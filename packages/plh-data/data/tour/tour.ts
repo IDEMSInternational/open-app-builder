@@ -27,8 +27,7 @@ const tour: FlowTypes.Tour[] = [
         type: "step",
         title: "Accessing the @global.parent_centre",
         message_text: "<p>Select the @global.parent_centre tile.</p>",
-        element:
-          "#main-content > plh-home > ion-content > plh-template-container > div > plh-template-component:nth-child(9) > div > plh-tmpl-display-group > div",
+        template_component_name: "tile_parent_centre",
         route: "home",
         exclude_from_translation: true,
       },
@@ -36,8 +35,7 @@ const tour: FlowTypes.Tour[] = [
         type: "step",
         title: "Accessing the Essential Tools",
         message_text: "<p>Select the Essential Tools tile to get to the full list of tools.</p>",
-        element:
-          "#main-content > plh-template-testing > ion-content > plh-template-container > div > plh-template-component:nth-child(3) > div > plh-tmpl-display-group > div > div > plh-template-component:nth-child(3) > div > plh-tile-component > div",
+        template_component_name: "tile_essential_tools",
         route: "template/parent_centre",
         exclude_from_translation: true,
       },

@@ -30,6 +30,7 @@ import player from "lottie-web";
 import { MatomoModule } from "ngx-matomo";
 import { TourComponent } from "./feature/tour/tour.component";
 import { httpInterceptorProviders } from "./shared/services/server/interceptors";
+import { TemplateComponentsModule } from "./shared/components/template/template.module";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -55,6 +56,7 @@ export function lottiePlayerFactory() {
     ...introModules,
     SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
+    TemplateComponentsModule,
     // TODO - use env (handle undefined case)
     // TODO - handle breaking versions ng 10/11/12 matomo rc1,2
     // MatomoModule.forRoot({

@@ -4,7 +4,7 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows",
-    flow_name: "campaign_home_screen",
+    flow_name: "campaign_hs_w_self_care",
     status: "released",
     rows: [
       {
@@ -20,6 +20,108 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: -1,
         campaign_list: ["weekly_workshops", "parent_points", "parent_centre"],
+        icon: "plh_images/icons/play_white.svg",
+      },
+      {
+        id: "welcome_survey_quick_start",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["setup_and_survey_stepper"],
+            _raw: "go_to: setup_and_survey_stepper",
+            _cleaned: "click | go_to: setup_and_survey_stepper",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["welcome_survey_quick_start.sent", true],
+            _raw: "set_field: welcome_survey_quick_start.sent : true",
+            _cleaned: "click | set_field: welcome_survey_quick_start.sent : true",
+          },
+        ],
+        priority: 13,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "survey_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | survey_completed : true",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/phone_heart_white.svg",
+      },
+      {
+        id: "w_self_care_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_self_care_m_w_released"],
+            _raw: "go_to: w_self_care_m_w_released",
+            _cleaned: "click | go_to: w_self_care_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_m_w_released.sent", true],
+            _raw: "set_field: w_self_care_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_self_care_m_w_released.sent : true",
+          },
+        ],
+        priority: 12.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_self_care_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
         icon: "plh_images/icons/play_white.svg",
       },
       {
@@ -40,13 +142,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_self_care_m_relax.sent : true",
           },
         ],
-        priority: 0.1,
+        priority: 12.9,
         activation_condition_list: [
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_completed",
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_completed : true",
@@ -57,131 +170,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_relax.sent",
+                field: "w_self_care_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_relax.sent : true | before : 1 : day",
           },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 6 : day",
-          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "welcome_survey_quick_start",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["setup_and_survey_stepper"],
-            _raw: "go_to: setup_and_survey_stepper",
-            _cleaned: "click | go_to: setup_and_survey_stepper",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["welcome_survey_quick_start.sent", true],
-            _raw: "set_field: welcome_survey_quick_start.sent : true",
-            _cleaned: "click | set_field: welcome_survey_quick_start.sent : true",
-          },
-        ],
-        priority: 0.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_self_care_started",
-              },
-            },
-            _raw: "get_field | w_self_care_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "survey_completed",
-              },
-            },
-            _raw: "get_field | survey_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/phone_heart_white.svg",
-      },
-      {
-        id: "w_self_care_m_w_tomorrow",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_self_care_m_w_tomorrow"],
-            _raw: "pop_up: w_self_care_m_w_tomorrow",
-            _cleaned: "click | pop_up: w_self_care_m_w_tomorrow",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_m_w_tomorrow.sent", true],
-            _raw: "set_field: w_self_care_m_w_tomorrow.sent : true",
-            _cleaned: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          },
-        ],
-        priority: 0.6,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "5",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 5 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_self_care_m_w_tomorrow.sent",
-              },
-            },
-            _raw: "get_field | w_self_care_m_w_tomorrow.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_self_care_m_hp_reminder",
@@ -201,26 +198,31 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_self_care_m_hp_reminder.sent : true",
           },
         ],
-        priority: 0.8,
+        priority: 12.4,
         activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
           {
             condition_type: "db_lookup",
             condition_args: {
               db_lookup: {
                 table_id: "data_events",
-                filter: {
-                  field: "w_self_care_completed",
+                where: {
+                  name: "w_self_care_completed",
                   value: "true",
                 },
                 order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "3",
-                  unit: "day",
-                },
               },
             },
-            _raw: "get_field:first | w_self_care_completed: true | before : 3 : day",
+            _raw: "get_field:first | w_self_care_completed: true",
           },
         ],
         deactivation_condition_list: [
@@ -228,10 +230,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_hp_reminder.sent",
+                field: "w_self_care_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -255,35 +298,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_self_care_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 0.9,
+        priority: 12.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "5",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 5 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "1",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 1",
           },
         ],
         deactivation_condition_list: [
@@ -291,14 +316,246 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_m_parent_points_overview.sent",
+                field: "w_self_care_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_self_care_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_self_care_m_w_tomorrow"],
+            _raw: "pop_up: w_self_care_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_self_care_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_self_care_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 12.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_self_care_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_1on1",
+    status: "released",
+    rows: [
+      {
+        id: "w_1on1_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_1on1_m_w_released"],
+            _raw: "pop_up: w_1on1_m_w_released",
+            _cleaned: "click | pop_up: w_1on1_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_m_w_released.sent", true],
+            _raw: "set_field: w_1on1_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_1on1_m_w_released.sent : true",
+          },
+        ],
+        priority: 11.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_1on1_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_1on1_m_relax",
@@ -318,26 +575,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_relax.sent : true",
           },
         ],
-        priority: 1.1,
+        priority: 11.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 6 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -345,177 +593,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_relax.sent",
+                field: "w_1on1_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_relax.sent : true | before : 1 : day",
           },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 13 : day",
-          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_1on1_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_1on1_m_w_released"],
-            _raw: "pop_up: w_1on1_m_w_released",
-            _cleaned: "click | pop_up: w_1on1_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_m_w_released.sent", true],
-            _raw: "set_field: w_1on1_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_1on1_m_w_released.sent : true",
-          },
-        ],
-        priority: 1.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 6 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_started",
-              },
-            },
-            _raw: "get_field | w_1on1_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_1on1_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_1on1_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_1on1_m_w_released"],
-            _raw: "pop_up: w_1on1_m_w_released",
-            _cleaned: "click | pop_up: w_1on1_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_m_w_released.sent", true],
-            _raw: "set_field: w_1on1_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_1on1_m_w_released.sent : true",
-          },
-        ],
-        priority: 1.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 6 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_started",
-              },
-            },
-            _raw: "get_field | w_1on1_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_1on1_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_1on1_m_something_fun",
@@ -535,26 +621,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_something_fun.sent : true",
           },
         ],
-        priority: 1.4,
+        priority: 11.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "7",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 7 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -562,10 +639,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_something_fun.sent",
+                field: "w_1on1_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -589,26 +687,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_praise.sent : true",
           },
         ],
-        priority: 1.5,
+        priority: 11.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "8",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 8 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -616,7 +705,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_praise.sent",
+                field: "w_1on1_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_praise.sent : true",
@@ -625,10 +715,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "current_relative_day_number",
+                value: "0",
               },
             },
-            _raw: "get_field | w_1on1_completed : true",
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -652,32 +763,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_w_reminder.sent : true",
           },
         ],
-        priority: 1.6,
+        priority: 11.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "9",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 9 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_1on1_started",
+                value: false,
               },
             },
             _raw: "get_field | w_1on1_started : false",
@@ -688,10 +791,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_w_reminder.sent",
+                field: "w_1on1_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -715,26 +849,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_w_in_progress.sent : true",
           },
         ],
-        priority: 1.7,
+        priority: 11.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "9",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 9 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -742,7 +867,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_w_in_progress.sent",
+                field: "w_1on1_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_w_in_progress.sent : true",
@@ -751,7 +877,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_started",
+                value: false,
               },
             },
             _raw: "get_field | w_1on1_started : false",
@@ -760,7 +917,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed: true",
@@ -787,32 +945,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_hp_reminder.sent : true",
           },
         ],
-        priority: 1.8,
+        priority: 11.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "9",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 9 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_1on1_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_completed: true",
@@ -823,10 +973,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_hp_reminder.sent",
+                field: "w_1on1_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -850,35 +1041,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_1on1_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 1.9,
+        priority: 11.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "12",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 12 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -886,14 +1059,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_m_parent_points_overview.sent",
+                field: "w_1on1_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_1on1_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_1on1_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_1on1_hp_review"],
+            _raw: "go_to: w_1on1_hp_review",
+            _cleaned: "click | go_to: w_1on1_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_hp_review.sent", true],
+            _raw: "set_field: w_1on1_hp_review.sent : true",
+            _cleaned: "click | set_field: w_1on1_hp_review.sent : true",
+          },
+        ],
+        priority: 11.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_1on1_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_1on1_m_w_tomorrow"],
+            _raw: "pop_up: w_1on1_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_1on1_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_1on1_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_1on1_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 11.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_1on1_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_praise",
+    status: "released",
+    rows: [
+      {
+        id: "w_praise_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_praise_m_w_released"],
+            _raw: "pop_up: w_praise_m_w_released",
+            _cleaned: "click | pop_up: w_praise_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_m_w_released.sent", true],
+            _raw: "set_field: w_praise_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_praise_m_w_released.sent : true",
+          },
+        ],
+        priority: 10.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_praise_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_praise_m_relax",
@@ -913,26 +1424,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_relax.sent : true",
           },
         ],
-        priority: 2.1,
+        priority: 10.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 13 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -940,168 +1442,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_relax.sent",
+                field: "w_praise_m_relax.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_relax.sent : true | before : 1 : day",
           },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 20 : day",
-          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_praise_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_praise_m_w_released"],
-            _raw: "pop_up: w_praise_m_w_released",
-            _cleaned: "click | pop_up: w_praise_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_m_w_released.sent", true],
-            _raw: "set_field: w_praise_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_praise_m_w_released.sent : true",
-          },
-        ],
-        priority: 2.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 13 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_started",
-              },
-            },
-            _raw: "get_field | w_praise_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_praise_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_praise_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_praise_m_w_released"],
-            _raw: "pop_up: w_praise_m_w_released",
-            _cleaned: "click | pop_up: w_praise_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_m_w_released.sent", true],
-            _raw: "set_field: w_praise_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_praise_m_w_released.sent : true",
-          },
-        ],
-        priority: 2.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 13 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_praise_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_praise_m_something_fun",
@@ -1121,26 +1470,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_something_fun.sent : true",
           },
         ],
-        priority: 2.4,
+        priority: 10.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "14",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 14 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1148,10 +1488,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_something_fun.sent",
+                field: "w_praise_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -1175,26 +1536,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_praise.sent : true",
           },
         ],
-        priority: 2.5,
+        priority: 10.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "15",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 15 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1202,10 +1554,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_praise.sent",
+                field: "w_praise_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -1229,32 +1612,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_w_reminder.sent : true",
           },
         ],
-        priority: 2.6,
+        priority: 10.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "16",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 16 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "w_praise_started",
+                value: false,
               },
             },
             _raw: "get_field | w_praise_started : false",
@@ -1265,10 +1640,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_w_reminder.sent",
+                field: "w_praise_m_w_reminder.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_praise_m_w_reminder.sent : true | before : 1 : day",
+            _raw: "get_field | w_praise_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -1292,26 +1698,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_w_in_pro.sent : true",
           },
         ],
-        priority: 2.7,
+        priority: 10.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "16",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 16 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1319,7 +1716,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_w_in_pro.sent",
+                field: "w_praise_m_w_in_pro.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_w_in_pro.sent : true",
@@ -1328,7 +1726,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_started",
+                value: false,
               },
             },
             _raw: "get_field | w_praise_started : false",
@@ -1337,7 +1766,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_completed",
+                field: "w_praise_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_completed: true",
@@ -1364,32 +1794,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_hp_reminder.sent : true",
           },
         ],
-        priority: 2.8,
+        priority: 10.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "16",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 16 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_completed",
+                field: "w_praise_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_completed: true",
@@ -1400,10 +1822,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_hp_reminder.sent",
+                field: "w_praise_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -1427,35 +1890,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_praise_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 2.9,
+        priority: 10.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "19",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 19 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1463,14 +1908,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_m_parent_points_overview.sent",
+                field: "w_praise_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_praise_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_praise_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_praise_hp_review"],
+            _raw: "go_to: w_praise_hp_review",
+            _cleaned: "click | go_to: w_praise_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_hp_review.sent", true],
+            _raw: "set_field: w_praise_hp_review.sent : true",
+            _cleaned: "click | set_field: w_praise_hp_review.sent : true",
+          },
+        ],
+        priority: 10.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_praise_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_praise_m_w_tomorrow"],
+            _raw: "pop_up: w_praise_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_praise_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_praise_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_praise_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 10.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_praise_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_instruct",
+    status: "released",
+    rows: [
+      {
+        id: "w_instruct_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_instruct_m_w_released"],
+            _raw: "pop_up: w_instruct_m_w_released",
+            _cleaned: "click | pop_up: w_instruct_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_m_w_released.sent", true],
+            _raw: "set_field: w_instruct_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_instruct_m_w_released.sent : true",
+          },
+        ],
+        priority: 9.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_instruct_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_instruct_m_relax",
@@ -1490,26 +2273,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_relax.sent : true",
           },
         ],
-        priority: 3.1,
+        priority: 9.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 20 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -1517,177 +2291,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_relax.sent",
+                field: "w_instruct_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_instruct_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 27 : day",
+            _raw: "get_field | w_instruct_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_instruct_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_instruct_m_w_released"],
-            _raw: "pop_up: w_instruct_m_w_released",
-            _cleaned: "click | pop_up: w_instruct_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_m_w_released.sent", true],
-            _raw: "set_field: w_instruct_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_instruct_m_w_released.sent : true",
-          },
-        ],
-        priority: 3.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 20 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_started",
-              },
-            },
-            _raw: "get_field | w_instruct_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_instruct_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_instruct_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_instruct_m_w_released"],
-            _raw: "pop_up: w_instruct_m_w_released",
-            _cleaned: "click | pop_up: w_instruct_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_m_w_released.sent", true],
-            _raw: "set_field: w_instruct_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_instruct_m_w_released.sent : true",
-          },
-        ],
-        priority: 3.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 20 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_started",
-              },
-            },
-            _raw: "get_field | w_instruct_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_instruct_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_instruct_m_something_fun",
@@ -1707,26 +2319,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_something_fun.sent : true",
           },
         ],
-        priority: 3.4,
+        priority: 9.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "21",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 21 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -1734,7 +2337,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_something_fun.sent",
+                field: "w_instruct_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_something_fun.sent : true",
@@ -1761,26 +2365,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_praise.sent : true",
           },
         ],
-        priority: 3.5,
+        priority: 9.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "22",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 22 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -1788,7 +2383,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_praise.sent",
+                field: "w_instruct_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_praise.sent : true",
@@ -1815,32 +2411,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_w_reminder.sent : true",
           },
         ],
-        priority: 3.6,
+        priority: 9.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "23",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 23 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "w_instruct_started",
+                value: false,
               },
             },
             _raw: "get_field | w_instruct_started : false",
@@ -1851,10 +2439,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_w_reminder.sent",
+                field: "w_instruct_m_w_reminder.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_instruct_m_w_reminder.sent : true | before : 1 : day",
+            _raw: "get_field | w_instruct_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -1878,26 +2497,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_w_in_pro.sent : true",
           },
         ],
-        priority: 3.7,
+        priority: 9.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "23",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 23 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -1905,7 +2515,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_w_in_pro.sent",
+                field: "w_instruct_m_w_in_pro.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_w_in_pro.sent : true",
@@ -1914,7 +2525,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_started",
+                value: false,
               },
             },
             _raw: "get_field | w_instruct_started : false",
@@ -1923,7 +2565,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_completed",
+                field: "w_instruct_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_completed: true",
@@ -1950,32 +2593,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_hp_reminder.sent : true",
           },
         ],
-        priority: 3.8,
+        priority: 9.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "23",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 23 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_completed",
+                field: "w_instruct_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_completed: true",
@@ -1986,10 +2621,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_hp_reminder.sent",
+                field: "w_instruct_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -2013,35 +2689,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_instruct_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 3.9,
+        priority: 9.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "26",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 26 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -2049,14 +2707,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_m_parent_points_overview.sent",
+                field: "w_instruct_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_instruct_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_instruct_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_instruct_hp_review"],
+            _raw: "go_to: w_instruct_hp_review",
+            _cleaned: "click | go_to: w_instruct_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_hp_review.sent", true],
+            _raw: "set_field: w_instruct_hp_review.sent : true",
+            _cleaned: "click | set_field: w_instruct_hp_review.sent : true",
+          },
+        ],
+        priority: 9.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_instruct_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_instruct_m_w_tomorrow"],
+            _raw: "pop_up: w_instruct_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_instruct_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_instruct_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_instruct_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 9.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_1on1_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_stress",
+    status: "released",
+    rows: [
+      {
+        id: "w_stress_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_stress_m_w_released"],
+            _raw: "pop_up: w_stress_m_w_released",
+            _cleaned: "click | pop_up: w_stress_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_m_w_released.sent", true],
+            _raw: "set_field: w_stress_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_stress_m_w_released.sent : true",
+          },
+        ],
+        priority: 8.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 5",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_stress_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_stress_m_relax",
@@ -2076,26 +3072,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_relax.sent : true",
           },
         ],
-        priority: 4.1,
+        priority: 8.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -2103,177 +3090,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_relax.sent",
+                field: "w_stress_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_stress_m_relax.sent : true | within : 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_stress_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_stress_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_stress_m_w_released"],
-            _raw: "pop_up: w_stress_m_w_released",
-            _cleaned: "click | pop_up: w_stress_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_m_w_released.sent", true],
-            _raw: "set_field: w_stress_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_stress_m_w_released.sent : true",
-          },
-        ],
-        priority: 4.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_started",
-              },
-            },
-            _raw: "get_field | w_stress_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_stress_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_stress_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_stress_m_w_released"],
-            _raw: "pop_up: w_stress_m_w_released",
-            _cleaned: "click | pop_up: w_stress_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_m_w_released.sent", true],
-            _raw: "set_field: w_stress_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_stress_m_w_released.sent : true",
-          },
-        ],
-        priority: 4.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_started",
-              },
-            },
-            _raw: "get_field | w_stress_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_stress_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_stress_m_something_fun",
@@ -2293,26 +3118,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_something_fun.sent : true",
           },
         ],
-        priority: 4.4,
+        priority: 8.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -2320,10 +3136,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_something_fun.sent",
+                field: "w_stress_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -2347,26 +3184,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_praise.sent : true",
           },
         ],
-        priority: 4.5,
+        priority: 8.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -2374,10 +3202,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_praise.sent",
+                field: "w_stress_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -2401,32 +3260,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_w_reminder.sent : true",
           },
         ],
-        priority: 4.6,
+        priority: 8.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "w_stress_started",
+                value: false,
               },
             },
             _raw: "get_field | w_stress_started : false",
@@ -2437,10 +3288,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_w_reminder.sent",
+                field: "w_stress_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -2464,26 +3346,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_w_in_progress.sent : true",
           },
         ],
-        priority: 4.7,
+        priority: 8.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -2491,7 +3364,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_w_in_progress.sent",
+                field: "w_stress_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_w_in_progress.sent : true",
@@ -2500,7 +3374,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_started",
+                value: false,
               },
             },
             _raw: "get_field | w_stress_started : false",
@@ -2509,7 +3414,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_completed",
+                field: "w_stress_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_completed: true",
@@ -2536,35 +3442,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_hp_reminder.sent : true",
           },
         ],
-        priority: 4.8,
+        priority: 8.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_completed",
+                field: "w_stress_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_stress_completed: true",
+            _raw: "get_field | w_stress_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -2572,10 +3470,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_hp_reminder.sent",
+                field: "w_stress_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -2599,35 +3538,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_stress_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 4.9,
+        priority: 8.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -2635,14 +3556,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_m_parent_points_overview.sent",
+                field: "w_stress_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_stress_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_stress_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_stress_hp_review"],
+            _raw: "go_to: w_stress_hp_review",
+            _cleaned: "click | go_to: w_stress_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_hp_review.sent", true],
+            _raw: "set_field: w_stress_hp_review.sent : true",
+            _cleaned: "click | set_field: w_stress_hp_review.sent : true",
+          },
+        ],
+        priority: 8.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 5",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_stress_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_stress_m_w_tomorrow"],
+            _raw: "pop_up: w_stress_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_stress_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_stress_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_stress_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 8.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 5",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_stress_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_money",
+    status: "released",
+    rows: [
+      {
+        id: "w_money_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_money_m_w_released"],
+            _raw: "pop_up: w_money_m_w_released",
+            _cleaned: "click | pop_up: w_money_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_m_w_released.sent", true],
+            _raw: "set_field: w_money_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_money_m_w_released.sent : true",
+          },
+        ],
+        priority: 7.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 6",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_money_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_money_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_money_m_relax",
@@ -2662,26 +3921,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_relax.sent : true",
           },
         ],
-        priority: 5.1,
+        priority: 7.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -2689,177 +3939,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_relax.sent",
+                field: "w_money_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_money_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_money_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_money_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_money_m_w_released"],
-            _raw: "pop_up: w_money_m_w_released",
-            _cleaned: "click | pop_up: w_money_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_m_w_released.sent", true],
-            _raw: "set_field: w_money_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_money_m_w_released.sent : true",
-          },
-        ],
-        priority: 5.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_started",
-              },
-            },
-            _raw: "get_field | w_money_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_money_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_money_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_money_m_w_released"],
-            _raw: "pop_up: w_money_m_w_released",
-            _cleaned: "click | pop_up: w_money_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_m_w_released.sent", true],
-            _raw: "set_field: w_money_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_money_m_w_released.sent : true",
-          },
-        ],
-        priority: 5.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_started",
-              },
-            },
-            _raw: "get_field | w_money_started : false",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_money_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_money_m_something_fun",
@@ -2879,26 +3967,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_something_fun.sent : true",
           },
         ],
-        priority: 5.4,
+        priority: 7.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -2906,10 +3985,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_something_fun.sent",
+                field: "w_money_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -2933,26 +4033,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_praise.sent : true",
           },
         ],
-        priority: 5.5,
+        priority: 7.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -2960,10 +4051,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_praise.sent",
+                field: "w_money_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -2987,32 +4109,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_w_reminder.sent : true",
           },
         ],
-        priority: 5.6,
+        priority: 7.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "w_money_started",
+                value: false,
               },
             },
             _raw: "get_field | w_money_started : false",
@@ -3023,10 +4137,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_w_reminder.sent",
+                field: "w_money_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -3050,26 +4195,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_w_in_progress.sent : true",
           },
         ],
-        priority: 5.7,
+        priority: 7.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -3077,7 +4213,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_w_in_progress.sent",
+                field: "w_money_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_w_in_progress.sent : true",
@@ -3086,7 +4223,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_started",
+                value: false,
               },
             },
             _raw: "get_field | w_money_started : false",
@@ -3095,7 +4263,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_completed",
+                field: "w_money_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_money_completed: true",
@@ -3122,35 +4291,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_hp_reminder.sent : true",
           },
         ],
-        priority: 5.8,
+        priority: 7.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_completed",
+                field: "w_money_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_money_completed: true",
+            _raw: "get_field | w_money_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -3158,10 +4319,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_hp_reminder.sent",
+                field: "w_money_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -3185,35 +4387,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_money_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 5.9,
+        priority: 7.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -3221,14 +4405,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_m_parent_points_overview.sent",
+                field: "w_money_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_money_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_money_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_money_hp_review"],
+            _raw: "go_to: w_money_hp_review",
+            _cleaned: "click | go_to: w_money_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_hp_review.sent", true],
+            _raw: "set_field: w_money_hp_review.sent : true",
+            _cleaned: "click | set_field: w_money_hp_review.sent : true",
+          },
+        ],
+        priority: 7.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 6",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_money_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_money_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_rules_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_rules_m_w_tomorrow"],
+            _raw: "pop_up: w_rules_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_rules_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_rules_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_rules_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 7.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 6",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_money_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_rules",
+    status: "released",
+    rows: [
+      {
+        id: "w_rules_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_rules_m_w_released"],
+            _raw: "pop_up: w_rules_m_w_released",
+            _cleaned: "click | pop_up: w_rules_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_m_w_released.sent", true],
+            _raw: "set_field: w_rules_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_rules_m_w_released.sent : true",
+          },
+        ],
+        priority: 6.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 7",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_rules_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_rules_m_relax",
@@ -3248,26 +4770,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_rules_m_relax.sent : true",
           },
         ],
-        priority: 6.1,
+        priority: 6.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -3275,159 +4788,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_relax.sent",
+                field: "w_rules_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_rules_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_rules_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_rules_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_rules_m_w_released"],
-            _raw: "pop_up: w_rules_m_w_released",
-            _cleaned: "click | pop_up: w_rules_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_m_w_released.sent", true],
-            _raw: "set_field: w_rules_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_rules_m_w_released.sent : true",
-          },
-        ],
-        priority: 6.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_rules_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_rules_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_rules_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_rules_m_w_released"],
-            _raw: "pop_up: w_rules_m_w_released",
-            _cleaned: "click | pop_up: w_rules_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_m_w_released.sent", true],
-            _raw: "set_field: w_rules_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_rules_m_w_released.sent : true",
-          },
-        ],
-        priority: 6.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_rules_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_rules_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_rules_m_something_fun",
@@ -3447,26 +4816,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_rules_m_something_fun.sent : true",
           },
         ],
-        priority: 6.4,
+        priority: 6.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -3474,10 +4834,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_something_fun.sent",
+                field: "w_rules_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -3501,26 +4882,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_rules_m_praise.sent : true",
           },
         ],
-        priority: 6.5,
+        priority: 6.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -3528,10 +4900,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_praise.sent",
+                field: "w_rules_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -3558,29 +4961,21 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "w_rules_started",
+                value: false,
               },
             },
             _raw: "get_field | w_rules_started : false",
@@ -3591,10 +4986,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_w_reminder.sent",
+                field: "w_rules_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -3618,26 +5044,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_rules_m_w_in_progress.sent : true",
           },
         ],
-        priority: 6.7,
+        priority: 6.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -3645,7 +5062,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_w_in_progress.sent",
+                field: "w_rules_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_w_in_progress.sent : true",
@@ -3654,7 +5072,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_started",
+                value: false,
               },
             },
             _raw: "get_field | w_rules_started : false",
@@ -3663,7 +5112,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_completed",
+                field: "w_rules_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_completed: true",
@@ -3690,35 +5140,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_rules_m_hp_reminder.sent : true",
           },
         ],
-        priority: 6.8,
+        priority: 6.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_completed",
+                field: "w_rules_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_rules_completed: true",
+            _raw: "get_field | w_rules_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -3726,10 +5168,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_hp_reminder.sent",
+                field: "w_rules_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -3753,35 +5236,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_rules_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 6.9,
+        priority: 6.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -3789,14 +5254,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_m_parent_points_overview.sent",
+                field: "w_rules_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_rules_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_rules_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_rules_hp_review"],
+            _raw: "go_to: w_rules_hp_review",
+            _cleaned: "click | go_to: w_rules_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_hp_review.sent", true],
+            _raw: "set_field: w_rules_hp_review.sent : true",
+            _cleaned: "click | set_field: w_rules_hp_review.sent : true",
+          },
+        ],
+        priority: 6.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 7",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_rules_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_rules_m_w_tomorrow"],
+            _raw: "pop_up: w_rules_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_rules_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_rules_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_rules_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 6.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 7",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_rules_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_consequence",
+    status: "released",
+    rows: [
+      {
+        id: "w_consequence_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_consequence_m_w_released"],
+            _raw: "pop_up: w_consequence_m_w_released",
+            _cleaned: "click | pop_up: w_consequence_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_m_w_released.sent", true],
+            _raw: "set_field: w_consequence_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_consequence_m_w_released.sent : true",
+          },
+        ],
+        priority: 5.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 8",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_consequence_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_consequence_m_relax",
@@ -3816,26 +5619,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_consequence_m_relax.sent : true",
           },
         ],
-        priority: 7.1,
+        priority: 5.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -3843,159 +5637,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_relax.sent",
+                field: "w_consequence_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_consequence_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_consequence_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_consequence_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_consequence_m_w_rel"],
-            _raw: "pop_up: w_consequence_m_w_rel",
-            _cleaned: "click | pop_up: w_consequence_m_w_rel",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_m_w_rel.sent", true],
-            _raw: "set_field: w_consequence_m_w_rel.sent : true",
-            _cleaned: "click | set_field: w_consequence_m_w_rel.sent : true",
-          },
-        ],
-        priority: 7.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_consequence_m_w_rel.sent",
-              },
-            },
-            _raw: "get_field | w_consequence_m_w_rel.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_consequence_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_consequence_m_w_rel"],
-            _raw: "pop_up: w_consequence_m_w_rel",
-            _cleaned: "click | pop_up: w_consequence_m_w_rel",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_m_w_rel.sent", true],
-            _raw: "set_field: w_consequence_m_w_rel.sent : true",
-            _cleaned: "click | set_field: w_consequence_m_w_rel.sent : true",
-          },
-        ],
-        priority: 7.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_consequence_m_w_rel.sent",
-              },
-            },
-            _raw: "get_field | w_consequence_m_w_rel.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_consequence_m_something_fun",
@@ -4015,26 +5665,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_consequence_m_something_fun.sent : true",
           },
         ],
-        priority: 7.4,
+        priority: 5.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -4042,10 +5683,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_something_fun.sent",
+                field: "w_consequence_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4069,26 +5731,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_consequence_m_praise.sent : true",
           },
         ],
-        priority: 7.5,
+        priority: 5.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -4096,59 +5749,82 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_praise.sent",
+                field: "w_consequence_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
         icon: "plh_images/icons/heart_white.svg",
       },
       {
-        id: "w_consequence_m_w_rem",
+        id: "w_consequence_m_w_reminder",
         click_action_list: [
           {
             trigger: "click",
             action_id: "pop_up",
-            args: ["w_consequence_m_w_rem"],
-            _raw: "pop_up: w_consequence_m_w_rem",
-            _cleaned: "click | pop_up: w_consequence_m_w_rem",
+            args: ["w_consequence_m_w_reminder"],
+            _raw: "pop_up: w_consequence_m_w_reminder",
+            _cleaned: "click | pop_up: w_consequence_m_w_reminder",
           },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_consequence_m_w_rem.sent", true],
-            _raw: "set_field: w_consequence_m_w_rem.sent : true",
-            _cleaned: "click | set_field: w_consequence_m_w_rem.sent : true",
+            args: ["w_consequence_m_w_reminder.sent", true],
+            _raw: "set_field: w_consequence_m_w_reminder.sent : true",
+            _cleaned: "click | set_field: w_consequence_m_w_reminder.sent : true",
           },
         ],
-        priority: 7.6,
+        priority: 5.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "w_consequence_started",
+                value: false,
               },
             },
             _raw: "get_field | w_consequence_started : false",
@@ -4159,53 +5835,75 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_w_rem.sent",
+                field: "w_consequence_m_w_reminder.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_consequence_m_w_rem.sent : true",
+            _raw: "get_field | w_consequence_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
         icon: "plh_images/icons/bell_white.svg",
       },
       {
-        id: "w_consequence_m_w_in_pro",
+        id: "w_consequence_m_w_in_progress",
         click_action_list: [
           {
             trigger: "click",
             action_id: "pop_up",
-            args: ["w_consequence_m_w_in_pro"],
-            _raw: "pop_up: w_consequence_m_w_in_pro",
-            _cleaned: "click | pop_up: w_consequence_m_w_in_pro",
+            args: ["w_consequence_m_w_in_progress"],
+            _raw: "pop_up: w_consequence_m_w_in_progress",
+            _cleaned: "click | pop_up: w_consequence_m_w_in_progress",
           },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_consequence_m_w_in_pro.sent", true],
-            _raw: "set_field: w_consequence_m_w_in_pro.sent : true",
-            _cleaned: "click | set_field: w_consequence_m_w_in_pro.sent : true",
+            args: ["w_consequence_m_w_in_progress.sent", true],
+            _raw: "set_field: w_consequence_m_w_in_progress.sent : true",
+            _cleaned: "click | set_field: w_consequence_m_w_in_progress.sent : true",
           },
         ],
-        priority: 7.7,
+        priority: 5.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -4213,16 +5911,48 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_w_in_pro.sent",
+                field: "w_consequence_m_w_in_progress.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_consequence_m_w_in_pro.sent : true",
+            _raw: "get_field | w_consequence_m_w_in_progress.sent : true",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_started",
+                value: false,
               },
             },
             _raw: "get_field | w_consequence_started : false",
@@ -4231,7 +5961,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_completed",
+                field: "w_consequence_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_completed: true",
@@ -4258,35 +5989,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_consequence_m_hp_reminder.sent : true",
           },
         ],
-        priority: 7.8,
+        priority: 5.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_completed",
+                field: "w_consequence_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_consequence_completed: true",
+            _raw: "get_field | w_consequence_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -4294,10 +6017,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_hp_reminder.sent",
+                field: "w_consequence_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -4321,35 +6085,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_consequence_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 7.9,
+        priority: 5.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -4357,14 +6103,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_m_parent_points_overview.sent",
+                field: "w_consequence_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_consequence_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_consequence_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_consequence_hp_review"],
+            _raw: "go_to: w_consequence_hp_review",
+            _cleaned: "click | go_to: w_consequence_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_hp_review.sent", true],
+            _raw: "set_field: w_consequence_hp_review.sent : true",
+            _cleaned: "click | set_field: w_consequence_hp_review.sent : true",
+          },
+        ],
+        priority: 5.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 8",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_consequence_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_consequence_m_w_tomorrow"],
+            _raw: "pop_up: w_consequence_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_consequence_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_consequence_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_consequence_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 5.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 8",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_consequence_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_solve",
+    status: "released",
+    rows: [
+      {
+        id: "w_solve_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_solve_m_w_released"],
+            _raw: "pop_up: w_solve_m_w_released",
+            _cleaned: "click | pop_up: w_solve_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_m_w_released.sent", true],
+            _raw: "set_field: w_solve_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_solve_m_w_released.sent : true",
+          },
+        ],
+        priority: 4.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 9",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_solve_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_solve_m_relax",
@@ -4384,26 +6468,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_relax.sent : true",
           },
         ],
-        priority: 8.1,
+        priority: 4.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -4411,159 +6486,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_relax.sent",
+                field: "w_solve_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_solve_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_solve_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_solve_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_solve_m_w_released"],
-            _raw: "pop_up: w_solve_m_w_released",
-            _cleaned: "click | pop_up: w_solve_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_m_w_released.sent", true],
-            _raw: "set_field: w_solve_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_solve_m_w_released.sent : true",
-          },
-        ],
-        priority: 8.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_solve_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_solve_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_solve_m_w_released"],
-            _raw: "pop_up: w_solve_m_w_released",
-            _cleaned: "click | pop_up: w_solve_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_m_w_released.sent", true],
-            _raw: "set_field: w_solve_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_solve_m_w_released.sent : true",
-          },
-        ],
-        priority: 8.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_solve_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_solve_m_something_fun",
@@ -4583,26 +6514,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_something_fun.sent : true",
           },
         ],
-        priority: 8.4,
+        priority: 4.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -4610,10 +6532,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_something_fun.sent",
+                field: "w_solve_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4637,26 +6580,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_praise.sent : true",
           },
         ],
-        priority: 8.5,
+        priority: 4.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -4664,10 +6598,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_praise.sent",
+                field: "w_solve_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4691,32 +6656,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_w_reminder.sent : true",
           },
         ],
-        priority: 8.6,
+        priority: 4.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_started",
+                field: "w_solve_started",
+                value: false,
               },
             },
             _raw: "get_field | w_solve_started : false",
@@ -4727,10 +6684,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_w_reminder.sent",
+                field: "w_solve_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -4754,26 +6742,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_w_in_progress.sent : true",
           },
         ],
-        priority: 8.7,
+        priority: 4.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -4781,7 +6760,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_w_in_progress.sent",
+                field: "w_solve_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_w_in_progress.sent : true",
@@ -4790,7 +6770,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_started",
+                value: false,
               },
             },
             _raw: "get_field | w_solve_started : false",
@@ -4799,7 +6810,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_completed",
+                field: "w_solve_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_completed: true",
@@ -4826,35 +6838,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_hp_reminder.sent : true",
           },
         ],
-        priority: 8.8,
+        priority: 4.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_completed",
+                field: "w_solve_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_solve_completed: true",
+            _raw: "get_field | w_solve_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -4862,10 +6866,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_hp_reminder.sent",
+                field: "w_solve_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -4889,35 +6934,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_solve_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 8.9,
+        priority: 4.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -4925,14 +6952,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_m_parent_points_overview.sent",
+                field: "w_solve_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_solve_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_solve_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_solve_hp_review"],
+            _raw: "go_to: w_solve_hp_review",
+            _cleaned: "click | go_to: w_solve_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_hp_review.sent", true],
+            _raw: "set_field: w_solve_hp_review.sent : true",
+            _cleaned: "click | set_field: w_solve_hp_review.sent : true",
+          },
+        ],
+        priority: 4.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 9",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_solve_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_solve_m_w_tomorrow"],
+            _raw: "pop_up: w_solve_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_solve_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_solve_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_solve_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 4.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 9",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_solve_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_safe",
+    status: "released",
+    rows: [
+      {
+        id: "w_safe_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_safe_m_w_released"],
+            _raw: "pop_up: w_safe_m_w_released",
+            _cleaned: "click | pop_up: w_safe_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_m_w_released.sent", true],
+            _raw: "set_field: w_safe_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_safe_m_w_released.sent : true",
+          },
+        ],
+        priority: 3.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 10",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_safe_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_safe_m_relax",
@@ -4952,26 +7317,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_relax.sent : true",
           },
         ],
-        priority: 9.1,
+        priority: 3.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -4979,159 +7335,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_relax.sent",
+                field: "w_safe_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_safe_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_safe_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_safe_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_safe_m_w_released"],
-            _raw: "pop_up: w_safe_m_w_released",
-            _cleaned: "click | pop_up: w_safe_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_safe_m_w_released.sent", true],
-            _raw: "set_field: w_safe_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_safe_m_w_released.sent : true",
-          },
-        ],
-        priority: 9.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_safe_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_safe_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_safe_m_w_released"],
-            _raw: "pop_up: w_safe_m_w_released",
-            _cleaned: "click | pop_up: w_safe_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_safe_m_w_released.sent", true],
-            _raw: "set_field: w_safe_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_safe_m_w_released.sent : true",
-          },
-        ],
-        priority: 9.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_safe_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_safe_m_something_fun",
@@ -5151,26 +7363,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_something_fun.sent : true",
           },
         ],
-        priority: 9.4,
+        priority: 3.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -5178,10 +7381,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_something_fun.sent",
+                field: "w_safe_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5205,26 +7429,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_praise.sent : true",
           },
         ],
-        priority: 9.5,
+        priority: 3.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -5232,10 +7447,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_praise.sent",
+                field: "w_safe_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5259,32 +7505,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_w_reminder.sent : true",
           },
         ],
-        priority: 9.6,
+        priority: 3.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_started",
+                field: "w_safe_started",
+                value: false,
               },
             },
             _raw: "get_field | w_safe_started : false",
@@ -5295,10 +7533,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_w_reminder.sent",
+                field: "w_safe_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -5322,26 +7591,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_w_in_progress.sent : true",
           },
         ],
-        priority: 9.7,
+        priority: 3.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -5349,7 +7609,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_w_in_progress.sent",
+                field: "w_safe_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_w_in_progress.sent : true",
@@ -5358,7 +7619,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_started",
+                value: false,
               },
             },
             _raw: "get_field | w_safe_started : false",
@@ -5367,7 +7659,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_completed",
+                field: "w_safe_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_completed: true",
@@ -5394,35 +7687,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_hp_reminder.sent : true",
           },
         ],
-        priority: 9.8,
+        priority: 3.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_completed",
+                field: "w_safe_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_safe_completed: true",
+            _raw: "get_field | w_safe_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -5430,10 +7715,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_hp_reminder.sent",
+                field: "w_safe_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -5457,35 +7783,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_safe_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 9.9,
+        priority: 3.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -5493,14 +7801,352 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_m_parent_points_overview.sent",
+                field: "w_safe_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_safe_m_parent_points_overview.sent : true",
           },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
+      },
+      {
+        id: "w_safe_hp_review",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_safe_hp_review"],
+            _raw: "go_to: w_safe_hp_review",
+            _cleaned: "click | go_to: w_safe_hp_review",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_hp_review.sent", true],
+            _raw: "set_field: w_safe_hp_review.sent : true",
+            _cleaned: "click | set_field: w_safe_hp_review.sent : true",
+          },
+        ],
+        priority: 3.2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 10",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_completed : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_hp_review_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
+      },
+      {
+        id: "w_safe_m_w_tomorrow",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_safe_m_w_tomorrow"],
+            _raw: "pop_up: w_safe_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_safe_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_safe_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_safe_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 3.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 10",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_completed",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_safe_completed : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_m_w_tomorrow.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_m_w_tomorrow.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "5",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 5",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_hs_w_crisis",
+    status: "released",
+    rows: [
+      {
+        id: "w_crisis_m_w_released",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_crisis_m_w_released"],
+            _raw: "pop_up: w_crisis_m_w_released",
+            _cleaned: "click | pop_up: w_crisis_m_w_released",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_crisis_m_w_released.sent", true],
+            _raw: "set_field: w_crisis_m_w_released.sent : true",
+            _cleaned: "click | set_field: w_crisis_m_w_released.sent : true",
+          },
+        ],
+        priority: 2.99,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 11",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_started",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_crisis_started : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_m_w_released.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_crisis_m_w_released.sent : true",
+          },
+        ],
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_crisis_m_relax",
@@ -5520,26 +8166,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_relax.sent : true",
           },
         ],
-        priority: 10.1,
+        priority: 2.9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -5547,159 +8184,15 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_relax.sent",
+                field: "w_crisis_m_relax.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_crisis_m_relax.sent : true | within: 1 : day",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | w_crisis_m_relax.sent : true | before : 1 : day",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
-      },
-      {
-        id: "w_crisis_m_w_released_individual",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_crisis_m_w_released"],
-            _raw: "pop_up: w_crisis_m_w_released",
-            _cleaned: "click | pop_up: w_crisis_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_crisis_m_w_released.sent", true],
-            _raw: "set_field: w_crisis_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_crisis_m_w_released.sent : true",
-          },
-        ],
-        priority: 10.2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: false",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_crisis_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
-      },
-      {
-        id: "w_crisis_m_w_released_together",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_crisis_m_w_released"],
-            _raw: "pop_up: w_crisis_m_w_released",
-            _cleaned: "click | pop_up: w_crisis_m_w_released",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_crisis_m_w_released.sent", true],
-            _raw: "set_field: w_crisis_m_w_released.sent : true",
-            _cleaned: "click | set_field: w_crisis_m_w_released.sent : true",
-          },
-        ],
-        priority: 10.3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "do_workshops_together",
-              },
-            },
-            _raw: "get_field | do_workshops_together: true",
-          },
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_m_w_released.sent",
-              },
-            },
-            _raw: "get_field | w_crisis_m_w_released.sent : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops"],
-        icon: "plh_images/icons/bell_white.svg",
       },
       {
         id: "w_crisis_m_something_fun",
@@ -5719,26 +8212,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_something_fun.sent : true",
           },
         ],
-        priority: 10.4,
+        priority: 2.8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "28",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 28 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -5746,10 +8230,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_something_fun.sent",
+                field: "w_crisis_m_something_fun.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_something_fun.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5773,26 +8278,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_praise.sent : true",
           },
         ],
-        priority: 10.5,
+        priority: 2.7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "29",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 29 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -5800,10 +8296,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_praise.sent",
+                field: "w_crisis_m_praise.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_praise.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5827,32 +8354,24 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_w_reminder.sent : true",
           },
         ],
-        priority: 10.6,
+        priority: 2.6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_started",
+                field: "w_crisis_started",
+                value: false,
               },
             },
             _raw: "get_field | w_crisis_started : false",
@@ -5863,10 +8382,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_w_reminder.sent",
+                field: "w_crisis_m_w_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_w_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -5890,26 +8440,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_w_in_progress.sent : true",
           },
         ],
-        priority: 10.7,
+        priority: 2.5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -5917,7 +8458,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_w_in_progress.sent",
+                field: "w_crisis_m_w_in_progress.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_w_in_progress.sent : true",
@@ -5926,7 +8468,38 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_started",
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_started",
+                value: false,
               },
             },
             _raw: "get_field | w_crisis_started : false",
@@ -5935,7 +8508,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_completed",
+                field: "w_crisis_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_completed: true",
@@ -5962,35 +8536,27 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_hp_reminder.sent : true",
           },
         ],
-        priority: 10.8,
+        priority: 2.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "30",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 30 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_completed",
+                field: "w_crisis_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_crisis_completed: true",
+            _raw: "get_field | w_crisis_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -5998,10 +8564,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_hp_reminder.sent",
+                field: "w_crisis_m_hp_reminder.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_hp_reminder.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -6025,35 +8632,17 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_crisis_m_parent_points_overview.sent : true",
           },
         ],
-        priority: 10.9,
+        priority: 2.3,
         activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "no_parent_points_this_week",
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "get_field | no_parent_points_this_week : false",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -6061,96 +8650,105 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_m_parent_points_overview.sent",
+                field: "w_crisis_m_parent_points_overview.sent",
+                value: true,
               },
             },
             _raw: "get_field | w_crisis_m_parent_points_overview.sent : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
           },
         ],
         campaign_list: ["parent_points"],
         icon: "plh_images/icons/star_white.svg",
       },
-    ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "campaign_workshop_quick_start",
-    status: "released",
-    rows: [
       {
-        id: "default",
+        id: "w_crisis_hp_review",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_crisis_hp_review"],
+            _raw: "go_to: w_crisis_hp_review",
+            _cleaned: "click | go_to: w_crisis_hp_review",
+          },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["default.sent", true],
-            _raw: "set_field: default.sent : true",
-            _cleaned: "click | set_field: default.sent : true",
+            args: ["w_crisis_hp_review.sent", true],
+            _raw: "set_field: w_crisis_hp_review.sent : true",
+            _cleaned: "click | set_field: w_crisis_hp_review.sent : true",
           },
         ],
-        priority: -1,
-        campaign_list: ["workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-      },
-      {
-        id: "w_self_care_quick_start",
-        workshop: "w_self_care",
-        workshop_data: "@data.workshop.w_self_care",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_self_care_stepper"],
-            _raw: "go_to: w_self_care_stepper",
-            _cleaned: "click | go_to: w_self_care_stepper",
-          },
-        ],
-        priority: 0,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_self_care_started",
-              },
-            },
-            _raw: "get_field | w_self_care_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_self_care_continue",
-        workshop: "w_self_care",
-        workshop_data: "@data.workshop.w_self_care",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_self_care_stepper"],
-            _raw: "go_to: w_self_care_stepper",
-            _cleaned: "click | go_to: w_self_care_stepper",
-          },
-        ],
-        priority: 0,
+        priority: 2.2,
         activation_condition_list: [
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_started",
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "get_field | w_self_care_started : true",
+            _raw: "get_field | current_workshop_number : 11",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_crisis_completed : true",
           },
         ],
         deactivation_condition_list: [
@@ -6158,118 +8756,105 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_completed",
+                field: "w_crisis_hp_review_completed",
+                value: true,
               },
             },
-            _raw: "get_field | w_self_care_completed: true",
+            _raw: "get_field | w_crisis_hp_review_completed : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "0",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 0",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "2",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 2",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "3",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 3",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_relative_day_number",
+                value: "4",
+              },
+            },
+            _raw: "get_field | current_relative_day_number : 4",
           },
         ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/parent_heart_white.svg",
       },
       {
-        id: "w_1on1_quick_start",
-        workshop: "w_1on1",
-        workshop_data: "@data.workshop.w_1on1",
+        id: "w_crisis_m_w_tomorrow",
         click_action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
-            args: ["w_1on1_stepper"],
-            _raw: "go_to: w_1on1_stepper",
-            _cleaned: "click | go_to: w_1on1_stepper",
+            action_id: "pop_up",
+            args: ["w_crisis_m_w_tomorrow"],
+            _raw: "pop_up: w_crisis_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_crisis_m_w_tomorrow",
           },
-        ],
-        priority: 1,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 6 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_started",
-              },
-            },
-            _raw: "get_field | w_1on1_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_1on1_continue",
-        workshop: "w_1on1",
-        workshop_data: "@data.workshop.w_1on1",
-        click_action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
-            args: ["w_1on1_stepper"],
-            _raw: "go_to: w_1on1_stepper",
-            _cleaned: "click | go_to: w_1on1_stepper",
+            action_id: "set_field",
+            args: ["w_crisis_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_crisis_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_crisis_m_w_tomorrow.sent : true",
           },
         ],
-        priority: 1,
+        priority: 2.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 6 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_started",
+                field: "w_crisis_completed",
+                value: false,
               },
             },
-            _raw: "get_field | w_1on1_started : true",
+            _raw: "get_field | w_crisis_completed : false",
           },
         ],
         deactivation_condition_list: [
@@ -6277,1213 +8862,78 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_completed",
+                field: "w_crisis_m_w_tomorrow.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_1on1_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_praise_quick_start",
-        workshop: "w_praise",
-        workshop_data: "@data.workshop.w_praise",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_praise_stepper"],
-            _raw: "go_to: w_praise_stepper",
-            _cleaned: "click | go_to: w_praise_stepper",
-          },
-        ],
-        priority: 2,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 13 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_started",
-              },
-            },
-            _raw: "get_field | w_praise_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_praise_continue",
-        workshop: "w_praise",
-        workshop_data: "@data.workshop.w_praise",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_praise_stepper"],
-            _raw: "go_to: w_praise_stepper",
-            _cleaned: "click | go_to: w_praise_stepper",
-          },
-        ],
-        priority: 2,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 13 : day",
+            _raw: "get_field | w_crisis_m_w_tomorrow.sent : true",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_started",
+                field: "current_relative_day_number",
+                value: "0",
               },
             },
-            _raw: "get_field | w_praise_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_completed",
-              },
-            },
-            _raw: "get_field | w_praise_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_instruct_quick_start",
-        workshop: "w_instruct",
-        workshop_data: "@data.workshop.w_instruct",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_instruct_stepper"],
-            _raw: "go_to: w_instruct_stepper",
-            _cleaned: "click | go_to: w_instruct_stepper",
-          },
-        ],
-        priority: 3,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 20 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_started",
-              },
-            },
-            _raw: "get_field | w_instruct_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_instruct_continue",
-        workshop: "w_instruct",
-        workshop_data: "@data.workshop.w_instruct",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_instruct_stepper"],
-            _raw: "go_to: w_instruct_stepper",
-            _cleaned: "click | go_to: w_instruct_stepper",
-          },
-        ],
-        priority: 3,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 20 : day",
+            _raw: "get_field | current_relative_day_number : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_started",
+                field: "current_relative_day_number",
+                value: "1",
               },
             },
-            _raw: "get_field | w_instruct_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_completed",
-              },
-            },
-            _raw: "get_field | w_instruct_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_stress_quick_start",
-        workshop: "w_stress",
-        workshop_data: "@data.workshop.w_stress",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_stress_stepper"],
-            _raw: "go_to: w_stress_stepper",
-            _cleaned: "click | go_to: w_stress_stepper",
-          },
-        ],
-        priority: 4,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_started",
-              },
-            },
-            _raw: "get_field | w_stress_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_stress_continue",
-        workshop: "w_stress",
-        workshop_data: "@data.workshop.w_stress",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_stress_stepper"],
-            _raw: "go_to: w_stress_stepper",
-            _cleaned: "click | go_to: w_stress_stepper",
-          },
-        ],
-        priority: 4,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 27 : day",
+            _raw: "get_field | current_relative_day_number : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_started",
+                field: "current_relative_day_number",
+                value: "2",
               },
             },
-            _raw: "get_field | w_stress_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_completed",
-              },
-            },
-            _raw: "get_field | w_stress_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_money_quick_start",
-        workshop: "w_money",
-        workshop_data: "@data.workshop.w_money",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_money_stepper"],
-            _raw: "go_to: w_money_stepper",
-            _cleaned: "click | go_to: w_money_stepper",
-          },
-        ],
-        priority: 5,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_started",
-              },
-            },
-            _raw: "get_field | w_money_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_money_continue",
-        workshop: "w_money",
-        workshop_data: "@data.workshop.w_money",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_money_stepper"],
-            _raw: "go_to: w_money_stepper",
-            _cleaned: "click | go_to: w_money_stepper",
-          },
-        ],
-        priority: 5,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
+            _raw: "get_field | current_relative_day_number : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_started",
+                field: "current_relative_day_number",
+                value: "3",
               },
             },
-            _raw: "get_field | w_money_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_completed",
-              },
-            },
-            _raw: "get_field | w_money_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_rules_quick_start",
-        workshop: "w_rules",
-        workshop_data: "@data.workshop.w_rules",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_rules_stepper"],
-            _raw: "go_to: w_rules_stepper",
-            _cleaned: "click | go_to: w_rules_stepper",
-          },
-        ],
-        priority: 6,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_rules_started",
-              },
-            },
-            _raw: "get_field | w_rules_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_rules_continue",
-        workshop: "w_rules",
-        workshop_data: "@data.workshop.w_rules",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_rules_stepper"],
-            _raw: "go_to: w_rules_stepper",
-            _cleaned: "click | go_to: w_rules_stepper",
-          },
-        ],
-        priority: 6,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
+            _raw: "get_field | current_relative_day_number : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_started",
+                field: "current_relative_day_number",
+                value: "4",
               },
             },
-            _raw: "get_field | w_rules_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_rules_completed",
-              },
-            },
-            _raw: "get_field | w_rules_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_consequence_quick_start",
-        workshop: "w_consequence",
-        workshop_data: "@data.workshop.w_consequence",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_consequence_stepper"],
-            _raw: "go_to: w_consequence_stepper",
-            _cleaned: "click | go_to: w_consequence_stepper",
-          },
-        ],
-        priority: 7,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_consequence_started",
-              },
-            },
-            _raw: "get_field | w_consequence_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_consequence_continue",
-        workshop: "w_consequence",
-        workshop_data: "@data.workshop.w_consequence",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_consequence_stepper"],
-            _raw: "go_to: w_consequence_stepper",
-            _cleaned: "click | go_to: w_consequence_stepper",
-          },
-        ],
-        priority: 7,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
+            _raw: "get_field | current_relative_day_number : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_started",
+                field: "current_relative_day_number",
+                value: "5",
               },
             },
-            _raw: "get_field | w_consequence_started : true",
+            _raw: "get_field | current_relative_day_number : 5",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_consequence_completed",
-              },
-            },
-            _raw: "get_field | w_consequence_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_solve_quick_start",
-        workshop: "w_solve",
-        workshop_data: "@data.workshop.w_solve",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_solve_stepper"],
-            _raw: "go_to: w_solve_stepper",
-            _cleaned: "click | go_to: w_solve_stepper",
-          },
-        ],
-        priority: 8,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_started",
-              },
-            },
-            _raw: "get_field | w_solve_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_solve_continue",
-        workshop: "w_solve",
-        workshop_data: "@data.workshop.w_solve",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_solve_stepper"],
-            _raw: "go_to: w_solve_stepper",
-            _cleaned: "click | go_to: w_solve_stepper",
-          },
-        ],
-        priority: 8,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_started",
-              },
-            },
-            _raw: "get_field | w_solve_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_completed",
-              },
-            },
-            _raw: "get_field | w_solve_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_safe_quick_start",
-        workshop: "w_safe",
-        workshop_data: "@data.workshop.w_safe",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_safe_stepper"],
-            _raw: "go_to: w_safe_stepper",
-            _cleaned: "click | go_to: w_safe_stepper",
-          },
-        ],
-        priority: 9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_started",
-              },
-            },
-            _raw: "get_field | w_safe_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_safe_continue",
-        workshop: "w_safe",
-        workshop_data: "@data.workshop.w_safe",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_safe_stepper"],
-            _raw: "go_to: w_safe_stepper",
-            _cleaned: "click | go_to: w_safe_stepper",
-          },
-        ],
-        priority: 9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_started",
-              },
-            },
-            _raw: "get_field | w_safe_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_completed",
-              },
-            },
-            _raw: "get_field | w_safe_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_crisis_quick_start",
-        workshop: "w_crisis",
-        workshop_data: "@data.workshop.w_crisis",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_crisis_stepper"],
-            _raw: "go_to: w_crisis_stepper",
-            _cleaned: "click | go_to: w_crisis_stepper",
-          },
-        ],
-        priority: 10,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_started",
-              },
-            },
-            _raw: "get_field | w_crisis_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_crisis_continue",
-        workshop: "w_crisis",
-        workshop_data: "@data.workshop.w_crisis",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_crisis_stepper"],
-            _raw: "go_to: w_crisis_stepper",
-            _cleaned: "click | go_to: w_crisis_stepper",
-          },
-        ],
-        priority: 10,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_started",
-              },
-            },
-            _raw: "get_field | w_crisis_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_completed",
-              },
-            },
-            _raw: "get_field | w_crisis_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
-      },
-      {
-        id: "w_celebrate_quick_start",
-        workshop: "w_celebrate",
-        workshop_data: "@data.workshop.w_celebrate",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_celebrate_stepper"],
-            _raw: "go_to: w_celebrate_stepper",
-            _cleaned: "click | go_to: w_celebrate_stepper",
-          },
-        ],
-        priority: 11,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_celebrate_started",
-              },
-            },
-            _raw: "get_field | w_celebrate_started : true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Start",
-        _translatedFields: {
-          text: {
-            eng: "Start",
-          },
-        },
-      },
-      {
-        id: "w_celebrate_continue",
-        workshop: "w_celebrate",
-        workshop_data: "@data.workshop.w_celebrate",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_celebrate_stepper"],
-            _raw: "go_to: w_celebrate_stepper",
-            _cleaned: "click | go_to: w_celebrate_stepper",
-          },
-        ],
-        priority: 11,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 34 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_celebrate_started",
-              },
-            },
-            _raw: "get_field | w_celebrate_started : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_celebrate_completed",
-              },
-            },
-            _raw: "get_field | w_celebrate_completed: true",
-          },
-        ],
-        campaign_list: ["weekly_workshops", "workshop_quick_start"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Continue",
-        _translatedFields: {
-          text: {
-            eng: "Continue",
-          },
-        },
+        campaign_list: ["weekly_workshops"],
+        icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_home_screen_quick_start.xlsx",
   },
   {
     flow_type: "data_list",
@@ -7530,31 +8980,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_self_care_completed",
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_completed",
+                value: true,
               },
             },
             _raw: "get_field | w_self_care_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 6 : day",
           },
         ],
         campaign_list: ["relax"],
@@ -7581,44 +9021,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 1.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 6 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 13 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         campaign_list: ["relax"],
@@ -7645,44 +9055,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 13 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 20 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         campaign_list: ["relax"],
@@ -7709,44 +9089,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 20 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 27 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         campaign_list: ["relax"],
@@ -7773,44 +9123,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         campaign_list: ["relax"],
@@ -7837,44 +9157,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         campaign_list: ["relax"],
@@ -7901,44 +9191,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         campaign_list: ["relax"],
@@ -7965,44 +9225,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         campaign_list: ["relax"],
@@ -8029,44 +9259,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         campaign_list: ["relax"],
@@ -8093,44 +9293,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         campaign_list: ["relax"],
@@ -8157,51 +9327,21 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.1,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         campaign_list: ["relax"],
         icon: "plh_images/icons/smile_eyes_down_white.svg",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_parent_centre_quick_start.xlsx",
   },
   {
     flow_type: "data_list",
@@ -8245,44 +9385,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 1.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before: 6 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 13 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8309,44 +9419,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before: 13 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 20 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8373,44 +9453,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before: 20 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 27 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8437,44 +9487,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8501,44 +9521,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8565,44 +9555,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8629,44 +9589,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8693,44 +9623,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8757,44 +9657,14 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         campaign_list: ["something_fun"],
@@ -8821,690 +9691,21 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before: 27 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         campaign_list: ["something_fun"],
         icon: "plh_images/icons/smile_eyes_up_white.svg",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "campaign_hp_review",
-    status: "released",
-    rows: [
-      {
-        id: "w_1on1_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_1on1_hp_review"],
-            _raw: "go_to: w_1on1_hp_review",
-            _cleaned: "click | go_to: w_1on1_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_hp_review.sent", true],
-            _raw: "set_field: w_1on1_hp_review.sent : true",
-            _cleaned: "click | set_field: w_1on1_hp_review.sent : true",
-          },
-        ],
-        priority: 1.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "12",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 12 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_completed",
-              },
-            },
-            _raw: "get_field | w_1on1_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_1on1_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_1on1_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_praise_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_praise_hp_review"],
-            _raw: "go_to: w_praise_hp_review",
-            _cleaned: "click | go_to: w_praise_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_hp_review.sent", true],
-            _raw: "set_field: w_praise_hp_review.sent : true",
-            _cleaned: "click | set_field: w_praise_hp_review.sent : true",
-          },
-        ],
-        priority: 2.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "19",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 19 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_completed",
-              },
-            },
-            _raw: "get_field | w_praise_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_praise_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_praise_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_instruct_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_instruct_hp_review"],
-            _raw: "go_to: w_instruct_hp_review",
-            _cleaned: "click | go_to: w_instruct_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_hp_review.sent", true],
-            _raw: "set_field: w_instruct_hp_review.sent : true",
-            _cleaned: "click | set_field: w_instruct_hp_review.sent : true",
-          },
-        ],
-        priority: 3.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "26",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 26 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_completed",
-              },
-            },
-            _raw: "get_field | w_instruct_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_instruct_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_instruct_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_stress_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_stress_hp_review"],
-            _raw: "go_to: w_stress_hp_review",
-            _cleaned: "click | go_to: w_stress_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_hp_review.sent", true],
-            _raw: "set_field: w_stress_hp_review.sent : true",
-            _cleaned: "click | set_field: w_stress_hp_review.sent : true",
-          },
-        ],
-        priority: 4.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_completed",
-              },
-            },
-            _raw: "get_field | w_stress_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_stress_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_stress_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_money_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_money_hp_review"],
-            _raw: "go_to: w_money_hp_review",
-            _cleaned: "click | go_to: w_money_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_hp_review.sent", true],
-            _raw: "set_field: w_money_hp_review.sent : true",
-            _cleaned: "click | set_field: w_money_hp_review.sent : true",
-          },
-        ],
-        priority: 5.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_completed",
-              },
-            },
-            _raw: "get_field | w_money_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_money_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_money_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_rules_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_rules_hp_review"],
-            _raw: "go_to: w_rules_hp_review",
-            _cleaned: "click | go_to: w_rules_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_hp_review.sent", true],
-            _raw: "set_field: w_rules_hp_review.sent : true",
-            _cleaned: "click | set_field: w_rules_hp_review.sent : true",
-          },
-        ],
-        priority: 6.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_rules_completed",
-              },
-            },
-            _raw: "get_field | w_rules_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_rules_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_rules_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_consequence_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_consequence_hp_review"],
-            _raw: "go_to: w_consequence_hp_review",
-            _cleaned: "click | go_to: w_consequence_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_hp_review.sent", true],
-            _raw: "set_field: w_consequence_hp_review.sent : true",
-            _cleaned: "click | set_field: w_consequence_hp_review.sent : true",
-          },
-        ],
-        priority: 7.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_consequence_completed",
-              },
-            },
-            _raw: "get_field | w_consequence_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_consequence_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_consequence_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_solve_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_solve_hp_review"],
-            _raw: "go_to: w_solve_hp_review",
-            _cleaned: "click | go_to: w_solve_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_hp_review.sent", true],
-            _raw: "set_field: w_solve_hp_review.sent : true",
-            _cleaned: "click | set_field: w_solve_hp_review.sent : true",
-          },
-        ],
-        priority: 8.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_completed",
-              },
-            },
-            _raw: "get_field | w_solve_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_solve_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_solve_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_safe_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_safe_hp_review"],
-            _raw: "go_to: w_safe_hp_review",
-            _cleaned: "click | go_to: w_safe_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_safe_hp_review.sent", true],
-            _raw: "set_field: w_safe_hp_review.sent : true",
-            _cleaned: "click | set_field: w_safe_hp_review.sent : true",
-          },
-        ],
-        priority: 9.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_completed",
-              },
-            },
-            _raw: "get_field | w_safe_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_safe_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_safe_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-      {
-        id: "w_crisis_hp_review",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_crisis_hp_review"],
-            _raw: "go_to: w_crisis_hp_review",
-            _cleaned: "click | go_to: w_crisis_hp_review",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_crisis_hp_review.sent", true],
-            _raw: "set_field: w_crisis_hp_review.sent : true",
-            _cleaned: "click | set_field: w_crisis_hp_review.sent : true",
-          },
-        ],
-        priority: 10.9,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "33",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 33 : day",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_completed",
-              },
-            },
-            _raw: "get_field | w_crisis_completed : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "w_crisis_hp_review_completed",
-              },
-            },
-            _raw: "get_field | w_crisis_hp_review_completed : true",
-          },
-        ],
-        campaign_list: ["parent_centre"],
-        icon: "plh_images/icons/parent_heart_white.svg",
-      },
-    ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_quick_starts.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_parent_centre_quick_start.xlsx",
   },
   {
     flow_type: "data_list",
@@ -9513,7 +9714,21 @@ const data_list: FlowTypes.Data_list[] = [
     status: "released",
     rows: [
       {
-        id: "w_self_care_disabled",
+        id: "default",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["default.sent", true],
+            _raw: "set_field: default.sent : TRUE",
+            _cleaned: "click | set_field: default.sent : TRUE",
+          },
+        ],
+        priority: -1,
+        campaign_list: ["unlock_workshops"],
+      },
+      {
+        id: "enable_up_to_w_self_care",
         click_action_list: [
           {
             trigger: "click",
@@ -9523,12 +9738,43 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | set_field: w_self_care_disabled : FALSE",
           },
         ],
-        priority: -1,
+        priority: 1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "1",
+              },
+            },
+            _raw: "get_field | current_workshop_number : 1",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "enable_up_to_w_self_care.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | enable_up_to_w_self_care.sent : TRUE",
+          },
+        ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_1on1_disabled",
+        id: "enable_up_to_w_1on1",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9539,31 +9785,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_1on1_disabled.sent", true],
-            _raw: "set_field: w_1on1_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_1on1_disabled.sent : TRUE",
+            args: ["enable_up_to_w_1on1.sent", true],
+            _raw: "set_field: enable_up_to_w_1on1.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_1on1.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 2,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "6",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "2",
               },
             },
-            _raw: "first_launch | before : 6 : day",
+            _raw: "get_field | current_workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -9571,17 +9808,32 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_1on1_disabled.sent",
+                field: "enable_up_to_w_1on1.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_1on1_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_1on1.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_praise_disabled",
+        id: "enable_up_to_w_praise",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9592,31 +9844,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_praise_disabled.sent", true],
-            _raw: "set_field: w_praise_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_praise_disabled.sent : TRUE",
+            args: ["enable_up_to_w_praise.sent", true],
+            _raw: "set_field: enable_up_to_w_praise.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_praise.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 3,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "13",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "3",
               },
             },
-            _raw: "first_launch | before : 13 : day",
+            _raw: "get_field | current_workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -9624,17 +9867,39 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_praise_disabled.sent",
+                field: "enable_up_to_w_praise.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_praise_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_praise.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_instruct_disabled",
+        id: "enable_up_to_w_instruct",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9645,31 +9910,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_instruct_disabled.sent", true],
-            _raw: "set_field: w_instruct_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_instruct_disabled.sent : TRUE",
+            args: ["enable_up_to_w_instruct.sent", true],
+            _raw: "set_field: enable_up_to_w_instruct.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_instruct.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 4,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "20",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "4",
               },
             },
-            _raw: "first_launch | before : 20 : day",
+            _raw: "get_field | current_workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -9677,17 +9933,46 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_instruct_disabled.sent",
+                field: "enable_up_to_w_instruct.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_instruct_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_instruct.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_stress_disabled",
+        id: "enable_up_to_w_stress",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9698,31 +9983,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_stress_disabled.sent", true],
-            _raw: "set_field: w_stress_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_stress_disabled.sent : TRUE",
+            args: ["enable_up_to_w_stress.sent", true],
+            _raw: "set_field: enable_up_to_w_stress.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_stress.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 5,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "27",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "5",
               },
             },
-            _raw: "first_launch | before : 27 : day",
+            _raw: "get_field | current_workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -9730,17 +10006,53 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_stress_disabled.sent",
+                field: "enable_up_to_w_stress.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_stress_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_stress.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_money_disabled",
+        id: "enable_up_to_w_money",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9751,31 +10063,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_money_disabled.sent", true],
-            _raw: "set_field: w_money_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_money_disabled.sent : TRUE",
+            args: ["enable_up_to_w_money.sent", true],
+            _raw: "set_field: enable_up_to_w_money.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_money.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 6,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "34",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "6",
               },
             },
-            _raw: "first_launch | before : 34 : day",
+            _raw: "get_field | current_workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -9783,17 +10086,60 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_money_disabled.sent",
+                field: "enable_up_to_w_money.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_money_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_money.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_rules_disabled",
+        id: "enable_up_to_w_rules",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9804,31 +10150,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_rules_disabled.sent", true],
-            _raw: "set_field: w_rules_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_rules_disabled.sent : TRUE",
+            args: ["enable_up_to_w_rules.sent", true],
+            _raw: "set_field: enable_up_to_w_rules.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_rules.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 7,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "41",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "7",
               },
             },
-            _raw: "first_launch | before : 41 : day",
+            _raw: "get_field | current_workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -9836,17 +10173,67 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_rules_disabled.sent",
+                field: "enable_up_to_w_rules.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_rules_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_rules.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_consequence_disabled",
+        id: "enable_up_to_w_consequence",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_disabled", false],
+            _raw: "set_field: w_rules_disabled : FALSE",
+            _cleaned: "click | set_field: w_rules_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9857,31 +10244,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_consequence_disabled.sent", true],
-            _raw: "set_field: w_consequence_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_consequence_disabled.sent : TRUE",
+            args: ["enable_up_to_w_consequence.sent", true],
+            _raw: "set_field: enable_up_to_w_consequence.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_consequence.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 8,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "48",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "8",
               },
             },
-            _raw: "first_launch | before : 48 : day",
+            _raw: "get_field | current_workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -9889,17 +10267,74 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_consequence_disabled.sent",
+                field: "enable_up_to_w_consequence.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_consequence_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_consequence.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_solve_disabled",
+        id: "enable_up_to_w_solve",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_disabled", false],
+            _raw: "set_field: w_rules_disabled : FALSE",
+            _cleaned: "click | set_field: w_rules_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9910,31 +10345,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_solve_disabled.sent", true],
-            _raw: "set_field: w_solve_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_solve_disabled.sent : TRUE",
+            args: ["enable_up_to_w_solve.sent", true],
+            _raw: "set_field: enable_up_to_w_solve.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_solve.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 9,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "55",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "9",
               },
             },
-            _raw: "first_launch | before : 55 : day",
+            _raw: "get_field | current_workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -9942,17 +10368,81 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_solve_disabled.sent",
+                field: "enable_up_to_w_solve.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_solve_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_solve.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_safe_disabled",
+        id: "enable_up_to_w_safe",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_disabled", false],
+            _raw: "set_field: w_rules_disabled : FALSE",
+            _cleaned: "click | set_field: w_rules_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_disabled", false],
+            _raw: "set_field: w_solve_disabled : FALSE",
+            _cleaned: "click | set_field: w_solve_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -9963,31 +10453,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_safe_disabled.sent", true],
-            _raw: "set_field: w_safe_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_safe_disabled.sent : TRUE",
+            args: ["enable_up_to_w_safe.sent", true],
+            _raw: "set_field: enable_up_to_w_safe.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_safe.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 10,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "62",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "10",
               },
             },
-            _raw: "first_launch | before : 62 : day",
+            _raw: "get_field | current_workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -9995,17 +10476,81 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_safe_disabled.sent",
+                field: "enable_up_to_w_safe.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_safe_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_safe.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_crisis_disabled",
+        id: "enable_up_to_w_crisis",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_disabled", false],
+            _raw: "set_field: w_solve_disabled : FALSE",
+            _cleaned: "click | set_field: w_solve_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_disabled", false],
+            _raw: "set_field: w_safe_disabled : FALSE",
+            _cleaned: "click | set_field: w_safe_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -10016,31 +10561,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_crisis_disabled.sent", true],
-            _raw: "set_field: w_crisis_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_crisis_disabled.sent : TRUE",
+            args: ["enable_up_to_w_crisis.sent", true],
+            _raw: "set_field: enable_up_to_w_crisis.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_crisis.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 11,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "69",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "11",
               },
             },
-            _raw: "first_launch | before : 69 : day",
+            _raw: "get_field | current_workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -10048,17 +10584,95 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_crisis_disabled.sent",
+                field: "enable_up_to_w_crisis.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_crisis_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_crisis.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
       {
-        id: "w_celebrate_disabled",
+        id: "enable_up_to_w_celebrate",
         click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_disabled", false],
+            _raw: "set_field: w_self_care_disabled : FALSE",
+            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_1on1_disabled", false],
+            _raw: "set_field: w_1on1_disabled : FALSE",
+            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_praise_disabled", false],
+            _raw: "set_field: w_praise_disabled : FALSE",
+            _cleaned: "click | set_field: w_praise_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_instruct_disabled", false],
+            _raw: "set_field: w_instruct_disabled : FALSE",
+            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_stress_disabled", false],
+            _raw: "set_field: w_stress_disabled : FALSE",
+            _cleaned: "click | set_field: w_stress_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_money_disabled", false],
+            _raw: "set_field: w_money_disabled : FALSE",
+            _cleaned: "click | set_field: w_money_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_rules_disabled", false],
+            _raw: "set_field: w_rules_disabled : FALSE",
+            _cleaned: "click | set_field: w_rules_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_consequence_disabled", false],
+            _raw: "set_field: w_consequence_disabled : FALSE",
+            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_solve_disabled", false],
+            _raw: "set_field: w_solve_disabled : FALSE",
+            _cleaned: "click | set_field: w_solve_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_safe_disabled", false],
+            _raw: "set_field: w_safe_disabled : FALSE",
+            _cleaned: "click | set_field: w_safe_disabled : FALSE",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_crisis_disabled", false],
+            _raw: "set_field: w_crisis_disabled : FALSE",
+            _cleaned: "click | set_field: w_crisis_disabled : FALSE",
+          },
           {
             trigger: "click",
             action_id: "set_field",
@@ -10069,31 +10683,22 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_celebrate_disabled.sent", true],
-            _raw: "set_field: w_celebrate_disabled.sent : TRUE",
-            _cleaned: "click | set_field: w_celebrate_disabled.sent : TRUE",
+            args: ["enable_up_to_w_celebrate.sent", true],
+            _raw: "set_field: enable_up_to_w_celebrate.sent : TRUE",
+            _cleaned: "click | set_field: enable_up_to_w_celebrate.sent : TRUE",
           },
         ],
-        priority: 1,
+        priority: 12,
         activation_condition_list: [
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "76",
-                  unit: "day",
-                },
+              field_evaluation: {
+                field: "current_workshop_number",
+                value: "12",
               },
             },
-            _raw: "first_launch | before : 76 : day",
+            _raw: "get_field | current_workshop_number : 12",
           },
         ],
         deactivation_condition_list: [
@@ -10101,16 +10706,1290 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "w_celebrate_disabled.sent",
+                field: "enable_up_to_w_celebrate.sent",
+                value: true,
               },
             },
-            _raw: "get_field | w_celebrate_disabled.sent : TRUE",
+            _raw: "get_field | enable_up_to_w_celebrate.sent : TRUE",
           },
         ],
         campaign_list: ["unlock_workshops"],
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_unlock_workshops.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_workshop_quick_start",
+    status: "released",
+    rows: [
+      {
+        id: "default",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["default.sent", true],
+            _raw: "set_field: default.sent : true",
+            _cleaned: "click | set_field: default.sent : true",
+          },
+        ],
+        priority: -1,
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+      },
+      {
+        id: "w_self_care_quick_start",
+        workshop: "w_self_care",
+        workshop_data: "@data.workshop.w_self_care",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_self_care_stepper"],
+            _raw: "go_to: w_self_care_stepper",
+            _cleaned: "click | go_to: w_self_care_stepper",
+          },
+        ],
+        priority: 12,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_self_care_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_self_care_continue",
+        workshop: "w_self_care",
+        workshop_data: "@data.workshop.w_self_care",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_self_care_stepper"],
+            _raw: "go_to: w_self_care_stepper",
+            _cleaned: "click | go_to: w_self_care_stepper",
+          },
+        ],
+        priority: 12,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_self_care_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_1on1_quick_start",
+        workshop: "w_1on1",
+        workshop_data: "@data.workshop.w_1on1",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_1on1_stepper"],
+            _raw: "go_to: w_1on1_stepper",
+            _cleaned: "click | go_to: w_1on1_stepper",
+          },
+        ],
+        priority: 11,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_1on1_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_1on1_continue",
+        workshop: "w_1on1",
+        workshop_data: "@data.workshop.w_1on1",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_1on1_stepper"],
+            _raw: "go_to: w_1on1_stepper",
+            _cleaned: "click | go_to: w_1on1_stepper",
+          },
+        ],
+        priority: 11,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_1on1_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_1on1_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_1on1_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_praise_quick_start",
+        workshop: "w_praise",
+        workshop_data: "@data.workshop.w_praise",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_praise_stepper"],
+            _raw: "go_to: w_praise_stepper",
+            _cleaned: "click | go_to: w_praise_stepper",
+          },
+        ],
+        priority: 10,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_praise_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_praise_continue",
+        workshop: "w_praise",
+        workshop_data: "@data.workshop.w_praise",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_praise_stepper"],
+            _raw: "go_to: w_praise_stepper",
+            _cleaned: "click | go_to: w_praise_stepper",
+          },
+        ],
+        priority: 10,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_praise_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_praise_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_praise_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_instruct_quick_start",
+        workshop: "w_instruct",
+        workshop_data: "@data.workshop.w_instruct",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_instruct_stepper"],
+            _raw: "go_to: w_instruct_stepper",
+            _cleaned: "click | go_to: w_instruct_stepper",
+          },
+        ],
+        priority: 9,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_instruct_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_instruct_continue",
+        workshop: "w_instruct",
+        workshop_data: "@data.workshop.w_instruct",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_instruct_stepper"],
+            _raw: "go_to: w_instruct_stepper",
+            _cleaned: "click | go_to: w_instruct_stepper",
+          },
+        ],
+        priority: 9,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_instruct_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_instruct_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_instruct_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_stress_quick_start",
+        workshop: "w_stress",
+        workshop_data: "@data.workshop.w_stress",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_stress_stepper"],
+            _raw: "go_to: w_stress_stepper",
+            _cleaned: "click | go_to: w_stress_stepper",
+          },
+        ],
+        priority: 8,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_stress_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_stress_continue",
+        workshop: "w_stress",
+        workshop_data: "@data.workshop.w_stress",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_stress_stepper"],
+            _raw: "go_to: w_stress_stepper",
+            _cleaned: "click | go_to: w_stress_stepper",
+          },
+        ],
+        priority: 8,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_stress_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_stress_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_stress_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_money_quick_start",
+        workshop: "w_money",
+        workshop_data: "@data.workshop.w_money",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_money_stepper"],
+            _raw: "go_to: w_money_stepper",
+            _cleaned: "click | go_to: w_money_stepper",
+          },
+        ],
+        priority: 7,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_money_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_money_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_money_continue",
+        workshop: "w_money",
+        workshop_data: "@data.workshop.w_money",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_money_stepper"],
+            _raw: "go_to: w_money_stepper",
+            _cleaned: "click | go_to: w_money_stepper",
+          },
+        ],
+        priority: 7,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_money_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_money_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_money_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_money_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_rules_quick_start",
+        workshop: "w_rules",
+        workshop_data: "@data.workshop.w_rules",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_rules_stepper"],
+            _raw: "go_to: w_rules_stepper",
+            _cleaned: "click | go_to: w_rules_stepper",
+          },
+        ],
+        priority: 6,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_rules_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_rules_continue",
+        workshop: "w_rules",
+        workshop_data: "@data.workshop.w_rules",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_rules_stepper"],
+            _raw: "go_to: w_rules_stepper",
+            _cleaned: "click | go_to: w_rules_stepper",
+          },
+        ],
+        priority: 6,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_rules_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_rules_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_rules_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_consequence_quick_start",
+        workshop: "w_consequence",
+        workshop_data: "@data.workshop.w_consequence",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_consequence_stepper"],
+            _raw: "go_to: w_consequence_stepper",
+            _cleaned: "click | go_to: w_consequence_stepper",
+          },
+        ],
+        priority: 5,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_consequence_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_consequence_continue",
+        workshop: "w_consequence",
+        workshop_data: "@data.workshop.w_consequence",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_consequence_stepper"],
+            _raw: "go_to: w_consequence_stepper",
+            _cleaned: "click | go_to: w_consequence_stepper",
+          },
+        ],
+        priority: 5,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_consequence_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_consequence_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_consequence_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_solve_quick_start",
+        workshop: "w_solve",
+        workshop_data: "@data.workshop.w_solve",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_solve_stepper"],
+            _raw: "go_to: w_solve_stepper",
+            _cleaned: "click | go_to: w_solve_stepper",
+          },
+        ],
+        priority: 4,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_solve_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_solve_continue",
+        workshop: "w_solve",
+        workshop_data: "@data.workshop.w_solve",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_solve_stepper"],
+            _raw: "go_to: w_solve_stepper",
+            _cleaned: "click | go_to: w_solve_stepper",
+          },
+        ],
+        priority: 4,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_solve_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_solve_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_solve_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_safe_quick_start",
+        workshop: "w_safe",
+        workshop_data: "@data.workshop.w_safe",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_safe_stepper"],
+            _raw: "go_to: w_safe_stepper",
+            _cleaned: "click | go_to: w_safe_stepper",
+          },
+        ],
+        priority: 3,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_safe_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_safe_continue",
+        workshop: "w_safe",
+        workshop_data: "@data.workshop.w_safe",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_safe_stepper"],
+            _raw: "go_to: w_safe_stepper",
+            _cleaned: "click | go_to: w_safe_stepper",
+          },
+        ],
+        priority: 3,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_safe_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_safe_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_safe_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_crisis_quick_start",
+        workshop: "w_crisis",
+        workshop_data: "@data.workshop.w_crisis",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_crisis_stepper"],
+            _raw: "go_to: w_crisis_stepper",
+            _cleaned: "click | go_to: w_crisis_stepper",
+          },
+        ],
+        priority: 2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_crisis_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_crisis_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_crisis_continue",
+        workshop: "w_crisis",
+        workshop_data: "@data.workshop.w_crisis",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_crisis_stepper"],
+            _raw: "go_to: w_crisis_stepper",
+            _cleaned: "click | go_to: w_crisis_stepper",
+          },
+        ],
+        priority: 2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_crisis_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_crisis_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_crisis_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_crisis_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+      {
+        id: "w_celebrate_quick_start",
+        workshop: "w_celebrate",
+        workshop_data: "@data.workshop.w_celebrate",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_celebrate_stepper"],
+            _raw: "go_to: w_celebrate_stepper",
+            _cleaned: "click | go_to: w_celebrate_stepper",
+          },
+        ],
+        priority: 1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_celebrate_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_celebrate_disabled : false",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_celebrate_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_celebrate_started : true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Start",
+        _translatedFields: {
+          text: {
+            eng: "Start",
+          },
+        },
+      },
+      {
+        id: "w_celebrate_continue",
+        workshop: "w_celebrate",
+        workshop_data: "@data.workshop.w_celebrate",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_celebrate_stepper"],
+            _raw: "go_to: w_celebrate_stepper",
+            _cleaned: "click | go_to: w_celebrate_stepper",
+          },
+        ],
+        priority: 1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_celebrate_disabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | w_celebrate_disabled : false",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_celebrate_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_celebrate_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_celebrate_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_celebrate_completed: true",
+          },
+        ],
+        campaign_list: ["workshop_quick_start"],
+        icon: "plh_images/icons/play_white.svg",
+        text: "Continue",
+        _translatedFields: {
+          text: {
+            eng: "Continue",
+          },
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/campaigns/campaign_weekly_workshops_quick_start.xlsx",
   },
   {
     flow_type: "data_list",
@@ -10135,7 +12014,8 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                evaluate: "inactive_0.sent",
+                field: "inactive_0.sent",
+                value: true,
               },
             },
             _raw: "get_field | inactive_0.sent : true",
@@ -10374,676 +12254,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/no_app_activity.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "debug_campaign_list",
-    status: "released",
-    rows: [
-      {
-        id: "debug_reminder_reset",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_1.sent", false],
-            _raw: "set_field: debug_reminder_1.sent: false",
-            _cleaned: "click | set_field: debug_reminder_1.sent: false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_2.sent", false],
-            _raw: "set_field: debug_reminder_2.sent: false",
-            _cleaned: "click | set_field: debug_reminder_2.sent: false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_3.sent", false],
-            _raw: "set_field: debug_reminder_3.sent: false",
-            _cleaned: "click | set_field: debug_reminder_3.sent: false",
-          },
-        ],
-        priority: -2,
-        campaign_list: ["debug_campaign"],
-      },
-      {
-        id: "debug_reminder_default",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_default.sent", true],
-            _raw: "set_field: debug_reminder_default.sent : true",
-            _cleaned: "click | set_field: debug_reminder_default.sent : true",
-          },
-        ],
-        priority: -1,
-        campaign_list: ["debug_campaign", "debug_campaign_2"],
-        icon: "plh_images/icons/play_white.svg",
-        text: "Default",
-      },
-      {
-        id: "debug_reminder_1",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_1.sent", true],
-            _raw: "set_field: debug_reminder_1.sent : true",
-            _cleaned: "click | set_field: debug_reminder_1.sent : true",
-          },
-        ],
-        priority: 1,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_default.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_default.sent:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_1.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_1.sent : true",
-          },
-        ],
-        campaign_list: ["debug_campaign"],
-        icon: "plh_images/icons/play_white.svg",
-        text: 1,
-      },
-      {
-        id: "debug_reminder_2",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_2.sent", true],
-            _raw: "set_field: debug_reminder_2.sent : true",
-            _cleaned: "click | set_field: debug_reminder_2.sent : true",
-          },
-        ],
-        priority: 2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_1.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_1.sent:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_2.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_2.sent : true",
-          },
-        ],
-        campaign_list: ["debug_campaign"],
-        icon: "plh_images/icons/play_white.svg",
-        text: 2,
-      },
-      {
-        id: "debug_reminder_3",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_3.sent", true],
-            _raw: "set_field: debug_reminder_3.sent : true",
-            _cleaned: "click | set_field: debug_reminder_3.sent : true",
-          },
-        ],
-        priority: 3,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "data_events",
-                filter: {
-                  field: "debug_reminder_2.sent",
-                  value: "TRUE",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "2",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "get_field:first | debug_reminder_2.sent:TRUE | before : 2 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_3.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_3.sent : true",
-          },
-        ],
-        campaign_list: ["debug_campaign"],
-        icon: "plh_images/icons/play_white.svg",
-        text: 3,
-      },
-      {
-        id: "debug_reminder_4",
-        priority: 4,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "5",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before: 5 : day",
-          },
-        ],
-        campaign_list: ["debug_campaign"],
-      },
-      {
-        id: "debug_reminder_5",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["@global.example_text"],
-            _raw: "pop_up: @global.example_text",
-            _cleaned: "click | pop_up: @global.example_text",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_5.sent", true],
-            _raw: "set_field: debug_reminder_5.sent : true",
-            _cleaned: "click | set_field: debug_reminder_5.sent : true",
-          },
-        ],
-        priority: 1,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_5.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_5.sent : true",
-          },
-        ],
-        campaign_list: ["debug_campaign_2"],
-        icon: "plh_images/icons/bell_white.svg",
-        text: 5,
-      },
-      {
-        id: "debug_reminder_6",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["@global.some_global", "some_value"],
-            _raw: "set_field: @global.some_global : some_value",
-            _cleaned: "click | set_field: @global.some_global : some_value",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_6.sent", true],
-            _raw: "set_field: debug_reminder_6.sent : true",
-            _cleaned: "click | set_field: debug_reminder_6.sent : true",
-          },
-        ],
-        priority: 2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_5.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_5.sent:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_6.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_6.sent : true",
-          },
-        ],
-        campaign_list: ["debug_campaign_2"],
-        icon: "plh_images/icons/bell_white.svg",
-        text: 6,
-      },
-      {
-        id: "debug_reminder_7",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["activity_@data.workshop.1on1.something_fun"],
-            _raw: "go_to: activity_@data.workshop.1on1.something_fun",
-            _cleaned: "click | go_to: activity_@data.workshop.1on1.something_fun",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_7.sent", true],
-            _raw: "set_field: debug_reminder_7.sent : true",
-            _cleaned: "click | set_field: debug_reminder_7.sent : true",
-          },
-        ],
-        priority: 3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_6.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_6.sent:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "debug_reminder_7.sent",
-              },
-            },
-            _raw: "get_field | debug_reminder_7.sent : true",
-          },
-        ],
-        campaign_list: ["debug_campaign_2"],
-        icon: "plh_images/icons/bell_white.svg",
-        text: 7,
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "debug_campaign_3_list",
-    status: "released",
-    rows: [
-      {
-        id: "disabled_1",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_1", false],
-            _raw: "set_field: disabled_1 : FALSE",
-            _cleaned: "click | set_field: disabled_1 : FALSE",
-          },
-        ],
-        priority: -1,
-        campaign_list: ["debug_campaign_3"],
-      },
-      {
-        id: "disabled_2",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_2", false],
-            _raw: "set_field: disabled_2 : FALSE",
-            _cleaned: "click | set_field: disabled_2 : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_2.sent", true],
-            _raw: "set_field: disabled_2.sent : TRUE",
-            _cleaned: "click | set_field: disabled_2.sent : TRUE",
-          },
-        ],
-        priority: 1,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "@calc(Math.min(0.001,0.002))",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : @calc(Math.min(0.001,0.002)) : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "disabled_2.sent",
-              },
-            },
-            _raw: "get_field | disabled_2.sent : TRUE",
-          },
-        ],
-        campaign_list: ["debug_campaign_3"],
-      },
-      {
-        id: "disabled_3",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_3", false],
-            _raw: "set_field: disabled_3 : FALSE",
-            _cleaned: "click | set_field: disabled_3 : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_3.sent", true],
-            _raw: "set_field: disabled_3.sent : TRUE",
-            _cleaned: "click | set_field: disabled_3.sent : TRUE",
-          },
-        ],
-        priority: 2,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "1",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : 1 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "disabled_3.sent",
-              },
-            },
-            _raw: "get_field | disabled_3.sent : TRUE",
-          },
-        ],
-        campaign_list: ["debug_campaign_3"],
-      },
-      {
-        id: "disabled_4",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_4", false],
-            _raw: "set_field: disabled_4 : FALSE",
-            _cleaned: "click | set_field: disabled_4 : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_4.sent", true],
-            _raw: "set_field: disabled_4.sent : TRUE",
-            _cleaned: "click | set_field: disabled_4.sent : TRUE",
-          },
-        ],
-        priority: 3,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "@calc(Math.min(1,3))",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : @calc(Math.min(1,3)) : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "disabled_4.sent",
-              },
-            },
-            _raw: "get_field | disabled_4.sent : TRUE",
-          },
-        ],
-        campaign_list: ["debug_campaign_3"],
-      },
-      {
-        id: "disabled_5",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_5", false],
-            _raw: "set_field: disabled_5 : FALSE",
-            _cleaned: "click | set_field: disabled_5 : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_5.sent", true],
-            _raw: "set_field: disabled_5.sent : TRUE",
-            _cleaned: "click | set_field: disabled_5.sent : TRUE",
-          },
-        ],
-        priority: 4,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "app_events",
-                filter: {
-                  field: "event_id",
-                  value: "app_launch",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "@calc(Math.max(1,3))",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "first_launch | before : @calc(Math.max(1,3)) : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "disabled_5.sent",
-              },
-            },
-            _raw: "get_field | disabled_5.sent : TRUE",
-          },
-        ],
-        campaign_list: ["debug_campaign_3"],
-      },
-      {
-        id: "disabled_6",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_6", false],
-            _raw: "set_field: disabled_6 : FALSE",
-            _cleaned: "click | set_field: disabled_6 : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_6.sent", true],
-            _raw: "set_field: disabled_6.sent : TRUE",
-            _cleaned: "click | set_field: disabled_6.sent : TRUE",
-          },
-        ],
-        priority: 5,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "data_events",
-                filter: {
-                  field: "w_self_care_started",
-                  value: "true",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "0.001",
-                  unit: "day",
-                },
-              },
-            },
-            _raw: "get_field:first | w_self_care_started: true | before : 0.001 : day",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "disabled_6.sent",
-              },
-            },
-            _raw: "get_field | disabled_6.sent : TRUE",
-          },
-        ],
-        campaign_list: ["debug_campaign_3"],
-      },
-      {
-        id: "disabled_7",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_7", false],
-            _raw: "set_field: disabled_7 : FALSE",
-            _cleaned: "click | set_field: disabled_7 : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["disabled_7.sent", true],
-            _raw: "set_field: disabled_7.sent : TRUE",
-            _cleaned: "click | set_field: disabled_7.sent : TRUE",
-          },
-        ],
-        priority: 5,
-        activation_condition_list: [
-          {
-            condition_type: "db_lookup",
-            condition_args: {
-              db_lookup: {
-                table_id: "data_events",
-                filter: {
-                  field: "w_self_care_started",
-                  value: "true",
-                },
-                order: "asc",
-                evaluate: {
-                  operator: ">",
-                  value: "2",
-                  unit: "min",
-                },
-              },
-            },
-            _raw: "get_field:first | w_self_care_started: true | before : 2 : min",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                evaluate: "disabled_7.sent",
-              },
-            },
-            _raw: "get_field | disabled_7.sent : TRUE",
-          },
-        ],
-        campaign_list: ["debug_campaign_4"],
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
   {
     flow_type: "data_list",

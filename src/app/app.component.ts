@@ -9,7 +9,7 @@ import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
-import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
+import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -49,48 +49,19 @@ export class AppComponent {
     this.themeService.init();
     this.platform.ready().then(async () => {
       this.dbService.init();
+      this.hackSetDeveloperOptions();
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
         await this.surveyService.runSurvey("analytics");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        // temporary fix: set initial fields to avoid doubling up of quickstart buttons
-        this.templateService.setField(".w_1on1_completion_status", "uncompleted");
-        this.templateService.setField("second_week", "false");
-        this.templateService.setField(".w_praise_completion_status", "uncompleted");
-        this.templateService.setField("third_week", "false");
+        this.hackSetFirstOpenFields();
         await this.tourService.startTour("intro_tour");
       }
       this.skipTutorial = true;
       this.menuController.enable(true, "main-side-menu");
-      let old_date = this.userMetaService.getUserMeta("current_date");
-      await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
-      let current_date = this.userMetaService.getUserMeta("current_date");
-      this.templateService.setField("first_app_open", user.first_app_open);
-      this.templateService.setField("current_date", current_date);
-      if (old_date != current_date) {
-        this.templateService.setField("daily_relax_done", "false");
-      }
-      this.templateService.setField("first_week", "true");
-      if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
-        this.templateService.setField("second_week", "true");
-        this.templateService.setField("w_1on1_disabled", "false");
-      } else {
-        this.templateService.setField("second_week", "false");
-      }
-      if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
-        this.templateService.setField("third_week", "true");
-        this.templateService.setField("w_praise_disabled", "false");
-      } else {
-        this.templateService.setField("third_week", "false");
-      }
-      this.templateService.setField(
-        "days_since_start",
-        (
-          (Date.parse(current_date) - Date.parse(user.first_app_open)) /
-          (24 * 60 * 60 * 1000)
-        ).toString()
-      );
+      await this.hackSetAppOpenFields(user);
+
       if (Capacitor.isNative) {
         this.removeConsoleLogs();
         SplashScreen.hide();
@@ -132,5 +103,61 @@ export class AppComponent {
       window.console.warn = function (...args: any) {};
       window.console.error = function (...args: any) {};
     }
+  }
+
+  /** ensure localhost dev can see all non-user content */
+  private hackSetDeveloperOptions() {
+    if (location.hostname === "localhost" && !environment.production) {
+      const isUserMode = this.templateService.getField("user_mode");
+      if (isUserMode !== false) {
+        this.templateService.setField("user_mode", "false");
+      }
+    }
+  }
+
+  /**
+   * temporary fix: set initial fields to avoid doubling up of quickstart buttons
+   * TODO CC 2021-07-23 - Review if methods still required
+   */
+  private hackSetFirstOpenFields() {
+    this.templateService.setField(".w_1on1_completion_status", "uncompleted");
+    this.templateService.setField("second_week", "false");
+    this.templateService.setField(".w_praise_completion_status", "uncompleted");
+    this.templateService.setField("third_week", "false");
+  }
+
+  /**
+   * temporary workaround for setting unlocked content
+   * TODO CC 2021-07-23 - Review if methods still required
+   */
+  private async hackSetAppOpenFields(user: IUserMeta) {
+    let old_date = this.userMetaService.getUserMeta("current_date");
+    await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
+    let current_date = this.userMetaService.getUserMeta("current_date");
+    this.templateService.setField("first_app_open", user.first_app_open);
+    this.templateService.setField("current_date", current_date);
+    if (old_date != current_date) {
+      this.templateService.setField("daily_relax_done", "false");
+    }
+    this.templateService.setField("first_week", "true");
+    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
+      this.templateService.setField("second_week", "true");
+      this.templateService.setField("w_1on1_disabled", "false");
+    } else {
+      this.templateService.setField("second_week", "false");
+    }
+    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
+      this.templateService.setField("third_week", "true");
+      this.templateService.setField("w_praise_disabled", "false");
+    } else {
+      this.templateService.setField("third_week", "false");
+    }
+    this.templateService.setField(
+      "days_since_start",
+      (
+        (Date.parse(current_date) - Date.parse(user.first_app_open)) /
+        (24 * 60 * 60 * 1000)
+      ).toString()
+    );
   }
 }

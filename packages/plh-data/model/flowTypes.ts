@@ -4,6 +4,20 @@ import { TipRow } from "./tips.model";
 // import { IDBTable } from "../../../src/app/shared/services/db/db.service";
 
 /*********************************************************************************************
+ *  Constants used to generate types
+ ********************************************************************************************/
+
+export const DYNAMIC_PREFIXES = [
+  "local",
+  "field",
+  "fields",
+  "global",
+  "data",
+  "campaign",
+  "calc",
+] as const;
+
+/*********************************************************************************************
  *  Base flow types
  ********************************************************************************************/
 
@@ -250,7 +264,9 @@ export namespace FlowTypes {
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
     notification_schedule?: NotificationSchedule;
-    _active?: boolean; // calculated from activation and deactivation conditions
+    _activated?: boolean; // all activation criteria satisfied
+    _deactivated?: boolean; // any deactivation criteria satisfied
+    _active?: boolean; // activated and not deactivated
 
     // additional fields for current data_list but not required
     click_action_list?: TemplateRowAction[];
@@ -276,17 +292,20 @@ export namespace FlowTypes {
       db_lookup?: {
         // TODO CC 2021-07-09 - refactor to make type available
         table_id: string;
-        // table_id: IDBTable;
-        filter: { field: string; value: string }; // filter value is misleading, e.g. field:event_id, value:app_launch ;
+        // NOTE - where queries only support text or number
+        // see: https://github.com/dfahlander/Dexie.js/issues/427
+        // (non-sparse indexes)
+        where: { [field: string]: string | number }; //  e.g. {name:reminder_1.sent, value:'true'} ;
         order?: "asc" | "desc";
         evaluate?: {
           operator: ">" | "<=";
-          value: string | number;
+          value: string | number | boolean;
           unit?: "day" | "app_day";
         };
       };
       field_evaluation?: {
-        evaluate: string;
+        field: string;
+        value: string;
       };
     };
     /** calculated after criteria has been evaluated */
@@ -400,7 +419,8 @@ export namespace FlowTypes {
     | "icon_banner"
     | "dashed_box"
     | "lottie_animation"
-    | "parent_point_box";
+    | "parent_point_box"
+    | "debug_toggle";
 
   export interface TemplateRow {
     type: TemplateRowType;
@@ -430,13 +450,15 @@ export namespace FlowTypes {
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
+  type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
+
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
     fullExpression: string;
     matchedExpression: string;
     // TODO CC 2021-05-15 - 'campaign' should be handled as a special case of data in the parser
     // i.e. @data.campaign_list | evaluate_conditions | first (or similar)
-    type: "local" | "field" | "fields" | "global" | "data" | "campaign" | "calc";
+    type: IDynamicPrefix;
     fieldName: string;
     // computed properties
     parsedValue?: any;
