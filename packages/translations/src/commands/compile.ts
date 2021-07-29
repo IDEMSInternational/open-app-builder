@@ -40,18 +40,28 @@ program
  * replace text from input files
  **/
 function compileTranslations(inDir: string, translationsDir: string, outDir: string) {
-  checkInputOutputDirs(inDir, outDir);
+  fs.emptyDirSync(outDir);
+  checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
   checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
-  const strings = compileTranslationStrings(translationsDir);
-  const stringsOutput = path.resolve(outDir, "strings.json");
-  fs.writeFileSync(stringsOutput, JSON.stringify(strings, null, 2));
-  populateTranslations(inDir, outDir, strings);
+  const { translationsByCode } = compileTranslationStrings(translationsDir, outDir);
+  populateTranslations(inDir, outDir, translationsByCode);
   outputCompleteMessage("Translations Compiled", outDir);
 }
 
 /**
  * Takes a list of all translation entry jsons and compiles into single list of strings
- * @returns json object containing sourceText strings and all available translations
+ * @returns translationsByCode - json object with strings by lang code
+ * ```
+ * {
+ *  "esp":{
+ *    "How are you feeling today?": "¿Cómo te sientes hoy?"
+ *  },
+ * "eng":{
+ *    "How are you feeling today?": "How are you feeling today?"
+ *  }
+ * }
+ * ```
+ * @returns translationsCombined - json object with translations by sourceText
  * ```
  * {
  *   "How are you feeling today?":{
@@ -61,9 +71,10 @@ function compileTranslations(inDir: string, translationsDir: string, outDir: str
  * }
  * ```
  **/
-function compileTranslationStrings(translationsDir: string) {
+function compileTranslationStrings(translationsDir: string, outDir: string) {
   // Create masterlist of all translations strings
-  const strings: ITranslationStrings = {};
+  const translationsCombined: ITranslationsCombined = {};
+  const translationsByCode: ITranslationsByCode = {};
   const translationsFiles = recursiveFindByExtension(translationsDir, "json");
   for (const filepath of translationsFiles) {
     const [, langCode] = path.basename(filepath, ".json").split(".");
@@ -73,22 +84,41 @@ function compileTranslationStrings(translationsDir: string) {
         filepath
       );
     }
+    if (!translationsByCode[langCode]) {
+      translationsByCode[langCode] = {};
+    }
+
     const translationsEntries: ITranslationEntry[] = fs.readJSONSync(filepath);
     translationsEntries.forEach((entry) => {
       const { SourceText, text } = entry;
-      if (!strings[SourceText]) {
-        strings[SourceText] = { eng: SourceText };
+      translationsByCode[langCode][SourceText] = text;
+      if (!translationsCombined[SourceText]) {
+        translationsCombined[SourceText] = {};
       }
-      strings[SourceText][langCode] = text;
+      translationsCombined[SourceText][langCode] = text;
     });
   }
-  return strings;
+  // Handle output files
+  // const indexOutput = path.resolve(outDir, "index.ts");
+  // fs.createFileSync(indexOutput);
+  for (const [langCode, strings] of Object.entries(translationsByCode)) {
+    const stringsOutput = path.resolve(outDir, "strings", `${langCode}.json`);
+    fs.writeFileSync(stringsOutput, JSON.stringify(strings, null, 2));
+    // fs.appendFileSync(indexOutput, `import ${langCode} from "./strings/${langCode}";\r\n`);
+  }
+  const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
+  fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
+  // fs.appendFileSync(
+  //   indexOutput,
+  //   `export const TRANSLATION_STRINGS = {${Object.keys(translationsByCode).join(",")}} `
+  // );
+  return { translationsCombined, translationsByCode };
 }
 
 /**
  *
  */
-function populateTranslations(inDir: string, outDir: string, strings: ITranslationStrings) {
+function populateTranslations(inDir: string, outDir: string, strings: ITranslationsByCode) {
   const inputFiles = recursiveFindByExtension(inDir, "json");
   for (const filepath of inputFiles) {
     const inputEntries: IInputEntry[] = fs.readJSONSync(filepath);
@@ -111,26 +141,32 @@ function populateTranslations(inDir: string, outDir: string, strings: ITranslati
 function applyStringTranslations(
   row: any,
   translatedFields: string[],
-  strings: ITranslationStrings
+  translationsByCode: ITranslationsByCode
 ) {
   let translated: any = {};
   const hasChildRows = row.hasOwnProperty("rows");
+  const langCodes = Object.keys(translationsByCode);
   Object.entries(row).forEach(([field, value]) => {
     // default keep original
     translated[field] = row[field];
     // handle translations from list
     if (field === "rows" && Array.isArray(value)) {
-      translated[field] = value.map((v) => applyStringTranslations(v, translatedFields, strings));
+      translated[field] = value.map((v) =>
+        applyStringTranslations(v, translatedFields, translationsByCode)
+      );
     } else {
       // handle all other fields
       // (although skip if parent row.rows exists as likely top-level or no translation required)
       if (translatedFields.includes(field) && typeof value === "string" && !hasChildRows) {
-        // TODO - merge with scripts methods
-        translated["_translatedFields"] = {
-          ...translated["_translatedFields"],
-          // merge translated fields, fallback to just english value if missing (?)
-          [field]: strings[value as string] || { eng: value },
-        };
+        if (!translated.hasOwnProperty("_translations")) {
+          translated["_translations"] = {};
+        }
+        translated["_translations"][field] = {};
+        // assign true/false to record whether translations exist for the string
+        langCodes.forEach((code) => {
+          const hasTranslation = translationsByCode[code][value] ? true : false;
+          translated["_translations"][field][code] = hasTranslation;
+        });
       }
     }
   });
@@ -170,7 +206,8 @@ interface ITranslationEntry {
   type: string;
 }
 
-type ITranslationStrings = { [sourceString: string]: { [langcode: string]: string } };
+type ITranslationsByCode = { [langCode: string]: { [sourceText: string]: string } };
+type ITranslationsCombined = { [sourceText: string]: { [langCode: string]: string } };
 
 /** Input entries are the same as data flows, with a `flow_type` and child `rows` */
 type IInputEntry = FlowTypes.FlowTypeWithData;

@@ -8,10 +8,9 @@
         "type": "declare_global_constant",
         "name": "languge_global",
         "value": "This is a global variable set in a global",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "This is a global variable set in a global",
-            "esp": "Esta es una variable global determinada en una planilla global"
+            "esp": true
           }
         }
       },
@@ -19,10 +18,9 @@
         "type": "declare_field_default",
         "name": "language_field_1",
         "value": "This is a field set by default",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "This is a field set by default",
-            "esp": "Este es un campo con valor predeterminado"
+            "esp": true
           }
         }
       },
@@ -30,9 +28,9 @@
         "type": "declare_field_default",
         "name": "language_field_2",
         "value": "@data.language.example_lang_3.text",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@data.language.example_lang_3.text"
+            "esp": false
           }
         }
       }
