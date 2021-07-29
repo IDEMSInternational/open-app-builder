@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
-import { capitalizeFirstLetter, recursiveFindByExtension } from "./utils";
+import { capitalizeFirstLetter, recursiveFindByExtension, convertJsonToTs } from "./utils";
 import { spawnSync } from "child_process";
 import { PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
 
@@ -9,46 +9,84 @@ import { PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
 const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
 
-/** A simple script to copy data exported from gdrive and processed for plh into the app data folder */
+/**
+ * A simple script to copy data exported from gdrive and processed for plh into the app data folder
+ * @param doAssetFolderCheck whether to copy assets across (e.g. ignored when syncing single files)
+ **/
 export function main(doAssetFolderCheck = true) {
-  fs.ensureDirSync(PLH_DATA_PATH);
-  fs.emptyDirSync(PLH_DATA_PATH);
-  if (doAssetFolderCheck) {
-    fs.ensureDirSync(PLH_ASSETS_PATH);
-    fs.emptyDirSync(PLH_ASSETS_PATH);
-  }
-  console.log(chalk.yellow("Copying Data To App"));
-  const localTsFiles = recursiveFindByExtension(DATA_INPUT_FOLDER, "json");
+  // Translations Compilation
+  console.log(chalk.yellow("Compiling existing translations"));
+  const TRANSLATIONS_FOLDER = path.resolve(PLH_DATA_PATH, "../translations/from_translators");
+  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(PLH_DATA_PATH, "../translations/compiled");
+  compileTranslationFiles(DATA_INPUT_FOLDER, TRANSLATIONS_OUTPUT_FOLDER, TRANSLATIONS_FOLDER);
 
+  // App files
+  console.log(chalk.yellow("Writing app files"));
+  writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_PATH);
+  if (doAssetFolderCheck) {
+    copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_ASSETS_PATH);
+  }
+  generateAppDataIndexFiles();
+  writeTranslationTsFiles(
+    path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
+    path.resolve(PLH_DATA_PATH, "translation_strings")
+  );
+  console.log(chalk.yellow("Cleaning Output Files"));
+  cleanAppTsOutput(PLH_DATA_PATH);
+
+  // New translations output
+  console.log(chalk.yellow("Generating new translation files"));
+  generateTranslationFiles(
+    "../scripts/src/plh-data-convert/output",
+    "../plh-data/translations/to_translate"
+  );
+  console.log(chalk.green("Copy Complete"));
+}
+
+if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
+  main();
+}
+
+function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
+  fs.ensureDirSync(targetFolder);
+  fs.emptyDirSync(targetFolder);
+  fs.removeSync(path.resolve(PLH_DATA_PATH, "translation_strings", "_combined.json"));
+  // convert all individual strings to ts, but ignore combined
+  const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
+    (filepath) => path.basename(filepath) !== "_combined.json"
+  );
+  convertJsonToTs(sourceFiles, {
+    outputDir: targetFolder,
+    indexFile: { namedExport: "TRANSLATION_STRINGS" },
+  });
+}
+
+function copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
+  fs.ensureDirSync(targetFolder);
+  fs.emptyDirSync(targetFolder);
+  if (fs.existsSync(sourceFolder)) {
+    fs.copySync(sourceFolder, targetFolder);
+  }
+}
+
+function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
+  fs.ensureDirSync(targetFolder);
+  fs.emptyDirSync(targetFolder);
+  console.log(chalk.yellow("Copying Data To App"));
+  const localTsFiles = recursiveFindByExtension(sourceFolder, "json");
   for (const filepath of localTsFiles) {
     const fileJson = fs.readJSONSync(filepath);
     // files are organised by flow_type, so get name of parent folder for type
     const flow_type = path.dirname(filepath).split(path.sep).pop();
     // create output ts from json
     const appOutputTs = generateLocalTsOutput(fileJson, flow_type);
-    const outputPath = path.join(PLH_DATA_PATH, path.relative(DATA_INPUT_FOLDER, filepath));
+    const outputPath = path.join(targetFolder, path.relative(sourceFolder, filepath));
     const outputDir = path.dirname(outputPath);
     const outputName = path.basename(filepath).replace(".json", ".ts");
-
+    // write outputs
     fs.ensureDirSync(outputDir);
     fs.writeFileSync(path.resolve(outputDir, outputName), appOutputTs);
   }
-  if (fs.existsSync(ASSETS_INPUT_FOLDER)) {
-    fs.copySync(ASSETS_INPUT_FOLDER, PLH_ASSETS_PATH);
-  }
-  generateAppDataIndexFiles();
-  console.log(chalk.yellow("Cleaning Output Files"));
-  cleanAppTsOutput();
-  console.log(chalk.yellow("Generating translation files"));
-  generateTranslationFiles();
-  console.log(chalk.yellow("Compiling translations"));
-  compileTranslationFiles();
-  console.log(chalk.green("Copy Complete"));
-  // generateTranslationIndexFiles();
-}
-
-if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
-  main();
 }
 
 /**
@@ -67,8 +105,8 @@ function generateLocalTsOutput(json: any, flow_type: string) {
   `;
 }
 
-function cleanAppTsOutput() {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${PLH_DATA_PATH}/**/*.ts --loglevel error`;
+function cleanAppTsOutput(outputFolder: string) {
+  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${outputFolder}/**/*.ts --loglevel error`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
@@ -77,8 +115,8 @@ function cleanAppTsOutput() {
  * TODO - ideally this and all above scripts should be called from within plh-data workspace instead
  * TODO - could also install as node_module and run as bin
  * */
-function generateTranslationFiles() {
-  const cmd = `yarn workspace translations start generate -i ../scripts/src/plh-data-convert/output -o ../plh-data/translations/source`;
+function generateTranslationFiles(inputFolder: string, outputFolder: string) {
+  const cmd = `yarn workspace translations start generate -i ${inputFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
@@ -86,21 +124,14 @@ function generateTranslationFiles() {
  * Call translation scripts to also process compiled translations
  * TODO - ideally this and all above scripts should be called from within plh-data workspace instead
  **/
-function compileTranslationFiles() {
-  const cmd = `yarn workspace translations start compile -i ../plh-data/translations/source -t ../plh-data/translations/translations -o ../plh-data/translations/compiled`;
+function compileTranslationFiles(
+  sourceFolder: string,
+  outputFolder: string,
+  translationsFolder: string
+) {
+  const cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-  // TODO - convert jsons, generate index (make nice script, e.g.)
 }
-function convertJsonToTs(
-  filepaths: string[],
-  config: {
-    generateIndex?: boolean;
-    exportDataType?: string;
-    outputDir?: string;
-    importStatements?: string[];
-    exportName?: string;
-  }
-) {}
 
 /**
  * Create a default index.ts file in each data folder to export all other local
