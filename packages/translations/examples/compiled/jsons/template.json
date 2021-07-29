@@ -1,0 +1,1187 @@
+[
+  {
+    "flow_type": "template",
+    "flow_name": "example_lang_template_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title",
+        "value": "Example Language Template",
+        "_translatedFields": {
+          "value": {
+            "eng": "Example Language Template",
+            "esp": "Plantilla de Ejemplo de Idioma"
+          }
+        },
+        "_nested_name": "title"
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "This is a default text that needs to be translated",
+        "_translatedFields": {
+          "value": {
+            "eng": "This is a default text that needs to be translated",
+            "esp": "Esto es un texto predeterminado que necesita ser traducido"
+          }
+        },
+        "_nested_name": "text_1"
+      },
+      {
+        "type": "subtitle",
+        "name": "subtitle_1",
+        "value": "How are you feeling today?",
+        "_translatedFields": {
+          "value": {
+            "eng": "How are you feeling today?",
+            "esp": "¿Cómo te sientes hoy?"
+          }
+        },
+        "parameter_list": {
+          "style": "large"
+        },
+        "_nested_name": "subtitle_1"
+      },
+      {
+        "name": "answer_list_1",
+        "value": [
+          "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+          "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked:plh_images/stickers/faces/neutral.svg",
+          "name:sad | image:plh_images/stickers/faces/sadder.svg |  image_checked:plh_images/stickers/faces/sadder.svg"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list_1"
+      },
+      {
+        "name": "options_per_row",
+        "value": 3,
+        "type": "set_variable",
+        "_nested_name": "options_per_row"
+      },
+      {
+        "name": "radio_group_field_name",
+        "value": "radio_group_field",
+        "_translatedFields": {
+          "value": {
+            "eng": "radio_group_field"
+          }
+        },
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "radio_group_field_name"
+      },
+      {
+        "type": "radio_group",
+        "name": "radio_group",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.radio_group_field_name",
+              "this.value"
+            ],
+            "_raw": "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+            "_cleaned": "changed | set_field:@local.radio_group_field_name:@local.radio_group"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_1",
+          "options_per_row": "@local.options_per_row"
+        },
+        "_nested_name": "radio_group",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.radio_group_field_name",
+                    "matchedExpression": "@local.radio_group_field_name",
+                    "type": "local",
+                    "fieldName": "radio_group_field_name"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  "matchedExpression": "@local.radio_group_field_name",
+                  "type": "local",
+                  "fieldName": "radio_group_field_name"
+                },
+                {
+                  "fullExpression": "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  "matchedExpression": "@local.radio_group",
+                  "type": "local",
+                  "fieldName": "radio_group"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  "matchedExpression": "@local.radio_group_field_name",
+                  "type": "local",
+                  "fieldName": "radio_group_field_name"
+                },
+                {
+                  "fullExpression": "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  "matchedExpression": "@local.radio_group",
+                  "type": "local",
+                  "fieldName": "radio_group"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_1",
+                "matchedExpression": "@local.answer_list_1",
+                "type": "local",
+                "fieldName": "answer_list_1"
+              }
+            ],
+            "options_per_row": [
+              {
+                "fullExpression": "@local.options_per_row",
+                "matchedExpression": "@local.options_per_row",
+                "type": "local",
+                "fieldName": "options_per_row"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group_field_name": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.radio_group": [
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.answer_list_1": [
+            "parameter_list.answer_list"
+          ],
+          "@local.options_per_row": [
+            "parameter_list.options_per_row"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "reply_happy_dg",
+        "hidden": "@local.radio_group!=\"happy\"",
+        "parameter_list": {
+          "style": "column"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "reply_happy",
+            "value": "This is the default reply if the feeling response is happy, the first option.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is the default reply if the feeling response is happy, the first option.",
+                "esp": "Esta es la respuesta predeterminada si la respuesta es contento, la primera opción."
+              }
+            },
+            "_nested_name": "reply_happy_dg.reply_happy"
+          }
+        ],
+        "_nested_name": "reply_happy_dg",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "@local.radio_group!=\"happy\"",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "reply_ok_dg",
+        "hidden": "@local.radio_group!=\"ok\" ",
+        "parameter_list": {
+          "style": "column"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "reply_ok",
+            "value": "This is the default reply if the feeling response is ok, the second option.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is the default reply if the feeling response is ok, the second option.",
+                "esp": "Esta es la respuesta predeterminada si la respuesta es normal, la segunda opción."
+              }
+            },
+            "_nested_name": "reply_ok_dg.reply_ok"
+          }
+        ],
+        "_nested_name": "reply_ok_dg",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "@local.radio_group!=\"ok\" ",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "reply_sad_dg",
+        "hidden": "@local.radio_group!=\"sad\"",
+        "parameter_list": {
+          "style": "column"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "reply_sad",
+            "value": "This is the default reply if the feeling response is sad, the third option.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is the default reply if the feeling response is sad, the third option.",
+                "esp": "Esta es la respuesta predeterminada si la respuesta es triste, la tercer opción."
+              }
+            },
+            "_nested_name": "reply_sad_dg.reply_sad"
+          }
+        ],
+        "_nested_name": "reply_sad_dg",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "@local.radio_group!=\"sad\"",
+              "matchedExpression": "@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_2",
+        "value": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+        "_translatedFields": {
+          "value": {
+            "eng": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+            "esp": "El campo determinado por medio del grupo radial es @local.radio_group_field_name y su valor es @fields.@local.radio_group_field_name."
+          }
+        },
+        "hidden": "!@local.radio_group",
+        "_nested_name": "text_2",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+              "matchedExpression": "@local.radio_group_field_name",
+              "type": "local",
+              "fieldName": "radio_group_field_name"
+            },
+            {
+              "fullExpression": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+              "matchedExpression": "@local.radio_group_field_name",
+              "type": "local",
+              "fieldName": "radio_group_field_name"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@local.radio_group",
+              "matchedExpression": "!@local.radio_group",
+              "type": "local",
+              "fieldName": "radio_group"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.radio_group_field_name": [
+            "value",
+            "value"
+          ],
+          "!@local.radio_group": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "subtitle",
+        "name": "subtitle_2",
+        "value": "Select one of the following options:",
+        "_translatedFields": {
+          "value": {
+            "eng": "Select one of the following options:",
+            "esp": "Selecciona una de las siguientes opciones:"
+          }
+        },
+        "parameter_list": {
+          "style": "large"
+        },
+        "_nested_name": "subtitle_2"
+      },
+      {
+        "name": "combo_box_answered",
+        "value": false,
+        "type": "set_variable",
+        "_nested_name": "combo_box_answered"
+      },
+      {
+        "name": "answer_list_2",
+        "value": [
+          "name: option_1 | text:This is the first default option for the combo box",
+          "name: option_2 | text:This is the second default option for the combo box",
+          "name: option_3 | text:This is the third default option for the combo box"
+        ],
+        "type": "set_variable",
+        "_nested_name": "answer_list_2"
+      },
+      {
+        "name": "placeholder",
+        "value": "@global.tap_and_choose",
+        "_translatedFields": {
+          "value": {
+            "eng": "@global.tap_and_choose"
+          }
+        },
+        "type": "set_variable",
+        "_nested_name": "placeholder",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.tap_and_choose",
+              "matchedExpression": "@global.tap_and_choose",
+              "type": "global",
+              "fieldName": "tap_and_choose"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.tap_and_choose": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "input_allowed",
+        "value": true,
+        "type": "set_variable",
+        "_nested_name": "input_allowed"
+      },
+      {
+        "name": "answer_placeholder",
+        "value": "@global.type_your_own",
+        "_translatedFields": {
+          "value": {
+            "eng": "@global.type_your_own"
+          }
+        },
+        "type": "set_variable",
+        "_nested_name": "answer_placeholder",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@global.type_your_own",
+              "matchedExpression": "@global.type_your_own",
+              "type": "global",
+              "fieldName": "type_your_own"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@global.type_your_own": [
+            "value"
+          ]
+        }
+      },
+      {
+        "name": "combo_box_field_name",
+        "value": "radio_group_field",
+        "_translatedFields": {
+          "value": {
+            "eng": "radio_group_field"
+          }
+        },
+        "exclude_from_translation": true,
+        "type": "set_variable",
+        "_nested_name": "combo_box_field_name"
+      },
+      {
+        "type": "combo_box",
+        "name": "combo_box",
+        "action_list": [
+          {
+            "trigger": "changed",
+            "action_id": "set_field",
+            "args": [
+              "@local.combo_box_field_name",
+              "this.value"
+            ],
+            "_raw": "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+            "_cleaned": "changed | set_field:@local.combo_box_field_name:@local.combo_box"
+          },
+          {
+            "trigger": "changed",
+            "action_id": "set_local",
+            "args": [
+              "combo_box_answered",
+              true
+            ],
+            "_raw": "changed | set_local: combo_box_answered: true",
+            "_cleaned": "changed | set_local: combo_box_answered: true"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": "@local.answer_list_2",
+          "placeholder": "@local.placeholder",
+          "input_allowed": "@local.input_allowed",
+          "answer_placeholder": "@local.answer_placeholder"
+        },
+        "_nested_name": "combo_box",
+        "_dynamicFields": {
+          "action_list": {
+            "0": {
+              "args": {
+                "0": [
+                  {
+                    "fullExpression": "@local.combo_box_field_name",
+                    "matchedExpression": "@local.combo_box_field_name",
+                    "type": "local",
+                    "fieldName": "combo_box_field_name"
+                  }
+                ]
+              },
+              "_raw": [
+                {
+                  "fullExpression": "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  "matchedExpression": "@local.combo_box_field_name",
+                  "type": "local",
+                  "fieldName": "combo_box_field_name"
+                },
+                {
+                  "fullExpression": "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ],
+              "_cleaned": [
+                {
+                  "fullExpression": "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  "matchedExpression": "@local.combo_box_field_name",
+                  "type": "local",
+                  "fieldName": "combo_box_field_name"
+                },
+                {
+                  "fullExpression": "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ]
+            }
+          },
+          "parameter_list": {
+            "answer_list": [
+              {
+                "fullExpression": "@local.answer_list_2",
+                "matchedExpression": "@local.answer_list_2",
+                "type": "local",
+                "fieldName": "answer_list_2"
+              }
+            ],
+            "placeholder": [
+              {
+                "fullExpression": "@local.placeholder",
+                "matchedExpression": "@local.placeholder",
+                "type": "local",
+                "fieldName": "placeholder"
+              }
+            ],
+            "input_allowed": [
+              {
+                "fullExpression": "@local.input_allowed",
+                "matchedExpression": "@local.input_allowed",
+                "type": "local",
+                "fieldName": "input_allowed"
+              }
+            ],
+            "answer_placeholder": [
+              {
+                "fullExpression": "@local.answer_placeholder",
+                "matchedExpression": "@local.answer_placeholder",
+                "type": "local",
+                "fieldName": "answer_placeholder"
+              }
+            ]
+          }
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box_field_name": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.combo_box": [
+            "action_list.0._raw",
+            "action_list.0._cleaned"
+          ],
+          "@local.answer_list_2": [
+            "parameter_list.answer_list"
+          ],
+          "@local.placeholder": [
+            "parameter_list.placeholder"
+          ],
+          "@local.input_allowed": [
+            "parameter_list.input_allowed"
+          ],
+          "@local.answer_placeholder": [
+            "parameter_list.answer_placeholder"
+          ]
+        }
+      },
+      {
+        "type": "display_group",
+        "name": "reply_dg",
+        "hidden": "!@local.combo_box_answered",
+        "parameter_list": {
+          "style": "column"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "reply_combo_box",
+            "value": "The option selected was @local.combo_box.",
+            "_translatedFields": {
+              "value": {
+                "eng": "The option selected was @local.combo_box.",
+                "esp": "La opción seleccionada fue @local.combo_box."
+              }
+            },
+            "_nested_name": "reply_dg.reply_combo_box",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "The option selected was @local.combo_box.",
+                  "matchedExpression": "@local.combo_box",
+                  "type": "local",
+                  "fieldName": "combo_box"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@local.combo_box": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "reply_dg",
+        "_dynamicFields": {
+          "hidden": [
+            {
+              "fullExpression": "!@local.combo_box_answered",
+              "matchedExpression": "!@local.combo_box_answered",
+              "type": "local",
+              "fieldName": "combo_box_answered"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "!@local.combo_box_answered": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_3",
+        "value": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+        "_translatedFields": {
+          "value": {
+            "eng": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+            "esp": "El campo determinado por medio de la caja de combinaciones es @local.combo_box_field_name y su valor es @fields.@local.combo_box_field_name."
+          }
+        },
+        "hidden": "!@local.combo_box",
+        "_nested_name": "text_3",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+              "matchedExpression": "@local.combo_box_field_name",
+              "type": "local",
+              "fieldName": "combo_box_field_name"
+            },
+            {
+              "fullExpression": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+              "matchedExpression": "@local.combo_box_field_name",
+              "type": "local",
+              "fieldName": "combo_box_field_name"
+            }
+          ],
+          "hidden": [
+            {
+              "fullExpression": "!@local.combo_box",
+              "matchedExpression": "!@local.combo_box",
+              "type": "local",
+              "fieldName": "combo_box"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@local.combo_box_field_name": [
+            "value",
+            "value"
+          ],
+          "!@local.combo_box": [
+            "hidden"
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "name": "button_1",
+        "value": "Pop-up 1",
+        "_translatedFields": {
+          "value": {
+            "eng": "Pop-up 1"
+          }
+        },
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_lang_template_pop_1"
+            ],
+            "_raw": "click | pop_up:example_lang_template_pop_1",
+            "_cleaned": "click | pop_up:example_lang_template_pop_1"
+          }
+        ],
+        "exclude_from_translation": true,
+        "_nested_name": "button_1"
+      },
+      {
+        "type": "button",
+        "name": "button_2",
+        "value": "Pop-up 2",
+        "_translatedFields": {
+          "value": {
+            "eng": "Pop-up 2"
+          }
+        },
+        "action_list": [
+          {
+            "trigger": "click",
+            "action_id": "pop_up",
+            "args": [
+              "example_lang_template_pop_2"
+            ],
+            "_raw": "click | pop_up:example_lang_template_pop_2",
+            "_cleaned": "click | pop_up:example_lang_template_pop_2"
+          }
+        ],
+        "exclude_from_translation": true,
+        "_nested_name": "button_2"
+      },
+      {
+        "type": "display_group",
+        "name": "global_box",
+        "parameter_list": {
+          "style": "dashed_box"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "text_4",
+            "value": "(don't translate this) The following text is a global:",
+            "_translatedFields": {
+              "value": {
+                "eng": "(don't translate this) The following text is a global:"
+              }
+            },
+            "exclude_from_translation": true,
+            "_nested_name": "global_box.text_4"
+          },
+          {
+            "type": "text",
+            "name": "text_5",
+            "value": "@global.languge_global",
+            "_translatedFields": {
+              "value": {
+                "eng": "@global.languge_global"
+              }
+            },
+            "_nested_name": "global_box.text_5",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@global.languge_global",
+                  "matchedExpression": "@global.languge_global",
+                  "type": "global",
+                  "fieldName": "languge_global"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@global.languge_global": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "global_box"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "dashed_box"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "text_6",
+            "value": "(don't translate) The following text is a field:",
+            "_translatedFields": {
+              "value": {
+                "eng": "(don't translate) The following text is a field:"
+              }
+            },
+            "exclude_from_translation": true,
+            "_nested_name": "display_group.text_6"
+          },
+          {
+            "type": "text",
+            "name": "text_7",
+            "value": "@fields.language_field_1",
+            "_translatedFields": {
+              "value": {
+                "eng": "@fields.language_field_1"
+              }
+            },
+            "_nested_name": "display_group.text_7",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.language_field_1",
+                  "matchedExpression": "@fields.language_field_1",
+                  "type": "fields",
+                  "fieldName": "language_field_1"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@fields.language_field_1": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      },
+      {
+        "type": "display_group",
+        "parameter_list": {
+          "style": "dashed_box"
+        },
+        "rows": [
+          {
+            "type": "text",
+            "name": "text_8",
+            "value": "(don't translate) The following text is a field defined in a global from a data list:",
+            "_translatedFields": {
+              "value": {
+                "eng": "(don't translate) The following text is a field defined in a global from a data list:"
+              }
+            },
+            "exclude_from_translation": true,
+            "_nested_name": "display_group.text_8"
+          },
+          {
+            "type": "text",
+            "name": "text_9",
+            "value": "@fields.language_field_2",
+            "_translatedFields": {
+              "value": {
+                "eng": "@fields.language_field_2"
+              }
+            },
+            "_nested_name": "display_group.text_9",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@fields.language_field_2",
+                  "matchedExpression": "@fields.language_field_2",
+                  "type": "fields",
+                  "fieldName": "language_field_2"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@fields.language_field_2": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "name": "display_group",
+        "_nested_name": "display_group"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_lang_template_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "example_lang_template_1",
+        "value": "example_lang_template_1",
+        "rows": [
+          {
+            "name": "text_1",
+            "value": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+                "esp": "Este es un texto modificado que necesita ser traducido.\n\nEste es un texto anidado."
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.text_1"
+          },
+          {
+            "name": "reply_happy",
+            "value": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+                "esp": "Esta es la respuesta modificada si la respuesta es alegre, la primera opción.\n\nEste es un texto anidado."
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.reply_happy"
+          },
+          {
+            "name": "reply_ok",
+            "value": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+                "esp": "Esta es la respuesta modificada si la respuesta es normal, la segunda opción.\n\nEste es un texto anidado."
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.reply_ok"
+          },
+          {
+            "name": "reply_sad",
+            "value": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+            "_translatedFields": {
+              "value": {
+                "eng": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+                "esp": "Esta es la respuesta modificada si la respuesta es triste, la tercer opción.\n\nEste es un texto anidado."
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.reply_sad"
+          },
+          {
+            "name": "subtitle_2",
+            "value": "Which of the following do you like the most (this is modified)?",
+            "_translatedFields": {
+              "value": {
+                "eng": "Which of the following do you like the most (this is modified)?",
+                "esp": "¿Cuál de los siguientes te gusta más? (esto está modificado)?"
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.subtitle_2"
+          },
+          {
+            "name": "answer_list_2",
+            "value": [
+              "name: option_1 | text:Cats (modified text in answer list)",
+              "name: option_2 | text:Dogs (modified text in answer list)",
+              "name: option_3 | text:Chinchillas (modified text in answer list)"
+            ],
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.answer_list_2"
+          },
+          {
+            "name": "input_allowed",
+            "value": false,
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_1.input_allowed"
+          }
+        ],
+        "_nested_name": "example_lang_template_1"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_lang_template_pop_1",
+    "status": "released",
+    "rows": [
+      {
+        "type": "title",
+        "name": "title_1",
+        "value": "@data.language.example_lang_1.title",
+        "_translatedFields": {
+          "value": {
+            "eng": "@data.language.example_lang_1.title"
+          }
+        },
+        "_nested_name": "title_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.language.example_lang_1.title",
+              "matchedExpression": "@data.language.example_lang_1.title",
+              "type": "data",
+              "fieldName": "language"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.language.example_lang_1.title": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_1",
+        "value": "@data.language.example_lang_1.text",
+        "_translatedFields": {
+          "value": {
+            "eng": "@data.language.example_lang_1.text"
+          }
+        },
+        "_nested_name": "text_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.language.example_lang_1.text",
+              "matchedExpression": "@data.language.example_lang_1.text",
+              "type": "data",
+              "fieldName": "language"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.language.example_lang_1.text": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "image",
+        "name": "image_1",
+        "value": "@data.language.example_lang_1.image_asset",
+        "_translatedFields": {
+          "value": {
+            "eng": "@data.language.example_lang_1.image_asset"
+          }
+        },
+        "_nested_name": "image_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.language.example_lang_1.image_asset",
+              "matchedExpression": "@data.language.example_lang_1.image_asset",
+              "type": "data",
+              "fieldName": "language"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.language.example_lang_1.image_asset": [
+            "value"
+          ]
+        }
+      },
+      {
+        "type": "lottie_animation",
+        "name": "lottie_1",
+        "value": "@data.language.example_lang_1.lottie_asset",
+        "_translatedFields": {
+          "value": {
+            "eng": "@data.language.example_lang_1.lottie_asset"
+          }
+        },
+        "_nested_name": "lottie_1",
+        "_dynamicFields": {
+          "value": [
+            {
+              "fullExpression": "@data.language.example_lang_1.lottie_asset",
+              "matchedExpression": "@data.language.example_lang_1.lottie_asset",
+              "type": "data",
+              "fieldName": "language"
+            }
+          ]
+        },
+        "_dynamicDependencies": {
+          "@data.language.example_lang_1.lottie_asset": [
+            "value"
+          ]
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  },
+  {
+    "flow_type": "template",
+    "flow_name": "example_lang_template_pop_2",
+    "status": "released",
+    "rows": [
+      {
+        "type": "template",
+        "name": "example_lang_template_pop_1",
+        "value": "example_lang_template_pop_1",
+        "rows": [
+          {
+            "name": "title_1",
+            "value": "New title: @data.language.example_lang_2.title",
+            "_translatedFields": {
+              "value": {
+                "eng": "New title: @data.language.example_lang_2.title",
+                "esp": "Título nuevo: @data.language.example_lang_2.title"
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_pop_1.title_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "New title: @data.language.example_lang_2.title",
+                  "matchedExpression": "@data.language.example_lang_2.title",
+                  "type": "data",
+                  "fieldName": "language"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.language.example_lang_2.title": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "text_1",
+            "value": "New text: @data.language.example_lang_2.text",
+            "_translatedFields": {
+              "value": {
+                "eng": "New text: @data.language.example_lang_2.text",
+                "esp": "Texto nuevo: @data.language.example_lang_2.text"
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_pop_1.text_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "New text: @data.language.example_lang_2.text",
+                  "matchedExpression": "@data.language.example_lang_2.text",
+                  "type": "data",
+                  "fieldName": "language"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.language.example_lang_2.text": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "image_1",
+            "value": "@data.language.example_lang_2.image_asset",
+            "_translatedFields": {
+              "value": {
+                "eng": "@data.language.example_lang_2.image_asset"
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_pop_1.image_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.language.example_lang_2.image_asset",
+                  "matchedExpression": "@data.language.example_lang_2.image_asset",
+                  "type": "data",
+                  "fieldName": "language"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.language.example_lang_2.image_asset": [
+                "value"
+              ]
+            }
+          },
+          {
+            "name": "lottie_1",
+            "value": "@data.language.example_lang_2.lottie_asset",
+            "_translatedFields": {
+              "value": {
+                "eng": "@data.language.example_lang_2.lottie_asset"
+              }
+            },
+            "type": "set_variable",
+            "_nested_name": "example_lang_template_pop_1.lottie_1",
+            "_dynamicFields": {
+              "value": [
+                {
+                  "fullExpression": "@data.language.example_lang_2.lottie_asset",
+                  "matchedExpression": "@data.language.example_lang_2.lottie_asset",
+                  "type": "data",
+                  "fieldName": "language"
+                }
+              ]
+            },
+            "_dynamicDependencies": {
+              "@data.language.example_lang_2.lottie_asset": [
+                "value"
+              ]
+            }
+          }
+        ],
+        "_nested_name": "example_lang_template_pop_1"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  }
+]
