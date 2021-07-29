@@ -15,6 +15,7 @@
     "data:serve": "yarn workspace plh-data serve",
     "scripts": "yarn workspace scripts",
     "server": "yarn workspace server",
+    "translations": "yarn workspace translations start",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
