@@ -49,6 +49,7 @@ export class AppComponent {
     this.themeService.init();
     this.platform.ready().then(async () => {
       this.dbService.init();
+      this.hackSetDeveloperOptions();
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
@@ -101,6 +102,16 @@ export class AppComponent {
       window.console.log = function (...args: any) {};
       window.console.warn = function (...args: any) {};
       window.console.error = function (...args: any) {};
+    }
+  }
+
+  /** ensure localhost dev can see all non-user content */
+  private hackSetDeveloperOptions() {
+    if (location.hostname === "localhost" && !environment.production) {
+      const isUserMode = this.templateService.getField("user_mode");
+      if (isUserMode !== false) {
+        this.templateService.setField("user_mode", "false");
+      }
     }
   }
 
