@@ -152,7 +152,7 @@ export function convertJsonToTs(
     if (indexFilePath) {
       const importName = path.basename(filename, ".ts");
       if (indexFile.namedExport) {
-        fs.appendFileSync(indexFilePath, `import * as ${importName} from "./${importName}";\r\n`);
+        fs.appendFileSync(indexFilePath, `import ${importName} from "./${importName}";\r\n`);
       } else {
         fs.appendFileSync(indexFilePath, `export * from "./${importName}";\r\n`);
       }
