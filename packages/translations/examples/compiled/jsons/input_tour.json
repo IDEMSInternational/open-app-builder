@@ -1,0 +1,91 @@
+[
+  {
+    "flow_type": "tour",
+    "flow_name": "example_lang_tour",
+    "status": "released",
+    "rows": [
+      {
+        "type": "step",
+        "title": "<p>Standard Template</p>",
+        "_translatedFields": {
+          "title": {
+            "eng": "<p>Standard Template</p>",
+            "esp": "<p>Plantilla estandar</p>"
+          },
+          "message_text": {
+            "eng": "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>",
+            "esp": "<p>Esta es una planilla estandar que demuestra una variedad de cosas que necesitarían ser traducidas y algunas que están excluídas de la traducción.</p>"
+          }
+        },
+        "message_text": "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>",
+        "route": "template/example_lang_template_1"
+      },
+      {
+        "type": "step",
+        "title": "<p>Nested Template</p>",
+        "_translatedFields": {
+          "title": {
+            "eng": "<p>Nested Template</p>",
+            "esp": "<p>Plantilla Anidada</p>"
+          },
+          "message_text": {
+            "eng": "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>",
+            "esp": "<p>Esta es una planilla anidada que demuestra una variedad de cosas que necesitarían ser traducidas y algunas que están excluídas de la traducción. Esto nos permitirá verificar que el sistema multilingual funciona cuando se anida.</p>"
+          }
+        },
+        "message_text": "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>",
+        "route": "template/example_lang_template_2"
+      },
+      {
+        "type": "step",
+        "title": "<p>Component to translate</p>",
+        "_translatedFields": {
+          "title": {
+            "eng": "<p>Component to translate</p>",
+            "esp": "<p>Componente para traducir</p>"
+          },
+          "message_text": {
+            "eng": "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>",
+            "esp": "<p>Este es un ejemplo de un componente que requiere ser traducido: el marcador de posición u la opción seleccionada deben ser traducidos</p>"
+          }
+        },
+        "message_text": "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>",
+        "template_component_name": "combo_box",
+        "route": "template/example_lang_template_1"
+      },
+      {
+        "type": "step",
+        "title": "<p>Component that should not be translated translate</p>",
+        "_translatedFields": {
+          "title": {
+            "eng": "<p>Component that should not be translated translate</p>",
+            "esp": "<p>Component que no debe ser traducido</p>"
+          },
+          "message_text": {
+            "eng": "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>",
+            "esp": "<p>Este es un ejemplo de un componente que esta excluído de la traducción. El texto del botón debería mantenerse como Pop-up 1.</p>"
+          }
+        },
+        "message_text": "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>",
+        "template_component_name": "button_1",
+        "route": "template/example_lang_template_1"
+      },
+      {
+        "type": "step",
+        "title": "<p>Step without translation</p>",
+        "_translatedFields": {
+          "title": {
+            "eng": "<p>Step without translation</p>"
+          },
+          "message_text": {
+            "eng": "<p>This step in the tour should not be translated as the exclude_from_translation column is TRUE.</p>"
+          }
+        },
+        "message_text": "<p>This step in the tour should not be translated as the exclude_from_translation column is TRUE.</p>",
+        "route": "template/example_lang_template_1",
+        "exclude_from_translation": true
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  }
+]

@@ -61,7 +61,7 @@ function cleanAppTsOutput() {
  * TODO - could also install as node_module and run as bin
  * */
 function generateTranslationFiles() {
-  const cmd = `yarn workspace translations start generate -i ../scripts/src/plh-data-convert/output -o ../plh-data/translations`;
+  const cmd = `yarn workspace translations start generate -i ../scripts/src/plh-data-convert/output -o ../plh-data/translations/source`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
