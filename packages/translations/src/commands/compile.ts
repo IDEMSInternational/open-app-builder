@@ -25,8 +25,8 @@ program
     path.resolve(process.cwd(), "./examples/compiled")
   )
   .requiredOption(
-    "-t, --translations [output]",
-    "Target folder containing translations files, relative to translations folder. Default ./examples/translations",
+    "-t, --translations [translations]",
+    "Target folder containing translated sourceText files, relative to translations folder. Default ./examples/translations",
     (v) => path.resolve(process.cwd(), v),
     path.resolve(process.cwd(), "./examples/translations")
   )
@@ -45,7 +45,7 @@ function compileTranslations(inDir: string, translationsDir: string, outDir: str
   checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
   const { translationsByCode } = compileTranslationStrings(translationsDir, outDir);
   populateTranslations(inDir, outDir, translationsByCode);
-  outputCompleteMessage("Translations Compiled", outDir);
+  // outputCompleteMessage("Translations Compiled", outDir);
 }
 
 /**
