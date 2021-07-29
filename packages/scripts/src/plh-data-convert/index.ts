@@ -55,13 +55,11 @@ export async function main() {
     const convertedDataBySubtype = groupJsonByKey(value as any, "flow_subtype", "_default");
     Object.entries(convertedDataBySubtype).forEach(([subkey, subvalue]) => {
       const outputJson = JSON.stringify(subvalue, null, 2);
-      const outputTs = generateLocalTsOutput(outputJson, key);
       let outputName = key;
       if (subkey !== "_default") {
         outputName = `${key}.${subkey}`;
       }
       fs.ensureDirSync(`${OUTPUT_FOLDER}/${key}`);
-      fs.writeFileSync(`${OUTPUT_FOLDER}/${key}/${outputName}.ts`, outputTs);
       fs.writeFileSync(`${OUTPUT_FOLDER}/${key}/${outputName}.json`, outputJson);
     });
   });
@@ -185,18 +183,6 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
   return json;
 }
 
-/**
- * Create a ts file of json export, importing what would be the relevant local
- * typings to allow checking against data (and disabling unwanted additional linting)
- */
-function generateLocalTsOutput(json: any, flow_type: string) {
-  const typeName = capitalizeFirstLetter(flow_type);
-  return `/* eslint-disable */
-  import { FlowTypes } from "../../../../types";
-  const ${flow_type}: FlowTypes.${typeName}[] = ${json};
-  export default ${flow_type}
-  `;
-}
 /**
  * Read all xlsx files in the function xlsx folder (ignoring temp files and anything in an 'old' directory)
  * @returns filenames of xlsx files in given folder
