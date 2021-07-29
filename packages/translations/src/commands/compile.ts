@@ -14,19 +14,19 @@ const program = new Command();
 program
   .requiredOption(
     "-i, --input <input>",
-    "Source folder for input files, relative to translations folder. Default ./examples/source",
+    "Source folder for input json files, relative to translations folder. Default ./examples/source",
     (v) => path.resolve(process.cwd(), v),
     path.resolve(process.cwd(), "./examples/source")
   )
   .requiredOption(
     "-o, --output [output]",
-    "Target folder for compiled files, relative to translations folder. Default ./examples/compiled",
+    "Target folder for compiled json files, relative to translations folder. Default ./examples/compiled",
     (v) => path.resolve(process.cwd(), v),
     path.resolve(process.cwd(), "./examples/compiled")
   )
   .requiredOption(
     "-t, --translations [translations]",
-    "Target folder containing translated sourceText files, relative to translations folder. Default ./examples/translations",
+    "Target folder containing translated sourceText json files, relative to translations folder. Default ./examples/translations",
     (v) => path.resolve(process.cwd(), v),
     path.resolve(process.cwd(), "./examples/translations")
   )
@@ -133,7 +133,9 @@ function populateTranslations(inDir: string, outDir: string, strings: ITranslati
       }
       translatedEntries.push(entry);
     }
-    const outputFilepath = path.resolve(outDir, "jsons", path.basename(filepath));
+    const relativePath = path.relative(inDir, filepath);
+    const outputFilepath = path.resolve(outDir, "jsons", relativePath);
+    fs.ensureDirSync(path.dirname(outputFilepath));
     fs.writeFileSync(outputFilepath, JSON.stringify(translatedEntries, null, 2));
   }
 }
