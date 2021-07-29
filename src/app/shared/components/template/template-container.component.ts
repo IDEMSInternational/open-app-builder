@@ -38,6 +38,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
+  /** Query params are used for trigger template actions such as opening popups or enabling debug_mode. Ignored if required (e.g. app sidemenu template) */
+  @Input() ignoreQueryParamChanges?: boolean;
   children: { [name: string]: TemplateContainerComponent } = {};
 
   template: FlowTypes.Template;
@@ -68,7 +70,9 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   }
 
   async ngOnInit() {
-    this.subscribeToQueryParamChanges();
+    if (!this.ignoreQueryParamChanges) {
+      this.subscribeToQueryParamChanges();
+    }
     // add logging if default disabled and in debug view
     if (this.debugMode) {
       this.setLogging(true);
