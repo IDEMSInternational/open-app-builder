@@ -1,6 +1,6 @@
 # Parenting App UI
 
-# Quickstart
+# Quickstart.
 
 ## Prequisites
 
