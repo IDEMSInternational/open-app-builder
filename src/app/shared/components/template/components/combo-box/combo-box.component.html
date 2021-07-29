@@ -11,5 +11,5 @@
   }"
   [disabled]="_row.disabled"
 >
-  {{ text && !prioritisePlaceholder ? text : placeholder }}
+  {{ (text && !prioritisePlaceholder ? text : placeholder) | translate }}
 </button>
