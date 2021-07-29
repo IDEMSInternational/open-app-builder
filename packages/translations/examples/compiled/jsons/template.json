@@ -8,10 +8,9 @@
         "type": "title",
         "name": "title",
         "value": "Example Language Template",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "Example Language Template",
-            "esp": "Plantilla de Ejemplo de Idioma"
+            "esp": true
           }
         },
         "_nested_name": "title"
@@ -20,10 +19,9 @@
         "type": "text",
         "name": "text_1",
         "value": "This is a default text that needs to be translated",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "This is a default text that needs to be translated",
-            "esp": "Esto es un texto predeterminado que necesita ser traducido"
+            "esp": true
           }
         },
         "_nested_name": "text_1"
@@ -32,10 +30,9 @@
         "type": "subtitle",
         "name": "subtitle_1",
         "value": "How are you feeling today?",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "How are you feeling today?",
-            "esp": "¿Cómo te sientes hoy?"
+            "esp": true
           }
         },
         "parameter_list": {
@@ -62,9 +59,9 @@
       {
         "name": "radio_group_field_name",
         "value": "radio_group_field",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "radio_group_field"
+            "esp": false
           }
         },
         "exclude_from_translation": true,
@@ -183,10 +180,9 @@
             "type": "text",
             "name": "reply_happy",
             "value": "This is the default reply if the feeling response is happy, the first option.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is the default reply if the feeling response is happy, the first option.",
-                "esp": "Esta es la respuesta predeterminada si la respuesta es contento, la primera opción."
+                "esp": true
               }
             },
             "_nested_name": "reply_happy_dg.reply_happy"
@@ -221,10 +217,9 @@
             "type": "text",
             "name": "reply_ok",
             "value": "This is the default reply if the feeling response is ok, the second option.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is the default reply if the feeling response is ok, the second option.",
-                "esp": "Esta es la respuesta predeterminada si la respuesta es normal, la segunda opción."
+                "esp": true
               }
             },
             "_nested_name": "reply_ok_dg.reply_ok"
@@ -259,10 +254,9 @@
             "type": "text",
             "name": "reply_sad",
             "value": "This is the default reply if the feeling response is sad, the third option.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is the default reply if the feeling response is sad, the third option.",
-                "esp": "Esta es la respuesta predeterminada si la respuesta es triste, la tercer opción."
+                "esp": true
               }
             },
             "_nested_name": "reply_sad_dg.reply_sad"
@@ -289,10 +283,9 @@
         "type": "text",
         "name": "text_2",
         "value": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
-            "esp": "El campo determinado por medio del grupo radial es @local.radio_group_field_name y su valor es @fields.@local.radio_group_field_name."
+            "esp": true
           }
         },
         "hidden": "!@local.radio_group",
@@ -335,10 +328,9 @@
         "type": "subtitle",
         "name": "subtitle_2",
         "value": "Select one of the following options:",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "Select one of the following options:",
-            "esp": "Selecciona una de las siguientes opciones:"
+            "esp": true
           }
         },
         "parameter_list": {
@@ -365,9 +357,9 @@
       {
         "name": "placeholder",
         "value": "@global.tap_and_choose",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@global.tap_and_choose"
+            "esp": false
           }
         },
         "type": "set_variable",
@@ -397,9 +389,9 @@
       {
         "name": "answer_placeholder",
         "value": "@global.type_your_own",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@global.type_your_own"
+            "esp": false
           }
         },
         "type": "set_variable",
@@ -423,9 +415,9 @@
       {
         "name": "combo_box_field_name",
         "value": "radio_group_field",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "radio_group_field"
+            "esp": false
           }
         },
         "exclude_from_translation": true,
@@ -578,10 +570,9 @@
             "type": "text",
             "name": "reply_combo_box",
             "value": "The option selected was @local.combo_box.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "The option selected was @local.combo_box.",
-                "esp": "La opción seleccionada fue @local.combo_box."
+                "esp": true
               }
             },
             "_nested_name": "reply_dg.reply_combo_box",
@@ -623,10 +614,9 @@
         "type": "text",
         "name": "text_3",
         "value": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
-            "esp": "El campo determinado por medio de la caja de combinaciones es @local.combo_box_field_name y su valor es @fields.@local.combo_box_field_name."
+            "esp": true
           }
         },
         "hidden": "!@local.combo_box",
@@ -669,9 +659,9 @@
         "type": "button",
         "name": "button_1",
         "value": "Pop-up 1",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "Pop-up 1"
+            "esp": false
           }
         },
         "action_list": [
@@ -692,9 +682,9 @@
         "type": "button",
         "name": "button_2",
         "value": "Pop-up 2",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "Pop-up 2"
+            "esp": false
           }
         },
         "action_list": [
@@ -722,9 +712,9 @@
             "type": "text",
             "name": "text_4",
             "value": "(don't translate this) The following text is a global:",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "(don't translate this) The following text is a global:"
+                "esp": false
               }
             },
             "exclude_from_translation": true,
@@ -734,9 +724,9 @@
             "type": "text",
             "name": "text_5",
             "value": "@global.languge_global",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "@global.languge_global"
+                "esp": false
               }
             },
             "_nested_name": "global_box.text_5",
@@ -769,9 +759,9 @@
             "type": "text",
             "name": "text_6",
             "value": "(don't translate) The following text is a field:",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "(don't translate) The following text is a field:"
+                "esp": false
               }
             },
             "exclude_from_translation": true,
@@ -781,9 +771,9 @@
             "type": "text",
             "name": "text_7",
             "value": "@fields.language_field_1",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "@fields.language_field_1"
+                "esp": false
               }
             },
             "_nested_name": "display_group.text_7",
@@ -817,9 +807,9 @@
             "type": "text",
             "name": "text_8",
             "value": "(don't translate) The following text is a field defined in a global from a data list:",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "(don't translate) The following text is a field defined in a global from a data list:"
+                "esp": false
               }
             },
             "exclude_from_translation": true,
@@ -829,9 +819,9 @@
             "type": "text",
             "name": "text_9",
             "value": "@fields.language_field_2",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "@fields.language_field_2"
+                "esp": false
               }
             },
             "_nested_name": "display_group.text_9",
@@ -871,10 +861,9 @@
           {
             "name": "text_1",
             "value": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
-                "esp": "Este es un texto modificado que necesita ser traducido.\n\nEste es un texto anidado."
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -883,10 +872,9 @@
           {
             "name": "reply_happy",
             "value": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
-                "esp": "Esta es la respuesta modificada si la respuesta es alegre, la primera opción.\n\nEste es un texto anidado."
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -895,10 +883,9 @@
           {
             "name": "reply_ok",
             "value": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
-                "esp": "Esta es la respuesta modificada si la respuesta es normal, la segunda opción.\n\nEste es un texto anidado."
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -907,10 +894,9 @@
           {
             "name": "reply_sad",
             "value": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
-                "esp": "Esta es la respuesta modificada si la respuesta es triste, la tercer opción.\n\nEste es un texto anidado."
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -919,10 +905,9 @@
           {
             "name": "subtitle_2",
             "value": "Which of the following do you like the most (this is modified)?",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "Which of the following do you like the most (this is modified)?",
-                "esp": "¿Cuál de los siguientes te gusta más? (esto está modificado)?"
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -959,9 +944,9 @@
         "type": "title",
         "name": "title_1",
         "value": "@data.language.example_lang_1.title",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@data.language.example_lang_1.title"
+            "esp": false
           }
         },
         "_nested_name": "title_1",
@@ -985,9 +970,9 @@
         "type": "text",
         "name": "text_1",
         "value": "@data.language.example_lang_1.text",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@data.language.example_lang_1.text"
+            "esp": false
           }
         },
         "_nested_name": "text_1",
@@ -1011,9 +996,9 @@
         "type": "image",
         "name": "image_1",
         "value": "@data.language.example_lang_1.image_asset",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@data.language.example_lang_1.image_asset"
+            "esp": false
           }
         },
         "_nested_name": "image_1",
@@ -1037,9 +1022,9 @@
         "type": "lottie_animation",
         "name": "lottie_1",
         "value": "@data.language.example_lang_1.lottie_asset",
-        "_translatedFields": {
+        "_translations": {
           "value": {
-            "eng": "@data.language.example_lang_1.lottie_asset"
+            "esp": false
           }
         },
         "_nested_name": "lottie_1",
@@ -1075,10 +1060,9 @@
           {
             "name": "title_1",
             "value": "New title: @data.language.example_lang_2.title",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "New title: @data.language.example_lang_2.title",
-                "esp": "Título nuevo: @data.language.example_lang_2.title"
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -1102,10 +1086,9 @@
           {
             "name": "text_1",
             "value": "New text: @data.language.example_lang_2.text",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "New text: @data.language.example_lang_2.text",
-                "esp": "Texto nuevo: @data.language.example_lang_2.text"
+                "esp": true
               }
             },
             "type": "set_variable",
@@ -1129,9 +1112,9 @@
           {
             "name": "image_1",
             "value": "@data.language.example_lang_2.image_asset",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "@data.language.example_lang_2.image_asset"
+                "esp": false
               }
             },
             "type": "set_variable",
@@ -1155,9 +1138,9 @@
           {
             "name": "lottie_1",
             "value": "@data.language.example_lang_2.lottie_asset",
-            "_translatedFields": {
+            "_translations": {
               "value": {
-                "eng": "@data.language.example_lang_2.lottie_asset"
+                "esp": false
               }
             },
             "type": "set_variable",

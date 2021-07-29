@@ -1,154 +1,116 @@
 {
   "Example Language Template": {
-    "eng": "Example Language Template",
     "esp": "Plantilla de Ejemplo de Idioma"
   },
   "This is a default text that needs to be translated": {
-    "eng": "This is a default text that needs to be translated",
     "esp": "Esto es un texto predeterminado que necesita ser traducido"
   },
   "How are you feeling today?": {
-    "eng": "How are you feeling today?",
     "esp": "¿Cómo te sientes hoy?"
   },
   "This is the default reply if the feeling response is happy, the first option.": {
-    "eng": "This is the default reply if the feeling response is happy, the first option.",
     "esp": "Esta es la respuesta predeterminada si la respuesta es contento, la primera opción."
   },
   "This is the default reply if the feeling response is ok, the second option.": {
-    "eng": "This is the default reply if the feeling response is ok, the second option.",
     "esp": "Esta es la respuesta predeterminada si la respuesta es normal, la segunda opción."
   },
   "This is the default reply if the feeling response is sad, the third option.": {
-    "eng": "This is the default reply if the feeling response is sad, the third option.",
     "esp": "Esta es la respuesta predeterminada si la respuesta es triste, la tercer opción."
   },
   "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.": {
-    "eng": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
     "esp": "El campo determinado por medio del grupo radial es @local.radio_group_field_name y su valor es @fields.@local.radio_group_field_name."
   },
   "Select one of the following options:": {
-    "eng": "Select one of the following options:",
     "esp": "Selecciona una de las siguientes opciones:"
   },
   "This is the first default option for the combo box": {
-    "eng": "This is the first default option for the combo box",
     "esp": "Esta es la primera opción de la caja de combinaciones"
   },
   "This is the second default option for the combo box": {
-    "eng": "This is the second default option for the combo box",
     "esp": "Esta es la segunda opción de la caja de combinaciones"
   },
   "This is the third default option for the combo box": {
-    "eng": "This is the third default option for the combo box",
     "esp": "Esta es la tercer opción de la caja de combinaciones"
   },
   "The option selected was @local.combo_box.": {
-    "eng": "The option selected was @local.combo_box.",
     "esp": "La opción seleccionada fue @local.combo_box."
   },
   "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.": {
-    "eng": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
     "esp": "El campo determinado por medio de la caja de combinaciones es @local.combo_box_field_name y su valor es @fields.@local.combo_box_field_name."
   },
   "This is a modified text that needs to be translated.\n\nThis is a nested text.": {
-    "eng": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
     "esp": "Este es un texto modificado que necesita ser traducido.\n\nEste es un texto anidado."
   },
   "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.": {
-    "eng": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
     "esp": "Esta es la respuesta modificada si la respuesta es alegre, la primera opción.\n\nEste es un texto anidado."
   },
   "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.": {
-    "eng": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
     "esp": "Esta es la respuesta modificada si la respuesta es normal, la segunda opción.\n\nEste es un texto anidado."
   },
   "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.": {
-    "eng": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
     "esp": "Esta es la respuesta modificada si la respuesta es triste, la tercer opción.\n\nEste es un texto anidado."
   },
   "Which of the following do you like the most (this is modified)?": {
-    "eng": "Which of the following do you like the most (this is modified)?",
     "esp": "¿Cuál de los siguientes te gusta más? (esto está modificado)?"
   },
   "Cats (modified text in answer list)": {
-    "eng": "Cats (modified text in answer list)",
     "esp": "Gatos (texto modificado en la lista de respuestas)"
   },
   "Dogs (modified text in answer list)": {
-    "eng": "Dogs (modified text in answer list)",
     "esp": "Perros (texto modificado en la lista de respuestas)"
   },
   "Chinchillas (modified text in answer list)": {
-    "eng": "Chinchillas (modified text in answer list)",
     "esp": "Chinchillas (texto modificado en la lista de respuestas)"
   },
   "New title: @data.language.example_lang_2.title": {
-    "eng": "New title: @data.language.example_lang_2.title",
     "esp": "Título nuevo: @data.language.example_lang_2.title"
   },
   "New text: @data.language.example_lang_2.text": {
-    "eng": "New text: @data.language.example_lang_2.text",
     "esp": "Texto nuevo: @data.language.example_lang_2.text"
   },
   "This is a global variable set in a global": {
-    "eng": "This is a global variable set in a global",
     "esp": "Esta es una variable global determinada en una planilla global"
   },
   "This is a field set by default": {
-    "eng": "This is a field set by default",
     "esp": "Este es un campo con valor predeterminado"
   },
   "<p>Standard Template</p>": {
-    "eng": "<p>Standard Template</p>",
     "esp": "<p>Plantilla estandar</p>"
   },
   "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>": {
-    "eng": "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>",
     "esp": "<p>Esta es una planilla estandar que demuestra una variedad de cosas que necesitarían ser traducidas y algunas que están excluídas de la traducción.</p>"
   },
   "<p>Nested Template</p>": {
-    "eng": "<p>Nested Template</p>",
     "esp": "<p>Plantilla Anidada</p>"
   },
   "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>": {
-    "eng": "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>",
     "esp": "<p>Esta es una planilla anidada que demuestra una variedad de cosas que necesitarían ser traducidas y algunas que están excluídas de la traducción. Esto nos permitirá verificar que el sistema multilingual funciona cuando se anida.</p>"
   },
   "<p>Component to translate</p>": {
-    "eng": "<p>Component to translate</p>",
     "esp": "<p>Componente para traducir</p>"
   },
   "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>": {
-    "eng": "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>",
     "esp": "<p>Este es un ejemplo de un componente que requiere ser traducido: el marcador de posición u la opción seleccionada deben ser traducidos</p>"
   },
   "<p>Component that should not be translated translate</p>": {
-    "eng": "<p>Component that should not be translated translate</p>",
     "esp": "<p>Component que no debe ser traducido</p>"
   },
   "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>": {
-    "eng": "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>",
     "esp": "<p>Este es un ejemplo de un componente que esta excluído de la traducción. El texto del botón debería mantenerse como Pop-up 1.</p>"
   },
   "Example Data List Title 1": {
-    "eng": "Example Data List Title 1",
     "esp": "Ejemplo 1 de Título de Listado de Datos"
   },
   "This text is loaded through the first data row.": {
-    "eng": "This text is loaded through the first data row.",
     "esp": "Este texto esta cargado por medio de la primera fila de datos."
   },
   "Example Data List Title 2": {
-    "eng": "Example Data List Title 2",
     "esp": "Ejemplo 2 de Título de Listado de Datos"
   },
   "This text is loaded through the second data row.": {
-    "eng": "This text is loaded through the second data row.",
     "esp": "Este texto esta cargado por medio de la segunda fila de datos."
   },
   "This text should define a default value for a field": {
-    "eng": "This text should define a default value for a field",
     "esp": "Este texto debería definir el valor predeterminado de un campo."
   }
 }
