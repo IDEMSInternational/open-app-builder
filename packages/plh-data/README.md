@@ -10,7 +10,7 @@ npm run scripts sync-plh-content
 ## Translations
 Files for translation, and compiled translation strings are automatically generated during sync scripts.
 
-Any strings for use in translations should be placed in the `./translations/translations` folder named in the format `{filename}.{langCode}.json`
+Any strings for use in translations should be placed in the `./translations/from_translators` folder named in the format `{filename}.{langCode}.json`
 
 The final output of translation strings can be found in the `./data/translation_strings` folder.
 
