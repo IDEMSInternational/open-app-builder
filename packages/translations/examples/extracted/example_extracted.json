@@ -1,0 +1,197 @@
+[
+    {
+        "SourceText": "Example Language Template",
+        "text": "Example Language Template",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is a default text that needs to be translated",
+        "text": "This is a default text that needs to be translated",
+        "type": "template"
+    },
+    {
+        "SourceText": "How are you feeling today?",
+        "text": "How are you feeling today?",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the default reply if the feeling response is happy, the first option.",
+        "text": "This is the default reply if the feeling response is happy, the first option.",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the default reply if the feeling response is ok, the second option.",
+        "text": "This is the default reply if the feeling response is ok, the second option.",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the default reply if the feeling response is sad, the third option.",
+        "text": "This is the default reply if the feeling response is sad, the third option.",
+        "type": "template"
+    },
+    {
+        "SourceText": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+        "text": "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+        "type": "template",
+        "note": "The following strings should not be translated: \n     @local.radio_group_field_name\n     @local.radio_group_field_name"
+    },
+    {
+        "SourceText": "Select one of the following options:",
+        "text": "Select one of the following options:",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the first default option for the combo box",
+        "text": "This is the first default option for the combo box",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the second default option for the combo box",
+        "text": "This is the second default option for the combo box",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the third default option for the combo box",
+        "text": "This is the third default option for the combo box",
+        "type": "template"
+    },
+    {
+        "SourceText": "The option selected was @local.combo_box.",
+        "text": "The option selected was @local.combo_box.",
+        "type": "template",
+        "note": "The string @local.combo_box should not be translated."
+    },
+    {
+        "SourceText": "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+        "text": "The field set through the radio group is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+        "type": "template",
+        "note": "The following strings should not be translated: \n     @local.combo_box_field_name\n     @local.combo_box_field_name"
+    },
+    {
+        "SourceText": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+        "text": "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+        "text": "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+        "text": "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+        "type": "template"
+    },
+    {
+        "SourceText": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+        "text": "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+        "type": "template"
+    },
+    {
+        "SourceText": "Which of the following do you like the most (this is modified)?",
+        "text": "Which of the following do you like the most (this is modified)?",
+        "type": "template"
+    },
+    {
+        "SourceText": "Cats (modified text in answer list)",
+        "text": "Cats (modified text in answer list)",
+        "type": "template"
+    },
+    {
+        "SourceText": "Dogs (modified text in answer list)",
+        "text": "Dogs (modified text in answer list)",
+        "type": "template"
+    },
+    {
+        "SourceText": "Chinchillas (modified text in answer list)",
+        "text": "Chinchillas (modified text in answer list)",
+        "type": "template"
+    },
+    {
+        "SourceText": "New title: @data.language.example_lang_2.title",
+        "text": "New title: @data.language.example_lang_2.title",
+        "type": "template",
+        "note": "The string @data.language.example_lang_2.title should not be translated."
+    },
+    {
+        "SourceText": "New text: @data.language.example_lang_2.text",
+        "text": "New text: @data.language.example_lang_2.text",
+        "type": "template",
+        "note": "The string @data.language.example_lang_2.text should not be translated."
+    },
+    {
+        "SourceText": "This is a global variable set in a global",
+        "text": "This is a global variable set in a global",
+        "type": "global"
+    },
+    {
+        "SourceText": "This is a field set by default",
+        "text": "This is a field set by default",
+        "type": "global"
+    },
+    {
+        "SourceText": "<p>Standard Template</p>",
+        "text": "<p>Standard Template</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>",
+        "text": "<p>This is a standard template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation.</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>Nested Template</p>",
+        "text": "<p>Nested Template</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>",
+        "text": "<p>This is a nested template that demonstrates a variety of things that would need to be translated and a few things that are excluded from translation. This will allow us to check that the multi-lingual system works with nesting.</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>Component to translate</p>",
+        "text": "<p>Component to translate</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>",
+        "text": "<p>This is an example of a component that requires translation: the placeholder text and the selected option should be translated</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>Component that should not be translated translate</p>",
+        "text": "<p>Component that should not be translated translate</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>",
+        "text": "<p>This is an example of a component that is excluded from translation. The button text should still be Pop-up 1.</p>",
+        "type": "tour"
+    },
+    {
+        "SourceText": "Example Data List Title 1",
+        "text": "Example Data List Title 1",
+        "type": "data_list"
+    },
+    {
+        "SourceText": "This text is loaded through the first data row.",
+        "text": "This text is loaded through the first data row.",
+        "type": "data_list"
+    },
+    {
+        "SourceText": "Example Data List Title 2",
+        "text": "Example Data List Title 2",
+        "type": "data_list"
+    },
+    {
+        "SourceText": "This text is loaded through the second data row.",
+        "text": "This text is loaded through the second data row.",
+        "type": "data_list"
+    },
+    {
+        "SourceText": "This text should define a default value for a field",
+        "text": "This text should define a default value for a field",
+        "type": "data_list"
+    }
+]

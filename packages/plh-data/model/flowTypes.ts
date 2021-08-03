@@ -111,9 +111,22 @@ export namespace FlowTypes {
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
 
+  export interface Translation_strings {
+    [sourceText: string]: string;
+  }
+
   /*********************************************************************************************
    *  Specific flow row types
    ********************************************************************************************/
+
+  export interface Row_with_translations {
+    exclude_from_translation?: boolean | string;
+    _translations?: {
+      [field: string]: {
+        [langCode: string]: boolean;
+      };
+    };
+  }
 
   export interface Module_listRow {
     module_number: number;
@@ -339,14 +352,13 @@ export namespace FlowTypes {
     rows: TourStep[];
   }
 
-  export interface TourStep {
+  export interface TourStep extends Row_with_translations {
     type: "step";
     message_text?: string;
     title?: string;
     template_component_name?: string;
     element?: string;
     route?: string;
-    exclude_from_translation?: boolean | string;
   }
 
   export interface Home_page extends FlowTypeBase {
@@ -422,14 +434,13 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle";
 
-  export interface TemplateRow {
+  export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
     name: string;
     value?: any; // TODO - incoming data will be string, so components should handle own parsing
     action_list?: TemplateRowAction[];
     style_list?: string[];
     parameter_list?: { [param: string]: string };
-    exclude_from_translation?: boolean | string;
     hidden?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     rows?: TemplateRow[];
     disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
@@ -516,13 +527,12 @@ export namespace FlowTypes {
     rows: GlobalRow[];
   }
 
-  export interface GlobalRow {
+  export interface GlobalRow extends Row_with_translations {
     type: "declare_global_constant" | "declare_field_default";
     name: string;
     value: any;
     comments?: string;
     __EMPTY?: string;
-    exclude_from_translation?: boolean | string;
   }
 
   /* Used for setting default parameters for template components */

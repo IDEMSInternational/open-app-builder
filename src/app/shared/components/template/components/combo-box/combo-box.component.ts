@@ -37,7 +37,6 @@ export class TmplComboBoxComponent
   ngOnInit(): void {
     this.getParams();
     const listAnswers: string[] = getParamFromTemplateRow(this._row, "answer_list", null);
-
     this.customAnswerSelected =
       listAnswers && this._row.value
         ? !listAnswers.find((x) => x.includes(this._row.value))

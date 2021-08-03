@@ -120,3 +120,47 @@ export function encryptFolder(
     }
   });
 }
+
+/**
+ * WiP function to simplify process of converting .json files to .ts, with addtional export
+ * and index file options
+ */
+export function convertJsonToTs(
+  filepaths: string[],
+  config: {
+    indexFile?: { namedExport?: string };
+    exportDataType?: string;
+    outputDir?: string;
+    importStatements?: string[];
+  }
+) {
+  let { exportDataType, indexFile, importStatements, outputDir } = config;
+  if (outputDir) {
+    fs.ensureDirSync(outputDir);
+    fs.emptyDirSync(outputDir);
+  }
+  const indexFilePath = outputDir && indexFile ? path.resolve(outputDir, "index.ts") : null;
+  if (indexFilePath) {
+    fs.createFileSync(indexFilePath);
+  }
+  for (const filepath of filepaths) {
+    outputDir = outputDir || path.dirname(filepath);
+    const filename = path.basename(filepath).replace(".json", ".ts");
+    const jsonData = fs.readJSONSync(filepath);
+    const tsData = `export default ${JSON.stringify(jsonData, null, 2)}`;
+    fs.writeFileSync(path.resolve(outputDir, filename), tsData);
+    if (indexFilePath) {
+      const importName = path.basename(filename, ".ts");
+      if (indexFile.namedExport) {
+        fs.appendFileSync(indexFilePath, `import ${importName} from "./${importName}";\r\n`);
+      } else {
+        fs.appendFileSync(indexFilePath, `export * from "./${importName}";\r\n`);
+      }
+    }
+  }
+  // Create single export, e.g. ```export const NAMED_EXPORT = {import_1,import_2}```
+  if (indexFilePath && indexFile.namedExport) {
+    const namedExports = filepaths.map((filepath) => path.basename(filepath, ".json")).join(",");
+    fs.appendFileSync(indexFilePath, `export const ${indexFile.namedExport} = { ${namedExports} }`);
+  }
+}
