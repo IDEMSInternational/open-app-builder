@@ -15,6 +15,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Reflect on the positive",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Reflect on the positive",
@@ -29,6 +34,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Check-in chat",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Check-in chat",
@@ -43,6 +53,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Dream Travel",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Dream Travel",
@@ -57,6 +72,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Famous Party",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Famous Party",
@@ -71,6 +91,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Two truths, one lie",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Two truths, one lie",
@@ -85,6 +110,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Time Machine",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Time Machine",
@@ -99,6 +129,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Superpowers",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Superpowers",
@@ -112,6 +147,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Just a friendly chat",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Just a friendly chat",
@@ -125,6 +165,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "The Interrupter",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "The Interrupter",
@@ -138,6 +183,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Three options",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Three options",
@@ -151,6 +201,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Yes, No or Maybe",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Yes, No or Maybe",
@@ -164,6 +219,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: 'Memory game - "On Saturday..."',
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: 'Memory game - "On Saturday..."',
@@ -177,6 +237,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "chat_together",
         title: "Make up a story",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Make up a story",
@@ -191,6 +256,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Co-chef",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Co-chef",
@@ -205,6 +275,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Dance moves",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Dance moves",
@@ -219,6 +294,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Mirror",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Mirror",
@@ -232,6 +312,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "What's new?",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "What's new?",
@@ -245,6 +330,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Get active!",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Get active!",
@@ -258,6 +348,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Name that tune",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Name that tune",
@@ -271,6 +366,14 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Pass the snap",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          intro_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Pass the snap",
@@ -288,6 +391,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Family workout",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Family workout",
@@ -302,6 +410,14 @@ const data_list: FlowTypes.Data_list[] = [
         has_recording: true,
         type: "do_together",
         title: "Make housework fun",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          intro_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Make housework fun",
@@ -320,6 +436,14 @@ const data_list: FlowTypes.Data_list[] = [
         has_recording: true,
         type: "do_together",
         title: "What are you doing?",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          intro_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "What are you doing?",
@@ -337,6 +461,11 @@ const data_list: FlowTypes.Data_list[] = [
         spend_time: true,
         type: "do_together",
         title: "Crazy chicken",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Crazy chicken",
@@ -360,6 +489,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Relax",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Relax",
@@ -391,6 +537,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Treat yourself well",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Treat yourself well",
@@ -422,6 +585,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Praise yourself",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Praise yourself",
@@ -453,6 +633,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "One-on-one time",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "One-on-one time",
@@ -484,6 +681,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Praise your teen",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Praise your teen",
@@ -515,6 +729,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Get positive",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Get positive",
@@ -546,6 +777,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Breathe not yell",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Breathe not yell",
@@ -577,6 +825,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Good money choice",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Good money choice",
@@ -608,6 +873,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Calm consequence",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Calm consequence",
@@ -639,6 +921,23 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Safe",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          description: {
+            spa: false,
+          },
+          mark_text: {
+            spa: false,
+          },
+          short_mark_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Safe",
@@ -673,8 +972,16 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "help",
-        icon_asset: "assets/plh_assets/plh_images/icons/hug_heart_white.svg",
+        icon_asset: "assets/plh_assets/plh_images/icons/question_mark_white.svg",
         title: "Help",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Help",
@@ -689,6 +996,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "my_tips",
         icon_asset: "assets/plh_assets/plh_images/icons/light_bulb_heart_white.svg",
         title: "My Tips",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "My Tips",
@@ -703,6 +1018,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "essential_tools",
         icon_asset: "assets/plh_assets/plh_images/icons/light_bulb_white.svg",
         title: "Essential Tools",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Essential Tools",
@@ -717,6 +1040,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "covid",
         icon_asset: "assets/plh_assets/plh_images/icons/ask_question_white.svg",
         title: "COVID",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "COVID",
@@ -731,6 +1062,17 @@ const data_list: FlowTypes.Data_list[] = [
         id: "customisation",
         icon_asset: "assets/plh_assets/plh_images/icons/phone_heart_white.svg",
         title: "Customise @global.parent_app",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          title_2: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Customise @global.parent_app",
@@ -749,6 +1091,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "relax_and_activities",
         icon_asset: "assets/plh_assets/plh_images/icons/smile_eyes_up_white.svg",
         title: "Relax & Activities",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Relax & Activities",
@@ -763,6 +1113,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "support_contacts",
         icon_asset: "assets/plh_assets/plh_images/icons/hands_support_heart_white.svg",
         title: "Support Contacts",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Support Contacts",
@@ -777,6 +1135,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "evidence_base",
         icon_asset: "assets/plh_assets/plh_images/icons/documents_white.svg",
         title: "Evidence Base",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Evidence Base",
@@ -791,6 +1157,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "technical_support",
         icon_asset: "assets/plh_assets/plh_images/icons/info_phone_white.svg",
         title: "Technical Support",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Technical Support",
@@ -805,6 +1179,14 @@ const data_list: FlowTypes.Data_list[] = [
         id: "message_archive",
         icon_asset: "assets/plh_assets/plh_images/icons/letter_white.svg",
         title: "Message Archive",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          location_text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Message Archive",
@@ -829,6 +1211,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["happy"],
         text: "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
@@ -840,6 +1227,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["happy"],
         text: "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
@@ -851,6 +1243,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["happy"],
         text: "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
@@ -862,6 +1259,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["happy"],
         text: "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
@@ -873,6 +1275,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["happy"],
         text: "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
@@ -884,6 +1291,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["ok"],
         text: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
@@ -895,6 +1307,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_1on1"],
         mood_list: ["sad"],
         text: "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
@@ -906,6 +1323,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_instruct"],
         mood_list: ["happy"],
         text: "Great to hear it went well; you are a star!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well; you are a star!",
@@ -917,6 +1339,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_instruct"],
         mood_list: ["ok", "sad"],
         text: "Sorry to hear it was difficult for you. Well done for trying!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry to hear it was difficult for you. Well done for trying!",
@@ -928,6 +1355,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_stress"],
         mood_list: ["happy"],
         text: "Wonderful! You deserve all the happy times!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Wonderful! You deserve all the happy times!",
@@ -939,6 +1371,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_stress"],
         mood_list: ["ok", "sad"],
         text: "Sorry that this was difficult for you. You are a star for trying!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry that this was difficult for you. You are a star for trying!",
@@ -950,6 +1387,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_stress"],
         mood_list: ["happy"],
         text: "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!",
@@ -961,6 +1403,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_stress"],
         mood_list: ["ok", "sad"],
         text: "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!",
@@ -972,6 +1419,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_money"],
         mood_list: ["happy"],
         text: "Great to hear it went well. Talking about your finances together really makes your family stronger!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well. Talking about your finances together really makes your family stronger!",
@@ -983,6 +1435,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_money"],
         mood_list: ["ok", "sad"],
         text: "Sorry to hear it was difficult for you. Well done for trying!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry to hear it was difficult for you. Well done for trying!",
@@ -994,6 +1451,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_rules"],
         mood_list: ["happy"],
         text: "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
@@ -1005,6 +1467,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_rules"],
         mood_list: ["ok", "sad"],
         text: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it! ",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it! ",
@@ -1016,6 +1483,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_crisis"],
         mood_list: ["happy"],
         text: "Great to hear it went well!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well!",
@@ -1027,6 +1499,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_consequence"],
         mood_list: ["ok", "sad"],
         text: "Sorry that this was difficult. Setting consequences together will make your teen want to follow the rules more often!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry that this was difficult. Setting consequences together will make your teen want to follow the rules more often!",
@@ -1038,6 +1515,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_solve"],
         mood_list: ["ok", "sad"],
         text: "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!",
@@ -1049,6 +1531,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_safe"],
         mood_list: ["happy"],
         text: "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.",
@@ -1060,6 +1547,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_safe"],
         mood_list: ["ok", "sad"],
         text: "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!",
@@ -1071,6 +1563,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_crisis"],
         mood_list: ["ok", "sad"],
         text: "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
@@ -1082,6 +1579,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_consequence"],
         mood_list: ["happy"],
         text: "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.",
@@ -1093,6 +1595,11 @@ const data_list: FlowTypes.Data_list[] = [
         workshop_list: ["w_solve"],
         mood_list: ["happy"],
         text: "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!",
@@ -1117,6 +1624,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Quick pause",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Quick pause",
@@ -1133,6 +1645,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Power of three",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Power of three",
@@ -1149,6 +1666,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "One thing today",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "One thing today",
@@ -1165,6 +1687,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Breathe to three",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Breathe to three",
@@ -1181,6 +1708,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "In and out",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "In and out",
@@ -1196,6 +1728,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Think about today",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Think about today",
@@ -1212,6 +1749,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Pause to respond",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Pause to respond",
@@ -1228,6 +1770,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Small things",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Small things",
@@ -1244,6 +1791,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Body scan",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Body scan",
@@ -1260,6 +1812,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Feel the ground",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Feel the ground",
@@ -1276,6 +1833,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Counting sounds",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Counting sounds",
@@ -1292,6 +1854,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Feel your feeling",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Feel your feeling",
@@ -1308,6 +1875,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_active",
         title: "Your song",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Your song",
@@ -1324,6 +1896,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Ground & gratitude",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Ground & gratitude",
@@ -1339,6 +1916,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Notice how you feel",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Notice how you feel",
@@ -1354,6 +1936,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Pause power",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Pause power",
@@ -1369,6 +1956,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Praise yourself",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Praise yourself",
@@ -1384,6 +1976,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_long",
         title: "Taking care of yourself",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Taking care of yourself",
@@ -1399,6 +1996,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_passive_long",
         title: "Take a pause",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Take a pause",
@@ -1414,6 +2016,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_active",
         title: "Physical activity",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Physical activity",
@@ -1429,6 +2036,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_active",
         title: "List of things",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "List of things",
@@ -1444,6 +2056,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_active",
         title: "Connect",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Connect",
@@ -1459,6 +2076,11 @@ const data_list: FlowTypes.Data_list[] = [
         "fields::favourite": false,
         type: "relax_active",
         title: "Prevent anger",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Prevent anger",
@@ -1473,10 +2095,15 @@ const data_list: FlowTypes.Data_list[] = [
         audio_asset: "assets/plh_assets/plh_audio/relax/relax_24_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
-        title: "Angry? Take a break.",
+        title: "Angry? Take a break",
+        _translations: {
+          title: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
-            eng: "Angry? Take a break.",
+            eng: "Angry? Take a break",
           },
         },
       },
@@ -1500,6 +2127,20 @@ const data_list: FlowTypes.Data_list[] = [
         relax_data: "@data.relax.relax_5",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_self_care.mp3",
         title: "Welcome and Self-Care",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          short_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Welcome and Self-Care",
@@ -1530,6 +2171,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.co_chef",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_1on1.mp3",
         title: "One-on-One Time",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "One-on-One Time",
@@ -1556,6 +2208,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.reflect_positive",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_praise.mp3",
         title: "Praise",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Praise",
@@ -1582,6 +2245,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.dance_moves",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_instruct.mp3",
         title: "Positive Instructions",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Positive Instructions",
@@ -1608,6 +2282,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.check_in_chat",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_stress.mp3",
         title: "Managing Stress",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Managing Stress",
@@ -1634,6 +2319,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.dream_travel",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_money.mp3",
         title: "Family Budgets",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Family Budgets",
@@ -1660,6 +2356,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.famous_party",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_rules.mp3",
         title: "Rules",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Rules",
@@ -1686,6 +2393,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.two_truths",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_consequence.mp3",
         title: "Calm Consequences",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Calm Consequences",
@@ -1712,6 +2430,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.mirror",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_solve.mp3",
         title: "Problem Solving",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Problem Solving",
@@ -1738,6 +2467,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.time_machine",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_safe.mp3",
         title: "Teen Safety",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Teen Safety",
@@ -1764,6 +2504,17 @@ const data_list: FlowTypes.Data_list[] = [
         something_fun_data: "@data.something_fun.superpowers",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_crisis.mp3",
         title: "Dealing with Crisis",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Dealing with Crisis",
@@ -1789,6 +2540,17 @@ const data_list: FlowTypes.Data_list[] = [
         relax_data: "@data.relax.relax_14",
         intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_celebrate.mp3",
         title: "Celebration and Next Steps",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          in_text_title: {
+            spa: false,
+          },
+          tools: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "Celebration and Next Steps",
