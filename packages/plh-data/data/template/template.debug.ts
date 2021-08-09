@@ -16,6 +16,11 @@ const template: FlowTypes.Template[] = [
             type: "subtitle",
             value:
               "s simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             parameter_list: {
               style: "emphasised center",
             },
@@ -31,6 +36,11 @@ const template: FlowTypes.Template[] = [
               {
                 type: "button",
                 value: "test",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 name: "button",
                 _nested_name: "dashed_box_test.display_group.button",
@@ -64,6 +74,11 @@ const template: FlowTypes.Template[] = [
           {
             type: "subtitle",
             value: "Every time you do a relax, tap the ParentPoint and celebrate your success!",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             parameter_list: {
               style: "emphasised center",
               text_align: "center",
@@ -103,6 +118,11 @@ const template: FlowTypes.Template[] = [
           {
             type: "subtitle",
             value: "small text here",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             parameter_list: {
               style: "emphasised center",
             },
@@ -132,6 +152,11 @@ const template: FlowTypes.Template[] = [
           {
             type: "subtitle",
             value: "Every time you do a relax, tap the ParentPoint and celebrate your success!",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             parameter_list: {
               style: "emphasised center",
               text_align: "center",
@@ -184,6 +209,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "active_campaign",
         value: "@campaign.debug_campaign",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "active_campaign",
@@ -213,6 +243,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "campaign_id",
             value: "Campaign id: @local.active_campaign.id",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "display_group.campaign_id",
             _dynamicFields: {
@@ -339,6 +374,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "clear_reminders",
         value: "Reset Reminders",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -392,6 +432,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "active_campaign_2",
         value: "@campaign.debug_campaign_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "active_campaign_2",
@@ -420,6 +465,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "campaign_id",
             value: "Campaign id: @local.active_campaign_2.id",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "display_group.campaign_id",
             _dynamicFields: {
@@ -526,6 +576,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "clear_reminders",
         value: "Reset Reminders",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -579,6 +634,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "demo_changed_local",
         value: "demo_changed_field_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "demo_changed_local",
@@ -679,6 +739,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: '@field.demo_changed_field_1 || @field.demo_changed_field_2=="name_var_1"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@field.demo_changed_field_1 || @field.demo_changed_field_2=="name_var_1"',
         exclude_from_translation: true,
         _nested_name: "text_1",
@@ -725,6 +790,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: '@field.demo_changed_field_1 || @field.demo_changed_field_2=="name_var_2"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@field.demo_changed_field_1 || @field.demo_changed_field_2=="name_var_2"',
         exclude_from_translation: true,
         _nested_name: "text_2",
@@ -849,6 +919,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: '@field.demo_changed_field_3 || @field.demo_changed_field_4=="name_var_1"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@field.demo_changed_field_3 || @field.demo_changed_field_4=="name_var_1"',
         exclude_from_translation: true,
         _nested_name: "text_1",
@@ -895,6 +970,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: '@field.demo_changed_field_3 || @field.demo_changed_field_4=="name_var_2"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@field.demo_changed_field_3 || @field.demo_changed_field_4=="name_var_2"',
         exclude_from_translation: true,
         _nested_name: "text_2",
@@ -1025,6 +1105,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: '@field.demo_changed_field_5 || @field.demo_changed_field_6=="name_var_1"',
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_text_1.text",
@@ -1086,6 +1171,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: '@field.demo_changed_field_5 || @field.demo_changed_field_6=="name_var_2"',
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_text_2.text",
@@ -1231,6 +1321,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: '@field.demo_changed_field_7 || @field.demo_changed_field_8=="name_var_1"',
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "box_duo.box_1.text",
@@ -1292,6 +1387,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: '@field.demo_changed_field_7 || @field.demo_changed_field_8=="name_var_2"',
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "box_duo.box_2.text",
@@ -1371,6 +1471,11 @@ const template: FlowTypes.Template[] = [
         type: "combo_box",
         name: "combo_box",
         value: "name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         parameter_list: {
           answer_list: "@local.answer_list",
@@ -1444,6 +1549,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_result",
         value: "Local combo box variable: @local.combo_box",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_result",
         _dynamicFields: {
@@ -1571,6 +1681,11 @@ const template: FlowTypes.Template[] = [
             type: "title",
             name: "title_1",
             value: "Using the condition column",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "display_group_1.title_1",
           },
@@ -1622,6 +1737,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "reply_choice_1_a",
             value: "reply_choice_1_a",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: '@local.combo_box_challenge_1=="choice_1_a"',
             exclude_from_translation: true,
             _nested_name: "display_group_1.reply_choice_1_a",
@@ -1643,6 +1763,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "reply_choice_1_b",
             value: "reply_choice_1_b",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: '@local.combo_box_challenge_1=="choice_1_b"',
             exclude_from_translation: true,
             _nested_name: "display_group_1.reply_choice_1_b",
@@ -1664,6 +1789,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "reply_choice_1_c",
             value: "reply_choice_1_c",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: '@local.combo_box_challenge_1=="choice_1_c"',
             exclude_from_translation: true,
             _nested_name: "display_group_1.reply_choice_1_c",
@@ -1695,6 +1825,11 @@ const template: FlowTypes.Template[] = [
             type: "title",
             name: "title_2",
             value: "Using the hidden column",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "display_group_2.title_2",
           },
@@ -1746,6 +1881,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "reply_choice_2_a",
             value: "reply_choice_2_a",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: '@local.combo_box_challenge_2!="choice_2_a"',
             exclude_from_translation: true,
             _nested_name: "display_group_2.reply_choice_2_a",
@@ -1767,6 +1907,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "reply_choice_2_b",
             value: "reply_choice_2_b",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: '@local.combo_box_challenge_2!="choice_2_b"',
             exclude_from_translation: true,
             _nested_name: "display_group_2.reply_choice_2_b",
@@ -1788,6 +1933,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "reply_choice_2_c",
             value: "reply_choice_2_c",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: '@local.combo_box_challenge_2!="choice_2_c"',
             exclude_from_translation: true,
             _nested_name: "display_group_2.reply_choice_2_c",
@@ -1822,6 +1972,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "Using the condition column",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -1873,6 +2028,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "reply_choice_1_a",
         value: "reply_choice_1_a",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: '@local.combo_box_challenge_1=="choice_1_a"',
         exclude_from_translation: true,
         _nested_name: "reply_choice_1_a",
@@ -1894,6 +2054,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "reply_choice_1_b",
         value: "reply_choice_1_b",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: '@local.combo_box_challenge_1=="choice_1_b"',
         exclude_from_translation: true,
         _nested_name: "reply_choice_1_b",
@@ -1915,6 +2080,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "reply_choice_1_c",
         value: "reply_choice_1_c",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: '@local.combo_box_challenge_1=="choice_1_c"',
         exclude_from_translation: true,
         _nested_name: "reply_choice_1_c",
@@ -1936,6 +2106,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Using the hidden column",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -1987,6 +2162,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "reply_choice_2_a",
         value: "reply_choice_2_a",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@local.combo_box_challenge_2!="choice_2_a"',
         exclude_from_translation: true,
         _nested_name: "reply_choice_2_a",
@@ -2008,6 +2188,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "reply_choice_2_b",
         value: "reply_choice_2_b",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@local.combo_box_challenge_2!="choice_2_b"',
         exclude_from_translation: true,
         _nested_name: "reply_choice_2_b",
@@ -2029,6 +2214,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "reply_choice_2_c",
         value: "reply_choice_2_c",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@local.combo_box_challenge_2!="choice_2_c"',
         exclude_from_translation: true,
         _nested_name: "reply_choice_2_c",
@@ -2070,6 +2260,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "option_1",
         value: "Option 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "option_1",
@@ -2077,6 +2272,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "option_2",
         value: "Option 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "option_2",
@@ -2084,6 +2284,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "option_3",
         value: "Option 3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "option_3",
@@ -2170,6 +2375,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "This is the combo box variables debug template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -2177,6 +2387,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Direct answer list (set through local variable)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -2208,6 +2423,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "Answer list contains local variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -2239,6 +2459,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "Answer list contains global variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
       },
@@ -2269,6 +2494,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_1",
         value: "Walking to the shops",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_1",
@@ -2276,6 +2506,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_2",
         value: "Get water together ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_2",
@@ -2283,6 +2518,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_3",
         value: "Doing a chore together",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_3",
@@ -2290,6 +2530,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_4",
         value: "Prepare dinner",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_4",
@@ -2297,6 +2542,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_5",
         value: "Eat breakfast/lunch/dinner",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_5",
@@ -2304,6 +2554,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_6",
         value: "Have tea after school",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_6",
@@ -2311,6 +2566,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_7",
         value: "Watch a T.V. show",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_7",
@@ -2318,6 +2578,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_8",
         value: "Review homework",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_8",
@@ -2325,6 +2590,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_9",
         value: "Chat before bedtime",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_9",
@@ -2332,6 +2602,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "spend_time_idea_10",
         value: "Play a game/sport",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "spend_time_idea_10",
@@ -2487,6 +2762,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "option_1",
         value: "Option 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "option_1",
@@ -2494,6 +2774,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "option_2",
         value: "Option 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "option_2",
@@ -2501,6 +2786,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "option_3",
         value: "Option 3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "option_3",
@@ -2581,6 +2871,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "This is the radio group variables debug template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -2588,6 +2883,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Direct answer list (set through local variable)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -2619,6 +2919,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "Answer list contains local variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -2650,6 +2955,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "Answer list contains global variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
       },
@@ -2691,6 +3001,11 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "answer_q1",
         value: "NA",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "answer_q1",
       },
@@ -2741,6 +3056,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_q1",
         value: "answer to q1 saved in field answer_q1: @field.answer_q1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_q1",
         _dynamicFields: {
@@ -2761,6 +3081,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "go_to_q2",
         value: "Go to Q2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -2787,6 +3112,11 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "answer_q2",
         value: "NA",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "answer_q2",
       },
@@ -2837,6 +3167,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_q2",
         value: "answer to q2 saved in field answer_q2: @field.answer_q2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_q2",
         _dynamicFields: {
@@ -2857,6 +3192,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "back_to_q1",
         value: "Back to Q1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -2873,6 +3213,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "conditional_texts",
         value: "Go to conditional texts",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -2899,6 +3244,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_q1",
         value: "answer to q1 saved in field answer_q1: @field.answer_q1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_q1",
         _dynamicFields: {
@@ -2919,6 +3269,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_q2",
         value: "answer to q2 saved in field answer_q2: @field.answer_q2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_q2",
         _dynamicFields: {
@@ -2939,6 +3294,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "Hidden column",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -2946,6 +3306,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "conditional_text_1",
         value: "This text shows if the answer to Q1 is less than 4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@field.answer_q1>=4",
         exclude_from_translation: true,
         _nested_name: "conditional_text_1",
@@ -2967,6 +3332,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "conditional_text_2",
         value: "This text shows if the answer to Q2 is less than 4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@field.answer_q2>=4",
         exclude_from_translation: true,
         _nested_name: "conditional_text_2",
@@ -2989,6 +3359,11 @@ const template: FlowTypes.Template[] = [
         name: "conditional_text_3",
         value:
           "This text shows if the answer to Q1 is greater than or equal to 4 and the answer to Q2 is greater than or equal to 4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@field.answer_q1<4 || @field.answer_q2<4",
         exclude_from_translation: true,
         _nested_name: "conditional_text_3",
@@ -3017,6 +3392,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Condition column ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -3024,6 +3404,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "conditional_text",
         value: "This text is created if the answer to Q1 is greater than or equal to 4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: "@field.answer_q1>=4",
         exclude_from_translation: true,
         _nested_name: "conditional_text",
@@ -3045,6 +3430,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "conditional_text",
         value: "This text is created if the answer to Q1 is less than 4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: "!(@field.answer_q1>=4)",
         exclude_from_translation: true,
         _nested_name: "conditional_text",
@@ -3066,6 +3456,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Condition column through a nested template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -3078,6 +3473,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "This text is created if the answer to Q1 is greater than or equal to 4",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: "@field.answer_q1>=4",
             exclude_from_translation: true,
             type: "set_variable",
@@ -3099,6 +3499,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "This text is created if the answer to Q1 is less than 4",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: "!(@field.answer_q1>=4)",
             exclude_from_translation: true,
             type: "set_variable",
@@ -3124,6 +3529,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "back_to_q1",
         value: "Back to Q2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -3145,6 +3555,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "not printed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: "1>2",
             exclude_from_translation: true,
             type: "set_variable",
@@ -3153,6 +3568,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "printed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: "2>1",
             exclude_from_translation: true,
             type: "set_variable",
@@ -3170,6 +3590,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "printed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: "2>1",
             exclude_from_translation: true,
             type: "set_variable",
@@ -3178,6 +3603,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "not printed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: "1>2",
             exclude_from_translation: true,
             type: "set_variable",
@@ -3200,6 +3630,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Print text  and image of item 1:\n\n@data.debug.item_1.text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -3220,6 +3655,11 @@ const template: FlowTypes.Template[] = [
         type: "image",
         name: "image_1",
         value: "@data.debug.item_1.image_asset",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "image_1",
         _dynamicFields: {
@@ -3241,6 +3681,11 @@ const template: FlowTypes.Template[] = [
         name: "text_2",
         value:
           "The parent point box below shows that the icon_src is NOT found when called through a data field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -3282,6 +3727,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "The parent point box below shows that the icon_src IS found when called directly",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -3313,6 +3763,11 @@ const template: FlowTypes.Template[] = [
       {
         value:
           "The tile below shows that the icon_src is NOT found when called through a data field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         name: "set_variable",
@@ -3356,6 +3811,11 @@ const template: FlowTypes.Template[] = [
       },
       {
         value: "The tile below shows that the icon_src IS found when called directly",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         name: "set_variable",
@@ -3402,6 +3862,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "@data.debug.item_1.text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -3422,6 +3887,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "This text is directly authored in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -3429,6 +3899,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "This text is directly authored in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -3436,6 +3911,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "@data.debug.item_1.text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
         _dynamicFields: {
@@ -3471,6 +3951,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "@data.debug.item_2.text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_data_bottom.text_1",
@@ -3491,6 +3976,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "@data.debug.item_2.text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_data_bottom.text_2",
@@ -3511,6 +4001,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_3",
             value: "This text is overridden directly in the value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_data_bottom.text_3",
@@ -3542,6 +4037,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_2",
                 value: "@data.debug.item_3.text",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_data_middle.debug_data_bottom.text_2",
@@ -3562,6 +4062,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_3",
                 value: "@data.debug.item_3.text",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_data_middle.debug_data_bottom.text_3",
@@ -3582,6 +4087,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_4",
                 value: "@data.debug.item_3.text",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_data_middle.debug_data_bottom.text_4",
@@ -3737,6 +4247,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_checkbox_3",
             value: "Contact me via email",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "form.text_checkbox_3",
           },
@@ -3753,6 +4268,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "text_checkbox_3",
             value: "Checkbox 3 text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: "!@local.checkbox_3",
             _nested_name: "form.text_checkbox_3",
             _dynamicFields: {
@@ -3773,6 +4293,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "text_checkbox_3_form",
             value: "Checkbox 3 form text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: "!@local.form.checkbox_3",
             _nested_name: "form.text_checkbox_3_form",
             _dynamicFields: {
@@ -3804,6 +4329,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "var_1",
         value: "Value ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "var_1",
@@ -3812,6 +4342,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "Correctly spaced dg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -3844,6 +4379,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Correctly spaced dg with variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -3872,6 +4412,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "var_2",
             value: "Value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "dg_2.var_2",
@@ -3883,6 +4428,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_3",
         value: "Awkwardly spaced dg with nested variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_3",
       },
@@ -3911,6 +4461,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "var_3",
             value: "@local.var_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "dg_3.var_3",
             _dynamicFields: {
@@ -3934,6 +4489,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_4",
         value: "Correctly spaced dg with nested variable (this flex should be the default)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "title_4",
       },
       {
@@ -3961,6 +4521,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "var_4",
             value: "@local.var_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             style_list: ["flex: 0"],
             type: "set_variable",
             _nested_name: "dg_4.var_4",
@@ -3986,6 +4551,438 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "debug_dg_form_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "display_group",
+        name: "form",
+        value: "form",
+        parameter_list: {
+          style: "form",
+          get_device_info: "true",
+          button_text: "Send",
+        },
+        rows: [
+          {
+            type: "simple_checkbox",
+            name: "checkbox_1",
+            value: false,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_checkbox_1", "this.value"],
+                _raw: "changed | set_field:demo_changed_field_checkbox_1:@local.checkbox_1",
+                _cleaned: "changed | set_field:demo_changed_field_checkbox_1:@local.checkbox_1",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "checkbox 1",
+              align: "left",
+            },
+            _nested_name: "form.checkbox_1",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox_1:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox_1:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
+            },
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_2",
+            value: false,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_checkbox_2", "@local.form.checkbox_1"],
+                _raw: "changed | set_field:demo_changed_field_checkbox_2:@local.form.checkbox_1",
+                _cleaned:
+                  "changed | set_field:demo_changed_field_checkbox_2:@local.form.checkbox_1",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "checkbox 2",
+              align: "left",
+            },
+            _nested_name: "form.checkbox_2",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  args: {
+                    "1": [
+                      {
+                        fullExpression: "@local.form.checkbox_1",
+                        matchedExpression: "@local.form.checkbox_1",
+                        type: "local",
+                        fieldName: "form",
+                      },
+                    ],
+                  },
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox_2:@local.form.checkbox_1",
+                      matchedExpression: "@local.form.checkbox_1",
+                      type: "local",
+                      fieldName: "form",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox_2:@local.form.checkbox_1",
+                      matchedExpression: "@local.form.checkbox_1",
+                      type: "local",
+                      fieldName: "form",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.form.checkbox_1": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned",
+              ],
+            },
+          },
+          {
+            name: "text_checkbox_3",
+            value: "Contact me via email",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "form.text_checkbox_3",
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_3",
+            parameter_list: {
+              label_text: "checkbox 3",
+              align: "left",
+            },
+            _nested_name: "form.checkbox_3",
+          },
+          {
+            type: "text",
+            name: "text_checkbox_3",
+            value: "Checkbox 3 text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            hidden: "!@local.checkbox_3",
+            _nested_name: "form.text_checkbox_3",
+            _dynamicFields: {
+              hidden: [
+                {
+                  fullExpression: "!@local.checkbox_3",
+                  matchedExpression: "!@local.checkbox_3",
+                  type: "local",
+                  fieldName: "checkbox_3",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "!@local.checkbox_3": ["hidden"],
+            },
+          },
+          {
+            type: "text",
+            name: "text_checkbox_3_form",
+            value: "Checkbox 3 form text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            hidden: "!@local.form.checkbox_3",
+            _nested_name: "form.text_checkbox_3_form",
+            _dynamicFields: {
+              hidden: [
+                {
+                  fullExpression: "!@local.form.checkbox_3",
+                  matchedExpression: "!@local.form.checkbox_3",
+                  type: "local",
+                  fieldName: "form",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "!@local.form.checkbox_3": ["hidden"],
+            },
+          },
+        ],
+        _nested_name: "form",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_dg_testing.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_dg_var_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "var_1",
+        value: "Value ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "var_1",
+      },
+      {
+        type: "title",
+        name: "title_1",
+        value: "Correctly spaced dg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_1",
+      },
+      {
+        type: "display_group",
+        name: "dg_1",
+        rows: [
+          {
+            type: "number_selector",
+            name: "number_selector_1",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_1.number_selector_1",
+          },
+          {
+            type: "number_selector",
+            name: "number_selector_2",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_1.number_selector_2",
+          },
+        ],
+        _nested_name: "dg_1",
+      },
+      {
+        type: "title",
+        name: "title_2",
+        value: "Correctly spaced dg with variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_2",
+      },
+      {
+        type: "display_group",
+        name: "dg_2",
+        rows: [
+          {
+            type: "number_selector",
+            name: "number_selector_3",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_2.number_selector_3",
+          },
+          {
+            type: "number_selector",
+            name: "number_selector_4",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_2.number_selector_4",
+          },
+          {
+            name: "var_2",
+            value: "Value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg_2.var_2",
+          },
+        ],
+        _nested_name: "dg_2",
+      },
+      {
+        type: "title",
+        name: "title_3",
+        value: "Awkwardly spaced dg with nested variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_3",
+      },
+      {
+        type: "display_group",
+        name: "dg_3",
+        rows: [
+          {
+            type: "number_selector",
+            name: "number_selector_5",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_3.number_selector_5",
+          },
+          {
+            type: "number_selector",
+            name: "number_selector_6",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_3.number_selector_6",
+          },
+          {
+            name: "var_3",
+            value: "@local.var_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "dg_3.var_3",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.var_1",
+                  matchedExpression: "@local.var_1",
+                  type: "local",
+                  fieldName: "var_1",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.var_1": ["value"],
+            },
+          },
+        ],
+        _nested_name: "dg_3",
+      },
+      {
+        type: "title",
+        name: "title_4",
+        value: "Correctly spaced dg with nested variable (this flex should be the default)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "title_4",
+      },
+      {
+        type: "display_group",
+        name: "dg_4",
+        rows: [
+          {
+            type: "number_selector",
+            name: "number_selector_7",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_4.number_selector_7",
+          },
+          {
+            type: "number_selector",
+            name: "number_selector_8",
+            parameter_list: {
+              min_value: "0",
+              max_value: "20",
+            },
+            _nested_name: "dg_4.number_selector_8",
+          },
+          {
+            name: "var_4",
+            value: "@local.var_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            style_list: ["flex: 0"],
+            type: "set_variable",
+            _nested_name: "dg_4.var_4",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.var_1",
+                  matchedExpression: "@local.var_1",
+                  type: "local",
+                  fieldName: "var_1",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.var_1": ["value"],
+            },
+          },
+        ],
+        _nested_name: "dg_4",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_dg_testing.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "debug_go_to_1",
     status: "released",
     flow_subtype: "debug",
@@ -3994,6 +4991,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "This is the first template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -4001,6 +5003,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_go_to_1",
         value: "Go to the second template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -4017,6 +5024,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "go_to_field",
         value: "Value of debug_go_to_field: @fields.debug_go_to_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "go_to_field",
         _dynamicFields: {
@@ -4047,6 +5059,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "This is the second template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -4054,6 +5071,11 @@ const template: FlowTypes.Template[] = [
         type: "text_box",
         name: "debug_text_box",
         value: "@fields.debug_go_to_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "changed",
@@ -4105,6 +5127,11 @@ const template: FlowTypes.Template[] = [
         name: "go_to_field",
         value:
           "Value of debug_go_to_field: \nlocal: @local.debug_text_box;\nfield: @fields.debug_go_to_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "go_to_field",
         _dynamicFields: {
@@ -4134,6 +5161,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_go_to_1",
         value: "Go to the third template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -4150,6 +5182,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_completed",
         value: "Complete the current template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -4176,6 +5213,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "This is the third template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -4183,6 +5225,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_completed",
         value: "Complete the current template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -4220,6 +5267,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "This is the radio group debug template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -4260,6 +5312,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "template_name",
         value: "debug_radio_group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "template_name",
@@ -4273,6 +5330,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "This is the first instance of @local.template_name",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_1.text",
@@ -4313,6 +5375,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "This is the second instance of debug_radio_group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_2.text",
@@ -4344,6 +5411,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "template_name",
         value: "debug_radio_group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "template_name",
@@ -4375,6 +5447,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "This is the first instance of @local.template_name",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_1.text",
@@ -4426,6 +5503,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "This is the second instance of debug_radio_group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_2.text",
@@ -4478,6 +5560,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "local variable for slider 1: @local.slider_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -4541,6 +5628,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "local variable for slider 2: @local.slider_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -4561,6 +5653,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "field for slider 2: @field.slider_2_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -4622,6 +5719,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "local variable for radio group 1: @local.radio_group_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -4696,6 +5798,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "local variable for radio group 2: @local.radio_group_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -4716,6 +5823,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "field for radio group 2: @field.radio_group_2_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -4756,6 +5868,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "combo_box_2_var",
         value: "combo_box_2_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "combo_box_2_var",
@@ -4788,6 +5905,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "local variable for combo box 1: @local.combo_box_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -4889,6 +6011,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Local variable for combo box 2: @local.combo_box_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -4909,6 +6036,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "field for combo box 2: @field.combo_box_2_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -4938,6 +6070,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "local_var_1",
         value: "Hello",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "local_var_1",
       },
@@ -4950,6 +6087,11 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "debug_field_2",
         value: "@local.local_var_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "debug_field_2",
         _dynamicFields: {
           value: [
@@ -4969,6 +6111,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_1",
         value: "Set debug_field_3 to blank",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -4985,6 +6132,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_2",
         value: "Set debug_field_4 to a blank local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -5040,6 +6192,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_3",
         value: "Set debug_field_5 to a non existing local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -5095,6 +6252,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Value of local variable: @local.local_var_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -5115,6 +6277,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Value of debug_field_1: @fields.debug_field_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -5135,6 +6302,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "debug_field_1 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_1 == null",
         exclude_from_translation: true,
         _nested_name: "text_3",
@@ -5156,6 +6328,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "debug_field_1 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_1 != null",
         exclude_from_translation: true,
         _nested_name: "text_4",
@@ -5177,6 +6354,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "Value of debug_field_2: @fields.debug_field_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -5197,6 +6379,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_6",
         value: "debug_field_2 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_2 == null",
         exclude_from_translation: true,
         _nested_name: "text_6",
@@ -5218,6 +6405,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "debug_field_2 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_2 != null",
         exclude_from_translation: true,
         _nested_name: "text_7",
@@ -5239,6 +6431,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_8",
         value: "Value of debug_field_3: @fields.debug_field_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_8",
         _dynamicFields: {
@@ -5259,6 +6456,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_9",
         value: "debug_field_3 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_3 == null",
         exclude_from_translation: true,
         _nested_name: "text_9",
@@ -5280,6 +6482,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_10",
         value: "debug_field_3 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_3 != null",
         exclude_from_translation: true,
         _nested_name: "text_10",
@@ -5301,6 +6508,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_11",
         value: "Value of debug_field_4: @fields.debug_field_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_11",
         _dynamicFields: {
@@ -5321,6 +6533,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_12",
         value: "debug_field_4 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_4 == null",
         exclude_from_translation: true,
         _nested_name: "text_12",
@@ -5342,6 +6559,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_13",
         value: "debug_field_4 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_4 != null",
         exclude_from_translation: true,
         _nested_name: "text_13",
@@ -5363,6 +6585,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_14",
         value: "Value of debug_field_5: @fields.debug_field_5",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_14",
         _dynamicFields: {
@@ -5383,6 +6610,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_15",
         value: "debug_field_5 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_5 == null",
         exclude_from_translation: true,
         _nested_name: "text_15",
@@ -5404,6 +6636,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_16",
         value: "debug_field_5 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_5 != null",
         exclude_from_translation: true,
         _nested_name: "text_16",
@@ -5425,6 +6662,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_17",
         value: "Value of debug_field_6: @fields.debug_field_6",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_17",
         _dynamicFields: {
@@ -5445,6 +6687,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_18",
         value: "debug_field_6 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_6 == null",
         exclude_from_translation: true,
         _nested_name: "text_18",
@@ -5466,6 +6713,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_19",
         value: "debug_field_6 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_6 != null",
         exclude_from_translation: true,
         _nested_name: "text_19",
@@ -5496,6 +6748,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "local_var_1",
         value: "Hello",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "local_var_1",
       },
@@ -5508,6 +6765,11 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "debug_field_2",
         value: "@local.local_var_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "debug_field_2",
         _dynamicFields: {
           value: [
@@ -5527,6 +6789,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_1",
         value: "Set debug_field_3 to blank",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -5543,6 +6810,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_2",
         value: "Set debug_field_4 to a blank local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -5598,6 +6870,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_3",
         value: "Set debug_field_5 to a non existing local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -5653,6 +6930,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Value of local variable: @local.local_var_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -5673,6 +6955,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Value of debug_field_1: @fields.debug_field_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -5693,6 +6980,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "debug_field_1 evaluates to FALSE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_1",
         exclude_from_translation: true,
         _nested_name: "text_3",
@@ -5714,6 +7006,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "debug_field_1 evaluates to TRUE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@fields.debug_field_1",
         exclude_from_translation: true,
         _nested_name: "text_4",
@@ -5735,6 +7032,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "Value of debug_field_2: @fields.debug_field_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -5755,6 +7057,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_6",
         value: "debug_field_2 evaluates to FALSE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_2",
         exclude_from_translation: true,
         _nested_name: "text_6",
@@ -5776,6 +7083,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "debug_field_2 evaluates to TRUE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@fields.debug_field_2",
         exclude_from_translation: true,
         _nested_name: "text_7",
@@ -5797,6 +7109,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_8",
         value: "Value of debug_field_3: @fields.debug_field_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_8",
         _dynamicFields: {
@@ -5817,6 +7134,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_9",
         value: "debug_field_3 evaluates to FALSE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_3",
         exclude_from_translation: true,
         _nested_name: "text_9",
@@ -5838,6 +7160,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_10",
         value: "debug_field_3 evaluates to TRUE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@fields.debug_field_3",
         exclude_from_translation: true,
         _nested_name: "text_10",
@@ -5859,6 +7186,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_11",
         value: "Value of debug_field_4: @fields.debug_field_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_11",
         _dynamicFields: {
@@ -5879,6 +7211,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_12",
         value: "debug_field_4 evaluates to FALSE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_4",
         exclude_from_translation: true,
         _nested_name: "text_12",
@@ -5900,6 +7237,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_13",
         value: "debug_field_4 evaluates to TRUE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@fields.debug_field_4",
         exclude_from_translation: true,
         _nested_name: "text_13",
@@ -5921,6 +7263,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_14",
         value: "Value of debug_field_5: @fields.debug_field_5",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_14",
         _dynamicFields: {
@@ -5941,6 +7288,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_15",
         value: "debug_field_5 evaluates to FALSE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_5",
         exclude_from_translation: true,
         _nested_name: "text_15",
@@ -5962,6 +7314,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_16",
         value: "debug_field_5 evaluates to TRUE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@fields.debug_field_5",
         exclude_from_translation: true,
         _nested_name: "text_16",
@@ -5983,6 +7340,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_17",
         value: "Value of debug_field_6: @fields.debug_field_6",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_17",
         _dynamicFields: {
@@ -6003,6 +7365,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_18",
         value: "debug_field_6 evaluates to FALSE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@fields.debug_field_6",
         exclude_from_translation: true,
         _nested_name: "text_18",
@@ -6024,6 +7391,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_19",
         value: "debug_field_6 evaluates to TRUE",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@fields.debug_field_6",
         exclude_from_translation: true,
         _nested_name: "text_19",
@@ -6054,6 +7426,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "local_var_1",
         value: "Hello",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "local_var_1",
       },
@@ -6066,6 +7443,11 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "debug_field_2",
         value: "@local.local_var_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "debug_field_2",
         _dynamicFields: {
           value: [
@@ -6085,6 +7467,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_1",
         value: "Set debug_field_3 to blank",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -6101,6 +7488,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_2",
         value: "Set debug_field_4 to a blank local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -6156,6 +7548,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_3",
         value: "Set debug_field_5 to a non existing local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -6211,6 +7608,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Value of local variable: @local.local_var_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -6231,6 +7633,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Value of debug_field_1: @fields.debug_field_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -6251,6 +7658,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "debug_field_1 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@calc(if(@fields.debug_field_1))",
         exclude_from_translation: true,
         _nested_name: "text_3",
@@ -6279,6 +7691,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "debug_field_1 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@calc(if(@fields.debug_field_1))",
         exclude_from_translation: true,
         _nested_name: "text_4",
@@ -6307,6 +7724,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "Value of debug_field_2: @fields.debug_field_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -6327,6 +7749,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_6",
         value: "debug_field_2 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@calc(if(@fields.debug_field_2))",
         exclude_from_translation: true,
         _nested_name: "text_6",
@@ -6355,6 +7782,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "debug_field_2 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@calc(if(@fields.debug_field_2))",
         exclude_from_translation: true,
         _nested_name: "text_7",
@@ -6383,6 +7815,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_8",
         value: "Value of debug_field_3: @fields.debug_field_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_8",
         _dynamicFields: {
@@ -6403,6 +7840,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_9",
         value: "debug_field_3 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@calc(if(@fields.debug_field_3))",
         exclude_from_translation: true,
         _nested_name: "text_9",
@@ -6431,6 +7873,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_10",
         value: "debug_field_3 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@calc(if(@fields.debug_field_3))",
         exclude_from_translation: true,
         _nested_name: "text_10",
@@ -6459,6 +7906,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_11",
         value: "Value of debug_field_4: @fields.debug_field_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_11",
         _dynamicFields: {
@@ -6479,6 +7931,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_12",
         value: "debug_field_4 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@calc(if(@fields.debug_field_4))",
         exclude_from_translation: true,
         _nested_name: "text_12",
@@ -6507,6 +7964,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_13",
         value: "debug_field_4 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@calc(if(@fields.debug_field_4))",
         exclude_from_translation: true,
         _nested_name: "text_13",
@@ -6535,6 +7997,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_14",
         value: "Value of debug_field_5: @fields.debug_field_5",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_14",
         _dynamicFields: {
@@ -6555,6 +8022,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_15",
         value: "debug_field_5 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@calc(if(@fields.debug_field_5))",
         exclude_from_translation: true,
         _nested_name: "text_15",
@@ -6583,6 +8055,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_16",
         value: "debug_field_5 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@calc(if(@fields.debug_field_5))",
         exclude_from_translation: true,
         _nested_name: "text_16",
@@ -6611,6 +8088,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_17",
         value: "Value of debug_field_6: @fields.debug_field_6",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_17",
         _dynamicFields: {
@@ -6631,6 +8113,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_18",
         value: "debug_field_6 is not null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@calc(if(@fields.debug_field_6))",
         exclude_from_translation: true,
         _nested_name: "text_18",
@@ -6659,6 +8146,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_19",
         value: "debug_field_6 is null",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@calc(if(@fields.debug_field_6))",
         exclude_from_translation: true,
         _nested_name: "text_19",
@@ -6696,6 +8188,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "local_full_stop",
         value: "Local with a full stop",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "local_full_stop",
@@ -6705,6 +8202,11 @@ const template: FlowTypes.Template[] = [
         name: "text_1",
         value:
           "This string ends with a local variable with a full stop at the end: @local.local_full_stop.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -6727,6 +8229,11 @@ const template: FlowTypes.Template[] = [
         name: "text_2",
         value:
           "This string ends with a local variable with a space before a full stop at the end: @local.local_full_stop .",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -6749,6 +8256,11 @@ const template: FlowTypes.Template[] = [
         name: "text_3",
         value:
           "This string ends with a field variable with a full stop at the end: @field.field_full_stop.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -6771,6 +8283,11 @@ const template: FlowTypes.Template[] = [
         name: "text_4",
         value:
           "This string ends with a field variable with a space before a full stop at the end: @field.field_full_stop .",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
         _dynamicFields: {
@@ -6793,6 +8310,11 @@ const template: FlowTypes.Template[] = [
         name: "text_5",
         value:
           "This string ends with a global constant with a full stop at the end: @global.global_full_stop.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -6815,6 +8337,11 @@ const template: FlowTypes.Template[] = [
         name: "text_6",
         value:
           "This string ends with a global constant with a space before a full stop at the end: @global.global_full_stop .",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_6",
         _dynamicFields: {
@@ -6835,18 +8362,33 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         value: "Dynamic Texts",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         name: "title",
         _nested_name: "title",
       },
       {
         name: "dynamic_lookup",
         value: "local_full_stop",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "dynamic_lookup",
       },
       {
         name: "dynamic_text_1",
         value: "@local.@local.dynamic_lookup",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "dynamic_text_1",
         _dynamicFields: {
@@ -6867,6 +8409,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "Dyanmic with full stop: @local.dynamic_text_1.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_7",
         _dynamicFields: {
@@ -6887,6 +8434,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_8",
         value: '@local.dynamic_text_1+"."',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_8",
         _dynamicFields: {
@@ -6907,6 +8459,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_9",
         value: "@local.dynamic_text_1.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_9",
         _dynamicFields: {
@@ -6927,6 +8484,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_10",
         value: "@local.@local.dynamic_lookup.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_10",
         _dynamicFields: {
@@ -6946,6 +8508,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         value: "Mixed Sentences",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "title",
         _nested_name: "title",
@@ -6954,6 +8521,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_11",
         value: "Start text: @local.local_full_stop. More text follows.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_11",
         _dynamicFields: {
@@ -6984,6 +8556,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "@global.debug_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -7004,6 +8581,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "@global.debug_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -7024,6 +8606,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "@global.debug_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -7044,6 +8631,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "@global.debug_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
         _dynamicFields: {
@@ -7064,6 +8656,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "This text is directly authored in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
       },
@@ -7071,6 +8668,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_6",
         value: "This text is directly authored in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_6",
       },
@@ -7078,6 +8680,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "This text is directly authored in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_7",
       },
@@ -7085,6 +8692,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_8",
         value: "This text is directly authored in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_8",
       },
@@ -7106,6 +8718,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "@global.debug_item_2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_global_bottom.text_2",
@@ -7126,6 +8743,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_3",
             value: "@global.debug_item_2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_global_bottom.text_3",
@@ -7146,6 +8768,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_4",
             value: "This text is overridden directly in the value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_global_bottom.text_4",
@@ -7153,6 +8780,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_6",
             value: "@global.debug_item_2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_global_bottom.text_6",
@@ -7173,6 +8805,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_7",
             value: "@global.debug_item_2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_global_bottom.text_7",
@@ -7193,6 +8830,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_8",
             value: "This text is overridden directly in the value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_global_bottom.text_8",
@@ -7223,6 +8865,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_1",
                 value: "@global.debug_item_3",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_1",
@@ -7243,6 +8890,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_2",
                 value: "@global.debug_item_3",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_2",
@@ -7263,6 +8915,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_3",
                 value: "This text is overridden directly in the value",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_3",
@@ -7270,6 +8927,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_4",
                 value: "@global.debug_item_3",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_4",
@@ -7290,6 +8952,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_5",
                 value: "@global.debug_item_3",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_5",
@@ -7310,6 +8977,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_6",
                 value: "@global.debug_item_3",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_6",
@@ -7330,6 +9002,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_7",
                 value: "This text is overridden directly in the value",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_7",
@@ -7337,6 +9014,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_8",
                 value: "@global.debug_item_3",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_global_middle.debug_global_bottom.text_8",
@@ -7372,12 +9054,22 @@ const template: FlowTypes.Template[] = [
       {
         name: "template",
         value: "template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "template",
       },
       {
         name: "debug_item_1",
         value: "_debug_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "debug_item_1",
       },
@@ -7385,6 +9077,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_pop_up",
         value: "Simple pop-up",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -7401,6 +9098,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_go_to",
         value: "@global.debug_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -7497,6 +9199,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "This is the debug_item_1 template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "text",
       },
     ],
@@ -7512,6 +9219,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "This text is followed by the template debug_go_to_nest_bottom",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -7537,6 +9249,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button",
         value: "Go to example_emit and come back",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -7567,6 +9284,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "workshop",
         value: "@local.workshop_data.id",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "workshop",
         _dynamicFields: {
@@ -7586,6 +9308,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug",
         value: "_debug",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug",
@@ -7593,6 +9320,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "workshop_debug",
         value: "@local.workshop@local.debug",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "workshop_debug",
         _dynamicFields: {
@@ -7620,6 +9352,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "debug_description",
         value: "This template should show the same information on both sections",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "debug_description",
       },
       {
@@ -7646,6 +9383,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "intro_text",
             value: "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "workshop_activity.intro_text",
             _dynamicFields: {
@@ -7695,6 +9437,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "Content",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 type: "set_variable",
                 _nested_name: "workshop_activity.content_box.title",
               },
@@ -7702,6 +9449,11 @@ const template: FlowTypes.Template[] = [
                 name: "text",
                 value:
                   "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 type: "set_variable",
                 _nested_name: "workshop_activity.content_box.text",
                 _dynamicFields: {
@@ -7782,6 +9534,11 @@ const template: FlowTypes.Template[] = [
             type: "title",
             name: "intro_title",
             value: "Intro",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             _nested_name: "intro.intro_title",
           },
           {
@@ -7916,6 +9673,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "workshop_data",
             value: "@data.workshop.w_consequence",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "home_practice_review.workshop_data",
             _dynamicFields: {
@@ -7953,6 +9715,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "workshop",
         value: "@local.workshop_data.id",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "workshop",
         _dynamicFields: {
@@ -7972,6 +9739,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug",
         value: "_debug",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug",
@@ -7979,6 +9751,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "workshop_debug",
         value: "@local.workshop@local.debug",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "workshop_debug",
         _dynamicFields: {
@@ -8010,6 +9787,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "intro_text",
             value: "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "workshop_activity.intro_text",
             _dynamicFields: {
@@ -8059,6 +9841,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "Content",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 type: "set_variable",
                 _nested_name: "workshop_activity.content_box.title",
               },
@@ -8066,6 +9853,11 @@ const template: FlowTypes.Template[] = [
                 name: "text",
                 value:
                   "@local.workshop_data.id\n@local.workshop\n@local.debug\n@local.workshop_debug",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 type: "set_variable",
                 _nested_name: "workshop_activity.content_box.text",
                 _dynamicFields: {
@@ -8127,6 +9919,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "intro_title",
         value: "Intro",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "intro_title",
       },
       {
@@ -8174,6 +9971,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "workshop_data",
             value: "@data.workshop.w_consequence",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "home_practice_review.workshop_data",
             _dynamicFields: {
@@ -8207,6 +10009,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "Initial text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "text",
       },
       {
@@ -8229,6 +10036,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "Initial text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "text",
       },
       {
@@ -8251,6 +10063,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Double nested 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "title",
       },
       {
@@ -8261,6 +10078,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "Text 1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "template_1.text",
           },
@@ -8272,6 +10094,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: "Text 2",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 type: "set_variable",
                 _nested_name: "template_1.subtemplate_1.text",
               },
@@ -8283,6 +10110,11 @@ const template: FlowTypes.Template[] = [
                   {
                     name: "text",
                     value: "Text 3",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     type: "set_variable",
                     _nested_name: "template_1.subtemplate_1.subtemplate_1.text",
                   },
@@ -8299,6 +10131,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Double nested 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "title",
       },
       {
@@ -8309,6 +10146,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "Text 1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "template_2.text",
           },
@@ -8320,6 +10162,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: "Text 2",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 type: "set_variable",
                 _nested_name: "template_2.subtemplate_1.text",
               },
@@ -8331,6 +10178,11 @@ const template: FlowTypes.Template[] = [
                   {
                     name: "text",
                     value: "Text 3",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     type: "set_variable",
                     _nested_name: "template_2.subtemplate_1.subtemplate_2.text",
                   },
@@ -8357,6 +10209,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Title of debug_nesting_sheet_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -8379,6 +10236,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "This title was overwritten",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "name_1.title",
@@ -8395,6 +10257,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "This title was overwritten as well",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "name_2.title",
@@ -8416,6 +10283,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "fail: title debug_nesting_sheet_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -8423,6 +10295,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "fail: text debug_nesting_sheet_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -8450,6 +10327,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "title for sheet 1 was overwritten twice",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "other_name.name_1.title",
@@ -8479,6 +10361,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "title for sheet 1a was overwritten",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_sheet_1a.title",
@@ -8495,6 +10382,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "title for sheet 2 was overwritten",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_sheet_2a.title",
@@ -8511,6 +10403,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "text for sheet 2 was overwritten",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_sheet_2b.text",
@@ -8531,6 +10428,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         value: "Test 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -8539,6 +10441,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "test_1_text",
         value: "success: test1 text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "test_1_text",
       },
@@ -8557,6 +10464,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "success: test1 title",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_override_1.template_wrapper.title",
@@ -8564,6 +10476,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: "@local.test_1_text",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_override_1.template_wrapper.text",
@@ -8590,6 +10507,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         value: "Test 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -8598,6 +10520,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "test_2_text",
         value: "success: test2 text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "test_2_text",
       },
@@ -8610,6 +10537,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "sucess: test2 title",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_sheet_2.title",
@@ -8617,6 +10549,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "@local.test_2_text",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_sheet_2.text",
@@ -8641,12 +10578,22 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "test_3_text",
         value: "success: text3_text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "test_3_text",
       },
       {
         type: "text",
         value: "Test 3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -8672,6 +10619,11 @@ const template: FlowTypes.Template[] = [
                   {
                     name: "title",
                     value: "success: text3_title",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     exclude_from_translation: true,
                     type: "set_variable",
                     _nested_name: "wrapper.template_wrapper.template_wrapper.title",
@@ -8679,6 +10631,11 @@ const template: FlowTypes.Template[] = [
                   {
                     name: "text",
                     value: "@local.test_3_text",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     exclude_from_translation: true,
                     type: "set_variable",
                     _nested_name: "wrapper.template_wrapper.template_wrapper.text",
@@ -8740,6 +10697,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "This is template shows how buttons can be overwritten.",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_pop_ups.text_1",
@@ -8747,6 +10709,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "Button 1 has a new button text, but the action_list is unaltered.",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_pop_ups.text_2",
@@ -8754,6 +10721,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "button_pop_up_1",
             value: "New Button 1 ",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_pop_ups.button_pop_up_1",
@@ -8761,6 +10733,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_3",
             value: "Button 2 has an altered action_list. It now launches a simple text pop-up.",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_pop_ups.text_3",
@@ -8783,6 +10760,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_4",
             value: "Button 3 is unaltered. ",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "example_pop_ups.text_4",
@@ -8804,6 +10786,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "heading_1",
         value: "TEST 1: Override template variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "heading_1",
       },
@@ -8817,6 +10804,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_local_variable",
             value: "Success: nesting local variable",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "two_texts_a.child_local_variable",
           },
@@ -8824,6 +10816,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_text_1",
             value: "Success: text_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "two_texts_a.child_text_1",
           },
@@ -8834,6 +10831,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "heading_2",
         value: "TEST 2: Override template variables dynamic",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "heading_2",
       },
@@ -8841,6 +10843,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_text_1",
         value: "Success: text_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_text_1",
       },
@@ -8854,6 +10861,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_local_variable",
             value: "Success: nesting local variable",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "two_texts_b.child_local_variable",
           },
@@ -8861,6 +10873,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_text_1",
             value: "@local.var_text_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "two_texts_b.child_text_1",
             _dynamicFields: {
@@ -8894,6 +10911,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_text_1",
         value: "Success: text_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_text_1",
       },
@@ -8901,6 +10923,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "heading_1",
         value: "TEST 1 - Overwrite a general wrapper to display a named template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "heading_1",
       },
@@ -8920,6 +10947,11 @@ const template: FlowTypes.Template[] = [
                 type: "set_variable",
                 name: "child_local_variable",
                 value: "Success: nesting local variable",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 _nested_name: "debug_wrapper_1.wrapper_template.child_local_variable",
               },
@@ -8927,6 +10959,11 @@ const template: FlowTypes.Template[] = [
                 type: "set_variable",
                 name: "child_text_1",
                 value: "@local.var_text_1",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 _nested_name: "debug_wrapper_1.wrapper_template.child_text_1",
                 _dynamicFields: {
@@ -8954,6 +10991,11 @@ const template: FlowTypes.Template[] = [
         name: "heading_2",
         value:
           "The template below should match the template above, and has been set by 2 levels of nested_properties",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         condition: false,
         _nested_name: "heading_2",
@@ -8981,6 +11023,11 @@ const template: FlowTypes.Template[] = [
                     type: "set_variable",
                     name: "child_local_variable",
                     value: "Success: nesting local variable",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     exclude_from_translation: true,
                     _nested_name:
                       "debug_wrapper_2.wrapper_template.wrapper_template.child_local_variable",
@@ -8989,6 +11036,11 @@ const template: FlowTypes.Template[] = [
                     type: "set_variable",
                     name: "child_text_1",
                     value: "@local.var_text_1",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     exclude_from_translation: true,
                     _nested_name: "debug_wrapper_2.wrapper_template.wrapper_template.child_text_1",
                     _dynamicFields: {
@@ -9018,6 +11070,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "heading_3",
         value: "The content below adds additional content to the template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "heading_3",
       },
@@ -9037,6 +11094,11 @@ const template: FlowTypes.Template[] = [
                 type: "set_variable",
                 name: "child_local_variable",
                 value: "Success: nesting local variable",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 _nested_name: "debug_wrapper_1.wrapper_template.child_local_variable",
               },
@@ -9044,6 +11106,11 @@ const template: FlowTypes.Template[] = [
                 type: "set_variable",
                 name: "child_text_1",
                 value: "@local.var_text_1",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 _nested_name: "debug_wrapper_1.wrapper_template.child_text_1",
                 _dynamicFields: {
@@ -9080,6 +11147,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "heading_1",
         value: "TEST 1: Conditional properties",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "heading_1",
       },
@@ -9094,6 +11166,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "toggle_button",
         value: "Value: @local.toggle_value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -9164,6 +11241,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_local_variable",
             value: "Text variant 1 (toggle to change)",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             condition: "@local.toggle_value",
             _nested_name: "two_texts_a.child_local_variable",
@@ -9185,6 +11267,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_local_variable",
             value: "Text variant 2 (toggle to change)",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             condition: "!@local.toggle_value",
             _nested_name: "two_texts_a.child_local_variable",
@@ -9206,6 +11293,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_text_1",
             value: "Success: text_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "two_texts_a.child_text_1",
           },
@@ -9225,6 +11317,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "text_2",
         value: "Success: text_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "text_2",
@@ -9240,6 +11337,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "var_toggle_text",
         value: "The value of the toggle is: @local.text_1_toggle",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_toggle_text",
         _dynamicFields: {
@@ -9261,6 +11363,11 @@ const template: FlowTypes.Template[] = [
         name: "intro_1",
         value:
           "The following template should change text_1 value depending on the value of a variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "intro_1",
       },
@@ -9274,6 +11381,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_text_1",
             value: "Success: text_1 - toggle TRUE",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             condition: "@local.text_1_toggle",
             _nested_name: "direct_template_2.child_text_1",
@@ -9295,6 +11407,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_text_1",
             value: "Success: text_1 - toggle FALSE",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             condition: "!@local.text_1_toggle",
             _nested_name: "direct_template_2.child_text_1",
@@ -9316,6 +11433,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_text_2",
             value: 'Expected: "Success: text_2"\nResult: @local.text_2',
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "direct_template_2.child_text_2",
             _dynamicFields: {
@@ -9336,6 +11458,11 @@ const template: FlowTypes.Template[] = [
             type: "set_variable",
             name: "child_local_variable",
             value: "Success: nesting local variable",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "direct_template_2.child_local_variable",
           },
@@ -9346,6 +11473,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "toggle text",
         value: "Toggle value of text_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -9403,6 +11535,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "child_text_1",
         value: 'Failed: "text_1" has not been overwritten',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "child_text_1",
       },
@@ -9410,6 +11547,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "child_text_from_local_variable",
         value: "@local.child_local_variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -9497,6 +11639,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "var_text_2",
         value: "This is text_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "var_text_2",
@@ -9504,6 +11651,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "var_text_4",
         value: "This is text_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "var_text_4",
@@ -9517,6 +11669,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "child_text_1",
             value: "This is text_1 overridden directly in the value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_two_texts.child_text_1",
@@ -9524,6 +11681,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "child_text_2",
             value: "@global.teen_girl_1 overridden by calling a variable",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_two_texts.child_text_2",
@@ -9548,6 +11710,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "This is text_3 written directly in the value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -9555,6 +11722,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "@local.var_text_4 calling a variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
         _dynamicFields: {
@@ -9592,6 +11764,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_counter_calc",
         value: "10*@local.var_counter",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_counter_calc",
         _dynamicFields: {
@@ -9612,6 +11789,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_counter_addition",
         value: "@local.var_counter + @local.var_counter",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_counter_addition",
         _dynamicFields: {
@@ -9638,6 +11820,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_bool_true",
         value: "@data.debug_vars.bool_true.value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_bool_true",
         _dynamicFields: {
@@ -9658,6 +11845,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_recursive_lookup",
         value: "@local.var_bool_true",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_recursive_lookup",
         _dynamicFields: {
@@ -9678,6 +11870,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_dynamic_nested_name",
         value: "var_bool_true",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_dynamic_nested_name",
       },
@@ -9685,6 +11882,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_dynamic_nested",
         value: "@local.@local.var_dynamic_nested_name",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_dynamic_nested",
         _dynamicFields: {
@@ -9705,6 +11907,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_bool_false",
         value: "@data.debug_vars.bool_false.value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_bool_false",
         _dynamicFields: {
@@ -9725,6 +11932,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_number_0",
         value: "@data.debug_vars.number_0.value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_number_0",
         _dynamicFields: {
@@ -9789,6 +12001,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_text_1",
         value: "@data.debug_vars.text_1.value",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_text_1",
         _dynamicFields: {
@@ -9809,6 +12026,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "global_text",
         value: "@global.debug_variable_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "global_text",
         _dynamicFields: {
@@ -9829,6 +12051,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "List length Test: @local.var_list_1_length",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -9849,6 +12076,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4wrong",
         value: "Expected fail calculation: 10*@local.var_counter",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4wrong",
         _dynamicFields: {
@@ -9869,6 +12101,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4right",
         value: "Expected pass calculation: @local.var_counter_calc",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4right",
         _dynamicFields: {
@@ -9889,6 +12126,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "Basic Text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
       },
@@ -9896,6 +12138,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_6",
         value: "Multiple values: @local.var_bool_true and @local.var_bool_false",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_6",
         _dynamicFields: {
@@ -9923,6 +12170,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "Recursive lookup: @local.var_recursive_lookup",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_7",
         _dynamicFields: {
@@ -9943,6 +12195,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_dynamic_nested",
         value: "Dynamic nested pass: @local.var_dynamic_nested",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_dynamic_nested",
         _dynamicFields: {
@@ -9963,6 +12220,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_number_1_increment",
         value: "Counter value: @local.var_counter",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -10027,6 +12289,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: "TODO - nested rows",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_7",
       },
@@ -10034,6 +12301,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_8",
         value: "Expected: global.debug_variable_1 lookup\nResult: @local.global_text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_8",
         _dynamicFields: {
@@ -10055,6 +12327,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_9",
         value: "Global text test: @global.debug_variable_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_9",
         _dynamicFields: {
@@ -10075,6 +12352,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_col_1",
         value: "@data.debug_vars.collection_1.value_collection",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_col_1",
         _dynamicFields: {
@@ -10095,6 +12377,11 @@ const template: FlowTypes.Template[] = [
         type: "set_variable",
         name: "var_col_1_key1",
         value: "@local.var_col_1.key1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "var_col_1_key1",
         _dynamicFields: {
@@ -10115,6 +12402,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_col",
         value: "col_1 (object): @local.var_col_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_col",
         _dynamicFields: {
@@ -10135,6 +12427,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_col_key",
         value: "key1: @local.var_col_1_key1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_col_key",
         _dynamicFields: {
@@ -10155,6 +12452,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "test_col_key",
         value: '@local.var_col_1_key1 === "val1"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "test_col_key",
         _dynamicFields: {
@@ -10189,6 +12491,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "No text to display in wrapper_template",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "wrapper_template.text_1",
@@ -10210,6 +12517,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_unordered",
         value: "This is a bulleted list",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_unordered",
       },
@@ -10217,6 +12529,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_unordered",
         value: "These are some ideas you can try:\n\n* first idea\n* second idea\n* third idea",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_unordered",
       },
@@ -10224,6 +12541,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_ordered",
         value: "This should be a numbered list",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_ordered",
       },
@@ -10231,6 +12553,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_ordered",
         value: "These are some ideas you can try:\n\n* first idea\n* second idea\n* third idea",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         parameter_list: {
           style: "numbered",
@@ -10241,6 +12568,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_ordered",
         value: "This should be a numbered list",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_ordered",
       },
@@ -10248,6 +12580,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_ordered2",
         value: "* first idea\n* second idea\n* third idea",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         parameter_list: {
           style: "numbered",
@@ -10268,6 +12605,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button",
         value: "Button",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -10293,6 +12635,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "field_1",
         value: "debug_actions_middle_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "field_1",
@@ -10300,6 +12647,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "value_1",
         value: "Value 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "value_1",
@@ -10308,6 +12660,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Set the field debug_actions_middle_1 through a local variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -10403,6 +12760,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Set the field debug_actions_middle_2 directly",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -10444,6 +12806,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_0",
         value: "Example 0",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_0",
       },
@@ -10456,6 +12823,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "Do not override the action list",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_0.text_1",
@@ -10463,6 +12835,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "Do not override the action list",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_0.text_2",
@@ -10474,6 +12851,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "Example 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -10486,6 +12868,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "Set the field debug_actions_top_1 ",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_1.text_1",
@@ -10509,6 +12896,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "Set the field debug_actions_top_2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_1.text_2",
@@ -10536,6 +12928,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Example 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -10548,6 +12945,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "Set the field debug_actions_top_3 and emit completed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_2.text_1",
@@ -10578,6 +12980,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "Set the field debug_actions_top_4 and emit completed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_2.text_2",
@@ -10612,6 +13019,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_3",
         value: "Example 3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_3",
       },
@@ -10624,6 +13036,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "Emit completed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_3.text_1",
@@ -10647,6 +13064,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2",
             value: "Emit completed",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_actions_middle_3.text_2",
@@ -10715,6 +13137,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1_hidden",
         value: "Text first - hidden",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@local.radio_group != "name_var_1"',
         exclude_from_translation: true,
         _nested_name: "text_1_hidden",
@@ -10736,6 +13163,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1_condition",
         value: "Text first - condition",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: '@local.radio_group == "name_var_1"',
         exclude_from_translation: true,
         _nested_name: "text_1_condition",
@@ -10762,6 +13194,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "text_1_display_group",
             value: "Text first - hidden on display group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "dg_1.text_1_display_group",
           },
@@ -10785,6 +13222,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2_hidden",
         value: "Text second - hidden",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@local.radio_group != "name_var_2"',
         exclude_from_translation: true,
         _nested_name: "text_2_hidden",
@@ -10806,6 +13248,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2_condition",
         value: "Text second - condition",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         condition: '@local.radio_group == "name_var_2"',
         exclude_from_translation: true,
         _nested_name: "text_2_condition",
@@ -10832,6 +13279,11 @@ const template: FlowTypes.Template[] = [
             type: "text",
             name: "text_2_display_group",
             value: "Text second - hidden on display group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             _nested_name: "dg_2.text_2_display_group",
           },
@@ -10865,6 +13317,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "Nested template",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -10872,6 +13329,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Hiding and conditions work correctly",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -10886,6 +13348,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Nested template with overridden text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -10894,6 +13361,11 @@ const template: FlowTypes.Template[] = [
         name: "text_2",
         value:
           "Hiding no longer works when specified on the same row as the text. When specified on the display group, hiding does work. Condition works fine.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -10905,6 +13377,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1_hidden",
             value: "New text first - hidden",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_replies_2.text_1_hidden",
@@ -10912,6 +13389,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1_condition",
             value: "New text first - condition",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_replies_2.text_1_condition",
@@ -10919,6 +13401,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1_display_group",
             value: "New text first - hidden on display group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_replies_2.text_1_display_group",
@@ -10926,6 +13413,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2_hidden",
             value: "New text second - hidden",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_replies_2.text_2_hidden",
@@ -10933,6 +13425,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2_condition",
             value: "New text second - condition",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_replies_2.text_2_condition",
@@ -10940,6 +13437,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_2_display_group",
             value: "New text second - hidden on display group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_radio_group_replies_2.text_2_display_group",
@@ -10961,6 +13463,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Button 1 is a simple text pop-up:",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -10968,6 +13475,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_pop_up_1",
         value: "Button 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -10984,6 +13496,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "Button 2 is a pop-up with a button:",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
       },
@@ -10991,6 +13508,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_pop_up_3",
         value: "Button 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -11033,6 +13555,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "template_name",
         value: "example_text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "template_name",
@@ -11041,6 +13568,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Button 1 pops up the template example_text directly",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -11048,6 +13580,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_pop_up_1",
         value: "Button_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -11064,6 +13601,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: 'Button 2 pops up the template example_text using a local variable "template_name"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -11071,6 +13613,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_pop_up_2",
         value: "Button 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -11143,12 +13690,22 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "which_relax",
         value: "relax_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "which_relax",
       },
       {
         name: "favourite",
         value: "_favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "favourite",
@@ -11156,6 +13713,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "relax",
         value: "@field.which_relax",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "relax",
@@ -11176,6 +13738,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "relax_favourite",
         value: "@local.relax@local.favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "relax_favourite",
@@ -11204,6 +13771,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "@local.relax_favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -11224,6 +13796,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "This is @field.@local.relax_favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -11244,6 +13821,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "@field.@local.relax@local.favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -11271,6 +13853,11 @@ const template: FlowTypes.Template[] = [
         type: "simple_checkbox",
         name: "checkbox_1",
         value: "@field.@local.relax_favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "changed",
@@ -11351,6 +13938,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "local_text_1",
         value: "checkbox local: @local.checkbox_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "local_text_1",
         _dynamicFields: {
@@ -11371,6 +13963,11 @@ const template: FlowTypes.Template[] = [
         type: "simple_checkbox",
         name: "checkbox_2",
         value: "@field.relax_3_favourite",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "changed",
@@ -11424,6 +14021,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "local_text_2",
         value: "checkbox local: @local.checkbox_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "local_text_2",
         _dynamicFields: {
@@ -11487,6 +14089,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "local_text_3",
         value: "checkbox local: @local.checkbox_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "local_text_3",
         _dynamicFields: {
@@ -11577,6 +14184,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "local_text_4",
         value: "checkbox local: @local.checkbox_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "local_text_4",
         _dynamicFields: {
@@ -11649,6 +14261,11 @@ const template: FlowTypes.Template[] = [
         name: "text_5",
         value:
           "the local for checkbox 5 in animates section is @local.checkbox_5 and the field is @fields.checkbox_a_s_test",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -11688,6 +14305,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Parent",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -11695,6 +14317,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "Value of test_render_updates_field: \nfield: @fields.test_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
         _dynamicFields: {
@@ -11727,6 +14354,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "Grandchild 2b",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_render_child.debug_render_grandchild_2b.title",
@@ -11734,6 +14366,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_3",
                 value: "(parent) selected no",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 hidden: '@fields.test_render_updates_field!="no"',
                 exclude_from_translation: true,
                 type: "set_variable",
@@ -11755,6 +14392,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text_4",
                 value: "(parent) selected yes",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 hidden: '@fields.test_render_updates_field!="yes"',
                 exclude_from_translation: true,
                 type: "set_variable",
@@ -11777,6 +14419,11 @@ const template: FlowTypes.Template[] = [
                 name: "text_5",
                 value:
                   "(parent) Value of test_render_updates_field: @fields.test_render_updates_field",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_render_child.debug_render_grandchild_2b.text_5",
@@ -11808,6 +14455,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "Grandchild 3b",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_render_child.debug_render_grandchild_3b.title",
@@ -11815,6 +14467,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: "(parent) selected no",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_render_child.debug_render_grandchild_3b.text",
@@ -11845,6 +14502,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "title",
                 value: "Grandchild 4b",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_render_child.debug_render_grandchild_4b.title",
@@ -11852,6 +14514,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value: "(parent) selected yes",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "debug_render_child.debug_render_grandchild_4b.text",
@@ -11889,6 +14556,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Child",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -11909,6 +14581,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "Grandchild 2a",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_render_grandchild_2a.title",
@@ -11916,6 +14593,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_3",
             value: "(child) selected no",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: '@fields.test_render_updates_field!="no"',
             exclude_from_translation: true,
             type: "set_variable",
@@ -11937,6 +14619,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_4",
             value: "(child) selected yes",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: '@fields.test_render_updates_field!="yes"',
             exclude_from_translation: true,
             type: "set_variable",
@@ -11958,6 +14645,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_5",
             value: "(child) Value of test_render_updates_field: @fields.test_render_updates_field",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_render_grandchild_2a.text_5",
@@ -11996,6 +14688,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "Grandchild 3a",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_render_grandchild_3a.title",
@@ -12003,6 +14700,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "(child) selected no",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_render_grandchild_3a.text",
@@ -12040,6 +14742,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "title",
             value: "Grandchild 4a",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_render_grandchild_4a.title",
@@ -12047,6 +14754,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "(child) selected yes",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "debug_render_grandchild_4a.text",
@@ -12088,6 +14800,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Grandchild 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -12102,6 +14819,11 @@ const template: FlowTypes.Template[] = [
         type: "radio_group",
         name: "radio_group",
         value: "@fields.test_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "changed",
@@ -12178,6 +14900,11 @@ const template: FlowTypes.Template[] = [
         name: "go_to_field",
         value:
           "Value of test_render_updates_field:  @fields.test_render_updates_field\n\nlocal: @local.radio_group;",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "go_to_field",
         _dynamicFields: {
@@ -12217,6 +14944,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Grandchild 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -12224,6 +14956,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "(grandchild) Value of test_render_updates_field: @fields.test_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
         _dynamicFields: {
@@ -12245,6 +14982,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "(grandchild) selected no",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@fields.test_render_updates_field!="no"',
         exclude_from_translation: true,
         _nested_name: "text_1",
@@ -12266,6 +15008,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "(grandchild) selected yes",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: '@fields.test_render_updates_field!="yes"',
         exclude_from_translation: true,
         _nested_name: "text_2",
@@ -12287,6 +15034,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "Text 3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -12294,6 +15046,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "Text 4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
       },
@@ -12301,6 +15058,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "Text 5",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
       },
@@ -12318,6 +15080,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "Example Title",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
       },
@@ -12325,6 +15092,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "Example text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -12341,6 +15113,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         value: "Parent",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "title",
         _nested_name: "title",
@@ -12348,6 +15125,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         value: "Changing either child input should update the other sibling",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -12355,6 +15137,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         value: "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -12402,6 +15189,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         value: "Child 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "title",
         _nested_name: "title",
@@ -12410,6 +15202,11 @@ const template: FlowTypes.Template[] = [
         type: "text_box",
         name: "debug_render_updates_text",
         value: "@fields.debug_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "changed",
@@ -12471,6 +15268,11 @@ const template: FlowTypes.Template[] = [
         name: "go_to_field",
         value:
           "Value of debug_render_updates_field: \nlocal: @local.debug_render_updates_text;\nfield: @fields.debug_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "go_to_field",
         _dynamicFields: {
@@ -12509,6 +15311,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         value: "Child 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "title",
         _nested_name: "title",
@@ -12516,6 +15323,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         value: "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -12548,6 +15360,11 @@ const template: FlowTypes.Template[] = [
         type: "image",
         name: "image",
         value: "plh_images/workshops/solve/read_1/slide_1.svg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         parameter_list: {
           style: "rounded_corners",
@@ -12568,6 +15385,11 @@ const template: FlowTypes.Template[] = [
         type: "text_box",
         name: "text_box",
         value: "@fields.debug_tracker_text_box",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "changed",
@@ -12632,6 +15454,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         value:
           "text_box\n---------------------------------------------------\nlocal: @local.text_box   \nfield: @fields.debug_tracker_text_box    \ntriggered: @fields.debug_triggered_text_box",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
@@ -12806,6 +15633,11 @@ const template: FlowTypes.Template[] = [
         type: "video",
         name: "video_src",
         value: "plh_video/lets_slow_down.mp4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "video_src",
       },
@@ -12813,6 +15645,11 @@ const template: FlowTypes.Template[] = [
         type: "video",
         name: "video_src",
         value: "https://www.w3schools.com/html/mov_bbb.mp4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "video_src",
       },
@@ -12820,6 +15657,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "my_text",
         value: "This is My Text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "my_text",
       },
@@ -12871,6 +15713,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "true_true",
         value: "Variable true  (this text is hidden)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@local.var_true",
         exclude_from_translation: true,
         _nested_name: "true_true",
@@ -12892,6 +15739,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "true_false",
         value: "Variable true Hidden negated (this text is visible)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@local.var_true",
         exclude_from_translation: true,
         _nested_name: "true_false",
@@ -12913,6 +15765,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "false_true",
         value: "Variable false (this text is visible)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@local.var_false",
         exclude_from_translation: true,
         _nested_name: "false_true",
@@ -12934,6 +15791,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "false_false",
         value: "Variable false Hidden negated (this text is hidden)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@local.var_false",
         exclude_from_translation: true,
         _nested_name: "false_false",
@@ -12964,6 +15826,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug_variable_one",
         value: "Value of the first debug variable.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug_variable_one",
@@ -12971,6 +15838,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug_variable_two",
         value: "Value of the second debug variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug_variable_two",
@@ -12978,6 +15850,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug_variable_3",
         value: "Value of the third debug variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug_variable_3",
@@ -12985,6 +15862,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug_variable_four",
         value: "Value of the fourth debug variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug_variable_four",
@@ -12992,6 +15874,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug_variable_five",
         value: "Value of the fifth debug variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug_variable_five",
@@ -13000,6 +15887,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "debug_text_1",
         value: "Text that includes @local.debug_variable_one",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "debug_text_1",
         _dynamicFields: {
@@ -13020,6 +15912,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "debug_text_2",
         value: "Text that includes @local.debug_variable_two",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "debug_text_2",
         _dynamicFields: {
@@ -13040,6 +15937,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "debug_text_3",
         value: "Text that includes @local.debug_variable_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "debug_text_3",
         _dynamicFields: {
@@ -13060,6 +15962,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "debug_text_4",
         value: "Text that includes @local.debug_variable_four",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "debug_text_4",
         _dynamicFields: {
@@ -13080,6 +15987,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "debug_text_5",
         value: "Text that includes @local.debug_variable-five",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "debug_text_5",
         _dynamicFields: {
@@ -13109,6 +16021,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "debug_variable",
         value: "plh_images/workshop_modes/guide_2/wave.svg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "debug_variable",
@@ -13117,6 +16034,11 @@ const template: FlowTypes.Template[] = [
         type: "image",
         name: "direct_image",
         value: "plh_images/workshop_modes/guide_2/wave.svg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "direct_image",
       },
@@ -13124,6 +16046,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "Text below the direct image and above the variable image.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
       },
@@ -13131,6 +16058,11 @@ const template: FlowTypes.Template[] = [
         type: "image",
         name: "variable_image",
         value: "plh_images/workshop_modes/guide_2/wave.svg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "variable_image",
       },
@@ -13148,6 +16080,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title",
         value: "@global.debug_variable_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title",
         _dynamicFields: {
@@ -13168,6 +16105,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "Text that includes @global.debug_variable_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text",
         _dynamicFields: {
@@ -13198,6 +16140,11 @@ const template: FlowTypes.Template[] = [
         type: "set_field",
         name: "variable",
         value: "Value of the field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "variable",
       },
@@ -13205,6 +16152,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Field value is @field.variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -13235,6 +16187,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Field value is @field.variable",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -13265,6 +16222,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Some text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -13287,6 +16249,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "First row: This text is hidden",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: true,
             exclude_from_translation: true,
             type: "set_variable",
@@ -13295,6 +16262,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "Second row: This text is visible",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: false,
             exclude_from_translation: true,
             type: "set_variable",
@@ -13312,6 +16284,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "First row: This text is visible",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: false,
             exclude_from_translation: true,
             type: "set_variable",
@@ -13320,6 +16297,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text_1",
             value: "Second row: This text is hidden",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             hidden: true,
             exclude_from_translation: true,
             type: "set_variable",
@@ -13342,6 +16324,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Placeholder Text to create separation",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -13355,6 +16342,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "Placeholder Text to create separation",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -13362,6 +16354,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_4",
         value: "This is text_4 which should be hidden as we set hidden to true",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: true,
         exclude_from_translation: true,
         _nested_name: "text_4",
@@ -13370,6 +16367,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "Placeholder Text to create separation",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
       },
@@ -13387,6 +16389,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Placeholder Text to create separation",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
       },
@@ -13400,6 +16407,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Placeholder Text to create separation..",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -13407,6 +16419,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "button_2",
         value: "Hidden Button",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: true,
         exclude_from_translation: true,
         _nested_name: "button_2",
@@ -13415,6 +16432,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: "Placeholder Text to create separation",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
       },
@@ -13432,6 +16454,11 @@ const template: FlowTypes.Template[] = [
         type: "audio",
         name: "audio_src",
         value: "plh_audio/sample.mp3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         parameter_list: {
           title: "Test title",
@@ -13466,6 +16493,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "true_true",
         value: "This text is hidden if var_true is true.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@local.var_true",
         exclude_from_translation: true,
         _nested_name: "true_true",
@@ -13487,6 +16519,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "true_false",
         value: "This text is hidden if var_true is false.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!@local.var_true",
         exclude_from_translation: true,
         _nested_name: "true_false",
@@ -13508,6 +16545,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "number_1",
         value: "This text is hidden if var_number_1 is 1.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@local.var_number_1 == 1",
         exclude_from_translation: true,
         _nested_name: "number_1",
@@ -13529,6 +16571,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "number_not_1",
         value: "This text is hidden if var_number_1 not 1.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@local.var_number_1 != 1",
         exclude_from_translation: true,
         _nested_name: "number_not_1",
@@ -13550,6 +16597,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "number_greater_1",
         value: "This text is hidden if var_number_1 is greater than 1.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "@local.var_number_1 > 1",
         exclude_from_translation: true,
         _nested_name: "number_greater_1",
@@ -13571,6 +16623,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "number_not_1",
         value: "This text is hidden if var_number_1 is not greater than 1.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         hidden: "!(@local.var_number_1 > 1)",
         exclude_from_translation: true,
         _nested_name: "number_not_1",
@@ -13602,6 +16659,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "Spacing between two paragraphs of text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -13610,6 +16672,11 @@ const template: FlowTypes.Template[] = [
         name: "text_1_a",
         value:
           "This is the first line in the first paragraph\nThis is the second line in the first paragraph.\n\nThis is the first line in the second paragraph\nThis is the second line in the second paragraph.\n\nThis is the first line in the third paragraph",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1_a",
       },
@@ -13617,6 +16684,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "Spacing in and around bulleted lists",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -13625,6 +16697,11 @@ const template: FlowTypes.Template[] = [
         name: "text_2",
         value:
           "This text is followed by a bulleted list. \n- First item\n- Second item\nSecond line of second item\n- Third item\n\nText below the bulleted list.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
       },
@@ -13662,6 +16739,11 @@ const template: FlowTypes.Template[] = [
                 name: "intro_text",
                 value:
                   "@global.w_instruct_female_caregiver @global.w_instruct_teen_girl @global.parent_point @global.w_instruct @global.guide_teen_name",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 exclude_from_translation: true,
                 type: "set_variable",
                 _nested_name: "read.workshop_activity.intro_text",
@@ -13721,6 +16803,11 @@ const template: FlowTypes.Template[] = [
                   {
                     name: "image_src",
                     value: "plh_images/workshops/instruct/read_1/slide_1.svg",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     exclude_from_translation: true,
                     type: "set_variable",
                     _nested_name: "read.workshop_activity.content_box.image_src",
@@ -13729,6 +16816,11 @@ const template: FlowTypes.Template[] = [
                     name: "text",
                     value:
                       "@global.w_instruct_female_caregiver @global.w_instruct_teen_girl @global.parent_point @global.w_instruct @global.guide_teen_name",
+                    _translations: {
+                      value: {
+                        spa: false,
+                      },
+                    },
                     exclude_from_translation: true,
                     type: "set_variable",
                     _nested_name: "read.workshop_activity.content_box.text",
@@ -13803,6 +16895,11 @@ const template: FlowTypes.Template[] = [
         name: "text",
         value:
           "thisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimes",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         style_list: ["overflow-wrap: anywhere"],
         _nested_name: "text",
       },
@@ -13810,6 +16907,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button",
         value: "pop-up",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -13836,6 +16938,11 @@ const template: FlowTypes.Template[] = [
         name: "text",
         value:
           "thisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimes",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         style_list: ["overflow-wrap: anywhere"],
         _nested_name: "text",
       },
@@ -13854,6 +16961,11 @@ const template: FlowTypes.Template[] = [
         name: "text",
         value:
           "All the tiles in the display group below should be the same height. \n\nText in the tiles below should be vertically centred, not fixed to top. You can see how the text in the tiles with short text is not vertically centred.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "text",
       },
       {
@@ -13985,6 +17097,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "radio_group_final",
         value: "radio_group_final_temp",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "radio_group_final",
       },
@@ -14038,6 +17155,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Local variable: @local.radio_group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -14058,6 +17180,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_1",
         value: "Set field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -14138,6 +17265,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "Field: @field.@local.radio_group_final",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -14158,6 +17290,11 @@ const template: FlowTypes.Template[] = [
         type: "button",
         name: "button_2",
         value: "Emit completed",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         action_list: [
           {
             trigger: "click",
@@ -14201,6 +17338,11 @@ const template: FlowTypes.Template[] = [
                 name: "text",
                 value:
                   "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp ",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 condition: '@fields.radio_group_final_temp == "option_1"',
                 exclude_from_translation: true,
                 type: "set_variable",
@@ -14232,6 +17374,11 @@ const template: FlowTypes.Template[] = [
                 name: "text",
                 value:
                   "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp ",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 condition: '@fields.radio_group_final_temp == "option_2"',
                 exclude_from_translation: true,
                 type: "set_variable",
@@ -14262,6 +17409,11 @@ const template: FlowTypes.Template[] = [
               {
                 name: "button",
                 value: "Emit uncompleted",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
                 action_list: [
                   {
                     trigger: "click",
@@ -14340,6 +17492,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "local_var",
             value: "@fields.radio_group_final_temp",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "example_text_button.local_var",
             _dynamicFields: {
@@ -14360,6 +17517,11 @@ const template: FlowTypes.Template[] = [
             name: "text",
             value:
               "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: '@fields.radio_group_final_temp == "option_1"',
             exclude_from_translation: true,
             type: "set_variable",
@@ -14399,6 +17561,11 @@ const template: FlowTypes.Template[] = [
             name: "text",
             value:
               "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             condition: '@fields.radio_group_final_temp == "option_2"',
             exclude_from_translation: true,
             type: "set_variable",
@@ -14437,6 +17604,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "button",
             value: "Emit uncompleted",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             action_list: [
               {
                 trigger: "click",
@@ -14466,6 +17638,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "radio_group_final",
         value: "radio_group_final_temp",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "radio_group_final",
       },
@@ -14519,6 +17696,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Local variable: @local.radio_group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -14538,6 +17720,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "show_first_template",
         value: '@local.radio_group == "option_1"',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "show_first_template",
         _dynamicFields: {
@@ -14572,6 +17759,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "You selected option 1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "example_text_button_1.text",
           },
@@ -14609,6 +17801,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "You selected option 2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "example_text_button_2.text",
           },
@@ -14636,6 +17833,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "Local variable: @local.radio_group",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "example_text.text",
             _dynamicFields: {
@@ -14668,6 +17870,11 @@ const template: FlowTypes.Template[] = [
       {
         name: "radio_group_final",
         value: "radio_group_final_temp",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         type: "set_variable",
         _nested_name: "radio_group_final",
       },
@@ -14721,6 +17928,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "Local variable: @local.radio_group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -14745,6 +17957,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "show_first_template",
             value: '@local.radio_group == "option_1"',
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "debug_update_child_2_b.show_first_template",
             _dynamicFields: {
@@ -14798,6 +18015,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "You selected option 1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "example_text_button_1.text",
           },
@@ -14835,6 +18057,11 @@ const template: FlowTypes.Template[] = [
           {
             name: "text",
             value: "You selected option 2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
             type: "set_variable",
             _nested_name: "example_text_button_2.text",
           },
@@ -14868,6 +18095,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "You selected option 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "text",
       },
     ],
@@ -14884,6 +18116,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text",
         value: "You selected option 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         _nested_name: "text",
       },
     ],
@@ -14900,6 +18137,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "List with last item global",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -14907,6 +18149,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "- First item\n- @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -14927,6 +18174,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "List with first item global",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -14934,6 +18186,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "- @global.savings_option_1\n- Second item",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -14954,6 +18211,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_3",
         value: "List with only global",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_3",
       },
@@ -14961,6 +18223,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_3",
         value: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_3",
         _dynamicFields: {
@@ -14988,6 +18255,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_4",
         value: "List with only global and a bit of text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_4",
       },
@@ -14996,6 +18268,11 @@ const template: FlowTypes.Template[] = [
         name: "text_4",
         value:
           "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
         _dynamicFields: {
@@ -15025,6 +18302,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_5",
         value: "List with only global using *",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_5",
       },
@@ -15032,6 +18314,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "* @global.savings_option_1\n* @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -15059,6 +18346,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_6",
         value: "Ordered lists (hardcoded)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_6",
       },
@@ -15067,6 +18359,11 @@ const template: FlowTypes.Template[] = [
         name: "text_6",
         value:
           "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_6",
         _dynamicFields: {
@@ -15096,6 +18393,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_7",
         value: "Ordered lists (automated)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_7",
       },
@@ -15103,6 +18405,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_7",
         value: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         parameter_list: {
           style: "numbered",
         },
@@ -15143,6 +18450,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_1",
         value: "List with last item global",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_1",
       },
@@ -15150,6 +18462,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_1",
         value: "* First item\n* @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_1",
         _dynamicFields: {
@@ -15170,6 +18487,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_2",
         value: "List with first item global",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_2",
       },
@@ -15177,6 +18499,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value: "* @global.savings_option_1\n* Second item",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_2",
         _dynamicFields: {
@@ -15197,6 +18524,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_4",
         value: "List with only global and a bit of text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_4",
       },
@@ -15205,6 +18537,11 @@ const template: FlowTypes.Template[] = [
         name: "text_4",
         value:
           "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_4",
         _dynamicFields: {
@@ -15234,6 +18571,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_5",
         value: "List with only global using *",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_5",
       },
@@ -15241,6 +18583,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_5",
         value: "* @global.savings_option_1\n* @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_5",
         _dynamicFields: {
@@ -15268,6 +18615,11 @@ const template: FlowTypes.Template[] = [
         type: "title",
         name: "title_6",
         value: "Ordered lists (hardcoded)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "title_6",
       },
@@ -15275,6 +18627,11 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_6",
         value: "1. @global.savings_option_1\n2. @global.savings_option_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
         _nested_name: "text_6",
         _dynamicFields: {
@@ -15301,6 +18658,1239 @@ const template: FlowTypes.Template[] = [
     ],
     _xlsxPath:
       "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_var_in_bulleted_list.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_lang_select",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        value: "Language Select",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        name: "language_list",
+        value: [
+          "name: eng | text: English",
+          "name: spa | text: Español",
+          "name: fra | text: Français",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "language_list",
+      },
+      {
+        type: "radio_group",
+        name: "language_select",
+        value: "@fields._app_language",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "emit",
+            args: ["set_language", "this.value"],
+            _raw: "changed | emit: set_language:@local.language_select",
+            _cleaned: "changed | emit: set_language:@local.language_select",
+          },
+          {
+            trigger: "changed",
+            action_id: "emit",
+            args: ["force_reload"],
+            _raw: "changed | emit: force_reload",
+            _cleaned: "changed | emit: force_reload",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.language_list",
+        },
+        _nested_name: "language_select",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields._app_language",
+              matchedExpression: "@fields._app_language",
+              type: "fields",
+              fieldName: "_app_language",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | emit: set_language:@local.language_select",
+                  matchedExpression: "@local.language_select",
+                  type: "local",
+                  fieldName: "language_select",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | emit: set_language:@local.language_select",
+                  matchedExpression: "@local.language_select",
+                  type: "local",
+                  fieldName: "language_select",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.language_list",
+                matchedExpression: "@local.language_list",
+                type: "local",
+                fieldName: "language_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields._app_language": ["value"],
+          "@local.language_select": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.language_list": ["parameter_list.answer_list"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_lang_template_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "template",
+        name: "lang_select",
+        value: "example_lang_select",
+        rows: [],
+        _nested_name: "lang_select",
+      },
+      {
+        type: "title",
+        name: "title",
+        value: "Example Language Template",
+        _translations: {
+          value: {
+            spa: true,
+          },
+        },
+        _nested_name: "title",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "This is a default text that needs to be translated",
+        _translations: {
+          value: {
+            spa: true,
+          },
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "subtitle",
+        name: "subtitle_1",
+        value: "How are you feeling today?",
+        _translations: {
+          value: {
+            spa: true,
+          },
+        },
+        parameter_list: {
+          style: "large",
+        },
+        _nested_name: "subtitle_1",
+      },
+      {
+        name: "answer_list_1",
+        value: [
+          "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+          "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked:plh_images/stickers/faces/neutral.svg",
+          "name:sad | image:plh_images/stickers/faces/sadder.svg |  image_checked:plh_images/stickers/faces/sadder.svg",
+        ],
+        type: "set_variable",
+        _nested_name: "answer_list_1",
+      },
+      {
+        name: "options_per_row",
+        value: 3,
+        type: "set_variable",
+        _nested_name: "options_per_row",
+      },
+      {
+        name: "radio_group_field_name",
+        value: "radio_group_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "radio_group_field_name",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["@local.radio_group_field_name", "this.value"],
+            _raw: "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+            _cleaned: "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+          },
+        ],
+        parameter_list: {
+          answer_list: "@local.answer_list_1",
+          options_per_row: "@local.options_per_row",
+        },
+        _nested_name: "radio_group",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              args: {
+                "0": [
+                  {
+                    fullExpression: "@local.radio_group_field_name",
+                    matchedExpression: "@local.radio_group_field_name",
+                    type: "local",
+                    fieldName: "radio_group_field_name",
+                  },
+                ],
+              },
+              _raw: [
+                {
+                  fullExpression:
+                    "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  matchedExpression: "@local.radio_group_field_name",
+                  type: "local",
+                  fieldName: "radio_group_field_name",
+                },
+                {
+                  fullExpression:
+                    "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression:
+                    "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  matchedExpression: "@local.radio_group_field_name",
+                  type: "local",
+                  fieldName: "radio_group_field_name",
+                },
+                {
+                  fullExpression:
+                    "changed | set_field:@local.radio_group_field_name:@local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_1",
+                matchedExpression: "@local.answer_list_1",
+                type: "local",
+                fieldName: "answer_list_1",
+              },
+            ],
+            options_per_row: [
+              {
+                fullExpression: "@local.options_per_row",
+                matchedExpression: "@local.options_per_row",
+                type: "local",
+                fieldName: "options_per_row",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.radio_group_field_name": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned",
+          ],
+          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+          "@local.options_per_row": ["parameter_list.options_per_row"],
+        },
+      },
+      {
+        type: "display_group",
+        name: "reply_happy_dg",
+        hidden: '@local.radio_group!="happy"',
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "reply_happy",
+            value: "This is the default reply if the feeling response is happy, the first option.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            _nested_name: "reply_happy_dg.reply_happy",
+          },
+        ],
+        _nested_name: "reply_happy_dg",
+        _dynamicFields: {
+          hidden: [
+            {
+              fullExpression: '@local.radio_group!="happy"',
+              matchedExpression: "@local.radio_group",
+              type: "local",
+              fieldName: "radio_group",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.radio_group": ["hidden"],
+        },
+      },
+      {
+        type: "display_group",
+        name: "reply_ok_dg",
+        hidden: '@local.radio_group!="ok" ',
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "reply_ok",
+            value: "This is the default reply if the feeling response is ok, the second option.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            _nested_name: "reply_ok_dg.reply_ok",
+          },
+        ],
+        _nested_name: "reply_ok_dg",
+        _dynamicFields: {
+          hidden: [
+            {
+              fullExpression: '@local.radio_group!="ok" ',
+              matchedExpression: "@local.radio_group",
+              type: "local",
+              fieldName: "radio_group",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.radio_group": ["hidden"],
+        },
+      },
+      {
+        type: "display_group",
+        name: "reply_sad_dg",
+        hidden: '@local.radio_group!="sad"',
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "reply_sad",
+            value: "This is the default reply if the feeling response is sad, the third option.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            _nested_name: "reply_sad_dg.reply_sad",
+          },
+        ],
+        _nested_name: "reply_sad_dg",
+        _dynamicFields: {
+          hidden: [
+            {
+              fullExpression: '@local.radio_group!="sad"',
+              matchedExpression: "@local.radio_group",
+              type: "local",
+              fieldName: "radio_group",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.radio_group": ["hidden"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value:
+          "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+        _translations: {
+          value: {
+            spa: true,
+          },
+        },
+        hidden: "!@local.radio_group",
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+              matchedExpression: "@local.radio_group_field_name",
+              type: "local",
+              fieldName: "radio_group_field_name",
+            },
+            {
+              fullExpression:
+                "The field set through the radio group is @local.radio_group_field_name and its value is @fields.@local.radio_group_field_name.",
+              matchedExpression: "@local.radio_group_field_name",
+              type: "local",
+              fieldName: "radio_group_field_name",
+            },
+          ],
+          hidden: [
+            {
+              fullExpression: "!@local.radio_group",
+              matchedExpression: "!@local.radio_group",
+              type: "local",
+              fieldName: "radio_group",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.radio_group_field_name": ["value", "value"],
+          "!@local.radio_group": ["hidden"],
+        },
+      },
+      {
+        type: "subtitle",
+        name: "subtitle_2",
+        value: "Select one of the following options:",
+        _translations: {
+          value: {
+            spa: true,
+          },
+        },
+        parameter_list: {
+          style: "large",
+        },
+        _nested_name: "subtitle_2",
+      },
+      {
+        name: "combo_box_answered",
+        value: false,
+        type: "set_variable",
+        _nested_name: "combo_box_answered",
+      },
+      {
+        name: "answer_list_2",
+        value: [
+          "name: option_1 | text:This is the first default option for the combo box",
+          "name: option_2 | text:This is the second default option for the combo box",
+          "name: option_3 | text:This is the third default option for the combo box",
+        ],
+        type: "set_variable",
+        _nested_name: "answer_list_2",
+      },
+      {
+        name: "placeholder",
+        value: "@global.tap_and_choose",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "placeholder",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.tap_and_choose",
+              matchedExpression: "@global.tap_and_choose",
+              type: "global",
+              fieldName: "tap_and_choose",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.tap_and_choose": ["value"],
+        },
+      },
+      {
+        name: "input_allowed",
+        value: true,
+        type: "set_variable",
+        _nested_name: "input_allowed",
+      },
+      {
+        name: "answer_placeholder",
+        value: "@global.type_your_own",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "answer_placeholder",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.type_your_own",
+              matchedExpression: "@global.type_your_own",
+              type: "global",
+              fieldName: "type_your_own",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.type_your_own": ["value"],
+        },
+      },
+      {
+        name: "combo_box_field_name",
+        value: "radio_group_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "combo_box_field_name",
+      },
+      {
+        type: "combo_box",
+        name: "combo_box",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["@local.combo_box_field_name", "this.value"],
+            _raw: "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+            _cleaned: "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+          },
+          {
+            trigger: "changed",
+            action_id: "set_local",
+            args: ["combo_box_answered", true],
+            _raw: "changed | set_local: combo_box_answered: true",
+            _cleaned: "changed | set_local: combo_box_answered: true",
+          },
+        ],
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+          placeholder: "@local.placeholder",
+          input_allowed: "@local.input_allowed",
+          answer_placeholder: "@local.answer_placeholder",
+        },
+        _nested_name: "combo_box",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              args: {
+                "0": [
+                  {
+                    fullExpression: "@local.combo_box_field_name",
+                    matchedExpression: "@local.combo_box_field_name",
+                    type: "local",
+                    fieldName: "combo_box_field_name",
+                  },
+                ],
+              },
+              _raw: [
+                {
+                  fullExpression:
+                    "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  matchedExpression: "@local.combo_box_field_name",
+                  type: "local",
+                  fieldName: "combo_box_field_name",
+                },
+                {
+                  fullExpression:
+                    "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  matchedExpression: "@local.combo_box",
+                  type: "local",
+                  fieldName: "combo_box",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression:
+                    "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  matchedExpression: "@local.combo_box_field_name",
+                  type: "local",
+                  fieldName: "combo_box_field_name",
+                },
+                {
+                  fullExpression:
+                    "changed | set_field:@local.combo_box_field_name:@local.combo_box",
+                  matchedExpression: "@local.combo_box",
+                  type: "local",
+                  fieldName: "combo_box",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+            input_allowed: [
+              {
+                fullExpression: "@local.input_allowed",
+                matchedExpression: "@local.input_allowed",
+                type: "local",
+                fieldName: "input_allowed",
+              },
+            ],
+            answer_placeholder: [
+              {
+                fullExpression: "@local.answer_placeholder",
+                matchedExpression: "@local.answer_placeholder",
+                type: "local",
+                fieldName: "answer_placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.combo_box_field_name": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned",
+          ],
+          "@local.combo_box": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+          "@local.input_allowed": ["parameter_list.input_allowed"],
+          "@local.answer_placeholder": ["parameter_list.answer_placeholder"],
+        },
+      },
+      {
+        type: "display_group",
+        name: "reply_dg",
+        hidden: "!@local.combo_box_answered",
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "reply_combo_box",
+            value: "The option selected was @local.combo_box.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            _nested_name: "reply_dg.reply_combo_box",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "The option selected was @local.combo_box.",
+                  matchedExpression: "@local.combo_box",
+                  type: "local",
+                  fieldName: "combo_box",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.combo_box": ["value"],
+            },
+          },
+        ],
+        _nested_name: "reply_dg",
+        _dynamicFields: {
+          hidden: [
+            {
+              fullExpression: "!@local.combo_box_answered",
+              matchedExpression: "!@local.combo_box_answered",
+              type: "local",
+              fieldName: "combo_box_answered",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "!@local.combo_box_answered": ["hidden"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value:
+          "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+        _translations: {
+          value: {
+            spa: true,
+          },
+        },
+        hidden: "!@local.combo_box",
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+              matchedExpression: "@local.combo_box_field_name",
+              type: "local",
+              fieldName: "combo_box_field_name",
+            },
+            {
+              fullExpression:
+                "The field set through the combo box is @local.combo_box_field_name and its value is @fields.@local.combo_box_field_name.",
+              matchedExpression: "@local.combo_box_field_name",
+              type: "local",
+              fieldName: "combo_box_field_name",
+            },
+          ],
+          hidden: [
+            {
+              fullExpression: "!@local.combo_box",
+              matchedExpression: "!@local.combo_box",
+              type: "local",
+              fieldName: "combo_box",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.combo_box_field_name": ["value", "value"],
+          "!@local.combo_box": ["hidden"],
+        },
+      },
+      {
+        type: "button",
+        name: "button_1",
+        value: "Pop-up 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_lang_template_pop_1"],
+            _raw: "click | pop_up:example_lang_template_pop_1",
+            _cleaned: "click | pop_up:example_lang_template_pop_1",
+          },
+        ],
+        exclude_from_translation: true,
+        _nested_name: "button_1",
+      },
+      {
+        type: "button",
+        name: "button_2",
+        value: "Pop-up 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_lang_template_pop_2"],
+            _raw: "click | pop_up:example_lang_template_pop_2",
+            _cleaned: "click | pop_up:example_lang_template_pop_2",
+          },
+        ],
+        exclude_from_translation: true,
+        _nested_name: "button_2",
+      },
+      {
+        type: "display_group",
+        name: "global_box",
+        parameter_list: {
+          style: "dashed_box",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "text_4",
+            value: "(don't translate this) The following text is a global:",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            exclude_from_translation: true,
+            _nested_name: "global_box.text_4",
+          },
+          {
+            type: "text",
+            name: "text_5",
+            value: "@global.languge_global",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "global_box.text_5",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@global.languge_global",
+                  matchedExpression: "@global.languge_global",
+                  type: "global",
+                  fieldName: "languge_global",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@global.languge_global": ["value"],
+            },
+          },
+        ],
+        _nested_name: "global_box",
+      },
+      {
+        type: "display_group",
+        parameter_list: {
+          style: "dashed_box",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "text_6",
+            value: "(don't translate) The following text is a field:",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.text_6",
+          },
+          {
+            type: "text",
+            name: "text_7",
+            value: "@fields.language_field_1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "display_group.text_7",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@fields.language_field_1",
+                  matchedExpression: "@fields.language_field_1",
+                  type: "fields",
+                  fieldName: "language_field_1",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@fields.language_field_1": ["value"],
+            },
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        parameter_list: {
+          style: "dashed_box",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "text_8",
+            value:
+              "(don't translate) The following text is a field defined in a global from a data list:",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.text_8",
+          },
+          {
+            type: "text",
+            name: "text_9",
+            value: "@fields.language_field_2",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "display_group.text_9",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@fields.language_field_2",
+                  matchedExpression: "@fields.language_field_2",
+                  type: "fields",
+                  fieldName: "language_field_2",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@fields.language_field_2": ["value"],
+            },
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_lang_template_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "template",
+        name: "example_lang_template_1",
+        value: "example_lang_template_1",
+        rows: [
+          {
+            name: "text_1",
+            value: "This is a modified text that needs to be translated.\n\nThis is a nested text.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.text_1",
+          },
+          {
+            name: "reply_happy",
+            value:
+              "This is the modified reply if the feeling response is happy, the first option.\n\nThis is a nested text.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.reply_happy",
+          },
+          {
+            name: "reply_ok",
+            value:
+              "This is the modified reply if the feeling response is ok, the second option.\n\nThis is a nested text.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.reply_ok",
+          },
+          {
+            name: "reply_sad",
+            value:
+              "This is the modified reply if the feeling response is sad, the third option.\n\nThis is a nested text.",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.reply_sad",
+          },
+          {
+            name: "subtitle_2",
+            value: "Which of the following do you like the most (this is modified)?",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.subtitle_2",
+          },
+          {
+            name: "answer_list_2",
+            value: [
+              "name: option_1 | text:Cats (modified text in answer list)",
+              "name: option_2 | text:Dogs (modified text in answer list)",
+              "name: option_3 | text:Chinchillas (modified text in answer list)",
+            ],
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.answer_list_2",
+          },
+          {
+            name: "input_allowed",
+            value: false,
+            type: "set_variable",
+            _nested_name: "example_lang_template_1.input_allowed",
+          },
+        ],
+        _nested_name: "example_lang_template_1",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_lang_template_pop_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "@data.language.example_lang_1.title",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "title_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.language.example_lang_1.title",
+              matchedExpression: "@data.language.example_lang_1.title",
+              type: "data",
+              fieldName: "language",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.language.example_lang_1.title": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "@data.language.example_lang_1.text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.language.example_lang_1.text",
+              matchedExpression: "@data.language.example_lang_1.text",
+              type: "data",
+              fieldName: "language",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.language.example_lang_1.text": ["value"],
+        },
+      },
+      {
+        type: "image",
+        name: "image_1",
+        value: "@data.language.example_lang_1.image_asset",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "image_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.language.example_lang_1.image_asset",
+              matchedExpression: "@data.language.example_lang_1.image_asset",
+              type: "data",
+              fieldName: "language",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.language.example_lang_1.image_asset": ["value"],
+        },
+      },
+      {
+        type: "lottie_animation",
+        name: "lottie_1",
+        value: "@data.language.example_lang_1.lottie_asset",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "lottie_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.language.example_lang_1.lottie_asset",
+              matchedExpression: "@data.language.example_lang_1.lottie_asset",
+              type: "data",
+              fieldName: "language",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.language.example_lang_1.lottie_asset": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_lang_template_pop_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "template",
+        name: "example_lang_template_pop_1",
+        value: "example_lang_template_pop_1",
+        rows: [
+          {
+            name: "title_1",
+            value: "New title: @data.language.example_lang_2.title",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_pop_1.title_1",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "New title: @data.language.example_lang_2.title",
+                  matchedExpression: "@data.language.example_lang_2.title",
+                  type: "data",
+                  fieldName: "language",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.language.example_lang_2.title": ["value"],
+            },
+          },
+          {
+            name: "text_1",
+            value: "New text: @data.language.example_lang_2.text",
+            _translations: {
+              value: {
+                spa: true,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_pop_1.text_1",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "New text: @data.language.example_lang_2.text",
+                  matchedExpression: "@data.language.example_lang_2.text",
+                  type: "data",
+                  fieldName: "language",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.language.example_lang_2.text": ["value"],
+            },
+          },
+          {
+            name: "image_1",
+            value: "@data.language.example_lang_2.image_asset",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_pop_1.image_1",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.language.example_lang_2.image_asset",
+                  matchedExpression: "@data.language.example_lang_2.image_asset",
+                  type: "data",
+                  fieldName: "language",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.language.example_lang_2.image_asset": ["value"],
+            },
+          },
+          {
+            name: "lottie_1",
+            value: "@data.language.example_lang_2.lottie_asset",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            type: "set_variable",
+            _nested_name: "example_lang_template_pop_1.lottie_1",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.language.example_lang_2.lottie_asset",
+                  matchedExpression: "@data.language.example_lang_2.lottie_asset",
+                  type: "data",
+                  fieldName: "language",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.language.example_lang_2.lottie_asset": ["value"],
+            },
+          },
+        ],
+        _nested_name: "example_lang_template_pop_1",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx",
   },
 ];
 export default template;
