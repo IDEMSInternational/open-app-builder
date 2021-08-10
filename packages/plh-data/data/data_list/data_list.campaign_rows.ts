@@ -74,9 +74,9 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "go_to",
-            args: ["w_self_care_m_w_released"],
-            _raw: "go_to: w_self_care_m_w_released",
-            _cleaned: "click | go_to: w_self_care_m_w_released",
+            args: ["w_self_care_stepper"],
+            _raw: "go_to: w_self_care_stepper",
+            _cleaned: "click | go_to: w_self_care_stepper",
           },
           {
             trigger: "click",
@@ -211,18 +211,14 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | current_workshop_number : 1",
           },
           {
-            condition_type: "db_lookup",
+            condition_type: "field_evaluation",
             condition_args: {
-              db_lookup: {
-                table_id: "data_events",
-                where: {
-                  name: "w_self_care_completed",
-                  value: "true",
-                },
-                order: "asc",
+              field_evaluation: {
+                field: "w_self_care_completed",
+                value: true,
               },
             },
-            _raw: "get_field:first | w_self_care_completed: true",
+            _raw: "get_field | w_self_care_completed: true",
           },
         ],
         deactivation_condition_list: [
@@ -4572,21 +4568,21 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/parent_heart_white.svg",
       },
       {
-        id: "w_rules_m_w_tomorrow",
+        id: "w_money_m_w_tomorrow",
         click_action_list: [
           {
             trigger: "click",
             action_id: "pop_up",
-            args: ["w_rules_m_w_tomorrow"],
-            _raw: "pop_up: w_rules_m_w_tomorrow",
-            _cleaned: "click | pop_up: w_rules_m_w_tomorrow",
+            args: ["w_money_m_w_tomorrow"],
+            _raw: "pop_up: w_money_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_money_m_w_tomorrow",
           },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_rules_m_w_tomorrow.sent", true],
-            _raw: "set_field: w_rules_m_w_tomorrow.sent : true",
-            _cleaned: "click | set_field: w_rules_m_w_tomorrow.sent : true",
+            args: ["w_money_m_w_tomorrow.sent", true],
+            _raw: "set_field: w_money_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_money_m_w_tomorrow.sent : true",
           },
         ],
         priority: 7.1,
@@ -4617,11 +4613,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_rules_m_w_tomorrow.sent",
+                field: "w_money_m_w_tomorrow.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_rules_m_w_tomorrow.sent : true",
+            _raw: "get_field | w_money_m_w_tomorrow.sent : true",
           },
           {
             condition_type: "field_evaluation",
@@ -10780,6 +10776,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -10837,6 +10838,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -10884,6 +10890,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -10941,6 +10952,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -10988,6 +11004,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11045,6 +11066,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11092,6 +11118,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11149,6 +11180,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11196,6 +11232,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11253,6 +11294,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11300,6 +11346,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11357,6 +11408,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11404,6 +11460,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11461,6 +11522,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11508,6 +11574,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11565,6 +11636,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11612,6 +11688,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11669,6 +11750,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11716,6 +11802,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11773,6 +11864,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11820,6 +11916,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11877,6 +11978,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -11924,6 +12030,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Start",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Start",
@@ -11981,6 +12092,11 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["workshop_quick_start"],
         icon: "plh_images/icons/play_white.svg",
         text: "Continue",
+        _translations: {
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           text: {
             eng: "Continue",
@@ -12034,6 +12150,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12060,6 +12184,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12086,6 +12218,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12112,6 +12252,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12138,6 +12286,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12164,6 +12320,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12190,6 +12354,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12216,6 +12388,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",
@@ -12242,6 +12422,14 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+          },
+          text: {
+            spa: false,
+          },
+        },
         _translatedFields: {
           title: {
             eng: "New message from PLH",

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
-import { ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
   selector: "plh-tmpl-text",

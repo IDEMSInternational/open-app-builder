@@ -2,17 +2,15 @@ import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 import { ITemplateRowProps } from "../models";
 import { getStringParamFromTemplateRow } from "../../../utils";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
 @Component({
   selector: "plh-tmpl-title",
   template: `
     <div class="title-wrapper" [class]="style">
       <h1
-        *ngIf="innerHTML"
         [style.textAlign]="textAlign"
         [class]="'tiny standard' + ' ' + style"
-        [innerHTML]="innerHTML"
+        [innerHTML]="_row.value"
       ></h1>
       <ion-icon
         *ngIf="help"
@@ -31,15 +29,9 @@ export class TmplTitleComponent extends TemplateBaseComponent implements ITempla
   tooltipPosition: string;
   textAlign: string;
   style: string | null;
-  innerHTML: SafeHtml;
-
-  constructor(private domSanitizer: DomSanitizer) {
-    super();
-  }
 
   ngOnInit() {
     this.getParams();
-    this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(this._row.value);
   }
 
   getParams() {

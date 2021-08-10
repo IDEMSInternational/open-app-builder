@@ -16,6 +16,11 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "dev_mode_code",
         value: "ParentApp_dev",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
     ],
@@ -30,11 +35,21 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "parent_points_make_me_smile",
         value: "Make me smile",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "parent_points_get_me_going",
         value: "Get me going",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
@@ -168,41 +183,81 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "m_w_tomorrow",
         value: "New workshop ready tomorrow!",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_w_released",
         value: "New workshop!",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_w_reminder",
         value: "Workshop Reminder",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_w_in_progress",
         value: "Nice progress!",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_praise",
         value: "You are appreciated!",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_something_fun",
         value: "Something Fun",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_parent_points_overview",
         value: "Your @global.parent_points this week",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "m_hp_reminder",
         value: "Home Practice Reminder",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/in_week_message_globals.xlsx",
@@ -216,16 +271,31 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "to_solve_hp_challenge",
         value: "To solve this challenge, I will try to:",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "try_this_hp_challenge",
         value: "Do you want to try one of the following things?   ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "challenge_not_here",
         value: "My challenge is not listed here.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/in_week_message_globals.xlsx",
@@ -237,272 +307,743 @@ const global: FlowTypes.Global[] = [
     rows: [
       {
         type: "declare_global_constant",
-        name: "guide_1_name",
+        name: "female_adult_name_1",
+        value: "Grace",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Felicia",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Sara",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Bibi",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Faraja",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Amina",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Shukuru",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Maria",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Emma",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Shalini",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Grandma",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mother",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mom",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mama",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
         value: "Giles",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Amani",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "James",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "Baraka",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_6",
+        value: "Thabani",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Father",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Dad",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Grandpa",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "guide_1_name",
+        value: "@global.male_adult_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "guide_2_name",
-        value: "Grace",
+        value: "@global.female_adult_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "guide_teen_name",
-        value: "Alex",
+        value: "@global.male_child_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_praise_female_caregiver_name",
-        value: "Felicia",
+        value: "@global.female_adult_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_praise_girl",
-        value: "Faraja",
+        value: "@global.female_child_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_praise_teen_girl",
-        value: "Amina",
+        value: "@global.female_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_instruct_teen_girl",
-        value: "Amina",
+        value: "@global.female_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_instruct_female_caregiver",
-        value: "Grandma",
+        value: "@global.female_caregiver_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_teen_boy_1",
-        value: "Amani",
+        value: "@global.male_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_girl",
-        value: "Shukuru",
+        value: "@global.female_child_name_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_male_caregiver",
-        value: "Father",
+        value: "@global.male_caregiver_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_female_caregiver",
-        value: "Mother",
+        value: "@global.female_caregiver_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_teen_girl",
-        value: "Maria",
+        value: "@global.female_child_name_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_teen_boy_2",
-        value: "James",
+        value: "@global.male_child_name_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_stress_parent",
-        value: "Dad",
+        value: "@global.male_caregiver_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_rules_teen_boy",
-        value: "Amani",
+        value: "@global.male_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_rules_female_caregiver_1",
-        value: "Mother",
+        value: "@global.female_caregiver_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_rules_teen_girl",
-        value: "Shalini",
+        value: "@global.female_child_name_6",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_rules_female_caregiver_2",
-        value: "Mom",
+        value: "@global.female_caregiver_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_teen_boy_1",
-        value: "Amani",
+        value: "@global.male_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_teen_boy_2",
-        value: "Baraka",
+        value: "@global.male_child_name_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_teen_girl_1",
-        value: "Faraja",
+        value: "@global.female_child_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_teen_girl_2",
-        value: "Shukuru",
+        value: "@global.female_child_name_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_male_caregiver",
-        value: "Father",
+        value: "@global.male_caregiver_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_female_caregiver",
-        value: "Mother",
+        value: "@global.female_caregiver_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_money_grandma",
-        value: "Grandma Sara",
+        value: "@global.female_caregiver_1 @global.female_adult_name_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_money_teen_girl",
-        value: "Amina",
+        value: "@global.female_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_money_teen_boy",
-        value: "Baraka",
+        value: "@global.male_child_name_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_solve_female_caregiver_1",
-        value: "Mother",
+        value: "@global.female_caregiver_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_solve_female_caregiver_1_name",
-        value: "Emma",
+        value: "@global.female_child_name_5",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_solve_teen_girl",
-        value: "Faraja",
+        value: "@global.female_child_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_solve_teen_boy_1",
-        value: "Sammy",
+        value: "@global.male_child_name_5",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_solve_female_caregiver_2",
-        value: "Grandma",
+        value: "@global.female_caregiver_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_solve_teen_boy_2",
-        value: "Baraka",
+        value: "@global.male_child_name_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_safe_teen_girl_1",
-        value: "Faraja",
+        value: "@global.female_child_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_safe_teen_girl_2",
-        value: "Amina",
+        value: "@global.female_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_safe_teen_girl_3",
-        value: "Shukuru",
+        value: "@global.female_child_name_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_safe_female_caregiver",
-        value: "Mom",
+        value: "@global.female_caregiver_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_teen_girl_1",
-        value: "Faraja",
+        value: "@global.female_child_name_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_adult_friend",
-        value: "Bibi",
+        value: "@global.female_adult_name_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_female_caregiver",
-        value: "Mama",
+        value: "@global.female_caregiver_4",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_teen_boy_1",
-        value: "Amani",
+        value: "@global.male_child_name_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_teen_boy_2",
-        value: "Thabani",
+        value: "@global.male_child_name_6",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_male_caregiver_1",
-        value: "Dad",
+        value: "@global.male_caregiver_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_male_caregiver_2",
-        value: "Grandpa",
+        value: "@global.male_caregiver_3",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
     ],
@@ -517,29 +1058,54 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "teen_social_medium",
         value: "TikTok",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "data_warning_video",
         value:
           "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "data_warning_websites",
         value:
           "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "data_warning_send_message",
         value:
           "Sending this message requires internet access. To limit data use, send this message when on WiFi.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "currency",
         value: "R",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
@@ -571,36 +1137,71 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "parent_app",
         value: "ParentApp",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "weekly_workshops",
         value: "Weekly Workshops",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "weekly_workshop",
         value: "Weekly Workshop",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "weekly_workshop_options",
         value: "Weekly Workshop Options",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "parent_points",
         value: "ParentPoints",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "parent_point",
         value: "ParentPoint",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "parent_centre",
         value: "Parent Library",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
@@ -624,6 +1225,11 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "in_week_messages",
         value: "In-Week Messages",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
@@ -637,66 +1243,131 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "ideas_button",
         value: "Real-world ideas",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "ideas_short_button",
         value: "Ideas",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "ideas_pop_up",
         value: "Ideas from other families...",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "more_button",
         value: "Find out more",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "show_me_how_button",
         value: "Show me how",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "tell_me_more_button",
         value: "Tell me more!",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "lets_go_button",
         value: "Let's go! ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "check_it_out_button",
         value: "Check it out!",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "done_button",
         value: "Done",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "next_button",
         value: "Next",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "back_button",
         value: "Previous",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "challenges_solutions_button",
         value: "Challenges & solutions",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "save_button",
         value: "Save",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
@@ -710,36 +1381,71 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "my_relaxes",
         value: "My Favourite Relaxes",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "all_relaxes",
         value: "All Relaxes",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "random_relax",
         value: "Random Relax",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "current_relax",
         value: "This Week's Relax",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "relax_passive_short",
         value: "Listen & Relax (1-2 minutes)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "relax_passive_long",
         value: "Listen & Relax (3-5 minutes)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "relax_active",
         value: "Do & Relax (5-10 minutes)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
@@ -897,31 +1603,61 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "my_activities",
         value: "My Favourite Activities",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "all_activities",
         value: "All Activities",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "random_activity",
         value: "Random Activity",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "current_activity",
         value: "This Week's Activity",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "chat_together",
         value: "Chat Together",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "do_together",
         value: "Do Together",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
@@ -1086,51 +1822,101 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "spend_time_idea_1",
         value: "Walk to the shops",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_2",
         value: "Get water together ",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_3",
         value: "Do a chore together",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_4",
         value: "Prepare dinner",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_5",
         value: "Eat breakfast/lunch/dinner",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_6",
         value: "Have tea after school",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_7",
         value: "Watch a T.V. show",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_8",
         value: "Review homework",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_9",
         value: "Chat before bedtime",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "spend_time_idea_10",
         value: "Play a game/sport",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx",
@@ -1145,21 +1931,41 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "saving_goal_1",
         value: "Teens completing school/university",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "saving_goal_2",
         value: "Building/expanding a house for my family",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "saving_goal_3",
         value: "Starting a business",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "saving_goal_4",
         value: "Buying a car for my family",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx",
@@ -1174,31 +1980,61 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "financial_emergency_1",
         value: "Severe illness or death of a friend or family member",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "financial_emergency_2",
         value: "Robbery",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "financial_emergency_3",
         value: "Flooding",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "financial_emergency_4",
         value: "Political violence",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "financial_emergency_5",
         value: "Losing my job",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "financial_emergency_6",
         value: "Pandemic (COVID-19)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx",
@@ -1213,21 +2049,41 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "savings_option_1",
         value: "At home",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "savings_option_2",
         value: "Buy things we can sell",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "savings_option_3",
         value: "At a bank",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "savings_option_4",
         value: "In a savings group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx",
@@ -1242,51 +2098,101 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "negative_consequence_1",
         value: "No gadget use the next day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "negative_consequence_2",
         value: "Take 5 minutes pause in separate part of the room",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "negative_consequence_3",
         value: "Write a letter of apology",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "negative_consequence_4",
         value: "Cannot see friends the next day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "negative_consequence_5",
         value: "Cannot play with phone after dinner (or next hour)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "positive_consequence_1",
         value: "Extra time with friends on weekend (1hr)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "positive_consequence_2",
         value: "Cooking teen’s favourite meal",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "positive_consequence_3",
         value: "Extra time with phone after dinner (30 min)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "positive_consequence_4",
         value: "Watching teen’s T.V. show together",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "positive_consequence_5",
         value: "Extra one-on-one time on Sunday (30 min)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx",
@@ -1301,26 +2207,51 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "crisis_skill_1",
         value: "Take a deep breath and pause before responding",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "crisis_skill_2",
         value: "Listen to your teen",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "crisis_skill_3",
         value: "Praise your teen for sharing",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "crisis_skill_4",
         value: "Use problem solving skills",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "crisis_skill_5",
         value: "Work out where you can get help",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/suggestion_globals.xlsx",
@@ -1340,21 +2271,41 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "tap_and_type",
         value: "Tap and type",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "tap_and_choose",
         value: "Tap and choose",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "type_your_own",
         value: "Type your own",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "dont_show_again",
         value: "I've understood this. Don't show me this message again.",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/survey_globals.xlsx",
@@ -1430,126 +2381,251 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "w_self_care",
         value: "Welcome and Self-Care",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_self_care_only",
         value: "Self-Care",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_self_care_tools",
         value: "How to add self-care",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_1on1",
         value: "One-on-One Time",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_1on1_tools",
         value: "How to spend one-on-one time",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_praise",
         value: "Praise",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_praise_tools",
         value: "How to praise",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_instruct",
         value: "Positive Instructions",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_instruct_tools",
         value: "How to give positive instructions",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_stress",
         value: "Managing Stress",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_stress_tools",
         value: "How to manage stress",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_money",
         value: "Family Budgets",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_money_tools",
         value: "How to budget & save",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_rules",
         value: "Rules",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_rules_tools",
         value: "How to create rules",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_consequence",
         value: "Calm Consequences",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_consequence_tools",
         value: "How to give calm consequences",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_solve",
         value: "Problem Solving",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_solve_tools",
         value: "How to solve problems",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_safe",
         value: "Teen Safety",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_safe_tools",
         value: "How to keep your teen safe",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_crisis",
         value: "Dealing with Crisis",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_crisis_tools",
         value: "How to deal with crisis",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_celebrate",
         value: "Celebration and Next Steps",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "w_celebrate_tools",
         value: "How to support each other",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx",
@@ -1563,16 +2639,31 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "home_practice",
         value: "Home Practice",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "home_practice_problem_solving",
         value: "Talk about @global.home_practice",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "hp_review",
         value: "Home Practice Review",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx",
@@ -1658,72 +2749,132 @@ const global: FlowTypes.Global[] = [
         type: "declare_field_default",
         name: "w_self_care_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_1on1_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_praise_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_instruct_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_stress_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_money_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_rules_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_consequence_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_solve_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_safe_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_crisis_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "w_celebrate_completion_status",
         value: "uncompleted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
@@ -2104,67 +3255,137 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "together",
         value: "In my group",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "individual",
         value: "By myself",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
         name: "guide_number",
         value: "guide_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "user_name",
         value: "awesome parent",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "user_name_default",
         value: "awesome parent",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
         name: "group_name",
         value: "friends",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "group_name_default",
         value: "friends",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "current_workshop_default",
         value: "w_self_care",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
         name: "current_workshop",
         value: "w_self_care",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_field_default",
+        name: "current_workshop_number",
+        value: 1,
       },
       {
         type: "declare_field_default",
         name: "workshop_day",
         value: "friday",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_global_constant",
         name: "workshop_day_default",
         value: "friday",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
         name: "w_money_path",
         value: "alone",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
       {
         type: "declare_field_default",
         name: "w_safe_path",
         value: "alone",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx",
@@ -2178,30 +3399,55 @@ const global: FlowTypes.Global[] = [
         type: "declare_global_constant",
         name: "example_global_constant_text",
         value: "Example Global Constant Text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "example_global_constant_title",
         value: "Example Global Constant Title",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
         name: "example_global_constant_image",
         value: "plh_images/habits/habit_relax_image.svg",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "field_1",
         value: "Value of Field 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
         name: "field_0",
         value: "Value of field 0",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
         exclude_from_translation: true,
       },
       {
