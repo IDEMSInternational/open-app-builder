@@ -12,11 +12,13 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   >
     <div [style.marginBottom.px]="-offset" class="offset" [ngSwitch]="type">
       <ng-container *ngSwitchCase="'default'">
-        <plh-template-component
-          *ngFor="let childRow of _row.rows; trackBy: trackByRow"
-          [row]="childRow"
-          [parent]="parent"
-        ></plh-template-component>
+        <ng-container *ngFor="let childRow of _row.rows; trackBy: trackByRow">
+          <plh-template-component
+            *ngIf="childRow.type == 'set_variable'"
+            [row]="childRow"
+            [parent]="parent"
+          ></plh-template-component>
+        </ng-container>
       </ng-container>
       <plh-advanced-dashed-box
         *ngSwitchCase="'dashed_box'"
