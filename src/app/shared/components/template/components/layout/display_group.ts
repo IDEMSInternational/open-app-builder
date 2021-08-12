@@ -14,7 +14,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       <ng-container *ngSwitchCase="'default'">
         <ng-container *ngFor="let childRow of _row.rows; trackBy: trackByRow">
           <plh-template-component
-            *ngIf="childRow.type == 'set_variable'"
+            *ngIf="childRow.type != 'set_variable'"
             [row]="childRow"
             [parent]="parent"
           ></plh-template-component>
