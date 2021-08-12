@@ -200,6 +200,9 @@
     }
   }
   .text {
+    height: 3rem;
+    overflow-y: scroll;
+
     order: 2;
     div {
       font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));

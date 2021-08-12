@@ -1,8 +1,8 @@
 @charset "UTF-8";
 ion-toggle {
   --background: #b4b7b7;
-  width: 48px;
-  height: 24px;
+  width: 42px;
+  height: 22px;
 }
 
 ion-toggle {
@@ -18,12 +18,12 @@ ion-toggle {
 
 .with_icons ion-toggle.toggle-checked::before {
   position: absolute;
-  top: 14px;
+  top: 12px;
   left: 18px;
   right: auto;
   content: "✓";
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 15px;
   z-index: 1;
 }
