@@ -436,7 +436,8 @@ export namespace FlowTypes {
     | "lottie_animation"
     | "parent_point_box"
     | "debug_toggle"
-    | "items";
+    | "items"
+    | "group";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
