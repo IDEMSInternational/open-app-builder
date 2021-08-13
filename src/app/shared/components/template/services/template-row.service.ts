@@ -1,7 +1,7 @@
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateContainerComponent } from "../template-container.component";
-import { mergeTemplateRows } from "../utils/template-utils";
+import { mergeTemplateRows, objectToArray } from "../utils/template-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -200,9 +200,13 @@ export class TemplateRowService {
     preProcessedRow: FlowTypes.TemplateRow,
     isNestedTemplate: boolean
   ) {
-    const { _nested_name } = preProcessedRow;
+    const { _nested_name, _evalContext } = preProcessedRow;
     // Evaluate row variables in context of current local state
-    const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
+    const evalContext = {
+      ..._evalContext,
+      templateRowMap: this.templateRowMap,
+      row: preProcessedRow,
+    };
     const { templateVariables } = this.container;
 
     // First process any dynamic condition. If evaluates as false can stop processing any further
@@ -233,6 +237,12 @@ export class TemplateRowService {
     }
 
     if (type === "template") isNestedTemplate = true;
+
+    // Prepare rows for child item-loop
+    if (type === "items") {
+      row.type = "display_group";
+      row.rows = this.generateLoopItemRows(row);
+    }
 
     // process any nested rows in same way
     if (row.rows) {
@@ -294,6 +304,23 @@ export class TemplateRowService {
   /***************************************************************************************
    *  Utils
    **************************************************************************************/
+
+  /**
+   * Takes a row with array value, iterates over the array to create a new entry for each item.
+   * Each item will have the same child rows as the original row
+   */
+  private generateLoopItemRows(row: FlowTypes.TemplateRow) {
+    const items = objectToArray(row.value);
+    let item_rows = items.map((item, index) => {
+      item._index = index;
+      const itemRow: FlowTypes.TemplateRow = {
+        type: "display_group",
+        rows: row.rows.map((r) => ({ ...r, _evalContext: { itemContext: item } })),
+      } as any;
+      return itemRow;
+    });
+    return item_rows;
+  }
 
   /** recursively filter out any rows that have a false condition */
   private filterConditionalTemplateRows(rows: FlowTypes.TemplateRow[] = []) {
