@@ -23,11 +23,12 @@ const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * (e.g.row, variables etc.). Store as a single object to make it easier to pass between methods
  * @param templateRowMap hashmap containing list of all template rows, keyed by their nested row name
  */
-interface IVariableContext {
+export interface IVariableContext {
   templateRowMap: ITemplateRowMap;
   row: FlowTypes.TemplateRow;
   field?: string;
   calcContext?: ICalcContext;
+  itemContext?: any; // used when iterating over items
 }
 
 @Injectable({ providedIn: "root" })
@@ -311,9 +312,15 @@ export class TemplateVariablesService {
         parsedValue = this.templateService.getDataListByPath(fieldName);
         // HACK - make sure data lists are translated (ideally should find way to handle alongside main translations)
         // TODO - review if similar methods required for campaign, global etc.
-        Object.keys(parsedValue).forEach((k) => {
-          parsedValue[k] = this.templateTranslateService.translateRow(parsedValue[k]);
-        });
+        if (parsedValue && typeof parsedValue === "object") {
+          Object.keys(parsedValue).forEach((k) => {
+            parsedValue[k] = this.templateTranslateService.translateRow(parsedValue[k]);
+          });
+        } else {
+          parsedValue = {};
+          console.error("Data list could not be processed", { fieldName, parsedValue });
+        }
+
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
@@ -326,6 +333,14 @@ export class TemplateVariablesService {
         log("evaluate calc", { expression, thisCtxt, globalFunctions });
         // TODO - merge string replacements with above methods
         parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions);
+        break;
+      case "item":
+        log("evaluate item", evaluator, context);
+        try {
+          parsedValue = context.itemContext[fieldName];
+        } catch (error) {
+          // field may not exist
+        }
         break;
       default:
         parseSuccess = false;
