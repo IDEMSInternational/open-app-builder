@@ -15,6 +15,7 @@ export const DYNAMIC_PREFIXES = [
   "data",
   "campaign",
   "calc",
+  "item",
 ] as const;
 
 /*********************************************************************************************
@@ -60,6 +61,7 @@ export namespace FlowTypes {
     module?: string;
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
+    comments?: string;
     _xlsxPath?: string; // debug info
   }
 
@@ -106,6 +108,7 @@ export namespace FlowTypes {
   }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
+    process_on_start?: number;
     rows: Data_listRow[];
   }
 
@@ -432,7 +435,8 @@ export namespace FlowTypes {
     | "dashed_box"
     | "lottie_animation"
     | "parent_point_box"
-    | "debug_toggle";
+    | "debug_toggle"
+    | "items";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -457,6 +461,7 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
+    _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
   type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
