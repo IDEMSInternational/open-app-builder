@@ -146,4 +146,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   parent_point_box: TmplParentPointBoxComponent,
   lottie_animation: TmplLottieAnimation,
   debug_toggle: PLHDebugToggleComponent as any,
+  items: null,
 };
