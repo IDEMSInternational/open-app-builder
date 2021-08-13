@@ -240,8 +240,9 @@ export class TemplateRowService {
 
     // Prepare rows for child item-loop
     if (type === "items") {
-      row.type = "display_group";
-      row.rows = this.generateLoopItemRows(row);
+      const itemsToIterateOver = objectToArray(row.value);
+      row.type = "group";
+      row.rows = this.generateLoopItemRows(row, itemsToIterateOver);
     }
 
     // process any nested rows in same way
@@ -306,20 +307,37 @@ export class TemplateRowService {
    **************************************************************************************/
 
   /**
-   * Takes a row with array value, iterates over the array to create a new entry for each item.
-   * Each item will have the same child rows as the original row
+   * Takes a row and list of items to iterate over, creating a new entry for each item with
+   * the same row values but a unique evaluation context for populating dynamic variables from the item
+   * @param items - list of items to iterate over
    */
-  private generateLoopItemRows(row: FlowTypes.TemplateRow) {
-    const items = objectToArray(row.value);
+  private generateLoopItemRows(row: FlowTypes.TemplateRow, items: any[]) {
     let item_rows = items.map((item, index) => {
       item._index = index;
+      const evalContext = { itemContext: item };
       const itemRow: FlowTypes.TemplateRow = {
-        type: "display_group",
-        rows: row.rows.map((r) => ({ ...r, _evalContext: { itemContext: item } })),
+        type: "group",
+        rows: row.rows.map((r) => this.setRecursiveRowEvalContext(r, evalContext)),
       } as any;
       return itemRow;
     });
     return item_rows;
+  }
+  /** Update the evaluation context of a row and recursively any nested rows */
+  private setRecursiveRowEvalContext(
+    row: FlowTypes.TemplateRow,
+    evalContext: FlowTypes.TemplateRow["_evalContext"]
+  ) {
+    const { rows, ...rest } = row;
+    const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
+    // handle child rows independently to avoid accidental property leaks
+    if (row.rows) {
+      rowWithEvalContext.rows = [];
+      row.rows.forEach((r) =>
+        rowWithEvalContext.rows.push(this.setRecursiveRowEvalContext(r, evalContext))
+      );
+    }
+    return rowWithEvalContext;
   }
 
   /** recursively filter out any rows that have a false condition */
