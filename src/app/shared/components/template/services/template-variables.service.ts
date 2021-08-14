@@ -8,7 +8,7 @@ import {
   setNestedProperty,
 } from "src/app/shared/utils";
 import { TemplateService } from "./template.service";
-import { CALC_CONTEXT, ICalcContext } from "./template-calc.service";
+import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { TemplateTranslateService } from "./template-translate.service";
 import { ITemplateRowMap } from "./template-row.service";
 
@@ -43,7 +43,8 @@ export class TemplateVariablesService {
   constructor(
     private templateService: TemplateService,
     private campaignService: CampaignService,
-    private templateTranslateService: TemplateTranslateService
+    private templateTranslateService: TemplateTranslateService,
+    private templateCalcService: TemplateCalcService
   ) {}
 
   /**
@@ -131,7 +132,7 @@ export class TemplateVariablesService {
     const fullExpression = evaluators[0].fullExpression;
     log_group(fullExpression);
     // create a base context of variables and functions that will be available when evaluating javascript
-    let calcContext = CALC_CONTEXT;
+    let calcContext = this.templateCalcService.calcContext;
 
     // evaluate each dynamic expression and store to the 'this' context that will be used to evaluate
     // at the end. E.g. this.fields = { some_value: 4 }. Update the context and full expression
@@ -212,7 +213,7 @@ export class TemplateVariablesService {
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[]
   ) {
     const { calcContext } = context;
-    const { thisCtxt, globalFunctions } = calcContext;
+    const { thisCtxt, globalFunctions, globalConstants } = calcContext;
     let evaluated: any;
     try {
       // first pass - full evaluation
@@ -227,8 +228,10 @@ export class TemplateVariablesService {
       const lines = contextExpression.split("\n");
       evaluated =
         lines.length > 1
-          ? lines.map((s) => evaluateJSExpression(s, thisCtxt, globalFunctions)).join("\n")
-          : evaluateJSExpression(contextExpression, thisCtxt, globalFunctions);
+          ? lines
+              .map((s) => evaluateJSExpression(s, thisCtxt, globalFunctions, globalConstants))
+              .join("\n")
+          : evaluateJSExpression(contextExpression, thisCtxt, globalFunctions, globalConstants);
       log("evaluated (JS)", evaluated);
     } catch (error) {
       // second pass - string replacement methods
@@ -329,10 +332,10 @@ export class TemplateVariablesService {
         break;
       case "calc":
         const expression = fieldName.replace(/@/gi, "this.");
-        const { thisCtxt, globalFunctions } = context.calcContext;
+        const { thisCtxt, globalFunctions, globalConstants } = context.calcContext;
         log("evaluate calc", { expression, thisCtxt, globalFunctions });
         // TODO - merge string replacements with above methods
-        parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions);
+        parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
         break;
       case "item":
         log("evaluate item", evaluator, context);
