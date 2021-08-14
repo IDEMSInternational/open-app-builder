@@ -1,4 +1,77 @@
-import { IFunctionHashmap } from "src/app/shared/utils";
+import { IFunctionHashmap, IConstantHashmap } from "src/app/shared/utils";
+
+import { Injectable } from "@angular/core";
+import * as date_fns from "date-fns";
+import { ServerService } from "src/app/shared/services/server/server.service";
+import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
+
+@Injectable({ providedIn: "root" })
+export class TemplateCalcService {
+  /** list of all variables accessible directly within calculations */
+  public calcContext: ICalcContext;
+
+  constructor(
+    private serverService: ServerService,
+    private dataEvaluationService: DataEvaluationService
+  ) {
+    this.calcContext = this.generateCalcContext();
+    this.addWindowCalcFunctions();
+  }
+
+  /**
+   * Main export for use in evaluation statements. Includes all functions listed below
+   * alongside additional a base for variables found at `this.`
+   */
+  private generateCalcContext(): ICalcContext {
+    const globalConstants = this.generateGlobalConstants();
+    const globalFunctions = { ...CALC_FUNCTIONS };
+    const thisCtxt = this.generateThisCtxt();
+    return { globalConstants, globalFunctions, thisCtxt };
+  }
+
+  private generateThisCtxt() {
+    return {
+      calc: (v: any) => v, // include simple function so @calc(...) returns the value already parsed inside
+      app_day: this.dataEvaluationService.data.app_day,
+      app_first_launch: this.dataEvaluationService.data.first_app_launch,
+      app_user_id: this.serverService.app_user_id,
+      device_info: this.serverService.device_info,
+    };
+  }
+
+  /**
+   * Provide a list of variables that can be accessed directly within calculations
+   *
+   * NOTE - as they will be hardcoded into the function string execution statement the only
+   * datatypes naturally supported are number and boolean, and custom method adds support
+   * for strings also (adds quotation marks). More complex datatypes should instead be included
+   * in the `this` context, or added to the global window object
+   *
+   * @example
+   * ```
+   * calc(test_var)
+   *
+   * // returns "hello"
+   * ```
+   */
+  private generateGlobalConstants() {
+    const globalConstants: IConstantHashmap = {
+      test_var: "hello",
+    };
+    return globalConstants;
+  }
+
+  /**
+   * 3rd party imports cannot be easily inlined, so instead add them to the window object to access from calculations
+   * @example
+   * ```
+   * calc(window.date_fns.differenceInWeeks(new Date(), new Date("2021-08-01"))
+   * ```
+   */
+  private addWindowCalcFunctions() {
+    (window as any).date_fns = date_fns;
+  }
+}
 
 /**
  * Declare any functions that can be called from within `@calc(....)` statements, e.g.
@@ -32,37 +105,24 @@ const CALC_FUNCTIONS: IFunctionHashmap = {
   lookup_answer_list: (list: string[] = [], name: string, returnField: string = "text") => {
     // Convert the list key-value pairs. Note - whilst this function is shared in template-utils
     // we cannot import into this function as it is created dynamically
-    const items = list.map((item) => {
-      const props: any = {};
-      item
-        .split("|")
-        .map((i) => i.trim())
-        .forEach((i) => {
-          const [key, value] = i.split(":").map((v) => v.trim());
-          props[key] = value;
-        });
-      return props;
-    });
     try {
+      const items = list.map((item) => {
+        const props: any = {};
+        item
+          .split("|")
+          .map((i) => i.trim())
+          .forEach((i) => {
+            const [key, value] = i.split(":").map((v) => v.trim());
+            props[key] = value;
+          });
+        return props;
+      });
       const foundItem = items.find((el) => el.name === name);
       return foundItem ? foundItem[returnField] : name;
     } catch (error) {
       return name;
     }
   },
-};
-
-/**
- * Main export for use in evaluation statements. Includes all above functions
- * alongside additional a base for variables found at `this.`
- *
- * NOTE - if useful entire libraries can also be included in functions or thisCtxt, e.g. lodash, date-fns or mathjs
- */
-export const CALC_CONTEXT: ICalcContext = {
-  thisCtxt: {
-    calc: (v: any) => v, // include simple function so @calc(...) returns the value already parsed inside
-  },
-  globalFunctions: CALC_FUNCTIONS,
 };
 
 /**
@@ -75,4 +135,5 @@ export interface ICalcContext {
     [name: string]: any;
   };
   globalFunctions: IFunctionHashmap;
+  globalConstants: IConstantHashmap;
 }

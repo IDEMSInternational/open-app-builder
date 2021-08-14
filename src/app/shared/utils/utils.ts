@@ -176,21 +176,38 @@ export function getBooleanParamFromTemplateRow(
 export function evaluateJSExpression(
   expression: string,
   thisCtxt = {},
-  globalFunctions: IFunctionHashmap = {}
+  globalFunctions: IFunctionHashmap = {},
+  globalConstants: IConstantHashmap = {}
 ): any {
+  const globalConstString = Object.entries(globalConstants)
+    .map(
+      ([name, value]) =>
+        // convert global constants to variable strings, adding quotation marks for string types
+        `var ${name} = ${typeof value === "string" ? `'${value}'` : value}`
+    )
+    .join(";");
   // convert global functions to variable strings. Note, cannot simply parse function.toString() as optimiser
   // strips names and just leaves all as anonymous functions
   const globalString = Object.entries(globalFunctions)
     .map(([name, fn]) => `var ${name} = ${fn}`)
     .join(";");
-  const funcString = `"use strict"; ${globalString}; return (${expression});`;
-  const func = new Function(funcString);
-
-  return func.apply(thisCtxt);
+  const funcString = `"use strict"; ${globalConstString}; ${globalString}; return (${expression});`;
+  try {
+    const func = new Function(funcString);
+    const evaluated = func.apply(thisCtxt);
+    return evaluated;
+  } catch (error) {
+    // console.warn('Could not evaluate expression', { expression, error, thisCtxt, globalFunctions, funcString })
+    // still throw error so that calling function can decide how to handle, e.g. attempt string replace
+    throw error;
+  }
 }
 
 /** Generic object containing list of functions */
 export type IFunctionHashmap = { [function_name: string]: (...args: any) => any };
+
+/** Generic object containing list of variables. Note - only simple types can be parsed */
+export type IConstantHashmap = { [constant_name: string]: string | number | boolean };
 
 /**
  * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
