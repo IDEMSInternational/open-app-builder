@@ -63,6 +63,7 @@ export namespace FlowTypes {
     data_list_name?: string;
     comments?: string;
     _xlsxPath?: string; // debug info
+    process_on_start?: number; // priority order to process template variable setters on startup
   }
 
   /**
@@ -108,7 +109,6 @@ export namespace FlowTypes {
   }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
-    process_on_start?: number;
     rows: Data_listRow[];
   }
 
@@ -515,7 +515,8 @@ export namespace FlowTypes {
       | "close_pop_up"
       | "set_theme"
       | "start_tour"
-      | "trigger_actions";
+      | "trigger_actions"
+      | "process_template";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**
