@@ -15,6 +15,7 @@ import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
+import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 
 @Component({
   selector: "app-root",
@@ -38,6 +39,7 @@ export class AppComponent {
     private templateService: TemplateService,
     private appEventService: AppEventService,
     private campaignService: CampaignService,
+    private dataEvaluationService: DataEvaluationService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -48,7 +50,7 @@ export class AppComponent {
   async initializeApp() {
     this.themeService.init();
     this.platform.ready().then(async () => {
-      this.dbService.init();
+      await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
@@ -68,11 +70,21 @@ export class AppComponent {
         this.notifications.init();
       }
       this.scheduleCampaignNotifications();
-      // CC 2021-05-14 - disabling reminders service until decide on full implementation
-      // (ideally not requiring evaluation of all reminders on init)
-      // this.remindersService.init();
-      this.appEventService.init();
     });
+  }
+
+  /**
+   * Various services set core app data which may be used in templates such as current app day,
+   * user id etc. Make sure these services have run their initialisation logic before proceeding
+   **/
+  async initialiseCoreServices() {
+    await this.dbService.init();
+    // CC 2021-05-14 - disabling reminders service until decide on full implementation
+    // (ideally not requiring evaluation of all reminders on init)
+    // this.remindersService.init();
+    await this.appEventService.init();
+    await this.serverService.init();
+    await this.dataEvaluationService.refreshDBCache();
   }
 
   clickOnMenuItem(id: string) {
