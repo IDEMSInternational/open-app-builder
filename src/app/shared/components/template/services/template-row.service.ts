@@ -1,7 +1,7 @@
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateContainerComponent } from "../template-container.component";
-import { mergeTemplateRows } from "../utils/template-utils";
+import { mergeTemplateRows, objectToArray } from "../utils/template-utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -200,9 +200,13 @@ export class TemplateRowService {
     preProcessedRow: FlowTypes.TemplateRow,
     isNestedTemplate: boolean
   ) {
-    const { _nested_name } = preProcessedRow;
+    const { _nested_name, _evalContext } = preProcessedRow;
     // Evaluate row variables in context of current local state
-    const evalContext = { templateRowMap: this.templateRowMap, row: preProcessedRow };
+    const evalContext = {
+      ..._evalContext,
+      templateRowMap: this.templateRowMap,
+      row: preProcessedRow,
+    };
     const { templateVariables } = this.container;
 
     // First process any dynamic condition. If evaluates as false can stop processing any further
@@ -233,6 +237,13 @@ export class TemplateRowService {
     }
 
     if (type === "template") isNestedTemplate = true;
+
+    // Prepare rows for child item-loop
+    if (type === "items") {
+      const itemsToIterateOver = objectToArray(row.value);
+      row.type = "group";
+      row.rows = this.generateLoopItemRows(row, itemsToIterateOver);
+    }
 
     // process any nested rows in same way
     if (row.rows) {
@@ -294,6 +305,40 @@ export class TemplateRowService {
   /***************************************************************************************
    *  Utils
    **************************************************************************************/
+
+  /**
+   * Takes a row and list of items to iterate over, creating a new entry for each item with
+   * the same row values but a unique evaluation context for populating dynamic variables from the item
+   * @param items - list of items to iterate over
+   */
+  private generateLoopItemRows(row: FlowTypes.TemplateRow, items: any[]) {
+    let item_rows = items.map((item, index) => {
+      item._index = index;
+      const evalContext = { itemContext: item };
+      const itemRow: FlowTypes.TemplateRow = {
+        type: "group",
+        rows: row.rows.map((r) => this.setRecursiveRowEvalContext(r, evalContext)),
+      } as any;
+      return itemRow;
+    });
+    return item_rows;
+  }
+  /** Update the evaluation context of a row and recursively any nested rows */
+  private setRecursiveRowEvalContext(
+    row: FlowTypes.TemplateRow,
+    evalContext: FlowTypes.TemplateRow["_evalContext"]
+  ) {
+    const { rows, ...rest } = row;
+    const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
+    // handle child rows independently to avoid accidental property leaks
+    if (row.rows) {
+      rowWithEvalContext.rows = [];
+      row.rows.forEach((r) =>
+        rowWithEvalContext.rows.push(this.setRecursiveRowEvalContext(r, evalContext))
+      );
+    }
+    return rowWithEvalContext;
+  }
 
   /** recursively filter out any rows that have a false condition */
   private filterConditionalTemplateRows(rows: FlowTypes.TemplateRow[] = []) {
