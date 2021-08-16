@@ -3,6 +3,7 @@ import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
 import { SettingsService } from "src/app/pages/settings/settings.service";
+import { TemplateProcessService } from "./template-process.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -134,6 +135,20 @@ export class TemplateActionService {
           this.actionsQueue.push({ ...a, _triggeredBy: action._triggeredBy })
         );
         return;
+      case "process_template":
+        // HACK - create an embedded template processor service instance to process template programatically
+        const templateToProcess = this.container.templateService.getTemplateByName(args[0]);
+        const processor = new TemplateProcessService(
+          this.container.templateService,
+          this.container.templateVariables,
+          this.container.templateTranslateService,
+          this.container.tourService,
+          this.container.router,
+          this.container.route,
+          this.container.templateNavService,
+          this.container.settingsService
+        );
+        return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this.container;

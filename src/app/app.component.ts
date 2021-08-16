@@ -16,6 +16,7 @@ import { TemplateService } from "./shared/components/template/services/template.
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
+import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
 
 @Component({
   selector: "app-root",
@@ -26,6 +27,7 @@ export class AppComponent {
   APP_VERSION = environment.version;
   ENV_NAME = environment.envName;
   skipTutorial: boolean;
+  public initComplete = false;
   constructor(
     private platform: Platform,
     private menuController: MenuController,
@@ -37,6 +39,7 @@ export class AppComponent {
     private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
+    private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
     private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
@@ -85,6 +88,9 @@ export class AppComponent {
     await this.appEventService.init();
     await this.serverService.init();
     await this.dataEvaluationService.refreshDBCache();
+    await this.templateService.init();
+    await this.templateProcessService.init();
+    this.initComplete = true;
   }
 
   clickOnMenuItem(id: string) {

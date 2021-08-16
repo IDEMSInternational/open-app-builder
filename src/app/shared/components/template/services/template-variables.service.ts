@@ -132,7 +132,7 @@ export class TemplateVariablesService {
     const fullExpression = evaluators[0].fullExpression;
     log_group(fullExpression);
     // create a base context of variables and functions that will be available when evaluating javascript
-    let calcContext = this.templateCalcService.calcContext;
+    let calcContext = this.templateCalcService.getCalcContext();
 
     // evaluate each dynamic expression and store to the 'this' context that will be used to evaluate
     // at the end. E.g. this.fields = { some_value: 4 }. Update the context and full expression
