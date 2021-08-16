@@ -38,7 +38,7 @@ export class TemplateRowService {
    * On template init combine any inherited row overrides with template rows,
    * process dynamic variables and filter conditions
    */
-  public async processInitialTemplateRows() {
+  public async processContainerTemplateRows() {
     const { name, template, row } = this.container;
     log_group("[Rows Init]", name, row?.value || "");
     const overrides = this.getParentOverridesHashmap(row?.rows, name);
@@ -258,7 +258,7 @@ export class TemplateRowService {
     if (!isNestedTemplate) {
       switch (type) {
         case "set_field":
-          console.warn("[W] Setting fields from template is not advised", row);
+          // console.warn("[W] Setting fields from template is not advised", row);
           await this.container.templateService.setField(name, value);
           return;
         // ensure set_variables are recorded via their name (instead of default nested name)
