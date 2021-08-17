@@ -156,9 +156,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       );
       const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
       let percentDone = currentPercentDone;
-      if (previousPercentDone && previousPercentDone != NaN) {
-        percentDone = Math.max(currentPercentDone, previousPercentDone);
-      }
+      // if (previousPercentDone && previousPercentDone != NaN) {
+      //
+      //   percentDone = Math.max(currentPercentDone, previousPercentDone);
+      // }
       await this.parent.handleActions(
         [
           {
