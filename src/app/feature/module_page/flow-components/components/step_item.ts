@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { FlowTypes } from "plh-data/model/flowTypes";
+import { FlowTypes } from "data-models";
 import { TaskService } from "src/app/shared/services/task/task.service";
 
 @Component({
