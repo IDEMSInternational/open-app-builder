@@ -3,9 +3,10 @@ import fs from "fs-extra";
 import path from "path";
 import { checkInputOutputDirs, outputCompleteMessage, recursiveFindByExtension } from "../utils";
 
-/** CLI commands */
-const program = new Command();
-program
+const program = new Command("generate");
+
+export default program
+  .description("Generate files for translation")
   .requiredOption(
     "-i, --input <input>",
     "Source folder for input files, relative to translations folder. Default ./input",
@@ -21,11 +22,10 @@ program
   )
   .action((opts) => {
     generateTranslations(opts.input, opts.output);
-  })
-  .parse(process.argv);
+  });
 
 /** Process files for translation from input folder and output to given directory **/
-export function generateTranslations(inDir: string, outDir: string) {
+function generateTranslations(inDir: string, outDir: string) {
   checkInputOutputDirs(inDir, outDir);
   copyTranslationFiles(inDir, outDir);
   outputCompleteMessage("Translation Files Generated", outDir);
