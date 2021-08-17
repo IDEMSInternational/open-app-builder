@@ -1,13 +1,8 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { FlowTypes } from "plh-data";
-import {
-  checkInputOutputDirs,
-  outputCompleteMessage,
-  outputErrorMessage,
-  recursiveFindByExtension,
-} from "../utils";
+import { FlowTypes } from "data-models";
+import { checkInputOutputDirs, outputErrorMessage, recursiveFindByExtension } from "../utils";
 
 /** CLI Options */
 const program = new Command();
