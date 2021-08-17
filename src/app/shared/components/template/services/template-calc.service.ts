@@ -8,14 +8,20 @@ import { DataEvaluationService } from "src/app/shared/services/data/data-evaluat
 @Injectable({ providedIn: "root" })
 export class TemplateCalcService {
   /** list of all variables accessible directly within calculations */
-  public calcContext: ICalcContext;
+  private calcContext: ICalcContext;
 
   constructor(
     private serverService: ServerService,
     private dataEvaluationService: DataEvaluationService
-  ) {
-    this.calcContext = this.generateCalcContext();
-    this.addWindowCalcFunctions();
+  ) {}
+
+  /** Provide calc context, initialising only once */
+  public getCalcContext() {
+    if (!this.calcContext) {
+      this.addWindowCalcFunctions();
+      this.calcContext = this.generateCalcContext();
+    }
+    return this.calcContext;
   }
 
   /**
