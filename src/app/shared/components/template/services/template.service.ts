@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, PLHDataService } from "src/app/shared/services/data/data.service";
+import { GLOBAL, PLHDataService, TEMPLATE } from "src/app/shared/services/data/data.service";
 import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
@@ -17,11 +17,14 @@ export class TemplateService {
     private localStorageService: LocalStorageService,
     private dataService: PLHDataService,
     private dbService: DbService
-  ) {
+  ) {}
+
+  /** Initialise global and startup templates */
+  async init() {
     this.initialiseGlobals();
   }
 
-  initialiseGlobals() {
+  private initialiseGlobals() {
     GLOBAL.forEach((flow) => {
       flow.rows?.forEach((row) => {
         if (row.type === "declare_field_default") {
@@ -33,6 +36,22 @@ export class TemplateService {
         }
       });
     });
+  }
+
+  public getTemplateByName(templateName: string): FlowTypes.Template {
+    const foundTemplate: FlowTypes.Template = TEMPLATE.find((t) => t.flow_name === templateName);
+    if (foundTemplate) {
+      // create a deep clone of the object to prevent accidental reference changes
+      // assign a name (in case top-level template) and store breadcrumb path for nested
+      // (NOTE - would no longer be required if reading in json objects instead of ts import)
+      const template = JSON.parse(JSON.stringify(foundTemplate));
+      return template;
+    }
+    // Template not found
+    else {
+      console.error(`[Template] - Not Found -`, templateName);
+      return NOT_FOUND_TEMPLATE(templateName);
+    }
   }
 
   /**
@@ -134,3 +153,12 @@ export class TemplateService {
     }
   }
 }
+
+const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
+  flow_name: "Template_not_found",
+  flow_type: "template",
+  rows: [
+    { type: "title", value: `Template "${name}" not found`, name: "title", _nested_name: "title" },
+  ],
+  status: "released",
+});
