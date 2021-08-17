@@ -86,6 +86,17 @@ export class TemplateCalcService {
  * ```
  */
 const CALC_FUNCTIONS: IFunctionHashmap = {
+  /** Shortcut method to generate current datetime as Date object */
+  now: () => new Date(),
+
+  /**
+   * Same code used in app generateTimestamp method to generate a string representation
+   * of a given date (or current date if no input specified)
+   */
+  timestamp: (value?: string | Date) => {
+    const date = value ? new Date(value) : new Date();
+    return (window as any).date_fns.format(date, "yyyy-MM-dd'T'HH:mm:ss");
+  },
   /**
    * Pick a random item from a list
    * @param arr array of items to pick from
