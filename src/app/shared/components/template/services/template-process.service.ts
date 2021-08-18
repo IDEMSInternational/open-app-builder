@@ -33,7 +33,6 @@ export class TemplateProcessService {
     settingsService: SettingsService
   ) {
     // Create mock template container component
-    console.log("hello template process service");
     this.container = new TemplateContainerComponent(
       templateService,
       templateVariables,
