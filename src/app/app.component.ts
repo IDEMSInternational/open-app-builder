@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
-import { Plugins, Capacitor } from "@capacitor/core";
+import { Plugins, Capacitor, App } from "@capacitor/core";
 const { SplashScreen } = Plugins;
 import { NotificationService } from "./shared/services/notification/notification.service";
 import { DbService } from "./shared/services/db/db.service";
@@ -17,6 +17,7 @@ import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
+import { isSameDay } from "date-fns";
 
 @Component({
   selector: "app-root",
@@ -73,6 +74,7 @@ export class AppComponent {
         this.notifications.init();
       }
       this.scheduleCampaignNotifications();
+      this.scheduleReinitialisation();
     });
   }
 
@@ -121,6 +123,32 @@ export class AppComponent {
       window.console.warn = function (...args: any) {};
       window.console.error = function (...args: any) {};
     }
+  }
+
+  /**
+   * The app might be left running in the background for multiple days
+   * Ensure information such as the current app day are kept updated in this case
+   *
+   * Note - prefer use of listener to app resume instead of specific timer, as these can be paused when app minimised
+   * https://stackoverflow.com/questions/6543325/what-happens-to-javascript-execution-settimeout-etc-when-iphone-android-goes
+   */
+  private async scheduleReinitialisation() {
+    App.addListener("appStateChange", async ({ isActive }) => {
+      if (isActive) {
+        const lastLaunchEntry = await this.dbService
+          .table("app_events")
+          .orderBy("_created")
+          .reverse()
+          .first();
+        const lastLaunchDay = new Date(lastLaunchEntry._created);
+        // reprocess initialisation if the day has changed
+        if (!isSameDay(lastLaunchDay, new Date())) {
+          await this.initialiseCoreServices();
+        } else {
+          console.log("welcome back :D");
+        }
+      }
+    });
   }
 
   /** ensure localhost dev can see all non-user content */
