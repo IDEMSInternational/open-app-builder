@@ -1,0 +1,10 @@
+{
+  "downloadsFolder": "projects/example/downloads",
+  "fixturesFolder": "projects/example/fixtures",
+  "integrationFolder": "projects/example/integration",
+  "pluginsFile": "projects/example/plugins/index.js",
+  "screenshotsFolder": "projects/example/screenshots",
+  "supportFile": "projects/example/support/index.js",
+  "videosFolder": "projects/example/videos",
+  "video": true
+}
