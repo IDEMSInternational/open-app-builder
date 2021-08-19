@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",

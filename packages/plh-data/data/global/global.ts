@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",
@@ -22,6 +22,26 @@ const global: FlowTypes.Global[] = [
           },
         },
         exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "uuid_example",
+        value: "fef8eebc2ac1817a",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "uuid_title",
+        value: "Your @global.parent_app Code",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/app_menu_globals.xlsx",
@@ -308,7 +328,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_adult_name_1",
-        value: "Grace",
+        value: "Thandie",
         _translations: {
           value: {
             spa: false,
@@ -319,7 +339,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_adult_name_2",
-        value: "Felicia",
+        value: "Lindiwe",
         _translations: {
           value: {
             spa: false,
@@ -330,7 +350,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_adult_name_3",
-        value: "Sara",
+        value: "Nontlantla",
         _translations: {
           value: {
             spa: false,
@@ -341,7 +361,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_adult_name_4",
-        value: "Bibi",
+        value: "Zanele",
         _translations: {
           value: {
             spa: false,
@@ -352,7 +372,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_child_name_1",
-        value: "Faraja",
+        value: "Khwezi",
         _translations: {
           value: {
             spa: false,
@@ -363,7 +383,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_child_name_2",
-        value: "Amina",
+        value: "Thuli",
         _translations: {
           value: {
             spa: false,
@@ -374,7 +394,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_child_name_3",
-        value: "Shukuru",
+        value: "Asive",
         _translations: {
           value: {
             spa: false,
@@ -385,7 +405,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_child_name_4",
-        value: "Maria",
+        value: "Zama",
         _translations: {
           value: {
             spa: false,
@@ -396,7 +416,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_child_name_5",
-        value: "Emma",
+        value: "Nombuso",
         _translations: {
           value: {
             spa: false,
@@ -407,7 +427,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_child_name_6",
-        value: "Shalini",
+        value: "Karabo",
         _translations: {
           value: {
             spa: false,
@@ -418,12 +438,13 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_caregiver_1",
-        value: "Grandma",
+        value: "Gogo",
         _translations: {
           value: {
             spa: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
@@ -438,7 +459,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_caregiver_3",
-        value: "Mom",
+        value: "Mother",
         _translations: {
           value: {
             spa: false,
@@ -448,7 +469,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "female_caregiver_4",
-        value: "Mama",
+        value: "Mother",
         _translations: {
           value: {
             spa: false,
@@ -458,7 +479,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "male_adult_name_1",
-        value: "Giles",
+        value: "Thabo",
         _translations: {
           value: {
             spa: false,
@@ -480,7 +501,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "male_child_name_2",
-        value: "Amani",
+        value: "Sabelo",
         _translations: {
           value: {
             spa: false,
@@ -491,7 +512,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "male_child_name_3",
-        value: "James",
+        value: "Rudzani",
         _translations: {
           value: {
             spa: false,
@@ -502,7 +523,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "male_child_name_4",
-        value: "Baraka",
+        value: "Lonwabo",
         _translations: {
           value: {
             spa: false,
@@ -512,8 +533,8 @@ const global: FlowTypes.Global[] = [
       },
       {
         type: "declare_global_constant",
-        name: "male_child_name_6",
-        value: "Thabani",
+        name: "male_child_name_5",
+        value: "Pule",
         _translations: {
           value: {
             spa: false,
@@ -534,7 +555,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "male_caregiver_2",
-        value: "Dad",
+        value: "Father",
         _translations: {
           value: {
             spa: false,
@@ -544,12 +565,13 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "male_caregiver_3",
-        value: "Grandpa",
+        value: "Mkhulu",
         _translations: {
           value: {
             spa: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
@@ -796,7 +818,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_consequence_teen_girl_2",
-        value: "@global.female_child_name_3",
+        value: "@global.female_child_name_2",
         _translations: {
           value: {
             spa: false,
@@ -840,7 +862,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_money_teen_girl",
-        value: "@global.female_child_name_2",
+        value: "@global.female_child_name_3",
         _translations: {
           value: {
             spa: false,
@@ -873,7 +895,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_solve_female_caregiver_1_name",
-        value: "@global.female_child_name_5",
+        value: "@global.female_adult_name_4",
         _translations: {
           value: {
             spa: false,
@@ -939,7 +961,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_safe_teen_girl_2",
-        value: "@global.female_child_name_2",
+        value: "@global.female_child_name_4",
         _translations: {
           value: {
             spa: false,
@@ -950,7 +972,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_safe_teen_girl_3",
-        value: "@global.female_child_name_3",
+        value: "@global.female_child_name_5",
         _translations: {
           value: {
             spa: false,
@@ -972,7 +994,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_crisis_teen_girl_1",
-        value: "@global.female_child_name_1",
+        value: "@global.female_child_name_3",
         _translations: {
           value: {
             spa: false,
@@ -983,7 +1005,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_crisis_adult_friend",
-        value: "@global.female_adult_name_4",
+        value: "@global.female_caregiver_1",
         _translations: {
           value: {
             spa: false,
@@ -994,7 +1016,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_crisis_female_caregiver",
-        value: "@global.female_caregiver_4",
+        value: "@global.female_caregiver_1",
         _translations: {
           value: {
             spa: false,
@@ -1016,7 +1038,7 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "w_crisis_teen_boy_2",
-        value: "@global.male_child_name_6",
+        value: "@global.male_child_name_4",
         _translations: {
           value: {
             spa: false,
@@ -1124,6 +1146,26 @@ const global: FlowTypes.Global[] = [
         name: "number_of_beans",
         value: 20,
         exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "teen_age_bracket",
+        value: "10-17",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "adult_age_bracket",
+        value: "18+",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/localisation_globals.xlsx",
@@ -2268,6 +2310,26 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
       {
+        type: "declare_field_default",
+        name: "survey_welcome_started",
+        value: false,
+      },
+      {
+        type: "declare_field_default",
+        name: "survey_welcome_completed",
+        value: false,
+      },
+      {
+        type: "declare_field_default",
+        name: "survey_final_started",
+        value: false,
+      },
+      {
+        type: "declare_field_default",
+        name: "survey_final_completed",
+        value: false,
+      },
+      {
         type: "declare_global_constant",
         name: "tap_and_type",
         value: "Tap and type",
@@ -2366,6 +2428,60 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "survey_welcome_t_9",
+        value: 7,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_1",
+        value: 4,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_2",
+        value: 5,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_3",
+        value: 2,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_4",
+        value: 2,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_5",
+        value: 1,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_6",
+        value: 1,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_7",
+        value: 7,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_8",
+        value: 5,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "survey_t_9",
         value: 7,
         exclude_from_translation: true,
       },
@@ -3252,6 +3368,16 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
       {
+        type: "declare_field_default",
+        name: "workshop_path",
+        value: "individual",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+      },
+      {
         type: "declare_global_constant",
         name: "together",
         value: "In my group",
@@ -3283,16 +3409,6 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
       {
-        type: "declare_field_default",
-        name: "user_name",
-        value: "awesome parent",
-        _translations: {
-          value: {
-            spa: false,
-          },
-        },
-      },
-      {
         type: "declare_global_constant",
         name: "user_name_default",
         value: "awesome parent",
@@ -3304,8 +3420,8 @@ const global: FlowTypes.Global[] = [
       },
       {
         type: "declare_field_default",
-        name: "group_name",
-        value: "friends",
+        name: "user_name",
+        value: "awesome parent",
         _translations: {
           value: {
             spa: false,
@@ -3323,44 +3439,9 @@ const global: FlowTypes.Global[] = [
         },
       },
       {
-        type: "declare_global_constant",
-        name: "current_workshop_default",
-        value: "w_self_care",
-        _translations: {
-          value: {
-            spa: false,
-          },
-        },
-      },
-      {
         type: "declare_field_default",
-        name: "current_workshop",
-        value: "w_self_care",
-        _translations: {
-          value: {
-            spa: false,
-          },
-        },
-      },
-      {
-        type: "declare_field_default",
-        name: "current_workshop_number",
-        value: 1,
-      },
-      {
-        type: "declare_field_default",
-        name: "workshop_day",
-        value: "friday",
-        _translations: {
-          value: {
-            spa: false,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "workshop_day_default",
-        value: "friday",
+        name: "group_name",
+        value: "friends",
         _translations: {
           value: {
             spa: false,
