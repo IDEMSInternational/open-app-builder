@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
@@ -4772,7 +4772,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         name: "title_1",
-        value: "Correctly spaced dg",
+        value: "Correctly spaced dg Saqlain",
         _translations: {
           value: {
             spa: false,
@@ -4957,7 +4957,7 @@ const template: FlowTypes.Template[] = [
                 spa: false,
               },
             },
-            style_list: ["flex: 0"],
+            exclude_from_translation: true,
             type: "set_variable",
             _nested_name: "dg_4.var_4",
             _dynamicFields: {
@@ -17009,7 +17009,7 @@ const template: FlowTypes.Template[] = [
             parameter_list: {
               style: "image_text",
               first_line_text:
-                "This is a very long text that should wrap into several lines within the tile tomponent.",
+                "This is a very long text that should wrap into several lines within the tile component. Please go through this",
               icon_src: "@data.workshop.w_1on1.image_asset",
             },
             _nested_name: "tool_tiles.tile_2",
@@ -18661,6 +18661,2881 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_calc",
+    status: "released",
+    rows: [
+      {
+        type: "title",
+        name: "example_1",
+        value: "Calc JS Functions",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_1",
+      },
+      {
+        type: "set_variable",
+        name: "example_calc_1",
+        value: "@calc(Math.floor(Math.random()*7))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_calc_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(Math.floor(Math.random()*7))",
+              matchedExpression: "@calc(Math.floor(Math.random()*7))",
+              type: "calc",
+              fieldName: "Math.floor(Math.random()*7)",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(Math.floor(Math.random()*7))": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "example_calc_2",
+        value: "@local.example_calc_1 + 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_calc_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.example_calc_1 + 1",
+              matchedExpression: "@local.example_calc_1",
+              type: "local",
+              fieldName: "example_calc_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.example_calc_1": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "example_calc_3",
+        value: "@calc(Math.ceil(Math.random()*3))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        condition: "!@local.example_calc_3",
+        _nested_name: "example_calc_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(Math.ceil(Math.random()*3))",
+              matchedExpression: "@calc(Math.ceil(Math.random()*3))",
+              type: "calc",
+              fieldName: "Math.ceil(Math.random()*3)",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "!@local.example_calc_3",
+              matchedExpression: "!@local.example_calc_3",
+              type: "local",
+              fieldName: "example_calc_3",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(Math.ceil(Math.random()*3))": ["value"],
+          "!@local.example_calc_3": ["condition"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value:
+          "calc_1: @local.example_calc_1\ncalc_2: @local.example_calc_2\ncalc_3: @local.example_calc_3   (fixed)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "calc_1: @local.example_calc_1\ncalc_2: @local.example_calc_2\ncalc_3: @local.example_calc_3   (fixed)",
+              matchedExpression: "@local.example_calc_1",
+              type: "local",
+              fieldName: "example_calc_1",
+            },
+            {
+              fullExpression:
+                "calc_1: @local.example_calc_1\ncalc_2: @local.example_calc_2\ncalc_3: @local.example_calc_3   (fixed)",
+              matchedExpression: "@local.example_calc_2",
+              type: "local",
+              fieldName: "example_calc_2",
+            },
+            {
+              fullExpression:
+                "calc_1: @local.example_calc_1\ncalc_2: @local.example_calc_2\ncalc_3: @local.example_calc_3   (fixed)",
+              matchedExpression: "@local.example_calc_3",
+              type: "local",
+              fieldName: "example_calc_3",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.example_calc_1": ["value"],
+          "@local.example_calc_2": ["value"],
+          "@local.example_calc_3": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "example_calc_max",
+        value: "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_calc_max",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))",
+              matchedExpression: "@local.example_calc_1",
+              type: "local",
+              fieldName: "example_calc_1",
+            },
+            {
+              fullExpression:
+                "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))",
+              matchedExpression: "@local.example_calc_2",
+              type: "local",
+              fieldName: "example_calc_2",
+            },
+            {
+              fullExpression:
+                "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))",
+              matchedExpression: "@local.example_calc_3",
+              type: "local",
+              fieldName: "example_calc_3",
+            },
+            {
+              fullExpression:
+                "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))",
+              matchedExpression:
+                "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))",
+              type: "calc",
+              fieldName:
+                "Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3)",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.example_calc_1": ["value"],
+          "@local.example_calc_2": ["value"],
+          "@local.example_calc_3": ["value"],
+          "@calc(Math.max(@local.example_calc_1,@local.example_calc_2,@local.example_calc_3))": [
+            "value",
+          ],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "The largest number is: @local.example_calc_max",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The largest number is: @local.example_calc_max",
+              matchedExpression: "@local.example_calc_max",
+              type: "local",
+              fieldName: "example_calc_max",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.example_calc_max": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "example_2",
+        value: "Calc Custom Functions",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_2",
+      },
+      {
+        type: "subtitle",
+        name: "example_2.1",
+        value: "Calc Pick Random Array Item",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_2.1",
+      },
+      {
+        type: "set_variable",
+        name: "list_data",
+        value: "@data.example_calc.example_1.value_list",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "list_data",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example_calc.example_1.value_list",
+              matchedExpression: "@data.example_calc.example_1.value_list",
+              type: "data",
+              fieldName: "example_calc",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example_calc.example_1.value_list": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "random_item",
+        value: "@calc(pick_random(@local.list_data))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "random_item",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(pick_random(@local.list_data))",
+              matchedExpression: "@local.list_data",
+              type: "local",
+              fieldName: "list_data",
+            },
+            {
+              fullExpression: "@calc(pick_random(@local.list_data))",
+              matchedExpression: "@calc(pick_random(@local.list_data))",
+              type: "calc",
+              fieldName: "pick_random(@local.list_data)",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.list_data": ["value"],
+          "@calc(pick_random(@local.list_data))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "Random Item: @local.random_item.name",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Random Item: @local.random_item.name",
+              matchedExpression: "@local.random_item.name",
+              type: "local",
+              fieldName: "random_item",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.random_item.name": ["value"],
+        },
+      },
+      {
+        type: "button",
+        name: "button_1",
+        value: "Randomise",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "click | emit:force_reprocess",
+            _cleaned: "click | emit:force_reprocess",
+          },
+        ],
+        _nested_name: "button_1",
+      },
+      {
+        type: "subtitle",
+        name: "example_2.2",
+        value: "Calc Lookup Text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_2.2",
+      },
+      {
+        type: "radio_group",
+        name: "selected_item",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "changed | emit:force_reprocess",
+            _cleaned: "changed | emit:force_reprocess",
+          },
+        ],
+        parameter_list: {
+          answer_list: "@local.list_data",
+        },
+        _nested_name: "selected_item",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.list_data",
+                matchedExpression: "@local.list_data",
+                type: "local",
+                fieldName: "list_data",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.list_data": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "selected_item_text",
+        value: "@calc(lookup_answer_list(@local.list_data,@local.selected_item))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "selected_item_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(lookup_answer_list(@local.list_data,@local.selected_item))",
+              matchedExpression: "@local.list_data",
+              type: "local",
+              fieldName: "list_data",
+            },
+            {
+              fullExpression: "@calc(lookup_answer_list(@local.list_data,@local.selected_item))",
+              matchedExpression: "@local.selected_item",
+              type: "local",
+              fieldName: "selected_item",
+            },
+            {
+              fullExpression: "@calc(lookup_answer_list(@local.list_data,@local.selected_item))",
+              matchedExpression: "@calc(lookup_answer_list(@local.list_data,@local.selected_item))",
+              type: "calc",
+              fieldName: "lookup_answer_list(@local.list_data,@local.selected_item)",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.list_data": ["value"],
+          "@local.selected_item": ["value"],
+          "@calc(lookup_answer_list(@local.list_data,@local.selected_item))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2.2a",
+        value: "Selected name: @local.selected_item",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        condition: "@local.selected_item",
+        _nested_name: "text_2.2a",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Selected name: @local.selected_item",
+              matchedExpression: "@local.selected_item",
+              type: "local",
+              fieldName: "selected_item",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.selected_item",
+              matchedExpression: "@local.selected_item",
+              type: "local",
+              fieldName: "selected_item",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.selected_item": ["value", "condition"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2.2b",
+        value: "Selected text: @local.selected_item_text",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        condition: "@local.selected_item",
+        _nested_name: "text_2.2b",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Selected text: @local.selected_item_text",
+              matchedExpression: "@local.selected_item_text",
+              type: "local",
+              fieldName: "selected_item_text",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.selected_item",
+              matchedExpression: "@local.selected_item",
+              type: "local",
+              fieldName: "selected_item",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.selected_item_text": ["value"],
+          "@local.selected_item": ["condition"],
+        },
+      },
+      {
+        type: "title",
+        name: "example_3",
+        value: "Calc Date Utilities",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_3",
+      },
+      {
+        type: "set_variable",
+        name: "date_now",
+        value: "@calc(now())",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "date_now",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(now())",
+              matchedExpression: "@calc(now())",
+              type: "calc",
+              fieldName: "now()",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(now())": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3.1a",
+        value: "Today is @local.date_now",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3.1a",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Today is @local.date_now",
+              matchedExpression: "@local.date_now",
+              type: "local",
+              fieldName: "date_now",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.date_now": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "timestamp",
+        value: "@calc(timestamp())",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "timestamp",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(timestamp())",
+              matchedExpression: "@calc(timestamp())",
+              type: "calc",
+              fieldName: "timestamp()",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(timestamp())": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3.1b",
+        value: "This is a db-friendly timestamp: @local.timestamp",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3.1b",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "This is a db-friendly timestamp: @local.timestamp",
+              matchedExpression: "@local.timestamp",
+              type: "local",
+              fieldName: "timestamp",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.timestamp": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "date_formatted",
+        value: '@calc(window.date_fns.format(now(),"dd MMM yyyy"))',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "date_formatted",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: '@calc(window.date_fns.format(now(),"dd MMM yyyy"))',
+              matchedExpression: '@calc(window.date_fns.format(now(),"dd MMM yyyy"))',
+              type: "calc",
+              fieldName: 'window.date_fns.format(now(),"dd MMM yyyy")',
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          '@calc(window.date_fns.format(now(),"dd MMM yyyy"))': ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3.1c",
+        value: "Formatted: @local.date_formatted",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3.1c",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Formatted: @local.date_formatted",
+              matchedExpression: "@local.date_formatted",
+              type: "local",
+              fieldName: "date_formatted",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.date_formatted": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "start_of_week",
+        value: "@calc(window.date_fns.startOfWeek(now(),{ weekStartsOn: 1 }))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "start_of_week",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(window.date_fns.startOfWeek(now(),{ weekStartsOn: 1 }))",
+              matchedExpression: "@calc(window.date_fns.startOfWeek(now(),{ weekStartsOn: 1 }))",
+              type: "calc",
+              fieldName: "window.date_fns.startOfWeek(now(),{ weekStartsOn: 1 })",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(window.date_fns.startOfWeek(now(),{ weekStartsOn: 1 }))": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "start_of_week_text",
+        value: "The week started on @local.start_of_week",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "start_of_week_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The week started on @local.start_of_week",
+              matchedExpression: "@local.start_of_week",
+              type: "local",
+              fieldName: "start_of_week",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.start_of_week": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "days_to_xmas",
+        value: '@calc(window.date_fns.differenceInDays(new Date("2021-12-25"),now()))',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "days_to_xmas",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                '@calc(window.date_fns.differenceInDays(new Date("2021-12-25"),now()))',
+              matchedExpression:
+                '@calc(window.date_fns.differenceInDays(new Date("2021-12-25"),now()))',
+              type: "calc",
+              fieldName: 'window.date_fns.differenceInDays(new Date("2021-12-25"),now())',
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          '@calc(window.date_fns.differenceInDays(new Date("2021-12-25"),now()))': ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3.2",
+        value: "There are @local.days_to_xmas days to Christmas (2021)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3.2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "There are @local.days_to_xmas days to Christmas (2021)",
+              matchedExpression: "@local.days_to_xmas",
+              type: "local",
+              fieldName: "days_to_xmas",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.days_to_xmas": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "last_xmas_words",
+        value:
+          '@calc(window.date_fns.formatDistance(new Date("2020-12-25"),now(),{ addSuffix: true }))',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "last_xmas_words",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                '@calc(window.date_fns.formatDistance(new Date("2020-12-25"),now(),{ addSuffix: true }))',
+              matchedExpression:
+                '@calc(window.date_fns.formatDistance(new Date("2020-12-25"),now(),{ addSuffix: true }))',
+              type: "calc",
+              fieldName:
+                'window.date_fns.formatDistance(new Date("2020-12-25"),now(),{ addSuffix: true })',
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          '@calc(window.date_fns.formatDistance(new Date("2020-12-25"),now(),{ addSuffix: true }))':
+            ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3.3",
+        value: "The last christmas was @local.last_xmas_words",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3.3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The last christmas was @local.last_xmas_words",
+              matchedExpression: "@local.last_xmas_words",
+              type: "local",
+              fieldName: "last_xmas_words",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.last_xmas_words": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "example_4",
+        value: "Calc Context Variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_4",
+      },
+      {
+        name: "app_day",
+        value: "@calc(this.app_day)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "app_day",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.app_day)",
+              matchedExpression: "@calc(this.app_day)",
+              type: "calc",
+              fieldName: "this.app_day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.app_day)": ["value"],
+        },
+      },
+      {
+        name: "app_first_launch",
+        value: "@calc(this.app_first_launch)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "app_first_launch",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.app_first_launch)",
+              matchedExpression: "@calc(this.app_first_launch)",
+              type: "calc",
+              fieldName: "this.app_first_launch",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.app_first_launch)": ["value"],
+        },
+      },
+      {
+        name: "app_user_id",
+        value: "@calc(this.app_user_id)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "app_user_id",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.app_user_id)",
+              matchedExpression: "@calc(this.app_user_id)",
+              type: "calc",
+              fieldName: "this.app_user_id",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.app_user_id)": ["value"],
+        },
+      },
+      {
+        name: "device_os",
+        value: "@calc(this.device_info.operatingSystem)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "device_os",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.device_info.operatingSystem)",
+              matchedExpression: "@calc(this.device_info.operatingSystem)",
+              type: "calc",
+              fieldName: "this.device_info.operatingSystem",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.device_info.operatingSystem)": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4.1",
+        value: "The current app day is @local.app_day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_4.1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The current app day is @local.app_day",
+              matchedExpression: "@local.app_day",
+              type: "local",
+              fieldName: "app_day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.app_day": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4.2",
+        value: "The app was first launched on @local.app_first_launch",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_4.2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The app was first launched on @local.app_first_launch",
+              matchedExpression: "@local.app_first_launch",
+              type: "local",
+              fieldName: "app_first_launch",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.app_first_launch": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4.3",
+        value: "The current user id is @local.app_user_id",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_4.3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The current user id is @local.app_user_id",
+              matchedExpression: "@local.app_user_id",
+              type: "local",
+              fieldName: "app_user_id",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.app_user_id": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4.4",
+        value: "The device OS is @local.device_os",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_4.4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "The device OS is @local.device_os",
+              matchedExpression: "@local.device_os",
+              type: "local",
+              fieldName: "device_os",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.device_os": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_calc.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_calc_date",
+    status: "released",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "Today",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "title_1",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "Today is @fields.current_date",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Today is @fields.current_date",
+              matchedExpression: "@fields.current_date",
+              type: "fields",
+              fieldName: "current_date",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.current_date": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "date",
+        value: "@calc(Date())",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "date",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(Date())",
+              matchedExpression: "@calc(Date())",
+              type: "calc",
+              fieldName: "Date()",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(Date())": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "Today is @local.date",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Today is @local.date",
+              matchedExpression: "@local.date",
+              type: "local",
+              fieldName: "date",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.date": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "day",
+        value: "@calc((new Date()).getDay())",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "day",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc((new Date()).getDay())",
+              matchedExpression: "@calc((new Date()).getDay())",
+              type: "calc",
+              fieldName: "(new Date()).getDay()",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc((new Date()).getDay())": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "Today is @local.day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Today is @local.day",
+              matchedExpression: "@local.day",
+              type: "local",
+              fieldName: "day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.day": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "christmas",
+        value: "@calc(new Date(2021,12, 25))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "christmas",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(new Date(2021,12, 25))",
+              matchedExpression: "@calc(new Date(2021,12, 25))",
+              type: "calc",
+              fieldName: "new Date(2021,12, 25)",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(new Date(2021,12, 25))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value: "Christmas is @local.christmas",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Christmas is @local.christmas",
+              matchedExpression: "@local.christmas",
+              type: "local",
+              fieldName: "christmas",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.christmas": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "christmas_time",
+        value: "@calc((new Date(2021,12, 25)).getTime())",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "christmas_time",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc((new Date(2021,12, 25)).getTime())",
+              matchedExpression: "@calc((new Date(2021,12, 25)).getTime())",
+              type: "calc",
+              fieldName: "(new Date(2021,12, 25)).getTime()",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc((new Date(2021,12, 25)).getTime())": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value: "Christmas time is @local.christmas_time",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Christmas time is @local.christmas_time",
+              matchedExpression: "@local.christmas_time",
+              type: "local",
+              fieldName: "christmas_time",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.christmas_time": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "days_to_christmas",
+        value: "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "days_to_christmas",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
+              matchedExpression: "@local.christmas_time",
+              type: "local",
+              fieldName: "christmas_time",
+            },
+            {
+              fullExpression:
+                "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
+              matchedExpression:
+                "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )",
+              type: "calc",
+              fieldName: " (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) ",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.christmas_time": ["value"],
+          "@calc( (@local.christmas_time - (new Date()).getTime())  / (1000 * 3600 * 24) )": [
+            "value",
+          ],
+        },
+      },
+      {
+        type: "text",
+        name: "text_6",
+        value: "Christmas is in @local.days_to_christmas days",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_6",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Christmas is in @local.days_to_christmas days",
+              matchedExpression: "@local.days_to_christmas",
+              type: "local",
+              fieldName: "days_to_christmas",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.days_to_christmas": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "midnight",
+        value: "@calc((new Date()).setHours(0,0,0,0))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "midnight",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc((new Date()).setHours(0,0,0,0))",
+              matchedExpression: "@calc((new Date()).setHours(0,0,0,0))",
+              type: "calc",
+              fieldName: "(new Date()).setHours(0,0,0,0)",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc((new Date()).setHours(0,0,0,0))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_7",
+        value: "Midnight was at @local.midnight",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_7",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Midnight was at @local.midnight",
+              matchedExpression: "@local.midnight",
+              type: "local",
+              fieldName: "midnight",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.midnight": ["value"],
+        },
+      },
+      {
+        type: "set_variable",
+        name: "midnight_time",
+        value: "@calc(((new Date()).setHours(0,0,0,0)))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "midnight_time",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(((new Date()).setHours(0,0,0,0)))",
+              matchedExpression: "@calc(((new Date()).setHours(0,0,0,0)))",
+              type: "calc",
+              fieldName: "((new Date()).setHours(0,0,0,0))",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(((new Date()).setHours(0,0,0,0)))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_8",
+        value: "Midnight time was @local.midnight_time",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_8",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Midnight time was @local.midnight_time",
+              matchedExpression: "@local.midnight_time",
+              type: "local",
+              fieldName: "midnight_time",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.midnight_time": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_calc.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_calc_2",
+    status: "released",
+    rows: [
+      {
+        name: "app_first_launch",
+        value: "@calc(this.app_first_launch)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "app_first_launch",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.app_first_launch)",
+              matchedExpression: "@calc(this.app_first_launch)",
+              type: "calc",
+              fieldName: "this.app_first_launch",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.app_first_launch)": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "app_first_launch_text",
+        value: "app_first_launch: @local.app_first_launch",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "app_first_launch_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "app_first_launch: @local.app_first_launch",
+              matchedExpression: "@local.app_first_launch",
+              type: "local",
+              fieldName: "app_first_launch",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.app_first_launch": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "workshop_start_day",
+        value: "@calc(window.date_fns.getDay(new Date(this.app_first_launch)))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_start_day",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(window.date_fns.getDay(new Date(this.app_first_launch)))",
+              matchedExpression: "@calc(window.date_fns.getDay(new Date(this.app_first_launch)))",
+              type: "calc",
+              fieldName: "window.date_fns.getDay(new Date(this.app_first_launch))",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(window.date_fns.getDay(new Date(this.app_first_launch)))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "workshop_start_day_text",
+        value: "workshop_start_day: @fields.workshop_start_day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_start_day_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "workshop_start_day: @fields.workshop_start_day",
+              matchedExpression: "@fields.workshop_start_day",
+              type: "fields",
+              fieldName: "workshop_start_day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.workshop_start_day": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "workshop_start_day_label",
+        value: "@calc(window.date_fns.format(new Date(@local.app_first_launch), 'EEEE'))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_start_day_label",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc(window.date_fns.format(new Date(@local.app_first_launch), 'EEEE'))",
+              matchedExpression: "@local.app_first_launch",
+              type: "local",
+              fieldName: "app_first_launch",
+            },
+            {
+              fullExpression:
+                "@calc(window.date_fns.format(new Date(@local.app_first_launch), 'EEEE'))",
+              matchedExpression:
+                "@calc(window.date_fns.format(new Date(@local.app_first_launch), 'EEEE'))",
+              type: "calc",
+              fieldName: "window.date_fns.format(new Date(@local.app_first_launch), 'EEEE')",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.app_first_launch": ["value"],
+          "@calc(window.date_fns.format(new Date(@local.app_first_launch), 'EEEE'))": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "workshop_start_day_label_text",
+        value: "workshop_start_day_label: @fields.workshop_start_day_label",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_start_day_label_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "workshop_start_day_label: @fields.workshop_start_day_label",
+              matchedExpression: "@fields.workshop_start_day_label",
+              type: "fields",
+              fieldName: "workshop_start_day_label",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.workshop_start_day_label": ["value"],
+        },
+      },
+      {
+        name: "today_end",
+        value: "@calc(window.date_fns.endOfDay(new Date()))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "today_end",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(window.date_fns.endOfDay(new Date()))",
+              matchedExpression: "@calc(window.date_fns.endOfDay(new Date()))",
+              type: "calc",
+              fieldName: "window.date_fns.endOfDay(new Date())",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(window.date_fns.endOfDay(new Date()))": ["value"],
+        },
+      },
+      {
+        name: "days_since_app_first_launch",
+        value:
+          "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch)))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "days_since_app_first_launch",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch)))",
+              matchedExpression: "@local.today_end",
+              type: "local",
+              fieldName: "today_end",
+            },
+            {
+              fullExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch)))",
+              matchedExpression: "@local.app_first_launch",
+              type: "local",
+              fieldName: "app_first_launch",
+            },
+            {
+              fullExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch)))",
+              matchedExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch)))",
+              type: "calc",
+              fieldName:
+                "window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch))",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.today_end": ["value"],
+          "@local.app_first_launch": ["value"],
+          "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@local.app_first_launch)))":
+            ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "days_since_app_first_launch_text",
+        value: "days_since_app_first_launch: @local.days_since_app_first_launch",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "days_since_app_first_launch_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "days_since_app_first_launch: @local.days_since_app_first_launch",
+              matchedExpression: "@local.days_since_app_first_launch",
+              type: "local",
+              fieldName: "days_since_app_first_launch",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.days_since_app_first_launch": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "benchmark_date",
+        value: "@local.app_first_launch",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "benchmark_date",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.app_first_launch",
+              matchedExpression: "@local.app_first_launch",
+              type: "local",
+              fieldName: "app_first_launch",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.app_first_launch": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "benchmark_date_text",
+        value: "benchmark_date: @fields.benchmark_date",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "benchmark_date_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "benchmark_date: @fields.benchmark_date",
+              matchedExpression: "@fields.benchmark_date",
+              type: "fields",
+              fieldName: "benchmark_date",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.benchmark_date": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "benchmark_workshop_number",
+        value: 1,
+        _nested_name: "benchmark_workshop_number",
+      },
+      {
+        type: "text",
+        name: "benchmark_workshop_number_text",
+        value: "benchmark_workshop_number: @fields.benchmark_workshop_number",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "benchmark_workshop_number_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "benchmark_workshop_number: @fields.benchmark_workshop_number",
+              matchedExpression: "@fields.benchmark_workshop_number",
+              type: "fields",
+              fieldName: "benchmark_workshop_number",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.benchmark_workshop_number": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "benchmark_day",
+        value:
+          "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "benchmark_day",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+              matchedExpression: "@fields.benchmark_date",
+              type: "fields",
+              fieldName: "benchmark_date",
+            },
+            {
+              fullExpression:
+                "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+              matchedExpression: "@fields.workshop_start_day",
+              type: "fields",
+              fieldName: "workshop_start_day",
+            },
+            {
+              fullExpression:
+                "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+              matchedExpression:
+                "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)",
+              type: "calc",
+              fieldName:
+                " (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.benchmark_date": ["value"],
+          "@fields.workshop_start_day": ["value"],
+          "@calc( (window.date_fns.getDay(new Date(@fields.benchmark_date)) - @fields.workshop_start_day +7) % 7)":
+            ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "benchmark_day_text",
+        value: "benchmark_day: @fields.benchmark_day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "benchmark_day_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "benchmark_day: @fields.benchmark_day",
+              matchedExpression: "@fields.benchmark_day",
+              type: "fields",
+              fieldName: "benchmark_day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.benchmark_day": ["value"],
+        },
+      },
+      {
+        name: "days_since_benchmark_date",
+        value:
+          "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "days_since_benchmark_date",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+              matchedExpression: "@local.today_end",
+              type: "local",
+              fieldName: "today_end",
+            },
+            {
+              fullExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+              matchedExpression: "@fields.benchmark_date",
+              type: "fields",
+              fieldName: "benchmark_date",
+            },
+            {
+              fullExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+              matchedExpression:
+                "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))",
+              type: "calc",
+              fieldName:
+                "window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date))",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.today_end": ["value"],
+          "@fields.benchmark_date": ["value"],
+          "@calc(window.date_fns.differenceInDays(@local.today_end, new Date(@fields.benchmark_date)))":
+            ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "days_since_benchmark_date_text",
+        value: "days_since_benchmark_date: @local.days_since_benchmark_date",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "days_since_benchmark_date_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "days_since_benchmark_date: @local.days_since_benchmark_date",
+              matchedExpression: "@local.days_since_benchmark_date",
+              type: "local",
+              fieldName: "days_since_benchmark_date",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.days_since_benchmark_date": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "workshop_number",
+        value:
+          "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_number",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+              matchedExpression: "@fields.benchmark_workshop_number",
+              type: "fields",
+              fieldName: "benchmark_workshop_number",
+            },
+            {
+              fullExpression:
+                "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+              matchedExpression: "@local.days_since_benchmark_date",
+              type: "local",
+              fieldName: "days_since_benchmark_date",
+            },
+            {
+              fullExpression:
+                "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+              matchedExpression: "@fields.benchmark_day",
+              type: "fields",
+              fieldName: "benchmark_day",
+            },
+            {
+              fullExpression:
+                "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+              matchedExpression:
+                "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )",
+              type: "calc",
+              fieldName:
+                " +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) ",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.benchmark_workshop_number": ["value"],
+          "@local.days_since_benchmark_date": ["value"],
+          "@fields.benchmark_day": ["value"],
+          "@calc( +@fields.benchmark_workshop_number + Math.floor((@local.days_since_benchmark_date + +@fields.benchmark_day)/7) )":
+            ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "workshop_number_text",
+        value: "workshop_number: @fields.workshop_number",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_number_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "workshop_number: @fields.workshop_number",
+              matchedExpression: "@fields.workshop_number",
+              type: "fields",
+              fieldName: "workshop_number",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.workshop_number": ["value"],
+        },
+      },
+      {
+        type: "set_field",
+        name: "workshop_day",
+        value:
+          "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_day",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+              matchedExpression: "@local.today_end",
+              type: "local",
+              fieldName: "today_end",
+            },
+            {
+              fullExpression:
+                "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+              matchedExpression: "@fields.workshop_start_day",
+              type: "fields",
+              fieldName: "workshop_start_day",
+            },
+            {
+              fullExpression:
+                "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+              matchedExpression:
+                "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )",
+              type: "calc",
+              fieldName:
+                " (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 ",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.today_end": ["value"],
+          "@fields.workshop_start_day": ["value"],
+          "@calc( (window.date_fns.getDay(@local.today_end) - @fields.workshop_start_day + 7) % 7 )":
+            ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "workshop_day_text",
+        value: "workshop_day: @fields.workshop_day",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_day_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "workshop_day: @fields.workshop_day",
+              matchedExpression: "@fields.workshop_day",
+              type: "fields",
+              fieldName: "workshop_day",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.workshop_day": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_calc.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_calc_3",
+    status: "released",
+    rows: [
+      {
+        name: "disabled",
+        value: "_disabled",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "disabled",
+      },
+      {
+        name: "workshop_number",
+        value: "+@fields.workshop_number",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "workshop_number",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "+@fields.workshop_number",
+              matchedExpression: "@fields.workshop_number",
+              type: "fields",
+              fieldName: "workshop_number",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.workshop_number": ["value"],
+        },
+      },
+      {
+        type: "items",
+        value: "@data.workshop",
+        rows: [
+          {
+            type: "set_field",
+            name: "@item.id@local.disabled",
+            value: false,
+            condition: "@calc(@item.number <= @local.workshop_number)",
+            _nested_name: "items.@item.id@local.disabled",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "@item.id@local.disabled",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+                {
+                  fullExpression: "@item.id@local.disabled",
+                  matchedExpression: "@local.disabled",
+                  type: "local",
+                  fieldName: "disabled",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@calc(@item.number <= @local.workshop_number)",
+                  matchedExpression: "@item.number",
+                  type: "item",
+                  fieldName: "number",
+                },
+                {
+                  fullExpression: "@calc(@item.number <= @local.workshop_number)",
+                  matchedExpression: "@local.workshop_number",
+                  type: "local",
+                  fieldName: "workshop_number",
+                },
+                {
+                  fullExpression: "@calc(@item.number <= @local.workshop_number)",
+                  matchedExpression: "@calc(@item.number <= @local.workshop_number)",
+                  type: "calc",
+                  fieldName: "@item.number <= @local.workshop_number",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.@item.id@local.disabled",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+                {
+                  fullExpression: "items.@item.id@local.disabled",
+                  matchedExpression: "@local.disabled",
+                  type: "local",
+                  fieldName: "disabled",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@local.disabled": ["name", "_nested_name"],
+              "@item.number": ["condition"],
+              "@local.workshop_number": ["condition"],
+              "@calc(@item.number <= @local.workshop_number)": ["condition"],
+            },
+          },
+        ],
+        name: "items",
+        _nested_name: "items",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.workshop",
+              matchedExpression: "@data.workshop",
+              type: "data",
+              fieldName: "workshop",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.workshop": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_calc.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_items",
+    status: "released",
+    rows: [
+      {
+        type: "title",
+        name: "basic_example",
+        value: "Basic Example",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "basic_example",
+      },
+      {
+        type: "items",
+        value: "@data.example_items",
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "item_text_1_@item.id",
+            value: "@item.id",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "items.item_text_1_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "item_text_1_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.item_text_1_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "value", "_nested_name"],
+            },
+          },
+          {
+            type: "text",
+            name: "item_text_2_@item.id",
+            value: "@item.name",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "items.item_text_2_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "item_text_2_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.name",
+                  matchedExpression: "@item.name",
+                  type: "item",
+                  fieldName: "name",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.item_text_2_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@item.name": ["value"],
+            },
+          },
+          {
+            type: "text",
+            name: "item_text_3_@item.id",
+            value: "+@item._index+1",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "items.item_text_3_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "item_text_3_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "+@item._index+1",
+                  matchedExpression: "@item._index",
+                  type: "item",
+                  fieldName: "_index",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.item_text_3_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@item._index": ["value"],
+            },
+          },
+        ],
+        name: "items",
+        _nested_name: "items",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example_items",
+              matchedExpression: "@data.example_items",
+              type: "data",
+              fieldName: "example_items",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example_items": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title",
+        value: "Setting conditional variables",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "title",
+      },
+      {
+        type: "items",
+        value: "@data.example_items",
+        rows: [
+          {
+            type: "set_field",
+            name: "example_items_field_@item.id",
+            value: "@item.field_value",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            condition: "@item.field_value > 2",
+            _nested_name: "items.example_items_field_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "example_items_field_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.field_value",
+                  matchedExpression: "@item.field_value",
+                  type: "item",
+                  fieldName: "field_value",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@item.field_value > 2",
+                  matchedExpression: "@item.field_value",
+                  type: "item",
+                  fieldName: "field_value",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.example_items_field_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@item.field_value": ["value", "condition"],
+            },
+          },
+        ],
+        name: "items",
+        _nested_name: "items",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example_items",
+              matchedExpression: "@data.example_items",
+              type: "data",
+              fieldName: "example_items",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example_items": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "conditional_var_1",
+        value: "This should be set as 7: @fields.example_items_field_item_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "conditional_var_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "This should be set as 7: @fields.example_items_field_item_1",
+              matchedExpression: "@fields.example_items_field_item_1",
+              type: "fields",
+              fieldName: "example_items_field_item_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.example_items_field_item_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "conditional_var_2",
+        value: "This should be not set (blank): @fields.example_items_field_item_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "conditional_var_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "This should be not set (blank): @fields.example_items_field_item_2",
+              matchedExpression: "@fields.example_items_field_item_2",
+              type: "fields",
+              fieldName: "example_items_field_item_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.example_items_field_item_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "workshop_example",
+        value: "Workshop Example",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_example",
+      },
+      {
+        type: "items",
+        value: "@data.workshop",
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "item_id_@item.id",
+            value: "@item.id",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "items.item_id_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "item_id_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.item_id_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "value", "_nested_name"],
+            },
+          },
+          {
+            type: "text",
+            name: "item_number_@item.id",
+            value: "@item.number",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "items.item_number_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "item_number_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.number",
+                  matchedExpression: "@item.number",
+                  type: "item",
+                  fieldName: "number",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.item_number_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@item.number": ["value"],
+            },
+          },
+        ],
+        name: "items",
+        _nested_name: "items",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.workshop",
+              matchedExpression: "@data.workshop",
+              type: "data",
+              fieldName: "workshop",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.workshop": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_items.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_items_unlock",
+    status: "released",
+    rows: [
+      {
+        type: "title",
+        name: "workshop_example",
+        value: "Example Items Unlock",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "workshop_example",
+      },
+      {
+        type: "set_variable",
+        name: "current_week",
+        value: '@calc(window.date_fns.differenceInWeeks(new Date(), new Date("2021-08-01"))+1)',
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "current_week",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                '@calc(window.date_fns.differenceInWeeks(new Date(), new Date("2021-08-01"))+1)',
+              matchedExpression:
+                '@calc(window.date_fns.differenceInWeeks(new Date(), new Date("2021-08-01"))+1)',
+              type: "calc",
+              fieldName: 'window.date_fns.differenceInWeeks(new Date(), new Date("2021-08-01"))+1',
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          '@calc(window.date_fns.differenceInWeeks(new Date(), new Date("2021-08-01"))+1)': [
+            "value",
+          ],
+        },
+      },
+      {
+        type: "text",
+        name: "text_current_week",
+        value: "@local.current_week",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "text_current_week",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.current_week",
+              matchedExpression: "@local.current_week",
+              type: "local",
+              fieldName: "current_week",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.current_week": ["value"],
+        },
+      },
+      {
+        type: "items",
+        value: "@data.example_items",
+        rows: [
+          {
+            type: "set_field",
+            name: "@item.unlock_fieldname",
+            value: "@calc(@item.unlock_week > @local.current_week)",
+            _translations: {
+              value: {
+                spa: false,
+              },
+            },
+            _nested_name: "items.@item.unlock_fieldname",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "@item.unlock_fieldname",
+                  matchedExpression: "@item.unlock_fieldname",
+                  type: "item",
+                  fieldName: "unlock_fieldname",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@calc(@item.unlock_week > @local.current_week)",
+                  matchedExpression: "@item.unlock_week",
+                  type: "item",
+                  fieldName: "unlock_week",
+                },
+                {
+                  fullExpression: "@calc(@item.unlock_week > @local.current_week)",
+                  matchedExpression: "@local.current_week",
+                  type: "local",
+                  fieldName: "current_week",
+                },
+                {
+                  fullExpression: "@calc(@item.unlock_week > @local.current_week)",
+                  matchedExpression: "@calc(@item.unlock_week > @local.current_week)",
+                  type: "calc",
+                  fieldName: "@item.unlock_week > @local.current_week",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.@item.unlock_fieldname",
+                  matchedExpression: "@item.unlock_fieldname",
+                  type: "item",
+                  fieldName: "unlock_fieldname",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.unlock_fieldname": ["name", "_nested_name"],
+              "@item.unlock_week": ["value"],
+              "@local.current_week": ["value"],
+              "@calc(@item.unlock_week > @local.current_week)": ["value"],
+            },
+          },
+          {
+            type: "display_group",
+            name: "group_@item.id",
+            rows: [
+              {
+                type: "text",
+                name: "text_group_item_@item.id",
+                value: "group item: @item.id",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
+                _nested_name: "items.group_@item.id.text_group_item_@item.id",
+                _dynamicFields: {
+                  name: [
+                    {
+                      fullExpression: "text_group_item_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                  value: [
+                    {
+                      fullExpression: "group item: @item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                  _nested_name: [
+                    {
+                      fullExpression: "items.group_@item.id.text_group_item_@item.id",
+                      matchedExpression: "@item.id.text_group_item_",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                    {
+                      fullExpression: "items.group_@item.id.text_group_item_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.id": ["name", "value", "_nested_name"],
+                  "@item.id.text_group_item_": ["_nested_name"],
+                },
+              },
+              {
+                type: "text",
+                name: "text_workshop_unlock_week_@item.id",
+                value: "Unlock week: @item.unlock_week",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
+                _nested_name: "items.group_@item.id.text_workshop_unlock_week_@item.id",
+                _dynamicFields: {
+                  name: [
+                    {
+                      fullExpression: "text_workshop_unlock_week_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                  value: [
+                    {
+                      fullExpression: "Unlock week: @item.unlock_week",
+                      matchedExpression: "@item.unlock_week",
+                      type: "item",
+                      fieldName: "unlock_week",
+                    },
+                  ],
+                  _nested_name: [
+                    {
+                      fullExpression: "items.group_@item.id.text_workshop_unlock_week_@item.id",
+                      matchedExpression: "@item.id.text_workshop_unlock_week_",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                    {
+                      fullExpression: "items.group_@item.id.text_workshop_unlock_week_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.id": ["name", "_nested_name"],
+                  "@item.unlock_week": ["value"],
+                  "@item.id.text_workshop_unlock_week_": ["_nested_name"],
+                },
+              },
+              {
+                type: "text",
+                name: "text_workshop_unlocked_@item.id",
+                value: "Unlocked: @fields.@item.unlock_fieldname",
+                _translations: {
+                  value: {
+                    spa: false,
+                  },
+                },
+                _nested_name: "items.group_@item.id.text_workshop_unlocked_@item.id",
+                _dynamicFields: {
+                  name: [
+                    {
+                      fullExpression: "text_workshop_unlocked_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                  value: [
+                    {
+                      fullExpression: "Unlocked: @fields.@item.unlock_fieldname",
+                      matchedExpression: "@item.unlock_fieldname",
+                      type: "item",
+                      fieldName: "unlock_fieldname",
+                    },
+                  ],
+                  _nested_name: [
+                    {
+                      fullExpression: "items.group_@item.id.text_workshop_unlocked_@item.id",
+                      matchedExpression: "@item.id.text_workshop_unlocked_",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                    {
+                      fullExpression: "items.group_@item.id.text_workshop_unlocked_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.id": ["name", "_nested_name"],
+                  "@item.unlock_fieldname": ["value"],
+                  "@item.id.text_workshop_unlocked_": ["_nested_name"],
+                },
+              },
+            ],
+            _nested_name: "items.group_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "group_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items.group_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+            },
+          },
+        ],
+        name: "items",
+        _nested_name: "items",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example_items",
+              matchedExpression: "@data.example_items",
+              type: "data",
+              fieldName: "example_items",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example_items": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_items.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "example_lang_select",
     status: "released",
     flow_subtype: "debug",
@@ -19891,6 +22766,222 @@ const template: FlowTypes.Template[] = [
     ],
     _xlsxPath:
       "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_startup_1",
+    status: "released",
+    process_on_start: 1.1,
+    comments: "Templates will be processed on startup in ascending order of priority",
+    rows: [
+      {
+        type: "title",
+        name: "example_1",
+        value: "Example Startup 1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_1",
+      },
+      {
+        type: "set_field",
+        name: "example_startup_field",
+        value: "Set by example_startup_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_startup_field",
+      },
+      {
+        type: "text",
+        name: "example_startup_text",
+        value: "@fields.example_startup_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_startup_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.example_startup_field",
+              matchedExpression: "@fields.example_startup_field",
+              type: "fields",
+              fieldName: "example_startup_field",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.example_startup_field": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_startup.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_startup_2",
+    status: "released",
+    process_on_start: 2.1,
+    comments:
+      "This template will be processed after example_startup_1 (2.1 > 1.1), and so variables set here may overwrite variables seet in example_startup_1",
+    rows: [
+      {
+        type: "title",
+        name: "example_1",
+        value: "Example Startup 2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_1",
+      },
+      {
+        type: "set_field",
+        name: "example_startup_field",
+        value: "Set by example_startup_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_startup_field",
+      },
+      {
+        type: "text",
+        name: "example_startup_text",
+        value: "\n@fields.example_startup_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_startup_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "\n@fields.example_startup_field",
+              matchedExpression: "@fields.example_startup_field",
+              type: "fields",
+              fieldName: "example_startup_field",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.example_startup_field": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_startup.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_startup_trigger",
+    status: "released",
+    rows: [
+      {
+        type: "title",
+        name: "example_1",
+        value: "Example Startup Trigger",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_1",
+      },
+      {
+        type: "text",
+        name: "example_startup_text",
+        value: "example_startup_field: @fields.example_startup_field",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        _nested_name: "example_startup_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "example_startup_field: @fields.example_startup_field",
+              matchedExpression: "@fields.example_startup_field",
+              type: "fields",
+              fieldName: "example_startup_field",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.example_startup_field": ["value"],
+        },
+      },
+      {
+        type: "button",
+        name: "trigger_1",
+        value: "Trigger example_startup_1",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "process_template",
+            args: ["example_startup_1"],
+            _raw: "click | process_template: example_startup_1",
+            _cleaned: "click | process_template: example_startup_1",
+          },
+          {
+            trigger: "click",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "click | emit: force_reprocess",
+            _cleaned: "click | emit: force_reprocess",
+          },
+        ],
+        _nested_name: "trigger_1",
+      },
+      {
+        type: "button",
+        name: "trigger_2",
+        value: "Trigger example_startup_2",
+        _translations: {
+          value: {
+            spa: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "process_template",
+            args: ["example_startup_2"],
+            _raw: "click | process_template: example_startup_2",
+            _cleaned: "click | process_template: example_startup_2",
+          },
+          {
+            trigger: "click",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "click | emit: force_reprocess",
+            _cleaned: "click | emit: force_reprocess",
+          },
+        ],
+        _nested_name: "trigger_2",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_startup.xlsx",
   },
 ];
 export default template;

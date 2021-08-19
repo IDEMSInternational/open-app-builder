@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const completion_list: FlowTypes.Completion_list[] = [
   {
     flow_type: "completion_list",

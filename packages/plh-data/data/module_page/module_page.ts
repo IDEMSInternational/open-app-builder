@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const module_page: FlowTypes.Module_page[] = [
   {
     flow_type: "module_page",
