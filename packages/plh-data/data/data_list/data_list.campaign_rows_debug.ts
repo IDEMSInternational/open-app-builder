@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
@@ -2567,25 +2567,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/workshop_data_list.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_name: "example_calc_data_list",
-    status: "released",
-    data_list_name: "example_calc",
-    rows: [
-      {
-        id: "example_1",
-        value_list: [
-          "name:name_var_1 | text:Option 1",
-          "name:name_var_2 | text: Option 2",
-          "name:name_var_3 | text: Option 3",
-        ],
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_calc.xlsx",
   },
   {
     flow_type: "data_list",
