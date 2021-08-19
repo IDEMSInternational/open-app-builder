@@ -1,15 +1,14 @@
 import inquirer from "inquirer";
 import { Command } from "commander";
-const program = new Command();
 
-program
-  .command("interactive")
+const program = new Command("interactive");
+
+export default program
   .description("Run with interactive prompts")
-  .action(() => interactivePrompts())
-  .parse(process.argv);
+  .action(() => interactivePrompts());
 
 /** WiP - interactive client */
-export function interactivePrompts() {
+function interactivePrompts() {
   inquirer
     .prompt([
       { message: "Here is a question", name: "command_option" },

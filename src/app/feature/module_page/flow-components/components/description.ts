@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "plh-data/model/flowTypes";
+import { FlowTypes } from "data-models";
 
 @Component({
   selector: "module-list-flow-description",

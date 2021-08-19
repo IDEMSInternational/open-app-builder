@@ -1,22 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { DYNAMIC_PREFIXES } from "./constants";
 import { RapidProFlowExport } from "./rapidpro.model";
 import { TipRow } from "./tips.model";
 // import { IDBTable } from "../../../src/app/shared/services/db/db.service";
-
-/*********************************************************************************************
- *  Constants used to generate types
- ********************************************************************************************/
-
-export const DYNAMIC_PREFIXES = [
-  "local",
-  "field",
-  "fields",
-  "global",
-  "data",
-  "campaign",
-  "calc",
-  "item",
-] as const;
 
 /*********************************************************************************************
  *  Base flow types

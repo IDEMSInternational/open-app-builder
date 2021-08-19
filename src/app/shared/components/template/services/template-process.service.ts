@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FlowTypes } from "packages/plh-data/model";
+import { FlowTypes } from "data-models";
 import { SettingsService } from "src/app/pages/settings/settings.service";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";

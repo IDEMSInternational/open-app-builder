@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
-import { FlowTypes } from "plh-data/model/flowTypes";
+import { FlowTypes } from "data-models";
 
 type Module = FlowTypes.Module_listRow;
 
