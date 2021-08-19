@@ -119,6 +119,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (full) {
         console.log("[Force Reload]", this.name);
         // ensure angular destroys previous row components before rendering new
+        // (note - will cause short content flicker)
+        this.templateRowService.renderedRows = [];
         await this.renderTemplate();
       } else {
         await this.templateRowService.processRowUpdates();
