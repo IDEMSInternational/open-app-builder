@@ -19,6 +19,7 @@
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
     "test": "ng test",
+    "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "analyse": "npm run build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
