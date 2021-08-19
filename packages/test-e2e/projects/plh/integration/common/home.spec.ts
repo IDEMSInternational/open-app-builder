@@ -55,7 +55,10 @@ describe("[Not First Load]", () => {
     // check template component loaded
     // NOTE - could also have better identifier
     cy.get('[ng-reflect-templatename="home_screen"]').should("be.visible");
-    // example if screenshots required
+    // example if screenshots required.
+    // Include extra wait time because likely content will not be visible immediately when template loaded
+    // (alternatively could wait for specific element from the content to be visible if known)
+    cy.wait(1000);
     cy.screenshot();
   });
 });
