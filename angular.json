@@ -43,10 +43,7 @@
               "./node_modules/intro.js/introjs.css",
               "src/theme/variables.scss",
               "src/global.scss",
-              {
-                "input": "node_modules/survey-angular/modern.css",
-                "inject": false
-              }
+              "node_modules/survey-angular/modern.css"
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
             "allowedCommonJsDependencies": ["lottie-web", "firebase/app", "@firebase/auth"],
