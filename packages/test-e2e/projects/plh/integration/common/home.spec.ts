@@ -21,7 +21,7 @@ describe("[First Load]", () => {
     cy.visit("/");
     cy.location("pathname").should("eq", "/home");
   });
-  it("[Shows and dismisses intro popup]", () => {
+  it("[Shows intro popup]", () => {
     // some app elements have a specific attribute on them to make it easier to search in cypress
     // e.g.  <ion-button data-cy="skip-intro">Skip Intro</ion-button>
     cy.get("[data-cy=skip-intro]").should("be.visible");
@@ -38,10 +38,10 @@ describe("[First Load]", () => {
     // so just search for anything containing the word Continue
     cy.get("analytics-survey").contains("Continue").click();
   });
-  it("[Shows intro.js tooltip", () => {
+  it("[Shows intro.js tooltip]", () => {
     cy.get(".introjs-tooltip").should("be.visible");
   });
-  it("[Dismisses intro.js tooltip", () => {
+  it("[Dismisses intro.js tooltip]", () => {
     cy.get(".introjs-skipbutton").click();
     cy.get(".introjs-tooltip").should("not.exist");
   });
