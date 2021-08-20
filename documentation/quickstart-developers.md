@@ -1,17 +1,15 @@
 ## Introduction
 
-This is the main frontend repository for the parenting app.
+The main tech stack comprises of:
 
-It was created using the Ionic CLI and it consists of four main parts:
-
-- Angular 9
-- Ionic v4
+- Angular 12
+- Ionic v5
 - Android Native via Capacitor
 
 ## Additional Developer Prerequisites
 
-1. Install angular CLI - yarn global add @angular/cli
-2. Install ionic CLI - - yarn global add @ionic/cli
+1. Install angular CLI - `npm i -g @angular/cli`
+2. Install ionic CLI - - `npm i -g @ionic/cli`
 
 ## Building / Running app on Android
 

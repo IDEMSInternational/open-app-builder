@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
@@ -23,7 +23,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/play_white.svg",
       },
       {
-        id: "welcome_survey_quick_start",
+        id: "survey_welcome_quick_start",
         click_action_list: [
           {
             trigger: "click",
@@ -35,12 +35,12 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["welcome_survey_quick_start.sent", true],
-            _raw: "set_field: welcome_survey_quick_start.sent : true",
-            _cleaned: "click | set_field: welcome_survey_quick_start.sent : true",
+            args: ["survey_welcome_quick_start.sent", true],
+            _raw: "set_field: survey_welcome_quick_start.sent : true",
+            _cleaned: "click | set_field: survey_welcome_quick_start.sent : true",
           },
         ],
-        priority: 13,
+        priority: 13.2,
         activation_condition_list: [
           {
             condition_type: "field_evaluation",
@@ -58,11 +58,57 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "survey_completed",
+                field: "survey_welcome_completed",
                 value: true,
               },
             },
-            _raw: "get_field | survey_completed : true",
+            _raw: "get_field | survey_welcome_completed : true",
+          },
+        ],
+        campaign_list: ["parent_centre"],
+        icon: "plh_images/icons/phone_heart_white.svg",
+      },
+      {
+        id: "survey_final_quick_start",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["survey_final_stepper"],
+            _raw: "go_to: survey_final_stepper",
+            _cleaned: "click | go_to: survey_final_stepper",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["survey_final_quick_start.sent", true],
+            _raw: "set_field: survey_final_quick_start.sent : true",
+            _cleaned: "click | set_field: survey_final_quick_start.sent : true",
+          },
+        ],
+        priority: 13.1,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_celebrate_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_celebrate_started : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "survey_final_completed",
+                value: true,
+              },
+            },
+            _raw: "get_field | survey_final_completed : true",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -92,11 +138,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "1",
               },
             },
-            _raw: "get_field | current_workshop_number : 1",
+            _raw: "get_field | workshop_number : 1",
           },
           {
             condition_type: "field_evaluation",
@@ -148,11 +194,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "1",
               },
             },
-            _raw: "get_field | current_workshop_number : 1",
+            _raw: "get_field | workshop_number : 1",
           },
           {
             condition_type: "field_evaluation",
@@ -204,11 +250,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "1",
               },
             },
-            _raw: "get_field | current_workshop_number : 1",
+            _raw: "get_field | workshop_number : 1",
           },
           {
             condition_type: "field_evaluation",
@@ -236,41 +282,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -300,11 +346,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "1",
               },
             },
-            _raw: "get_field | current_workshop_number : 1",
+            _raw: "get_field | workshop_number : 1",
           },
         ],
         deactivation_condition_list: [
@@ -322,51 +368,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -396,11 +442,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "1",
               },
             },
-            _raw: "get_field | current_workshop_number : 1",
+            _raw: "get_field | workshop_number : 1",
           },
           {
             condition_type: "field_evaluation",
@@ -428,61 +474,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -521,11 +567,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -577,11 +623,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -623,11 +669,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -645,21 +691,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -689,11 +735,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -711,31 +757,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -765,11 +811,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -797,31 +843,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -851,11 +897,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -873,31 +919,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -947,11 +993,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -979,41 +1025,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -1043,11 +1089,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         deactivation_condition_list: [
@@ -1065,51 +1111,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -1139,11 +1185,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -1171,51 +1217,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -1245,11 +1291,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -1277,61 +1323,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -1370,11 +1416,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
@@ -1426,11 +1472,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1472,11 +1518,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1494,21 +1540,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -1538,11 +1584,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1560,31 +1606,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -1614,11 +1660,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
@@ -1646,52 +1692,52 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
         icon: "plh_images/icons/bell_white.svg",
       },
       {
-        id: "w_praise_m_w_in_pro",
+        id: "w_praise_m_w_in_progress",
         click_action_list: [
           {
             trigger: "click",
             action_id: "pop_up",
-            args: ["w_praise_m_w_in_pro"],
-            _raw: "pop_up: w_praise_m_w_in_pro",
-            _cleaned: "click | pop_up: w_praise_m_w_in_pro",
+            args: ["w_praise_m_w_in_progress"],
+            _raw: "pop_up: w_praise_m_w_in_progress",
+            _cleaned: "click | pop_up: w_praise_m_w_in_progress",
           },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_praise_m_w_in_pro.sent", true],
-            _raw: "set_field: w_praise_m_w_in_pro.sent : true",
-            _cleaned: "click | set_field: w_praise_m_w_in_pro.sent : true",
+            args: ["w_praise_m_w_in_progress.sent", true],
+            _raw: "set_field: w_praise_m_w_in_progress.sent : true",
+            _cleaned: "click | set_field: w_praise_m_w_in_progress.sent : true",
           },
         ],
         priority: 10.5,
@@ -1700,11 +1746,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1712,41 +1758,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_praise_m_w_in_pro.sent",
+                field: "w_praise_m_w_in_progress.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_praise_m_w_in_pro.sent : true",
+            _raw: "get_field | w_praise_m_w_in_progress.sent : true",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -1796,11 +1842,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
@@ -1828,41 +1874,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -1892,11 +1938,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         deactivation_condition_list: [
@@ -1914,51 +1960,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -1988,11 +2034,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
@@ -2020,51 +2066,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -2094,11 +2140,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
           {
             condition_type: "field_evaluation",
@@ -2126,61 +2172,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -2219,11 +2265,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
@@ -2275,11 +2321,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -2321,11 +2367,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -2367,11 +2413,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -2413,11 +2459,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
@@ -2445,52 +2491,52 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
         icon: "plh_images/icons/bell_white.svg",
       },
       {
-        id: "w_instruct_m_w_in_pro",
+        id: "w_instruct_m_w_in_progress",
         click_action_list: [
           {
             trigger: "click",
             action_id: "pop_up",
-            args: ["w_instruct_m_w_in_pro"],
-            _raw: "pop_up: w_instruct_m_w_in_pro",
-            _cleaned: "click | pop_up: w_instruct_m_w_in_pro",
+            args: ["w_instruct_m_w_in_progress"],
+            _raw: "pop_up: w_instruct_m_w_in_progress",
+            _cleaned: "click | pop_up: w_instruct_m_w_in_progress",
           },
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["w_instruct_m_w_in_pro.sent", true],
-            _raw: "set_field: w_instruct_m_w_in_pro.sent : true",
-            _cleaned: "click | set_field: w_instruct_m_w_in_pro.sent : true",
+            args: ["w_instruct_m_w_in_progress.sent", true],
+            _raw: "set_field: w_instruct_m_w_in_progress.sent : true",
+            _cleaned: "click | set_field: w_instruct_m_w_in_progress.sent : true",
           },
         ],
         priority: 9.5,
@@ -2499,11 +2545,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -2511,41 +2557,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "w_instruct_m_w_in_pro.sent",
+                field: "w_instruct_m_w_in_progress.sent",
                 value: true,
               },
             },
-            _raw: "get_field | w_instruct_m_w_in_pro.sent : true",
+            _raw: "get_field | w_instruct_m_w_in_progress.sent : true",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -2595,11 +2641,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
@@ -2627,41 +2673,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -2691,11 +2737,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         deactivation_condition_list: [
@@ -2713,51 +2759,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -2787,11 +2833,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
@@ -2819,51 +2865,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -2893,11 +2939,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
           {
             condition_type: "field_evaluation",
@@ -2925,61 +2971,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -3018,11 +3064,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
@@ -3074,11 +3120,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -3120,11 +3166,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -3142,21 +3188,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -3186,11 +3232,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -3208,31 +3254,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -3262,11 +3308,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
@@ -3294,31 +3340,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -3348,11 +3394,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -3370,31 +3416,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -3444,11 +3490,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
@@ -3476,41 +3522,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -3540,11 +3586,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         deactivation_condition_list: [
@@ -3562,51 +3608,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -3636,11 +3682,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
@@ -3668,51 +3714,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -3742,11 +3788,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
           {
             condition_type: "field_evaluation",
@@ -3774,61 +3820,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -3867,11 +3913,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
@@ -3923,11 +3969,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -3969,11 +4015,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -3991,21 +4037,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4035,11 +4081,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -4057,31 +4103,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4111,11 +4157,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
@@ -4143,31 +4189,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -4197,11 +4243,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -4219,31 +4265,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -4293,11 +4339,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
@@ -4325,41 +4371,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -4389,11 +4435,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         deactivation_condition_list: [
@@ -4411,51 +4457,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -4485,11 +4531,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
@@ -4517,51 +4563,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4591,11 +4637,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
           {
             condition_type: "field_evaluation",
@@ -4623,61 +4669,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -4716,11 +4762,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
@@ -4772,11 +4818,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -4818,11 +4864,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -4840,21 +4886,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4884,11 +4930,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -4906,31 +4952,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -4960,11 +5006,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
@@ -4992,31 +5038,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -5046,11 +5092,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -5068,31 +5114,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -5142,11 +5188,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
@@ -5174,41 +5220,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -5238,11 +5284,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         deactivation_condition_list: [
@@ -5260,51 +5306,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -5334,11 +5380,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
@@ -5366,51 +5412,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5440,11 +5486,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
           {
             condition_type: "field_evaluation",
@@ -5472,61 +5518,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -5565,11 +5611,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
@@ -5621,11 +5667,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -5667,11 +5713,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -5689,21 +5735,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5733,11 +5779,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -5755,31 +5801,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -5809,11 +5855,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
@@ -5841,31 +5887,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -5895,11 +5941,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -5917,31 +5963,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -5991,11 +6037,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
@@ -6023,41 +6069,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -6087,11 +6133,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         deactivation_condition_list: [
@@ -6109,51 +6155,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -6183,11 +6229,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
@@ -6215,51 +6261,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -6289,11 +6335,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
           {
             condition_type: "field_evaluation",
@@ -6321,61 +6367,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -6414,11 +6460,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
@@ -6470,11 +6516,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -6516,11 +6562,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -6538,21 +6584,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -6582,11 +6628,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -6604,31 +6650,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -6658,11 +6704,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
@@ -6690,31 +6736,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -6744,11 +6790,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -6766,31 +6812,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -6840,11 +6886,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
@@ -6872,41 +6918,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -6936,11 +6982,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         deactivation_condition_list: [
@@ -6958,51 +7004,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -7032,11 +7078,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
@@ -7064,51 +7110,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -7138,11 +7184,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
           {
             condition_type: "field_evaluation",
@@ -7170,61 +7216,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -7263,11 +7309,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
@@ -7319,11 +7365,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -7365,11 +7411,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -7387,21 +7433,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -7431,11 +7477,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -7453,31 +7499,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -7507,11 +7553,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
@@ -7539,31 +7585,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -7593,11 +7639,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -7615,31 +7661,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -7689,11 +7735,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
@@ -7721,41 +7767,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -7785,11 +7831,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         deactivation_condition_list: [
@@ -7807,51 +7853,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -7881,11 +7927,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
@@ -7913,51 +7959,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -7987,11 +8033,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
           {
             condition_type: "field_evaluation",
@@ -8019,61 +8065,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -8112,11 +8158,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
@@ -8168,11 +8214,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -8214,11 +8260,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -8236,21 +8282,21 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -8280,11 +8326,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -8302,31 +8348,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -8356,11 +8402,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
@@ -8388,31 +8434,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -8442,11 +8488,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -8464,31 +8510,31 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
@@ -8538,11 +8584,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
@@ -8570,41 +8616,41 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
         ],
         campaign_list: ["parent_points"],
@@ -8634,11 +8680,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         deactivation_condition_list: [
@@ -8656,51 +8702,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_points"],
@@ -8730,11 +8776,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
@@ -8762,51 +8808,51 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
         ],
         campaign_list: ["parent_centre"],
@@ -8836,11 +8882,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
           {
             condition_type: "field_evaluation",
@@ -8868,61 +8914,61 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "0",
               },
             },
-            _raw: "get_field | current_relative_day_number : 0",
+            _raw: "get_field | workshop_day : 0",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "1",
               },
             },
-            _raw: "get_field | current_relative_day_number : 1",
+            _raw: "get_field | workshop_day : 1",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "2",
               },
             },
-            _raw: "get_field | current_relative_day_number : 2",
+            _raw: "get_field | workshop_day : 2",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "3",
               },
             },
-            _raw: "get_field | current_relative_day_number : 3",
+            _raw: "get_field | workshop_day : 3",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "4",
               },
             },
-            _raw: "get_field | current_relative_day_number : 4",
+            _raw: "get_field | workshop_day : 4",
           },
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_relative_day_number",
+                field: "workshop_day",
                 value: "5",
               },
             },
-            _raw: "get_field | current_relative_day_number : 5",
+            _raw: "get_field | workshop_day : 5",
           },
         ],
         campaign_list: ["weekly_workshops"],
@@ -8976,11 +9022,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "1",
               },
             },
-            _raw: "get_field | current_workshop_number : 1",
+            _raw: "get_field | workshop_number : 1",
           },
           {
             condition_type: "field_evaluation",
@@ -9020,11 +9066,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         campaign_list: ["relax"],
@@ -9054,11 +9100,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         campaign_list: ["relax"],
@@ -9088,11 +9134,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         campaign_list: ["relax"],
@@ -9122,11 +9168,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         campaign_list: ["relax"],
@@ -9156,11 +9202,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         campaign_list: ["relax"],
@@ -9190,11 +9236,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         campaign_list: ["relax"],
@@ -9224,11 +9270,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         campaign_list: ["relax"],
@@ -9258,11 +9304,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         campaign_list: ["relax"],
@@ -9292,11 +9338,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         campaign_list: ["relax"],
@@ -9326,11 +9372,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         campaign_list: ["relax"],
@@ -9384,11 +9430,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "2",
               },
             },
-            _raw: "get_field | current_workshop_number : 2",
+            _raw: "get_field | workshop_number : 2",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9418,11 +9464,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "3",
               },
             },
-            _raw: "get_field | current_workshop_number : 3",
+            _raw: "get_field | workshop_number : 3",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9452,11 +9498,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "4",
               },
             },
-            _raw: "get_field | current_workshop_number : 4",
+            _raw: "get_field | workshop_number : 4",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9486,11 +9532,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "5",
               },
             },
-            _raw: "get_field | current_workshop_number : 5",
+            _raw: "get_field | workshop_number : 5",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9520,11 +9566,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "6",
               },
             },
-            _raw: "get_field | current_workshop_number : 6",
+            _raw: "get_field | workshop_number : 6",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9554,11 +9600,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "7",
               },
             },
-            _raw: "get_field | current_workshop_number : 7",
+            _raw: "get_field | workshop_number : 7",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9588,11 +9634,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "8",
               },
             },
-            _raw: "get_field | current_workshop_number : 8",
+            _raw: "get_field | workshop_number : 8",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9622,11 +9668,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "9",
               },
             },
-            _raw: "get_field | current_workshop_number : 9",
+            _raw: "get_field | workshop_number : 9",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9656,11 +9702,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "10",
               },
             },
-            _raw: "get_field | current_workshop_number : 10",
+            _raw: "get_field | workshop_number : 10",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9690,11 +9736,11 @@ const data_list: FlowTypes.Data_list[] = [
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
-                field: "current_workshop_number",
+                field: "workshop_number",
                 value: "11",
               },
             },
-            _raw: "get_field | current_workshop_number : 11",
+            _raw: "get_field | workshop_number : 11",
           },
         ],
         campaign_list: ["something_fun"],
@@ -9702,1017 +9748,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_parent_centre_quick_start.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "campaign_unlock_workshops",
-    status: "released",
-    rows: [
-      {
-        id: "default",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["default.sent", true],
-            _raw: "set_field: default.sent : TRUE",
-            _cleaned: "click | set_field: default.sent : TRUE",
-          },
-        ],
-        priority: -1,
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_self_care",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-        ],
-        priority: 1,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "1",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 1",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_self_care.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_self_care.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_1on1",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_1on1.sent", true],
-            _raw: "set_field: enable_up_to_w_1on1.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_1on1.sent : TRUE",
-          },
-        ],
-        priority: 2,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "2",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 2",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_1on1.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_1on1.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_praise",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_praise.sent", true],
-            _raw: "set_field: enable_up_to_w_praise.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_praise.sent : TRUE",
-          },
-        ],
-        priority: 3,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "3",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 3",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_praise.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_praise.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_instruct",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_instruct.sent", true],
-            _raw: "set_field: enable_up_to_w_instruct.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_instruct.sent : TRUE",
-          },
-        ],
-        priority: 4,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "4",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 4",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_instruct.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_instruct.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_stress",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_stress.sent", true],
-            _raw: "set_field: enable_up_to_w_stress.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_stress.sent : TRUE",
-          },
-        ],
-        priority: 5,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "5",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 5",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_stress.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_stress.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_money",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_money.sent", true],
-            _raw: "set_field: enable_up_to_w_money.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_money.sent : TRUE",
-          },
-        ],
-        priority: 6,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "6",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 6",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_money.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_money.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_rules",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_disabled", false],
-            _raw: "set_field: w_rules_disabled : FALSE",
-            _cleaned: "click | set_field: w_rules_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_rules.sent", true],
-            _raw: "set_field: enable_up_to_w_rules.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_rules.sent : TRUE",
-          },
-        ],
-        priority: 7,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "7",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 7",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_rules.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_rules.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_consequence",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_disabled", false],
-            _raw: "set_field: w_rules_disabled : FALSE",
-            _cleaned: "click | set_field: w_rules_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_disabled", false],
-            _raw: "set_field: w_consequence_disabled : FALSE",
-            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_consequence.sent", true],
-            _raw: "set_field: enable_up_to_w_consequence.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_consequence.sent : TRUE",
-          },
-        ],
-        priority: 8,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "8",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 8",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_consequence.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_consequence.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_solve",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_disabled", false],
-            _raw: "set_field: w_rules_disabled : FALSE",
-            _cleaned: "click | set_field: w_rules_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_disabled", false],
-            _raw: "set_field: w_consequence_disabled : FALSE",
-            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_disabled", false],
-            _raw: "set_field: w_solve_disabled : FALSE",
-            _cleaned: "click | set_field: w_solve_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_solve.sent", true],
-            _raw: "set_field: enable_up_to_w_solve.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_solve.sent : TRUE",
-          },
-        ],
-        priority: 9,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "9",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 9",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_solve.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_solve.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_safe",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_disabled", false],
-            _raw: "set_field: w_rules_disabled : FALSE",
-            _cleaned: "click | set_field: w_rules_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_disabled", false],
-            _raw: "set_field: w_consequence_disabled : FALSE",
-            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_disabled", false],
-            _raw: "set_field: w_solve_disabled : FALSE",
-            _cleaned: "click | set_field: w_solve_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_safe_disabled", false],
-            _raw: "set_field: w_safe_disabled : FALSE",
-            _cleaned: "click | set_field: w_safe_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_safe.sent", true],
-            _raw: "set_field: enable_up_to_w_safe.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_safe.sent : TRUE",
-          },
-        ],
-        priority: 10,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "10",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 10",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_safe.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_safe.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_crisis",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_disabled", false],
-            _raw: "set_field: w_consequence_disabled : FALSE",
-            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_disabled", false],
-            _raw: "set_field: w_solve_disabled : FALSE",
-            _cleaned: "click | set_field: w_solve_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_safe_disabled", false],
-            _raw: "set_field: w_safe_disabled : FALSE",
-            _cleaned: "click | set_field: w_safe_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_crisis_disabled", false],
-            _raw: "set_field: w_crisis_disabled : FALSE",
-            _cleaned: "click | set_field: w_crisis_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_crisis.sent", true],
-            _raw: "set_field: enable_up_to_w_crisis.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_crisis.sent : TRUE",
-          },
-        ],
-        priority: 11,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "11",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 11",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_crisis.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_crisis.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-      {
-        id: "enable_up_to_w_celebrate",
-        click_action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_disabled", false],
-            _raw: "set_field: w_self_care_disabled : FALSE",
-            _cleaned: "click | set_field: w_self_care_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_1on1_disabled", false],
-            _raw: "set_field: w_1on1_disabled : FALSE",
-            _cleaned: "click | set_field: w_1on1_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_praise_disabled", false],
-            _raw: "set_field: w_praise_disabled : FALSE",
-            _cleaned: "click | set_field: w_praise_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_instruct_disabled", false],
-            _raw: "set_field: w_instruct_disabled : FALSE",
-            _cleaned: "click | set_field: w_instruct_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_stress_disabled", false],
-            _raw: "set_field: w_stress_disabled : FALSE",
-            _cleaned: "click | set_field: w_stress_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_money_disabled", false],
-            _raw: "set_field: w_money_disabled : FALSE",
-            _cleaned: "click | set_field: w_money_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_rules_disabled", false],
-            _raw: "set_field: w_rules_disabled : FALSE",
-            _cleaned: "click | set_field: w_rules_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_consequence_disabled", false],
-            _raw: "set_field: w_consequence_disabled : FALSE",
-            _cleaned: "click | set_field: w_consequence_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_solve_disabled", false],
-            _raw: "set_field: w_solve_disabled : FALSE",
-            _cleaned: "click | set_field: w_solve_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_safe_disabled", false],
-            _raw: "set_field: w_safe_disabled : FALSE",
-            _cleaned: "click | set_field: w_safe_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_crisis_disabled", false],
-            _raw: "set_field: w_crisis_disabled : FALSE",
-            _cleaned: "click | set_field: w_crisis_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_celebrate_disabled", false],
-            _raw: "set_field: w_celebrate_disabled : FALSE",
-            _cleaned: "click | set_field: w_celebrate_disabled : FALSE",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["enable_up_to_w_celebrate.sent", true],
-            _raw: "set_field: enable_up_to_w_celebrate.sent : TRUE",
-            _cleaned: "click | set_field: enable_up_to_w_celebrate.sent : TRUE",
-          },
-        ],
-        priority: 12,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "current_workshop_number",
-                value: "12",
-              },
-            },
-            _raw: "get_field | current_workshop_number : 12",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "enable_up_to_w_celebrate.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | enable_up_to_w_celebrate.sent : TRUE",
-          },
-        ],
-        campaign_list: ["unlock_workshops"],
-      },
-    ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/campaign_unlock_workshops.xlsx",
   },
   {
     flow_type: "data_list",
@@ -10738,7 +9773,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_self_care_quick_start",
         workshop: "w_self_care",
-        workshop_data: "@data.workshop.w_self_care",
         click_action_list: [
           {
             trigger: "click",
@@ -10790,7 +9824,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_self_care_continue",
         workshop: "w_self_care",
-        workshop_data: "@data.workshop.w_self_care",
         click_action_list: [
           {
             trigger: "click",
@@ -10852,7 +9885,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_1on1_quick_start",
         workshop: "w_1on1",
-        workshop_data: "@data.workshop.w_1on1",
         click_action_list: [
           {
             trigger: "click",
@@ -10904,7 +9936,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_1on1_continue",
         workshop: "w_1on1",
-        workshop_data: "@data.workshop.w_1on1",
         click_action_list: [
           {
             trigger: "click",
@@ -10966,7 +9997,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_praise_quick_start",
         workshop: "w_praise",
-        workshop_data: "@data.workshop.w_praise",
         click_action_list: [
           {
             trigger: "click",
@@ -11018,7 +10048,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_praise_continue",
         workshop: "w_praise",
-        workshop_data: "@data.workshop.w_praise",
         click_action_list: [
           {
             trigger: "click",
@@ -11080,7 +10109,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_instruct_quick_start",
         workshop: "w_instruct",
-        workshop_data: "@data.workshop.w_instruct",
         click_action_list: [
           {
             trigger: "click",
@@ -11132,7 +10160,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_instruct_continue",
         workshop: "w_instruct",
-        workshop_data: "@data.workshop.w_instruct",
         click_action_list: [
           {
             trigger: "click",
@@ -11194,7 +10221,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_stress_quick_start",
         workshop: "w_stress",
-        workshop_data: "@data.workshop.w_stress",
         click_action_list: [
           {
             trigger: "click",
@@ -11246,7 +10272,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_stress_continue",
         workshop: "w_stress",
-        workshop_data: "@data.workshop.w_stress",
         click_action_list: [
           {
             trigger: "click",
@@ -11308,7 +10333,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_money_quick_start",
         workshop: "w_money",
-        workshop_data: "@data.workshop.w_money",
         click_action_list: [
           {
             trigger: "click",
@@ -11360,7 +10384,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_money_continue",
         workshop: "w_money",
-        workshop_data: "@data.workshop.w_money",
         click_action_list: [
           {
             trigger: "click",
@@ -11422,7 +10445,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_rules_quick_start",
         workshop: "w_rules",
-        workshop_data: "@data.workshop.w_rules",
         click_action_list: [
           {
             trigger: "click",
@@ -11474,7 +10496,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_rules_continue",
         workshop: "w_rules",
-        workshop_data: "@data.workshop.w_rules",
         click_action_list: [
           {
             trigger: "click",
@@ -11536,7 +10557,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_consequence_quick_start",
         workshop: "w_consequence",
-        workshop_data: "@data.workshop.w_consequence",
         click_action_list: [
           {
             trigger: "click",
@@ -11588,7 +10608,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_consequence_continue",
         workshop: "w_consequence",
-        workshop_data: "@data.workshop.w_consequence",
         click_action_list: [
           {
             trigger: "click",
@@ -11650,7 +10669,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_solve_quick_start",
         workshop: "w_solve",
-        workshop_data: "@data.workshop.w_solve",
         click_action_list: [
           {
             trigger: "click",
@@ -11702,7 +10720,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_solve_continue",
         workshop: "w_solve",
-        workshop_data: "@data.workshop.w_solve",
         click_action_list: [
           {
             trigger: "click",
@@ -11764,7 +10781,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_safe_quick_start",
         workshop: "w_safe",
-        workshop_data: "@data.workshop.w_safe",
         click_action_list: [
           {
             trigger: "click",
@@ -11816,7 +10832,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_safe_continue",
         workshop: "w_safe",
-        workshop_data: "@data.workshop.w_safe",
         click_action_list: [
           {
             trigger: "click",
@@ -11878,7 +10893,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_crisis_quick_start",
         workshop: "w_crisis",
-        workshop_data: "@data.workshop.w_crisis",
         click_action_list: [
           {
             trigger: "click",
@@ -11930,7 +10944,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_crisis_continue",
         workshop: "w_crisis",
-        workshop_data: "@data.workshop.w_crisis",
         click_action_list: [
           {
             trigger: "click",
@@ -11992,7 +11005,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_celebrate_quick_start",
         workshop: "w_celebrate",
-        workshop_data: "@data.workshop.w_celebrate",
         click_action_list: [
           {
             trigger: "click",
@@ -12044,7 +11056,6 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_celebrate_continue",
         workshop: "w_celebrate",
-        workshop_data: "@data.workshop.w_celebrate",
         click_action_list: [
           {
             trigger: "click",

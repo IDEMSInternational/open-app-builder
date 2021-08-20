@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const care_package_list: FlowTypes.Care_package_list[] = [
   {
     flow_type: "care_package_list",

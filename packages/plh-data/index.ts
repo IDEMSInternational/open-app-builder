@@ -15,5 +15,3 @@ export { template } from "./data/template";
 export { tips } from "./data/tips";
 export { tour } from "./data/tour";
 export { TRANSLATION_STRINGS } from "./data/translation_strings";
-
-export * from "./model";

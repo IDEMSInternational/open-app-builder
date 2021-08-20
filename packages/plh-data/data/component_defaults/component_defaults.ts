@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const component_defaults: FlowTypes.Component_defaults[] = [
   {
     flow_type: "component_defaults",
