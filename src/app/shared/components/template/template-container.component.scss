@@ -9,6 +9,10 @@
 plh-template-container {
   width: 100%;
 }
+// Do not attempt to show components that do not have a display component (e.g. set_variable)
+plh-template-component[data-display-component="none"] {
+  display: none;
+}
 .template-container {
   width: 100%;
   height: 100%;
