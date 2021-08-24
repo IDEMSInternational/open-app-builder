@@ -17,6 +17,7 @@ import { getImageAssetPath } from "../utils/template-utils";
     `
       :host {
         width: 100%;
+        display: block;
       }
     `,
   ],
