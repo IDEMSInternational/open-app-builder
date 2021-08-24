@@ -48,16 +48,20 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         flex: 1 0 45%;
       }
       .two_columns_images .offset {
-        flex-wrap: wrap;
-        padding: 10px 0;
+        /*flex-wrap: wrap;*/
+        /*padding: 10px 0;*/
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 2fr;
       }
       .two_columns_images > .offset > :nth-child(1n) {
-        flex: 1 0 45%;
+        /*flex: 1 0 45%;*/
       }
       .two_columns_images > .offset plh-template-component {
         padding: 0 20px;
         max-width: 10rem;
-        max-height: 9rem;
+        max-height: 10rem;
       }
       .two_columns .offset {
         flex-wrap: wrap;
