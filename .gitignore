@@ -60,3 +60,4 @@ report.*
 !.yarn/versions
 .pnp.*
 node_modules
+.vs/slnx.sqlite
