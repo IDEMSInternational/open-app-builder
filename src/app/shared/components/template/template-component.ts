@@ -112,6 +112,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   @HostBinding("attr.data-type") get getComponentType() {
     return this._row?.type || null;
   }
+  @HostBinding("attr.has-child-rows") get getChildRows() {
+    return this._row?.rows ? "true" : null;
+  }
 
   private componentRef: ComponentRef<TemplateContainerComponent | ITemplateRowProps>;
 
