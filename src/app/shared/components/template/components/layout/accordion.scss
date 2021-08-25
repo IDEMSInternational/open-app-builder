@@ -89,6 +89,7 @@
   }
   .accordion-section-content {
     max-height: 0;
+    z-index: 2;
     transition: max-height 0.4s;
     &.openSection {
       max-height: var(--accordion-section-open-height);
