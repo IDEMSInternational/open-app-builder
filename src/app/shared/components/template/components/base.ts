@@ -41,7 +41,7 @@ export class TemplateBaseComponent implements ITemplateRowProps {
 
   /** Update the current value of the row by setting a local variable that matches */
   setValue(value: any) {
-    console.log("setting value", value);
+    // console.log("setting value", value);
     const action: FlowTypes.TemplateRowAction = {
       action_id: "set_local",
       args: [this._row._nested_name, value],
