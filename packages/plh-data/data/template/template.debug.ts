@@ -2643,13 +2643,13 @@ const template: FlowTypes.Template[] = [
       },
       {
         name: "spend_time_idea_2",
-        value: "Get water together ",
+        value: "Get water together",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -3616,7 +3616,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         name: "title_2",
-        value: "Condition column ",
+        value: "Condition column",
         _translations: {
           value: {
             spa: false,
@@ -4643,13 +4643,13 @@ const template: FlowTypes.Template[] = [
     rows: [
       {
         name: "var_1",
-        value: "Value ",
+        value: "Value",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -5107,13 +5107,13 @@ const template: FlowTypes.Template[] = [
     rows: [
       {
         name: "var_1",
-        value: "Value ",
+        value: "Value",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -12076,7 +12076,7 @@ const template: FlowTypes.Template[] = [
           },
           {
             name: "button_pop_up_1",
-            value: "New Button 1 ",
+            value: "New Button 1",
             _translations: {
               value: {
                 spa: false,
@@ -12121,7 +12121,7 @@ const template: FlowTypes.Template[] = [
           },
           {
             name: "text_4",
-            value: "Button 3 is unaltered. ",
+            value: "Button 3 is unaltered.",
             _translations: {
               value: {
                 spa: false,
@@ -14472,7 +14472,7 @@ const template: FlowTypes.Template[] = [
         rows: [
           {
             name: "text_1",
-            value: "Set the field debug_actions_top_1 ",
+            value: "Set the field debug_actions_top_1",
             _translations: {
               value: {
                 spa: false,
@@ -19619,7 +19619,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         name: "text_1",
-        value: "The text on the first tile is set through locals. Translations are found. ",
+        value: "The text on the first tile is set through locals. Translations are found.",
         _translations: {
           value: {
             spa: false,
@@ -19671,7 +19671,7 @@ const template: FlowTypes.Template[] = [
         type: "text",
         name: "text_2",
         value:
-          "The text on the second tile is set through globals and a (local) data item in the parameter list. Translations are not found. ",
+          "The text on the second tile is set through globals and a (local) data item in the parameter list. Translations are not found.",
         _translations: {
           value: {
             spa: false,
@@ -20034,7 +20034,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         name: "text_3",
-        value: "The translation of the same string, **followed by a space**, is not found: ",
+        value: "The translation of the same string, **followed by a space**, is not found:",
         _translations: {
           value: {
             spa: false,
@@ -20051,13 +20051,13 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         name: "text_4",
-        value: "Sometimes our children make us really upset. ",
+        value: "Sometimes our children make us really upset.",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "text_4",
@@ -20330,7 +20330,7 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value:
-                  "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp ",
+                  "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp",
                 _translations: {
                   value: {
                     spa: false,
@@ -20347,7 +20347,7 @@ const template: FlowTypes.Template[] = [
                   value: [
                     {
                       fullExpression:
-                        "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp ",
+                        "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp",
                       matchedExpression: "@fields.radio_group_final_temp",
                       type: "fields",
                       fieldName: "radio_group_final_temp",
@@ -20369,7 +20369,7 @@ const template: FlowTypes.Template[] = [
               {
                 name: "text",
                 value:
-                  "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp ",
+                  "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp",
                 _translations: {
                   value: {
                     spa: false,
@@ -20386,7 +20386,7 @@ const template: FlowTypes.Template[] = [
                   value: [
                     {
                       fullExpression:
-                        "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp ",
+                        "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp",
                       matchedExpression: "@fields.radio_group_final_temp",
                       type: "fields",
                       fieldName: "radio_group_final_temp",
@@ -25560,7 +25560,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "display_group",
         name: "reply_ok_dg",
-        hidden: '@local.radio_group!="ok" ',
+        hidden: '@local.radio_group!="ok"',
         parameter_list: {
           style: "column",
         },
@@ -25584,7 +25584,7 @@ const template: FlowTypes.Template[] = [
         _dynamicFields: {
           hidden: [
             {
-              fullExpression: '@local.radio_group!="ok" ',
+              fullExpression: '@local.radio_group!="ok"',
               matchedExpression: "@local.radio_group",
               type: "local",
               fieldName: "radio_group",
@@ -26672,7 +26672,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "text",
         name: "example_startup_text",
-        value: "\n@fields.example_startup_field",
+        value: "@fields.example_startup_field",
         _translations: {
           value: {
             spa: false,
@@ -26685,7 +26685,7 @@ const template: FlowTypes.Template[] = [
         _dynamicFields: {
           value: [
             {
-              fullExpression: "\n@fields.example_startup_field",
+              fullExpression: "@fields.example_startup_field",
               matchedExpression: "@fields.example_startup_field",
               type: "fields",
               fieldName: "example_startup_field",

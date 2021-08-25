@@ -1652,18 +1652,18 @@ const data_list: FlowTypes.Data_list[] = [
         id: "hp_praise_message_6",
         workshop_list: ["w_1on1"],
         mood_list: ["ok"],
-        text: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
+        text: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!",
         _translations: {
           text: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
           text: {
-            eng: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!   ",
+            eng: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!",
           },
         },
       },
@@ -1861,18 +1861,18 @@ const data_list: FlowTypes.Data_list[] = [
         id: "hp_praise_message_17",
         workshop_list: ["w_rules"],
         mood_list: ["ok", "sad"],
-        text: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it! ",
+        text: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
         _translations: {
           text: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
           text: {
-            eng: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it! ",
+            eng: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
           },
         },
       },

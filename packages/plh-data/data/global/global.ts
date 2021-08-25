@@ -342,13 +342,13 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "try_this_hp_challenge",
-        value: "Do you want to try one of the following things?   ",
+        value: "Do you want to try one of the following things?",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1660,13 +1660,13 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "lets_go_button",
-        value: "Let's go! ",
+        value: "Let's go!",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -2252,13 +2252,13 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_global_constant",
         name: "spend_time_idea_2",
-        value: "Get water together ",
+        value: "Get water together",
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
