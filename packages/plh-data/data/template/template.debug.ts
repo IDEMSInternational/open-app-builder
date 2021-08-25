@@ -19,6 +19,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             parameter_list: {
@@ -39,6 +42,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -77,6 +83,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             parameter_list: {
@@ -121,6 +130,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             parameter_list: {
@@ -155,6 +167,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             parameter_list: {
@@ -212,6 +227,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -246,6 +264,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -377,6 +398,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -435,6 +459,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -468,6 +495,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -579,6 +609,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -637,6 +670,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -742,6 +778,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@field.demo_changed_field_1 || @field.demo_changed_field_2=="name_var_1"',
@@ -793,6 +832,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@field.demo_changed_field_1 || @field.demo_changed_field_2=="name_var_2"',
@@ -922,6 +964,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@field.demo_changed_field_3 || @field.demo_changed_field_4=="name_var_1"',
@@ -973,6 +1018,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@field.demo_changed_field_3 || @field.demo_changed_field_4=="name_var_2"',
@@ -1108,6 +1156,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -1174,6 +1225,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -1324,6 +1378,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -1390,6 +1447,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -1474,6 +1534,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -1552,6 +1615,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -1684,6 +1750,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -1740,6 +1809,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: '@local.combo_box_challenge_1=="choice_1_a"',
@@ -1766,6 +1838,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: '@local.combo_box_challenge_1=="choice_1_b"',
@@ -1792,6 +1867,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: '@local.combo_box_challenge_1=="choice_1_c"',
@@ -1828,6 +1906,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -1884,6 +1965,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: '@local.combo_box_challenge_2!="choice_2_a"',
@@ -1910,6 +1994,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: '@local.combo_box_challenge_2!="choice_2_b"',
@@ -1936,6 +2023,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: '@local.combo_box_challenge_2!="choice_2_c"',
@@ -1975,6 +2065,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2031,6 +2124,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: '@local.combo_box_challenge_1=="choice_1_a"',
@@ -2057,6 +2153,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: '@local.combo_box_challenge_1=="choice_1_b"',
@@ -2083,6 +2182,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: '@local.combo_box_challenge_1=="choice_1_c"',
@@ -2109,6 +2211,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2165,6 +2270,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@local.combo_box_challenge_2!="choice_2_a"',
@@ -2191,6 +2299,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@local.combo_box_challenge_2!="choice_2_b"',
@@ -2217,6 +2328,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@local.combo_box_challenge_2!="choice_2_c"',
@@ -2263,6 +2377,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2275,6 +2392,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2287,6 +2407,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2378,6 +2501,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2390,6 +2516,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2426,6 +2555,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2462,6 +2594,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2497,6 +2632,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2509,6 +2647,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2521,6 +2662,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2533,6 +2677,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2545,6 +2692,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2557,6 +2707,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2569,6 +2722,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2581,6 +2737,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2593,6 +2752,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2605,6 +2767,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2765,6 +2930,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2777,6 +2945,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -2789,6 +2960,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2874,6 +3048,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2886,6 +3063,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2922,6 +3102,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -2958,6 +3141,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3004,6 +3190,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3059,6 +3248,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3084,6 +3276,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -3115,6 +3310,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3170,6 +3368,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3195,6 +3396,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -3216,6 +3420,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -3247,6 +3454,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3272,6 +3482,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3297,6 +3510,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3309,6 +3525,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@field.answer_q1>=4",
@@ -3335,6 +3554,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@field.answer_q2>=4",
@@ -3362,6 +3584,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@field.answer_q1<4 || @field.answer_q2<4",
@@ -3395,6 +3620,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3407,6 +3635,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: "@field.answer_q1>=4",
@@ -3433,6 +3664,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: "!(@field.answer_q1>=4)",
@@ -3459,6 +3693,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3476,6 +3713,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "@field.answer_q1>=4",
@@ -3502,6 +3742,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "!(@field.answer_q1>=4)",
@@ -3532,6 +3775,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -3558,6 +3804,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "1>2",
@@ -3571,6 +3820,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "2>1",
@@ -3593,6 +3845,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "2>1",
@@ -3606,6 +3861,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "1>2",
@@ -3633,6 +3891,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3658,6 +3919,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3684,6 +3948,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3730,6 +3997,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3766,6 +4036,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3814,6 +4087,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3865,6 +4141,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3890,6 +4169,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3902,6 +4184,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3914,6 +4199,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -3954,6 +4242,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -3979,6 +4270,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -4004,6 +4298,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -4040,6 +4337,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -4065,6 +4365,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -4090,6 +4393,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -4250,6 +4556,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             type: "set_variable",
@@ -4271,6 +4580,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             hidden: "!@local.checkbox_3",
@@ -4296,6 +4608,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             hidden: "!@local.form.checkbox_3",
@@ -4332,6 +4647,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4345,6 +4663,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4382,6 +4703,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4415,6 +4739,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             exclude_from_translation: true,
@@ -4431,6 +4758,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4464,6 +4794,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -4492,6 +4825,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "title_4",
@@ -4524,6 +4860,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             style_list: ["flex: 0"],
@@ -4680,6 +5019,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             type: "set_variable",
@@ -4701,6 +5043,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             hidden: "!@local.checkbox_3",
@@ -4726,6 +5071,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             hidden: "!@local.form.checkbox_3",
@@ -4763,6 +5111,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4776,6 +5127,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4813,6 +5167,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4846,6 +5203,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             exclude_from_translation: true,
@@ -4862,6 +5222,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -4895,6 +5258,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -4923,6 +5289,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "title_4",
@@ -4955,6 +5324,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -4994,6 +5366,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5006,6 +5381,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -5027,6 +5405,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5062,6 +5443,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5074,6 +5458,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -5130,6 +5517,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5164,6 +5554,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -5185,6 +5578,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -5216,6 +5612,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5228,6 +5627,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -5270,6 +5672,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5315,6 +5720,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5333,6 +5741,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -5378,6 +5789,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -5414,6 +5828,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5450,6 +5867,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -5506,6 +5926,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -5563,6 +5986,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5631,6 +6057,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5656,6 +6085,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5722,6 +6154,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5801,6 +6236,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5826,6 +6264,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5871,6 +6312,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -5908,6 +6352,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6014,6 +6461,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6039,6 +6489,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6063,6 +6516,408 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "debug_falsy_values",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "falsy_var_1",
+        value: 0,
+        type: "set_variable",
+        _nested_name: "falsy_var_1",
+      },
+      {
+        name: "falsy_var_2",
+        value: false,
+        type: "set_variable",
+        _nested_name: "falsy_var_2",
+      },
+      {
+        name: "falsy_var_3",
+        value: "null",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "falsy_var_3",
+      },
+      {
+        name: "falsy_var_4",
+        value: "NaN",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "falsy_var_4",
+      },
+      {
+        name: "falsy_var_5",
+        value: "undefined",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "falsy_var_5",
+      },
+      {
+        name: "falsy_var_6",
+        value: '""',
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "falsy_var_6",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "falsy value: @local.falsy_var_1",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "falsy value: @local.falsy_var_1",
+              matchedExpression: "@local.falsy_var_1",
+              type: "local",
+              fieldName: "falsy_var_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "@local.falsy_var_1",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.falsy_var_1",
+              matchedExpression: "@local.falsy_var_1",
+              type: "local",
+              fieldName: "falsy_var_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "falsy value: @local.falsy_var_2",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "falsy value: @local.falsy_var_2",
+              matchedExpression: "@local.falsy_var_2",
+              type: "local",
+              fieldName: "falsy_var_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_2": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value: "@local.falsy_var_2",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.falsy_var_2",
+              matchedExpression: "@local.falsy_var_2",
+              type: "local",
+              fieldName: "falsy_var_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_2": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value: "falsy value: @local.falsy_var_3",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "falsy value: @local.falsy_var_3",
+              matchedExpression: "@local.falsy_var_3",
+              type: "local",
+              fieldName: "falsy_var_3",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_3": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_6",
+        value: "@local.falsy_var_3",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_6",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.falsy_var_3",
+              matchedExpression: "@local.falsy_var_3",
+              type: "local",
+              fieldName: "falsy_var_3",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_3": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_7",
+        value: "falsy value: @local.falsy_var_4",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_7",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "falsy value: @local.falsy_var_4",
+              matchedExpression: "@local.falsy_var_4",
+              type: "local",
+              fieldName: "falsy_var_4",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_4": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_8",
+        value: "@local.falsy_var_4",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_8",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.falsy_var_4",
+              matchedExpression: "@local.falsy_var_4",
+              type: "local",
+              fieldName: "falsy_var_4",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_4": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_9",
+        value: "falsy value: @local.falsy_var_5",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_9",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "falsy value: @local.falsy_var_5",
+              matchedExpression: "@local.falsy_var_5",
+              type: "local",
+              fieldName: "falsy_var_5",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_5": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_10",
+        value: "@local.falsy_var_5",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_10",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.falsy_var_5",
+              matchedExpression: "@local.falsy_var_5",
+              type: "local",
+              fieldName: "falsy_var_5",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_5": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_11",
+        value: "falsy value: @local.falsy_var_6",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_11",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "falsy value: @local.falsy_var_6",
+              matchedExpression: "@local.falsy_var_6",
+              type: "local",
+              fieldName: "falsy_var_6",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_6": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_12",
+        value: "@local.falsy_var_6",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_12",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.falsy_var_6",
+              matchedExpression: "@local.falsy_var_6",
+              type: "local",
+              fieldName: "falsy_var_6",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.falsy_var_6": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_falsy_values.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "debug_field_null",
     status: "released",
     flow_subtype: "debug",
@@ -6073,6 +6928,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -6090,6 +6948,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "debug_field_2",
@@ -6114,6 +6975,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -6135,6 +6999,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -6195,6 +7062,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -6255,6 +7125,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6280,6 +7153,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6305,6 +7181,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_1 == null",
@@ -6331,6 +7210,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_1 != null",
@@ -6357,6 +7239,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6382,6 +7267,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_2 == null",
@@ -6408,6 +7296,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_2 != null",
@@ -6434,6 +7325,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6459,6 +7353,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_3 == null",
@@ -6485,6 +7382,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_3 != null",
@@ -6511,6 +7411,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6536,6 +7439,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_4 == null",
@@ -6562,6 +7468,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_4 != null",
@@ -6588,6 +7497,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6613,6 +7525,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_5 == null",
@@ -6639,6 +7554,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_5 != null",
@@ -6665,6 +7583,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6690,6 +7611,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_6 == null",
@@ -6716,6 +7640,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_6 != null",
@@ -6751,6 +7678,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -6768,6 +7698,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "debug_field_2",
@@ -6792,6 +7725,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -6813,6 +7749,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -6873,6 +7812,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -6933,6 +7875,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6958,6 +7903,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -6983,6 +7931,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_1",
@@ -7009,6 +7960,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@fields.debug_field_1",
@@ -7035,6 +7989,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7060,6 +8017,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_2",
@@ -7086,6 +8046,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@fields.debug_field_2",
@@ -7112,6 +8075,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7137,6 +8103,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_3",
@@ -7163,6 +8132,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@fields.debug_field_3",
@@ -7189,6 +8161,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7214,6 +8189,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_4",
@@ -7240,6 +8218,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@fields.debug_field_4",
@@ -7266,6 +8247,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7291,6 +8275,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_5",
@@ -7317,6 +8304,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@fields.debug_field_5",
@@ -7343,6 +8333,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7368,6 +8361,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@fields.debug_field_6",
@@ -7394,6 +8390,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@fields.debug_field_6",
@@ -7429,6 +8428,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -7446,6 +8448,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "debug_field_2",
@@ -7470,6 +8475,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -7491,6 +8499,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -7551,6 +8562,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -7611,6 +8625,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7636,6 +8653,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7661,6 +8681,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@calc(if(@fields.debug_field_1))",
@@ -7694,6 +8717,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@calc(if(@fields.debug_field_1))",
@@ -7727,6 +8753,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7752,6 +8781,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@calc(if(@fields.debug_field_2))",
@@ -7785,6 +8817,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@calc(if(@fields.debug_field_2))",
@@ -7818,6 +8853,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7843,6 +8881,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@calc(if(@fields.debug_field_3))",
@@ -7876,6 +8917,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@calc(if(@fields.debug_field_3))",
@@ -7909,6 +8953,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -7934,6 +8981,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@calc(if(@fields.debug_field_4))",
@@ -7967,6 +9017,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@calc(if(@fields.debug_field_4))",
@@ -8000,6 +9053,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8025,6 +9081,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@calc(if(@fields.debug_field_5))",
@@ -8058,6 +9117,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@calc(if(@fields.debug_field_5))",
@@ -8091,6 +9153,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8116,6 +9181,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@calc(if(@fields.debug_field_6))",
@@ -8149,6 +9217,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@calc(if(@fields.debug_field_6))",
@@ -8191,6 +9262,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8205,6 +9279,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8232,6 +9309,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8259,6 +9339,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8286,6 +9369,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8313,6 +9399,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8340,6 +9429,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8365,6 +9457,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         name: "title",
@@ -8376,6 +9471,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -8387,6 +9485,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -8412,6 +9513,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8437,6 +9541,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8462,6 +9569,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8487,6 +9597,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8511,6 +9624,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8524,6 +9640,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8559,6 +9678,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8584,6 +9706,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8609,6 +9734,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8634,6 +9762,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8659,6 +9790,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8671,6 +9805,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8683,6 +9820,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8695,6 +9835,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -8721,6 +9864,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -8746,6 +9892,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -8771,6 +9920,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -8783,6 +9935,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -8808,6 +9963,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -8833,6 +9991,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -8868,6 +10029,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -8893,6 +10057,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -8918,6 +10085,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -8930,6 +10100,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -8955,6 +10128,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -8980,6 +10156,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -9005,6 +10184,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -9017,6 +10199,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -9057,6 +10242,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -9068,6 +10256,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -9080,6 +10271,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -9101,6 +10295,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -9202,6 +10399,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text",
@@ -9222,6 +10422,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -9252,6 +10455,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -9287,6 +10493,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -9311,6 +10520,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -9323,6 +10535,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -9355,6 +10570,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "debug_description",
@@ -9386,6 +10604,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -9440,6 +10661,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: true,
+                    xho: true,
+                    zul: true,
                   },
                 },
                 type: "set_variable",
@@ -9452,6 +10676,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 type: "set_variable",
@@ -9537,6 +10764,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             _nested_name: "intro.intro_title",
@@ -9676,6 +10906,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -9718,6 +10951,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -9742,6 +10978,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -9754,6 +10993,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -9790,6 +11032,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -9844,6 +11089,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: true,
+                    xho: true,
+                    zul: true,
                   },
                 },
                 type: "set_variable",
@@ -9856,6 +11104,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 type: "set_variable",
@@ -9922,6 +11173,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "intro_title",
@@ -9974,6 +11228,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -10012,6 +11269,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "text",
@@ -10039,6 +11299,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "text",
@@ -10066,6 +11329,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "title",
@@ -10081,6 +11347,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             type: "set_variable",
@@ -10097,6 +11366,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: true,
+                    xho: true,
+                    zul: true,
                   },
                 },
                 type: "set_variable",
@@ -10113,6 +11385,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: true,
+                        xho: true,
+                        zul: true,
                       },
                     },
                     type: "set_variable",
@@ -10134,6 +11409,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _nested_name: "title",
@@ -10149,6 +11427,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: true,
+                xho: true,
+                zul: true,
               },
             },
             type: "set_variable",
@@ -10165,6 +11446,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: true,
+                    xho: true,
+                    zul: true,
                   },
                 },
                 type: "set_variable",
@@ -10181,6 +11465,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: true,
+                        xho: true,
+                        zul: true,
                       },
                     },
                     type: "set_variable",
@@ -10212,6 +11499,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10239,6 +11529,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10260,6 +11553,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10286,6 +11582,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10298,6 +11597,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10330,6 +11632,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -10364,6 +11669,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10385,6 +11693,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10406,6 +11717,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10431,6 +11745,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10444,6 +11761,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10467,6 +11787,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -10479,6 +11802,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -10510,6 +11836,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10523,6 +11852,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10540,6 +11872,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10552,6 +11887,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10581,6 +11919,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10592,6 +11933,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10622,6 +11966,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: false,
+                        xho: false,
+                        zul: false,
                       },
                     },
                     exclude_from_translation: true,
@@ -10634,6 +11981,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: false,
+                        xho: false,
+                        zul: false,
                       },
                     },
                     exclude_from_translation: true,
@@ -10700,6 +12050,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10712,6 +12065,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10724,6 +12080,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10736,6 +12095,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10763,6 +12125,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10789,6 +12154,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10807,6 +12175,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10819,6 +12190,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10834,6 +12208,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10846,6 +12223,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10864,6 +12244,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10876,6 +12259,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -10914,6 +12300,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10926,6 +12315,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -10950,6 +12342,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -10962,6 +12357,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -10994,6 +12392,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11026,6 +12427,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: false,
+                        xho: false,
+                        zul: false,
                       },
                     },
                     exclude_from_translation: true,
@@ -11039,6 +12443,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: false,
+                        xho: false,
+                        zul: false,
                       },
                     },
                     exclude_from_translation: true,
@@ -11073,6 +12480,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11097,6 +12507,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -11109,6 +12522,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -11150,6 +12566,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11169,6 +12588,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -11244,6 +12666,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11270,6 +12695,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11296,6 +12724,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11320,6 +12751,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11340,6 +12774,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11366,6 +12803,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11384,6 +12824,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11410,6 +12853,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11436,6 +12882,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11461,6 +12910,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11476,6 +12928,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -11538,6 +12993,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11550,6 +13008,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -11642,6 +13103,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11654,6 +13118,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11672,6 +13139,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11684,6 +13154,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -11713,6 +13186,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11725,6 +13201,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11767,6 +13246,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11792,6 +13274,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11823,6 +13308,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11848,6 +13336,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11873,6 +13364,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11885,6 +13379,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11910,6 +13407,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -11935,6 +13435,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12004,6 +13507,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12029,6 +13535,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12054,6 +13563,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12079,6 +13591,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12104,6 +13619,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12129,6 +13647,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12141,6 +13662,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12173,6 +13697,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12198,6 +13725,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12223,6 +13753,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -12292,6 +13825,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12304,6 +13840,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12330,6 +13869,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12355,6 +13897,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12380,6 +13925,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12405,6 +13953,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12430,6 +13981,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12455,6 +14009,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12494,6 +14051,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -12520,6 +14080,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12532,6 +14095,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12544,6 +14110,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12556,6 +14125,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12571,6 +14143,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12583,6 +14158,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12608,6 +14186,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -12638,6 +14219,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12650,6 +14234,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12663,6 +14250,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12763,6 +14353,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12809,6 +14402,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12826,6 +14422,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -12838,6 +14437,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -12854,6 +14456,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12871,6 +14476,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -12899,6 +14507,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -12931,6 +14542,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -12948,6 +14562,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -12983,6 +14600,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13022,6 +14642,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13039,6 +14662,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13067,6 +14693,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13140,6 +14769,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@local.radio_group != "name_var_1"',
@@ -13166,6 +14798,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: '@local.radio_group == "name_var_1"',
@@ -13197,6 +14832,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13225,6 +14863,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@local.radio_group != "name_var_2"',
@@ -13251,6 +14892,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: '@local.radio_group == "name_var_2"',
@@ -13282,6 +14926,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13320,6 +14967,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13332,6 +14982,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13351,6 +15004,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13364,6 +15020,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13380,6 +15039,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13392,6 +15054,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13404,6 +15069,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13416,6 +15084,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13428,6 +15099,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13440,6 +15114,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -13466,6 +15143,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13478,6 +15158,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -13499,6 +15182,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13511,6 +15197,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -13558,6 +15247,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13571,6 +15263,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13583,6 +15278,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -13604,6 +15302,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13616,6 +15317,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -13693,6 +15397,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13704,6 +15411,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13716,6 +15426,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13741,6 +15454,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13774,6 +15490,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13799,6 +15518,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13824,6 +15546,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13856,6 +15581,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -13941,6 +15669,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -13966,6 +15697,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -14024,6 +15758,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14092,6 +15829,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14187,6 +15927,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14264,6 +16007,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14308,6 +16054,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14320,6 +16069,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14357,6 +16109,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -14369,6 +16124,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 hidden: '@fields.test_render_updates_field!="no"',
@@ -14395,6 +16153,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 hidden: '@fields.test_render_updates_field!="yes"',
@@ -14422,6 +16183,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -14458,6 +16222,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -14470,6 +16237,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -14505,6 +16275,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -14517,6 +16290,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -14559,6 +16335,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14584,6 +16363,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -14596,6 +16378,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: '@fields.test_render_updates_field!="no"',
@@ -14622,6 +16407,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: '@fields.test_render_updates_field!="yes"',
@@ -14648,6 +16436,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -14691,6 +16482,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -14703,6 +16497,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -14745,6 +16542,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -14757,6 +16557,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -14803,6 +16606,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14822,6 +16628,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -14903,6 +16712,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14947,6 +16759,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14959,6 +16774,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -14985,6 +16803,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@fields.test_render_updates_field!="no"',
@@ -15011,6 +16832,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: '@fields.test_render_updates_field!="yes"',
@@ -15037,6 +16861,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         exclude_from_translation: true,
@@ -15049,6 +16876,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15061,6 +16891,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15083,6 +16916,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15095,6 +16931,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15116,6 +16955,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15128,6 +16970,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15140,6 +16985,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15192,6 +17040,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15205,6 +17056,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -15271,6 +17125,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15314,6 +17171,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15326,6 +17186,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15363,6 +17226,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15388,6 +17254,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -15457,6 +17326,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15636,6 +17508,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15648,6 +17523,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15660,6 +17538,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15716,6 +17597,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@local.var_true",
@@ -15742,6 +17626,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@local.var_true",
@@ -15768,6 +17655,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@local.var_false",
@@ -15794,6 +17684,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@local.var_false",
@@ -15829,6 +17722,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15841,6 +17737,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15853,6 +17752,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15865,6 +17767,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15877,6 +17782,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15890,6 +17798,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15915,6 +17826,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15940,6 +17854,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15965,6 +17882,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -15990,6 +17910,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16024,6 +17947,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16037,6 +17963,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16049,6 +17978,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16061,6 +17993,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16083,6 +18018,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16108,6 +18046,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16143,6 +18084,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16155,6 +18099,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16190,6 +18137,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16225,6 +18175,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16252,6 +18205,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: true,
@@ -16265,6 +18221,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: false,
@@ -16287,6 +18246,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: false,
@@ -16300,6 +18262,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             hidden: true,
@@ -16327,6 +18292,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16345,6 +18313,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16357,6 +18328,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: true,
@@ -16370,6 +18344,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16392,6 +18369,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16410,6 +18390,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16422,6 +18405,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: true,
@@ -16435,6 +18421,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16457,6 +18446,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16496,6 +18488,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@local.var_true",
@@ -16522,6 +18517,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@local.var_true",
@@ -16548,6 +18546,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@local.var_number_1 == 1",
@@ -16574,6 +18575,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@local.var_number_1 != 1",
@@ -16600,6 +18604,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "@local.var_number_1 > 1",
@@ -16626,6 +18633,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!(@local.var_number_1 > 1)",
@@ -16662,6 +18672,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16675,6 +18688,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16687,6 +18703,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16700,6 +18719,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -16742,6 +18764,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 exclude_from_translation: true,
@@ -16806,6 +18831,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: false,
+                        xho: false,
+                        zul: false,
                       },
                     },
                     exclude_from_translation: true,
@@ -16819,6 +18847,9 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        tsa: false,
+                        xho: false,
+                        zul: false,
                       },
                     },
                     exclude_from_translation: true,
@@ -16886,6 +18917,287 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "debug_stepper_nav_group",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "nav_group",
+        name: "nav_template_list",
+        value: [
+          "debug_stepper_step_1",
+          "debug_stepper_step_2",
+          "debug_stepper_step_3",
+          "debug_stepper_step_4",
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          progress_field: "debug_stepper_progress_field",
+        },
+        _nested_name: "nav_template_list",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_stepper.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_stepper_step_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title",
+        value: "Step 1",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "This is the first step in the nav_group",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text",
+      },
+      {
+        type: "template",
+        name: "nav_buttons",
+        value: "nav_buttons",
+        action_list: [
+          {
+            trigger: "completed",
+            action_id: "emit",
+            args: ["completed"],
+            _raw: "completed | emit:completed",
+            _cleaned: "completed | emit:completed",
+          },
+          {
+            trigger: "uncompleted",
+            action_id: "emit",
+            args: ["uncompleted"],
+            _raw: "uncompleted | emit:uncompleted",
+            _cleaned: "uncompleted | emit:uncompleted",
+          },
+        ],
+        exclude_from_translation: true,
+        rows: [],
+        _nested_name: "nav_buttons",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_stepper.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_stepper_step_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title",
+        value: "Step 2",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "This is the second step in the nav_group",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text",
+      },
+      {
+        type: "template",
+        name: "nav_buttons",
+        value: "nav_buttons",
+        action_list: [
+          {
+            trigger: "completed",
+            action_id: "emit",
+            args: ["completed"],
+            _raw: "completed | emit:completed",
+            _cleaned: "completed | emit:completed",
+          },
+          {
+            trigger: "uncompleted",
+            action_id: "emit",
+            args: ["uncompleted"],
+            _raw: "uncompleted | emit:uncompleted",
+            _cleaned: "uncompleted | emit:uncompleted",
+          },
+        ],
+        exclude_from_translation: true,
+        rows: [],
+        _nested_name: "nav_buttons",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_stepper.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_stepper_step_3",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title",
+        value: "Step 3",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "This is the third step in the nav_group",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text",
+      },
+      {
+        type: "template",
+        name: "nav_buttons",
+        value: "nav_buttons",
+        action_list: [
+          {
+            trigger: "completed",
+            action_id: "emit",
+            args: ["completed"],
+            _raw: "completed | emit:completed",
+            _cleaned: "completed | emit:completed",
+          },
+          {
+            trigger: "uncompleted",
+            action_id: "emit",
+            args: ["uncompleted"],
+            _raw: "uncompleted | emit:uncompleted",
+            _cleaned: "uncompleted | emit:uncompleted",
+          },
+        ],
+        exclude_from_translation: true,
+        rows: [],
+        _nested_name: "nav_buttons",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_stepper.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_stepper_step_4",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title",
+        value: "Step 4",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "This is the fourth and last step in the nav_group",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text",
+      },
+      {
+        type: "template",
+        name: "nav_buttons",
+        value: "nav_buttons",
+        action_list: [
+          {
+            trigger: "completed",
+            action_id: "emit",
+            args: ["completed"],
+            _raw: "completed | emit:completed",
+            _cleaned: "completed | emit:completed",
+          },
+          {
+            trigger: "uncompleted",
+            action_id: "emit",
+            args: ["uncompleted"],
+            _raw: "uncompleted | emit:uncompleted",
+            _cleaned: "uncompleted | emit:uncompleted",
+          },
+        ],
+        exclude_from_translation: true,
+        rows: [],
+        _nested_name: "nav_buttons",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_stepper.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "debug_text_wrapping",
     status: "released",
     flow_subtype: "debug",
@@ -16898,6 +19210,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         style_list: ["overflow-wrap: anywhere"],
@@ -16910,6 +19225,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -16941,6 +19259,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         style_list: ["overflow-wrap: anywhere"],
@@ -16964,6 +19285,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text",
@@ -17090,6 +19414,660 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "debug_tour_template",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "button",
+        name: "button",
+        value: "Go to debug_tour",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "start_tour",
+            args: ["debug_tour"],
+            _raw: "click | start_tour: debug_tour",
+            _cleaned: "click | start_tour: debug_tour",
+          },
+        ],
+        _nested_name: "button",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "global: @global.parent_app",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "global: @global.parent_app",
+              matchedExpression: "@global.parent_app",
+              type: "global",
+              fieldName: "parent_app",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_app": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "data: @data.example.example1.text",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "data: @data.example.example1.text",
+              matchedExpression: "@data.example.example1.text",
+              type: "data",
+              fieldName: "example",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example.example1.text": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_tour.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_tile",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "quick_start_campaign",
+        value: "@campaign.workshop_quick_start",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "quick_start_campaign",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@campaign.workshop_quick_start",
+              matchedExpression: "@campaign.workshop_quick_start",
+              type: "campaign",
+              fieldName: "workshop_quick_start",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@campaign.workshop_quick_start": ["value"],
+        },
+      },
+      {
+        name: "start_or_continue",
+        value: "@local.quick_start_campaign.text",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "start_or_continue",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.quick_start_campaign.text",
+              matchedExpression: "@local.quick_start_campaign.text",
+              type: "local",
+              fieldName: "quick_start_campaign",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.quick_start_campaign.text": ["value"],
+        },
+      },
+      {
+        name: "label_group",
+        value: "@global.together",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "label_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "label_individual",
+        value: "@global.individual",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "label_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "The text on the first tile is set through locals. Translations are found. ",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "tile_component",
+        name: "tile_1",
+        parameter_list: {
+          style: "quick_start_dark",
+          first_line_text: "@local.start_or_continue",
+          second_line_text: "@local.label_individual",
+        },
+        _nested_name: "tile_1",
+        _dynamicFields: {
+          parameter_list: {
+            first_line_text: [
+              {
+                fullExpression: "@local.start_or_continue",
+                matchedExpression: "@local.start_or_continue",
+                type: "local",
+                fieldName: "start_or_continue",
+              },
+            ],
+            second_line_text: [
+              {
+                fullExpression: "@local.label_individual",
+                matchedExpression: "@local.label_individual",
+                type: "local",
+                fieldName: "label_individual",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.start_or_continue": ["parameter_list.first_line_text"],
+          "@local.label_individual": ["parameter_list.second_line_text"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value:
+          "The text on the second tile is set through globals and a (local) data item in the parameter list. Translations are not found. ",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_2",
+      },
+      {
+        type: "tile_component",
+        name: "tile_2",
+        parameter_list: {
+          style: "quick_start_dark",
+          first_line_text: "@local.quick_start_campaign.text",
+          second_line_text: "@global.individual",
+        },
+        _nested_name: "tile_2",
+        _dynamicFields: {
+          parameter_list: {
+            first_line_text: [
+              {
+                fullExpression: "@local.quick_start_campaign.text",
+                matchedExpression: "@local.quick_start_campaign.text",
+                type: "local",
+                fieldName: "quick_start_campaign",
+              },
+            ],
+            second_line_text: [
+              {
+                fullExpression: "@global.individual",
+                matchedExpression: "@global.individual",
+                type: "global",
+                fieldName: "individual",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.quick_start_campaign.text": ["parameter_list.first_line_text"],
+          "@global.individual": ["parameter_list.second_line_text"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_radio_group",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "@global.individual",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "@global.together",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "text_3",
+        value: "Radio group with globals (doesn't work)",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_3",
+      },
+      {
+        name: "answer_list_1",
+        value: [
+          "name: individual | text: @global.individual",
+          "name: together | text: @global.together",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_1",
+        _dynamicFields: {
+          value: {
+            "0": [
+              {
+                fullExpression: "name: individual | text: @global.individual",
+                matchedExpression: "@global.individual",
+                type: "global",
+                fieldName: "individual",
+              },
+            ],
+            "1": [
+              {
+                fullExpression: "name: together | text: @global.together",
+                matchedExpression: "@global.together",
+                type: "global",
+                fieldName: "together",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value.0"],
+          "@global.together": ["value.1"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_1",
+        parameter_list: {
+          answer_list: "@local.answer_list_1",
+        },
+        _nested_name: "radio_group_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_1",
+                matchedExpression: "@local.answer_list_1",
+                type: "local",
+                fieldName: "answer_list_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "title",
+        name: "text_4",
+        value: "Radio group with locals (works)",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_4",
+      },
+      {
+        name: "individual",
+        value: "@global.individual",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        name: "together",
+        value: "@global.together",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "together",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "answer_list_2",
+        value: [
+          "name: individual | text: @local.individual",
+          "name: together | text: @local.together",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_2",
+        _dynamicFields: {
+          value: {
+            "0": [
+              {
+                fullExpression: "name: individual | text: @local.individual",
+                matchedExpression: "@local.individual",
+                type: "local",
+                fieldName: "individual",
+              },
+            ],
+            "1": [
+              {
+                fullExpression: "name: together | text: @local.together",
+                matchedExpression: "@local.together",
+                type: "local",
+                fieldName: "together",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.individual": ["value.0"],
+          "@local.together": ["value.1"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_2",
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+        },
+        _nested_name: "radio_group_2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_trim",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "The translation of the following string exists and works correctly:",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "Sometimes our children make us really upset.",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _nested_name: "text_2",
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "The translation of the same string, **followed by a space**, is not found: ",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_3",
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value: "Sometimes our children make us really upset. ",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _nested_name: "text_4",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "example_radio_group",
     status: "released",
     flow_subtype: "debug",
@@ -17100,6 +20078,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -17158,6 +20139,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -17183,6 +20167,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -17268,6 +20255,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -17293,6 +20283,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -17341,6 +20334,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 condition: '@fields.radio_group_final_temp == "option_1"',
@@ -17377,6 +20373,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 condition: '@fields.radio_group_final_temp == "option_2"',
@@ -17412,6 +20411,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 action_list: [
@@ -17495,6 +20497,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -17520,6 +20525,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: '@fields.radio_group_final_temp == "option_1"',
@@ -17564,6 +20572,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: '@fields.radio_group_final_temp == "option_2"',
@@ -17607,6 +20618,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             action_list: [
@@ -17641,6 +20655,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -17699,6 +20716,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -17723,6 +20743,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -17762,6 +20785,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -17804,6 +20830,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -17836,6 +20865,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -17873,6 +20905,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         type: "set_variable",
@@ -17931,6 +20966,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -17960,6 +20998,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -18018,6 +21059,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -18060,6 +21104,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -18098,6 +21145,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text",
@@ -18119,6 +21169,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text",
@@ -18140,6 +21193,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18152,6 +21208,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18177,6 +21236,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18189,6 +21251,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18214,6 +21279,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18226,6 +21294,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18258,6 +21329,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18271,6 +21345,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18305,6 +21382,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18317,6 +21397,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18349,6 +21432,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18362,6 +21448,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18396,6 +21485,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18408,6 +21500,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         parameter_list: {
@@ -18453,6 +21548,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18465,6 +21563,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18490,6 +21591,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18502,6 +21606,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18527,6 +21634,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18540,6 +21650,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18574,6 +21687,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18586,6 +21702,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18618,6 +21737,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18630,6 +21752,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -18672,6 +21797,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_1",
@@ -18683,6 +21811,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_calc_1",
@@ -18707,6 +21838,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_calc_2",
@@ -18731,6 +21865,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: "!@local.example_calc_3",
@@ -18766,6 +21903,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_1",
@@ -18807,6 +21947,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_calc_max",
@@ -18860,6 +22003,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_2",
@@ -18884,6 +22030,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_2",
@@ -18895,6 +22044,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_2.1",
@@ -18906,6 +22058,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "list_data",
@@ -18930,6 +22085,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "random_item",
@@ -18961,6 +22119,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3",
@@ -18985,6 +22146,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -19005,6 +22169,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_2.2",
@@ -19048,6 +22215,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "selected_item_text",
@@ -19086,6 +22256,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: "@local.selected_item",
@@ -19119,6 +22292,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         condition: "@local.selected_item",
@@ -19153,6 +22329,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_3",
@@ -19164,6 +22343,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "date_now",
@@ -19188,6 +22370,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3.1a",
@@ -19212,6 +22397,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "timestamp",
@@ -19236,6 +22424,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3.1b",
@@ -19260,6 +22451,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "date_formatted",
@@ -19284,6 +22478,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3.1c",
@@ -19308,6 +22505,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "start_of_week",
@@ -19332,6 +22532,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "start_of_week_text",
@@ -19356,6 +22559,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "days_to_xmas",
@@ -19382,6 +22588,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3.2",
@@ -19407,6 +22616,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "last_xmas_words",
@@ -19435,6 +22647,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3.3",
@@ -19459,6 +22674,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_4",
@@ -19469,6 +22687,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -19493,6 +22714,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -19517,6 +22741,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -19541,6 +22768,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -19566,6 +22796,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_4.1",
@@ -19590,6 +22823,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_4.2",
@@ -19614,6 +22850,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_4.3",
@@ -19638,6 +22877,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_4.4",
@@ -19672,6 +22914,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "title_1",
@@ -19683,6 +22928,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_1",
@@ -19707,6 +22955,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "date",
@@ -19731,6 +22982,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_2",
@@ -19755,6 +23009,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "day",
@@ -19779,6 +23036,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_3",
@@ -19803,6 +23063,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "christmas",
@@ -19827,6 +23090,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_4",
@@ -19851,6 +23117,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "christmas_time",
@@ -19875,6 +23144,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_5",
@@ -19899,6 +23171,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "days_to_christmas",
@@ -19935,6 +23210,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_6",
@@ -19959,6 +23237,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "midnight",
@@ -19983,6 +23264,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_7",
@@ -20007,6 +23291,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "midnight_time",
@@ -20031,6 +23318,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_8",
@@ -20064,6 +23354,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -20089,6 +23382,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "app_first_launch_text",
@@ -20113,6 +23409,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_start_day",
@@ -20137,6 +23436,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_start_day_text",
@@ -20161,6 +23463,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_start_day_label",
@@ -20195,6 +23500,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_start_day_label_text",
@@ -20218,6 +23526,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -20243,6 +23554,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -20288,6 +23602,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "days_since_app_first_launch_text",
@@ -20312,6 +23629,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "benchmark_date",
@@ -20336,6 +23656,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "benchmark_date_text",
@@ -20366,6 +23689,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "benchmark_workshop_number_text",
@@ -20391,6 +23717,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "benchmark_day",
@@ -20435,6 +23764,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "benchmark_day_text",
@@ -20459,6 +23791,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -20504,6 +23839,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "days_since_benchmark_date_text",
@@ -20529,6 +23867,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_number",
@@ -20581,6 +23922,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_number_text",
@@ -20606,6 +23950,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_day",
@@ -20650,6 +23997,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_day_text",
@@ -20683,6 +24033,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -20694,6 +24047,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -20804,6 +24160,283 @@ const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
     flow_subtype: "debug",
+    flow_name: "example_data_template",
+    status: "released",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "@data.example.example1.value",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example.example1.value",
+              matchedExpression: "@data.example.example1.value",
+              type: "data",
+              fieldName: "example",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example.example1.value": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "broken_1",
+        value: "@data.example.example1",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "broken_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example.example1",
+              matchedExpression: "@data.example.example1",
+              type: "data",
+              fieldName: "example",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example.example1": ["value"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@data.example.example3.value_list",
+        },
+        _nested_name: "radio_group_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@data.example.example3.value_list",
+                matchedExpression: "@data.example.example3.value_list",
+                type: "data",
+                fieldName: "example",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@data.example.example3.value_list": ["parameter_list.answer_list"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "example_data_from_id",
+    status: "released",
+    rows: [
+      {
+        name: "data_item_id",
+        value: "@data.example.example1.id",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "data_item_id",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.example.example1.id",
+              matchedExpression: "@data.example.example1.id",
+              type: "data",
+              fieldName: "example",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example.example1.id": ["value"],
+        },
+      },
+      {
+        name: "example",
+        value: "example.@local.data_item_id",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "example",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "example.@local.data_item_id",
+              matchedExpression: "@local.data_item_id",
+              type: "local",
+              fieldName: "data_item_id",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.data_item_id": ["value"],
+        },
+      },
+      {
+        name: "data_item",
+        value: "@data.@local.example",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "data_item",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.@local.example",
+              matchedExpression: "@local.example",
+              type: "local",
+              fieldName: "example",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.example": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "id: @local.data_item_id\nwhich is the same as\nid: @local.data_item.id",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "id: @local.data_item_id\nwhich is the same as\nid: @local.data_item.id",
+              matchedExpression: "@local.data_item_id",
+              type: "local",
+              fieldName: "data_item_id",
+            },
+            {
+              fullExpression:
+                "id: @local.data_item_id\nwhich is the same as\nid: @local.data_item.id",
+              matchedExpression: "@local.data_item.id",
+              type: "local",
+              fieldName: "data_item",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.data_item_id": ["value"],
+          "@local.data_item.id": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "value: @local.data_item.value",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "value: @local.data_item.value",
+              matchedExpression: "@local.data_item.value",
+              type: "local",
+              fieldName: "data_item",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.data_item.value": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "text: @local.data_item.text",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "text: @local.data_item.text",
+              matchedExpression: "@local.data_item.text",
+              type: "local",
+              fieldName: "data_item",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.data_item.text": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_subtype: "debug",
     flow_name: "example_items",
     status: "released",
     rows: [
@@ -20814,6 +24447,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "basic_example",
@@ -20832,6 +24468,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "items.item_text_1_@item.id",
@@ -20872,6 +24511,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "items.item_text_2_@item.id",
@@ -20913,6 +24555,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "items.item_text_3_@item.id",
@@ -20971,6 +24616,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "title",
@@ -20986,6 +24634,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             condition: "@item.field_value > 2",
@@ -21053,6 +24704,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "conditional_var_1",
@@ -21077,6 +24731,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "conditional_var_2",
@@ -21101,6 +24758,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_example",
@@ -21119,6 +24779,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "items.item_id_@item.id",
@@ -21159,6 +24822,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "items.item_number_@item.id",
@@ -21227,6 +24893,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "workshop_example",
@@ -21238,6 +24907,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "current_week",
@@ -21266,6 +24938,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_current_week",
@@ -21294,6 +24969,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "items.@item.unlock_fieldname",
@@ -21353,6 +25031,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 _nested_name: "items.group_@item.id.text_group_item_@item.id",
@@ -21400,6 +25081,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 _nested_name: "items.group_@item.id.text_workshop_unlock_week_@item.id",
@@ -21448,6 +25132,9 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    tsa: false,
+                    xho: false,
+                    zul: false,
                   },
                 },
                 _nested_name: "items.group_@item.id.text_workshop_unlocked_@item.id",
@@ -21546,6 +25233,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -21570,6 +25260,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -21663,6 +25356,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "title",
@@ -21674,6 +25370,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_1",
@@ -21685,6 +25384,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         parameter_list: {
@@ -21714,6 +25416,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -21829,6 +25534,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "reply_happy_dg.reply_happy",
@@ -21864,6 +25572,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "reply_ok_dg.reply_ok",
@@ -21899,6 +25610,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "reply_sad_dg.reply_sad",
@@ -21927,6 +25641,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@local.radio_group",
@@ -21969,6 +25686,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         parameter_list: {
@@ -21998,6 +25718,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -22028,6 +25751,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         type: "set_variable",
@@ -22052,6 +25778,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -22194,6 +25923,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "reply_dg.reply_combo_box",
@@ -22235,6 +25967,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         hidden: "!@local.combo_box",
@@ -22277,6 +26012,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -22298,6 +26036,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -22326,6 +26067,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -22338,6 +26082,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "global_box.text_5",
@@ -22371,6 +26118,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -22383,6 +26133,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "display_group.text_7",
@@ -22418,6 +26171,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             exclude_from_translation: true,
@@ -22430,6 +26186,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             _nested_name: "display_group.text_9",
@@ -22472,6 +26231,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22484,6 +26246,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22496,6 +26261,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22508,6 +26276,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22519,6 +26290,9 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22556,97 +26330,109 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         name: "title_1",
-        value: "@data.language.example_lang_1.title",
+        value: "@data.example_lang.example_lang_1.title",
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "title_1",
         _dynamicFields: {
           value: [
             {
-              fullExpression: "@data.language.example_lang_1.title",
-              matchedExpression: "@data.language.example_lang_1.title",
+              fullExpression: "@data.example_lang.example_lang_1.title",
+              matchedExpression: "@data.example_lang.example_lang_1.title",
               type: "data",
-              fieldName: "language",
+              fieldName: "example_lang",
             },
           ],
         },
         _dynamicDependencies: {
-          "@data.language.example_lang_1.title": ["value"],
+          "@data.example_lang.example_lang_1.title": ["value"],
         },
       },
       {
         type: "text",
         name: "text_1",
-        value: "@data.language.example_lang_1.text",
+        value: "@data.example_lang.example_lang_1.text",
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "text_1",
         _dynamicFields: {
           value: [
             {
-              fullExpression: "@data.language.example_lang_1.text",
-              matchedExpression: "@data.language.example_lang_1.text",
+              fullExpression: "@data.example_lang.example_lang_1.text",
+              matchedExpression: "@data.example_lang.example_lang_1.text",
               type: "data",
-              fieldName: "language",
+              fieldName: "example_lang",
             },
           ],
         },
         _dynamicDependencies: {
-          "@data.language.example_lang_1.text": ["value"],
+          "@data.example_lang.example_lang_1.text": ["value"],
         },
       },
       {
         type: "image",
         name: "image_1",
-        value: "@data.language.example_lang_1.image_asset",
+        value: "@data.example_lang.example_lang_1.image_asset",
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "image_1",
         _dynamicFields: {
           value: [
             {
-              fullExpression: "@data.language.example_lang_1.image_asset",
-              matchedExpression: "@data.language.example_lang_1.image_asset",
+              fullExpression: "@data.example_lang.example_lang_1.image_asset",
+              matchedExpression: "@data.example_lang.example_lang_1.image_asset",
               type: "data",
-              fieldName: "language",
+              fieldName: "example_lang",
             },
           ],
         },
         _dynamicDependencies: {
-          "@data.language.example_lang_1.image_asset": ["value"],
+          "@data.example_lang.example_lang_1.image_asset": ["value"],
         },
       },
       {
         type: "lottie_animation",
         name: "lottie_1",
-        value: "@data.language.example_lang_1.lottie_asset",
+        value: "@data.example_lang.example_lang_1.lottie_asset",
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "lottie_1",
         _dynamicFields: {
           value: [
             {
-              fullExpression: "@data.language.example_lang_1.lottie_asset",
-              matchedExpression: "@data.language.example_lang_1.lottie_asset",
+              fullExpression: "@data.example_lang.example_lang_1.lottie_asset",
+              matchedExpression: "@data.example_lang.example_lang_1.lottie_asset",
               type: "data",
-              fieldName: "language",
+              fieldName: "example_lang",
             },
           ],
         },
         _dynamicDependencies: {
-          "@data.language.example_lang_1.lottie_asset": ["value"],
+          "@data.example_lang.example_lang_1.lottie_asset": ["value"],
         },
       },
     ],
@@ -22666,10 +26452,13 @@ const template: FlowTypes.Template[] = [
         rows: [
           {
             name: "title_1",
-            value: "New title: @data.language.example_lang_2.title",
+            value: "New title: @data.example_lang.example_lang_2.title",
             _translations: {
               value: {
-                spa: true,
+                spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22677,23 +26466,26 @@ const template: FlowTypes.Template[] = [
             _dynamicFields: {
               value: [
                 {
-                  fullExpression: "New title: @data.language.example_lang_2.title",
-                  matchedExpression: "@data.language.example_lang_2.title",
+                  fullExpression: "New title: @data.example_lang.example_lang_2.title",
+                  matchedExpression: "@data.example_lang.example_lang_2.title",
                   type: "data",
-                  fieldName: "language",
+                  fieldName: "example_lang",
                 },
               ],
             },
             _dynamicDependencies: {
-              "@data.language.example_lang_2.title": ["value"],
+              "@data.example_lang.example_lang_2.title": ["value"],
             },
           },
           {
             name: "text_1",
-            value: "New text: @data.language.example_lang_2.text",
+            value: "New text: @data.example_lang.example_lang_2.text",
             _translations: {
               value: {
-                spa: true,
+                spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22701,23 +26493,26 @@ const template: FlowTypes.Template[] = [
             _dynamicFields: {
               value: [
                 {
-                  fullExpression: "New text: @data.language.example_lang_2.text",
-                  matchedExpression: "@data.language.example_lang_2.text",
+                  fullExpression: "New text: @data.example_lang.example_lang_2.text",
+                  matchedExpression: "@data.example_lang.example_lang_2.text",
                   type: "data",
-                  fieldName: "language",
+                  fieldName: "example_lang",
                 },
               ],
             },
             _dynamicDependencies: {
-              "@data.language.example_lang_2.text": ["value"],
+              "@data.example_lang.example_lang_2.text": ["value"],
             },
           },
           {
             name: "image_1",
-            value: "@data.language.example_lang_2.image_asset",
+            value: "@data.example_lang.example_lang_2.image_asset",
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22725,23 +26520,26 @@ const template: FlowTypes.Template[] = [
             _dynamicFields: {
               value: [
                 {
-                  fullExpression: "@data.language.example_lang_2.image_asset",
-                  matchedExpression: "@data.language.example_lang_2.image_asset",
+                  fullExpression: "@data.example_lang.example_lang_2.image_asset",
+                  matchedExpression: "@data.example_lang.example_lang_2.image_asset",
                   type: "data",
-                  fieldName: "language",
+                  fieldName: "example_lang",
                 },
               ],
             },
             _dynamicDependencies: {
-              "@data.language.example_lang_2.image_asset": ["value"],
+              "@data.example_lang.example_lang_2.image_asset": ["value"],
             },
           },
           {
             name: "lottie_1",
-            value: "@data.language.example_lang_2.lottie_asset",
+            value: "@data.example_lang.example_lang_2.lottie_asset",
             _translations: {
               value: {
                 spa: false,
+                tsa: false,
+                xho: false,
+                zul: false,
               },
             },
             type: "set_variable",
@@ -22749,15 +26547,15 @@ const template: FlowTypes.Template[] = [
             _dynamicFields: {
               value: [
                 {
-                  fullExpression: "@data.language.example_lang_2.lottie_asset",
-                  matchedExpression: "@data.language.example_lang_2.lottie_asset",
+                  fullExpression: "@data.example_lang.example_lang_2.lottie_asset",
+                  matchedExpression: "@data.example_lang.example_lang_2.lottie_asset",
                   type: "data",
-                  fieldName: "language",
+                  fieldName: "example_lang",
                 },
               ],
             },
             _dynamicDependencies: {
-              "@data.language.example_lang_2.lottie_asset": ["value"],
+              "@data.example_lang.example_lang_2.lottie_asset": ["value"],
             },
           },
         ],
@@ -22782,6 +26580,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_1",
@@ -22793,6 +26594,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_startup_field",
@@ -22804,6 +26608,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_startup_text",
@@ -22841,6 +26648,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_1",
@@ -22852,6 +26662,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_startup_field",
@@ -22863,6 +26676,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_startup_text",
@@ -22897,6 +26713,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_1",
@@ -22908,6 +26727,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _nested_name: "example_startup_text",
@@ -22932,6 +26754,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [
@@ -22959,6 +26784,9 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         action_list: [

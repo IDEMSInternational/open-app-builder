@@ -12,9 +12,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -28,9 +34,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -45,9 +57,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text: "<p>Select the @global.parent_centre tile.</p>",
@@ -61,9 +79,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text: "<p>Select the Essential Tools tile to get to the full list of tools.</p>",
@@ -77,9 +101,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text: "<p>You can find all the Essential Tools here.</p>",
@@ -94,6 +124,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         template_component_name: "demo_navigation",
@@ -114,9 +147,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -130,9 +169,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -146,9 +191,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -162,9 +213,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -178,9 +235,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -194,6 +257,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         route: "template/home_screen",
@@ -212,9 +278,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -228,9 +300,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -244,9 +322,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -260,9 +344,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -276,9 +366,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -292,6 +388,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         route: "template/home_screen",
@@ -310,9 +409,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -326,9 +431,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text: "<p>Press this button to go to the @global.weekly_workshop_options </p> ",
@@ -341,9 +452,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         message_text:
@@ -356,6 +473,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         template_component_name: "text_box_1",
@@ -368,6 +488,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         template_component_name: "combo_box_2",
@@ -379,6 +502,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         template_component_name: "combo_box_3",
@@ -391,6 +517,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         template_component_name: "radio_group_4",
@@ -402,6 +531,9 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         template_component_name: "text_box_5",
