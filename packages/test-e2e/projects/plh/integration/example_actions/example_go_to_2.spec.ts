@@ -37,7 +37,7 @@ describe("[Example_go_to_2 tests]", () => {
 
   it("[Checks for button 2]", () => {
     cy.get("ion-button").contains("Button 2").should("be.visible").click();
-    cy.contains("Emit completed").should("be.visible").click();
+    cy.contains("Emit completed").should("be.visible").click({ force: true, multiple: true });
     cy.get("ion-button").contains("Button 2").should("be.visible").click();
     cy.contains("Emit uncompleted").should("be.visible").click();
   });
