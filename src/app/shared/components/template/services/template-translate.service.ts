@@ -65,13 +65,9 @@ export class TemplateTranslateService {
       });
     }
     // Case 2 - row value assigned from data list with translate fields
-    // TODO - confirm if working for new implementation
     const { value } = row;
-    if (value && value._translatedFields) {
-      console.warn("[Translations] - requires implementation", value);
-      // Object.keys(value._translatedFields).forEach((field) => {
-      //   translated.value[field] = this.translateValue(row.value._translatedFields[field]);
-      // });
+    if (value && value._translations) {
+      translated.value = this.translateRow(value);
     }
     // Note - there is a third case when row value assigned from calculation (e.g. data list child field)
     // but this is currently manually handled in the template-variables service as required
