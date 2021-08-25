@@ -76,7 +76,7 @@ function compileTranslationStrings(translationsDir: string, outDir: string) {
   const translationsByCode: ITranslationsByCode = {};
   const translationsFiles = recursiveFindByExtension(translationsDir, "json");
   for (const filepath of translationsFiles) {
-    const [, langCode] = path.basename(filepath, ".json").split(".");
+    const [, countryCode, langCode] = path.basename(filepath, ".json").split(".");
     if (!langCode) {
       outputErrorMessage(
         "Translations file does not have language code in filename (e.g. translated.esp.json)",
