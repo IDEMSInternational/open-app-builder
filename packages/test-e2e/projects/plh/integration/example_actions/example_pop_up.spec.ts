@@ -62,8 +62,16 @@ describe("[Example_popup tests]", () => {
   });
 
   it("[Checks for popup button 1 working]", () => {
-    cy.get(".popup-content ion-button").contains("Button 1").should("be.visible").click();
-    cy.get(".close-button").should("be.visible").click();
+    cy.get(".popup-content ion-button")
+      .contains("Button 1")
+      .should("be.visible")
+      .click({ force: true });
+
+    cy.get(".close-button").then(($btn) => {
+      if ($btn) {
+        cy.get(".close-button").should("be.visible").click();
+      }
+    });
   });
 
   it("[Checks for emit completed/uncompleted button", () => {
