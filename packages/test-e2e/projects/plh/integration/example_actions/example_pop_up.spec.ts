@@ -49,7 +49,9 @@ describe("[Example_popup tests]", () => {
   });
 
   it("[Checks for the button 2 working]", () => {
+    cy.wait(500);
     cy.get("ion-button").contains("Button 2").should("be.visible").click();
+    cy.wait(500);
   });
 
   it("[Checks for the popup visbility]", () => {
@@ -62,22 +64,38 @@ describe("[Example_popup tests]", () => {
   });
 
   it("[Checks for popup button 1 working]", () => {
-    cy.get(".popup-content ion-button")
+    cy.wait(500);
+    cy.get(".popup-content ion-button").contains("Button 1").should("be.visible").click();
+    cy.wait(500);
+  });
+
+  it("[Checks for the non-visibility of popup]", () => {
+    cy.get(".popup-content").should("not.be.visible");
+  });
+
+  it("[Checks for emit completed/uncompleted button", () => {
+    cy.contains("Emit completed")
+      .should("be.visible")
+      .click()
+      .get(".popup-content span.left")
       .contains("Button 1")
       .should("be.visible")
       .click({ force: true });
 
-    cy.get(".close-button").then(($btn) => {
-      if ($btn) {
-        cy.get(".close-button").should("be.visible").click();
-      }
-    });
+    cy.contains("Emit uncompleted").click();
   });
 
-  it("[Checks for emit completed/uncompleted button", () => {
-    cy.contains("Emit completed").click();
-    cy.get("ion-button").contains("Button 2").should("be.visible").click();
-    cy.get(".popup-content ion-button").contains("Button 1").should("be.visible").click();
+  it("[Checks for the popup button 2 working]", () => {
+    cy.get(".popup-content ion-button").contains("Button 2").click({ multiple: true, force: true });
+
+    cy.contains("Emit completed")
+      .should("be.visible")
+      .click({ force: true })
+      .get(".popup-content span.left")
+      .contains("Button 2")
+      .should("be.visible")
+      .click({ multiple: true, force: true });
+
     cy.contains("Emit uncompleted").click();
   });
 
@@ -86,8 +104,9 @@ describe("[Example_popup tests]", () => {
   });
 
   it("[Checks for button 3 working]", () => {
-    cy.visit("/template/example_pop_ups");
+    cy.wait(500);
     cy.get("ion-button").contains("Button 3").should("be.visible").click();
+    cy.wait(500);
   });
 
   it("[Checks for the text visbility]", () => {
@@ -97,11 +116,22 @@ describe("[Example_popup tests]", () => {
   });
 
   it("[Checks popup button 1 working]", () => {
-    cy.get(".popup-content ion-button").contains("Button 1").should("be.visible").click();
+    cy.wait(500);
+    cy.get(".popup-content ion-button").contains("Button 1").click({ force: true });
+    cy.wait(500);
   });
 
   it("[Checks for emit completed/uncompleted buttons", () => {
     cy.contains("Emit completed").should("be.visible").click();
+    cy.get(".popup-content span.left")
+      .contains("Button 1")
+      .should("be.visible")
+      .click({ multiple: true, force: true });
+
+    cy.contains("Emit uncompleted").click();
+  });
+
+  it("[Closes the popup]", () => {
     cy.get(".close-button").should("be.visible").click({ multiple: true, force: true });
   });
 });
