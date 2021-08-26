@@ -5,18 +5,20 @@ import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
+import { TemplateTranslateService } from "./template-translate.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class TemplateService {
-  globals = {};
+  globals: { [name: string]: FlowTypes.GlobalRow } = {};
   private themeValue = new BehaviorSubject("passive");
   currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
     private dataService: PLHDataService,
-    private dbService: DbService
+    private dbService: DbService,
+    private translateService: TemplateTranslateService
   ) {}
 
   /** Initialise global and startup templates */
@@ -32,7 +34,7 @@ export class TemplateService {
             this.setField(row.name, row.value);
           }
         } else {
-          this.setGlobal(row.name, row.value);
+          this.setGlobal(row);
         }
       });
     });
@@ -105,17 +107,19 @@ export class TemplateService {
   }
 
   getGlobal(key: string): string {
-    let val = this.globals[key];
     // provide a fallback if the target global variable has never been set
     if (!this.globals.hasOwnProperty(key)) {
       console.warn("global value not found for key:", key);
-      val = undefined;
+      return undefined;
     }
-    return val;
+    let global = this.globals[key];
+    // HACK - ensure global value is translated (if exists)
+    // (could possibly be handled better from within translate service)
+    return this.translateService.translateValue(global.value);
   }
 
-  setGlobal(key: string, value: string) {
-    this.globals[key] = value;
+  private setGlobal(row: FlowTypes.GlobalRow) {
+    this.globals[row.name] = row;
   }
 
   /** Get the value of a data_list item as defined within templates */
