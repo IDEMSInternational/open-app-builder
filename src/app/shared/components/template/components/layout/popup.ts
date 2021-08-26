@@ -8,10 +8,10 @@ import { TemplateContainerComponent } from "../../template-container.component";
     <div
       class="popup-backdrop"
       (click)="dismissOnBackdrop($event)"
-      [attr.data-fullscreen]="fullScreen"
+      [attr.data-standalone]="standalone"
     >
-      <div class="popup-content" [attr.data-fullscreen]="fullScreen">
-        <ion-button (click)="dismiss()" class="close-button" fill="clear" *ngIf="!fullScreen">
+      <div class="popup-content" [attr.data-standalone]="standalone">
+        <ion-button (click)="dismiss()" class="close-button" fill="clear" *ngIf="!standalone">
           <ion-icon slot="icon-only" name="close"></ion-icon>
         </ion-button>
         <plh-template-container
@@ -41,7 +41,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         margin-top: 40px;
         background: rgba(0, 0, 0, 0.6);
       }
-      .popup-backdrop[data-fullscreen] {
+      .popup-backdrop[data-standalone] {
         height: 100vh;
         margin-top: 0;
         background: white;
@@ -55,7 +55,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         padding: 0px 20px 20px 20px;
         overflow: auto;
       }
-      .popup-content[data-fullscreen] {
+      .popup-content[data-standalone] {
         width: 100%;
         height: 100%;
         max-height: 100%;
@@ -97,15 +97,19 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
-  @Input() fullScreen?: boolean;
+  /** Standalone mode shows in fullscreen and dismisses on completed/uncompleted emit events */
+  @Input() standalone?: boolean;
 
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
 
-  /** When templates emit completed/uncompleted value from fullscreen popup close the popup */
+  /**
+   * When templates emit completed/uncompleted value from standalone popup close the popup
+   * NOTE - we do not want to respond to non-standalone templates as this is done through template nav-actions
+   * */
   handleEmittedValue(value: string) {
-    if (this.fullScreen) {
+    if (this.standalone) {
       if (["completed", "uncompleted"].includes(value)) {
         this.dismiss(value);
       }

@@ -28,17 +28,16 @@ export class TemplateService {
   }
 
   /**
-   * Load a specified template in a popup, dismissing popup on emit:completed/uncompleted
+   * Load a specified template in a full-screen popup, dismissing on emit:completed/uncompleted
    * This differs from the pop_up action as it can be run independent of other templates (e.g. on startup)
-   * and will run in a full-screen modal. It will not respond to nav actions so is only designed for basic templates
+   * It will not respond to nav actions so is only designed for basic templates
    * TODO - could be better-merged with template-nav service popup creation methods
    */
-  async runTemplateInModal(templatename: string) {
-    const componentProps = { templatename, fullScreen: true };
+  async runStandaloneTemplate(templatename: string) {
     const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
       cssClass: "template-popup-modal",
-      componentProps,
+      componentProps: { templatename, standalone: true },
     });
     await modal.present();
     const { data } = await modal.onDidDismiss();
