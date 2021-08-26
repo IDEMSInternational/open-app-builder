@@ -4,20 +4,27 @@ import { FlowTypes, ITemplateContainerProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 
 @Component({
-  template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event)">
-    <div class="popup-content">
-      <ion-button (click)="dismiss()" class="close-button" fill="clear">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-      <plh-template-container
-        class="template-container"
-        [name]="name"
-        [templatename]="templatename"
-        [parent]="parent"
-        [row]="row"
-      ></plh-template-container>
+  template: `
+    <div
+      class="popup-backdrop"
+      (click)="dismissOnBackdrop($event)"
+      [attr.data-fullscreen]="fullScreen"
+    >
+      <div class="popup-content" [attr.data-fullscreen]="fullScreen">
+        <ion-button (click)="dismiss()" class="close-button" fill="clear" *ngIf="!fullScreen">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+        <plh-template-container
+          class="template-container"
+          [name]="name"
+          [templatename]="templatename"
+          [parent]="parent"
+          [row]="row"
+          (emittedValue)="handleEmittedValue($event)"
+        ></plh-template-container>
+      </div>
     </div>
-  </div>`,
+  `,
   styles: [
     `
       .popup-backdrop,
@@ -34,6 +41,12 @@ import { TemplateContainerComponent } from "../../template-container.component";
         margin-top: 40px;
         background: rgba(0, 0, 0, 0.6);
       }
+      .popup-backdrop[data-fullscreen] {
+        height: 100vh;
+        margin-top: 0;
+        background: white;
+      }
+
       .popup-content {
         width: 85%;
         max-height: calc(100vh - 140px);
@@ -41,6 +54,12 @@ import { TemplateContainerComponent } from "../../template-container.component";
         border-radius: 30px;
         padding: 0px 20px 20px 20px;
         overflow: auto;
+      }
+      .popup-content[data-fullscreen] {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
       }
       .popup-content::-webkit-scrollbar {
         display: none;
@@ -78,10 +97,20 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
+  @Input() fullScreen?: boolean;
 
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
+
+  /** When templates emit completed/uncompleted value from fullscreen popup close the popup */
+  handleEmittedValue(value: string) {
+    if (this.fullScreen) {
+      if (["completed", "uncompleted"].includes(value)) {
+        this.dismiss(value);
+      }
+    }
+  }
 
   dismissOnBackdrop(e: MouseEvent) {
     const el = e.target as HTMLElement;

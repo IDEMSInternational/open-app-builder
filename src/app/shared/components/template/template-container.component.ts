@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
@@ -37,6 +46,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
+  /** Allow parents to also see emitted value (note - currently responding to emit is done in service, not output bindings except for ) */
+  @Output() emittedValue = new EventEmitter<string>();
   /** Query params are used for trigger template actions such as opening popups or enabling debug_mode. Ignored if required (e.g. app sidemenu template) */
   @Input() ignoreQueryParamChanges?: boolean;
   children: { [name: string]: TemplateContainerComponent } = {};

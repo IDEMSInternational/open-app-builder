@@ -201,6 +201,8 @@ export class TemplateActionService {
             parent.templateActionService.handleActions(parentActions, row);
           }
         }
+        // Emit value so manual container bindings can also track (e.g. closing modal in popup from runTemplateInModal method)
+        this.container.emittedValue.next(emit_value);
         break;
       default:
         console.warn("[W] No handler for action", { action_id, args });
