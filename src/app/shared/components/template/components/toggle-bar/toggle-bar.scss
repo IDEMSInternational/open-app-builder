@@ -1,63 +1,103 @@
 ion-toggle {
   --background: #b4b7b7;
-  width: 55px;
+  width: 42px;
+  height: 22px;
+}
+
+ion-toggle {
+  --background: #b4b7b7;
+  --background-checked: var(--ion-color-primary, "darkblue");
+  --handle-background: var(--ion-item-background, #fefefe);
+  --handle-background-checked: var(--ion-item-background, #fefefe);
+}
+
+ion-toggle {
+  --handle-spacing: 2px;
 }
 
 .with_icons {
-  ion-toggle::before {
+  ion-toggle.toggle-checked::before {
     position: absolute;
-    height: 100%;
-    width: 14px;
-    top: 10px;
-    left: 7px;
-    content: "";
-    background: url("../../../../../../assets/plh_assets/plh_images/icons/tick_white.svg");
-    background-repeat: no-repeat;
+    left: 16px;
+    top: 16px;
+    right: auto;
+    content: " ";
+    background-size: 14px 14px;
+    height: 16px;
+    width: 16px;
+    color: white;
+    background-image: url(../../../../../../../src/assets/icon/shared/tick.svg);
+    font-size: 20px;
     z-index: 1;
+    font-weight: 500;
   }
+
+  ion-toggle.toggle-checked::after {
+    position: absolute;
+    left: auto;
+    top: 16px;
+    right: 14px;
+    background-size: 14px 14px;
+    height: 16px;
+    width: 16px;
+    color: white;
+    background-image: none;
+    font-size: 20px;
+    z-index: 1;
+    font-weight: 500;
+  }
+
   ion-toggle::after {
     position: absolute;
-    height: 100%;
-    width: 14px;
-    top: 1px;
-    right: 2px;
-    content: "+";
+    left: auto;
+    top: 16px;
+    right: 14px;
+    content: " ";
+    background-size: 14px 14px;
+    height: 16px;
+    width: 16px;
     color: white;
-    background-repeat: no-repeat;
+    background-image: url(../../../../../../../src/assets/icon/shared/cross.svg);
+    font-size: 20px;
     z-index: 1;
-    transform: rotate(135deg);
-    font-size: 30px;
-    font-weight: 300;
+    font-weight: 500;
   }
 }
+
 .container {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .label {
   margin-left: var(--small-margin);
   margin-right: var(--small-margin);
   text-align: right;
   line-height: 27px;
 }
+
 .center {
   justify-content: center;
 }
+
 .center .label {
   position: absolute;
   right: 0;
   max-width: calc(50% - 45px);
 }
+
 .right .label {
   order: 1;
   text-align: left;
 }
+
 .toggle_wrapper {
   align-self: baseline;
   margin-top: 5px;
 }
+
 .right .toggle_wrapper {
   order: 2;
 }
