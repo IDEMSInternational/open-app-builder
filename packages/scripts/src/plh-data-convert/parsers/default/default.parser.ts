@@ -81,6 +81,10 @@ export class DefaultParser implements AbstractParser {
           row[field] = row[field].replace(expression, replaceValue);
         }
       }
+      // remove any trailing whitespace from any entries
+      if (typeof row[field] === "string") {
+        row[field] = row[field].trim();
+      }
       // mark fields for translation, rename so can process regularly (add translation data at end)
       // Note, cannot assume all :: statements translations as also used in fields, e.g. fields::favourite
       // TODO - alter fields syntax to avoid potential conflict (e.g. fields::eng)
