@@ -279,8 +279,7 @@ $horizontal: 90deg;
   );
   //ACCORDION
   --accordion-section-title-padding: var(--small-padding) 0 var(--small-padding) 0;
-  --accordion-section-padding: 0 10px 10px 10px;
-  --accordion-section-max-height: 43px;
+  --accordion-section-padding: 0 10px;
   --accordion-section-open-height: 400px;
   --accordion-section-width: 85%;
   --ion-accordion-status-bg-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
