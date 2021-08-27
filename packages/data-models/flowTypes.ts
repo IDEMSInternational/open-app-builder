@@ -391,7 +391,6 @@ export namespace FlowTypes {
     | "icon"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
-    | "set_global"
     | "set_local"
     | "set_field"
     | "update_action_list" // update own action list
@@ -488,7 +487,6 @@ export namespace FlowTypes {
       | "reset_app"
       | "set_field"
       | "set_local"
-      | "set_global"
       | "emit"
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
