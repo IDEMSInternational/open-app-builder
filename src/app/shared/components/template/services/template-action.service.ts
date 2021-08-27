@@ -99,9 +99,6 @@ export class TemplateActionService {
       case "set_local":
         console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
-      case "set_global":
-        console.log("[SET GLOBAL]", key, value);
-        return this.container.templateService.setGlobal(key, value);
       case "go_to":
         return this.container.templateNavService.handleNavAction(action, this.container);
       case "go_to_url":

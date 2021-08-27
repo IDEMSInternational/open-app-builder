@@ -4715,7 +4715,7 @@
     },
     {
         "SourceText": "* food \n* water & electricity \n* clothing \n* accounts \n* TV subscription \n* toiletries \n* salon \n* airtime \n* school fees \n* transport \n* insurance/policies \n* medication \n* entertainment/sports \n* rent \n* loans \n* church",
-        "text": "* dijo \n* metsi &amp; motlakase \n* diaparo \n* diakhaonto \n* peeletso ya TV \n* dilwana tsa go tlhapa \n* salune \n* airtime \n* tuelo ya sekolo \n* sepalangwa \n* inshorense/dipholisi \n* melemo \n* boitlosobodutu/metshameko \n* rente \n* melato \n* kereke",
+        "text": "* dijo \n* metsi & motlakase \n* diaparo \n* diakhaonto \n* peeletso ya TV \n* dilwana tsa go tlhapa \n* salune \n* airtime \n* tuelo ya sekolo \n* sepalangwa \n* inshorense/dipholisi \n* melemo \n* boitlosobodutu/metshameko \n* rente \n* melato \n* kereke",
         "type": "template"
     },
     {
@@ -7110,7 +7110,7 @@
     },
     {
         "SourceText": "Relax & Activities",
-        "text": "Go iketla &amp; Ditiro",
+        "text": "Go iketla & Ditiro",
         "type": "global"
     },
     {
@@ -7161,17 +7161,17 @@
     },
     {
         "SourceText": "Listen & relax (1-2 minutes)",
-        "text": "Reetsa &amp; iketle (metsotso e le 1-2)",
+        "text": "Reetsa & iketle (metsotso e le 1-2)",
         "type": "global"
     },
     {
         "SourceText": "Listen & relax (3-5 minutes)",
-        "text": "Reetsa &amp; iketle (metsotso e le 3-5)",
+        "text": "Reetsa & iketle (metsotso e le 3-5)",
         "type": "global"
     },
     {
         "SourceText": "Do & relax (5-10 minutes)",
-        "text": "Dira &amp; iketle (metsotso e le 5-10)",
+        "text": "Dira & iketle (metsotso e le 5-10)",
         "type": "global"
     },
     {
@@ -8002,7 +8002,7 @@
     },
     {
         "SourceText": "Relax & Activities",
-        "text": "Go iketla &amp; Ditiro",
+        "text": "Go iketla & Ditiro",
         "type": "data_list"
     },
     {
@@ -8208,7 +8208,7 @@
     },
     {
         "SourceText": "Ground & gratitude",
-        "text": "Lefatshe &amp; go leboga ",
+        "text": "Lefatshe & go leboga ",
         "type": "data_list"
     },
     {
