@@ -450,7 +450,7 @@ export namespace FlowTypes {
     _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
-  type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+  export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
   type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
 
