@@ -94,7 +94,7 @@ export class TemplateTranslateService {
           return evaluator;
         });
       } else {
-        const nestedDynamic = translatedFields[field] as FlowTypes.IDynamicField;
+        const nestedDynamic = value as FlowTypes.IDynamicField;
         translatedFields[field] = this.translateDynamicFields(nestedDynamic);
       }
     });
