@@ -31,6 +31,8 @@ export class TourService {
       this.introJS.setOptions({
         tooltipClass: "tooltipClass",
         buttonClass: "buttonClass",
+        nextLabel: this.translateService.translateValue("Next"),
+        prevLabel: this.translateService.translateValue("Previous"),
         steps: matchingTour.rows.map((row) => {
           // HACK - Ensure tour rows translated
           const translatedRow: FlowTypes.TourStep = this.translateService.translateRow(
