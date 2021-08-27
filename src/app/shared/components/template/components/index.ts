@@ -119,7 +119,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   // set variable and nested properties are handled by parent
   set_variable: null as any,
   nested_properties: null as any,
-  set_global: null as any,
   set_field: null as any,
   set_local: null as any,
   set_theme: null as any,
