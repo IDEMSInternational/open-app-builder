@@ -5,6 +5,8 @@ import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
+import { ModalController } from "@ionic/angular";
+import { TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
 
 @Injectable({
@@ -18,12 +20,30 @@ export class TemplateService {
     private localStorageService: LocalStorageService,
     private dataService: PLHDataService,
     private dbService: DbService,
+    private modalCtrl: ModalController,
     private translateService: TemplateTranslateService
   ) {}
 
   /** Initialise global and startup templates */
   async init() {
     this.initialiseGlobals();
+  }
+
+  /**
+   * Load a specified template in a full-screen popup, dismissing on emit:completed/uncompleted
+   * This differs from the pop_up action as it can be run independent of other templates (e.g. on startup)
+   * It will not respond to nav actions so is only designed for basic templates
+   * TODO - could be better-merged with template-nav service popup creation methods
+   */
+  async runStandaloneTemplate(templatename: string) {
+    const modal = await this.modalCtrl.create({
+      component: TemplatePopupComponent,
+      cssClass: "template-popup-modal",
+      componentProps: { templatename, standalone: true },
+    });
+    await modal.present();
+    const { data } = await modal.onDidDismiss();
+    return data;
   }
 
   private initialiseGlobals() {
