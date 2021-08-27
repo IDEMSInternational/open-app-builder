@@ -219,16 +219,17 @@ export class TemplateRowService {
         return { ...preProcessedRow, condition: false };
       }
     }
+    // As translations are applied in raw format (e.g. "Hello @global.some_field")
+    // strings should be translated before dynamic processing
+    const translatedRow = this.container.templateTranslateService.translateRow(preProcessedRow);
 
     // Continue processing full row
     const parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
-      { ...preProcessedRow },
+      { ...translatedRow },
       evalContext
     );
-    // assign translated values
-    const translatedRow = this.container.templateTranslateService.translateRow(parsedRow);
 
-    const row = translatedRow;
+    const row = parsedRow;
     const { name, value, type, _dynamicFields } = row;
 
     // Make type assigned to hidden consistent
