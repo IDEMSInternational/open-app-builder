@@ -391,7 +391,6 @@ export namespace FlowTypes {
     | "icon"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
-    | "set_global"
     | "set_local"
     | "set_field"
     | "update_action_list" // update own action list
@@ -451,7 +450,7 @@ export namespace FlowTypes {
     _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
-  type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+  export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
   type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
 
@@ -488,7 +487,6 @@ export namespace FlowTypes {
       | "reset_app"
       | "set_field"
       | "set_local"
-      | "set_global"
       | "emit"
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up

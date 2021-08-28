@@ -91,6 +91,27 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "debug",
+    flow_name: "example_data_list",
+    status: "released",
+    data_list_name: "example",
+    rows: [
+      {
+        id: "example1",
+        value: "Success - Example 1",
+        text: "some text",
+      },
+      {
+        id: "example3",
+        value_list: ["name:name_var_1 | text:Option 1", "name:name_var_2 | text: Option 2"],
+        text: "any fields can be accessed",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "debug",
     flow_name: "example_items_data_list",
     status: "released",
     data_list_name: "example_items",
@@ -131,7 +152,7 @@ const data_list: FlowTypes.Data_list[] = [
     flow_type: "data_list",
     flow_name: "example_lang_data_list",
     status: "released",
-    data_list_name: "language",
+    data_list_name: "example_lang",
     flow_subtype: "debug",
     rows: [
       {
@@ -142,9 +163,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _translatedFields: {
@@ -165,9 +192,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _translatedFields: {
@@ -186,6 +219,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _translatedFields: {

@@ -27,8 +27,8 @@ import { isSameDay } from "date-fns";
 export class AppComponent {
   APP_VERSION = environment.version;
   ENV_NAME = environment.envName;
-  skipTutorial: boolean;
-  public initComplete = false;
+  /** Track when app ready to render sidebar and route templates */
+  public renderAppTemplates = false;
   constructor(
     private platform: Platform,
     private menuController: MenuController,
@@ -62,17 +62,17 @@ export class AppComponent {
         await this.surveyService.runSurvey("analytics");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
+        await this.templateService.runStandaloneTemplate("language_select");
         await this.tourService.startTour("intro_tour");
       }
-      this.skipTutorial = true;
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
-
       if (Capacitor.isNative) {
         this.removeConsoleLogs();
         SplashScreen.hide();
         this.notifications.init();
       }
+      this.renderAppTemplates = true;
       this.scheduleCampaignNotifications();
       this.scheduleReinitialisation();
     });
@@ -92,7 +92,6 @@ export class AppComponent {
     await this.dataEvaluationService.refreshDBCache();
     await this.templateService.init();
     await this.templateProcessService.init();
-    this.initComplete = true;
   }
 
   clickOnMenuItem(id: string) {
