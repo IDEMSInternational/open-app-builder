@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import introJs from "intro.js";
 import { TOUR } from "../data/data.service";
 import { TemplateService } from "../../components/template/services/template.service";
+import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
+import { FlowTypes } from "packages/data-models/dist";
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +15,11 @@ export class TourService {
 
   waitForRoutingDelay = 1000;
 
-  constructor(private router: Router, private templateService: TemplateService) {}
+  constructor(
+    private router: Router,
+    private templateService: TemplateService,
+    private translateService: TemplateTranslateService
+  ) {}
 
   listTourNames(): string[] {
     return TOUR.map((t) => t.flow_name);
@@ -21,19 +27,27 @@ export class TourService {
 
   async startTour(tourName = "test_tour") {
     let matchingTour = TOUR.find((t) => t.flow_name === tourName);
-
     if (matchingTour && matchingTour.rows && matchingTour.rows.length > 0) {
       this.introJS.setOptions({
         tooltipClass: "tooltipClass",
         buttonClass: "buttonClass",
+        nextLabel: this.translateService.translateValue("Next"),
+        prevLabel: this.translateService.translateValue("Previous"),
         steps: matchingTour.rows.map((row) => {
-          let elementSelector = row.element;
-          if (row.template_component_name && row.template_component_name.trim().length > 0) {
-            elementSelector = `[data-rowname="${row.template_component_name}"]`;
+          // HACK - Ensure tour rows translated
+          const translatedRow: FlowTypes.TourStep = this.translateService.translateRow(
+            row as any
+          ) as any;
+          let elementSelector = translatedRow.element;
+          if (
+            translatedRow.template_component_name &&
+            translatedRow.template_component_name.trim().length > 0
+          ) {
+            elementSelector = `[data-rowname="${translatedRow.template_component_name}"]`;
           }
           return {
-            intro: this.replaceGlobalInRowMessage(row.message_text),
-            title: this.replaceGlobalInRowMessage(row.title),
+            intro: this.hackReplaceGlobalInRowMessage(translatedRow.message_text),
+            title: this.hackReplaceGlobalInRowMessage(translatedRow.title),
             element: elementSelector,
             elementSelector,
           } as any;
@@ -90,7 +104,11 @@ export class TourService {
       }
     });
   }
-  replaceGlobalInRowMessage(field: any) {
+  /**
+   * Legacy hardcoded method to replace tour data manually
+   * TODO - should be integrated with existing template parsing methods
+   */
+  hackReplaceGlobalInRowMessage(field: any) {
     const regExs = new RegExp(/([@]+[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi);
     const globalVariables = field ? field.match(regExs) : field;
     const regExpImg = new RegExp(/<img .*?>/g);
