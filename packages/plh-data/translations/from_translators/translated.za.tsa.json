@@ -165,13 +165,13 @@
     },
     {
         "SourceText": "total_parent_point_@local.habit",
-        "text": "ntlha_yotlhe_ya botsadi_@local.habit",
+        "text": "total_parent_point_@local.habit",
         "type": "template",
         "note": "The string @local.habit should not be translated."
     },
     {
         "SourceText": "weekly_parent_point_@local.habit",
-        "text": "ntlha_ya beke le beke_ya botsadi_@local.habit",
+        "text": "weekly_parent_point_@local.habit",
         "type": "template",
         "note": "The string @local.habit should not be translated."
     },
