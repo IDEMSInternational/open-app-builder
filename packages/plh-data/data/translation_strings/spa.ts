@@ -62,4 +62,7 @@ export default {
     "Este texto esta cargado por medio de la segunda fila de datos.",
   "This text should define a default value for a field":
     "Este texto debería definir el valor predeterminado de un campo.",
+  happy: "contento",
+  ok: "bien",
+  sad: "triste",
 };
