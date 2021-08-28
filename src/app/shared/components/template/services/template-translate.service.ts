@@ -63,6 +63,10 @@ export class TemplateTranslateService {
       Object.keys(row._translations).forEach((field) => {
         translated[field] = this.translateValue(row[field]);
       });
+      // Also assign as the base string for any fields that will be parsed dynamically
+      if (row._dynamicFields) {
+        translated._dynamicFields = this.translateDynamicFields(row._dynamicFields);
+      }
     }
     // Case 2 - row value assigned from data list with translate fields
     const { value } = row;
@@ -72,6 +76,29 @@ export class TemplateTranslateService {
     // Note - there is a third case when row value assigned from calculation (e.g. data list child field)
     // but this is currently manually handled in the template-variables service as required
     return translated;
+  }
+
+  /**
+   * As dynamic fields keep reference to initial full expressions that are used as part of evaluation,
+   * also replace these references with translated ones
+   */
+  private translateDynamicFields(fields: FlowTypes.IDynamicField) {
+    const translatedFields: FlowTypes.IDynamicField = {};
+    // There are 2 cases to handle dependingt on whether the dynamic field represents
+    // an array of dynamic evaluators or a further-nested dynamic field
+    Object.entries(fields).forEach(([field, value]) => {
+      if (Array.isArray(value)) {
+        const dynamicRowEvaluators = value as FlowTypes.TemplateRowDynamicEvaluator[];
+        translatedFields[field] = dynamicRowEvaluators.map((evaluator) => {
+          evaluator.fullExpression = this.translateValue(evaluator.fullExpression);
+          return evaluator;
+        });
+      } else {
+        const nestedDynamic = value as FlowTypes.IDynamicField;
+        translatedFields[field] = this.translateDynamicFields(nestedDynamic);
+      }
+    });
+    return translatedFields;
   }
 
   public translateValue(value: any) {
