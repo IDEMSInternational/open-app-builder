@@ -3,6 +3,162 @@ import { FlowTypes } from "data-models";
 const tour: FlowTypes.Tour[] = [
   {
     flow_type: "tour",
+    flow_name: "debug_tour",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "step",
+        title: "Title 1",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "<p> Text </p>",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "Title 2",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text:
+          "<p> global: @global.parent_app </p>\n<p> data: @data.example.example1.text</p>",
+        template_component_name: "tile_weekly_workshops",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "Title 3",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "<p> Text </p>",
+        template_component_name: "quick_start_weekly_workshops",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "Title 4",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "<p> Text </p>",
+        template_component_name: "tile_parent_points",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "Title 3",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "<p> Text </p>",
+        template_component_name: "quick_start_parent_points",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "Title 5",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "<p> Text </p>",
+        template_component_name: "tile_parent_centre",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "Title 3",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "<p> Text </p>",
+        template_component_name: "quick_start_parent_centre",
+        route: "template/home_screen",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_tour.xlsx",
+  },
+  {
+    flow_type: "tour",
     flow_name: "example_lang_tour",
     status: "released",
     flow_subtype: "debug",
@@ -13,9 +169,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -28,9 +190,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -43,9 +211,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -59,9 +233,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:
@@ -75,9 +255,15 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           message_text: {
             spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         message_text:

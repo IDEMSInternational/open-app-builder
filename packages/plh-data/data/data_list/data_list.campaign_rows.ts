@@ -9813,6 +9813,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -9874,6 +9877,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -9925,6 +9931,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -9986,6 +9995,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10037,6 +10049,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10098,6 +10113,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10149,6 +10167,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10210,6 +10231,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10261,6 +10285,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10322,6 +10349,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10373,6 +10403,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10434,6 +10467,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10485,6 +10521,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10546,6 +10585,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10597,6 +10639,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10658,6 +10703,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10709,6 +10757,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10770,6 +10821,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10821,6 +10875,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10882,6 +10939,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10933,6 +10993,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -10994,6 +11057,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11045,6 +11111,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11106,6 +11175,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11164,9 +11236,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11198,9 +11276,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11232,9 +11316,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11242,10 +11332,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "New message from PLH",
           },
           text: {
-            eng: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you. ",
+            eng: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
           },
         },
-        text: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you. ",
+        text: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
       },
       {
         id: "inactive_3",
@@ -11266,9 +11356,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11300,9 +11396,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11310,10 +11412,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "New message from PLH",
           },
           text: {
-            eng: "ParentApp misses you! There is a lot to explore. We are still here to support you. ",
+            eng: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
           },
         },
-        text: "ParentApp misses you! There is a lot to explore. We are still here to support you. ",
+        text: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
       },
       {
         id: "inactive_5",
@@ -11334,9 +11436,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11368,9 +11476,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11402,9 +11516,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -11436,9 +11556,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           text: {
             spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
