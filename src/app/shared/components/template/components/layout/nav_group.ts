@@ -156,7 +156,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       );
       const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
       let percentDone = currentPercentDone;
-
+     
       await this.parent.handleActions(
         [
           {
