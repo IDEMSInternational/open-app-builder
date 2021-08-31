@@ -1,5 +1,5 @@
 describe("[Example_go_to_2 tests]", () => {
-  it("[Navigates to example_go_to_1]", () => {
+  it("[Navigates to example_go_to_2]", () => {
     cy.visit("/template/example_go_to_2");
   });
 
