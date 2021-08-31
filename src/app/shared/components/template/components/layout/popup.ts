@@ -17,7 +17,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         [row]="row"
       ></plh-template-container>
     </div>
-  </div>`,
+  </div> `,
   styles: [
     `
       .popup-backdrop,
@@ -34,6 +34,12 @@ import { TemplateContainerComponent } from "../../template-container.component";
         margin-top: 40px;
         background: rgba(0, 0, 0, 0.6);
       }
+      .popup-backdrop[data-standalone] {
+        height: 100vh;
+        margin-top: 0;
+        background: white;
+      }
+
       .popup-content {
         width: 85%;
         max-height: calc(100vh - 140px);
@@ -41,6 +47,12 @@ import { TemplateContainerComponent } from "../../template-container.component";
         border-radius: 30px;
         padding: 0px 20px 20px 20px;
         overflow: auto;
+      }
+      .popup-content[data-standalone] {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
       }
       .popup-content::-webkit-scrollbar {
         display: none;
@@ -78,10 +90,24 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
+  /** Standalone mode shows in fullscreen and dismisses on completed/uncompleted emit events */
+  @Input() standalone?: boolean;
 
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
+
+  /**
+   * When templates emit completed/uncompleted value from standalone popup close the popup
+   * NOTE - we do not want to respond to non-standalone templates as this is done through template nav-actions
+   * */
+  handleEmittedValue(value: string) {
+    if (this.standalone) {
+      if (["completed", "uncompleted"].includes(value)) {
+        this.dismiss(value);
+      }
+    }
+  }
 
   dismissOnBackdrop(e: MouseEvent) {
     const el = e.target as HTMLElement;
