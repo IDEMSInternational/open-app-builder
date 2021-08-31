@@ -1,26 +1,6 @@
 describe("[Example_go_to_1 template tests]", () => {
-  it("[Loads home page]", () => {
-    cy.visit("/");
-    cy.location("pathname").should("eq", "/home");
-    cy.wait(1000);
-  });
-
-  it("[Clicks Menu Button]", () => {
-    cy.get(".buttons-first-slot").click();
-    cy.wait(1000);
-  });
-
-  it("[Should go to templates]", () => {
-    cy.contains("Template").click({ multiple: true });
-  });
-
-  it("[Searchs for example_go_to_1]", () => {
-    cy.get(".searchbar-input").type("example_go_to_1");
-    cy.wait(1000);
-  });
-
-  it("[Should go to example_go_to_1 template]", () => {
-    cy.contains("example_go_to_1").click();
+  it("[Navigates to example_go_to_1]", () => {
+    cy.visit("/template/example_go_to_1");
   });
 
   it("[Should show p tags text]", () => {

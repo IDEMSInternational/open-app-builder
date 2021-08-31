@@ -5,7 +5,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
 
 @Component({
   template: `<div class="popup-backdrop" (click)="dismissOnBackdrop($event)">
-    <div class="popup-content">
+    <div class="popup-content" [attr.data-popup_templatename]="templatename">
       <ion-button (click)="dismiss()" class="close-button" fill="clear">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>

@@ -1,28 +1,7 @@
 describe("[Example_update tests]", () => {
-  it("[Loads home page]", () => {
-    cy.visit("/");
-    cy.location("pathname").should("eq", "/home");
-    cy.wait(1000);
+  it("[Navigates to example_update_actions]", () => {
+    cy.visit("/template/example_update_actions");
   });
-
-  it("[Clicks Menu Button]", () => {
-    cy.get(".buttons-first-slot").click();
-    cy.wait(1000);
-  });
-
-  it("[Should go to templates]", () => {
-    cy.contains("Template").click({ multiple: true });
-  });
-
-  it("[Searchs for example_update_actions]", () => {
-    cy.get(".searchbar-input").type("example_update_actions");
-    cy.wait(1000);
-  });
-
-  it("[Should go to example_update_actions template]", () => {
-    cy.contains("example_update_actions").click();
-  });
-
   it("[Should check heading text]", () => {
     cy.contains("I will update after the popup has closed").should("be.visible");
   });
