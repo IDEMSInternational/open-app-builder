@@ -1,8 +1,16 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit } from "@angular/core";
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
-import { TEMPLATE } from "../../services/data/data.service";
 import { TourService } from "../../services/tour/tour.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
 import { TemplateActionService } from "./services/template-action.service";
@@ -38,6 +46,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() templatename: string;
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
+  /** Allow parents to also see emitted value (note - currently responding to emit is done in service, not output bindings except for ) */
+  @Output() emittedValue = new EventEmitter<string>();
   /** Query params are used for trigger template actions such as opening popups or enabling debug_mode. Ignored if required (e.g. app sidemenu template) */
   @Input() ignoreQueryParamChanges?: boolean;
   children: { [name: string]: TemplateContainerComponent } = {};
@@ -120,6 +130,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (full) {
         console.log("[Force Reload]", this.name);
         // ensure angular destroys previous row components before rendering new
+        // (note - will cause short content flicker)
+        this.templateRowService.renderedRows = [];
         await this.renderTemplate();
       } else {
         await this.templateRowService.processRowUpdates();
@@ -158,35 +170,23 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   private async renderTemplate() {
     // Lookup template
-    const foundTemplate: FlowTypes.Template = TEMPLATE.find(
-      (t) => t.flow_name === this.templatename
-    );
-    if (foundTemplate) {
-      // create a deep clone of the object to prevent accidental reference changes
-      // assign a name (in case top-level template) and store breadcrumb path for nested
-      const template = JSON.parse(JSON.stringify(foundTemplate));
-      this.name = this.name || this.templatename;
-      this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
-      this.template = template;
-      log_group("[Template Render Start]", this.name);
-      await this.templateRowService.processInitialTemplateRows();
-      log("[Template] Rendered", this.name, {
-        template,
-        ctxt: { ...this },
-        renderedRows: { ...this.templateRowService.renderedRows },
-        rowMap: this.templateRowService.templateRowMap,
-      });
-      // if a parent exists also provide parent reference to this as a child
-      if (this.parent) {
-        this.parent.children[this.name] = this;
-      }
-      log_groupEnd();
+    const template = this.templateService.getTemplateByName(this.templatename);
+    this.name = this.name || this.templatename;
+    this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
+    this.template = template;
+    log_group("[Template Render Start]", this.name);
+    await this.templateRowService.processContainerTemplateRows();
+    log("[Template] Rendered", this.name, {
+      template,
+      ctxt: { ...this },
+      renderedRows: { ...this.templateRowService.renderedRows },
+      rowMap: this.templateRowService.templateRowMap,
+    });
+    // if a parent exists also provide parent reference to this as a child
+    if (this.parent) {
+      this.parent.children[this.name] = this;
     }
-    // Template not found
-    else {
-      console.error(`[Template] - Not Found -`, { ...this });
-      this.template = NOT_FOUND_TEMPLATE(this.templatename);
-    }
+    log_groupEnd();
   }
 
   /**
@@ -230,12 +230,3 @@ function _wait(ms: number) {
     }, ms);
   });
 }
-
-const NOT_FOUND_TEMPLATE = (name: string): FlowTypes.Template => ({
-  flow_name: "Template_not_found",
-  flow_type: "template",
-  rows: [
-    { type: "title", value: `Template "${name}" not found`, name: "title", _nested_name: "title" },
-  ],
-  status: "released",
-});

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const module_page: FlowTypes.Module_page[] = [
   {
     flow_type: "module_page",
@@ -30,19 +30,19 @@ const module_page: FlowTypes.Module_page[] = [
           {
             row_id: 5,
             type: "step_item",
-            text: "Get essential tools for self-care ",
+            text: "Get essential tools for self-care",
             task_id: "task_mod_welcome_self-care_package",
           },
           {
             row_id: 6,
             type: "step_item",
-            text: "Customise the app for your needs ",
+            text: "Customise the app for your needs",
             task_id: "task_mod_welcome_survey",
           },
           {
             row_id: 7,
             type: "step_item",
-            text: "Get one quick tool for parenting a teen  ",
+            text: "Get one quick tool for parenting a teen",
             task_id: "task_mod_welcome_quick_praise",
           },
         ],

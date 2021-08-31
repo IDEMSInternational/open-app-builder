@@ -1,4 +1,4 @@
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 import data_list_campaign_rows from "./data_list.campaign_rows";
 import data_list_campaign_rows_debug from "./data_list.campaign_rows_debug";
 import data_list_debug from "./data_list.debug";

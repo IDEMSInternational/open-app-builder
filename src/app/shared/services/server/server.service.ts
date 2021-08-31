@@ -26,19 +26,17 @@ export class ServerService {
   syncSchedule = interval(SYNC_FREQUENCY_MS);
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
-  constructor(private http: HttpClient) {
-    if (environment.production) {
-      this.init();
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   async init() {
     this.device_info = await Device.getInfo();
     this.app_user_id = this.device_info.uuid;
-    this.syncUserData();
-    this.syncSchedule.subscribe(() => {
+    if (environment.production) {
       this.syncUserData();
-    });
+      this.syncSchedule.subscribe(() => {
+        this.syncUserData();
+      });
+    }
   }
 
   getServerStatus() {

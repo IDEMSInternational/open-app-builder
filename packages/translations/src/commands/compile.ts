@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { FlowTypes } from "plh-data";
+import { FlowTypes } from "data-models";
 import {
   checkInputOutputDirs,
   outputCompleteMessage,
@@ -9,9 +9,10 @@ import {
   recursiveFindByExtension,
 } from "../utils";
 
-/** CLI Options */
-const program = new Command();
-program
+const program = new Command("compile");
+
+export default program
+  .description("Generate files for translation")
   .requiredOption(
     "-i, --input <input>",
     "Source folder for input json files, relative to translations folder. Default ./examples/source",
@@ -32,15 +33,13 @@ program
   )
   .action((opts) => {
     compileTranslations(opts.input, opts.translations, opts.output);
-  })
-  .parse(process.argv);
+  });
 
 /**
  * Main function - Compile a masterlist of all translation strings and used to
  * replace text from input files
  **/
 function compileTranslations(inDir: string, translationsDir: string, outDir: string) {
-  fs.emptyDirSync(outDir);
   checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
   checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
   const { translationsByCode } = compileTranslationStrings(translationsDir, outDir);
@@ -77,7 +76,7 @@ function compileTranslationStrings(translationsDir: string, outDir: string) {
   const translationsByCode: ITranslationsByCode = {};
   const translationsFiles = recursiveFindByExtension(translationsDir, "json");
   for (const filepath of translationsFiles) {
-    const [, langCode] = path.basename(filepath, ".json").split(".");
+    const [, countryCode, langCode] = path.basename(filepath, ".json").split(".");
     if (!langCode) {
       outputErrorMessage(
         "Translations file does not have language code in filename (e.g. translated.esp.json)",

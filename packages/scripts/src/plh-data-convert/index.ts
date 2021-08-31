@@ -4,20 +4,12 @@ import * as path from "path";
 import boxen from "boxen";
 import chalk from "chalk";
 import * as Parsers from "./parsers";
-import {
-  recursiveFindByExtension,
-  capitalizeFirstLetter,
-  arrayToHashmap,
-  groupJsonByKey,
-} from "../utils";
+import { recursiveFindByExtension, arrayToHashmap, groupJsonByKey } from "../utils";
 import { FlowTypes } from "../../types";
 
 const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
 const OUTPUT_FOLDER = `${__dirname}/output`;
-
-// TODO - make it easier to set this in dotenv or cli
-const DEPLOY_TARGET: "app" | "rapidpro" = "app";
 
 /**
  * Reads xlsx files from gdrive-download output and converts to json

@@ -67,6 +67,10 @@ export class DefaultParser implements AbstractParser {
       if (field.startsWith("__")) {
         delete row[field];
       }
+      // delete any comments, e.g. 'comment', 'comments', 'comment_1' etc.
+      if (field.startsWith("comment")) {
+        delete row[field];
+      }
       // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
       // TODO - should find better long term option that can update based on dynamic value and translations
       if (typeof row[field] === "string") {
@@ -76,6 +80,10 @@ export class DefaultParser implements AbstractParser {
           const replaceValue = row[replaceField];
           row[field] = row[field].replace(expression, replaceValue);
         }
+      }
+      // remove any trailing whitespace from any entries
+      if (typeof row[field] === "string") {
+        row[field] = row[field].trim();
       }
       // mark fields for translation, rename so can process regularly (add translation data at end)
       // Note, cannot assume all :: statements translations as also used in fields, e.g. fields::favourite
@@ -120,9 +128,10 @@ export class DefaultParser implements AbstractParser {
         delete row[`${field}::eng`];
       }
     });
-    // remove any comments
-    delete row["comments"];
-    delete row["comment"];
+    // remove rows now left as empty (null return will remove from future processing)
+    if (Object.keys(row).length === 0) {
+      return null;
+    }
 
     /**
      * TODO - some specific sheet types (e.g. template data_list and derivatives)

@@ -48,6 +48,7 @@ src/environments/firebaseConfig.ts
 .env
 scripts/config/token.json
 .eslintcache
+report.*
 
 # Ignore yarn-v2 dependencies
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
@@ -59,3 +60,4 @@ scripts/config/token.json
 !.yarn/versions
 .pnp.*
 node_modules
+.vs/slnx.sqlite

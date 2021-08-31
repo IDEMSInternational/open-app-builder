@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const home_page: FlowTypes.Home_page[] = [
   {
     flow_type: "home_page",

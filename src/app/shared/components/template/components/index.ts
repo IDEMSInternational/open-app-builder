@@ -45,6 +45,7 @@ import { TmplParentPointBoxComponent } from "./points-item/points-item.component
 import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplIconComponent } from "./icon";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
+import { TmplGroupComponent } from "./layout/group";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -87,6 +88,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplDashedBoxComponent,
   TmplParentPointBoxComponent,
   TmplLottieAnimation,
+  TmplGroupComponent,
 ];
 
 /***************************************************************************************
@@ -117,7 +119,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   // set variable and nested properties are handled by parent
   set_variable: null as any,
   nested_properties: null as any,
-  set_global: null as any,
   set_field: null as any,
   set_local: null as any,
   set_theme: null as any,
@@ -146,4 +147,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   parent_point_box: TmplParentPointBoxComponent,
   lottie_animation: TmplLottieAnimation,
   debug_toggle: PLHDebugToggleComponent as any,
+  items: null,
+  group: TmplGroupComponent,
 };

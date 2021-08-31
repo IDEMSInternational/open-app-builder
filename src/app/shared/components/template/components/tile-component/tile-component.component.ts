@@ -49,7 +49,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
       ${this.isTwoColumns() ? "two_columns" : ""}
       `;
     this.is_play_icon = this.isPlayIcon(this.icon_src);
-    this.isCustomIcon = this.icon_src.includes("/");
+    this.isCustomIcon = this.icon_src?.includes("/");
     // I had added the line below to have the option of including plh assets rather than pre-built ion icons.
     // Having this line made the parent_point style in the display group behave very strangely in the parent centre.
     // Commented it out for now as we don't need custom-made icons for the ime eng but will create an issue in GH.

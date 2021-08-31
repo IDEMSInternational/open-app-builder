@@ -135,3 +135,18 @@ export function getImageAssetPath(value: string) {
   }
   return transformed;
 }
+
+/**
+ * Take an object and return an array via the object.values method.
+ * Provide additional check in case already is array (return array), or is not an object
+ * (return empty array)
+ */
+export function objectToArray(obj: any) {
+  if (Array.isArray(obj)) return obj;
+  if (obj) {
+    if (typeof obj === "object") {
+      return Object.values(obj);
+    }
+  }
+  return [];
+}
