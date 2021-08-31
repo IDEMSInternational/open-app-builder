@@ -200,9 +200,8 @@
     }
   }
   .text {
-    height: 3rem;
-    overflow-y: scroll;
-
+    //height: 3rem;
+    //overflow-y: scroll;
     order: 2;
     div {
       font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
@@ -215,7 +214,7 @@
 
 .two_columns {
   &.image_text {
-    min-height: 12rem;
+    min-height: 13rem;
     @media (max-width: 375px) {
       width: 9rem;
       min-height: 11rem;
