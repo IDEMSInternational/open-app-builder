@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
-import { FlowTypes } from "plh-data/model/flowTypes";
+import { FlowTypes } from "data-models";
 import { hackAddRowWithDefaultActions } from "../../hacks";
 import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";
@@ -156,9 +156,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       );
       const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
       let percentDone = currentPercentDone;
-      if (previousPercentDone && previousPercentDone != NaN) {
-        percentDone = Math.max(currentPercentDone, previousPercentDone);
-      }
+
       await this.parent.handleActions(
         [
           {

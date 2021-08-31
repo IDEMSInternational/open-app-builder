@@ -81,6 +81,7 @@ export class AppEventService {
 
   private calculateEventSummaries() {
     const appOpenEvents = this.appEventsById.app_launch;
+    // current app day calculated by finding length of array of subset of all unique app open event dates
     const app_day = [...new Set(appOpenEvents.map((e) => e._created.substring(0, 10)))].length;
     const first_app_launch = this.appEventsById.app_launch?.[0]?._created || generateTimestamp();
     return this.setSummaryValues({ app_day, first_app_launch });
@@ -100,12 +101,6 @@ export class AppEventService {
     this.summary = { ...DEFAULT_SUMMARY, ...this.summary, ...values };
     return this.localStorageService.setJSON("app_events_summary", this.summary);
   }
-
-  /** The app might be left running in the background for multiple days
-   *  Ensure information such as the current app day are kept updated in this case
-   *  TODO
-   */
-  private _scheduleUpdate() {}
 }
 
 const APP_EVENT_IDs = ["app_launch"] as const;

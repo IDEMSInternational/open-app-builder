@@ -1,21 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { DYNAMIC_PREFIXES } from "./constants";
 import { RapidProFlowExport } from "./rapidpro.model";
 import { TipRow } from "./tips.model";
 // import { IDBTable } from "../../../src/app/shared/services/db/db.service";
-
-/*********************************************************************************************
- *  Constants used to generate types
- ********************************************************************************************/
-
-export const DYNAMIC_PREFIXES = [
-  "local",
-  "field",
-  "fields",
-  "global",
-  "data",
-  "campaign",
-  "calc",
-] as const;
 
 /*********************************************************************************************
  *  Base flow types
@@ -60,7 +47,9 @@ export namespace FlowTypes {
     module?: string;
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
+    comments?: string;
     _xlsxPath?: string; // debug info
+    process_on_start?: number; // priority order to process template variable setters on startup
   }
 
   /**
@@ -402,7 +391,6 @@ export namespace FlowTypes {
     | "icon"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
-    | "set_global"
     | "set_local"
     | "set_field"
     | "update_action_list" // update own action list
@@ -432,7 +420,9 @@ export namespace FlowTypes {
     | "dashed_box"
     | "lottie_animation"
     | "parent_point_box"
-    | "debug_toggle";
+    | "debug_toggle"
+    | "items"
+    | "group";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
@@ -457,9 +447,10 @@ export namespace FlowTypes {
     /** Keep a list of dynamic dependencies used within a template, by reference (e.g. {@local.var1 : ["text_1"]}) */
     _dynamicDependencies?: { [reference: string]: string[] };
     _translatedFields?: { [field: string]: any };
+    _evalContext?: { itemContext: any }; // force specific context variables when calculating eval statements (such as loop items)
     __EMPTY?: any; // empty cells (can be removed after pr 679 merged)
   }
-  type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
+  export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
   type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
 
@@ -496,7 +487,6 @@ export namespace FlowTypes {
       | "reset_app"
       | "set_field"
       | "set_local"
-      | "set_global"
       | "emit"
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
@@ -509,7 +499,8 @@ export namespace FlowTypes {
       | "close_pop_up"
       | "set_theme"
       | "start_tour"
-      | "trigger_actions";
+      | "trigger_actions"
+      | "process_template";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**

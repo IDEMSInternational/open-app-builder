@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const habit_ideas: FlowTypes.Habit_ideas[] = [
   {
     flow_type: "habit_ideas",
@@ -104,43 +104,43 @@ const habit_ideas: FlowTypes.Habit_ideas[] = [
       },
       {
         type: "list_item",
-        message_text: "Cleaning their room ",
+        message_text: "Cleaning their room",
       },
       {
         type: "list_item",
-        message_text: "Helping clean up after school ",
+        message_text: "Helping clean up after school",
       },
       {
         type: "list_item",
-        message_text: "Greeting other family members ",
+        message_text: "Greeting other family members",
       },
       {
         type: "list_item",
-        message_text: "Looking after siblings ",
+        message_text: "Looking after siblings",
       },
       {
         type: "list_item",
-        message_text: "Coming home in time ",
+        message_text: "Coming home in time",
       },
       {
         type: "list_item",
-        message_text: "Showing thoughtfulness/respect ",
+        message_text: "Showing thoughtfulness/respect",
       },
       {
         type: "list_item",
-        message_text: "Using 'please' and 'thank you' ",
+        message_text: "Using 'please' and 'thank you'",
       },
       {
         type: "list_item",
-        message_text: "Getting ready for school in time ",
+        message_text: "Getting ready for school in time",
       },
       {
         type: "list_item",
-        message_text: "Doing chores or schoolwork  ",
+        message_text: "Doing chores or schoolwork",
       },
       {
         type: "list_item",
-        message_text: "Getting through mealtime peacefully ",
+        message_text: "Getting through mealtime peacefully",
       },
     ],
     _xlsxPath: "plh_sheets_beta/ver_7_design/habits/habit_idea_picker.xlsx",
@@ -160,7 +160,7 @@ const habit_ideas: FlowTypes.Habit_ideas[] = [
     rows: [
       {
         type: "list_item",
-        message_text: "Cooking for the family ",
+        message_text: "Cooking for the family",
       },
       {
         type: "list_item",

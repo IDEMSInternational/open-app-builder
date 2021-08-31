@@ -18,38 +18,47 @@ ion-toggle {
 .with_icons {
   ion-toggle.toggle-checked::before {
     position: absolute;
-    top: 12px;
-    left: 18px;
+    left: 16px;
+    top: 16px;
     right: auto;
-    content: "\2713";
+    content: " ";
+    background-size: 14px 14px;
+    height: 16px;
+    width: 16px;
     color: white;
-    font-weight: 600;
-    font-size: 15px;
+    background-image: url(../../../../../../../src/assets/icon/shared/tick.svg);
+    font-size: 20px;
     z-index: 1;
+    font-weight: 500;
   }
 
   ion-toggle.toggle-checked::after {
     position: absolute;
-    top: 12px;
     left: auto;
-    right: 16px;
-    content: "";
+    top: 16px;
+    right: 14px;
+    background-size: 14px 14px;
+    height: 16px;
+    width: 16px;
     color: white;
+    background-image: none;
     font-size: 20px;
-    transform: rotate(135deg);
     z-index: 1;
     font-weight: 500;
   }
 
   ion-toggle::after {
     position: absolute;
-    top: 12px;
     left: auto;
-    right: 16px;
-    content: "+";
+    top: 16px;
+    right: 14px;
+    content: " ";
+    background-size: 14px 14px;
+    height: 16px;
+    width: 16px;
     color: white;
+    background-image: url(../../../../../../../src/assets/icon/shared/cross.svg);
     font-size: 20px;
-    transform: rotate(135deg);
     z-index: 1;
     font-weight: 500;
   }

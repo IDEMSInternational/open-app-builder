@@ -1,2 +1,2 @@
-export * from "plh-data/model";
+export * from "data-models";
 export * from "./skins";

@@ -99,7 +99,7 @@ function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
 function generateLocalTsOutput(json: any, flow_type: string) {
   const typeName = capitalizeFirstLetter(flow_type);
   return `/* eslint-disable */
-  import { FlowTypes } from "../../model/flowTypes";
+  import { FlowTypes } from "data-models"
   const ${flow_type}: FlowTypes.${typeName}[] = ${JSON.stringify(json, null, 2)};
   export default ${flow_type}
   `;
@@ -155,7 +155,7 @@ function generateAppDataIndexFiles() {
     });
     const indexFilePath = `${dirPath}/index.ts`;
     fs.createFileSync(indexFilePath);
-    fs.appendFileSync(indexFilePath, `import { FlowTypes } from "../../model/flowTypes";\r\n`);
+    fs.appendFileSync(indexFilePath, `import { FlowTypes } from "data-models";\r\n`);
     fs.appendFileSync(indexFilePath, `${importStatements.join("\r\n")};\r\n`);
     fs.appendFileSync(
       indexFilePath,

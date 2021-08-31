@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FlowTypes } from "../../model/flowTypes";
+import { FlowTypes } from "data-models";
 const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
@@ -70,9 +70,89 @@ const data_list: FlowTypes.Data_list[] = [
   },
   {
     flow_type: "data_list",
+    flow_subtype: "debug",
+    flow_name: "example_calc_data_list",
+    status: "released",
+    data_list_name: "example_calc",
+    rows: [
+      {
+        id: "example_1",
+        value_list: [
+          "name:name_var_1 | text:Option 1",
+          "name:name_var_2 | text: Option 2",
+          "name:name_var_3 | text: Option 3",
+        ],
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_calc.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "debug",
+    flow_name: "example_data_list",
+    status: "released",
+    data_list_name: "example",
+    rows: [
+      {
+        id: "example1",
+        value: "Success - Example 1",
+        text: "some text",
+      },
+      {
+        id: "example3",
+        value_list: ["name:name_var_1 | text:Option 1", "name:name_var_2 | text: Option 2"],
+        text: "any fields can be accessed",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_data_lists.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "debug",
+    flow_name: "example_items_data_list",
+    status: "released",
+    data_list_name: "example_items",
+    rows: [
+      {
+        id: "item_1",
+        name: "first",
+        field_value: 7,
+        unlock_fieldname: "example_unlocked_item_1",
+        unlock_week: 1,
+      },
+      {
+        id: "item_2",
+        name: "second",
+        field_value: 1,
+        unlock_fieldname: "example_unlocked_item_2",
+        unlock_week: 2,
+      },
+      {
+        id: "item_3",
+        name: "third",
+        field_value: 3,
+        unlock_fieldname: "example_unlocked_item_3",
+        unlock_week: 3,
+      },
+      {
+        id: "item_4",
+        name: "fourth",
+        field_value: 2,
+        unlock_fieldname: "example_unlocked_item_4",
+        unlock_week: 4,
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_items.xlsx",
+  },
+  {
+    flow_type: "data_list",
     flow_name: "example_lang_data_list",
     status: "released",
-    data_list_name: "language",
+    data_list_name: "example_lang",
     flow_subtype: "debug",
     rows: [
       {
@@ -83,9 +163,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _translatedFields: {
@@ -106,9 +192,15 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _translatedFields: {
@@ -127,6 +219,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         _translatedFields: {

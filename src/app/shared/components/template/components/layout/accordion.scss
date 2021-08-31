@@ -17,6 +17,7 @@
 .accordion-wrapper {
   display: flex;
   justify-content: space-between;
+  // align-items: center; // aligns dot in center while closed but open will connecting line looks off
   margin-bottom: var(--regular-margin);
   height: 100%;
   .accordion-status {
@@ -45,7 +46,6 @@
     width: var(--accordion-section-width);
     border-radius: var(--ion-border-radius-standard);
     overflow: hidden;
-    max-height: var(--accordion-section-max-height);
     padding: var(--accordion-section-padding);
     border: var(--ion-border-thin-standard);
     transition: max-height 0.4s;
@@ -85,6 +85,14 @@
       background: var(--ion-accordion-bg);
       opacity: 1;
       transition: opacity 0.4s ease-in;
+    }
+  }
+  .accordion-section-content {
+    max-height: 0;
+    z-index: 2;
+    transition: max-height 0.4s;
+    &.openSection {
+      max-height: var(--accordion-section-open-height);
     }
   }
 }

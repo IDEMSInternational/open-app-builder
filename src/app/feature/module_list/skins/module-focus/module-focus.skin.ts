@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from "@angular/core";
 import { ITask } from "src/app/feature/goals/models/goals.model";
-import { FlowTypes } from "plh-data/model/flowTypes";
+import { FlowTypes } from "data-models";
 import { MODULE_LIST } from "src/app/shared/services/data/data.service";
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { SlidePanelBottomComponent } from "./components/slide-panel-bottom";

@@ -3,6 +3,7 @@ import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
 import { SettingsService } from "src/app/pages/settings/settings.service";
+import { TemplateProcessService } from "./template-process.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -98,9 +99,6 @@ export class TemplateActionService {
       case "set_local":
         console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
-      case "set_global":
-        console.log("[SET GLOBAL]", key, value);
-        return this.container.templateService.setGlobal(key, value);
       case "go_to":
         return this.container.templateNavService.handleNavAction(action, this.container);
       case "go_to_url":
@@ -134,6 +132,20 @@ export class TemplateActionService {
           this.actionsQueue.push({ ...a, _triggeredBy: action._triggeredBy })
         );
         return;
+      case "process_template":
+        // HACK - create an embedded template processor service instance to process template programatically
+        const templateToProcess = this.container.templateService.getTemplateByName(args[0]);
+        const processor = new TemplateProcessService(
+          this.container.templateService,
+          this.container.templateVariables,
+          this.container.templateTranslateService,
+          this.container.tourService,
+          this.container.router,
+          this.container.route,
+          this.container.templateNavService,
+          this.container.settingsService
+        );
+        return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
         const [emit_value, emit_from] = args;
         let container: TemplateContainerComponent = this.container;
@@ -186,6 +198,8 @@ export class TemplateActionService {
             parent.templateActionService.handleActions(parentActions, row);
           }
         }
+        // Emit value so manual container bindings can also track (e.g. closing modal in popup from runStandaloneTemplate method)
+        this.container.emittedValue.next(emit_value);
         break;
       default:
         console.warn("[W] No handler for action", { action_id, args });

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { FlowTypes } from "plh-data/model/flowTypes";
+import { FlowTypes } from "data-models";
 
 import * as data from "plh-data";
 

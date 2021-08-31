@@ -1,5 +1,5 @@
 // import const from plh-data directly as typings can sometimes break otherwise
-import { DYNAMIC_PREFIXES } from "plh-data";
+import { DYNAMIC_PREFIXES } from "data-models";
 import { FlowTypes } from "../model";
 
 /**
