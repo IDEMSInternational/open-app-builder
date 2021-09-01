@@ -8518,12 +8518,6 @@
       "note": "The following strings should not be translated: \n     @field.group_name\n     @global.parent_app"
     },
     {
-      "SourceText": "Hi @fields.user_name! This week you did:",
-      "text": "Molo @fields.user_name! Kule veki uye:",
-      "type": "template",
-      "note": "The string @fields.user_name should not be translated."
-    },
-    {
       "SourceText": "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.",
       "text": "Nazi izakhono eziphambili kule veki! \n\nZisebezise xa usekhaya kwaye ungazifumana nanini na kwi-@global.parent_centre yakho.",
       "type": "template",
