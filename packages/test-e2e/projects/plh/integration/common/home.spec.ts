@@ -38,6 +38,9 @@ describe("[First Load]", () => {
     // so just search for anything containing the word Continue
     cy.get("analytics-survey").contains("Continue").click();
   });
+  it("[Shows language select template]", () => {
+    cy.get("[data-templatename=language_select]").contains("English").click();
+  });
   it("[Shows intro.js tooltip]", () => {
     cy.get(".introjs-tooltip").should("be.visible");
   });
@@ -53,8 +56,7 @@ describe("[Not First Load]", () => {
   });
   it("[Should load homescreen template]", () => {
     // check template component loaded
-    // NOTE - could also have better identifier
-    cy.get('[ng-reflect-templatename="home_screen"]').should("be.visible");
+    cy.get('[data-templatename="home_screen"]').should("be.visible");
     // example if screenshots required.
     // Include extra wait time because likely content will not be visible immediately when template loaded
     // (alternatively could wait for specific element from the content to be visible if known)
