@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { FlowTypes } from "data-models";
 import { SettingsService } from "src/app/pages/settings/settings.service";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
+import { ServerService } from "src/app/shared/services/server/server.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";
 import { TemplateContainerComponent } from "../template-container.component";
 import { TemplateNavService } from "./template-nav.service";
@@ -30,7 +31,8 @@ export class TemplateProcessService {
     // elRef: ElementRef,
     templateNavService: TemplateNavService,
     // cdr: ChangeDetectorRef,
-    settingsService: SettingsService
+    settingsService: SettingsService,
+    serverService: ServerService
   ) {
     // Create mock template container component
     this.container = new TemplateContainerComponent(
@@ -43,7 +45,8 @@ export class TemplateProcessService {
       null as any,
       templateNavService,
       null as any,
-      settingsService
+      settingsService,
+      serverService
     );
   }
 
