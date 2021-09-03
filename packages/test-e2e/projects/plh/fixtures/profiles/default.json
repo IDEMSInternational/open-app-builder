@@ -1,9 +1,6 @@
 {
-  "fields": { "_app_language": "eng", "name": "default" },
+  "fields": { "_app_language": "eng", "name": "test default user" },
   "tables": {
-    "user_meta": [
-      { "key": "first_app_open", "value": "2021-09-02" },
-      { "key": "uuid", "value": "TEST_CI_DEFAULT" }
-    ]
+    "user_meta": [{ "key": "first_app_open", "value": "2021-09-02" }]
   }
 }
