@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
+import { DbService } from "src/app/shared/services/db/db.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { CONVERSATION } from "src/app/shared/services/data/data.service";
 import { environment } from "src/environments/environment";
+import { IFlowEvent } from "packages/data-models/db.model";
 
 @Injectable({
   providedIn: "root",
