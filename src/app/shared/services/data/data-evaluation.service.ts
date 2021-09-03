@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { differenceInHours } from "date-fns";
+import { IDBTable } from "packages/data-models/db.model";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateService } from "../../components/template/services/template.service";
 import { arrayToHashmapArray } from "../../utils";
 import { AppEventService } from "../app-events/app-events.service";
-import { DbService, IDBTable } from "../db/db.service";
+import { DbService } from "../db/db.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
