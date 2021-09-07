@@ -2795,7 +2795,7 @@
     },
     {
       "SourceText": "When you are ready open your eyes again. You are in control!",
-      "text": "Xa sele ukulungele, phinda uvule amehlo akho. Nguwe olawulayo!”",
+      "text": "Xa sele ukulungele, phinda uvule amehlo akho. Nguwe olawulayo!",
       "type": "template"
     },
     {
@@ -8516,12 +8516,6 @@
       "text": "Molo @field.group_name! Uqala inyanga yesibini usebenzisa @global.parent_app. Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
       "type": "template",
       "note": "The following strings should not be translated: \n     @field.group_name\n     @global.parent_app"
-    },
-    {
-      "SourceText": "Hi @fields.user_name! This week you did:",
-      "text": "Molo @fields.user_name! Kule veki uye:",
-      "type": "template",
-      "note": "The string @fields.user_name should not be translated."
     },
     {
       "SourceText": "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.",

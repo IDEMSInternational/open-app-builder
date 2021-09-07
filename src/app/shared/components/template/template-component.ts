@@ -95,11 +95,25 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   /** reference to parent template container */
   @Input() parent: TemplateContainerComponent;
 
+  // Add bindings to track key data attributes on the component itself, e.g.
+  // <plh-template-component data-debug-hidden="false" data-display-component="TmplNumberComponent" data-name="number_selector_6" data-type="number_selector">
   @HostBinding("attr.data-hidden") get getAttrHidden() {
     return this._row && this._row.hidden;
   }
   @HostBinding("attr.data-debug-hidden") get getAttrDat() {
     return this.parent && this.parent.debugMode;
+  }
+  @HostBinding("attr.data-display-component") get getComponentDisplayType() {
+    return TEMPLATE_COMPONENT_MAPPING[this._row?.type]?.name || "none";
+  }
+  @HostBinding("attr.data-name") get getComponentName() {
+    return this._row?.name || null;
+  }
+  @HostBinding("attr.data-type") get getComponentType() {
+    return this._row?.type || null;
+  }
+  @HostBinding("attr.has-child-rows") get getChildRows() {
+    return this._row?.rows ? "true" : null;
   }
 
   private componentRef: ComponentRef<TemplateContainerComponent | ITemplateRowProps>;
