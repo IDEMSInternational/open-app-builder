@@ -7,4 +7,6 @@
  * Additionally any aliases created in before will not be passed to test instance,
  * put aliases created in beforeAll will be (not currently required)
  */
-before(() => {});
+before(() => {
+  cy.setProfile("default");
+});

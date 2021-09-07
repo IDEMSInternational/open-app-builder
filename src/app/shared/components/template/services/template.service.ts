@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { GLOBAL, PLHDataService, TEMPLATE } from "src/app/shared/services/data/data.service";
-import { DbService, IFlowEvent } from "src/app/shared/services/db/db.service";
+import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
+import { IFlowEvent } from "packages/data-models/db.model";
 
 @Injectable({
   providedIn: "root",

@@ -1,0 +1,6 @@
+{
+  "fields": { "_app_language": "eng", "name": "test new user" },
+  "tables": {
+    "user_meta": []
+  }
+}

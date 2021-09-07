@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -77,6 +78,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   ) {
     this.templateActionService = new TemplateActionService(this, this.settingsService);
     this.templateRowService = new TemplateRowService(this);
+  }
+  /** Assign the templatename as metdaata on the component for easier debugging and testing */
+  @HostBinding("attr.data-templatename") get getTemplatename() {
+    return this.templatename;
   }
 
   async ngOnInit() {
