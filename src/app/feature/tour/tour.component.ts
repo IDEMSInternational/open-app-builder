@@ -19,8 +19,6 @@ export class TourComponent {
   }
 
   public startTour(tourName: string): void {
-    if (tourName) {
-      this.tourService.startTour(tourName);
-    }
+    this.tourService.startTour(tourName);
   }
 }
