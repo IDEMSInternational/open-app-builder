@@ -44,7 +44,10 @@ export class TemplateComponentsModule {
   // This allows us to inject directly into the dom, which is used by the tour service
   // TODO - code could possibly be refactored with tour service to own module
   constructor(injector: Injector) {
-    const el = createCustomElement(TemplateContainerComponent, { injector });
-    customElements.define("web-template-container", el);
+    // ensure only defined once
+    if (!customElements.get("web-template-container")) {
+      const el = createCustomElement(TemplateContainerComponent, { injector });
+      customElements.define("web-template-container", el);
+    }
   }
 }
