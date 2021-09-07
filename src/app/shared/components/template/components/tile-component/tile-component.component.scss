@@ -183,8 +183,8 @@
   flex-wrap: nowrap;
   .button-wrapper {
     order: 1;
-    height: 50%;
-    width: 120%;
+    height: auto;
+    width: 100%;
     margin-bottom: calc(10px * var(--scale-factor-tile));
     .btn-tile {
       pointer-events: none;
@@ -214,14 +214,15 @@
 
 .two_columns {
   &.image_text {
-    min-height: 13rem;
+    //min-height: 13rem;
+    height: 100%;
     @media (max-width: 375px) {
       width: 9rem;
-      min-height: 11rem;
+      //min-height: 11rem;
     }
     @media (max-width: 325px) {
       width: 8rem;
-      min-height: 9rem;
+      //min-height: 9rem;
     }
   }
 }

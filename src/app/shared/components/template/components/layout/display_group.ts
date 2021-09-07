@@ -29,6 +29,22 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   styleUrls: ["../tmpl-components-common.scss"],
   styles: [
     `
+      .display-group.two_columns .offset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 2fr;
+      }
+
+      .two_columns > .offset > :nth-child(1n) {
+        flex: 0 0 0%;
+      }
+
+      .display-group .offset :nth-child(1n) {
+        width: 100%;
+        height: 100%;
+        padding-top: 10px;
+      }
+
       :host {
         width: 100%;
         border-radius: 20px;
