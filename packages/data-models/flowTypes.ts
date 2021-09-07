@@ -344,6 +344,7 @@ export namespace FlowTypes {
   export interface TourStep extends Row_with_translations {
     type: "step";
     message_text?: string;
+    message_template?: string;
     title?: string;
     template_component_name?: string;
     element?: string;
