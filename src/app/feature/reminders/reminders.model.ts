@@ -1,5 +1,5 @@
 import { FormControl, Validators } from "@angular/forms";
-import { IDBDoc, IDBTable } from "src/app/shared/services/db/db.service";
+import { IDBDoc, IDBTable } from "packages/data-models/db.model";
 
 /******************************************************************************************
  * Typings
