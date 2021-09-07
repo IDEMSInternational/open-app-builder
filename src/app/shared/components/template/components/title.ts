@@ -10,7 +10,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       <h1
         [style.textAlign]="textAlign"
         [class]="'tiny standard' + ' ' + style"
-        [innerHTML]="_row.value"
+        [innerHTML]="_row.value | markdown"
       ></h1>
       <ion-icon
         *ngIf="help"
