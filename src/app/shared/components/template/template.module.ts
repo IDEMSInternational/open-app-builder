@@ -42,6 +42,9 @@ import { createCustomElement } from "@angular/elements";
 export class TemplateComponentsModule {
   // Create a custom element for the template container
   // This allows us to inject directly into the dom, which is used by the tour service
+  // Adapted from: https://medium.com/@suwigyarathore/angular-element-as-a-web-component-6e77a1e1b4a7
+  // Angular docs: https://angular.io/guide/elements
+
   // TODO - code could possibly be refactored with tour service to own module
   constructor(injector: Injector) {
     // ensure only defined once
