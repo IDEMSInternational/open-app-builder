@@ -56,6 +56,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
+      const isDeveloperMode = this.templateService.getField("user_mode") === false;
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
@@ -68,7 +69,9 @@ export class AppComponent {
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
       if (Capacitor.isNative) {
-        this.removeConsoleLogs();
+        if (!isDeveloperMode) {
+          this.removeConsoleLogs();
+        }
         SplashScreen.hide();
         this.pushNotificationService.init();
       }
@@ -118,6 +121,7 @@ export class AppComponent {
   /** Rewrite default log functions for improved performance when running on device */
   private removeConsoleLogs() {
     if (window && window.console) {
+      console.log("Disabling console logs");
       window.console.log = function (...args: any) {};
       window.console.warn = function (...args: any) {};
       window.console.error = function (...args: any) {};
