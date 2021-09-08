@@ -67,7 +67,6 @@ export class TemplateService {
             break;
           case "declare_global_constant":
             const translatedGlobal = this.translateService.translateRow(row as any);
-            // console.log("set global", row.value, { row, translatedGlobal });
             this.setGlobal(translatedGlobal as any);
             break;
           default:
