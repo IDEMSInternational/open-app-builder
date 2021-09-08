@@ -25,7 +25,12 @@ export class TourService {
     return TOUR.map((t) => t.flow_name);
   }
 
-  async startTour(tourName = "test_tour") {
+  /**
+   * Start the tour given by the named tour template. Will automatically handle any initial
+   * and subsequent navigation events
+   * @param tourName flow-name of tour, e.g. `test_tour`
+   */
+  async startTour(tourName: string) {
     let matchingTour = TOUR.find((t) => t.flow_name === tourName);
     if (matchingTour && matchingTour.rows && matchingTour.rows.length > 0) {
       this.introJS.setOptions({
@@ -45,12 +50,20 @@ export class TourService {
           ) {
             elementSelector = `[data-rowname="${translatedRow.template_component_name}"]`;
           }
+          let stepTitle = this.hackReplaceGlobalInRowMessage(translatedRow.title);
+          let stepContent = this.hackReplaceGlobalInRowMessage(translatedRow.message_text);
+          // if using a template for the step content load using the custom template-container web-component
+          if (translatedRow.message_template) {
+            stepContent = `
+              <web-template-container templatename=${translatedRow.message_template}></web-template-container>
+            `;
+          }
           return {
-            intro: this.hackReplaceGlobalInRowMessage(translatedRow.message_text),
-            title: this.hackReplaceGlobalInRowMessage(translatedRow.title),
+            intro: stepContent,
+            title: stepTitle,
             element: elementSelector,
             elementSelector,
-          } as any;
+          };
         }),
         hidePrev: true,
       });
@@ -58,7 +71,6 @@ export class TourService {
         this.introJS.currentStep();
         const stepNumber = this.introJS.currentStep();
         const currentRow = matchingTour.rows[stepNumber];
-
         /* If route changes then navigate, then after delay, actually change intro.js step */
         if (currentRow.route) {
           const currentPath = this.router.url.replace(/^\//g, "");
@@ -83,8 +95,6 @@ export class TourService {
           this.introJS.refresh();
         }, this.waitForRoutingDelay);
       });
-      const startRoute = matchingTour.rows[0].route ? matchingTour.rows[0].route : "/";
-      await this.router.navigateByUrl(startRoute);
       setTimeout(() => {
         this.introJS.start();
       }, this.waitForRoutingDelay);
