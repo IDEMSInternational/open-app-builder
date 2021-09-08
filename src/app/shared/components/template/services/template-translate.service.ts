@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { TRANSLATION_STRINGS } from "plh-data";
+import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
 
@@ -15,6 +16,9 @@ const DEFAULT_LANGUAGE = "eng";
  * are already pre-populated in the column (so just a case to return the current language field)
  */
 export class TemplateTranslateService {
+  /** Provide an observable so services can subscribe and respond to language changes*/
+  app_language$ = new BehaviorSubject<string>(null);
+
   app_language: string;
   translation_strings = {};
 
@@ -35,6 +39,8 @@ export class TemplateTranslateService {
       }
       this.app_language = code;
       this.translation_strings = TRANSLATION_STRINGS[code] || {};
+      // update observable for subscribers
+      this.app_language$.next(code);
       console.log("[Language Set]", code);
     }
   }

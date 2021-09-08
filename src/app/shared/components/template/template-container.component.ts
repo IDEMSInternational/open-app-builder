@@ -143,6 +143,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         // ensure angular destroys previous row components before rendering new
         // (note - will cause short content flicker)
         this.templateRowService.renderedRows = [];
+        // allow time for other pending ops to finish
+        await _wait(50);
         await this.renderTemplate();
       } else {
         await this.templateRowService.processRowUpdates();
