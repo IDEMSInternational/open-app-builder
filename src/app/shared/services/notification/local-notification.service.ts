@@ -142,6 +142,7 @@ export class LocalNotificationService {
     // preview on web
     else {
       const hasPermission = await this.requestWebNotificationPermission();
+      console.log("has permission?", hasPermission);
       if (hasPermission) {
         console.log("permission granted, sending notification");
         this.scheduleNotification(preview);
@@ -158,12 +159,17 @@ export class LocalNotificationService {
    */
   private async requestWebNotificationPermission() {
     if ("Notification" in window) {
-      if (window.Notification.permission !== "granted") {
+      if (window.Notification.permission === "granted") {
+        return true;
+      } else {
         const permission = await window.Notification.requestPermission();
+        console.log("[Notification Permission]", permission);
         return permission === "granted";
       }
+    } else {
+      console.error("Notification API not available");
+      return false;
     }
-    return false;
   }
 
   /**
