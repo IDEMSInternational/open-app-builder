@@ -1,6 +1,6 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Notifications Debug</h2>
+    <h2 style="flex: 1">Pending Notifications</h2>
   </div>
 
   <ion-card *ngFor="let notification of localNotificationService.notificationsList">
@@ -25,8 +25,16 @@
               >
                 {{notification.schedule.at | date:'MMM d, h:mm a'}}
               </ion-button>
-              <div class="divider"></div>
             </div>
+            <div class="divider"></div>
+            <ion-button
+              fill="clear"
+              (click)="previewNotification(notification)"
+              class="no-padding"
+              style="margin: 0"
+              >Preview</ion-button
+            >
+            <div class="divider"></div>
             <ion-button
               fill="clear"
               (click)="removeNotification(notification)"

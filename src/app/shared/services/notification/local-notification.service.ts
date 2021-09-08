@@ -6,7 +6,10 @@ import {
   Plugins,
   Capacitor,
   LocalNotificationPendingList,
+  App,
 } from "@capacitor/core";
+import { addSeconds } from "date-fns";
+import { Subject } from "rxjs";
 const { LocalNotifications } = Plugins;
 
 const LOCAL_STORAGE_KEY = "local_notifications";
@@ -25,6 +28,8 @@ export type ILocalNotificationStorage = { [id: string]: Partial<LocalNotificatio
  */
 export class LocalNotificationService {
   enabled = false;
+
+  public notifications$ = new Subject<any>();
 
   public notificationsList: LocalNotification[] = [];
   public notificationsHash: ILocalNotificationStorage = {};
@@ -110,6 +115,58 @@ export class LocalNotificationService {
   }
 
   /**
+   *
+   * @param notification
+   * @param delay - number of seconds to delay sending notification (default 3s)
+   * @param forceBackground - number of seconds to delay sending notification (default 3s)
+   */
+  public async previewNotification(
+    notification: LocalNotification,
+    delay = 5,
+    forceBackground = true
+  ) {
+    const notificationDeliveryTime = addSeconds(new Date(), delay);
+    const preview = {
+      ...notification,
+      id: notificationDeliveryTime.getTime(),
+      schedule: { at: notificationDeliveryTime },
+    };
+    // preview on device
+    if (Capacitor.isNative) {
+      // create a duplicate notification to fire after short delay
+      this.scheduleNotification(preview);
+      if (forceBackground) {
+        App.exitApp();
+      }
+    }
+    // preview on web
+    else {
+      const hasPermission = await this.requestWebNotificationPermission();
+      if (hasPermission) {
+        console.log("permission granted, sending notification");
+        this.scheduleNotification(preview);
+      } else {
+        console.error("Could not get permission for notifications");
+      }
+    }
+  }
+
+  /**
+   *
+   * NOTE - requires secure context and limited browser support (https://developer.mozilla.org/en-US/docs/Web/API/notification)
+   * @returns
+   */
+  private async requestWebNotificationPermission() {
+    if ("Notification" in window) {
+      if (window.Notification.permission !== "granted") {
+        const permission = await window.Notification.requestPermission();
+        return permission === "granted";
+      }
+    }
+    return false;
+  }
+
+  /**
    * When notifications are scheduled only the ID number (as string) is returned when querying
    * Store full details in localstorage for future retrieval
    */
@@ -141,9 +198,10 @@ export class LocalNotificationService {
       // good to have default as can only ever have 1 listener for each type
     );
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
-    LocalNotifications.addListener("localNotificationReceived", (notification) =>
-      console.log(["NOTIFICATION RECEIVED"], notification)
-    );
+    LocalNotifications.addListener("localNotificationReceived", (notification) => {
+      console.log(["NOTIFICATION RECEIVED"], notification);
+      this.notifications$.next(notification);
+    });
   }
 }
 
