@@ -52,15 +52,18 @@
  *
  */
 
-import './zone-flags';
+import "./zone-flags";
 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
 
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-
+import "zone.js/dist/zone"; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// Fix bug "globalThis is not defined"
+// https://github.com/ionic-team/capacitor/discussions/3871
+import "globalthis/auto";
