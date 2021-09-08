@@ -39,6 +39,7 @@ export class LocalNotificationService {
     this._addListeners();
   }
   async init() {
+    await this.requestPermission();
     const { granted } = await LocalNotifications.requestPermission();
     if (granted) {
       this.enabled = true;
@@ -53,6 +54,26 @@ export class LocalNotificationService {
       this._addListeners();
       // can still add listeners locally
     }
+  }
+
+  public requestPermission() {
+    return new Promise((resolve) => {
+      LocalNotifications.requestPermissions()
+        .then(({ results }) => {
+          const permissionState = results[0];
+          resolve(permissionState === "granted" ? true : false);
+        })
+        .catch((err) => {
+          if (err === "default") {
+            // user dismissed request;
+          }
+          if (err === "denied") {
+            // user or browser blocked request;
+          }
+          console.error(err);
+          resolve(false);
+        });
+    });
   }
 
   /**
@@ -118,11 +139,11 @@ export class LocalNotificationService {
    *
    * @param notification
    * @param delay - number of seconds to delay sending notification (default 3s)
-   * @param forceBackground - number of seconds to delay sending notification (default 3s)
+   * @param forceBackground - WiP - minimise the app to show notification when app in background
    */
   public async previewNotification(
     notification: LocalNotification,
-    delay = 5,
+    delay = 3,
     forceBackground = true
   ) {
     const notificationDeliveryTime = addSeconds(new Date(), delay);
@@ -131,25 +152,16 @@ export class LocalNotificationService {
       id: notificationDeliveryTime.getTime(),
       schedule: { at: notificationDeliveryTime },
     };
-    // preview on device
-    if (Capacitor.isNative) {
-      // create a duplicate notification to fire after short delay
-      this.scheduleNotification(preview);
-      if (forceBackground) {
-        App.exitApp();
-      }
+    // create a duplicate notification to fire after short delay
+    this.scheduleNotification(preview);
+    if (Capacitor.isNative && forceBackground) {
+      // Ideally we want to minimise the app to see response when app is in background,
+      // although the method appears inconsistent. Alternative minimiseApp proposed:
+      // https://github.com/ionic-team/capacitor-plugins/issues/130
+      // https://github.com/ionic-team/capacitor/issues?q=exitapp
+      // App.exitApp();
     }
-    // preview on web
-    else {
-      const hasPermission = await this.requestWebNotificationPermission();
-      console.log("has permission?", hasPermission);
-      if (hasPermission) {
-        console.log("permission granted, sending notification");
-        this.scheduleNotification(preview);
-      } else {
-        console.error("Could not get permission for notifications");
-      }
-    }
+    return preview;
   }
 
   /**

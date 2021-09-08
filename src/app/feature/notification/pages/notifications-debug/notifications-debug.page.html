@@ -1,6 +1,16 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
     <h2 style="flex: 1">Pending Notifications</h2>
+    <ion-button *ngIf="localNotificationService.enabled" fill="clear">
+      <ion-icon name="notifications-outline" slot="start"></ion-icon> Enabled
+    </ion-button>
+    <ion-button
+      *ngIf="!localNotificationService.enabled"
+      fill="outline"
+      (click)="localNotificationService.requestPermission()"
+    >
+      <ion-icon name="notifications-off" slot="start"></ion-icon> Enable
+    </ion-button>
   </div>
 
   <ion-card *ngFor="let notification of localNotificationService.notificationsList">
@@ -22,6 +32,7 @@
                 fill="clear"
                 class="no-padding"
                 style="margin: 0"
+                [disabled]="!localNotificationService.enabled"
               >
                 {{notification.schedule.at | date:'MMM d, h:mm a'}}
               </ion-button>
@@ -32,8 +43,13 @@
               (click)="previewNotification(notification)"
               class="no-padding"
               style="margin: 0"
-              >Preview</ion-button
+              [disabled]="(!localNotificationService.enabled || previewCountdown[notification.id]) ? true : false"
             >
+              <span *ngIf="previewCountdown[notification.id]"
+                >Send in {{previewCountdown[notification.id]}}</span
+              >
+              <span *ngIf="!previewCountdown[notification.id]">Preview</span>
+            </ion-button>
             <div class="divider"></div>
             <ion-button
               fill="clear"
