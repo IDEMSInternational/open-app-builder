@@ -60,6 +60,7 @@
     "dexie-observable": "3.0.0-beta.11",
     "dexie-syncable": "^3.0.0-beta.10",
     "firebase": "^8.6.8",
+    "globalthis": "^1.0.2",
     "howler": "^2.2.1",
     "intro.js": "^3.2.1",
     "jasmine-ts": "^0.4.0",
