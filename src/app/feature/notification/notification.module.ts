@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
 import { SharedPipesModule } from "src/app/shared/pipes";
-import { NotificationsRoutingModule } from "./notifications-routing.module";
+import { NotificationsRoutingModule } from "./notification-routing.module";
 import { NotificationsDebugPage } from "./pages/notifications-debug/notifications-debug.page";
 
 @NgModule({
