@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HTTP } from "@ionic-native/http/ngx";
 import { Device } from "@ionic-native/device/ngx";
 import { Subject } from "rxjs";
-import { environment } from "src/environments/environment";
 import {
   Plugins,
   PushNotification,

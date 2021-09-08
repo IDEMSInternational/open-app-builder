@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
-import { ParentPointsPage } from "./feature/parent-points/parent-points.page";
 import { TourComponent } from "./feature/tour/tour.component";
 
 const FeatureRoutes: Routes = [
@@ -55,6 +54,11 @@ const FeatureRoutes: Routes = [
   {
     path: "campaigns",
     loadChildren: () => import("./feature/campaign/campaign.module").then((m) => m.CampaignModule),
+  },
+  {
+    path: "notifications",
+    loadChildren: () =>
+      import("./feature/notification/notification.module").then((m) => m.NotificationsModule),
   },
   {
     path: "theme-editor",

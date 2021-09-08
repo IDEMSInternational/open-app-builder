@@ -3,7 +3,7 @@ import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Plugins, Capacitor, App } from "@capacitor/core";
 const { SplashScreen } = Plugins;
-import { NotificationService } from "./shared/services/notification/notification.service";
+import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { SurveyService } from "./feature/survey/survey.service";
@@ -33,7 +33,7 @@ export class AppComponent {
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
-    private notifications: NotificationService,
+    private pushNotificationService: PushNotificationService,
     private dbService: DbService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
@@ -70,7 +70,7 @@ export class AppComponent {
       if (Capacitor.isNative) {
         this.removeConsoleLogs();
         SplashScreen.hide();
-        this.notifications.init();
+        this.pushNotificationService.init();
       }
       this.renderAppTemplates = true;
       this.scheduleCampaignNotifications();
