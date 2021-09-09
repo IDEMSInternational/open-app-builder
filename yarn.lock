@@ -469,6 +469,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/elements@npm:^12.2.4":
+  version: 12.2.4
+  resolution: "@angular/elements@npm:12.2.4"
+  dependencies:
+    tslib: ^2.2.0
+  peerDependencies:
+    "@angular/core": 12.2.4
+    "@angular/platform-browser": 12.2.4
+    rxjs: ^6.5.3 || ^7.0.0
+  checksum: 41f05493d2dc1f3060800af0d8fdffa1729e79abe8e1d310b4d50d1dcb4f6b1c689c82d1fe9a15bf3c5d5118648734dd2ec1fae1c4fc539533c35914b0f08028
+  languageName: node
+  linkType: hard
+
 "@angular/fire@npm:^6.1.5":
   version: 6.1.5
   resolution: "@angular/fire@npm:6.1.5"
@@ -8784,6 +8797,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"document-register-element@npm:^1.14.10":
+  version: 1.14.10
+  resolution: "document-register-element@npm:1.14.10"
+  checksum: 4a2302361cc193ae6be28a2eec9dee8aec18c370411b2dfc264a73a0c20839e76396dc19680069f71a40ca5aa838499038af9b6a9e4baa8be22e3e96d4f7fae8
+  languageName: node
+  linkType: hard
+
 "dom-serialize@npm:^2.2.1":
   version: 2.2.1
   resolution: "dom-serialize@npm:2.2.1"
@@ -10618,6 +10638,7 @@ __metadata:
     "@angular/compiler": ~12.0.5
     "@angular/compiler-cli": ~12.0.5
     "@angular/core": ~12.0.5
+    "@angular/elements": ^12.2.4
     "@angular/fire": ^6.1.5
     "@angular/forms": ~12.0.5
     "@angular/language-service": ~12.0.5
@@ -10665,6 +10686,7 @@ __metadata:
     dexie: ^3.0.3
     dexie-observable: 3.0.0-beta.11
     dexie-syncable: ^3.0.0-beta.10
+    document-register-element: ^1.14.10
     eslint: ^7.29.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: 2.23.4
