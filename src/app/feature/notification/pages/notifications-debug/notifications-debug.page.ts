@@ -17,14 +17,17 @@ export class NotificationsDebugPage implements OnInit {
 
   async ngOnInit() {
     await this.localNotificationService.loadNotifications();
-    this.localNotificationService.notifications$.subscribe((notification) => {
+    this.localNotificationService.notifications$.subscribe(async (notification) => {
+      // refresh notification list when new notification received
       console.log("local notification received", notification);
-      // TODO - show status and add button to enable
+      await this.localNotificationService.loadNotifications();
     });
   }
 
   /**
    * Schedule a duplicate notification to be triggered after 2s as a preview
+   * Create a countdown timer to inform the user of the pending notification
+   * in case they want to test with app closed
    * @param notification
    */
   public async previewNotification(notification: LocalNotification) {
