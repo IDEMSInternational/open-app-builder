@@ -11,13 +11,13 @@ The Apps Server contains various docker containers for managing IDEMS Apps, incl
 ## Configure Environment Variables
 Copy the sample environemnt file
 ```bash
-cp .env.sample .env
+cp .env.example .env
 ```
 Default values in [.env](./.env) should be changed when running in production
 
 Similarly, the api package should have corresponding environment variables set
 ```bash
-cp ../api/.env.sample ../api/.env
+cp ../api/.env.example ../api/.env
 ```
 
 Matomo analytics can be configured in the file [./docker/config/matomo_config/config.ini.php](./docker/config/matomo_config/config.ini.php).
@@ -34,6 +34,60 @@ npm run start
 # From parent directory
 yarn workspace server start
 ```
+
+## Application Configs
+
+### Adminer DB Admin
+http://localhost/dbadmin/
+
+Login details
+```
+System: PostgreSQL
+Server: db
+Username: (POSTGRES_USER in .env)
+Password: (POSTGRES_PASS in .env)
+Database: (blank)
+```
+You should already see app and metabase databases created via the initialisation script [docker/config/init.sh](./docker/config/db/init.sh)
+
+Note - as these scripts only ever run on first initialisation, if adjustments need to be made then SQL can be executed from within Adminer in a similar way as the scripts
+
+### Api
+http://localhost/api/
+
+The api page should load with an overview of all available endpoints for reference and testing. No additional configuration is required, however you could test populating a new app user via the `/app_users/` POST interface.
+
+### Metabase DB Dashboard
+http://localhost/dashboard/
+
+A new database will need to be created to allow access for metabase. This should be automatically configured in [](./docker/config/db/init.sh), however if these steps fail they can be run manually (currently a bit temperamental - TODO ISSUE - will know if successful if can see a database created that matches the provided $MB_DB_DBNAME).
+
+Manual SQL can be executed from the Adminer DB interface, e.g. using the example config:
+```
+CREATE USER metabase WITH PASSWORD 'metabase';
+CREATE DATABASE metabase;
+GRANT ALL PRIVILEGES ON DATABASE metabase to metabase;
+```
+
+Once running complete configuration from within the dashboard app. Configure connection to the same database created by the api:
+```
+Database type: PostgreSQL
+Name: (any)
+Host: db
+Port: 5432
+Database name: ($DB_NAME in ../api/.env)
+Username: ($DB_USER in ../api/.env)
+Password: ($DB_PASSWORD in ../api/.env)
+
+```
+
+You should then see the main dashboard page
+
+Individual applications can be configured from their URL endpoints:
+- 
+
+- http://localhost/api/
+- http://localhost/analytics/
 
 
 ## Server Deployment (WiP docs)
