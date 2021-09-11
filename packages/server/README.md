@@ -123,6 +123,11 @@ These changes can only be applied after initial setup, as it is during this proc
 
 You should see previously broken images now appearing correctly
 
+**Handling CORS**
+If deploying to a site that is hosted on a different domain, CORS should be enabled in the analytics paltform `Settings -> System -> General settings` options.
+
+Additionally, privacy settings on the platform might need to be visited (such as `DoNotTrack` browser defaults). More information at https://matomo.org/privacy
+
 ## Server Deployment (WiP docs)
 To deploy on a server the same ensure docker and docker-compse are installed and run the same way as locally
 
