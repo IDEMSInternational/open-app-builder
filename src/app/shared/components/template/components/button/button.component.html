@@ -3,8 +3,6 @@
   [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
-  *ngIf="innerHTML"
-  [innerHTML]="innerHTML | markdown"
 >
-  <span *ngIf="innerHTML" [class]="textAlign" [innerHTML]="innerHTML | markdown"> </span>
+  <span *ngIf="innerHTML" [class]="textAlign" [innerHTML]="_row.value | markdown"> </span>
 </ion-button>

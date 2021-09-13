@@ -42,7 +42,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
   ngOnInit() {
     this.getParams();
     this.getScaleFactor();
-    this.innerHTML = this._row.value;
+    this.innerHTML = this.domSanitizer.bypassSecurityTrustHtml(this._row.value);
   }
 
   getParams() {

@@ -5,6 +5,7 @@
   }
   span {
     padding: var(--tiny-padding) 0;
+    display: contents;
   }
 }
 ion-button {
@@ -66,9 +67,12 @@ ion-button[disabled] {
   color: var(--ion-color-primary);
 }
 
-.left {
+.left ::ng-deep {
   margin: 0 auto 0 2px;
   text-align: left;
+  p {
+    margin: 0 0 0 2px;
+  }
 }
 .right {
   margin: 0 2px 0 auto;
