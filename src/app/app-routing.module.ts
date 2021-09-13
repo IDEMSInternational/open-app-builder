@@ -7,12 +7,12 @@ import { TourComponent } from "./feature/tour/tour.component";
 const FeatureRoutes: Routes = [
   {
     path: "",
-    redirectTo: "home",
     pathMatch: "full",
+    redirectTo: "template/home_screen",
   },
   {
     path: "home",
-    loadChildren: () => import("./feature/home/home.module").then((m) => m.HomePageModule),
+    redirectTo: "template/home_screen",
   },
   {
     path: "module_list",
@@ -111,6 +111,7 @@ const StaticPages: Routes = [
   },
   {
     path: "app-terms",
+    pathMatch: "full",
     loadChildren: () =>
       import("./pages/app-terms/app-terms.module").then((m) => m.AppTermsPageModule),
   },
