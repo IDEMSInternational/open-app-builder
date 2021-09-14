@@ -208,5 +208,10 @@
     "SourceText": "sad",
     "text": "triste",
     "type": "template"
+  },
+  {
+    "SourceText": "awesome parent",
+    "text": "Padre asombroso",
+    "type": "template"
   }
 ]

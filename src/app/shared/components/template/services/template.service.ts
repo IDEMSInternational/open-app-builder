@@ -27,7 +27,10 @@ export class TemplateService {
 
   /** Initialise global and startup templates */
   async init() {
-    this.initialiseGlobals();
+    // wait until app language has been specified before populating, and update on change
+    this.translateService.app_language$.subscribe((lang) => {
+      this.initialiseDefaultFieldAndGlobals();
+    });
   }
 
   /**
@@ -47,15 +50,28 @@ export class TemplateService {
     return data;
   }
 
-  private initialiseGlobals() {
+  /**
+   * Iterate over global template rows, assigning `declare_field_default` values to fields if they do not already exist,
+   * and `declare_global_constant` values to global regardless.
+   * NOTE - globals will always show the latest value as defined in app sheets (with any translations processed)
+   * NOTE - fields will not update if already set
+   */
+  private initialiseDefaultFieldAndGlobals() {
     GLOBAL.forEach((flow) => {
       flow.rows?.forEach((row) => {
-        if (row.type === "declare_field_default") {
-          if (this.localStorageService.getString("rp-contact-field." + row.name) === null) {
-            this.setField(row.name, row.value);
-          }
-        } else {
-          this.setGlobal(row);
+        switch (row.type) {
+          case "declare_field_default":
+            if (this.localStorageService.getString("rp-contact-field." + row.name) === null) {
+              this.setField(row.name, row.value);
+            }
+            break;
+          case "declare_global_constant":
+            const translatedGlobal = this.translateService.translateRow(row as any);
+            this.setGlobal(translatedGlobal as any);
+            break;
+          default:
+            console.warn(`[${row.type}] row type not supported in global template`);
+            break;
         }
       });
     });
