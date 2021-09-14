@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { LocalNotification } from "@capacitor/core";
 import { IonDatetime } from "@ionic/angular";
+import { timer } from "rxjs";
+import { map, take } from "rxjs/operators";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
 
 @Component({
@@ -9,11 +11,40 @@ import { LocalNotificationService } from "src/app/shared/services/notification/l
 })
 export class NotificationsDebugPage implements OnInit {
   public editableNotification: LocalNotification;
+  public previewCountdown: { [id: number]: number } = {};
 
   constructor(public localNotificationService: LocalNotificationService) {}
 
-  ngOnInit() {
-    this.localNotificationService.loadNotifications();
+  async ngOnInit() {
+    await this.localNotificationService.loadNotifications();
+    this.localNotificationService.notifications$.subscribe(async (notification) => {
+      // refresh notification list when new notification received
+      console.log("local notification received", notification);
+      await this.localNotificationService.loadNotifications();
+    });
+  }
+
+  /**
+   * Schedule a duplicate notification to be triggered after 2s as a preview
+   * Create a countdown timer to inform the user of the pending notification
+   * in case they want to test with app closed
+   * @param notification
+   */
+  public async previewNotification(notification: LocalNotification) {
+    const delaySeconds = 3;
+    const { id } = await this.localNotificationService.previewNotification(
+      notification,
+      delaySeconds + 1
+    );
+    timer(1000, 1000)
+      .pipe(map((i) => delaySeconds - i))
+      .pipe(take(delaySeconds + 1))
+      .subscribe((v) => {
+        this.previewCountdown[id] = v;
+        if (v === 0) {
+          this.localNotificationService.loadNotifications();
+        }
+      });
   }
 
   public async removeNotification(notification: LocalNotification) {

@@ -10694,6 +10694,7 @@ __metadata:
     eslint-plugin-prefer-arrow: 1.2.3
     firebase: ^8.6.8
     firebase-tools: ^9.14.0
+    globalthis: ^1.0.2
     howler: ^2.2.1
     intro.js: ^3.2.1
     jasmine-core: ~3.7.1
@@ -11192,6 +11193,15 @@ fsevents@^1.2.7:
   dependencies:
     type-fest: ^0.20.2
   checksum: ae5f8d4ef26b845a3d2a370a0dd0b7cc8bce09d11bf75dbde8dce8a0855e8ad4f34613090eaad8e71d24fb01fe00d8b2708533b32da08f104c0ddd19b70219f1
+  languageName: node
+  linkType: hard
+
+"globalthis@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "globalthis@npm:1.0.2"
+  dependencies:
+    define-properties: ^1.1.3
+  checksum: 1ac54e059ddb43ff8342cfd94406934c184de544ff505550e9242df35deb50591a5ff80635a8fa28c2f10e8b6544d99d58a0f88f3f8a8db933b7fd614c06b27a
   languageName: node
   linkType: hard
 
