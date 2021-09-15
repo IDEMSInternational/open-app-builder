@@ -7,10 +7,10 @@ import { environment } from "src/environment";
 import { Umzug, SequelizeStorage } from "umzug";
 import { ADMIN_CLIENT_CONFIG, USER_DB_CONFIG } from "./config";
 
-const DB_DIR = path.resolve(process.cwd(), "src", "db");
-const APP_DB_NAME = environment.DB_NAME || "app";
-const APP_DB_PASSWORD = environment.DB_PASSWORD || "app";
-const APP_DB_USER = environment.DB_USER || "app";
+const MIGRATIONS_DIR = path.resolve(__dirname, "migrations");
+const APP_DB_NAME = environment.APP_DB_NAME;
+const APP_DB_PASSWORD = environment.APP_DB_PASSWORD;
+const APP_DB_USER = environment.APP_DB_USER;
 
 /**
  * Bootstrap app database and initial user
@@ -61,15 +61,28 @@ async function setupUsers(client: Client) {
  * For more info see: https://github.com/sequelize/umzug
  */
 async function runMigrations() {
+  console.log("[Migration] start");
   const sequelize = new Sequelize(USER_DB_CONFIG);
   const migrator = new Umzug({
     migrations: {
-      glob: ["migrations/*.ts", { cwd: DB_DIR }],
+      // files might be local typescript or the compiled js files
+      // in case compiled ignore type definitions
+      glob: ["*.{js,ts}", { cwd: MIGRATIONS_DIR, ignore: ["*.d.ts"] }],
     },
     context: sequelize.getQueryInterface(),
     storage: new SequelizeStorage({ sequelize }),
     logger: console,
   });
-  await migrator.up();
+  const pending = await migrator.pending();
+  console.log("[Migrations] pending", pending);
+  try {
+    await migrator.up();
+    const executed = await migrator.executed();
+    console.log("[Migrations] executed", executed);
+    console.log("[Migration] complete");
+  } catch (error) {
+    console.error("[Migration] error", error);
+  }
+
   await sequelize.close();
 }
