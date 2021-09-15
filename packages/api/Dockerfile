@@ -3,7 +3,7 @@
 # and: https://dev.to/abbasogaji/how-to-dockerize-your-nestjs-app-for-production-2lmf
 
 # Standalone dashboard docker build (no api required)
-# $docker build -f docker/DOCKERFILE --tag idems/apps-api .
+# $docker build --tag idems/apps-api .
 # $docker run -p 80:80 --name apps-api --rm idems/apps-api
 
 ### STAGE 1: Build ###
