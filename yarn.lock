@@ -10696,7 +10696,7 @@ __metadata:
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
     howler: ^2.2.1
-    intro.js: ^3.2.1
+    intro.js: ^4.2.2
     jasmine-core: ~3.7.1
     jasmine-spec-reporter: ~7.0.0
     jasmine-ts: ^0.4.0
@@ -12183,10 +12183,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"intro.js@npm:^3.2.1":
-  version: 3.4.0
-  resolution: "intro.js@npm:3.4.0"
-  checksum: e843966326194bf46a58dbe35eaabe4aa9293cce3e77b988c012d2e5576a49a657b3eed35fd577b3753dc4ca665a7aea69275c81cb71353dd2cdf3b6afcacf94
+"intro.js@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "intro.js@npm:4.2.2"
+  checksum: 352eee61701f3780b65460c8283a201214f4d316bcf222f81210039fc2a31654c5096aecf27b0927aab39f246f4b13e70ca0b096b4b24623fcea86e48ac43f7a
   languageName: node
   linkType: hard
 

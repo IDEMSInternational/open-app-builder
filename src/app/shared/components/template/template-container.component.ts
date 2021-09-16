@@ -23,6 +23,7 @@ import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } fr
 import { TemplateTranslateService } from "./services/template-translate.service";
 import { SettingsService } from "src/app/pages/settings/settings.service";
 import { ServerService } from "../../services/server/server.service";
+import { _wait } from "../../utils";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -233,13 +234,4 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     log_group = SHOW_DEBUG_LOGS ? console.group : () => null;
     log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
   }
-}
-
-/** helper function used for dev to wait a fixed amount of time */
-function _wait(ms: number) {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
 }

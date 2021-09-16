@@ -95,7 +95,7 @@ plh-template-component[data-debug-hidden="true"] {
   }
 }
 //TOUR STYLES
-.tooltipClass {
+.introjs-tooltip.tooltip_visible {
   border-radius: var(--ion-border-radius-standard);
   color: var(--ion-color-primary);
   min-width: 90vw;
@@ -140,6 +140,10 @@ plh-template-component[data-debug-hidden="true"] {
     background: var(--ion-color-primary);
   }
 }
+.introjs-tooltip.tooltip_hidden {
+  display: none !important;
+}
+
 .buttonClass {
   border: var(--ion-border-thin-standard);
   padding: 10px 15px;
