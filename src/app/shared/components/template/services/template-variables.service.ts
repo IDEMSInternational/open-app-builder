@@ -351,10 +351,6 @@ export class TemplateVariablesService {
           // field may not exist
         }
         break;
-      case "raw":
-        console.log("parse raw", evaluator);
-        parsedValue = evaluator.matchedExpression;
-        break;
       default:
         parseSuccess = false;
         console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
