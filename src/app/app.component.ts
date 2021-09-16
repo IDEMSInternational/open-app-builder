@@ -18,6 +18,7 @@ import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
 import { isSameDay } from "date-fns";
+import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 
 @Component({
   selector: "app-root",
@@ -44,6 +45,7 @@ export class AppComponent {
     private appEventService: AppEventService,
     private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
+    private analyticsService: AnalyticsService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -75,6 +77,7 @@ export class AppComponent {
         SplashScreen.hide();
         this.pushNotificationService.init();
       }
+      this.analyticsService.init();
       this.renderAppTemplates = true;
       this.scheduleCampaignNotifications();
       this.scheduleReinitialisation();

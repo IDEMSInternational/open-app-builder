@@ -69,7 +69,15 @@ CREATE DATABASE metabase;
 GRANT ALL PRIVILEGES ON DATABASE metabase to metabase;
 ```
 
-Once running complete configuration from within the dashboard app. Configure connection to the same database created by the api:
+Once running complete configuration from within the dashboard app. 
+
+Create a user account using preferred credentials and retain securely elsewhere. As a default when running test servers in docker the following credentials are used
+```
+email: demo@demo.com
+password: demo1234
+```
+
+Configure connection to the same database created by the api:
 ```
 Database type: PostgreSQL
 Name: (any)
@@ -78,17 +86,47 @@ Port: 5432
 Database name: ($DB_NAME in ../api/.env)
 Username: ($DB_USER in ../api/.env)
 Password: ($DB_PASSWORD in ../api/.env)
-
 ```
+
 
 You should then see the main dashboard page
 
-Individual applications can be configured from their URL endpoints:
-- 
+### Matomo Analytics
+http://localhost/analytics/
 
-- http://localhost/api/
-- http://localhost/analytics/
+An initial set of configuration screens should walk through the process of setting up users and a database connection. If connection fails or additional users need to be created the database can be accessed via the same Adminer `/dbadmin` path and `root` user credentials
+```
+System: MySQL
+Server: analytics_db
+Username: root
+Password: (MYSQL_ROOT_PASSWORD in .env)
+Database: (blank)
+```
+You will be asked to create a super user login and password. This information should be stored safely.
+As a default when running test servers in docker the following credentials are used
+```
+email: demo@demo.com
+password: demo1234
+```
 
+To enable data collection from the frontend application follow instructions in the dashboard. You may need to record the Matomo Url and site ID as seen on the initial page, e.g.
+```
+Matomo URL: http://localhost/
+Your site ID: 1
+```
+
+**Handling Redirects**
+An extra configuration step is required to allow matomo to be hosted from a subdirectly (e.g. `/analytics`). See instructions in [docker/config/analytics_dashboard/config.ini](./docker/config/analytics_dashboard/config.ini).
+General reference notes are also available in [docker/config/nginx/conf/locations.conf](./docker/config/nginx/conf/locations.conf)
+
+These changes can only be applied after initial setup, as it is during this process that a `config.ini` file is populated to the matomo volume and exposed to the local matomo config folder.
+
+You should see previously broken images now appearing correctly
+
+**Handling CORS**
+If deploying to a site that is hosted on a different domain, CORS should be enabled in the analytics paltform `Settings -> System -> General settings` options.
+
+Additionally, privacy settings on the platform might need to be visited (such as `DoNotTrack` browser defaults). More information at https://matomo.org/privacy
 
 ## Server Deployment (WiP docs)
 To deploy on a server the same ensure docker and docker-compse are installed and run the same way as locally
