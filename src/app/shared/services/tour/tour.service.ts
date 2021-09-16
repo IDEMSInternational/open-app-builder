@@ -45,7 +45,7 @@ export class TourService {
       this.tourName = tourName;
       const initialTourRow = this.tourRows[initialStepIndex];
 
-      // handle intial nav before and el lookup before tour start
+      // handle initial nav and el lookup before tour start
       const requiredRouteChange = this.checkRouteChangeRequired(initialTourRow);
       if (requiredRouteChange) {
         this.router.navigateByUrl(requiredRouteChange);
@@ -60,7 +60,7 @@ export class TourService {
 
       introJS.setOptions({
         tooltipClass: "tooltip_visible",
-        buttonClass: "buttonClass",
+        buttonClass: "introjs-tooltip-button",
         nextLabel: this.translateService.translateValue("Next"),
         prevLabel: this.translateService.translateValue("Previous"),
         steps: this.tourSteps,
