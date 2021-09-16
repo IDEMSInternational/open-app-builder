@@ -343,11 +343,17 @@ export namespace FlowTypes {
 
   export interface TourStep extends Row_with_translations {
     type: "step";
-    message_text?: string;
-    message_template?: string;
+    /** Title displayed on top of step */
     title?: string;
+    /** Static text shown in step */
+    message_text?: string;
+    /** Render a custom template in place of message text */
+    message_template?: string;
+    /** Name of template to highlight for step */
     template_component_name?: string;
+    /** Advanced selector for path to template to highlight for step (e.g. plh-main-header > h1) */
     element?: string;
+    /** URL path to navigate to before running step */
     route?: string;
   }
 

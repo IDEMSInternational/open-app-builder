@@ -236,3 +236,12 @@ export function stringToIntegerHash(str: string) {
   }
   return hash;
 }
+
+/** helper function used for to wait a fixed amount of time */
+export function _wait(ms: number) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}
