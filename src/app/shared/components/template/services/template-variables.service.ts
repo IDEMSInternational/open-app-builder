@@ -143,7 +143,7 @@ export class TemplateVariablesService {
       context.calcContext = calcContext;
 
       // If a raw evaluator exists for any part of expression, return full expression unparsed
-      // e.g. "Example field name syntax is `@field.my_name`"
+      // e.g. "Example syntax is `@field.my_name`" -> "Example syntax is @field.my_name"
       if (type === "raw") {
         return evaluator.fullExpression.replace(/`/gi, "");
       }
