@@ -565,20 +565,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/router@npm:>=9.0.0 <13.0.0":
-  version: 12.1.1
-  resolution: "@angular/router@npm:12.1.1"
-  dependencies:
-    tslib: ^2.2.0
-  peerDependencies:
-    "@angular/common": 12.1.1
-    "@angular/core": 12.1.1
-    "@angular/platform-browser": 12.1.1
-    rxjs: ^6.5.3
-  checksum: 6f2ae8058f70cf9cfda9a0387e0bd4be2db1cd14c27ea20e9dd8d4a2041bc72dd7a97d306bdc8e84aead4deee136a7acb88b23475b5b28fb381b89e9edf2eaca
-  languageName: node
-  linkType: hard
-
 "@angular/router@npm:~12.0.5":
   version: 12.0.5
   resolution: "@angular/router@npm:12.0.5"
@@ -3366,6 +3352,32 @@ __metadata:
     typescript: ~4.2.3
     webpack: ^5.30.0
   checksum: dc6c97be34adbddaad1c79009860b0abbd9bcf3613cc23816f27503a9274392d1369181a89d6df94e7b9f3b2fc5721f9aea43a00b61f91a4cb074508a695e34a
+  languageName: node
+  linkType: hard
+
+"@ngx-matomo/router@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@ngx-matomo/router@npm:1.3.3"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ">=9.0.0 <13.0.0"
+    "@angular/core": ">=9.0.0 <13.0.0"
+    "@angular/router": ">=9.0.0 <13.0.0"
+    "@ngx-matomo/tracker": 1.3.3
+  checksum: 38270fd5857578cdde1b27ae42c21cf9584a04d30c2aae3ddb46e47d557bbf63ccacd93ca65d88c6322232ebc3d4a9d6ea5caf07440a53d12f8a833938209cd6
+  languageName: node
+  linkType: hard
+
+"@ngx-matomo/tracker@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@ngx-matomo/tracker@npm:1.3.3"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ">=9.0.0 <13.0.0"
+    "@angular/core": ">=9.0.0 <13.0.0"
+  checksum: 423ffce58b1e1ed60ff28d364337f7b2b0a318ca3d9faaaffd1e6eb8306ff95eab9cc4fcca2ac2da1f3eed00888d13044738b9af1ba5aa0297f561531c3cce06
   languageName: node
   linkType: hard
 
@@ -10662,6 +10674,8 @@ __metadata:
     "@ionic/angular-toolkit": ^4.0.0
     "@ionic/cli": ^6.16.3
     "@ionic/pwa-elements": ^3.0.2
+    "@ngx-matomo/router": ^1.3.3
+    "@ngx-matomo/tracker": ^1.3.3
     "@types/howler": ^2.2.2
     "@types/intro.js": ^3.0.1
     "@types/jasmine": ~3.7.7
@@ -10713,7 +10727,6 @@ __metadata:
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^6.4.0
-    ngx-matomo: 1.0.0-rc.0
     node-rsa: ^1.1.1
     nouislider: ^14.6.3
     plh-data: 1.0.0
@@ -15687,25 +15700,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"ngx-matomo@npm:1.0.0-rc.0":
-  version: 1.0.0-rc.0
-  resolution: "ngx-matomo@npm:1.0.0-rc.0"
-  dependencies:
-    "@angular/router": ">=9.0.0 <13.0.0"
-    rxjs: ^6.5.0
-    tslib: ^2.0.0
-  peerDependencies:
-    "@angular/common": ">=9.0.0 <13.0.0"
-    "@angular/core": ">=9.0.0 <13.0.0"
-  dependenciesMeta:
-    "@angular/router":
-      optional: true
-    rxjs:
-      optional: true
-  checksum: e008d2db743232e1967aca61921e3747163ccae7e9949c1e88be2bb38fd47d0ac0bace78e928df0c0f3896942d0b8df1c3b01f1b1958cc8a7346be13adb8c253
-  languageName: node
-  linkType: hard
-
 "nice-try@npm:^1.0.4":
   version: 1.0.5
   resolution: "nice-try@npm:1.0.5"
@@ -19135,7 +19129,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
+"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
