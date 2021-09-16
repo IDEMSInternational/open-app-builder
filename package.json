@@ -64,7 +64,7 @@
     "firebase": "^8.6.8",
     "globalthis": "^1.0.2",
     "howler": "^2.2.1",
-    "intro.js": "^3.2.1",
+    "intro.js": "^4.2.2",
     "jasmine-ts": "^0.4.0",
     "karma-typescript": "^5.5.1",
     "lottie-web": "^5.7.11",
