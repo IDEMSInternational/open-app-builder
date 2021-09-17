@@ -7,7 +7,12 @@ import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
-import { arrayToHashmap, mergeArrayOfArrays, stringToIntegerHash } from "src/app/shared/utils";
+import {
+  arrayToHashmap,
+  mergeArrayOfArrays,
+  randomElementFromArray,
+  stringToIntegerHash,
+} from "src/app/shared/utils";
 type ICampaigns = {
   [campaign_id: string]: { id: string; schedule?: any; rows: FlowTypes.Campaign_listRow[] };
 };
@@ -27,6 +32,7 @@ export class CampaignService {
   public async init() {
     this.loadCampaigns();
     // Note - not currently awaiting to allow faster initial load
+    console.log("[Campaigns]", this.campaigns);
     this.scheduleCampaignNotifications();
   }
 
@@ -51,6 +57,10 @@ export class CampaignService {
     }
   }
 
+  /**
+   * Select the highest priority row for a given campaign that satisfies all activation/deactivation
+   * criteria. In the case of multiple equal priority rows, return at random
+   */
   public async getNextCampaignRow(campaign_id: string) {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
@@ -59,18 +69,27 @@ export class CampaignService {
       console.error("no data exists for campaign", campaign_id);
       return null;
     }
-    const campaignRows = this.campaigns[campaign_id].rows;
-    const evaluatedRows = [];
+    const campaignRows = this.campaigns[campaign_id].rows.sort((a, b) => b.priority - a.priority);
+    const satisfiedRows: FlowTypes.Campaign_listRow[] = [];
+    // Iterate over campaign rows in order of priority. If row satisfies conditions set as new benchmark priority
+    let benchmarkRowPriority = -Infinity;
     for (const row of campaignRows) {
-      const evaluatedRow = await this.evaluateCampaignRow(row);
-      evaluatedRows.push(evaluatedRow);
-      if (evaluatedRow._active) {
-        console.log("[Campaign Next]", campaign_id, { evaluatedRow, evaluatedRows });
-        return evaluatedRow;
+      if (!row.hasOwnProperty("priority")) row.priority = -Infinity;
+      if (row.priority >= benchmarkRowPriority) {
+        const evaluated = await this.evaluateCampaignRow(row);
+        if (evaluated._active) {
+          // set current row as new bar for activation processing
+          benchmarkRowPriority = row.priority;
+          satisfiedRows.push(evaluated);
+        }
       }
     }
-    console.log("[Campaign Inactive]", campaign_id, { campaign_id, evaluatedRows });
-    return null;
+    // return row at random from list of all rows that matched the final benchmark priority
+    const highestPriorityRows = satisfiedRows.filter((row) => row.priority >= benchmarkRowPriority);
+    const selectedRow = randomElementFromArray(highestPriorityRows);
+
+    // console.log("[Campaign Next]", campaign_id, { campaignRows, selectedRow, satisfiedRows });
+    return selectedRow;
   }
 
   /**
