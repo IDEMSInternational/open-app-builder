@@ -16,7 +16,9 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
           *ngFor="let childRow of _row.rows; trackBy: trackByRow"
           [row]="childRow"
           [parent]="parent"
-        ></plh-template-component>
+          [attr.class]="_row.name"
+        >
+        </plh-template-component>
       </ng-container>
       <plh-advanced-dashed-box
         *ngSwitchCase="'dashed_box'"
@@ -29,6 +31,11 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   styleUrls: ["../tmpl-components-common.scss"],
   styles: [
     `
+      .dg_parent_centre {
+        margin-left: 0 !important;
+        max-width: 100% !important;
+      }
+
       .display-group.two_columns .offset {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
