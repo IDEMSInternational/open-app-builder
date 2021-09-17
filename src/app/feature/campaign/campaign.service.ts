@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { addDays } from "@fullcalendar/angular";
 import { addHours, addMinutes } from "date-fns";
+import { APP_STRINGS } from "packages/data-models/constants";
+import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -16,7 +18,8 @@ export class CampaignService {
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
-    private localNotificationService: LocalNotificationService
+    private localNotificationService: LocalNotificationService,
+    private translateService: TemplateTranslateService
   ) {
     this.loadCampaigns();
   }
@@ -75,14 +78,29 @@ export class CampaignService {
    * @returns list of all currently scheduled notifications
    */
   public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow, campaign_id: string) {
-    const { id, notification_schedule } = row;
-    const { _schedule_at, text, title } = notification_schedule;
+    // HACK - currently campaign schedules can either be defined within campaign rows or
+    // within a notification_schedule data list. Merge together.
+
+    // TODO - cc 2021-09-17 - might be better to refactor so all defined in schedule, although
+    // possibly requires revisit of how translations handled also
+    const campaignSchedule = this.campaigns[campaign_id]?.schedule || {};
+    const rowSchedule = row.notification_schedule || {};
+    const notification_schedule = this.evaluateCampaignNotification({
+      ...campaignSchedule,
+      ...rowSchedule,
+    });
+
+    let { _schedule_at, text, title } = notification_schedule;
+
+    title = this.translateService.translateValue(title || APP_STRINGS.NOTIFICATION_DEFAULT_TITLE);
+    text = this.translateService.translateValue(text || APP_STRINGS.NOTIFICATION_DEFAULT_TEXT);
+
     return this.localNotificationService.scheduleNotification({
       schedule: { at: _schedule_at },
-      body: text || "You have a new message from PLH",
-      title: title || "Notification",
+      body: text,
+      title,
       extra: { ...row, campaign_id },
-      id: stringToIntegerHash(id),
+      id: stringToIntegerHash(row.id),
     });
   }
 
@@ -150,9 +168,6 @@ export class CampaignService {
         return { ...condition, _satisfied };
       })
     );
-    if (row.notification_schedule) {
-      row.notification_schedule = this.evaluateCampaignNotification(row.notification_schedule);
-    }
     row._activated = row.activation_condition_list.every((c) => c._satisfied === true);
     row._deactivated = row.deactivation_condition_list.some((c) => c._satisfied === true);
     // assume active if all activation criteria met and no deactivation criteria satisfied
