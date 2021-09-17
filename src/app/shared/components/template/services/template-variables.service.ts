@@ -142,6 +142,12 @@ export class TemplateVariablesService {
       const { type, fieldName, matchedExpression } = evaluator;
       context.calcContext = calcContext;
 
+      // If a raw evaluator exists for any part of expression, return full expression unparsed
+      // e.g. "Example syntax is `@field.my_name`" -> "Example syntax is @field.my_name"
+      if (type === "raw") {
+        return evaluator.fullExpression.replace(/`/gi, "");
+      }
+
       // process the main lookup, e.g. @local.some_val, @campaign.some_val
       // NOTE - if parse fail an empty string will be returned
       let { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);
