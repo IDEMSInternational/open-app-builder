@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FlowTypes } from "data-models";
 import { SettingsService } from "src/app/pages/settings/settings.service";
+import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";
@@ -32,7 +33,8 @@ export class TemplateProcessService {
     templateNavService: TemplateNavService,
     // cdr: ChangeDetectorRef,
     settingsService: SettingsService,
-    serverService: ServerService
+    serverService: ServerService,
+    analyticsService: AnalyticsService
   ) {
     // Create mock template container component
     this.container = new TemplateContainerComponent(
@@ -46,7 +48,8 @@ export class TemplateProcessService {
       templateNavService,
       null as any,
       settingsService,
-      serverService
+      serverService,
+      analyticsService
     );
   }
 

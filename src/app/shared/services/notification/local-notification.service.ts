@@ -6,7 +6,10 @@ import {
   Plugins,
   Capacitor,
   LocalNotificationPendingList,
+  App,
 } from "@capacitor/core";
+import { addSeconds } from "date-fns";
+import { Subject } from "rxjs";
 const { LocalNotifications } = Plugins;
 
 const LOCAL_STORAGE_KEY = "local_notifications";
@@ -26,6 +29,8 @@ export type ILocalNotificationStorage = { [id: string]: Partial<LocalNotificatio
 export class LocalNotificationService {
   enabled = false;
 
+  public notifications$ = new Subject<any>();
+
   public notificationsList: LocalNotification[] = [];
   public notificationsHash: ILocalNotificationStorage = {};
 
@@ -34,6 +39,7 @@ export class LocalNotificationService {
     this._addListeners();
   }
   async init() {
+    await this.requestPermission();
     const { granted } = await LocalNotifications.requestPermission();
     if (granted) {
       this.enabled = true;
@@ -48,6 +54,26 @@ export class LocalNotificationService {
       this._addListeners();
       // can still add listeners locally
     }
+  }
+
+  public requestPermission() {
+    return new Promise((resolve) => {
+      LocalNotifications.requestPermissions()
+        .then(({ results }) => {
+          const permissionState = results[0];
+          resolve(permissionState === "granted" ? true : false);
+        })
+        .catch((err) => {
+          if (err === "default") {
+            // user dismissed request;
+          }
+          if (err === "denied") {
+            // user or browser blocked request;
+          }
+          console.error(err);
+          resolve(false);
+        });
+    });
   }
 
   /**
@@ -110,6 +136,55 @@ export class LocalNotificationService {
   }
 
   /**
+   *
+   * @param notification
+   * @param delay - number of seconds to delay sending notification (default 3s)
+   * @param forceBackground - WiP - minimise the app to show notification when app in background
+   */
+  public async previewNotification(
+    notification: LocalNotification,
+    delay = 3,
+    forceBackground = true
+  ) {
+    const notificationDeliveryTime = addSeconds(new Date(), delay);
+    const preview = {
+      ...notification,
+      id: notificationDeliveryTime.getTime(),
+      schedule: { at: notificationDeliveryTime },
+    };
+    // create a duplicate notification to fire after short delay
+    this.scheduleNotification(preview);
+    if (Capacitor.isNative && forceBackground) {
+      // Ideally we want to minimise the app to see response when app is in background,
+      // although the method appears inconsistent. Alternative minimiseApp proposed:
+      // https://github.com/ionic-team/capacitor-plugins/issues/130
+      // https://github.com/ionic-team/capacitor/issues?q=exitapp
+      // App.exitApp();
+    }
+    return preview;
+  }
+
+  /**
+   *
+   * NOTE - requires secure context and limited browser support (https://developer.mozilla.org/en-US/docs/Web/API/notification)
+   * @returns
+   */
+  private async requestWebNotificationPermission() {
+    if ("Notification" in window) {
+      if (window.Notification.permission === "granted") {
+        return true;
+      } else {
+        const permission = await window.Notification.requestPermission();
+        console.log("[Notification Permission]", permission);
+        return permission === "granted";
+      }
+    } else {
+      console.error("Notification API not available");
+      return false;
+    }
+  }
+
+  /**
    * When notifications are scheduled only the ID number (as string) is returned when querying
    * Store full details in localstorage for future retrieval
    */
@@ -141,9 +216,10 @@ export class LocalNotificationService {
       // good to have default as can only ever have 1 listener for each type
     );
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
-    LocalNotifications.addListener("localNotificationReceived", (notification) =>
-      console.log(["NOTIFICATION RECEIVED"], notification)
-    );
+    LocalNotifications.addListener("localNotificationReceived", (notification) => {
+      console.log(["NOTIFICATION RECEIVED"], notification);
+      this.notifications$.next(notification);
+    });
   }
 }
 
