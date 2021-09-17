@@ -83,6 +83,15 @@ export function mergeObjectArrays<T>(
   return Object.values(secondaryHash);
 }
 
+export function randomElementFromArray(arr: any[] = null) {
+  try {
+    const randomItem = arr[Math.floor(Math.random() * arr.length)];
+    return randomItem;
+  } catch (error) {
+    return null;
+  }
+}
+
 /**
  * Retrieve a nested property from a json object
  * using a single path string accessor
