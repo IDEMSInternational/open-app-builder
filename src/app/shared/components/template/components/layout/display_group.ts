@@ -16,6 +16,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
           *ngFor="let childRow of _row.rows; trackBy: trackByRow"
           [row]="childRow"
           [parent]="parent"
+          [attr.class]="_row.name"
         ></plh-template-component>
       </ng-container>
       <plh-advanced-dashed-box
@@ -43,6 +44,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         width: 100%;
         height: 100%;
         padding-top: 10px;
+      }
+
+      .display-group .offset plh-template-component.heading {
+        height: auto;
       }
 
       :host {
