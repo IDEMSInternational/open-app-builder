@@ -42,11 +42,34 @@ export function parsePLHActionString(actionString: string): FlowTypes.TemplateRo
   // const _parsed = parsePLHString(actionString);
   const parts = actionString.split("|").map((s) => s.trim());
   const trigger = parts[0] as any;
+  // 3+ string format {trigger} | {action_id} | {arg[]}
+  // e.g.             `click    | track_event | name:event_1, value:hello`
+  // e.g.             `click    | set_local   | some_key:some_value`
+
+  // WiP - Proposed future syntax for processing complex args as key-value pairs
+  // Breaking changes - needs thorough review before implementation
+
+  // if (parts[2]) {
+  //   const action_id = parts[1] as any;
+  //   const args = {} as any;
+  //   parts[2]
+  //     .split(",")
+  //     .map((arg) => arg.trim())
+  //     .forEach((arg) => {
+  //       const [key, value] = arg.split(":").map((v) => v.trim());
+  //       args[key] = value;
+  //     });
+  //   return { trigger, action_id, args, _raw, _cleaned };
+  // }
+
+  // 2-part string format {trigger} | {action_id}:  {arg}
+  // e.g.                 `completed    | emit:     completed
   if (parts[1]) {
     let [action_id, ...args] = parts[1].split(":").map((s) => s.trim()) as any;
     // ensure any boolean values are parsed correctly
     args = args.map((arg) => booleanStringToBoolean(arg));
     return { trigger, action_id, args, _raw, _cleaned };
+    // single string format {trigger}
   } else {
     return { trigger, action_id: null, args: [], _raw, _cleaned };
   }

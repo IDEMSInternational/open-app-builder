@@ -17,7 +17,10 @@ export const environment = {
   chatNonNavigatePaths: ["/chat/action", "/chat/msg-info"],
   variableNameFlows: ["character_names"],
   apiEndpoint: "http://localhost/api",
+  analytics: { endpoint: "http://localhost/analytics", siteId: 1 },
+  /** production settings **/
   // apiEndpoint: "https://apps-server.idems.international/api",
+  // analytics: { endpoint: "https://apps-server.idems.international/analytics", siteId: 1 },
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.
