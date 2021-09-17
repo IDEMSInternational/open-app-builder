@@ -5,8 +5,11 @@ import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
-import { stringToIntegerHash } from "src/app/shared/utils";
-type ICampaigns = { [campaign_id: string]: FlowTypes.Campaign_listRow[] };
+import { arrayToHashmap, mergeArrayOfArrays, stringToIntegerHash } from "src/app/shared/utils";
+type ICampaigns = {
+  [campaign_id: string]: { id: string; schedule?: any; rows: FlowTypes.Campaign_listRow[] };
+};
+
 @Injectable({ providedIn: "root" })
 export class CampaignService {
   campaigns: ICampaigns;
@@ -18,6 +21,33 @@ export class CampaignService {
     this.loadCampaigns();
   }
 
+  public async init() {
+    this.loadCampaigns();
+    // Note - not currently awaiting to allow faster initial load
+    this.scheduleCampaignNotifications();
+  }
+
+  get scheduledCampaigns() {
+    return Object.values(this.campaigns).filter((campaign) => campaign.schedule);
+  }
+
+  /**
+   * Check all campaigns for those with notification schedules and evaluate
+   * any notifications requiring scheduling
+   */
+  private async scheduleCampaignNotifications() {
+    const scheduledCampaigns = this.scheduledCampaigns;
+    for (const campaign of scheduledCampaigns) {
+      const nextRow = await this.getNextCampaignRow(campaign.id);
+      if (nextRow) {
+        // remove any previous notification
+        await this.deactiveCampaignNotifications(campaign.id);
+        // add new notification
+        await this.scheduleCampaignNotification(nextRow, campaign.id);
+      }
+    }
+  }
+
   public async getNextCampaignRow(campaign_id: string) {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
@@ -26,7 +56,7 @@ export class CampaignService {
       console.error("no data exists for campaign", campaign_id);
       return null;
     }
-    const campaignRows = this.campaigns[campaign_id];
+    const campaignRows = this.campaigns[campaign_id].rows;
     const evaluatedRows = [];
     for (const row of campaignRows) {
       const evaluatedRow = await this.evaluateCampaignRow(row);
@@ -42,31 +72,49 @@ export class CampaignService {
 
   /**
    * Convert PLH notification schedule data and create local notification
-   * @param id string identifier for the notification. Will be converted to integer hash
-   * @param schedule
-   * @param data any additional data to be stored with the notification
    * @returns list of all currently scheduled notifications
    */
-  public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow) {
+  public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow, campaign_id: string) {
     const { id, notification_schedule } = row;
     const { _schedule_at, text, title } = notification_schedule;
     return this.localNotificationService.scheduleNotification({
       schedule: { at: _schedule_at },
       body: text || "You have a new message from PLH",
       title: title || "Notification",
-      extra: row,
+      extra: { ...row, campaign_id },
       id: stringToIntegerHash(id),
     });
   }
 
-  private loadCampaigns() {
-    // merge all campaign_row data lists
-    const allCampaignRows: FlowTypes.Campaign_listRow[] = [].concat.apply(
-      [],
-      DATA_LIST.filter((list) =>
-        ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
-      ).map((list) => list.rows)
+  /** Deactivate all notifications for a given campaign */
+  private async deactiveCampaignNotifications(campaign_id: string) {
+    const pendingNotifications = await this.localNotificationService.loadNotifications();
+    const deactivatedNotifications = Object.values(pendingNotifications).filter(
+      (n) => n.extra.campaign_id === campaign_id
     );
+    for (const notification of deactivatedNotifications) {
+      await this.localNotificationService.removeNotification(notification);
+    }
+  }
+
+  /**
+   * Get a list of all campaign rows collated by campaign_id, with merged notification schedules
+   * TODO - most of this logic could be handled in parser instead
+   */
+  private loadCampaigns() {
+    // get list of notification schedules for merging with rows
+    const notificationScheduleRows = DATA_LIST.filter(
+      (list) => list.flow_subtype === "notification_schedule"
+    ).map((list) => list.rows);
+    const allCNotificationSchedules = mergeArrayOfArrays(notificationScheduleRows);
+    const notificationSchedulesById = arrayToHashmap(allCNotificationSchedules, "id");
+
+    // merge all campaign_row data lists
+    const campaignListRows = DATA_LIST.filter((list) =>
+      ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
+    ).map((list) => list.rows);
+
+    const allCampaignRows: FlowTypes.Campaign_listRow[] = mergeArrayOfArrays(campaignListRows);
     const allCampaignRowsByPriority = allCampaignRows.sort(
       (a, b) => (b.priority || 0) - (a.priority || 0)
     );
@@ -75,9 +123,13 @@ export class CampaignService {
       const campaign_list = row.campaign_list || [];
       campaign_list.forEach((campaign_id) => {
         if (!campaignsById[campaign_id]) {
-          campaignsById[campaign_id] = [];
+          campaignsById[campaign_id] = { id: campaign_id, rows: [] };
+          // merge notification schedule
+          if (notificationSchedulesById[campaign_id]) {
+            campaignsById[campaign_id].schedule = notificationSchedulesById[campaign_id];
+          }
         }
-        campaignsById[campaign_id].push(row);
+        campaignsById[campaign_id].rows.push(row);
       });
     });
     this.campaigns = campaignsById;
