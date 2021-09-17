@@ -79,7 +79,6 @@ export class AppComponent {
       }
       this.analyticsService.init();
       this.renderAppTemplates = true;
-      this.scheduleCampaignNotifications();
       this.scheduleReinitialisation();
     });
   }
@@ -98,27 +97,12 @@ export class AppComponent {
     await this.dataEvaluationService.refreshDBCache();
     await this.templateService.init();
     await this.templateProcessService.init();
+    await this.campaignService.init();
   }
 
   clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
-  }
-
-  /**
-   * Manually schedule specific campaign notifications
-   * TODO CC 2021-05-14 - Ideally these should be triggered from a template or other general method
-   */
-  async scheduleCampaignNotifications() {
-    const inactiveNotification = await this.campaignService.getNextCampaignRow(
-      "m_inactive_campaign"
-    );
-    if (inactiveNotification) {
-      const notifications = await this.campaignService.scheduleCampaignNotification(
-        inactiveNotification
-      );
-      console.log("scheduled notifications", notifications);
-    }
   }
 
   /** Rewrite default log functions for improved performance when running on device */

@@ -60,7 +60,7 @@ export class CampaignDebugPage implements OnInit {
   }
 
   public scheduleNotification(row: FlowTypes.Campaign_listRow) {
-    return this.campaignService.scheduleCampaignNotification(row);
+    return this.campaignService.scheduleCampaignNotification(row, this.debugCampaignId);
   }
 
   /**
@@ -88,7 +88,7 @@ export class CampaignDebugPage implements OnInit {
   private async processCampaign() {
     const debugCampaignRows: IDebugCampaignRows = { activated: [], deactivated: [], pending: [] };
     const campaign_id = this.debugCampaignId;
-    const campaignRows = this.campaignService.campaigns[campaign_id];
+    const campaignRows = this.campaignService.campaigns[campaign_id].rows;
     const evaluated = await Promise.all(
       campaignRows.map(async (row) => {
         return await this.campaignService.evaluateCampaignRow(row);

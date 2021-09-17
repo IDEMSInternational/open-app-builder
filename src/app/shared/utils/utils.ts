@@ -51,6 +51,17 @@ export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
 }
 
 /**
+ * Takes an array of arrays and merges into single array
+ * @example ```
+ * mergeArrayOfArrays([['a','b'],['c','d']])
+ * // [ 'a', 'b', 'c', 'd' ]
+ * ```
+ */
+export function mergeArrayOfArrays<T>(arr: T[][]) {
+  return [].concat.apply([], arr);
+}
+
+/**
  * Take 2 object arrays identified by a given key field, and merge rows together.
  * In case of rows with identical keys, only one will be retained
  *
