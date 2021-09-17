@@ -33,8 +33,10 @@
                 class="no-padding"
                 style="margin: 0"
                 [disabled]="!localNotificationService.enabled"
-              >
-                {{notification.schedule.at | date:'MMM d, h:mm a'}}
+                ><div>
+                  <div>{{notification.schedule.at | date:'MMM d YYYY'}}</div>
+                  <div>{{notification.schedule.at | date: 'h:mm a'}}</div>
+                </div>
               </ion-button>
             </div>
             <div class="divider"></div>
