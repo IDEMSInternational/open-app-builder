@@ -1,10 +1,11 @@
 import { Command } from "commander";
-import fs from "fs-extra";
+import fs, { outputFile } from "fs-extra";
 import axios from "axios";
 import { Octokit } from "octokit";
 import path from "path";
-import { CACHED_RELEASES_PATH } from "../paths";
+import { paths } from "../paths";
 import logUpdate from "log-update";
+import { outputErrorMessage } from "../utils";
 
 const program = new Command("download");
 
@@ -46,13 +47,20 @@ async function downloadReleaseScreenshots() {
   // https://github.com/IDEMSInternational/parenting-app-ui/releases
   const res = await octokit.rest.repos.listReleases({ repo, owner });
   const latestRelease = res.data[0];
-  let { assets, zipball_url, tag_name } = latestRelease;
+  let { assets, html_url, tag_name } = latestRelease;
   console.log("latestRelease", latestRelease);
-  const generatedSnapshots = assets.find((asset) => asset.name === "visual-snapshots");
-  if (generatedSnapshots) {
-    console.log("snapshots found, downloading (TODO)");
+  const screenshotsFilename = `screenshots-${tag_name}.zip`;
+  const screenshotsAsset = assets.find((asset) => asset.name === screenshotsFilename);
+  if (screenshotsAsset) {
+    const downloadFolder = paths.CACHED_SCREENSHOTS_FOLDER;
+    const downloadFilepath = path.resolve(downloadFolder, screenshotsFilename);
+    await downloadToFile(screenshotsAsset.browser_download_url as string, downloadFilepath);
   } else {
-    await downloadGithubReleaseZip(zipball_url as string, tag_name as string);
+    outputErrorMessage(
+      `No screenshots.zip asset: ${html_url}`,
+      `See instructions in readme to populate release screenshots`
+    );
+    // await downloadGithubReleaseZip(zipball_url as string, tag_name as string);
   }
 }
 
@@ -62,8 +70,8 @@ async function downloadReleaseScreenshots() {
  * @param tag_name - used to name the file, e.g. v1.0.2.zip
  */
 async function downloadGithubReleaseZip(zipball_url: string, tag_name: string) {
-  fs.ensureDirSync(CACHED_RELEASES_PATH);
-  const outputFilePath = path.resolve(CACHED_RELEASES_PATH, `${tag_name}.zip`);
+  fs.ensureDirSync(paths.CACHED_RELEASES);
+  const outputFilePath = path.resolve(paths.CACHED_RELEASES, `${tag_name}.zip`);
   if (fs.existsSync(outputFilePath)) {
     // TODO - confirm zip not corrupt/meta matches (if possible)
     // Hard todo as head method does not return content length even after redirects (tried various ways)
