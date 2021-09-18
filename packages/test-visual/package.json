@@ -1,0 +1,30 @@
+{
+  "name": "test-visual",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "bin": {
+    "idems-test-visual": "./lib/index.js"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn --watch 'src/**/*.ts' src/index.ts",
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "commander": "^8.2.0",
+    "data-models": "1.0.0",
+    "fs-extra": "^10.0.0",
+    "log-update": "^4.0.0",
+    "octokit": "^1.5.0",
+    "plh-data": "workspace:*",
+    "puppeteer": "^10.2.0",
+    "ts-node": "^10.2.1",
+    "typescript": "~4.2.4"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.12",
+    "@types/node": "^15.12.4",
+    "ts-node-dev": "^1.1.8"
+  }
+}
