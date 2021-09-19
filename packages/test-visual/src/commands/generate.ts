@@ -110,14 +110,6 @@ export class ScreenshotGenerate {
     let index = 0;
     for (const template of templateFlows) {
       const { flow_name } = template;
-      /**
-       *
-       * CC TODO - replace all jpgs for png, remove jpeg package, update
-       * repo screenshots
-       *
-       *
-       *
-       */
       const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
       if (!fs.existsSync(outputPath)) {
         await this.gotoTemplate(flow_name);
