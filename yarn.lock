@@ -4508,6 +4508,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pixelmatch@npm:^5.2.4":
+  version: 5.2.4
+  resolution: "@types/pixelmatch@npm:5.2.4"
+  dependencies:
+    "@types/node": "*"
+  checksum: 44bdf4714b4514fc9136eb453258e7d2dee0cfced82ebba4d367adcf9cc9bf0719028edea40b7c464ed04abacec8317856624e2c2b1febb5a86e3c62ee830f5a
+  languageName: node
+  linkType: hard
+
+"@types/pngjs@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@types/pngjs@npm:6.0.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 8778f8287f559f4be22850f88e9ac7530b1943a22be003a40ffc88dd103ef449d306736185e494d1006128dbff5f06356747361117d73886aef6ce7645e833ea
+  languageName: node
+  linkType: hard
+
 "@types/prettier@npm:^2.0.0":
   version: 2.3.2
   resolution: "@types/prettier@npm:2.3.2"
@@ -10532,7 +10550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"extract-zip@npm:2.0.1":
+"extract-zip@npm:2.0.1, extract-zip@npm:^2.0.1":
   version: 2.0.1
   resolution: "extract-zip@npm:2.0.1"
   dependencies:
@@ -14059,6 +14077,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jpeg-js@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "jpeg-js@npm:0.4.3"
+  checksum: c882ae02b8639d92b0004520dc949363dd1ff9dcfbadbb93f1760c9a3aab894fdca66af2ff57bcdb85a2741dba51cbaf748745eb3165bf2b73bdef2cfd639442
+  languageName: node
+  linkType: hard
+
 "js-beautify@npm:^1.8.8":
   version: 1.14.0
   resolution: "js-beautify@npm:1.14.0"
@@ -17567,7 +17592,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"pixelmatch@npm:^5.1.0":
+"pixelmatch@npm:^5.1.0, pixelmatch@npm:^5.2.1":
   version: 5.2.1
   resolution: "pixelmatch@npm:5.2.1"
   dependencies:
@@ -17661,6 +17686,13 @@ fsevents@^1.2.7:
   version: 4.0.1
   resolution: "pngjs@npm:4.0.1"
   checksum: 69b86799d85d2788a9418683a1477443cf92e7d0b3697c88fa2bb261b407e80ff52df20e69ace534d0c9e633ef862426ba1270e5c5b1dec59137820ffb75cad5
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "pngjs@npm:6.0.0"
+  checksum: b90cbd7d96e73a35427a08d1c583f58f0c63a34b7e8920dc228f3f3c5f3ed7ad359c5abafee78210d62453896300b280dd7cc3b5c2cb0f9291efcc86c35885ab
   languageName: node
   linkType: hard
 
@@ -21618,16 +21650,23 @@ fsevents@^1.2.7:
   dependencies:
     "@types/fs-extra": ^9.0.12
     "@types/node": ^15.12.4
+    "@types/pixelmatch": ^5.2.4
+    "@types/pngjs": ^6.0.1
     archiver: ^5.3.0
     axios: ^0.21.4
     boxen: ^5.1.2
     chalk: ^4.1.2
     commander: ^8.2.0
     data-models: 1.0.0
+    dotenv: ^10.0.0
+    extract-zip: ^2.0.1
     fs-extra: ^10.0.0
+    jpeg-js: ^0.4.3
     log-update: ^4.0.0
     octokit: ^1.5.0
+    pixelmatch: ^5.2.1
     plh-data: "workspace:*"
+    pngjs: ^6.0.0
     puppeteer: ^10.2.0
     ts-node: ^10.2.1
     ts-node-dev: ^1.1.8

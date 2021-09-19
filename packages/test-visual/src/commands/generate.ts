@@ -3,7 +3,6 @@ import puppeteer from "puppeteer";
 import path from "path";
 import fs from "fs-extra";
 import logUpdate from "log-update";
-import archiver from "archiver";
 import { DEXIE_SRC_PATH, paths } from "../config";
 import { USER_PROFILE_DEFAULT } from "../data/profiles";
 import { DB_TABLES, DB_VERSION } from "data-models/db.model";
@@ -25,7 +24,10 @@ const Dexie = require(DEXIE_SRC_PATH);
 const APP_SERVER_URL = "http://localhost:4200";
 /** screen size to use during test - purposefully long to include more in screenshots */
 const SCREEN_SIZE = { width: 360, height: 1280 };
-const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.SCREENSHOTS_FOLDER, "../screenshots-vlatest.zip");
+const SCREENSHOTS_OUTPUT_ZIP = path.resolve(
+  paths.SCREENSHOTS_FOLDER,
+  "../screenshots-generated.zip"
+);
 
 /***************************************************************************************
  * CLI
@@ -48,7 +50,9 @@ export default program
   .description("Generate screenshots")
   .requiredOption("-c, --clean", "Clean output folder before generating", false)
   .action(async (opts) => {
-    const options = { ...DEFAULT_OPTIONS, opts };
+    console.log("Generating screenshots...");
+    console.table(opts);
+    const options = { ...DEFAULT_OPTIONS, ...opts };
     await new ScreenshotGenerate(options).run().then(() => process.exit(0));
   });
 
@@ -59,12 +63,10 @@ export default program
 export class ScreenshotGenerate {
   browser: puppeteer.Browser;
   page: puppeteer.Page;
-  callbacks = DEFAULT_OPTIONS;
 
   constructor(private options: typeof DEFAULT_OPTIONS) {}
 
   public async run() {
-    console.log("Generating screenshots...", JSON.stringify(this.options, null, 2));
     await this.prepareBrowserRunner();
     await this.seedBrowserDB();
     await this.generateTemplateScreenshots();
@@ -121,19 +123,15 @@ export class ScreenshotGenerate {
         });
       }
       index++;
-      await this.callbacks.onScreenshotGenerated({
+      await this.options.onScreenshotGenerated({
         screenshotPath: outputPath,
         index,
         total: totalTemplates,
       });
     }
-    await this.callbacks.onScreenshotsCompleted({ total: totalTemplates });
+    await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
-  /**
-   *
-   *
-   */
   private async generateZipOutput() {
     await zipFolder(paths.SCREENSHOTS_FOLDER, SCREENSHOTS_OUTPUT_ZIP);
     console.log("✔️  Zip saved");
@@ -154,9 +152,7 @@ export class ScreenshotGenerate {
     });
   }
 
-  /**
-   *
-   */
+  /** Run custom scripts to seed localstorage and indexeddb profile for app **/
   private async seedBrowserDB() {
     const { fields, tables } = USER_PROFILE_DEFAULT;
     // load localstorage fields
