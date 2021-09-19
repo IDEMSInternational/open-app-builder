@@ -24,14 +24,11 @@ const Dexie = require(DEXIE_SRC_PATH);
 const APP_SERVER_URL = "http://localhost:4200";
 /** screen size to use during test - purposefully long to include more in screenshots */
 const SCREEN_SIZE = { width: 360, height: 1280 };
-const SCREENSHOTS_OUTPUT_ZIP = path.resolve(
-  paths.SCREENSHOTS_FOLDER,
-  "../screenshots-generated.zip"
-);
+const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.OUTPUT_FOLDER, "screenshots-generated.zip");
 
 /***************************************************************************************
  * CLI
- * @example yarn workspace test-visual dev -- generate --clean
+ * @example yarn workspace test-visual start generate --clean
  *************************************************************************************/
 
 const DEFAULT_OPTIONS = {
