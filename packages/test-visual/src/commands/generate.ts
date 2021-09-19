@@ -4,14 +4,14 @@ import path from "path";
 import fs from "fs-extra";
 import logUpdate from "log-update";
 import archiver from "archiver";
-import { DEXIE_SRC_PATH, paths } from "../paths";
+import { DEXIE_SRC_PATH, paths } from "../config";
 import { USER_PROFILE_DEFAULT } from "../data/profiles";
 import { DB_TABLES, DB_VERSION } from "data-models/db.model";
 
 // As using commonJS can only import from built
 // TODO - ensure built before run
 import * as templateImport from "plh-data/dist/data/template/index";
-import { outputCompleteMessage, outputErrorMessage } from "../utils";
+import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 const templateFlows = templateImport.template;
 
 // Import Dexie from the src folder so that same instance can be used to seed the DB
@@ -26,41 +26,45 @@ const APP_SERVER_URL = "http://localhost:4200";
 /** screen size to use during test - purposefully long to include more in screenshots */
 const SCREEN_SIZE = { width: 360, height: 1280 };
 const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.SCREENSHOTS_FOLDER, "../screenshots-vlatest.zip");
-let CLEAN_OUTPUT_FOLDER = false;
 
 /***************************************************************************************
  * CLI
  * @example yarn workspace test-visual dev -- generate --clean
  *************************************************************************************/
+
+const DEFAULT_OPTIONS = {
+  onScreenshotGenerated: async ({ screenshotPath, index, total }) => {
+    logUpdate(`${index}/${total} screenshots generated`);
+  },
+  onScreenshotsCompleted: async ({ total }) => {
+    logUpdate.done();
+    logUpdate(`✔️  Screenshots complete`);
+  },
+  clean: false,
+};
+
 const program = new Command("generate");
 export default program
   .description("Generate screenshots")
   .requiredOption("-c, --clean", "Clean output folder before generating", false)
   .action(async (opts) => {
-    CLEAN_OUTPUT_FOLDER = opts.clean;
-    await new ScreenshotGenerate().run().then(() => process.exit(0));
+    const options = { ...DEFAULT_OPTIONS, opts };
+    await new ScreenshotGenerate(options).run().then(() => process.exit(0));
   });
 
 /***************************************************************************************
  * Main Methods
  *************************************************************************************/
 
-const DEFAULT_CALLBACKS = {
-  onScreenshotGenerated: async (screenshotPath: string) => null,
-};
-
-class ScreenshotGenerate {
+export class ScreenshotGenerate {
   browser: puppeteer.Browser;
   page: puppeteer.Page;
-  callbacks = DEFAULT_CALLBACKS;
+  callbacks = DEFAULT_OPTIONS;
 
-  constructor(callbacks: Partial<typeof DEFAULT_CALLBACKS> = {}) {
-    // merge any passed callbacks with default
-    Object.entries(callbacks).forEach(([key, fn]) => (this.callbacks[key] = fn));
-  }
+  constructor(private options: typeof DEFAULT_OPTIONS) {}
 
   public async run() {
-    console.log("Generating screenshots...");
+    console.log("Generating screenshots...", JSON.stringify(this.options, null, 2));
     await this.prepareBrowserRunner();
     await this.seedBrowserDB();
     await this.generateTemplateScreenshots();
@@ -87,6 +91,7 @@ class ScreenshotGenerate {
       // allow dexie to be accessed via window.dexie in page
       // https://stackoverflow.com/questions/48815565/how-to-pass-required-module-object-to-puppeteer-page-evaluate
       await this.page.addScriptTag({ path: DEXIE_SRC_PATH });
+      console.log("✔️  Browser ready");
     } catch (error) {
       outputErrorMessage(`Could not load app on ${APP_SERVER_URL}`, "Is the server running?");
       process.exit(1);
@@ -98,53 +103,48 @@ class ScreenshotGenerate {
    * and then take a screenshot
    */
   private async generateTemplateScreenshots() {
-    if (CLEAN_OUTPUT_FOLDER) {
+    if (this.options.clean) {
       fs.emptyDirSync(paths.SCREENSHOTS_FOLDER);
     }
     const totalTemplates = templateFlows.length;
     let index = 0;
     for (const template of templateFlows) {
       const { flow_name } = template;
-      const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.jpg`);
+      /**
+       *
+       * CC TODO - replace all jpgs for png, remove jpeg package, update
+       * repo screenshots
+       *
+       *
+       *
+       */
+      const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
       if (!fs.existsSync(outputPath)) {
         await this.gotoTemplate(flow_name);
         await this.page.screenshot({
           path: outputPath,
           fullPage: true,
           captureBeyondViewport: true,
+          type: "png",
         });
       }
-      await this.callbacks.onScreenshotGenerated(outputPath);
       index++;
-      logUpdate(`${index}/${totalTemplates} screenshots generated`);
+      await this.callbacks.onScreenshotGenerated({
+        screenshotPath: outputPath,
+        index,
+        total: totalTemplates,
+      });
     }
-    logUpdate(`✔️  ${index}/${totalTemplates} screenshots generated`);
-    logUpdate.done();
+    await this.callbacks.onScreenshotsCompleted({ total: totalTemplates });
   }
 
   /**
    *
-   * Adapted from: https://stackoverflow.com/questions/15641243/need-to-zip-an-entire-directory-using-node-js
+   *
    */
   private async generateZipOutput() {
-    if (fs.existsSync(SCREENSHOTS_OUTPUT_ZIP)) {
-      fs.removeSync(SCREENSHOTS_OUTPUT_ZIP);
-    }
-    const stream = fs.createWriteStream(SCREENSHOTS_OUTPUT_ZIP);
-    const archive = archiver("zip", {
-      zlib: { level: 9 },
-    });
-    return new Promise((resolve, reject) => {
-      stream.on("close", () => {
-        console.log("✔️  Zip saved");
-        resolve(SCREENSHOTS_OUTPUT_ZIP);
-      });
-      archive
-        .directory(paths.SCREENSHOTS_FOLDER, false)
-        .on("error", (err) => reject(err))
-        .pipe(stream);
-      archive.finalize();
-    });
+    await zipFolder(paths.SCREENSHOTS_FOLDER, SCREENSHOTS_OUTPUT_ZIP);
+    console.log("✔️  Zip saved");
   }
 
   private async gotoTemplate(templatename: string) {
