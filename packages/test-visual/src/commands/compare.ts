@@ -31,7 +31,8 @@ export default program
 class ScreenshotComparator {
   diffs = {
     new: 0,
-    updated: 0,
+    different: 0,
+    same: 0,
   };
 
   constructor(private options: typeof DEFAULT_OPTIONS) {}
@@ -39,7 +40,7 @@ class ScreenshotComparator {
   public async run() {
     const latestRelease = await this.getLatestRelease();
     const { tag_name } = latestRelease;
-    const compareFolder = path.resolve(paths.CACHED_SCREENSHOTS_FOLDER, `screenshots-${tag_name}`);
+    const compareFolder = path.resolve(paths.CACHED_SCREENSHOTS_FOLDER, tag_name);
 
     if (!fs.existsSync(compareFolder)) {
       console.log("Downloading screenshots for comparison", tag_name);
@@ -69,11 +70,11 @@ class ScreenshotComparator {
 
   private async compareScreenshots(sourcePath: string, comparePath: string) {
     if (!fs.existsSync(sourcePath)) {
-      return "DELETED";
+      return;
     }
     if (!fs.existsSync(comparePath)) {
       this.diffs.new++;
-      return "NEW";
+      return;
     }
 
     const img1 = this.readImageData(sourcePath);
@@ -81,16 +82,16 @@ class ScreenshotComparator {
 
     if (img1 && img2) {
       const diff = new PNG({ width: img1.width, height: img1.height });
-
       const numDiffPixels = pixelmatch(img1.data, img2.data, diff.data, img1.width, img2.height, {
         threshold: 0.01,
       });
-
       if (numDiffPixels > 0) {
-        this.diffs.updated++;
+        this.diffs.different++;
         const outputFilename = path.basename(sourcePath).replace(".jpg", ".png");
         const outputFilepath = path.resolve(paths.SCREENSHOT_DIFFS_FOLDER, outputFilename);
         diff.pack().pipe(fs.createWriteStream(outputFilepath));
+      } else {
+        this.diffs.same++;
       }
     }
   }
@@ -99,9 +100,9 @@ class ScreenshotComparator {
     const extension = path.extname(filepath);
     const buffer = fs.readFileSync(filepath);
     switch (extension) {
-      case "jpg":
+      case ".jpg":
         return JPEG.decode(buffer);
-      case "png":
+      case ".png":
         return PNG.sync.read(buffer);
       default:
         if (this.options["ignore-errors"]) {

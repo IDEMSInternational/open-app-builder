@@ -4,14 +4,16 @@ import dotenv from "dotenv";
 
 const env = loadEnvVars();
 
+const APP_SRC_FOLDER = path.resolve(__dirname, "../../../../");
+const REPO_FOLDER = path.resolve(__dirname, "../../");
+
 export const paths = {
-  SRC_FOLDER: path.resolve(__dirname, "../../../../"),
   /** output path for generated screenshots */
-  OUTPUT_FOLDER: path.resolve(__dirname, "../output"),
-  SCREENSHOTS_FOLDER: path.resolve(__dirname, "../output/screenshots"),
-  SCREENSHOT_DIFFS_FOLDER: path.resolve(__dirname, "../output/diffs"),
-  CACHED_RELEASES: path.resolve(__dirname, "../cache/releases"),
-  CACHED_SCREENSHOTS_FOLDER: path.resolve(__dirname, "../cache/screenshots"),
+  OUTPUT_FOLDER: path.resolve(REPO_FOLDER, "output"),
+  SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "output/screenshots"),
+  SCREENSHOT_DIFFS_FOLDER: path.resolve(REPO_FOLDER, "output/diffs"),
+  CACHED_RELEASES: path.resolve(REPO_FOLDER, "cache/releases"),
+  CACHED_SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "cache/screenshots"),
 };
 
 Object.values(paths).forEach((p) => {
@@ -19,7 +21,7 @@ Object.values(paths).forEach((p) => {
 });
 
 /** path to src dexie installation to use during db seed methods */
-export const DEXIE_SRC_PATH = path.resolve(paths.SRC_FOLDER, "node_modules/dexie/dist/dexie.js");
+export const DEXIE_SRC_PATH = path.resolve(APP_SRC_FOLDER, "node_modules/dexie/dist/dexie.js");
 
 export const GH_REPO_ORG = env.GH_REPO_ORG;
 export const GH_REPO_NAME = env.GH_REPO_NAME;
