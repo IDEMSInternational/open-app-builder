@@ -36,6 +36,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         max-width: 100% !important;
       }
 
+      .tile_parent_points {
+        padding-top: 0 !important;
+      }
+
       .display-group.two_columns .offset {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
