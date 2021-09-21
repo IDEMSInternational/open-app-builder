@@ -52,7 +52,6 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     this.getParams();
   }
 
