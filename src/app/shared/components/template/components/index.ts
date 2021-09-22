@@ -46,6 +46,7 @@ import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplIconComponent } from "./icon";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
 import { TmplGroupComponent } from "./layout/group";
+import { SelectTextComponent } from "./select-text/select-text.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -89,6 +90,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplParentPointBoxComponent,
   TmplLottieAnimation,
   TmplGroupComponent,
+  SelectTextComponent,
 ];
 
 /***************************************************************************************
@@ -108,6 +110,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
   form: FormComponent,
+  select_text: SelectTextComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,

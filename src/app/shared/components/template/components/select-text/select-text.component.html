@@ -1,0 +1,51 @@
+<div
+  class="bordered-line mt-20 individual-select-text-box"
+  [ngClass]="{ green: toggle == true, red: toggle == false }"
+  (click)="triggerCopyContent($event, _row)"
+>
+  <div class="">
+    <div class="ion-float-left">{{ _row?.name }}</div>
+    <div class="ion-float-right">
+      <ng-container *ngIf="_row?.parameter_list?.copy_text && _row?.parameter_list.copied_text">
+        <ng-container *ngIf="!toggle; else copy_text_replace">{{
+          _row.parameter_list.copy_text
+        }}</ng-container>
+        <ng-template #copy_text_replace>{{ _row.parameter_list.copied_text }}</ng-template>
+      </ng-container>
+
+      <ng-container *ngIf="_row.parameter_list?.copy_icon && _row.parameter_list.copied_text">
+        <ng-container *ngIf="!toggle; else copy_icon_replace">
+          <ion-icon name="{{ _row.parameter_list?.copy_icon }}"></ion-icon>
+        </ng-container>
+
+        <ng-template #copy_icon_replace>
+          <span class="copy_text">{{ _row?.parameter_list.copied_text }}</span>
+        </ng-template>
+      </ng-container>
+
+      <ng-container *ngIf="_row.parameter_list?.copy_text && _row.parameter_list.copied_icon">
+        <ng-container *ngIf="!toggle; else copy_text_replace">
+          {{ _row.parameter_list?.copy_text }}
+        </ng-container>
+
+        <ng-template #copy_text_replace>
+          <ion-icon name="{{ _row.parameter_list?.copied_icon }}"></ion-icon>
+        </ng-template>
+      </ng-container>
+
+      <ng-container *ngIf="_row.parameter_list?.copy_icon && _row.parameter_list?.copied_icon">
+        <ng-container *ngIf="!toggle; else copy_img_replace">
+          <ion-icon name="{{ _row.parameter_list?.copy_icon }}"></ion-icon>
+        </ng-container>
+
+        <ng-template #copy_img_replace>
+          <img
+            class="image-based-icon"
+            src="/assets/plh_assets/{{ _row?.parameter_list?.copied_icon }}"
+          />
+        </ng-template>
+      </ng-container>
+    </div>
+    <span></span>
+  </div>
+</div>

@@ -15,6 +15,7 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
+import { ClipboardModule } from "@angular/cdk/clipboard";
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { createCustomElement } from "@angular/elements";
     NouisliderModule,
     LottieModule,
     AngularSvgIconModule.forRoot(),
+    ClipboardModule,
   ],
   exports: [...TEMPLATE_COMPONENTS, ...TEMPLATE_PIPES, TemplateContainerComponent],
   declarations: [

@@ -423,6 +423,7 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
+    | "select_text"
     | "group";
 
   export interface TemplateRow extends Row_with_translations {
