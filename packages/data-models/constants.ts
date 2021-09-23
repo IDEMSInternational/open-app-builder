@@ -14,6 +14,7 @@ export const DYNAMIC_PREFIXES = [
   "campaign",
   "calc",
   "item",
+  "raw",
 ] as const;
 
 /**
