@@ -48,12 +48,6 @@
     "note": ""
   },
   {
-    "SourceText": "Notifications",
-    "text": "",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Privacy Policy",
     "text": "Ipolisi Yobumfihlo",
     "type": "template",
@@ -68,12 +62,6 @@
   {
     "SourceText": "Open Survey",
     "text": "Isaveyi Evulekileyo",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Select Language",
-    "text": "",
     "type": "template",
     "note": ""
   },
@@ -140,12 +128,6 @@
   {
     "SourceText": "You have entered an incorrect code.",
     "text": "Ufake ikhowudi engachananga.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Language",
-    "text": "",
     "type": "template",
     "note": ""
   },
@@ -2920,30 +2902,6 @@
     "text": "Unokucelwa ukuba wabelane ngale khowudi nabantu abaza kuxhasa uhambo lwakho lwe@global.parent_app.",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Last sync at: @local.sync_latest",
-    "text": "",
-    "type": "template",
-    "note": "The string @local.sync_latest should not be translated."
-  },
-  {
-    "SourceText": "This device has never been synced",
-    "text": "",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Sync Now",
-    "text": "",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Syncing...",
-    "text": "",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!",
