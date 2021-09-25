@@ -10,12 +10,11 @@ import { PushNotificationService } from "./push-notification.service";
  */
 export class RapidproNotificationService {
   public token: string;
-  constructor(public pushNotificationService: PushNotificationService) {
-    this.init();
-  }
+  constructor(public pushNotificationService: PushNotificationService) {}
 
   async init() {
-    await this.pushNotificationService.init();
+    // TODO CC 2021-09-23 - Ensure push init handled in main app component before this init
+    // await this.pushNotificationService.init();
     this.registerRapidproToken(this.pushNotificationService.token);
   }
 
