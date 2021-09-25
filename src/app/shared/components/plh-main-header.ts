@@ -2,6 +2,7 @@ import { Location } from "@angular/common";
 import { Component, Input, NgZone, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: "plh-main-header",
@@ -36,15 +37,23 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   showDebugToggle = true;
   routeChanges$: Subscription;
   /** track if navigation has been used to handle back button click behaviour */
-  hasBackHistory = false;
+  backHistory: string[] = [];
+  previousUrl: string;
   constructor(private router: Router, private location: Location) {}
   ngOnInit() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.previousUrl = event.url;
+      });
     this.routeChanges$ = this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         this.handleRouteChange();
       }
       if (e instanceof NavigationStart) {
-        this.hasBackHistory = true;
+        if (e.url != "/template/home_screen") {
+          this.backHistory.push(e.url);
+        }
       }
     });
     this.handleRouteChange();
@@ -59,15 +68,24 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    */
   handleRouteChange() {
     // As component sits outside main ion-router-outlet need to access via firstChild method
-    // if wanting to access route params directly (not currently required)
+    // if wanting to access route params directly (not currently required)4
     const HOME_ROUTE = "/home_screen";
-    // track if home page, allowing case where hosted from subdirectory (e.g. our pr preview system)
-    this.isHomePage = location.pathname.endsWith(HOME_ROUTE);
-    this.isSettingsPage = location.pathname.endsWith("/settings");
+
+    if (this.backHistory.length > 0) {
+      this.isHomePage = false;
+    } else {
+      // track if home page, allowing case where hosted from subdirectory (e.g. our pr preview system)
+      this.isHomePage = location.pathname.endsWith(HOME_ROUTE);
+      this.isSettingsPage = location.pathname.endsWith("/settings");
+    }
   }
 
   onBackButtonClick() {
-    if (this.hasBackHistory) {
+    this.backHistory.pop();
+    if (this.backHistory.length >= 1) {
+      this.backHistory = [];
+    }
+    if (this.backHistory) {
       this.location.back();
     } else {
       this.router.navigateByUrl("/");
