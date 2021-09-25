@@ -3,6 +3,7 @@ import { addDays } from "@fullcalendar/angular";
 import { addHours, addMinutes } from "date-fns";
 import { APP_STRINGS } from "packages/data-models/constants";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
+import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -20,24 +21,61 @@ type ICampaigns = {
 @Injectable({ providedIn: "root" })
 export class CampaignService {
   campaigns: ICampaigns;
+  private _handledNotifications = {};
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
     private localNotificationService: LocalNotificationService,
-    private translateService: TemplateTranslateService
-  ) {
-    this.loadCampaigns();
-  }
+    private translateService: TemplateTranslateService,
+    private templateService: TemplateService
+  ) {}
 
   public async init() {
     this.loadCampaigns();
+    await this.scheduleCampaignNotifications();
     // Note - not currently awaiting to allow faster initial load
     console.log("[Campaigns]", this.campaigns);
-    this.scheduleCampaignNotifications();
+    // await this.handledTriggeredNotifications();
+    // add subscription to also process on update
+    this.localNotificationService.notificationsUpdated$.subscribe(async () => {
+      await this.handledTriggeredNotifications();
+    });
   }
 
   get scheduledCampaigns() {
     return Object.values(this.campaigns).filter((campaign) => campaign.schedule);
+  }
+
+  private async handledTriggeredNotifications() {
+    for (const notification of this.localNotificationService.triggeredNotifications) {
+      if (!this._handledNotifications[notification.id]) {
+        this._handledNotifications[notification.id] = true;
+        this.triggerRowActions(notification.extra);
+        // reschedule if actions handled, allow time for notifications to be loaded
+        setTimeout(async () => {
+          await this.scheduleCampaignNotifications();
+        }, 200);
+      }
+    }
+  }
+
+  /**
+   *
+   * @param row
+   * TODO - find better way to link with template actions
+   * TODO - find way to identify any named action list (not just click_action_list)
+   */
+  public triggerRowActions(row: FlowTypes.Campaign_listRow) {
+    if (row.click_action_list) {
+      for (const action of row.click_action_list) {
+        if (action.action_id === "set_field") {
+          const [key, value] = action.args;
+          this.templateService.setField(key, value);
+        } else {
+          console.error("Only set_field actions supported by debugger");
+        }
+      }
+    }
   }
 
   /**
@@ -47,10 +85,10 @@ export class CampaignService {
   private async scheduleCampaignNotifications() {
     const scheduledCampaigns = this.scheduledCampaigns;
     for (const campaign of scheduledCampaigns) {
+      // remove any previous notification
+      await this.deactiveCampaignNotifications(campaign.id);
       const nextRow = await this.getNextCampaignRow(campaign.id);
       if (nextRow) {
-        // remove any previous notification
-        await this.deactiveCampaignNotifications(campaign.id);
         // add new notification
         await this.scheduleCampaignNotification(nextRow, campaign.id);
       }
@@ -125,12 +163,12 @@ export class CampaignService {
 
   /** Deactivate all notifications for a given campaign */
   private async deactiveCampaignNotifications(campaign_id: string) {
-    const pendingNotifications = await this.localNotificationService.loadNotifications();
-    const deactivatedNotifications = Object.values(pendingNotifications).filter(
+    const pendingNotifications = this.localNotificationService.pendingNotifications;
+    const deactivatedNotifications = pendingNotifications.filter(
       (n) => n.extra.campaign_id === campaign_id
     );
     for (const notification of deactivatedNotifications) {
-      await this.localNotificationService.removeNotification(notification);
+      await this.localNotificationService.removeNotification(notification.id);
     }
   }
 

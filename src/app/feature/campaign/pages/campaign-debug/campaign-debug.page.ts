@@ -33,7 +33,6 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.localNotificationService.loadNotifications();
     // this.debugData = await this.dataEvaluationService.refreshDBCache();
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
@@ -70,17 +69,7 @@ export class CampaignDebugPage implements OnInit {
    * TODO - find way to identify any named action list (not just click_action_list)
    */
   public triggerRowActions(row: FlowTypes.Campaign_listRow) {
-    console.log("triggering actions", row);
-    if (row.click_action_list) {
-      for (const action of row.click_action_list) {
-        if (action.action_id === "set_field") {
-          const [key, value] = action.args;
-          this.templateService.setField(key, value);
-        } else {
-          console.error("Only set_field actions supported by debugger");
-        }
-      }
-    }
+    this.campaignService.triggerRowActions(row);
     this.processCampaign();
     // TODO - reload cache after trigger
   }

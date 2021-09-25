@@ -1,19 +1,21 @@
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
+import { Capacitor } from "@capacitor/core";
 import {
-  LocalNotification,
-  LocalNotificationAction,
-  Plugins,
-  Capacitor,
-  LocalNotificationPendingList,
-  App,
-} from "@capacitor/core";
+  LocalNotifications,
+  LocalNotificationSchema,
+  ActionType,
+} from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import { Subject } from "rxjs";
-const { LocalNotifications } = Plugins;
+import { BehaviorSubject } from "rxjs";
+import { DbService } from "../db/db.service";
 
-const LOCAL_STORAGE_KEY = "local_notifications";
-export type ILocalNotificationStorage = { [id: string]: Partial<LocalNotification> };
+const LOCAL_STORAGE_KEY = "local_notifications_list";
+
+/** Utility type to assert local notification has extra and schedule defined */
+export interface ILocalNotification extends LocalNotificationSchema {
+  schedule: LocalNotificationSchema["schedule"];
+  extra: any;
+}
 
 @Injectable({
   providedIn: "root",
@@ -25,82 +27,105 @@ export type ILocalNotificationStorage = { [id: string]: Partial<LocalNotificatio
  *
  * Note - local notificaitons always display in a banner (even in foreground mode)
  *
+ * Note - complex system required to maintain copy of notifications in storage and calculate
+ * which may have been triggered since last load as capacitor api only keeps notification ids (not meta)
+ * and doesn't always trigger events based on notifications (e.g. web provides no listener bindings)
+ *
  */
 export class LocalNotificationService {
-  enabled = false;
+  /**
+   * list of all notifications processed since app load for processing by services initialising after
+   * Includes any notifications previously scheduled but no longer present (e.g dismissed while app closed)
+   **/
+  public triggeredNotifications: ILocalNotification[] = [];
+  public pendingNotifications: ILocalNotification[] = [];
+  /** oservable */
+  public notificationsUpdated$ = new BehaviorSubject(new Date().getTime());
+  public permissionGranted = false;
 
-  public notifications$ = new Subject<any>();
+  constructor(private dbService: DbService) {}
 
-  public notificationsList: LocalNotification[] = [];
-  public notificationsHash: ILocalNotificationStorage = {};
-
-  constructor(private router: Router) {
-    this.init();
-    this._addListeners();
-  }
-  async init() {
-    await this.requestPermission();
-    const { granted } = await LocalNotifications.requestPermission();
-    if (granted) {
-      this.enabled = true;
+  public async init() {
+    this.permissionGranted = await this.requestPermission();
+    if (this.permissionGranted) {
       if (Capacitor.isNative) {
         await LocalNotifications.registerActionTypes({
           types: Object.values(NOTIFICATION_ACTIONS),
         });
       }
-      console.log("notifications are enabled");
-      this._addListeners();
-    } else {
-      this._addListeners();
-      // can still add listeners locally
     }
+    this._addListeners();
+    await this.loadNotifications();
   }
 
-  public requestPermission() {
-    return new Promise((resolve) => {
-      LocalNotifications.requestPermissions()
-        .then(({ results }) => {
-          const permissionState = results[0];
-          resolve(permissionState === "granted" ? true : false);
-        })
-        .catch((err) => {
-          if (err === "default") {
-            // user dismissed request;
-          }
-          if (err === "denied") {
-            // user or browser blocked request;
-          }
-          console.error(err);
-          resolve(false);
-        });
-    });
+  public async requestPermission(): Promise<boolean> {
+    const { display } = await LocalNotifications.requestPermissions();
+    return display === "granted";
   }
 
   /**
-   * Retrieve a list of pending notification IDs from
+   * Retrieve a list of pending notification IDs read from the notifications plugin
+   * and compare against metadata saved in localstorage. Combine to determine list of notifications
+   * that have since been sent (but not triggered in the app), and list of pending future notifications
    */
-  public async loadNotifications() {
+  private async loadNotifications() {
+    console.group("[Notifications] load");
+    const now = new Date();
+    // handle rescheduling notifications if lost from capacitor (e.g. web refresh)
+    const rescheduledNotifications = await this.getNotificationsRescheduled(now);
+    if (rescheduledNotifications.length > 0) {
+      for (const rescheduledNotification of rescheduledNotifications) {
+        // convert schedule back to date object from string representation
+        rescheduledNotification.schedule.at = new Date(rescheduledNotification.schedule.at);
+        await this.scheduleNotification(rescheduledNotification as any, false);
+      }
+      console.groupEnd();
+      return this.loadNotifications();
+    }
+
+    // use current timestamp to determine notifications triggered before now, or upcoming notifications
+    const triggeredNotifications = await this.getNotificationsTriggered(now);
+    this.triggeredNotifications = [...this.triggeredNotifications, ...triggeredNotifications];
+
+    const pendingNotifications = await this.getNotificationsPending();
+    this.pendingNotifications = pendingNotifications.sort((a, b) =>
+      a.schedule.at > b.schedule.at ? 1 : -1
+    );
+    console.log("pending notifications", this.pendingNotifications);
+    console.log("triggered notifications", this.triggeredNotifications);
+    // now that triggered/pending have been handled update stored cached to remove triggered
+    // and avoid reprocessing on a subsequent load
+    this.setLocalStorageNotifications(pendingNotifications);
+    console.groupEnd();
+
+    // notify subscribers that data may have been updated
+    this.notificationsUpdated$.next(new Date().getTime());
+  }
+
+  private async getNotificationsRescheduled(timeSince: Date) {
+    const missingNotifications = await this.getNotificationsNotPending();
+    // handle notification rescheduling (wiped from session in web app)
+    return missingNotifications.filter((n) => (n.schedule.at as any) > timeSince.toISOString());
+  }
+
+  /** Retrieve list of notifications no longer scheduled that were previously scheduled and stored */
+  private async getNotificationsTriggered(timeSince: Date) {
+    const missingNotifications = await this.getNotificationsNotPending();
+    return missingNotifications.filter((n) => (n.schedule.at as any) <= timeSince.toISOString());
+  }
+
+  /** Retrieve list of pending notifications */
+  private async getNotificationsPending() {
     const { notifications } = await LocalNotifications.getPending();
-    const pendingNotificationIds = Object.values(notifications).map((n) => n.id);
-    const localNotifications = this.getLocalStorageNotifications();
-    // remove local notifications no longer listed in pending
-    Object.keys(localNotifications).forEach((k) => {
-      if (!pendingNotificationIds.includes(k)) {
-        delete localNotifications[k];
-      }
-    });
-    // check for pending notifications with no local data stored (simply log error)
-    pendingNotificationIds.forEach((id) => {
-      if (!localNotifications.hasOwnProperty(id)) {
-        console.error("No local notification meta saved for id", id);
-      }
-    });
-    this.setLocalStorageNotifications(localNotifications);
-    // store variables
-    this.notificationsHash = localNotifications;
-    const list = Object.values(localNotifications) as LocalNotification[];
-    this.notificationsList = list.sort((a, b) => (a.schedule.at > b.schedule.at ? -1 : 1));
-    return localNotifications;
+    return notifications as ILocalNotification[];
+  }
+
+  /** Retrieve list of notifications that appear in storage but are not scheduled (e.g. cleared by capacitor wb) */
+  private async getNotificationsNotPending() {
+    const pending = await this.getNotificationsPending();
+    const pendingIds = pending.map((n) => n.id);
+    const storedNotificationMeta = this.getLocalStorageNotifications();
+    return storedNotificationMeta.filter((n) => !pendingIds.includes(n.id));
   }
 
   /**
@@ -110,50 +135,52 @@ export class LocalNotificationService {
    * see full scheduling options in type interface
    * see named actions below for configurations
    */
-  public async scheduleNotification(
-    options: Partial<LocalNotification> & {
-      schedule: LocalNotification["schedule"];
-    }
-  ) {
+  public async scheduleNotification(options: ILocalNotification, reloadNotifications = true) {
+    options.extra = { ...options.extra };
     const notifications = [{ ...NOTIFICATION_DEFAULTS, ...options }];
-    const result = await LocalNotifications.schedule({ notifications });
-    const { id } = options;
-    // when retrieved the numeric id has been converted back to string (for some reason)
-    if (result?.notifications?.[0].id === `${id}`) {
-      this.storeNotificationDetail(id, options);
+    await LocalNotifications.schedule({ notifications });
+    // ensure extra field populated (TODO - could make stronger requirement elsewhere)
+    options.extra = { ...options.extra };
+    this.addLocalStorageNotification(options as ILocalNotification);
+    if (reloadNotifications) {
+      await this.loadNotifications();
     }
-    return this.loadNotifications();
   }
 
   /**
    *
    */
-  public async removeNotification(notification: Partial<LocalNotification>) {
-    const { id } = notification;
-    const list: LocalNotificationPendingList = { notifications: [{ id: `${id}` }] };
-    await LocalNotifications.cancel(list);
-    return this.loadNotifications();
+  public async removeNotification(id: number, reloadNotifications = true) {
+    // remove from schedule
+    const notifications = [{ id }];
+    await LocalNotifications.cancel({ notifications });
+    // remove from localStorage
+    this.removeLocalStorageNotification(id);
+    if (reloadNotifications) {
+      await this.loadNotifications();
+    }
   }
 
   /**
-   *
+   * Debug method used to Schedule/Reschedule a notification to trigger after short delay
    * @param notification
    * @param delay - number of seconds to delay sending notification (default 3s)
    * @param forceBackground - WiP - minimise the app to show notification when app in background
    */
-  public async previewNotification(
-    notification: LocalNotification,
+  public async scheduleImmediateNotification(
+    notification: ILocalNotification,
     delay = 3,
     forceBackground = true
   ) {
+    // remove any existing notificaiton and reschedule with a new id to allow action reprocessing
+    await this.removeNotification(notification.id, false);
     const notificationDeliveryTime = addSeconds(new Date(), delay);
-    const preview = {
+    const immediateNotification = {
       ...notification,
-      id: notificationDeliveryTime.getTime(),
       schedule: { at: notificationDeliveryTime },
+      id: new Date().getTime(),
     };
-    // create a duplicate notification to fire after short delay
-    this.scheduleNotification(preview);
+    await this.scheduleNotification(immediateNotification, false);
     if (Capacitor.isNative && forceBackground) {
       // Ideally we want to minimise the app to see response when app is in background,
       // although the method appears inconsistent. Alternative minimiseApp proposed:
@@ -161,64 +188,60 @@ export class LocalNotificationService {
       // https://github.com/ionic-team/capacitor/issues?q=exitapp
       // App.exitApp();
     }
-    return preview;
-  }
-
-  /**
-   *
-   * NOTE - requires secure context and limited browser support (https://developer.mozilla.org/en-US/docs/Web/API/notification)
-   * @returns
-   */
-  private async requestWebNotificationPermission() {
-    if ("Notification" in window) {
-      if (window.Notification.permission === "granted") {
-        return true;
-      } else {
-        const permission = await window.Notification.requestPermission();
-        console.log("[Notification Permission]", permission);
-        return permission === "granted";
-      }
-    } else {
-      console.error("Notification API not available");
-      return false;
-    }
+    return immediateNotification;
   }
 
   /**
    * When notifications are scheduled only the ID number (as string) is returned when querying
    * Store full details in localstorage for future retrieval
    */
-  private storeNotificationDetail(id: number, notification: Partial<LocalNotification>) {
+  private addLocalStorageNotification(notification: ILocalNotification) {
+    // remove any duplicate id
     const localNotifications = this.getLocalStorageNotifications();
-    localNotifications[`${id}`] = notification;
-    this.setLocalStorageNotifications(localNotifications);
+    const updatedNotifications = localNotifications.filter((n) => n.id !== notification.id);
+    updatedNotifications.push(notification);
+    this.setLocalStorageNotifications(updatedNotifications);
   }
-  private getLocalStorageNotifications() {
+
+  private removeLocalStorageNotification(id: number) {
+    const localNotifications = this.getLocalStorageNotifications();
+    const updatedNotifications = localNotifications.filter((n) => n.id !== id);
+    this.setLocalStorageNotifications(updatedNotifications);
+  }
+
+  private getLocalStorageNotifications(): ILocalNotification[] {
     const storedNotifications = localStorage.getItem(LOCAL_STORAGE_KEY);
-    const notificationsByKey: ILocalNotificationStorage = JSON.parse(storedNotifications || "{}");
-    return notificationsByKey;
+    return storedNotifications ? JSON.parse(storedNotifications) : [];
   }
-  private setLocalStorageNotifications(localNotifications: ILocalNotificationStorage) {
+  private setLocalStorageNotifications(localNotifications: ILocalNotification[]) {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localNotifications));
   }
 
+  /**
+   *
+   * NOTE - CC 2021-09-23
+   * As notifications contain custom extra data that needs to be handled by different services,
+   * we actually don't want to do much directly when notification received. Instead we trigger
+   * the load script which handled tracking notificaitons previously schedule but no longer existing
+   * (to allow ). Also the triggers don't appear to be working on web
+   *
+   * TODO - handle removal/re-init methods to avoid memory leaks
+   */
   async _addListeners() {
     // LocalNotifications.removeAllListeners();
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
-      (action) => {
+      async (action) => {
         console.log("[NOTIFICATION ACTION]", action);
-        if (action.notification.extra && action.notification.extra.openPath) {
-          this.router.navigateByUrl(action.notification.extra.openPath);
-        }
+        await this.loadNotifications();
       }
       // TODO emit event for action to other listeners?
       // good to have default as can only ever have 1 listener for each type
     );
     // Note - currently not working: https://github.com/ionic-team/capacitor/issues/2352
-    LocalNotifications.addListener("localNotificationReceived", (notification) => {
+    LocalNotifications.addListener("localNotificationReceived", async (notification) => {
       console.log(["NOTIFICATION RECEIVED"], notification);
-      this.notifications$.next(notification);
+      await this.loadNotifications();
     });
   }
 }
@@ -235,36 +258,44 @@ type IActionTypeId = "action_1" | "action_2";
  * Could possibly consider: https://github.com/katzer/cordova-plugin-local-notifications
  */
 const NOTIFICATION_ACTIONS: {
-  [key in IActionTypeId]: LocalNotificationAction;
+  [key in IActionTypeId]: ActionType;
 } = {
   action_1: {
-    title: "Test 1",
     id: "action_1",
-    requiresAuthentication: false,
-    foreground: true,
-    destructive: true,
-    input: true,
-    inputButtonTitle: "input",
-    inputPlaceholder: "some text",
+    actions: [
+      {
+        title: "Test 1",
+        id: "action_1",
+        requiresAuthentication: false,
+        foreground: true,
+        destructive: true,
+        input: true,
+        inputButtonTitle: "input",
+        inputPlaceholder: "some text",
+      },
+    ],
   },
   action_2: {
-    title: "Test 1",
     id: "action_1",
-    requiresAuthentication: false,
-    foreground: false,
-    destructive: false,
-    input: false,
-    inputButtonTitle: "input",
-    inputPlaceholder: "some text",
+    actions: [
+      {
+        title: "Test 1",
+        id: "action_1",
+        requiresAuthentication: false,
+        foreground: false,
+        destructive: false,
+        input: false,
+        inputButtonTitle: "input",
+        inputPlaceholder: "some text",
+      },
+    ],
   },
 };
 
 /**
  * Default settings used where otherwise not specified
  */
-const NOTIFICATION_DEFAULTS: LocalNotification & {
-  actionTypeId: IActionTypeId;
-} = {
+const NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
   id: new Date().getUTCMilliseconds(),
   title: "PLH Teens",
   body: "You have a new message waiting for you",
