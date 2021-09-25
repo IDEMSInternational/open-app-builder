@@ -14,6 +14,8 @@ export const DB_TABLES = {
   flow_events: "++id," + FLOW_EVENT_INDEXES.join(","),
   /** Long term tracking of changes to user data, such as contact fields */
   data_events: "++id," + FLOW_EVENT_INDEXES.join(","),
+  /** Scheduled and sent local notifications, including whether the app has had chance to process callbacks */
+  local_notifications: "id,_created,_callbacks_processed",
 
   /**********************************************************************************************************
    * 2021-04-06
@@ -52,7 +54,7 @@ export interface IDBDoc {
  * e.g. v0.1.0 => 000001000
  * e.g. v0.10.4 => 000010004
  */
-export const DB_VERSION = 10005;
+export const DB_VERSION = 12000;
 
 export interface IDBEvent {
   topic: "DB";

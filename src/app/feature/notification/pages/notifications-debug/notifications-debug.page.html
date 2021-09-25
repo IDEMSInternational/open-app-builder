@@ -14,7 +14,7 @@
   </div>
 
   <!-- Pending Notifications -->
-  <ion-card *ngFor="let notification of localNotificationService.pendingNotifications">
+  <ion-card *ngFor="let notification of (localNotificationService.pendingNotifications$ | async)">
     <ion-card-header class="row-header">
       <span>{{notification.extra.id}}</span>
     </ion-card-header>
@@ -68,15 +68,15 @@
       <ion-button fill="clear" (click)="logDebugInfo(notification)">(log full details)</ion-button>
     </ion-card-content>
   </ion-card>
-  <ion-card *ngIf="localNotificationService.pendingNotifications.length===0">
+  <ion-card *ngIf="(localNotificationService.pendingNotifications$ | async).length===0">
     <ion-card-header>No Scheduled Notifications</ion-card-header>
   </ion-card>
 
   <!-- Triggered Notifications -->
-  <h2 style="flex: 1" *ngIf="localNotificationService.triggeredNotifications.length>0">
+  <h2 style="flex: 1" *ngIf="(localNotificationService.sessionNotifications$ | async).length>0">
     Recently Sent
   </h2>
-  <ion-card *ngFor="let notification of localNotificationService.triggeredNotifications">
+  <ion-card *ngFor="let notification of (localNotificationService.sessionNotifications$ | async)">
     <ion-card-header class="row-header">
       <span>{{notification.extra.id}}</span>
     </ion-card-header>

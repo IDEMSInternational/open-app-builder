@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
@@ -26,7 +25,6 @@ export class CampaignDebugPage implements OnInit {
     public campaignService: CampaignService,
     public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
-    private templateService: TemplateService,
     private router: Router,
     private route: ActivatedRoute,
     private modalCtrl: ModalController
