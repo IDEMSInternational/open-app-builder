@@ -2,7 +2,6 @@ import { Location } from "@angular/common";
 import { Component, Input, NgZone, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { filter } from "rxjs/operators";
 
 @Component({
   selector: "plh-main-header",
@@ -38,14 +37,8 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
   routeChanges$: Subscription;
   /** track if navigation has been used to handle back button click behaviour */
   backHistory: string[] = [];
-  previousUrl: string;
   constructor(private router: Router, private location: Location) {}
   ngOnInit() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.previousUrl = event.url;
-      });
     this.routeChanges$ = this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
         this.handleRouteChange();
