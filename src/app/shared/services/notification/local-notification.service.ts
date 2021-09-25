@@ -7,14 +7,17 @@ import {
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
 import { BehaviorSubject } from "rxjs";
+import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
-
-const LOCAL_STORAGE_KEY = "local_notifications_list";
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
   schedule: LocalNotificationSchema["schedule"];
   extra: any;
+  _created?: any;
+  _action_performed?: string;
+  // maintain timestamp to keep track of what notifications have been processed since load
+  _callbacks_processed_time?: number;
 }
 
 @Injectable({
@@ -27,28 +30,38 @@ export interface ILocalNotification extends LocalNotificationSchema {
  *
  * Note - local notificaitons always display in a banner (even in foreground mode)
  *
- * Note - complex system required to maintain copy of notifications in storage and calculate
- * which may have been triggered since last load as capacitor api only keeps notification ids (not meta)
- * and doesn't always trigger events based on notifications (e.g. web provides no listener bindings)
+ * Note - complex system required to maintain copy of notifications in db and calculate
+ * which may have been triggered since last load as capacitor api removes sent notifications and
+ * doesn't always trigger events based on notifications (e.g. dismissed while app closed)
+ *
+ * TODO - improve logging methods
  *
  */
 export class LocalNotificationService {
   /**
-   * list of all notifications processed since app load for processing by services initialising after
+   * Observable list of all notifications processed since app load, so additional services can respond to updates
    * Includes any notifications previously scheduled but no longer present (e.g dismissed while app closed)
    **/
-  public triggeredNotifications: ILocalNotification[] = [];
-  public pendingNotifications: ILocalNotification[] = [];
-  /** oservable */
-  public notificationsUpdated$ = new BehaviorSubject(new Date().getTime());
+  public sessionNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
+  /** Observable list of all scheduled notifications */
+  public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
 
-  constructor(private dbService: DbService) {}
+  /** Typed wrapper around database table used to store local notifications */
+  private db: Dexie.Table<ILocalNotification, number>;
+
+  /** Track session start time to resolve list of notifications processed during session */
+  private sessionStartTime = new Date().getTime();
+
+  constructor(dbService: DbService) {
+    this.db = dbService.table<ILocalNotification>("local_notifications");
+  }
 
   public async init() {
+    this.sessionStartTime = new Date().getTime();
     this.permissionGranted = await this.requestPermission();
     if (this.permissionGranted) {
-      if (Capacitor.isNative) {
+      if (Capacitor.isNativePlatform()) {
         await LocalNotifications.registerActionTypes({
           types: Object.values(NOTIFICATION_ACTIONS),
         });
@@ -64,68 +77,71 @@ export class LocalNotificationService {
   }
 
   /**
-   * Retrieve a list of pending notification IDs read from the notifications plugin
-   * and compare against metadata saved in localstorage. Combine to determine list of notifications
-   * that have since been sent (but not triggered in the app), and list of pending future notifications
+   * Retrieve a list of pending notification IDs read from the notifications API plugin
+   * and compare against list saved in database.
+   * Use to resolve list of upcoming notifications and any been sent but not triggered in the app.
    */
   private async loadNotifications() {
     console.group("[Notifications] load");
-    const now = new Date();
-    // handle rescheduling notifications if lost from capacitor (e.g. web refresh)
-    const rescheduledNotifications = await this.getNotificationsRescheduled(now);
-    if (rescheduledNotifications.length > 0) {
-      for (const rescheduledNotification of rescheduledNotifications) {
-        // convert schedule back to date object from string representation
-        rescheduledNotification.schedule.at = new Date(rescheduledNotification.schedule.at);
-        await this.scheduleNotification(rescheduledNotification as any, false);
-      }
-      console.groupEnd();
-      return this.loadNotifications();
-    }
 
-    // use current timestamp to determine notifications triggered before now, or upcoming notifications
-    const triggeredNotifications = await this.getNotificationsTriggered(now);
-    this.triggeredNotifications = [...this.triggeredNotifications, ...triggeredNotifications];
+    await this.rescheduleMissingNotifications();
 
-    const pendingNotifications = await this.getNotificationsPending();
-    this.pendingNotifications = pendingNotifications.sort((a, b) =>
-      a.schedule.at > b.schedule.at ? 1 : -1
+    await this.handleUnprocessedNotifications();
+
+    const dbNotifications = await this.getDBNotifications();
+    const sessionNotifications = dbNotifications.filter(
+      (n) => n._callbacks_processed_time >= this.sessionStartTime
     );
-    console.log("pending notifications", this.pendingNotifications);
-    console.log("triggered notifications", this.triggeredNotifications);
-    // now that triggered/pending have been handled update stored cached to remove triggered
-    // and avoid reprocessing on a subsequent load
-    this.setLocalStorageNotifications(pendingNotifications);
+    this.sessionNotifications$.next(this._sortBySchedule(sessionNotifications));
+
+    const pendingNotifications = await this.getAPINotifications();
+    this.pendingNotifications$.next(this._sortBySchedule(pendingNotifications));
     console.groupEnd();
-
-    // notify subscribers that data may have been updated
-    this.notificationsUpdated$.next(new Date().getTime());
   }
 
-  private async getNotificationsRescheduled(timeSince: Date) {
-    const missingNotifications = await this.getNotificationsNotPending();
-    // handle notification rescheduling (wiped from session in web app)
-    return missingNotifications.filter((n) => (n.schedule.at as any) > timeSince.toISOString());
+  private _sortBySchedule(notifications: ILocalNotification[]) {
+    return notifications.sort((a, b) => (a.schedule.at > b.schedule.at ? 1 : -1));
   }
 
-  /** Retrieve list of notifications no longer scheduled that were previously scheduled and stored */
-  private async getNotificationsTriggered(timeSince: Date) {
-    const missingNotifications = await this.getNotificationsNotPending();
-    return missingNotifications.filter((n) => (n.schedule.at as any) <= timeSince.toISOString());
+  /**
+   * Reschedule any notifications that have been listed in the DB but do not appear as pending on the API
+   * This can happen on web when api data is cleared between sessions
+   */
+  private async rescheduleMissingNotifications() {
+    const dbNotifications = await this.getDBNotifications();
+    const expected = dbNotifications.filter((n) => n.schedule.at.getTime() > new Date().getTime());
+
+    const pending = await this.getAPINotifications();
+    const pendingIds = pending.map((n) => n.id);
+
+    const missing = expected.filter((n) => !pendingIds.includes(n.id));
+    for (const notification of missing) {
+      await this.scheduleNotification(notification, false);
+    }
   }
 
-  /** Retrieve list of pending notifications */
-  private async getNotificationsPending() {
+  /**
+   * Mark any notifications that have not been processed but should have been sent with
+   * the current processing timestamp to include in session notifications list
+   */
+  private async handleUnprocessedNotifications() {
+    const dbNotifications = await this.getDBNotifications();
+    const unprocessedNotifications = dbNotifications
+      .filter((n) => !n._callbacks_processed_time)
+      .filter((n) => n.schedule.at.getTime() < new Date().getTime());
+    const processTime = new Date().getTime();
+
+    for (const notification of unprocessedNotifications) {
+      await this.updateDBNotification(notification.id, {
+        _callbacks_processed_time: processTime,
+      });
+    }
+  }
+
+  /** Retrieve list of pending notifications from Capacitor API */
+  private async getAPINotifications() {
     const { notifications } = await LocalNotifications.getPending();
     return notifications as ILocalNotification[];
-  }
-
-  /** Retrieve list of notifications that appear in storage but are not scheduled (e.g. cleared by capacitor wb) */
-  private async getNotificationsNotPending() {
-    const pending = await this.getNotificationsPending();
-    const pendingIds = pending.map((n) => n.id);
-    const storedNotificationMeta = this.getLocalStorageNotifications();
-    return storedNotificationMeta.filter((n) => !pendingIds.includes(n.id));
   }
 
   /**
@@ -141,21 +157,17 @@ export class LocalNotificationService {
     await LocalNotifications.schedule({ notifications });
     // ensure extra field populated (TODO - could make stronger requirement elsewhere)
     options.extra = { ...options.extra };
-    this.addLocalStorageNotification(options as ILocalNotification);
+    await this.addDBNotification(options as ILocalNotification);
     if (reloadNotifications) {
       await this.loadNotifications();
     }
   }
 
-  /**
-   *
-   */
+  /** Remove API and DB references for a given notification id **/
   public async removeNotification(id: number, reloadNotifications = true) {
-    // remove from schedule
     const notifications = [{ id }];
     await LocalNotifications.cancel({ notifications });
-    // remove from localStorage
-    this.removeLocalStorageNotification(id);
+    await this.removeDBNotification(id);
     if (reloadNotifications) {
       await this.loadNotifications();
     }
@@ -191,30 +203,30 @@ export class LocalNotificationService {
     return immediateNotification;
   }
 
-  /**
-   * When notifications are scheduled only the ID number (as string) is returned when querying
-   * Store full details in localstorage for future retrieval
-   */
-  private addLocalStorageNotification(notification: ILocalNotification) {
-    // remove any duplicate id
-    const localNotifications = this.getLocalStorageNotifications();
-    const updatedNotifications = localNotifications.filter((n) => n.id !== notification.id);
-    updatedNotifications.push(notification);
-    this.setLocalStorageNotifications(updatedNotifications);
+  /***************************************************************************************************
+   * DB Methods
+   *
+   * Notifications are autmoatically removed by the capacitor API after processing locally, therefore
+   * retain copy in db for longer term storage and identification of notifications that may have been
+   * sent while app in background and not processed
+   **************************************************************************************************/
+
+  private addDBNotification(notification: ILocalNotification) {
+    notification._created = generateTimestamp();
+    return this.db.put(notification, notification.id);
   }
 
-  private removeLocalStorageNotification(id: number) {
-    const localNotifications = this.getLocalStorageNotifications();
-    const updatedNotifications = localNotifications.filter((n) => n.id !== id);
-    this.setLocalStorageNotifications(updatedNotifications);
+  /** Apply changes on top of an existing notification, with simple merge (i.e. non-nested) */
+  private updateDBNotification(id: number, update: Partial<ILocalNotification>) {
+    return this.db.update(id, update);
   }
 
-  private getLocalStorageNotifications(): ILocalNotification[] {
-    const storedNotifications = localStorage.getItem(LOCAL_STORAGE_KEY);
-    return storedNotifications ? JSON.parse(storedNotifications) : [];
+  private async removeDBNotification(id: number) {
+    return this.db.delete(id);
   }
-  private setLocalStorageNotifications(localNotifications: ILocalNotification[]) {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(localNotifications));
+
+  private async getDBNotifications() {
+    return this.db.toArray();
   }
 
   /**
@@ -228,11 +240,13 @@ export class LocalNotificationService {
    * TODO - handle removal/re-init methods to avoid memory leaks
    */
   async _addListeners() {
-    // LocalNotifications.removeAllListeners();
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       async (action) => {
         console.log("[NOTIFICATION ACTION]", action);
+        await this.updateDBNotification(action.notification.id, {
+          _action_performed: action.actionId,
+        });
         await this.loadNotifications();
       }
       // TODO emit event for action to other listeners?

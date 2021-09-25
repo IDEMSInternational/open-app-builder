@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { addDays } from "@fullcalendar/angular";
 import { addHours, addMinutes } from "date-fns";
 import { APP_STRINGS } from "packages/data-models/constants";
+import { Subscription } from "rxjs";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
@@ -22,6 +23,7 @@ type ICampaigns = {
 export class CampaignService {
   campaigns: ICampaigns;
   private _handledNotifications = {};
+  private _notificationUpdates$: Subscription;
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
@@ -35,11 +37,18 @@ export class CampaignService {
     await this.scheduleCampaignNotifications();
     // Note - not currently awaiting to allow faster initial load
     console.log("[Campaigns]", this.campaigns);
-    // await this.handledTriggeredNotifications();
-    // add subscription to also process on update
-    this.localNotificationService.notificationsUpdated$.subscribe(async () => {
-      await this.handledTriggeredNotifications();
-    });
+    this._subscribeToNotificationUpdates();
+  }
+
+  private _subscribeToNotificationUpdates() {
+    if (this._notificationUpdates$) {
+      this._notificationUpdates$.unsubscribe();
+    }
+    this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
+      async () => {
+        await this.handledTriggeredNotifications();
+      }
+    );
   }
 
   get scheduledCampaigns() {
@@ -47,7 +56,7 @@ export class CampaignService {
   }
 
   private async handledTriggeredNotifications() {
-    for (const notification of this.localNotificationService.triggeredNotifications) {
+    for (const notification of this.localNotificationService.sessionNotifications$.value) {
       if (!this._handledNotifications[notification.id]) {
         this._handledNotifications[notification.id] = true;
         this.triggerRowActions(notification.extra);
@@ -163,7 +172,7 @@ export class CampaignService {
 
   /** Deactivate all notifications for a given campaign */
   private async deactiveCampaignNotifications(campaign_id: string) {
-    const pendingNotifications = this.localNotificationService.pendingNotifications;
+    const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
     const deactivatedNotifications = pendingNotifications.filter(
       (n) => n.extra.campaign_id === campaign_id
     );
