@@ -1940,7 +1940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/cli@npm:latest":
+"@capacitor/cli@npm:^3.2.3":
   version: 3.2.3
   resolution: "@capacitor/cli@npm:3.2.3"
   dependencies:
@@ -1967,12 +1967,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capacitor/core@npm:latest":
-  version: 3.1.1
-  resolution: "@capacitor/core@npm:3.1.1"
+"@capacitor/core@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "@capacitor/core@npm:3.2.3"
   dependencies:
     tslib: ^2.1.0
-  checksum: 0f2b868a30140128f92afcb78863479493e44337065f91d668def31d9d36fe28b58abd99c70c00505c51162c61c0ec82bcf34e4a71215747d8ea480ea2d89db0
+  checksum: 67b9878bb9aa33c1aea3fc0fc7477db6ebad1efb17cf5aecf2929682d076afad5d2eb0bd100a289c6e1d353e7214c926e7ea2f7e328efa59709187d41aa78fc6
   languageName: node
   linkType: hard
 
@@ -10744,8 +10744,8 @@ __metadata:
     "@angular/router": ~12.0.5
     "@capacitor/android": ^3.2.3
     "@capacitor/app": ^1.0.3
-    "@capacitor/cli": latest
-    "@capacitor/core": latest
+    "@capacitor/cli": ^3.2.3
+    "@capacitor/core": ^3.2.3
     "@capacitor/device": ^1.0.3
     "@capacitor/local-notifications": ^1.0.6
     "@capacitor/push-notifications": ^1.0.4
