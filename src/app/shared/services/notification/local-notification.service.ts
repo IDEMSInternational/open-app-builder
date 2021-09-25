@@ -6,6 +6,7 @@ import {
   ActionType,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
+import { APP_STRINGS } from "packages/data-models/constants";
 import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
@@ -265,11 +266,12 @@ type IActionTypeId = "action_1" | "action_2";
 
 /**
  * More fine-grained control to notifications can be set through the use of registered
- * actions.
- * Note, these might not be fully functional at the moment
- * https://forum.ionicframework.com/t/push-notifications-background-handler/188578
- * https://forum.ionicframework.com/t/android-capacitor-local-notification-clear-dismiss-button/184896/2
- * Could possibly consider: https://github.com/katzer/cordova-plugin-local-notifications
+ * actions. These provide sets of buttons that appear under notifications and perform
+ * specific actions.
+ *
+ * NOTE - not currently used. If wanting to link to paths in the app will require
+ * registering custom url scheme
+ *
  */
 const NOTIFICATION_ACTIONS: {
   [key in IActionTypeId]: ActionType;
@@ -311,11 +313,11 @@ const NOTIFICATION_ACTIONS: {
  */
 const NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
   id: new Date().getUTCMilliseconds(),
-  title: "PLH Teens",
-  body: "You have a new message waiting for you",
+  title: APP_STRINGS.NOTIFICATION_DEFAULT_TITLE,
+  body: APP_STRINGS.NOTIFICATION_DEFAULT_TEXT,
   sound: null,
   attachments: null,
-  actionTypeId: "action_1",
+  // actionTypeId: "action_1", // Currently no action buttons included
   extra: null,
   // Note, we don't want android to remove notification as we will handle in db
   autoCancel: false,
