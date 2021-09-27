@@ -3,7 +3,7 @@ import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Plugins, Capacitor, App } from "@capacitor/core";
 const { SplashScreen } = Plugins;
-import { NotificationService } from "./shared/services/notification/notification.service";
+import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { SurveyService } from "./feature/survey/survey.service";
@@ -18,6 +18,7 @@ import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
 import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
 import { isSameDay } from "date-fns";
+import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 
 @Component({
   selector: "app-root",
@@ -33,7 +34,7 @@ export class AppComponent {
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
-    private notifications: NotificationService,
+    private pushNotificationService: PushNotificationService,
     private dbService: DbService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
@@ -44,6 +45,7 @@ export class AppComponent {
     private appEventService: AppEventService,
     private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
+    private analyticsService: AnalyticsService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -56,6 +58,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
+      const isDeveloperMode = this.templateService.getField("user_mode") === false;
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
@@ -68,10 +71,13 @@ export class AppComponent {
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
       if (Capacitor.isNative) {
-        this.removeConsoleLogs();
+        if (!isDeveloperMode) {
+          this.removeConsoleLogs();
+        }
         SplashScreen.hide();
-        this.notifications.init();
+        this.pushNotificationService.init();
       }
+      this.analyticsService.init();
       this.renderAppTemplates = true;
       this.scheduleCampaignNotifications();
       this.scheduleReinitialisation();
@@ -118,6 +124,7 @@ export class AppComponent {
   /** Rewrite default log functions for improved performance when running on device */
   private removeConsoleLogs() {
     if (window && window.console) {
+      console.log("Disabling console logs");
       window.console.log = function (...args: any) {};
       window.console.warn = function (...args: any) {};
       window.console.error = function (...args: any) {};

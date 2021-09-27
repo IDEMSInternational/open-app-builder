@@ -7,12 +7,11 @@ interface IParsedEnvironment {
   API_BASE_PATH: string;
   DB_HOST: string;
   DB_PORT: string;
-  DB_ADMIN_NAME: string;
-  DB_ADMIN_USER: string;
-  DB_ADMIN_PASSWORD: string;
-  DB_NAME: string;
-  DB_USER: string;
-  DB_PASSWORD: string;
+  POSTGRES_USER: string;
+  POSTGRES_PASSWORD: string;
+  APP_DB_NAME: string;
+  APP_DB_USER: string;
+  APP_DB_PASSWORD: string;
   NODE_ENV: string;
   npm_package_version?: string;
 }
@@ -30,7 +29,7 @@ try {
   }
   if (error) {
     // could not parse dotenv - either not provided or running in production without file
-    console.error("dotenv parse fail");
+    console.error("dotenv parse fail, existing env keys:", Object.keys(process.env));
   }
 } catch (error) {
   console.error("caught error from parsed");

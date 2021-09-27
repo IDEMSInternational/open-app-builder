@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostBinding,
   Input,
   OnDestroy,
   OnInit,
@@ -21,6 +22,8 @@ import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
 import { TemplateTranslateService } from "./services/template-translate.service";
 import { SettingsService } from "src/app/pages/settings/settings.service";
+import { ServerService } from "../../services/server/server.service";
+import { AnalyticsService } from "../../services/analytics/analytics.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -73,10 +76,21 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public elRef: ElementRef,
     public templateNavService: TemplateNavService,
     public cdr: ChangeDetectorRef,
-    public settingsService: SettingsService
+    public settingsService: SettingsService,
+    public serverService: ServerService,
+    public analyticsService: AnalyticsService
   ) {
-    this.templateActionService = new TemplateActionService(this, this.settingsService);
+    this.templateActionService = new TemplateActionService(
+      this,
+      this.settingsService,
+      this.serverService,
+      this.analyticsService
+    );
     this.templateRowService = new TemplateRowService(this);
+  }
+  /** Assign the templatename as metdaata on the component for easier debugging and testing */
+  @HostBinding("attr.data-templatename") get getTemplatename() {
+    return this.templatename;
   }
 
   async ngOnInit() {
@@ -132,6 +146,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
         // ensure angular destroys previous row components before rendering new
         // (note - will cause short content flicker)
         this.templateRowService.renderedRows = [];
+        // allow time for other pending ops to finish
+        await _wait(50);
         await this.renderTemplate();
       } else {
         await this.templateRowService.processRowUpdates();

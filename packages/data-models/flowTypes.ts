@@ -344,6 +344,7 @@ export namespace FlowTypes {
   export interface TourStep extends Row_with_translations {
     type: "step";
     message_text?: string;
+    message_template?: string;
     title?: string;
     template_component_name?: string;
     element?: string;
@@ -500,6 +501,7 @@ export namespace FlowTypes {
       | "set_theme"
       | "start_tour"
       | "trigger_actions"
+      | "track_event"
       | "process_template";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;

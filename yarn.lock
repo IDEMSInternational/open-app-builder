@@ -469,6 +469,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular/elements@npm:^12.2.4":
+  version: 12.2.4
+  resolution: "@angular/elements@npm:12.2.4"
+  dependencies:
+    tslib: ^2.2.0
+  peerDependencies:
+    "@angular/core": 12.2.4
+    "@angular/platform-browser": 12.2.4
+    rxjs: ^6.5.3 || ^7.0.0
+  checksum: 41f05493d2dc1f3060800af0d8fdffa1729e79abe8e1d310b4d50d1dcb4f6b1c689c82d1fe9a15bf3c5d5118648734dd2ec1fae1c4fc539533c35914b0f08028
+  languageName: node
+  linkType: hard
+
 "@angular/fire@npm:^6.1.5":
   version: 6.1.5
   resolution: "@angular/fire@npm:6.1.5"
@@ -549,20 +562,6 @@ __metadata:
     "@angular/animations":
       optional: true
   checksum: adb2375176903d388168fc62b3e1177732b70ea85b0c6c81b6d93d52b670135b67ca1950eedd7450e77d0997d4127f1247a8820b96ba4a6f98f3089f3d2db6c2
-  languageName: node
-  linkType: hard
-
-"@angular/router@npm:>=9.0.0 <13.0.0":
-  version: 12.1.1
-  resolution: "@angular/router@npm:12.1.1"
-  dependencies:
-    tslib: ^2.2.0
-  peerDependencies:
-    "@angular/common": 12.1.1
-    "@angular/core": 12.1.1
-    "@angular/platform-browser": 12.1.1
-    rxjs: ^6.5.3
-  checksum: 6f2ae8058f70cf9cfda9a0387e0bd4be2db1cd14c27ea20e9dd8d4a2041bc72dd7a97d306bdc8e84aead4deee136a7acb88b23475b5b28fb381b89e9edf2eaca
   languageName: node
   linkType: hard
 
@@ -3356,6 +3355,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ngx-matomo/router@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@ngx-matomo/router@npm:1.3.3"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ">=9.0.0 <13.0.0"
+    "@angular/core": ">=9.0.0 <13.0.0"
+    "@angular/router": ">=9.0.0 <13.0.0"
+    "@ngx-matomo/tracker": 1.3.3
+  checksum: 38270fd5857578cdde1b27ae42c21cf9584a04d30c2aae3ddb46e47d557bbf63ccacd93ca65d88c6322232ebc3d4a9d6ea5caf07440a53d12f8a833938209cd6
+  languageName: node
+  linkType: hard
+
+"@ngx-matomo/tracker@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@ngx-matomo/tracker@npm:1.3.3"
+  dependencies:
+    tslib: ^2.0.0
+  peerDependencies:
+    "@angular/common": ">=9.0.0 <13.0.0"
+    "@angular/core": ">=9.0.0 <13.0.0"
+  checksum: 423ffce58b1e1ed60ff28d364337f7b2b0a318ca3d9faaaffd1e6eb8306ff95eab9cc4fcca2ac2da1f3eed00888d13044738b9af1ba5aa0297f561531c3cce06
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -5130,7 +5155,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.0, ansi-escapes@npm:^4.3.1":
+"ansi-escapes@npm:^4.1.0, ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.0, ansi-escapes@npm:^4.3.1":
   version: 4.3.2
   resolution: "ansi-escapes@npm:4.3.2"
   dependencies:
@@ -5279,6 +5304,15 @@ __metadata:
     umzug: 3.0.0-beta.16
   languageName: unknown
   linkType: soft
+
+"app-path@npm:^3.2.0":
+  version: 3.3.0
+  resolution: "app-path@npm:3.3.0"
+  dependencies:
+    execa: ^1.0.0
+  checksum: 7a0879999f65223ce08bf63c3660add700683fddfe4043caffc17160293ee2c2dc93a6874b82bd0a38f38706d08b546c6133ab5988aa0a015e6cc062aca7d509
+  languageName: node
+  linkType: hard
 
 "app-root-path@npm:^3.0.0":
   version: 3.0.0
@@ -8175,6 +8209,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cypress-image-snapshot@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "cypress-image-snapshot@npm:4.0.1"
+  dependencies:
+    chalk: ^2.4.1
+    fs-extra: ^7.0.1
+    glob: ^7.1.3
+    jest-image-snapshot: 4.2.0
+    pkg-dir: ^3.0.0
+    term-img: ^4.0.0
+  peerDependencies:
+    cypress: ^4.5.0
+  checksum: 3fa5745461b033d18c585b0e1ca8f0f046f196023906103fb11c963566ea73714232d3000e45305a9953b2e38341af4a00a1b60e27eca700faed1aacb04c6ae5
+  languageName: node
+  linkType: hard
+
 "cypress@npm:^8.3.0":
   version: 8.3.0
   resolution: "cypress@npm:8.3.0"
@@ -8781,6 +8831,13 @@ __metadata:
   dependencies:
     esutils: ^2.0.2
   checksum: 2eae469bd2889ceee9892083a67340b3622568fe5290edce620e5d5ddab23d644b2a780e9a7c68ad9c8a62716a70c5e484402ac93a398fa78b54b7505592aa7f
+  languageName: node
+  linkType: hard
+
+"document-register-element@npm:^1.14.10":
+  version: 1.14.10
+  resolution: "document-register-element@npm:1.14.10"
+  checksum: 4a2302361cc193ae6be28a2eec9dee8aec18c370411b2dfc264a73a0c20839e76396dc19680069f71a40ca5aa838499038af9b6a9e4baa8be22e3e96d4f7fae8
   languageName: node
   linkType: hard
 
@@ -10618,6 +10675,7 @@ __metadata:
     "@angular/compiler": ~12.0.5
     "@angular/compiler-cli": ~12.0.5
     "@angular/core": ~12.0.5
+    "@angular/elements": ^12.2.4
     "@angular/fire": ^6.1.5
     "@angular/forms": ~12.0.5
     "@angular/language-service": ~12.0.5
@@ -10641,6 +10699,8 @@ __metadata:
     "@ionic/angular-toolkit": ^4.0.0
     "@ionic/cli": ^6.16.3
     "@ionic/pwa-elements": ^3.0.2
+    "@ngx-matomo/router": ^1.3.3
+    "@ngx-matomo/tracker": ^1.3.3
     "@types/howler": ^2.2.2
     "@types/intro.js": ^3.0.1
     "@types/jasmine": ~3.7.7
@@ -10665,6 +10725,7 @@ __metadata:
     dexie: ^3.0.3
     dexie-observable: 3.0.0-beta.11
     dexie-syncable: ^3.0.0-beta.10
+    document-register-element: ^1.14.10
     eslint: ^7.29.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: 2.23.4
@@ -10672,6 +10733,7 @@ __metadata:
     eslint-plugin-prefer-arrow: 1.2.3
     firebase: ^8.6.8
     firebase-tools: ^9.14.0
+    globalthis: ^1.0.2
     howler: ^2.2.1
     intro.js: ^3.2.1
     jasmine-core: ~3.7.1
@@ -10690,7 +10752,6 @@ __metadata:
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^6.4.0
-    ngx-matomo: 1.0.0-rc.0
     node-rsa: ^1.1.1
     nouislider: ^14.6.3
     plh-data: 1.0.0
@@ -10996,6 +11057,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"get-stdin@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "get-stdin@npm:5.0.1"
+  checksum: a355ad406d78cb1d5bf297c8c8b8648ceb6ff52c8deb9c582f6f7bab3ff0619b5a86defbb0c286ff1e556cd2324dc4416b81f09d339d1763b7c970696f55cc42
+  languageName: node
+  linkType: hard
+
 "get-stream@npm:^4.0.0, get-stream@npm:^4.1.0":
   version: 4.1.0
   resolution: "get-stream@npm:4.1.0"
@@ -11173,6 +11241,15 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"globalthis@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "globalthis@npm:1.0.2"
+  dependencies:
+    define-properties: ^1.1.3
+  checksum: 1ac54e059ddb43ff8342cfd94406934c184de544ff505550e9242df35deb50591a5ff80635a8fa28c2f10e8b6544d99d58a0f88f3f8a8db933b7fd614c06b27a
+  languageName: node
+  linkType: hard
+
 "globby@npm:^11.0.1, globby@npm:^11.0.3":
   version: 11.0.4
   resolution: "globby@npm:11.0.4"
@@ -11211,6 +11288,13 @@ fsevents@^1.2.7:
     pify: ^2.0.0
     pinkie-promise: ^2.0.0
   checksum: 7acac933247f203624c502e6db54995d355ae2ce618be40a6a125c73bac9fa1bb775cf2b0959d92807605534f7b29cf711bc354febb8a6dc2ecbaa1cbf59efa5
+  languageName: node
+  linkType: hard
+
+"glur@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "glur@npm:1.1.2"
+  checksum: ac352bfd525af750aeee602b776ff48fae75f96086f9c50d7197faa9e93bef78c94d4fe0e56b06a10046bc5ae19255121b122888849708efd1872d7b1d0fb217
   languageName: node
   linkType: hard
 
@@ -12924,6 +13008,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"iterm2-version@npm:^4.1.0":
+  version: 4.2.0
+  resolution: "iterm2-version@npm:4.2.0"
+  dependencies:
+    app-path: ^3.2.0
+    plist: ^3.0.1
+  checksum: 5df4224d8c7d51a8d40c5d45fb7a8c1c435caf9210ca1005872af938c639cf70b4e4658f676fefc9c2a070e0196e12d552d23f02986c171ca622b352ea0e4d46
+  languageName: node
+  linkType: hard
+
 "jasmine-core@npm:^3.6.0, jasmine-core@npm:~3.8.0":
   version: 3.8.0
   resolution: "jasmine-core@npm:3.8.0"
@@ -13173,6 +13267,25 @@ fsevents@^1.2.7:
     fsevents:
       optional: true
   checksum: 5c9e3a1e3feee8cf6e06aec5ddc28703d75d484c398802469ec881a922591a2c94b1bc86ce9510dec854b363740781f9eb2d76b224fdd560ecb8fa2436b35432
+  languageName: node
+  linkType: hard
+
+"jest-image-snapshot@npm:4.2.0":
+  version: 4.2.0
+  resolution: "jest-image-snapshot@npm:4.2.0"
+  dependencies:
+    chalk: ^1.1.3
+    get-stdin: ^5.0.1
+    glur: ^1.1.2
+    lodash: ^4.17.4
+    mkdirp: ^0.5.1
+    pixelmatch: ^5.1.0
+    pngjs: ^3.4.0
+    rimraf: ^2.6.2
+    ssim.js: ^3.1.1
+  peerDependencies:
+    jest: ">=20 <=26"
+  checksum: 23075ebd6117b5f5ff7d698fc1ba7f8f1f170cab4f288ab9e0d002acafc70c21cd46a151aa88a93e84a28f7984673490194768e94fa5e9c3e9dfd66d9286b5f9
   languageName: node
   linkType: hard
 
@@ -14691,7 +14804,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:4.x, lodash@npm:^4.15.0, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.5, lodash@npm:^4.7.0":
+"lodash@npm:4.17.21, lodash@npm:4.x, lodash@npm:^4.15.0, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4, lodash@npm:^4.17.5, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
@@ -15652,25 +15765,6 @@ fsevents@^1.2.7:
     lottie-web: ">=5.4.0"
     rxjs: ">=6.0.0"
   checksum: aaeaf4f59e0a119868d15ee75af206f1d8823025bb08fcde6a7c2f198861fb703dfb21a73a3954d18608d2349d71b02235351d480ed1e3393fbe33468705924d
-  languageName: node
-  linkType: hard
-
-"ngx-matomo@npm:1.0.0-rc.0":
-  version: 1.0.0-rc.0
-  resolution: "ngx-matomo@npm:1.0.0-rc.0"
-  dependencies:
-    "@angular/router": ">=9.0.0 <13.0.0"
-    rxjs: ^6.5.0
-    tslib: ^2.0.0
-  peerDependencies:
-    "@angular/common": ">=9.0.0 <13.0.0"
-    "@angular/core": ">=9.0.0 <13.0.0"
-  dependenciesMeta:
-    "@angular/router":
-      optional: true
-    rxjs:
-      optional: true
-  checksum: e008d2db743232e1967aca61921e3747163ccae7e9949c1e88be2bb38fd47d0ac0bace78e928df0c0f3896942d0b8df1c3b01f1b1958cc8a7346be13adb8c253
   languageName: node
   linkType: hard
 
@@ -17016,6 +17110,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"pixelmatch@npm:^5.1.0":
+  version: 5.2.1
+  resolution: "pixelmatch@npm:5.2.1"
+  dependencies:
+    pngjs: ^4.0.1
+  bin:
+    pixelmatch: bin/pixelmatch
+  checksum: 6cdfc967c03e41e2350c8669d8b3f37dad1106de5f43f0537c3a3fd1c557e28cd9e8039f445591efdc52372ab50592ed696acc1183106239ec2b19b5bfd10345
+  languageName: node
+  linkType: hard
+
 "pkg-dir@npm:^2.0.0":
   version: 2.0.0
   resolution: "pkg-dir@npm:2.0.0"
@@ -17085,6 +17190,20 @@ fsevents@^1.2.7:
   version: 8.0.0
   resolution: "pluralize@npm:8.0.0"
   checksum: 5251b470a0c8e5181ac7e1d61028553f90cb2c85c34b8e468cea269ae715499524546c2c3681029ef5697d86c54bfb12e49388f5cc6082051e84f5888588f4ec
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "pngjs@npm:3.4.0"
+  checksum: aa6d2cb4dd770cab9b06d9169aa94f134d7ff7dae3a73310709f0f0b4cdbcca2a8bfa7fa6f4d610719d5a3aa848447e6a755730e5dc911a38e8ec4d7a64dc214
+  languageName: node
+  linkType: hard
+
+"pngjs@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "pngjs@npm:4.0.1"
+  checksum: 69b86799d85d2788a9418683a1477443cf92e7d0b3697c88fa2bb261b407e80ff52df20e69ace534d0c9e633ef862426ba1270e5c5b1dec59137820ffb75cad5
   languageName: node
   linkType: hard
 
@@ -19017,7 +19136,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rimraf@npm:2, rimraf@npm:^2.2.8, rimraf@npm:^2.5.2, rimraf@npm:^2.5.4, rimraf@npm:^2.6.1, rimraf@npm:^2.6.3":
+"rimraf@npm:2, rimraf@npm:^2.2.8, rimraf@npm:^2.5.2, rimraf@npm:^2.5.4, rimraf@npm:^2.6.1, rimraf@npm:^2.6.2, rimraf@npm:^2.6.3":
   version: 2.7.1
   resolution: "rimraf@npm:2.7.1"
   dependencies:
@@ -19103,7 +19222,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
+"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -20199,6 +20318,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"ssim.js@npm:^3.1.1":
+  version: 3.5.0
+  resolution: "ssim.js@npm:3.5.0"
+  checksum: 6545f9e86059b3a74b6f5f9a14f2e265c1209d3f1f8ad2a076ef11b708397afd9ab924b8844303ad8de3fd3bb3886e78e3efedc0f83d53d7f1cb57a5dc2e2356
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^8.0.0, ssri@npm:^8.0.1":
   version: 8.0.1
   resolution: "ssri@npm:8.0.1"
@@ -20880,6 +21006,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"term-img@npm:^4.0.0":
+  version: 4.1.0
+  resolution: "term-img@npm:4.1.0"
+  dependencies:
+    ansi-escapes: ^4.1.0
+    iterm2-version: ^4.1.0
+  checksum: 738460fffe68169d3d17097cd05b11bcdaddbb4cf04760312b1c2d7575a2fab6a1034a7f03f45d63155487f79ec3289a8dd96ec1277a12de353dda8e1e93c0e0
+  languageName: node
+  linkType: hard
+
 "term-size@npm:^2.1.0":
   version: 2.2.1
   resolution: "term-size@npm:2.2.1"
@@ -20962,6 +21098,8 @@ fsevents@^1.2.7:
     "@types/node": ^15.12.4
     concurrently: ^6.2.1
     cypress: ^8.3.0
+    cypress-image-snapshot: ^4.0.1
+    data-models: 1.0.0
     typescript: ~4.2.4
     wait-on: ^6.0.0
   languageName: unknown

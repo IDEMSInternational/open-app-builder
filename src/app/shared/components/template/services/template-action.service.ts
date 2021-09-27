@@ -4,6 +4,8 @@ import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
 import { SettingsService } from "src/app/pages/settings/settings.service";
 import { TemplateProcessService } from "./template-process.service";
+import { ServerService } from "src/app/shared/services/server/server.service";
+import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -21,7 +23,9 @@ export class TemplateActionService {
 
   constructor(
     public container: TemplateContainerComponent,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private serverService: ServerService,
+    private analyticsService: AnalyticsService
   ) {}
 
   /** Public method to add actions to processing queue and process */
@@ -125,6 +129,9 @@ export class TemplateActionService {
         );
       case "start_tour":
         return this.container.tourService.startTour(key);
+      case "track_event":
+        this.analyticsService.trackEvent(key);
+        break;
       case "trigger_actions":
         const triggeredActions: FlowTypes.TemplateRowAction[] = args[0] as any;
         // add actions to end of existing action queue for processing after current queue complete
@@ -143,7 +150,9 @@ export class TemplateActionService {
           this.container.router,
           this.container.route,
           this.container.templateNavService,
-          this.container.settingsService
+          this.container.settingsService,
+          this.container.serverService,
+          this.analyticsService
         );
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
@@ -175,6 +184,9 @@ export class TemplateActionService {
         }
         if (emit_value === "set_language") {
           this.container.templateTranslateService.setLanguage(args[1]);
+        }
+        if (emit_value === "server_sync") {
+          await this.serverService.syncUserData();
         }
         if (parent) {
           // continue to emit any actions to parent where defined

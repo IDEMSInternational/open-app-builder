@@ -14,4 +14,20 @@ export const DYNAMIC_PREFIXES = [
   "campaign",
   "calc",
   "item",
+  "raw",
 ] as const;
+
+/**
+ * All localstorage fields will be prefixed with this
+ * TODO - this has not been consistently applied so refactoring required
+ * */
+export const FIELD_PREFIX = "rp-contact-field";
+
+/**
+ * Fieldnames hardcoded into the app
+ * TODO - these have not been consistently applied so refactoring required
+ * */
+export const APP_FIELDS = {
+  SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
+  APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
+};

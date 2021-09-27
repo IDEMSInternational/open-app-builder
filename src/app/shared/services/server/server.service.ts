@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Plugins } from "@capacitor/core";
+import { APP_FIELDS } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
-import { catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
+import { generateTimestamp } from "../../utils";
 
 const { Device } = Plugins;
 /** How often to attempt sync - currently every 15mins */
@@ -56,24 +57,29 @@ export class ServerService {
       app_version: environment.version,
       device_info: this.device_info,
     };
-    return this.http
-      .post(`/app_users/${this.app_user_id}`, data)
-      .pipe(
-        catchError(this.handleError)
-        // retryWhen((errors) =>
-        //   errors.pipe(
-        //     tap((val) => console.log(`error happened, val`)),
-        //     delayWhen((val) => timer(5000))
-        //   )
+    return new Promise<string>((resolve, reject) => {
+      this.http
+        .post(`/app_users/${this.app_user_id}`, data)
+        // .pipe(
+        //   catchError(this.handleError)
+        //   // retryWhen((errors) =>
+        //   //   errors.pipe(
+        //   //     tap((val) => console.log(`error happened, val`)),
+        //   //     delayWhen((val) => timer(5000))
+        //   //   )
+        //   // )
+        //   // retry(3), // retry a failed request up to 3 times
         // )
-        // retry(3), // retry a failed request up to 3 times
-      )
-      .subscribe(
-        (res) => {
-          console.log("User data synced", res);
-        },
-        (err) => console.error(err)
-      );
+        .subscribe(
+          (res) => {
+            const timestamp = generateTimestamp();
+            console.log("User data synced", res);
+            localStorage.setItem(APP_FIELDS.SERVER_SYNC_LATEST, timestamp);
+            resolve(timestamp);
+          },
+          (err) => resolve(null)
+        );
+    });
   }
 
   private getUserStorageData() {
