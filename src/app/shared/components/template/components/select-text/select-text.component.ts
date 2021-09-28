@@ -35,11 +35,7 @@ export class SelectTextComponent
     this.getParams();
   }
 
-  public async handleChange(value: any) {
-    await this.setValue(value);
-    this.triggerActions("changed");
-  }
-
+ 
   getParams() {
     console.table(this._row);
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
@@ -55,7 +51,6 @@ export class SelectTextComponent
   }
 
   triggerCopyContent($event: MouseEvent, _row: FlowTypes.TemplateRow) {
-    debugger;
     this.toggle = !this.toggle;
 
     this.subscribe = this.source.subscribe((val) => {
