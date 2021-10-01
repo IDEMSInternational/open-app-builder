@@ -50,7 +50,7 @@ services:
   # Postgres DB
   ####################################################################
   db:
-    image: postgres
+    image: postgres:13
     container_name: plh_db
     restart: unless-stopped
     env_file:
