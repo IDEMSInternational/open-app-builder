@@ -44,6 +44,17 @@ All changes to database structures are handled by migration scripts, found in [s
 
 The files must be named sequentially as that is the order they are applied in.
 
+## Importing Spec into REST Clients 
+To view a json representation of the docs, a url is produced depending on the basepath the api is served from, e.g.
+`http://localhost:3000/-json`
+`http://localhost:3000/api-json`
+https://stackoverflow.com/a/69388317/5693245
+
+Additionally a [spec-export.json](./spec-export.json) document is created when running locally and committed to the repo.
+
+Either the file or link can be directly imported into a REST client like insomnia
+
+
 ## Examples and References
 - https://github.com/nestjs/nest/tree/master/sample/07-sequelize/src
 - https://docs.nestjs.com/recipes/sql-sequelize#sql-sequelize
