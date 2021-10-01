@@ -84,7 +84,11 @@ export class ContactFieldService {
     this.columnsHashmap = arrayToHashmap(this.columns, "column_name");
   }
 
+  /**
+   *
+   */
   private async listTableColumns(table_name: string) {
+    // https://sequelize.org/master/manual/raw-queries.html
     const query =
       "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = ?";
     const result = await this.executeSQL(query, [table_name]);
