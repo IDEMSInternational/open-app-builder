@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { USER_DB_CONFIG } from "./db/config";
-import { AppUsersModule } from "./endpoints";
+import * as Endpoints from "./endpoints";
 import { DefaultModule } from "./endpoints/default";
 
 @Module({
@@ -21,7 +21,8 @@ import { DefaultModule } from "./endpoints/default";
       },
     }),
     DefaultModule,
-    AppUsersModule,
+    Endpoints.AppUsersModule,
+    Endpoints.ContactFieldsModule,
   ],
 })
 export class AppModule {}
