@@ -17,7 +17,12 @@ import { Platform } from "@ionic/angular";
         >
         </ion-toggle>
       </div>
-      <span class="label">{{ _row.value ? true_text : false_text }}</span>
+      <span
+        class="label"
+        *ngIf="true_text && false_text"
+        [innerHTML]="true_text && false_text | markdown"
+        >{{ _row.value ? true_text : false_text }}</span
+      >
     </div>
   `,
   styleUrls: ["./toggle-bar.scss"],
