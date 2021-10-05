@@ -1,13 +1,12 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { DeviceInfo, Plugins } from "@capacitor/core";
+import { DeviceInfo, Device } from "@capacitor/device";
 import { APP_FIELDS } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 
-const { Device } = Plugins;
 /** How often to attempt sync - currently every 15mins */
 const SYNC_FREQUENCY_MS = 1000 * 60 * 15;
 
@@ -31,7 +30,8 @@ export class ServerService {
 
   async init() {
     this.device_info = await Device.getInfo();
-    this.app_user_id = this.device_info.uuid;
+    const { uuid } = await Device.getId();
+    this.app_user_id = uuid;
     if (environment.production) {
       this.syncUserData();
       this.syncSchedule.subscribe(() => {
