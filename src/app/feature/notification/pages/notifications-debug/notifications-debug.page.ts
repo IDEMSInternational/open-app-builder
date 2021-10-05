@@ -1,38 +1,31 @@
-import { Component, OnInit } from "@angular/core";
-import { LocalNotification } from "@capacitor/core";
+import { Component } from "@angular/core";
 import { IonDatetime } from "@ionic/angular";
 import { timer } from "rxjs";
 import { map, take } from "rxjs/operators";
-import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
+import {
+  ILocalNotification,
+  LocalNotificationService,
+} from "src/app/shared/services/notification/local-notification.service";
 
 @Component({
   templateUrl: "./notifications-debug.page.html",
   styleUrls: ["./notifications-debug.page.scss"],
 })
-export class NotificationsDebugPage implements OnInit {
-  public editableNotification: LocalNotification;
+export class NotificationsDebugPage {
+  public editableNotification: ILocalNotification;
   public previewCountdown: { [id: number]: number } = {};
 
   constructor(public localNotificationService: LocalNotificationService) {}
 
-  async ngOnInit() {
-    await this.localNotificationService.loadNotifications();
-    this.localNotificationService.notifications$.subscribe(async (notification) => {
-      // refresh notification list when new notification received
-      console.log("local notification received", notification);
-      await this.localNotificationService.loadNotifications();
-    });
-  }
-
   /**
-   * Schedule a duplicate notification to be triggered after 2s as a preview
+   * Reschedule a notification to be triggered after 2s
    * Create a countdown timer to inform the user of the pending notification
    * in case they want to test with app closed
    * @param notification
    */
-  public async previewNotification(notification: LocalNotification) {
+  public async triggerSend(notification: ILocalNotification) {
     const delaySeconds = 3;
-    const { id } = await this.localNotificationService.previewNotification(
+    await this.localNotificationService.scheduleImmediateNotification(
       notification,
       delaySeconds + 1
     );
@@ -40,18 +33,15 @@ export class NotificationsDebugPage implements OnInit {
       .pipe(map((i) => delaySeconds - i))
       .pipe(take(delaySeconds + 1))
       .subscribe((v) => {
-        this.previewCountdown[id] = v;
-        if (v === 0) {
-          this.localNotificationService.loadNotifications();
-        }
+        this.previewCountdown[notification.id] = v;
       });
   }
 
-  public async removeNotification(notification: LocalNotification) {
-    await this.localNotificationService.removeNotification(notification);
+  public async removeNotification(notification: ILocalNotification) {
+    await this.localNotificationService.removeNotification(notification.id);
   }
 
-  public showCustomNotificationSchedule(notification: LocalNotification, picker: IonDatetime) {
+  public showCustomNotificationSchedule(notification: ILocalNotification, picker: IonDatetime) {
     this.editableNotification = notification;
     const pickerValue = new Date(notification.schedule.at).toISOString();
     picker.value = pickerValue;
@@ -62,11 +52,11 @@ export class NotificationsDebugPage implements OnInit {
     if (this.editableNotification) {
       this.editableNotification.schedule.at = new Date(pickerValue);
       await this.localNotificationService.scheduleNotification(this.editableNotification as any);
-      await this.localNotificationService.loadNotifications();
+      // await this.localNotificationService.loadNotifications();
     }
   }
 
-  public logDebugInfo(notification: LocalNotification) {
+  public logDebugInfo(notification: ILocalNotification) {
     console.group(notification.extra.id);
     console.log(notification);
     console.groupEnd();
