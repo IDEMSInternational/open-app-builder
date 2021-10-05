@@ -8,7 +8,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   template: `
     <div class="subtitle-wrapper margin-t-regular" [class]="style">
       <h2 [style.text-align]="textAlign" [class]="'standard normal' + ' ' + style">
-        {{ _row.value }}
+        <span [innerHTML]="_row.value | markdown"></span>
       </h2>
     </div>
   `,
