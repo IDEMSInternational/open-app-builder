@@ -23,6 +23,7 @@ import { DefaultModule } from "./endpoints/default";
     DefaultModule,
     Endpoints.AppUsersModule,
     Endpoints.ContactFieldsModule,
+    Endpoints.TablesModule,
   ],
 })
 export class AppModule {}
