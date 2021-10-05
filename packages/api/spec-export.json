@@ -56,6 +56,10 @@
           "device_info"
         ]
       },
+      "STRING": {
+        "type": "object",
+        "properties": {}
+      },
       "TableColumnMappingDto": {
         "type": "object",
         "properties": {
@@ -173,17 +177,17 @@
         }
       }
     },
-    "/contact_fields/columns": {
+    "/contact_fields/{app_user_id}": {
       "post": {
-        "operationId": "ContactFieldController_addMappedTableColumns",
-        "summary": "Add columns to map raw field data",
+        "operationId": "ContactFieldController_setUserContactFields",
+        "summary": "Set User Contact Fields",
         "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TableColumnMappingDto"
+                "$ref": "#/components/schemas/ContactFieldDto"
               }
             }
           }
@@ -194,16 +198,40 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                  "$ref": "#/components/schemas/ContactFieldDto"
                 }
               }
             }
           }
         }
-      },
-      "delete": {
-        "operationId": "ContactFieldController_removeMappedTableColumns",
-        "summary": "Remove columns used to map raw field data",
+      }
+    },
+    "/tables": {
+      "get": {
+        "operationId": "TablesController_listTables",
+        "summary": "List tables",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "List of table_names",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/STRING"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tables/{table_name}": {
+      "get": {
+        "operationId": "TablesController_addMappedTableColumns",
+        "summary": "Add columns to map raw field data",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -229,17 +257,17 @@
         }
       }
     },
-    "/contact_fields/{app_user_id}": {
-      "post": {
-        "operationId": "ContactFieldController_setUserContactFields",
-        "summary": "Set User Contact Fields",
+    "/tables/{table_name}/columns": {
+      "delete": {
+        "operationId": "TablesController_removeMappedTableColumns",
+        "summary": "Remove columns used to map raw field data",
         "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactFieldDto"
+                "$ref": "#/components/schemas/TableColumnMappingDto"
               }
             }
           }
@@ -250,7 +278,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactFieldDto"
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
                 }
               }
             }
