@@ -14,7 +14,7 @@
   ],
   "servers": [
     {
-      "url": ""
+      "url": "//api/"
     }
   ],
   "components": {
@@ -67,8 +67,24 @@
             "description": "Column Field Mapping",
             "default": [
               {
-                "field_name": "example_text",
+                "field_name": "test_text",
                 "field_type": "text"
+              },
+              {
+                "field_name": "test_integer",
+                "field_type": "integer"
+              },
+              {
+                "field_name": "test_number",
+                "field_type": "number"
+              },
+              {
+                "field_name": "test_date",
+                "field_type": "date"
+              },
+              {
+                "field_name": "test_boolean",
+                "field_type": "boolean"
               }
             ],
             "type": "array",
@@ -230,6 +246,45 @@
     },
     "/tables/{table_name}": {
       "get": {
+        "operationId": "TablesController_getTableMeta",
+        "summary": "Get table meta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tables/{table_name}/columns": {
+      "get": {
+        "operationId": "TablesController_getTableColumns",
+        "summary": "Add columns to map raw field data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
         "operationId": "TablesController_addMappedTableColumns",
         "summary": "Add columns to map raw field data",
         "parameters": [],
@@ -255,9 +310,7 @@
             }
           }
         }
-      }
-    },
-    "/tables/{table_name}/columns": {
+      },
       "delete": {
         "operationId": "TablesController_removeMappedTableColumns",
         "summary": "Remove columns used to map raw field data",
