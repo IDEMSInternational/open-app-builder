@@ -24,14 +24,10 @@ export class ContactFieldController {
     description: "User Updated",
     type: ContactFieldDto,
   })
-  async setUserContactFields(
-    @Param() params: { app_user_id: string },
-    @Body() data: ContactFieldDto
-  ) {
-    const { contact_fields } = data;
+  async setUserContactFields(@Param() params: { app_user_id: string }, @Body() data: any) {
     const { app_user_id } = params;
     try {
-      const res = await this.ContactFieldService.setUserContactFields(app_user_id, contact_fields);
+      const res = await this.ContactFieldService.setUserContactFields(app_user_id, data);
       return res;
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
