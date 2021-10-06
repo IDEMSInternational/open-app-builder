@@ -1,7 +1,5 @@
-import { Sequelize } from "sequelize";
-import { any } from "sequelize/types/lib/operators";
-import { USER_DB_CONFIG } from "src/db/config";
-import { FieldDataType, ITableColumn } from "../types";
+import { ITableColumn } from "../types";
+import { getSequelize } from "./sequelize.utils";
 
 export async function listTableNames() {
   const query = `
@@ -29,7 +27,7 @@ export async function listTableColumns(table_name: string) {
 /**
  *
  */
-export function addTableColumn(table_name: string, column_name: string, datatype: FieldDataType) {
+export function addTableColumn(table_name: string, column_name: string, datatype: string) {
   const query = `ALTER TABLE ${table_name} ADD ${column_name} ${datatype}`;
   return this.executeSQL(query);
 }
@@ -47,8 +45,7 @@ export function dropTableColumn(table_name: string, column_name: string) {
  */
 export async function executeSQL(query: string, values: string[] = []) {
   // TODO - might be way to pass existing connection
-  const sequelize = new Sequelize(USER_DB_CONFIG);
+  const sequelize = getSequelize();
   const res = await sequelize.query({ query, values });
-  await sequelize.close();
   return res;
 }
