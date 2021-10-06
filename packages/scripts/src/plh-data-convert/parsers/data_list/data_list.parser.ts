@@ -1,3 +1,4 @@
+import { setNestedProperty } from "../../../../../../src/app/shared/utils";
 import { FlowTypes } from "../../../../types";
 import { extractConditionList, parsePLHCollectionString } from "../../utils";
 import { DefaultParser } from "../default/default.parser";
@@ -14,6 +15,11 @@ export class DataListParser extends DefaultParser {
       }
       if (field.endsWith("notification_schedule")) {
         row[field] = parsePLHCollectionString(row[field]);
+      }
+      // assign nested structures, e.g {time.hour : 4} => {time: { hour: 4 }}
+      if (field.includes(".")) {
+        row = setNestedProperty(field, row[field], row);
+        delete row[field];
       }
     });
     return row;
