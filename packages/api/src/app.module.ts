@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { EventEmitterModule } from "@nestjs/event-emitter";
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { USER_DB_CONFIG } from "./db/config";
@@ -8,6 +9,7 @@ import { DefaultModule } from "./endpoints/default";
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    EventEmitterModule.forRoot(),
     SequelizeModule.forRoot({
       ...USER_DB_CONFIG,
       autoLoadModels: true,
