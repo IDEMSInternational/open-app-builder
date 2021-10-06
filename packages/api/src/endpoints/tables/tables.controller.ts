@@ -31,6 +31,27 @@ export class TablesController {
   }
 
   @Get(":table_name")
+  @ApiOperation({ summary: "Get table meta" })
+  @ApiResponse({
+    status: 200,
+  })
+  async getTableMeta(@Param() params: { table_name: string }) {
+    // TODO - add general table meta get return or discovery doc
+    return params.table_name;
+  }
+
+  @Get(":table_name/columns")
+  @ApiOperation({ summary: "Add columns to map raw field data" })
+  @ApiBody({ type: TableColumnMappingDto })
+  @ApiResponse({
+    status: 200,
+    description: "User Updated",
+    type: TableColumnMappingDto,
+  })
+  async getTableColumns(@Param() params: { table_name: string }) {
+    return listTableColumns(params.table_name);
+  }
+
   @Post(":table_name/columns")
   @ApiOperation({ summary: "Add columns to map raw field data" })
   @ApiBody({ type: TableColumnMappingDto })
