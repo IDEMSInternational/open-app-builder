@@ -3241,6 +3241,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nestjs/event-emitter@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@nestjs/event-emitter@npm:1.0.0"
+  dependencies:
+    eventemitter2: 6.4.4
+  peerDependencies:
+    "@nestjs/common": ^7.0.0 || ^8.0.0
+    "@nestjs/core": ^7.0.0 || ^8.0.0
+    reflect-metadata: ^0.1.12
+  checksum: 1c9464dd2ee5b7162af83564f3dd9d88c2cb45ad469fdf6dc0eb0d06fde0834e8debacc645e4602bc6f1f42e094f5cfa9d6599f4b954bb39ab78d2553d24bf98
+  languageName: node
+  linkType: hard
+
 "@nestjs/mapped-types@npm:0.4.1":
   version: 0.4.1
   resolution: "@nestjs/mapped-types@npm:0.4.1"
@@ -5268,6 +5281,7 @@ __metadata:
     "@nestjs/common": 7.6.15
     "@nestjs/config": ^0.6.3
     "@nestjs/core": 7.6.15
+    "@nestjs/event-emitter": ^1.0.0
     "@nestjs/platform-express": 7.6.15
     "@nestjs/schematics": ^7.3.0
     "@nestjs/sequelize": 0.2.0
@@ -5284,11 +5298,11 @@ __metadata:
     dotenv: ^10.0.0
     eslint: ^7.22.0
     eslint-config-prettier: ^8.1.0
-    eslint-plugin-prettier: ^3.3.1
+    eslint-plugin-prettier: ^4.0.0
     fs-extra: ^10.0.0
     jest: ^26.6.3
     pg: ^8.6.0
-    prettier: ^2.2.1
+    prettier: ^2.4.1
     reflect-metadata: ^0.1.13
     rimraf: ^3.0.2
     rxjs: ^6.6.6
@@ -9619,18 +9633,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^3.3.1":
-  version: 3.4.0
-  resolution: "eslint-plugin-prettier@npm:3.4.0"
+"eslint-plugin-prettier@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "eslint-plugin-prettier@npm:4.0.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
-    eslint: ">=5.0.0"
-    prettier: ">=1.13.0"
+    eslint: ">=7.28.0"
+    prettier: ">=2.0.0"
   peerDependenciesMeta:
     eslint-config-prettier:
       optional: true
-  checksum: 322be1af8c7a6b7f1c718d912090722b65da072fda05bbc0a9d94523e6c3dfda49a7f62fd411126f1909c12bbc63e827ee6459163b2ce3458adb292541decf66
+  checksum: 6ae81c8c43d760ffb4a63ea2e343ac119b76fdd2a92e192dc55148616a748d6a95a00dcb6c09f66b61407965cf354546f7cffa4da519c3fa6da70c86c0eb8393
   languageName: node
   linkType: hard
 
@@ -9812,7 +9826,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter2@npm:^6.4.3":
+"eventemitter2@npm:6.4.4, eventemitter2@npm:^6.4.3":
   version: 6.4.4
   resolution: "eventemitter2@npm:6.4.4"
   checksum: 632e4e96be6d34c55855980dfe051d684ed9555d9ce800b824369a7f3a9ba9d792775bba45182f0280c5635eab96e8d7cbbcdd6a8f2f4c0d703304632391b9be
@@ -10755,7 +10769,7 @@ __metadata:
     node-rsa: ^1.1.1
     nouislider: ^14.6.3
     plh-data: 1.0.0
-    prettier: 2.3.1
+    prettier: 2.4.1
     protractor: ~7.0.0
     rxjs: ^6.6.7
     simple-git-hooks: ^2.4.1
@@ -18112,21 +18126,12 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.3.1":
-  version: 2.3.1
-  resolution: "prettier@npm:2.3.1"
+"prettier@npm:2.4.1, prettier@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "prettier@npm:2.4.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 9b4a695b87ce5f510fc20feec01cce7371f0fa0b92ffe79d543f6be52e2004c532861629de4d7ab1c577e1f649dce3cfccd62cb2ca6526b1da8d9c63eb84bf36
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.2.1":
-  version: 2.3.2
-  resolution: "prettier@npm:2.3.2"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 4fd89a7f6a12b13456d359fba2b1dd0fc0a17cf33f8f15953ab9f43b21ea9b09b5a2861d63b558ca0577274ce606d390e70628cf93e26d19d6cb7f19c9eebc31
+  checksum: d72ebe33441651cdb334d05d8d180bedbb6f8ca9db47163719b9763f3f471d27b9dc86b9f2c9383773681ff836eb5951acd1809871077c9313609f7b7e05554e
   languageName: node
   linkType: hard
 
