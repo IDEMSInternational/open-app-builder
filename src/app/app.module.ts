@@ -27,7 +27,8 @@ const introModules = [AppTermsPageModule, PrivacyPageModule];
 
 import { LottieModule } from "ngx-lottie";
 import player from "lottie-web";
-import { MatomoModule } from "ngx-matomo";
+import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
+import { NgxMatomoRouterModule } from "@ngx-matomo/router";
 import { TourComponent } from "./feature/tour/tour.component";
 import { httpInterceptorProviders } from "./shared/services/server/interceptors";
 import { TemplateComponentsModule } from "./shared/components/template/template.module";
@@ -57,20 +58,11 @@ export function lottiePlayerFactory() {
     SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
     TemplateComponentsModule,
-    // TODO - use env (handle undefined case)
-    // TODO - handle breaking versions ng 10/11/12 matomo rc1,2
-    // MatomoModule.forRoot({
-    //   scriptUrl: "http://localhost/analytics/",
-    //   trackers: [
-    //     {
-    //       trackerUrl: "http://localhost/analytics/matomo.php",
-    //       siteId: 1,
-    //     },
-    //   ],
-    //   routeTracking: {
-    //     enable: true,
-    //   },
-    // }),
+    NgxMatomoTrackerModule.forRoot({
+      siteId: environment.analytics.siteId,
+      trackerUrl: environment.analytics.endpoint,
+    }),
+    NgxMatomoRouterModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

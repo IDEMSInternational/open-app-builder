@@ -1,0 +1,115 @@
+<ion-content class="ion-padding">
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Pending Notifications</h2>
+    <ion-button *ngIf="localNotificationService.permissionGranted" fill="clear">
+      <ion-icon name="notifications-outline" slot="start"></ion-icon> Enabled
+    </ion-button>
+    <ion-button
+      *ngIf="!localNotificationService.permissionGranted"
+      fill="outline"
+      (click)="localNotificationService.requestPermission()"
+    >
+      <ion-icon name="notifications-off" slot="start"></ion-icon> Enable
+    </ion-button>
+  </div>
+
+  <!-- Pending Notifications -->
+  <ion-card *ngFor="let notification of (localNotificationService.pendingNotifications$ | async)">
+    <ion-card-header class="row-header">
+      <span>{{notification.extra.id}}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Notification -->
+      <div>
+        <div style="display: flex">
+          <div style="flex: 1; margin-right: 8px">
+            <h2>{{notification.title}}</h2>
+            <div>{{notification.body}}</div>
+          </div>
+          <div style="text-align: right">
+            <div>
+              <ion-button
+                (click)="showCustomNotificationSchedule(notification, picker)"
+                fill="clear"
+                class="no-padding"
+                style="margin: 0"
+                [disabled]="!localNotificationService.permissionGranted"
+                ><div>
+                  <div>{{notification.schedule.at | date:'MMM d YYYY'}}</div>
+                  <div>{{notification.schedule.at | date: 'h:mm a'}}</div>
+                </div>
+              </ion-button>
+            </div>
+            <div class="divider"></div>
+            <ion-button
+              fill="clear"
+              (click)="triggerSend(notification)"
+              class="no-padding"
+              style="margin: 0"
+              [disabled]="(!localNotificationService.permissionGranted || previewCountdown[notification.id]) ? true : false"
+            >
+              <span *ngIf="previewCountdown[notification.id]"
+                >Send in {{previewCountdown[notification.id]}}</span
+              >
+              <span *ngIf="!previewCountdown[notification.id]">Send Now</span>
+            </ion-button>
+            <div class="divider"></div>
+            <ion-button
+              fill="clear"
+              (click)="removeNotification(notification)"
+              class="no-padding"
+              style="margin: 0"
+              >Remove</ion-button
+            >
+          </div>
+        </div>
+      </div>
+
+      <ion-button fill="clear" (click)="logDebugInfo(notification)">(log full details)</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="(localNotificationService.pendingNotifications$ | async).length===0">
+    <ion-card-header>No Scheduled Notifications</ion-card-header>
+  </ion-card>
+
+  <!-- Triggered Notifications -->
+  <h2 style="flex: 1" *ngIf="(localNotificationService.sessionNotifications$ | async).length>0">
+    Recently Sent
+  </h2>
+  <ion-card *ngFor="let notification of (localNotificationService.sessionNotifications$ | async)">
+    <ion-card-header class="row-header">
+      <span>{{notification.extra.id}}</span>
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <div style="display: flex">
+          <div style="flex: 1; margin-right: 8px">
+            <h2>{{notification.title}}</h2>
+            <div>{{notification.body}}</div>
+          </div>
+          <div style="text-align: right">
+            <div>
+              <ion-button fill="clear" class="no-padding" style="margin: 0" [disabled]="true"
+                ><div>
+                  <div>{{notification.schedule.at | date:'MMM d YYYY'}}</div>
+                  <div>{{notification.schedule.at | date: 'h:mm a'}}</div>
+                </div>
+              </ion-button>
+            </div>
+            <div class="divider"></div>
+          </div>
+        </div>
+      </div>
+
+      <ion-button fill="clear" (click)="logDebugInfo(notification)">(log full details)</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Hidden picker used when creating custom datetime -->
+  <ion-datetime
+    style="display: none"
+    (ionChange)="setCustomNotificationSchedule(picker.value)"
+    #picker
+    displayFormat="MMM DD, h:mm A"
+  ></ion-datetime>
+</ion-content>

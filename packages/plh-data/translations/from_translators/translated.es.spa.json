@@ -213,5 +213,10 @@
     "SourceText": "awesome parent",
     "text": "Padre asombroso",
     "type": "template"
+  },
+  {
+    "SourceText": "Audio message",
+    "text": "Mensaje de audio",
+    "type": "template"
   }
 ]

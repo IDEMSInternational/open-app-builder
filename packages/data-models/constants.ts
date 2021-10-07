@@ -14,6 +14,7 @@ export const DYNAMIC_PREFIXES = [
   "campaign",
   "calc",
   "item",
+  "raw",
 ] as const;
 
 /**
@@ -29,4 +30,13 @@ export const FIELD_PREFIX = "rp-contact-field";
 export const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
+};
+
+/**
+ * Some specific strings are currently hardcoded into the app
+ * TODO - not all strings included, should add to when required
+ */
+export const APP_STRINGS = {
+  NOTIFICATION_DEFAULT_TITLE: "Notification",
+  NOTIFICATION_DEFAULT_TEXT: "You have a new message from PLH",
 };

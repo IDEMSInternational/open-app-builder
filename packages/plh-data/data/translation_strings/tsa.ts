@@ -1,28 +1,61 @@
 export default {
   "You can always find these tools in the @global.parent_centre":
     "Ka metlha o ka bona dithulusu tseno mo go @global.parent_centre",
+  Home: "Gae",
+  "About PLH App": "Kaga App ya PLH",
+  Settings: "Diseting",
+  Template: "Thempoleiti",
+  Tour: "Loeto",
+  "In-Week Messages": "Melaetsa ya Beke",
+  Campaigns: "Matsholo",
+  "Privacy Policy": "Melao ya Sephiri",
+  "App terms": "Melawana ya App",
+  "Open Survey": "Potsolotso e e Bulegileng",
+  "Workshop Options": "Dikakantsho tsa di-Workshop",
+  "Demo Presentation": "Pontsho ya Tshupetso",
+  "Developer Mode": "Mokgwa wa Motlhami",
+  "Unlock all workshops": "Lotlolola di-workshop tsotlhe",
+  "By clicking in the button below you will unlock all the workshops.\n\nNOTE: Users should not use this functionality to unlock workshops, this is not recommended unless strictly necessary.":
+    "Ka go tobetsa mo konopong e e fa tlase o tla bo o lotlolola di-workshop tsotlhe.\n\nTSHWAYANTLHA: Badirisi ba seka ba dirisa mokgwa ono go lotlolola di-workshop, seno ga se atlanegisiwe ntle le fa go tlhokega.",
+  "Unlock workshops": "Bula di-workshop",
+  "All workshops are now unlocked.": "Di-workshop tsotlhe jaanong di lotlolotswe.",
+  "By clicking in the button below you will reset the app to its initial settings. \n\nThis means that all your progress and usage data will be deleted and your app will work as if it was just installed for the first time.\n\nNOTE: Resetting the app is permanent and you will not be able to recover any information.":
+    "Ka go tobetsa konopo e e fa tlase o tla seta sesha app ka go e busetsa kwa diseting tsa yone tsa kwa tshimologong. \n\nSeno se raya gore kgatelopele ya gago yotlhe le tiriso ya data di tlile go phimolwa mme app ya gago e tla bereka jaaka e ne e bereka kgetlho la ntlha.\n\nTSHWAYANTLHA: Go seta app sesha go ka se dirololwe mme ga o kitla o kgona go boa o bona gape tshedimosetso epe.",
+  "Reset App": "Seta App sesha",
+  "You have successfully entered developer mode.": "O tsentse mokgwa wa motlhami ka katlego.",
+  "You have entered an incorrect code.": "O tsentse khoutu e e seng yone.",
+  "Welcome Back!": "Re a go amogela gape!",
   Start: "Simolola",
-  "Start workshop @global.w_self_care": "Simolola workshop@global.w_self_care",
   "How would you like to do this workshop?": "O ka rata go dira workshop eno jang?",
   "Coming soon": "E etla gautshwane",
-  "We will need to cover other parenting issues before we can start working on @fields.this_workshop\n\nYou can get essential tools on @fields.this_workshop via the @global.parent_centre":
-    "Re tla tlhoka go bua ka mathata a mangwe a go nna motsadi pele re ka simolola go dira go @fields.this_workshop\n\nO ka bona dithulusu tsa botlhokwa mo @fields.this_workshop o dirisa @global.parent_centre",
+  "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.":
+    "Re tla tlhoka go bua ka mathata a mangwe a go nna motsadi pele re ka simolola go dira go @local.workshop_data.title.\n\nO ka bona dithulusu tsa botlhokwa mo @local.workshop_data.title o dirisa @global.parent_centre.",
   "My name": "Leina la me",
   "Day to do the workshops": "Letsatsi la go dira di-workshop",
-  "Current workshop": "Workshop ya ga jaana",
-  "I will do the workshops...": "Ke tla dira di-workshop...",
+  "I do the workshops...": "Ke dira di-workshop...",
   "My group's name": "Leina la setlhopha sa me",
+  "My group is now doing the workshop...": "Setlhopha sa me se dira workshop jaanong...",
+  "I am now doing the workshop...": "Ke dira workshop jaanong...",
   "Are you sure you want to unlock all the workshops? Once you do this you will not be able to lock them back":
     "A o tlhomamisegile gore o batla go bula di-workshop tsotlhe? Fa o setse o dirile seno o ka se kgone go di tswala gape",
   "Unlock Workshops": "Bula di-Workshop",
+  "Give me quick parenting tips": "Mphe dikakantsho tsa ka bonako tsa botsadi",
+  "Something really bad happened": "Sengwe se se maswe tota se diragetse",
+  "I have technical problems with the app": "Ke na le bothata jwa setegeniki ka app",
   "You will find tips that we think you may find useful here, based on your answers to the app customisation.":
     "O tla bona dintlha tse di thusang tse re akanyang gore o ka bona di thusa fano, go ikaegile ka dikarabo tsa gago tsa go rulaganya sediriso.",
   "WHO Website": "Webosaete ya WHO",
+  "UNICEF Website": "Webosaete ya UNICEF",
   "Parenting during COVID is hard. Be proud of yourself for making it this far.\n\nWe are working on new content here to support you with talking to your teens and children about COVID.\n\nThe most up to date information on COVID-19 can be found on the WHO and UNICEF websites:":
     "Go nna motsadi go thata ka nako ya COVID. Nna motlotlo gore o fitlhile fano.\n\nRe semeletse ka tshedimosetso e ntšhwa fano ya go go thusa gore o bue le basha le bana ba gago kaga COVID.\n\nTshedimosetso e e mo nakong thata ka COVID-19 e ka fitlhelwa mo diwebosaeteng tsa WHO le UNICEF:",
-  tile_1: "tile_1",
-  "This button will take you to the Coronavirus of the official WHO website. \n\nThe URL is https://www.who.int/emergencies/diseases/novel-coronavirus-2019":
-    "Konopo eno e tla go isa ko webosaeteng ya semmuso ya WHO ya Coronavirus. \n\nURL ke https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+  "This button will take you to the Coronavirus section of the official WHO website.":
+    "Konopo eno e tla go isa ko webosaeteng ya semmuso ya WHO ya Coronavirus.",
+  "The URL is https://www.who.int/emergencies/diseases/novel-coronavirus-2019":
+    "URL ke https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+  "This button will take you to the Coronavirus section of the official UNICEF website.":
+    "Konopo eno e tla go isa ko webosaeteng ya semmuso ya UNICEF ya Coronavirus.",
+  "The URL is https://www.unicef.org/coronavirus/covid-19":
+    "URL ke https://www.unicef.org/coronavirus/covid-19",
   "Update my parenting experiences": "Ntšhwafatsa maitemogelo a me a botsadi",
   "Update my personal details": "Ntšhwafatsa dintlha tsa me tsa botho",
   "Update my workshop options": "Ntšhwafatsa ditlhopho tsa me tsa workshop",
@@ -30,8 +63,8 @@ export default {
   "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!":
     "A o nna le mathata ape a setegeniki? Re itsise mme re thuse go tokafatsa @global.parent_app!",
   "Type your name (optional)": "Kwala leina la gago (itlhophelo)",
-  "Contact me via text message": "Ikgolaganye le nna ka molaetsa wa founo",
   "Contact me on WhatsApp": "Ikgolaganye le nna ka WhatsApp",
+  "Contact me via email": "Ikgolaganye le nna ka imeile",
   "Type your phone number": "Kwala nomore ya gago ya mogala",
   "Type your email address": "Kwala aterese ya gago ya imeile",
   "Tell us about your issue": "Re bolelele bothata jwa gago",
@@ -39,9 +72,9 @@ export default {
     "Lekgetlo la ntlha fa mme a mpotsa gore a ke batla go fetsa nako le ene, ke ile ka mo raya ka re a ntlogele ka gonne ke ne ke santse ke tshwaragane le motshameko. Mme o ne a mpateletsa jaaka a tlwaetse go dira. Ke ile ka re a ka ntebelela ke tshameka fa e le gore ke se a se batlang. Morago ga metsotso e le mmalwa o ile a simolola go mpotsa dipotso ka motshameko wa me. Go ne go tena kwa tshimologong, mme morago ga nakwana ke ne ke itumetse gore kgabagare o kgatlhegela se ke se dirang. O ile a ba a leka go e tshameka!",
   "My father told me I’m playing too much basketball after school, so we must set a family rule. He promised we'll think about a solution together, so we both feel good about it. I didn't believe it's possible but said, “OK, let's try”. We negotiated and agreed that the rule will be playing basketball is allowed after doing homework and until family dinner. It is hard for me to see my friends playing after school, so I'm doing my best to finish homework first and join them. I also have now the whole evening to do other things I want after the family dinner like watching basketball in the NBA.":
     "Rre o rile ke tshameka basketball thata morago ga sekolo, ka jalo re tshwanetse go tlhoma molao wa lelapa. O ne a tshepisa gore re tla akanya ka tharabololo mmogo, ka jalo bobedi jwa rona re ile ra go itumelela. Ke ne ke sa dumele gore go a kgonega mme ka re, “GO SIAME, mma re leke.” Re ne ra buisana mme ra dumalana gore molao e tla nna gore go tshameka basketball go letleletswe fa go dira tirogae ya sekolo e dirilwe le morago ga dijo tsa maitseboa tsa lelapa. Go thata go bona ditsala tsa me di tshameka morago ga sekolo, ka jalo ke dira ka natla go fetsa tirogae ya sekolo pele mme ke bo ke tshameka le bone. Gape jaanong ke na le maitseboa otlhe go dira dilo tse dingwe tse ke di batlang morago ga dijo tsa maitseboa tsa lelapa jaaka go lebelela basketball mo NBA.",
+  "You will find the in-week messages from the previous workshops here.":
+    "O tla bona melaetsa ya beke ya di-workshop tse di fetileng fano.",
   Options: "Tlhopho",
-  "total_parent_point_@local.habit": "total_parent_point_@local.habit",
-  "weekly_parent_point_@local.habit": "weekly_parent_point_@local.habit",
   "Add this activity to @global.my_activities": "Tsenya tiro eno go @global.my_activities",
   "Relaxation activities": "Ditiro tsa boiketlo",
   "Something fun to do with your teen": "Sengwe sa go ijesa monate go se dira le mosha wa gago",
@@ -49,13 +82,8 @@ export default {
     "Ga o ise o tsenye ditiro dipe tsa boiketlo go @global.my_relaxes ga jaana. Goreng o sa tlhophe dingwe?",
   "You have not added any activities to @global.my_activities yet. Why don't you choose some?":
     "Ga o ise o tsenye ditiro dipe go @global.my_activities ga jaana. Goreng o sa tlhophe dingwe?",
-  Text: "Mafoko",
-  "Question text": "Mafoko a Potso",
   "You selected @local.threshold or less": "O tlhophile @local.threshold kgotsa kwa tlase",
   "You selected more than @local.threshold": "O tlhophile kwa godimo ga @local.threshold",
-  First: "Ya Ntlha",
-  Second: "Ya Bobedi",
-  Third: "Ya Boraro",
   Reply: "Araba",
   "Days in the past month": "Malatsi mo kgweding e e fetileng",
   "Days in the past week": "Malatsi mo bekeng e e fetileng",
@@ -66,14 +94,6 @@ export default {
   Timer: "Sebalanako",
   "Press the triangle to help you keep this discussion to @local.timer_duration minutes.":
     "Tobetsa khutlotharo go go thusa go nna o tshwere motlotlo ono ka metsotso e le @local.timer_duration.",
-  "Here is a fun activity to do with your teen!":
-    "Tiro ya go ijesa monate e o ka e dirang le mosha wa gago ke eno!",
-  "Start @local.workshop_data.in_text_title": "Simolola @local.workshop_data.in_text_title",
-  "Continue @local.workshop_data.in_text_title": "Tswelela @local.workshop_data.in_text_title",
-  "Remember to sit down and relax today - taking care of yourself is an important parenting skill.":
-    "Gopola go nna fa fatshe o iketle gompieno - go itlhokomela ke bokgoni jwa botlhokwa jwa go nna motsadi.",
-  "Relax now": "Iketle jaanong",
-  "Did you relax already? Tap it!": "A o setse o iketlile? E tobetse!",
   "Your goal was to spend one-on-one time with your teen. We noticed you tapped the @data.habit.spend_time.in_text_title - great job for remembering!":
     "Boikaelelo jwa gago e ne e le go fetsa nako le mosha wa gago lo le babedi. Re lemogile gore o tobeditse @data.habit.spend_time.in_text_title - o dirile sentle wa gopola!",
   "Your goal was to spend one-on-one time with your teen.":
@@ -172,8 +192,8 @@ export default {
     "Akantsha ditiro tse dingwe tsa go ijesa monate tse re ka di dirang mmogo.",
   "Awesome! It is very important that your teen understands why you cannot do the activity that they suggested. Ask them for other ideas!":
     "Bontle! Go botlhokwa tota gore mosha wa gago a tlhaloganye gore goreng o se kitla o dira ditiro tse ba di akantshitseng. Ba kope dikakantsho tse dingwe!",
-  "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text . Remember, let your teen choose the activity!":
-    "Seno se sentle tota! Fa o tlhoka thotloetso, o ka bona dikakantsho tsa ditiro @data.parent_centre.relax_and_activities.location_text . Gopola, letla mosha wa gago go tlhopha tiro!",
+  "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!":
+    "Seno se sentle tota! Fa o tlhoka thotloetso, o ka bona dikakantsho tsa ditiro @data.parent_centre.relax_and_activities.location_text. Gopola, letla mosha wa gago go tlhopha tiro!",
   "Sorry to hear this. Our teens may be disappointed if we cannot do what they want to do, like playing sports or doing other physically demanding activities. But remember, what is most important is that we spend time with them. That looks different for everyone!":
     "Ke maswabi go utlwa seno. Basha ba rona ba ka nna ba swaba fa re sa kgone go dira se ba batlang re se dira, jaaka go tshameka metshameko kgotsa go dira ditiro tse di sugang mmele tota. Mme gopola, se se botlhokwa thata ke go ipha nako le bone. Seo se bonala se farologane mo go botlhe!",
   "Watch my teen do the activity and cheer them on.":
@@ -182,8 +202,8 @@ export default {
     "Akantsha ditiro tse dingwe tsa go ijesa monate tse re ka di dirang mmogo.",
   "Wonderful! Even if you are watching instead of doing the activity together, you can show your interest by describing and praising what your teen is doing!":
     "Bontle tota! Le fa o lebeletse go na le go dira tiro le bone, o ka bontsha gore o na le kgatlhego ka go supa le go tlhalosa le go akgola mosha wa gago ka se a se dirang.",
-  "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text . Remember, let your teen choose the activity!":
-    "Seo se sentle tota! Fa o tlhoka thotloetso, o ka bona dikakantsho tsa ditiro @data.parent_centre.relax_and_activities.location_text . Gopola, letla mosha wa gago go tlhopha tiro!",
+  "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!":
+    "Seo se sentle tota! Fa o tlhoka thotloetso, o ka bona dikakantsho tsa ditiro @data.parent_centre.relax_and_activities.location_text. Gopola, letla mosha wa gago go tlhopha tiro!",
   "This sometimes happens! Competitive games can be challenging for teens (and adults!) if they have difficulty with losing.":
     "Seno se na le go direga ka dinako tse dingwe! Metshameko ya dikgaisano e ka nna kgwetlho mo basheng (le bagolo!) fa ba sa kgone go amogela fa ba fentswe.",
   "Suggest other activities that we can do together instead of against each other.":
@@ -322,8 +342,8 @@ export default {
     "Bontle tota! Ka go aroganya maikarabelo, o tla nna le nako e ntsi ya go dira sengwe sa go ijesa monate le mosha wa gago – seo se botlhokwa tota!",
   "Yes, it takes some time to get used to giving positive instructions – it’s really worth trying again! Think about the behaviour you would love to see your teen do more and think of positive ways to give that instruction!":
     "Ee, go tsaya nako e ntsi go tlwaela go naya ditaelo tse di siameng – go molemo tota go leka gape! Akanya ka boitshwaro jo o ka ratang go bona mosha wa gago a bo dira thata mme o akanye ka ditsela tse di siameng tsa go naya taelo eo!",
-  "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nIn the next @global.weekly_workshop, we’ll talk more about how we can manage our emotions!  You can find more relaxation activities @data.parent_centre.relax_and_activities.location_text .":
-    "Go boima go tla ka ditaelo fa re santse re galefile. Leka mme o batle nako ya fa o kgobile makgwafo gore o kgone go itsise mosha wa gago ditaelo tse di siameng. \n\nMo @global.weekly_workshop e e latelang, re tlile go bua thata ka kafa re ka kgonang go laola maikutlo a rona ka gone!  O ka bona ditiro tsa boiketlo tse dingwe go @data.parent_centre.relax_and_activities.location_text .",
+  "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nIn the next @global.weekly_workshop, we’ll talk more about how we can manage our emotions!  You can find more relaxation activities @data.parent_centre.relax_and_activities.location_text.":
+    "Go boima go tla ka ditaelo fa re santse re galefile. Leka mme o batle nako ya fa o kgobile makgwafo gore o kgone go itsise mosha wa gago ditaelo tse di siameng. \n\nMo @global.weekly_workshop e e latelang, re tlile go bua thata ka kafa re ka kgonang go laola maikutlo a rona ka gone!  O ka bona ditiro tsa boiketlo tse dingwe go @data.parent_centre.relax_and_activities.location_text.",
   "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!":
     "Mokgele wa gago e ne e le go dira thulaganyo ya tekanyetsokabo le go boloka madi ga lelapa. Re lemogile gore o tobeditse @data.habit.money.in_text_title - o dirile sentle wa gopola!",
   "Your goal was to make a family budget and savings plan.":
@@ -337,8 +357,8 @@ export default {
     "Ke eng se se go thatafaletseng ka go dira tekanyetsokabo ya lona mmogo?",
   "I did not want to tell my family how much I earn.":
     "Ke ne ke sa batle go bolelela lelapa la me gore ke gola bokae.",
-  "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.monthly_income_estimate every month” rather than, “I make @global.monthly_income_precise”.":
-    "Ga o tlhoke go bua gore o gola bokae kgo; o ka fopholetsa. O ka nna wa re, “mo legaeng leno, re nale @global.monthly_income_estimate kgwedi le kgwedi” go na le gore “ke dira @global.monthly_income_precise”.",
+  "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.":
+    "Ga o tlhoke go bua gore o gola bokae kgo; o ka fopholetsa. O ka nna wa re, “mo legaeng leno, re nale @global.currency@global.monthly_income_estimate kgwedi le kgwedi” go na le gore “ke dira @global.currency@global.monthly_income_precise”.",
   "When budgeting, we could not agree on what should fall under needs and what should fall under wants.":
     "Fa re dira tekanyetsokabo, re ka nna ra seka ra dumalana gore ke eng se eleng ditlhoko le gore ke eng se eleng dipatlo.",
   "People’s wants and needs are different sometimes. Talking about them together can help you and your teen to understand each other, respect your differences, and see where you can compromise.":
@@ -350,8 +370,8 @@ export default {
     "Mosha wa me o ne a sa batle go dira tekanyetsokabo le nna.",
   "Try making the budget with other adults in your home first. Your teen may get interested in what you are doing. \n\nMaking a budget may sound serious but try to make it fun – make it a game during one-on-one time! Or you can try to make the budget for @global.w_money_grandma first. \n\nRemember to praise them when you are done!":
     "Leka go dira tekanyetsokabo le bagolo ba bangwe mo legaeng la gago pele. Mosha wa gago a ka kgatlhegela se o se dirang. \n\nGo dira tekanyetsokabo go ka bonala go le masisi mme leka go go dira monate – go dire motshameko fa lo ntse lo ipha nako mmogo! Kgotsa o ka leka go dira tekanyetsokabo ya @global.w_money_grandma pele. \n\nGopola go ba akgola fa o feditse!",
-  "You deserve some praise, too. Thank you again for using @global.parent_app . It shows you really care!":
-    "O tlhoka go akgolwa, le wena. Re leboga gape gore o dirisitse @global.parent_app . Go a bontsha gore tota o a kgathala!",
+  "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!":
+    "O tlhoka go akgolwa, le wena. Re leboga gape gore o dirisitse @global.parent_app. Go a bontsha gore tota o a kgathala!",
   "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!":
     "Mokgele wa gago e ne e le go akgola mosha wa gago. O tobeditse @data.habit.praise_teen.in_text_title mo bekeng eno. O dirile sentle wa gopola!",
   "Your goal was to praise your teen.": "Mokgele wa gago e ne e le go akgola mosha wa gago.",
@@ -405,42 +425,45 @@ export default {
   "We were not able to stick to the rule.": "Ga re a kgona go latelela molao.",
   "The rule needs to be specific and realistic. Make sure to have a rule that can be kept easily, like having one meal together every Sunday instead of every night. Do you need to be more flexible about the rule?":
     "Molao o tshwanetse go nna o totobetseng le o o kgonang go latelwa. Netefatsa gore o na le molao o o kgonang go latelwa motlhofo, jaaka go ja dijo mmogo gangwe ka Sontaga mongwe le mongwe go na le bosigo bongwe le bongwe. A o tlhoka go nna yo o fetofetogang ka molao?",
-  "Your goal was to map risks and support systems, both in your community and online, with your teen.":
-    "Mokgele wa gago e ne e le go bona dikotsi le ditsamaiso tsa tshegetso, ka bobedi mo tikologong ya gago gammogo le mo mafaratlhatlheng, le mosha wa gago.",
+  "Your goal was to map risks and support systems with your teen - both in your community and online.":
+    "Mokgele wa gago e ne e le go bona dikotsi le ditsamaiso tsa tshegetso le mosha wa gago - ka bobedi mo tikologong ya gago gammogo le mo mafaratlhatlheng.",
   "map risks and support with their teens": "bona dikotsi le tshegetso le basha ba bone",
   "map risks and support with your teen": "bona dikotsi le tshegetso le mosha wa gago",
   "My teen and I disagreed on which areas and online activities were unsafe.":
     "Nna le mosha wa me ga re dumalane ka gore ke mafelo afe le mafaratlhatlha afe a a sa sireletsegang.",
-  "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again. This time, try to really listen and show you understand them before expressing your thoughts.":
-    "O dirile sentle wa leka tiro eno! Fa re reetsa basha ba rona, le re sa dumalane, re ithuta go tlhaloganya gore ba akanya jang. Leka mme o dire nako ya go dira tiro e gape. Lekgetlo leno, leka go ba reetsa ka kelotlhoko le go bontsha gore o a ba tlhaloganya pele ga o ba bolelela dikakanyo tsa gago.",
-  "My teen identified the house of someone I trust as unsafe. I was shocked and did not what to do.":
+  "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again - try to really listen and show you understand them before sharing your thoughts.":
+    "O dirile sentle wa leka tiro eno! Fa re reetsa basha ba rona, le fa re sa dumalane le bone, re ithuta go tlhaloganya gore ba akanya jang. Leka go batla nako go dira tiro eno gape - leka go reetsa ka kelotlhoko mme o bontshe gore wa di tlhaloganya pele ga o abelana ka dikakantsho tsa gago.",
+  "My teen identified the house of someone I trust as unsafe. I was shocked and did not know what to do.":
     "Mosha wa me o lemogile ntlo ya motho yo ke mo tshepang gore ga e a sireletsega. Ke ne ke tshogile mme ke sa itse gore nka dira eng.",
-  "It is shocking to learn that people who are close to us and who we trust may be a danger to our teens. Find someone you can talk to about this, perhaps a friend or support service, so you can get the support your need. Remember to take a pause when you are stressed.":
-    "Go a tshosa go ithuta gore batho ba re atamalaneng le bone le ba re ba tshepang ba ka nna kotsi mo basheng ba rona. Batla mongwe yo o ka buang le ene ka seno, gongwe tsala kgotsa tirelo ya tshegetso, gore o kgone go nna le tshegetso e o e tlhokang. Gopola go ema go se kae fa o tshwenyegile mo maikutlong.",
-  "My teen insisted that the bar is safe for them to visit. I don’t know how to convince my teen that it is not a safe area.":
-    "Mosha wa me o pateletsa gore bara e sireletsegile gore ba ka e etela. Ga ke itse gore nka tlhatswa mosha wa me pelo jang gore lefelo leo ga le a sireletsega.",
-  "Create a safe space to talk with your teen when you are both calm. Listen to your teen’s thoughts about why they feel the bar is safe, and then share your thoughts on why you feel the bar is not safe. Think about making a rule together that allows them to still have fun but stay safe. Teenagers listen better when we speak to them calmly.":
-    "Dira lefelo le le sireletsegileng la go bua le mosha wa gago fa lo kgobile makgwafo. Reetsa dikakanyo tsa mosha wa gago ka gore goreng ba akanya gore bara e sireletsegile, mme o abelane dikakanyo tsa gago gore goreng o ikutlwa gore bara ga e a sireletsega. Akanya ka go dira molao mmogo o o ba letlelelang gore ba ijese monate mme gone ba sireletsegile. Basha ba reetsa botoka fa re bua le bone re kgobile makgwafo.",
-  "As an adult, I feel I am responsible for protecting my child. When I told my teen which areas or online activities are unsafe, my child got angry.":
-    "Jaaka mogolo, ke ikutlwa e kete ke maikarabelo a me go sireletsa ngwana wa me. Fa ke bolelela mosha wa me gore ke mafelo afe kgotsa ditiro tsa mafaratlhatlha dife tse di sa sireletsegang, ngwana wa me wa galefa. ",
-  "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on.":
-    "Basha ba rona ba ka itse dilo ka tikologo ya rona le thekenoloji tse rona re sa di itseng. Fa re tsenyeletsa basha ba rona ka matlhagatlhaga mo direng dilo, ba ikutlwa ba reediwa le go tseelwa kwa godimo, mme go ka nna motlhofo go tla ka leano le mongwe le mongwe a dumalanang le lone.",
-  "It was hard to identify resources available in my community because I don’t know my community so well.":
-    "Go ne go le boima go bona ditlamelwana tse di leng gone mo tikologong ya me ka gonne ga ke itse tikologo ya me sentle.",
+  "It is shocking to learn that people who are close to us and who we trust may be a danger to our teens. Remember to take a pause when you are upset, and try to listen calmly to your teen. Find someone you can talk to about this, perhaps a friend or support service, so you can get the support you need.":
+    "Go a tshosa go ithuta gore batho ba re atamalaneng le bone le ba re ba tshepang ba ka nna kotsi mo basheng ba rona. Gopola go ema go se kae fa o ngadile, mme o leke go reetsa mosha wa gago o kgobile makgwafo. Batla mongwe yo o ka buang le ene ka seno, gongwe tsala kgotsa tirelo ya tshegetso, gore o kgone go nna le tshegetso e o e tlhokang.",
+  "My teen insisted that the bar (or another place I don’t feel is safe) is safe for them to visit. I don’t know how to convince my teen.":
+    "Ngwana wa me wa mosha o gatelela gore bara (kgotsa lefelo le lengwe le ke sa dumeleng gore le na le tshireletsego) ga le borai gore a le etele. Ga ke itse gore ke dire jang gore ngwanake wa mosha a ntumele.",
+  "This can be very frustrating. To find a solution, your teen needs to feel heard - so listen calmly to your teen's reasons, and only then share your own thoughts. Then, think together about a rule that allows them to have fun but stay safe.":
+    "Seno se ka tlhakanya tlhogo tota. Go bona tharabololo ya seno, ngwana wa gago wa mosha o batla go ikutlwa gore o a reediwa - jalo reetsa mabaka a ngwana wa gago wa mosha o wetse dibete, e be e le gone o bua dikakanyo tsa gago. Morago, akanyang mmogo ka  molao o o ka letlelelang gore ba ijese monate mme gone ba nna ba sireletsegile.",
+  "As an adult, I feel responsible to protect - but when I told my teen what is safe and what is not, my teen got angry.":
+    "Jaaka mogolo, ke ikutlwa ke na le boikarabelo jwa go sireletsa - mme fa ke bolelela ngwanake wa mosha gore ke eng se se sireletsegileng le se se sa sireletsegang, o a galefa.",
+  "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity and really listen to them, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on.":
+    "Basha ba rona ba ka itse dilo ka tikologo ya rona le thekenoloji tse rona re sa di itseng. Fa re tsenya basha ba rona ka tlhagafalo mo go rulaganyeng ditiro e bile re ba reetsa tota, ba ikutlwa ba reediwa e bile ba le botlhokwa, mme go ka nna motlhofo go tla ka leano le mongwe le mongwe a dumalanang le lone.",
+  "It was hard to identify support resources available in my community, because I don’t know my community so well / there are few services available.":
+    "Go ne go le boima go bona ditlamelwana tsa tshegetso mo motseng wa rona, ka gonne ga ke itse motse wa me sentle /ga go na ditirelo tse di kalo mo go one.",
   "It is difficult to know every detail about our communities. Involve another family member or friend in your mapping activity. You can even visit some of the services available and ask what they do. The more we know, the better we can keep our families safe!":
     "Go boima go itse sengwe le sengwe ka tikologo ya rona. Tsenyeletsa leloko le lengwe la lelapa kgotsa tsala lo dira tiro nngwe. O kgona le go etela ditirelo tse di leng gone mme o ba botse gore ba dira eng. Fa re itse go le gontsi, re ka kgona go boloka malapa a rona a sireletsegile!",
   "I don’t know much about technology, so I don’t know how to talk about it with my teen.":
     "Ga ke itse go le gontsi ka thekenoloji, ka jalo ga ke itse gore nka bua jang le mosha wa me ka yone.",
-  "Ask your teen to explain the gadgets they use; you could do this  during one-on-one time). This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!":
-    "Kopa mosha wa gago gore a tlhalose didirisiwa tse a di dirisang; o ka dira seno ka nako ya fa lo ipha nako mmogo). Eno ke tshono e ntle ya go bontsha kgatlhego mo botshelong jwa mosha wa gago mme lo buisane ka dikotsi tse di ka diregang. Fa o sa tlhomamisega ka gore o beye melao efe, lo ka nna lwa dumela, le mosha wa gago, go leka molao o mosha mo dibekeng tse pedi mme lo buisane ka gore dilo di tla jang le go fetola molao fa go tlhokega!",
+  "That's totally fine! You can still support your teen. Ask your teen to explain the gadgets they use - you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!":
+    "Ga go na bothata gotlhelele! O santse o ka tshegetsa mosha wa gago. Kopa mosha wa gago gore a tlhalose didiriswa tse a di dirisang - o ka dira seno ka nako ya fa lo ipha nako mmogo. Eno ke tshono e ntle ya go bontsha kgatlhego mo botshelong jwa mosha wa gago mme lo buisane ka dikotsi tse di ka diregang. Fa o sa tlhomamisega ka gore o beye melao efe, lo ka nna lwa dumelana, le mosha wa gago, go leka molao o mosha mo dibekeng tse pedi mme lo buisane ka gore dilo di tla jang le go fetola molao fa go tlhokega!",
   "Your goal was to try and resolve a problem or conflict together with your teen.":
     "Mokgele wa gago e ne e le go leka go rarabolola bothata kgotsa kgotlhang mmogo le mosha wa gago.",
-  "When we have a problem, we always want to get to the quickest end result and can forget about the steps. To come up with the best solution together, it is helpful to first have a full understanding of the problem and the different solutions.":
-    "Fa re na le bothata, ka metlha re batla go fitlhelela matswela ka bonako mme re ka lebala ka dikgato. Go tla ka tharabololo e e gaisang mmogo, go tla thusa pele gore re tlhaloganye bothata ka botlalo le ditharabololo tse di farologaneng.",
   "resolve problems with their teens": "rarabolola mathata le basha ba bone",
   "resolve the problem with your teen": "rarabolola mathata le mosha wa gago",
   "I forgot the steps of problem solving.": "Ke lebetse dikgato tsa go rarabolola bothata.",
+  "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen - it will make a big difference!":
+    "O tshwanetse go itlwaetsa go dirisa dikgato tsotlhe tse nne tsa go rarabolola bothata. Nako e e tlang fa go nna le bothata, leba dikgato tsotlhe tse nné le mosha wa gago - go tla dira pharologanyo e kgolo!",
   "I started with the solutions right away.": "Ke simolotse ka ditharabololo ka gangwe.",
+  "When we have a problem, we always want to get to the quickest end result and can forget about the steps. To come up with the best solution together, it is helpful to first have a full understanding of the problem and the different solutions.":
+    "Fa re na le bothata, ka metlha re batla go fitlhelela matswela ka bonako mme re ka lebala ka dikgato. Go tla ka tharabololo e e gaisang mmogo, go tla thusa pele gore re tlhaloganye bothata ka botlalo le ditharabololo tse di farologaneng.",
+  "Four steps of problem solving": "Dikgato tse nné tsa go rarabolola bothata",
   "We could not agree on a solution to try out and we got into an argument.":
     "Ga re a kgona go dumalana ka tharabololo e re ka e lekang mme ga tsoga ngangisano.",
   "Sometimes it can be difficult to agree with everyone in the family, especially if everyone is not yet calm. You could agree to try one solution first, and then another. Also, if you get stuck, try to get together later to agree on the solution together.":
@@ -451,8 +474,8 @@ export default {
     "Fa bothata bo tlhaga, rotlhe re a galefa kgotsa go tshwenyega maikutlo ka dinako dingwe. Gopola, fa o ikutlwa o galefile kgotsa o tshwenyegile mo maikutlong, o ka nna wa ema go se kae go go thusa go ritibala mme o rarabolole bothata jo o lebaganeng le jone.",
   "My teen got angry and did not want to talk about the problem.":
     "Mosha wa me o ile a galefa mme a sa batle go bua ka bothata.",
-  "Try to listen to your teen and pay attention to their emotions. If they need some time to calm down, create a time later in the day or week to discuss and solve the problem together. By taking your time, the problem can be solved well.":
-    "Leka go reetsa mosha wa gago mme o tlhwaele tsebe maikutlo a bone. Fa ba tlhoka nakonyana go ritibala, dira nako kgantele mo letsatsing kgotsa mo bekeng ya go buisana mme lo rarabolole bothata mmogo. Ka go tsaya nako ya gago, bothata bo ka rarabololwa sentle.",
+  "Your teen might be too overwhelmed to deal with the problem right away. Recognise and name their emotions, and create a time later in the day or week to discuss and solve the problem together. By giving your teen time, the problem can be solved well.":
+    "Mosha wa gago o ka nna a imelwa thata ke go dirisana le bothata ka yone nako eo. Lemoga maikutlo a gagwe o bo o a tlhalose, mme moragonyana mo letsatsing leo kgotsa mo bekeng eno o bo o rulaganyetsa nako ya gore le buisane ka go rarabolola bothata joo mmogo. Fa o ipha nako ya go buisana le mosha wa gago, bothata bo ka rarabololwa sentle.",
   "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. You tapped the @data.habit.breathe.in_text_title - well done!":
     "Beke eno, mokgele wa gago e ne e le gore: Fa o ikutlwa o tshwenyegile mo maikutlong kgotsa o tenegile, hemela ko teng le kwa ntle ga tlhano pele ga o ka tsaya kgato. O tobeditse @data.habit.breathe.in_text_title - o dirile sentle!",
   "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react.":
@@ -486,10 +509,10 @@ export default {
   "It’s okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand.":
     "Go siame go sa batle go bua ka nako eo. Batla nako ya go tlhalosa kgantele, fa o ikutlwa o ritibetse, gore mongwe le mongwe a go tlhaloganye.",
   "First @global.weekly_workshop!": "Ntlha @global.weekly_workshop!",
-  "Hi @field.user_name! Your @local.workshop_data.in_text_title is ready for you!":
-    "Dumela @field.user_name! @local.workshop_data.in_text_title ya gago e setse e go letile!",
-  "Hi @field.group_name! Your @local.workshop_data.in_text_title is ready for you!":
-    "Dumela @field.group_name! @local.workshop_data.in_text_title ya gago e setse e go letile!",
+  "Hi @fields.user_name. Your @local.workshop_data.in_text_title is ready for you.":
+    "Dumela @fields.user_name. @local.workshop_data.in_text_title ya gago e setse e go letile.",
+  "Hi @fields.group_name. Your @local.workshop_data.in_text_title is ready for you.":
+    "Dumela @fields.group_name. @local.workshop_data.in_text_title ya gago e setse e go letile.",
   "Spending time with your teen helps build trust between you. \n\nContinue your @global.parent_app journey now - you and your family will see great results.":
     "Go ipha nako le mosha wa gago go thusa go aga go tshepana magareng ga lona. \n\nTswelapele ka @global.parent_app ya gago ya mosepele jaanong - wena le lelapa la gago lo tla bona dipholo tse dintle.",
   "Thank you for putting so much effort into being a better parent. You are loved and appreciated!":
@@ -497,18 +520,24 @@ export default {
   "Have you spent time with your teen already?": "A o setse o iphile nako le mosha wa gago?",
   "Thank you for using @global.parent_app and committing to your parenting. \n\nYour @local.workshop_data.in_text_title is ready for you!":
     "Re lebogela gore o dirisitse@global.parent_app le go ikemisetsa go nna motsadi. \n\n@local.workshop_data.in_text_title ya gago e setse e go letile!",
-  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. It won’t take long, and you will get valuable information from it. Thank you again for trying to be a better parent. Tomorrow, a new workshop awaits you.":
-    "Go bonala o sa fetsa @local.workshop_data.in_text_title ga jaana. Go ka se tseye sebaka, mme o tla newa tshedimosetso ya botlhokwa mo go yone. Re a go leboga gape go leka go nna motsadi yo o botoka. Kamoso, workshop e ntšha e go emetse.",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. It won’t take long, and you will get valuable information. \n\nWell done for trying to be a better parent. Tomorrow, you can access a new workshop.":
+    "Go bonala o sa fetsa @local.workshop_data.in_text_title ga jaana. Ga go na go tsaya nako e telele, mme o tla bona tshedimosetso ya botlhokwa. \n\nO dirile sentle go leka go nna motsadi yo o botoka. Kamoso, o ka kgona go tsena mo workshop e ntšha.",
+  "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!":
+    "O dirile sentle go fetsa @local.workshop_data.in_text_title. Kamoso, o ka tsena mo workshop e ntšha ya go go thusa go itapolosa, go itumelela le go ithuta go nna le bokgoni jo bosha!",
   "Hi @field.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.":
     "Dumela @field.user_name! Gompieno re keteka kgwedi tse pedi o dirisa @global.parent_app! \n\nO dira sentle! Workshop ya beke eno e go thusa go itse gore o tshwanetse go dira eng fa mosha wa gago a sa latele melao ya mo gae.",
   "Hi @field.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.":
     "Dumela @field.group_name! Gompieno re keteka kgwedi tse pedi o dirisa @global.parent_app! \n\nO dira sentle! Workshop ya beke eno e go thusa go itse gore o tshwanetse go dira eng fa mosha wa gago a sa latele melao ya mo gae.",
-  "It’s great that you’ve been using @global.parent_app . You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!":
-    "Go gontle gore o ntse o dirisa @global.parent_app . O setse o iponetse dithulusu tse 6 tsa go nna motsadi! \n\nDira workshop e e latelang go iponela thulusu e nngwe ya go nna motsadi!",
+  "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!":
+    "Go gontle gore o ntse o dirisa @global.parent_app. O setse o iponetse dithulusu tse 6 tsa go nna motsadi! \n\nDira workshop e e latelang go iponela thulusu e nngwe ya go nna motsadi!",
   "Complete the workshop and try to discuss with your teen to come up with one positive and one negative consequence of a behaviour together.":
     "Feleletsa workshop mme o leke go buisana le mosha wa gago go tla ka e le nngwe ya ditlamorago tse di siameng le tse di sa siamang tsa boitshwaro lo le mmogo.",
   "Have you managed to come up with one positive and one negative consequence of a behaviour with your teen yet?":
     "A o setse o kgonne go tla ka e le nngwe ya ditlamorago tse di siameng le tse di sa siamang tsa boitshwaro jwa mosha wa gago?",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Calm consequences really help your teen to follow rules well – give it a try before moving on!\n\nWell done for showing so much commitment to your family.":
+    "Go bonala o sa fetsa @local.workshop_data.in_text_title ga jaana. Fa go nna le maemo a a ritibetseng kwa morago seno se thusa mosha go latela ditaelo sentle – e leke pele ga o tswelela!\n\nO dirile sentle go bontsha boiketleetso jo bo kalo ka balelapa la gago.",
+  "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn useful skills!":
+    "O dirile sentle go fetsa @local.workshop_data.in_text_title. Kamoso, o ka tsena mo workshop e ntšha ya go go thusa go itapolosa, go itumelela le go ithuta go nna le bokgoni jo bosha!",
   "Hi @field.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.":
     "Dumela @field.user_name! Mathata a ka tlhagela mongwe le mongwe - go ipaakanya go thusa tota. \n\nWorkshop eno e tla go bontsha gore jang.",
   "Hi @field.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.":
@@ -521,6 +550,10 @@ export default {
     "Go molemo gore o na le rona mo tseleng eno ya go nna motsadi! \n\nFeleletsa @local.workshop_data.in_text_title mme o ithute tsela e e molemo go tsiboga fa mosha wa gago a go tlhoka thata.",
   "Have you discussed with your teen what you would do in a crisis situation?":
     "A o kile wa buisana le mosha wa gago gore lo tla dira eng fa go tlhaga mathata?",
+  "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!":
+    "Kamoso go tla bo go na le workshop @global.parent_app ya bofelo e o ka e dirang. \n\nLeka go e dira @local.workshop_data.in_text_title pele ga o simolola workshop e ntšha. Fa o dira jalo, o ka kgona go dira dithulaganyo tsotlhe tsa bokgoni jwa go godisa bana le go dira tshwetso ya se o batlang go se dira morago ga tsone!",
+  "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!":
+    "O dirile sentle ka go fetsa @local.workshop_data.in_text_title. Kamoso, o ka kgona go tsena mo workshop ya bofelo ya go akanya ka loeto lwa @global.parent_app la gago le se o ka se dirang mo nakong e e tlangt!",
   "Hi @field.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.":
     "Dumela @field.user_name! Re a go akgola gore o simolotse @global.parent_app ya beke ya bo 4. \n\nWorkshop ya beke eno e kaga gore o ka oketsa jang ditshono tsa gago tsa go dira gore mosha wa gago a dire se o mo kopang gore a se dire.",
   "Hi @field.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.":
@@ -537,71 +570,81 @@ export default {
     "A mosha wa gago o nna a go reetsa? Fa go se jalo (jaaka bontsi jwa rona), leba workshop ya beke eno go ithuta kafa go naya ditaelo tse di siameng go ka thusang ka teng - thata.",
   "Positive instructions help to see more and more good behaviour! \n\nComplete the @local.workshop_data.in_text_title to get some ideas on how this could work in your family.":
     "Ditaelo tse di siameng di thusa go bona boitshwaro jo bo molemo gantsintsi! \n\nFeleletsa @local.workshop_data.in_text_title go bona dikakantsho tsa gore seno se ka dira jang mo lelapeng la gago.",
-  "As usual, tomorrow a new workshop awaits you. You might want to complete the previous workshop before then.  \n\nSome parents told us they are using the app while commuting to work.  Why don’t you use the app when you have a few minutes?  Thank you again for using @global.parent_app .":
-    "Jaaka tlwaelo, kamoso workshop e ntšha e go emetse. O ka batla go feleletsa workshop e fetileng pele ga seo.  \n\nBatsadi ba bangwe ba re boleletse gore ba dirisa sediriso le fa ba le mo tseleng ya go ya tirong.  Ke ka ntlha yang o sa dirise sediriso fa o na le metsotso e mmalwa?  Re leboga gape gore o dirisitse @global.parent_app .",
-  "Hi @field.user_name! You are starting your second month of using @global.parent_app . Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
-    "Dumela @field.user_name! O simolola kgwedi ya bobedi o dirisa @global.parent_app . Bontle! \n\nMalapa a mantsi a sokola ka dikgang tsa madi, ka jalo, workshop ya beke eno e tla go naya thulusu e e tla go thusang go rulaganya ditshenyegelo tsa gago gore o nne le madi a a lekaneng go go tsweledisa le kgwedi.",
-  "Hi @field.group_name! You are starting your second month of using @global.parent_app . Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
-    "Dumela @field.group_name! O simolola kgwedi ya bobedi o dirisa @global.parent_app . Bontle! \n\nMalapa a mantsi a sokola ka dikgang tsa madi, ka jalo, workshop ya beke eno e tla go naya thulusu e e tla go thusang go rulaganya ditshenyegelo tsa gago gore o nne le madi a a lekaneng go go tsweledisa le kgwedi.",
-  "Whenever you feel alone or overwhelmed, know that you are not alone. There are parents all over the world who are going through the same struggles as you. \n\nYou are doing your best every day and we’re all proud of you!":
-    "Fa o ikutlwa o le nosi kgotsa o imelwa, itse gore ga o nosi. Go nale batsadi mo lefatsheng ka bophara ba ba sokolang jaaka o sokola. \n\nO dira bojotlhe jwa gago tsatsi le letsatsi mme re a go akgola!",
+  "As usual, you can access a new workshop tomorrow. It will help to complete the previous workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.":
+    "Kamoso, o ka kgona go tsena mo workshop e ntšha. E tla go thusa go dira workshop ya pele ga eno.  \n\nBatsadi ba bangwe ba dirisa app eno fa ba le mo tseleng ya go ya tirong. Ke ka ntlha yang o sa dirise app eno fa o na le metsotsonyana e le mmalwa? \n\nRe leboga gape gore o dirisitse @global.parent_app.",
+  "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop is ready for you: you will see a big difference by making small changes!":
+    "Re a go akgola, o feditse @local.workshop_data.in_text_title.\n\nKamoso, go tla bo go na le workshop e ntšha e o tshwanetseng go e dira: o tla bona pharologanyo e kgolo ka go dira diphetogo tse dinnye!",
+  "Hi @field.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
+    "Dumela @field.user_name! O simolola kgwedi ya bobedi o dirisa @global.parent_app. Bontle! \n\nMalapa a mantsi a sokola ka dikgang tsa madi, ka jalo, workshop ya beke eno e tla go naya thulusu e e tla go thusang go rulaganya ditshenyegelo tsa gago gore o nne le madi a a lekaneng go go tsweledisa le kgwedi.",
+  "Hi @field.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
+    "Dumela @field.group_name! O simolola kgwedi ya bobedi o dirisa @global.parent_app. Bontle! \n\nMalapa a mantsi a sokola ka dikgang tsa madi, ka jalo, workshop ya beke eno e tla go naya thulusu e e tla go thusang go rulaganya ditshenyegelo tsa gago gore o nne le madi a a lekaneng go go tsweledisa le kgwedi.",
   "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? \n\nThis week’s workshop deals with money and budgeting.":
     "A o ikutlwa o tshwenyegile mo maikutlong ka ntlha ya madi? A mosha wa gago o nna a kopa dilo tse o sa kgoneng go di reka? \n\nWorkshop ya beke eno e bua ka madi le ditekanyetsokabo.",
-  "Involving your family in how you spend your money can take away a lot of stress and arguments. \n\nComplete the @local.workshop_data.in_text_title and gain useful tools to help your family with budgeting and saving. It's actually easy - you will see!":
-    "Go akaretsa lelapa la gago ka ga gore o dirisa jang madi go ka dira gore o efoge go tshwenyega thata mo maikutlong le dikgotlhang. \n\nFeleletsa @local.workshop_data.in_text_title mme o kgone go iponela dithulusu go thusa lelapa la gago ka tekanyetsokabo le go boloka madi. Tota go motlhofo - o tla bona!",
+  "Whenever you feel alone or overwhelmed, know that you are not alone. There are parents all over the world who are going through the same struggles as you. \n\nYou are doing your best every day and we’re all proud of you!":
+    "Fa o ikutlwa o le nosi kgotsa o imelwa, itse gore ga o nosi. Go nale batsadi mo lefatsheng ka bophara ba ba sokolang jaaka o sokola. \n\nO dira bojotlhe jwa gago tsatsi le letsatsi mme re a go akgola!",
   "Have you talked with your teen about your family budget yet?":
     "A o setse o buile le mosha wa gago ka go tekanyetsokabo ya lelapa la gago?",
-  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Many parents said that making a budget created a positive change in many aspects. \n\nThank you again for your long-lasting commitment.":
-    "Go bonala o sa fetsa @local.workshop_data.in_text_title ga jaana. Batsadi ba le bantsi ba re go dira tekanyetsokabo go dirile diphetogo tse di molemo mo dikarolong tse dintsi. \n\nRe leboga gape go bo o ikemiseditse ka nako e telele.",
+  "Involving your family in how you spend your money can take away a lot of stress and arguments. \n\nComplete the @local.workshop_data.in_text_title to help your family with budgeting and saving. It's actually easy - you will see!":
+    "Go akaretsa lelapa la gago ka ga gore o dirisa jang madi go ka dira gore o efoge go tshwenyega thata mo maikutlong le dikgotlhang. \n\nFetsa @local.workshop_data.in_text_title gore o kgone go thusa balelapa la gago ka dira tekanyetsokabo le go boloka madi. Tota go motlhofo - o tla bona!",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Many parents said that making a budget brought peace back into their house – it can work for you too.\n\nThank you again for being such a committed parent.":
+    "Go bonala o sa fetsa @local.workshop_data.in_text_title ga jaana. Batsadi ba le bantsi ba boletse gore go dira tekanyetsokabo go ne ga dira gore go nne le kagiso mo lelapeng - le wena go ka go direla jalo.\n\nRe santse re go lebogela go nna motsadi yo o ikemiseditseng.",
+  "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you set family rules that work.":
+    "O dirile sentle thata go bo o feditse @local.workshop_data.in_text_title. Kamoso, go tla bulelwa workshop e ntšha ya go thusa go tlhoma melao ya lelapa e e berekang.",
   "Hi @field.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?":
     "Dumela @field.user_name! Re a go akgola gore o simolotse beke ya gago ya @field.user_name ya boraro. \n\nWorkshop e ntšha e go emetse! A o kgona go bona gore setlhogo sa beke eno ke eng go tswa mo setshwantshong seno?",
   "Hi @field.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?":
     "Dumela @field.group_name! Re a go akgola gore o simolotse beke ya gago ya @field.user_name ya boraro. \n\nWorkshop e ntšha e go emetse! A o kgona go bona gore setlhogo sa beke eno ke eng go tswa mo setshwantshong seno?",
   "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.":
     "O dirile sentle ka go dirisa @global.parent_app! Gopola gore ke dilo tse dinnye tse di dirang pharologanyo e kgolo.",
-  "Thank you again for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and add some valuable parenting tools to your toolbox!":
-    "Re lebogela gore o bo o dirisitse @global.parent_app go beeletsa mo go wena le lelapa la gago.\n\nLeka @global.parent_app go oketsa ka dithulusu tsa botsadi tsa botlhokwa mo thulubokoseng ya gago!",
+  "Thank you for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and build a great parenting skill!":
+    "Re lebogela gore o bo o dirisitse @global.parent_app go beeletsa mo go wena le lelapa la gago.\n\nLeka @local.workshop_data.in_text_title mme o kgone go nna le bokgoni jo bo siameng thata jwa go godisa bana!",
   "Praising makes all the difference. \n\nComplete the @local.workshop_data.in_text_title and see how YOU can use praise in your family.":
     "Go akgola go dira pharologanyo. \n\nFeleletsa @local.workshop_data.in_text_title mme o bone kafa O ka dirisang kakgolo ka teng mo lelapeng la gago.",
   "Praise time!": "Nako ya go akgola!",
   "When you see your teen next, praise them for one thing they are doing well! \n\nAnd when was the last time you praised yourself or another adult in your household? Try it!":
     "Fa o bona mosha wa gago, mo akgole ka sengwe se se molemo se a se dirang sentle! \n\nKe leng la bofelo fa o ne o ikakgola kgotsa o akgola mogolo mongwe mo lelapeng la gago? Go leke!",
-  "Hi awesome parent! A new workshop awaits you tomorrow, but it seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!). Some parents told us they went through it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes? \n\nThank you again for using @global.parent_app .":
-    "Dumela motsadi yo montle! Workshop e ntšha e go emetse kamoso, mme go bonala e kete ga o ise o fetse @local.workshop_data.in_text_title ga jaana. E khutshwane (ke a go solofetsa!). Batsadi ba bangwe ba re boleletse gore ba e lebile fa ba emetse dijo tsa maitseboa gore di butswe. Ke ka ntlha yang o sa dirise sediriso fa o na le metsotso e mmalwa? \n\nRe leboga gape gore o dirisitse @global.parent_app .",
+  "Hi awesome parent, a new workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes? \n\nThank you again for using @global.parent_app.":
+    "Dumela motsadi wa botlhokwa, go na le workshop e o tshwanetseng go e dira kamoso. Go lebega o santse o ise o fetse @local.workshop_data.in_text_title le ga jaana. E khutshwane tota (ke a go tlhomamisetsa!) – tota e bile o ka kgona go fetsa o ntse o apeile dijo tsa maitseboa. Ke ka ntlha yang o sa dirise sediriso fa o na le metsotso e mmalwa? \n\nRe leboga gape gore o dirisitse @global.parent_app.",
+  "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.":
+    "O dirile sentle thata ka go fetsa @local.workshop_data.in_text_title. Kamoso, go tla bulelwa workshop e ntšha. E leke - o tla bona pharoganyo mo tseleng e mosha wa gago a itshwarang ka yone.",
   "Hi @field.user_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.":
     "Dumela @field.user_name! Beke e ntšha, workshop e ntšha! Ithute go baya melao ya mo gae ka tsela e e tla oketsang ditshono tsa gore mosha wa gago a e latele.",
   "Hi @field.group_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.":
     "Dumela @field.group_name! Beke e ntšha, workshop e ntšha! Ithute go baya melao ya mo gae ka tsela e e tla oketsang ditshono tsa gore mosha wa gago a e latele.",
   "Sometimes it feels like your teens are still grumpy even when you’ve done the best you can. Remember that you are doing an amazing job, and that there will be good times with them too!":
     "Ka dinako tse dingwe go utlwala e kete basha ba gago ba santse ba sa itumela le fa o lekile ka moo o kgonang ka gone. Gopola gore o dira tiro e ntle, le gore go tlile go nna le dinako tse di monate le bone!",
-  "Thank you again for using @global.parent_app and for committing to your parenting journey. \n\nThe @local.workshop_data.in_text_title will show you how to set rules in a way that will help your teen to understand and follow them.":
-    "Re lebogela gore o dirisitse @global.parent_app le go ikemisetsa go tsaya loeto lwa gago lwa go nna motsadi. \n\n@local.workshop_data.in_text_title e tla go bontsha gore o baya jang melao ka tsela e e tla thusang mosha wa gago go e tlhaloganya le go e latela.",
+  "Thank you again for using @global.parent_app and for committing to your parenting journey. \n\nThe @local.workshop_data.in_text_title will show you how to set rules in a way that will help your teen to understand and follow them better.":
+    "Re lebogela gore o dirisitse @global.parent_app le go ikemisetsa go tsaya loeto lwa gago lwa go nna motsadi. \n\n@local.workshop_data.in_text_title e tla go bontsha kafa o tshwanetseng go tlhoma melao ka teng ka tsela e e tla thusang mosha wa gago go e tlhaloganya le go e latela botoka.",
   "You are close to gaining another parenting tool! Complete the @local.workshop_data.in_text_title, set ONE simple and realistic rule with your teen, and see things change!":
     "O gaufi le go nna le thulusu ya botsadi e nngwe! Feleletsa @local.workshop_data.in_text_title, baya molao o le MONGWE o o motlhofo le o o ka kgonang go latelwa le mosha wa gago, mme o bone dilo di fetoga!",
   "Have you managed to set a rule together with your teen?":
     "A o kgonne go baya molao mmogo le mosha wa gago?",
+  "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. It won’t take long and will help your teen to follow rules better!":
+    "Kamoso go tla bo go na le @global.parent_app workshop e ntšha gore o simolole go e dira. \n\nLeka go e fetsa @global.parent_app pele ga o simolola workshop e ntšha. Ga e na go tsaya nako e telele mme e tla thusa mosha wa gago go latela melao botoka!",
+  "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop will help you know what to do when teens show bad (or good) behaviour!":
+    "Re a go akgola, o feditse @local.workshop_data.in_text_title.\n\nKamoso, go tla bo go na le workshop e ntšha e e tla go thusang go itse gore ke leng basha ba bontsha maitshwaro a a maswe (a a molemo)!",
   "Hi @field.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!":
     "Dumela @field.user_name! O gaufi le go fetsa di-workshop tsa gago tse @global.parent_app! Re leboga gape go bo o ikemiseditse ka nako e telele. \n\nWorkshop ya beke eno e kaga go boloka mosha wa rona a sireletsegile, ka bobedi mo mafaratlhatlheng le mo tikologong. Itumelele!",
   "Hi @field.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!":
     "Dumela @field.group_name! Lotlhe lo gaufi le go fetsa di-workshop tsa lona tse @global.parent_app! Re leboga gape go bo o ikemiseditse ka nako e telele. \n\nWorkshop ya beke eno e kaga go boloka mosha wa rona a sireletsegile, ka bobedi mo mafaratlhatlheng le mo tikologong. Itumelele!",
   "This has been the hardest of times to be a parent. You should be so proud of yourself for everything you have done. \n\nThink about every time you have made your teen smile and all the care you have given them. Parents are incredible, and you are incredible!":
     "Eno e nnile nako e boima thata ya go nna motsadi. O tshwanetse go nna motlotlo ka sengwe le sengwe se o se dirileng. \n\nAkanya ka nako yotlhe e o dirileng gore mosha wa gago a nyenye ka yone le tlhokomelo yotlhe e o ba neileng yone. Batsadi ba a gakgamatsa, le wena wa gakgamatsa!",
-  "You have been using @global.parent_app and you have gained 8 parenting tools already! \n\nComplete the next workshop to gain another tool!":
-    "Kgale o dirisa @global.parent_app mme o setse o iponetse dithulusu tse 8 tsa botsadi! \n\nFeleletsa workshop e e latelang go iponela thulusu e nngwe!",
+  "You have have gained so many parenting skills already over the past weeks!\n\nComplete the next workshop to gain another helpful skill.":
+    "O setse o kgonne go ithuta bokgoni jo bontsi jwa go godisa bana mo dibekeng tse di fetileng!\n\nFeleletsa workshop e e latelang go iponela thulusu e nngwe!",
   "To keep your teen safe, it helps to chat together about your community and their online experiences. \n\nComplete the @local.workshop_data.in_text_title and see how you can do this!":
     "Go boloka mosha wa gago a sireletsegile, go a thusa go tlotla le bone ka tikologo ya gago le maitemogelo a bone a mafaratlhatlha. \n\nFeleletsa @local.workshop_data.in_text_title mme o bone gore o ka dira seno!",
   "Have you talked with your teen about safety measures?":
     "A o setse o buile le mosha wa gago kaga ditsela tsa tshireletsego?",
-  "The tenth and last workshop awaits you tomorrow. \n\nThank you again for using @global.parent_app .":
-    "Workshop ya bosome le ya bofelo di go emetse kamoso. \n\nRe leboga gape gore o dirisitse @global.parent_app .",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Making a plan together with your teen can prevent many problems – give it a try before moving on!\n\nWell done for using @global.parent_app to support your family.":
+    "Go bonala o sa fetsa @local.workshop_data.in_text_title ga jaana. Go dira thulaganyo le mosha wa gago go ka thusa go thibela mathata a le mantsi - leka go dira jalo pele go o tswelela!\n\nO dirile sentle go dirisa @global.parent_app go tshegetsa balelapa la gago.",
+  "Congratulations, you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is ready for you to help you and your family deal with any situation – together you can do so much!":
+    "Re a go akgola, o feditse @local.workshop_data.in_text_title. Kamoso, go tla bo go na le workshop e ntšha ya go thusa wena le balelapa la gago go dirisana le seemo sepe fela – fa le dira mmogo le ka kgona go dira go le gontsi thata!",
   "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this!":
     "Gopola – beke eno ke kaga WENA!  Re solofela o itlhokomela sentle. O tshwanelwa ke seno!",
-  "First @global.weekly_workshop ready tomorrow!":
-    "Sa ntlha @global.weekly_workshop ipaakanyetse kamoso!",
-  "Start your first @global.parent_app workshop tomorrow. You will see the good results!":
-    "Simolola workshop ya gago ya ntlha @global.parent_app kamoso. O tla bona dipholo tse di molemo!",
-  "Have you told your @global.parent_app partners about the app yet? You can start your first @global.parent_app workshop together tomorrow!":
-    "A o setse o boleletse molekane wa gago @global.parent_app kaga sediriso? O ka simolola workshop ya gago ya ntlha  lo le mmogo kamoso!",
+  "Start a brand new @global.parent_app workshop tomorrow. You will see the good results!":
+    "Siimolola workshop e ntšha ya @global.parent_app gotlhelele kamoso. O tla bona dipholo tse di molemo!",
+  "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!":
+    "A o setse o boleletse molekane wa gago @global.parent_app kaga sediriso? Go simolola kamoso, o ka simolola go dira di-workshop tsa @global.parent_app tsa lona mmogo!",
   "Hi @field.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.":
     "Dumela @field.user_name! O dira kgatelopele e ntle tota mo loetong lwa gago lwa botsadi! \n\nGo nna le mosha go raya go nna le mathata a a sa lebelelwang a o tshwanetseng go lepalepana le bone. Workshop eno e tla go bontsha gore o lepalepane le one jang.",
   "Hi @field.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.":
@@ -610,68 +653,53 @@ export default {
     "Go ikemisetsa ga gago go rotloetsa mongwe le mongwe. Kgoba makgwafo mme o tswelepele!",
   "With teenagers, and in life, unexpected problems come up and we have to deal with them. \n\nStart the next workshop to learn how to successfully address these problems.":
     "Ka basha, le mo botshelong, mathata a a sa lebelelwang a nna gone mme re tshwanetse go lepalepana le one. \n\nSimolola workshop e e latelang go ithuta gore o ka berekana jang le mathata ano ka katlego.",
-  "You are on the right track to start solving problems together with your teen! \n\nComplete the @local.workshop_data.in_text_title and gain another important parenting tool!":
-    "O mo tseleng e e siameng ya go simolola go rarabolola mathata mmogo le mosha wa gago! \n\nFeleletsa @local.workshop_data.in_text_title mme o iponele thulusu e nngwe ya botlhokwa ya go nna motsadi!",
+  "You are on the right track to start solving problems together with your teen! \n\nComplete the @local.workshop_data.in_text_title and gain another important parenting skill!":
+    "O mo tseleng e e siameng ya go simolola go rarabolola mathata mmogo le mosha wa gago! \n\nFeleletsa @local.workshop_data.in_text_title mme o iponele bokgoni jo bongwe jwa botlhokwa jwa go godisa bana!",
   "Have you tried the four steps of problem-solving with your teen yet? \n\nKNOW IT, SOLVE IT, TRY IT, TEST IT!":
     "A o setse o lekile dikgato tse nne tsa go rarabolola bothata le mosha wa gago? \n\nA ITSE - A RARABOLOLE - E LEKE - E TLHATLHOBE!",
+  "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. Knowing how to solve problems together will help in many situations!":
+    "Kamoso go tla bo go na le @global.parent_app workshop e ntšha gore o simolole go e dira. \n\nLeka go e fetsa @global.parent_app pele ga o simolola workshop e ntšha. Go itse go rarabolola mathata a lona mmogo go tla thusa mo maemong a le mantsi!",
+  "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe.":
+    "O dirile sentle thata go bo o feditse @local.workshop_data.in_text_title. Kamoso, go tla bulelwa workshop e ntšha ya go go thusa go boloka mosha wa gago a sireletsegile.",
   "Hi @field.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.":
     "Dumela @field.user_name! Re a go akgola gore o simolotse @global.parent_app beke ya bo 5.\n\nWorkshop ya botsadi e ntšha e go emetse ka dikakantsho tsa gore re ka nna jang re kgobile makgwafo le go itshwara fa basha ba rona ba batla go re tsentsha.",
   "Hi @field.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.":
     "Dumela @field.group_name! Re a go akgola gore o simolotse @global.parent_app beke ya bo 5.\n\nWorkshop ya botsadi e ntšha e go emetse ka dikakantsho tsa gore re ka nna jang re kgobile makgwafo le go itshwara fa basha ba rona ba batla go re tsentsha.",
-  "Happy, sad, angry, excited, worried? Well done for recognizing how you and others felt today! And remember, tomorrow is a brand new day.":
-    "O itumetse, o hutsafetse, o galefile, o kgatlhegile, o tshwenyegile? O dirile sentle go lemoga gore wena le ba bangwe lo ne lo ikutlwa jang gompieno! Mme gopola, kamoso ke letsatsi le lesha.",
   "We have a new workshop available for you about managing anger and stress. It will help you take better care of yourself.":
     "Re na le workshop e ntšha e e gone go go thusa kaga go laola kgalefo le go tshwenyega mo maikutlong. E tla go thusa go itlhokomela botoka.",
+  "Happy, sad, angry, excited, worried? Well done for recognizing how you and others felt today! And remember, tomorrow is a brand new day.":
+    "O itumetse, o hutsafetse, o galefile, o kgatlhegile, o tshwenyegile? O dirile sentle go lemoga gore wena le ba bangwe lo ne lo ikutlwa jang gompieno! Mme gopola, kamoso ke letsatsi le lesha.",
   "We all feel overwhelmed sometimes. Taking a deep breath helps! \n\nComplete the @local.workshop_data.in_text_title to get some useful tools to deal with stress.":
     "Rotlhe re ikutlwa re imetswe ka nako nngwe. Go hemela ko teng go ka thusa! \n\nFeleletsa @local.workshop_data.in_text_title go iponela dithulusu tse di mosola tsa go lepalepana le go tshwenyega mo maikutlong.",
   "How have your stress levels been this week? Try to take a few deep breaths before responding to your teen - it makes a big difference.":
     "Go tshwenyega mo maikutlong ga gago go ne go ntse jang beke eno? Leka go hemela ko teng makgetlo a le mmalwa pele o araba mosha wa gago - go dira pharologanyo e kgolo.",
   "Well done for taking a big breath before responding to your teen! Each time you are taking a pause, you are getting back control.":
     "O dirile sentle ka go hema thata pele o araba mosha wa gago! Nako le nako fa o ema go se kae, o kgona go itshwara.",
-  "Hi @field.user_name! This week you:": "Dumela @field.user_name! Beke eno o:",
-  "Did a relax, which shows you are trying to stay calm.":
-    "Kile wa repa, se se bontshang gore o leka go kgoba makgwafo.",
-  "Did @field.weekly_parent_point_relax relaxes, which shows you are trying to stay calm.":
-    "Kile wa repa ga @field.weekly_parent_point_relax, se se bontshang gore o leka go kgoba makgwafo.",
-  "Treated yourself, which shows you are trying to look after yourself.":
-    "Itshwere sentle, se se bontshang gore o leka go itlhokomela.",
-  "Treated yourself @field.weekly_parent_point_treat_yourself times, which shows you are trying to look after yourself.":
-    "Itshwere sentle makgetlo a le @field.weekly_parent_point_treat_yourself, se se bontshang gore o leka go itlhokomela.",
-  "Praised yourself, which shows you appreciate your hard work.":
-    "Ikakgotse, se se bontshang gore o anaanela tiro ya gago ya bonatla.",
-  "Praised yourself @field.weekly_parent_point_praise_yourself times, which shows you appreciate your hard work.":
-    "Ikakgotse makgetlo a le @field.weekly_parent_point_praise_yourself, se se bontshang gore o anaanela tiro ya gago ya bonatla.",
-  "Did one-on-one, which shows you are spending time together.":
-    "Iphile nako lo le mmogo, se se bontshang gore lo fetsa nako mmogo.",
-  "Did one-on-one @field.weekly_parent_point_spend_time times, which shows you are spending time together.":
-    "Iphile nako lo le mmogo makgetlo a le @field.weekly_parent_point_spend_time , se se bontshang gore lo fetsa nako mmogo.",
-  "Praised your teen, which shows you are finding positives.":
-    "Akgotse mosha wa gago, se se bontshang gore o bona dilo tse di siameng.",
-  "Praised your teen @field.weekly_parent_point_praise_teen times, which shows you are finding positives.":
-    "Akgotse mosha wa gago makgetlo a le @field.weekly_parent_point_praise_teen, se se bontshang gore o bona dilo tse di siameng.",
-  "Gave a positive instruction, which shows you are being positive.":
-    "File taelo e e siameng, se se bontshang gore o leba dilo ka tsela e e siameng.",
-  "Gave positive instructions @field.weekly_parent_point_instruct_positively times, which shows you are being positive.":
-    "File taelo e e siameng makgetlo a le @field.weekly_parent_point_instruct_positively, gore o leba dilo ka tsela e e siameng.",
-  "Took a breath instead of yelling, which shows you are trying to control yourself.":
-    "O hemile pele o omana, se se bontsha gore o leka go itshwara.",
-  "Took a breath instead of yelling @field.weekly_parent_point_breathe times, which shows you are trying to control yourself.":
-    "O hemile pele o omana makgetlo a le @field.weekly_parent_point_breathe , se se bontshang gore o leka go itshwara.",
-  "Made a good money choice, which shows you are trying to manage your finances.":
-    "Dirile tshwetso e ntle ka madi, se se bontshang gore o leka go laola madi a gago.",
-  "Made @field.weekly_parent_point_money good money choices, which shows you are trying to manage your finances.":
-    "Dirile tshwetso e ntle ka madi makgetlo a le @field.weekly_parent_point_money, se se bontshang gore o leka go laola madi a gago.",
-  "Gave a calm consequence, which shows you guide your teen calmly.":
-    "Neile ditlamorago o kgobile makgwafo, se se bontshang gore o kaela mosha wa gago o kgobile makgwafo.",
-  "Gave a calm consequence @field.weekly_parent_point_consequence times, which shows you guide your teen calmly.":
-    "Neile ditlamorago o kgobile makgwafo makgetlo a le @field.weekly_parent_point_consequence, se se bontshang gore o kaela mosha wa gago o kgobile makgwafo.",
-  "Did something to keep your teen safe, which shows you care.":
-    "Dirile sengwe go boloka mosha wa gago a sireletsegile, se se bontshang gore wa mo kgathalela.",
-  "Did something to keep your teen safe @field.weekly_parent_point_safe times, which shows you care.":
-    "Dirile sengwe go boloka mosha wa gago a sireletsegile makgetlo a le @field.weekly_parent_point_safe, se se bontshang gore wa mo kgathalela.",
-  "Missing: @global.m_workshop_tomorrow": "Latlhegile: @global.m_workshop_tomorrow",
-  "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre":
-    "Fano ke botswerere jwa beke eno jo o ka bo itseelang! \n\nBo dirise kwa gae mme o bo iponele nako nngwe le nngwe go @global.parent_centre ya gago",
+  "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nBy completing the @local.workshop_data.in_text_title first, you lay a really important foundation: If you feel good, your family will do better too!":
+    "Kamoso go tla bo go na le @global.parent_app workshop e ntšha gore o simolole go e dira. \n\nKa go fetsa @local.workshop_data.in_text_title ya ntlha, o thaya motheo wa botlhokwa tota: Fa o ikutlwa o itumetse, balelapa la gago le bone ba tla dira botoka!",
+  "Well done for completing the @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax and build valuable skills!":
+    "O dirile sentle go fetsa eno @local.workshop_data.in_text_title. Kamoso, o ka tsena mo workshop e ntšha ya go go thusa go itapolosa le go nna le bokgoni jo go nang le mosola!",
+  "Finish current workshop": "Fetsa workshop e o e dirang mo nakong eno",
+  "Here is a fun activity to do with your teen!":
+    "Tiro ya go ijesa monate e o ka e dirang le mosha wa gago ke eno!",
+  "Start @local.workshop_data.in_text_title": "Simolola @local.workshop_data.in_text_title",
+  "Continue @local.workshop_data.in_text_title": "Tswelela @local.workshop_data.in_text_title",
+  "Hi @fields.user_name! This week you did:": "Dumela @fields.user_name! Beke eno o dirile:",
+  "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!":
+    "Dumela @fields.user_name! Re lebogela gore o dirisitse@global.parent_app le go ikemisetsa go nna motsadi. \n\nGopola go konya @global.parent_points ya gago!",
+  "That’s wonderful!": "Lo dirile bontle tota!",
+  "Nice work!": "O dirile sentle thata!",
+  "Your commitment is not taken for granted.": "Boikemisetso jwa gago ga bo tseelwe kwa tlase.",
+  "Keep up the good work!": "Tswelelang lo dira tiro eno e e molemo!",
+  "This is lovely!": "O dirile sentle tota fano!",
+  "Tap yourself on the shoulder. You deserve this.": "Ikiteele legofi. O tshwanelwa ke seno.",
+  "Every @global.parent_point counts!": "@global.parent_point mongwe le mongwe o botlhokwa!",
+  "Remember to sit down and relax today - taking care of yourself is an important parenting skill.":
+    "Gopola go nna fa fatshe o iketle gompieno - go itlhokomela ke bokgoni jwa botlhokwa jwa go nna motsadi.",
+  "Relax now": "Iketle jaanong",
+  "Did you relax already? Tap it!": "A o setse o iketlile? E tobetse!",
+  "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.":
+    "Fano ke botswerere jwa beke eno jo o ka bo itseelang! \n\nBo dirise kwa gae mme o bo iponele nako nngwe le nngwe go @global.parent_centre ya gago.",
   "Home Practice": "Katiso ya Legae",
   "Small actions, big results! Parents who practice their workshop skills at home get better results.":
     "Ditiro tse dinnye, dipholo tse di kgolo! Batsadi ba ba dirisang botswerere jwa bone jwa di workshop ko gae ba nna le dipholo tse di botoka.",
@@ -690,31 +718,10 @@ export default {
     "A o kile wa kopana le dikgwetlho fa o leka go @local.hp_description_second_singular?",
   "What was difficult for you when trying to @local.hp_description_second_singular?":
     "Ke eng se se neng se le boima fa o ne o se leka go @local.hp_description_second_singular?",
-  text_challenge_1: "mafoko_kgwetlho_1",
-  text_challenge_2: "mafoko_kgwetlho_2",
-  text_challenge_3: "mafoko_kgwetlho_3",
-  text_challenge_4: "mafoko_kgwetlho_4",
-  text_challenge_5: "mafoko_kgwetlho_5",
-  text_challenge_6: "mafoko_kgwetlho_6",
-  combo_box_tracker: "mmogo_bokoso_go batla",
-  button_1_a: "konopo_1_a",
-  button_1_b: "konopo_1_b",
-  button_2_a: "konopo_2_a",
-  button_2_b: "konopo_2_b",
-  button_3_a: "konopo_3_a",
-  button_3_b: "konopo_3_b",
-  button_4_a: "konopo_4_a",
-  button_4_b: "konopo_4_b",
-  button_5_a: "konopo_5_a",
-  button_5_b: "konopo_5_b",
-  button_6_a: "konopo_6_a",
-  button_6_b: "konopo_6_b",
-  button_7_a: "konopo_7_a",
-  button_7_b: "konopo_7_b",
   "Sorry we missed this!": "Re itshwarele re fetile seno!",
   "Do you want to share it with us?": "A o batla go se bua le rona?",
-  "Thank you for sharing your challenge! We will take it into account for the next version of @global.parent_app .":
-    "Re lebogela go bo o re boleletse kgwetlho ya gago! Re tla e tsenyeletsa mo akhaonteng ya mofuta o o latelang ya @global.parent_app .",
+  "Thank you for sharing your challenge! We will use this feedback to make @global.parent_app better.":
+    "Re lebogela go bo o re boleletse kgwetlho ya gago! Re tlile go dirisa pegelo eno ya gago go tokafatsa @global.parent_app.",
   "Sorry to hear the tips did not help you.":
     "Re maswabi go utlwa gore dikakantsho ga di a go thusa.",
   "Do you want to share with us what you think would help you?":
@@ -760,6 +767,8 @@ export default {
     "Ikatiso ya mo gae ke yone e dirang botshelo jwa lelapa la rona bo nne botoka. Mme gantsi e tlisa dikgwetlho. \n\nA re bolelaneng dikatlego le mathata a rona, mme re thusane go bona dikakanyo tse re ka di lekang tse disha!",
   "Think about how your home activities went this week. \n\nTake turns to discuss: \n* What went well and what was a problem? \n* What solutions can you think of together? \n* Pick one solution and try it later with your teen! \n\n(Or you can even practice it now so it will be easier later!)":
     "Akanya ka kafa ikatiso ya lona ya kwa gae e tsamaile ka teng mo bekeng eno. \n\nRefosanang go tlotla ka: \n* Ke kae mo o kgonneng go dira bontle le gore ke eng se se neng se le thata? \n* Ke ditharabololo dife tse lo kgonang go di akanya mmogo? \n* Tlhopha tharabololo e le nosi mme o e leke moragonyang le mosha wa gago! \n\n(E bile gongwe lo ka ikatisa gone jaanong gore e nne motlhofo moragonyana!)",
+  "Discussion example from @data.workshop.w_1on1.title":
+    "Sekai sa puisano go tswa go @data.workshop.w_1on1.title",
   "Start Positively Together": "Simololang Sentle Mmogo",
   "It's great to see you again! \n\nLet's start with caring for you.":
     "Go gontle go go bona gape! \n\nA re simolole ka go go kgathalela.",
@@ -768,7 +777,6 @@ export default {
   "Ideas from other families:": "Dikakantsho go tswa ko malapeng a mangwe:",
   "Welcome @fields.user_name": "O amogetswe @fields.user_name",
   "It's great to see you again!": "Go gontle go go bona gape!",
-  current_feeling: "boikutlo_jwa gone jaanong",
   "Let's see how this week has been.": "A re bone gore beke eno e tsamaile jang.",
   "This week you have done...": "Beke eno o dirile...",
   "You are showing such commitment to being a parent and to caring for yourself. \n\nYou are fantastic.":
@@ -785,40 +793,12 @@ export default {
   "Finish with a song": "Feleletsa ka pina",
   "See you soon.": "Re tla go bona mo bogautshwaneng.",
   "Goodbye!": "Tsamaya sentle!",
-  "Contact me via email": "Ikgolaganye le nna ka imeile",
-  "Checkbox 3 text": "Mafoko a bokosotshwao 3",
-  "Checkbox 3 form text": "Mafoko a foromo a bokosotshwao 3",
-  Hello: "Dumela",
-  "Dynamic Texts": "Mafoko a a Nonofileng",
-  local_full_stop: "lefelo_tletse_emisa",
-  "This template should show the same information on both sections":
-    "Thempoleiti eno e tshwanetse go bontsha tshedimosetso e e tshwanang mo dikarolong ka bobedi",
-  Content: "Diteng",
-  Intro: "Matseno",
-  "Initial text": "Mafoko a ntlha",
-  "Double nested 1": "Dintlhaga tse di gabedi 1",
-  "Double nested 2": "Dintlhaga tse di gabedi 2",
-  "Text 1": "Mafoko 1",
-  "Text 2": "Mafoko 2",
-  "Text 3": "Mafoko 3",
-  radio_group_final_temp: "seyalemowa_setlhopha_sa bofelo_nakwana",
-  "Option 1": "Tlhopho 1",
-  "Option 2": "Tlhopho 2",
-  "Welcome Back!": "Re a go amogela gape!",
-  "I will update after the popup has closed":
-    "Ke tla tlhabolola morago ga molaetsa o itlhagelang o sena go tswalega",
-  "Show Popup": "Bontsha Molaetsa o Itlhagelang",
-  Value: "Boleng",
-  "Value of last slider: @local.slider_without_value_labels_1":
-    "Mosola wa selaete sa bofelo: @local.slider_without_value_labels_1",
-  "Value of last slider: @local.slider_without_value_labels_2":
-    "Mosola wa selaete sa bofelo: @local.slider_without_value_labels_2",
-  "form with 'go to'": "dira ka ‘ya go’",
-  "pop up form": "molaetsa o itlhagelang wa direga",
-  happy: "o itumetse",
-  "Powered by Parenting for Lifelong Health and partners":
-    "E Matlafadiwa ke Botsadi jwa Boitekanelo jwa Botshelo jo bo Leele le balekane",
-  "ParentApp funded by": "Sediriso sa Motsadi se thusiwa ka matlole ke",
+  "Organisation Registration": "Kwadiso ya Setheo",
+  "If you are going through the @global.parent_app programme with the support of an organisation, they should have given you a code. Please enter the code in the box below and press Done.":
+    "Fa e le gore o lebile thulaganyo ya @global.parent_app o thusiwa ke setheo sengwe, ba tshwanetse ba bo ba go file khoutu. Tsweetswee tsenya khoutu mo bokosong e e fa tlase o bo go tobetsa Dirilwe.",
+  Done: "Dirilwe",
+  "You may be asked to share this code with people who will support your @global.parent_app journey.":
+    "O ka nna wa kopiwa gore o bontshe batho ba bangwe khoutu eno ba ba tla go tshegetsang mo leetong la gago la @global.parent_app.",
   "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!":
     "Kwa bokhutlong jwa letsatsi, iphe motsotso wa go: \n\n* Bua le mosha wa gago ka selo se le nosi sa go ijesa monate se ba se dirileng. \n* Ikakgole fa o dirile sengwe se le nosi se sentle gompieno. \n* O naledi!",
   "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed.":
@@ -944,76 +924,97 @@ export default {
     "Akanya ka gore ke eng se se dirang gore o galefe? Go direga leng? Gantsi o itshwara jang?\n\nO seka wa letla kgalefo go simolola. Robala kgotsa o ikhutse fa o lapile. Leka go ja sengwe fa o tshwerwe ke tlala. Kopa tshegetso ya mongwe fa o ikutlwa o le esi.",
   "Managing anger can be really difficult. Take a break when you feel you are getting angry at your children or someone else.\n\nGo somewhere else for 5 minutes to regain control of your emotions. If you have safe outdoor space, go outside. You can get through this!":
     "Go laola kgalefo ga ka nna thata. Ema fa o ikutlwa o galefela bana ba gago kgotsa mongwe o sele.\n\nGore maikutlo a gago a boe ya golo gongwe o tseye metsotso e ka nna 5. Fa o na le lefelo la ko ntle le le sireletsegileng, tsamaya o ye ko ntle.  O tla fenya seno!",
+  "Quick Parenting Tips": "Ditlhabobotlhale tsa go Godisa Bana tsa ka Bonako",
+  "Raising teens can be hard, and we all struggle sometimes.":
+    "Go godisa basha e ka nna tiro e e boima, mme e a re sokodisa rotlhe fa gongwe.",
+  "What is the main challenge you are experiencing right now?":
+    "Kgwetlho e kgolo e o nang le yone mo nakong eno ke efe?",
+  "My relationship with my teen is not good": "Kamano ya me le mosha wa me ga se e e siameng",
+  "My teen’s behaviour is difficult":
+    "Ke bona go le thata go dirisana le boitshwaro jwa mosha wa me",
+  "I feel stressed, lonely, angry":
+    "Ke ikutlwa ke gateletswe mo maikutlong, ke jewa ke bodutu, ke tenegile",
+  "I have money worries": "Ke na tshwenyegile ka madi",
+  "I worry about my teen’s safety": "Ke tshwenyegile ka mosha wa me",
+  "We often fight in our family": "Re tlhola re lole fela mo lelapeng la rona",
+  "I have a different problem…": "Nna ke na le bothata bo sele...",
+  "Building a better relationship starts with spending time together - even 5 minutes a day makes a difference! At first, it can be hard to spend time together, as we are all busy and our teens can be in a bad mood sometimes. But spending even 5 minutes a day of focused time with your teen helps to build trust. Try asking your teen what they would like to do together. It can be fun and relaxing for you too!":
+    "Go dira botsala jo bosha go simolola ka go senya nako le le mmogo - le eleng metsotso e le 5 fela go dira pharologanyo! Kwa tshimologong, go ka nna ga sita go ipha nako le le mmogo, ka gonne rotlhe re nna re tshwaregile le gore basha ba rona fa gongwe ba mo maikutlong a a seng monate. Mme go senya le e leng metsotso e le 5 mo letsatsing le tlhomile mogopolo le mosha wa gago go thusa gore le tshepane. Leka go botsa mosha wa gago gore a ka rata lo dira eng mmogo. Go ka le itumedisa le go le repisa!",
+  "You can get more support on how to spend one-on-one time with your teen here:":
+    "O ka bona thuso e nngwe mabapi le gore o ka senya nako le ngwana wa gago wa mosha jang le le babedi fela fa:",
+  "All teenagers sometimes behave just horribly! One thing that can help with teenage behaviour is to praise them any time that they do something good – however small. Teens may not look like they want or seek your praise but they still really, really do.":
+    "Basha botlhe fa gongwe ba itshwara ka go tlhoka maitseo! Selo se le sengwe se se ka thusang ka maitseo a mosha ke go mo akgola nako nngwe le nngwe fa a dira sengwe se se siameng - le fa se ka nna sennye jang. Basha ba ka lebega o kare ga ba batle kgotsa ga ba lebelela gore o ba akgole mme batla jalo tota.",
+  "You can get more support here on how to encourage good behaviour through praising:":
+    "O ka kgona go bona thuso e nngwe fano mabapi le tsela ya go kgothaletsa boitshwaro jo bo siameng ka go akgola:",
+  "Parenting stress is really high right now. We know exactly how overwhelming life can be. Doing something for yourself can reduce your stress. You deserve it! And when you feel overwhelmed, take back control over your body by taking five slow, deep breaths before responding. Lots of parents found this helpful.":
+    "Go tshwenyega mo maikutlong mo go amanang le go godisa bana go kwa godimo fela thata mo nakong eno. Re itse sentle kafa botshelo bo ka imelang ka teng. O ka fokotsa go tshwenyega mo maikutlong ka go dira sengwe ka gone. O tshwanelwa ke seno! Mme fa o ikutlwa o imelwa, laola mmele wa gago ka go hemela kwa teng gatlhano, ka bonya pele ga o fetola. Batsadi ba le bantsi ba bone seno se thusa.",
+  "You can get more support on how to take care of yourself here:":
+    "O ka bona thuso e nngwe mabapi le gore o ka itlhokomela jang fa:",
+  "You are not alone. Money stress is so hard for parents. Try talking to your teen about how much money comes in and what you need to spend money on as a family each month. This can help them to understand why you cannot afford something they want. And when everyone understands where the money goes, it is easier to agree on where you can save together too!":
+    "Ga o nosi. Batsadi ba na le imelwa ke kgetelelo ya maikutlo kaga madi. Leka go bolelela mosha wa gago gore go tsena madi a a kana kang le gore o tshwanela go senya bokae mo lelapeng kgwedi le kgwedi. Seno se ka nna sa mo thusa go tlhaloganya gore gore o ka seke wa kgona go duelela sengwe se a se tlhokang. Mme fa mongwe le mongwe a tlhaloganya gore madi a dira jang, go nna bonolo gore le dumalane gore le ka boloka madi mmogo mo go eng!",
+  "You can get more support on how to budget and save here:":
+    "O ka bona thuso e nngwe mabapi le tsela ya go dira tekanyetsokabo le go boloka madi fa:",
+  "Teens spend a lot of time outside the house or online, where it is harder for us to keep them safe - many parents worry about this. Try to start a conversation with your teen about safe and unsafe places in your community and online (you might need to try a few times). They may even know some you do not. This can start to help you make a plan together about how to stay safe.":
+    "Basha ba ka fetsa nako e ntsi ba le kwa ntle kgotsa ba le mo inthaneteng, kwa go leng thata gone gore re ka ba sireletsa - batsadi ba le bantsi ba tshwenyega ka seno. Leka go simolola motlotlo le mosha wa gago ka ga mafelo a a bolokegileng le a a sa bolokegang mo tikologong ya lona le mo inthaneteng (o ka nna wa tshwanela go leka makgetlo a le mmalwa). E bile ba ka nna ba itse dingwe tse wena o sa di itseng. Seno se ka nna sa simolola go le thusa go dira thulaganyo mmogo ya gore le ka nna le sireletsegile jang.",
+  "You can get more support on how to keep your teen safe here:":
+    "O ka bona thuso e nngwe mabapi le dira gore mosha wa gago a nne a sireletsegile fa:",
+  "When a problem comes up, try to talk about it together. What is the problem exactly? What different solutions are there and what are the consequences of one? That way, you can find a solution that can be OK for everyone.":
+    "Fa bothata bo tlhaga, buisanang mmogo ka jone. Bothata ke eng sentlentle? Go na le ditharabololo dife tse di farologaneng mme ditlamorago tsa tsona ke dife? Ka tsela e, le ka bona tharabololo e e ka nnang e e SIAMENG go botlhe.",
+  "You can get more support on how to solve problems together here:":
+    "O ka bona thuso ya tsela ya go rarabolola mathata mmogo fa:",
+  "It is not easy to look after our families. We all have challenges sometimes, but we hope this app will help you navigate them well. @global.parent_app is based on ten years of experience running parenting programmes in South Africa, and thousands of parents have found that the tips that are shared help with many parenting challenges. We hope this app will help you and your family too.\n\nHere are some of the key proven tips for you:":
+    "Ga go bonolo go tlhokomela bamalapa a rona. Rotlhe re na le dikgwetlho fa gongwe, mme re solofela gore app eno e tla go thusa gore o dirisane le tsone sentle jang. @global.parent_app e thailwe mo boitemogelong jwa dingwaga tse di lesome tsa go tsamaisa dithulaganyo tsa go godisa bana mo Aforika Borwa, mme diketekete tsa batsadi ba bone ditlhabobotlhale tse ba di newang di thusa ka dikgwetlho tse dintsi tsa go godisa bana. Re solofela gore app eno e tlile go thusa le wena le balelapa la gago.\n\nDitlhabotlhale dingwe tsa botlhokwa tse di tlhomamisitsweng ke tseno tse o ka di dirisang:",
+  "Start your first parenting workshop": "Simolola workshop ya gago ya ntlha ya go godisa bana",
+  "You will get more support in the @local.workshop_data.in_text_title.":
+    "O tla bona thuso e nngwe mo go @local.workshop_data.in_text_title.",
+  "You can get more support in the @local.workshop_data.in_text_title.":
+    "O tla bona thuso e nngwe mo go @local.workshop_data.in_text_title.",
+  "Start the @local.workshop_data.in_text_title": "Simolola @local.workshop_data.in_text_title",
+  "Finish the @local.workshop_data.in_text_title to get more support.":
+    "Fetsa @local.workshop_data.in_text_title gore o kgone bona thuso e nngwe.",
+  "Continue the @local.workshop_data.in_text_title":
+    "Tswelela ka @local.workshop_data.in_text_title",
+  "Re-access the @local.workshop_data.in_text_title":
+    "Tsena gape mo go @local.workshop_data.in_text_title",
   "Customise for your needs": "Direla ditlhoko tsa gago",
-  "The next questions about your parenting experiences will help us to get you the support you need.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
-    "Potso e e latelang ka maitemogelo a gago a go nna motsadi go tla re thusa go go batlela tshegetso e o e tlhokang.\n\nBua nnete. Gopola gore dimilone tsa batsadi ba ikutlwa jaaka o ikutlwa, mme rotlhe re tshwanelwa ke go tshegediwa. Ga o esi!",
+  "Every parent in the world is struggling in these hard times. The next questions about your parenting experiences will help us to get you the support you need.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.":
+    "Motsadi mongwe le mongwe mo lefatsheng wa sokola mo dinakong tseno tse di boima. Potso e e latelang ka maitemogelo a gago a go nna motsadi go tla re thusa go go batlela tshegetso e o e tlhokang.\n\nBua nnete. Gopola gore ga o nosi! Gopola gore dimilone tsa batsadi ba ikutlwa jaaka wena, mme rotlhe re tshwanelwa ke go tshegediwa.",
   "It is hard to find time to have fun with your teenager.":
     "Go thata go bona nako ya go itumela le mosha wa gago.",
   "How many days in the past week were you able to give them your attention and do something that they enjoyed with them?":
     "Ke malatsi a ma kae mo bekeng e e fetileng a o kgonneng go ba naya nako ya gago mme lwa dira sengwe se lo se ratang le bone?",
-  "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @global.my_tips (in the @global.parent_centre), so you can access it right away. \n\nBecause @global.w_1on1 builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
-    "Re a itse seno se boima. Re tsentse dikakantsho tse di tla go thusang gore o iphe nako le mosha wa gago go @global.my_tips (mo @global.parent_centre), gore o e bone gone jaanong. \n\nKa gonne @global.w_1on1 e aga motheo wa thulusu ya batsadi botlhe, e tla bo e le @global.weekly_workshop o e amogelang beke e e tlang!",
-  "@global.w_1on1_tools added to @global.my_tips":
-    "@global.w_1on1_tools e tsenyeleditswe mo @global.my_tips",
-  "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
-    "O dirile sentle! @global.weekly_workshop ya rona e e latelang e tla go naya dikakantsho tse di oketsegileng tsa seno, jaaka motheo wa dithulusu tsotlhe tsa botsadi. Mme o setse o simolotse sentle tota!",
+  "@data.workshop.w_1on1.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_1on1.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
   "In our busy lives it’s hard to focus on the positive.":
     "Mo go tshwaregeng ka botshelo jwa rona go boima go tlhoma mogopolo mo dilong tse di siameng.",
   "How many days in the past week have you praised your teen?":
     "O akgotse mosha wa gago ga kae mo bekeng e e fetileng?",
-  "Using this app shows us that you care about your teen. We have added some essential tools on how to use praise to @global.my_tips for quick access. You can find @global.my_tips in the @global.parent_centre .\n\nIn our @global.weekly_workshop on @global.w_praise, you will learn even more on how to use this skill well.":
-    "Go dirisa ga gago sediriso seno go re bontsha gore o kgathalela mosha wa gago. Re tsentse dithulusu tse di botlhokwa tsa kafa o ka dirisang go akgola mo @global.my_tips gore o tsene ka bonako. O ka bona @global.my_tips mo @global.parent_centre .\n\nMo @global.weekly_workshop ya rona mo @global.w_praise, o tla ithuta mo go oketsegileng ka ga go dirisa botswerere jono sentle.",
-  "@global.w_praise_tools added to @global.my_tips":
-    "@global.w_praise_tools e tsenyeleditse mo @global.my_tips",
-  "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @global.weekly_workshop on @global.w_praise, you will learn even more how to use this skill well.":
-    "Go gontle gore o akgola mosha wa gago! Seno se dira gore ba ikutlwe ba le botlhokwa – kgothatso ya gago e raya go le gontsi. Mo @global.weekly_workshop ya rona mo @global.w_praise, o tla ithuta mo go oketsegileng ka ga go dirisa botswerere jono sentle.",
-  survey_welcome_a_3: "Patlisiso_amogetswe_mo_3",
+  "@data.workshop.w_praise.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_praise.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
   "This is a very stressful time for families.":
     "Eno ke nako e e tshwenyang mo maikutlong mo malapeng.",
   "How many days in the past week did you feel very stressed as a parent/caregiver?":
     "Ke malatsi a le kae a o neng o ikutlwa o tshwenyegile mo maikutlong jaaka motsadi/motlhokomedi mo bekeng e e fetileng?",
-  "Great that this has been a good week!\n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
-    "Go gontle gore eno e ne e le beke e e molemo!\n\nRe tla go gopotsa tsatsi le letsatsi gore o iketle, gakologelwa mme o iteboge, go go thusa go tswelapele o kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.",
-  "Great that you felt calm most of the week! \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
-    "Go gontle gore o ikutlwile o kgobile makgwafo gantsi mo bekeng eno! \n\nRe tla go gopotsa tsatsi le letsatsi gore o iketle, gakologelwa mme o iteboge, go go thusa go tswelapele o kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.",
-  "We understand how stressful life can be. We’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops - but you can already access some helpful tools under @global.my_tips to get you started!":
-    "Re a tlhaloganya gore botshelo bo ka ngomola pelo go le kana kang. Re tla go gopotsa tsatsi le letsatsi gore o iketle, gakologelwa mme o iteboge, go go thusa go kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya - mme fela o ka kgona go dirisa dithulusu tse di thusang mo tlase ga @global.my_tips gore o simolole!",
   "Sometimes our children make us really upset.":
     "Ka dinako tse dingwe bana ba rona ba dira gore re tenege thata.",
   "How many days in the past week did you shout, scream or yell at your teen?":
     "Mo bekeng e e fetileng o omantse kgotsa o goile mosha wa gago malatsi a le kae?",
-  "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.":
-    "O dirile sentle. Saense ya boboko e bontsha gore go laola kgalefo ya gago go tla tokafatsa tsela e boboko jwa mosha wa gago bo golang ka gone. Nna motlotlo ka wena.",
-  "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @global.my_tips to get started.":
-    "Re lebogela gore o buile nnete. Go ka nna boima go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go thusa o ikutlwe o kgobile makgwafo fa dilo di nna boima, re tla go gopotsa tsatsi le letsatsi gore o iketle, o lemoge mme o iteboge. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @global.weekly_workshops - mme fela o ka kgona go dirisa dithulusu tse di thusang mo tlase ga @global.my_tips gore o simolole.",
-  "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @global.my_tips in the @global.parent_centre .":
-    "Re lebogela gore o buile nnete. Go ka nna boima go laola go tshwenyega mo maikutlong ga rona. Re solofela thulusu ya rona ya go laola go tshwenyega mo maikutlong e go thusitse. O ka iponela tsone mo tlase ga @global.my_tips mo @global.parent_centre",
   "Money is one of the biggest stresses for families now.":
     "Madi ke nngwe ya tse dikgolo e e dirang gore malapa a tshwenyege mo maikutlong gone gaanong.",
   "How many days in the past week have you worried or felt anxious about money?":
     "O ikutlwile o tshwenyegile kgotsa o akanya thata ka madi malatsi a le kae mo bekeng e e fetileng?",
   "How many days in the past month (30 days) did you run out of money to pay for food?":
     "Ke malatsi a le kae mo kgweding (malatsi a 30) e e fetileng mo o o neng o felelwa ke madi a go duela dijo?",
-  "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.":
-    "Go gontle. Re nale @global.weekly_workshop mo tekanyetsongkabo ya lelapa e e ka thusang ka go tshwenyega ka madi, le go fokotsa dikomano tsa madi.",
-  "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @global.my_tips!":
-    "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nRe na le @global.weekly_workshop mo tekanyetsongkabo ya lelapa ya beke tse tlhano, mme fela o ka iponela dikakantsho tsa botlhokwa tsa tekanyetsokabo mo tlase ga @global.my_tips!",
-  "@global.w_money_tools added to @global.my_tips":
-    "@global.w_money_tools e tsenyeleditswe mo @global.my_tips",
+  "@data.workshop.w_money.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_money.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
   "It is so stressful when children misbehave.":
     "Go tshwenya mo maikutlong tota fa bana ba sa itshware sentle.",
   "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
     "Mo bekeng e e fetileng, a o kile wa otlhaya bana ba gago mo mmeleng ka go ba itaya, go ba kgwathisa, kgotsa go ba faphola ka seatla sa gago kgotsa ka sengwe jaaka thupa kgotsa lebante?",
   "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!":
     "Go gontle fa o araba o kgobile makgwafo fa mosha wa gago a dira sengwe se se tenang. Ba ka ithuta go le gontsi go tswa mo go wena!",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @global.my_tips to get started.":
-    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. Go itlhokomela le go thusa o ikutlwe o kgobile makgwafo fa dilo di nna boima, re tla go gopotsa tsatsi le letsatsi gore o iketle, o lemoge mme o iteboge. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @global.weekly_workshops - mme fela o ka kgona go dirisa dithulusu tse di thusang mo tlase ga @global.my_tips gore o simolole.",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them in your @global.parent_centre, under @global.my_tips .":
-    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRe solofela dithulusu tsa rona tsa go laola go tshwenyega mo maikutlong di tla go thusa gore o ikutlwe o kgobile makgwafo mo maemong a a thata. O tla di bona mo @global.parent_centre ya gago, mo tlase ga @global.my_tips .",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.":
-    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe , mme go dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDilo tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
-  "@global.w_stress_tools added to @global.my_tips":
-    "@global.w_stress_tools e tsenyeleditswe mo @global.my_tips",
+  "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_stress.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
   "It’s hard to keep track of your teenagers when they are becoming independent.":
     "Go thata go tsamaisana le mosha wa gago fa ba ikemela.",
   "How many days in the past week did you know what your teen was doing and who they were with?":
@@ -1022,42 +1023,125 @@ export default {
   "Were you in lockdown this week?": "A o ne o lotleletswe mo bekeng eno?",
   "How many days in a typical non-lockdown week do you know what your teen is doing and who they are with?":
     "Ke malatsi a le kae mo bekeng mo go neng go sa lotlelelwa mo o ileng wa itse se mosha wa gago a se dirang le gore o ne a na le mang?",
-  "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @global.my_tips!":
-    "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Re tla netefatsa gore o a tshegediwa ka go aga puisano. \n\nRe tla bua mo go oketsegileng ka go rulaganya tshireletsego ya mosha wa gago kgantele mo @global.weekly_workshops, mme fela o ka iponela dikakantsho tsa konokono tsa go boloka mosha wa gago a sireletsegile mo tlase ga @global.my_tips!",
-  "@global.w_safe_tools added to @global.my_tips":
-    "@global.w_safe_tools e tsenyeleditswe mo @global.my_tips",
-  "This is really great. Parenting is hard, but you’re really succeeding in this.":
-    "Seno se sentle tota. Go nna motsadi go boima, mme o a atlega mo go direng seno.",
+  "@data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_safe.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
   "We all want to keep our children safe.":
     "Rotlhe re batla go boloka bana ba rona ba sireletsegile.",
   "How many days in the past month (30 days) did you talk with your teen about keeping safe from sexual violence online or offline?":
     "Ke malatsi a le kae mo kgweding e e fetileng (malatsi a 30) mo o kileng wa bua le mosha wa gago ka go ipoloka a sireletsegile mo tirisong dikgoka ya tlhakanelo dikobo mo mafaratlhatlheng kgotsa ka namana?",
   "This could be when they are going out with friends, or talking about the websites they use.":
     "Seno e ka nna fa ba ikentsha le ditsala, kgotsa ba bua ka diwebosaete tse ba di dirisang.",
-  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nWe’ll also unlock the @global.weekly_workshops on rules and safety planning, which help with this – they'll be available for you anytime.":
-    "Go nna motsadi ga go bonolo. Go ka nna boima go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena maatla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! O ka bona dithulusu tse di tobileng, ka diteng tse di oketsegileng le ditlamelwana mo @global.parent_centre ka nako nngwe le nngwe. \n\nRe tlile gape go bula @global.weekly_workshops ya go rulaganya melao le tshireletsego, e e thusang ka seno – di tla nna gone nako nngwe le nngwe.",
-  "@global.weekly_workshops @global.w_rules and @global.w_safe unlocked":
-    "@global.weekly_workshops @global.w_rules le @global.w_safe di lotlolotswe",
-  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nWe’ll also unlock the @global.weekly_workshop on rules, which help with this – they'll be available for you anytime.":
-    "Go nna motsadi ga go bonolo. Go ka nna boima go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena maatla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! O ka bona dithulusu tse di tobileng, ka diteng tse di oketsegileng le ditlamelwana mo @global.parent_centre ka nako nngwe le nngwe. \n\nRe tlile gape go bula @global.weekly_workshop mo melaong, e e thusang ka seno – di tla nna gone nako nngwe le nngwe.",
-  "@global.weekly_workshops @global.w_rules unlocked":
-    "@global.weekly_workshops @global.w_rules di lotlolotswe",
-  "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!":
-    "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nRe tlile go go neela tshegetso e oketsegileng ka seno mo nakong e e tlang @global.weekly_workshops fa o ka rata go itse mo go oketsegileng!",
   "We have a new challenge now – keeping our teenagers safe from COVID-19.":
     "Re na le kgwetlho e ntšha jaanong – go sireletsa basha ba rona go COVID-19.",
   "How many days last week did your teenager stay safe through wearing a mask, keeping a distance from people and keeping away from crowded places?":
     "Ke malatsi a le kae mosha wa gago a ileng a nna a sireletsegile ka go tsenya mmaseke, a katoga batho le go nna kgakala le mo mafelong a a tletseng ka batho?",
-  "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre .":
-    "E ka nna kgwetlho go sireletsa mosha wa gago mo COVID! Re ntse re rulaganyetsa go tla ka dikakantsho - e se kgale o tla di bona mo @global.parent_centre .",
-  "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre .":
-    "Go gontle. Re ntse re rulaganyetsa go tla ka dikakantsho tsa go boloka mosha wa gago a sireletsegile go COVID - e se kgale o tla di bona mo@global.parent_centre .",
+  "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre.":
+    "E ka nna kgwetlho go sireletsa mosha wa gago mo COVID! Re ntse re rulaganyetsa go tla ka dikakantsho - e se kgale o tla di bona mo @global.parent_centre.",
+  "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre.":
+    "Go gontle. Re ntse re rulaganyetsa go tla ka dikakantsho tsa go boloka mosha wa gago a sireletsegile go COVID - e se kgale o tla di bona mo@global.parent_centre.",
   "Thank you for being honest": "Re lebogela gore o buile nnete",
-  "Content unlocked by these questions is now accessible in the @global.weekly_workshops":
-    "Diteng di bulwa ka dipotso tseno tse o ka di bonang mo @global.weekly_workshops",
+  "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.":
+    "Re a itse seno se boima. O ka sekaseka ditlhabobotlhale dingwe tse di thusang mabapi le kafa o ka senyang nako o na le mosha wa gago ka teng tlase ga @data.parent_centre.my_tips.location_text kgotsa o ka leba gape @data.workshop.w_1on1.in_text_title.",
+  "Well done for laying such a good foundation! You can always review the @data.workshop.w_1on1.in_text_title to get more ideas on how to spend time together.":
+    "O dirile sentle ka go simolola ka motheo ono o o siameng! O ka nna wa sekaseka @data.workshop.w_1on1.in_text_title go bona megopolo e mengwe mabapi le go senya nako mmogo.",
+  "Using this app shows that you care about your teen. You can review how to use praise under @data.parent_centre.my_tips.location_text.\n\nFor more tips on how to use this skill well, you can also have another look at the @data.workshop.w_praise.in_text_title.":
+    "Go dirisa app eno go bontsha gore o kgathalela mosha wa gago. O nna wa sekaseka gore o ka dirisa kakgolo jang tlase ga @data.parent_centre.my_tips.location_text.\n\nGo bona ditlhabobotlhale tse dingwe mabapi le go dirisa bokgoni jono sentle, o ka leba gape @data.workshop.w_praise.in_text_title.",
+  "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. \n\nYou can always have another look at the @data.workshop.w_praise.in_text_title for more tips on how to use this skill well.":
+    "Go gontle gore o akgola mosha wa gago! Seno se dira gore ba ikutlwe ba le botlhokwa – kgothatso ya gago e raya go le gontsi. \n\nGape o ka leba lekgetlo la bobedi @data.workshop.w_praise.in_text_title go bona ditlhabobotlhale tse dingwe mabapi le gore o dirise bokgoni jono sentle jang.",
+  "Great that this has been a good week!\n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Go gontle gore eno e ne e le beke e e molemo!\n\nRe tla nna re go gopotsa gore o iketle, gakologelwa mme o iteboge, go go thusa go tswelapele o kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.",
+  "Great that you felt calm most of the week! \n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Go gontle gore o ikutlwile o kgobile makgwafo gantsi mo bekeng eno! \n\nRe tla nna re go gopotsa gore o iketle, gakologelwa mme o iteboge, go go thusa go tswelapele o kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.",
+  "We understand how stressful life can be. We will keep reminding you to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.":
+    "Re a tlhaloganya gore botshelo bo ka ngomola pelo go le kana kang. Re tla go gopotsa letsatsi le letsatsi gore o iketle, go lemoga gore o kgonne le go iteboga, go go thusa go kgona go laola kgatelelo ya gago ya maikutlo le gore o ikutlwe o kgobile makgwafo.\n\nO ka bona megopolo e mengwe ya go laola go tshwenyega mo maikutlong mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.":
+    "Re lebogela gore o buile nnete. Go ka nna boima go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go go thusa o ikutlwe o kgobile makgwafo fa dilo di nna boima, re tla nna re go gopotsa gore o iketle, o lemoge le gore o iteboge. O botlhokwa!\n\nO ka bona megopolo e mengwe ya go laola go tshwenyega mo maikutlong mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest. It can be so difficult to control our stress. You can always find some helpful stress management tools under @data.parent_centre.my_tips.location_text.":
+    "Re lebogela gore o buile nnete. Go ka nna boima go laola go tshwenyega mo maikutlong ga rona. Gantsi o ka bona ditsela tsa go laola go tshwenyega mo maikutlong tse di thusang tlase ga @data.parent_centre.my_tips.location_text.",
+  "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!":
+    "Go gontle. Fa go ka nna le kgatelelo epe ya maikutlo kgotsa go sa utlwane ka baka la madi mo lelapeng la lona mo nakong e e tlang, o ka nna wa sekaseka @data.workshop.w_money.in_text_title kgotsa @data.parent_centre.my_tips.location_text!",
+  "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!":
+    "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nNako le nako fa go nna le go sa utlwane ka madi mo lelapeng la gago, batla ditlhabobotlhale mo go @data.workshop.w_money.in_text_title kgotsa kafa tlase ga @data.parent_centre.my_tips.location_text!",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.":
+    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. Gore re le tlhokomele le go le thusa go ikutlwa le kgobile makgwafo fa dilo di nna boima, re tla nna re le go gopotsa gore lo iketle, le lemoge gore le kgonne le go iteboga. O botlhokwa!\n\nO ka bona megopolo e mengwe ya go laola go tshwenyega mo maikutlong mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.":
+    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe, mme go tswelela o dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDilo tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will continue to help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.":
+    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRe solofela didirisiwa tsa rona tsa go laola go tshwenyega mo maikutlong di tla nna di go thusa gore o ikutlwe o kgobile makgwafo mo maemong a a thata. O kgona go di bona mo tlase ga @data.parent_centre.my_tips.location_text.",
+  "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!":
+    "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Gopola go dirisa bokgoni jo bosha gore o tswelele o nna le puisano e e siameng le mosha wa gago. \n\nO ka sekaseka ditlhabobotlhale tsa motheo tsa go rulaganya tshireletsego ya mosha wa gago mo go @global.weekly_workshop kgotsa tlase ga @data.parent_centre.my_tips.location_text!",
+  "Great that you are aware of what your teen is doing. Parenting is hard, but you’re really succeeding in this to keep them safe.":
+    "Go gontle gore o lemoga se mosha wa gago a se dirang. Go nna motsadi go boima, mme o dira sentle go mmoloka a sireletsegile.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on rules and safety planning under @data.parent_centre.my_tips.location_text.":
+    "Go nna motsadi ga go bonolo. Go ka nna boima go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena maatla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa!\n\nGopola, o ka bona didirisiwa tse di remeletseng mo go seno, mafoko a mangwe a a kwadilweng le ditsompelo mabapi le seno mo go @global.parent_centre ka epe fela. Gape o ka kgona go sekaseka ditlhabobotlhale tsa motheo mabapi le melao le go rulaganyetsa thulaganyo tlase ga @data.parent_centre.my_tips.location_text.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! Remember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can also review core tips on making rules under @data.parent_centre.my_tips.location_text.":
+    "Go nna motsadi ga go bonolo. Go ka nna boima go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena maatla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! Gopola, o ka bona didirisiwa tse di remeletseng mo go seno, mafoko a mangwe a a kwadilweng le ditsompelo mabapi le seno mo go @global.parent_centre ka epe fela. \n\nGape o ka sekaseka ditlhabobotlhale tsa motheo mabapi le go dira melao tlase ga @data.parent_centre.my_tips.location_text.",
+  "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!":
+    "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nGopola, o ka kgona go bona tshegetso e nngwe ka seno mo go @data.workshop.w_safe.in_text_title nako le nako fa o e batla!",
+  "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!":
+    "Gopola gore o ka kgona go bona ditlhabobotlhale di le dintsi tse di thusang le didirisiwa mo go @global.parent_centre - o ka kgona go di bona nako nngwe le nngwe fela!",
+  "Are there teens in your family?": "A go na le basha mo lelapeng la gago?",
+  "This app focuses on families with teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!":
+    "App eno e remeletse mo malapeng a a nang le basha ba dingwaga tsa  @global.teen_age_bracket, mme o letlelelwa go tswelela - o ka nna wa ithuta le dilo tse di nang le mosola mo lelapeng la gago!",
+  "Are there adults in your family?": "A go na le bagolo mo lelapeng la gago?",
+  "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!":
+    "App eno e remeletse mo batsading ba ba nang le basha ba dingwaga tsa  @global.teen_age_bracket, mme o letlelelwa go tswelela - o ka nna wa ithuta le dilo tse di nang le mosola!",
+  "Are you sure you want to skip this question?":
+    "A o a tlhomamisa gore o batla go tlola potso eno?",
+  "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.":
+    "Gopola, fa O araba, karabo ya gago e nna ya motlhokaina.\n\nO ka nna wa tlhopha gore o se ka wa araba potso ka go tshwaya lebokosotshwao le le mo selaedareng.",
+  'You selected "I would rather not answer"': "O tlhophile “Ke tlhopha go se arabe”",
+  "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!":
+    "Ga se bothata!\n\nGopola, fa O araba, karabo ya gago e tla nna ya tlhokaina mme o tla romelelwa mafoko a a go tshwanetseng sentle!",
+  "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
+    "Re a itse seno se boima. Re tsentse dikakantsho tse di tla go thusang gore o iphe nako le mosha wa gago go @data.parent_centre.my_tips.location_text, gore o e bone ka nako e o e batlang ka yone. \n\nKa gonne @data.workshop.w_1on1.title e aga motheo wa thulusu ya batsadi botlhe, e tla bo e le @global.weekly_workshop o e amogelang beke e e tlang!",
+  "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
+    "O dirile sentle! @global.weekly_workshop ya rona e e latelang e tla go naya dikakantsho tse di oketsegileng tsa seno, jaaka motheo wa dithulusu tsotlhe tsa botsadi. Mme o setse o simolotse sentle tota!",
+  "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.":
+    "Go dirisa app eno go bontsha gore o kgathalela mosha wa gago. Re tsentse dfidirisiwa tse di botlhokwa tsa kafa o ka dirisang go akgola mo @data.parent_centre.my_tips.location_text gore o tsene ka bonako.\n\nMo go @data.workshop.w_praise.in_text_title ya rona o tla ithuta mo go oketsegileng ka ga go dirisa botswerere jono sentle.",
+  "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @data.workshop.w_praise.in_text_title you will learn even more how to use this skill well.":
+    "Go gontle gore o akgola mosha wa gago! Seno se dira gore ba ikutlwe ba le botlhokwa – kgothatso ya gago e raya go le gontsi. Mo @data.workshop.w_praise.in_text_title ya rona o tla ithuta mo go oketsegileng ka ga go dirisa bokgoni jono sentle.",
+  "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Go gontle gore eno e ne e le beke e e molemo!\n\nRe tla go gopotsa ka metlha gore o iketle, gakologelwa mme o iteboge, go go thusa go tswelapele o kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.",
+  "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Go gontle gore o ikutlwile o kgobile makgwafo gantsi mo bekeng eno! \n\nRe tla go gopotsa ka metlha gore o iketle, gakologelwa mme o iteboge, go go thusa go tswelapele o kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.",
+  "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!":
+    "Re a tlhaloganya gore botshelo bo ka ngomola pelo go le kana kang. Re tla go gopotsa letsatsi le letsatsi gore o iketle, gakologelwa mme o iteboge, go go thusa go kgona go laola go tshwenyega mo maikutlong ga gago le gore o ikutlwe o kgobile makgwafo.\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo @data.workshop.w_stress.number ya @global.weekly_workshops- mme o setse o kgona go dirisa didirisiwa tse di thusang mo tlase ga@data.parent_centre.my_tips.location_text  gore o simolole!",
+  "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.":
+    "O dirile sentle. Saense ya boboko e bontsha gore go laola kgalefo ya gago go tla tokafatsa tsela e boboko jwa mosha wa gago bo golang ka gone. Nna motlotlo ka wena.",
+  "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.":
+    "Re lebogela gore o buile nnete. Go ka nna boima go laola go tshwenyega mo maikutlong ga rona. Go itlhokomela le go go thusa gore o ikutlwe o kgobile makgwafo fa dilo di nna boima, re tla go gopotsa ka metlha gore o iketle, o lemoge gore o kgonne le go iteboga. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @data.workshop.w_stress.number - mme fela o ka kgona go dirisa didirisiwa tse di thusang mo tlase ga @global.weekly_workshops gore o simolole.",
+  "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.":
+    "Re lebogela gore o buile nnete. Go ka nna boima go laola go tshwenyega mo maikutlong ga rona. Re solofela thulusu ya rona ya go laola go tshwenyega mo maikutlong e go thusitse. O setse o kgona go di bona tlase ga @data.parent_centre.my_tips.location_text.",
+  "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.":
+    "Go gontle. Re na le workshop e e rutang ka tekanyetsokabo ya lelapa e e ka thusang ka go tshwenyega ka madi ka kakaretso, le go fokotsa go omana ka madi.",
+  "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!":
+    "Go tshwenyega ka madi go ka tlhakanya tlhogo. \n\nRe na le workshop e e rutang ka tekanyetsokabo ya lelapa dibeke di le tlhano,  mme o setse o ka kgona go bona ditlhabobotlhale dingwe tsa motheo ka bajete ya lelapa tlase ga !",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.":
+    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. Go itlhokomela le go thusa o ikutlwe o kgobile makgwafo fa dilo di nna boima, re tla go gopotsa tsatsi le letsatsi gore o iketle, o lemoge mme o iteboge. O botlhokwa!\n\nRe tla ithuta mo go oketsegileng ka go laola go tshwenyega mo maikutlong mo bekeng ya bo 5 ya @global.weekly_workshops - mme fela o ka kgona go dirisa dithulusu tse di thusang mo tlase ga @data.parent_centre.my_tips.location_text gore o simolole.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.":
+    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRotlhe re ikutlwa re gateletswe ka dinako dingwe , mme go dirisa @global.parent_app ke kgato e ntle ya go thusa wena le lelapa la gago!\n\nDilo tsa rona di thusitse diketekete tsa batsadi le malapa gore ba se tshwenyege thata mo maikutlong le go nna le nako e e siameng mmogo. Re fano go go tshegetsa.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.":
+    "Re lebogela o kgonne go bua nnete – mme re maswabi gore o nale nako e e boima ka mosha wa gago. \n\nRe solofela didirisiwa tsa rona tsa go laola go tshwenyega mo maikutlong di tla go thusa gore o ikutlwe o kgobile makgwafo mo maemong a a thata. O kgona go di bona mo tlase ga @data.parent_centre.my_tips.location_text.",
+  "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!":
+    "Seno ke bothata jo bo tshwenyang batsadi gongwe le gongwe. Re tla netefatsa gore o a tshegediwa ka go aga puisano. \n\nRe tla bua mo go oketsegileng ka go rulaganya tshireletsego ya mosha wa gago kgantele mo @global.weekly_workshops, mme fela o ka iponela dikakantsho tsa konokono tsa go boloka mosha wa gago a sireletsegile mo tlase ga @data.parent_centre.my_tips.location_text!",
+  "This is really great. Parenting is hard, but you’re really succeeding in this.":
+    "Seno se sentle tota. Go nna motsadi go boima, mme o a atlega mo go direng seno.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules and safety planning under @data.parent_centre.my_tips.location_text.":
+    "Go nna motsadi ga go bonolo. Go ka nna boima go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena maatla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! O ka bona didirisiwa tse di tobileng, ka diteng tse di oketsegileng le ditlamelwana mo @global.parent_centre ka nako nngwe le nngwe. \n\nO setse o ka kgona go bona ditlhabotlhale tse dingwe tsa motheo tse di thusang ka go rulaganya go dira tlase ga @data.parent_centre.my_tips.location_text.",
+  "@data.workshop.w_rules.tools and @data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_rules.tools le @data.workshop.w_safe.tools e e tsenngwang mo go @data.parent_centre.my_tips.title.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules under @data.parent_centre.my_tips.location_text.":
+    "Go nna motsadi ga go bonolo. Go ka nna boima go itse gore o ka boloka basha ba rona ba sireletsegile jang. Gantsi re ikutlwa re sena maatla jaaka batsadi mo go seno, mme fela re fano go go tshegetsa! O ka bona didirisiwa tse di tobileng, ka diteng tse di oketsegileng le ditlamelwana mo @global.parent_centre ka nako nngwe le nngwe. \n\nO setse o ka kgona go bona ditlhabotlhale tse dingwe tsa motheo tse di tla thusang ka go dira melao tlase ga @global.parent_centre",
+  "@data.workshop.w_rules.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_rules.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
+  "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!":
+    "Go nna motsadi ga go bonolo. O dirile sentle ka go tlhoma mogopolo mo go sireletseng mosha wa gago. \n\nRe tlile go go neela tshegetso e oketsegileng ka seno mo nakong e e tlang @global.weekly_workshops fa o ka rata go itse mo go oketsegileng!",
+  "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.":
+    "Diteng tse di bulwang ka dipotso tseno jaanong di ka bonwa tlase ga @data.parent_centre.my_tips.location_text.",
   "You have just unlocked the first workshop!": "O sa tswa go bula workshop ya ntlha!",
-  "Every parent in the world is struggling in these hard times. These quick questions will fit this app to your needs.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.":
-    "Motsadi mongwe le mongwe mo lefatsheng wa sokola mo dinakong tseno tse di boima. Dipotso tseno di bonako mme di tla tshwanela sediriso seno go ya ka ditlhoko tsa gago.\n\nBua nnete. Gopola gore ga o nosi! Gopola gore dimilone tsa batsadi ba ikutlwa jaaka wena, mme rotlhe re tshwanelwa ke go tshegediwa.",
+  "These quick questions will fit this app to your needs.":
+    "Dipotso tseno di bonako mme di tla tshwanela sediriso seno go ya ka ditlhoko tsa gago.",
   "Let’s start with a few questions about you and your family.":
     "A re simolole ka dipotso di le mmalwa ka wena le lelapa la gago.",
   "We would love to know your first name or nickname:":
@@ -1085,11 +1169,11 @@ export default {
   Friday: "Labotlhano",
   Saturday: "Lamatlhatso",
   Sunday: "Latshipi",
-  "Great! We will unlock a new workshop for your group every week on @local.@local.combo_box . This allows all of you to try what you learned with your families before building the next skill.":
-    "Go gontle! Re tla bula workshop e ntšha ya setlhopha sa gago beke le beke mo @local.@local.combo_box . Seno se tla le dumelela lotlhe go leka se lo se ithutileng ka malapa a lona pele ga lo aga botswerere jo bo latelang.",
-  "Great! We will unlock a new workshop for you every week on @local.@local.combo_box . This allows you to try what you learned with your family before building the next skill.":
-    "Go gontle! Re tla bula workshop e ntšha ya setlhopha sa gago beke le beke mo @local.@local.combo_box . Seno se tla le dumelela lotlhe go leka se lo se ithutileng ka malapa a lona pele ga lo aga botswerere jo bo latelang.",
-  "You can always change these settings in your @global.weekly_workshop_options .":
+  "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.":
+    "Go gontle! Re tla bula workshop e ntšha ya setlhopha sa gago beke le beke. Seno se tla le dumelela lotlhe go leka se lo se ithutileng ka malapa a lona pele ga lo aga botswerere jo bo latelang.",
+  "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.":
+    "Go gontle! Re tla bula workshop e ntšha ya setlhopha sa gago beke le beke. Seno se tla le dumelela lotlhe go leka se lo se ithutileng ka malapa a lona pele ga lo aga botswerere jo bo latelang.",
+  "You can always change these settings in your @global.weekly_workshop_options.":
     "O ka kgona go fetola diseting tseno ka metlha mo @global.weekly_workshop_options ya gago.",
   "Great!": "Go gontle!",
   "I know life can be hard. I’m proud of you. \n\nWhatever you are feeling, it’s great that you are here!":
@@ -1099,8 +1183,11 @@ export default {
     "Go gontle go go bona!\n\nSa ntlha, a re thuse setlhopha sa gago gore se simolole.",
   "Agree on your ground rules together:\n* Which day(s)/time(s) will we meet in the week?\n* Who will hold the phone(s) during our activities?\n* How can we make sure everyone can share freely?\n* What can we do so we all feel respected?":
     "Dumalanang ka melao ya lona mmogo:\n* Ke malatsi/dinako dife tse re tla kopanang ka tsone mo bekeng?\n* Ke mang yo o tla tshwarang difounu ka nako ya ditiro tsa rona?\n* Re ka netefatsa jang gore mongwe le mongwe a ka bua a gololesegile?\n* Re ka dirang gore rotlhe re ikutlwe re tlotliwa?",
-  "You always can change your workshop day and your group name in the @global.weekly_workshop_options .":
-    "O ka nna wa fetola letsatsi la workshop ya lona le leina la setlhopha sa lona mo @global.weekly_workshop_options .",
+  "You always can change your workshop day and your group name in the @global.weekly_workshop_options.":
+    "O ka nna wa fetola letsatsi la workshop ya lona le leina la setlhopha sa lona mo @global.weekly_workshop_options.",
+  "Some rules that other groups made:": "Melao mengwe e ditlhopha tse dingwe di e dirileng:",
+  "* Tuesday at 7pm is our @global.parent_app time together\n* Take turns holding the phone (1 activity per person)\n* Accept each other’s experiences. We are all different!\n* Take turns speaking and listening\n* All questions are welcome\n* What we share stays among us":
+    "* Labobed 7pm ke nako ya rona ya @global.parent_app mmogo\n* Refosanang go tshwara founo (tiro e le 1 motho mongwe le mongwe)\n* Amogelang maitegelo a yo mongwe. Rotlhe ga re tshwane!\n* Fanang sebaka sa go bua le go reetsana\n* Dipotso tsotlhe di a amogelwa\n* Se re se bolelelanang ga re se bolelele ope",
   "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself - you matter!":
     "O naledi! \n\nTsatsi le letsatsi, lemoga sengwe se o se dirileng sentle. Ituele ka sengwe se se go itumedisang. Mme hemela ko teng gore o iketle. \n\nGopola, o amogela @global.parent_point nako nngwe le nngwe fa o itlhokomela - o botlhokwa!",
   "Being a parent can be so hard. Sometimes it feels like our children never listen to us.\n\nBut science shows that spending just a few minutes each day of focused one-on-one time with your teen helps build trust and love.":
@@ -1144,13 +1231,11 @@ export default {
     "Bontle! Re motlotlo ka sotlhe se o se dirileng mo dibekeng tse di fetileng.",
   "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.":
     "Re maswabi gore ke letsatsi le le boima. Re motlotlo ka sotlhe se o se dirileng mo dibekeng tse di fetileng.",
-  "@global.home_practice_problem_solving: @global.w_crisis":
-    "@global.home_practice_problem_solving: @global.w_crisis",
   "Well done!": "O dirile sentle!",
   "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future parenting support.":
     "LO DIRILE BONTLE TOTA! O kgonne! O agile botswerere jo bo botlhokwa jwa botsadi bo le 11. \n\nSeno ke phitlhelelo e kgolo. Go bontsha gore o kgathalela lelapa la gago. \n\nA re go akgole, mme o rulaganye tshegetso ya botsadi ya gago e e tlang.",
-  "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future ParentApp support.":
-    "LO DIRILE BONTLE TOTA! O kgonne! O agile botswerere jo bo botlhokwa jwa botsadi bo le 11. \n\nSeno ke phitlhelelo e kgolo. Go bontsha gore o kgathalela lelapa la gago. \n\nA re keteke le wena, mme o dire thulaganyo ya tshegetso ya gago ya ParentApp e e tlang.",
+  "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.":
+    "LO DIRILE BONTLE TOTA! O kgonne! O agile botswerere jo bo botlhokwa jwa botsadi bo le 11. \n\nSeno ke phitlhelelo e kgolo. Go bontsha gore o kgathalela lelapa la gago. \n\nA re keteke le wena, mme o dire thulaganyo ya tshegetso ya gago ya @global.parent_app e e tlang.",
   "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout.":
     "Dumelang lotlhe.\n\nSetlhogo sa gompieno ke go keteka le dikgato tse di latelang.\n\nGo ntse go le monate tota, go ntse go le monate go nna le wena mo loetong leno. Gompieno re keteka loeto lo re lo tshotseng mmogo. \n\nGompieno re keteka sotlhe se re se ithutileng mo nako eno yotlhe.",
   "Today you will celebrate, look back and look ahead:":
@@ -1161,7 +1246,11 @@ export default {
     "Gompieno o a keteka o bo o leba kwa morago mo maitemogelong a gago.",
   "You and your family have learnt so much. Let's think back and see what has changed.":
     "Wena le lelapa la gago lo ithutile mo go ntsi. A re akanyeng ka se se fetileng mme re bone gore go fetogile eng.",
-  "Reflect with Sbo": "Leba kwa morago le Sbo",
+  Reflect: "Akanya ka se o se dirang",
+  "Listen and reflect": "Reetsa le go akanya",
+  "Read and reflect": "Bala o bo o akanye",
+  "Close eyes and relax.\n\nThink of your family life before you started your journey with this app.\n       \nThink back of skills you learned:\n* Self-care\n* One-on-one time\n* Praise\n* Positive instructions\n* Managing stress\n* Family budgeting\n* Rules\n* Calm consequences\n* Problem solving\n* Teen safety\n* Dealing with crisis\n\nReflect on the journey – how was it for you to:\n* Share ideas and experiences\n* Reflect on and learn from the stories\n* Practice skills with your teen\n\nDid anything change for you and your family?\n\nWhat do you need to continue to use skills?":
+    "Tswala matlho o bo o iketle.\n\nAkanya ka botshelo jwa lelapa la gago pele ga o simolola leeto la gago ka app eno.\n       \nAkanyetsa kwa morago ka bokgoni jo o bo ithutileng:\n* Go itlhokomela\n* Go ipha nako lo le mmogo\n* Kakgolo\n* Ditaelo tse di siameng\n* Go laola go tshwenyega mo maikutlong\n* Go dira tekanyetsokabo ya lelapa\n* Melao\n* Ditlamorago o ritibetse\n* Go rarabolola mathata\n* Pabalesego ya basha\n* Go dirisana le mathata a a masisi\n\nAkanya ka leeto le o le tsereng - o le bone le ntse jang:\n* Re bolelele megopolo ya gago le maitemogelo\n* Akanya ka dipolelo o bo o ithute mo go tsone\n* Ikatisetse bokgoni jwa gago le mosha wa gago\n\nA go na le sengwe se se fetogileng ka wena le balelapa la gago?\n\nO tlhokang gore o tswelele o dirisa bokgoni jwa gago?",
   "Let's talk about what has changed.": "A re bue ka se se fetogileng.",
   "Discuss together:\n* What has changed in your family?\n* What are you proud of that you have done?\n\nRemember to praise and encourage each other!":
     "Tlotlang mmogo:\n* Ke eng se se fetogileng mo lelapeng la gago?\n* Ke eng se o leng motlotlo ka sone se o se dirileng?\n\nGopolang go akgolana lo bo lo kgothatsane!",
@@ -1179,6 +1268,8 @@ export default {
   SHARE: "BUANG",
   "Share @global.parent_app and help other families start their journey.":
     "Bua ka @global.parent_app mme o thuse malapa a mangwe go simolola leeto la bone.",
+  "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
+    "O ntse o dirisa @global.parent_app mo dikgweding tse fetileng, lefa go ntse jalo go godisa mosha ga go fele!  Potso e e latelang ka maitemogelo a gago a go godisa ngwana go tla re thusa go sekaseka go godisa bana ga gago.\n\nBua nnete. Gopola gore dimilone tsa batsadi ba ikutlwa jaaka o ikutlwa, mme rotlhe re tshwanelwa ke go tshegediwa. Ga o esi!",
   "Plan how you will support each other going forward. \n\nYou can use the ideas from other families, or make up your own!":
     "Dirang thulaganyo gore lo tlile go tshegetsana jang go ya ko pele. \n\nLo ka dirisa dikakantsho tsa malapa a mangwe, kgotsa lo itireleng tsone!",
   "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!":
@@ -1190,8 +1281,6 @@ export default {
     "Ke itumelela go utlwa gore o tsogile sentle gompieno. O botlhokwa!",
   "Sorry that things are difficult right now. Take a deep breath and know that you are valued.":
     "Tshwarelo gore dilo di boima gone jaanong. Hemela ko teng mme o itse gore o botlhokwa.",
-  "@global.home_practice_problem_solving: @global.w_rules":
-    "@global.home_practice_problem_solving: @global.w_rules",
   "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do this matters. \n\nGetting consequences right helps teens behave better and makes family life calmer...":
     "O ka thusa mosha wa gago go tlhaloganya gore go roba molao wa lelapa go na le ditlamorago. \n\nMme gore o dira seo JANG ke gone go leng botlhokwa. \n\nGo otlhaya ka tsela e e siameng go thusa basha gore ba itshware sentle e bile go dira gore maemo a ritibale mo lelapeng...",
   "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible.":
@@ -1214,8 +1303,6 @@ export default {
     "Tlotlang mmogo: \n* Goreng go dirisa ditlamorago ka tsela eno go ile ga se ka ga bereka sentle?",
   "Giving a consequence this way did not work well because...":
     "Go dirisa ditlamorago ka tsela eno ga go a bereka sentle ka gonne...",
-  "Why did giving a consequence this way not work well?":
-    "Goreng go dirisa ditlamorago ka tsela eno go ile ga se ka ga bereka sentle?",
   "@global.w_consequence_male_caregiver was angry":
     "@global.w_consequence_male_caregiver o ne a galefile",
   "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain":
@@ -1223,6 +1310,8 @@ export default {
   "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1":
     "Ga go a ka ga tlotliwa ka ditlamorago pele le @global.w_consequence_teen_boy_1",
   "The consequence was too strong": "Ditlamorago di ile tsa nna bogale thata",
+  "Why did giving a consequence this way not work well?":
+    "Goreng go dirisa ditlamorago ka tsela eno go ile ga se ka ga bereka sentle?",
   "Yes, a strong reaction like that just made everyone more angry and upset.":
     "Ee, go tsibogela maemo ka tsela e e ntseng jalo go ile ga dira gore mongwe le mongwe a tenege le go galefa le go feta.",
   "Teenagers often break rules. Growing up is a difficult time when they are learning about who they are. \n\nLuckily, there are ways to discipline your teen without getting angry or using violence… and they work well!\n\nGiving calm consequences helps teach our children responsibility for what they do – good and bad. \n\nHere are some examples - imagine you are the parent:":
@@ -1267,14 +1356,14 @@ export default {
     "Tlotlang mmogo:\n* Ke melao efe a basha ba gago go le gantsi ba sa e lateleng? \n* Ke ditlamorago dife tse o ka di dirisang mo molaong mongwe le mongwe o o tobileng fa o sa latelwe? \n\nDitlamorago di tshwanetse go nna: \nTEKATEKANO (go se nne makgwakgwa thata)\nKA BONAKO (dira seo ka gangwe) \nSE FETOFETOGE (ka go tshwana nako le nako)\n\nBaka le go kgothatsana – re ka kgona go nonotshana!",
   "Let's go back to @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver":
     "A re tlotleng gape ka @global.w_consequence_teen_boy_1 le @global.w_consequence_male_caregiver",
-  '@global.w_consequence_male_caregiver: "I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1 . What can we do to help you remember to come home in time?"\n\n@global.w_consequence_teen_boy_1: "If I come home in time, maybe I can stay up 30 minutes later than usual?"':
-    "@global.w_consequence_male_caregiver: “Ke tshwenngwa ke gore o sa ntse o tla gae thari, @global.w_consequence_teen_boy_1 . Ke eng se re ka se dirang go go thusa gore o gakologelwe go tla gae ka nako?”\n\n@global.w_consequence_teen_boy_1: “Fa ke tla gae ka nako, gongwe nka robala thari ka metsotso e le 30 go feta ka tlwaelo?”",
+  '@global.w_consequence_male_caregiver: "I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1. What can we do to help you remember to come home in time?"\n\n@global.w_consequence_teen_boy_1: "If I come home in time, maybe I can stay up 30 minutes later than usual?"':
+    "@global.w_consequence_male_caregiver: “Ke tshwenngwa ke gore o sa ntse o tla gae thari, @global.w_consequence_teen_boy_1. Ke eng se re ka se dirang go go thusa gore o gakologelwe go tla gae ka nako?”\n\n@global.w_consequence_teen_boy_1: “Fa ke tla gae ka nako, gongwe nka robala thari ka metsotso e le 30 go feta ka tlwaelo?”",
   "@global.w_consequence_male_caregiver: That is a good idea! And what should we do if you don’t follow the rule?  \n\n@global.w_consequence_teen_boy_1 (mumbles): “Mgmluuhm”":
     "@global.w_consequence_male_caregiver: Kakantsho eo e molemo tota! Jaanong re tshwanetse go dira eng fa o sa ikobele molao ono?  \n\n@global.w_consequence_teen_boy_1 (o itoma diteme): “Mgmluuhm”",
   '@global.w_consequence_male_caregiver: "Oh come on, I know you have some ideas."\n\n@global.w_consequence_teen_boy_1: "Okay…. What about: I have to do my homework?"':
     '@global.w_consequence_male_caregiver: “Bua fela, ke a itse gore o akantse sengwe.”\n\n@global.w_consequence_teen_boy_1: "Go siame…. Go tweng ka: Ke tshwanelwa ke go dira tirogae ya me?”',
-  '@global.w_consequence_male_caregiver: "You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day."\n\n@global.w_consequence_teen_boy_1: "Okay, @global.w_consequence_male_caregiver ."':
-    '@global.w_consequence_male_caregiver: “Gone mme tirogae ke selo se o tshwanetseng go se dira. Fa o lebala molao, a go tla bo go siame gore o seka wa bonana le ditsala tsa gago letsatsi le le latelang.”\n\n@global.w_consequence_teen_boy_1: "Go siame, @global.w_consequence_male_caregiver ."',
+  '@global.w_consequence_male_caregiver: "You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day."\n\n@global.w_consequence_teen_boy_1: "Okay, @global.w_consequence_male_caregiver."':
+    '@global.w_consequence_male_caregiver: “Gone mme tirogae ke selo se o tshwanetseng go se dira. Fa o lebala molao, a go tla bo go siame gore o seka wa bonana le ditsala tsa gago letsatsi le le latelang.”\n\n@global.w_consequence_teen_boy_1: "Go siame, @global.w_consequence_male_caregiver."',
   "The next day...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is it! It is late!”":
     "Letsatsi le le latelang...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! Ke nako mang! Go setse go le thari!”",
   "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep.”  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”":
@@ -1283,13 +1372,11 @@ export default {
     "@global.w_consequence_teen_boy_1: “Nka kgona go tlhalosa, @global.w_consequence_male_caregiver, Nka kgona.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, Ke bosigogare mme o tlile gae thari go na le nako e re dumalaneng ka yone. Le fa gone o ka tlhalosa jang, o tshwanetse go tlhaloganya gore se o se dirang ga se a siama. @global.w_consequence_female_caregiver ke ntse ke tshwenyegile tota.”",
   "@global.w_consequence_teen_boy_1: “My friends wanted me to stay longer. They were calling me a baby for having to go home already.” \n\n@global.w_consequence_male_caregiver: “I know it can be hard to say no to your friends. Let’s talk more about this in the morning when we have had some rest.”":
     "@global.w_consequence_teen_boy_1: “Ditsala tsa me di ne di batla gore re fetse nako e telelenyana mmogo. Ba ne ba re ke ngwana fa ke setse ke batla go ya gae.” \n\n@global.w_consequence_male_caregiver: “Ke a itse gore gantsi go thata go gana se ditsala tsa gago di go kopang sone. A re ye go robala, re tla bua ka kgang eno mo mosong fa re ikhutsitse sentle.”",
-  "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver .” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”":
-    "@global.w_consequence_teen_boy_1: “Intshwarele go bo ke dirile gore o tshwenyege le @global.w_consequence_female_caregiver .” \n\n@global.w_consequence_male_caregiver: “Ke a leboga. Ya go robala, mme gone, itse gore ka gonne o tlile gae thari, kamoso maitseboa ga o ye gope.”",
+  "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver.” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”":
+    "@global.w_consequence_teen_boy_1: “Intshwarele go bo ke dirile gore o tshwenyege le @global.w_consequence_female_caregiver.” \n\n@global.w_consequence_male_caregiver: “Ke a leboga. Ya go robala, mme gone, itse gore ka gonne o tlile gae thari, kamoso maitseboa ga o ye gope.”",
   "Let's talk about this story": "A re bueng ka kgang eno",
   "Using a consequence worked well this time because...":
     "Ditlamorago di berekile sentle mo lekgetlong leno ka gonne...",
-  "Why did using a consequence work well this time?":
-    "Goreng go dirisa ditlamorago go berekile sentle mo lekgetlong leno?",
   "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm":
     "@global.w_consequence_teen_boy_1 le @global.w_consequence_male_caregiver ba buile ka ditlamorago ba ritibetse maikutlo",
   "They agreed on consequences together": "Ba ile ba dumalana mmogo ka ditlamorago",
@@ -1299,6 +1386,8 @@ export default {
     "@global.w_consequence_male_caregiver o ne a reetsa @global.w_consequence_teen_boy_1",
   "The consequence was realistic and appropriate":
     "Ditlamorago di ne di utlwala e bile di tshwanela",
+  "Why did using a consequence work well this time?":
+    "Goreng go dirisa ditlamorago go berekile sentle mo lekgetlong leno?",
   "What would be a calm consequence for your teenagers arguing with each other during dinner? \n\nRemember it needs to be: \nFAIR - IMMEDIATE - CONSISTENT":
     "O ka tla ka ditlamorago o ritibetse jang fa basha ba gago ba ngangisana ka nako ya dijo tsa maitseboa? \n\nGakologelwa gore e tshwanetse go nna: \nTEKATEKANO - BONAKO - SA FETOFETOGE",
   "Not seeing any friends for a month": "Go sa etele ditsala kgwedi yotlhe",
@@ -1322,8 +1411,6 @@ export default {
     "Letsatsi la gompieno le monate tota! Ke eng se se dirileng gore letsatsi la gompieno le nne monate? Gakologelwa gore ke selo se se siameng go ipaka fa o dirile sentle.",
   "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.":
     "Ke maswabi go utlwa gore ga o ikutlwe sentle gompieno. Re motlotlo ka wena go bo o lemogile maikutlo ao, e bile o leka go ritibala maikutlo le go ineneketsa. O tlhomela lelapa la gago sekao se se molemo.",
-  "@global.home_practice_problem_solving: @global.w_safe":
-    "@global.home_practice_problem_solving: @global.w_safe",
   "Every small thing you do matters. We hope you are proud of yourself too.":
     "Selo sengwe le sengwe se sennye se o se dirang se botlhokwa. Re solofela gore le wena o ikutlwa o le motlotlo.",
   "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.":
@@ -1342,8 +1429,8 @@ export default {
     "@global.w_crisis_teen_girl_1: “Ke Malome, o… o… o ne a mphoraphora.”  \n\n@global.w_crisis_teen_girl_1 (a akanya): “Leka go wela makgwafo... Ngwanake o tlhoka eng? O tlhoka gore ke ritibale maikutlo mme ke mo reetse” \n\n@global.w_crisis_female_caregiver: “Tla o nne gaufi le nna. Tsaya nako ya gago, ke go reeditse.”",
   '@global.w_crisis_teen_girl_1: "It’s true, he… he… made me do it! He made me have sex with him! I didn’t want to, I swear, and I even said NO, but he told me I would be in trouble."\n\n@global.w_crisis_female_caregiver: "Thank you for sharing this with me. You are not in trouble. This is not your fault."':
     '@global.w_crisis_teen_girl_1: “Ke bua nnete, o... o... mpateleditse gore ke dire jalo! O mpateleditse gore ke robalane le ene! Ke ne ke sa batle, ke lekile go mmolelela gore GA KE BATLE, a ba a re fa ke gana ke tlile go tsena mo mathateng."\n\n@global.w_crisis_female_caregiver: “O dirile sentle ka go mpolelela se se diragetseng. O ka se tsene mo mathateng. Ga se phoso ya gago.”',
-  '@global.w_crisis_teen_girl_1: "Yesterday when you went to see @global.w_crisis_adult_friend . He just came and that’s when it happened."\n\n@global.w_crisis_female_caregiver:  "It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?"\n\n@global.w_crisis_teen_girl_1: "My school?"':
-    '@global.w_crisis_teen_girl_1: "Maabane fa o ne o ile kwa go @global.w_crisis_adult_friend . O tlile fano mme go diragetse ka yone nako eo.”\n\n@global.w_crisis_female_caregiver:  “Go siame, ke dumela se o se buang ngwanaka. Kgang eno e masisi tota mme re tlile go batla thuso e re e tlhokang. Re ka batla thuso kae?”\n\n@global.w_crisis_teen_girl_1: “Kwa sekolong sa me?”',
+  '@global.w_crisis_teen_girl_1: "Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened."\n\n@global.w_crisis_female_caregiver:  "It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?"\n\n@global.w_crisis_teen_girl_1: "My school?"':
+    '@global.w_crisis_teen_girl_1: "Maabane fa o ne o ile kwa go @global.w_crisis_adult_friend. O tlile fano mme go diragetse ka yone nako eo.”\n\n@global.w_crisis_female_caregiver:  “Go siame, ke dumela se o se buang ngwanaka. Kgang eno e masisi tota mme re tlile go batla thuso e re e tlhokang. Re ka batla thuso kae?”\n\n@global.w_crisis_teen_girl_1: “Kwa sekolong sa me?”',
   '@global.w_crisis_female_caregiver: "Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?"\n\n@global.w_crisis_teen_girl_1: "Yes… Okay… But will you come with me?"':
     '@global.w_crisis_female_caregiver: “Ah ke a itse gore kae, a re ye kwa tliliniking. Ba a itse gore ke eng se ba tshwanetseng go se dira go go thusa. A ga o na bothata fa re ya kwa teng?"\n\n@global.w_crisis_teen_girl_1: “Ee... Go siame...a o tla tsamaya le nna?”',
   '@global.w_crisis_female_caregiver: "Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this."':
@@ -1364,8 +1451,8 @@ export default {
     "@global.w_crisis_teen_boy_1: “Tota ke ne ke sa batle go lwa mme gone, ke ne nka se lebelele tsala ya me fela e itewa ka jalo...”\n\n@global.w_crisis_male_caregiver_1: “Ka gone, o ile wa lwana gore o sireletse tsala ya gago?”",
   '@global.w_crisis_teen_boy_1: “Everyone was fighting. I saw someone lying on the field in a pool of blood. He looked… dead."':
     "@global.w_crisis_teen_boy_1: “Rotlhe re ne re lwa. Ke bone mongwe a rapaletse fa fatshe a dutla madi. Ke akanya gore... o ne a sule.”",
-  '@global.w_crisis_male_caregiver_1: "I am glad you are telling me about this, @global.w_crisis_teen_boy_1 . Let’s sit down together now and discuss whether we should involve the police or someone else to help."':
-    "@global.w_crisis_male_caregiver_1: “Ke a leboga gore o mpoleletse ka seno, @global.w_crisis_teen_boy_1 . A re nne fa fatshe mmogo jaanong mme re bone gore a ke re itsise mapodisi kgotsa mongwe o sele go thusa.”",
+  '@global.w_crisis_male_caregiver_1: "I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help."':
+    "@global.w_crisis_male_caregiver_1: “Ke a leboga gore o mpoleletse ka seno, @global.w_crisis_teen_boy_1. A re nne fa fatshe mmogo jaanong mme re bone gore a ke re itsise mapodisi kgotsa mongwe o sele go thusa.”",
   '@global.w_crisis_teen_boy_1: "Thank you, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: "We will get through this. Remember, we will support you as a family."':
     '@global.w_crisis_teen_boy_1: “Ke a leboga, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: Re tla bona thuso. Gopola, re tla go tshegetsa jaaka lelapa.”',
   "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!":
@@ -1391,16 +1478,16 @@ export default {
     "Go a thusa go ikatisetsa go rarabolola mathata pele ga a diragala. \n\nBona gore malapa ano a matlhano a ile a nna le mathata ka dinako dife. A re re o motsadi: O ne o tla dira eng?\n\nGakologelwa:  KGWA MOWA - REETSA - AKANYA",
   "Crisis 1: @global.w_crisis_teen_boy_2 fights at school":
     "Bothata 1: @global.w_crisis_teen_boy_2 dintwa kwa sekolong",
-  '"I’ve never done this before. And now they will expel me"':
-    "“Ke la ntlha ke nna le bothata jono. Mme jaanong ke tlile go lelekwa”",
+  '@global.w_crisis_teen_boy_2: "I’ve never done this before. And now they will expel me"':
+    "@global.w_crisis_teen_boy_2: “Ke la ntlha ke nna le bothata jono. Mme jaanong ke tlile go lelekwa”",
   "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant":
     "Bothata 2: @global.w_crisis_teen_girl_1 ke imile",
-  '"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do"':
-    '"@global.w_crisis_male_caregiver_1, Ke tlhabilwe ke ditlhong tota. Ga ke itse gore ke direng”',
+  '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do"':
+    '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, Ke tlhabilwe ke ditlhong tota. Ga ke itse gore ke direng”',
   "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant":
     "Bothata 3: @global.w_crisis_teen_boy_2 ke imisitse mosetsana",
-  '"@global.w_crisis_male_caregiver_2, I don’t want to have a baby"':
-    '"@global.w_crisis_male_caregiver_2, Ga ke batle go nna le ngwana"',
+  '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, I don’t want to have a baby"':
+    '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, Ga ke batle go nna le ngwana"',
   "How could you respond to @global.w_crisis_teen_boy_2?":
     "O ka tsibogela jang @global.w_crisis_teen_boy_2?",
   "Crisis 4: Someone in the family gets sick": "Bothata 4: Mongwe mo lapeng o simolola go lwala",
@@ -1409,8 +1496,8 @@ export default {
   "How could you respond in this situation?": "O ka tsibogela jang seemo seno?",
   "Crisis 5: @global.w_crisis_teen_girl_1 is pressured into sex by her boyfriend":
     "Bothata 5: mosimane yo o ratanang le @global.w_crisis_teen_girl_1 o mo pateletsa gore ba robalane",
-  '"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared..."':
-    '“Tota ke ne ke sa batle. Jaanong ke tlile go ima kgotsa go tsenwa ke bolwetsi. @global.w_crisis_female_caregiver, ke tshogile tota..."',
+  '@global.w_crisis_teen_girl_1: "I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared..."':
+    '@global.w_crisis_teen_girl_1: “Tota ke ne ke sa batle. Jaanong ke tlile go ima kgotsa go tsenwa ke bolwetsi. @global.w_crisis_female_caregiver, ke tshogile tota..."',
   "How could you respond to @global.w_crisis_teen_girl_1?":
     "O ka tsibogela jang @global.w_crisis_teen_girl_1?",
   "Remember to support and encourage each other. It is hard to remain calm and listen to each other in a crisis - we are proud of you.":
@@ -1428,8 +1515,6 @@ export default {
     "Tshwarelo gore dilo di boima. Malapa otlhe a na le mathata. Re fano go lo thusa!",
   "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!":
     "A re lebaleng ka sepe fela se se phoso se se diragetseng gompieno, re tla leka gape letsatsi le le latelang. Ga se bothata!",
-  "@global.home_practice_problem_solving: @global.w_praise":
-    "@global.home_practice_problem_solving: @global.w_praise",
   "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference.":
     "Tlhoma mogopolo mo dilong tse di siameng! \n\nGo botoka go bolelela basha ba rona gore ke eng se re batlang ba se DIRA go na le go ba bolelela gore ba TLOGELE go dira sengwe.\n\nO tla bona pharologanyo.",
   "Greetings, greetings everyone.\n\nToday our topic is positive instructions. \n\nIt is important to give positive instructions to our children, because when we give them positive instructions they know and understand what we are expecting them to do, and they do it the way we want them to do it. \n\nSo, at the end it keeps everyone happy.":
@@ -1474,8 +1559,8 @@ export default {
     "Ke a leboga gore re dirile ikatiso eno mmogo! \n\nA jaanong re boele morago mme re bone gore go diragala eng fa @global.w_instruct_female_caregiver a ntsha taelo e e siameng:",
   '@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance."\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”':
     '@global.w_instruct_female_caregiver o ne a phepafatsa ntlo fa @global.w_instruct_teen_girl ene a ntse a ikatisetsa mmino le tsala ya gagwe.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, go itumedisa go bona o ikatisetsa go bina ga gago le tsala ya gago. Ke kopa lo ye kwa ntle pele gore ke feleletse go phepafatsa mo ntlong. Fa ke feditse lo ka boela e bile le nna ke tla itumelela go lo lebelela.”\n\n@global.w_instruct_teen_girl: "Go siame, @global.w_instruct_female_caregiver!”',
-  '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl . Now I have some time to watch your dance."':
-    "@global.w_instruct_female_caregiver: “Ke a leboga gore lo ile lwa nna lwa ikatisetsa kwa ntle fa ke ntse ke feleletsa go phepafatsa, @global.w_instruct_teen_girl . Jaanong le nna ke kopa lo mpontshe gore lo di betsa jang.”",
+  '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance."':
+    "@global.w_instruct_female_caregiver: “Ke a leboga gore lo ile lwa nna lwa ikatisetsa kwa ntle fa ke ntse ke feleletsa go phepafatsa, @global.w_instruct_teen_girl. Jaanong le nna ke kopa lo mpontshe gore lo di betsa jang.”",
   '@global.w_instruct_female_caregiver: "Wow, @global.w_instruct_teen_girl! You have such good dance moves!"':
     '@global.w_instruct_female_caregiver: "Iyo, @global.w_instruct_teen_girl! Ka re mmino ke dilo tsa lona!”',
   "Let's discuss what happened this time.":
@@ -1518,8 +1603,6 @@ export default {
   "Caring for yourself is so essential.": "Go itlhokomela go botlhokwa thata.",
   "Wonderful, I am so happy things are going well. Keep up the good work.":
     "Ke a leboga, ke itumela tota go bona gore dilo di tsamaya sentle. Tswelelang lo dira tiro eno e e molemo.",
-  "@global.home_practice_problem_solving: @global.w_stress":
-    "@global.home_practice_problem_solving: @global.w_stress",
   "Take a moment and just be impressed at what you’ve achieved, despite all the other things you have to do each day.":
     "Iphe nako ya go itumelela se o kgonneng go se fitlhelela le fa gone go na le dilo tse dintsi tse o tshwanetseng go di dira letsatsi le letsatsi.",
   "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.":
@@ -1560,11 +1643,11 @@ export default {
     "Lebelela lenaane la gago la dilo tse o di rekang mme lo tlhophe:\n* Ke dilo dife tse o di TLHOKANG tse o ka se kgoneng go tshela ntle le tsone? Goreng?\n* Ke dilo dife tse o di BATLANG tse o ka itumelelang go nna le tsone mme gone tota di se botlhokwa jalo? Goreng? \n* Ke dilo dife tse o ka lekang go dirisa madi a mannye mo go tsone?",
   "Make a budget!": "Dira tekanyetsokabo!",
   "Make a budget as one big family!": "Dirang tekanyetsokabo lotlhe lo le lelapa!",
-  '* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
-    "* Motho a le nosi o tla ithapela go abelana ka lenaane la gagwe (Fa go sena ope yo o ithaopang lo ka dira lenaane le lesha mmogo) \n* Ipheng diabe - bangwe e ka nna bagolo, bangwe e tla nna basha. \n* Dirang tshwetso ya gore lotseno lwa lona ke bokae ka kgwedi.\n* Tsaya maje mangwe kgotsa dinawa kgotsa sepe se se tshwantshetsang madi - leo ke lone letseno la lona la kgwedi. \n(Ka sekai: Fa letseno la lona e le $100, mme lo na le dinawa di le 20, nawa nngwe le nngwe ke $5.  \n* Dirang tshwetso mmogo gore lo a go dirisa bokae go reka eng, mme lo bo lo baya maje ao mo godimo ga setshwantsho se lo se teroileng. \n\nA ga lo tlhomamisege ka tshwetso ya lona? A ga lo kgone go dira tshwetso ya gore ke dilo dife tse lo di “tlhokang” le tse lo di “batlang”? Ga go na bothata!",
+  '* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
+    "* Motho a le nosi o tla ithapela go abelana ka lenaane la gagwe (Fa go sena ope yo o ithaopang lo ka dira lenaane le lesha mmogo) \n* Ipheng diabe - bangwe e ka nna bagolo, bangwe e tla nna basha. \n* Dirang tshwetso ya gore lotseno lwa lona ke bokae ka kgwedi.\n* Tsaya maje mangwe kgotsa dinawa kgotsa sepe se se tshwantshetsang madi - leo ke lone letseno la lona la kgwedi. \n(Ka sekai: Fa letseno la gago e le @global.currency@local.monthly_income, mme o na le dinawa di le @local.number_of_beans, nawa nngwe le nngwe ke @global.currency@local.bean_value.)  \n* Dirang tshwetso mmogo gore lo a go dirisa bokae go reka eng, mme lo bo lo baya maje ao mo godimo ga setshwantsho se lo se teroileng. \n\nA ga lo tlhomamisege ka tshwetso ya lona? A ga lo kgone go dira tshwetso ya gore ke dilo dife tse lo di “tlhokang” le tse lo di “batlang”? Ga go na bothata!",
   "Make a budget as a family!": "Dirang tekanyetsokabo lotlhe lo le lelapa!",
-  '* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
-    "* Kwalang fa fatshe gore lotseno lwa lona ke bokae ka kgwedi.\n* Tsaya maje mangwe kgotsa dinawa kgotsa sepe se se tshwantshetsang madi - leo ke lone letseno la lona la kgwedi. \n(Ka sekai: Fa letseno la lona e le $100, mme lo na le dinawa di le 20, nawa nngwe le nngwe ke $5.  \n* Dirang tshwetso gore lo a go dirisa bokae go reka eng, mme lo bo lo baya maje/dilo tseo mo godimo ga setshwantsho seo. \n\nA ga lo tlhomamisege ka tshwetso ya lona? A ga lo kgone go dira tshwetso ya gore ke dilo dife tse lo di “tlhokang” le tse lo di “batlang”? Ga go na bothata!",
+  '* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
+    "* Kwalang fa fatshe gore lotseno lwa lona ke bokae ka kgwedi.\n* Tsaya maje mangwe kgotsa dinawa kgotsa sepe se se tshwantshetsang madi - leo ke lone letseno la lona la kgwedi. \n(Ka sekai: Fa letseno la gago e le @global.currency@local.monthly_income, mme o na le dinawa di le @local.number_of_beans, nawa nngwe le nngwe ke @global.currency@local.bean_value.)\n* Dirang tshwetso gore lo a go dirisa bokae go reka eng, mme lo bo lo baya maje/dilo tseo mo godimo ga setshwantsho seo. \n\nA ga lo tlhomamisege ka tshwetso ya lona? A ga lo kgone go dira tshwetso ya gore ke dilo dife tse lo di “tlhokang” le tse lo di “batlang”? Ga go na bothata!",
   "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:":
     "Lo dirile bontle, lo feditse dikgato tse 3 tsa ntlha! \n\nA re boneng gore @global.w_money_grandma o ne a rulaganya go dirisa madi a gagwe jang, jaaka re dira fano:",
   '"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!"':
@@ -1581,7 +1664,7 @@ export default {
     "Lelapa la lona le ipeetse mekgele efe ya go boloka madi?",
   "Such great goals! \n\nSuch a great goal! When we make a good budget and saving plan together, we can achieve it and feel proud of ourselves!":
     "Ke mekgele e mentle tota! \n\nKe mokgele o montle tota! Fa re dira tekanyetsokabo e e siameng e bile re rulaganya dilo mmogo, re ka fitlhelela mekgele ya rona e bile re tla ikutlwa re le motlotlo!",
-  "We all have dreams for our family, just like @global.w_money_grandma . By setting aside a bit of money every month, you can realise them too!":
+  "We all have dreams for our family, just like @global.w_money_grandma. By setting aside a bit of money every month, you can realise them too!":
     "Fela jaaka @global.w_money_grandma, le rona re na le mekgele e re batlang lelapa la rona le e fitlhelela. Fa o boloka madinyana a se kae kgwedi le kgwedi, le wena o ka kgona go e fitlhelela!",
   "What are your family savings goals?": "Lelapa la lona le ipeetse mekgele efe ya go boloka madi?",
   "Such a great goal! \n\nBy making a good budget and saving plan, you can achieve it and feel proud of yourself!":
@@ -1648,8 +1731,6 @@ export default {
     "Ke maswabi go utlwa gore gompieno go thatanyana. Re leboga gore lo dirile sotlhe se lo ka se kgonang. Ga go ope yo o itseng sengwe le sengwe mme lo dira bontle tota!",
   "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!":
     "Ke maswabi go utlwa gore gompieno go thatanyana. Re a lo akgola gore fa lo tsoga moso mongwe le mongwe, lo dira sotlhe se lo ka se kgonang le fa gone lo lapile. Seno se tlhoka bopelokgale le boineelo!",
-  "@global.home_practice_problem_solving: @global.w_1on1":
-    "@global.home_practice_problem_solving: @global.w_1on1",
   "Step 1: Share what went well and what was hard":
     "Kgato 1: Re bolelele gore ke kae mo o kgonneng go dira bontle le gore ke eng se se neng se le thata",
   '"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone."':
@@ -1686,8 +1767,8 @@ export default {
     "Go baka go na le maatla tota. \n\nA re lebeng sekai sa ga @global.w_praise_female_caregiver_name le bana ba gagwe ba basetsana:",
   "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!":
     "Gantsi fa @global.w_praise_female_caregiver_namea tshwaregile ka go dira sengwe, bana ba gagwe ba basetsana ba a lwa. Mme, gompieno ngwana wa gagwe wa mosetsana yo mogolo o thusa monnawe ka tiro ya sekolo!",
-  '"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl . I\'m so proud of you!"':
-    "“Ke a leboga @global.w_praise_girl gore o dira tiro ya sekolo, tanki ka go thusa monnao, @global.w_praise_teen_girl . Ke motlotlo tota ka lona!”",
+  '@global.w_praise_female_caregiver_name: "Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I\'m so proud of you!"':
+    "@global.w_praise_female_caregiver_name: “Ke a leboga @global.w_praise_girl gore o dira tiro ya sekolo, tanki ka go thusa monnao, @global.w_praise_teen_girl. Ke motlotlo tota ka lona!”",
   "Let's discuss this story.": "A re tlotleng ka kgang eno.",
   "Discuss together:\n\n* How did praise make @global.w_praise_female_caregiver_name's teens feel?\n* Why did she praise them?":
     "Tlotlang mmogo:\n\n* Go bakwa go ile ga dira gore basha ba ga @global.w_praise_female_caregiver_name ba ikutlwe jang?\n* Goreng a ile a ba baka?",
@@ -1730,8 +1811,6 @@ export default {
     "Ke lebogela go lemoga maikutlo a a siameng. Ke itumelela go utlwa gore lo tsogile sentle gompieno!",
   "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember you are not alone.":
     "Ke lebogela go lemoga maikutlo a a thatanyana. Botshelo bo ntse jalo, ka dinako tse dingwe go nna thata. Gopola gore ga o nosi.",
-  "@global.home_practice_problem_solving: @global.w_money":
-    "@global.home_practice_problem_solving: @global.w_money",
   "This is just incredible. Every one of these habits is making your family stronger. Be proud.":
     "Seno se sentle ruri. Mekgwa eno yotlhe e dira gore lelapa la lona le nonofe. Nna motlotlo.",
   "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!":
@@ -1802,10 +1881,10 @@ export default {
     "Melao e botlhokwa go boloka basha ba gago ba sireletsegile - le mo inthaneteng. Go buiwa go le gontsi ka seno mo Kopanong ya Beke le Beke ka thulaganyo ya tshireletsego, mme tla re simolole ka go e bona gone jaanong!",
   '@global.w_rules_female_caregiver_2: "@global.w_rules_teen_girl, have you done your homework?"\n\n@global.w_rules_teen_girl: "Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video"':
     '@global.w_rules_female_caregiver_2: "@global.w_rules_teen_girl, a o dirile tirogae ya gago?"\n\n@global.w_rules_teen_girl: "Ke etla @global.w_rules_female_caregiver_2, ke feleletsa bidio eno ya @global.teen_social_medium"',
-  '@global.w_rules_female_caregiver_2: "You are a really great dancer! Tell me about why you like it"\n\n@global.w_rules_teen_girl: "All my friends are on it, @global.w_rules_female_caregiver_2 . I have more than 600 likes and 120 followers."':
-    '@global.w_rules_female_caregiver_2: “Tota o kgeleke ya go bina! Mpolelele gore goreng o go rata"\n\n@global.w_rules_teen_girl: "Ditsala tsa me tsotlhe di dira jalo, @global.w_rules_female_caregiver_2 . Ke na le batho ba ba e ratang ba le 600 ba ba ntshalang morago ba le 120.”',
-  '@global.w_rules_female_caregiver_2: "I’m proud of how well you dance, @global.w_rules_teen_girl . But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens."':
-    '@global.w_rules_female_caregiver_2: "Ke motlotlo ka fa o binang bontle ka teng, @global.w_rules_teen_girl . Mme re tshwanetse go tlhomamisa gore o sireletsegile. \n\nKe itse gore ditsala tsa gago di lebelela @global.teen_social_medium, mme di dirisa akhaonto e e sa sireletsegang, go na le batho bangwe ba ba lebang dibidio tsa basha gore ba kgotsofatse keletso ya bone ya thobalano. Ka dinako tse dingwe ba ikgolaganya le basha. Ba itira e kete ba siame mme ba feleletsa ba tshosetsa basha le go ba sotla.”',
+  '@global.w_rules_female_caregiver_2: "You are a really great dancer! Tell me about why you like it"\n\n@global.w_rules_teen_girl: "All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers."':
+    '@global.w_rules_female_caregiver_2: “Tota o kgeleke ya go bina! Mpolelele gore goreng o go rata"\n\n@global.w_rules_teen_girl: "Ditsala tsa me tsotlhe di dira jalo, @global.w_rules_female_caregiver_2. Ke na le batho ba ba e ratang ba le 600 ba ba ntshalang morago ba le 120.”',
+  '@global.w_rules_female_caregiver_2: "I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens."':
+    '@global.w_rules_female_caregiver_2: "Ke motlotlo ka fa o binang bontle ka teng, @global.w_rules_teen_girl. Mme re tshwanetse go tlhomamisa gore o sireletsegile. \n\nKe itse gore ditsala tsa gago di lebelela @global.teen_social_medium, mme di dirisa akhaonto e e sa sireletsegang, go na le batho bangwe ba ba lebang dibidio tsa basha gore ba kgotsofatse keletso ya bone ya thobalano. Ka dinako tse dingwe ba ikgolaganya le basha. Ba itira e kete ba siame mme ba feleletsa ba tshosetsa basha le go ba sotla.”',
   '@global.w_rules_female_caregiver_2: "Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you.\n\nSo you can accept people you know from school and our community, but not people who contact you online.\n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!”':
     '@global.w_rules_female_caregiver_2: "Tla re lebe inthanete mmogo re bone gore re ka dira jang gore e go itumedise le gore gape e sireletsege. Bona - o ka kgona go dira gore akhaonto ya gago e nne khupamarama le go laola batho ba ba go salang morago.\n\nO ka nna wa amogela batho ba o tsenang sekolo le bone le ba mo lefelong la rona, mme e seng batho ba ba ikgolaganyang le wena mo inthaneteng.\n\nA re ka dira molao mmogo o o ka o dirisang @global.teen_social_medium, mme e le ka akhaonto ya khupamarama? Ke a go tshepa gore o tla amogela batho ba o ba itseng!”',
   '@global.w_rules_female_caregiver_2: "I’m proud of you @global.w_rules_teen_girl"':
@@ -1827,8 +1906,6 @@ export default {
     "Go gontle. E bile go a kgatlha go bo o dirisa sediriso seno - go a bontsha gore o motsadi yo o nang le maikemisetso. Tlhomamisa gore o a iteboga le go ikakgolela se o se dirang.",
   "Being a parent is hard. But it is amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.":
     "Go nna motsadi go boima. Mme go a kgatlha go bo o dirisa sediriso seno - go a bontsha gore o motsadi yo o nang le maikemisetso. Tlhomamisa gore o a iteboga le go ikakgolela se o se dirang.",
-  "@global.home_practice_problem_solving: @global.w_solve":
-    "@global.home_practice_problem_solving: @global.w_solve",
   "Doing any of these makes you a great parent.":
     "Go dira dilo tseno tsotlhe go go dira motsadi yo o molemo.",
   "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!":
@@ -1841,8 +1918,8 @@ export default {
     "* Kgang le go leba kwa morago - tse di berekileng!\n* Kgang le go leba kwa morago - tse di berekileng!\n* Ikatiso ya go rulaganya\n* Dithulusu: Se o ka se dirang go boloka mosha wa gago a sireletsegile\nDIMMAPA - MELAO - KGOLOLESEGO\n * Dikakantsho tsa katiso ya legae",
   "Communication is the most important thing!\n\nLet's see what happened with @global.w_safe_female_caregiver and @global.w_safe_teen_girl_1:":
     "Puisano ke selo sa botlhokwa tota!\n\nA re boneng gore go diragetseng ka @global.w_safe_female_caregiver le @global.w_safe_teen_girl_1:",
-  '@global.w_safe_teen_girl_1: "Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_1!"\n\n@global.w_safe_female_caregiver: "Tell me, @global.w_safe_teen_girl_1"':
-    '@global.w_safe_teen_girl_1: "Go diragetse sengwe fa ke tswile le ditsala tsa me @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_1!"\n\n@global.w_safe_female_caregiver: "Mpolelele, @global.w_safe_teen_girl_1"',
+  '@global.w_safe_teen_girl_1: "Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_3!"\n\n@global.w_safe_female_caregiver: "Tell me, @global.w_safe_teen_girl_1"':
+    '@global.w_safe_teen_girl_1: "Go diragetse sengwe fa ke tswile le ditsala tsa me @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_3!"\n\n@global.w_safe_female_caregiver: "Mpolelele, @global.w_safe_teen_girl_1"',
   "Man in car: “Hey beautiful. I have been looking at you for a while. You are very beautiful, what’s your name?  \n\n@global.w_safe_teen_girl_2: “Her name is @global.w_safe_teen_girl_1”":
     "Monna yo o mo koloing: “Dumela montlenyane. Ke ntse ke go lebeletse. O montle tota, leina la gago ke mang?  \n\n@global.w_safe_teen_girl_2: “Leina la gagwe ke @global.w_safe_teen_girl_1”",
   "Man in car: “@global.w_safe_teen_girl_1, would you like to come with me to have something to drink and chips? Come on, get in, you’ll be back in time, I promise…” \n\n@global.w_safe_teen_girl_1: “I’m not sure if that’s a good idea…”":
@@ -1906,8 +1983,8 @@ export default {
     "Go boloka basha ba rona ba sireletsegile, re tlhoka go tlhaloganya boemo jo bo kotsi jo ba ka tsenang mo go jone!\n\nA re direng dimmapa tse pedi mmogo tsa mafelo a a babalesegileng le a a sa babalesegang:\n* Mmapa wa motse wa rona\n* Mmapa wa ditiriso/diwebosaete tse re di dirisang mo inthaneteng\n\nA re direng mmapa tseno jaanong re le setlhopha. \n\nO tla dira se se tshwanang ka basha ba gago e le ikatiso ya kwa gae mo bekeng eno.",
   "Discuss together:\n\n* Which areas on your map are safe for teenagers \n     – CIRCLE these \n* Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n* What makes a place safe or unsafe?  \n* What could you and your teen do to keep your teen safer?":
     "Tlotlang mmogo:\n\n* Ke mafelo afe mo mmapeng wa gago a a sireletsegileng mo basheng \n     – A THEKELETSE \n* Ke mafelo afe mo mmapeng wa gago a a sa sireletsegang mo basheng \n     – A THALELE  \n* Ke eng se se dirang gore lefelo le sireletsege kgotsa le seka la sireletsega?  \n* Wena le mosha wa gago lo ka dirang go boloka mosha wa gago a babalesegile?",
-  "Sometimes, we can find ourselves in trouble. Discuss together:\n \n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
-    "Ka dinako tse dingwe, re ka iphitlhela re le mo mathateng. Tlotlang mmogo:\n \n* Wena le mosha wa gago lo ka batla tshegetso kae fa lo lebana le mathata a a masisi? \n     – TSHWAYA mafelo ao ka selo se sennye jaaka leje kgotsa pampitshana.  \n\nFa tlase go na le mafelo a a ka thusang",
+  "Sometimes, we can find ourselves in trouble. Discuss together:\n \n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.":
+    "Ka dinako tse dingwe, re ka iphitlhela re le mo mathateng. Tlotlang mmogo:\n \n* Wena le mosha wa gago lo ka batla tshegetso kae fa lo lebana le mathata a a masisi? \n     – TSHWAYA mafelo ao ka selo se sennye jaaka leje kgotsa pampitshana.",
   "* Draw pictures of the apps and websites your teenagers use \n* Praise each other for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
     "* Taka ditshwantsho tsa ditiriso le diwebosaete tse basha ba gago ba ka di dirisang \n* Bakanang ka bolona ka kafa ba dirisang webo sentle ka teng!  \n* Buang ka gore ke dife tse di ka tswang di sa sireletsega. Goreng? \n** Ke eng se wena le mosha le ka se dirang gore tiriso ya inthanete e nne e e sireletsegileng mo mosheng wa gago le ditsala tsa gagwe?",
   "Safety Plan": "Thulaganya ya Tshireletsego",
@@ -1932,8 +2009,8 @@ export default {
   "Step 3: Where can you get support?": "Kgato 3: O ka bona tshegetso kae?",
   "Sometimes, we can find ourselves in trouble. Discuss together:\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
     "Ka dinako tse dingwe, re ka iphitlhela re le mo mathateng. Tlotlang mmogo:\n* Wena le mosha wa gago lo ka batla tshegetso kae fa lo lebana le mathata a a masisi? \n     – TSHWAYA mafelo ao ka selo se sennye jaaka leje kgotsa pampitshana.  \n\nFa tlase go na le mafelo a a ka thusang",
-  "Sometimes, we can find ourselves in trouble.\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
-    "Ka dinako tse dingwe, re ka iphitlhela re le mo mathateng.\n* Wena le mosha wa gago lo ka batla tshegetso kae fa lo lebana le mathata a a masisi? \n     – TSHWAYA mafelo ao ka selo se sennye jaaka leje kgotsa pampitshana.  \n\nFa tlase go na le mafelo a a ka thusang",
+  "Sometimes, we can find ourselves in trouble.\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.":
+    "Ka dinako tse dingwe, re ka iphitlhela re le mo mathateng.\n* Wena le mosha wa gago lo ka batla tshegetso kae fa lo lebana le mathata a a masisi? \n     – TSHWAYA mafelo ao ka selo se sennye jaaka leje kgotsa pampitshana.",
   "Step 4: What are risky places online and how can you make them safer?":
     "Kgato 4: Ke mafelo afe a a kotsi mo inthanete mme o ka a dira gore a sireletsege jang?",
   "* Draw pictures of the apps and websites your teenagers use \n* Praise your teens for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
@@ -2039,11 +2116,11 @@ export default {
     "Gakologelwa gore le wena o tlhoka nako ya go iketla! Ke eng se se dirang gore o itumele?",
   "Customise your @global.parent_app":
     "Itsenyetse dilo tse o di batlang mo @global.parent_app ya gago",
-  "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you":
-    "Jaanong ka gore re agile bokgoni jwa go itlhokomela, a re tlhomamise gore @global.weekly_workshops tsa gago di a go tshwanela sentle",
+  "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you.":
+    "Jaanong ka gore re agile bokgoni jwa go itlhokomela, a re tlhomamise gore @global.weekly_workshops tsa gago di a go tshwanela sentle.",
   "Start customising": "Simolola go tsenya dilo tse o di batlang",
-  "You seem to have completed the customisation process already. You can now skip this activity":
-    "Go bonala o setse o feditse thulaganyo ya go itsenyetsa dilo tse o di batlang. O ka nna wa tlola tiro eno",
+  "You seem to have completed the customisation process already. You can now skip this activity.":
+    "Go bonala o setse o feditse thulaganyo ya go itsenyetsa dilo tse o di batlang. O ka nna wa tlola tiro eno.",
   "Skip customisation survey": "Tlola patlisiso ya go itsenyetsa dilo tse o di batlang",
   "Whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!":
     "Nako e o kgonang ka yone, iketle, lemoga o bo o ituela. \n\nItlhokomele letsatsi le letsatsi. O botlhokwa!",
@@ -2060,8 +2137,6 @@ export default {
     "O naledi. E bile o dira pharologanyo e kgolo. Nna motlotlo ka wena.",
   "Sorry that things are not easy today. All parents have these days.":
     "Tshwarelo gore dilo di boima gompieno. Batsadi botlhe ba na le malatsi a a ntseng jalo.",
-  "@global.home_practice_problem_solving: @global.w_consequence":
-    "@global.home_practice_problem_solving: @global.w_consequence",
   "Close your eyes, breathe in, and know that everything you have done is so important.":
     "Tswala matlho a gago, goga mowa, o bo o itse gore sengwe le sengwe se o se dirileng se botlhokwa tota.",
   "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too!":
@@ -2074,8 +2149,8 @@ export default {
     "* Kgang le motlotlo - tse di sa berekang...\n* Dithulusu: Kafa o ka rarabololang mathata ka teng\nA ITSE - A RARABOLOLE - E LEKE - E TLHATLHOBE\n* Kgang le go leba kwa morago - tse di berekileng!\n* E leke!\n * Dikakantsho tsa katiso ya legae",
   "Let’s look at what happened to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 when @global.w_solve_teen_girl got a phone from a boy… a phone!":
     "A re bone se se diragaletseng @global.w_solve_teen_girl le @global.w_solve_female_caregiver_1 wa gagwe fa @global.w_solve_teen_girl a ne a tshotse founo e e tswang kwa mosimaneng… founo!",
-  '@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1 . It takes great photos!"':
-    "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, o tsaya kae selo seo?” \n\n @global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 o e ntheketse. Ke founo e ntle, @global.w_solve_female_caregiver_1 . E tsaya ditshwantsho tse dintle!”",
+  '@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1. It takes great photos!"':
+    "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, o tsaya kae selo seo?” \n\n @global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 o e ntheketse. Ke founo e ntle, @global.w_solve_female_caregiver_1. E tsaya ditshwantsho tse dintle!”",
   "@global.w_solve_female_caregiver_1: “I don’t want to see that expensive thing! That boy is no good! How does he think you are going to repay him for this?!”  \n\n@global.w_solve_teen_girl: “That’s not how it works, @global.w_solve_female_caregiver_1! That’s not fair!”":
     "@global.w_solve_female_caregiver_1: “Ga ke batle go bona selo seo se se jang madi a mantsi! Mosimane oo ga a siama! O akanya gore o tlile go e duela ka bokae?!”  \n\n@global.w_solve_teen_girl: “Ga go dirwe jalo, @global.w_solve_female_caregiver_1! Ga o dire sentle!”",
   "@global.w_solve_female_caregiver_1: “I don’t want to hear it!” \n\n@global.w_solve_teen_girl: “You’re not even trying to listen to me! I don’t know why I even try with you!”":
@@ -2106,8 +2181,8 @@ export default {
   "Step 1: KNOW IT": "Kgato 1: A ITSE",
   '@global.w_solve_female_caregiver_2: "Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: "That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!"':
     "@global.w_solve_female_caregiver_2: “Jaanong mpolelele, goreng o tshwerwe ke tlala jaana? Ga o a ja dijo tsa gago tsa motshegare kwa sekolong?” \n\n@global.w_solve_teen_boy_2: “Ke jone bothata joo. Go na le mosimane kwa sekolong yo o nkgerisang. A re fa ke sa mo fe dijo tsa me tsa motshegare letsatsi le letsatsi, ene le ditsala tsa gagwe ba tlile go nkutlwisa botlhoko. O nkgalefisa tota!”",
-  '@global.w_solve_female_caregiver_2: "I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2 . It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?"\n\n@global.w_solve_teen_boy_2: "Well… I want to just hit him or get him back."':
-    '@global.w_solve_female_caregiver_2: "Ke maswabi go utlwa ka seo mme ke itumelela gore o mpoleletse, @global.w_solve_teen_boy_2 . Ga go reye gore o ka ja dijo tsa mongwe le mongwe tsa maitseboa. Fa re fetsa go bua, o tshwanetse go ya kwa lebentleleng o ye go reka borotho jo bongwe. Mme sa ntlha: O akanya gore re tshwanetse go dirang ka bothata jwa mosimane yo o kgerisang?"\n\n@global.w_solve_teen_boy_2: “Ke batla go mo itaya kgotsa go ipusolosetsa.”',
+  '@global.w_solve_female_caregiver_2: "I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?"\n\n@global.w_solve_teen_boy_2: "Well… I want to just hit him or get him back."':
+    '@global.w_solve_female_caregiver_2: "Ke maswabi go utlwa ka seo mme ke itumelela gore o mpoleletse, @global.w_solve_teen_boy_2. Ga go reye gore o ka ja dijo tsa mongwe le mongwe tsa maitseboa. Fa re fetsa go bua, o tshwanetse go ya kwa lebentleleng o ye go reka borotho jo bongwe. Mme sa ntlha: O akanya gore re tshwanetse go dirang ka bothata jwa mosimane yo o kgerisang?"\n\n@global.w_solve_teen_boy_2: “Ke batla go mo itaya kgotsa go ipusolosetsa.”',
   "Step 2: SOLVE IT": "Kgato 2: A RARABOLOLE",
   '@global.w_solve_female_caregiver_2: "Hmmm… what do you think will happen to you if you do that?"\n\n@global.w_solve_teen_boy_2: "I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled."':
     '@global.w_solve_female_caregiver_2: "Hmmm… o akanya gore go tlile go diregang fa o dira jalo?"\n\n@global.w_solve_teen_boy_2: “Ga ke itse. O motona mo go nna ka jalo a ka nna a nkutlwisa botlhoko le go feta. E bile nka tsena mo mathateng kwa sekolong le go kobiwa.”',
@@ -2121,8 +2196,8 @@ export default {
   'A week later… \n\n@global.w_solve_female_caregiver_2: "How are things going at school now?"\n\n@global.w_solve_teen_boy_2: "It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me."':
     'Beke morago ga moo… \n\n@global.w_solve_female_caregiver_2: "Dilo di tsamaya jang kwa sekolong jaanong?"\n\n@global.w_solve_teen_boy_2: “Go botoka, mosimane ole ga a sa tlhole a ntseela dijo tsa me tsa motshegare. Mme o santse a sa ntseye sentle.”',
   "Step 4: TEST IT": "Kgato 4: E TLHATLHOBE",
-  '@global.w_solve_female_caregiver_2: "I am sorry to hear that, @global.w_solve_teen_boy_2 . Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!"\n\n@global.w_solve_teen_boy_2: "Yes, thank you @global.w_solve_female_caregiver_2 . At least I know you are on my side."':
-    '@global.w_solve_female_caregiver_2: “Ke maswabi go utlwa seo, @global.w_solve_teen_boy_2 . A ke kope malome wa gago gore a bue le batsadi ba gagwe? Fa e le gore seo ga se dire, re tla leka sengwe se sele!"\n\n@global.w_solve_teen_boy_2: "Ee, ke a leboga @global.w_solve_female_caregiver_2 . Ke lebogela gore o nkeme nokeng.”',
+  '@global.w_solve_female_caregiver_2: "I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!"\n\n@global.w_solve_teen_boy_2: "Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side."':
+    '@global.w_solve_female_caregiver_2: “Ke maswabi go utlwa seo, @global.w_solve_teen_boy_2. A ke kope malome wa gago gore a bue le batsadi ba gagwe? Fa e le gore seo ga se dire, re tla leka sengwe se sele!"\n\n@global.w_solve_teen_boy_2: "Ee, ke a leboga @global.w_solve_female_caregiver_2. Ke lebogela gore o nkeme nokeng.”',
   "Discuss together: \n\nHow could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT":
     "Tlotlang mmogo: \n\n@global.w_solve_teen_girl le @global.w_solve_female_caregiver_1 ba ka dirisa jang dikgato di le 4 tsa go rarabolola mathata, jaaka @global.w_solve_female_caregiver_2 le @global.w_solve_teen_boy_2 ba dirile? \n\nA ITSE - A RARABOLOLE - E LEKE - E TLHATLHOBE",
   "Remember @global.w_solve_teen_girl and the phone she got from the boy?":
@@ -2162,8 +2237,6 @@ export default {
     "Go gontle! Go a itumedisa go utlwa gore o ikutlwa sentle gompieno. Ruri ke boikutlo jo bo itumedisang!",
   "Sometimes things go great. Sometimes they don't. And sometimes we don't quite know what to think... and that's totally okay! Remember that you are not alone.":
     "Ka dinako tse dingwe dilo di tsamaya sentle. Ka dinako tse dingwe ga di tsamae sentle. E bile ka dinako tse dingwe ga re itse sentle gore re direng... mme seo se siame fela! Gopola gore ga o nosi.",
-  "@global.home_practice_problem_solving: @global.w_instruct":
-    "@global.home_practice_problem_solving: @global.w_instruct",
   "This is fantastic, especially in such difficult times as this. You are a star.":
     "Go gontle, segolobogolo ka dinako tse di thata jaaka tseno. O naledi.",
   "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family.":
@@ -2222,8 +2295,8 @@ export default {
     "@global.w_stress_teen_boy_1: “A nka nna le madi a go reka airtime?”  \n\n@global.w_stress_male_caregiver (go kgwa mowa): “Ke maswabi morwaaka. Go ne go le thata tota gompieno. Mookamedi wa me o nkobile kwa tirong.”",
   "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”":
     "@global.w_stress_teen_boy_1: “Hee se rialo!  Ke tlhoka diaparo tse di ntšha tsa sekolo.”  \n\n@global.w_stress_male_caregiver: “Ke tla leka morwaaka mme tiro ya ga @global.w_stress_female_caregiver e tla nna e re thusa fa ke ntse ke batla tiro e nngwe.”",
-  "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1 . I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”":
-    "@global.w_stress_teen_boy_1: “Le nna nka go thusa go batla tiro, ne @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “Nnyaa, o seka tshwenyega, @global.w_stress_teen_boy_1 . Ke a leboga go bo o batla go nthusa. Selo se se botlhokwa thata ke gore o dire ka natla ko sekolong. Ke a leboga go bo o ile wa ntheetsa.”",
+  "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”":
+    "@global.w_stress_teen_boy_1: “Le nna nka go thusa go batla tiro, ne @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “Nnyaa, o seka tshwenyega, @global.w_stress_teen_boy_1. Ke a leboga go bo o batla go nthusa. Selo se se botlhokwa thata ke gore o dire ka natla ko sekolong. Ke a leboga go bo o ile wa ntheetsa.”",
   "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”":
     '@global.w_stress_male_caregiver: “A re ye go tshameka kgwele ya dinao mmogo. E tla nthusa gore ke fokotse go tshwenyega thata mo maikutlong.”  \n\n@global.w_stress_teen_boy_1: "Go siame, @global.w_stress_male_caregiver!”',
   "That went so much better! \n\nTaking a pause helps to respond calmly when you feel angry or stressed. Try it, you will see!":
@@ -2267,20 +2340,22 @@ export default {
     "Nako le nako fa o ema go se kae pele ga o araba, kgotsa fa o dira sengwe go sireletsa mosha wa gago, tobetsa @global.parent_points mme o nne motlotlo gore o kgonne go dira jalo!",
   "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n* a sheet of paper/cardboard\n* a pen\n* 20 small rocks/beans/kernels\n\nIt will be fun!":
     "O feleleditse workshop ya beke eno.\n\nBeke e e tlang, re tla bua kaga madi - o tla tlhoka:\n* tsebe ya pampiri/khateboto\n* pene\n* maja/dinawa/ditlhaka di le 20\n\nGo a go nna monate!",
+  "Your @global.parent_app Code": "Khoutu @global.parent_app ya Gago",
   "Make me smile": "Tlang lo ipaakantse sentle",
   "Get me going": "Lo nkgothatse",
-  "New @global.weekly_workshop ready tomorrow!":
-    "@global.weekly_workshop e ntšha e siametse kamoso!",
-  "New @global.weekly_workshop!": "@global.weekly_workshop e ntšha!",
-  "Workshop reminder": "Kgopotso ya workshop",
+  "New workshop ready tomorrow!": "Workshop e ntšha e tla bo e siame kamoso!",
+  "New workshop!": "Workshop e ntšha!",
+  "Workshop Reminder": "Kgopotso ya Workshop",
   "Nice progress!": "Lo dira bontle!",
   "You are appreciated!": "Lo ntira motlotlo!",
-  "Something fun": "Sengwe se se itumedisang",
-  "Your @global.parent_points": "@global.parent_points",
-  "Home practice reminder": "Kgopotso ya ikatiso ya kwa gae",
+  "Something Fun": "Sengwe se se Itumedisang",
+  "Your @global.parent_points this week": "@global.parent_points ya gago beke eno",
+  "Home Practice Reminder": "Kgopotso ya Ikatiso ya kwa Gae",
   "To solve this challenge, I will try to:":
     "Ke tla leka go dira seno go leka go rarabolola bothata jono:",
   "My challenge is not listed here.": "Bothata jo ke nang le jone ga bo a tsenngwa fano.",
+  Mother: "Mmé",
+  Father: "Rre",
   TikTok: "TikTok",
   "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.":
     "Ke tlhoka internet gore ke kgone go lebelela bidio eno. Go fokotsa selekanyo sa datha e ke e dirisang, ke lebelele bidio eno kgotsa ke e laisolole fa ke le mo WiFi.",
@@ -2305,28 +2380,21 @@ export default {
   "Check it out!": "E tlhole!",
   Next: "E e latelang",
   Previous: "E e fetileng",
-  Help: "Thuso",
-  "My Tips": "Dintlha Tsa me",
-  "Essential Tools": "Dithulusu Tsa Botlhokwa",
-  COVID: "COVID",
-  "Relax & Activities": "Go iketla & Ditiro",
-  "Customise Again": "Itsenyetse Gape",
-  "Support Contacts": "Batho Ba ba Ka go Thusang",
-  "Evidence Base": "Motheo wa Bosupi",
-  "Technical Support": "Tshegetso ya Botegeniki",
-  "Favourite relaxes": "Se o ratang go se dira fa o iketlile",
-  "All relaxes": "Tsotlhe tse o di dirang fa o iketlile",
-  "Random relax": "Se o tlang o se dira fale le fale fa o iketlile",
-  "This week's relax": "Se o dirang beke eno fa o iketlile",
-  "Listen & relax (1-2 minutes)": "Reetsa & iketle (metsotso e le 1-2)",
-  "Listen & relax (3-5 minutes)": "Reetsa & iketle (metsotso e le 3-5)",
-  "Do & relax (5-10 minutes)": "Dira & iketle (metsotso e le 5-10)",
-  "Favourite activities": "Ditiro tse o ratang go di dira",
-  "All activities": "Ditiro tsotlhe tse o di dirang",
-  "Random activity": "Tiro fale le fale",
-  "This week's activity": "Tiro ya beke eno",
-  "Chat together": "Buang mmogo",
-  "Do together": "Dirang mmogo",
+  "Challenges & solutions": "Dikgwetlho le ditharabololo",
+  Save: "Boloka",
+  "My Favourite Relaxes": "Go Iketla go ke go Ratang",
+  "All Relaxes": "Ditsela Tsotlhe tsa go Iketla",
+  "Random Relax": "Go Iketla Fale le Fale",
+  "This Week's Relax": "Go Iketla ga Beke Eno",
+  "Listen & Relax (1-2 minutes)": "Reetsa o bo o Iketle (metsotso e le 1-2)",
+  "Listen & Relax (3-5 minutes)": "Reetsa o bo o Iketle (metsotso e le 3-5)",
+  "Do & Relax (5-10 minutes)": "Dira o bo o iketle (metsotso e le 5-10)",
+  "My Favourite Activities": "Ditiro tse ke Ratang go di Dira",
+  "All Activities": "Ditiro Tsotlhe",
+  "Random Activity": "Tiro Fale le Fale",
+  "This Week's Activity": "Tiro ya Beke Eno",
+  "Chat Together": "Buang Mmogo",
+  "Do Together": "Dirang Mmogo",
   "Walk to the shops": "Tsamaya ka dinao ka dinao go ya mabenkeleng",
   "Get water together": "Yang go ga metsi mmogo",
   "Do a chore together": "Dirang sengwe mo ntlong mmogo",
@@ -2376,6 +2444,8 @@ export default {
   "Tap and type": "Tobetsa o kwale",
   "Tap and choose": "Tobetsa o tlhophe",
   "Type your own": "Ikwalele ya gago",
+  "I've understood this. Don't show me this message again.":
+    "Ke tlhalogantse seno. O seka wa mpontsha molaetsa ono gape.",
   "Welcome and Self-Care": "Go Amogelwa le go Itlhokomela",
   "Self-Care": "Go itlhokomela",
   "How to add self-care": "Tsela ya go tsenya lenaane la go itlhokomela",
@@ -2407,9 +2477,6 @@ export default {
   "By myself": "Ke le nosi",
   "awesome parent": "motsadi yo o dirang bontle",
   friends: "ditsala",
-  friday: "labotlhano",
-  alone: "nosi",
-  "Value of the first debug variable": "Boleng jwa go nna o baakanya se se phoso",
   "Welcome to @global.parent_app": "O amogetswe mo @global.parent_app",
   "<p>Welcome to @global.parent_app.</p>\n\n<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app will support you and your family in three ways:</p>":
     "<p>O amogetswe mo @global.parent_app.</p>\n\n<p>O tshwanelwa ke go ikutlwa sentle, le go nna le dikamano tse di itumedisang mo lelapeng.</p>\n\n<p>@global.parent_app e tla thusa wena le lelapa la gago ka ditsela tse tharo:</p>",
@@ -2441,26 +2508,6 @@ export default {
     "<p> O ka fetola fano fa o batla go dira @global.weekly_workshops lo le setlhopha kgotsa o le nosi. </p>",
   "<p> Tap here to change your group name. </p>":
     "<p> Tobetsa fano go fetola leina la setlhopha sa lona. </p>",
-  Continue: "Tswelela",
-  "Welcome to ParentApp. Click here to start your journey!":
-    "Re a go amogela mo ParentApp. Tobetsa fano gore o simolole go e dirisa!",
-  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
-    "Ke solofela gore lo SIAME. Go nna motsadi ga go motlhofo, mme gone, ga go ise go nne thari gore o leke gape go thusa mosha wa gago. Workshop ya gago ya ntlha ya batsadi e setse e le teng! Tobetsa fano gore o simolole go dirisa ParentApp!",
-  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
-    "Dumela! A o SIAME? Go bonala o ise o bule ParentApp. Goreng o sa leke go e dirisa? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno e ba thusitse. Re ikemiseditse go tswelela re go thusa.",
-  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
-    "Dumelang gape! Ga go thari gore o ka dirisa ParentApp gore o bone thuso e e tshwanetseng maemo a gago o le motsadi. Goreng o sa leke go e dirisa fa o le mo tseleng go ya tirong kgotsa fa o apeile? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno ya rona e ba thusitse.",
-  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
-    "O seka wa itetla go fetwa ke tshedimosetso ya botlhokwa e e mo ParentApp! E na le tshedimosetso e ntsi tota. Re ikemiseditse go tswelela re go thusa.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go rarabolola matshwenyego a go nna motsadi.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go thusa mosha wa gago gore a kgone go atlega mo botshelong.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go lepalepana le boitshwaro jwa mosha wa gago.",
-  "New message from PLH": "Molaetsa o mosha go tswa go PLH",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go nna tsala ya mosha wa gago gape!",
   "Reflect on the positive": "Akanya ka dilo tse di siameng",
   "Check-in chat": "Tlhola motlotlo",
   "Dream Travel": "Loeto lo lo Batlang go lo Tsaya",
@@ -2504,6 +2551,15 @@ export default {
   '"Calm consequence" @global.parent_point': "“Ditlamorago o ritibetse” @global.parent_point",
   Safe: "Sireletsegile",
   '"Safe" @global.parent_point': "“Sireletsegile” @global.parent_point",
+  Help: "Thuso",
+  "My Tips": "Dintlha Tsa me",
+  "Essential Tools": "Dithulusu Tsa Botlhokwa",
+  COVID: "COVID",
+  "Relax & Activities": "Go iketla & Ditiro",
+  "Support Contacts": "Batho Ba ba Ka go Thusang",
+  "Evidence Base": "Motheo wa Bosupi",
+  "Technical Support": "Tshegetso ya Botegeniki",
+  "Message Archive": "Akhaefe ya Molaetsa",
   "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!":
     "Lo dirile bontle tota! Lo dirile sentle ka go fetsa nako mmogo. Seno ke one motheo wa go nna tsala e kgolo ya mosha wa gago!",
   "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!":
@@ -2540,14 +2596,16 @@ export default {
     "Re maswabi go utlwa gore go ne go se motlhofo. Fa lo buisana mmogo gore kotlhao e tla nna eng, gantsi seno se tla dira gore mosha wa gago a batle go ikobela melao!",
   "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!":
     "Re maswabi go utlwa gore go ne go se motlhofo. Go le gantsi re tshwanetse go nna re leka. Leka go batla nako e wena le mosha wa gago lo ritibetseng maikutlo mme o leke gape go rarabolola bothata o dirisa dikgato tse nne tsa go rarabolola mathata. Fa lo dira mmogo, lo ka kgona go atlega thata!",
-  "Great to hear it went well! This can help keep your teen safe!":
-    "Ke leboga go utlwa gore dilo di tsamaile sentle! Seno se ka thusa mosha wa gago gore a nne a sireletsegile!",
-  "Sorry that this has been hard. Try to do this with your teen again later, and maybe involve some other family members to help give ideas!":
-    "Re maswabi go utlwa gore go ne go le thata. Leka go dira seno gape le mosha wa gago fa nako e ntse e ya, e bile gongwe o ka akaretsa ba bangwe mo lapeng e le gore le bone ba ntshe dikakantsho!",
+  "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.":
+    "Ke leboga go utlwa gore dilo di tsamaile sentle! Go bua ka bodiphatsa le ditsela tse di ka dirisiwang tsa thuso go thibela mathata mme e bile go thusa tota go boloka mosha wa gago a sireletsegile.",
+  "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!":
+    "Re maswabi go utlwa gore go ne go se motlhofo. Go bona fa dikotsi le mafelo a go bona tshegetso di leng teng e ka nna kgwetlho le go tsholetsa maikutlo. Tota go a thusa go boloka mosha wa gago a sireletsegile!",
   "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?":
     "Re maswabi gore go ne go le thatanyana. Ga se selo se se motlhofo go se dira. Leka go nna fa fatshe le mosha wa gago mme lo tlotle ka yone gape. Mme gape, a go na le mongwe yo mosha wa gago a mo tshepang yo a ka tlang go kopanela le lona mo motlotlong?",
   "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.":
     "Ke leboga go utlwa gore dilo di tsamaile sentle! Go otlhaya ka tsela e e siameng go thusa basha ba gago gore ba itshware sentle e bile go dira gore maemo a ritibale mo lelapeng.",
+  "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!":
+    "Ke leboga go utlwa gore dilo di tsamaile sentle! Fa mosha wa gago a ithuta go rarabolola mathata, o tla kgona go dirisa bokgoni joo botshelo jwa gagwe jotlhe. Ruri ke mpho!",
   "Quick pause": "Go ema o se kae",
   "Power of three": "Maatla a gararo",
   "One thing today": "Selo se le nosi gompieno",
@@ -2571,8 +2629,9 @@ export default {
   "List of things": "Lenaane la dilo",
   Connect: "Ikamanye",
   "Prevent anger": "Thibela go galefa",
-  "Angry? Take a break.": "O galefile? Ikhutse go se kae.",
+  "Angry? Take a break": "O galefile? Ikhutse go se kae",
   '"Welcome and Self-Care" workshop': "Workshop ya “Go amogelwa le go itlhokomela”",
+  "How to do self-care": "Tsela ya go itlhokomela",
   '"One-on-One Time" workshop': "Workshop ya “Go ipha nako mmogo”",
   '"Praise" workshop': "Workshop ya “Go baka”",
   '"Positive Instructions" workshop': "Workshop ya “Ditaelo tse di siameng”",
@@ -2584,4 +2643,24 @@ export default {
   '"Teen Safety" workshop': "Workshop ya “Pabalesego ya Basha”",
   '"Dealing with Crisis" workshop': "Workshop ya “Go Lepalepana le Mathata a a Masisi”",
   '"Celebration and Next Steps" workshop': "Workshop ya “Go Keteka le Dikgato Tse di Latelang”",
+  Continue: "Tswelela",
+  "Welcome to ParentApp. Click here to start your journey!":
+    "Re a go amogela mo ParentApp. Tobetsa fano gore o simolole go e dirisa!",
+  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
+    "Ke solofela gore lo SIAME. Go nna motsadi ga go motlhofo, mme gone, ga go ise go nne thari gore o leke gape go thusa mosha wa gago. Workshop ya gago ya ntlha ya batsadi e setse e le teng! Tobetsa fano gore o simolole go dirisa ParentApp!",
+  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
+    "Dumela! A o SIAME? Go bonala o ise o bule ParentApp. Goreng o sa leke go e dirisa? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno e ba thusitse. Re ikemiseditse go tswelela re go thusa.",
+  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
+    "Dumelang gape! Ga go thari gore o ka dirisa ParentApp gore o bone thuso e e tshwanetseng maemo a gago o le motsadi. Goreng o sa leke go e dirisa fa o le mo tseleng go ya tirong kgotsa fa o apeile? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno ya rona e ba thusitse.",
+  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
+    "O seka wa itetla go fetwa ke tshedimosetso ya botlhokwa e e mo ParentApp! E na le tshedimosetso e ntsi tota. Re ikemiseditse go tswelela re go thusa.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go rarabolola matshwenyego a go nna motsadi.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go thusa mosha wa gago gore a kgone go atlega mo botshelong.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go lepalepana le boitshwaro jwa mosha wa gago.",
+  "New message from PLH": "Molaetsa o mosha go tswa go PLH",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go nna tsala ya mosha wa gago gape!",
 };

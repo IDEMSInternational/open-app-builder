@@ -38,6 +38,7 @@ const global: FlowTypes.Global[] = [
             zul: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
@@ -46,9 +47,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -88,121 +89,61 @@ const global: FlowTypes.Global[] = [
       },
       {
         type: "declare_field_default",
-        name: "weekly_parent_point_relax",
+        name: "parent_point_count_relax",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "total_parent_point_relax",
+        name: "parent_point_count_treat_yourself",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "weekly_parent_point_treat_yourself",
+        name: "parent_point_count_praise_yourself",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "total_parent_point_treat_yourself",
+        name: "parent_point_count_spend_time",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "weekly_parent_point_praise_yourself",
+        name: "parent_point_count_praise_teen",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "total_parent_point_praise_yourself",
+        name: "parent_point_count_instruct_positively",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "weekly_parent_point_spend_time",
+        name: "parent_point_count_breathe",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "total_parent_point_spend_time",
+        name: "parent_point_count_money",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "weekly_parent_point_praise_teen",
+        name: "parent_point_count_consequence",
         value: 0,
         exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
-        name: "total_parent_point_praise_teen",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "weekly_parent_point_instruct_positively",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "total_parent_point_instruct_positively",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "weekly_parent_point_breathe",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "total_parent_point_breathe",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "weekly_parent_point_money",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "total_parent_point_money",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "weekly_parent_point_consequence",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "total_parent_point_consequence",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "weekly_parent_point_safe",
-        value: 0,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "total_parent_point_safe",
+        name: "parent_point_count_safe",
         value: 0,
         exclude_from_translation: true,
       },
@@ -221,9 +162,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -234,9 +175,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -247,7 +188,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -286,7 +227,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -299,9 +240,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -312,9 +253,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -534,9 +475,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -547,9 +488,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -560,9 +501,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -657,9 +598,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -670,9 +611,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1427,6 +1368,7 @@ const global: FlowTypes.Global[] = [
             zul: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
@@ -1440,6 +1382,7 @@ const global: FlowTypes.Global[] = [
             zul: false,
           },
         },
+        exclude_from_translation: true,
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/localisation_globals.xlsx",
@@ -1565,9 +1508,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1690,9 +1633,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1729,9 +1672,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1742,11 +1685,487 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "click_count_defaults",
+    status: "released",
+    rows: [
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_self_care",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_self_care",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_self_care",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_self_care",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_self_care",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_self_care",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_1on1",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_1on1",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_1on1",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_1on1",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_1on1",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_1on1",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_praise",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_praise",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_praise",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_praise",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_praise",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_praise",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_instruct",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_instruct",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_instruct",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_instruct",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_instruct",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_instruct",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_stress",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_stress",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_stress",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_stress",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_stress",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_stress",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_money",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_money",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_money",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_money",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_money",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_money",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_rules",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_rules",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_rules",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_rules",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_rules",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_rules",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_consequence",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_consequence",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_consequence",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_consequence",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_consequence",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_consequence",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_solve",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_solve",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_solve",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_solve",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_solve",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_solve",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_safe",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_safe",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_safe",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_safe",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_safe",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_safe",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_crisis",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_crisis",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_crisis",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_crisis",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_crisis",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_crisis",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_count_w_celebrate",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_w_celebrate",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_w_celebrate",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_weekly_workshops_quick_start_w_celebrate",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_points_quick_start_w_celebrate",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_hs_parent_centre_quick_start_w_celebrate",
+        value: 0,
+        exclude_from_translation: true,
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/navigation_globals.xlsx",
@@ -1763,9 +2182,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1776,9 +2195,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1789,7 +2208,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -1802,9 +2221,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -1815,8 +2234,8 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
+            tsa: true,
+            xho: true,
             zul: true,
           },
         },
@@ -1828,8 +2247,8 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
+            tsa: true,
+            xho: true,
             zul: true,
           },
         },
@@ -1841,8 +2260,8 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
+            tsa: true,
+            xho: true,
             zul: true,
           },
         },
@@ -2006,9 +2425,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -2019,7 +2438,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -2032,7 +2451,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -2045,9 +2464,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -2058,7 +2477,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -2071,9 +2490,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -2225,6 +2644,74 @@ const global: FlowTypes.Global[] = [
         type: "declare_field_default",
         name: "activity_crazy_chicken_favourite",
         value: false,
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/data/parent_centre_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "pc_click_count_defaults",
+    status: "released",
+    rows: [
+      {
+        type: "declare_field_default",
+        name: "click_pc_my_tips_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_essential_tools_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_covid_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_customisation_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_relax_and_activities_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_help_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_support_contacts_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_evidence_base_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_message_archive_count",
+        value: 0,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "click_pc_technical_support_count",
+        value: 0,
         exclude_from_translation: true,
       },
     ],
@@ -2868,9 +3355,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
       },
@@ -3452,174 +3939,6 @@ const global: FlowTypes.Global[] = [
       },
       {
         type: "declare_field_default",
-        name: "w_self_care_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_1on1_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_praise_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_instruct_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_stress_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_money_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_rules_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_consequence_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_solve_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_safe_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_crisis_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "w_celebrate_completion_status",
-        value: "uncompleted",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
         name: "w_self_care_started",
         value: false,
         exclude_from_translation: true,
@@ -4004,6 +4323,7 @@ const global: FlowTypes.Global[] = [
             zul: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
@@ -4051,7 +4371,7 @@ const global: FlowTypes.Global[] = [
         value: "awesome parent",
         _translations: {
           value: {
-            spa: false,
+            spa: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4061,15 +4381,16 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_field_default",
         name: "user_name",
-        value: "awesome parent",
+        value: "@global.user_name_default",
         _translations: {
           value: {
             spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
@@ -4087,15 +4408,16 @@ const global: FlowTypes.Global[] = [
       {
         type: "declare_field_default",
         name: "group_name",
-        value: "friends",
+        value: "@global.group_name_default",
         _translations: {
           value: {
             spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
@@ -4104,11 +4426,12 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
+        exclude_from_translation: true,
       },
       {
         type: "declare_field_default",
@@ -4117,105 +4440,15 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
+        exclude_from_translation: true,
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/workshop_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "example_initialise_global",
-    status: "released",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "example_global_constant_text",
-        value: "Example Global Constant Text",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "example_global_constant_title",
-        value: "Example Global Constant Title",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "example_global_constant_image",
-        value: "plh_images/habits/habit_relax_image.svg",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_1",
-        value: "Value of Field 1",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_0",
-        value: "Value of field 0",
-        _translations: {
-          value: {
-            spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_4",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_5",
-        value: 5,
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_global_field.xlsx",
   },
 ];
 export default global;
