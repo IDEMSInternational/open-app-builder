@@ -9,6 +9,115 @@ const tour: FlowTypes.Tour[] = [
     rows: [
       {
         type: "step",
+        title: "Start of tour",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text:
+          "This will navigate to the example_tour_template_1 and highlight the title_1 template component",
+        template_component_name: "title_1",
+        route: "template/example_tour_template_1",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Element example",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text:
+          "The element column allows for my advanced/specific highlight selection (in rare cases where not created by a template row)",
+        element: "plh-main-header",
+        route: "template/example_tour_template_1",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Template example",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "The next step will render a template instead of a message",
+        route: "template/example_tour_template_1",
+      },
+      {
+        type: "step",
+        title: "Template example",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "This message will not be shown as a message_template is included",
+        message_template: "example_tour_template_1",
+        route: "template/example_tour_template_1",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Navigation example",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "The next step will navigate to the home_screen to continue the tour",
+        route: "template/example_tour_template_1",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
         title: "Title 1",
         _translations: {
           title: {
@@ -26,6 +135,7 @@ const tour: FlowTypes.Tour[] = [
         },
         message_text: "<p> Text </p>",
         route: "template/home_screen",
+        exclude_from_translation: true,
       },
       {
         type: "step",
@@ -48,6 +158,7 @@ const tour: FlowTypes.Tour[] = [
           "<p> global: @global.parent_app </p>\n<p> data: @data.example.example1.text</p>",
         template_component_name: "tile_weekly_workshops",
         route: "template/home_screen",
+        exclude_from_translation: true,
       },
       {
         type: "step",
@@ -69,6 +180,7 @@ const tour: FlowTypes.Tour[] = [
         message_text: "<p> Text </p>",
         template_component_name: "quick_start_weekly_workshops",
         route: "template/home_screen",
+        exclude_from_translation: true,
       },
       {
         type: "step",
@@ -90,6 +202,7 @@ const tour: FlowTypes.Tour[] = [
         message_text: "<p> Text </p>",
         template_component_name: "tile_parent_points",
         route: "template/home_screen",
+        exclude_from_translation: true,
       },
       {
         type: "step",
@@ -111,6 +224,7 @@ const tour: FlowTypes.Tour[] = [
         message_text: "<p> Text </p>",
         template_component_name: "quick_start_parent_points",
         route: "template/home_screen",
+        exclude_from_translation: true,
       },
       {
         type: "step",
@@ -132,6 +246,7 @@ const tour: FlowTypes.Tour[] = [
         message_text: "<p> Text </p>",
         template_component_name: "tile_parent_centre",
         route: "template/home_screen",
+        exclude_from_translation: true,
       },
       {
         type: "step",
@@ -153,6 +268,70 @@ const tour: FlowTypes.Tour[] = [
         message_text: "<p> Text </p>",
         template_component_name: "quick_start_parent_centre",
         route: "template/home_screen",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Navigation example 2",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text:
+          "This will navigate to same page as start\n(TODO - provide 'back' nav function)",
+        route: "template/example_tour_template_1",
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_tour.xlsx",
+  },
+  {
+    flow_type: "tour",
+    flow_name: "example_tour_templates",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "step",
+        title: "Title 1",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_template: "example_tour_template_1",
+      },
+      {
+        type: "step",
+        title: "Title 2",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          message_text: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        message_text: "This is regular text",
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_tour.xlsx",
