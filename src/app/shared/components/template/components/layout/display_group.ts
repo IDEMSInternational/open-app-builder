@@ -50,6 +50,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         height: auto;
       }
 
+      .display-group .offset plh-template-component.banner {
+        background: transparent;
+      }
+
       :host {
         width: 100%;
         border-radius: 20px;
