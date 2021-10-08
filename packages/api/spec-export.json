@@ -1,0 +1,343 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "IDEMS Apps API",
+    "description": "App-Server Communication",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "api",
+      "description": ""
+    }
+  ],
+  "servers": [
+    {
+      "url": "//api/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "JSONB": {
+        "type": "object",
+        "properties": {}
+      },
+      "ContactFieldDto": {
+        "type": "object",
+        "properties": {
+          "contact_fields": {
+            "description": "Contact Fields from app",
+            "default": {},
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
+          "device_info": {
+            "description": "Device info from app",
+            "default": {},
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          }
+        },
+        "required": [
+          "contact_fields",
+          "app_version",
+          "device_info"
+        ]
+      },
+      "STRING": {
+        "type": "object",
+        "properties": {}
+      },
+      "TableColumnMappingDto": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "description": "Column Field Mapping",
+            "default": [
+              {
+                "field_name": "test_text",
+                "field_type": "text"
+              },
+              {
+                "field_name": "test_integer",
+                "field_type": "integer"
+              },
+              {
+                "field_name": "test_number",
+                "field_type": "number"
+              },
+              {
+                "field_name": "test_date",
+                "field_type": "date"
+              },
+              {
+                "field_name": "test_boolean",
+                "field_type": "boolean"
+              }
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "columns"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/status": {
+      "get": {
+        "operationId": "DefaultController_checkStatus",
+        "summary": "Check server status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/app_users": {
+      "get": {
+        "operationId": "AppUsersController_findAll",
+        "summary": "List users",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/app_users/{app_user_id}": {
+      "get": {
+        "operationId": "AppUsersController_findOne",
+        "summary": "Get user profile",
+        "parameters": [
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "post": {
+        "operationId": "AppUsersController_setUserData",
+        "summary": "Update user profile",
+        "parameters": [
+          {
+            "name": "app_user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFieldDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFieldDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contact_fields": {
+      "get": {
+        "operationId": "ContactFieldController_findAll",
+        "summary": "List contact field entries",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/contact_fields/{app_user_id}": {
+      "post": {
+        "operationId": "ContactFieldController_setUserContactFields",
+        "summary": "Set User Contact Fields",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFieldDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFieldDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tables": {
+      "get": {
+        "operationId": "TablesController_listTables",
+        "summary": "List tables",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "List of table_names",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/STRING"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tables/{table_name}": {
+      "get": {
+        "operationId": "TablesController_getTableMeta",
+        "summary": "Get table meta",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tables/{table_name}/columns": {
+      "get": {
+        "operationId": "TablesController_getTableColumns",
+        "summary": "Add columns to map raw field data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "TablesController_addMappedTableColumns",
+        "summary": "Add columns to map raw field data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "TablesController_removeMappedTableColumns",
+        "summary": "Remove columns used to map raw field data",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TableColumnMappingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TableColumnMappingDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
