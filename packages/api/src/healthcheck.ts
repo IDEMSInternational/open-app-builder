@@ -14,7 +14,7 @@ const options: http.RequestOptions = {
  * TODO - could be modified to use https://docs.nestjs.com/recipes/terminus
  * */
 function healthCheck() {
-  var request = http.request(options, (res) => {
+  const request = http.request(options, (res) => {
     console.log(`STATUS: ${res.statusCode}`);
     if (res.statusCode == 200) {
       process.exit(0);
