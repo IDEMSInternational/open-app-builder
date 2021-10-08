@@ -79,7 +79,7 @@ jobs:
           asset_name: app-debug.apk
           asset_content_type: application/zip
       - name: Upload to Google play
-        uses: r0adkll/upload-google-play@v1
+        uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: international.idems.plh_teens
