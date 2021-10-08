@@ -65,4 +65,6 @@ export default {
   happy: "contento",
   ok: "bien",
   sad: "triste",
+  "awesome parent": "Padre asombroso",
+  "Audio message": "Mensaje de audio",
 };

@@ -1,13 +1,12 @@
-import { Component, Input, OnInit, ViewChild, ViewChildren } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { Plugins } from "@capacitor/core";
 import { FlowTypes } from "../../models";
 import {
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 
-const { Device } = Plugins;
+import { Device } from "@capacitor/device";
 
 @Component({
   selector: "plh-tmpl-form",

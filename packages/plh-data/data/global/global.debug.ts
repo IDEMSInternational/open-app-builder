@@ -141,9 +141,9 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
         },
         exclude_from_translation: true,
@@ -151,6 +151,98 @@ const global: FlowTypes.Global[] = [
     ],
     _xlsxPath:
       "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_small_issues.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "example_initialise_global",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "example_global_constant_text",
+        value: "Example Global Constant Text",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "example_global_constant_title",
+        value: "Example Global Constant Title",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "example_global_constant_image",
+        value: "plh_images/habits/habit_relax_image.svg",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_1",
+        value: "Value of Field 1",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_0",
+        value: "Value of field 0",
+        _translations: {
+          value: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_4",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_5",
+        value: 5,
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_global_field.xlsx",
   },
   {
     flow_type: "global",

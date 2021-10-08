@@ -4,10 +4,10 @@
     <ion-button
       fill="outline"
       [routerLink]="['/','notifications']"
-      [disabled]="localNotificationService.notificationsList.length===0"
+      [disabled]="(localNotificationService.pendingNotifications$ | async).length===0"
     >
       <ion-icon name="notifications" slot="start"></ion-icon>
-      <span>{{localNotificationService.notificationsList.length}}</span>
+      <span>{{(localNotificationService.pendingNotifications$ | async).length}}</span>
     </ion-button>
   </div>
   <ion-item>

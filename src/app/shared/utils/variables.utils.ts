@@ -3,6 +3,14 @@ import { DYNAMIC_PREFIXES } from "data-models";
 import { FlowTypes } from "../model";
 
 /**
+ * Regex used to match dynamic strings. Specific keypoints:
+ * [`!] include ! or ` first character, e.g. negated condition or backtick escape (will remove later)
+ * - allow deeper levels of nesting, e.g. `@data.some_data_list.some_evaluated_property`
+ *
+ * For deeper understanding of this regex recommend view in https://regexr.com/
+ */
+const DYNAMIC_STRING_REGEX = /[`!]?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
+/**
  * Process each column specified in VARIABLE_FIELDS, to check whether there are any references to
  * dynamic fields, such as @local.someVar. These can appear nested within objects or arrays so requires
  * recursive iteration
@@ -68,12 +76,15 @@ export function extractDynamicEvaluators(
   // group 3: trailing evaluation, e.g. @local.someVar'.nestedvar.length'
   let allMatches: FlowTypes.TemplateRowDynamicEvaluator[] = [];
   if (typeof fullExpression === "string") {
-    const regex1 = /!?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
-    allMatches = _matchAll(regex1, fullExpression)
+    allMatches = _matchAll(DYNAMIC_STRING_REGEX, fullExpression)
       .map((m) => {
         let [matchedExpression, type, fieldName] = m as any[];
         // if expression ends in period expect this is intended as a text full-stop (not nested property)
         if (matchedExpression.endsWith(".")) matchedExpression = matchedExpression.slice(0, -1);
+        // expressions that start with backticks will be displayed without parsing (i.e raw)
+        if (matchedExpression.startsWith("`")) {
+          type = "raw";
+        }
         // cross-check to ensure lookup matches one of the pre-defined dynamic field types (e.g. not email@domain.com)
         if (!DYNAMIC_PREFIXES.includes(type)) {
           return undefined;
