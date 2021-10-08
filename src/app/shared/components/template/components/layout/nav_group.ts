@@ -169,7 +169,6 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     //update the field provided in progress_variable to be equal to the max of it's current value
     //and the percentage of this.sectionIndex from this.templateNames.length. the value should
     //be an integer between 0 and 100 inclusive.
-    debugger;
     const progressField = this._row.parameter_list["progress_field"];
     const progressFieldMaximum = this._row.parameter_list["max_progress_field"];
     if (progressField && progressField.indexOf("{{") < 0) {
