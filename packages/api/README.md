@@ -39,6 +39,12 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Docker Build and Run
+```sh
+npm run docker:build
+npm run docker:run
+```
+
 ## Updating DB Models
 All changes to database structures are handled by migration scripts, found in [src/db/migrations](./src/db/migrations).
 
