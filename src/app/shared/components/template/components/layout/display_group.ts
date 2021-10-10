@@ -31,8 +31,10 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   styleUrls: ["../tmpl-components-common.scss"],
   styles: [
     `
+      .dg_weekly_workshops,
+      .dg_parent_points,
       .dg_parent_centre {
-        margin-left: 0 !important;
+        margin-left: 10px !important;
         max-width: 100% !important;
       }
 
