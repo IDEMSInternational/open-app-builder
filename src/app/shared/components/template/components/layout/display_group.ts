@@ -56,6 +56,14 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
         padding-top: 10px;
       }
 
+      .display-group .offset plh-template-component.heading {
+        height: auto;
+      }
+
+      .display-group .offset plh-template-component.banner {
+        background: transparent;
+      }
+
       :host {
         width: 100%;
         border-radius: 20px;
