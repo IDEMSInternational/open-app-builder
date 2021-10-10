@@ -71,6 +71,23 @@ services:
       timeout: 5s
       retries: 5
   ####################################################################
+  # Postgres DB admin (pgadmin)
+  ####################################################################
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: plh_pg_admin
+    restart: unless-stopped 
+    env_file:
+      - ../.env
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      # expose on port 5050 to allow easier connect on docker for windows
+      - 5050:80
+    networks:
+      - db_network
+      - webserver_network       
+  ####################################################################
   # Adminer DB Admin
   # Works with both Postgres and MariaDB
   ####################################################################
@@ -175,6 +192,7 @@ volumes:
   analytics_db:
   matomo_www:
   nginx_secrets:
+  pgadmin:
 # NOTE - networks aren't actually required unless we used multiple docker-compose files
 networks:
   db_network:
