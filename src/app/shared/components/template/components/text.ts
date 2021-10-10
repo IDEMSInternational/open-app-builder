@@ -5,12 +5,13 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-text",
   template: `<p
-    *ngIf="_row.value"
+    *ngIf="_row"
     class="large standard normal margin-t-large"
     [class]="style"
-    [innerHTML]="type === 'numbered' ? (_row.value | number) : (_row.value | markdown)"
+    [ngStyle]="isFalsy ? { display: 'none' } : { display: 'block' }"
+    [innerHTML]="type === 'numbered' ? (_row.value | number) : (_row.value?.toString() | markdown)"
     [style.textAlign]="textAlign"
-  ></p>`,
+  ></p> `,
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
@@ -45,6 +46,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string | null;
   style: string | null;
   type: string;
+  isFalsy: boolean;
   constructor() {
     super();
   }
@@ -54,6 +56,7 @@ export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   }
 
   getParams() {
+    this.isFalsy = ["undefined", "NaN", "null", '""'].includes(this._row.value);
     this.textAlign = getStringParamFromTemplateRow(this._row, "text_align", null);
     this.type = this._row.parameter_list?.style?.includes("numbered") ? "numbered" : "marked";
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
