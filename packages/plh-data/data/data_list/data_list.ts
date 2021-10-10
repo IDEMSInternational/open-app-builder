@@ -1379,9 +1379,9 @@ const data_list: FlowTypes.Data_list[] = [
           },
           title_2: {
             spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
+            tsa: false,
+            xho: false,
+            zul: false,
           },
           location_text: {
             spa: false,
@@ -1523,9 +1523,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           location_text: {
             spa: false,
@@ -1941,9 +1941,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -1960,9 +1960,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -2017,9 +2017,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {
@@ -2590,7 +2590,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
-            tsa: false,
+            tsa: true,
             xho: true,
             zul: true,
           },
@@ -2642,9 +2642,9 @@ const data_list: FlowTypes.Data_list[] = [
           },
           tools: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
         },
         _translatedFields: {

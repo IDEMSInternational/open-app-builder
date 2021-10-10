@@ -1,5 +1,8 @@
 import Dexie from "dexie";
 import { DB_TABLES, DB_VERSION } from "data-models/db.model";
+import { addMatchImageSnapshotCommand } from "cypress-image-snapshot/command";
+
+addMatchImageSnapshotCommand();
 
 // as importing additional modules need to declare as global (https://github.com/cypress-io/cypress/issues/1065)
 declare global {

@@ -10,5 +10,5 @@
     (ionChange)="handleChange(checkbox.checked)"
     color="primary"
   ></ion-checkbox>
-  <label *ngIf="label_text">{{ label_text }}</label>
+  <label *ngIf="label_text" [innerHTML]="label_text | markdown">{{ label_text }}</label>
 </div>

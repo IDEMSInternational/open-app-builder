@@ -1,28 +1,61 @@
 export default {
   "You can always find these tools in the @global.parent_centre":
     "Unokuzifumana ngalo lonke ixesha ezi zixhobo kwi-@global.parent_centre",
+  Home: "Iphepha Lokuqala",
+  "About PLH App": "Malunga ne-App yePLH",
+  Settings: "Iisetingi",
+  Template: "Itemplethi",
+  Tour: "Ukhenketho",
+  "In-Week Messages": "Imiyalezo Yeveki ",
+  Campaigns: "Amaphulo",
+  "Privacy Policy": "Ipolisi Yobumfihlo",
+  "App terms": "Imimiselo ye-App",
+  "Open Survey": "Isaveyi Evulekileyo",
+  "Workshop Options": "Ukhetho Loqeqesho",
+  "Demo Presentation": "Iprizenteyishini Eyidemo",
+  "Developer Mode": "Imowudi Yomphuhlisi",
+  "Unlock all workshops": "Vula lonke uqeqesho",
+  "By clicking in the button below you will unlock all the workshops.\n\nNOTE: Users should not use this functionality to unlock workshops, this is not recommended unless strictly necessary.":
+    "Ngokucofa eli qhosha lingezantsi uya kuvula lonke uqeqesho.\n\nPHAWULA: Abasebenzisi abafanele basebenzise le ndawo ukuvula iiwekshophu, oku akucetyiswa ngaphandle kokuba kunyanzelekile.",
+  "Unlock workshops": "Vula uqeqesho",
+  "All workshops are now unlocked.": "Lonke uqeqesho luvuliwe ngoku.",
+  "By clicking in the button below you will reset the app to its initial settings. \n\nThis means that all your progress and usage data will be deleted and your app will work as if it was just installed for the first time.\n\nNOTE: Resetting the app is permanent and you will not be able to recover any information.":
+    "Ngokucofa eli qhosha lingezantsi uza kubuyisela i-app kwiisetingi zayo zakuqala. \n\nOku kuthetha ukuba yonke inkqubela osowuyenzile nenkcazelo oyisebenzisayo iya kucinywa kwaye i-app yakho iya kusebenza ngokungathi isanda ku-instolwa okokuqala.\n\nPHAWULA: Ukuyiseta kwakhona i-app kusisigxina kwaye awuyi kukwazi ukubuyisela nayiphi na inkcazelo.",
+  "Reset App": "Seta Kwakhona i-App",
+  "You have successfully entered developer mode.": "Ungene ngempumelelo kwimowudi yomphuhlisi.",
+  "You have entered an incorrect code.": "Ufake ikhowudi engachananga.",
+  "Welcome Back!": "Siyakwamkela Kwakhona!",
   Start: "Qalisa",
-  "Start workshop @global.w_self_care": "Qalisa uqeqesho@global.w_self_care",
   "How would you like to do this workshop?": "Ungathanda ukulenza njani olu qeqesho?",
   "Coming soon": "Luyeza kungekudala",
-  "We will need to cover other parenting issues before we can start working on @fields.this_workshop\n\nYou can get essential tools on @fields.this_workshop via the @global.parent_centre":
-    "Kufuneka sithethe ngeminye imiba yokuba ngumzali ngaphambi kokuba siqalise kwi-@fields.this_workshop\n\nUnokufumana izixhobo ezibalulekileyo kwi-@fields.this_workshop usebenzisa i-@global.parent_centre",
+  "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.":
+    "Kufuneka sithethe ngeminye imiba yokuba ngumzali ngaphambi kokuba siqalise kwi-@local.workshop_data.title.\n\nUnokufumana izixhobo ezibalulekileyo kwi-@local.workshop_data.title usebenzisa i-@global.parent_centre.",
   "My name": "Igama lam",
   "Day to do the workshops": "Usuku ekuza kwenziwa ngalo uqeqesho",
-  "Current workshop": "Uqeqesho yangoku",
-  "I will do the workshops...": "Uqeqesho, ndiza kulenza...",
+  "I do the workshops...": "Ndiyalwenza uqeqesho...",
   "My group's name": "Igama leqela lam",
+  "My group is now doing the workshop...": "Iqela lam lenza uqeqesho ngoku...",
+  "I am now doing the workshop...": "Ndim owenza uqeqesho ngoku...",
   "Are you sure you want to unlock all the workshops? Once you do this you will not be able to lock them back":
     "Ingaba uqinisekile ukuba ufuna ukuluvula lonke uqeqesho? Wakuba uyenzile le nto awuzukwazi ukuphinda ulutshixe",
   "Unlock Workshops": "Vula uqeqesho",
+  "Give me quick parenting tips": "Ndinike amacebiso akhawulezileyo okuba ngumzali",
+  "Something really bad happened": "Kukho ingxaki embi eyenzekileyo",
+  "I have technical problems with the app": "Ndineengxaki zobugcisa nge-app",
   "You will find tips that we think you may find useful here, based on your answers to the app customisation.":
     "Ngokusekelwe kwiimpendulo zakho xa ubuseta i-app, uza kuwafumana apha amacebiso esicinga ukuba angaluncedo kuwe.",
   "WHO Website": "Iwebhsayithi ye-WHO",
+  "UNICEF Website": "Iwebhsayithi ye-UNICEF",
   "Parenting during COVID is hard. Be proud of yourself for making it this far.\n\nWe are working on new content here to support you with talking to your teens and children about COVID.\n\nThe most up to date information on COVID-19 can be found on the WHO and UNICEF websites:":
     "Ukuba ngumzali ngexesha le-COVID kunzima. Zingce ngenxa yokuba ude wafikelela apha.\n\nSisebenzela emxholweni omtsha oza kuwufumana apha ukuze sikuxhase ukwazi ukuncokola nge-COVID kunye nabantwana bakho abancinane kunye nabo bafikisayo.\n\nEyona nkcazelo isexesheni nge-COVID-19 inokufumaneka kwiwebhsayithi ye-WHO kunye neye-UNICEF:",
-  tile_1: "tile_1",
-  "This button will take you to the Coronavirus of the official WHO website. \n\nThe URL is https://www.who.int/emergencies/diseases/novel-coronavirus-2019":
-    "Eli qhosha liza kukusa kwi-Coronavirus yewebhsayithi esemthethweni ye-WHO. \n\nI-URL ithi https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+  "This button will take you to the Coronavirus section of the official WHO website.":
+    "Eli qhosha liza kukusa kwicandelo le-Coronavirus kwiwebhsayithi esemthethweni ye-WHO.",
+  "The URL is https://www.who.int/emergencies/diseases/novel-coronavirus-2019":
+    "I-URL ithi https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+  "This button will take you to the Coronavirus section of the official UNICEF website.":
+    "Eli qhosha liza kukusa kwicandelo le-Coronavirus kwiwebhsayithi esemthethweni ye-UNICEF.",
+  "The URL is https://www.unicef.org/coronavirus/covid-19":
+    "I-URL yile https://www.unicef.org/coronavirus/covid-19",
   "Update my parenting experiences": "Hlaziya amava am okuba ngumzali",
   "Update my personal details": "Hlaziya iinkcukacha zam zobuqu",
   "Update my workshop options": "Hlaziya ukhetho loqeqesho lwam",
@@ -30,8 +63,8 @@ export default {
   "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!":
     "Ngaba uhlangabezana neengxaki zobuxhakaxhaka? Sazise kwaye uncedise ekwenzeni i-@global.parent_app ibe ngcono!",
   "Type your name (optional)": "Bhala igama lakho (akunyanzelekanga)",
-  "Contact me via text message": "Qhagamshelana nam ngokomyalezo",
   "Contact me on WhatsApp": "Qhagamshelana nam ku-WhatsApp",
+  "Contact me via email": "Qhagamshelana nam nge-imeyile",
   "Type your phone number": "Chwetheza inombolo yakho yomnxeba",
   "Type your email address": "Chwetheza idilesi yakho ye-imeyile",
   "Tell us about your issue": "Sixelele ingxaki yakho",
@@ -39,9 +72,9 @@ export default {
     "Xa umama wandibuza okokuqala ukuba ndiyafuna na ukuchitha ixesha naye, ndamxelele ukuba makandiyeke ngenxa yokuba ndandiphakathi nendawo nomdlalo wam. Kodwa wanyanzelisa njengoko ehlale esenza. Ndathi angandibukela xa ndidlala ukuba yiloo ayifunayo. Emva kwemizuzu embalwa, waqalisa ukundibuza imibuzo ngokuphathelene nomdlalo. Ekuqaleni, kwakucaphukisa oku kodwa emva kwethutyana yayindivuyisa into yokuba wade wanomdla kwinto endiyenzayo. Wade wazama nokudlala!",
   "My father told me I’m playing too much basketball after school, so we must set a family rule. He promised we'll think about a solution together, so we both feel good about it. I didn't believe it's possible but said, “OK, let's try”. We negotiated and agreed that the rule will be playing basketball is allowed after doing homework and until family dinner. It is hard for me to see my friends playing after school, so I'm doing my best to finish homework first and join them. I also have now the whole evening to do other things I want after the family dinner like watching basketball in the NBA.":
     "Utata wandixelela ukuba ndichitha ixesha elininzi ndidlala i-basketball ukuphuma kwesikolo, ngoko kwakufuneka sibeke umthetho wekhaya. Wandithembisa ukuba isisombululo sasiza kuphuma kuthi sobabini ukuze soneliseke ngaso. Zange ndikholelwe ukuba ingenzeka loo nto, kodwa ndathi, “KULUNGILE, masizame”. Sathethana saza savumelana ngomthetho othi kuvumeleke ukudlala i-basketball emva kokuba ndigqibe ukwenza umsebenzi wesikolo kwaye kude kube lixesha lesidlo sangokuhlwa. Kubuhlungu ukubona iitshomi zam zidlala emva kokuphuma kwesikolo, ngoko ndenza konke endinako ukuba ndiqale ndigqibe umsebenzi wesikolo ndize ndiyokudlala nabo emva koko. Ndinengokuhlwa yonke yokwenza ezinye izinto endifuna ukuzenza njengokubukela i-basketball idlalwa kwi-NBA emva kokutya isidlo sangokuhlwa kunye nentsapho yam.",
+  "You will find the in-week messages from the previous workshops here.":
+    "Uza kufumana imiyalezo yeveki esuka kuqeqesho oludlulileyo apha.",
   Options: "Ukhetho",
-  "total_parent_point_@local.habit": "total_parent_point_@local.habit",
-  "weekly_parent_point_@local.habit": "weekly_parent_point_@local.habit",
   "Add this activity to @global.my_activities": "Faka oku kwenziwayo kwi-@global.my_activities",
   "Relaxation activities": "Izinto ezenziwayo xa kupholiwe",
   "Something fun to do with your teen": "Izinto ezimnandi onokuzenza nomntwana wakho ofikisayo",
@@ -49,13 +82,8 @@ export default {
     "Awukafaki nto eyenziwayo xa kupholiwe kwi @global.my_relaxes. Kutheni ungakhethi ezimbalwa?",
   "You have not added any activities to @global.my_activities yet. Why don't you choose some?":
     "Awukafaki nto zenziwayo kwi @global.my_activities. Kutheni ungakhethi ezimbalwa?",
-  Text: "Amagama",
-  "Question text": "Amagama ombuzo",
   "You selected @local.threshold or less": "Ukhethe ezi-@local.threshold okanye ngaphantsi",
   "You selected more than @local.threshold": "Ukhethe ezingaphezu kwe-@local.threshold",
-  First: "Okokuqala",
-  Second: "Okwesibini",
-  Third: "Okwesithathu",
   Reply: "Phendula",
   "Days in the past month": "Iintsuku kwinyanga edlulileyo",
   "Days in the past week": "Iintsuku kwiveki edlulileyo",
@@ -66,14 +94,6 @@ export default {
   Timer: "Isibali xesha",
   "Press the triangle to help you keep this discussion to @local.timer_duration minutes.":
     "Cofa unxa-ntathu ukuze ukwazi ukugcina le ncoko ku-@local.timer_durationngemizuzu.",
-  "Here is a fun activity to do with your teen!":
-    "Nantsi into emnandi onokuyenza nomntwana wakho ofikisayo!",
-  "Start @local.workshop_data.in_text_title": "Qalisa i-@local.workshop_data.in_text_title",
-  "Continue @local.workshop_data.in_text_title": "Qhubeka ne-@local.workshop_data.in_text_title",
-  "Remember to sit down and relax today - taking care of yourself is an important parenting skill.":
-    "Ukhumbule ukuba namhlanje, umele uhlale phantsi uze uphole - ukuzinakekela sisakhono esibalulekileyo sokuba ngumzali.",
-  "Relax now": "Phola ngoku",
-  "Did you relax already? Tap it!": "Ngaba sowupholile? Yicofe!",
   "Your goal was to spend one-on-one time with your teen. We noticed you tapped the @data.habit.spend_time.in_text_title - great job for remembering!":
     "Injongo yakho ibikukuchitha ixesha ukunye nomntwana wakho ofikisayo. Siye saphawula ukuba ucofe ku-@data.habit.spend_time.in_text_title - wenze kakuhle ngokukhumbula oku!",
   "Your goal was to spend one-on-one time with your teen.":
@@ -172,8 +192,8 @@ export default {
     "Cebisa ngezinye izinto ezimnandi esinokuzenza kunye.",
   "Awesome! It is very important that your teen understands why you cannot do the activity that they suggested. Ask them for other ideas!":
     "Kwakuhle kakhulu! Kubaluleke kakhulu ukuba umntwana wakho ofikisayo asiqonde isizathu sokuba ingenokwenziwa into ebecebisa yenziwe. Mcele aze namanye namacebiso!",
-  "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text . Remember, let your teen choose the activity!":
-    "Oku kulungile! Ukuba ufuna amacebiso, ungafumana amacebiso ezinto ezinokwenziwa kwi-@data.parent_centre.relax_and_activities.location_text . Khumbula, vumela umntwana wakho ofikisayo akhethe into emayenziwe",
+  "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!":
+    "Oku kulungile! Ukuba ufuna amacebiso, ungafumana amacebiso ezinto ezinokwenziwa kwi-@data.parent_centre.relax_and_activities.location_text. Khumbula, vumela umntwana wakho ofikisayo akhethe into emayenziwe",
   "Sorry to hear this. Our teens may be disappointed if we cannot do what they want to do, like playing sports or doing other physically demanding activities. But remember, what is most important is that we spend time with them. That looks different for everyone!":
     "Uxolo ukuva le nto. Abantwana bethu basenokuphoxeka xa singakwazi ukwenza izinto abafuna ukuzenza njengokudlala imidlalo okanye izinto ezifuna amandla. Kodwa khumbula, eyona nto ibalulekileyo kukuchitha ixesha kunye nabo. Oko kwahluke kumntu wonke!",
   "Watch my teen do the activity and cheer them on.":
@@ -182,8 +202,8 @@ export default {
     "Cebisa ngezinye izinto ezimnandi nesinokuzenza kunye.",
   "Wonderful! Even if you are watching instead of doing the activity together, you can show your interest by describing and praising what your teen is doing!":
     "Kuhle gqitha! Nokuba ubukele endaweni yokwenza kunye umdlalo, ungabonisa umdla wakho ngokuchaza nokuncoma into eyenziwa ngumntwana wakho ofikisayo!",
-  "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text . Remember, let your teen choose the activity!":
-    "Oko kulunge gqitha! Ukuba ufuna amacebiso, ungafumana amacebiso ezinto ezinokwenziwa kwi-@data.parent_centre.relax_and_activities.location_text . Khumbula, vumela umntwana wakho ofikisayo akhethe into emayenziwe",
+  "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!":
+    "Oko kulunge gqitha! Ukuba ufuna amacebiso, ungafumana amacebiso ezinto ezinokwenziwa kwi-@data.parent_centre.relax_and_activities.location_text. Khumbula, vumela umntwana wakho ofikisayo akhethe into emayenziwe",
   "This sometimes happens! Competitive games can be challenging for teens (and adults!) if they have difficulty with losing.":
     "Oku kuyenzeka ngamaye amaxesha! Imidlalo enokhuphiswano ingayingxaki kubantwana abafikisayo (nakubantu abadala), ukuba abakuthandi ukungaphumeleli.",
   "Suggest other activities that we can do together instead of against each other.":
@@ -323,8 +343,8 @@ export default {
     "Kuhle gqitha! Ngokuncedisana ngeembopheleleko, uza kuba nexesha elingakumbi lokwenza izinto ezonwabisayo kunye nomntwana wakho ofikisayo – ibaluleke gqitha loo nto!",
   "Yes, it takes some time to get used to giving positive instructions – it’s really worth trying again! Think about the behaviour you would love to see your teen do more and think of positive ways to give that instruction!":
     "Ewe, kuthatha ixesha ukuqhelana nokunika imiyalelo ekhuthazayo – akulo lize ukuzama kwakhona! Cinga ngendlela yokuziphatha ongathanda ukuyibona kumntwana wakho uze ucinge ngeendlela ezikhuthazayo zokumnika loo myalelo!",
-  "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nIn the next @global.weekly_workshop, we’ll talk more about how we can manage our emotions!  You can find more relaxation activities @data.parent_centre.relax_and_activities.location_text .":
-    "Kunzima ukucinga ngemiyalelo ngoxa sisenomsindo. Zama ukufumana ixesha ozole ngalo uze unike umntwana wakho ofikisayo umyalelo okhuthazayo. \n\nKwi-@global.weekly_workshop elandelayo, siza kuthetha ngakumlwbi ngendlela yokulawula iimvakalelo zethu!  Ungafumana izinto zokuphola ezingakumbi kwi-@data.parent_centre.relax_and_activities.location_text .",
+  "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nIn the next @global.weekly_workshop, we’ll talk more about how we can manage our emotions!  You can find more relaxation activities @data.parent_centre.relax_and_activities.location_text.":
+    "Kunzima ukucinga ngemiyalelo ngoxa sisenomsindo. Zama ukufumana ixesha ozole ngalo uze unike umntwana wakho ofikisayo umyalelo okhuthazayo. \n\nKwi-@global.weekly_workshop elandelayo, siza kuthetha ngakumlwbi ngendlela yokulawula iimvakalelo zethu!  Ungafumana izinto zokuphola ezingakumbi kwi-@data.parent_centre.relax_and_activities.location_text.",
   "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!":
     "Injongo yakho ibikukwenza ulongiwo-mali kunye nesicwangciso sokonga imali. Siye saphawula ukuba ucofe ku-@data.habit.money.in_text_title - wenze kakuhle ngokukhumbula oku!",
   "Your goal was to make a family budget and savings plan.":
@@ -338,8 +358,8 @@ export default {
     "Yitoni ibininzimela ngokulenza kunye ulongiwo-mali?",
   "I did not want to tell my family how much I earn.":
     "Bendingafuni ukuxelela intsapho yam ukuba ndamkela malini.",
-  "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.monthly_income_estimate every month” rather than, “I make @global.monthly_income_precise”.":
-    "Awunyanzelekanga uchaze ngqo imali oyamkelayo; unokuchaza inani eliqIkelelwayo. Usenokuthi, “Apha ekhaya sine @global.monthly_income_estimate qho ngenyanga” endaweni yokuthi, “Ndamkela @global.monthly_income_precise”.",
+  "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.":
+    "Awunyanzelekanga uchaze ngqo imali oyamkelayo; unokuchaza inani eliqIkelelwayo. Usenokuthi, “Apha ekhaya sine @global.currency@global.monthly_income_estimate qho ngenyanga” endaweni yokuthi, “Ndamkela @global.currency@global.monthly_income_precise”.",
   "When budgeting, we could not agree on what should fall under needs and what should fall under wants.":
     "Xa besisenza ibhajethi, khange sikwazi ukuvumelana ngezinto eziyimfuneko nezinto ekumnandi ukuba nazo.",
   "People’s wants and needs are different sometimes. Talking about them together can help you and your teen to understand each other, respect your differences, and see where you can compromise.":
@@ -351,7 +371,7 @@ export default {
     "Umntwana wam ofikisayo khange afune ukuyenza kunye nam ibhajethi.",
   "Try making the budget with other adults in your home first. Your teen may get interested in what you are doing. \n\nMaking a budget may sound serious but try to make it fun – make it a game during one-on-one time! Or you can try to make the budget for @global.w_money_grandma first. \n\nRemember to praise them when you are done!":
     "Zama ukwenza ibhajethi nabanye abantu abadala abasekhayeni lakho kuqala. Umtwana wakho ofikisayo angaba nomdla kwinto eniyenzayo. \n\nUkwenza ibhajethi kungabonakala kuyinto efuna unikele ingqalelo, kodwa zama ukuyenza ibe yinto emnandi – yenze umdlalo ngethuba lokuchitha ixesha kunye! Okanye ungazama ukwenza ibhajethi ye-@global.w_money_grandmakuqala. \n\nUngalibali ukubancoma xa nigqibile!",
-  "You deserve some praise, too. Thank you again for using @global.parent_app . It shows you really care!":
+  "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!":
     "Nawe ukufanelwe ukunconywa. Enkosi kwakhona ngokusebenzisa i-@global.parent_app. Kubonisa ukuba ukhathala ngokwenene!",
   "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!":
     "Injongo yakho ibikukuncoma umntwana wakho ofikisayo. Ucofe ku-@data.habit.praise_teen.in_text_title.kule veki. Wenze umsebenzi omhle ngokukhumbula!",
@@ -406,45 +426,48 @@ export default {
   "We were not able to stick to the rule.": "Khange sikwazi ukuwuthobela umthetho.",
   "The rule needs to be specific and realistic. Make sure to have a rule that can be kept easily, like having one meal together every Sunday instead of every night. Do you need to be more flexible about the rule?":
     "Umthetho kufuneka ungqale uze ube ngonokuthotyelwa. Qinisekisa ukuba umthetho obekwayo unokugcinwa ngokulula, njengokutya isidlo kunye qho ngeCawa endaweni yokwenza oko ngazo zonke iingokuhlwa. Ngaba kufuneka ububhetyebhetye kulo mthetho?",
-  "Your goal was to map risks and support systems, both in your community and online, with your teen.":
-    "Injongo yakho ibukukujonga kunye nomntwana wakho ofikisayo imingcipheko kunye neenkqubo zenkxaso ezikwindawo ohlala kuyo nakwi-intanethi.",
+  "Your goal was to map risks and support systems with your teen - both in your community and online.":
+    "Injongo yakho ibikukuceba imingcipheko neenkqubo zenkxaso kunye nomntwana wakho ofikisayo - kokubini kwindawo ohlala kuyo naxa kusetyenziswa i-intanethi.",
   "map risks and support with their teens":
     "ukubhala imingcipheko nenkxaso kunye nabantwana babo abafikisayo",
   "map risks and support with your teen":
     "ukubhala imingcipheko nenkxaso kunye nomntwana wakho ofikisayo",
   "My teen and I disagreed on which areas and online activities were unsafe.":
     "Mna nomntwana wam ofikisayo khange sivumelane ngeendawo ezingakhuselekanga kunye nezinto ezingakhuselekanga ezenziwa kwi-intanethi.",
-  "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again. This time, try to really listen and show you understand them before expressing your thoughts.":
-    "Usebenzile ngokuzama ukwenza le nto! Xa sibamamela abantwana bethu abafikisayo, sifunda ukuqonda indlela abacinga ngayo nokuba asivumelani nabo. Zama ukwenza ixesha uze uphinde wenze le nto kwakhona. Kweli tyeli, ngaphambi kokuba uphendule, zama ukuphulaphula ngenyameko uze ubonise ukuba uyabaqonda ngaphambi kokuvakalisa izimvo zakho.",
-  "My teen identified the house of someone I trust as unsafe. I was shocked and did not what to do.":
-    "Umntwana wam uthe indlu yomntu endimthembayo ayikhuselekanga. Indothusile loo nto ndaza andayazi ukuba mandithini.",
-  "It is shocking to learn that people who are close to us and who we trust may be a danger to our teens. Find someone you can talk to about this, perhaps a friend or support service, so you can get the support your need. Remember to take a pause when you are stressed.":
-    "Kuyothusa ukwazi ukuba abantu abasondeleyo kuthi nesibathembayo kusenokwenzeka bayingozi kubantwana bethu abafikisayo. Fumana umntu onokuthetha naye ngale nto, mhlawumbi isihlobo okanye inkonzo yenkxaso ukuze ufumana ukuxhaswa okudingayo. Ungalibali ukunqumama xa uxinezelekile.",
-  "My teen insisted that the bar is safe for them to visit. I don’t know how to convince my teen that it is not a safe area.":
-    "Umntwana wam ofikisayo unyanzelisa ngelithi ibhari kukhuselekile ngaye ukuba aye kuyo. Andazi ukuba ndingambonisa njani ukuba yindawo engakhuselekanga.",
-  "Create a safe space to talk with your teen when you are both calm. Listen to your teen’s thoughts about why they feel the bar is safe, and then share your thoughts on why you feel the bar is not safe. Think about making a rule together that allows them to still have fun but stay safe. Teenagers listen better when we speak to them calmly.":
-    "Yenza indawo ekhuselekileyo ukuze un cokole nomntwana wakho ofikisayo xa nobabini nizolile. Mamela izizathu zokuba umntwana wakho acinge ukuba ibhari ikhuselekile uze uchaze ezakho izizathu ezibangela ukuba uthi ibhari ayikhuselekanga. Injongo kukuba nenze umthetho oza kubavumela bonwabe kodwa bakhuseleke. Abantwana abafikisayo bamamela kakuhle xa sithetha nabo sizolile.",
-  "As an adult, I feel I am responsible for protecting my child. When I told my teen which areas or online activities are unsafe, my child got angry.":
-    "Njengomntu omdala, ndivakalelwa kukuba ndinembopheleleko yokukhusela umntwana wam. Xa bendixelela umntwana wam ofikisayo ngeendawo okanye izinto ezenziwa kwi-intanethi ezingakhuselekanga, umntwana wam uye wanomsindo.",
-  "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on.":
-    "Abantwana bethu basenokwazi izinto ngeendawo esihlala kuzo kunye neteknoloji ekusenokwenzeka asizazi thina. Xa sibabandakanya abantwana bethu abafikisayo ekubhaleni izinto, baziva bemanyelwe kwaye bexatyiswa ibe kungalula ukuza neplani eyamkeleke kuye wonke umntu.",
-  "It was hard to identify resources available in my community because I don’t know my community so well.":
-    "Bekunzima ukukhetha izinto ezifumaneka kwindawo endihlala kuyo ngenxa yokuba andiyazi kakuhle.",
+  "Well done for trying the activity! When we listen to our teenagers, even if we disagree, we learn to understand their thinking. Try and find time to do the activity again - try to really listen and show you understand them before sharing your thoughts.":
+    "Usebenzile ngokuzama ukwenza le nto! Xa sibamamela abantwana bethu abafikisayo, sifunda ukuqonda indlela abacinga ngayo nokuba asivumelani nabo. Zama ukufumana ixesha lokwenza lo msebenzi kwakhona -zama ukumamela nyhani uze ubonise ukuba uyabaqonda ngaphambi kokuthetha ngeengcinga zakho.",
+  "My teen identified the house of someone I trust as unsafe. I was shocked and did not know what to do.":
+    "Umntwana wam uthe indlu yomntu endimthembayo ayikhuselekanga. Bendothukile kwaye ndingazi ukuba ndenzeni.",
+  "It is shocking to learn that people who are close to us and who we trust may be a danger to our teens. Remember to take a pause when you are upset, and try to listen calmly to your teen. Find someone you can talk to about this, perhaps a friend or support service, so you can get the support you need.":
+    "Kuyothusa ukwazi ukuba abantu abasondeleyo kuthi nesibathembayo kusenokwenzeka bayingozi kubantwana bethu abafikisayo. Khumbula ukukhe uthathe ikhefu xa ukhathazekile, uze uzame ukummamela uzolile umntwana wakho ofikisayo. Fumana umntu onokuthetha naye ngale nto, mhlawumbi umhlobo okanye inkonzo yenkxaso, ukuze ufumane inkxaso oyidingayo.",
+  "My teen insisted that the bar (or another place I don’t feel is safe) is safe for them to visit. I don’t know how to convince my teen.":
+    "Umntwana wam ofikisayo unyanzelise ukuba ibha (okanye enye indawo endicinga ukuba ayikhuselekanga) kukhuselekile ukuba ayindwendwele. Andiyazi ndingamoyisela njani umntwana wam ofikisayo.",
+  "This can be very frustrating. To find a solution, your teen needs to feel heard - so listen calmly to your teen's reasons, and only then share your own thoughts. Then, think together about a rule that allows them to have fun but stay safe.":
+    "Oku kunokucaphukisa kakhulu. Ukuze ufumane isisombululo, umntwana wakho ofikisayo kufuneka azive emanyelwa - ngoko ke zimamele uzolile izizathu zomntwana wakho ofikisayo, kusemva koko kuphela oya kuthi uthethe ngezakho iingcinga. Emva koko, ninobabini cingani ngomgaqo obavumela bonwabe kodwa babe bekhuselekile.",
+  "As an adult, I feel responsible to protect - but when I told my teen what is safe and what is not, my teen got angry.":
+    "Njengomntu omdala, ndiziva ndinoxanduva lokukhusela -  kodwa xa ndaxelela umntwana wam ofikisayo oko kukhuselekileyo nokungakhuselekanga, umntwana wam waba nomsindo.",
+  "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity and really listen to them, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on.":
+    "Abantwana bethu basenokwazi izinto ngeendawo esihlala kuzo kunye neteknoloji ekusenokwenzeka asizazi thina. Xa sibabandakanya ngokupheleleyo abantwana bethu abafikisayo ekucebeni izinto size sibamamele nyhani, baziva bemanyelwa kwaye bexatyiswa, ibe kungalula ukuza necebo elamkelwa nguye wonke umntu.",
+  "It was hard to identify support resources available in my community, because I don’t know my community so well / there are few services available.":
+    "Bekunzima ukubona imithombo yenkxaso efumanekayo kwindawo endihlala kuba andiyazi kakuhle indawo endihlala kuyo / kukho iinkonzo ezimbalwa ezifumanekayo.",
   "It is difficult to know every detail about our communities. Involve another family member or friend in your mapping activity. You can even visit some of the services available and ask what they do. The more we know, the better we can keep our families safe!":
     "Kunzima ukwazi zonke iinkcukacha ngeendawo esihlala kuzo. Xa ubhala into yokwenza, bandakanya elinye ilugu losapho okanye isihlobo. Usenokude utyelele kwezinye zeendawo ekufumaneka kuzo iinkonzo uze ubuze ukuba zenza ntoni. Okukhona sisazi, kokukhona sinokugcina iintsapho zethu zikhuselekile!",
   "I don’t know much about technology, so I don’t know how to talk about it with my teen.":
     "Andazi nto kangako ngeteknoloji, ngoko andiyazi indlela yokuncokola kunye nomntwana wam ofikisayo ngayo.",
-  "Ask your teen to explain the gadgets they use; you could do this  during one-on-one time). This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!":
-    "Cela umntwana wakho akuxelele ngezixhobo ze-elektroniki azisebenzisayo; unokuyenza le nto ngethuba lokuchitha ixesha kunye). Eli lithuba elihle lokubonisa umdla kubomi bomntwana wakho ofikisayo nize nincokole kunye ngemingcipheko enokubakho. Ukuba awuqinisekanga ngemithetho onokuyibeka, ninokuvumelana nomntwana wakho ofikisayo ukuba nizame umthetho omtsha kangangeeveki ezimbini nize emva koko nincokole ngendlela ezihamba ngayo izinto kwaye niwutshintshe umthetho ukuba kuyimfuneko!",
+  "That's totally fine! You can still support your teen. Ask your teen to explain the gadgets they use - you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!":
+    "Akukho ngxaki kwaphela! Ungaqhubeka umxhasa umntwana wakho ofikisayo. Cela umntwana wakho akuxelele ngeegajethi abazisebenzisayo - unokuyenza le nto ngethuba lokuchitha ixesha kunye. Eli lithuba elihle lokubonisa umdla kubomi bomntwana wakho ofikisayo nize nincokole kunye ngemingcipheko enokubakho. Ukuba awuqinisekanga ngemithetho onokuyibeka, ninokuvumelana nomntwana wakho ofikisayo ukuba nizame umthetho omtsha kangangeeveki ezimbini nize emva koko nincokole ngendlela ezihamba ngayo izinto kwaye niwutshintshe umthetho ukuba kuyimfuneko!",
   "Your goal was to try and resolve a problem or conflict together with your teen.":
     "Injongo yakho ibukukuzama ukusombulula ingxaki okanye ungquzulwano usebenzisana nomntwana wakho ofikisayo.",
-  "When we have a problem, we always want to get to the quickest end result and can forget about the steps. To come up with the best solution together, it is helpful to first have a full understanding of the problem and the different solutions.":
-    "Xa sinengxaki, sisoloko sifuna ukukhawuleza sifike kwisisombululo kwaye singalibala ngamanyathelo abandakanyekileyo. Ukuze nize nesisombululo kunye, kuluncedo ukuba niqale niyiqonde kakuhle ingxaki kunye nezisombululo ezahlukahlukeneyo.",
   "resolve problems with their teens":
     "basombulule iingxaki besebenzisana nabantwana babo abafikisayo",
   "resolve the problem with your teen": "sombulula ingxaki usebenzisana nomntwana wakho ofikisayo",
   "I forgot the steps of problem solving.": "Ndiwalibele amanyathelo okusombulula ingxaki.",
+  "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen - it will make a big difference!":
+    "Kuthatha uqheliselo oluthile ukusebenzisa onke la manyathelo mane okusombulula ingxaki. Kwixesha elizayo xa kuvela ingxaki, jonga amanyathelo amane nomntwana wakho ofikisayo - kuya kwenza umahluko omkhulu!",
   "I started with the solutions right away.": "Ndivele ndangena kwizisombululo ngoko nangoko.",
+  "When we have a problem, we always want to get to the quickest end result and can forget about the steps. To come up with the best solution together, it is helpful to first have a full understanding of the problem and the different solutions.":
+    "Xa sinengxaki, sisoloko sifuna ukukhawuleza sifike kwisisombululo kwaye singalibala ngamanyathelo abandakanyekileyo. Ukuze nize nesisombululo kunye, kuluncedo ukuba niqale niyiqonde kakuhle ingxaki kunye nezisombululo ezahlukahlukeneyo.",
+  "Four steps of problem solving": "Amanyathelo amane okusombulula ingxaki",
   "We could not agree on a solution to try out and we got into an argument.":
     "Khange sivumelane ngesisombululo esinokusizama saza saxabana.",
   "Sometimes it can be difficult to agree with everyone in the family, especially if everyone is not yet calm. You could agree to try one solution first, and then another. Also, if you get stuck, try to get together later to agree on the solution together.":
@@ -455,8 +478,8 @@ export default {
     "Xa kuvela ingxaki, ngamanye amaxesha sonke siye sibe nomsindo okanye sibe noxinezeleko. Ukhumbule ukuba xa uziva unomsindo okanye ucaphukile, ungathatha ikhefu ukuze likuncede uhlale uzolile uze usombulule ingxaki onayo.",
   "My teen got angry and did not want to talk about the problem.":
     "Umtwana wam ofikisayo uye wanomsindo kwaye khange afune ukuthetha ngengxaki.",
-  "Try to listen to your teen and pay attention to their emotions. If they need some time to calm down, create a time later in the day or week to discuss and solve the problem together. By taking your time, the problem can be solved well.":
-    "Zama ukummamela umntwana wakho ofikisayo uze uphawule iimvakalelo zabo. Ukuba kufuneka babe nexesha lokwehlisa umoya, beka elinye ixesha kwangolo suku okanye evekini ukuze nithethe nize niyisombulule kunye ingxaki. Xa ningangxamanga, ingxaki ingasonjululwa kakuhle.",
+  "Your teen might be too overwhelmed to deal with the problem right away. Recognise and name their emotions, and create a time later in the day or week to discuss and solve the problem together. By giving your teen time, the problem can be solved well.":
+    "Umntwana wakho unokunzinyelwa ukujongana nengxaki ngoko nangoko. Qaphela uze uyazi indlela avakalelwa ngayo, uze wenze ixesha kamva kwangolo suku okanye kulo veki ukuze nithethe nize niyisombulule kunye ingxaki. Ngokwenza ixesha nomntwana wakho ofikisayo, ingxaki ingasonjululwa kakuhle.",
   "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react. You tapped the @data.habit.breathe.in_text_title - well done!":
     "Kule veki, usukelo lwakho ibikukuba: Nanini na uziva uxinezelekile okanye ucaphukile, tsala umoya uphinde uwukhuphe izihlandlo ezintlanu ngaphambi kokuba usabele. Ucofe ku-@data.habit.breathe.in_text_title - usebenzile!",
   "This week, your goal was: Whenever you are feeling stressed or upset, take five breaths in and out before you react.":
@@ -490,10 +513,10 @@ export default {
   "It’s okay to not want to share at that time. Find some time to explain later, when you feel calmer, so that everyone can understand.":
     "Kulungile ukuba awufuni kuthetha ngelo xesha. Fumana ixesha lokucacisa xa uziva uzolile ukuze wonke umntu akuqonde.",
   "First @global.weekly_workshop!": "Okokuqala @global.weekly_workshop!",
-  "Hi @field.user_name! Your @local.workshop_data.in_text_title is ready for you!":
-    "Molo @field.user_name! I-@local.workshop_data.in_text_title sele ikulungele!",
-  "Hi @field.group_name! Your @local.workshop_data.in_text_title is ready for you!":
-    "Molo @field.group_name! I-@local.workshop_data.in_text_title sele ikulungele!",
+  "Hi @fields.user_name. Your @local.workshop_data.in_text_title is ready for you.":
+    "Molo @fields.user_name. I-@local.workshop_data.in_text_title sele ikulungele.",
+  "Hi @fields.group_name. Your @local.workshop_data.in_text_title is ready for you.":
+    "Molo @fields.group_name. I-@local.workshop_data.in_text_title sele ikulungele.",
   "Spending time with your teen helps build trust between you. \n\nContinue your @global.parent_app journey now - you and your family will see great results.":
     "Ukuchitha ixesha kunye nomntwana wakho kunceda ekwakheni ukuthembana phakathi kwenu. \n\nQhubeka ngohambo lwakho lwe-@global.parent_app ngoku - wena nosapho lwakho niza kubona imiphumo emihle.",
   "Thank you for putting so much effort into being a better parent. You are loved and appreciated!":
@@ -502,18 +525,24 @@ export default {
     "Ngaba sele ulichithile ixesha kunye nomntwana wakho ofikisayo?",
   "Thank you for using @global.parent_app and committing to your parenting. \n\nYour @local.workshop_data.in_text_title is ready for you!":
     "Enkosi ngokusebenzisa i-@global.parent_app nangokuzimisela ekubeni ngumzali. \n\nI-@local.workshop_data.in_text_title sele ikulungele!",
-  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. It won’t take long, and you will get valuable information from it. Thank you again for trying to be a better parent. Tomorrow, a new workshop awaits you.":
-    "Kubonakala ungekayigqibi i-@local.workshop_data.in_text_title. Ayizukuthatha ixesha elide kwaye uza kufumana ulwazi oluxabisekileyo kuyo. Enkosi kwakhona ngokuzama ukuba ngumzali ongcono. Kukho uqeqesho olukulindeleyo ngomso.",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. It won’t take long, and you will get valuable information. \n\nWell done for trying to be a better parent. Tomorrow, you can access a new workshop.":
+    "Kubonakala ngathi awukayigqibi i-@local.workshop_data.in_text_title. Akuyi kuthatha xesha lide, kwaye uza kufumana ulwazi oluxabisekileyo. \n\nWenze kakuhle ngokuzama ukuba ngumzali ongcono. Ngomso, ungangena kuqeqesho olutsha.",
+  "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!":
+    "Wenze kakhuhle ngokugqiba i@local.workshop_data.in_text_title. Ngomso, ungangena kuqeqesho olutsha olukunceda uphole, lonwabele uze ufunde izakhono ezitsha!",
   "Hi @field.user_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.":
     "Molo @field.user_name! Namhlanje sibhiyozela iinyanga ezimbini zokusebenzisa i-@global.parent_app! \n\nUqhuba kakuhle! Uqeqesho lwale veki luza kukunceda uyazi into omawuyenze xa umntwana wakho ofikisayo engayilandeli imithetho yekhaya.",
   "Hi @field.group_name! Today we are celebrating two months of using @global.parent_app! \n\nYou are doing great! This week’s workshop will help you know what to do when your teen is not following the household rules.":
     "Molo @field.group_name! Namhlanje sibhiyozela iinyanga ezimbini zokusebenzisa i-@global.parent_app! \n\nUqhuba kakuhle! Uqeqesho lwale veki luza kukunceda uyazi into omawuyenze xa umntwana wakho ofikisayo engayilandeli imithetho yekhaya.",
-  "It’s great that you’ve been using @global.parent_app . You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!":
-    "Iyancomeka into yokuba usebenzisa i-@global.parent_app . Sele ufumene izixhobo ezi-6 kakade zokuba ngumzali! \n\nYenza uqeqesho olu landelayo ukuze ufumane esinye isxhobo sokuba ngumzali!",
+  "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!":
+    "Iyancomeka into yokuba usebenzisa i-@global.parent_app. Sele ufumene izixhobo ezi-6 kakade zokuba ngumzali! \n\nYenza uqeqesho olu landelayo ukuze ufumane esinye isxhobo sokuba ngumzali!",
   "Complete the workshop and try to discuss with your teen to come up with one positive and one negative consequence of a behaviour together.":
     "Gqiba uqeqesho uze uzame ukuncokola kunye nomntwana wakho ofikisayo ukuze nithethe ngomphumo omnye okhuthazayo nomphumo omnye ongathandekiyo xa enze into.",
   "Have you managed to come up with one positive and one negative consequence of a behaviour with your teen yet?":
     "Ngaba wena nomntwana wakho sele nikwazile ukucinga ngomphumo omnye okhuthazayo kunye nomphumo omnye ongathandekiyo?",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Calm consequences really help your teen to follow rules well – give it a try before moving on!\n\nWell done for showing so much commitment to your family.":
+    "Kubonakala ngathi awukayigqibi i-@local.workshop_data.in_text_title. Imiphumo yokuzola imnceda nyhani umntwana wakho ofikisayo ukuba ayilandele kakuhle imithetho – khawukhe ukuzame ngaphambi kokuba uqhubeke!\n\nWenze kakuhle ngokubonisa ukuzinikela kwakho kusapho lwakho.",
+  "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn useful skills!":
+    "Wenze kakhuhle ngokugqiba i@local.workshop_data.in_text_title. Ngomso, ungangena kuqeqesho olutsha olukunceda uphole, lonwabele uze ufunde izakhono onokuzisebenzisa!",
   "Hi @field.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.":
     "Molo @field.user_name! Ingxaki inokwehlela nabani - ukuyilungela kunceda kakhulu. \n\nOlu qeqesho luza kukubonisa indlela yokwenza loo nto.",
   "Hi @field.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.":
@@ -526,6 +555,10 @@ export default {
     "Kuhle ukubona ukuba ukunye nathi kolu hambo lokuba ngumzali! \n\nGqiba i-@local.workshop_data.in_text_title uze ufunde ngeyona ndlela yokusabela xa umntwana wakho ofikisayo ekufuna kakhulu.",
   "Have you discussed with your teen what you would do in a crisis situation?":
     "Ngaba ukhe wathetha kunye nomntwana wakho ofikisayo ukuba niza kwenza ntoni xa kukho ingxaki?",
+  "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!":
+    "Ngomso uqeqesho lokugqibela lwe @global.parent_app luya kube likulindile. \n\nZama ukugqiba i@local.workshop_data.in_text_title ngaphambi kokuqala uqeqsho olutsha. Ngaloo ndlela, ungayigqiba iseti yakho yezakhono zokuba ngumzali uze ubone omawukwenze ngokulandelayo!",
+  "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!":
+    "Wenze kakuhle ngokugqiba i@local.workshop_data.in_text_title. Ngomso, ungangena kuqeqesho lokugqibela ukuze ucinge ngohambo lwakho lwe@global.parent_app noko unokukwenza ngokulandelayo!",
   "Hi @field.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.":
     "Molo @field.user_name! Sivuyisana nawe ngokuqala iveki 4 kwi-@global.parent_app. \n\nUqeqesho lwale veki luza kuthetha ngendlela yokwandisa amathuba okuba umntwana wakho ofikisayo enze into omcela ukuba ayenze.",
   "Hi @field.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.":
@@ -542,71 +575,81 @@ export default {
     "Ngaba umntwana wakho ofikisayo usoloko ekumamela? Ukuba akunjalo (njengathi sonke), jonga uqeqesho lwale veki ukuze ufunde ngendlela yokukhupha imiyalelo ekhuthazayo enokukunceda ngayo - ngeyona ndlela.",
   "Positive instructions help to see more and more good behaviour! \n\nComplete the @local.workshop_data.in_text_title to get some ideas on how this could work in your family.":
     "Imiyalelo ekhuthazayo ikunceda uphawule ukuziphatha okuhle nangakumbi! \n\nGqiba ukwenza i-@local.workshop_data.in_text_title ukuze ufumane amacebo endlela okunokusebenza ngayo oku kwintsapho yakho.",
-  "As usual, tomorrow a new workshop awaits you. You might want to complete the previous workshop before then.  \n\nSome parents told us they are using the app while commuting to work.  Why don’t you use the app when you have a few minutes?  Thank you again for using @global.parent_app .":
-    "Njengesiqhelo, ngomso kukho uqeqesho olukulindeleyo. Usenokufuna ukuqala ugqibe uqeqesho oludlulileyo ngaphambi koko.  \n\nAbanye abazali basixelele ukuba basebenzisa i-app ngoxa besendleni eya emsebenzini.  Kutheni ungayisebenzisi i-app kangangemizuzu embalwa?  Enkosi kwakhona ngokusebenzisa i-@global.parent_app.",
-  "Hi @field.user_name! You are starting your second month of using @global.parent_app . Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
-    "Molo @field.user_name! Uqala inyanga yesibini usebenzisa @global.parent_app . Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
-  "Hi @field.group_name! You are starting your second month of using @global.parent_app . Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
-    "Molo @field.group_name! Uqala inyanga yesibini usebenzisa @global.parent_app . Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
-  "Whenever you feel alone or overwhelmed, know that you are not alone. There are parents all over the world who are going through the same struggles as you. \n\nYou are doing your best every day and we’re all proud of you!":
-    "Nanini na uziva uwedwa okanye izinto zikongamela, yazi ukuba awuwedwa. Kukho abazali ehlabathini nokubanzi abaneengxaki ezifanayo nezakho. \n\nNgoko, wenza konke okwaziyo ukukwenza yonke imihla kwaye sonke siyazingca ngawe!",
+  "As usual, you can access a new workshop tomorrow. It will help to complete the previous workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.":
+    "Njengesiqhelo, ungangena kuqeqesho olutsha ngomso. Kuza kunceda ukuqala ugqibe uqeqesho olungaphambi kolu ngaphambi koko.  \n\nAbanye abazali basebenzisa le app ngoxa besendleni eya emsebenzini. Kutheni ungayisebenzisi i-app kangangemizuzu embalwa? \n\nEnkosi kwakhona ngokusebenzisa i-@global.parent_app.",
+  "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop is ready for you: you will see a big difference by making small changes!":
+    "Sivuyisana nawe, uye wayigqiba i@local.workshop_data.in_text_title.\n\nNgomso, uqeqsho olutsha sele likulindele: uza kubona umahluko omkhulu ngokwenza utshintsho oluncinane!",
+  "Hi @field.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
+    "Molo @field.user_name! Uqala inyanga yesibini usebenzisa @global.parent_app. Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
+  "Hi @field.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
+    "Molo @field.group_name! Uqala inyanga yesibini usebenzisa @global.parent_app. Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
   "Do you feel stressed about money? Does your teen keep asking for things you can’t afford? \n\nThis week’s workshop deals with money and budgeting.":
     "Ngaba imali ikwenza uzive uxinezelekile? Ngaba umntwana wakho usoloko ecela izinto eningakwaziyo ukuzifikelela? \n\nOlu qeqesho luthetha ngemali kunye nokwenza ibhajethi.",
-  "Involving your family in how you spend your money can take away a lot of stress and arguments. \n\nComplete the @local.workshop_data.in_text_title and gain useful tools to help your family with budgeting and saving. It's actually easy - you will see!":
-    "Ukubandakanya amalugu entsapho yakho ngendlela esetyenziswa ngayo imali kungenza lwehle uxinezeleko kunye nokuxabulisana. \n\nGqiba i-@local.workshop_data.in_text_title uze ufumane izixhobo eziluncedo zokunceda intsapho yakho ibhajethe ize yonge imali. Kulula kanti - uza kuzibona!",
+  "Whenever you feel alone or overwhelmed, know that you are not alone. There are parents all over the world who are going through the same struggles as you. \n\nYou are doing your best every day and we’re all proud of you!":
+    "Nanini na uziva uwedwa okanye izinto zikongamela, yazi ukuba awuwedwa. Kukho abazali ehlabathini nokubanzi abaneengxaki ezifanayo nezakho. \n\nNgoko, wenza konke okwaziyo ukukwenza yonke imihla kwaye sonke siyazingca ngawe!",
   "Have you talked with your teen about your family budget yet?":
     "Ngaba sele uthethile nomntwana wakho ofikisayo ngebhajethi yentsapho yakho?",
-  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Many parents said that making a budget created a positive change in many aspects. \n\nThank you again for your long-lasting commitment.":
-    "Kubonakala ungekayigqibi i-@local.workshop_data.in_text_title. Abazali abaninzi bathe ukwenza ibhajethi kwenze kwakho utshitsho oluncomekayo kwizinto ezininzi. \n\nEnkosi kwakhona ngokuzimisela iixesha elide kangaka.",
+  "Involving your family in how you spend your money can take away a lot of stress and arguments. \n\nComplete the @local.workshop_data.in_text_title to help your family with budgeting and saving. It's actually easy - you will see!":
+    "Ukubandakanya amalungu entsapho yakho ngendlela esetyenziswa ngayo imali kungenza lwehle uxinezeleko kunye nokuxabulisana. \n\nGqiba i-@local.workshop_data.in_text_title ukuze incede usapho lwakho ngokubhajetha nokonga imali. Kulula kanti - uza kuibona!",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Many parents said that making a budget brought peace back into their house – it can work for you too.\n\nThank you again for being such a committed parent.":
+    "Kubonakala ngathi awukayigqibi i-@local.workshop_data.in_text_title. Uninzi lwabazali luthi ukwenza ibhajethi kuye kwazisa uxolo kumakhaya abo - nawe kungakusebenzela oku.\n\nEnkosi kwakhona ngokuba ngumzali ozinikele olu hlobo.",
+  "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you set family rules that work.":
+    "Kuhle xa ugqibe i@local.workshop_data.in_text_title. Ngomso, uqeqesho olutsha luza kuvulwa ukuze lukuncede ubeke imithetho eza kusebenza kwintsapho yakho.",
   "Hi @field.user_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?":
     "Molo @field.user_name! Sivuyisana nawe ngokuqala iveki yakho yesithathu kwi-@global.parent_app. \n\nUqeqesho olusha lukulindele! Xa ujonge lo mfanekiso, ngaba unokuqashisela umxholo woqeqesho?",
   "Hi @field.group_name! Congratulations for starting your third  @global.parent_app week. \n\nA new workshop awaits you! Can you guess the topic of the workshop from this picture?":
     "Molo @field.group_name! Sivuyisana nawe ngokuqala iveki yakho yesithathu kwi-@global.parent_app. \n\nUqeqesho olusha lukulindele! Xa ujonge lo mfanekiso, ngaba unokuqashisela umxholo woqeqesho?",
   "Well done for using @global.parent_app! Remember that it’s the small things that make a big difference.":
     "Usebenzile ngokusebenzisa i-@global.parent_app! Ukhumbule ukuba zizinto ezincinci ezenza umahluko omkhulu.",
-  "Thank you again for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and add some valuable parenting tools to your toolbox!":
-    "Enkosi kwakhona ngokusebenzisa i-@global.parent_app ukuze uzincede kunye nentsapho yakho.\n\nZama i-@local.workshop_data.in_text_title uze wongeze izixhobo eziluncedo zokuba ngumzali kwibhokisi yakho yezixhobo!",
+  "Thank you for using @global.parent_app to invest in yourself and your family.\n\nTry the @local.workshop_data.in_text_title and build a great parenting skill!":
+    "Enkosi ngokusebenzisa i-@global.parent_app ukuze utyale kuwe siqu nakusapho lwakho.\n\nZama i@local.workshop_data.in_text_title uze wakhe isakhono esigqwesileyo sokuba ngumzali!",
   "Praising makes all the difference. \n\nComplete the @local.workshop_data.in_text_title and see how YOU can use praise in your family.":
     "Ukuncoma kwenza umahluko. \n\nGqiba i-@local.workshop_data.in_text_title uze ubone indlela ONOKUNCOMA ngayo kwintsapho yakho.",
   "Praise time!": "Lixesha lokuncoma!",
   "When you see your teen next, praise them for one thing they are doing well! \n\nAnd when was the last time you praised yourself or another adult in your household? Try it!":
     "Xa uphinda ubona umntwana wakho ofikisayo, mncome ngento enye ayenza kakuhle! \n\nUgqibele nini ukuzincoma okanye ukuncoma omnye umntu omdala ekhayeni lakho? Yizame!",
-  "Hi awesome parent! A new workshop awaits you tomorrow, but it seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!). Some parents told us they went through it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes? \n\nThank you again for using @global.parent_app .":
-    "Molo mzali ogqwesileyo! Ngomso ulindelwe luqeqesho, kodwa kubonakala ngathi awukayigqibi i-@local.workshop_data.in_text_title. Lufutshane nyhani (siyakuthembisa!). Abanye abazali baye basixelela ukuba baye balwenza ngoxa belinde ukutya kwesidlo sangokuhlwa ukuba kuvuthwe. Kutheni ungayenzi xa unethutyana? \n\nEnkosi kwakhona ngokusebenzisa i-@global.parent_app.",
+  "Hi awesome parent, a new workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes? \n\nThank you again for using @global.parent_app.":
+    "Molo mzali ogqwesileyo, uqeqesho olutsha ikulindile ngomso. Kubonakala ngathi awukayigqibi i@local.workshop_data.in_text_title. Imfutshane ngeyona ndlela (ndiyakuthembisa!) – ungade uyigqibe ngoxa usalinde idinara ivuthwe. Kutheni ungayenzi xa unethutyana? \n\nEnkosi kwakhona ngokusebenzisa i-@global.parent_app.",
+  "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.":
+    "Kuhle ukukubona ugqibe i@local.workshop_data.in_text_title. Ngomso, uqeqsho olutsha luza kuvuleka. Yizame - uza kuwubona umahluko kwindlela yokuziphatha yomntwana wakho ofikisayo.",
   "Hi @field.user_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.":
     "Molo @field.user_name! Kwiveki ezayo, kukho uqeqesho olutsha! Funda indlela yokubeka imithetho yekhaya ngendlela eza kwenza abe maninzi amathuba okuba umntwana wakho ofikisayo ayithobele.",
   "Hi @field.group_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.":
     "Molo @field.group_name! Kwiveki ezayo, kukho uqeqesho olutsha! Funda indlela yokubeka imithetho yekhaya ngendlela eza kwenza abe maninzi amathuba okuba umntwana wakho ofikisayo ayithobele.",
   "Sometimes it feels like your teens are still grumpy even when you’ve done the best you can. Remember that you are doing an amazing job, and that there will be good times with them too!":
     "Ngamanye amaxesha kuye kube ngathi abantwana bakho abafikisayo banomsindo nangona sele wenze konke okusemandleni akho. Ukhumbule ukuba wenza umsebenzi ogqwesileyo, kwaye amaxesha amnandi aza kude abekho nakubo!",
-  "Thank you again for using @global.parent_app and for committing to your parenting journey. \n\nThe @local.workshop_data.in_text_title will show you how to set rules in a way that will help your teen to understand and follow them.":
-    "Enkosi kwakhona ngokusebenzisa i-@global.parent_app nangokuzimisela kuhambo lokuba ngumzali. \n\nI-@local.workshop_data.in_text_title iza kukubonisa indlela yokubeka imithetho ngendlela enceda umntwana wakho ofikisayo ayiqonde aze ayithobele.",
+  "Thank you again for using @global.parent_app and for committing to your parenting journey. \n\nThe @local.workshop_data.in_text_title will show you how to set rules in a way that will help your teen to understand and follow them better.":
+    "Enkosi kwakhona ngokusebenzisa i-@global.parent_app nangokuzimisela kuhambo lokuba ngumzali. \n\nI-@local.workshop_data.in_text_title iza kukubonisa indlela yokubeka imithetho ngendlela eya kunceda umntwana wakho ofikisayo ayiqonde aze ayilandele ngcono.",
   "You are close to gaining another parenting tool! Complete the @local.workshop_data.in_text_title, set ONE simple and realistic rule with your teen, and see things change!":
     "Sele ukufutshane ekufumaneni esinye isixhobo sokuba ngumzali! Gqiba i-@local.workshop_data.in_text_title, bekela umntwana wakho ofikisayo umthetho OMNYE olula nonokuthotyelwa, uze ubone izinto zitshintsha!",
   "Have you managed to set a rule together with your teen?":
     "Ngaba ukwazile ukusebenzisana nomntwana wakho ofikisayo ukuze nibeke umthetho?",
+  "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. It won’t take long and will help your teen to follow rules better!":
+    "Ngomso uqeqesho olutsha kraca lwe @global.parent_app sele likulindile. \n\nZama ukugqiba i@local.workshop_data.in_text_title ngaphambi kokuqala uqeqesho olutsha. Ayiyi kuthatha xesha lide kwaye iya kunceda umntwana wakho ofikisayo alandele imithetho ngcono!",
+  "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop will help you know what to do when teens show bad (or good) behaviour!":
+    "Sivuyisana nawe, uye wayigqiba i@local.workshop_data.in_text_title.\n\nNgomso, uqeqesho olutsha luza kukunceda wazi ukuba wenzeni xa abantwana abafikisayo bebonakalisa ukungabi nasimilo (okanye ukuba naso)!",
   "Hi @field.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!":
     "Molo @field.user_name! Sele uza kulugqiba uquqesho lwakho ze-@global.parent_app! Enkosi ngokuzimisela ixesha elide kangaka. \n\nUqeqesho lwale veki luthetha ngendlela yokugcina abantwana bethu abafikisayo bekhuselekile kokubini xa besebenzisa i-intanethi nakwiindawo esihlala kuzo. Yonwabele!",
   "Hi @field.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!":
     "Molo @field.group_name! Sele uza kulugqiba lonke uqeqesho lwakho @global.parent_app! Enkosi ngokuzimisela ixesha elide kangaka. \n\nUqeqesho lwale veki luthetha ngendlela yokugcina abantwana bethu abafikisayo bekhuselekile kokubini xa besebenzisa i-intanethi nakwiindawo esihlala kuzo. Yonwabele!",
   "This has been the hardest of times to be a parent. You should be so proud of yourself for everything you have done. \n\nThink about every time you have made your teen smile and all the care you have given them. Parents are incredible, and you are incredible!":
     "Eli ibilelona xesha elinzima kakhulu kubazali. Umele uzingce ngayo yonke into oyenzileyo. \n\nCinga ngawo onke amaxesha oye wamenza wancuma ngawo umntwana wakho ofikisayo kunye nendlela oye wamnyamekela ngayo. Abazali bayamangalisa kwaye nawe uyamangalisa!",
-  "You have been using @global.parent_app and you have gained 8 parenting tools already! \n\nComplete the next workshop to gain another tool!":
-    "Ubusebenzisa i-@global.parent_app waza wafumana izixhobo zokuba ngumzali ezi-8! \n\nGqiba uqeqesho olulandelayo ukuze ufumane esinye isixhobo!",
+  "You have have gained so many parenting skills already over the past weeks!\n\nComplete the next workshop to gain another helpful skill.":
+    "Sele uzuze izakhono ezininzi zokuba ngumzali kwezi veki zidlulileyo!\n\nGqiba uqeqesho olulandelayo ukuze uzuze esinye isakhono esiluncedo.",
   "To keep your teen safe, it helps to chat together about your community and their online experiences. \n\nComplete the @local.workshop_data.in_text_title and see how you can do this!":
     "Ukuze umgcine ekhuselekile umntwana wakho ofikisayo, kuyanceda ukuncokola malunga nendawo enihlala kuyo kunye namava akhe okusebenzisa i-intanethi. \n\nGqiba i-@local.workshop_data.in_text_title uze ubone indlela onokuyenza ngayo le nto!",
   "Have you talked with your teen about safety measures?":
     "Ngaba sele uthethile nomntwana wakho malunga namanyathelo okhuseleko?",
-  "The tenth and last workshop awaits you tomorrow. \n\nThank you again for using @global.parent_app .":
-    "Uqeqesho lweshumi lokugqibela lukulindele ngomso. \n\nEnkosi kwakhona ngokusebenzisa i-@global.parent_app.",
+  "It seems you haven’t finished the @local.workshop_data.in_text_title yet. Making a plan together with your teen can prevent many problems – give it a try before moving on!\n\nWell done for using @global.parent_app to support your family.":
+    "Kubonakala ngathi awukayigqibi i-@local.workshop_data.in_text_title. Ukwenza isicwangciso kunye nomntwana wakho ofikisayo kungathintela iingxaki ezininzi - yizame ngaphambi kokuba uqhubeke!\n\nWenze kakuhle ngokusebenzisa i@global.parent_app ukuxhasa usapho lwakho.",
+  "Congratulations, you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is ready for you to help you and your family deal with any situation – together you can do so much!":
+    "Siyavuyisana nawe, ugqibe i@local.workshop_data.in_text_title. Ngomso, uqeqesho olutsha sele ikulindile ukukunceda wena kunye nosapho lwakho ukuba nijongane nayo nayiphi na imeko -  ngokubambisana ninokwenza okuninzi!",
   "Remember – this week is about YOU!  We hope you are treating yourself well. You deserve this!":
     "Ukhumbule – le veki INGAWE!  Siyathemba ukuba uziphethe njengeqanda. Uyakufanelekela oku!",
-  "First @global.weekly_workshop ready tomorrow!":
-    "Okokuqala @global.weekly_workshop lungela usuku lwangomso!",
-  "Start your first @global.parent_app workshop tomorrow. You will see the good results!":
-    "Qalisa uqeqesho lwakho lokuqala kwi-@global.parent_app ngomso. Uza kubona iziphumo ezintle!",
-  "Have you told your @global.parent_app partners about the app yet? You can start your first @global.parent_app workshop together tomorrow!":
-    "Ngaba uye wawaxelela amaqabane akho e-@global.parent_app malunga ne-app? Nigaqalisa uqeqesho lwenu lokuqala kwi-@global.parent_app ngomso!",
+  "Start a brand new @global.parent_app workshop tomorrow. You will see the good results!":
+    "Qala uqeqsho olutsha kraca @global.parent_app ngomso. Uza kubona iziphumo ezintle!",
+  "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!":
+    "Ngaba uye wawaxelela amaqabane akho e-@global.parent_app malunga ne-app? Ukususela ngomso, ningaqalisa ukwenza uqeqesho lwenu lwe@global.parent_app kunye!",
   "Hi @field.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.":
     "Molo @field.user_name! Wenza inkqubela entle kakhulu kuhambo lwakho lokuba ngumzali! \n\nUkuba nomntwana ofikisayo kuthetha ukuba kuza kubakho iingxaki ezingalindelekanga ekufuneka ujamelane nazo. Olu qeqesho luza kukubonisa indlela yokwenza loo nto.",
   "Hi @field.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.":
@@ -615,68 +658,53 @@ export default {
     "Ukuzimisela kwakho kulukhuthazo kuye wonke umntu. Khawuzole uze uqhubekeke!",
   "With teenagers, and in life, unexpected problems come up and we have to deal with them. \n\nStart the next workshop to learn how to successfully address these problems.":
     "Ubomi, nokuba nabantwana abafikisayo, kuza neengxaki ezingalindelekanga kwaye kufuneka sijamelane nazo. \n\nQalisa uqeqesho olulandelayo uze ufunde indlela yokujamelana ngempumelelo nezi ngxaki.",
-  "You are on the right track to start solving problems together with your teen! \n\nComplete the @local.workshop_data.in_text_title and gain another important parenting tool!":
-    "Ukwindlela efanelekileyo yokuqalisa ukusombulula iingxaki kunye nomntwana wakho ofikisayo! \n\nGqiba i-@local.workshop_data.in_text_title uze ufumane esinye isixhobo esibalulekileyo sokuba ngumzali!",
+  "You are on the right track to start solving problems together with your teen! \n\nComplete the @local.workshop_data.in_text_title and gain another important parenting skill!":
+    "Ukwindlela efanelekileyo yokuqalisa ukusombulula iingxaki kunye nomntwana wakho ofikisayo! \n\nGqiba i-@local.workshop_data.in_text_title uze uzuze esinye isakhono esibalulekileyo sokuba ngumzali!",
   "Have you tried the four steps of problem-solving with your teen yet? \n\nKNOW IT, SOLVE IT, TRY IT, TEST IT!":
     "Ngaba ukhe wawazama amanyathelo amane okusombulula ingxaki kunye nomntwana wakho ofikisayo? \n\nYAZI, YISOMBULULE, YIZAME, YIVAVANYE!",
+  "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. Knowing how to solve problems together will help in many situations!":
+    "Ngomso uqeqesho olutsha kraca lwe @global.parent_app sele likulindile. \n\nZama ukugqiba i@local.workshop_data.in_text_title ngaphambi kokuqala uqeqesho olutsha. Ukwazi indlela yokusombulula iingxaki kunye kunganceda kwiimeko ezininzi!",
+  "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe.":
+    "Kuhle xa ugqibe i@local.workshop_data.in_text_title. Ngomso, uqeqsho olutsha luvuliwe ukuze lukuncede ugcine umntwana wakho ofikisayo ekhuselekile.",
   "Hi @field.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.":
     "Molo @field.user_name! Sivuyisana nawe ngokuqala iveki 5 kwi-@global.parent_app.\n\nUqeqesho olutsha lokuba ngumzali lukulindela kwaye lunamacebiso endlela yokuhlala uzolile ibe uzibambile xa abantwana bethu abafikisayo besicaphukisa.",
   "Hi @field.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.":
     "Molo @field.group_name! Sivuyisana nawe ngokuqala iveki 5 kwi-@global.parent_app.\n\nUqeqesho olutsha lokuba ngumzali lukulindela kwaye lunamacebiso endlela yokuhlala uzolile ibe uzibambile xa abantwana bethu abafikisayo besicaphukisa.",
-  "Happy, sad, angry, excited, worried? Well done for recognizing how you and others felt today! And remember, tomorrow is a brand new day.":
-    "Wonwabile, udakumbile, unomsindo, uchulumancile, unexhala? Usebenzile ngokuqonda indlela wena kunye nabanye abantu enivakalelwe ngayo namhlanje! Ungalibali ukuba ngomso, lusuku olutsha kraca.",
   "We have a new workshop available for you about managing anger and stress. It will help you take better care of yourself.":
     "Sinoqeqesho olutsha olumalunga nokulawula umsindo kunye noxinezeleko. Luza kukunceda uzinyamekele.",
+  "Happy, sad, angry, excited, worried? Well done for recognizing how you and others felt today! And remember, tomorrow is a brand new day.":
+    "Wonwabile, udakumbile, unomsindo, uchulumancile, unexhala? Usebenzile ngokuqonda indlela wena kunye nabanye abantu enivakalelwe ngayo namhlanje! Ungalibali ukuba ngomso, lusuku olutsha kraca.",
   "We all feel overwhelmed sometimes. Taking a deep breath helps! \n\nComplete the @local.workshop_data.in_text_title to get some useful tools to deal with stress.":
     "Sonke sikhe sizive ngathi izinto ziyasongamela ngamanye amaxesha. Ukutsala umoya kuyanceda! \n\nGqiba i-@local.workshop_data.in_text_title ukuze ufumane izixhobo eziluncedo ngendlela yokujamelana noxinezeleko.",
   "How have your stress levels been this week? Try to take a few deep breaths before responding to your teen - it makes a big difference.":
     "Unjani umlinganiselo woxinezeleko lwakho kule veki? Zama ukutsala umoya kambalwa ngaphambi kokuba usabele kumntwana wakho ofikisayo - kwenza umahluko omkhulu.",
   "Well done for taking a big breath before responding to your teen! Each time you are taking a pause, you are getting back control.":
     "Usebenzile ngokutsala umoya ngaphambi kokusabela kumntwana wakho ofikisayo! Qho wenza unqumamo, uye ukwazi ukuzibamba.",
-  "Hi @field.user_name! This week you:": "Molo @field.user_name! Kule veki uye:",
-  "Did a relax, which shows you are trying to stay calm.":
-    "Waphola, into ebonisa ukuba uzama ukuzola.",
-  "Did @field.weekly_parent_point_relax relaxes, which shows you are trying to stay calm.":
-    "Wenze i-@field.weekly_parent_point_relax epholisayo nto leyo ebonisa ukuba uzama ukuzola.",
-  "Treated yourself, which shows you are trying to look after yourself.":
-    "Uzenzele into entle, into ebonisa ukuba uzama ukuzinyamekela.",
-  "Treated yourself @field.weekly_parent_point_treat_yourself times, which shows you are trying to look after yourself.":
-    "Uzenzele into entle izihlandlo ezi-@field.weekly_parent_point_treat_yourself, nto leyo ebonisa ukuba uzama ukuzinyamekela.",
-  "Praised yourself, which shows you appreciate your hard work.":
-    "Uzincomile, nto leyo ebonisa ukuba uyakuxabisa ukusebenza nzima kwakho.",
-  "Praised yourself @field.weekly_parent_point_praise_yourself times, which shows you appreciate your hard work.":
-    "Uzincomile izihlandlo ezi-@field.weekly_parent_point_praise_yourself, nto leyo ebonisa ukuba uyakuxabisa ukusebenza nzima kwakho.",
-  "Did one-on-one, which shows you are spending time together.":
-    "Nibe nobabini, nto leyo ebonisa ukuba nichitha kunye ixesha.",
-  "Did one-on-one @field.weekly_parent_point_spend_time times, which shows you are spending time together.":
-    "Nibe nobabini kayi-@field.weekly_parent_point_spend_time, nto leyo ebonisa ukuba nichitha kunye ixesha.",
-  "Praised your teen, which shows you are finding positives.":
-    "Mncome umntwana wakho ofikisayo, nto leyo ebonisa ukuba uyazifumana izinto ezintle.",
-  "Praised your teen @field.weekly_parent_point_praise_teen times, which shows you are finding positives.":
-    "Mncome umntwana wakho ofikisayo izihlandlo ezi-@field.weekly_parent_point_praise_teen, nto leyo ebonisa ukuba uyazifumana izinto ezitle.",
-  "Gave a positive instruction, which shows you are being positive.":
-    "Ukhuphe umyalelo okhuthazayo, nto leyo ebonisa ukuba uyakhuthaza.",
-  "Gave positive instructions @field.weekly_parent_point_instruct_positively times, which shows you are being positive.":
-    "Ukhuphe imiyalelo ekhuthazayo kayi-@field.weekly_parent_point_instruct_positively, nto leyo ebonisa ukuba uyakhuthaza.",
-  "Took a breath instead of yelling, which shows you are trying to control yourself.":
-    "Uye watsala umoya endaweni yokungxola, nto leyo ebonisa ukuba uzama ukuzibamba.",
-  "Took a breath instead of yelling @field.weekly_parent_point_breathe times, which shows you are trying to control yourself.":
-    "Uye watsala umoya izihlandlo ezi-@field.weekly_parent_point_breathe, nto leyo ebonisa ukuba uzama ukuzibamba.",
-  "Made a good money choice, which shows you are trying to manage your finances.":
-    "Uye wenza ukhetho oluhle ngendlela yokusebenzisa imali, nto leyo ebonisa ukuba uzama ukulawula izimali zakho.",
-  "Made @field.weekly_parent_point_money good money choices, which shows you are trying to manage your finances.":
-    "Uye wenza ukhetho oluhle ngendlela yokusebenzisa imali kayi-@field.weekly_parent_point_money, nto leyo ebonisa ukuba uzama ukulawula izimali zakho.",
-  "Gave a calm consequence, which shows you guide your teen calmly.":
-    "Uye wanika umphumo uzolile, nto leyo ebonisa ukuba uzama ukukhokela umntwana wakho ofikisayo uzolile.",
-  "Gave a calm consequence @field.weekly_parent_point_consequence times, which shows you guide your teen calmly.":
-    "Uye wanika umphumo izihlandlo ezi-@field.weekly_parent_point_consequence, nto leyo ebonisa ukuba uzama ukukhokela umntwana wakho ofikisayo uzolile.",
-  "Did something to keep your teen safe, which shows you care.":
-    "Uye wenza into yokugcina umntwana wakho ofikisayo ekhuselekile, nto leyo ebonisa ukuba uyakhathala.",
-  "Did something to keep your teen safe @field.weekly_parent_point_safe times, which shows you care.":
-    "Uye wenza into yokugcina umntwana wakho ofikisayo ekhuselekile kayi-@field.weekly_parent_point_safe, nto leyo ebonisa ukuba uyakhathala.",
-  "Missing: @global.m_workshop_tomorrow": "Engekhoyo: @global.m_workshop_tomorrow",
-  "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre":
-    "Nazi izakhono eziphambili kule veki! \n\nZisebezise xa usekhaya kwaye ungazifumana nanini na kwi-@global.parent_centre yakho",
+  "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nBy completing the @local.workshop_data.in_text_title first, you lay a really important foundation: If you feel good, your family will do better too!":
+    "Ngomso uqeqesho olutsha kraca lwe @global.parent_app sele likulindile. \n\nNgokugqiba i@local.workshop_data.in_text_title kuqala, ubeka isiseko esibaluleke ngokwenene: Ukuba uziva kamnandi, usapho lwakho luyokwenza ngcono nalo!",
+  "Well done for completing the @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax and build valuable skills!":
+    "Wenze kakhuhle ngokugqiba i@local.workshop_data.in_text_title. Ngomso, ungangena kuqeqesho olutsha ekunceda uphole uze wakhe izakhono ezixabisekileyo!",
+  "Finish current workshop": "Gqiba uqeqesho lwangoku",
+  "Here is a fun activity to do with your teen!":
+    "Nantsi into emnandi onokuyenza nomntwana wakho ofikisayo!",
+  "Start @local.workshop_data.in_text_title": "Qalisa i-@local.workshop_data.in_text_title",
+  "Continue @local.workshop_data.in_text_title": "Qhubeka ne-@local.workshop_data.in_text_title",
+  "Hi @fields.user_name! This week you did:": "Molo @fields.user_name! Kule veki uye wenza:",
+  "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!":
+    "Molo @fields.user_name! Enkosi ngokusebenzisa i-@global.parent_app nangokuzimisela ekubeni ngumzali. \n\nKhumbula ukucofa i@global.parent_points yakho!",
+  "That’s wonderful!": "Kuyancomeka oku!",
+  "Nice work!": "Wenza umsebenzi omhle!",
+  "Your commitment is not taken for granted.": "Ukuzinikela kwakho akulolize.",
+  "Keep up the good work!": "Qhubeka nalo msebenzi mhle!",
+  "This is lovely!": "Oku kuyathandeka!",
+  "Tap yourself on the shoulder. You deserve this.": "Ziqhwabele izandla. Ukufanele oku.",
+  "Every @global.parent_point counts!": "Um@global.parent_point ngamnye uyabala!",
+  "Remember to sit down and relax today - taking care of yourself is an important parenting skill.":
+    "Ukhumbule ukuba namhlanje, umele uhlale phantsi uze uphole - ukuzinakekela sisakhono esibalulekileyo sokuba ngumzali.",
+  "Relax now": "Phola ngoku",
+  "Did you relax already? Tap it!": "Ngaba sowupholile? Yicofe!",
+  "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.":
+    "Nazi izakhono eziphambili kule veki! \n\nZisebezise xa usekhaya kwaye ungazifumana nanini na kwi-@global.parent_centre yakho.",
   "Home Practice": "Uqheliselo Lwasekhaya",
   "Small actions, big results! Parents who practice their workshop skills at home get better results.":
     "Izenzo ezincinane, iziphumo ezinkulu! Abazali abaqhelisela izakhono zabo zoqeqesho xa besekhaya bafumana iziphumo ezigcono.",
@@ -697,31 +725,10 @@ export default {
     "Ngaba uye wanayo imiceli-mngeni xa ubuzama uku @local.hp_description_second_singular?",
   "What was difficult for you when trying to @local.hp_description_second_singular?":
     "Yintoni ebinzima xa ubuzama uku @local.hp_description_second_singular?",
-  text_challenge_1: "text_challenge_1",
-  text_challenge_2: "text_challenge_2",
-  text_challenge_3: "text_challenge_3",
-  text_challenge_4: "text_challenge_4",
-  text_challenge_5: "text_challenge_5",
-  text_challenge_6: "text_challenge_6",
-  combo_box_tracker: "combo_box_tracker",
-  button_1_a: "button_1_a",
-  button_1_b: "button_1_b",
-  button_2_a: "button_2_a",
-  button_2_b: "button_2_b",
-  button_3_a: "button_3_a",
-  button_3_b: "button_3_b",
-  button_4_a: "button_4_a",
-  button_4_b: "button_4_b",
-  button_5_a: "button_5_a",
-  button_5_b: "button_5_b",
-  button_6_a: "button_6_a",
-  button_6_b: "button_6_b",
-  button_7_a: "button_7_a",
-  button_7_b: "button_7_b",
   "Sorry we missed this!": "Uxolo siyiphosile le nto!",
   "Do you want to share it with us?": "Ngaba ufuna ukwabelana ngayo kunye nathi?",
-  "Thank you for sharing your challenge! We will take it into account for the next version of @global.parent_app .":
-    "Enkosi ngokwabelana ngocelo-mngeni lwakho! Siza kuyifaka engqalelweni kwinguqulelo elandelayo ye-@global.parent_app.",
+  "Thank you for sharing your challenge! We will use this feedback to make @global.parent_app better.":
+    "Enkosi ngokwabelana ngocelo-mngeni lwakho! Siza kulusebenzisa olu luvo ukuze senze @global.parent_app ngcono.",
   "Sorry to hear the tips did not help you.": "Sibuhlungu ukuva ukuba amacebiso khange akuncede.",
   "Do you want to share with us what you think would help you?":
     "Ngaba ufuna ukusichazela ukuba ucinga ukuba yintoni enokukunceda?",
@@ -766,6 +773,8 @@ export default {
     "Ukuziqhelanisa ekhaya yindlela esibenza bube ngcono ngayo ubomi bentsapho yethu. Kodwa kudla ngokubakho imiceli-mngeni. \n\nMasincokole ngeempumelelo kunye neengxaki zethu size sincedane ukuze sibe namacebiso amatsha esinokuwazama!",
   "Think about how your home activities went this week. \n\nTake turns to discuss: \n* What went well and what was a problem? \n* What solutions can you think of together? \n* Pick one solution and try it later with your teen! \n\n(Or you can even practice it now so it will be easier later!)":
     "Cinga malunga nendlela izinto ezenziwa ekhaya ezihambe ngayo kule veki. \n\nTshintshanani xa nincokola: \n* Yintoni ehambe kakuhle ibe yintoni eye yanzima? \n* Zeziphi izisombululo eninokucinga ngazo? \n* Khethani isisombululo esinye nize ethubeni nisizame kunye nomntwana wakho ofikisayo! \n\n(Okanye ningaqhelisela ngoku ukuze kube lula xa seniyenza kamva!)",
+  "Discussion example from @data.workshop.w_1on1.title":
+    "Umzekelo wengxoxo esuka @data.workshop.w_1on1.title",
   "Start Positively Together": "Qalisani Kunye Ngendlela Ekhuthazayo",
   "It's great to see you again! \n\nLet's start with caring for you.":
     "Kuluvuyo ukukubona kwakhona! \n\nMasiqalise ngokunyamekela wena.",
@@ -774,7 +783,6 @@ export default {
   "Ideas from other families:": "Amacebiso avela kwezinye iintsapho:",
   "Welcome @fields.user_name": "Wamkelekile @fields.user_name",
   "It's great to see you again!": "Kuluvuyo ukukubona kwakhona!",
-  current_feeling: "current_feeling",
   "Let's see how this week has been.": "Makhe sibone ukuba ihamba njani iveki.",
   "This week you have done...": "Kule veki uye wenza...",
   "You are showing such commitment to being a parent and to caring for yourself. \n\nYou are fantastic.":
@@ -791,39 +799,12 @@ export default {
   "Finish with a song": "Gqibezela ngengoma",
   "See you soon.": "Masiphinde sikubone kungekudala.",
   "Goodbye!": "Kamnandi!",
-  "Contact me via email": "Qhagamshelana nam nge-imeyile",
-  "Checkbox 3 text": "Amagama eBhokisi 3 ekuthikishwa kuyo",
-  "Checkbox 3 form text": "Amagama efomu yeBhokisi 3 ekuthikishwa kuyo",
-  Hello: "Molo",
-  "Dynamic Texts": "Amagama Atshintshayo",
-  local_full_stop: "local_full_stop",
-  "This template should show the same information on both sections":
-    "Le thempleyithi imele ibonise ulwazi olufanayo kuwo omabini amacandelo",
-  Content: "Isiqulatho",
-  Intro: "Intshayelelo",
-  "Initial text": "Amagama asekuqaleni",
-  "Double nested 1": "Double nested 1",
-  "Double nested 2": "Double nested 2",
-  "Text 1": "Amagama 1",
-  "Text 2": "Amagama 2",
-  "Text 3": "Amagama 3",
-  radio_group_final_temp: "radio_group_final_temp",
-  "Option 1": "Ukhetho 1",
-  "Option 2": "Ukhetho 2",
-  "Welcome Back!": "Siyakwamkela Kwakhona!",
-  "I will update after the popup has closed": "Ndiza kuhlaziya emva kokuvala kwe-popup",
-  "Show Popup": "Bonisa i-Popup",
-  Value: "Uxabiso",
-  "Value of last slider: @local.slider_without_value_labels_1":
-    "Value of last slider: @local.slider_without_value_labels_1",
-  "Value of last slider: @local.slider_without_value_labels_2":
-    "Value of last slider: @local.slider_without_value_labels_2",
-  "form with 'go to'": "ifomu ethi ‘yiya ku’",
-  "pop up form": "i-popup form",
-  happy: "uvuyo",
-  "Powered by Parenting for Lifelong Health and partners":
-    "Ixhaswa yi-Parenting for Lifelong Health kunye namaqabane ayo",
-  "ParentApp funded by": "I-ParentApp ixhaswa ngu",
+  "Organisation Registration": "Ukubhaliswa Kombutho",
+  "If you are going through the @global.parent_app programme with the support of an organisation, they should have given you a code. Please enter the code in the box below and press Done.":
+    "Ukuba wenza inkqubo ye@global.parent_app kunye nenkxaso yombutho, bafanele ukuba bakunike ikhowudi. Nceda ungenise ikhowudi kule bhokisi ingezantsi uze ucofe Kugqityiwe.",
+  Done: "Kugqityiwe",
+  "You may be asked to share this code with people who will support your @global.parent_app journey.":
+    "Unokucelwa ukuba wabelane ngale khowudi nabantu abaza kuxhasa uhambo lwakho lwe@global.parent_app.",
   "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!":
     "Ekupheleni kosuku, thatha umzuzu ukuze: \n\n* Uncokole nomntwana wakho ngento enye emnandi ayenzileyo. \n* UzIncome ngokwenza into enye kakuhle namhlanje. \n*Uligqala!",
   "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed.":
@@ -892,7 +873,7 @@ export default {
   "Close your eyes.\n\nListen to your breath as it goes in and out five times.\n\nNotice how you feel.":
     "Vala amehlo akho.\n\nMamela njengoko utsala uze ukhuphe umoya kahlanu.\n\nPhawula indlela ovakalelwa ngayo.",
   "When you are ready open your eyes again. You are in control!":
-    "Xa sele ukulungele, phinda uvule amehlo akho. Nguwe olawulayo!”",
+    "Xa sele ukulungele, phinda uvule amehlo akho. Nguwe olawulayo!",
   "Close your eyes. \n\nTake a minute to think about the day.\n\nThink about one positive or fun thing you did.\nPraise yourself for one thing you did well today. \nThink of one thing you can do differently tomorrow.  \nThink of one thing that you are grateful for.":
     "Vala amehlo akho. \n\nThatha umzuzu ucinge ngosuku lwakho.\n\nCinga ngento ekhuthazayo okanye emnandi oye wayenza.\nZIncome ngokwenza into enye kakuhle namhlanje. \nCinga ngento enye onokuyenza ngendlela eyahlukileyo ngomso.  \nCinga ngento enye onombulelo ngayo.",
   "Close your eyes. \n\nDo your children ever make you feel like screaming? \n\nGive yourself a 10-second pause. Breath in and out slowly 5 times. \n\nThen try responding in a calmer way.":
@@ -948,74 +929,93 @@ export default {
     "Cinga ngento ekwenza ube nomsindo. Kwenzeka xa kutheni oku? Udla ngokusabela njani?\n\nThintela ukuba nomsindo kwasekuqaleni. Lala okanye uphumle xa udiniwe. Zama ukutya xa ulambile. Cela umntu akuxhase xa uziva ngathi uwedwa.",
   "Managing anger can be really difficult. Take a break when you feel you are getting angry at your children or someone else.\n\nGo somewhere else for 5 minutes to regain control of your emotions. If you have safe outdoor space, go outside. You can get through this!":
     "Ukulawula umsindo kunganzima. Thatha ikhefu xa uziva usiba nomsindo ngakubantwana bakho okanye omnye umntu.\n\nYiya kwenye indawo kangangemizuzu emi-5 uze ukwazi ukulawula iimvakalelo zakho. Ukuba kukhuselekile phandle, yiya khona. Uza kudlula kule nto!",
+  "Quick Parenting Tips": "Iingcebiso Ezikhawuleziyo Zokuba Ngumzali",
+  "Raising teens can be hard, and we all struggle sometimes.":
+    "Ukukhulisa abantwana abafikisayo kunganzima, kwaye sonke siyoyisakala ngamanye amaxesha.",
+  "What is the main challenge you are experiencing right now?":
+    "Loluphi ucelomngeni oluyintloko ojongene nalo ngalo mzuzu?",
+  "My relationship with my teen is not good": "Ulwalamano lwam nomntwana wam ofikisayo aluluhlanga",
+  "My teen’s behaviour is difficult": "Isimilo somntwana wam ofikisayo sixakile",
+  "I feel stressed, lonely, angry": "Ndiziva ndinoxinezelelo, ndindodwa, ndinomsindo",
+  "I have money worries": "Ndinamaxhala emali",
+  "I worry about my teen’s safety": "Luyandixhalabisa ukhuseleko lomntwana wam ofikisayo",
+  "We often fight in our family": "Sisoloko sisilwa kusapho lwethu",
+  "I have a different problem…": "Ndinengxaki eyahlukileyo…",
+  "Building a better relationship starts with spending time together - even 5 minutes a day makes a difference! At first, it can be hard to spend time together, as we are all busy and our teens can be in a bad mood sometimes. But spending even 5 minutes a day of focused time with your teen helps to build trust. Try asking your teen what they would like to do together. It can be fun and relaxing for you too!":
+    "Ukwakha ulwalamano olungcono kuqala ngokuchitha ixesha kunye - noba yimizuzu emi-5 ngosuku kwenza umahluko! Okokuqala, kunokuba nzima ukuchitha ixesha kunye, njengoko sonke sixakekile kwaye ulutsha lwethu lunokuba kwimudi engentle ngamanye amaxesha. Kodwa ukuchitha noba yimizuzu emi-5 ngosuku lwexesha olijolise kumntwana wakho ofikisayo kuyanceda ekwakheni ukuthembana. Zama ukubuza umntwana wakho ofikisayo ukuba yintoni angathanda niyenze kunye. Inokuba mnandi kwaye ikuphumze nawe ngokunjalo!",
+  "You can get more support on how to spend one-on-one time with your teen here:":
+    "Unokufumana inkxaso engakumbi ngendlela yokuchitha ixesha ninodwa kunye nomntwana wakho ofikisayo apha:",
+  "All teenagers sometimes behave just horribly! One thing that can help with teenage behaviour is to praise them any time that they do something good – however small. Teens may not look like they want or seek your praise but they still really, really do.":
+    "Bonke abantwana abafikisayo bayageza ngamanye amaxesha! Eyona nto inokunceda kwisimilo sabantwana abafikisayo kukubancoma nanini na besenza into entle - nokuba incinci kangakanani na. Abantwana abafikisayo basenokungabonakali ngathi bafuna okanye bakhangela ukunconywa nguwe kodwa eneneni, bayafuna.",
+  "You can get more support here on how to encourage good behaviour through praising:":
+    "Unokufumana inkxaso engakumbi apha malunga nendlela yokukhuthaza isimilo esihle ngokuncoma:",
+  "Parenting stress is really high right now. We know exactly how overwhelming life can be. Doing something for yourself can reduce your stress. You deserve it! And when you feel overwhelmed, take back control over your body by taking five slow, deep breaths before responding. Lots of parents found this helpful.":
+    "Uxinezelelo lokuba ngumzali luphezulu ngeyona ndlela ngoku. Sazi kakuhle ukuba ubomi bunokuba nzima kangakanani. Ukuzenzela okuthile kungalunciphisa uxinezelelo lwakho. Ukufanelekele oku! Xa uziva ukhathazekile, lawula umzimba wakho ngokuwutsala ngamandla umoya ngokucotha, kahlanu ngaphambi kokuphendula. Abazali abaninzi bakufumanisa kuluncedo oku.",
+  "You can get more support on how to take care of yourself here:":
+    "Unokufumana inkxaso engakumbi malunga nendlela yokuzikhathalela apha:",
+  "You are not alone. Money stress is so hard for parents. Try talking to your teen about how much money comes in and what you need to spend money on as a family each month. This can help them to understand why you cannot afford something they want. And when everyone understands where the money goes, it is easier to agree on where you can save together too!":
+    "Awuwedwa. Uxinezelelo lwemali lunzima kakhulu kubazali. Zama ukuthetha nomntwana wakho ofikisayo malunga nokuba yimalini engenayo nezinto enidinga ukuyisebenzisa kuzo njengosapho nyanga nganye. Oku kunokubanceda baqonde ukuba kutheni ungakwazi ukubathengela into abayifunayo. Yaye xa wonke umntu ekuqonda ukuba iyaphi imali, kulula ukuvumelana ngokuba yimalini eninokuyonga kunye!",
+  "You can get more support on how to budget and save here:":
+    "Unokufumana inkxaso engakumbi ngendlela yokwenza ibhajethi uze wonge apha:",
+  "Teens spend a lot of time outside the house or online, where it is harder for us to keep them safe - many parents worry about this. Try to start a conversation with your teen about safe and unsafe places in your community and online (you might need to try a few times). They may even know some you do not. This can start to help you make a plan together about how to stay safe.":
+    "Abantwana abafikisayo bachitha ixesha elininzi bengaphandle kwekhaya okanye besebenzisa i-intanethi, apho kunzima nangakumbi ukuba sibagcine bekhuselekile - abazali abaninzi kuyabakhathaza oku. Zama ukuqala incoko nomntwana wakho ofikisayo malunga neendawo ezikhuselekileyo nezingakhuselekanga kwindawo ohlala kuyo naxa kusetyenziswa i-intanethi (kungafuneka ukuzame amatyeli ambalwa). Banokude bazi nezo wena ungazaziyo. Oku kuza kuqalisa ukukunceda nenze isicwangciso kunye sokuba uhlala njani ekhuselekile.",
+  "You can get more support on how to keep your teen safe here:":
+    "Unokufumana inkxaso engakumbi ngendlela yokugcina umntwana wakho ofikisayo ekhuselekile apha:",
+  "When a problem comes up, try to talk about it together. What is the problem exactly? What different solutions are there and what are the consequences of one? That way, you can find a solution that can be OK for everyone.":
+    "Xa kuvela ingxaki, zamani ukuthetha ngayo kunye. Yintoni kanye kanye ingxaki? Zeziphi izisombululo ezohlukeneyo ezikhoyo kwaye zeziphi iziphumo zaso ngasinye? Ngaloo ndlela, ungafumana isisombululo esinokuba SILUNGILE kumntu wonke.",
+  "You can get more support on how to solve problems together here:":
+    "Unokufumana inkxaso engakumbi malunga nokusombulula iingxaki kunye apha:",
+  "It is not easy to look after our families. We all have challenges sometimes, but we hope this app will help you navigate them well. @global.parent_app is based on ten years of experience running parenting programmes in South Africa, and thousands of parents have found that the tips that are shared help with many parenting challenges. We hope this app will help you and your family too.\n\nHere are some of the key proven tips for you:":
+    "Akululanga ukunyamekela iintsapho zethu. Sonke sinemiceli mngeni ngamanye amaxesha, kodwa siyathemba ukuba le app iza kukunceda uyoyise ngempumelelo.  @global.parent_app isekwe kwiminyaka elishumi yamava eqhuba iinkqubo zobuzali eMzantsi Afrika, kwaye amawaka abazali bafumanise ukuba iingcebiso ekwabelwana ngazo ziyanceda kwimiceli mngeni emininzi yokuba ngumzali. Siyathemba ukuba le app iza kukunceda kunye nentsapho yakho.\n\nNazi ezinye zeengcebiso eziphambili nezingqiniweyo:",
+  "Start your first parenting workshop": "Qalisa uqeqesho lwakho lokuqala lokuba ngumzali",
+  "You will get more support in the @local.workshop_data.in_text_title.":
+    "Uza kufumana inkxaso engakumbi kwi @local.workshop_data.in_text_title.",
+  "You can get more support in the @local.workshop_data.in_text_title.":
+    "Ungafumana inkxaso engakumbi kwi @local.workshop_data.in_text_title.",
+  "Start the @local.workshop_data.in_text_title": "Qalisa i@local.workshop_data.in_text_title",
+  "Finish the @local.workshop_data.in_text_title to get more support.":
+    "Gqiba i@local.workshop_data.in_text_title ukuze ufumane inkxaso engakumbi.",
+  "Continue the @local.workshop_data.in_text_title":
+    "Qhubeka ne-@local.workshop_data.in_text_title",
+  "Re-access the @local.workshop_data.in_text_title":
+    "Phinda ungene kwi@local.workshop_data.in_text_title",
   "Customise for your needs": "Tshintsha ngenxa yeemfuno zakho",
-  "The next questions about your parenting experiences will help us to get you the support you need.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
-    "Imibuzo elandelayo malunga namava akho okuba ngumzali aza kusinceda sikunike inkxaso oyifunayo.\n\nNyaniseka. Ukhumbule ukuba izigidi zabazali zivakalelwa ngale ndlela ovakalelwa ngayo kwaye sonke siyayifanelekela inkxaso. Awukho wedwa!",
+  "Every parent in the world is struggling in these hard times. The next questions about your parenting experiences will help us to get you the support you need.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.":
+    "Wonke umzali osehlabathini uyasokola ngala maxesha obunzima. Imibuzo elandelayo malunga namava akho okuba ngumzali iza kusinceda sikunike inkxaso oyifunayo.\n\nNyaniseka. Khumbula ukuba awukho wedwa! Izigidi zabazali zivakalelwa ngale ndlela uvakalelwa ngayo kwaye sonke siyayidinga inkxaso.",
   "It is hard to find time to have fun with your teenager.":
     "Kunzima ukuba nexesha lokonwaba kunye nomntwana wakho ofikisayo.",
   "How many days in the past week were you able to give them your attention and do something that they enjoyed with them?":
     "Zingaphi iintsuku evekini apho ukwaziyo ukubanika ingqalelo yakho uze wenze into abayithandayo kunye nabo?",
-  "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @global.my_tips (in the @global.parent_centre), so you can access it right away. \n\nBecause @global.w_1on1 builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
-    "Siyayiqonda ukuba inzima le nto. Siye safaka amacebiso aluncedo ngendlela onokuchitha ngayo ixesha kunye nomntwana wakho ofikisayo @global.my_tips (kwi-@global.parent_centre), ukuze ukwazi ukuwafumana ngokukhawuleza. \n\nNgenxa yokuba i-@global.w_1on1 isisiseko sazo zonke izixhobo zokuba ngumzali, iza kuba yi-@global.weekly_workshop oza kuyifumana kwiveki ezayo!",
-  "@global.w_1on1_tools added to @global.my_tips":
-    "I-@global.w_1on1_tools ifakwe kwi-@global.my_tips",
-  "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
-    "Usebenzile! I-@global.weekly_workshop elandelayo iza kukunika amacebiso ngale nto, njengesiseko sazo zonke ezinye izixhobo zokuba ngumzali. Kodwa sele unesiqalo esihle!",
+  "@data.workshop.w_1on1.tools added to @data.parent_centre.my_tips.title.":
+    "I-@data.workshop.w_1on1.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
   "In our busy lives it’s hard to focus on the positive.":
     "Kubomi bethu obuxakekileyo, kunzima ukunikela ingqalelo kwizinto ezikhuthazayo.",
   "How many days in the past week have you praised your teen?":
     "Kwiveki ephelileyo, uye wamncoma iintsuku ezingaphi umntwana wakho ofikisayo?",
-  "Using this app shows us that you care about your teen. We have added some essential tools on how to use praise to @global.my_tips for quick access. You can find @global.my_tips in the @global.parent_centre .\n\nIn our @global.weekly_workshop on @global.w_praise, you will learn even more on how to use this skill well.":
-    "Ukusebenzisa le app kubonisa ukuba umkhathalele umntwana wakho ofikisayo. Kwi-@global.my_tips siye safaka izixhobo ezibalulekileyo ngendlela onokuncoma ngayo ukuze ukhawuleze uzifikelele. Unokufumana i-@global.my_tips kwi-@global.parent_centre.\n\nKwi-@global.weekly_workshop nge-@global.w_praise, uza kufunda nangakumbi ngendlela yokusisebenzisa kakuhle esi sakhono.",
-  "@global.w_praise_tools added to @global.my_tips":
-    "I-@global.w_praise_tools ifakwe kwi-@global.my_tips",
-  "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @global.weekly_workshop on @global.w_praise, you will learn even more how to use this skill well.":
-    "Kuyavuyisa ukuba uyamncoma umntwana wakho ofikisayo! Oku kumnceda azive exatyiswa – ukumkhuthaza kwakho kutsho lukhulu. Kwi-@global.weekly_workshop nge-@global.w_praise, uza kufunda nangakumbi ngendlela yokusisebenzisa kakuhle esi sakhono.",
-  survey_welcome_a_3: "survey_welcome_a_3",
+  "@data.workshop.w_praise.tools added to @data.parent_centre.my_tips.title.":
+    "I-@data.workshop.w_praise.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
   "This is a very stressful time for families.": "Eli lixesha elibangela uxinezeleko kwiintsapho.",
   "How many days in the past week did you feel very stressed as a parent/caregiver?":
     "Kwiveki ephelileyo, ngaba njengomzali/umnakekeli uye waziva uxinezelekile?",
-  "Great that this has been a good week!\n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
-    "Kuhle ukuva ukuba le veki ibintle!\n\nSiza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
-  "Great that you felt calm most of the week! \n\nWe’ll remind you every day to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
-    "Kuhle ukuva ukuba ubukhulu becala evekini ubuziva uzolile! \n\nSiza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
-  "We understand how stressful life can be. We’ll remind you every day to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops - but you can already access some helpful tools under @global.my_tips to get you started!":
-    "Siyayiqonda indlela obunoxinezeleleko ngayo ubomi. Siza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.\n\nKwiveki 5 ye-@global.weekly_workshops, siza kufunda okungakumbi malunga nokulawula uxinezeleko – kodwa ukuze uqalise, unako ukufikelela kwizixhobo eziluncedo phantsi kwe-@global.my_tips!",
   "Sometimes our children make us really upset.":
     "Ngamanye amaxesha, abantwana bethu bakhe basicaphukise.",
   "How many days in the past week did you shout, scream or yell at your teen?":
     "Kwiveki ephelileyo, zingaphi iintsuku oye washawuta waza wabakrasela ngazo abantwana bakho?",
-  "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.":
-    "Usebenzile. Inzululwazi yengqondo ibonisa ukuba ukulawula umsindo wakho kuphucula ukukhula kwengqondo yomntwana wakho. Zingce.",
-  "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @global.my_tips to get started.":
-    "Enkosi ngokunyaniseka. Kukhe kube nzima kakhulu ukulawula uxinezeleko lwethu. Ukuze uzinyamekele size sikuncede uzive uzolile xa izinto zisiba nzima, siza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze. Ubalulekile!\n\nKwiveki 5 ye-@global.weekly_workshops, siza kufunda okungakumbi malunga nokulawula uxinezeleko, kodwa sele unako ukufikelela kwizixhobo eziluncedo phantsi kwe-@global.my_tips.",
-  "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @global.my_tips in the @global.parent_centre .":
-    "Enkosi ngokunyaniseka. Kukhe kube nzima kakhulu ukulawula uxinezeleko lwethu. Siyathemba ukuba izixhobo zethu zokulawula uxinezeleko ziza kuba luncedo kuwe. Unokuzifumana phantsi kwe-@global.my_tips kwi-@global.parent_centre.",
   "Money is one of the biggest stresses for families now.":
     "Imali yenye yezona zinto zinkulu ezibangela uxinezeleko kwiintsapho ngoku.",
   "How many days in the past week have you worried or felt anxious about money?":
     "Kwiveki ephelileyo, zingaphi iintsuku oye wanexhala ngazo okanye oye waziva unexhala ngemali?",
   "How many days in the past month (30 days) did you run out of money to pay for food?":
     "Kwinyanga edlulileyo (iinstuku ezingama-30), zingaphi iintsuku oye waphelelwa ngazo yimali yokuthenga ukutya?",
-  "Great. We have a @global.weekly_workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.":
-    "Kuhle. Sine-@global.weekly_workshop malunga nokwenza ibhajethi yosapho enokukunceda ngoxinezeleko lwemali ngokuthe jikelele kuze kunciphise iingxabano ezinxulumene nemali.",
-  "Money stress can be overwhelming. \n\nWe have a @global.weekly_workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @global.my_tips!":
-    "Uxinezeleko ngemali lungabangela usindeke kakhulu. \n\nKwiiveki ezintlanu sine-@global.weekly_workshop malunga nokwenza ibhajethi yosapho, kodwa phantsi kwe-@global.my_tips unako ukufikelela amanye amacebiso ayintloko malunga nokwenza ibhajethi!",
-  "@global.w_money_tools added to @global.my_tips":
-    "I-@global.w_money_tools ifakwe kwi-@global.my_tips",
+  "@data.workshop.w_money.tools added to @data.parent_centre.my_tips.title.":
+    "I-@data.workshop.w_money.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
   "It is so stressful when children misbehave.": "Xa abantwana begeza, oko kubangela uxinezeleko.",
   "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
     "Kwiveki ephelileyo, ngaba abantwana bakho uye wabaqeqesha ngokubabetha, ukubabetha ezimpundu okanye ukubabetha ngesandla sakho okanye ngenye into efana noswazi okanye ibhanti?",
   "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!":
     "Kuhle ukubona ukuba uyazola xa umntwana wakho ofikisayo esenza into ecaphukisayo. Ininzi into abanokuyifunda kuwe!",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @global.my_tips to get started.":
-    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. Ukuze uzinyamekele size sikuncede uzive uzolile xa izinto zisiba nzima, siza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze. Ubalulekile!\n\nKwiveki 5 ye-@global.weekly_workshops, siza kufunda okungakumbi malunga nokulawula uxinezeleko, kodwa sele unako ukufikelela kwizixhobo eziluncedo phantsi kwe-@global.my_tips.",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them in your @global.parent_centre, under @global.my_tips .":
-    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. \n\nSiyathemba ukuba izixhobo zokulawula uxinezeleko ziza kukunceda uzive uzolile phantsi kweemeko ezinzima. Ungazifumana kwi-@global.parent_centre yakho, phantsi kwe-@global.my_tips .",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.":
-    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. \n\nSonke sikhe sizive sisonganyelwa zizinto ngamanye amaxesha kwaye ukusebenzisa i-@global.parent_app linyathelo elihle lokukunceda kunye nentsapho yakho!\n\nIzinto zethu zincede amawaka abazali kunye neentsapho zaye ziyeka ukuba noxinezeleko kwaye zaba nexesha elimnadi kunye. Silapha ukuze sikuxhase.",
-  "@global.w_stress_tools added to @global.my_tips":
-    "I-@global.w_stress_tools ifakwe kwi-@global.my_tips",
+  "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.":
+    "I-@data.workshop.w_stress.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
   "It’s hard to keep track of your teenagers when they are becoming independent.":
     "Kunzima ukuzazi kakuhle izinto ezenziwa ngaabatwana bakho abafikisayo njengoko baya bekhula ibe bezimela.",
   "How many days in the past week did you know what your teen was doing and who they were with?":
@@ -1024,41 +1024,123 @@ export default {
   "Were you in lockdown this week?": "Ngaba beniphantsi kwemithetho yokuhlala ekhaya kule veki?",
   "How many days in a typical non-lockdown week do you know what your teen is doing and who they are with?":
     "Zingaphi iintsuku kwiveki eqhelekileyo ekungekho mithetho yokuhlala endlwini oye wazi ukuba umntwana wakho ofikisayo wenza ntoni kwaye ukunye nabani na?",
-  "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @global.my_tips!":
-    "Oku kuxhalabisa bonke abazali nokuba baphi. Siza kuqinisekisa ukufumana inkxaso yokukwazi ukunxibelelana. \n\nSiza kuthetha ngakumbi malunga nokuceba ukhuseleko lomntwana wakho ofikisayo kwi-@global.weekly_workshops, kodwa phantsi kwe-@global.my_tips unokufikelela kumacebiso aphambili ukuze ugcine umntwana wakho ofikisayo ekhuselekile!",
-  "@global.w_safe_tools added to @global.my_tips":
-    "I-@global.w_safe_tools ifakwe kwi-@global.my_tips",
-  "This is really great. Parenting is hard, but you’re really succeeding in this.":
-    "Oku kuhle ngeyona ndlela. Ukuba ngumzali kunzima, kodwa uphumelela kakhulu kule nto.",
+  "@data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.":
+    "I-@data.workshop.w_safe.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
   "We all want to keep our children safe.": "Sonke sifuna abantwana bethu bahlale bekhuselekile.",
   "How many days in the past month (30 days) did you talk with your teen about keeping safe from sexual violence online or offline?":
     "Kwinyanga ephelileyo (iintsuku ezingama-30), zingaphi iintsuku oye wacokola ngazo kunye nomntwana wakho malunga nokukhuseleka kubundlobongela ngokwesini enoba ukwi-intanethi okanye ekuhlaleni?",
   "This could be when they are going out with friends, or talking about the websites they use.":
     "Kusenokwenzeka xa bekunye neetshomi zabo okanye bethetha ngeewebhsayithi abazisebenzisayo.",
-  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nWe’ll also unlock the @global.weekly_workshops on rules and safety planning, which help with this – they'll be available for you anytime.":
-    "Ukuba ngumzali akululanga. Kunokubanzima ukwazi indlela yokugcina abantwana bethu abafikisayo bekhuselekile. Njengabazali, siye singabi nawo amandla kulo mbandela, kodwa sikhona ukuze sikuxhase! Kwi-@global.parent_centre ungafikelela kwizixhobo ezithetha ngqo ngalo mbandela, umxholo owongezelelekileyo kunye nezixhobo enokuba kunini na. \n\nSiza kuvula i-@global.weekly_workshops emalunga nemithetho kunye nokucebela ukhuseleko, enokukunceda ngoku – ziza kufumaneka kuwe nanini a.",
-  "@global.weekly_workshops @global.w_rules and @global.w_safe unlocked":
-    "I-@global.weekly_workshops @global.w_rules kunye ne-@global.w_safe zivuliwe",
-  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nWe’ll also unlock the @global.weekly_workshop on rules, which help with this – they'll be available for you anytime.":
-    "Ukuba ngumzali akululanga. Kunokubanzima ukwazi indlela yokugcina abantwana bethu abafikisayo bekhuselekile. Njengabazali, siye singabi nawo amandla kulo mbandela, kodwa sikhona ukuze sikuxhase! Kwi-@global.parent_centre ungafikelela kwizixhobo ezithetha ngqo ngalo mbandela, umxholo owongezelelekileyo kunye nezixhobo enokuba kunini na. \n\nSiza kuvula i-@global.weekly_workshop emalunga nemithetho nenokukunceda ngoku – ziza kufumaneka kuwe nanini a.",
-  "@global.weekly_workshops @global.w_rules unlocked":
-    "I-@global.weekly_workshops @global.w_rules ivuliwe",
-  "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!":
-    "Ukuba ngumzali akululanga. Usebenzile ngokunikela ingqalelo ekugcineni umntwana wakho ofikisayo ekhuselekile. \n\nKwi-@global.weekly_workshops ezizayo siza kuba nenkxaso engakumbi, ukuba ungathanda ukwazi okungakumbi!",
   "We have a new challenge now – keeping our teenagers safe from COVID-19.":
     "Ngoku sinocelo-mngeni olutsha – ukugcina abantwana bethu abafikisayo bekhuselekile kwi-COVID-19.",
   "How many days last week did your teenager stay safe through wearing a mask, keeping a distance from people and keeping away from crowded places?":
     "Kwiveki ephelileyo, zingaphi iintsuku aye wakhuseleka ngazo umntwana wakho ofikisayo ngokuthi anxibe imaski, angasondelelani nabanye abantu nokungayi kwiindawo ezinabantu abaninzi?",
-  "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre .":
-    "Kungalucelo-mngeni ukugcina umntwana wakho ekhuselekile kwi-COVID! Sisaqulunqa amacebiso – kungekudala uza kuwafumana kwi-@global.parent_centre .",
-  "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre .":
-    "Kuhle oko. Sisaqulunqa amacebiso okugcina umntwana wakho ofikisayo ekhuselekile kwi-COVID – kungekudala uza kuwafumana kwi-@global.parent_centre .",
+  "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre.":
+    "Kungalucelo-mngeni ukugcina umntwana wakho ekhuselekile kwi-COVID! Sisaqulunqa amacebiso – kungekudala uza kuwafumana kwi-@global.parent_centre.",
+  "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre.":
+    "Kuhle oko. Sisaqulunqa amacebiso okugcina umntwana wakho ofikisayo ekhuselekile kwi-COVID – kungekudala uza kuwafumana kwi-@global.parent_centre.",
   "Thank you for being honest": "Enkosi ngokunyaniseka",
-  "Content unlocked by these questions is now accessible in the @global.weekly_workshops":
-    "Umxholo ovulwa yile mibuzo uyafumaneka ngoku kwi-@global.weekly_workshops",
+  "We know this is hard. You can review some helpful tips on how you can spend time with your teen under @data.parent_centre.my_tips.location_text or you can have another look at the @data.workshop.w_1on1.in_text_title.":
+    "Siyayiqonda ukuba inzima le nto. Ungajonga ezinye iingcebiso eziluncedo ngendlela onokuchitha ngayo ixesha kunye nomntwana wakho ofikisayo @data.parent_centre.my_tips.location_text okanye ungaphinda ujonge i@data.workshop.w_1on1.in_text_title.",
+  "Well done for laying such a good foundation! You can always review the @data.workshop.w_1on1.in_text_title to get more ideas on how to spend time together.":
+    "Wenze kakuhle ngokubeka isiseko esihle kangaka! Ungaphinda ujonge i@data.workshop.w_1on1.in_text_title nanini na ukuze ufumane iingcamango zendlela yokuchitha ixesha kunye.",
+  "Using this app shows that you care about your teen. You can review how to use praise under @data.parent_centre.my_tips.location_text.\n\nFor more tips on how to use this skill well, you can also have another look at the @data.workshop.w_praise.in_text_title.":
+    "Ukusebenzisa le app kubonisa ukuba umkhathalele umntwana wakho ofikisayo. Ungaphinga ujonge indlela onokukusebenzisa ngayo ukuncoma phantsi ko@data.parent_centre.my_tips.location_text.\n\nUkufumana amanye amacebiso angakumbi ngendlela yokusisebenzisa kakuhle esi sakhono, unokuphinda ujonge kwi @data.workshop.w_praise.in_text_title.",
+  "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. \n\nYou can always have another look at the @data.workshop.w_praise.in_text_title for more tips on how to use this skill well.":
+    "Kuyavuyisa ukuba uyamncoma umntwana wakho ofikisayo! Oku kumnceda azive exatyiswa – ukumkhuthaza kwakho kutsho lukhulu. \n\nUngaphinda ujonge kwakhona kwi@data.workshop.w_praise.in_text_title ukufumana ezinye iingcebiso ezingakumbi zendlela yokusisebenzisa kakuhle esi sakhono",
+  "Great that this has been a good week!\n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Kuhle ukuva ukuba le veki ibintle!\n\nSiza kukukhumbuza qho ukuba uphole, uziphawule uze uzivuze wena siqu, ukukunceda uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
+  "Great that you felt calm most of the week! \n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Kuhle ukuva ukuba ubukhulu becala evekini ubuziva uzolile! \n\nSiza kukukhumbuza qho ukuba uphole, uziphawule uze uzivuze wena siqu, ukukunceda uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
+  "We understand how stressful life can be. We will keep reminding you to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.":
+    "Siyayiqonda indlela obunoxinezeleleko ngayo ubomi. Siza kukukhumbuza qho ukuba uphole, uziphawule uze uzivuze wena siqu, ukuze kukuncede ulawule uxinezeleko lwakho uze uzive uzolile.\n\nUngafumana iingcebiso ezingakumbi zokulawula uxinezelelo kwi@global.weekly_workshop okanye phantsi kwe @data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.":
+    "Enkosi ngokunyaniseka. Kukhe kube nzima kakhulu ukulawula uxinezeleko lwethu. Ukuze uzikhathalele wena siqu kuze kukuncede uzive uzolile xa izinto zisiba nzima, siza kuqhubeka sikukhumbuza ukuba uphole, uziphawule uze uzivuze. Ubalulekile!\n\nUngafumana iingcebiso ezingakumbi zokulawula uxinezelelo kwi@global.weekly_workshop okanye phantsi kwe @data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest. It can be so difficult to control our stress. You can always find some helpful stress management tools under @data.parent_centre.my_tips.location_text.":
+    "Enkosi ngokunyaniseka. Kukhe kube nzima kakhulu ukulawula uxinezeleko lwethu. Ungafumana nezinye izixhobo ezisebenzayo zokulawula uxinzelelo phantsi kwe@data.parent_centre.my_tips.location_text.",
+  "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!":
+    "Kuhle. Ukuba kuye kwavela naluphi na uxinzelelo okanye ukungavisisani ngokuphathelele imali kusapho lwakho kwixesha elizayo, ungaphinda ujonge i@data.workshop.w_money.in_text_title okanye i@data.parent_centre.my_tips.location_text!",
+  "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!":
+    "Uxinezeleko ngemali lungabangela usindeke kakhulu. \n\nNanini na kuvela uxinzelelo okanye ukungavisisani ngokuphathelele imali kusapho lwakho, unokufumana iingcebiso kwi @data.workshop.w_money.in_text_title okanye phantsi kwe @data.parent_centre.my_tips.location_text!",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.":
+    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. Ukuze uzikhathalele wena siqu kuze kukuncede uzive uzolile xa izinto zisiba nzima, siza kuqhubeka sikukhumbuza uphole, uziphawule uze uzivuze wena siqu. Ubalulekile!\n\nUngafumana iingcebiso ezingakumbi zokulawula uxinezelelo kwi@global.weekly_workshop okanye phantsi kwe @data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.":
+    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. \n\nSonke sikhe sizive sisonganyelwa zizinto ngamanye amaxesha, kwaye ukuqhubeka sisebenzisa i-@global.parent_app linyathelo elihle lokunceda wena nosapho lwakho!\n\nIzinto zethu zincede amawaka abazali kunye neentsapho zaye ziyeka ukuba noxinezeleko kwaye zaba nexesha elimnadi kunye. Silapha ukuze sikuxhase.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will continue to help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.":
+    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. \n\nSiyathemba ukuba izixhobo zethu zokulawula uxinezeleko ziza kuqhubeka zikunceda uzive uzolile phantsi kweemeko ezinzima. Ungazifumana phantsi kwe-@data.parent_centre.my_tips.location_text.",
+  "This is a real concern for parents everywhere. Remember to use your new skills to continue to build good communication with your teen. \n\nYou can review core tips on planning for your teen’s safety in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text!":
+    "Oku kuxhalabisa bonke abazali nokuba baphi. Khumbula ukusebenzisa izakhono zakho ezintsha ukuze uqhubeke nokwakha unxibelelwano oluhle nomntwana wakho ofikisayo. \n\nUngaphinda ujonge iingcebiso ezingundoqo ekucebeni ukhuseleko lomntwana wakho kwi @global.weekly_workshop okanye phantsi kwe @data.parent_centre.my_tips.location_text!",
+  "Great that you are aware of what your teen is doing. Parenting is hard, but you’re really succeeding in this to keep them safe.":
+    "Kwakuhle ukubona ukuba uyakwazi oko kwenziwa ngumntwana wakho ofikisayo. Ukuba ngumzali kunzima, kodwa uyaphumelela ngokwenene koku ukuze ubagcine bekhuselekile.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on rules and safety planning under @data.parent_centre.my_tips.location_text.":
+    "Ukuba ngumzali akululanga. Kunokuba nzima ukwazi indlela yokugcina abantwana bethu abafikisayo bekhuselekile. Njengabazali, siye singabi nawo amandla kulo mbandela, kodwa sikhona ukuze sikuxhase!\n\nKhumbula, ungafumana izixhobo ezijolisileyo, umbandela owongezelelekileyo kunye nezinto onokuzisebenzisa koku kwi@global.parent_centre  nanini na. Unokuphinda ujonge iingcebiso ezingundoqo ngokubeka imithetho kunye nokuceba ukhuseleko phantsi kwe @data.parent_centre.my_tips.location_text.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! Remember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can also review core tips on making rules under @data.parent_centre.my_tips.location_text.":
+    "Ukuba ngumzali akululanga. Kunokuba nzima ukwazi indlela yokugcina abantwana bethu abafikisayo bekhuselekile. Njengabazali, siye singabi nawo amandla kulo mbandela, kodwa sikhona ukuze sikuxhase! Khumbula, ungafumana izixhobo ezijolisileyo, umbandela owongezelelekileyo kunye nezinto onokuzisebenzisa koku kwi@global.parent_centre  nanini na. \n\nUnokuphinda ujonge iingcebiso ezingundoqo zokubeka imithetho phantsi kwe@data.parent_centre.my_tips.location_text.",
+  "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!":
+    "Ukuba ngumzali akululanga. Usebenzile ngokunikela ingqalelo ekugcineni umntwana wakho ofikisayo ekhuselekile. \n\nKhumbula, unokufumana inkxaso engakumbi malunga noku @data.workshop.w_safe.in_text_title nanini na uyidinga!",
+  "Remember you can access lots of helpful tips and resources in the @global.parent_centre - this is available for you at any time!":
+    "Khumbula ukuba unokufikelela kwiingcebiso ezininzi eziluncedo kunye nezinto onokuzisebenzisa kwi @global.parent_centre - oku ungakufumana nanini na!",
+  "Are there teens in your family?": "Ngaba kukho abantwana abafikisayo kusapho lwakho?",
+  "This app focuses on families with teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!":
+    "Le app ijolise kwiintsapho ezinabantwana abafikisayo @global.teen_age_bracket, kodwa wamkelekile ukuba uqhubeke - ungafunda izinto eziluncedo kusapho lwakho\n!",
+  "Are there adults in your family?": "Ngaba bakhona abantu abadala kusapho lwakho?",
+  "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!":
+    "Le app ijolise kubazali babantwana abafikisayo @global.teen_age_bracket, kodwa wamkelekile ukuba uqhubeke - ungafunda izinto eziluncedo!",
+  "Are you sure you want to skip this question?": "Uqinisekile ufuna ukuwutsiba lo mbuzo?",
+  "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.":
+    "Khumbula, ukuba UYAPHENDULA, impendulo yakho ihlala ingaziwa ukuba yeyakho.\n\nUngakhetha ukungawuphenduli umbuzo ngokuthikisha kwibhokisi yokuphawula ecaleni kwesilayidi.",
+  'You selected "I would rather not answer"': 'Ukhethe "Ndikhetha ukungaphenduli"',
+  "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!":
+    "Oko kulungile!\n\nKhumbula, ukuba UYAPHENDULA, impendulo yakho ihlala ingaziwa ukuba yeyakho kwaye uza kufumana umbandela olungele wena!",
+  "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
+    "Siyayiqonda ukuba inzima le nto. Siye songeza amacebiso aluncedo angendlela onokuchitha ngalo ixesha nomntwana wakho ofikisayo kwi@data.parent_centre.my_tips.location_text, ngoko ungawafikelela ngoku. \n\nNgenxa yokuba i-@data.workshop.w_1on1.title isisiseko sazo zonke izixhobo zokuba ngumzali, iza kuba yi-@global.weekly_workshop oza kuyifumana kwiveki ezayo!",
+  "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
+    "Usebenzile! I-@global.weekly_workshop elandelayo iza kukunika amacebiso ngale nto, njengesiseko sazo zonke ezinye izixhobo zokuba ngumzali. Kodwa sele unesiqalo esihle!",
+  "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.":
+    "Ukusebenzisa le app kubonisa ukuba umkhathalele umntwana wakho ofikisayo. Kwi-@data.parent_centre.my_tips.location_text siye safaka izixhobo ezibalulekileyo ngendlela onokuncoma ngayo ukuze ukhawuleze uzifikelele.\n\nKwi-@data.workshop.w_praise.in_text_title yethu uza kufunda nangakumbi ngendlela yokusisebenzisa kakuhle esi sakhono.",
+  "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. In our @data.workshop.w_praise.in_text_title you will learn even more how to use this skill well.":
+    "Kuyavuyisa ukuba uyamncoma umntwana wakho ofikisayo! Oku kumnceda azive exatyiswa – ukumkhuthaza kwakho kutsho lukhulu. Kwi-@data.workshop.w_praise.in_text_title yethu uza kufunda nangakumbi ngendlela yokusisebenzisa kakuhle esi sakhono.",
+  "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Kuhle ukuva ukuba le veki ibintle!\n\nSiza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
+  "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
+    "Kuhle ukuva ukuba ubukhulu becala evekini ubuziva uzolile! \n\nSiza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
+  "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!":
+    "Siyayiqonda indlela obunoxinezeleleko ngayo ubomi. Siza kukukhumbuza rhoqo ukuba uphole, uziphawule uze uzivuze, ukuze kukuncede ulawule uxinezeleko lwakho uze uzive uzolile.\n\nSiza kufunda ngakumbi ngokulawula uxinezelelo kwiveki @data.workshop.w_stress.numberye-@global.weekly_workshops - kodwa ungakwazi ukufikelela kwizixhobo eziluncedo phantsi kwe@data.parent_centre.my_tips.location_text ukuze uqalise!",
+  "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.":
+    "Usebenzile. Inzululwazi yengqondo ibonisa ukuba ukulawula umsindo wakho kuphucula ukukhula kwengqondo yomntwana wakho. Zingce.",
+  "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.":
+    "Enkosi ngokunyaniseka. Kukhe kube nzima kakhulu ukulawula uxinezeleko lwethu. Ukuze uzikhathalele size sikuncede uzive uzolile xa izinto zisiba nzima, siza kukukhumbuza rhoqo ukuba uphole, uziphawule uze uzivuze. Ubalulekile!\n\nSIza kufunda malunga nokulawula uxinezeleko kwiveki @data.workshop.w_stress.number ye @global.weekly_workshops, kodwa ungakwazi ukufikelela kwizixhobo eziluncedo phantsi kwe @data.parent_centre.my_tips.location_text ukuze uqalise.",
+  "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.":
+    "Enkosi ngokunyaniseka. Kukhe kube nzima kakhulu ukulawula uxinezeleko lwethu. Siyathemba ukuba izixhobo zethu zokulawula uxinezeleko ziza kuba luncedo kuwe. Unokuzifumana phantsi kwe-@data.parent_centre.my_tips.location_text.",
+  "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.":
+    "Kuhle. Sinoqeqesho malunga nokwenza ibhajethi yosapho enokunceda kuxinezeleko lwemali ngokubanzi ngakumbi kuze kunciphise iingxabano ezinxulumene nemali.",
+  "Money stress can be overwhelming. \n\nWe have a workshop on family budgeting in five weeks, but you can already access some core family budgeting tips under @data.parent_centre.my_tips.location_text!":
+    "Uxinezeleko ngemali lungabangela usindeke kakhulu. \n\nSinoqeqesho malunga nebhajethi yosapho kwiiveki ezintlanu, kodwa ungafikelela kwezinye iingcebiso zokubhajetha kosapho phantsi kwe@data.parent_centre.my_tips.location_text!",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.":
+    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. Ukuze uzinyamekele size sikuncede uzive uzolile xa izinto zisiba nzima, siza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze. Ubalulekile!\n\nKwiveki 5 ye-@global.weekly_workshops, siza kufunda okungakumbi malunga nokulawula uxinezeleko, kodwa sele unako ukufikelela kwizixhobo eziluncedo phantsi kwe-@data.parent_centre.my_tips.location_text.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.":
+    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. \n\nSonke sikhe sizive sisonganyelwa zizinto ngamanye amaxesha kwaye ukusebenzisa i-@global.parent_app linyathelo elihle lokukunceda kunye nentsapho yakho!\n\nIzinto zethu zincede amawaka abazali kunye neentsapho zaye ziyeka ukuba noxinezeleko kwaye zaba nexesha elimnadi kunye. Silapha ukuze sikuxhase.",
+  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.":
+    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. \n\nSiyathemba ukuba izixhobo zokulawula uxinezeleko ziza kukunceda uzive uzolile phantsi kweemeko ezinzima. Ungazifumana phantsi kwe-@data.parent_centre.my_tips.location_text.",
+  "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!":
+    "Oku kuxhalabisa bonke abazali nokuba baphi. Siza kuqinisekisa ukufumana inkxaso yokukwazi ukunxibelelana. \n\nSiza kuthetha ngakumbi malunga nokuceba ukhuseleko lomntwana wakho ofikisayo kwi-@global.weekly_workshops, kodwa phantsi kwe-@data.parent_centre.my_tips.location_text unokufikelela kumacebiso aphambili ukuze ugcine umntwana wakho ofikisayo ekhuselekile!",
+  "This is really great. Parenting is hard, but you’re really succeeding in this.":
+    "Oku kuhle ngeyona ndlela. Ukuba ngumzali kunzima, kodwa uphumelela kakhulu kule nto.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules and safety planning under @data.parent_centre.my_tips.location_text.":
+    "Ukuba ngumzali akululanga. Kunokuba nzima ukwazi indlela yokugcina abantwana bethu abafikisayo bekhuselekile. Njengabazali, siye singabi nawo amandla kulo mbandela, kodwa sikhona ukuze sikuxhase! Kwi-@global.parent_centre ungafikelela kwizixhobo ezithetha ngqo ngalo mbandela, umxholo owongezelelekileyo kunye nezixhobo enokuba kunini na. \n\nUngafikelela kwezinye iingcebiso zokuqala ezisisiseko eziya kunceda xa ubeka imithetho nasekucebeni ukhuseleko phantsi kwe @data.parent_centre.my_tips.location_text.",
+  "@data.workshop.w_rules.tools and @data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.":
+    "@data.workshop.w_rules.tools kunye @data.workshop.w_safe.tools yongezwe ku @data.parent_centre.my_tips.title.",
+  "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules under @data.parent_centre.my_tips.location_text.":
+    "Ukuba ngumzali akululanga. Kunokuba nzima ukwazi indlela yokugcina abantwana bethu abafikisayo bekhuselekile. Njengabazali, siye singabi nawo amandla kulo mbandela, kodwa sikhona ukuze sikuxhase! Kwi-@global.parent_centre ungafikelela kwizixhobo ezithetha ngqo ngalo mbandela, umxholo owongezelelekileyo kunye nezixhobo enokuba kunini na. \n\nUngafikelela kwezona ngcebiso zokuqala zisisiseko eziya kunceda ekubekeni imithetho phantsi kwe@data.parent_centre.my_tips.location_text.",
+  "@data.workshop.w_rules.tools added to @data.parent_centre.my_tips.title.":
+    "I-@data.workshop.w_rules.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
+  "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!":
+    "Ukuba ngumzali akululanga. Usebenzile ngokunikela ingqalelo ekugcineni umntwana wakho ofikisayo ekhuselekile. \n\nKwi-@global.weekly_workshops ezizayo siza kuba nenkxaso engakumbi, ukuba ungathanda ukwazi okungakumbi!",
+  "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.":
+    "Ikhontenti evulwa yile mibuzo uyafumaneka ngoku phantsi kwe@data.parent_centre.my_tips.location_text.",
   "You have just unlocked the first workshop!": "Usanda kuvula uqeqesho lokuqala!",
-  "Every parent in the world is struggling in these hard times. These quick questions will fit this app to your needs.\n\nBe honest. Remember that you are not alone! Millions of parents feel like you do, and we all deserve support.":
-    "Wonke umzali osehlabathini uyasokola ngala maxesha obunzima. Le mibuzo emifutshane iza kwenza le app ifanele iimfuno zakho.\n\nNyaniseka. Khumbula ukuba awukho wedwa! Izigidi zabazali zivakalelwa ngale ndlela uvakalelwa ngayo kwaye sonke siyayidinga inkxaso.",
+  "These quick questions will fit this app to your needs.":
+    "Le mibuzo emifutshane iza kwenza le app ifanele iimfuno zakho.",
   "Let’s start with a few questions about you and your family.":
     "Masiqale ngemibuzo embalwa malunga nawe kunye nentsapho yakho.",
   "We would love to know your first name or nickname:":
@@ -1086,11 +1168,11 @@ export default {
   Friday: "NgoLwesihlanu",
   Saturday: "NgoMgqibelo",
   Sunday: "NgeCawa",
-  "Great! We will unlock a new workshop for your group every week on @local.@local.combo_box . This allows all of you to try what you learned with your families before building the next skill.":
-    "Kulunge kakhulu! Qho ngeveki, siza kuvulela iqela lakho uqeqesho olutsha ku-@local.@local.combo_box . Oku kuza kuvumela ukuba nonke nizame izinto enizifunde kunye neentsapho zenu ngaphambi kokuba nifunde isakhono esilandelayo.",
-  "Great! We will unlock a new workshop for you every week on @local.@local.combo_box . This allows you to try what you learned with your family before building the next skill.":
-    "Kulunge kakhulu! Qho ngeveki, siza kukuvulela uqeqesho olutsha ku-@local.@local.combo_box . Oku kuza kuvumela ukuba uzame izinto ozifunde kunye nentsapho yakho ngaphambi kokuba ufunde isakhono esilandelayo.",
-  "You can always change these settings in your @global.weekly_workshop_options .":
+  "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.":
+    "Kulunge kakhulu! Siza kuvula uqeqesho olutsha lweqela lakho qho ngeveki. Oku kuza kuvumela ukuba nonke nizame izinto enizifunde kunye neentsapho zenu ngaphambi kokuba nifunde isakhono esilandelayo.",
+  "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.":
+    "Kulunge kakhulu! Siza kuvula uqeqsho olutsha qo ngeveki. Oku kuza kuvumela ukuba uzame izinto ozifunde kunye nentsapho yakho ngaphambi kokuba ufunde isakhono esilandelayo.",
+  "You can always change these settings in your @global.weekly_workshop_options.":
     "Unako ukutshintsha olu lungiso nanini na kwi-@global.weekly_workshop_options yakho.",
   "Great!": "Kulunge kakhulu!",
   "I know life can be hard. I’m proud of you. \n\nWhatever you are feeling, it’s great that you are here!":
@@ -1100,8 +1182,11 @@ export default {
     "Kuhle ukukubona!\n\nOkokuqala, masincede iqela lakho liqalise.",
   "Agree on your ground rules together:\n* Which day(s)/time(s) will we meet in the week?\n* Who will hold the phone(s) during our activities?\n* How can we make sure everyone can share freely?\n* What can we do so we all feel respected?":
     "Okokuqala vumelanani ngemithetho ebalulekileyo:\n* Zeziphi iintsuku/amaxesha esiza kudibana ngawo evekini?\n* Ngubani oza kubamba ifowuni xa sisenza izinto?\n* Yintoni esinokuyenza ukuze siqiniseke ukuba wonke umntu uthetha ngokukhululekileyo?\n* Yintoni esinokuyenza ukuze sonke sizive sihlonitshwa?",
-  "You always can change your workshop day and your group name in the @global.weekly_workshop_options .":
+  "You always can change your workshop day and your group name in the @global.weekly_workshop_options.":
     "Unako ukulitshintsha nanini na usuku loqeqesho lwenu kunye negama leqela lakho kwi-@global.weekly_workshop_options.",
+  "Some rules that other groups made:": "Eminye imithetho eyenziwe ngamanye amaqela:",
+  "* Tuesday at 7pm is our @global.parent_app time together\n* Take turns holding the phone (1 activity per person)\n* Accept each other’s experiences. We are all different!\n* Take turns speaking and listening\n* All questions are welcome\n* What we share stays among us":
+    "* Ngolwesibini ngo 7pm lixesha lethu le@global.parent_app sisonke\n* Ukutshintshana ngokubamba ifowuni (umsebenzi om-1 kumntu ngamnye)\n* Yamkela amava omnye nomnye. Sisonke sahlukile!\n* Tshintshanani ngokuthetha nokumamela\r\n\n* Yonke imibuzo yamkelekile\n* Oko sabelana ngako kuphelela phakathi kwethu",
   "You are a star! \n\nEvery day, recognise something you have done well. Reward yourself with something that makes you happy. And take a deep breath to relax. \n\nRemember, you earn a @global.parent_point every time you care for yourself - you matter!":
     "Ungu ngqa phambili! \n\nYonke imihla, khumbula into oyenze kakuhle. Zivuze ngokuzenzela into ekwenza wonwabe. Tsala umoya ukuze uphole. \n\nUkhumbule ukuba ufumana i-@global.parent_point qho uzikhathalela - ubalulekile!",
   "Being a parent can be so hard. Sometimes it feels like our children never listen to us.\n\nBut science shows that spending just a few minutes each day of focused one-on-one time with your teen helps build trust and love.":
@@ -1145,13 +1230,11 @@ export default {
     "Kuhle ngeyona ndlela! SIyazingca ngawe ngazo zonke izinto ozenzileyo kwezi veki zidlulileyo.",
   "We’re sorry it’s a difficult day. We are proud of you for all you have done over the past weeks.":
     "Sibuhlungu yimini enzima le. SIyazingca ngawe ngazo zonke izinto ozenzileyo kwezi veki zidlulileyo.",
-  "@global.home_practice_problem_solving: @global.w_crisis":
-    "@global.home_practice_problem_solving: @global.w_crisis",
   "Well done!": "Usebenzile!",
   "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future parenting support.":
     "SIVUYISANA NAWE! Uphumelele! Uye wakha izakhono ezili-11 zokuba ngumzali. \n\nUphumeze into enkulu. Kubonisa ukuba uyikhathalele intsapho yakho. \n\nMasikuvuyele size sicebe indlela yokukuxhasa njengomzali kwixesha elizayo.",
-  "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future ParentApp support.":
-    "SIVUYISANA NAWE! Uphumelele! Uye wakha izakhono ezili-11 zokuba ngumzali. \n\nUphumeze into enkulu. Kubonisa ukuba uyikhathalele intsapho yakho. \n\nMasikuvuyele size sicebe inkxaso yexesha elizayo kwi-ParentApp.",
+  "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.":
+    "SIVUYISANA NAWE! Uphumelele! Uye wakha izakhono ezili-11 zokuba ngumzali. \n\nUphumeze into enkulu. Kubonisa ukuba uyikhathalele intsapho yakho. \n\nMasikuvuyele size sicebe inkxaso yexesha elizayo kwi-@global.parent_app.",
   "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout.":
     "Molweni, kuni nonke.\n\nUmxholo wanamhlanje ungokubhiyoza kunye namanyathelo alandelayo.\n\nBekumangalisa, bekumnandi ukuba kunye nawe kolu hambo. Namhlanje sibhiyozela uhambo lwethu kunye. \n\nNamhlanje sibhiyozela zonke izinto esizifundileyo kulo lonke uqeqesho.",
   "Today you will celebrate, look back and look ahead:":
@@ -1162,7 +1245,11 @@ export default {
     "Namhlanje uyabhiyoza uze ucinge ngamava akho.",
   "You and your family have learnt so much. Let's think back and see what has changed.":
     "Wena nentsapho yakho nifunde into eninzi gqitha. Makhe sibuyele emva size sibone izinto ezitshintshileyo.",
-  "Reflect with Sbo": "Khawucinge kunye noSbo",
+  Reflect: "Ukucinga emva",
+  "Listen and reflect": "Mamela uze ucingisise",
+  "Read and reflect": "Funda uze ucingisise",
+  "Close eyes and relax.\n\nThink of your family life before you started your journey with this app.\n       \nThink back of skills you learned:\n* Self-care\n* One-on-one time\n* Praise\n* Positive instructions\n* Managing stress\n* Family budgeting\n* Rules\n* Calm consequences\n* Problem solving\n* Teen safety\n* Dealing with crisis\n\nReflect on the journey – how was it for you to:\n* Share ideas and experiences\n* Reflect on and learn from the stories\n* Practice skills with your teen\n\nDid anything change for you and your family?\n\nWhat do you need to continue to use skills?":
+    "Vala amehlo uze uphole.\n\nCinga ngobomi bosapho lwakho ngaphambi kokuba waqalisa uhambo lwakho ngale app.\n       \nCinga ngezakhono oye wazifunda:\n* Ukuzikhathalela\n* Ixesha enilichitha kunye\n* Ncoma\n* Imiyalelo eyakhayo\n* Ukulawula uxinezeleko\n* Ibhajethi yosapho\n* Imithetho\n* Imiphumo ezolileyo\n* Ukusombulula iingxaki\n* Ukhuseleko lwabantwana abafikisayo\n* Ukuhlangabezana neengxaki\n\nCingisisa ngohambo – belunjani kuwe:\n* Ncokolani ngamacebiso nangamava\n* Cingisisa uze ufunde kumabali\n* Qhelisela izakhono kunye nomntwana wakho ofikisayo\n\nNgaba kukho nto itshintshileyo kuwe nakusapho lwakho?\n\nYintoni oyidingayo ukuze uqhubeke usebenzisa izakhono?",
   "Let's talk about what has changed.": "Makhe sithethe ngezinto ezitshintshileyo.",
   "Discuss together:\n* What has changed in your family?\n* What are you proud of that you have done?\n\nRemember to praise and encourage each other!":
     "Ncokolani kunye:\n* Yintoni etshintshileyo kwintsapho yakho?\n* Zintoni onebhongo ngokuzenza?\n\nNingalibali ukuncoma kunye nokukhuthazana!",
@@ -1180,6 +1267,8 @@ export default {
   SHARE: "YABELANANI",
   "Share @global.parent_app and help other families start their journey.":
     "Yabelanani nge-@global.parent_app nize nincede ezinye iintsapho ziqale uhambo lwazo.",
+  "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
+    "Uye wasebenzisa i@global.parent_app kwezi nyanga zidlulileyo, kodwa ukuba ngumzali kumntwana ofikisayo kokwexesha elide!  Imibuzo elandelayo malunga namava akho okuba ngumzali iza kusinceda sihlole ukuba ngumzali kwakho.\n\nNyaniseka. Ukhumbule ukuba izigidi zabazali zivakalelwa ngale ndlela ovakalelwa ngayo kwaye sonke siyayifuna inkxaso. Awukho wedwa!",
   "Plan how you will support each other going forward. \n\nYou can use the ideas from other families, or make up your own!":
     "Cebani ngendlela eniza kuxhasana ngayo ukususela ngoku. \n\nNingasebenzisa amacebiso avela kwezinye iintsapho okanye nizicingele awenu!",
   "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!":
@@ -1191,8 +1280,6 @@ export default {
     "Kuyavuyisa ukuva ukuba uziva kamnandi namhlanje. Uyamangalisa!",
   "Sorry that things are difficult right now. Take a deep breath and know that you are valued.":
     "Uxolo ngokuba iimeko zinzima kanye ngoku. Tsala umoya uze uzazi ukuba uyaxatyiswa.",
-  "@global.home_practice_problem_solving: @global.w_rules":
-    "@global.home_practice_problem_solving: @global.w_rules",
   "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do this matters. \n\nGetting consequences right helps teens behave better and makes family life calmer...":
     "Unganceda umntwana wakho ofikisayo ayiqonde ukuba kukho imiphumo xa engayithobeli imithetho yekhaya. \n\nKodwa INDLELA okwenza ngayo oku ibalulekile. \n\nUkunika imiphumo ngendlela efanelekileyo kunceda abantwana abafikisayo baziphathe kakuhle kuze kwenze ubomi bentsapho buzole...",
   "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible.":
@@ -1215,8 +1302,6 @@ export default {
     "Ncokolani kunye: \n* Kutheni ukuza nemiphumo elolu hlobo kungakhange kusebenze?",
   "Giving a consequence this way did not work well because...":
     "Ukuza nemiphumo ngolu hlobo akuzange kusebenze kakuhle ngenxa yokuba...",
-  "Why did giving a consequence this way not work well?":
-    "Kutheni ukuza nemiphumo elolu hlobo kungakhange kusebenze?",
   "@global.w_consequence_male_caregiver was angry":
     "@global.w_consequence_male_caregiver bendinomsindo",
   "@global.w_consequence_male_caregiver did not let @global.w_consequence_teen_boy_1 explain":
@@ -1224,6 +1309,8 @@ export default {
   "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1":
     "Imiphumo ayizange incokolwe kwangaphambili no- @global.w_consequence_teen_boy_1",
   "The consequence was too strong": "Umphumo ubungqongqo kakhulu",
+  "Why did giving a consequence this way not work well?":
+    "Kutheni ukuza nemiphumo elolu hlobo kungakhange kusebenze?",
   "Yes, a strong reaction like that just made everyone more angry and upset.":
     "Ewe, intsabelo erhabaxa ngolo hlobo yenze wonke umntu wanomsindo kakhulu waza wacaphuka.",
   "Teenagers often break rules. Growing up is a difficult time when they are learning about who they are. \n\nLuckily, there are ways to discipline your teen without getting angry or using violence… and they work well!\n\nGiving calm consequences helps teach our children responsibility for what they do – good and bad. \n\nHere are some examples - imagine you are the parent:":
@@ -1268,14 +1355,14 @@ export default {
     "Ncokolani kunye:\n* Yiyiphi imithetho abantwana bakho abafikisayo abathanda ukuyaphula? \n* Nguwuphi umphumo onokuwusebenzisa kumgaqo ngamnye owaphulayo? \n\nImiphumo ifanele ibe: \nSESIKWENI, (kungekhona ngqwabalala kakhulu)\nIKHAWULEZE (kwenze ngokungxamisekileyo) \nNGOKUQHUBEKAYO (ngendlela efanayo rhoqo).\n\nNcomanani nize nikhuthazane – sinokomelezana!",
   "Let's go back to @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver":
     "Masibuyele ku @global.w_consequence_teen_boy_1 neyakhe i @global.w_consequence_male_caregiver",
-  '@global.w_consequence_male_caregiver: "I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1 . What can we do to help you remember to come home in time?"\n\n@global.w_consequence_teen_boy_1: "If I come home in time, maybe I can stay up 30 minutes later than usual?"':
-    '@global.w_consequence_male_caregiver: "Iyandixhalabisa into yokuba usoloko ubuya emva kwexesha endlini, @global.w_consequence_teen_boy_1 . Singenza ntoni ukukunceda ukhumbule ukugoduka kwangexesha?"\n\n@global.w_consequence_teen_boy_1: "Ukuba ndigoduka kwangethuba, mhlawumbi ndingashiywa lixesha ngemizuzu engama-30?"',
+  '@global.w_consequence_male_caregiver: "I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1. What can we do to help you remember to come home in time?"\n\n@global.w_consequence_teen_boy_1: "If I come home in time, maybe I can stay up 30 minutes later than usual?"':
+    '@global.w_consequence_male_caregiver: "Iyandixhalabisa into yokuba usoloko ubuya emva kwexesha endlini, @global.w_consequence_teen_boy_1. Singenza ntoni ukukunceda ukhumbule ukugoduka kwangexesha?"\n\n@global.w_consequence_teen_boy_1: "Ukuba ndigoduka kwangethuba, mhlawumbi ndingashiywa lixesha ngemizuzu engama-30?"',
   "@global.w_consequence_male_caregiver: That is a good idea! And what should we do if you don’t follow the rule?  \n\n@global.w_consequence_teen_boy_1 (mumbles): “Mgmluuhm”":
     "@global.w_consequence_male_caregiver: YIngcamango entle leyo! Yaye simele senzeni xa ungawuthobeli lo mthetho?  \n\n@global.w_consequence_teen_boy_1 uyambombozela): “Mgmluuhm”",
   '@global.w_consequence_male_caregiver: "Oh come on, I know you have some ideas."\n\n@global.w_consequence_teen_boy_1: "Okay…. What about: I have to do my homework?"':
     '@global.w_consequence_male_caregiver: "Yitsho kaloku, ndiyayazi ikhona into oyicingayo."\n\n@global.w_consequence_teen_boy_1: "Kulungile…. Kuthekani: Ndimele ndiyokwenza umsebenzi wam wesikolo?”',
-  '@global.w_consequence_male_caregiver: "You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day."\n\n@global.w_consequence_teen_boy_1: "Okay, @global.w_consequence_male_caregiver ."':
-    '@global.w_consequence_male_caregiver: "Umsebenzi wakho wesikolo umele ukuba uwenzile kakade. Ukuba uyawulibala lo mthetho, kusengqiqweni ukuba ungadibani neetshomi zakho ngomso."\n\n@global.w_consequence_teen_boy_1: "Kulungile, @global.w_consequence_male_caregiver ."',
+  '@global.w_consequence_male_caregiver: "You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day."\n\n@global.w_consequence_teen_boy_1: "Okay, @global.w_consequence_male_caregiver."':
+    '@global.w_consequence_male_caregiver: "Umsebenzi wakho wesikolo umele ukuba uwenzile kakade. Ukuba uyawulibala lo mthetho, kusengqiqweni ukuba ungadibani neetshomi zakho ngomso."\n\n@global.w_consequence_teen_boy_1: "Kulungile, @global.w_consequence_male_caregiver."',
   "The next day...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is it! It is late!”":
     "Ngengomso...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! Ngubani ixesha ngoku! Selibethile ixesha!”",
   "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep.”  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”":
@@ -1284,13 +1371,11 @@ export default {
     "@global.w_consequence_teen_boy_1: “Ndingachaza,@global.w_consequence_male_caregiver, ndingakwazi.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, kusezinzulwini zobusuku yaye ubuye ekhaya emva kwexesha ebesivumelene ngalo. Noba siyintoni isizathu, umele uqonde ukuba ayamkelekanga loo nto. @global.w_consequence_female_caregiver yaye ndikhathazeke nyhani.”",
   "@global.w_consequence_teen_boy_1: “My friends wanted me to stay longer. They were calling me a baby for having to go home already.” \n\n@global.w_consequence_male_caregiver: “I know it can be hard to say no to your friends. Let’s talk more about this in the morning when we have had some rest.”":
     "@global.w_consequence_teen_boy_1: “Abahlobo bam bathe makhe ndihlale ixeshana. Bebesithi ndilusana kuba ndifuna ukugoduka kwangoko.” \n\n@global.w_consequence_male_caregiver: “Ndiyazi kunganzima ukuthi hayi kubahlobo bakho. Masithethe ngakumbi ngale nto kusasa xa siye saphumla.”",
-  "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver .” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”":
-    "@global.w_consequence_teen_boy_1: “Uxolo ngokukukhathaza yaye @global.w_consequence_female_caregiver .“ \n\n@global.w_consequence_male_caregiver: “Enkosi. Hamb’ uyolala ke ngoku, kodwa uze wazi, ukuba ubuye ekhaya sekubethe ixesha ebesivumelene ngalo, awuvumelekanga ukuphuma ngokuhlwa kwangomso.”",
+  "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver.” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”":
+    "@global.w_consequence_teen_boy_1: “Uxolo ngokukukhathaza yaye @global.w_consequence_female_caregiver.“ \n\n@global.w_consequence_male_caregiver: “Enkosi. Hamb’ uyolala ke ngoku, kodwa uze wazi, ukuba ubuye ekhaya sekubethe ixesha ebesivumelene ngalo, awuvumelekanga ukuphuma ngokuhlwa kwangomso.”",
   "Let's talk about this story": "Masithethe ngeli bali",
   "Using a consequence worked well this time because...":
     "Ukusebenzisa umphumo kusebenze kakuhle kweli tyeli ngenxa yokuba...",
-  "Why did using a consequence work well this time?":
-    "Kutheni ukusebenzisa umphumo kusebenze kakuhle kweli tyeli?",
   "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm":
     "@global.w_consequence_teen_boy_1 nowakhe u @global.w_consequence_male_caregiver bancokole ngemiphumo bobabini bezolile",
   "They agreed on consequences together": "Bavumelene bobabini ngemiphumo",
@@ -1299,6 +1384,8 @@ export default {
   "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1":
     "@global.w_consequence_male_caregiver umphulaphule u @global.w_consequence_teen_boy_1",
   "The consequence was realistic and appropriate": "Umphumo ubusengqiqweni yaye ufanelekile",
+  "Why did using a consequence work well this time?":
+    "Kutheni ukusebenzisa umphumo kusebenze kakuhle kweli tyeli?",
   "What would be a calm consequence for your teenagers arguing with each other during dinner? \n\nRemember it needs to be: \nFAIR - IMMEDIATE - CONSISTENT":
     "Ubuya kuthi umphumo ozolileyo kubantwana bakho abafikisayo abaphikisanayo ebudeni besidlo unjani? \n\nKhumbula kufuneka ube: \nMHLE NOKO - UNGXAMISEKE - UQHUBEKE",
   "Not seeing any friends for a month": "Ukungababoni abahlobo bam kangangenyanga",
@@ -1322,8 +1409,6 @@ export default {
     "Kuhle kuba namhlanje izinto zihamba kakuhle! Yintoni into enye ehambe kakuhle namhlanje? Khumbula ukuzincoma ngaloo nto.",
   "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.":
     "Uxolo ngokuva ukuba uxakanisekile namhlanje. Wenze kakuhle ngokuphawula ezo mvakalelo, nokuzama ukuzola uze uzicingele. Umisela umzelelo obalaseleyo kwintsapho yakho.",
-  "@global.home_practice_problem_solving: @global.w_safe":
-    "@global.home_practice_problem_solving: @global.w_safe",
   "Every small thing you do matters. We hope you are proud of yourself too.":
     "Neyona nto incinci oyenzayo ibalulekile. Siyathemba ukuba uyazidla ngesiqu sakho nawe.",
   "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.":
@@ -1342,8 +1427,8 @@ export default {
     '@global.w_crisis_teen_girl_1: "Ngumalume, u… u… undibambile."  \n\n@global.w_crisis_female_caregiver (ecinga): "Khawuthath’ umoya... Ufuna ntoni umntanam? Ufuna ndizole ndize ndiphulaphule" \n\n@global.w_crisis_female_caregiver: "Yizokuhlala apha ecaleni kwam. Thath’ ixesha lakho, ndiphulaphule.”',
   '@global.w_crisis_teen_girl_1: "It’s true, he… he… made me do it! He made me have sex with him! I didn’t want to, I swear, and I even said NO, but he told me I would be in trouble."\n\n@global.w_crisis_female_caregiver: "Thank you for sharing this with me. You are not in trouble. This is not your fault."':
     '@global.w_crisis_teen_girl_1: "Yinyani, u… u… the mandiyenze! Uthe mandilale naye! Bendingafuni, ndiyafunga, ndide ndathi HAYI, kodwa uthe ndiza kuba sengxakini."\n\n@global.w_crisis_female_caregiver: Enkosi ngokundichazela le nto. Awukho sengxakini. Asilotyala lakho eli.”',
-  '@global.w_crisis_teen_girl_1: "Yesterday when you went to see @global.w_crisis_adult_friend . He just came and that’s when it happened."\n\n@global.w_crisis_female_caregiver:  "It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?"\n\n@global.w_crisis_teen_girl_1: "My school?"':
-    '@global.w_crisis_teen_girl_1: "Izolo xa ubuyokubona @global.w_crisis_adult_friend . Ufikile nje yaye yenzeke ngelo xesha le nto."\n\n@global.w_crisis_female_caregiver:  "Kulungile, ndiyakukholelwa mntana. Inkulu le nto yaye siza kufumana indlela yokufumana uncedo esiludingayo. Singaya phi ukuze sifumane uncedo?"\n\n@global.w_crisis_teen_girl_1: "Esikolweni sam?"',
+  '@global.w_crisis_teen_girl_1: "Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened."\n\n@global.w_crisis_female_caregiver:  "It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?"\n\n@global.w_crisis_teen_girl_1: "My school?"':
+    '@global.w_crisis_teen_girl_1: "Izolo xa ubuyokubona @global.w_crisis_adult_friend. Ufikile nje yaye yenzeke ngelo xesha le nto."\n\n@global.w_crisis_female_caregiver:  "Kulungile, ndiyakukholelwa mntana. Inkulu le nto yaye siza kufumana indlela yokufumana uncedo esiludingayo. Singaya phi ukuze sifumane uncedo?"\n\n@global.w_crisis_teen_girl_1: "Esikolweni sam?"',
   '@global.w_crisis_female_caregiver: "Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?"\n\n@global.w_crisis_teen_girl_1: "Yes… Okay… But will you come with me?"':
     '@global.w_crisis_female_caregiver: "Yha, masiye siye ekliniki. Baza kuyazi ukuba masenze ntoni ukuze uncedakale. Ngaba ivakala ilungile loo nto kuwe?\n\n@global.w_crisis_teen_girl_1: "Ewe… Ilungile… Kodwa ungahamba nam?"',
   '@global.w_crisis_female_caregiver: "Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this."':
@@ -1364,8 +1449,8 @@ export default {
     '@global.w_crisis_teen_boy_1: "Bendingafuni, kodwa bendingenakubukela nje ndibavumele babethe umhlobo wam, ngoko…"\n\n@global.w_crisis_male_caregiver_1: "Ngoko, ulwile ukuze ukhusele umhlobo wakho?"',
   '@global.w_crisis_teen_boy_1: “Everyone was fighting. I saw someone lying on the field in a pool of blood. He looked… dead."':
     '@global.w_crisis_teen_boy_1: “Wonke umntu ebesilwa. Ndibone umntu ebaleni kububutyadidi ligazi. Ebekhangeleka … eswelekile."',
-  '@global.w_crisis_male_caregiver_1: "I am glad you are telling me about this, @global.w_crisis_teen_boy_1 . Let’s sit down together now and discuss whether we should involve the police or someone else to help."':
-    '@global.w_crisis_male_caregiver_1: "Ndiyavuya ngokundixelela ngale nto, @global.w_crisis_teen_boy_1 . Ngoku masihlale kunye phantsi size sincokole ngokuba simele sifake amapolisa okanye omnye umntu oza kusinceda.”',
+  '@global.w_crisis_male_caregiver_1: "I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help."':
+    '@global.w_crisis_male_caregiver_1: "Ndiyavuya ngokundixelela ngale nto, @global.w_crisis_teen_boy_1. Ngoku masihlale kunye phantsi size sincokole ngokuba simele sifake amapolisa okanye omnye umntu oza kusinceda.”',
   '@global.w_crisis_teen_boy_1: "Thank you, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: "We will get through this. Remember, we will support you as a family."':
     '@global.w_crisis_teen_boy_1: "Enkosi, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: “Siza kudlula kule nto. Khumbula, siya kukuxhasa njengentsapho.”',
   "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!":
@@ -1389,16 +1474,16 @@ export default {
     "Kuluncedo ukuqhelisela ukuhlangabezana nengxaki ngaphambi kokuba yenzeke. \n\nKhawujonge ezi zihlandlo zihlanu zeengxaki zentsapho. Khawuzibone ungumzali. Ubungenza ntoni?\n\nKhumbula:  PHEFUMLA - PHULAPHULA - CINGA",
   "Crisis 1: @global.w_crisis_teen_boy_2 fights at school":
     "Ingxaki 1: @global.w_crisis_teen_boy_2 imilo yasesikolweni",
-  '"I’ve never done this before. And now they will expel me"':
-    '"Andizange ndiyenze le nto ngaphambili. Yaye ngoku baza kundigxotha"',
+  '@global.w_crisis_teen_boy_2: "I’ve never done this before. And now they will expel me"':
+    '@global.w_crisis_teen_boy_2: "Andizange ndiyenze le nto ngaphambili. Yaye ngoku baza kundigxotha"',
   "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant":
     "Ingxaki 2: @global.w_crisis_teen_girl_1 uyakhulelwa",
-  '"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do"':
-    '"@global.w_crisis_male_caregiver_1, Ndineentloni ezingathethekiyo. Andazi ukuba mandenze ntoni"',
+  '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do"':
+    '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, Ndineentloni ezingathethekiyo. Andazi ukuba mandenze ntoni"',
   "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant":
     "Ingxaki 3: @global.w_crisis_teen_boy_2 umithisa intombazana",
-  '"@global.w_crisis_male_caregiver_2, I don’t want to have a baby"':
-    '"@global.w_crisis_male_caregiver_2, Andifuni ukuba nomntwana"',
+  '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, I don’t want to have a baby"':
+    '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, Andifuni ukuba nomntwana"',
   "How could you respond to @global.w_crisis_teen_boy_2?":
     "Ungasabela njani ku @global.w_crisis_teen_boy_2?",
   "Crisis 4: Someone in the family gets sick": "Ingxaki 4: Kugula umntu entsatsheni",
@@ -1407,8 +1492,8 @@ export default {
   "How could you respond in this situation?": "Ungasabela njani kule meko?",
   "Crisis 5: @global.w_crisis_teen_girl_1 is pressured into sex by her boyfriend":
     "Ingxaki 5: @global.w_crisis_teen_girl_1 unyanzelwa lisoka lakhe ukuba alale nalo",
-  '"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared..."':
-    '"Enyanisweni bendingafuni. Ngoku ndiza kumitha okanye ndigule. @global.w_crisis_female_caregiver, Ndoyika kakhulu..."',
+  '@global.w_crisis_teen_girl_1: "I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared..."':
+    '@global.w_crisis_teen_girl_1: "Enyanisweni bendingafuni. Ngoku ndiza kumitha okanye ndigule. @global.w_crisis_female_caregiver, Ndoyika kakhulu..."',
   "How could you respond to @global.w_crisis_teen_girl_1?":
     "Ungasabela njani ku @global.w_crisis_teen_girl_1?",
   "Remember to support and encourage each other. It is hard to remain calm and listen to each other in a crisis - we are proud of you.":
@@ -1426,8 +1511,6 @@ export default {
     "Uxolo ngokuba iimeko zinzima. Zonke iintsapho zitsala nzima. Sikholo ukukunceda!",
   "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!":
     "Nantoni na engahambanga kakuhle namhlanje, yilibale uze uze uzame kwakhona ngomso Kulungile!",
-  "@global.home_practice_problem_solving: @global.w_praise":
-    "@global.home_practice_problem_solving: @global.w_praise",
   "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference.":
     "Nikela iingqalelo kwizinto ezintle! \n\nUkuxelela abantwana bethu abafikisayo ukuba sifuna BENZE ntoni kusebenza bhetele kunokubaxelela ukuba BAYEKE ukwenza into ethile.\n\nUza kuwubona umahluko",
   "Greetings, greetings everyone.\n\nToday our topic is positive instructions. \n\nIt is important to give positive instructions to our children, because when we give them positive instructions they know and understand what we are expecting them to do, and they do it the way we want them to do it. \n\nSo, at the end it keeps everyone happy.":
@@ -1472,8 +1555,8 @@ export default {
     "Enkosi ngokucinga ngolu hlobo! \n\nMakhe sibuyele umva size sibone ukuba kwenzekani ukuba u @global.w_instruct_female_caregiver unikela umyalelo ofanelekileyo:",
   '@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance."\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”':
     '@global.w_instruct_female_caregiver ebecoca indlu ngoxa u @global.w_instruct_teen_girl ebeqhelisela umdaniso. nezihlobo zakhe.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, kumnandi ukunibona niqhelisela umdaniso nomhlobo wakho. Ndicela niye phandle ndizogqibezela ukucoca indlu. Emva koko, ningandibonisa umdaniso wenu."\n\n@global.w_instruct_teen_girl: "Kulungile, @global.w_instruct_female_caregiver ."',
-  '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl . Now I have some time to watch your dance."':
-    '@global.w_instruct_female_caregiver: "Enkosi ngokuqhelisela phandle ngoxa ndigqibezela ukucoca, @global.w_instruct_teen_girl . Ngoku ndinexesha lokubukela umdaniso wenu."',
+  '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance."':
+    '@global.w_instruct_female_caregiver: "Enkosi ngokuqhelisela phandle ngoxa ndigqibezela ukucoca, @global.w_instruct_teen_girl. Ngoku ndinexesha lokubukela umdaniso wenu."',
   '@global.w_instruct_female_caregiver: "Wow, @global.w_instruct_teen_girl! You have such good dance moves!"':
     '@global.w_instruct_female_caregiver: "Wow, @global.w_instruct_teen_girl! Nidanisa kamnandi sukani madoda!"',
   "Let's discuss what happened this time.": "Makhe sincokole ngento eyenzekileyo kweli ityeli.",
@@ -1515,8 +1598,6 @@ export default {
   "Caring for yourself is so essential.": "Ukuzinyamekela kubaluleke kakhulu!",
   "Wonderful, I am so happy things are going well. Keep up the good work.":
     "Kuhle, ndivuya kakhulu izinto zihamba kakuhle Qhubeka nalo msebenzi mhle.",
-  "@global.home_practice_problem_solving: @global.w_stress":
-    "@global.home_practice_problem_solving: @global.w_stress",
   "Take a moment and just be impressed at what you’ve achieved, despite all the other things you have to do each day.":
     "Khawuthathe ithuba uze uvuyiswe yiloo nto uyifezileyo, ngaphandle kwazo zonke ezinye izinto ekufuneka uzenzile usuku ngalunye.",
   "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.":
@@ -1557,11 +1638,11 @@ export default {
     "Jongani uluhlu lwenu lwezinto enisebenzisa imali kuzo nize nikhethe:\n* Zezphi IZIDINGO ongenakuphila ngaphandle kwazo? Ngoba?\n* Zeziphi IIMFUNO ongathanda nje ukuba nazo kodwa ezingabalulekanga? Ngoba? \n* Zeziphi izinto eninokuzama ukungachithi mali eninzi kuzo?",
   "Make a budget!": "Yenzani ibhajethi!",
   "Make a budget as one big family!": "Yenza ibhajethi njengentsapho enye enkulu!",
-  '* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
-    "* Umntu omnye uya kuvolontiya ukusichazela ngoluhlu lwakhe (Ukuba akukho mntu uvolontiyayo ningenza uluhlu olutsha ninonke) \n* Thathani iindima - abanye iya kuba ngabantu abadala, abanye ibe ngabantwana abafikisayo. \n* Gqibani ukuba umvuzo wenu wenyanga uza kuba yimalini.\n* Thathani amanye amatye okanye iimbotyi okanye nantoni na enamasuntswana amaninzi - lo ngumvuzo wakho wenyanga. \n(Ngokomzekelo: Ukuba umvuzo wakho yi-$100, yaye uneembotyi ezingama-20, mbotyi nganye yi-$5.  \n* Gqibani kunye ukuba niza kuthenga ntoni ngemali,uze ubeke amatye/ izinto kuloo mfanekiso. \n\nAniqinisekanga ngesigqibo senu? Ninengxaki ukwahlula phakathi “kwezidingo” “neemfuno”? Akukho ngxaki konke konke!",
+  '* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
+    "* Umntu omnye uza kuvolontiya aze asichazele ngoluhlu lwakhe (Ukuba akukho mntu uvolontiyayo ningenza uluhlu olutsha ninonke) \n* Dlalani iindima - abanye iya kuba ngabantu abadala, abanye ibe ngabantwana abafikisayo. \n* Gqibani ukuba umvuzo wenu wenyanga uza kuba yimalini.\n* Thathani amatye ambalwa okanye iimbotyi okanye nantoni na enamasuntswana amaninzi - lo ngumvuzo wakho wenyanga. \n(Ngokomzekelo: Ukuba umvuzo wakho yi-@global.currency@local.monthly_income, kwaye uneembotyi ezi-@local.number_of_beans,  imbotyi nganye yi-@global.currency@local.bean_value.)  \n* Gqibani kunye ukuba niza kuthenga ntoni ngemali, uze ubeke amatye/ izinto kuloo mfanekiso. \n\nAniqinisekanga ngesigqibo senu? Ninengxaki ukwahlula phakathi “kweentswelo” “neemfuno”? Akukho ngxaki konke konke!",
   "Make a budget as a family!": "Yenzani ibhajethi njengentsapho!",
-  '* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is $100, and you have 20 beans, each bean is $5.  \n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
-    "* Bhala phantsi ukuba uyimalini umvuzo wakho wenyanga.\n* Thathani amanye amatye okanye iimbotyi okanye nantoni na enamasuntswana amaninzi - lo ngumvuzo wakho wenyanga. \n(Ngokomzekelo: Ukuba umvuzo wakho yi-$100, yaye uneembotyi ezingama-20, mbotyi nganye yi-$5.  \n* Gqibani ukuba niza kuthenga ntoni ngemali,uze ubeke amatye/ izinto kuloo mfanekiso. \n\nAniqinisekanga ngesigqibo senu? Ninengxaki ukwahlula phakathi “kwezidingo” “neemfuno”? Akukho ngxaki konke konke!",
+  '* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
+    "* Bhala phantsi ukuba uyimalini umvuzo wakho wenyanga.\n* Thathani amatye ambalwa okanye iimbotyi okanye nantoni na enamasuntswana amaninzi - lo ngumvuzo wakho wenyanga. \n(Ngokomzekelo: Ukuba umvuzo wakho yi-@global.currency@local.monthly_income, kwaye uneembotyi ezi-@local.number_of_beans,  imbotyi nganye yi-@global.currency@local.bean_value.)\n* Gqibani ukuba niza kuthenga ntoni ngemali, uze ubeke amatye/ izinto kuloo mfanekiso. \n\nAniqinisekanga ngesigqibo senu? Ninengxaki ukwahlula phakathi “kweentswelo” “neemfuno”? Akukho ngxaki konke konke!",
   "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:":
     "Niqhube kakuhle, sele nigqibe amanyathelo ama-3 okuqala! \n\nMakhe sibone indlela u @global.w_money_grandma asenze ngayo isicwangciso sakhe ngemali, kanye njengokuba wenzile:",
   '"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!"':
@@ -1577,8 +1658,8 @@ export default {
   "What are your  family savings goals?": "Luthini usukelo lwentsapho yakho lokonga?",
   "Such great goals! \n\nSuch a great goal! When we make a good budget and saving plan together, we can achieve it and feel proud of ourselves!":
     "Lusukelo oluhle kakhulu olo! \n\nLusukelo oluhle kakhulu olo! Xa sisenza ibhajethi entle nesicwangciso sokonga sikunye, singaphumelela size sizidle ngeziqu zethu!",
-  "We all have dreams for our family, just like @global.w_money_grandma . By setting aside a bit of money every month, you can realise them too!":
-    "Sonke sinamaphupha ngeentsapho zethu, kanye njengo @global.w_money_grandma . Ngokubekela ecaleni intwana yemali nyanga nganye, bangazeka emzekweni",
+  "We all have dreams for our family, just like @global.w_money_grandma. By setting aside a bit of money every month, you can realise them too!":
+    "Sonke sinamaphupha ngeentsapho zethu, kanye njengo @global.w_money_grandma. Ngokubekela ecaleni intwana yemali nyanga nganye, bangazeka emzekweni",
   "What are your family savings goals?": "Luthini usukelo lwentsapho yakho lokonga?",
   "Such a great goal! \n\nBy making a good budget and saving plan, you can achieve it and feel proud of yourself!":
     "Lusukelo oluhle kakhulu olo! \n\nXa sisenza ibhajethi entle nesicwangciso sokonga, ningaphumelela nize nizidle ngeziqu zenu!",
@@ -1643,8 +1724,6 @@ export default {
     "Uxolo ngoba usuku lwakho alukuhambeli kakuhle. Wenze kakuhle ngokuzama ukubona yonke into. Akakho umntu onazo zonke iimpendulo kodwa eneneni wenza konke okusemandleni akho!",
   "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!":
     "Uxolo ngokuva ukuba alumnandanga usuku lwakho. Uqhube kakuhle ngokuvuka rhoqo ntsasa nganye uphinde uzame kwakhona naxa sele udiniwe. Yinkalipho nokuzinikela kokwenene!",
-  "@global.home_practice_problem_solving: @global.w_1on1":
-    "@global.home_practice_problem_solving: @global.w_1on1",
   "Step 1: Share what went well and what was hard":
     "Inyathelo 1: Sibalisele oko kuye kwahamba kakuhle noko kuye kwanzima",
   '"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone."':
@@ -1681,8 +1760,8 @@ export default {
     "Ukuncoma kunamandla kakhulu. \n\nMakhe sijonge umzekelo ka @global.w_praise_female_caregiver_name neentombi zakhe:",
   "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!":
     "Xa u @global.w_praise_female_caregiver_name exakekile, iintombi zakhe ezimbini ziyalwa qho. Kodwa namhlanje, intombi yakhe enkulu iye yancedisa udadewayo ngomsebenzi wesikolo!",
-  '"Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl . I\'m so proud of you!"':
-    "“Enkosi ngokwenza umsebenzi wakho wesikolo, @global.w_praise_girl, yaye enkosi ngokuncedisa udadewenu, @global.w_praise_teen_girl . Ndiyazidla ngawe!”",
+  '@global.w_praise_female_caregiver_name: "Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I\'m so proud of you!"':
+    '@global.w_praise_female_caregiver_name: "Enkosi ngokwenza umsebenzi wakho wesikolo, @global.w_praise_girl, yaye enkosi ngokuncedisa udadewenu, @global.w_praise_teen_girl. Ndiyazidla ngawe!”',
   "Let's discuss this story.": "Makhe sincokole ngeli bali.",
   "Discuss together:\n\n* How did praise make @global.w_praise_female_caregiver_name's teens feel?\n* Why did she praise them?":
     "Ncokolani kunye:\n\n* Ukunconywa kubenze baziva njani abantwana abafikisayo baka @global.w_praise_female_caregiver_name?\n* Kutheni eye wabancoma?",
@@ -1724,8 +1803,6 @@ export default {
     "Wenze kakuhle ekuqondeni imvakalelo ezakhayo. Kuyandivuyisa ukuva ukuba uziva kamandi namhlanje!",
   "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember you are not alone.":
     "Uqhube kakuhle ngokuqonda iimvakalelo ezinzima. Kulungile ukungaziva mnandi maxa wambi. Khumbula ukuba awukho wedwa.",
-  "@global.home_practice_problem_solving: @global.w_money":
-    "@global.home_practice_problem_solving: @global.w_money",
   "This is just incredible. Every one of these habits is making your family stronger. Be proud.":
     "Oku kusemagqabini. Ngalunye kolu qheliselo lwenza intsapho yakho yomelele. Zidle.",
   "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!":
@@ -1793,10 +1870,10 @@ export default {
     "Imigaqo ibalulekile ukugcina umntwana wakho ofikisayo ekhuselekile - nakwi-intanethi. Kukho okungakumbi ngale nto kuQeqesho lweVeki nganye olungokuceba ukhuseleko, kodwa masesiqaliseni sijonge ngoku!",
   '@global.w_rules_female_caregiver_2: "@global.w_rules_teen_girl, have you done your homework?"\n\n@global.w_rules_teen_girl: "Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video"':
     '@global.w_rules_female_caregiver_2: "@global.w_rules_teen_girl, ngaba uwenzile umsebenzi wakho wesikolo?"\n\n@global.w_rules_teen_girl: “Kancinci nje @global.w_rules_female_caregiver_2, ndigqibezela le @global.teen_social_medium vidiyo"',
-  '@global.w_rules_female_caregiver_2: "You are a really great dancer! Tell me about why you like it"\n\n@global.w_rules_teen_girl: "All my friends are on it, @global.w_rules_female_caregiver_2 . I have more than 600 likes and 120 followers."':
-    '@global.w_rules_female_caregiver_2: “Ungumdanisi ophum’ izandla ngokwenene! Ndixelele isizathu sokuba uwuthande"\n\n@global.w_rules_teen_girl: "Bonke abahlobo bam bakuwo, @global.w_rules_female_caregiver_2 . Ndineelikes eziyi-600 neefollowers eziyi-120."',
-  '@global.w_rules_female_caregiver_2: "I’m proud of how well you dance, @global.w_rules_teen_girl . But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens."':
-    '@global.w_rules_female_caregiver_2: "Ndiyazidla ngendlela odanisa kamnandi ngayo, @global.w_rules_teen_girl . Kodwa simele siqinisekise ukuba ukhuselekile. \n\nNdiyazi ukuba abahlobo bakho bajonga ku @global.teen_social_medium, kodwa ngeakhawunti evulekileyo, kukho nabanye abantu abajonga iividiyo zabantu abafikisayo bencwase ukwabelana nabo ngesondo. Maxa wambi baye baqhagamshelane nabantu abafikisayo. Bazenza ngathi banobuntu kodwa baphela besongela baze babaxhaphaze abantwana abafikisayo.”',
+  '@global.w_rules_female_caregiver_2: "You are a really great dancer! Tell me about why you like it"\n\n@global.w_rules_teen_girl: "All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers."':
+    '@global.w_rules_female_caregiver_2: “Ungumdanisi ophum’ izandla ngokwenene! Ndixelele isizathu sokuba uwuthande"\n\n@global.w_rules_teen_girl: "Bonke abahlobo bam bakuwo, @global.w_rules_female_caregiver_2. Ndineelikes eziyi-600 neefollowers eziyi-120."',
+  '@global.w_rules_female_caregiver_2: "I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens."':
+    '@global.w_rules_female_caregiver_2: "Ndiyazidla ngendlela odanisa kamnandi ngayo, @global.w_rules_teen_girl. Kodwa simele siqinisekise ukuba ukhuselekile. \n\nNdiyazi ukuba abahlobo bakho bajonga ku @global.teen_social_medium, kodwa ngeakhawunti evulekileyo, kukho nabanye abantu abajonga iividiyo zabantu abafikisayo bencwase ukwabelana nabo ngesondo. Maxa wambi baye baqhagamshelane nabantu abafikisayo. Bazenza ngathi banobuntu kodwa baphela besongela baze babaxhaphaze abantwana abafikisayo.”',
   '@global.w_rules_female_caregiver_2: "Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you.\n\nSo you can accept people you know from school and our community, but not people who contact you online.\n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!”':
     '@global.w_rules_female_caregiver_2: "Makhe sijonge kunye kwi-intanethi ukuze sibone ukuba singaqhubeka njani siqiniseka ukuba wonwabile kodwa ukwakhuselekile. Khangela – ungenza iakhawunti yakho ibe nobumfihlo uze ulawule abantu abakulandelayo.\n\nUngamkela abantu obaziyo esikolweni nakwindawo esihlala kuyo, kungekhona abantu abaqhagamshelana nawe kwi-intanethi.\n\nNgaba singawenza kunye umgaqo onokuwusebenzisa @global.teen_social_medium, kodwa kwiakhawunti yabucala? Ndiyathemba uyazi ukuba ngubani omawumamkele!”',
   '@global.w_rules_female_caregiver_2: "I’m proud of you @global.w_rules_teen_girl"':
@@ -1818,8 +1895,6 @@ export default {
     "Kuhle. Yaye kuyamangalisa ukubona usebenzisa le app – loo nto ibonisa ukuzimisela kwakho njengomzali. Qiniseka ukuba uyazincoma uze uzizukise ngoko ukwenzayo.",
   "Being a parent is hard. But it is amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.":
     "Ukuba ngumzali kunzima. Kodwa kuyamangalisa ukubona usebenzisa le app – loo nto ibonisa ukuzimisela kwakho njengomzali. Qiniseka ukuba uyazincoma uze uzizukise ngoko ukwenzayo.",
-  "@global.home_practice_problem_solving: @global.w_solve":
-    "@global.home_practice_problem_solving: @global.w_solve",
   "Doing any of these makes you a great parent.":
     "Ukwenza nayiphi na kwezi zinto kukwenza ube ngumzali omangalisayo.",
   "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!":
@@ -1832,8 +1907,8 @@ export default {
     "* Ibali nokucamngca – oko kuye kwasebenza!\n* Ibali nokucamngca – oko kuye kwasebenza!\n* Uqheliselo lokumepha\n* Izixhobo: Indlela yokugcina umntwana wakho ofikisayo ekhuselekile\nIIMEPHU - IMIGAQO - UXOLELO\n* Amacebiso asebenzisekayo ekhaya",
   "Communication is the most important thing!\n\nLet's see what happened with @global.w_safe_female_caregiver and @global.w_safe_teen_girl_1:":
     "Unxibelelwano yeyona nto ibalulekileyo!\n\nMakhe sibone oko kwenzeke ku @global.w_safe_female_caregiver no @global.w_safe_teen_girl_1:",
-  '@global.w_safe_teen_girl_1: "Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_1!"\n\n@global.w_safe_female_caregiver: "Tell me, @global.w_safe_teen_girl_1"':
-    '@global.w_safe_teen_girl_1: "Ikho into eye yenzeka ngoxa ndiphume nabahlobo bam u @global.w_safe_teen_girl_2 no !@global.w_safe_teen_girl_1"\n\n@global.w_safe_female_caregiver: "Ndixelele, @global.w_safe_teen_girl_1"',
+  '@global.w_safe_teen_girl_1: "Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_3!"\n\n@global.w_safe_female_caregiver: "Tell me, @global.w_safe_teen_girl_1"':
+    '@global.w_safe_teen_girl_1: "Ikho into eye yenzeka ngoxa ndiphume nabahlobo bam u @global.w_safe_teen_girl_2 no !@global.w_safe_teen_girl_3"\n\n@global.w_safe_female_caregiver: "Ndixelele, @global.w_safe_teen_girl_1"',
   "Man in car: “Hey beautiful. I have been looking at you for a while. You are very beautiful, what’s your name?  \n\n@global.w_safe_teen_girl_2: “Her name is @global.w_safe_teen_girl_1”":
     "Indoda esemotweni: “Hey nzwakazi. Kudala ndikujongile. Umhle nyhani, ngubani igama lakho?  \n\n@global.w_safe_teen_girl_2: “Igama lakhe ngu @global.w_safe_teen_girl_1”",
   "Man in car: “@global.w_safe_teen_girl_1, would you like to come with me to have something to drink and chips? Come on, get in, you’ll be back in time, I promise…” \n\n@global.w_safe_teen_girl_1: “I’m not sure if that’s a good idea…”":
@@ -1897,8 +1972,8 @@ export default {
     "Ukugcina abantwana bethu abafikisayo bekhuselekile, kufuneka siqonde imeko eyingozi abanokungena kuyo!\n\nMakhe senze kunye iimephu zeendawo ezikhuselekileyo neziyingozi:\n* Imephu yendawo esihlala kuyo\n* Imephu yee-app/iiwebhsayithi esizisebenzisayo kwi-intanethi.\n\nMasenze ezi mephu siliqela ke ngoku. \n\nNiza kwenza loo nto nomntwana wakho ofikisayo njengoqheliselo lwasekhaya kule veki.",
   "Discuss together:\n\n* Which areas on your map are safe for teenagers \n     – CIRCLE these \n* Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n* What makes a place safe or unsafe?  \n* What could you and your teen do to keep your teen safer?":
     "Ncokolani kunye:\n\n* Ziziphi iindawo kwimephu yakho ezikhuselekileyo kubantwana abafikisayo \n     * YENZA ISANGQA kwezi \n* Ziziphi iindawo kwimephu yakho ezingakhuselekanga kubantwana abafikisayo \n     * ZINQAMLEZE ezi  \n* Yintoni eyenza indawo ikhuseleke okanye ingakhuseleki?  \n* Yintoni wena kunye nomntwana wakho ofikisayo eninokuyenza ukuze nigcine umntwana wakho ofikisayo ekhuselekile?",
-  "Sometimes, we can find ourselves in trouble. Discuss together:\n \n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
-    "Maxa wambi, singazifumana sisengxakini. Ncokolani kunye:\n \n* Wena nomntwana wakho ofikisayo ningayifumana phi inkxaso xa nijamelene nentlekele? \n     * PHAWULA ezo ndawo zinento encinci njengelitye okanye intwana yephepha.  \n\nApha ngezantsi kukho iindawo ezinokuba luncedo",
+  "Sometimes, we can find ourselves in trouble. Discuss together:\n \n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.":
+    "Maxa wambi, singazifumana sisengxakini. Ncokolani kunye:\n \n* Wena nomntwana wakho ofikisayo ningayifumana phi inkxaso xa nijamelene nengxaki? \n     * PHAWULA ezo ndawo zinento encinci njengelitye okanye intwana yephepha.",
   "* Draw pictures of the apps and websites your teenagers use \n* Praise each other for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
     "* Zoba imifanekiso yee-app neewebhsayithi ezisetyenziswa ngabantwana bakho abafikisayo \n* Ncomanani ngendlela eniyisebenzisa kakuhle ngayo i-intanethi!.  \n* Thethani ngokuba ziziphi ekusenokwenzeka ukuba azikhuselekanga Ngoba? \n* Yintoni wena nomntwana wakho ofikisayo eninokuyenza ukuze nenze ukusebenzisa i-intanethi kukhuseleke kumntwana wakho ofikisayo nabahlobo bakhe?",
   "Safety Plan": "Isicwangciso Sokhuseleko",
@@ -1923,8 +1998,8 @@ export default {
   "Step 3: Where can you get support?": "Inyathelo 3: Ningayifumana phi inkxaso?",
   "Sometimes, we can find ourselves in trouble. Discuss together:\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
     "Maxa wambi, singazifumana sisengxakini. Ncokolani kunye:\n* Wena nomntwana wakho ofikisayo ningayifumana phi inkxaso xa nijamelene nentlekele? \n     * PHAWULA ezo ndawo zinento encinci njengelitye okanye intwana yephepha.  \n\nApha ngezantsi kukho iindawo ezinokuba luncedo",
-  "Sometimes, we can find ourselves in trouble.\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
-    "Maxa wambi, singazifumana sisengxakini.\n* Wena nomntwana wakho ofikisayo ningayifumana phi inkxaso xa nijamelene nentlekele? \n     * PHAWULA ezo ndawo zinento encinci njengelitye okanye intwana yephepha.  \n\nApha ngezantsi kukho iindawo ezinokuba luncedo",
+  "Sometimes, we can find ourselves in trouble.\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.":
+    "Maxa wambi, singazifumana sisengxakini.\n* Wena nomntwana wakho ofikisayo ningayifumana phi inkxaso xa nijamelene nengxaki? \n     * PHAWULA ezo ndawo zinento encinci njengelitye okanye intwana yephepha.",
   "Step 4: What are risky places online and how can you make them safer?":
     "Inyathelo 4: Ziziphi iindawo eziyingozi kwi-intanethi yaye ungazenza njani zikhuseleke?",
   "* Draw pictures of the apps and websites your teenagers use \n* Praise your teens for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
@@ -2029,11 +2104,11 @@ export default {
   "Remember you deserve your quality time too! What makes you happy?":
     "Khumbula ukuba ufanelwe lixesha lokuzimamela nawe! Yintoni ekwenza wonwabe?",
   "Customise your @global.parent_app": "Vumelanisa i-@global.parent_appyakho",
-  "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you":
-    "Njengoko ngoku uye wakha ubuchule bokuzinyamekela, masiqinisekise ukuba i- @global.weekly_workshops yakho ikulungele",
+  "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you.":
+    "Njengoko ngoku uye wakha ubuchule bokuzinyamekela, masiqinisekise ukuba i- @global.weekly_workshops yakho ikulungele.",
   "Start customising": "Qalisa ukuzivmelanisa",
-  "You seem to have completed the customisation process already. You can now skip this activity":
-    "Kubonakala ngathi sele uyigqibile inkqubo yokuzivumelanisa. Ngoku ungawutsiba lo msebenzi",
+  "You seem to have completed the customisation process already. You can now skip this activity.":
+    "Kubonakala ngathi sele uyigqibile inkqubo yokuzivumelanisa. Ngoku ungawutsiba lo msebenzi.",
   "Skip customisation survey": "Lutsibe uphando lokuzivumelanisa",
   "Whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!":
     "Nanini na unako, phola, qonda uze uzivuze. \n\nZinyamekele usuku ngalunye. Ubalulekile!",
@@ -2050,8 +2125,6 @@ export default {
     "Uligqala. Yaye uyawenza umahluko. Zingce.",
   "Sorry that things are not easy today. All parents have these days.":
     "Uxolo kuba izinto zingekho lula namhlanje. Iimini ezinje ziyabafikela bonke abazali.",
-  "@global.home_practice_problem_solving: @global.w_consequence":
-    "@global.home_practice_problem_solving: @global.w_consequence",
   "Close your eyes, breathe in, and know that everything you have done is so important.":
     "Vala amehlo, utsale umoya, uze wazi ukuba yonke into oye wayenza ibaluleke kakhulu.",
   "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too!":
@@ -2064,8 +2137,8 @@ export default {
     "* Ibali nencoko – loo ayikhange isebenze…\n* Izixhobo: Indlela yokusombulula iingxaki\nYAZI - YISOMBULULE - YIZAME - YIVAVANYE\n* Ibali nokucamngca – oko kuye kwasebenza!\n* Yizame!\n* Amacebiso asebenzisekayo ekhaya",
   "Let’s look at what happened to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 when @global.w_solve_teen_girl got a phone from a boy… a phone!":
     "Makhe sijonge oko kwenzekileyo ku @global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 wakhe xa u @global.w_solve_teen_girl eye wafumana ifowuni kwinkwenkwe… ifowuni!",
-  '@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1 . It takes great photos!"':
-    "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, uyifumene kubani loo nto?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 undithengele. Intle le fowuni, @global.w_solve_female_caregiver_1 . Ithatha iifoto ezintle!”",
+  '@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1. It takes great photos!"':
+    "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, uyifumene kubani loo nto?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 undithengele. Intle le fowuni, @global.w_solve_female_caregiver_1. Ithatha iifoto ezintle!”",
   "@global.w_solve_female_caregiver_1: “I don’t want to see that expensive thing! That boy is no good! How does he think you are going to repay him for this?!”  \n\n@global.w_solve_teen_girl: “That’s not how it works, @global.w_solve_female_caregiver_1! That’s not fair!”":
     "@global.w_solve_female_caregiver_1: “Andifuni kubona loo nto ibiza kangako! Ayilunganga laa nkwenkwe! Ucinga ukuba uza kumbuyisela njani ngale nto?!”  \n\n@global.w_solve_teen_girl: “Ayisebenzi ngolo hlobo, @global.w_solve_female_caregiver_1! Undidlel’ indlala!”",
   "@global.w_solve_female_caregiver_1: “I don’t want to hear it!” \n\n@global.w_solve_teen_girl: “You’re not even trying to listen to me! I don’t know why I even try with you!”":
@@ -2097,8 +2170,8 @@ export default {
   "Step 1: KNOW IT": "Inyathelo 1: YAZI",
   '@global.w_solve_female_caregiver_2: "Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: "That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!"':
     '@global.w_solve_female_caregiver_2: "Ngoku khawundixelele, kutheni ulambe kangaka? Khange uwutye umphako wakho wasesikolweni?” \n\n@global.w_solve_teen_boy_2: Nantso ke ingxaki. Kukho umfana esikolweni ondintlontayo. Uthi ukuba andimniki umphako wam wasesikolweni suku ngalunye, yena nabahlobo bakhe baza kundonzakalisa. Uyandiphambanisa!”',
-  '@global.w_solve_female_caregiver_2: "I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2 . It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?"\n\n@global.w_solve_teen_boy_2: "Well… I want to just hit him or get him back."':
-    '@global.w_solve_female_caregiver_2: "Ndibuhlungu ukuva loo nto kodwa ndiyavuya undixelele, @global.w_solve_teen_boy_2 . Loo nto ayithethi ukuba umele utye idinala yomntu wonke. Emva kokuba sithethile, kufuneka uyokuthenga esinye isonka evenkileni. Kodwa kuqala: Ucinga ukuba sifanele senze ntoni ngale ngxaki yokuntlontwa kwakho?"\n\n@global.w_solve_teen_boy_2: "Kaloku… Ndifuna ukumbetha okanye ndiziphindezele kuye."',
+  '@global.w_solve_female_caregiver_2: "I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?"\n\n@global.w_solve_teen_boy_2: "Well… I want to just hit him or get him back."':
+    '@global.w_solve_female_caregiver_2: "Ndibuhlungu ukuva loo nto kodwa ndiyavuya undixelele, @global.w_solve_teen_boy_2. Loo nto ayithethi ukuba umele utye idinala yomntu wonke. Emva kokuba sithethile, kufuneka uyokuthenga esinye isonka evenkileni. Kodwa kuqala: Ucinga ukuba sifanele senze ntoni ngale ngxaki yokuntlontwa kwakho?"\n\n@global.w_solve_teen_boy_2: "Kaloku… Ndifuna ukumbetha okanye ndiziphindezele kuye."',
   "Step 2: SOLVE IT": "Inyathelo 2: YISOMBULULE",
   '@global.w_solve_female_caregiver_2: "Hmmm… what do you think will happen to you if you do that?"\n\n@global.w_solve_teen_boy_2: "I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled."':
     '@global.w_solve_female_caregiver_2: "Hmmm… ucinga ukuba kuya kwenzeka ntoni kuwe xa usenza loo nto?"\n\n@global.w_solve_teen_boy_2: "Andazi. Mkhulu kunam ngoko mhlwumbi uza kundonzakalisa ngakumbi. Yaye ndingasenkathazweni esikolweni ndize ndigxothwe.”',
@@ -2112,8 +2185,8 @@ export default {
   'A week later… \n\n@global.w_solve_female_caregiver_2: "How are things going at school now?"\n\n@global.w_solve_teen_boy_2: "It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me."':
     'Emva kweveki… \n\n@global.w_solve_female_caregiver_2: "Izinto zihamba njani esikolweni ngoku?"\n\n@global.w_solve_teen_boy_2: “Kubhetele, le nkwenkwe ayisawuthathi umphako wam wesikolo. Kodwa isekrwada kakhulu kum.”',
   "Step 4: TEST IT": "Inyathelo 4: SIVAVANYE",
-  '@global.w_solve_female_caregiver_2: "I am sorry to hear that, @global.w_solve_teen_boy_2 . Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!"\n\n@global.w_solve_teen_boy_2: "Yes, thank you @global.w_solve_female_caregiver_2 . At least I know you are on my side."':
-    '@global.w_solve_female_caregiver_2: "Ndiyayixolisela ukuva loo nto, @global.w_solve_teen_boy_2 . Ndingamcela umalume wakho ayokuthetha nabazali bayo? Ukuba leyo ayisebenzi, siya kuzama enye into!"\n\n@global.w_solve_teen_boy_2: "Ewe, enkosi @global.w_solve_female_caregiver_2 . Noko ndiyazi ukuba umi ngakum.”',
+  '@global.w_solve_female_caregiver_2: "I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!"\n\n@global.w_solve_teen_boy_2: "Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side."':
+    '@global.w_solve_female_caregiver_2: "Ndiyayixolisela ukuva loo nto, @global.w_solve_teen_boy_2. Ndingamcela umalume wakho ayokuthetha nabazali bayo? Ukuba leyo ayisebenzi, siya kuzama enye into!"\n\n@global.w_solve_teen_boy_2: "Ewe, enkosi @global.w_solve_female_caregiver_2. Noko ndiyazi ukuba umi ngakum.”',
   "Discuss together: \n\nHow could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT":
     "Ncokolani kunye: \n\nU @global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 banokuwasebenzisa njani amanyathelo ama-4 okusombulula iingxaki njengoba u @global.w_solve_female_caregiver_2 no @global.w_solve_teen_boy_2 benzile? \n\nYAZI - YISOMBULULE - YIZAME - YIVAVANYE",
   "Remember @global.w_solve_teen_girl and the phone she got from the boy?":
@@ -2154,8 +2227,6 @@ export default {
     "Kulunge kakhulu! Kuhle kakhulu ukuva ukuba ukwimeko entle namhlanje. Enjani ukumangalisa imvakalelo!",
   "Sometimes things go great. Sometimes they don't. And sometimes we don't quite know what to think... and that's totally okay! Remember that you are not alone.":
     "Maxa wambi izinto zihamba kakuhle. Maxa wambi akubi njalo. Yaye maxa wambi asiye sazi ukuba masicinge ntoni... ayaye oko kulunge ngokupheleleyo! Khumbula ukuba awukho wedwa.",
-  "@global.home_practice_problem_solving: @global.w_instruct":
-    "@global.home_practice_problem_solving: @global.w_instruct",
   "This is fantastic, especially in such difficult times as this. You are a star.":
     "Oku kubalasele, ingakumbi ngamaxesha anzima njengala. Uligqala.",
   "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family.":
@@ -2212,8 +2283,8 @@ export default {
     "@global.w_stress_teen_boy_1: “Ndicela imali ndizokuthenga iethayimu?”  \n\n@global.w_stress_male_caregiver (uyaphefumla): “Uxolo nyana wam. Bendinemini embi namhlanje. Umqeshi wam undigxothile.”",
   "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”":
     "@global.w_stress_teen_boy_1: “Yhoo!  Ndicela iyunifom entsha.”  \n\n@global.w_stress_male_caregiver: “Ndiza kuzama nyana, Yaye umsebenzi ka @global.w_stress_female_caregiveruza kusithwala logama ndisakhangela omnye umsebenzi.”",
-  "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1 . I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”":
-    "@global.w_stress_teen_boy_1: “Nam ndingakuncedisa ukukhangela umsebenzi, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “Hayi akunangxaki, @global.w_stress_teen_boy_1 . Ndiyakuxabisa ukulungela kwakho ukunceda. Eyona nto ibalulekileyo kukuba usebenze nzima esikolweni. Enkosi ngokundiphulaphula.”",
+  "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”":
+    "@global.w_stress_teen_boy_1: “Nam ndingakuncedisa ukukhangela umsebenzi, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “Hayi akunangxaki, @global.w_stress_teen_boy_1. Ndiyakuxabisa ukulungela kwakho ukunceda. Eyona nto ibalulekileyo kukuba usebenze nzima esikolweni. Enkosi ngokundiphulaphula.”",
   "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”":
     '@global.w_stress_male_caregiver: “Masidlale kunye ibhola. Kuza kundinceda ndikhuphe olu xinezeleko engqondweni okwethutyana.”  \n\n@global.w_stress_teen_boy_1: "Kulungile, @global.w_stress_male_caregiver!"',
   "That went so much better! \n\nTaking a pause helps to respond calmly when you feel angry or stressed. Try it, you will see!":
@@ -2257,19 +2328,21 @@ export default {
     "Sihlandlo ngasinye unqumama ngaphambi kokuphendula, okanye nanini na usenza into ukuze ukhusele umntwana wakho ofikisayo, cofa i @global.parent_points uze ubhiyozele impumelelo yakho!",
   "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n* a sheet of paper/cardboard\n* a pen\n* 20 small rocks/beans/kernels\n\nIt will be fun!":
     "Ulugqibile uqeqesho lwale veki.\n\nKule veki izayo siza kuthetha ngemali - uya kudinga:\n* iphepha/ikhadbhodi\n* ipen\n* amatye amancinci angama-20/iimbotyi/iinkozo\n\nkuya kuba mnandi!",
+  "Your @global.parent_app Code": "Ikhowudi yakho ye@global.parent_app",
   "Make me smile": "Ndenze ndincume",
   "Get me going": "Ndenze ndiqhubeke",
-  "New @global.weekly_workshop ready tomorrow!":
-    "I @global.weekly_workshop entsha ilungele usuku lwangomso!",
-  "New @global.weekly_workshop!": "I @global.weekly_workshopentsha!",
-  "Workshop reminder": "Isikhumbuzo soqeqesho",
+  "New workshop ready tomorrow!": "Uqeqesha lwakho olutsha lwangomso sele lulungile!",
+  "New workshop!": "Uqeqesho olutsha!",
+  "Workshop Reminder": "Isikhumbuzo Soqeqesho",
   "Nice progress!": "Inkqubela encomekayo!",
   "You are appreciated!": "Uxabisekile",
-  "Something fun": "Into eyonwabiswayo",
-  "Your @global.parent_points": "i @global.parent_pointsyakho",
-  "Home practice reminder": "isikhumbuzo soqheliselo lwasekhaya",
+  "Something Fun": "Into Eyonwabiswayo",
+  "Your @global.parent_points this week": "I-@global.parent_points yakho kule veki",
+  "Home Practice Reminder": "Isikhumbuzo Soqheliselo Lwasekhaya",
   "To solve this challenge, I will try to:": "Ukuze ucombulule olu celo-mngeni, Ndiya kuzama uku:",
   "My challenge is not listed here.": "Ucelo-mngeni lwam aludweliswanga apha.",
+  Mother: "Mama",
+  Father: "Tata",
   TikTok: "I-TikTok",
   "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.":
     "Ukubukela levidiyo kufuna ufikelelo lweintanethi. Ukulinganisela usetyenziso lwedatha, bukela okanye udawnlowude le vidiyo xa ukwi WiFi",
@@ -2294,28 +2367,21 @@ export default {
   "Check it out!": "Yijonge!",
   Next: "Elandelayo",
   Previous: "Edluleyo",
-  Help: "Uncedo",
-  "My Tips": "Amacebiso Am",
-  "Essential Tools": "Izixhobo Ezibalulekileyo",
-  COVID: "I-COVID",
-  "Relax & Activities": "Ukuphola Nemisebenzi",
-  "Customise Again": "Phinda Uzivumelanise",
-  "Support Contacts": "Abaqhagamshelwa Benkxaso",
-  "Evidence Base": "Isiseko Sobungqina",
-  "Technical Support": "Inkxaso Yobunjineli",
-  "Favourite relaxes": "Ukuphumla okuthandayo",
-  "All relaxes": "Konke ukuphumla",
-  "Random relax": "Ukuphumla ngokungacwangciswanga",
-  "This week's relax": "Ukuphumla kwale veki",
-  "Listen & relax (1-2 minutes)": "Phulaphula uze uphumle (imizuzu 1-2)",
-  "Listen & relax (3-5 minutes)": "Phulaphula uze uphumle (imizuzu 3-5)",
-  "Do & relax (5-10 minutes)": "Yenza uze uphumle (imizuzu 5-10)",
-  "Favourite activities": "Imisebenzi endiyithandayo",
-  "All activities": "Yonke imisebenzi",
-  "Random activity": "Umsebenzi ongacwangciswanga",
-  "This week's activity": "Umsebenzi wale veki",
-  "Chat together": "Ncokolani kunye",
-  "Do together": "Yenzani kunye",
+  "Challenges & solutions": "Imicelimingeni nezisombululo",
+  Save: "Gcina",
+  "My Favourite Relaxes": "Ukuphola Okuthandayo",
+  "All Relaxes": "Konke Ukuphola",
+  "Random Relax": "Ukuphumla Ngokungacwangciswanga",
+  "This Week's Relax": "Ukuphola Kwale Veki",
+  "Listen & Relax (1-2 minutes)": "Phulaphula uze Uphole (imizuzu 1-2)",
+  "Listen & Relax (3-5 minutes)": "Phulaphula uze Uphole (imizuzu 3-5)",
+  "Do & Relax (5-10 minutes)": "Yenza uze Uphole (imizuzu 5-10)",
+  "My Favourite Activities": "Imisebenzi Endiyithandayo",
+  "All Activities": "Yonke Imisebenzi",
+  "Random Activity": "Umsebenzi Ongacwangciswanga",
+  "This Week's Activity": "Umsebenzi wale veki",
+  "Chat Together": "Ncokolani Kunye",
+  "Do Together": "Yenzani Kunye",
   "Walk to the shops": "Ukolula iinyawo niye ezivenkileni",
   "Get water together": "Yiyani kukha amanzi kunye",
   "Do a chore together": "Yenzani umsebenzi kunye",
@@ -2365,6 +2431,8 @@ export default {
   "Tap and type": "Cofa uze ubhale",
   "Tap and choose": "Cofa uze ukhethe",
   "Type your own": "Bhala eyakho",
+  "I've understood this. Don't show me this message again.":
+    "Ndiye ndakuqonda oku. Ungawubonisi lo myalezo kwakhona.",
   "Welcome and Self-Care": "Ukwamkela Nokuzinyamekela",
   "Self-Care": "Ukuzinyamekela",
   "How to add self-care": "* Indlela yokongeza ukuzinyamekela",
@@ -2396,9 +2464,6 @@ export default {
   "By myself": "Ngokwam",
   "awesome parent": "umzali ogqwesileyo!",
   friends: "abahlobo",
-  friday: "ngoLwesihlanu",
-  alone: "yedwa",
-  "Value of the first debug variable": "Ixabiso lomahluko wokuqala wokulungisa ingxaki",
   "Welcome to @global.parent_app": "Wamkelekile ku @global.parent_app",
   "<p>Welcome to @global.parent_app.</p>\n\n<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app will support you and your family in three ways:</p>":
     "<p>Wamkelekile ku @global.parent_app.</p>\n\n<p>Uyakufanelekela ukuziva kamnandi, uze ube nolwalamano oluhle nentsapho yakho.</p>\n\n<p>@global.parent_app uya kukuxhasa wena nentsapho yakho ngeendlela ezintathu:</p>",
@@ -2430,26 +2495,6 @@ export default {
     "<p> Ungatshintsha apha enoba nifuna ukwenza i @global.weekly_workshops yenu njengeqela okanye wedwa. </p>",
   "<p> Tap here to change your group name. </p>":
     "<p> Cofa apha ukuze utshintshe igama leqela. </p>",
-  Continue: "Qhubeka",
-  "Welcome to ParentApp. Click here to start your journey!":
-    "Wamkelekile kwiApp Yomzali. Cofa apha ukuze uqalise uhambo lwakho!",
-  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
-    "Ndiyathemba uziva bhetele. Ukuba ngumzali kunzima, kodwa awukashiywa lixesha lokuphinda uqalise nomntwana wakho ofikisayo. Uqeqesho lwakho lokuba ngumzali lulinde wena! Cofa apha ukuze uqalise uhambo lwakho lweApp Yomzali!",
-  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
-    "Molo! Ngaba yonke into ihamba KAKUHLE? Kubonakala ngathi khange uyivule iApp Yomzali kutshanje. Kutheni ungakhe uyizame? Izigidi zabazali zIye zafumanisa ezi zixhobo ziluncedo. Sisekhona ukuze sikuxhase.",
-  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
-    "Molo kwakhona! Awukashiywa lixesha lokusebenzisa i-App Yomzali uze ufumane inkxaso efanele wena yokuba ngumzali. Kutheni ungakhe uyizame xa usiya emsebenzini okanye xa usapheke ukutya? Izigidi zabazali zIye zafumanisa izixhobo zethu ziluncedo.",
-  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
-    "I-App yoMzali iyakukhumbuza! Kuninzi omele ukuhlole. Sisekhona ukuze sikuxhase.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp Yomzali ukukunceda ulawule uxinezeleko lokuba ngumzali.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali - sebenzsa iApp Yomzali ukulungiselela umntwana wakho ofikisayo ukuba aphumelele ebomini.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp Yomzali ukukunceda ulawule isimilo somntwana wakho ofikisayo.",
-  "New message from PLH": "Umyalezo omtsha ovela kwi-PLH",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp Yomzali ukuze uphinde usondelelane nomntwana wakho ofikisayo kwakhona!",
   "Reflect on the positive": "Cinga ngezinto ezakhayo!",
   "Check-in chat": "Ngena kwincoko",
   "Dream Travel": "UHambo Oluliphupha",
@@ -2493,6 +2538,15 @@ export default {
   '"Calm consequence" @global.parent_point': '“Imiphumo Ezolileyo" @global.parent_point',
   Safe: "Ikhuselekile",
   '"Safe" @global.parent_point': '“Ikhuselekile" @global.parent_point',
+  Help: "Uncedo",
+  "My Tips": "Amacebiso Am",
+  "Essential Tools": "Izixhobo Ezibalulekileyo",
+  COVID: "I-COVID",
+  "Relax & Activities": "Ukuphola Nemisebenzi",
+  "Support Contacts": "Abaqhagamshelwa Benkxaso",
+  "Evidence Base": "Isiseko Sobungqina",
+  "Technical Support": "Inkxaso Yobunjineli",
+  "Message Archive": "Ugcino Lwemiyalezo",
   "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!":
     "Isemagqabini! Wenze kakuhle ngokuchitha ixesha kunye. Ibeka isiseko solwalamano olusemagqabini nomntwana wakho ofikisayo",
   "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!":
@@ -2530,14 +2584,16 @@ export default {
     "Siyaxolisa ngokuba oko kube nzima. Ukuyila kunye iziphumo kuya kwenza umntwana wakho ofikisayo afune ukulandela imigaqo rhoqo!",
   "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!":
     "Uxolo ukuba oko kube nzima. Maxa wambi kufuneka siqhubeke sizama. Fumana ixesha xa wena nomntwana wakho ofikisayo nizolileyo nize nizame ukuthetha ngengxaki kwakhona nisebenzisa amanyathelo amane okucombulula iingxaki. Nikunye ningafeza lukhulu!",
-  "Great to hear it went well! This can help keep your teen safe!":
-    "Kuyavuyisa ukuva ukuba izinto zihambe kakuhle! Oku kunokwenza umntwana wakho ofikisayo azive ekhuselekile!",
-  "Sorry that this has been hard. Try to do this with your teen again later, and maybe involve some other family members to help give ideas!":
-    "Uxolo ukuba oku bekunzima. Zama ukwenza oku kwakhona kamva kunye nomntwana wakho ofikisayo, yaye mhlawumbi uquke amanye amalungu entsapho ukunceda ukuveza ezinye izimvo!",
+  "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.":
+    "Ndiyavuya ukuva ukuba kuhambe kakuhle! Ukuthetha ngemingcipheko nokhetho lwenkxaso kuthintela iingxaki kwaye kunceda ngokwenene ekugcineni umntwana wakho ofikisayo ekhuselekile.",
+  "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!":
+    "Uxolo ukuba oko kube nzima. Ukuceba imingcipheko kunye neendawo zokufumana inkxaso kungalucelomngeni kunye neemvakalelo. Kunceda ngokwenene ukugcina umntwana wakho ofikisayo ekhuselekile!",
   "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?":
     "Uxolo ukuba oku akukhange kuhambe kakuhle. Oku akulula ukukwenza. Zama ukuhlala phantsi uze uncokole nomntwana wakho ofikisayo kwakhona. Okunye, ngaba ukho umntu othenjwayo ngumntwana wakho ofikisayo onokuba kunye nawe xa uncokola nomntwana wakho ofikisayo?",
   "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.":
     "Kuyavuyisa ukuva ukuba izinto zihambe kakuhle! Ukunika imiphumo ngendlela efanelekileyo kunceda abantwana abafikisayo baziphathe kakuhle kuze kwenze ubomi bentsapho buzole.",
+  "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!":
+    "Ndiyavuya ukuva ukuba kuhambe kakuhle! Xa umntwana wakho ofikisayo efunda ukusombulula iingxaki, unokusebenzisa eso sakhono ubomi bakhe bonke. Sisipho sokwenene!",
   "Quick pause": "Ukunqumama okukhawulezileyo",
   "Power of three": "Amandla abantu abathathu",
   "One thing today": "Into enye namhlanje",
@@ -2561,8 +2617,9 @@ export default {
   "List of things": "Uluhlu lwezinto",
   Connect: "Qhagamshela",
   "Prevent anger": "Thintela umsindo",
-  "Angry? Take a break.": "Unomsindo? Hlaba ikhefu.",
+  "Angry? Take a break": "Unomsindo? Hlaba ikhefu",
   '"Welcome and Self-Care" workshop': "Uqeqesho “lokwamkela Nokuzinyamekela”",
+  "How to do self-care": "Indlela yokuzikhathalela",
   '"One-on-One Time" workshop': "Iwekshopu “yexesha lenu nobabini”",
   '"Praise" workshop': "Uqeqesho “lokuzincoma”",
   '"Positive Instructions" workshop': "Uqeqesho “Lwemiyalelo Eyakhayo”",
@@ -2574,95 +2631,24 @@ export default {
   '"Teen Safety" workshop': "Uqeqesho “Lokhuseleko Lomntu Ofikisayo”",
   '"Dealing with Crisis" workshop': "Uqeqesho lokuhlangabezana Neengxaki",
   '"Celebration and Next Steps" workshop': "Uqeqesho Lokubhiyoza kunye Namanyathelo Alandelayo",
-  "Unlock workshops": "Vula uqeqesho",
-  "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.":
-    "Kufuneka sithethe ngeminye imiba yokuba ngumzali ngaphambi kokuba siqalise kwi-@local.workshop_data.title.\n\nUnokufumana izixhobo ezibalulekileyo kwi-@local.workshop_data.title usebenzisa i-@global.parent_centre.",
-  "This is perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!":
-    "Oku kulungile! Ukuba ufuna amacebiso, ungafumana amacebiso ezinto ezinokwenziwa kwi-@data.parent_centre.relax_and_activities.location_text. Khumbula, vumela umntwana wakho ofikisayo akhethe into emayenziwe",
-  "That’s perfect! If you need any inspiration, you can find suggestions for activities @data.parent_centre.relax_and_activities.location_text. Remember, let your teen choose the activity!":
-    "Oko kulunge gqitha! Ukuba ufuna amacebiso, ungafumana amacebiso ezinto ezinokwenziwa kwi-@data.parent_centre.relax_and_activities.location_text. Khumbula, vumela umntwana wakho ofikisayo akhethe into emayenziwe",
-  "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nIn the next @global.weekly_workshop, we’ll talk more about how we can manage our emotions!  You can find more relaxation activities @data.parent_centre.relax_and_activities.location_text.":
-    "Kunzima ukucinga ngemiyalelo ngoxa sisenomsindo. Zama ukufumana ixesha ozole ngalo uze unike umntwana wakho ofikisayo umyalelo okhuthazayo. \n\nKwi-@global.weekly_workshop elandelayo, siza kuthetha ngakumlwbi ngendlela yokulawula iimvakalelo zethu!  Ungafumana izinto zokuphola ezingakumbi kwi-@data.parent_centre.relax_and_activities.location_text.",
-  "You don’t have to reveal the exact amount you earn; you could give an estimate. You could say, “In this household, we have @global.currency@global.monthly_income_estimate every month” rather than, “I make @global.currency@global.monthly_income_precise”.":
-    "Awunyanzelekanga uchaze ngqo imali oyamkelayo; unokuchaza inani eliqIkelelwayo. Usenokuthi, “Apha ekhaya sine @global.currency@global.monthly_income_estimate qho ngenyanga” endaweni yokuthi, “Ndamkela @global.currency@global.monthly_income_precise”.",
-  "You deserve some praise, too. Thank you again for using @global.parent_app. It shows you really care!":
-    "Nawe ukufanelwe ukunconywa. Enkosi kwakhona ngokusebenzisa i-@global.parent_app. Kubonisa ukuba ukhathala ngokwenene!",
-  "Hi @fields.user_name. Your @local.workshop_data.in_text_title is ready for you.":
-    "Molo @fields.user_name. I-@local.workshop_data.in_text_title sele ikulungele.",
-  "Hi @fields.group_name. Your @local.workshop_data.in_text_title is ready for you.":
-    "Molo @fields.group_name. I-@local.workshop_data.in_text_title sele ikulungele.",
-  "It’s great that you’ve been using @global.parent_app. You’ve gained 6 parenting tools already! \n\nTake the next workshop to get another parenting tool!":
-    "Iyancomeka into yokuba usebenzisa i-@global.parent_app. Sele ufumene izixhobo ezi-6 kakade zokuba ngumzali! \n\nYenza uqeqesho olu landelayo ukuze ufumane esinye isxhobo sokuba ngumzali!",
-  "Hi @field.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
-    "Molo @field.user_name! Uqala inyanga yesibini usebenzisa @global.parent_app. Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
-  "Hi @field.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.":
-    "Molo @field.group_name! Uqala inyanga yesibini usebenzisa @global.parent_app. Kuyamangalisa! \n\nPhantse zonke iintsapho zineengxaki zemali, ngoko ke uqeqesho lwale veki luza kukunika isixhobo esiza kukunceda ucwangcise iindleko zakho ukuze ube nemali eyaneleyo de kuphele inyanga.",
-  "Hi @fields.user_name! This week you did:": "Molo @fields.user_name! Kule veki uye:",
-  "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.":
-    "Nazi izakhono eziphambili kule veki! \n\nZisebezise xa usekhaya kwaye ungazifumana nanini na kwi-@global.parent_centre yakho.",
-  "It can be challenging to keep your teen safe in COVID! We are putting together some advice - you will soon be able to access it in the @global.parent_centre.":
-    "Kungalucelo-mngeni ukugcina umntwana wakho ekhuselekile kwi-COVID! Sisaqulunqa amacebiso – kungekudala uza kuwafumana kwi-@global.parent_centre.",
-  "That’s great. We are putting together some advice for keeping your teen safe in COVID - you will soon be able to access it in the @global.parent_centre.":
-    "Kuhle oko. Sisaqulunqa amacebiso okugcina umntwana wakho ofikisayo ekhuselekile kwi-COVID – kungekudala uza kuwafumana kwi-@global.parent_centre.",
-  "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
-    "Kuhle ukuva ukuba le veki ibintle!\n\nSiza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
-  "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.":
-    "Kuhle ukuva ukuba ubukhulu becala evekini ubuziva uzolile! \n\nSiza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze ukuze sikuncede uqhubeke ulawula uxinezeleko lwakho uze uzive uzolile.",
-  "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.":
-    "Enkosi ngokunyaniseka – kwaye sibuhlungu ngenxa yokuba unexesha elinzima kunye nomntwana wakho ofikisayo. Ukuze uzinyamekele size sikuncede uzive uzolile xa izinto zisiba nzima, siza kukukhumbuza yonke imihla ukuba uphole, uziphawule uze uzivuze. Ubalulekile!\n\nKwiveki 5 ye-@global.weekly_workshops, siza kufunda okungakumbi malunga nokulawula uxinezeleko, kodwa sele unako ukufikelela kwizixhobo eziluncedo phantsi kwe-@data.parent_centre.my_tips.location_text.",
-  "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!":
-    "Oku kuxhalabisa bonke abazali nokuba baphi. Siza kuqinisekisa ukufumana inkxaso yokukwazi ukunxibelelana. \n\nSiza kuthetha ngakumbi malunga nokuceba ukhuseleko lomntwana wakho ofikisayo kwi-@global.weekly_workshops, kodwa phantsi kwe-@data.parent_centre.my_tips.location_text unokufikelela kumacebiso aphambili ukuze ugcine umntwana wakho ofikisayo ekhuselekile!",
-  "You can always change these settings in your @global.weekly_workshop_options.":
-    "Unako ukutshintsha olu lungiso nanini na kwi-@global.weekly_workshop_options yakho.",
-  "You always can change your workshop day and your group name in the @global.weekly_workshop_options.":
-    "Unako ukulitshintsha nanini na usuku loqeqesho lwenu kunye negama leqela lakho kwi-@global.weekly_workshop_options.",
-  "CONGRATULATIONS! You have done it! You have built 11 important parenting skills. \n\nThis is a huge achievement. It shows such care for your family. \n\nLet’s celebrate you, and plan your future @global.parent_app support.":
-    "SIVUYISANA NAWE! Uphumelele! Uye wakha izakhono ezili-11 zokuba ngumzali. \n\nUphumeze into enkulu. Kubonisa ukuba uyikhathalele intsapho yakho. \n\nMasikuvuyele size sicebe inkxaso yexesha elizayo kwi-@global.parent_app.",
-  '@global.w_consequence_male_caregiver: "I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1. What can we do to help you remember to come home in time?"\n\n@global.w_consequence_teen_boy_1: "If I come home in time, maybe I can stay up 30 minutes later than usual?"':
-    '@global.w_consequence_male_caregiver: "Iyandixhalabisa into yokuba usoloko ubuya emva kwexesha endlini, @global.w_consequence_teen_boy_1. Singenza ntoni ukukunceda ukhumbule ukugoduka kwangexesha?"\n\n@global.w_consequence_teen_boy_1: "Ukuba ndigoduka kwangethuba, mhlawumbi ndingashiywa lixesha ngemizuzu engama-30?"',
-  '@global.w_consequence_male_caregiver: "You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day."\n\n@global.w_consequence_teen_boy_1: "Okay, @global.w_consequence_male_caregiver."':
-    '@global.w_consequence_male_caregiver: "Umsebenzi wakho wesikolo umele ukuba uwenzile kakade. Ukuba uyawulibala lo mthetho, kusengqiqweni ukuba ungadibani neetshomi zakho ngomso."\n\n@global.w_consequence_teen_boy_1: "Kulungile, @global.w_consequence_male_caregiver."',
-  "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver.” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”":
-    "@global.w_consequence_teen_boy_1: “Uxolo ngokukukhathaza yaye @global.w_consequence_female_caregiver.“ \n\n@global.w_consequence_male_caregiver: “Enkosi. Hamb’ uyolala ke ngoku, kodwa uze wazi, ukuba ubuye ekhaya sekubethe ixesha ebesivumelene ngalo, awuvumelekanga ukuphuma ngokuhlwa kwangomso.”",
-  '@global.w_crisis_teen_girl_1: "Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened."\n\n@global.w_crisis_female_caregiver:  "It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?"\n\n@global.w_crisis_teen_girl_1: "My school?"':
-    '@global.w_crisis_teen_girl_1: "Izolo xa ubuyokubona @global.w_crisis_adult_friend. Ufikile nje yaye yenzeke ngelo xesha le nto."\n\n@global.w_crisis_female_caregiver:  "Kulungile, ndiyakukholelwa mntana. Inkulu le nto yaye siza kufumana indlela yokufumana uncedo esiludingayo. Singaya phi ukuze sifumane uncedo?"\n\n@global.w_crisis_teen_girl_1: "Esikolweni sam?"',
-  '@global.w_crisis_male_caregiver_1: "I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help."':
-    '@global.w_crisis_male_caregiver_1: "Ndiyavuya ngokundixelela ngale nto, @global.w_crisis_teen_boy_1. Ngoku masihlale kunye phantsi size sincokole ngokuba simele sifake amapolisa okanye omnye umntu oza kusinceda.”',
-  '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do"':
-    '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, Ndineentloni ezingathethekiyo. Andazi ukuba mandenze ntoni"',
-  '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, I don’t want to have a baby"':
-    '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, Andifuni ukuba nomntwana"',
-  '@global.w_crisis_teen_girl_1: "I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared..."':
-    '@global.w_crisis_teen_girl_1: "Enyanisweni bendingafuni. Ngoku ndiza kumitha okanye ndigule. @global.w_crisis_female_caregiver, Ndoyika kakhulu..."',
-  '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance."':
-    '@global.w_instruct_female_caregiver: "Enkosi ngokuqhelisela phandle ngoxa ndigqibezela ukucoca, @global.w_instruct_teen_girl. Ngoku ndinexesha lokubukela umdaniso wenu."',
-  "We all have dreams for our family, just like @global.w_money_grandma. By setting aside a bit of money every month, you can realise them too!":
-    "Sonke sinamaphupha ngeentsapho zethu, kanye njengo @global.w_money_grandma. Ngokubekela ecaleni intwana yemali nyanga nganye, bangazeka emzekweni",
-  '@global.w_praise_female_caregiver_name: "Thank you for doing your schoolwork, @global.w_praise_girl, and thank you for helping your sister,  @global.w_praise_teen_girl. I\'m so proud of you!"':
-    '@global.w_praise_female_caregiver_name: "Enkosi ngokwenza umsebenzi wakho wesikolo, @global.w_praise_girl, yaye enkosi ngokuncedisa udadewenu, @global.w_praise_teen_girl. Ndiyazidla ngawe!”',
-  '@global.w_rules_female_caregiver_2: "You are a really great dancer! Tell me about why you like it"\n\n@global.w_rules_teen_girl: "All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers."':
-    '@global.w_rules_female_caregiver_2: “Ungumdanisi ophum’ izandla ngokwenene! Ndixelele isizathu sokuba uwuthande"\n\n@global.w_rules_teen_girl: "Bonke abahlobo bam bakuwo, @global.w_rules_female_caregiver_2. Ndineelikes eziyi-600 neefollowers eziyi-120."',
-  '@global.w_rules_female_caregiver_2: "I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens."':
-    '@global.w_rules_female_caregiver_2: "Ndiyazidla ngendlela odanisa kamnandi ngayo, @global.w_rules_teen_girl. Kodwa simele siqinisekise ukuba ukhuselekile. \n\nNdiyazi ukuba abahlobo bakho bajonga ku @global.teen_social_medium, kodwa ngeakhawunti evulekileyo, kukho nabanye abantu abajonga iividiyo zabantu abafikisayo bencwase ukwabelana nabo ngesondo. Maxa wambi baye baqhagamshelane nabantu abafikisayo. Bazenza ngathi banobuntu kodwa baphela besongela baze babaxhaphaze abantwana abafikisayo.”',
-  '@global.w_safe_teen_girl_1: "Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_3!"\n\n@global.w_safe_female_caregiver: "Tell me, @global.w_safe_teen_girl_1"':
-    '@global.w_safe_teen_girl_1: "Ikho into eye yenzeka ngoxa ndiphume nabahlobo bam u @global.w_safe_teen_girl_2 no !@global.w_safe_teen_girl_3"\n\n@global.w_safe_female_caregiver: "Ndixelele, @global.w_safe_teen_girl_1"',
-  "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you.":
-    "Njengoko ngoku uye wakha ubuchule bokuzinyamekela, masiqinisekise ukuba i- @global.weekly_workshops yakho ikulungele.",
-  "You seem to have completed the customisation process already. You can now skip this activity.":
-    "Kubonakala ngathi sele uyigqibile inkqubo yokuzivumelanisa. Ngoku ungawutsiba lo msebenzi.",
-  '@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1. It takes great photos!"':
-    "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, uyifumene kubani loo nto?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 undithengele. Intle le fowuni, @global.w_solve_female_caregiver_1. Ithatha iifoto ezintle!”",
-  '@global.w_solve_female_caregiver_2: "I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?"\n\n@global.w_solve_teen_boy_2: "Well… I want to just hit him or get him back."':
-    '@global.w_solve_female_caregiver_2: "Ndibuhlungu ukuva loo nto kodwa ndiyavuya undixelele, @global.w_solve_teen_boy_2. Loo nto ayithethi ukuba umele utye idinala yomntu wonke. Emva kokuba sithethile, kufuneka uyokuthenga esinye isonka evenkileni. Kodwa kuqala: Ucinga ukuba sifanele senze ntoni ngale ngxaki yokuntlontwa kwakho?"\n\n@global.w_solve_teen_boy_2: "Kaloku… Ndifuna ukumbetha okanye ndiziphindezele kuye."',
-  '@global.w_solve_female_caregiver_2: "I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!"\n\n@global.w_solve_teen_boy_2: "Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side."':
-    '@global.w_solve_female_caregiver_2: "Ndiyayixolisela ukuva loo nto, @global.w_solve_teen_boy_2. Ndingamcela umalume wakho ayokuthetha nabazali bayo? Ukuba leyo ayisebenzi, siya kuzama enye into!"\n\n@global.w_solve_teen_boy_2: "Ewe, enkosi @global.w_solve_female_caregiver_2. Noko ndiyazi ukuba umi ngakum.”',
-  "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”":
-    "@global.w_stress_teen_boy_1: “Nam ndingakuncedisa ukukhangela umsebenzi, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “Hayi akunangxaki, @global.w_stress_teen_boy_1. Ndiyakuxabisa ukulungela kwakho ukunceda. Eyona nto ibalulekileyo kukuba usebenze nzima esikolweni. Enkosi ngokundiphulaphula.”",
-  "Workshop Reminder": "Isikhumbuzo Soqeqesho",
-  "Something Fun": "Into Eyonwabiswayo",
-  "Random Relax": "Ukuphumla Ngokungacwangciswanga",
-  "All Activities": "Yonke Imisebenzi",
-  "Random Activity": "Umsebenzi Ongacwangciswanga",
-  "Chat Together": "Ncokolani Kunye",
-  "Angry? Take a break": "Unomsindo? Hlaba ikhefu",
+  Continue: "Qhubeka",
+  "Welcome to ParentApp. Click here to start your journey!":
+    "Wamkelekile kwiApp Yomzali. Cofa apha ukuze uqalise uhambo lwakho!",
+  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
+    "Ndiyathemba uziva bhetele. Ukuba ngumzali kunzima, kodwa awukashiywa lixesha lokuphinda uqalise nomntwana wakho ofikisayo. Uqeqesho lwakho lokuba ngumzali lulinde wena! Cofa apha ukuze uqalise uhambo lwakho lweApp Yomzali!",
+  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
+    "Molo! Ngaba yonke into ihamba KAKUHLE? Kubonakala ngathi khange uyivule iApp Yomzali kutshanje. Kutheni ungakhe uyizame? Izigidi zabazali zIye zafumanisa ezi zixhobo ziluncedo. Sisekhona ukuze sikuxhase.",
+  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
+    "Molo kwakhona! Awukashiywa lixesha lokusebenzisa i-App Yomzali uze ufumane inkxaso efanele wena yokuba ngumzali. Kutheni ungakhe uyizame xa usiya emsebenzini okanye xa usapheke ukutya? Izigidi zabazali zIye zafumanisa izixhobo zethu ziluncedo.",
+  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
+    "I-App yoMzali iyakukhumbuza! Kuninzi omele ukuhlole. Sisekhona ukuze sikuxhase.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp Yomzali ukukunceda ulawule uxinezeleko lokuba ngumzali.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali - sebenzsa iApp Yomzali ukulungiselela umntwana wakho ofikisayo ukuba aphumelele ebomini.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp Yomzali ukukunceda ulawule isimilo somntwana wakho ofikisayo.",
+  "New message from PLH": "Umyalezo omtsha ovela kwi-PLH",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp Yomzali ukuze uphinde usondelelane nomntwana wakho ofikisayo kwakhona!",
 };

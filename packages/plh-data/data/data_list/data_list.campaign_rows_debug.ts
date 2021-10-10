@@ -4,7 +4,62 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows_debug",
-    flow_name: "debug_campaign_list",
+    flow_name: "debug_campaign_rows",
+    status: "released",
+    comments: "This campaign has scheduled notifications",
+    rows: [
+      {
+        id: "debug_notification_1",
+        priority: 1,
+        campaign_list: ["debug_campaign"],
+        notification_schedule: {
+          text: "Text 1",
+          title: "Debug Notification 1",
+        },
+        text: "Text 1",
+        title: "Debug Notification 1",
+      },
+      {
+        id: "debug_notification_2",
+        priority: 1,
+        campaign_list: ["debug_campaign"],
+        notification_schedule: {
+          text: "Text 2",
+          title: "Debug Notification 2",
+        },
+        text: "Text 2",
+        title: "Debug Notification 2",
+      },
+      {
+        id: "debug_notification_3",
+        priority: 1,
+        campaign_list: ["debug_campaign"],
+        notification_schedule: {
+          text: "Text 3",
+          title: "Debug Notification 3",
+        },
+        text: "Text 3",
+        title: "Debug Notification 3",
+      },
+      {
+        id: "debug_notification_4",
+        priority: 1,
+        campaign_list: ["debug_campaign"],
+        notification_schedule: {
+          text: "Text 4",
+          title: "Debug Notification 4",
+        },
+        text: "Text 4",
+        title: "Debug Notification 4",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows_debug",
+    flow_name: "debug_campaign_rows_2",
     status: "released",
     rows: [
       {
@@ -341,7 +396,7 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows_debug",
-    flow_name: "debug_campaign_3_list",
+    flow_name: "debug_campaign_rows_3",
     status: "released",
     rows: [
       {
@@ -681,6 +736,77 @@ const data_list: FlowTypes.Data_list[] = [
     ],
     _xlsxPath:
       "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows_debug",
+    flow_name: "example_notifications_list",
+    status: "released",
+    rows: [
+      {
+        id: "example_notification_1",
+        priority: 1,
+        campaign_list: ["example_notifications"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Example text. Ideally this should be 40-50 characters",
+          delay: {
+            minutes: "2",
+          },
+        },
+        title: "New message from PLH",
+        text: "Example text. Ideally this should be 40-50 characters",
+        message_length: 53,
+      },
+      {
+        id: "example_notification_2",
+        priority: 2,
+        campaign_list: ["example_notifications"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "There is no maximum text length, but some longer messages can get cut off.\n\nTypically around on 150-230 IOS and on 450-650 Android",
+          time: {
+            hour: "19",
+            minute: "30",
+          },
+          delay: {
+            days: "7",
+          },
+        },
+        title: "New message from PLH",
+        text: "There is no maximum text length, but some longer messages can get cut off.\n\nTypically around on 150-230 IOS and on 450-650 Android",
+        message_length: 130,
+      },
+      {
+        id: "example_notification_3",
+        priority: 3,
+        campaign_list: ["example_notifications"],
+        notification_schedule: {
+          time: {
+            hour: "1",
+            minute: "10",
+          },
+          delay: {
+            days: "2",
+            hours: "4",
+            minutes: "30",
+          },
+        },
+        text: "Text needs to be included in the notification_schedule column. This will not be used otherwise",
+      },
+      {
+        id: "example_notification_4",
+        notification_schedule: {
+          text: "TODO - text examples with conditions based on fields or previous notifications",
+          delay: {
+            minutes: "1",
+          },
+        },
+        text: "TODO - text examples with conditions based on fields or previous notifications",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_notifications.xlsx",
   },
 ];
 export default data_list;
