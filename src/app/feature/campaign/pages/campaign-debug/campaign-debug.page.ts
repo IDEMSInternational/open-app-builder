@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
@@ -26,14 +25,12 @@ export class CampaignDebugPage implements OnInit {
     public campaignService: CampaignService,
     public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
-    private templateService: TemplateService,
     private router: Router,
     private route: ActivatedRoute,
     private modalCtrl: ModalController
   ) {}
 
   async ngOnInit() {
-    this.localNotificationService.loadNotifications();
     // this.debugData = await this.dataEvaluationService.refreshDBCache();
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
@@ -60,7 +57,7 @@ export class CampaignDebugPage implements OnInit {
   }
 
   public scheduleNotification(row: FlowTypes.Campaign_listRow) {
-    return this.campaignService.scheduleCampaignNotification(row);
+    return this.campaignService.scheduleCampaignNotification(row, this.debugCampaignId);
   }
 
   /**
@@ -70,17 +67,7 @@ export class CampaignDebugPage implements OnInit {
    * TODO - find way to identify any named action list (not just click_action_list)
    */
   public triggerRowActions(row: FlowTypes.Campaign_listRow) {
-    console.log("triggering actions", row);
-    if (row.click_action_list) {
-      for (const action of row.click_action_list) {
-        if (action.action_id === "set_field") {
-          const [key, value] = action.args;
-          this.templateService.setField(key, value);
-        } else {
-          console.error("Only set_field actions supported by debugger");
-        }
-      }
-    }
+    this.campaignService.triggerRowActions(row);
     this.processCampaign();
     // TODO - reload cache after trigger
   }
@@ -88,7 +75,7 @@ export class CampaignDebugPage implements OnInit {
   private async processCampaign() {
     const debugCampaignRows: IDebugCampaignRows = { activated: [], deactivated: [], pending: [] };
     const campaign_id = this.debugCampaignId;
-    const campaignRows = this.campaignService.campaigns[campaign_id];
+    const campaignRows = this.campaignService.campaigns[campaign_id].rows;
     const evaluated = await Promise.all(
       campaignRows.map(async (row) => {
         return await this.campaignService.evaluateCampaignRow(row);

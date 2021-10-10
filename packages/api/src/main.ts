@@ -1,5 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { setupDB } from "./db";
 import { environment } from "./environment";
@@ -25,6 +26,8 @@ async function bootstrap() {
     .addServer(environment.API_BASE_PATH ? `/${environment.API_BASE_PATH}` : "")
     .build();
   const document = SwaggerModule.createDocument(app, config, { ignoreGlobalPrefix: true });
+  // add export for docs (https://github.com/nestjs/swagger/issues/158)
+  fs.writeFileSync("./spec-export.json", JSON.stringify(document, null, 2));
   SwaggerModule.setup("", app, document);
   // Starts listening for shutdown hooks
   app.enableShutdownHooks();

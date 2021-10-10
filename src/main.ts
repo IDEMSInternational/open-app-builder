@@ -10,15 +10,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-if (Capacitor.isNative) {
-  /** Rewrite default log functions for improved performance when running on device */
-  if (window && window.console) {
-    window.console.log = function (...args: any) {};
-    window.console.warn = function (...args: any) {};
-    window.console.error = function (...args: any) {};
-  }
-}
-
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err) => console.log(err));
