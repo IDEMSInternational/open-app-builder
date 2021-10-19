@@ -92,6 +92,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex: number;
   sectionMaximumIndex: number | string;
+  sectionMaxiumumPercentage: unknown;
 
   /** Temp row to pass emit completed/uncompleted actions to parent */
   containerRow = hackAddRowWithDefaultActions();
@@ -109,6 +110,9 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       if (!this.sectionIndex) {
         this.sectionIndex = this.getActiveSectionIdx(row?.parameter_list?.progress_field);
         this.sectionMaximumIndex = this.getMaximumSectionIdx(
+          row.parameter_list["max_progress_field"]
+        );
+        this.sectionMaxiumumPercentage = this.getMaximumProgressPercentage(
           row.parameter_list["max_progress_field"]
         );
       }
@@ -171,6 +175,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     //be an integer between 0 and 100 inclusive.
     const progressField = this._row.parameter_list["progress_field"];
     const progressFieldMaximum = this._row.parameter_list["max_progress_field"];
+
     if (progressField && progressField.indexOf("{{") < 0) {
       const currentPercentDone = Math.ceil(
         ((this.sectionIndex + 1) / this.templateNames.length) * 100
@@ -180,8 +185,16 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       let maximumPercentDone: Number;
 
       if (previousPercentDone && !isNaN(previousPercentDone)) {
-        maximumPercentDone = Math.max(currentPercentDone, previousPercentDone);
-        this.templateService.setField(progressFieldMaximum, maximumPercentDone.toString());
+        if (currentPercentDone == previousPercentDone) {
+          this.sectionMaxiumumPercentage = parseFloat(
+            this.templateService.getField(progressFieldMaximum)
+          );
+        } else {
+          maximumPercentDone = Math.max(currentPercentDone, previousPercentDone);
+          this.sectionMaxiumumPercentage = maximumPercentDone;
+
+          this.templateService.setField(progressFieldMaximum, maximumPercentDone.toString());
+        }
       }
 
       await this.parent.handleActions(
@@ -194,7 +207,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
           },
           {
             action_id: "set_field",
-            args: [progressFieldMaximum, "" + maximumPercentDone],
+            args: [progressFieldMaximum, "" + this.sectionMaxiumumPercentage],
             trigger: "completed",
             _triggeredBy: this._row,
           },
@@ -216,5 +229,14 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     const maximumProgress = parseFloat(this.templateService.getField(parameterListElement));
     result = Math.floor((maximumProgress * this.templateNames.length) / 100 - 1);
     return result > 0 ? result : 0;
+  }
+
+  /**
+   *
+   * @param parameterListElement
+   * @private
+   */
+  getMaximumProgressPercentage(parameterListElement: string) {
+    return this.templateService.getField(parameterListElement);
   }
 }
