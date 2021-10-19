@@ -8,6 +8,7 @@ import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 // RxJS v6+
 import { Subscription, timer } from "rxjs";
+import { Clipboard } from "@ionic-native/clipboard/ngx";
 
 @Component({
   selector: "plh-select-text",
@@ -25,6 +26,7 @@ export class SelectTextComponent
   public isNumberInput: boolean | any;
   public prioritisePlaceholder: boolean | any;
   toggle: boolean = false;
+  private clipboard: Clipboard = new Clipboard();
 
   //emit after 1 second
   public source = timer(1000);
@@ -35,7 +37,6 @@ export class SelectTextComponent
     this.getParams();
   }
 
- 
   getParams() {
     console.table(this._row);
     this.placeholder = getStringParamFromTemplateRow(this._row, "placeholder", "");
@@ -51,20 +52,25 @@ export class SelectTextComponent
   }
 
   triggerCopyContent($event: MouseEvent, _row: FlowTypes.TemplateRow) {
+    debugger;
     this.toggle = !this.toggle;
 
     this.subscribe = this.source.subscribe((val) => {
       this.toggle = !this.toggle;
     });
 
-    var text = _row.value;
-    navigator.clipboard.writeText(text).then(
-      function () {
-        console.log("Async: Copying to clipboard was successful!");
-      },
-      function (err) {
-        console.error("Async: Could not copy text: ", err);
-      }
-    );
+    let text = _row.value;
+    if ("clipboard" in navigator) {
+      navigator.clipboard.writeText(text).then(
+        function () {
+          console.log("Async: Copying to clipboard was successful!");
+        },
+        function (err) {
+          console.error("Async: Could not copy text: ", err);
+        }
+      );
+    } else {
+      this.clipboard.copy(text).then((r) => console.log(r));
+    }
   }
 }
