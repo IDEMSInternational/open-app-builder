@@ -11193,6 +11193,423 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows",
+    flow_name: "campaign_inactive_day",
+    status: "released",
+    rows: [
+      {
+        id: "m_inactive_day_1",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_day_1.sent", true],
+            _raw: "set_field: m_inactive_day_1.sent : true",
+            _cleaned: "click | set_field: m_inactive_day_1.sent : true",
+          },
+        ],
+        priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "m_inactive_day_1.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | m_inactive_day_1.sent : true",
+          },
+        ],
+        campaign_list: ["inactive_day"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Welcome to ParentApp. Click here to start your journey!",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Welcome to ParentApp. Click here to start your journey!",
+          },
+        },
+        text: "Welcome to ParentApp. Click here to start your journey!",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_inactive_week",
+    status: "released",
+    rows: [
+      {
+        id: "m_inactive_week_1",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_week_1.sent", true],
+            _raw: "set_field: m_inactive_week_1.sent : true",
+            _cleaned: "click | set_field: m_inactive_week_1.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_week"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
+          },
+        },
+        text: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
+      },
+      {
+        id: "m_inactive_week_2",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_week_2.sent", true],
+            _raw: "set_field: m_inactive_week_2.sent : true",
+            _cleaned: "click | set_field: m_inactive_week_2.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_week"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
+      },
+      {
+        id: "m_inactive_week_3",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_week_3.sent", true],
+            _raw: "set_field: m_inactive_week_3.sent : true",
+            _cleaned: "click | set_field: m_inactive_week_3.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_week"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+          },
+        },
+        text: "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+      },
+      {
+        id: "m_inactive_week_4",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_week_4.sent", true],
+            _raw: "set_field: m_inactive_week_4.sent : true",
+            _cleaned: "click | set_field: m_inactive_week_4.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_week"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_inactive_month",
+    status: "released",
+    rows: [
+      {
+        id: "m_inactive_month_1",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_month_1.sent", true],
+            _raw: "set_field: m_inactive_month_1.sent : true",
+            _cleaned: "click | set_field: m_inactive_month_1.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_month"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+          },
+        },
+        text: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+      },
+      {
+        id: "m_inactive_month_2",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_month_2.sent", true],
+            _raw: "set_field: m_inactive_month_2.sent : true",
+            _cleaned: "click | set_field: m_inactive_month_2.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_month"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
+          },
+        },
+        text: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
+      },
+      {
+        id: "m_inactive_month_3",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_month_3.sent", true],
+            _raw: "set_field: m_inactive_month_3.sent : true",
+            _cleaned: "click | set_field: m_inactive_month_3.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_month"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
+      },
+      {
+        id: "m_inactive_month_4",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_inactive_month_4.sent", true],
+            _raw: "set_field: m_inactive_month_4.sent : true",
+            _cleaned: "click | set_field: m_inactive_month_4.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["inactive_month"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
     flow_name: "m_inactive_data",
     status: "released",
     rows: [
@@ -11299,7 +11716,28 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "inactive_2",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["inactive_2.sent", true],
+            _raw: "set_field: inactive_2.sent : true",
+            _cleaned: "click | set_field: inactive_2.sent : true",
+          },
+        ],
         priority: 2,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "inactive_2.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | inactive_2.sent : true",
+          },
+        ],
         campaign_list: ["m_inactive_campaign"],
         notification_schedule: {
           title: "New message from PLH",
@@ -11339,7 +11777,28 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "inactive_3",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["inactive_3.sent", true],
+            _raw: "set_field: inactive_3.sent : true",
+            _cleaned: "click | set_field: inactive_3.sent : true",
+          },
+        ],
         priority: -1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "inactive_3.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | inactive_3.sent : true",
+          },
+        ],
         campaign_list: ["m_inactive_campaign"],
         notification_schedule: {
           title: "New message from PLH",
@@ -11379,7 +11838,28 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "inactive_4",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["inactive_4.sent", true],
+            _raw: "set_field: inactive_4.sent : true",
+            _cleaned: "click | set_field: inactive_4.sent : true",
+          },
+        ],
         priority: -2,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "inactive_4.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | inactive_4.sent : true",
+          },
+        ],
         campaign_list: ["m_inactive_campaign"],
         notification_schedule: {
           title: "New message from PLH",
@@ -11419,7 +11899,28 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "inactive_5",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["inactive_5.sent", true],
+            _raw: "set_field: inactive_5.sent : true",
+            _cleaned: "click | set_field: inactive_5.sent : true",
+          },
+        ],
         priority: -3,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "inactive_5.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | inactive_5.sent : true",
+          },
+        ],
         campaign_list: ["m_inactive_campaign"],
         notification_schedule: {
           title: "New message from PLH",
@@ -11459,7 +11960,28 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "inactive_6",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["inactive_6.sent", true],
+            _raw: "set_field: inactive_6.sent : true",
+            _cleaned: "click | set_field: inactive_6.sent : true",
+          },
+        ],
         priority: -4,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "inactive_6.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | inactive_6.sent : true",
+          },
+        ],
         campaign_list: ["m_inactive_campaign"],
         notification_schedule: {
           title: "New message from PLH",
@@ -11499,7 +12021,28 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "inactive_7",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["inactive_7.sent", true],
+            _raw: "set_field: inactive_7.sent : true",
+            _cleaned: "click | set_field: inactive_7.sent : true",
+          },
+        ],
         priority: -5,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "inactive_7.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | inactive_7.sent : true",
+          },
+        ],
         campaign_list: ["m_inactive_campaign"],
         notification_schedule: {
           title: "New message from PLH",
@@ -11578,78 +12121,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/no_app_activity.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "example_notifications_list",
-    status: "released",
-    rows: [
-      {
-        id: "example_notification_1",
-        priority: 1,
-        campaign_list: ["example_notifications"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Example text. Ideally this should be 40-50 characters",
-          delay: {
-            minutes: "2",
-          },
-        },
-        title: "New message from PLH",
-        text: "Example text. Ideally this should be 40-50 characters",
-        message_length: 53,
-      },
-      {
-        id: "example_notification_2",
-        priority: 2,
-        campaign_list: ["example_notifications"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "There is no maximum text length, but some longer messages can get cut off.\n\nTypically around on 150-230 IOS and on 450-650 Android",
-          time: {
-            hour: "19",
-            minute: "30",
-          },
-          delay: {
-            days: "7",
-          },
-        },
-        title: "New message from PLH",
-        text: "There is no maximum text length, but some longer messages can get cut off.\n\nTypically around on 150-230 IOS and on 450-650 Android",
-        message_length: 130,
-      },
-      {
-        id: "example_notification_3",
-        priority: 3,
-        campaign_list: ["example_notifications"],
-        notification_schedule: {
-          time: {
-            hour: "1",
-            minute: "10",
-          },
-          delay: {
-            days: "2",
-            hours: "4",
-            minutes: "30",
-          },
-        },
-        text: "Text needs to be included in the notification_schedule column. This will not be used otherwise",
-      },
-      {
-        id: "example_notification_4",
-        notification_schedule: {
-          text: "TODO - text examples with conditions based on fields or previous notifications",
-          delay: {
-            minutes: "1",
-          },
-        },
-        text: "TODO - text examples with conditions based on fields or previous notifications",
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_notifications.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/no_app_activity_backup.xlsx",
   },
 ];
 export default data_list;

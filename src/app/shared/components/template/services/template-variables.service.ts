@@ -142,6 +142,12 @@ export class TemplateVariablesService {
       const { type, fieldName, matchedExpression } = evaluator;
       context.calcContext = calcContext;
 
+      // If a raw evaluator exists for any part of expression, return full expression unparsed
+      // e.g. "Example syntax is `@field.my_name`" -> "Example syntax is @field.my_name"
+      if (type === "raw") {
+        return evaluator.fullExpression.replace(/`/gi, "");
+      }
+
       // process the main lookup, e.g. @local.some_val, @campaign.some_val
       // NOTE - if parse fail an empty string will be returned
       let { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);
@@ -313,17 +319,6 @@ export class TemplateVariablesService {
         break;
       case "data":
         parsedValue = this.templateService.getDataListByPath(fieldName);
-        // HACK - make sure data lists are translated (ideally should find way to handle alongside main translations)
-        // TODO - review if similar methods required for campaign, global etc.
-        if (parsedValue && typeof parsedValue === "object") {
-          Object.keys(parsedValue).forEach((k) => {
-            parsedValue[k] = this.templateTranslateService.translateRow(parsedValue[k]);
-          });
-        } else {
-          parsedValue = {};
-          console.error("Data list could not be processed", { fieldName, parsedValue });
-        }
-
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
@@ -353,9 +348,32 @@ export class TemplateVariablesService {
         // This will be checked a second time and could cause an infinite loop
         parsedValue = "";
     }
+    parsedValue = this.ensureValueTranslated(parsedValue);
     return { parsedValue, parseSuccess };
   }
+
+  /**
+   * HACK - make sure objects (e.g. campaign, global, data_lists) are translated
+   * (ideally should find way to handle alongside main translations)
+   * TODO - could also merge with standalone global method
+   */
+  private ensureValueTranslated(value: any) {
+    // If translatable value should be an object with _tranlsations property
+    // TODO - check if case needs to be added to translate arrays
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      if (value.hasOwnProperty("_translations")) {
+        value = this.templateTranslateService.translateRow(value);
+      } else {
+        // Check in case object with nested translations (e.g. data list)
+        Object.keys(value).forEach((k) => {
+          value[k] = this.ensureValueTranslated(value[k]);
+        });
+      }
+    }
+    return value;
+  }
 }
+
 function _arrayToObject(arr: any[]) {
   const obj = {};
   arr.forEach((el, i) => (obj[i] = el));

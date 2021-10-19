@@ -7,7 +7,7 @@ services:
   ####################################################################
   nginx:
     # image: jonasal/nginx-certbot:latest
-    image: nginx:latest
+    image: nginx:stable
     container_name: plh_webserver
     restart: unless-stopped
     env_file:
@@ -50,7 +50,7 @@ services:
   # Postgres DB
   ####################################################################
   db:
-    image: postgres
+    image: postgres:13
     container_name: plh_db
     restart: unless-stopped
     env_file:
@@ -71,11 +71,28 @@ services:
       timeout: 5s
       retries: 5
   ####################################################################
+  # Postgres DB admin (pgadmin)
+  ####################################################################
+  pgadmin:
+    image: dpage/pgadmin4:6
+    container_name: plh_pg_admin
+    restart: unless-stopped 
+    env_file:
+      - ../.env
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      # expose on port 5050 to allow easier connect on docker for windows
+      - 5050:80
+    networks:
+      - db_network
+      - webserver_network       
+  ####################################################################
   # Adminer DB Admin
   # Works with both Postgres and MariaDB
   ####################################################################
   db_admin:
-    image: adminer
+    image: adminer:4.8.1
     container_name: plh_db_admin
     restart: unless-stopped
     networks:
@@ -92,7 +109,7 @@ services:
   # TODO - Add custom env credentials
   ####################################################################
   db_dashboard:
-    image: metabase/metabase
+    image: metabase/metabase:v0.41.0
     container_name: plh_db_dashboard
     restart: unless-stopped
     depends_on:
@@ -117,7 +134,7 @@ services:
   # ```docker exec analytics_dashboard chown -R www-data:www-data /var/www/html```
   ####################################################################
   analytics_db:
-    image: mariadb
+    image: mariadb:10.5.12
     container_name: plh_analytics_db
     command: --max-allowed-packet=64MB
     restart: unless-stopped
@@ -136,7 +153,7 @@ services:
       timeout: 20s
       retries: 10
   analytics_dashboard:
-    image: matomo:fpm-alpine
+    image: matomo:4.5.0-fpm-alpine
     container_name: analytics_dashboard
     restart: unless-stopped
     depends_on:
@@ -155,7 +172,7 @@ services:
     networks:
       - analytics_network
   analytics_webserver:
-    image: nginx:latest
+    image: nginx:stable
     container_name: analytics_webserver
     restart: unless-stopped
     env_file:
@@ -175,6 +192,7 @@ volumes:
   analytics_db:
   matomo_www:
   nginx_secrets:
+  pgadmin:
 # NOTE - networks aren't actually required unless we used multiple docker-compose files
 networks:
   db_network:

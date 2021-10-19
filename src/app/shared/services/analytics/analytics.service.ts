@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Device } from "@capacitor/core";
+import { Device } from "@capacitor/device";
 import { MatomoTracker } from "@ngx-matomo/tracker";
 
 @Injectable({ providedIn: "root" })
@@ -11,9 +11,8 @@ export class AnalyticsService {
     this.matomoTracker.setCookieSameSite("Lax");
 
     // set user id
-    const device_info = await Device.getInfo();
-    const app_user_id = device_info.uuid;
-    this.matomoTracker.setUserId(app_user_id);
+    const { uuid } = await Device.getId();
+    this.matomoTracker.setUserId(uuid);
   }
 
   public trackEvent(name: string, value = null, category = "default", action = "default") {
