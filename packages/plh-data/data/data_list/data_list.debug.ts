@@ -173,6 +173,18 @@ const data_list: FlowTypes.Data_list[] = [
             xho: false,
             zul: false,
           },
+          bold_title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          title_and_happy: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
         },
         _translatedFields: {
           title: {
@@ -181,8 +193,16 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             eng: "This text is loaded through the first data row.",
           },
+          bold_title: {
+            eng: "**Example Data List Title 1**",
+          },
+          title_and_happy: {
+            eng: "Example Data List Title 1 happy",
+          },
         },
         text: "This text is loaded through the first data row.",
+        bold_title: "**Example Data List Title 1**",
+        title_and_happy: "Example Data List Title 1 happy",
       },
       {
         id: "example_lang_2",
@@ -202,6 +222,18 @@ const data_list: FlowTypes.Data_list[] = [
             xho: false,
             zul: false,
           },
+          bold_title: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+          title_and_happy: {
+            spa: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
         },
         _translatedFields: {
           title: {
@@ -210,8 +242,16 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             eng: "This text is loaded through the second data row.",
           },
+          bold_title: {
+            eng: "**Example Data List Title 2**",
+          },
+          title_and_happy: {
+            eng: "Example Data List Title 2 happy",
+          },
         },
         text: "This text is loaded through the second data row.",
+        bold_title: "**Example Data List Title 2**",
+        title_and_happy: "Example Data List Title 2 happy",
       },
       {
         id: "example_lang_3",
