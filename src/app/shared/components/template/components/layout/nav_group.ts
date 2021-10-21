@@ -191,9 +191,16 @@ export class NavGroupComponent extends TemplateLayoutComponent {
           );
         } else {
           maximumPercentDone = Math.max(currentPercentDone, previousPercentDone);
-          this.sectionMaxiumumPercentage = maximumPercentDone;
 
-          this.templateService.setField(progressFieldMaximum, maximumPercentDone.toString());
+          if (maximumPercentDone > this.sectionMaxiumumPercentage) {
+            this.sectionMaxiumumPercentage = maximumPercentDone;
+            this.templateService.setField(progressFieldMaximum, maximumPercentDone.toString());
+          } else {
+            this.templateService.setField(
+              progressFieldMaximum,
+              this.sectionMaxiumumPercentage.toString()
+            );
+          }
         }
       }
 
