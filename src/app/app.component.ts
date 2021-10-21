@@ -69,6 +69,7 @@ export class AppComponent {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
         await this.templateService.runStandaloneTemplate("language_select");
+        await this.templateService.runStandaloneTemplate("organisation_registration");
         await this.tourService.startTour("intro_tour");
       }
       this.menuController.enable(true, "main-side-menu");
