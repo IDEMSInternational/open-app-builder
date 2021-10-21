@@ -17,7 +17,8 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
           [row]="childRow"
           [parent]="parent"
           [attr.class]="_row.name"
-        ></plh-template-component>
+        >
+        </plh-template-component>
       </ng-container>
       <plh-advanced-dashed-box
         *ngSwitchCase="'dashed_box'"
@@ -30,6 +31,17 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
   styleUrls: ["../tmpl-components-common.scss"],
   styles: [
     `
+      .dg_weekly_workshops,
+      .dg_parent_points,
+      .dg_parent_centre {
+        margin-left: 10px !important;
+        max-width: 100% !important;
+      }
+
+      .tile_parent_points {
+        padding-top: 0 !important;
+      }
+
       .display-group.two_columns .offset {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
