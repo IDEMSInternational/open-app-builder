@@ -18,6 +18,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -40,6 +41,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -62,6 +64,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -84,6 +87,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -106,6 +110,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -128,6 +133,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -150,6 +156,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -171,6 +178,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -192,6 +200,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -213,6 +222,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -234,6 +244,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -255,6 +266,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -276,6 +288,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -298,6 +311,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -320,6 +334,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -342,6 +357,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -363,6 +379,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -384,6 +401,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -405,6 +423,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -426,12 +445,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           intro_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -457,6 +478,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -479,12 +501,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           intro_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -511,12 +535,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           intro_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -542,6 +568,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -573,30 +600,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -636,30 +668,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -699,30 +736,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -762,30 +804,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -825,30 +872,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -888,30 +940,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -951,30 +1008,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1014,30 +1076,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1077,30 +1144,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1140,30 +1212,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1245,6 +1322,17 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Setswana",
         image: "i18n/flags/za.svg",
       },
+      {
+        id: "za-afr",
+        country_code: "za",
+        country_label: "South Africa",
+        country_icon: "i18n/flags/za.svg",
+        language_code: "afr",
+        language_label: "Afrikaans",
+        name: "afr",
+        text: "Afrikaans",
+        image: "i18n/flags/za.svg",
+      },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/language_data_list.xlsx",
   },
@@ -1261,12 +1349,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1289,12 +1379,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1317,12 +1409,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1345,12 +1439,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1373,18 +1469,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           title_2: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1411,12 +1510,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1439,12 +1540,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1467,12 +1570,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1495,12 +1600,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1523,12 +1630,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1561,6 +1670,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1580,6 +1690,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1599,6 +1710,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1618,6 +1730,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1637,6 +1750,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1656,6 +1770,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1675,6 +1790,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1694,6 +1810,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1713,6 +1830,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1732,6 +1850,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1751,6 +1870,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1770,6 +1890,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1789,6 +1910,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1808,6 +1930,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1827,6 +1950,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1846,6 +1970,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1865,6 +1990,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1884,6 +2010,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1903,6 +2030,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1922,6 +2050,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1941,6 +2070,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1960,6 +2090,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1979,6 +2110,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1998,6 +2130,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2017,6 +2150,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2049,6 +2183,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2073,6 +2208,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2097,6 +2233,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2121,6 +2258,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2145,6 +2283,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2168,6 +2307,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2192,6 +2332,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2216,6 +2357,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2240,6 +2382,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2264,6 +2407,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2288,6 +2432,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2312,6 +2457,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2336,6 +2482,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2360,6 +2507,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2383,6 +2531,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2406,6 +2555,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2429,6 +2579,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2452,6 +2603,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2475,6 +2627,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2498,6 +2651,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2521,6 +2675,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2544,6 +2699,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2567,6 +2723,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2590,6 +2747,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2624,24 +2782,28 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           short_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2680,18 +2842,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2726,18 +2891,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2772,18 +2940,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2818,18 +2989,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2864,18 +3038,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2910,18 +3087,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2956,18 +3136,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3002,18 +3185,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3048,18 +3234,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3094,18 +3283,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3139,18 +3331,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
