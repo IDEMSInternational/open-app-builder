@@ -19,6 +19,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -33,6 +34,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -47,6 +49,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -68,6 +71,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -81,6 +85,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -162,6 +167,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -175,6 +181,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -188,6 +195,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -201,6 +209,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -214,6 +223,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -227,6 +237,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -240,6 +251,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -253,6 +265,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -274,6 +287,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -287,6 +301,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -300,6 +315,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -321,6 +337,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -335,6 +352,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -349,6 +367,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -363,6 +382,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -377,6 +397,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -391,6 +412,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -405,6 +427,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -419,6 +442,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -433,6 +457,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -447,6 +472,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -461,6 +487,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -475,6 +502,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -488,6 +516,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -501,6 +530,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -514,6 +544,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -528,6 +559,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -542,6 +574,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -556,6 +589,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -570,6 +604,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -584,6 +619,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -598,6 +634,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -611,6 +648,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -624,6 +662,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -638,6 +677,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -652,6 +692,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -666,6 +707,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -680,6 +722,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -694,6 +737,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -708,6 +752,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -722,6 +767,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -736,6 +782,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -750,6 +797,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -764,6 +812,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -778,6 +827,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -792,6 +842,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -806,6 +857,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -820,6 +872,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -834,6 +887,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -848,6 +902,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -862,6 +917,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -876,6 +932,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -890,6 +947,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -904,6 +962,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -918,6 +977,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -932,6 +992,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -946,6 +1007,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -960,6 +1022,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -974,6 +1037,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -988,6 +1052,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1002,6 +1067,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1016,6 +1082,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1030,6 +1097,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1044,6 +1112,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1058,6 +1127,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1072,6 +1142,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1086,6 +1157,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1100,6 +1172,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1114,6 +1187,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1128,6 +1202,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1142,6 +1217,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1156,6 +1232,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1170,6 +1247,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1184,6 +1262,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1198,6 +1277,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1212,6 +1292,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1226,6 +1307,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1240,6 +1322,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1254,6 +1337,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1276,6 +1360,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1290,6 +1375,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1304,6 +1390,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1318,6 +1405,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1331,6 +1419,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1363,6 +1452,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1377,6 +1467,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1399,6 +1490,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1413,6 +1505,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1427,6 +1520,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1441,6 +1535,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1455,6 +1550,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1469,6 +1565,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1491,6 +1588,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1504,6 +1602,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1517,6 +1616,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1530,6 +1630,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1543,6 +1644,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1556,6 +1658,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1569,6 +1672,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1600,6 +1704,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1621,6 +1726,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1634,6 +1740,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1647,6 +1754,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1660,6 +1768,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1673,6 +1782,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1686,6 +1796,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1699,6 +1810,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1712,6 +1824,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1725,6 +1838,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1738,6 +1852,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1751,6 +1866,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1764,6 +1880,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1777,6 +1894,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1790,6 +1908,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1803,6 +1922,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1816,6 +1936,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1829,6 +1950,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1842,6 +1964,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1855,6 +1978,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1869,6 +1993,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1883,6 +2008,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1897,6 +2023,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1911,6 +2038,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1925,6 +2053,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1939,6 +2068,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1953,6 +2083,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1967,6 +2098,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1981,6 +2113,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1995,6 +2128,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -2009,6 +2143,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -2023,6 +2158,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -2521,6 +2657,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2534,6 +2671,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2547,6 +2685,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2560,6 +2699,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2573,6 +2713,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2586,6 +2727,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2599,6 +2741,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2764,6 +2907,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2777,6 +2921,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2790,6 +2935,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2803,6 +2949,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2816,6 +2963,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2829,6 +2977,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3069,6 +3218,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3082,6 +3232,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3095,6 +3246,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3108,6 +3260,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3121,6 +3274,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3134,6 +3288,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3147,6 +3302,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3160,6 +3316,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3173,6 +3330,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3186,6 +3344,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3208,6 +3367,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3221,6 +3381,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3234,6 +3395,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3247,6 +3409,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3269,6 +3432,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3282,6 +3446,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3295,6 +3460,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3308,6 +3474,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3321,6 +3488,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3334,6 +3502,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3356,6 +3525,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3369,6 +3539,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3382,6 +3553,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3395,6 +3567,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3417,6 +3590,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3430,6 +3604,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3443,6 +3618,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3456,6 +3632,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3469,6 +3646,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3482,6 +3660,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3495,6 +3674,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3508,6 +3688,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3521,6 +3702,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3534,6 +3716,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3556,6 +3739,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3569,6 +3753,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3582,6 +3767,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3595,6 +3781,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3608,6 +3795,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3655,6 +3843,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3668,6 +3857,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3681,6 +3871,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3694,6 +3885,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3831,6 +4023,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3844,6 +4037,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3857,6 +4051,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3870,6 +4065,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3883,6 +4079,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3896,6 +4093,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3909,6 +4107,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3922,6 +4121,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3935,6 +4135,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3948,6 +4149,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3961,6 +4163,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3974,6 +4177,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3987,6 +4191,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4000,6 +4205,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4013,6 +4219,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4026,6 +4233,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4039,6 +4247,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4052,6 +4261,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4065,6 +4275,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4078,6 +4289,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4091,6 +4303,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4104,6 +4317,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4117,6 +4331,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4130,6 +4345,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4143,6 +4359,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4164,6 +4381,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4177,6 +4395,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4190,6 +4409,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4657,6 +4877,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -4671,6 +4892,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4684,6 +4906,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4697,6 +4920,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -4711,6 +4935,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: true,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4724,6 +4949,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -4738,6 +4964,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -4751,6 +4978,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -4765,6 +4993,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -4779,6 +5008,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
