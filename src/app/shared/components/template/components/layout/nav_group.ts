@@ -91,8 +91,6 @@ import { TemplateLayoutComponent } from "./layout";
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex: number;
-  // sectionMaximumIndex: number | string;
-  // sectionMaxiumumPercentage: unknown;
 
   /** Temp row to pass emit completed/uncompleted actions to parent */
   containerRow = hackAddRowWithDefaultActions();
@@ -109,13 +107,6 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       // (handle via goToSection method internally for other cases)
       if (!this.sectionIndex) {
         this.sectionIndex = this.getActiveSectionIdx(row?.parameter_list?.progress_field);
-        // this.sectionMaximumIndex = this.getMaximumSectionIdx(
-        //   row.parameter_list["max_progress_field"]
-        // );
-        // this.sectionMaxiumumPercentage = this.getMaximumProgressPercentage(
-        //   row.parameter_list["max_progress_field"],
-        //   row?.parameter_list?.progress_field
-        // );
       }
     }
     return row;
@@ -174,7 +165,6 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     //update the field provided in progress_variable to be equal to the max of it's current value
     //and the percentage of this.sectionIndex from this.templateNames.length. the value should
     //be an integer between 0 and 100 inclusive.
-    debugger;
     const progressField = this._row.parameter_list["progress_field"];
     const progressFieldMaximum = this._row.parameter_list["max_progress_field"];
 
@@ -220,28 +210,4 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       console.warn("No progress field", progressField);
     }
   }
-
-  /**
-   * Function that will return the maximum Slider Index that Stepper ever achieved
-   * @param parameterListElement
-   * @private
-   */
-  // private getMaximumSectionIdx(parameterListElement: string) {
-  //   let result: number;
-  //   const maximumProgress = parseFloat(this.templateService.getField(parameterListElement));
-  //   result = Math.floor((maximumProgress * this.templateNames.length) / 100 - 1);
-  //   return result > 0 ? result : 0;
-  // }
-
-  /**
-   *
-   * @param parameterListElement
-   * @param progress_field
-   * @private
-   */
-  // getMaximumProgressPercentage(parameterListElement: string, progress_field: string | undefined) {
-  //   let getPercentage = this.templateService.getField(parameterListElement);
-  //   let getPercentageSecondary = this.templateService.getField(progress_field);
-  //   return getPercentage > 0 ? getPercentage : getPercentageSecondary ? getPercentageSecondary : 0;
-  // }
 }
