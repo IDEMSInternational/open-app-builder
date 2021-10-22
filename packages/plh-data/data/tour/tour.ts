@@ -12,12 +12,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -34,12 +36,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -57,12 +61,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -79,12 +85,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -101,12 +109,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -124,6 +134,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -147,12 +158,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -169,12 +182,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -187,23 +202,17 @@ const tour: FlowTypes.Tour[] = [
       },
       {
         type: "step",
-        title: "@global.weekly_workshops quick start",
+        message_text:
+          "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
         _translations: {
-          title: {
-            spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
-          },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
         },
-        message_text:
-          "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
         template_component_name: "tile_weekly_workshops",
         route: "template/home_screen",
       },
@@ -213,12 +222,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -235,12 +246,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -257,6 +270,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -278,12 +292,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -300,12 +316,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -318,23 +336,17 @@ const tour: FlowTypes.Tour[] = [
       },
       {
         type: "step",
-        title: "@global.weekly_workshops quick start",
+        message_text:
+          "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
         _translations: {
-          title: {
-            spa: false,
-            tsa: true,
-            xho: true,
-            zul: true,
-          },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
         },
-        message_text:
-          "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
         template_component_name: "tile_weekly_workshops",
         route: "template/home_screen",
       },
@@ -344,12 +356,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -366,12 +380,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -388,6 +404,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -409,12 +426,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -431,12 +450,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -452,12 +473,14 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -473,6 +496,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -488,6 +512,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -502,6 +527,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -517,6 +543,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -531,6 +558,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
