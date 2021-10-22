@@ -38,6 +38,7 @@ export class TourService {
         buttonClass: "buttonClass",
         nextLabel: this.translateService.translateValue("Next"),
         prevLabel: this.translateService.translateValue("Previous"),
+        doneLabel: this.translateService.translateValue("Done"),
         steps: matchingTour.rows.map((row) => {
           // HACK - Ensure tour rows translated
           const translatedRow: FlowTypes.TourStep = this.translateService.translateRow(
