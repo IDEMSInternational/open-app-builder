@@ -12,12 +12,6 @@
     "note": ""
   },
   {
-    "SourceText": "About PLH App",
-    "text": "Kaga App ya PLH",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Settings",
     "text": "Diseting",
     "type": "template",
@@ -78,6 +72,12 @@
     "note": ""
   },
   {
+    "SourceText": "Organisation Registration",
+    "text": "Kwadiso ya Setheo",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Developer Mode",
     "text": "Mokgwa wa Motlhami",
     "type": "template",
@@ -132,10 +132,34 @@
     "note": ""
   },
   {
-    "SourceText": "Welcome Back!",
-    "text": "Re a go amogela gape!",
+    "SourceText": "How did you hear about @global.parent_app?",
+    "text": "O utlwile jang ka @global.parent_app?",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "I found it myself",
+    "text": "Ke e bone ka bonna",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "A friend or family",
+    "text": "Tsala kgotsa wa lelapa",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Other",
+    "text": "E ngwe",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You may be asked to share this code with people who will support your @global.parent_app journey.",
+    "text": "O ka nna wa kopiwa gore o bontshe batho ba bangwe khoutu eno ba ba tla go tshegetsang mo leetong la gago la @global.parent_app.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Start",
@@ -164,12 +188,6 @@
   {
     "SourceText": "My name",
     "text": "Leina la me",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Day to do the workshops",
-    "text": "Letsatsi la go dira di-workshop",
     "type": "template",
     "note": ""
   },
@@ -2862,46 +2880,10 @@
     "note": ""
   },
   {
-    "SourceText": "Finish with a song",
-    "text": "Feleletsa ka pina",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "See you soon.",
     "text": "Re tla go bona mo bogautshwaneng.",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Goodbye!",
-    "text": "Tsamaya sentle!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Organisation Registration",
-    "text": "Kwadiso ya Setheo",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "If you are going through the @global.parent_app programme with the support of an organisation, they should have given you a code. Please enter the code in the box below and press Done.",
-    "text": "Fa e le gore o lebile thulaganyo ya @global.parent_app o thusiwa ke setheo sengwe, ba tshwanetse ba bo ba go file khoutu. Tsweetswee tsenya khoutu mo bokosong e e fa tlase o bo go tobetsa Dirilwe.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Done",
-    "text": "Dirilwe",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "You may be asked to share this code with people who will support your @global.parent_app journey.",
-    "text": "O ka nna wa kopiwa gore o bontshe batho ba bangwe khoutu eno ba ba tla go tshegetsang mo leetong la gago la @global.parent_app.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!",
@@ -7314,20 +7296,8 @@
     "note": "The string @global.weekly_workshops should not be translated."
   },
   {
-    "SourceText": "Start customising",
-    "text": "Simolola go tsenya dilo tse o di batlang",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "You seem to have completed the customisation process already. You can now skip this activity.",
     "text": "Go bonala o setse o feditse thulaganyo ya go itsenyetsa dilo tse o di batlang. O ka nna wa tlola tiro eno.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Skip customisation survey",
-    "text": "Tlola patlisiso ya go itsenyetsa dilo tse o di batlang",
     "type": "template",
     "note": ""
   },
@@ -8286,6 +8256,12 @@
     "note": ""
   },
   {
+    "SourceText": "Challenges & solutions",
+    "text": "Dikgwetlho le ditharabololo",
+    "type": "global",
+    "note": ""
+  },
+  {
     "SourceText": "Find out more",
     "text": "Batla tse di oketsegileng",
     "type": "global",
@@ -8334,14 +8310,26 @@
     "note": ""
   },
   {
-    "SourceText": "Challenges & solutions",
-    "text": "Dikgwetlho le ditharabololo",
+    "SourceText": "Save",
+    "text": "Boloka",
     "type": "global",
     "note": ""
   },
   {
-    "SourceText": "Save",
-    "text": "Boloka",
+    "SourceText": "Start",
+    "text": "Simolola",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "Finish with a song",
+    "text": "Feleletsa ka pina",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "Goodbye!",
+    "text": "Tsamaya sentle!",
     "type": "global",
     "note": ""
   },
@@ -9132,8 +9120,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Relax\" @global.parent_point",
-    "text": "“Iketle” @global.parent_point",
+    "SourceText": "**Relax** @global.parent_point",
+    "text": "**Iketle** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9144,14 +9132,14 @@
     "note": ""
   },
   {
-    "SourceText": "\"Treat yourself well\" @global.parent_point",
-    "text": "“Ineneketse” @global.parent_point",
+    "SourceText": "**Treat yourself well** @global.parent_point",
+    "text": "**Ineneketse** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "\"Praise yourself\" @global.parent_point",
-    "text": "“Ipake” @global.parent_point",
+    "SourceText": "**Praise yourself** @global.parent_point",
+    "text": "**Ipake** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9162,8 +9150,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"One-on-one time\" @global.parent_point",
-    "text": "“Go ipha nako mmogo” @global.parent_point",
+    "SourceText": "**One-on-one time** @global.parent_point",
+    "text": "**Go ipha nako mmogo** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9174,8 +9162,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Praise your teen\" @global.parent_point",
-    "text": "“Baka mosha wa gago” @global.parent_point",
+    "SourceText": "**Praise your teen** @global.parent_point",
+    "text": "**Baka mosha wa gago** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9186,8 +9174,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Get positive\" @global.parent_point",
-    "text": "“Leba dilo ka tsela e e siameng” @global.parent_point",
+    "SourceText": "**Get positive** @global.parent_point",
+    "text": "**Leba dilo ka tsela e e siameng** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9198,8 +9186,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Breathe not yell\" @global.parent_point",
-    "text": "“Kgwa mowa mme o se ka wa goelela” @global.parent_point",
+    "SourceText": "**Breathe not yell** @global.parent_point",
+    "text": "**Kgwa mowa mme o se ka wa goelela** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9210,8 +9198,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Good money choice\" @global.parent_point",
-    "text": "“Go dirisa madi sentle” @global.parent_point",
+    "SourceText": "**Good money choice** @global.parent_point",
+    "text": "**Go dirisa madi sentle** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9222,8 +9210,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Calm consequence\" @global.parent_point",
-    "text": "“Ditlamorago o ritibetse” @global.parent_point",
+    "SourceText": "**Calm consequence** @global.parent_point",
+    "text": "**Ditlamorago o ritibetse** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9234,8 +9222,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Safe\" @global.parent_point",
-    "text": "“Sireletsegile” @global.parent_point",
+    "SourceText": "**Safe** @global.parent_point",
+    "text": "**Sireletsegile** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9268,6 +9256,12 @@
     "text": "Itsenyetse @global.parent_app",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Customise Again",
+    "text": "Itsenyetse Gape",
+    "type": "data_list",
+    "note": ""
   },
   {
     "SourceText": "Relax & Activities",
@@ -9594,8 +9588,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Welcome and Self-Care\" workshop",
-    "text": "Workshop ya “Go amogelwa le go itlhokomela”",
+    "SourceText": "**Welcome and Self-Care** workshop",
+    "text": "Workshop ya **Go amogelwa le go itlhokomela**",
     "type": "data_list",
     "note": ""
   },
@@ -9618,8 +9612,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"One-on-One Time\" workshop",
-    "text": "Workshop ya “Go ipha nako mmogo”",
+    "SourceText": "**One-on-One Time** workshop",
+    "text": "Workshop ya **Go ipha nako mmogo**",
     "type": "data_list",
     "note": ""
   },
@@ -9636,8 +9630,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Praise\" workshop",
-    "text": "Workshop ya “Go baka”",
+    "SourceText": "**Praise** workshop",
+    "text": "Workshop ya **Go baka**",
     "type": "data_list",
     "note": ""
   },
@@ -9654,8 +9648,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Positive Instructions\" workshop",
-    "text": "Workshop ya “Ditaelo tse di siameng”",
+    "SourceText": "**Positive Instructions** workshop",
+    "text": "Workshop ya **Ditaelo tse di siameng**",
     "type": "data_list",
     "note": ""
   },
@@ -9672,8 +9666,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Managing Stress\" workshop",
-    "text": "Workshop ya “Go laola go tshwenyega mo maikutlong”",
+    "SourceText": "**Managing Stress** workshop",
+    "text": "Workshop ya **Go laola go tshwenyega mo maikutlong**",
     "type": "data_list",
     "note": ""
   },
@@ -9690,8 +9684,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Family Budgets\" workshop",
-    "text": "Workshop ya “Ditekanyetsokabo tsa lelapa”",
+    "SourceText": "**Family Budgets** workshop",
+    "text": "Workshop ya **Ditekanyetsokabo tsa lelapa**",
     "type": "data_list",
     "note": ""
   },
@@ -9708,8 +9702,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Rules\" workshop",
-    "text": "Workshop ya “Melao”",
+    "SourceText": "**Rules** workshop",
+    "text": "Workshop ya **Melao**",
     "type": "data_list",
     "note": ""
   },
@@ -9726,8 +9720,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Calm Consequences\" workshop",
-    "text": "Workshop ya “Ditlamorago o Ritibetse”",
+    "SourceText": "**Calm Consequences** workshop",
+    "text": "Workshop ya **Ditlamorago o Ritibetse**",
     "type": "data_list",
     "note": ""
   },
@@ -9744,8 +9738,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Problem Solving\" workshop",
-    "text": "Workshop ya “Go Rarabolola Mathata”",
+    "SourceText": "**Problem Solving** workshop",
+    "text": "Workshop ya **Go Rarabolola Mathata**",
     "type": "data_list",
     "note": ""
   },
@@ -9762,8 +9756,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Teen Safety\" workshop",
-    "text": "Workshop ya “Pabalesego ya Basha”",
+    "SourceText": "**Teen Safety** workshop",
+    "text": "Workshop ya **Pabalesego ya Basha**",
     "type": "data_list",
     "note": ""
   },
@@ -9780,8 +9774,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Dealing with Crisis\" workshop",
-    "text": "Workshop ya “Go Lepalepana le Mathata a a Masisi”",
+    "SourceText": "**Dealing with Crisis** workshop",
+    "text": "Workshop ya **Go Lepalepana le Mathata a a Masisi**",
     "type": "data_list",
     "note": ""
   },
@@ -9798,8 +9792,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Celebration and Next Steps\" workshop",
-    "text": "Workshop ya “Go Keteka le Dikgato Tse di Latelang”",
+    "SourceText": "**Celebration and Next Steps** workshop",
+    "text": "Workshop ya **Go Keteka le Dikgato Tse di Latelang**",
     "type": "data_list",
     "note": ""
   },
