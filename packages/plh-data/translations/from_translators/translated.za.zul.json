@@ -12,12 +12,6 @@
     "note": ""
   },
   {
-    "SourceText": "About PLH App",
-    "text": "Mayelana Ne-App ye-PLH",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "Settings",
     "text": "Izinhlelo",
     "type": "template",
@@ -78,6 +72,12 @@
     "note": ""
   },
   {
+    "SourceText": "Organisation Registration",
+    "text": "Ukubhaliswa Kwenhlangano",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "Developer Mode",
     "text": "Uhlelo Lonjiniyela",
     "type": "template",
@@ -132,10 +132,34 @@
     "note": ""
   },
   {
-    "SourceText": "Welcome Back!",
-    "text": "Siyakwamukela Futhi!",
+    "SourceText": "How did you hear about @global.parent_app?",
+    "text": "Uzwe kanjani ngaloluhlelo lwe @global.parent_app?",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "I found it myself",
+    "text": "Ngizitholele ngokwami",
     "type": "template",
     "note": ""
+  },
+  {
+    "SourceText": "A friend or family",
+    "text": "Umngani noma ilunga lomndeni",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Other",
+    "text": "Ngenye indlela",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You may be asked to share this code with people who will support your @global.parent_app journey.",
+    "text": "Ungase ucelwe ukuba wabelane ngale khodi nabantu abazosekela@global.parent_app uhambo lwakho.",
+    "type": "template",
+    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Start",
@@ -164,12 +188,6 @@
   {
     "SourceText": "My name",
     "text": "Igama lami",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Day to do the workshops",
-    "text": "Usuku lokwenza ukuqeqeshwa",
     "type": "template",
     "note": ""
   },
@@ -2862,46 +2880,10 @@
     "note": ""
   },
   {
-    "SourceText": "Finish with a song",
-    "text": "Phetha ngengoma",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "See you soon.",
     "text": "Sizokubona maduzane.",
     "type": "template",
     "note": ""
-  },
-  {
-    "SourceText": "Goodbye!",
-    "text": "Uhambe kahle!",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Organisation Registration",
-    "text": "Ukubhaliswa Kwenhlangano",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "If you are going through the @global.parent_app programme with the support of an organisation, they should have given you a code. Please enter the code in the box below and press Done.",
-    "text": "Uma wenza lolu hlelo @global.parent_app usekelwa yinhlangano, kufanele ngabe unikwe ikhodi. Sicela ufake ikhodi ebhokisini elingezansi bese uchofoza okuthi Ngiqedile.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
-  },
-  {
-    "SourceText": "Done",
-    "text": "Ngiqedile",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "You may be asked to share this code with people who will support your @global.parent_app journey.",
-    "text": "Ungase ucelwe ukuba wabelane ngale khodi nabantu abazosekela@global.parent_app uhambo lwakho.",
-    "type": "template",
-    "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "At the end of the day, take a minute to: \n\n* Talk to your teen about one fun thing they did. \n* Praise yourself for one thing you did well today. \n* You are a star!",
@@ -3223,7 +3205,7 @@
   },
   {
     "SourceText": "Sit comfortably and close your eyes. \n\nRecognise what is happening for you in this moment. What are you thinking? Are your thoughts positive or negative. How do you feel? Do you feel pleasant or unpleasant? How does your body feel? Do you feel tense or relaxed?\n\nConnect to your heart in a kind and gentle way. You may want to place one hand on your heart or chest. Say the following words silently to yourself:\n\nMay I be peaceful.\nMay I be safe.\nMay I be healthy.\nMay I be happy.\nMay there be love in my family.\nMay I feel loved.",
-    "text": "Hlala ngokunethezeka bese uvala amehlo akho. \n\nQaphela lokho okwenzekayo kuwe njengamanje. Yini oyicabangayo? Ingabe imicabango yakho mihle noma mibi. Uzizwa kanjani? Ingabe uzizwa ujabule noma ungajabule? Umzimba wakho uzizwa kanjani? Ingabe uzizwa ubophekile noma ukhululekile?\n\nXhumana nenhliziyo yakho ngendlela enomusa nemnene. Ungase ufune ukubeka isandla esisodwa enhliziyweni yakho noma esifubeni. Buthule<b> </b>yisho la mazwi alandelayo kuwe:\n\nKwangathi ngingaba nokuthula.\nKwangathi ngingaphepha.\nKwangathi ngingaba nempilo enhle.\nKwangathi ngingajabula.\nKwangathi kungaba nothando emndenini wami.\nKwangathi ngingazizwa ngithandwa.",
+    "text": "Hlala ngokunethezeka bese uvala amehlo akho. \n\nQaphela lokho okwenzekayo kuwe njengamanje. Yini oyicabangayo? Ingabe imicabango yakho mihle noma mibi. Uzizwa kanjani? Ingabe uzizwa ujabule noma ungajabule? Umzimba wakho uzizwa kanjani? Ingabe uzizwa ubophekile noma ukhululekile?\n\nXhumana nenhliziyo yakho ngendlela enomusa nemnene. Ungase ufune ukubeka isandla esisodwa enhliziyweni yakho noma esifubeni. Buthule yisho la mazwi alandelayo kuwe:\n\nKwangathi ngingaba nokuthula.\nKwangathi ngingaphepha.\nKwangathi ngingaba nempilo enhle.\nKwangathi ngingajabula.\nKwangathi kungaba nothando emndenini wami.\nKwangathi ngingazizwa ngithandwa.",
     "type": "template",
     "note": ""
   },
@@ -7314,20 +7296,8 @@
     "note": "The string @global.weekly_workshops should not be translated."
   },
   {
-    "SourceText": "Start customising",
-    "text": "Qala ukuhlela kahle",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "You seem to have completed the customisation process already. You can now skip this activity.",
     "text": "Kubonakala sengathi usuqedile kakade ukuhlela. Ungaweqa manje lo msebenzi.",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Skip customisation survey",
-    "text": "Yeqa inhlolovo yokuhlela",
     "type": "template",
     "note": ""
   },
@@ -8286,6 +8256,12 @@
     "note": ""
   },
   {
+    "SourceText": "Challenges & solutions",
+    "text": "Izinselele nezixazululo",
+    "type": "global",
+    "note": ""
+  },
+  {
     "SourceText": "Find out more",
     "text": "Thola okwengeziwe",
     "type": "global",
@@ -8334,14 +8310,26 @@
     "note": ""
   },
   {
-    "SourceText": "Challenges & solutions",
-    "text": "Izinselele nezixazululo",
+    "SourceText": "Save",
+    "text": "Londoloza",
     "type": "global",
     "note": ""
   },
   {
-    "SourceText": "Save",
-    "text": "Londoloza",
+    "SourceText": "Start",
+    "text": "Qala",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "Finish with a song",
+    "text": "Phetha ngengoma",
+    "type": "global",
+    "note": ""
+  },
+  {
+    "SourceText": "Goodbye!",
+    "text": "Uhambe kahle!",
     "type": "global",
     "note": ""
   },
@@ -9132,8 +9120,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Relax\" @global.parent_point",
-    "text": "“Phumula” @global.parent_point",
+    "SourceText": "**Relax** @global.parent_point",
+    "text": "**Phumula** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9144,14 +9132,14 @@
     "note": ""
   },
   {
-    "SourceText": "\"Treat yourself well\" @global.parent_point",
-    "text": "“Zenzele okuthile okuhle” @global.parent_point",
+    "SourceText": "**Treat yourself well** @global.parent_point",
+    "text": "**Zenzele okuthile okuhle** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
   {
-    "SourceText": "\"Praise yourself\" @global.parent_point",
-    "text": "“Zincome” @global.parent_point",
+    "SourceText": "**Praise yourself** @global.parent_point",
+    "text": "**Zincome** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9162,8 +9150,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"One-on-one time\" @global.parent_point",
-    "text": "“Isikhathi sokuthi sibe babili” @global.parent_point",
+    "SourceText": "**One-on-one time** @global.parent_point",
+    "text": "**Isikhathi sokuthi sibe babili** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9174,8 +9162,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Praise your teen\" @global.parent_point",
-    "text": "“Ncoma intsha yakho” @global.parent_point",
+    "SourceText": "**Praise your teen** @global.parent_point",
+    "text": "**Ncoma intsha yakho** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9186,8 +9174,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Get positive\" @global.parent_point",
-    "text": "“Cabanga ngezinto ezakhayo” @global.parent_point",
+    "SourceText": "**Get positive** @global.parent_point",
+    "text": "**Cabanga ngezinto ezakhayo** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9198,8 +9186,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Breathe not yell\" @global.parent_point",
-    "text": "“Donsa umoya ungathethi” @global.parent_point",
+    "SourceText": "**Breathe not yell** @global.parent_point",
+    "text": "**Donsa umoya ungathethi** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9210,8 +9198,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Good money choice\" @global.parent_point",
-    "text": "“Ukusebenzisa kahle imali” @global.parent_point",
+    "SourceText": "**Good money choice** @global.parent_point",
+    "text": "**Ukusebenzisa kahle imali** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9222,8 +9210,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Calm consequence\" @global.parent_point",
-    "text": "“Imiphumela eyethulwa ngomoya ophansi” @global.parent_point",
+    "SourceText": "**Calm consequence** @global.parent_point",
+    "text": "**Imiphumela eyethulwa ngomoya ophansi** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9234,8 +9222,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Safe\" @global.parent_point",
-    "text": "“Ukuphepha” @global.parent_point",
+    "SourceText": "**Safe** @global.parent_point",
+    "text": "**Ukuphepha** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9268,6 +9256,12 @@
     "text": "Hlela Ngendlela Oyithandayo @global.parent_app",
     "type": "data_list",
     "note": "The string @global.parent_app should not be translated."
+  },
+  {
+    "SourceText": "Customise Again",
+    "text": "Phinde Uhlele Ngendlela Oyithandayo",
+    "type": "data_list",
+    "note": ""
   },
   {
     "SourceText": "Relax & Activities",
@@ -9594,8 +9588,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Welcome and Self-Care\" workshop",
-    "text": "Ukuqeqeshelwa “Ukwamukela kanye Nokuzinakekela”",
+    "SourceText": "**Welcome and Self-Care** workshop",
+    "text": "Ukuqeqeshelwa **Ukwamukela kanye Nokuzinakekela**",
     "type": "data_list",
     "note": ""
   },
@@ -9618,8 +9612,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"One-on-One Time\" workshop",
-    "text": "Ukuqeqeshelwa “Isikhathi Sokuthi Nibe Babili”",
+    "SourceText": "**One-on-One Time** workshop",
+    "text": "Ukuqeqeshelwa **Isikhathi Sokuthi Nibe Babili**",
     "type": "data_list",
     "note": ""
   },
@@ -9636,8 +9630,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Praise\" workshop",
-    "text": "Ukuqeqeshelwa “Ukuncoma”",
+    "SourceText": "**Praise** workshop",
+    "text": "Ukuqeqeshelwa **Ukuncoma**",
     "type": "data_list",
     "note": ""
   },
@@ -9654,8 +9648,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Positive Instructions\" workshop",
-    "text": "Ukuqeqeshelwa “Iziqondiso Ezinhle”",
+    "SourceText": "**Positive Instructions** workshop",
+    "text": "Ukuqeqeshelwa **Iziqondiso Ezinhle**",
     "type": "data_list",
     "note": ""
   },
@@ -9672,8 +9666,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Managing Stress\" workshop",
-    "text": "Ukuqeqeshelwa “Ukulawula Ukucindezeleka”",
+    "SourceText": "**Managing Stress** workshop",
+    "text": "Ukuqeqeshelwa **Ukulawula Ukucindezeleka**",
     "type": "data_list",
     "note": ""
   },
@@ -9690,8 +9684,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Family Budgets\" workshop",
-    "text": "Ukuqeqeshelwa “Isabelomali Somndeni”",
+    "SourceText": "**Family Budgets** workshop",
+    "text": "Ukuqeqeshelwa **Isabelomali Somndeni**",
     "type": "data_list",
     "note": ""
   },
@@ -9708,8 +9702,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Rules\" workshop",
-    "text": "Ukuqeqeshelwa “Imithetho”",
+    "SourceText": "**Rules** workshop",
+    "text": "Ukuqeqeshelwa **Imithetho**",
     "type": "data_list",
     "note": ""
   },
@@ -9726,8 +9720,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Calm Consequences\" workshop",
-    "text": "Ukuqeqeshelwa “Imiphumela Eyethulwa Ngomoya ophansi”",
+    "SourceText": "**Calm Consequences** workshop",
+    "text": "Ukuqeqeshelwa **Imiphumela Eyethulwa Ngomoya ophansi**",
     "type": "data_list",
     "note": ""
   },
@@ -9744,8 +9738,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Problem Solving\" workshop",
-    "text": "Ukuqeqeshelwa “Ukuxazulula Inkinga”",
+    "SourceText": "**Problem Solving** workshop",
+    "text": "Ukuqeqeshelwa **Ukuxazulula Inkinga**",
     "type": "data_list",
     "note": ""
   },
@@ -9762,8 +9756,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Teen Safety\" workshop",
-    "text": "Ukuqeqeshelwa “Ukuphepha Kwentsha”",
+    "SourceText": "**Teen Safety** workshop",
+    "text": "Ukuqeqeshelwa **Ukuphepha Kwentsha**",
     "type": "data_list",
     "note": ""
   },
@@ -9780,8 +9774,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Dealing with Crisis\" workshop",
-    "text": "Ukuqeqeshelwa “Ukubhekana Nezinkinga”",
+    "SourceText": "**Dealing with Crisis** workshop",
+    "text": "Ukuqeqeshelwa **Ukubhekana Nezinkinga**",
     "type": "data_list",
     "note": ""
   },
@@ -9798,8 +9792,8 @@
     "note": ""
   },
   {
-    "SourceText": "\"Celebration and Next Steps\" workshop",
-    "text": "Ukuqeqeshelwa “Ukubungaza kanye Nezinyathelo Ezilandelayo”",
+    "SourceText": "**Celebration and Next Steps** workshop",
+    "text": "Ukuqeqeshelwa **Ukubungaza kanye Nezinyathelo Ezilandelayo**",
     "type": "data_list",
     "note": ""
   },
