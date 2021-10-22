@@ -173,22 +173,16 @@ export class NavGroupComponent extends TemplateLayoutComponent {
         ((this.sectionIndex + 1) / this.templateNames.length) * 100
       );
 
-      const previousPercentDone = Number.parseInt(
-        this.templateService.getField(progressField)
-          ? this.templateService.getField(progressField)
-          : 0
-      );
-      let maximumPercentDone: number = Number.parseInt(
+      let maximumPercentDone: number;
+
+      let currentMaximumPercentDone: number = Number.parseInt(
         this.templateService.getField(progressFieldMaximum)
           ? this.templateService.getField(progressFieldMaximum)
-          : 0
+          : currentPercentDone
       );
 
-      maximumPercentDone =
-        previousPercentDone && !isNaN(previousPercentDone)
-          ? Math.max(currentPercentDone, maximumPercentDone)
-          : Math.max(currentPercentDone, previousPercentDone);
-      console.info("The Maximum Percent Done Ever", maximumPercentDone);
+      maximumPercentDone = Math.max(currentPercentDone, currentMaximumPercentDone);
+
       await this.parent.handleActions(
         [
           {
