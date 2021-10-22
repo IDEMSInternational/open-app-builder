@@ -112,7 +112,6 @@ export class NavGroupComponent extends TemplateLayoutComponent {
         this.sectionMaximumIndex = this.getMaximumSectionIdx(
           row.parameter_list["max_progress_field"]
         );
-        debugger;
         this.sectionMaxiumumPercentage = this.getMaximumProgressPercentage(
           row.parameter_list["max_progress_field"],
           row?.parameter_list?.progress_field
@@ -133,7 +132,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     }
     if (action_id === "emit" && args[0] === "uncompleted") {
       if (this.sectionIndex > 0) {
-        this.goToSection(this.sectionIndex - 1).then((r) => console.log(r));
+        this.goToSection(this.sectionIndex - 1).then();
         return false;
       }
     }
