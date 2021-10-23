@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
-import { Plugins, Capacitor, App } from "@capacitor/core";
-const { SplashScreen } = Plugins;
+import { Capacitor } from "@capacitor/core";
+import { SplashScreen } from "@capacitor/splash-screen";
+import { App } from "@capacitor/app";
 import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
@@ -19,6 +20,7 @@ import { DataEvaluationService } from "./shared/services/data/data-evaluation.se
 import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
+import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 
 @Component({
   selector: "app-root",
@@ -46,6 +48,7 @@ export class AppComponent {
     private campaignService: CampaignService,
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
+    private localNotificationService: LocalNotificationService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -66,6 +69,7 @@ export class AppComponent {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
         await this.templateService.runStandaloneTemplate("language_select");
+        await this.templateService.runStandaloneTemplate("organisation_registration");
         await this.tourService.startTour("intro_tour");
       }
       this.menuController.enable(true, "main-side-menu");
@@ -79,14 +83,16 @@ export class AppComponent {
       }
       this.analyticsService.init();
       this.renderAppTemplates = true;
-      this.scheduleCampaignNotifications();
       this.scheduleReinitialisation();
     });
   }
 
   /**
    * Various services set core app data which may be used in templates such as current app day,
-   * user id etc. Make sure these services have run their initialisation logic before proceeding
+   * user id etc. Make sure these services have run their initialisation logic before proceeding.
+   *
+   * Note - For some of these services order will be important
+   * (e.g. notifications before campaigns that require notifications)
    **/
   async initialiseCoreServices() {
     await this.dbService.init();
@@ -98,27 +104,13 @@ export class AppComponent {
     await this.dataEvaluationService.refreshDBCache();
     await this.templateService.init();
     await this.templateProcessService.init();
+    await this.localNotificationService.init();
+    await this.campaignService.init();
   }
 
   clickOnMenuItem(id: string) {
     this.menuController.close("main-side-menu");
     this.router.navigateByUrl("/" + id);
-  }
-
-  /**
-   * Manually schedule specific campaign notifications
-   * TODO CC 2021-05-14 - Ideally these should be triggered from a template or other general method
-   */
-  async scheduleCampaignNotifications() {
-    const inactiveNotification = await this.campaignService.getNextCampaignRow(
-      "m_inactive_campaign"
-    );
-    if (inactiveNotification) {
-      const notifications = await this.campaignService.scheduleCampaignNotification(
-        inactiveNotification
-      );
-      console.log("scheduled notifications", notifications);
-    }
   }
 
   /** Rewrite default log functions for improved performance when running on device */

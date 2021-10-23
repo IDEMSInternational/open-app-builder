@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Plugins, CameraResultType, CameraOptions } from "@capacitor/core";
-const { Camera } = Plugins;
+// import { Plugins, CameraResultType, CameraOptions } from "@capacitor/core";
+// const { Camera } = Plugins;
 
-const CAMERA_DEFAULTS: CameraOptions = {
-  resultType: CameraResultType.Uri,
-  quality: 100,
-  allowEditing: false,
-};
+// const CAMERA_DEFAULTS: CameraOptions = {
+//   resultType: CameraResultType.Uri,
+//   quality: 100,
+//   allowEditing: false,
+// };
 
 @Injectable({
   providedIn: "root",
@@ -28,11 +28,12 @@ export class CameraService {
    * Filesystem API to read the raw data of the image if desired
    * (or pass resultType: CameraResultType.Base64 to getPhoto)
    */
-  async takePhoto(options: Partial<CameraOptions> = {}) {
-    const image = await Camera.getPhoto({
-      ...CAMERA_DEFAULTS,
-      ...options,
-    });
-    return image;
+  async takePhoto(options = {}) {
+    // const image = await Camera.getPhoto({
+    //   ...CAMERA_DEFAULTS,
+    //   ...options,
+    // });
+    // return image;
+    return {} as any;
   }
 }

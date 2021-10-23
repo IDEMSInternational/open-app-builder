@@ -18,6 +18,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -40,6 +41,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -62,6 +64,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -84,6 +87,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -106,6 +110,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -128,6 +133,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -150,6 +156,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -171,6 +178,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -192,6 +200,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -213,6 +222,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -234,6 +244,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -255,6 +266,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -276,6 +288,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -298,6 +311,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -320,6 +334,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -342,6 +357,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -363,6 +379,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -384,6 +401,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -405,6 +423,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -426,12 +445,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           intro_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -457,6 +478,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -479,12 +501,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           intro_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -511,12 +535,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           intro_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -542,6 +568,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -573,30 +600,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -607,7 +639,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Relax",
           },
           in_text_title: {
-            eng: '"Relax" @global.parent_point',
+            eng: "**Relax** @global.parent_point",
           },
           description: {
             eng: "Doing a relaxation activity",
@@ -619,7 +651,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Relax" @global.parent_point',
+        in_text_title: "**Relax** @global.parent_point",
         description: "Doing a relaxation activity",
         mark_text:
           "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
@@ -636,30 +668,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -670,7 +707,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Treat yourself well",
           },
           in_text_title: {
-            eng: '"Treat yourself well" @global.parent_point',
+            eng: "**Treat yourself well** @global.parent_point",
           },
           description: {
             eng: "Doing something they like for themselves",
@@ -682,7 +719,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Treat yourself well" @global.parent_point',
+        in_text_title: "**Treat yourself well** @global.parent_point",
         description: "Doing something they like for themselves",
         mark_text:
           "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
@@ -699,30 +736,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -733,7 +775,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Praise yourself",
           },
           in_text_title: {
-            eng: '"Praise yourself" @global.parent_point',
+            eng: "**Praise yourself** @global.parent_point",
           },
           description: {
             eng: "Praising themselves",
@@ -745,7 +787,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Praise yourself" @global.parent_point',
+        in_text_title: "**Praise yourself** @global.parent_point",
         description: "Praising themselves",
         mark_text:
           "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
@@ -762,30 +804,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -796,7 +843,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "One-on-one time",
           },
           in_text_title: {
-            eng: '"One-on-one time" @global.parent_point',
+            eng: "**One-on-one time** @global.parent_point",
           },
           description: {
             eng: "Spending time with their teen",
@@ -808,7 +855,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"One-on-one time" @global.parent_point',
+        in_text_title: "**One-on-one time** @global.parent_point",
         description: "Spending time with their teen",
         mark_text:
           "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
@@ -825,30 +872,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -859,7 +911,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Praise your teen",
           },
           in_text_title: {
-            eng: '"Praise your teen" @global.parent_point',
+            eng: "**Praise your teen** @global.parent_point",
           },
           description: {
             eng: "Praising their teen when they did positive thing",
@@ -871,7 +923,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Praise your teen" @global.parent_point',
+        in_text_title: "**Praise your teen** @global.parent_point",
         description: "Praising their teen when they did positive thing",
         mark_text:
           "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
@@ -888,30 +940,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -922,7 +979,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Get positive",
           },
           in_text_title: {
-            eng: '"Get positive" @global.parent_point',
+            eng: "**Get positive** @global.parent_point",
           },
           description: {
             eng: "Giving their teen a positive instruction",
@@ -934,7 +991,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Get positive" @global.parent_point',
+        in_text_title: "**Get positive** @global.parent_point",
         description: "Giving their teen a positive instruction",
         mark_text:
           "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
@@ -951,30 +1008,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -985,7 +1047,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Breathe not yell",
           },
           in_text_title: {
-            eng: '"Breathe not yell" @global.parent_point',
+            eng: "**Breathe not yell** @global.parent_point",
           },
           description: {
             eng: "Taking a pause before responding",
@@ -997,7 +1059,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Breathe not yell" @global.parent_point',
+        in_text_title: "**Breathe not yell** @global.parent_point",
         description: "Taking a pause before responding",
         mark_text:
           "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
@@ -1014,30 +1076,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1048,7 +1115,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Good money choice",
           },
           in_text_title: {
-            eng: '"Good money choice" @global.parent_point',
+            eng: "**Good money choice** @global.parent_point",
           },
           description: {
             eng: "Keeping the budget",
@@ -1060,7 +1127,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Good money choice" @global.parent_point',
+        in_text_title: "**Good money choice** @global.parent_point",
         description: "Keeping the budget",
         mark_text:
           "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
@@ -1077,30 +1144,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1111,7 +1183,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Calm consequence",
           },
           in_text_title: {
-            eng: '"Calm consequence" @global.parent_point',
+            eng: "**Calm consequence** @global.parent_point",
           },
           description: {
             eng: "Giving their teen a consequence in a calm way",
@@ -1123,7 +1195,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Calm consequence" @global.parent_point',
+        in_text_title: "**Calm consequence** @global.parent_point",
         description: "Giving their teen a consequence in a calm way",
         mark_text:
           "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
@@ -1140,30 +1212,35 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           description: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
           },
           short_mark_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1174,7 +1251,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Safe",
           },
           in_text_title: {
-            eng: '"Safe" @global.parent_point',
+            eng: "**Safe** @global.parent_point",
           },
           description: {
             eng: "Planning or keeping a family safety plan",
@@ -1186,7 +1263,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Did it? Tap it!",
           },
         },
-        in_text_title: '"Safe" @global.parent_point',
+        in_text_title: "**Safe** @global.parent_point",
         description: "Planning or keeping a family safety plan",
         mark_text:
           "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
@@ -1245,6 +1322,17 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Setswana",
         image: "i18n/flags/za.svg",
       },
+      {
+        id: "za-afr",
+        country_code: "za",
+        country_label: "South Africa",
+        country_icon: "i18n/flags/za.svg",
+        language_code: "afr",
+        language_label: "Afrikaans",
+        name: "afr",
+        text: "Afrikaans",
+        image: "i18n/flags/za.svg",
+      },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/language_data_list.xlsx",
   },
@@ -1261,12 +1349,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1277,10 +1367,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Help",
           },
           location_text: {
-            eng: '"Help" in the @global.parent_centre',
+            eng: "**Help** in the @global.parent_centre",
           },
         },
-        location_text: '"Help" in the @global.parent_centre',
+        location_text: "**Help** in the @global.parent_centre",
       },
       {
         id: "my_tips",
@@ -1289,12 +1379,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1305,10 +1397,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "My Tips",
           },
           location_text: {
-            eng: '"My Tips" in the @global.parent_centre',
+            eng: "**My Tips** in the @global.parent_centre",
           },
         },
-        location_text: '"My Tips" in the @global.parent_centre',
+        location_text: "**My Tips** in the @global.parent_centre",
       },
       {
         id: "essential_tools",
@@ -1317,12 +1409,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1333,10 +1427,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Essential Tools",
           },
           location_text: {
-            eng: '"Essential Tools" in the @global.parent_centre',
+            eng: "**Essential Tools** in the @global.parent_centre",
           },
         },
-        location_text: '"Essential Tools" in the @global.parent_centre',
+        location_text: "**Essential Tools** in the @global.parent_centre",
       },
       {
         id: "covid",
@@ -1345,12 +1439,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1361,10 +1457,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "COVID",
           },
           location_text: {
-            eng: '"COVID" in the @global.parent_centre',
+            eng: "**COVID** in the @global.parent_centre",
           },
         },
-        location_text: '"COVID" in the @global.parent_centre',
+        location_text: "**COVID** in the @global.parent_centre",
       },
       {
         id: "customisation",
@@ -1373,18 +1469,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           title_2: {
             spa: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            afr: false,
+            tsa: true,
+            xho: true,
+            zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1398,11 +1497,11 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Customise Again",
           },
           location_text: {
-            eng: '"Customise @global.parent_app" in the @global.parent_centre',
+            eng: "**Customise @global.parent_app** in the @global.parent_centre",
           },
         },
         title_2: "Customise Again",
-        location_text: '"Customise @global.parent_app" in the @global.parent_centre',
+        location_text: "**Customise @global.parent_app** in the @global.parent_centre",
       },
       {
         id: "relax_and_activities",
@@ -1411,12 +1510,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1427,10 +1528,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Relax & Activities",
           },
           location_text: {
-            eng: 'under "Relax & Activities" in the @global.parent_centre',
+            eng: "under **Relax & Activities** in the @global.parent_centre",
           },
         },
-        location_text: 'under "Relax & Activities" in the @global.parent_centre',
+        location_text: "under **Relax & Activities** in the @global.parent_centre",
       },
       {
         id: "support_contacts",
@@ -1439,12 +1540,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1455,10 +1558,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Support Contacts",
           },
           location_text: {
-            eng: '"Support Contacts" in the @global.parent_centre',
+            eng: "**Support Contacts** in the @global.parent_centre",
           },
         },
-        location_text: '"Support Contacts" in the @global.parent_centre',
+        location_text: "**Support Contacts** in the @global.parent_centre",
       },
       {
         id: "evidence_base",
@@ -1467,12 +1570,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1483,10 +1588,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Evidence Base",
           },
           location_text: {
-            eng: '"Evidence Base" in the @global.parent_centre',
+            eng: "**Evidence Base** in the @global.parent_centre",
           },
         },
-        location_text: '"Evidence Base" in the @global.parent_centre',
+        location_text: "**Evidence Base** in the @global.parent_centre",
       },
       {
         id: "technical_support",
@@ -1495,12 +1600,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1511,10 +1618,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Technical Support",
           },
           location_text: {
-            eng: '"Technical Support" in the @global.parent_centre',
+            eng: "**Technical Support** in the @global.parent_centre",
           },
         },
-        location_text: '"Technical Support" in the @global.parent_centre',
+        location_text: "**Technical Support** in the @global.parent_centre",
       },
       {
         id: "message_archive",
@@ -1523,12 +1630,14 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           location_text: {
             spa: false,
+            afr: false,
             tsa: false,
             xho: false,
             zul: false,
@@ -1539,10 +1648,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Message Archive",
           },
           location_text: {
-            eng: '"Message Archive" in the @global.parent_centre',
+            eng: "**Message Archive** in the @global.parent_centre",
           },
         },
-        location_text: '"Message Archive" in the @global.parent_centre',
+        location_text: "**Message Archive** in the @global.parent_centre",
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/data/parent_centre_data_list.xlsx",
@@ -1561,6 +1670,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1580,6 +1690,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1599,6 +1710,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1618,6 +1730,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1637,6 +1750,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1656,6 +1770,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1675,6 +1790,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1694,6 +1810,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1713,6 +1830,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1732,6 +1850,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1751,6 +1870,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1770,6 +1890,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1789,6 +1910,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1808,6 +1930,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1827,6 +1950,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1846,6 +1970,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1865,6 +1990,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1884,6 +2010,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1903,6 +2030,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1922,6 +2050,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1941,6 +2070,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1960,6 +2090,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1979,6 +2110,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -1998,6 +2130,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2017,6 +2150,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2049,6 +2183,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2073,6 +2208,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2097,6 +2233,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2121,6 +2258,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2145,6 +2283,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2168,6 +2307,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2192,6 +2332,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2216,6 +2357,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2240,6 +2382,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2264,6 +2407,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2288,6 +2432,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2312,6 +2457,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2336,6 +2482,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2360,6 +2507,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2383,6 +2531,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2406,6 +2555,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2429,6 +2579,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2452,6 +2603,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2475,6 +2627,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2498,6 +2651,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2521,6 +2675,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2544,6 +2699,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2567,6 +2723,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2590,6 +2747,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2624,24 +2782,28 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           short_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2652,7 +2814,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Welcome and Self-Care",
           },
           in_text_title: {
-            eng: '"Welcome and Self-Care" workshop',
+            eng: "**Welcome and Self-Care** workshop",
           },
           short_title: {
             eng: "Self-Care",
@@ -2661,7 +2823,7 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "How to do self-care",
           },
         },
-        in_text_title: '"Welcome and Self-Care" workshop',
+        in_text_title: "**Welcome and Self-Care** workshop",
         short_title: "Self-Care",
         tools: "How to do self-care",
       },
@@ -2680,18 +2842,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2702,13 +2867,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "One-on-One Time",
           },
           in_text_title: {
-            eng: '"One-on-One Time" workshop',
+            eng: "**One-on-One Time** workshop",
           },
           tools: {
             eng: "How to spend one-on-one time",
           },
         },
-        in_text_title: '"One-on-One Time" workshop',
+        in_text_title: "**One-on-One Time** workshop",
         tools: "How to spend one-on-one time",
       },
       {
@@ -2726,18 +2891,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2748,13 +2916,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Praise",
           },
           in_text_title: {
-            eng: '"Praise" workshop',
+            eng: "**Praise** workshop",
           },
           tools: {
             eng: "How to praise",
           },
         },
-        in_text_title: '"Praise" workshop',
+        in_text_title: "**Praise** workshop",
         tools: "How to praise",
       },
       {
@@ -2772,18 +2940,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2794,13 +2965,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Positive Instructions",
           },
           in_text_title: {
-            eng: '"Positive Instructions" workshop',
+            eng: "**Positive Instructions** workshop",
           },
           tools: {
             eng: "How to give positive instructions",
           },
         },
-        in_text_title: '"Positive Instructions" workshop',
+        in_text_title: "**Positive Instructions** workshop",
         tools: "How to give positive instructions",
       },
       {
@@ -2818,18 +2989,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2840,13 +3014,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Managing Stress",
           },
           in_text_title: {
-            eng: '"Managing Stress" workshop',
+            eng: "**Managing Stress** workshop",
           },
           tools: {
             eng: "How to manage stress",
           },
         },
-        in_text_title: '"Managing Stress" workshop',
+        in_text_title: "**Managing Stress** workshop",
         tools: "How to manage stress",
       },
       {
@@ -2864,18 +3038,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2886,13 +3063,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Family Budgets",
           },
           in_text_title: {
-            eng: '"Family Budgets" workshop',
+            eng: "**Family Budgets** workshop",
           },
           tools: {
             eng: "How to budget & save",
           },
         },
-        in_text_title: '"Family Budgets" workshop',
+        in_text_title: "**Family Budgets** workshop",
         tools: "How to budget & save",
       },
       {
@@ -2910,18 +3087,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2932,13 +3112,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Rules",
           },
           in_text_title: {
-            eng: '"Rules" workshop',
+            eng: "**Rules** workshop",
           },
           tools: {
             eng: "How to create rules",
           },
         },
-        in_text_title: '"Rules" workshop',
+        in_text_title: "**Rules** workshop",
         tools: "How to create rules",
       },
       {
@@ -2956,18 +3136,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -2978,13 +3161,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Calm Consequences",
           },
           in_text_title: {
-            eng: '"Calm Consequences" workshop',
+            eng: "**Calm Consequences** workshop",
           },
           tools: {
             eng: "How to give calm consequences",
           },
         },
-        in_text_title: '"Calm Consequences" workshop',
+        in_text_title: "**Calm Consequences** workshop",
         tools: "How to give calm consequences",
       },
       {
@@ -3002,18 +3185,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3024,13 +3210,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Problem Solving",
           },
           in_text_title: {
-            eng: '"Problem Solving" workshop',
+            eng: "**Problem Solving** workshop",
           },
           tools: {
             eng: "How to solve problems",
           },
         },
-        in_text_title: '"Problem Solving" workshop',
+        in_text_title: "**Problem Solving** workshop",
         tools: "How to solve problems",
       },
       {
@@ -3048,18 +3234,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3070,13 +3259,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Teen Safety",
           },
           in_text_title: {
-            eng: '"Teen Safety" workshop',
+            eng: "**Teen Safety** workshop",
           },
           tools: {
             eng: "How to keep your teen safe",
           },
         },
-        in_text_title: '"Teen Safety" workshop',
+        in_text_title: "**Teen Safety** workshop",
         tools: "How to keep your teen safe",
       },
       {
@@ -3094,18 +3283,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3116,13 +3308,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Dealing with Crisis",
           },
           in_text_title: {
-            eng: '"Dealing with Crisis" workshop',
+            eng: "**Dealing with Crisis** workshop",
           },
           tools: {
             eng: "How to deal with crisis",
           },
         },
-        in_text_title: '"Dealing with Crisis" workshop',
+        in_text_title: "**Dealing with Crisis** workshop",
         tools: "How to deal with crisis",
       },
       {
@@ -3139,18 +3331,21 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           in_text_title: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
           },
           tools: {
             spa: false,
+            afr: true,
             tsa: true,
             xho: true,
             zul: true,
@@ -3161,13 +3356,13 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Celebration and Next Steps",
           },
           in_text_title: {
-            eng: '"Celebration and Next Steps" workshop',
+            eng: "**Celebration and Next Steps** workshop",
           },
           tools: {
             eng: "How to support each other",
           },
         },
-        in_text_title: '"Celebration and Next Steps" workshop',
+        in_text_title: "**Celebration and Next Steps** workshop",
         tools: "How to support each other",
       },
     ],
