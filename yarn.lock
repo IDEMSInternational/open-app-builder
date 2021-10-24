@@ -5,6 +5,18 @@ __metadata:
   version: 4
   cacheKey: 7
 
+"@IDEMSInternational/rapidpro-excel@workspace:*, @IDEMSInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel":
+  version: 0.0.0-use.local
+  resolution: "@IDEMSInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel"
+  dependencies:
+    "@types/fs-extra": ^9.0.13
+    chalk: ^4.1.2
+    fs-extra: ^10.0.0
+    typescript: ^4.1.2
+    uuid: ^8.3.2
+  languageName: unknown
+  linkType: soft
+
 "@angular-devkit/architect@npm:0.1200.5":
   version: 0.1200.5
   resolution: "@angular-devkit/architect@npm:0.1200.5"
@@ -4008,6 +4020,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/fs-extra@npm:^9.0.13":
+  version: 9.0.13
+  resolution: "@types/fs-extra@npm:9.0.13"
+  dependencies:
+    "@types/node": "*"
+  checksum: ca4dc68663870775b20abe26a1cc3228c5790113b2c984395ea9cd448443abb4433420821030813bd7cdf1718144afafaa9efa6cd8419dcc4a49c9117a577ad1
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:*, @types/glob@npm:^7.1.1":
   version: 7.1.4
   resolution: "@types/glob@npm:7.1.4"
@@ -6766,6 +6787,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chalk@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "chalk@npm:4.1.2"
+  dependencies:
+    ansi-styles: ^4.1.0
+    supports-color: ^7.1.0
+  checksum: e3901b97d953991712bf0b941d586175be7ca5da56a97d25187e07453c6b26cae0ac8d9c7aa9e87e7c5c986fff870771b3a8e2705b3becda868829e2e12c2a65
+  languageName: node
+  linkType: hard
+
 "char-regex@npm:^1.0.2":
   version: 1.0.2
   resolution: "char-regex@npm:1.0.2"
@@ -8379,6 +8410,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
+    "@IDEMSInternational/rapidpro-excel": "workspace:*"
     "@types/node": ^15.12.4
     typescript: ~4.2.4
   languageName: unknown
@@ -19423,6 +19455,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
+    "@IDEMSInternational/rapidpro-excel": "workspace:*"
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
     "@types/sharp": 0.28.3
