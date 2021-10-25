@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "./build/src/index.js",
-  "types": "./types/firestore.d.ts",
+  "types": "./types",
   "files": [
     "build",
     "types"
   ],
   "scripts": {
-    "prepare": "npm run compile",
     "compile": "tsc -p .",
-    "test": "ts-mocha -p tsconfig.spec.json src/**/*.spec.ts"
+    "test": "ts-mocha -p tsconfig.spec.json src/**/*.spec.ts",
+    "test:coverage": "nyc --reporter=html --reporter=text --reporter=text-summary npm test"
   },
   "author": "",
   "license": "ISC",
