@@ -60,9 +60,6 @@ export interface ExcelRowModel {
 
 /** Format of conversation rows prior to processing */
 export interface ExcelSheetModel {
-  // TODO - type def actually extends common flow type
-  //   extends FlowTypeWithData
-  flow_type: "conversation";
   flow_name: string;
   rows: ExcelRowModel[];
 }
