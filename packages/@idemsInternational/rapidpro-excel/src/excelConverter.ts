@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import chalk from "chalk";
 import { RapidProFlowExport } from "../types/rapidpro.model";
-import { ExcelRowModel, ExcelSheetModel } from "../types";
+import { RapidproExcelModel } from "../types";
 
 // Default settings
 const version: string = "13";
@@ -18,7 +18,8 @@ type EntityType = "flow" | "node" | "action" | "router" | "case" | "category" | 
 export class ExcelToRapidproConverter {
   /** @param deployTarget uuids and media paths may be formatted differently depending on target */
   constructor(
-    public excelSheet: ExcelSheetModel,
+    public flow_name: string,
+    public rows: RapidproExcelModel.RowModel[],
     private deployTarget: "app" | "rapidpro" = "app"
   ) {}
 
@@ -41,7 +42,6 @@ export class ExcelToRapidproConverter {
   }
 
   public run(): RapidProFlowExport.RootObject {
-    const excelSheet = this.excelSheet;
     const rapidProExportObject: RapidProFlowExport.RootObject = {
       campaigns: [],
       fields: [],
@@ -51,13 +51,13 @@ export class ExcelToRapidproConverter {
       triggers: [],
       version,
     };
-    const rows = excelSheet.rows;
+    const rows = this.rows;
     try {
       this.setRowIDs(rows);
       // TODO Also need to consider case of updating an existing flow.
       let flow: RapidProFlowExport.Flow = {
-        name: excelSheet.flow_name,
-        uuid: this.deterministicUUID(excelSheet.flow_name, "flow"),
+        name: this.flow_name,
+        uuid: this.deterministicUUID(this.flow_name, "flow"),
         // TODO This metadata should possibly be passed in from the "Content list" Excel sheet.
         spec_version: flowSpecVersion,
         language: flowLanguage,
@@ -73,7 +73,7 @@ export class ExcelToRapidproConverter {
       };
       const nodesById: { [nodeId: string]: RapidProFlowExport.Node } = {};
       for (const row of rows) {
-        let nodeId = this.deterministicUUID(excelSheet.flow_name, "node");
+        let nodeId = this.deterministicUUID(this.flow_name, "node");
         row.nodeUUIDForExit = nodeId;
 
         let actionNode: RapidProFlowExport.Node = {
@@ -154,13 +154,13 @@ export class ExcelToRapidproConverter {
             text: action_text,
             type: "send_msg",
             quick_replies: this.getRowChoices(row),
-            uuid: this.deterministicUUID(excelSheet.flow_name, "action"),
+            uuid: this.deterministicUUID(this.flow_name, "action"),
           });
           row._rapidProNode = actionNode;
           nodesById[nodeId] = actionNode;
           if (row.save_name) {
             let resultNode: RapidProFlowExport.Node = {
-              uuid: this.deterministicUUID(excelSheet.flow_name, "node"),
+              uuid: this.deterministicUUID(this.flow_name, "node"),
               actions: [],
               exits: [this.createEmptyExit()],
               router: {
@@ -169,7 +169,7 @@ export class ExcelToRapidproConverter {
                 cases: [],
                 categories: [
                   {
-                    uuid: this.deterministicUUID(excelSheet.flow_name, "category"),
+                    uuid: this.deterministicUUID(this.flow_name, "category"),
                     name: "All Responses",
                     exit_uuid: null,
                   },
@@ -187,10 +187,10 @@ export class ExcelToRapidproConverter {
             // The initial node exits to the resultNode
             actionNode.exits[0].destination_uuid = resultNode.uuid;
             let saveNode: RapidProFlowExport.Node = {
-              uuid: this.deterministicUUID(excelSheet.flow_name, "node"),
+              uuid: this.deterministicUUID(this.flow_name, "node"),
               actions: [
                 {
-                  uuid: this.deterministicUUID(excelSheet.flow_name, "action"),
+                  uuid: this.deterministicUUID(this.flow_name, "action"),
                   type: "set_contact_field",
                   field: {
                     // Can these be the same?
@@ -213,7 +213,7 @@ export class ExcelToRapidproConverter {
               name: row.message_text,
             },
             type: "enter_flow",
-            uuid: this.deterministicUUID(excelSheet.flow_name, "action"),
+            uuid: this.deterministicUUID(this.flow_name, "action"),
           });
           this.setEnterFlowRouterAndExits(actionNode);
           row._rapidProNode = actionNode;
@@ -229,14 +229,14 @@ export class ExcelToRapidproConverter {
           nodesById[nodeId] = actionNode;
           if (row.message_text) {
             let enterFlowNode: RapidProFlowExport.Node = {
-              uuid: this.deterministicUUID(excelSheet.flow_name, "node"),
+              uuid: this.deterministicUUID(this.flow_name, "node"),
               actions: [
                 {
                   flow: {
                     name: row.message_text,
                   },
                   type: "enter_flow",
-                  uuid: this.deterministicUUID(excelSheet.flow_name, "action"),
+                  uuid: this.deterministicUUID(this.flow_name, "action"),
                 },
               ],
               exits: [this.createEmptyExit()],
@@ -314,9 +314,10 @@ export class ExcelToRapidproConverter {
       rapidProExportObject.flows.push(flow);
       return rapidProExportObject;
     } catch (error) {
-      console.log(excelSheet);
+      console.log(this.flow_name);
+      console.log(this.rows);
       console.log(chalk.red(error));
-      process.exit(1);
+      throw error;
     }
   }
 
@@ -324,35 +325,35 @@ export class ExcelToRapidproConverter {
   private setEnterFlowRouterAndExits(node: RapidProFlowExport.Node) {
     let exits: RapidProFlowExport.Exit[] = [
       {
-        uuid: this.deterministicUUID(this.excelSheet.flow_name, "exit"),
+        uuid: this.deterministicUUID(this.flow_name, "exit"),
         destination_uuid: null,
       },
       {
-        uuid: this.deterministicUUID(this.excelSheet.flow_name, "exit"),
+        uuid: this.deterministicUUID(this.flow_name, "exit"),
         destination_uuid: null,
       },
     ];
     let categories: RapidProFlowExport.Category[] = [
       {
-        uuid: this.deterministicUUID(this.excelSheet.flow_name, "category"),
+        uuid: this.deterministicUUID(this.flow_name, "category"),
         name: "Complete",
         exit_uuid: exits[0].uuid,
       },
       {
-        uuid: this.deterministicUUID(this.excelSheet.flow_name, "category"),
+        uuid: this.deterministicUUID(this.flow_name, "category"),
         name: "Expired",
         exit_uuid: exits[1].uuid,
       },
     ];
     let cases: RapidProFlowExport.RouterCase[] = [
       {
-        uuid: this.deterministicUUID(this.excelSheet.flow_name, "case"),
+        uuid: this.deterministicUUID(this.flow_name, "case"),
         type: "has_only_text",
         arguments: ["completed"],
         category_uuid: categories[0].uuid,
       },
       {
-        uuid: this.deterministicUUID(this.excelSheet.flow_name, "case"),
+        uuid: this.deterministicUUID(this.flow_name, "case"),
         type: "has_only_text",
         arguments: ["expired"],
         category_uuid: categories[1].uuid,
@@ -369,7 +370,7 @@ export class ExcelToRapidproConverter {
     node.exits = exits;
   }
 
-  private setRowIDs(rows: ExcelRowModel[]) {
+  private setRowIDs(rows: RapidproExcelModel.RowModel[]) {
     let nullRows = rows.filter((row) => row.row_id === undefined);
 
     if (nullRows.length === rows.length) {
@@ -387,7 +388,7 @@ export class ExcelToRapidproConverter {
     }
   }
 
-  private getFromRowIndices(row: ExcelRowModel): string[] {
+  private getFromRowIndices(row: RapidproExcelModel.RowModel): string[] {
     if (row.from) {
       return row.from
         .toString()
@@ -397,20 +398,26 @@ export class ExcelToRapidproConverter {
     return [];
   }
 
-  private getFromRows(row: ExcelRowModel, rows: ExcelRowModel[]): ExcelRowModel[] {
+  private getFromRows(
+    row: RapidproExcelModel.RowModel,
+    rows: RapidproExcelModel.RowModel[]
+  ): RapidproExcelModel.RowModel[] {
     let ind = this.getFromRowIndices(row);
     return rows.filter((curr_row) => ind.includes(curr_row.row_id.toString()));
   }
 
-  private getFromNodes(row: ExcelRowModel, rows: ExcelRowModel[]): RapidProFlowExport.Node[] {
+  private getFromNodes(
+    row: RapidproExcelModel.RowModel,
+    rows: RapidproExcelModel.RowModel[]
+  ): RapidProFlowExport.Node[] {
     return this.getFromRows(row, rows)
       .map((r) => r._rapidProNode)
       .filter((node) => node !== undefined);
   }
 
   private getRoutersFromRow(
-    currentRow: ExcelRowModel,
-    rows: ExcelRowModel[],
+    currentRow: RapidproExcelModel.RowModel,
+    rows: RapidproExcelModel.RowModel[],
     nodesById: { [nodeId: string]: RapidProFlowExport.Node }
   ): RapidProFlowExport.Node[] {
     const fromNodes = this.getFromNodes(currentRow, rows);
@@ -444,7 +451,7 @@ export class ExcelToRapidproConverter {
 
   private createEmptyExit(): RapidProFlowExport.Exit {
     let exit: RapidProFlowExport.Exit = {
-      uuid: this.deterministicUUID(this.excelSheet.flow_name, "exit"),
+      uuid: this.deterministicUUID(this.flow_name, "exit"),
       destination_uuid: null,
     };
     return exit;
@@ -456,12 +463,12 @@ export class ExcelToRapidproConverter {
     routerType: "switch" | "random" | string = "switch",
     defaultName: string = "All Responses"
   ): RapidProFlowExport.Node {
-    let nodeId = this.deterministicUUID(this.excelSheet.flow_name, "node");
+    let nodeId = this.deterministicUUID(this.flow_name, "node");
     let emptyExit = this.createEmptyExit();
     let otherCategory = {
       exit_uuid: emptyExit.uuid,
       name: defaultName,
-      uuid: this.deterministicUUID(this.excelSheet.flow_name, "category"),
+      uuid: this.deterministicUUID(this.flow_name, "category"),
     };
     // This is common to "switch" and "random" router nodes.
     let newRouterNode: RapidProFlowExport.Node = {
@@ -491,8 +498,8 @@ export class ExcelToRapidproConverter {
   // Adds a condition to a router node based on the condition information in a row.
   private addConditionToRouterNode(
     routerNode: RapidProFlowExport.Node,
-    row: ExcelRowModel,
-    rows: ExcelRowModel[],
+    row: RapidproExcelModel.RowModel,
+    rows: RapidproExcelModel.RowModel[],
     // TODO This could be more global?
     defaultType: RapidProFlowExport.RouterCaseType = "has_only_phrase"
   ) {
@@ -551,14 +558,14 @@ export class ExcelToRapidproConverter {
             routerNode.router.categories.push({
               exit_uuid: exit.uuid,
               name: con,
-              uuid: this.deterministicUUID(this.excelSheet.flow_name, "category"),
+              uuid: this.deterministicUUID(this.flow_name, "category"),
             });
           }
         } else {
           choiceCategory = {
             exit_uuid: exit.uuid,
             name: row.condition,
-            uuid: this.deterministicUUID(this.excelSheet.flow_name, "category"),
+            uuid: this.deterministicUUID(this.flow_name, "category"),
           };
           routerNode.router.categories.push(choiceCategory);
         }
@@ -574,7 +581,7 @@ export class ExcelToRapidproConverter {
                 arguments: conds,
                 category_uuid: choiceCategory.uuid,
                 type,
-                uuid: this.deterministicUUID(this.excelSheet.flow_name, "case"),
+                uuid: this.deterministicUUID(this.flow_name, "case"),
               },
             ];
             // For phrases need one case per phrase linked to the same category. arguments is a list of length one with the phrase.
@@ -584,7 +591,7 @@ export class ExcelToRapidproConverter {
                 arguments: [con],
                 category_uuid: choiceCategory.uuid,
                 type,
-                uuid: this.deterministicUUID(this.excelSheet.flow_name, "case"),
+                uuid: this.deterministicUUID(this.flow_name, "case"),
               });
             }
           } else {
@@ -595,7 +602,7 @@ export class ExcelToRapidproConverter {
                 arguments: conds,
                 category_uuid: choiceCategory.uuid,
                 type,
-                uuid: this.deterministicUUID(this.excelSheet.flow_name, "case"),
+                uuid: this.deterministicUUID(this.flow_name, "case"),
               },
             ];
           }
@@ -615,12 +622,12 @@ export class ExcelToRapidproConverter {
   }
 
   private processRouterRow(
-    row: ExcelRowModel,
-    rows: ExcelRowModel[],
+    row: RapidproExcelModel.RowModel,
+    rows: RapidproExcelModel.RowModel[],
     flow: RapidProFlowExport.Flow
   ) {
     let fromNodes = this.getFromNodes(row, rows);
-    let fromRows: ExcelRowModel[];
+    let fromRows: RapidproExcelModel.RowModel[];
     let routerNode: RapidProFlowExport.Node;
     let newRouterNode: RapidProFlowExport.Node;
     let first: boolean = true;
@@ -719,7 +726,7 @@ export class ExcelToRapidproConverter {
     }
   }
 
-  private getRowChoices(row: ExcelRowModel): string[] {
+  private getRowChoices(row: RapidproExcelModel.RowModel): string[] {
     let quick_replies: string[] = [];
     for (let i = 1; i <= 12; i++) {
       if (row["choice_" + i] !== undefined) {
@@ -747,7 +754,7 @@ export class ExcelToRapidproConverter {
   private createSaveAction(fieldKey: string, value: string): RapidProFlowExport.Action {
     const stringValue = "" + value;
     return {
-      uuid: this.deterministicUUID(this.excelSheet.flow_name, "action"),
+      uuid: this.deterministicUUID(this.flow_name, "action"),
       type: "set_contact_field",
       field: {
         // Can these be the same?
