@@ -25,7 +25,7 @@ import { SurveyModule } from "src/app/feature/survey/survey.module";
 
 const introModules = [AppTermsPageModule, PrivacyPageModule];
 
-import { LottieModule } from "ngx-lottie";
+import { LottieModule, LottieCacheModule } from "ngx-lottie";
 import player from "lottie-web";
 import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
 import { NgxMatomoRouterModule } from "@ngx-matomo/router";
@@ -56,7 +56,9 @@ export function lottiePlayerFactory() {
     ColorSketchModule,
     ...introModules,
     SurveyModule,
-    LottieModule.forRoot({ player: lottiePlayerFactory, useCache: true }),
+    LottieModule.forRoot({ player: lottiePlayerFactory }),
+    // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
+    // LottieCacheModule.forRoot(),
     TemplateComponentsModule,
     NgxMatomoTrackerModule.forRoot({
       siteId: environment.analytics.siteId,
