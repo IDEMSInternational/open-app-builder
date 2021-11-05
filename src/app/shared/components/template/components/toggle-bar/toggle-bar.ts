@@ -39,7 +39,7 @@ export class TmplToggleBarComponent
 
   constructor(private platform: Platform) {
     super();
-    this.mode = this.platform.is("android") ? "md" : "ios" || "ios";
+    this.mode = this.platform.is("ios") ? "md" : "android" || "android";
   }
 
   ngOnInit() {
