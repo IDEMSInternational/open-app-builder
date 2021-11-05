@@ -1002,6 +1002,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_habit_breathe",
         image_asset: "assets/plh_assets/plh_images/habits/habit_breathe.svg",
         lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_breathe.json",
+        video_asset: "assets/plh_assets/plh_lottie/habits/habit_breathe.mp4",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Breathe not yell",
