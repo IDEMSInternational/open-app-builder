@@ -13,7 +13,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     <div [style.marginBottom.px]="-offset" class="offset" [ngSwitch]="type">
       <ng-container *ngSwitchCase="'default'">
         <plh-template-component
-          *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+          *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
           [row]="childRow"
           [parent]="parent"
           [attr.class]="_row.name"
