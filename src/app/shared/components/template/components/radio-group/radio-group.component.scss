@@ -6,6 +6,7 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
 .wrapper-radio-group {
   width: 100%;
   height: 100%;
+  margin-top: calc(60px * var(--scale-factor));
 
   .container {
     @include flex-centered;
@@ -18,8 +19,9 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
         margin: calc(5px * var(--scale-factor));
 
         label {
-          height: calc(44px * var(--scale-factor));
+          height: auto;
           background-color: var(--ion-color-primary-contrast);
+          padding: calc(10px * var(--scale-factor));
         }
       }
     }
