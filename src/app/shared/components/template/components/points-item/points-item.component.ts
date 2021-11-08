@@ -68,6 +68,7 @@ export class TmplParentPointBoxComponent
       loop: false,
       rendererSettings: {
         // svg scaling options: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+        z-index: 999,
         preserveAspectRatio: "xMinYMin slice",
       },
     };
