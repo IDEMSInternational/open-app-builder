@@ -27,7 +27,10 @@ export class TemplateService {
 
   /** Initialise global and startup templates */
   async init() {
-    // wait until app language has been specified before populating, and update on change
+    // Re-initialise default field and globals on init in case sheets have been updated
+    // TODO - ideally this should just be triggered on first launch of new app update
+    this.initialiseDefaultFieldAndGlobals();
+    // Update default values when language changed to allow for global translations
     this.translateService.app_language$.subscribe((lang) => {
       this.initialiseDefaultFieldAndGlobals();
     });
