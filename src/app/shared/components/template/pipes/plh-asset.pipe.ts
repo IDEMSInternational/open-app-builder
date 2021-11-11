@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { getImageAssetPath } from "../utils/template-utils";
+import { deprecatedGetImageAssetPath } from "../utils/template-utils";
 /**
  * Ensure local assets have correct path name to local asset folder
  * @example <img src="images/my_icon.svg | plhAsset" />
@@ -7,9 +7,9 @@ import { getImageAssetPath } from "../utils/template-utils";
  *
  */
 
-@Pipe({ name: "plhAsset" })
+@Pipe({ name: "deprecatedPlhAsset" })
 export class PLHAssetPipe implements PipeTransform {
   transform(value: string) {
-    return getImageAssetPath(value);
+    return deprecatedGetImageAssetPath(value);
   }
 }

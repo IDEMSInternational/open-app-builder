@@ -117,11 +117,15 @@ export function parseValueListItems(items: string[]): any[] {
 }
 
 /**
+ * DEPRECATED - 2021-11-11
+ * Methods replaced by async template-assets.service methods which allow for checking
+ * file exists and providing fallback for current language
+ *
  * Ensure local assets have correct path name to local asset folder
  * @example getImageAssetPath("images/my_icon.svg") => "assets/plh_assets/images/my_icon"
  * TODO - share base folder / conversion method as util with scripts default.parser.ts
  */
-export function getImageAssetPath(value: string) {
+export function deprecatedGetImageAssetPath(value: string) {
   const ASSETS_BASE = "assets/plh_assets";
   // ensure starts either "assets/plh_assets" or "/assets/plh_assets"
   const regex = /^(\/)?assets\/plh_assets/gi;
