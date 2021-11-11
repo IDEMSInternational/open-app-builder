@@ -11,7 +11,6 @@ import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 import { AnimationOptions } from "ngx-lottie";
-import player from "lottie-web";
 import { getImageAssetPath } from "../../utils/template-utils";
 
 @Component({
@@ -26,7 +25,6 @@ export class TmplParentPointBoxComponent
 {
   @Input() template: FlowTypes.Template;
   @ViewChild("star", { static: false }) star: ElementRef;
-  @ViewChild("celebretionAnim", { static: false }) celebretionAnim: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
   lottie_src: string | null;
@@ -38,6 +36,7 @@ export class TmplParentPointBoxComponent
   animOptions: AnimationOptions;
   animCelebrationOptions: AnimationOptions;
   play_celebration: boolean;
+  showCelebrationAnimation = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -65,7 +64,7 @@ export class TmplParentPointBoxComponent
     this.animCelebrationOptions = {
       path: getImageAssetPath("/plh_lottie/habits/cascading_stars.json"),
       name: "celebration",
-      autoplay: false,
+      autoplay: true,
       loop: false,
       rendererSettings: {
         // svg scaling options: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
@@ -93,13 +92,11 @@ export class TmplParentPointBoxComponent
     this.value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
     if (this.play_celebration) {
-      this.celebretionAnim.nativeElement.classList.add("play");
-      player.play("celebration");
+      this.showCelebrationAnimation = true;
     }
     setTimeout((_) => {
       this.star.nativeElement.classList.remove("on-add");
-      this.celebretionAnim.nativeElement.classList.remove("play");
-      player.stop("celebration");
+      this.showCelebrationAnimation = false;
     }, 1000);
     if (!this.wasClicked) {
       this.item.nativeElement.classList.add("complete");
