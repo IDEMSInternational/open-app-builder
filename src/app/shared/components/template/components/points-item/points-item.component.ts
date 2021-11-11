@@ -11,7 +11,7 @@ import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 import { AnimationOptions } from "ngx-lottie";
-import { getImageAssetPath } from "../../utils/template-utils";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-points-item",
@@ -45,15 +45,15 @@ export class TmplParentPointBoxComponent
   @HostBinding("style.--scale-factor--point") get scale() {
     return this.scaleFactor;
   }
-  constructor() {
+  constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getParams();
     this.getScaleFactor();
     if (this.lottie_src) {
-      this.lottie_src = getImageAssetPath(this.lottie_src);
+      this.lottie_src = await this.templateAssetService.getTranslatedAssetPath(this.lottie_src);
       this.animOptions = {
         path: this.lottie_src,
         name: this.text,
@@ -61,8 +61,11 @@ export class TmplParentPointBoxComponent
         loop: true,
       };
     }
+    const celebrationAnimationPath = await this.templateAssetService.getTranslatedAssetPath(
+      "/plh_lottie/habits/cascading_stars.json"
+    );
     this.animCelebrationOptions = {
-      path: getImageAssetPath("/plh_lottie/habits/cascading_stars.json"),
+      path: celebrationAnimationPath,
       name: "celebration",
       autoplay: true,
       loop: false,

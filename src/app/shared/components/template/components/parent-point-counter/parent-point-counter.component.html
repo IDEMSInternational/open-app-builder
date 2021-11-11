@@ -1,7 +1,7 @@
 <div class="point_wrapper margin-t-regular">
   <div class="container">
     <div class="icon">
-      <img *ngIf="icon_src" [src]="icon_src | plhAsset" />
+      <img *ngIf="icon_src" [src]="icon_src | plhAssetTranslated | async" />
       <div *ngIf="count && count >= 0" class="count">{{ count }}</div>
     </div>
     <div class="text">{{ _row.value }}</div>
