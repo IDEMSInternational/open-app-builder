@@ -51,7 +51,8 @@
           [class.ml-5]="!isPlayed"
           [src]="
             (!isPlayed ? 'plh_images/icons/play_white.svg' : 'plh_images/icons/pause_white.svg')
-              | plhAsset
+              | plhAssetTranslated
+              | async
           "
           alt=""
         />

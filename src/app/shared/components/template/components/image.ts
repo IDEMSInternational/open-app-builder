@@ -1,15 +1,13 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 import { FlowTypes } from "data-models";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
-import { getImageAssetPath } from "../utils/template-utils";
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
     <div class="tmpl-image-container" [class]="style">
-      <img *ngIf="imageSrc" [src]="imageSrc" />
+      <img *ngIf="imageSrc" [src]="imageSrc | plhAssetTranslated | async" />
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
@@ -24,7 +22,7 @@ import { getImageAssetPath } from "../utils/template-utils";
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
   style = "";
 
-  constructor(private http: HttpClient) {
+  constructor() {
     super();
   }
 
@@ -32,18 +30,8 @@ export class TmplImageComponent extends TemplateBaseComponent implements OnInit 
 
   @Input() set row(r: FlowTypes.TemplateRow) {
     if (r.value) {
-      const imageSrc = getImageAssetPath(r.value);
-      this.http
-        .get(imageSrc, { responseType: "arraybuffer" })
-        .toPromise()
-        .then(() => {
-          this.imageSrc = imageSrc;
-          this.style += ` ${r.parameter_list?.style}`;
-        })
-        .catch(() => {
-          console.error("image not found", r.value, imageSrc);
-          // could add fallback image here if desired
-        });
+      this.style += ` ${r.parameter_list?.style}`;
+      this.imageSrc = r.value;
     } else {
       console.warn("No image specified", { ...r });
     }
