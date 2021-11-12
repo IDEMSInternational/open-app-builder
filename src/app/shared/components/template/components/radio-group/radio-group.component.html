@@ -30,11 +30,7 @@
       >
         <label class="center standard-label" [class.checked]="item.name === _row.value">
           <svg-icon
-            [src]="
-              (el.checked && item.image_checked ? item.image_checked : item.image)
-                | plhAssetTranslated
-                | async
-            "
+            [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"
           >
           </svg-icon>
           <input

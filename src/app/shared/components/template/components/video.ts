@@ -7,7 +7,7 @@ import { TemplateBaseComponent } from "./base";
 @Component({
   selector: "plh-tmpl-video",
   template: `<div class="tmpl-video-container margin-t-large" [class]="style">
-    <video [src]="row.value | plhAssetTranslated" controls></video>
+    <video [src]="row.value | plhAsset" controls></video>
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"],
 })
