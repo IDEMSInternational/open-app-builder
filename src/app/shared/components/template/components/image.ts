@@ -7,7 +7,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   selector: "plh-tmpl-image",
   template: `
     <div class="tmpl-image-container" [class]="style">
-      <img *ngIf="imageSrc" [src]="imageSrc | plhAssetTranslated | async" />
+      <img *ngIf="imageSrc" [src]="imageSrc | plhAssetTranslated" />
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],

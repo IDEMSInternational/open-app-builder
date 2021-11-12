@@ -16,7 +16,7 @@
         *ngIf="isCustomIcon"
         [style.max-width]="is_play_icon ? '' : 'initial'"
         [style.margin-left]="is_play_icon ? '5px' : '0'"
-        [src]="icon_src | plhAssetTranslated | async"
+        [src]="icon_src | plhAssetTranslated"
         alt=""
       />
       <ion-icon *ngIf="!isCustomIcon" [name]="icon_src"></ion-icon>

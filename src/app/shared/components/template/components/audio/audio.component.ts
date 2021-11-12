@@ -40,13 +40,13 @@ export class TmplAudioComponent
     super();
   }
 
-  async ngOnInit() {
-    await this.getParams();
+  ngOnInit() {
+    this.getParams();
     this.initPlayer();
   }
 
-  async getParams() {
-    this.src = await this.templateAssetService.getTranslatedAssetPath(
+  getParams() {
+    this.src = this.templateAssetService.getTranslatedAssetPath(
       this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
     );
     this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");

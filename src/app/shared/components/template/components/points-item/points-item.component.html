@@ -4,13 +4,13 @@
   </div>
   <div class="item" #item (click)="clickPointItem()">
     <div class="star" #star>
-      <img [src]="'plh_images/icons/star.svg' | plhAssetTranslated | async" alt="" />
+      <img [src]="'plh_images/icons/star.svg' | plhAssetTranslated" alt="" />
       <div class="star-value">
         {{ _row.value }}
       </div>
     </div>
     <div class="image">
-      <img *ngIf="icon_src" [src]="icon_src | plhAssetTranslated | async" alt="" />
+      <img *ngIf="icon_src" [src]="icon_src | plhAssetTranslated" alt="" />
       <ng-lottie *ngIf="lottie_src" [options]="animOptions"></ng-lottie>
     </div>
     <div class="text" *ngIf="text">

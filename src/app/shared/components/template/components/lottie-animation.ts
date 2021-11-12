@@ -33,11 +33,11 @@ export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit
     this.loadAnimation(r);
   }
 
-  private async loadAnimation(r: FlowTypes.TemplateRow) {
+  private loadAnimation(r: FlowTypes.TemplateRow) {
     // Loop by default
     const loop = r?.parameter_list?.loop === "false" ? false : true;
     if (r.value) {
-      const path = await this.templateAssetService.getTranslatedAssetPath(r.value);
+      const path = this.templateAssetService.getTranslatedAssetPath(r.value);
       this.animOptions = {
         path,
         loop,
