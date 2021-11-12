@@ -1941,4 +1941,8 @@ export const ASSETS_CONTENTS_LIST = {
       },
     },
   },
+  "quality_assurance/test_image_no_translations.png": {
+    size: 2902,
+    checksum: "f759667d7abedfa5aea2ac742e831ce3",
+  },
 };
