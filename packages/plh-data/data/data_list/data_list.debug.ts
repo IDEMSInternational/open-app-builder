@@ -163,6 +163,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -170,6 +171,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -177,6 +179,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           bold_title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -184,6 +187,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           title_and_happy: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -216,6 +220,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -223,6 +228,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -230,6 +236,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           bold_title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -237,6 +244,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           title_and_happy: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -267,6 +275,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,

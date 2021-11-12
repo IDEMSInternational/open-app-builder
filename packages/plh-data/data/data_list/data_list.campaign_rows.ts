@@ -9813,6 +9813,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -9878,6 +9879,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -9933,6 +9935,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -9998,6 +10001,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10053,6 +10057,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10118,6 +10123,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10173,6 +10179,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10238,6 +10245,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10293,6 +10301,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10358,6 +10367,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10413,6 +10423,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10478,6 +10489,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10533,6 +10545,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10598,6 +10611,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10653,6 +10667,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10718,6 +10733,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10773,6 +10789,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10838,6 +10855,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10893,6 +10911,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -10958,6 +10977,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11013,6 +11033,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11078,6 +11099,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11133,6 +11155,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11198,6 +11221,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11253,6 +11277,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11260,6 +11285,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11306,6 +11332,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11313,6 +11340,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11350,6 +11378,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11357,6 +11386,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11394,6 +11424,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11401,6 +11432,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11438,6 +11470,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11445,6 +11478,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11491,6 +11525,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11498,6 +11533,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11535,6 +11571,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11542,6 +11579,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11579,6 +11617,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11586,6 +11625,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11623,6 +11663,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11630,6 +11671,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11645,6 +11687,153 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "campaign_generic",
+    status: "released",
+    rows: [
+      {
+        cam: "m_generic_1",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["undefined.sent", true],
+            _raw: "set_field: undefined.sent : true",
+            _cleaned: "click | set_field: undefined.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["generic"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            swa: true,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
+          },
+        },
+        text: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
+      },
+      {
+        cam: "m_generic_2",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["undefined.sent", true],
+            _raw: "set_field: undefined.sent : true",
+            _cleaned: "click | set_field: undefined.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["generic"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            swa: true,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
+          },
+        },
+        text: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
+      },
+      {
+        cam: "m_generic_3",
+        click_action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["undefined.sent", true],
+            _raw: "set_field: undefined.sent : true",
+            _cleaned: "click | set_field: undefined.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["generic"],
+        notification_schedule: {
+          title: "New message from PLH",
+          text: "Hi great parent! ParentApp is here to support you. Check it out now!",
+        },
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            spa: false,
+            swa: true,
+            afr: true,
+            tsa: true,
+            xho: true,
+            zul: true,
+          },
+          text: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi great parent! ParentApp is here to support you. Check it out now!",
+          },
+        },
+        text: "Hi great parent! ParentApp is here to support you. Check it out now!",
       },
     ],
     _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
@@ -11695,6 +11884,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11702,6 +11892,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11737,6 +11928,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11744,6 +11936,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11800,6 +11993,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11807,6 +12001,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11863,6 +12058,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11870,6 +12066,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11926,6 +12123,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11933,6 +12131,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11989,6 +12188,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -11996,6 +12196,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -12052,6 +12253,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -12059,6 +12261,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -12115,6 +12318,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -12122,6 +12326,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -12157,6 +12362,7 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -12164,6 +12370,7 @@ const data_list: FlowTypes.Data_list[] = [
           },
           text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
