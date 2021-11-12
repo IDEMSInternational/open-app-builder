@@ -12,6 +12,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19,6 +20,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36,6 +38,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -43,6 +46,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -61,6 +65,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -68,6 +73,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -85,6 +91,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -92,6 +99,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -109,6 +117,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -116,6 +125,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -134,6 +144,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -158,6 +169,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -165,6 +177,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -182,6 +195,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -189,6 +203,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -207,6 +222,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -222,6 +238,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -229,6 +246,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -246,6 +264,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -253,6 +272,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -270,6 +290,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -292,6 +313,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -299,6 +321,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -316,6 +339,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -323,6 +347,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -341,6 +366,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -356,6 +382,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -363,6 +390,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -380,6 +408,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -387,6 +416,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -404,6 +434,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -426,6 +457,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -433,6 +465,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -450,6 +483,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -457,6 +491,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -473,6 +508,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -480,6 +516,7 @@ const tour: FlowTypes.Tour[] = [
           },
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -496,6 +533,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -512,6 +550,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -527,6 +566,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -543,6 +583,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -558,6 +599,7 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           message_text: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
