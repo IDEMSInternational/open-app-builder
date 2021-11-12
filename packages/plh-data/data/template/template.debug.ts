@@ -19,6 +19,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -43,6 +44,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -85,6 +87,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -133,6 +136,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -171,6 +175,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -243,6 +248,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -296,6 +302,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -338,6 +345,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -376,6 +384,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -511,6 +520,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -573,6 +583,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -610,6 +621,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -725,6 +737,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -787,6 +800,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -896,6 +910,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -951,6 +966,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -1084,6 +1100,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -1139,6 +1156,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -1278,6 +1296,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -1348,6 +1367,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -1502,6 +1522,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -1572,6 +1593,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -1660,6 +1682,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -1742,6 +1765,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -1878,6 +1902,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -1938,6 +1963,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -1968,6 +1994,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -1998,6 +2025,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -2038,6 +2066,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -2098,6 +2127,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -2128,6 +2158,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -2158,6 +2189,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -2201,6 +2233,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2261,6 +2294,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2291,6 +2325,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2321,6 +2356,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2351,6 +2387,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2411,6 +2448,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2441,6 +2479,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2471,6 +2510,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2521,6 +2561,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2537,6 +2578,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2553,6 +2595,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2648,6 +2691,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2664,6 +2708,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2704,6 +2749,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2744,6 +2790,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2783,6 +2830,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2799,6 +2847,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2815,6 +2864,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -2831,6 +2881,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2847,6 +2898,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2863,6 +2915,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2879,6 +2932,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2895,6 +2949,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2911,6 +2966,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -2927,6 +2983,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -3091,6 +3148,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3107,6 +3165,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3123,6 +3182,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3212,6 +3272,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3228,6 +3289,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3268,6 +3330,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3308,6 +3371,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3358,6 +3422,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3417,6 +3482,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3446,6 +3512,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3481,6 +3548,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3540,6 +3608,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3569,6 +3638,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3594,6 +3664,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3629,6 +3700,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3658,6 +3730,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3687,6 +3760,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3703,6 +3777,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3733,6 +3808,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3764,6 +3840,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3801,6 +3878,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3817,6 +3895,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3847,6 +3926,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3877,6 +3957,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3898,6 +3979,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -3928,6 +4010,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -3962,6 +4045,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -3992,6 +4076,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4009,6 +4094,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4035,6 +4121,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4052,6 +4139,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4083,6 +4171,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4112,6 +4201,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4142,6 +4232,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4192,6 +4283,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4232,6 +4324,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4284,6 +4377,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4339,6 +4433,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4368,6 +4463,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4384,6 +4480,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4400,6 +4497,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4444,6 +4542,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4473,6 +4572,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4502,6 +4602,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4542,6 +4643,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -4571,6 +4673,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -4600,6 +4703,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -4764,6 +4868,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -4789,6 +4894,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4818,6 +4924,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4858,6 +4965,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4875,6 +4983,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4916,6 +5025,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -4953,6 +5063,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -4973,6 +5084,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5010,6 +5122,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -5042,6 +5155,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5078,6 +5192,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -5120,6 +5235,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5136,6 +5252,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5161,6 +5278,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5200,6 +5318,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5216,6 +5335,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5276,6 +5396,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5314,6 +5435,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5339,6 +5461,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5374,6 +5497,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5390,6 +5514,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5434,6 +5559,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5506,6 +5632,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5535,6 +5662,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5605,6 +5733,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5688,6 +5817,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5717,6 +5847,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5766,6 +5897,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5807,6 +5939,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5917,6 +6050,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5946,6 +6080,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -5996,6 +6131,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6011,6 +6147,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6026,6 +6163,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6041,6 +6179,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6057,6 +6196,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6085,6 +6225,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6113,6 +6254,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6141,6 +6283,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6169,6 +6312,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6197,6 +6341,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6225,6 +6370,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6253,6 +6399,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6281,6 +6428,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6309,6 +6457,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6337,6 +6486,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6365,6 +6515,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6402,6 +6553,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6423,6 +6575,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6451,6 +6604,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6476,6 +6630,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6540,6 +6695,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6604,6 +6760,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6633,6 +6790,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6662,6 +6820,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6692,6 +6851,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6722,6 +6882,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6751,6 +6912,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6781,6 +6943,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6811,6 +6974,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6840,6 +7004,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6870,6 +7035,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6900,6 +7066,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6929,6 +7096,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6959,6 +7127,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -6989,6 +7158,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7018,6 +7188,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7048,6 +7219,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7078,6 +7250,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7107,6 +7280,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7137,6 +7311,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7176,6 +7351,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7197,6 +7373,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7225,6 +7402,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7250,6 +7428,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7314,6 +7493,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7378,6 +7558,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7407,6 +7588,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7436,6 +7618,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7466,6 +7649,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7496,6 +7680,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7525,6 +7710,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7555,6 +7741,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7585,6 +7772,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7614,6 +7802,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7644,6 +7833,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7674,6 +7864,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7703,6 +7894,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7733,6 +7925,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7763,6 +7956,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7792,6 +7986,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7822,6 +8017,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7852,6 +8048,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7881,6 +8078,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7911,6 +8109,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7950,6 +8149,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7971,6 +8171,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -7999,6 +8200,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8024,6 +8226,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8088,6 +8291,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8152,6 +8356,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8181,6 +8386,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8210,6 +8416,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8247,6 +8454,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8284,6 +8492,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8313,6 +8522,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8350,6 +8560,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8387,6 +8598,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8416,6 +8628,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8453,6 +8666,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8490,6 +8704,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8519,6 +8734,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8556,6 +8772,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8593,6 +8810,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8622,6 +8840,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8659,6 +8878,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8696,6 +8916,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8725,6 +8946,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8762,6 +8984,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8808,6 +9031,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8826,6 +9050,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8857,6 +9082,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8888,6 +9114,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8919,6 +9146,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8950,6 +9178,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -8981,6 +9210,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9010,6 +9240,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9025,6 +9256,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9040,6 +9272,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9069,6 +9302,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9098,6 +9332,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9127,6 +9362,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9156,6 +9392,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9184,6 +9421,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9201,6 +9439,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9240,6 +9479,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9269,6 +9509,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9298,6 +9539,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9327,6 +9569,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9356,6 +9599,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9372,6 +9616,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9388,6 +9633,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9404,6 +9650,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9434,6 +9681,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -9463,6 +9711,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -9492,6 +9741,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -9508,6 +9758,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -9537,6 +9788,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -9566,6 +9818,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -9605,6 +9858,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9634,6 +9888,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9663,6 +9918,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9679,6 +9935,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9708,6 +9965,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9737,6 +9995,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9766,6 +10025,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9782,6 +10042,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -9826,6 +10087,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9841,6 +10103,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9857,6 +10120,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9882,6 +10146,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -9987,6 +10252,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10011,6 +10277,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10045,6 +10312,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10084,6 +10352,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10112,6 +10381,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10128,6 +10398,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10164,6 +10435,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10199,6 +10471,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -10257,6 +10530,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -10273,6 +10547,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -10362,6 +10637,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -10505,6 +10781,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -10551,6 +10828,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10579,6 +10857,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10595,6 +10874,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10635,6 +10915,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -10693,6 +10974,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -10709,6 +10991,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -10779,6 +11062,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10835,6 +11119,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -10876,6 +11161,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10893,6 +11179,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10922,6 +11209,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10954,6 +11242,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -10986,6 +11275,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11015,6 +11305,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11044,6 +11335,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11165,6 +11457,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11196,6 +11489,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11227,6 +11521,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11246,6 +11541,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11266,6 +11562,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -11286,6 +11583,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -11311,6 +11609,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11330,6 +11629,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11350,6 +11650,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -11370,6 +11671,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -11405,6 +11707,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11436,6 +11739,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11461,6 +11765,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11491,6 +11796,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11507,6 +11813,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11543,6 +11850,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -11581,6 +11889,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11606,6 +11915,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11631,6 +11941,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11660,6 +11971,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11677,6 +11989,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11704,6 +12017,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -11720,6 +12034,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -11755,6 +12070,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11772,6 +12088,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11793,6 +12110,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11809,6 +12127,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11842,6 +12161,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11857,6 +12177,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -11891,6 +12212,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -11907,6 +12229,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -11977,6 +12300,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -11993,6 +12317,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12009,6 +12334,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12025,6 +12351,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12056,6 +12383,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12086,6 +12414,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12108,6 +12437,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12124,6 +12454,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12143,6 +12474,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12159,6 +12491,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12181,6 +12514,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12197,6 +12531,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12239,6 +12574,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12255,6 +12591,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12283,6 +12620,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -12299,6 +12637,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -12335,6 +12674,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12371,6 +12711,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -12388,6 +12729,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -12426,6 +12768,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12454,6 +12797,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -12470,6 +12814,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -12515,6 +12860,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12538,6 +12884,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12617,6 +12964,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12647,6 +12995,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12677,6 +13026,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12705,6 +13055,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12729,6 +13080,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12759,6 +13111,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12781,6 +13134,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12811,6 +13165,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12841,6 +13196,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12870,6 +13226,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -12889,6 +13246,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12955,6 +13313,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -12971,6 +13330,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13067,6 +13427,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13083,6 +13444,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13105,6 +13467,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -13121,6 +13484,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -13154,6 +13518,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13170,6 +13535,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13216,6 +13582,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13245,6 +13612,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13280,6 +13648,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13309,6 +13678,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13338,6 +13708,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13354,6 +13725,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13383,6 +13755,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13412,6 +13785,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13485,6 +13859,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13514,6 +13889,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13543,6 +13919,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13572,6 +13949,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13601,6 +13979,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13630,6 +14009,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13646,6 +14026,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13682,6 +14063,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13711,6 +14093,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13740,6 +14123,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13813,6 +14197,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13829,6 +14214,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13859,6 +14245,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13888,6 +14275,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13917,6 +14305,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13946,6 +14335,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -13975,6 +14365,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14004,6 +14395,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14047,6 +14439,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14077,6 +14470,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14093,6 +14487,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14109,6 +14504,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14125,6 +14521,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14144,6 +14541,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14160,6 +14558,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14189,6 +14588,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14223,6 +14623,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14239,6 +14640,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14256,6 +14658,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14360,6 +14763,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14410,6 +14814,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14431,6 +14836,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14447,6 +14853,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14467,6 +14874,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14488,6 +14896,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14520,6 +14929,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14556,6 +14966,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14577,6 +14988,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14616,6 +15028,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14659,6 +15072,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14680,6 +15094,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14712,6 +15127,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14789,6 +15205,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14819,6 +15236,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14854,6 +15272,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14886,6 +15305,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14916,6 +15336,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -14951,6 +15372,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -14993,6 +15415,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15009,6 +15432,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15032,6 +15456,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15049,6 +15474,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15069,6 +15495,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15085,6 +15512,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15101,6 +15529,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15117,6 +15546,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15133,6 +15563,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15149,6 +15580,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15179,6 +15611,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15195,6 +15628,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15220,6 +15654,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15236,6 +15671,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15287,6 +15723,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15304,6 +15741,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15320,6 +15758,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15345,6 +15784,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15361,6 +15801,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15446,6 +15887,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15495,6 +15937,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15517,6 +15960,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15566,6 +16010,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15606,6 +16051,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15646,6 +16092,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15706,6 +16153,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -15765,6 +16213,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15830,6 +16279,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15844,6 +16294,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15857,7 +16308,6 @@ const template: FlowTypes.Template[] = [
       {
         name: "answer_list_2",
         value: ["name:name_var_1 | text:@local.long_text", "name:name_var_2 | text:Second"],
-        exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "answer_list_2",
         _dynamicFields: {
@@ -15879,7 +16329,6 @@ const template: FlowTypes.Template[] = [
       {
         type: "radio_group",
         name: "radio_group_with_long_text_and_options_per_row",
-        exclude_from_translation: true,
         parameter_list: {
           answer_list: "@local.answer_list_2",
           options_per_row: "2",
@@ -15941,6 +16390,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15970,6 +16420,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -15986,6 +16437,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16015,6 +16467,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16032,6 +16485,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16124,6 +16578,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16191,6 +16646,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16251,6 +16707,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16266,6 +16723,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16282,6 +16740,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16311,6 +16770,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16348,6 +16808,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16377,6 +16838,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16406,6 +16868,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16442,6 +16905,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16531,6 +16995,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16560,6 +17025,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16622,6 +17088,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16694,6 +17161,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16793,6 +17261,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16874,6 +17343,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16922,6 +17392,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16938,6 +17409,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -16979,6 +17451,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -16995,6 +17468,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17025,6 +17499,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17056,6 +17531,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17096,6 +17572,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17112,6 +17589,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17151,6 +17629,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17167,6 +17646,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -17213,6 +17693,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17242,6 +17723,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17258,6 +17740,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17288,6 +17771,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17318,6 +17802,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17365,6 +17850,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17381,6 +17867,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17427,6 +17914,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17443,6 +17931,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -17493,6 +17982,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17516,6 +18006,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17601,6 +18092,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17649,6 +18141,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17665,6 +18158,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17695,6 +18189,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17725,6 +18220,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17755,6 +18251,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17771,6 +18268,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17787,6 +18285,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17813,6 +18312,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17829,6 +18329,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17854,6 +18355,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17870,6 +18372,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17886,6 +18389,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17942,6 +18446,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -17959,6 +18464,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18029,6 +18535,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18076,6 +18583,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18092,6 +18600,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18133,6 +18642,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18162,6 +18672,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18235,6 +18746,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18418,6 +18930,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18434,6 +18947,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18450,6 +18964,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18510,6 +19025,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18540,6 +19056,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18570,6 +19087,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18600,6 +19118,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18639,6 +19158,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18655,6 +19175,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18671,6 +19192,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18687,6 +19209,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18703,6 +19226,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18720,6 +19244,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18749,6 +19274,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18778,6 +19304,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18807,6 +19334,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18836,6 +19364,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18874,6 +19403,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18891,6 +19421,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18907,6 +19438,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18923,6 +19455,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18949,6 +19482,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -18978,6 +19512,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19017,6 +19552,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19033,6 +19569,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19072,6 +19609,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19111,6 +19649,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19142,6 +19681,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -19159,6 +19699,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -19185,6 +19726,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -19202,6 +19744,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -19233,6 +19776,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19255,6 +19799,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19271,6 +19816,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19288,6 +19834,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19314,6 +19861,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19336,6 +19884,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19352,6 +19901,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19369,6 +19919,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19395,6 +19946,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19438,6 +19990,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19468,6 +20021,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19498,6 +20052,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19528,6 +20083,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19558,6 +20114,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19588,6 +20145,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19628,6 +20186,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19645,6 +20204,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19661,6 +20221,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19678,6 +20239,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19724,6 +20286,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -19792,6 +20355,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -19809,6 +20373,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -19890,6 +20455,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19905,6 +20471,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19971,6 +20538,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -19987,6 +20555,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20037,6 +20606,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20053,6 +20623,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20103,6 +20674,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20119,6 +20691,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20169,6 +20742,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20185,6 +20759,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20236,6 +20811,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20252,6 +20828,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20287,6 +20864,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20314,6 +20892,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20455,6 +21034,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20470,6 +21050,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20494,6 +21075,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20522,6 +21104,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20559,6 +21142,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20580,6 +21164,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20595,6 +21180,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20633,6 +21219,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20670,6 +21257,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20699,6 +21287,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20728,6 +21317,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20757,6 +21347,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20787,6 +21378,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20840,6 +21432,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20902,6 +21495,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20931,6 +21525,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -20960,6 +21555,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21036,6 +21632,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21053,6 +21650,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21082,6 +21680,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21179,6 +21778,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21197,6 +21797,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -21212,6 +21813,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21230,6 +21832,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -21255,6 +21858,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21273,6 +21877,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -21301,6 +21906,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -21329,6 +21935,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21353,6 +21960,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21386,6 +21994,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21448,6 +22057,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21477,6 +22087,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21566,6 +22177,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21595,6 +22207,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -21647,6 +22260,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -21687,6 +22301,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -21726,6 +22341,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -21813,6 +22429,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -21842,6 +22459,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -21890,6 +22508,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -21937,6 +22556,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -21975,6 +22595,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22037,6 +22658,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22065,6 +22687,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22108,6 +22731,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -22154,6 +22778,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -22190,6 +22815,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -22231,6 +22857,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22293,6 +22920,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22326,6 +22954,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -22388,6 +23017,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -22434,6 +23064,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -22476,6 +23107,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22501,6 +23133,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22526,6 +23159,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22542,6 +23176,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22571,6 +23206,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22587,6 +23223,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22616,6 +23253,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22632,6 +23270,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22668,6 +23307,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22685,6 +23325,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22723,6 +23364,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22739,6 +23381,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22775,6 +23418,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22792,6 +23436,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22830,6 +23475,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22846,6 +23492,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22895,6 +23542,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22911,6 +23559,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22940,6 +23589,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22956,6 +23606,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -22985,6 +23636,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23002,6 +23654,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23040,6 +23693,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23056,6 +23710,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23092,6 +23747,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23108,6 +23764,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23161,6 +23818,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23177,6 +23835,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23202,6 +23861,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23234,6 +23894,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23266,6 +23927,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23308,6 +23970,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23324,6 +23987,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23349,6 +24013,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23384,6 +24049,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23452,6 +24118,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23466,6 +24133,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23501,6 +24169,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23517,6 +24186,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23533,6 +24203,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23558,6 +24229,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23574,6 +24246,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23599,6 +24272,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23615,6 +24289,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23657,6 +24332,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23683,6 +24359,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23699,6 +24376,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23724,6 +24402,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23740,6 +24419,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23782,6 +24462,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23798,6 +24479,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23840,6 +24522,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23856,6 +24539,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23881,6 +24565,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23908,6 +24593,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23924,6 +24610,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23949,6 +24636,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23964,6 +24652,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -23992,6 +24681,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24020,6 +24710,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24059,6 +24750,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24104,6 +24796,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24161,6 +24854,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24189,6 +24883,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24204,6 +24899,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24219,6 +24915,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24247,6 +24944,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24282,6 +24980,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24310,6 +25009,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24334,6 +25034,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24381,6 +25082,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24423,6 +25125,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24460,6 +25163,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24498,6 +25202,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24513,6 +25218,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24541,6 +25247,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24569,6 +25276,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24597,6 +25305,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24625,6 +25334,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24653,6 +25363,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24681,6 +25392,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24709,6 +25421,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24737,6 +25450,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24767,6 +25481,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24796,6 +25511,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24828,6 +25544,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24856,6 +25573,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24870,6 +25588,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24898,6 +25617,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24926,6 +25646,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24954,6 +25675,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -24983,6 +25705,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25011,6 +25734,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25039,6 +25763,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25067,6 +25792,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25105,6 +25831,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25120,6 +25847,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25148,6 +25876,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25176,6 +25905,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25204,6 +25934,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25232,6 +25963,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25260,6 +25992,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25288,6 +26021,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25316,6 +26050,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25344,6 +26079,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25372,6 +26108,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25412,6 +26149,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25440,6 +26178,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25468,6 +26207,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25496,6 +26236,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25524,6 +26265,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25561,6 +26303,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25590,6 +26333,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25618,6 +26362,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25646,6 +26391,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25674,6 +26420,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25712,6 +26459,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25739,6 +26487,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25768,6 +26517,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25817,6 +26567,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25845,6 +26596,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25873,6 +26625,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25907,6 +26660,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25936,6 +26690,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -25984,6 +26739,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26012,6 +26768,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26061,6 +26818,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26090,6 +26848,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26146,6 +26905,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26175,6 +26935,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26223,6 +26984,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26260,6 +27022,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26275,6 +27038,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26399,6 +27163,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26415,6 +27180,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26431,6 +27197,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26447,6 +27214,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26537,6 +27305,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26631,6 +27400,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26661,6 +27431,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26743,6 +27514,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26830,6 +27602,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26894,6 +27667,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26949,6 +27723,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -26974,6 +27749,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27010,6 +27786,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27040,6 +27817,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27079,6 +27857,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27109,6 +27888,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27148,6 +27928,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27178,6 +27959,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27217,6 +27999,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27247,6 +28030,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27291,6 +28075,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27307,6 +28092,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27347,6 +28133,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27376,6 +28163,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27406,6 +28194,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27436,6 +28225,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27479,6 +28269,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27501,6 +28292,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27539,6 +28331,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27577,6 +28370,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -27626,6 +28420,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27643,6 +28438,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27677,6 +28473,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27706,6 +28503,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27746,6 +28544,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27775,6 +28574,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27837,6 +28637,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27866,6 +28667,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27895,6 +28697,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27925,6 +28728,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27963,6 +28767,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -27992,6 +28797,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28031,6 +28837,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28060,6 +28867,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28089,6 +28897,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28118,6 +28927,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28144,6 +28954,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28173,6 +28984,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28198,6 +29010,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28227,6 +29040,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28252,6 +29066,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28281,6 +29096,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28311,6 +29127,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28341,6 +29158,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28371,6 +29189,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28401,6 +29220,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28431,6 +29251,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28497,6 +29318,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28526,6 +29348,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28556,6 +29379,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28604,6 +29428,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28626,6 +29451,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -28670,6 +29496,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -28715,6 +29542,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -28777,6 +29605,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28796,6 +29625,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -28867,6 +29697,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28895,6 +29726,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28923,6 +29755,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -28945,6 +29778,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -28989,6 +29823,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -29061,6 +29896,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29076,6 +29912,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29108,6 +29945,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29140,6 +29978,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -29203,6 +30042,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -29254,6 +30094,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -29306,6 +30147,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -29408,6 +30250,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29432,6 +30275,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29529,6 +30373,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29544,6 +30389,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29559,6 +30405,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -29592,6 +30439,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29711,6 +30559,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -29750,6 +30599,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -29789,6 +30639,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -29821,6 +30672,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29906,6 +30758,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29939,6 +30792,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -29973,6 +30827,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30001,6 +30856,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30147,6 +31003,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30192,6 +31049,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30238,6 +31096,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30263,6 +31122,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30296,6 +31156,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30312,6 +31173,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30349,6 +31211,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30365,6 +31228,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30404,6 +31268,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30420,6 +31285,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30459,6 +31325,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30475,6 +31342,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30505,6 +31373,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30520,6 +31389,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30536,6 +31406,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30592,6 +31463,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30608,6 +31480,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30624,6 +31497,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30640,6 +31514,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30655,6 +31530,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: true,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30707,6 +31583,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30736,6 +31613,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30765,6 +31643,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30794,6 +31673,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30833,6 +31713,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30861,6 +31742,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30889,6 +31771,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30917,6 +31800,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -30959,6 +31843,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -30987,6 +31872,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31015,6 +31901,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31043,6 +31930,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31092,6 +31980,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31115,6 +32004,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31131,6 +32021,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31160,6 +32051,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31176,6 +32068,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31208,6 +32101,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31233,6 +32127,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31297,6 +32192,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31361,6 +32257,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31434,6 +32331,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31450,6 +32348,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31466,6 +32365,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31552,6 +32452,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31591,6 +32492,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31620,6 +32522,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31649,6 +32552,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31678,6 +32582,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31737,6 +32642,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31753,6 +32659,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31805,6 +32712,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: true,
                     afr: true,
                     tsa: true,
                     xho: true,
@@ -31847,6 +32755,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31863,6 +32772,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -31887,6 +32797,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -31942,6 +32853,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31958,6 +32870,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -31981,6 +32894,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -32006,6 +32920,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -32035,6 +32950,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32068,6 +32984,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -32085,6 +33002,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -32102,6 +33020,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -32144,6 +33063,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32178,6 +33098,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32208,6 +33129,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32238,6 +33160,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32268,6 +33191,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32319,6 +33243,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32353,6 +33278,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32383,6 +33309,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32413,6 +33340,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32453,6 +33381,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32468,6 +33397,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32496,6 +33426,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32527,6 +33458,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32568,6 +33500,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32583,6 +33516,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32628,6 +33562,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32674,6 +33609,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32690,6 +33626,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32706,6 +33643,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32742,6 +33680,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -32860,6 +33799,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32898,6 +33838,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -32922,6 +33863,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -33167,6 +34109,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -33217,6 +34160,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33268,6 +34212,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33284,6 +34229,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33300,6 +34246,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33316,6 +34263,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33332,6 +34280,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33348,6 +34297,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33392,6 +34342,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33437,6 +34388,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33457,6 +34409,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33473,6 +34426,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33489,6 +34443,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33514,6 +34469,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33530,6 +34486,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33547,6 +34504,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33563,6 +34521,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33580,6 +34539,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33605,6 +34565,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33621,6 +34582,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33637,6 +34599,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -33739,6 +34702,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -33755,6 +34719,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -33781,6 +34746,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -33798,6 +34764,7 @@ const template: FlowTypes.Template[] = [
                     _translations: {
                       value: {
                         spa: false,
+                        swa: false,
                         afr: false,
                         tsa: false,
                         xho: false,
@@ -33870,6 +34837,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -33898,6 +34866,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -34013,6 +34982,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -34052,6 +35022,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34068,6 +35039,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34084,6 +35056,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34100,6 +35073,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34116,6 +35090,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34132,6 +35107,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34148,6 +35124,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34164,6 +35141,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34180,6 +35158,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34196,6 +35175,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34212,6 +35192,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34228,6 +35209,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34244,6 +35226,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34260,6 +35243,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34276,6 +35260,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: true,
             afr: true,
             tsa: true,
             xho: true,
@@ -34292,6 +35277,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34317,6 +35303,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34334,6 +35321,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34351,6 +35339,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34436,6 +35425,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34466,6 +35456,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34526,6 +35517,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34564,6 +35556,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34637,6 +35630,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34712,6 +35706,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34742,6 +35737,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34836,6 +35832,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34853,6 +35850,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34870,6 +35868,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -34965,6 +35964,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -35050,6 +36050,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -35088,6 +36089,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -35171,6 +36173,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -35256,6 +36259,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -35286,6 +36290,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -35832,6 +36837,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36059,6 +37065,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36276,6 +37283,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36365,6 +37373,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36454,6 +37463,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36483,6 +37493,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36508,6 +37519,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36534,6 +37546,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36550,6 +37563,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36582,6 +37596,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36598,6 +37613,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36630,6 +37646,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36646,6 +37663,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36687,6 +37705,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36704,6 +37723,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36759,6 +37779,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36780,6 +37801,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36801,6 +37823,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36821,6 +37844,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36852,6 +37876,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36873,6 +37898,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36894,6 +37920,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36915,6 +37942,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36936,6 +37964,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36967,6 +37996,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -36983,6 +38013,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37005,6 +38036,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37040,6 +38072,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37171,6 +38204,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37235,6 +38269,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37264,6 +38299,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37304,6 +38340,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37333,6 +38370,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37380,6 +38418,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37409,6 +38448,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37469,6 +38509,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37526,6 +38567,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -37550,6 +38592,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -37588,6 +38631,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -37635,6 +38679,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -37665,6 +38710,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -37698,6 +38744,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -37745,6 +38792,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -37769,6 +38817,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -37802,6 +38851,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -37846,6 +38896,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37872,6 +38923,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37889,6 +38941,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37906,6 +38959,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37923,6 +38977,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37940,6 +38995,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -37975,6 +39031,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -37995,6 +39052,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38026,6 +39084,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38046,6 +39105,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38077,6 +39137,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38097,6 +39158,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38128,6 +39190,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38148,6 +39211,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38179,6 +39243,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38199,6 +39264,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38231,6 +39297,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38251,6 +39318,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38280,6 +39348,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38300,6 +39369,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38331,6 +39401,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38351,6 +39422,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38382,6 +39454,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -38413,6 +39486,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38441,6 +39515,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38460,6 +39535,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38487,6 +39563,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38506,6 +39583,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38533,6 +39611,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38561,6 +39640,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38592,6 +39672,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -38610,6 +39691,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -38713,6 +39795,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38741,6 +39824,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -38844,6 +39928,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38883,6 +39968,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -38906,6 +39992,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38922,6 +40009,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38937,6 +40025,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38958,6 +40047,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -38982,6 +40072,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -38998,6 +40089,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39013,6 +40105,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39034,6 +40127,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -39058,6 +40152,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39089,6 +40184,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -39111,6 +40207,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -39152,6 +40249,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39173,6 +40271,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39194,6 +40293,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39225,6 +40325,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39245,6 +40346,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39266,6 +40368,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39287,6 +40390,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39318,6 +40422,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39338,6 +40443,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39359,6 +40465,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39380,6 +40487,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39417,6 +40525,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39437,6 +40546,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39458,6 +40568,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39479,6 +40590,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39510,6 +40622,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39530,6 +40643,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39551,6 +40665,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39572,6 +40687,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39609,6 +40725,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39629,6 +40746,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39650,6 +40768,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39671,6 +40790,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39702,6 +40822,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39722,6 +40843,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39752,6 +40874,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -39783,6 +40906,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39803,6 +40927,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: true,
                 afr: true,
                 tsa: true,
                 xho: true,
@@ -39833,6 +40958,7 @@ const template: FlowTypes.Template[] = [
                 _translations: {
                   value: {
                     spa: false,
+                    swa: false,
                     afr: false,
                     tsa: false,
                     xho: false,
@@ -39866,6 +40992,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -39895,6 +41022,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -39924,6 +41052,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -39968,6 +41097,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -39984,6 +41114,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -40001,6 +41132,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -40225,6 +41357,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40258,6 +41391,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -40291,6 +41425,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -40318,6 +41453,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -40345,6 +41481,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -40389,6 +41526,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40423,6 +41561,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40467,6 +41606,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40524,6 +41664,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40816,6 +41957,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40850,6 +41992,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40879,6 +42022,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40913,6 +42057,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40965,6 +42110,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: true,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -40981,6 +42127,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41024,6 +42171,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41039,6 +42187,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41079,6 +42228,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41120,6 +42270,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41161,6 +42312,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41230,6 +42382,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41255,6 +42408,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41284,6 +42438,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41344,6 +42499,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41433,6 +42589,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41513,6 +42670,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41541,6 +42699,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41560,6 +42719,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41587,6 +42747,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41606,6 +42767,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41646,6 +42808,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41681,6 +42844,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41787,6 +42951,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41897,6 +43062,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41931,6 +43097,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -41957,6 +43124,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41973,6 +43141,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -41989,6 +43158,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42005,6 +43175,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42021,6 +43192,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42050,6 +43222,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {
             spa: false,
+            swa: false,
             afr: false,
             tsa: false,
             xho: false,
@@ -42076,6 +43249,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42092,6 +43266,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42108,6 +43283,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42124,6 +43300,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42140,6 +43317,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42156,6 +43334,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42172,6 +43351,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42188,6 +43368,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42204,6 +43385,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
@@ -42220,6 +43402,7 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {
                 spa: false,
+                swa: false,
                 afr: false,
                 tsa: false,
                 xho: false,
