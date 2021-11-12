@@ -1,4 +1,4 @@
-export const UNTRACKED_ASSETS = ["es-spa/plh_audio/quality_assurance/test_image_untracked.png"];
+export const UNTRACKED_ASSETS = ["es-spa/quality_assurance/test_image_untracked.png"];
 
 export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/gb.svg": {
@@ -12,20 +12,6 @@ export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/za.svg": {
     size: 859,
     checksum: "14e7052257d9914b613fc992186d2e90",
-  },
-  "plh_audio/quality_assurance/sample.mp3": {
-    size: 764176,
-    checksum: "0c481e87f2774b1bd41a0a70d9b70d11",
-  },
-  "plh_audio/quality_assurance/test.mp3": {
-    size: 44397,
-    checksum: "5ddddf934d2187d084c75b7e27797fae",
-    translations: {
-      "es-spa": {
-        size: 34365,
-        checksum: "a53e8b35c7985e051a7b9b9742879b03",
-      },
-    },
   },
   "plh_audio/relax/relax_10_audio.mp3": {
     size: 766955,
@@ -1930,5 +1916,29 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_video/lets_slow_down.mp4": {
     size: 13805802,
     checksum: "62f06faa95a979d128b4356db9bb396e",
+  },
+  "quality_assurance/sample.mp3": {
+    size: 764176,
+    checksum: "0c481e87f2774b1bd41a0a70d9b70d11",
+  },
+  "quality_assurance/test_audio.mp3": {
+    size: 44397,
+    checksum: "5ddddf934d2187d084c75b7e27797fae",
+    translations: {
+      "es-spa": {
+        size: 34365,
+        checksum: "a53e8b35c7985e051a7b9b9742879b03",
+      },
+    },
+  },
+  "quality_assurance/test_image.png": {
+    size: 2032,
+    checksum: "e6d6c6a12ca13a6277084e01c088378c",
+    translations: {
+      "es-spa": {
+        size: 1891,
+        checksum: "f44069fc2c1d641dae929631c17fdbec",
+      },
+    },
   },
 };
