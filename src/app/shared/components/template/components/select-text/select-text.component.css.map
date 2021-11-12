@@ -1,0 +1,8 @@
+{
+"version": 3,
+"sourceRoot":"",
+"sources":["select-text.component.scss"],
+"names":[],
+"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA;;;AAMF;EACE;EACA;EACA;;;AAGF;EACE;EACA",
+"file":"select-text.component.css"
+}
