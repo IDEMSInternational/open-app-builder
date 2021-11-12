@@ -1,8 +1,5 @@
 <div class="wrapper">
   <ion-button [class]="style" (click)="onClick($event)" [disabled]="_row.disabled">
-    <ion-icon
-      [name]="icon_src"
-      [src]="isCustomIcon ? (icon_src | plhAssetTranslated) : icon_src"
-    ></ion-icon>
+    <ion-icon [name]="icon_src" [src]="isCustomIcon ? (icon_src | plhAsset) : icon_src"></ion-icon>
   </ion-button>
 </div>

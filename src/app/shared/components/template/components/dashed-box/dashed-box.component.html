@@ -2,7 +2,7 @@
   <div class="item margin-t-regular" [class]="style">
     <div *ngIf="innerHTML" class="text" [innerHTML]="innerHTML"></div>
     <div class="icon" [class]="icon_position" *ngIf="icon_src">
-      <img [src]="icon_src | plhAssetTranslated" alt="" />
+      <img [src]="icon_src | plhAsset" alt="" />
     </div>
   </div>
 </div>
