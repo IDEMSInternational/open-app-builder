@@ -49,11 +49,11 @@ export class TmplParentPointBoxComponent
     super();
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.getParams();
     this.getScaleFactor();
     if (this.lottie_src) {
-      this.lottie_src = await this.templateAssetService.getTranslatedAssetPath(this.lottie_src);
+      this.lottie_src = this.templateAssetService.getTranslatedAssetPath(this.lottie_src);
       this.animOptions = {
         path: this.lottie_src,
         name: this.text,
@@ -61,7 +61,7 @@ export class TmplParentPointBoxComponent
         loop: true,
       };
     }
-    const celebrationAnimationPath = await this.templateAssetService.getTranslatedAssetPath(
+    const celebrationAnimationPath = this.templateAssetService.getTranslatedAssetPath(
       "/plh_lottie/habits/cascading_stars.json"
     );
     this.animCelebrationOptions = {

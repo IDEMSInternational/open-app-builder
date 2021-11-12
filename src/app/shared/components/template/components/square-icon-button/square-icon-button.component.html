@@ -2,7 +2,7 @@
   <ion-button [class]="style" (click)="onClick($event)" [disabled]="_row.disabled">
     <ion-icon
       [name]="icon_src"
-      [src]="isCustomIcon ? (icon_src | plhAssetTranslated | async) : icon_src"
+      [src]="isCustomIcon ? (icon_src | plhAssetTranslated) : icon_src"
     ></ion-icon>
   </ion-button>
 </div>

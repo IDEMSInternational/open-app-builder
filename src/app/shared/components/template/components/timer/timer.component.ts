@@ -78,11 +78,11 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.changeState(new PausedState(this));
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.getParams();
     this.state.callOnInit();
     if (this.ping) {
-      const pingSrc = await this.templateAssetService.getTranslatedAssetPath(this.ping);
+      const pingSrc = this.templateAssetService.getTranslatedAssetPath(this.ping);
       this.player = this.audioService.createPlayer(pingSrc);
     }
   }

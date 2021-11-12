@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { TemplateAssetService } from "../services/template-asset.service";
 /**
  * Retrieve an asset for the current language, with fallback in case not available
- * @example <img src="images/my_icon.svg | plhAssetTranslated | async" />
+ * @example <img src="images/my_icon.svg | plhAssetTranslated" />
  *
  * If the current deployment is za_xho with za_eng default configuration fallback
  *
@@ -21,12 +21,12 @@ import { TemplateAssetService } from "../services/template-asset.service";
 export class PLHAssetTranslatedPipe implements PipeTransform {
   constructor(private templateAssetService: TemplateAssetService) {}
 
-  async transform(value: string) {
+  transform(value: string) {
     // keep external links
     if (value.startsWith("http")) {
       return value;
     }
-    const path = await this.templateAssetService.getTranslatedAssetPath(value);
+    const path = this.templateAssetService.getTranslatedAssetPath(value);
     return path;
   }
 }
