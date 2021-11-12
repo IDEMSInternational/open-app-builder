@@ -5,12 +5,11 @@ import {
   capitalizeFirstLetter,
   recursiveFindByExtension,
   convertJsonToTs,
-  generateFolderTreeMap,
   generateFolderFlatMap,
   isCountryLanguageCode,
 } from "./utils";
 import { spawnSync } from "child_process";
-import { PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
+import { PLH_ASSETS_INDEX_PATH, PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
 
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
@@ -32,7 +31,7 @@ export function main(doAssetFolderCheck = true) {
   writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_PATH);
   if (doAssetFolderCheck) {
     copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_ASSETS_PATH);
-    generateDataAssetsContentsFile();
+    generateDataAssetsIndexFile();
   }
   generateAppDataIndexFiles();
   writeTranslationTsFiles(
@@ -147,7 +146,7 @@ function compileTranslationFiles(
  * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
  * corresponding translation files
  * */
-function generateDataAssetsContentsFile() {
+function generateDataAssetsIndexFile() {
   const topLevelFolders = fs
     .readdirSync(PLH_ASSETS_PATH, { withFileTypes: true })
     .filter((v) => v.isDirectory())
@@ -178,7 +177,7 @@ function generateDataAssetsContentsFile() {
   const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
   \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
 
-  fs.writeFileSync(path.resolve(PLH_ASSETS_PATH, "index.ts"), outputTS);
+  fs.writeFileSync(PLH_ASSETS_INDEX_PATH, outputTS);
 }
 
 /**

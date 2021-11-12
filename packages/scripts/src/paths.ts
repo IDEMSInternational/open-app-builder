@@ -18,3 +18,4 @@ export const APP_BUILD_GRADLE_PATH = path.join(ROOT_DIR, "android/app/build.grad
 
 export const PLH_DATA_PATH = path.join(ROOT_DIR, "packages/plh-data/data");
 export const PLH_ASSETS_PATH = path.join(ROOT_DIR, "packages/plh-data/assets/plh_assets");
+export const PLH_ASSETS_INDEX_PATH = path.resolve(PLH_ASSETS_PATH, "../index.ts");
