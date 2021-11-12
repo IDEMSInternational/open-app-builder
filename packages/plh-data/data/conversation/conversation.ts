@@ -6,6 +6,2726 @@ const conversation: FlowTypes.Conversation[] = [
     fields: [],
     flows: [
       {
+        name: "example_long_xxxxxxxxxxxxxxxx",
+        uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the media example flow. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_0",
+                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_1",
+            actions: [
+              {
+                attachments: ["image:plh_images/characters/guide1/neutral.svg"],
+                text: "This message has an attached image.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_1",
+                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_2",
+            actions: [
+              {
+                attachments: [],
+                text: "This is a multiple choice question with images attached to the choices, displaying both media and text. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=both&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
+                type: "send_msg",
+                quick_replies: ["image1", "image2"],
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_2",
+                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_4",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["image1"],
+                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_0",
+                },
+                {
+                  arguments: ["image2"],
+                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_4",
+                  name: "All Responses",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_5",
+                  name: "image1; image2",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_1",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_0",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_4",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_5",
+                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: "This is a multiple choice question with images attached to the choices, displaying only media. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
+                type: "send_msg",
+                quick_replies: ["image1", "image2"],
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_3",
+                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_6",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["image1"],
+                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_2",
+                },
+                {
+                  arguments: ["image2"],
+                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_3",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_7",
+                  name: "All Responses",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_2",
+                },
+                {
+                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_8",
+                  name: "image1; image2",
+                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_3",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_2",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_7",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_8",
+                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_5",
+            actions: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "example_long_xxxxxxxxxxxxxxxx__completed",
+                  name: "example_long_xxxxxxxxxxxxxxxx__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_6",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_tickbox",
+        uuid: "uuid_example_tickbox_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_tickbox_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the tickbox example flow.",
+                type: "send_msg",
+                quick_replies: [
+                  "Show a tickbox that is ticked by default.",
+                  "Show a tickbox that is unticked by default.",
+                ],
+                uuid: "uuid_example_tickbox_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_0",
+                destination_uuid: "uuid_example_tickbox_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_2",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Show a tickbox that is ticked by default."],
+                  category_uuid: "uuid_example_tickbox_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_case_0",
+                },
+                {
+                  arguments: ["Show a tickbox that is unticked by default."],
+                  category_uuid: "uuid_example_tickbox_category_2",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_2",
+                  name: "All Responses",
+                  uuid: "uuid_example_tickbox_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_3",
+                  name: "Show a tickbox that is ticked by default.",
+                  uuid: "uuid_example_tickbox_category_1",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_5",
+                  name: "Show a tickbox that is unticked by default.",
+                  uuid: "uuid_example_tickbox_category_2",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_tickbox_category_0",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_2",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_tickbox_exit_3",
+                destination_uuid: "uuid_example_tickbox_node_1",
+              },
+              {
+                uuid: "uuid_example_tickbox_exit_5",
+                destination_uuid: "uuid_example_tickbox_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "This tickbox is ticked by default. https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=true",
+                type: "send_msg",
+                quick_replies: ["Ticked Value", "Unticked Value"],
+                uuid: "uuid_example_tickbox_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_1",
+                destination_uuid: "uuid_example_tickbox_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: "This tickbox is unticked by default. https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=false",
+                type: "send_msg",
+                quick_replies: ["Ticked Value", "Unticked Value"],
+                uuid: "uuid_example_tickbox_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_4",
+                destination_uuid: "uuid_example_tickbox_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_5",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Ticked Value"],
+                  category_uuid: "uuid_example_tickbox_category_4",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_case_2",
+                },
+                {
+                  arguments: ["Unticked Value"],
+                  category_uuid: "uuid_example_tickbox_category_5",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_case_3",
+                },
+                {
+                  arguments: ["Unticked Value"],
+                  category_uuid: "uuid_example_tickbox_category_6",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_case_4",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_7",
+                  name: "All Responses",
+                  uuid: "uuid_example_tickbox_category_3",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_8",
+                  name: "Ticked Value",
+                  uuid: "uuid_example_tickbox_category_4",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_10",
+                  name: "Unticked Value",
+                  uuid: "uuid_example_tickbox_category_5",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_exit_11",
+                  name: "Unticked Value",
+                  uuid: "uuid_example_tickbox_category_6",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_tickbox_category_3",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_7",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_tickbox_exit_8",
+                destination_uuid: "uuid_example_tickbox_node_4",
+              },
+              {
+                uuid: "uuid_example_tickbox_exit_10",
+                destination_uuid: "uuid_example_tickbox_node_6",
+              },
+              {
+                uuid: "uuid_example_tickbox_exit_11",
+                destination_uuid: "uuid_example_tickbox_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "You chose ticked.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_tickbox_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_6",
+                destination_uuid: "uuid_example_tickbox_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_6",
+            actions: [
+              {
+                attachments: [],
+                text: "You chose unticked.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_tickbox_action_4",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_9",
+                destination_uuid: "uuid_example_tickbox_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_node_7",
+            actions: [
+              {
+                uuid: "uuid_example_tickbox_action_5",
+                type: "set_contact_field",
+                field: {
+                  key: "example_tickbox__completed",
+                  name: "example_tickbox__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_exit_12",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_variables",
+        uuid: "uuid_example_variables_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_variables_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the variables example flow.  ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_variables_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_0",
+                destination_uuid: "uuid_example_variables_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "Choose a number.",
+                type: "send_msg",
+                quick_replies: ["1", "2"],
+                uuid: "uuid_example_variables_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_1",
+                destination_uuid: "uuid_example_variables_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_2",
+            actions: [],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_2",
+                destination_uuid: "uuid_example_variables_node_3",
+              },
+            ],
+            router: {
+              type: "switch",
+              default_category_uuid: "uuid_example_variables_category_0",
+              cases: [],
+              categories: [
+                {
+                  uuid: "uuid_example_variables_category_0",
+                  name: "All Responses",
+                  exit_uuid: "uuid_example_variables_exit_2",
+                },
+              ],
+              operand: "@input.text",
+              wait: {
+                type: "msg",
+              },
+              result_name: "favourite_number",
+            },
+          },
+          {
+            uuid: "uuid_example_variables_node_3",
+            actions: [
+              {
+                uuid: "uuid_example_variables_action_2",
+                type: "set_contact_field",
+                field: {
+                  key: "favourite_number",
+                  name: "favourite_number",
+                },
+                value: "@results.favourite_number",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_3",
+                destination_uuid: "uuid_example_variables_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_5",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["1"],
+                  category_uuid: "uuid_example_variables_category_2",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_variables_case_0",
+                },
+                {
+                  arguments: ["2"],
+                  category_uuid: "uuid_example_variables_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_variables_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_variables_exit_5",
+                  name: "All Responses",
+                  uuid: "uuid_example_variables_category_1",
+                },
+                {
+                  exit_uuid: "uuid_example_variables_exit_6",
+                  name: "1",
+                  uuid: "uuid_example_variables_category_2",
+                },
+                {
+                  exit_uuid: "uuid_example_variables_exit_8",
+                  name: "2",
+                  uuid: "uuid_example_variables_category_3",
+                },
+              ],
+              operand: "@fields.favourite_number",
+              default_category_uuid: "uuid_example_variables_category_1",
+            },
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_5",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_variables_exit_6",
+                destination_uuid: "uuid_example_variables_node_4",
+              },
+              {
+                uuid: "uuid_example_variables_exit_8",
+                destination_uuid: "uuid_example_variables_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_4",
+            actions: [
+              {
+                uuid: "uuid_example_variables_action_3",
+                type: "set_contact_field",
+                field: {
+                  key: "favourite_number_text",
+                  name: "favourite_number_text",
+                },
+                value: "one",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_4",
+                destination_uuid: "uuid_example_variables_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_6",
+            actions: [
+              {
+                uuid: "uuid_example_variables_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "favourite_number_text",
+                  name: "favourite_number_text",
+                },
+                value: "two",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_7",
+                destination_uuid: "uuid_example_variables_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_7",
+            actions: [
+              {
+                attachments: [],
+                text: "Now type a word.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_variables_action_5",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_9",
+                destination_uuid: "uuid_example_variables_node_8",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_8",
+            actions: [],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_10",
+                destination_uuid: "uuid_example_variables_node_9",
+              },
+            ],
+            router: {
+              type: "switch",
+              default_category_uuid: "uuid_example_variables_category_4",
+              cases: [],
+              categories: [
+                {
+                  uuid: "uuid_example_variables_category_4",
+                  name: "All Responses",
+                  exit_uuid: "uuid_example_variables_exit_10",
+                },
+              ],
+              operand: "@input.text",
+              wait: {
+                type: "msg",
+              },
+              result_name: "favourite_word",
+            },
+          },
+          {
+            uuid: "uuid_example_variables_node_9",
+            actions: [
+              {
+                uuid: "uuid_example_variables_action_6",
+                type: "set_contact_field",
+                field: {
+                  key: "favourite_word",
+                  name: "favourite_word",
+                },
+                value: "@results.favourite_word",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_11",
+                destination_uuid: "uuid_example_variables_node_10",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_10",
+            actions: [
+              {
+                attachments: [],
+                text: "Your chosen number is @fields.favourite_number, that is, @fields.favourite_number_text. You typed the word @fields.favourite_word.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_variables_action_7",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_12",
+                destination_uuid: "uuid_example_variables_node_11",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_variables_node_11",
+            actions: [
+              {
+                uuid: "uuid_example_variables_action_8",
+                type: "set_contact_field",
+                field: {
+                  key: "example_variables__completed",
+                  name: "example_variables__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_variables_exit_13",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_save_variable",
+        uuid: "uuid_example_save_variable_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_save_variable_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is save the variables example flow.  ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_save_variable_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_0",
+                destination_uuid: "uuid_example_save_variable_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_1",
+            actions: [
+              {
+                uuid: "uuid_example_save_variable_action_1",
+                type: "set_contact_field",
+                field: {
+                  key: "first_value",
+                  name: "first_value",
+                },
+                value: "I am the first value",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_1",
+                destination_uuid: "uuid_example_save_variable_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_2",
+            actions: [
+              {
+                uuid: "uuid_example_save_variable_action_2",
+                type: "set_contact_field",
+                field: {
+                  key: "second_value",
+                  name: "second_value",
+                },
+                value: "I am the second value",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_2",
+                destination_uuid: "uuid_example_save_variable_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: "Please choose your variable",
+                type: "send_msg",
+                quick_replies: ["First value", "Second Value"],
+                uuid: "uuid_example_save_variable_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_3",
+                destination_uuid: "uuid_example_save_variable_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_4",
+            actions: [],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_4",
+                destination_uuid: "uuid_example_save_variable_node_5",
+              },
+            ],
+            router: {
+              type: "switch",
+              default_category_uuid: "uuid_example_save_variable_category_0",
+              cases: [],
+              categories: [
+                {
+                  uuid: "uuid_example_save_variable_category_0",
+                  name: "All Responses",
+                  exit_uuid: "uuid_example_save_variable_exit_4",
+                },
+              ],
+              operand: "@input.text",
+              wait: {
+                type: "msg",
+              },
+              result_name: "value_label",
+            },
+          },
+          {
+            uuid: "uuid_example_save_variable_node_5",
+            actions: [
+              {
+                uuid: "uuid_example_save_variable_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "value_label",
+                  name: "value_label",
+                },
+                value: "@results.value_label",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_5",
+                destination_uuid: "uuid_example_save_variable_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_7",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["First value"],
+                  category_uuid: "uuid_example_save_variable_category_2",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_save_variable_case_0",
+                },
+                {
+                  arguments: ["Second Value"],
+                  category_uuid: "uuid_example_save_variable_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_save_variable_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_save_variable_exit_7",
+                  name: "All Responses",
+                  uuid: "uuid_example_save_variable_category_1",
+                },
+                {
+                  exit_uuid: "uuid_example_save_variable_exit_8",
+                  name: "First value",
+                  uuid: "uuid_example_save_variable_category_2",
+                },
+                {
+                  exit_uuid: "uuid_example_save_variable_exit_10",
+                  name: "Second Value",
+                  uuid: "uuid_example_save_variable_category_3",
+                },
+              ],
+              operand: "@fields.value_label",
+              default_category_uuid: "uuid_example_save_variable_category_1",
+            },
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_7",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_save_variable_exit_8",
+                destination_uuid: "uuid_example_save_variable_node_6",
+              },
+              {
+                uuid: "uuid_example_save_variable_exit_10",
+                destination_uuid: "uuid_example_save_variable_node_8",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_6",
+            actions: [
+              {
+                uuid: "uuid_example_save_variable_action_5",
+                type: "set_contact_field",
+                field: {
+                  key: "value_value",
+                  name: "value_value",
+                },
+                value: "@fields.first_value",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_6",
+                destination_uuid: "uuid_example_save_variable_node_9",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_8",
+            actions: [
+              {
+                uuid: "uuid_example_save_variable_action_6",
+                type: "set_contact_field",
+                field: {
+                  key: "value_value",
+                  name: "value_value",
+                },
+                value: "@fields.second_value",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_9",
+                destination_uuid: "uuid_example_save_variable_node_9",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_save_variable_node_9",
+            actions: [
+              {
+                attachments: [],
+                text: "@fields.first_value\n@fields.second_value\nYou chose @fields.value_label so @fields.value_value",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_save_variable_action_7",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_save_variable_exit_11",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_user_input",
+        uuid: "uuid_example_user_input_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_user_input_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the user input example flow.  ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_user_input_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_0",
+                destination_uuid: "uuid_example_user_input_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "This message allows the user to type a custom reply.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_user_input_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_1",
+                destination_uuid: "uuid_example_user_input_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_2",
+            actions: [],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_2",
+                destination_uuid: "uuid_example_user_input_node_3",
+              },
+            ],
+            router: {
+              type: "switch",
+              default_category_uuid: "uuid_example_user_input_category_0",
+              cases: [],
+              categories: [
+                {
+                  uuid: "uuid_example_user_input_category_0",
+                  name: "All Responses",
+                  exit_uuid: "uuid_example_user_input_exit_2",
+                },
+              ],
+              operand: "@input.text",
+              wait: {
+                type: "msg",
+              },
+              result_name: "first_reply",
+            },
+          },
+          {
+            uuid: "uuid_example_user_input_node_3",
+            actions: [
+              {
+                uuid: "uuid_example_user_input_action_2",
+                type: "set_contact_field",
+                field: {
+                  key: "first_reply",
+                  name: "first_reply",
+                },
+                value: "@results.first_reply",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_3",
+                destination_uuid: "uuid_example_user_input_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "This message has two quick replies, and also allows the user to type a custom reply.",
+                type: "send_msg",
+                quick_replies: ["quick reply 1", "quick reply 2", "custom reply"],
+                uuid: "uuid_example_user_input_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_4",
+                destination_uuid: "uuid_example_user_input_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_5",
+            actions: [],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_5",
+                destination_uuid: "uuid_example_user_input_node_6",
+              },
+            ],
+            router: {
+              type: "switch",
+              default_category_uuid: "uuid_example_user_input_category_1",
+              cases: [],
+              categories: [
+                {
+                  uuid: "uuid_example_user_input_category_1",
+                  name: "All Responses",
+                  exit_uuid: "uuid_example_user_input_exit_5",
+                },
+              ],
+              operand: "@input.text",
+              wait: {
+                type: "msg",
+              },
+              result_name: "second_reply",
+            },
+          },
+          {
+            uuid: "uuid_example_user_input_node_6",
+            actions: [
+              {
+                uuid: "uuid_example_user_input_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "second_reply",
+                  name: "second_reply",
+                },
+                value: "@results.second_reply",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_6",
+                destination_uuid: "uuid_example_user_input_node_10",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_10",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["custom reply"],
+                  category_uuid: "uuid_example_user_input_category_4",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_user_input_case_0",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_user_input_exit_10",
+                  name: "All Responses",
+                  uuid: "uuid_example_user_input_category_3",
+                },
+                {
+                  exit_uuid: "uuid_example_user_input_exit_11",
+                  name: "custom reply",
+                  uuid: "uuid_example_user_input_category_4",
+                },
+              ],
+              operand: "@fields.second_reply",
+              default_category_uuid: "uuid_example_user_input_category_3",
+            },
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_10",
+                destination_uuid: "uuid_example_user_input_node_11",
+              },
+              {
+                uuid: "uuid_example_user_input_exit_11",
+                destination_uuid: "uuid_example_user_input_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_7",
+            actions: [
+              {
+                attachments: [],
+                text: "Type your custom reply.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_user_input_action_5",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_7",
+                destination_uuid: "uuid_example_user_input_node_8",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_8",
+            actions: [],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_8",
+                destination_uuid: "uuid_example_user_input_node_9",
+              },
+            ],
+            router: {
+              type: "switch",
+              default_category_uuid: "uuid_example_user_input_category_2",
+              cases: [],
+              categories: [
+                {
+                  uuid: "uuid_example_user_input_category_2",
+                  name: "All Responses",
+                  exit_uuid: "uuid_example_user_input_exit_8",
+                },
+              ],
+              operand: "@input.text",
+              wait: {
+                type: "msg",
+              },
+              result_name: "second_reply",
+            },
+          },
+          {
+            uuid: "uuid_example_user_input_node_9",
+            actions: [
+              {
+                uuid: "uuid_example_user_input_action_6",
+                type: "set_contact_field",
+                field: {
+                  key: "second_reply",
+                  name: "second_reply",
+                },
+                value: "@results.second_reply",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_9",
+                destination_uuid: "uuid_example_user_input_node_11",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_11",
+            actions: [
+              {
+                attachments: [],
+                text: "Your first reply was @fields.first_reply and your second reply was @fields.second_reply. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_user_input_action_7",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_12",
+                destination_uuid: "uuid_example_user_input_node_12",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_user_input_node_12",
+            actions: [
+              {
+                uuid: "uuid_example_user_input_action_8",
+                type: "set_contact_field",
+                field: {
+                  key: "example_user_input__completed",
+                  name: "example_user_input__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_user_input_exit_13",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_story1",
+        uuid: "uuid_example_story1_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_story1_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This flow shows an example of the story mode.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_story1_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_0",
+                destination_uuid: "uuid_example_story1_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story1_node_1",
+            actions: [
+              {
+                attachments: [
+                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg",
+                ],
+                text: "Top text\n<story-image>\nBottom text",
+                type: "send_msg",
+                quick_replies: ["Next"],
+                uuid: "uuid_example_story1_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_1",
+                destination_uuid: "uuid_example_story1_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story1_node_3",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Next"],
+                  category_uuid: "uuid_example_story1_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story1_case_0",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_story1_exit_3",
+                  name: "All Responses",
+                  uuid: "uuid_example_story1_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_story1_exit_4",
+                  name: "Next",
+                  uuid: "uuid_example_story1_category_1",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_story1_category_0",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_3",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_story1_exit_4",
+                destination_uuid: "uuid_example_story1_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story1_node_2",
+            actions: [
+              {
+                attachments: [
+                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg",
+                ],
+                text: "Top text 2\n<story-image>\nBottom text 2",
+                type: "send_msg",
+                quick_replies: ["Previous", "Next"],
+                uuid: "uuid_example_story1_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_2",
+                destination_uuid: "uuid_example_story1_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story1_node_5",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Next"],
+                  category_uuid: "uuid_example_story1_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story1_case_1",
+                },
+                {
+                  arguments: ["Previous"],
+                  category_uuid: "uuid_example_story1_category_4",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story1_case_2",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_story1_exit_6",
+                  name: "All Responses",
+                  uuid: "uuid_example_story1_category_2",
+                },
+                {
+                  exit_uuid: "uuid_example_story1_exit_7",
+                  name: "Next",
+                  uuid: "uuid_example_story1_category_3",
+                },
+                {
+                  exit_uuid: "uuid_example_story1_exit_9",
+                  name: "Previous",
+                  uuid: "uuid_example_story1_category_4",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_story1_category_2",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_6",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_story1_exit_7",
+                destination_uuid: "uuid_example_story1_node_4",
+              },
+              {
+                uuid: "uuid_example_story1_exit_9",
+                destination_uuid: "uuid_example_story1_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story1_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "Now we're back in regular mode. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_story1_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_5",
+                destination_uuid: null,
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story1_node_7",
+            actions: [
+              {
+                uuid: "uuid_example_story1_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "example_story1__completed",
+                  name: "example_story1__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story1_exit_10",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_story2",
+        uuid: "uuid_example_story2_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_story2_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This flow shows an example of the story mode.",
+                type: "send_msg",
+                quick_replies: ["Start story"],
+                uuid: "uuid_example_story2_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_0",
+                destination_uuid: "uuid_example_story2_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_2",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Start story"],
+                  category_uuid: "uuid_example_story2_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story2_case_0",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_story2_exit_2",
+                  name: "All Responses",
+                  uuid: "uuid_example_story2_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_story2_exit_3",
+                  name: "Start story",
+                  uuid: "uuid_example_story2_category_1",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_story2_category_0",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_2",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_story2_exit_3",
+                destination_uuid: "uuid_example_story2_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: '<p>Top text</p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                type: "send_msg",
+                quick_replies: ["Next"],
+                uuid: "uuid_example_story2_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_1",
+                destination_uuid: "uuid_example_story2_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_4",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Next"],
+                  category_uuid: "uuid_example_story2_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story2_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_story2_exit_5",
+                  name: "All Responses",
+                  uuid: "uuid_example_story2_category_2",
+                },
+                {
+                  exit_uuid: "uuid_example_story2_exit_6",
+                  name: "Next",
+                  uuid: "uuid_example_story2_category_3",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_story2_category_2",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_5",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_story2_exit_6",
+                destination_uuid: "uuid_example_story2_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: '<p>Top text 2</p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                type: "send_msg",
+                quick_replies: ["Previous", "Next"],
+                uuid: "uuid_example_story2_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_4",
+                destination_uuid: "uuid_example_story2_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_6",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Next"],
+                  category_uuid: "uuid_example_story2_category_5",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story2_case_2",
+                },
+                {
+                  arguments: ["Previous"],
+                  category_uuid: "uuid_example_story2_category_6",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_story2_case_3",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_story2_exit_8",
+                  name: "All Responses",
+                  uuid: "uuid_example_story2_category_4",
+                },
+                {
+                  exit_uuid: "uuid_example_story2_exit_9",
+                  name: "Next",
+                  uuid: "uuid_example_story2_category_5",
+                },
+                {
+                  exit_uuid: "uuid_example_story2_exit_11",
+                  name: "Previous",
+                  uuid: "uuid_example_story2_category_6",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_story2_category_4",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_8",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_story2_exit_9",
+                destination_uuid: "uuid_example_story2_node_5",
+              },
+              {
+                uuid: "uuid_example_story2_exit_11",
+                destination_uuid: "uuid_example_story2_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_5",
+            actions: [
+              {
+                attachments: [],
+                text: "Now we're back in regular mode. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_story2_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_7",
+                destination_uuid: null,
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_story2_node_8",
+            actions: [
+              {
+                uuid: "uuid_example_story2_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "example_story2__completed",
+                  name: "example_story2__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_story2_exit_12",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_mark_as_completed",
+        uuid: "uuid_example_mark_as_completed_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_mark_as_completed_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the mark_as_completed example flow.",
+                type: "send_msg",
+                quick_replies: ["Mark task as completed", "Mark this flow as completed"],
+                uuid: "uuid_example_mark_as_completed_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_0",
+                destination_uuid: "uuid_example_mark_as_completed_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_2",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Mark task as completed"],
+                  category_uuid: "uuid_example_mark_as_completed_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_mark_as_completed_case_0",
+                },
+                {
+                  arguments: ["Mark this flow as completed"],
+                  category_uuid: "uuid_example_mark_as_completed_category_2",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_mark_as_completed_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_mark_as_completed_exit_2",
+                  name: "All Responses",
+                  uuid: "uuid_example_mark_as_completed_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_mark_as_completed_exit_3",
+                  name: "Mark task as completed",
+                  uuid: "uuid_example_mark_as_completed_category_1",
+                },
+                {
+                  exit_uuid: "uuid_example_mark_as_completed_exit_6",
+                  name: "Mark this flow as completed",
+                  uuid: "uuid_example_mark_as_completed_category_2",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_mark_as_completed_category_0",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_2",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_mark_as_completed_exit_3",
+                destination_uuid: "uuid_example_mark_as_completed_node_1",
+              },
+              {
+                uuid: "uuid_example_mark_as_completed_exit_6",
+                destination_uuid: "uuid_example_mark_as_completed_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "(a message)",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_mark_as_completed_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_1",
+                destination_uuid: "uuid_example_mark_as_completed_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_3",
+            actions: [
+              {
+                uuid: "uuid_example_mark_as_completed_action_2",
+                type: "set_contact_field",
+                field: {
+                  key: "task_relax__completed",
+                  name: "task_relax__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_4",
+                destination_uuid: "uuid_example_mark_as_completed_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "(a message)",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_mark_as_completed_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_5",
+                destination_uuid: "uuid_example_mark_as_completed_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_5",
+            actions: [
+              {
+                uuid: "uuid_example_mark_as_completed_action_4",
+                type: "set_contact_field",
+                field: {
+                  key: "example_mark_as_completed__completed",
+                  name: "example_mark_as_completed__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_7",
+                destination_uuid: "uuid_example_mark_as_completed_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_6",
+            actions: [
+              {
+                attachments: [],
+                text: "Some text. Flow completed = @fields.example_mark_as_completed__completed",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_mark_as_completed_action_5",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_8",
+                destination_uuid: "uuid_example_mark_as_completed_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_mark_as_completed_node_7",
+            actions: [
+              {
+                uuid: "uuid_example_mark_as_completed_action_6",
+                type: "set_contact_field",
+                field: {
+                  key: "example_mark_as_completed__completed",
+                  name: "example_mark_as_completed__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_mark_as_completed_exit_9",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_characters",
+        uuid: "uuid_example_characters_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_characters_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This flow shows the functionality of the character, character_media and character_display columns.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_characters_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_characters_exit_0",
+                destination_uuid: "uuid_example_characters_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_characters_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "This text is said by @fields.neighbour. A neutral image of neighbour is displayed in front of this text. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_characters_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_characters_exit_1",
+                destination_uuid: "uuid_example_characters_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_characters_node_2",
+            actions: [
+              {
+                attachments: [],
+                text: "This text is said by @fields.neighbour. No image of neighbour is displayed. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_characters_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_characters_exit_2",
+                destination_uuid: "uuid_example_characters_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_characters_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: "This text is said by @fields.neighbour. A happy image of neighbour is displayed in front of this text. The link to this image is the happy_asset associated to neighbour in the character_names sheet. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_characters_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_characters_exit_3",
+                destination_uuid: "uuid_example_characters_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_characters_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the end of the character example flow.",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_characters_action_4",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_characters_exit_4",
+                destination_uuid: "uuid_example_characters_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_characters_node_5",
+            actions: [
+              {
+                uuid: "uuid_example_characters_action_5",
+                type: "set_contact_field",
+                field: {
+                  key: "example_characters__completed",
+                  name: "example_characters__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_characters_exit_5",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_tickbox_2",
+        uuid: "uuid_example_tickbox_2_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_tickbox_2_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This is the tickbox example flow.",
+                type: "send_msg",
+                quick_replies: [
+                  "Show a Yes/No question that assumes Yes as an answer",
+                  "Show a Yes/No question that assumes No as an answer",
+                ],
+                uuid: "uuid_example_tickbox_2_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_0",
+                destination_uuid: "uuid_example_tickbox_2_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_2",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Show a Yes/No question that assumes Yes as an answer"],
+                  category_uuid: "uuid_example_tickbox_2_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_2_case_0",
+                },
+                {
+                  arguments: ["Show a Yes/No question that assumes No as an answer"],
+                  category_uuid: "uuid_example_tickbox_2_category_2",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_2_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_2",
+                  name: "All Responses",
+                  uuid: "uuid_example_tickbox_2_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_3",
+                  name: "Show a Yes/No question that assumes Yes as an answer",
+                  uuid: "uuid_example_tickbox_2_category_1",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_5",
+                  name: "Show a Yes/No question that assumes No as an answer",
+                  uuid: "uuid_example_tickbox_2_category_2",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_tickbox_2_category_0",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_2",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_tickbox_2_exit_3",
+                destination_uuid: "uuid_example_tickbox_2_node_1",
+              },
+              {
+                uuid: "uuid_example_tickbox_2_exit_5",
+                destination_uuid: "uuid_example_tickbox_2_node_3",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "This question is a Yes/No question where the assumed answer is Yes https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=true",
+                type: "send_msg",
+                quick_replies: ["Yes", "No"],
+                uuid: "uuid_example_tickbox_2_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_1",
+                destination_uuid: "uuid_example_tickbox_2_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: "This question is a Yes/No question where the assumed answer is No https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=false",
+                type: "send_msg",
+                quick_replies: ["Yes", "No"],
+                uuid: "uuid_example_tickbox_2_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_4",
+                destination_uuid: "uuid_example_tickbox_2_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_5",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Yes"],
+                  category_uuid: "uuid_example_tickbox_2_category_4",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_2_case_2",
+                },
+                {
+                  arguments: ["No"],
+                  category_uuid: "uuid_example_tickbox_2_category_5",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_2_case_3",
+                },
+                {
+                  arguments: ["No"],
+                  category_uuid: "uuid_example_tickbox_2_category_6",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_tickbox_2_case_4",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_7",
+                  name: "All Responses",
+                  uuid: "uuid_example_tickbox_2_category_3",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_8",
+                  name: "Yes",
+                  uuid: "uuid_example_tickbox_2_category_4",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_10",
+                  name: "No",
+                  uuid: "uuid_example_tickbox_2_category_5",
+                },
+                {
+                  exit_uuid: "uuid_example_tickbox_2_exit_11",
+                  name: "No",
+                  uuid: "uuid_example_tickbox_2_category_6",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_tickbox_2_category_3",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_7",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_tickbox_2_exit_8",
+                destination_uuid: "uuid_example_tickbox_2_node_4",
+              },
+              {
+                uuid: "uuid_example_tickbox_2_exit_10",
+                destination_uuid: "uuid_example_tickbox_2_node_6",
+              },
+              {
+                uuid: "uuid_example_tickbox_2_exit_11",
+                destination_uuid: "uuid_example_tickbox_2_node_6",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "You chose Yes",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_tickbox_2_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_6",
+                destination_uuid: "uuid_example_tickbox_2_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_6",
+            actions: [
+              {
+                attachments: [],
+                text: "You chose No",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_tickbox_2_action_4",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_9",
+                destination_uuid: "uuid_example_tickbox_2_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_tickbox_2_node_7",
+            actions: [
+              {
+                uuid: "uuid_example_tickbox_2_action_5",
+                type: "set_contact_field",
+                field: {
+                  key: "example_tickbox_2__completed",
+                  name: "example_tickbox_2__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_tickbox_2_exit_12",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
+        name: "example_habit",
+        uuid: "uuid_example_habit_flow_0",
+        spec_version: "13.1.0",
+        language: "base",
+        type: "messaging",
+        nodes: [
+          {
+            uuid: "uuid_example_habit_node_0",
+            actions: [
+              {
+                attachments: [],
+                text: "This flow shows the functionality of printing the number of recorded habits. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_habit_action_0",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_0",
+                destination_uuid: "uuid_example_habit_node_2",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_2",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["1"],
+                  category_uuid: "uuid_example_habit_category_1",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_habit_case_0",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_habit_exit_2",
+                  name: "All Responses",
+                  uuid: "uuid_example_habit_category_0",
+                },
+                {
+                  exit_uuid: "uuid_example_habit_exit_3",
+                  name: "1",
+                  uuid: "uuid_example_habit_category_1",
+                },
+              ],
+              operand: "@habit.habit_relax.weekly_count",
+              default_category_uuid: "uuid_example_habit_category_0",
+            },
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_2",
+                destination_uuid: "uuid_example_habit_node_3",
+              },
+              {
+                uuid: "uuid_example_habit_exit_3",
+                destination_uuid: "uuid_example_habit_node_1",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_1",
+            actions: [
+              {
+                attachments: [],
+                text: "In the past 7 days the habit habit_relax was recorded @habit.habit_relax.weekly_count time. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_habit_action_1",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_1",
+                destination_uuid: "uuid_example_habit_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_3",
+            actions: [
+              {
+                attachments: [],
+                text: "In the past 7 days the habit habit_relax was recorded @habit.habit_relax.weekly_count times. ",
+                type: "send_msg",
+                quick_replies: [],
+                uuid: "uuid_example_habit_action_2",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_4",
+                destination_uuid: "uuid_example_habit_node_5",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_5",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["1"],
+                  category_uuid: "uuid_example_habit_category_3",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_habit_case_1",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_habit_exit_6",
+                  name: "All Responses",
+                  uuid: "uuid_example_habit_category_2",
+                },
+                {
+                  exit_uuid: "uuid_example_habit_exit_7",
+                  name: "1",
+                  uuid: "uuid_example_habit_category_3",
+                },
+              ],
+              operand: "@habit.habit_spend_time.weekly_count",
+              default_category_uuid: "uuid_example_habit_category_2",
+            },
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_6",
+                destination_uuid: "uuid_example_habit_node_6",
+              },
+              {
+                uuid: "uuid_example_habit_exit_7",
+                destination_uuid: "uuid_example_habit_node_4",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_4",
+            actions: [
+              {
+                attachments: [],
+                text: "In the past 7 days the habit habit_spend_time was recorded @habit.habit_spend_time.weekly_count time. ",
+                type: "send_msg",
+                quick_replies: ["Done"],
+                uuid: "uuid_example_habit_action_3",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_5",
+                destination_uuid: "uuid_example_habit_node_8",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_6",
+            actions: [
+              {
+                attachments: [],
+                text: "In the past 7 days the habit habit_spend_time was recorded @habit.habit_spend_time.weekly_count times. ",
+                type: "send_msg",
+                quick_replies: ["Done"],
+                uuid: "uuid_example_habit_action_4",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_8",
+                destination_uuid: "uuid_example_habit_node_8",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_8",
+            actions: [],
+            router: {
+              type: "switch",
+              cases: [
+                {
+                  arguments: ["Done"],
+                  category_uuid: "uuid_example_habit_category_5",
+                  type: "has_only_phrase",
+                  uuid: "uuid_example_habit_case_2",
+                },
+              ],
+              categories: [
+                {
+                  exit_uuid: "uuid_example_habit_exit_10",
+                  name: "All Responses",
+                  uuid: "uuid_example_habit_category_4",
+                },
+                {
+                  exit_uuid: "uuid_example_habit_exit_11",
+                  name: "Done",
+                  uuid: "uuid_example_habit_category_5",
+                },
+              ],
+              operand: "@input.text",
+              default_category_uuid: "uuid_example_habit_category_4",
+              wait: {
+                type: "msg",
+              },
+            },
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_10",
+                destination_uuid: null,
+              },
+              {
+                uuid: "uuid_example_habit_exit_11",
+                destination_uuid: "uuid_example_habit_node_7",
+              },
+            ],
+          },
+          {
+            uuid: "uuid_example_habit_node_7",
+            actions: [
+              {
+                uuid: "uuid_example_habit_action_5",
+                type: "set_contact_field",
+                field: {
+                  key: "example_habit__completed",
+                  name: "example_habit__completed",
+                },
+                value: "true",
+              },
+            ],
+            exits: [
+              {
+                uuid: "uuid_example_habit_exit_9",
+                destination_uuid: null,
+              },
+            ],
+          },
+        ],
+        _ui: null,
+        revision: 0,
+        expire_after_minutes: 60,
+        metadata: {
+          revision: 0,
+        },
+        localization: {},
+      },
+    ],
+    groups: [],
+    site: "https://rapidpro.idems.international",
+    triggers: [],
+    version: "13",
+  },
+  {
+    campaigns: [],
+    fields: [],
+    flows: [
+      {
         name: "character_names",
         uuid: "uuid_character_names_flow_0",
         spec_version: "13.1.0",
@@ -20826,1590 +23546,6 @@ const conversation: FlowTypes.Conversation[] = [
     fields: [],
     flows: [
       {
-        name: "example_long_xxxxxxxxxxxxxxxx",
-        uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the media example flow. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_0",
-                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_1",
-            actions: [
-              {
-                attachments: ["image:plh_images/characters/guide1/neutral.svg"],
-                text: "This message has an attached image.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_1",
-                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_2",
-            actions: [
-              {
-                attachments: [],
-                text: "This is a multiple choice question with images attached to the choices, displaying both media and text. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=both&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
-                type: "send_msg",
-                quick_replies: ["image1", "image2"],
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_2",
-                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_4",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_4",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["image1"],
-                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_0",
-                },
-                {
-                  arguments: ["image2"],
-                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_4",
-                  name: "All Responses",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_5",
-                  name: "image1; image2",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_1",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_0",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_4",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_5",
-                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_3",
-            actions: [
-              {
-                attachments: [],
-                text: "This is a multiple choice question with images attached to the choices, displaying only media. https://plh-demo1.idems.international/chat/msg-info?choiceMediaDisplay=media&choiceMediaUrls=%5B%22plh_images%2Fcharacters%2Fguide1%2Fneutral.svg%22%2C%22plh_images%2Fcharacters%2Fguide2%2Fneutral.svg%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%5D",
-                type: "send_msg",
-                quick_replies: ["image1", "image2"],
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_3",
-                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_6",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["image1"],
-                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_3",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_2",
-                },
-                {
-                  arguments: ["image2"],
-                  category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_3",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_case_3",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_7",
-                  name: "All Responses",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_2",
-                },
-                {
-                  exit_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_8",
-                  name: "image1; image2",
-                  uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_3",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_category_2",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_7",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_8",
-                destination_uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_node_5",
-            actions: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_action_4",
-                type: "set_contact_field",
-                field: {
-                  key: "example_long_xxxxxxxxxxxxxxxx__completed",
-                  name: "example_long_xxxxxxxxxxxxxxxx__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_long_xxxxxxxxxxxxxxxx_exit_6",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_tickbox",
-        uuid: "uuid_example_tickbox_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_tickbox_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the tickbox example flow.",
-                type: "send_msg",
-                quick_replies: [
-                  "Show a tickbox that is ticked by default.",
-                  "Show a tickbox that is unticked by default.",
-                ],
-                uuid: "uuid_example_tickbox_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_0",
-                destination_uuid: "uuid_example_tickbox_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_2",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Show a tickbox that is ticked by default."],
-                  category_uuid: "uuid_example_tickbox_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_case_0",
-                },
-                {
-                  arguments: ["Show a tickbox that is unticked by default."],
-                  category_uuid: "uuid_example_tickbox_category_2",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_2",
-                  name: "All Responses",
-                  uuid: "uuid_example_tickbox_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_3",
-                  name: "Show a tickbox that is ticked by default.",
-                  uuid: "uuid_example_tickbox_category_1",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_5",
-                  name: "Show a tickbox that is unticked by default.",
-                  uuid: "uuid_example_tickbox_category_2",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_tickbox_category_0",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_2",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_tickbox_exit_3",
-                destination_uuid: "uuid_example_tickbox_node_1",
-              },
-              {
-                uuid: "uuid_example_tickbox_exit_5",
-                destination_uuid: "uuid_example_tickbox_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "This tickbox is ticked by default. https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=true",
-                type: "send_msg",
-                quick_replies: ["Ticked Value", "Unticked Value"],
-                uuid: "uuid_example_tickbox_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_1",
-                destination_uuid: "uuid_example_tickbox_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_3",
-            actions: [
-              {
-                attachments: [],
-                text: "This tickbox is unticked by default. https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=false",
-                type: "send_msg",
-                quick_replies: ["Ticked Value", "Unticked Value"],
-                uuid: "uuid_example_tickbox_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_4",
-                destination_uuid: "uuid_example_tickbox_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_5",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Ticked Value"],
-                  category_uuid: "uuid_example_tickbox_category_4",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_case_2",
-                },
-                {
-                  arguments: ["Unticked Value"],
-                  category_uuid: "uuid_example_tickbox_category_5",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_case_3",
-                },
-                {
-                  arguments: ["Unticked Value"],
-                  category_uuid: "uuid_example_tickbox_category_6",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_case_4",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_7",
-                  name: "All Responses",
-                  uuid: "uuid_example_tickbox_category_3",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_8",
-                  name: "Ticked Value",
-                  uuid: "uuid_example_tickbox_category_4",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_10",
-                  name: "Unticked Value",
-                  uuid: "uuid_example_tickbox_category_5",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_exit_11",
-                  name: "Unticked Value",
-                  uuid: "uuid_example_tickbox_category_6",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_tickbox_category_3",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_7",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_tickbox_exit_8",
-                destination_uuid: "uuid_example_tickbox_node_4",
-              },
-              {
-                uuid: "uuid_example_tickbox_exit_10",
-                destination_uuid: "uuid_example_tickbox_node_6",
-              },
-              {
-                uuid: "uuid_example_tickbox_exit_11",
-                destination_uuid: "uuid_example_tickbox_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "You chose ticked.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_tickbox_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_6",
-                destination_uuid: "uuid_example_tickbox_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_6",
-            actions: [
-              {
-                attachments: [],
-                text: "You chose unticked.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_tickbox_action_4",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_9",
-                destination_uuid: "uuid_example_tickbox_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_node_7",
-            actions: [
-              {
-                uuid: "uuid_example_tickbox_action_5",
-                type: "set_contact_field",
-                field: {
-                  key: "example_tickbox__completed",
-                  name: "example_tickbox__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_exit_12",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_variables",
-        uuid: "uuid_example_variables_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_variables_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the variables example flow.  ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_variables_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_0",
-                destination_uuid: "uuid_example_variables_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "Choose a number.",
-                type: "send_msg",
-                quick_replies: ["1", "2"],
-                uuid: "uuid_example_variables_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_1",
-                destination_uuid: "uuid_example_variables_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_2",
-            actions: [],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_2",
-                destination_uuid: "uuid_example_variables_node_3",
-              },
-            ],
-            router: {
-              type: "switch",
-              default_category_uuid: "uuid_example_variables_category_0",
-              cases: [],
-              categories: [
-                {
-                  uuid: "uuid_example_variables_category_0",
-                  name: "All Responses",
-                  exit_uuid: "uuid_example_variables_exit_2",
-                },
-              ],
-              operand: "@input.text",
-              wait: {
-                type: "msg",
-              },
-              result_name: "favourite_number",
-            },
-          },
-          {
-            uuid: "uuid_example_variables_node_3",
-            actions: [
-              {
-                uuid: "uuid_example_variables_action_2",
-                type: "set_contact_field",
-                field: {
-                  key: "favourite_number",
-                  name: "favourite_number",
-                },
-                value: "@results.favourite_number",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_3",
-                destination_uuid: "uuid_example_variables_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_5",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["1"],
-                  category_uuid: "uuid_example_variables_category_2",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_variables_case_0",
-                },
-                {
-                  arguments: ["2"],
-                  category_uuid: "uuid_example_variables_category_3",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_variables_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_variables_exit_5",
-                  name: "All Responses",
-                  uuid: "uuid_example_variables_category_1",
-                },
-                {
-                  exit_uuid: "uuid_example_variables_exit_6",
-                  name: "1",
-                  uuid: "uuid_example_variables_category_2",
-                },
-                {
-                  exit_uuid: "uuid_example_variables_exit_8",
-                  name: "2",
-                  uuid: "uuid_example_variables_category_3",
-                },
-              ],
-              operand: "@fields.favourite_number",
-              default_category_uuid: "uuid_example_variables_category_1",
-            },
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_5",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_variables_exit_6",
-                destination_uuid: "uuid_example_variables_node_4",
-              },
-              {
-                uuid: "uuid_example_variables_exit_8",
-                destination_uuid: "uuid_example_variables_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_4",
-            actions: [
-              {
-                uuid: "uuid_example_variables_action_3",
-                type: "set_contact_field",
-                field: {
-                  key: "favourite_number_text",
-                  name: "favourite_number_text",
-                },
-                value: "one",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_4",
-                destination_uuid: "uuid_example_variables_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_6",
-            actions: [
-              {
-                uuid: "uuid_example_variables_action_4",
-                type: "set_contact_field",
-                field: {
-                  key: "favourite_number_text",
-                  name: "favourite_number_text",
-                },
-                value: "two",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_7",
-                destination_uuid: "uuid_example_variables_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_7",
-            actions: [
-              {
-                attachments: [],
-                text: "Now type a word.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_variables_action_5",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_9",
-                destination_uuid: "uuid_example_variables_node_8",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_8",
-            actions: [],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_10",
-                destination_uuid: "uuid_example_variables_node_9",
-              },
-            ],
-            router: {
-              type: "switch",
-              default_category_uuid: "uuid_example_variables_category_4",
-              cases: [],
-              categories: [
-                {
-                  uuid: "uuid_example_variables_category_4",
-                  name: "All Responses",
-                  exit_uuid: "uuid_example_variables_exit_10",
-                },
-              ],
-              operand: "@input.text",
-              wait: {
-                type: "msg",
-              },
-              result_name: "favourite_word",
-            },
-          },
-          {
-            uuid: "uuid_example_variables_node_9",
-            actions: [
-              {
-                uuid: "uuid_example_variables_action_6",
-                type: "set_contact_field",
-                field: {
-                  key: "favourite_word",
-                  name: "favourite_word",
-                },
-                value: "@results.favourite_word",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_11",
-                destination_uuid: "uuid_example_variables_node_10",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_10",
-            actions: [
-              {
-                attachments: [],
-                text: "Your chosen number is @fields.favourite_number, that is, @fields.favourite_number_text. You typed the word @fields.favourite_word.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_variables_action_7",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_12",
-                destination_uuid: "uuid_example_variables_node_11",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_variables_node_11",
-            actions: [
-              {
-                uuid: "uuid_example_variables_action_8",
-                type: "set_contact_field",
-                field: {
-                  key: "example_variables__completed",
-                  name: "example_variables__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_variables_exit_13",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_user_input",
-        uuid: "uuid_example_user_input_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_user_input_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the user input example flow.  ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_user_input_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_0",
-                destination_uuid: "uuid_example_user_input_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "This message allows the user to type a custom reply.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_user_input_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_1",
-                destination_uuid: "uuid_example_user_input_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_2",
-            actions: [],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_2",
-                destination_uuid: "uuid_example_user_input_node_3",
-              },
-            ],
-            router: {
-              type: "switch",
-              default_category_uuid: "uuid_example_user_input_category_0",
-              cases: [],
-              categories: [
-                {
-                  uuid: "uuid_example_user_input_category_0",
-                  name: "All Responses",
-                  exit_uuid: "uuid_example_user_input_exit_2",
-                },
-              ],
-              operand: "@input.text",
-              wait: {
-                type: "msg",
-              },
-              result_name: "first_reply",
-            },
-          },
-          {
-            uuid: "uuid_example_user_input_node_3",
-            actions: [
-              {
-                uuid: "uuid_example_user_input_action_2",
-                type: "set_contact_field",
-                field: {
-                  key: "first_reply",
-                  name: "first_reply",
-                },
-                value: "@results.first_reply",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_3",
-                destination_uuid: "uuid_example_user_input_node_4",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "This message has two quick replies, and also allows the user to type a custom reply.",
-                type: "send_msg",
-                quick_replies: ["quick reply 1", "quick reply 2", "custom reply"],
-                uuid: "uuid_example_user_input_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_4",
-                destination_uuid: "uuid_example_user_input_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_5",
-            actions: [],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_5",
-                destination_uuid: "uuid_example_user_input_node_6",
-              },
-            ],
-            router: {
-              type: "switch",
-              default_category_uuid: "uuid_example_user_input_category_1",
-              cases: [],
-              categories: [
-                {
-                  uuid: "uuid_example_user_input_category_1",
-                  name: "All Responses",
-                  exit_uuid: "uuid_example_user_input_exit_5",
-                },
-              ],
-              operand: "@input.text",
-              wait: {
-                type: "msg",
-              },
-              result_name: "second_reply",
-            },
-          },
-          {
-            uuid: "uuid_example_user_input_node_6",
-            actions: [
-              {
-                uuid: "uuid_example_user_input_action_4",
-                type: "set_contact_field",
-                field: {
-                  key: "second_reply",
-                  name: "second_reply",
-                },
-                value: "@results.second_reply",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_6",
-                destination_uuid: "uuid_example_user_input_node_10",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_10",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["custom reply"],
-                  category_uuid: "uuid_example_user_input_category_4",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_user_input_case_0",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_user_input_exit_10",
-                  name: "All Responses",
-                  uuid: "uuid_example_user_input_category_3",
-                },
-                {
-                  exit_uuid: "uuid_example_user_input_exit_11",
-                  name: "custom reply",
-                  uuid: "uuid_example_user_input_category_4",
-                },
-              ],
-              operand: "@fields.second_reply",
-              default_category_uuid: "uuid_example_user_input_category_3",
-            },
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_10",
-                destination_uuid: "uuid_example_user_input_node_11",
-              },
-              {
-                uuid: "uuid_example_user_input_exit_11",
-                destination_uuid: "uuid_example_user_input_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_7",
-            actions: [
-              {
-                attachments: [],
-                text: "Type your custom reply.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_user_input_action_5",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_7",
-                destination_uuid: "uuid_example_user_input_node_8",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_8",
-            actions: [],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_8",
-                destination_uuid: "uuid_example_user_input_node_9",
-              },
-            ],
-            router: {
-              type: "switch",
-              default_category_uuid: "uuid_example_user_input_category_2",
-              cases: [],
-              categories: [
-                {
-                  uuid: "uuid_example_user_input_category_2",
-                  name: "All Responses",
-                  exit_uuid: "uuid_example_user_input_exit_8",
-                },
-              ],
-              operand: "@input.text",
-              wait: {
-                type: "msg",
-              },
-              result_name: "second_reply",
-            },
-          },
-          {
-            uuid: "uuid_example_user_input_node_9",
-            actions: [
-              {
-                uuid: "uuid_example_user_input_action_6",
-                type: "set_contact_field",
-                field: {
-                  key: "second_reply",
-                  name: "second_reply",
-                },
-                value: "@results.second_reply",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_9",
-                destination_uuid: "uuid_example_user_input_node_11",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_11",
-            actions: [
-              {
-                attachments: [],
-                text: "Your first reply was @fields.first_reply and your second reply was @fields.second_reply. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_user_input_action_7",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_12",
-                destination_uuid: "uuid_example_user_input_node_12",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_user_input_node_12",
-            actions: [
-              {
-                uuid: "uuid_example_user_input_action_8",
-                type: "set_contact_field",
-                field: {
-                  key: "example_user_input__completed",
-                  name: "example_user_input__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_user_input_exit_13",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_story1",
-        uuid: "uuid_example_story1_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_story1_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This flow shows an example of the story mode.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_story1_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_0",
-                destination_uuid: "uuid_example_story1_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story1_node_1",
-            actions: [
-              {
-                attachments: [
-                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg",
-                ],
-                text: "Top text\n<story-image>\nBottom text",
-                type: "send_msg",
-                quick_replies: ["Next"],
-                uuid: "uuid_example_story1_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_1",
-                destination_uuid: "uuid_example_story1_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story1_node_3",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Next"],
-                  category_uuid: "uuid_example_story1_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story1_case_0",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_story1_exit_3",
-                  name: "All Responses",
-                  uuid: "uuid_example_story1_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_story1_exit_4",
-                  name: "Next",
-                  uuid: "uuid_example_story1_category_1",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_story1_category_0",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_3",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_story1_exit_4",
-                destination_uuid: "uuid_example_story1_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story1_node_2",
-            actions: [
-              {
-                attachments: [
-                  "image:plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg",
-                ],
-                text: "Top text 2\n<story-image>\nBottom text 2",
-                type: "send_msg",
-                quick_replies: ["Previous", "Next"],
-                uuid: "uuid_example_story1_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_2",
-                destination_uuid: "uuid_example_story1_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story1_node_5",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Next"],
-                  category_uuid: "uuid_example_story1_category_3",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story1_case_1",
-                },
-                {
-                  arguments: ["Previous"],
-                  category_uuid: "uuid_example_story1_category_4",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story1_case_2",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_story1_exit_6",
-                  name: "All Responses",
-                  uuid: "uuid_example_story1_category_2",
-                },
-                {
-                  exit_uuid: "uuid_example_story1_exit_7",
-                  name: "Next",
-                  uuid: "uuid_example_story1_category_3",
-                },
-                {
-                  exit_uuid: "uuid_example_story1_exit_9",
-                  name: "Previous",
-                  uuid: "uuid_example_story1_category_4",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_story1_category_2",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_6",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_story1_exit_7",
-                destination_uuid: "uuid_example_story1_node_4",
-              },
-              {
-                uuid: "uuid_example_story1_exit_9",
-                destination_uuid: "uuid_example_story1_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story1_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "Now we're back in regular mode. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_story1_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_5",
-                destination_uuid: null,
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story1_node_7",
-            actions: [
-              {
-                uuid: "uuid_example_story1_action_4",
-                type: "set_contact_field",
-                field: {
-                  key: "example_story1__completed",
-                  name: "example_story1__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story1_exit_10",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_story2",
-        uuid: "uuid_example_story2_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_story2_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This flow shows an example of the story mode.",
-                type: "send_msg",
-                quick_replies: ["Start story"],
-                uuid: "uuid_example_story2_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_0",
-                destination_uuid: "uuid_example_story2_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_2",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Start story"],
-                  category_uuid: "uuid_example_story2_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story2_case_0",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_story2_exit_2",
-                  name: "All Responses",
-                  uuid: "uuid_example_story2_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_story2_exit_3",
-                  name: "Start story",
-                  uuid: "uuid_example_story2_category_1",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_story2_category_0",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_2",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_story2_exit_3",
-                destination_uuid: "uuid_example_story2_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: '<p>Top text</p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
-                type: "send_msg",
-                quick_replies: ["Next"],
-                uuid: "uuid_example_story2_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_1",
-                destination_uuid: "uuid_example_story2_node_4",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_4",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Next"],
-                  category_uuid: "uuid_example_story2_category_3",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story2_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_story2_exit_5",
-                  name: "All Responses",
-                  uuid: "uuid_example_story2_category_2",
-                },
-                {
-                  exit_uuid: "uuid_example_story2_exit_6",
-                  name: "Next",
-                  uuid: "uuid_example_story2_category_3",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_story2_category_2",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_5",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_story2_exit_6",
-                destination_uuid: "uuid_example_story2_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_3",
-            actions: [
-              {
-                attachments: [],
-                text: '<p>Top text 2</p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
-                type: "send_msg",
-                quick_replies: ["Previous", "Next"],
-                uuid: "uuid_example_story2_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_4",
-                destination_uuid: "uuid_example_story2_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_6",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Next"],
-                  category_uuid: "uuid_example_story2_category_5",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story2_case_2",
-                },
-                {
-                  arguments: ["Previous"],
-                  category_uuid: "uuid_example_story2_category_6",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_story2_case_3",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_story2_exit_8",
-                  name: "All Responses",
-                  uuid: "uuid_example_story2_category_4",
-                },
-                {
-                  exit_uuid: "uuid_example_story2_exit_9",
-                  name: "Next",
-                  uuid: "uuid_example_story2_category_5",
-                },
-                {
-                  exit_uuid: "uuid_example_story2_exit_11",
-                  name: "Previous",
-                  uuid: "uuid_example_story2_category_6",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_story2_category_4",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_8",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_story2_exit_9",
-                destination_uuid: "uuid_example_story2_node_5",
-              },
-              {
-                uuid: "uuid_example_story2_exit_11",
-                destination_uuid: "uuid_example_story2_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_5",
-            actions: [
-              {
-                attachments: [],
-                text: "Now we're back in regular mode. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_story2_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_7",
-                destination_uuid: null,
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_story2_node_8",
-            actions: [
-              {
-                uuid: "uuid_example_story2_action_4",
-                type: "set_contact_field",
-                field: {
-                  key: "example_story2__completed",
-                  name: "example_story2__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_story2_exit_12",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
         name: "example_exit",
         uuid: "uuid_example_exit_flow_0",
         spec_version: "13.1.0",
@@ -22652,881 +23788,6 @@ const conversation: FlowTypes.Conversation[] = [
             exits: [
               {
                 uuid: "uuid_example_exit_exit_12",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_mark_as_completed",
-        uuid: "uuid_example_mark_as_completed_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_mark_as_completed_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the mark_as_completed example flow.",
-                type: "send_msg",
-                quick_replies: ["Mark task as completed", "Mark this flow as completed"],
-                uuid: "uuid_example_mark_as_completed_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_0",
-                destination_uuid: "uuid_example_mark_as_completed_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_2",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Mark task as completed"],
-                  category_uuid: "uuid_example_mark_as_completed_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_mark_as_completed_case_0",
-                },
-                {
-                  arguments: ["Mark this flow as completed"],
-                  category_uuid: "uuid_example_mark_as_completed_category_2",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_mark_as_completed_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_mark_as_completed_exit_2",
-                  name: "All Responses",
-                  uuid: "uuid_example_mark_as_completed_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_mark_as_completed_exit_3",
-                  name: "Mark task as completed",
-                  uuid: "uuid_example_mark_as_completed_category_1",
-                },
-                {
-                  exit_uuid: "uuid_example_mark_as_completed_exit_6",
-                  name: "Mark this flow as completed",
-                  uuid: "uuid_example_mark_as_completed_category_2",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_mark_as_completed_category_0",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_2",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_mark_as_completed_exit_3",
-                destination_uuid: "uuid_example_mark_as_completed_node_1",
-              },
-              {
-                uuid: "uuid_example_mark_as_completed_exit_6",
-                destination_uuid: "uuid_example_mark_as_completed_node_4",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "(a message)",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_mark_as_completed_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_1",
-                destination_uuid: "uuid_example_mark_as_completed_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_3",
-            actions: [
-              {
-                uuid: "uuid_example_mark_as_completed_action_2",
-                type: "set_contact_field",
-                field: {
-                  key: "task_relax__completed",
-                  name: "task_relax__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_4",
-                destination_uuid: "uuid_example_mark_as_completed_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "(a message)",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_mark_as_completed_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_5",
-                destination_uuid: "uuid_example_mark_as_completed_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_5",
-            actions: [
-              {
-                uuid: "uuid_example_mark_as_completed_action_4",
-                type: "set_contact_field",
-                field: {
-                  key: "example_mark_as_completed__completed",
-                  name: "example_mark_as_completed__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_7",
-                destination_uuid: "uuid_example_mark_as_completed_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_6",
-            actions: [
-              {
-                attachments: [],
-                text: "Some text. Flow completed = @fields.example_mark_as_completed__completed",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_mark_as_completed_action_5",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_8",
-                destination_uuid: "uuid_example_mark_as_completed_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_mark_as_completed_node_7",
-            actions: [
-              {
-                uuid: "uuid_example_mark_as_completed_action_6",
-                type: "set_contact_field",
-                field: {
-                  key: "example_mark_as_completed__completed",
-                  name: "example_mark_as_completed__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_mark_as_completed_exit_9",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_characters",
-        uuid: "uuid_example_characters_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_characters_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This flow shows the functionality of the character, character_media and character_display columns.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_characters_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_characters_exit_0",
-                destination_uuid: "uuid_example_characters_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_characters_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "This text is said by @fields.neighbour. A neutral image of neighbour is displayed in front of this text. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_characters_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_characters_exit_1",
-                destination_uuid: "uuid_example_characters_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_characters_node_2",
-            actions: [
-              {
-                attachments: [],
-                text: "This text is said by @fields.neighbour. No image of neighbour is displayed. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_characters_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_characters_exit_2",
-                destination_uuid: "uuid_example_characters_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_characters_node_3",
-            actions: [
-              {
-                attachments: [],
-                text: "This text is said by @fields.neighbour. A happy image of neighbour is displayed in front of this text. The link to this image is the happy_asset associated to neighbour in the character_names sheet. https://plh-demo1.idems.international/chat/msg-info?character=neighbour",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_characters_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_characters_exit_3",
-                destination_uuid: "uuid_example_characters_node_4",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_characters_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the end of the character example flow.",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_characters_action_4",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_characters_exit_4",
-                destination_uuid: "uuid_example_characters_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_characters_node_5",
-            actions: [
-              {
-                uuid: "uuid_example_characters_action_5",
-                type: "set_contact_field",
-                field: {
-                  key: "example_characters__completed",
-                  name: "example_characters__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_characters_exit_5",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_tickbox_2",
-        uuid: "uuid_example_tickbox_2_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_tickbox_2_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This is the tickbox example flow.",
-                type: "send_msg",
-                quick_replies: [
-                  "Show a Yes/No question that assumes Yes as an answer",
-                  "Show a Yes/No question that assumes No as an answer",
-                ],
-                uuid: "uuid_example_tickbox_2_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_0",
-                destination_uuid: "uuid_example_tickbox_2_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_2",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Show a Yes/No question that assumes Yes as an answer"],
-                  category_uuid: "uuid_example_tickbox_2_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_2_case_0",
-                },
-                {
-                  arguments: ["Show a Yes/No question that assumes No as an answer"],
-                  category_uuid: "uuid_example_tickbox_2_category_2",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_2_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_2",
-                  name: "All Responses",
-                  uuid: "uuid_example_tickbox_2_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_3",
-                  name: "Show a Yes/No question that assumes Yes as an answer",
-                  uuid: "uuid_example_tickbox_2_category_1",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_5",
-                  name: "Show a Yes/No question that assumes No as an answer",
-                  uuid: "uuid_example_tickbox_2_category_2",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_tickbox_2_category_0",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_2",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_tickbox_2_exit_3",
-                destination_uuid: "uuid_example_tickbox_2_node_1",
-              },
-              {
-                uuid: "uuid_example_tickbox_2_exit_5",
-                destination_uuid: "uuid_example_tickbox_2_node_3",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "This question is a Yes/No question where the assumed answer is Yes https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=true",
-                type: "send_msg",
-                quick_replies: ["Yes", "No"],
-                uuid: "uuid_example_tickbox_2_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_1",
-                destination_uuid: "uuid_example_tickbox_2_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_3",
-            actions: [
-              {
-                attachments: [],
-                text: "This question is a Yes/No question where the assumed answer is No https://plh-demo1.idems.international/chat/msg-info?displayAsTick=true&tickedByDefault=false",
-                type: "send_msg",
-                quick_replies: ["Yes", "No"],
-                uuid: "uuid_example_tickbox_2_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_4",
-                destination_uuid: "uuid_example_tickbox_2_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_5",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Yes"],
-                  category_uuid: "uuid_example_tickbox_2_category_4",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_2_case_2",
-                },
-                {
-                  arguments: ["No"],
-                  category_uuid: "uuid_example_tickbox_2_category_5",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_2_case_3",
-                },
-                {
-                  arguments: ["No"],
-                  category_uuid: "uuid_example_tickbox_2_category_6",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_tickbox_2_case_4",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_7",
-                  name: "All Responses",
-                  uuid: "uuid_example_tickbox_2_category_3",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_8",
-                  name: "Yes",
-                  uuid: "uuid_example_tickbox_2_category_4",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_10",
-                  name: "No",
-                  uuid: "uuid_example_tickbox_2_category_5",
-                },
-                {
-                  exit_uuid: "uuid_example_tickbox_2_exit_11",
-                  name: "No",
-                  uuid: "uuid_example_tickbox_2_category_6",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_tickbox_2_category_3",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_7",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_tickbox_2_exit_8",
-                destination_uuid: "uuid_example_tickbox_2_node_4",
-              },
-              {
-                uuid: "uuid_example_tickbox_2_exit_10",
-                destination_uuid: "uuid_example_tickbox_2_node_6",
-              },
-              {
-                uuid: "uuid_example_tickbox_2_exit_11",
-                destination_uuid: "uuid_example_tickbox_2_node_6",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "You chose Yes",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_tickbox_2_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_6",
-                destination_uuid: "uuid_example_tickbox_2_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_6",
-            actions: [
-              {
-                attachments: [],
-                text: "You chose No",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_tickbox_2_action_4",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_9",
-                destination_uuid: "uuid_example_tickbox_2_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_tickbox_2_node_7",
-            actions: [
-              {
-                uuid: "uuid_example_tickbox_2_action_5",
-                type: "set_contact_field",
-                field: {
-                  key: "example_tickbox_2__completed",
-                  name: "example_tickbox_2__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_tickbox_2_exit_12",
-                destination_uuid: null,
-              },
-            ],
-          },
-        ],
-        _ui: null,
-        revision: 0,
-        expire_after_minutes: 60,
-        metadata: {
-          revision: 0,
-        },
-        localization: {},
-      },
-    ],
-    groups: [],
-    site: "https://rapidpro.idems.international",
-    triggers: [],
-    version: "13",
-  },
-  {
-    campaigns: [],
-    fields: [],
-    flows: [
-      {
-        name: "example_habit",
-        uuid: "uuid_example_habit_flow_0",
-        spec_version: "13.1.0",
-        language: "base",
-        type: "messaging",
-        nodes: [
-          {
-            uuid: "uuid_example_habit_node_0",
-            actions: [
-              {
-                attachments: [],
-                text: "This flow shows the functionality of printing the number of recorded habits. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_habit_action_0",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_0",
-                destination_uuid: "uuid_example_habit_node_2",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_2",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["1"],
-                  category_uuid: "uuid_example_habit_category_1",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_habit_case_0",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_habit_exit_2",
-                  name: "All Responses",
-                  uuid: "uuid_example_habit_category_0",
-                },
-                {
-                  exit_uuid: "uuid_example_habit_exit_3",
-                  name: "1",
-                  uuid: "uuid_example_habit_category_1",
-                },
-              ],
-              operand: "@habit.habit_relax.weekly_count",
-              default_category_uuid: "uuid_example_habit_category_0",
-            },
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_2",
-                destination_uuid: "uuid_example_habit_node_3",
-              },
-              {
-                uuid: "uuid_example_habit_exit_3",
-                destination_uuid: "uuid_example_habit_node_1",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_1",
-            actions: [
-              {
-                attachments: [],
-                text: "In the past 7 days the habit habit_relax was recorded @habit.habit_relax.weekly_count time. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_habit_action_1",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_1",
-                destination_uuid: "uuid_example_habit_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_3",
-            actions: [
-              {
-                attachments: [],
-                text: "In the past 7 days the habit habit_relax was recorded @habit.habit_relax.weekly_count times. ",
-                type: "send_msg",
-                quick_replies: [],
-                uuid: "uuid_example_habit_action_2",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_4",
-                destination_uuid: "uuid_example_habit_node_5",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_5",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["1"],
-                  category_uuid: "uuid_example_habit_category_3",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_habit_case_1",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_habit_exit_6",
-                  name: "All Responses",
-                  uuid: "uuid_example_habit_category_2",
-                },
-                {
-                  exit_uuid: "uuid_example_habit_exit_7",
-                  name: "1",
-                  uuid: "uuid_example_habit_category_3",
-                },
-              ],
-              operand: "@habit.habit_spend_time.weekly_count",
-              default_category_uuid: "uuid_example_habit_category_2",
-            },
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_6",
-                destination_uuid: "uuid_example_habit_node_6",
-              },
-              {
-                uuid: "uuid_example_habit_exit_7",
-                destination_uuid: "uuid_example_habit_node_4",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_4",
-            actions: [
-              {
-                attachments: [],
-                text: "In the past 7 days the habit habit_spend_time was recorded @habit.habit_spend_time.weekly_count time. ",
-                type: "send_msg",
-                quick_replies: ["Done"],
-                uuid: "uuid_example_habit_action_3",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_5",
-                destination_uuid: "uuid_example_habit_node_8",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_6",
-            actions: [
-              {
-                attachments: [],
-                text: "In the past 7 days the habit habit_spend_time was recorded @habit.habit_spend_time.weekly_count times. ",
-                type: "send_msg",
-                quick_replies: ["Done"],
-                uuid: "uuid_example_habit_action_4",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_8",
-                destination_uuid: "uuid_example_habit_node_8",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_8",
-            actions: [],
-            router: {
-              type: "switch",
-              cases: [
-                {
-                  arguments: ["Done"],
-                  category_uuid: "uuid_example_habit_category_5",
-                  type: "has_only_phrase",
-                  uuid: "uuid_example_habit_case_2",
-                },
-              ],
-              categories: [
-                {
-                  exit_uuid: "uuid_example_habit_exit_10",
-                  name: "All Responses",
-                  uuid: "uuid_example_habit_category_4",
-                },
-                {
-                  exit_uuid: "uuid_example_habit_exit_11",
-                  name: "Done",
-                  uuid: "uuid_example_habit_category_5",
-                },
-              ],
-              operand: "@input.text",
-              default_category_uuid: "uuid_example_habit_category_4",
-              wait: {
-                type: "msg",
-              },
-            },
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_10",
-                destination_uuid: null,
-              },
-              {
-                uuid: "uuid_example_habit_exit_11",
-                destination_uuid: "uuid_example_habit_node_7",
-              },
-            ],
-          },
-          {
-            uuid: "uuid_example_habit_node_7",
-            actions: [
-              {
-                uuid: "uuid_example_habit_action_5",
-                type: "set_contact_field",
-                field: {
-                  key: "example_habit__completed",
-                  name: "example_habit__completed",
-                },
-                value: "true",
-              },
-            ],
-            exits: [
-              {
-                uuid: "uuid_example_habit_exit_9",
                 destination_uuid: null,
               },
             ],

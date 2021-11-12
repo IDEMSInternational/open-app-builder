@@ -13,7 +13,7 @@
   },
   {
     "SourceText": "Settings",
-    "text": "Izinhlelo/ izilungiselelo",
+    "text": "Izilungiselelo",
     "type": "template",
     "note": ""
   },
@@ -25,7 +25,7 @@
   },
   {
     "SourceText": "Tour",
-    "text": "Ukuvakasha/ Uhambo/Ukubuka",
+    "text": "Uhambo",
     "type": "template",
     "note": ""
   },
@@ -55,19 +55,19 @@
   },
   {
     "SourceText": "Open Survey",
-    "text": "Vila Inhlolovo/ Vula Ucwaningo",
+    "text": "Vula Ucwaningo",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Workshop Options",
-    "text": "Uhlelo Lokuqeqeshwa/ umhlangano wokufundisana ongakhetha kukho",
+    "text": "Umhlangano wokufundisana ongakhetha kukho",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Demo Presentation",
-    "text": "Ukuboniswa noma Isethulo Komkhiqizo / Isethulo Sedemo",
+    "text": "Ukuboniswa noma Isethulo Komkhiqizo",
     "type": "template",
     "note": ""
   },
@@ -85,7 +85,7 @@
   },
   {
     "SourceText": "Unlock all workshops",
-    "text": "Vula konke ukuqeqeshwa/ Vula onke imihlangano yokufundisana",
+    "text": "Vula onke imihlangano yokufundisana",
     "type": "template",
     "note": ""
   },
@@ -4351,13 +4351,13 @@
   },
   {
     "SourceText": "Reflect",
-    "text": "Cabangisisa / zindla",
+    "text": "Zindla",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Listen and reflect",
-    "text": "Lalela futhi ucabangisisa/zindla",
+    "text": "Lalela futhi zindla",
     "type": "template",
     "note": ""
   },
