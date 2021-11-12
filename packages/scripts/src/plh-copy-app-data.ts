@@ -1,7 +1,14 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
-import { capitalizeFirstLetter, recursiveFindByExtension, convertJsonToTs } from "./utils";
+import {
+  capitalizeFirstLetter,
+  recursiveFindByExtension,
+  convertJsonToTs,
+  generateFolderTreeMap,
+  generateFolderFlatMap,
+  isCountryLanguageCode,
+} from "./utils";
 import { spawnSync } from "child_process";
 import { PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
 
@@ -25,12 +32,14 @@ export function main(doAssetFolderCheck = true) {
   writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_PATH);
   if (doAssetFolderCheck) {
     copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_ASSETS_PATH);
+    generateDataAssetsContentsFile();
   }
   generateAppDataIndexFiles();
   writeTranslationTsFiles(
     path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
     path.resolve(PLH_DATA_PATH, "translation_strings")
   );
+
   console.log(chalk.yellow("Cleaning Output Files"));
   cleanAppTsOutput(PLH_DATA_PATH);
 
@@ -131,6 +140,45 @@ function compileTranslationFiles(
 ) {
   const cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+}
+
+/**
+ * Create an index recursively listing all assets in plh-data assets folder.
+ * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
+ * corresponding translation files
+ * */
+function generateDataAssetsContentsFile() {
+  const topLevelFolders = fs
+    .readdirSync(PLH_ASSETS_PATH, { withFileTypes: true })
+    .filter((v) => v.isDirectory())
+    .map((v) => v.name);
+  const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
+
+  // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
+  const globalFolders = topLevelFolders.filter((name) => !isCountryLanguageCode(name));
+  const globalAassetsFilter = (pathName: string) => globalFolders.includes(pathName.split("/")[0]);
+  const globalAssets: any = generateFolderFlatMap(PLH_ASSETS_PATH, true, globalAassetsFilter);
+  const untrackedAssets: any = [];
+
+  // populate tracked and untracked translated assets
+  for (const languageFolder of languageFolders) {
+    const languageFolderPath = path.resolve(PLH_ASSETS_PATH, languageFolder);
+    const translatedAssets = generateFolderFlatMap(languageFolderPath);
+    Object.entries(translatedAssets).forEach(([name, value]) => {
+      if (globalAssets.hasOwnProperty(name)) {
+        globalAssets[name].translations = globalAssets[name].translations || {};
+        globalAssets[name].translations[languageFolder] = value;
+      } else {
+        untrackedAssets.push(`${languageFolder}/${name}`);
+      }
+    });
+  }
+
+  // write output index file for tracked and untracked assets
+  const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
+  \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
+
+  fs.writeFileSync(path.resolve(PLH_ASSETS_PATH, "index.ts"), outputTS);
 }
 
 /**
