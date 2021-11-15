@@ -123,6 +123,7 @@
       description: Primary background color. (--ion-btn-primary)
       value_2: navigation 
       description: Secondary background color. (--ion-btn-secondary)
+
 # RoundIconButton - RoundIconButtonComponent 
    ## Type 
    type: round_button 
@@ -391,6 +392,10 @@
       description: 0 seconds by default
       value_2: number
       description: any number as starting seconds
+   ### Parameter 7
+      Parameter Name: ping
+      #### Values and descriptions
+      value_1: '' - (default)
 
 # Radio Buttons - TmplRadioGroupComponent 
    ## Type 
@@ -422,6 +427,18 @@
       description: by default two buttons in one row
       value_2: number
       description: any number for buttons in one row
+   ### Parameter 4
+      Parameter Name: style
+      #### Values and descriptions
+      description: String. Class name for button. 
+      value_1: '' - (default) 
+      description: Primary background color for label  (--ion-color-primary-contrast)
+      value_2: full - (default) 
+      description: Full width
+      value_3: standard - (default) 
+      description: Text color white (--ion-color-primary-contrast) 
+      value_4: '' - (default)
+      description: active radio button background color  (--ion-color-primary-contrast)
 
 # ComboBox - TmplComboBoxComponent 
    ## Type 
@@ -669,6 +686,15 @@
       description: Italic font style
       value_10: emphasised 
       description: Bold font style
+   ### Parameter 2
+      Parameter Name: text_align
+      #### Values and descriptions
+      value_1: left
+      description: text left aligned 
+      value_2: center 
+      description: text center aligned
+      value_3: right 
+      description: text right aligned 
 
 # TextComponent - TmplTextComponent 
    ## Type 
@@ -753,41 +779,6 @@
       description: two column for images (splash screen)
       #### To display the element display_group with style === navigation correctly, the element must be the last one in the spreadsheets
       #### If style === 'banner' and action_id === 'set_theme: active | passive' it's will be changed main background color and display_group background color.
-
-# PointBoxComponent - TmplPointBoxComponent 
-   ## Type 
-   type: parent_point_box 
-   ## Value
-   value: number. Counter number
-   ## Parameters 
-   ### Parameter 1 
-      Parameter Name: icon_src
-      #### Values and descriptions
-      value_1: null - (default) 
-      description: no icon
-      value_2: string 
-      description: Path to icon
-   ### Parameter 2
-      Parameter Name: lottie_src
-      #### Values and descriptions
-      value_1: null - (default) 
-      description: no lottie animation
-      value_2: string 
-      description: Path to lottie animation
-   ### Parameter 3
-      Parameter Name: text
-      #### Values and descriptions
-      value_1: null - (default) 
-      description: no text
-      value_2: string 
-      description: Any string as a text
-   ### Parameter 4
-      Parameter Name: play_celebration
-      #### Values and descriptions
-      value_1: true - (default) 
-      description: show falling stars when item is clicked
-      value_2: false 
-      description: disable falling stars
 
 # ImageComponent - TmplImageComponent 
    ## Type 
@@ -948,5 +939,5 @@
 - no_margin_lr - remove left and right margin;
 - no_margin - remove all margins;
 - no_padding_t - remove top padding;
-- no_padding_lr - remove left and rigth padding
+- no_padding_lr - remove left and right padding
 - no_padding - remove all paddings
