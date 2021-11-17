@@ -24426,7 +24426,7 @@ const template: FlowTypes.Template[] = [
       },
       {
         name: "language_list",
-        value: ["name: eng | text: English", "name: spa | text: Español"],
+        value: ["name: za_en | text: English", "name: es_sp | text: Español"],
         exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "language_list",

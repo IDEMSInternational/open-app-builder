@@ -34,7 +34,7 @@
               {
                 "glob": "**/*",
                 "input": "node_modules/plh-data/assets",
-                "output": "assets"
+                "output": "assets/_app_assets"
               },
               {
                 "glob": "**/*.svg",

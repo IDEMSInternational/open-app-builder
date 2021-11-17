@@ -11,13 +11,7 @@ import {
   logError,
 } from "./utils";
 import { spawnSync } from "child_process";
-import {
-  PLH_ASSETS_INDEX_PATH,
-  PLH_DATA_ASSETS_PATH,
-  PLH_DATA_ASSETS_SUBFOLDER_PATH,
-  PLH_DATA_DATA_PATH,
-  ROOT_DIR,
-} from "./paths";
+import { PLH_ASSETS_INDEX_PATH, PLH_DATA_ASSETS_PATH, PLH_DATA_DATA_PATH, ROOT_DIR } from "./paths";
 
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
@@ -43,7 +37,7 @@ export function main(doAssetFolderCheck = true) {
 
   if (doAssetFolderCheck) {
     assetsQualityCheck(ASSETS_INPUT_FOLDER);
-    copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_DATA_ASSETS_SUBFOLDER_PATH);
+    copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_DATA_ASSETS_PATH);
     generateDataAssetsIndexFile();
   }
   generateAppDataIndexFiles();
@@ -190,7 +184,7 @@ function compileTranslationFiles(
  * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
  * corresponding translation files
  * */
-function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_SUBFOLDER_PATH) {
+function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_PATH) {
   const topLevelFolders = listFolderNames(assetsBase);
   const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
 
