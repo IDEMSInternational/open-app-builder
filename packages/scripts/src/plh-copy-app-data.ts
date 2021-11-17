@@ -7,6 +7,8 @@ import {
   convertJsonToTs,
   generateFolderFlatMap,
   isCountryLanguageCode,
+  listFolderNames,
+  logError,
 } from "./utils";
 import { spawnSync } from "child_process";
 import {
@@ -20,6 +22,9 @@ import {
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
 const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
+
+/** Expected folder containing global assets */
+const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 /**
  * A simple script to copy data exported from gdrive and processed for plh into the app data folder
@@ -37,6 +42,7 @@ export function main(doAssetFolderCheck = true) {
   writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_DATA_PATH);
 
   if (doAssetFolderCheck) {
+    assetsQualityCheck(ASSETS_INPUT_FOLDER);
     copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_DATA_ASSETS_SUBFOLDER_PATH);
     generateDataAssetsIndexFile();
   }
@@ -75,6 +81,32 @@ function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
     outputDir: targetFolder,
     indexFile: { namedExport: "TRANSLATION_STRINGS" },
   });
+}
+
+/** Ensure asset folders are named correctly */
+function assetsQualityCheck(sourceFolder: string) {
+  const output = { hasGlobalFolder: false, languageFolders: [], invalidFolders: [] };
+  const topLevelFolders = listFolderNames(sourceFolder);
+  for (const folderName of topLevelFolders) {
+    if (folderName === ASSETS_GLOBAL_FOLDER_NAME) output.hasGlobalFolder = true;
+    else {
+      if (isCountryLanguageCode(folderName)) output.languageFolders.push(folderName);
+      else output.invalidFolders.push(folderName);
+    }
+  }
+  if (!output.hasGlobalFolder) {
+    logError({
+      msg1: "Global folder not found",
+      msg2: `Assets folder should include a folder named "${ASSETS_GLOBAL_FOLDER_NAME}"`,
+    });
+  }
+  if (output.invalidFolders.length > 0) {
+    logError({
+      msg1: "Asset folders named incorrectly",
+      msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
+    });
+  }
+  console.log(chalk.green("Preparing assets for:", "global", output.languageFolders.join(", ")));
 }
 
 function copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
@@ -159,16 +191,12 @@ function compileTranslationFiles(
  * corresponding translation files
  * */
 function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_SUBFOLDER_PATH) {
-  const topLevelFolders = fs
-    .readdirSync(assetsBase, { withFileTypes: true })
-    .filter((v) => v.isDirectory())
-    .map((v) => v.name);
+  const topLevelFolders = listFolderNames(assetsBase);
   const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
 
   // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
-  const globalFolders = topLevelFolders.filter((name) => !isCountryLanguageCode(name));
-  const globalAassetsFilter = (pathName: string) => globalFolders.includes(pathName.split("/")[0]);
-  const globalAssets: any = generateFolderFlatMap(assetsBase, true, globalAassetsFilter);
+  const globalAssetsFolder = path.join(assetsBase, ASSETS_GLOBAL_FOLDER_NAME);
+  const globalAssets: any = generateFolderFlatMap(globalAssetsFolder, true);
   const untrackedAssets: any = [];
 
   // populate tracked and untracked translated assets
