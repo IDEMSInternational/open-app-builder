@@ -86,7 +86,7 @@ const template: FlowTypes.Template[] = [
             name: "points_example_1",
             value: 3,
             parameter_list: {
-              lottie_src: "lottie_animations/parent_centre.json",
+              lottie_src: "plh_lottie/parent_centre.json",
               text: "text two",
             },
             exclude_from_translation: true,
@@ -127,7 +127,7 @@ const template: FlowTypes.Template[] = [
             name: "points_example_1",
             value: 3,
             parameter_list: {
-              lottie_src: "lottie_animations/parent_centre.json",
+              lottie_src: "plh_lottie/parent_centre.json",
               text: "text two",
             },
             exclude_from_translation: true,
@@ -160,7 +160,7 @@ const template: FlowTypes.Template[] = [
             name: "points_example_1",
             value: 3,
             parameter_list: {
-              lottie_src: "lottie_animations/parent_centre.json",
+              lottie_src: "plh_lottie/parent_centre.json",
               text: "text two",
             },
             exclude_from_translation: true,
@@ -28238,7 +28238,7 @@ const template: FlowTypes.Template[] = [
             value: 3,
             exclude_from_translation: true,
             parameter_list: {
-              lottie_src: "lottie_animations/parent_centre.json",
+              lottie_src: "plh_lottie/parent_centre.json",
               text: "text two",
             },
             _nested_name: "dg_example_dashed_box.points_example_1",
@@ -31484,7 +31484,7 @@ const template: FlowTypes.Template[] = [
           {
             type: "lottie_animation",
             name: "lottie_src",
-            value: "lottie_animations/weekly_workshops.json",
+            value: "plh_lottie/weekly_workshops.json",
             _translations: {
               value: {},
             },
@@ -31575,7 +31575,7 @@ const template: FlowTypes.Template[] = [
           {
             type: "lottie_animation",
             name: "lottie_src",
-            value: "lottie_animations/parent_points.json",
+            value: "plh_lottie/parent_points.json",
             _translations: {
               value: {},
             },
@@ -31667,7 +31667,7 @@ const template: FlowTypes.Template[] = [
           {
             type: "lottie_animation",
             name: "lottie_src",
-            value: "lottie_animations/parent_centre.json",
+            value: "plh_lottie/parent_centre.json",
             _translations: {
               value: {},
             },
@@ -31750,7 +31750,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "lottie_animation",
         name: "relax_anim",
-        value: "lottie_animations/relax1.json",
+        value: "plh_lottie/relax1.json",
         _translations: {
           value: {},
         },
@@ -32314,7 +32314,7 @@ const template: FlowTypes.Template[] = [
             value: 3,
             exclude_from_translation: true,
             parameter_list: {
-              lottie_src: "lottie_animations/parent_centre.json",
+              lottie_src: "plh_lottie/parent_centre.json",
               text: "text two",
             },
             _nested_name: "dg_example_dashed_box.points_example_1",
