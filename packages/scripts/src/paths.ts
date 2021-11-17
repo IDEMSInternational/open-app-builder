@@ -1,5 +1,4 @@
 import * as path from "path";
-import { APP_ASSETS_SUBFOLDER } from "data-models";
 
 export const ROOT_DIR = path.resolve(__dirname, "../../../");
 export const MAIN_PACKAGE_PATH = path.join(ROOT_DIR, "package.json");
@@ -22,9 +21,4 @@ export const APP_BUILD_GRADLE_PATH = path.join(ROOT_DIR, "android/app/build.grad
 const PLH_DATA_PACKAGE_PATH = path.join(ROOT_DIR, "packages/plh-data");
 export const PLH_DATA_DATA_PATH = path.join(PLH_DATA_PACKAGE_PATH, "data");
 export const PLH_DATA_ASSETS_PATH = path.join(PLH_DATA_PACKAGE_PATH, "assets");
-/**
- * Path to subfolder containing synced assets
- * TODO - could all be moved to top folder to avoid need for this (requires angular.json update)
- **/
-export const PLH_DATA_ASSETS_SUBFOLDER_PATH = path.join(PLH_DATA_ASSETS_PATH, APP_ASSETS_SUBFOLDER);
 export const PLH_ASSETS_INDEX_PATH = path.resolve(PLH_DATA_ASSETS_PATH, "index.ts");
