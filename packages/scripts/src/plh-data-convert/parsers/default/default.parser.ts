@@ -7,9 +7,6 @@ import { SCRIPTS_WORKSPACE_PATH } from "../../../paths";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
 
-/** Prefix for use with images in the app */
-const ASSETS_BASE = "assets/plh_assets";
-
 const ASSETS_CACHE_PATH = `${SCRIPTS_WORKSPACE_PATH}/src/gdrive-download/cache/plh_assets`;
 
 /**
@@ -168,8 +165,6 @@ export class DefaultParser implements AbstractParser {
     if (!fs.existsSync(`${ASSETS_CACHE_PATH}/${assetPath}`)) {
       this.summary.missingAssets.push({ flow_name, assetPath });
     }
-    // rewrite asset urls for use in app
-    assetPath = `${ASSETS_BASE}/${assetPath}`;
     return assetPath;
   }
 
