@@ -619,8 +619,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "relax",
         task_id: "task_habit_relax",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_relax.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_relax.json",
+        image_asset: "plh_images/habits/habit_relax.svg",
+        lottie_asset: "plh_lottie/habits/habit_relax.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Relax",
@@ -692,8 +692,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "treat_yourself",
         task_id: "task_habit_treat_yourself",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_treat_yourself.json",
+        image_asset: "plh_images/habits/habit_treat_yourself.svg",
+        lottie_asset: "plh_lottie/habits/habit_treat_yourself.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Treat yourself well",
@@ -765,8 +765,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "praise_yourself",
         task_id: "task_habit_praise_yourself",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_praise_yourself.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_praise_yourself.json",
+        image_asset: "plh_images/habits/habit_praise_yourself.svg",
+        lottie_asset: "plh_lottie/habits/habit_praise_yourself.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Praise yourself",
@@ -838,8 +838,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "spend_time",
         task_id: "task_habit_spend_time",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_spend_time.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_spend_time.json",
+        image_asset: "plh_images/habits/habit_spend_time.svg",
+        lottie_asset: "plh_lottie/habits/habit_spend_time.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "One-on-one time",
@@ -911,8 +911,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "praise_teen",
         task_id: "task_habit_praise_teen",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_praise_teen.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_praise_teen.json",
+        image_asset: "plh_images/habits/habit_praise_teen.svg",
+        lottie_asset: "plh_lottie/habits/habit_praise_teen.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Praise your teen",
@@ -984,8 +984,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "instruct_positively",
         task_id: "task_habit_instruct_positively",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_instruct_positively.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_instruct_positively.json",
+        image_asset: "plh_images/habits/habit_instruct_positively.svg",
+        lottie_asset: "plh_lottie/habits/habit_instruct_positively.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Get positive",
@@ -1057,8 +1057,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "breathe",
         task_id: "task_habit_breathe",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_breathe.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_breathe.json",
+        image_asset: "plh_images/habits/habit_breathe.svg",
+        lottie_asset: "plh_lottie/habits/habit_breathe.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Breathe not yell",
@@ -1130,8 +1130,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "money",
         task_id: "task_habit_money",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_money.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_money.json",
+        image_asset: "plh_images/habits/habit_money.svg",
+        lottie_asset: "plh_lottie/habits/habit_money.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Good money choice",
@@ -1203,8 +1203,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "consequence",
         task_id: "task_habit_consequence",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_consequence.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_consequence.json",
+        image_asset: "plh_images/habits/habit_consequence.svg",
+        lottie_asset: "plh_lottie/habits/habit_consequence.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Calm consequence",
@@ -1276,8 +1276,8 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "safe",
         task_id: "task_habit_safe",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_safe.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_safe.json",
+        image_asset: "plh_images/habits/habit_safe.svg",
+        lottie_asset: "plh_lottie/habits/habit_safe.json",
         "fields::weekly_count": 0,
         "fields::total_count": 0,
         title: "Safe",
@@ -1432,7 +1432,7 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "help",
-        icon_asset: "assets/plh_assets/plh_images/icons/question_mark_white.svg",
+        icon_asset: "plh_images/icons/question_mark_white.svg",
         title: "Help",
         _translations: {
           title: {
@@ -1464,7 +1464,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "my_tips",
-        icon_asset: "assets/plh_assets/plh_images/icons/light_bulb_heart_white.svg",
+        icon_asset: "plh_images/icons/light_bulb_heart_white.svg",
         title: "My Tips",
         _translations: {
           title: {
@@ -1496,7 +1496,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "essential_tools",
-        icon_asset: "assets/plh_assets/plh_images/icons/light_bulb_white.svg",
+        icon_asset: "plh_images/icons/light_bulb_white.svg",
         title: "Essential Tools",
         _translations: {
           title: {
@@ -1528,7 +1528,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "covid",
-        icon_asset: "assets/plh_assets/plh_images/icons/ask_question_white.svg",
+        icon_asset: "plh_images/icons/ask_question_white.svg",
         title: "COVID",
         _translations: {
           title: {
@@ -1560,7 +1560,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "customisation",
-        icon_asset: "assets/plh_assets/plh_images/icons/phone_heart_white.svg",
+        icon_asset: "plh_images/icons/phone_heart_white.svg",
         title: "Customise @global.parent_app",
         _translations: {
           title: {
@@ -1604,7 +1604,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "relax_and_activities",
-        icon_asset: "assets/plh_assets/plh_images/icons/smile_eyes_up_white.svg",
+        icon_asset: "plh_images/icons/smile_eyes_up_white.svg",
         title: "Relax & Activities",
         _translations: {
           title: {
@@ -1636,7 +1636,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "support_contacts",
-        icon_asset: "assets/plh_assets/plh_images/icons/hands_support_heart_white.svg",
+        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
         title: "Support Contacts",
         _translations: {
           title: {
@@ -1668,7 +1668,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "evidence_base",
-        icon_asset: "assets/plh_assets/plh_images/icons/documents_white.svg",
+        icon_asset: "plh_images/icons/documents_white.svg",
         title: "Evidence Base",
         _translations: {
           title: {
@@ -1700,7 +1700,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "technical_support",
-        icon_asset: "assets/plh_assets/plh_images/icons/info_phone_white.svg",
+        icon_asset: "plh_images/icons/info_phone_white.svg",
         title: "Technical Support",
         _translations: {
           title: {
@@ -1732,7 +1732,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "message_archive",
-        icon_asset: "assets/plh_assets/plh_images/icons/letter_white.svg",
+        icon_asset: "plh_images/icons/letter_white.svg",
         title: "Message Archive",
         _translations: {
           title: {
@@ -2310,7 +2310,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_1_text",
         activity_template: "activity_relax_1",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_1_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_1_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Quick pause",
@@ -2336,7 +2336,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_2_text",
         activity_template: "activity_relax_2",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_2_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_2_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Power of three",
@@ -2362,7 +2362,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_3_text",
         activity_template: "activity_relax_3",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_3_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_3_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "One thing today",
@@ -2388,7 +2388,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_4_text",
         activity_template: "activity_relax_4",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_4_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_4_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Breathe to three",
@@ -2414,7 +2414,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_5_text",
         activity_template: "activity_relax_5",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_5_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_5_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "In and out",
@@ -2439,7 +2439,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_6_text",
         activity_template: "activity_relax_6",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_6_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_6_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Think about today",
@@ -2465,7 +2465,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_7_text",
         activity_template: "activity_relax_7",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_7_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_7_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Pause to respond",
@@ -2491,7 +2491,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_8_text",
         activity_template: "activity_relax_8",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_8_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_8_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Small things",
@@ -2517,7 +2517,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_9_text",
         activity_template: "activity_relax_9",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_9_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_9_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Body scan",
@@ -2543,7 +2543,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_10_text",
         activity_template: "activity_relax_10",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_10_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_10_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Feel the ground",
@@ -2569,7 +2569,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_11_text",
         activity_template: "activity_relax_11",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_11_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_11_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Counting sounds",
@@ -2595,7 +2595,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_12_text",
         activity_template: "activity_relax_12",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_12_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_12_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Feel your feeling",
@@ -2621,7 +2621,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_13_text",
         activity_template: "activity_relax_13",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_13_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_13_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
         title: "Your song",
@@ -2647,7 +2647,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_14_text",
         activity_template: "activity_relax_14",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_14_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_14_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Ground & gratitude",
@@ -2672,7 +2672,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_15_text",
         activity_template: "activity_relax_15",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_15_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_15_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Notice how you feel",
@@ -2697,7 +2697,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_16_text",
         activity_template: "activity_relax_16",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_16_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_16_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Pause power",
@@ -2722,7 +2722,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_17_text",
         activity_template: "activity_relax_17",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_17_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_17_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_short",
         title: "Praise yourself",
@@ -2747,7 +2747,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_18_text",
         activity_template: "activity_relax_18",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_18_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_18_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_long",
         title: "Taking care of yourself",
@@ -2772,7 +2772,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_19_text",
         activity_template: "activity_relax_19",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_19_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_19_audio.mp3",
         "fields::favourite": false,
         type: "relax_passive_long",
         title: "Take a pause",
@@ -2797,7 +2797,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_20_text",
         activity_template: "activity_relax_20",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_20_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_20_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
         title: "Physical activity",
@@ -2822,7 +2822,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_21_text",
         activity_template: "activity_relax_21",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_21_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_21_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
         title: "List of things",
@@ -2847,7 +2847,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_22_text",
         activity_template: "activity_relax_22",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_22_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_22_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
         title: "Connect",
@@ -2872,7 +2872,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_23_text",
         activity_template: "activity_relax_23",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_23_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_23_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
         title: "Prevent anger",
@@ -2897,7 +2897,7 @@ const data_list: FlowTypes.Data_list[] = [
         task_id: "task_relax",
         text_template: "relax_24_text",
         activity_template: "activity_relax_24",
-        audio_asset: "assets/plh_assets/plh_audio/relax/relax_24_audio.mp3",
+        audio_asset: "plh_audio/relax/relax_24_audio.mp3",
         "fields::favourite": false,
         type: "relax_active",
         title: "Angry? Take a break",
@@ -2929,13 +2929,13 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_self_care",
         number: 1,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_self_care/tools.svg",
+        image_asset: "plh_images/workshops/w_self_care/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": false,
         relax_data: "@data.relax.relax_5",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_self_care.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_self_care.mp3",
         title: "Welcome and Self-Care",
         _translations: {
           title: {
@@ -2992,14 +2992,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_1on1",
         number: 2,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_1on1/tools.svg",
+        image_asset: "plh_images/workshops/w_1on1/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_2",
         something_fun_data: "@data.something_fun.co_chef",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_1on1.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_1on1.mp3",
         title: "One-on-One Time",
         _translations: {
           title: {
@@ -3044,14 +3044,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_praise",
         number: 3,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_praise/tools.svg",
+        image_asset: "plh_images/workshops/w_praise/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_3",
         something_fun_data: "@data.something_fun.reflect_positive",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_praise.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_praise.mp3",
         title: "Praise",
         _translations: {
           title: {
@@ -3096,14 +3096,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_instruct",
         number: 4,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_instruct/tools.svg",
+        image_asset: "plh_images/workshops/w_instruct/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_4",
         something_fun_data: "@data.something_fun.dance_moves",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_instruct.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_instruct.mp3",
         title: "Positive Instructions",
         _translations: {
           title: {
@@ -3148,14 +3148,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_stress",
         number: 5,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_stress/tools.svg",
+        image_asset: "plh_images/workshops/w_stress/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_7",
         something_fun_data: "@data.something_fun.check_in_chat",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_stress.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_stress.mp3",
         title: "Managing Stress",
         _translations: {
           title: {
@@ -3200,14 +3200,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_money",
         number: 6,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_money/tools.svg",
+        image_asset: "plh_images/workshops/w_money/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_8",
         something_fun_data: "@data.something_fun.dream_travel",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_money.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_money.mp3",
         title: "Family Budgets",
         _translations: {
           title: {
@@ -3252,14 +3252,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_rules",
         number: 7,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_rules/tools.svg",
+        image_asset: "plh_images/workshops/w_rules/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_9",
         something_fun_data: "@data.something_fun.famous_party",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_rules.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_rules.mp3",
         title: "Rules",
         _translations: {
           title: {
@@ -3304,14 +3304,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_consequence",
         number: 8,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_consequence/tools.svg",
+        image_asset: "plh_images/workshops/w_consequence/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_10",
         something_fun_data: "@data.something_fun.two_truths",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_consequence.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_consequence.mp3",
         title: "Calm Consequences",
         _translations: {
           title: {
@@ -3356,14 +3356,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_solve",
         number: 9,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_solve/tools.svg",
+        image_asset: "plh_images/workshops/w_solve/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_11",
         something_fun_data: "@data.something_fun.mirror",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_solve.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_solve.mp3",
         title: "Problem Solving",
         _translations: {
           title: {
@@ -3408,14 +3408,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_safe",
         number: 10,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_safe/tools.svg",
+        image_asset: "plh_images/workshops/w_safe/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_12",
         something_fun_data: "@data.something_fun.time_machine",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_safe.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_safe.mp3",
         title: "Teen Safety",
         _translations: {
           title: {
@@ -3460,14 +3460,14 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_crisis",
         number: 11,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_crisis/tools.svg",
+        image_asset: "plh_images/workshops/w_crisis/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_13",
         something_fun_data: "@data.something_fun.superpowers",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_crisis.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_crisis.mp3",
         title: "Dealing with Crisis",
         _translations: {
           title: {
@@ -3512,13 +3512,13 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "w_celebrate",
         number: 12,
-        image_asset: "assets/plh_assets/plh_images/workshops/w_celebrate/tools.svg",
+        image_asset: "plh_images/workshops/w_celebrate/tools.svg",
         "fields::completion_level": 0,
         "fields::started": false,
         "fields::completed": false,
         "fields::disabled": true,
         relax_data: "@data.relax.relax_14",
-        intro_audio_asset: "assets/plh_assets/plh_audio/topic_intros/w_celebrate.mp3",
+        intro_audio_asset: "plh_audio/topic_intros/w_celebrate.mp3",
         title: "Celebration and Next Steps",
         _translations: {
           title: {
