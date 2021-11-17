@@ -1663,7 +1663,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p>Top text</p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p>Top text</p>\n<p><img class="block-image" src="plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"></p>\n<p>Bottom text</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next"],
                 uuid: "uuid_example_story2_action_1",
@@ -1723,7 +1723,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p>Top text 2</p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p>Top text 2</p>\n<p><img class="block-image" src="plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"></p>\n<p>Bottom text 2</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Previous", "Next"],
                 uuid: "uuid_example_story2_action_2",
@@ -3175,7 +3175,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Weekly Workshops <img class="icon" src="assets/plh_assets/plh_images/other_icons/tick.svg">\n10-12 weekly sessions structured for you. These include key tools for self-care and parenting a teenager, and extra content where you want it. You can choose to do each workshop as an individual, or with someone else, or as a group with family or friends.',
+                text: 'Weekly Workshops <img class="icon" src="plh_images/other_icons/tick.svg">\n10-12 weekly sessions structured for you. These include key tools for self-care and parenting a teenager, and extra content where you want it. You can choose to do each workshop as an individual, or with someone else, or as a group with family or friends.',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_give_action_2",
@@ -3193,7 +3193,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Parent Centre <img class="icon" src="assets/plh_assets/plh_images/other_icons/tick.svg">\nStacked with the resources you need, whenever you want. Instant access help section with Essential Tools for each skill, extra information and local resources',
+                text: 'Parent Centre <img class="icon" src="plh_images/other_icons/tick.svg">\nStacked with the resources you need, whenever you want. Instant access help section with Essential Tools for each skill, extra information and local resources',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_give_action_3",
@@ -3211,7 +3211,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Parent Points <img class="icon" src="assets/plh_assets/plh_images/other_icons/tick.svg">\nTrack your success in self-care and parenting. Celebrate your daily achievements! ',
+                text: 'Parent Points <img class="icon" src="plh_images/other_icons/tick.svg">\nTrack your success in self-care and parenting. Celebrate your daily achievements! ',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_give_action_4",
@@ -3400,7 +3400,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_relax_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_self-care_package_action_5",
@@ -3519,7 +3519,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your Parent Point <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">: see your success!',
+                text: 'Tap your Parent Point <img class="icon" src="plh_images/habits/habit_relax_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_self-care_package_action_10",
@@ -3713,7 +3713,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your Parent Point <img class="icon" src="assets/plh_assets/plh_images/habits/habit_treat_yourself_icon.svg">: see your success!',
+                text: 'Tap your Parent Point <img class="icon" src="plh_images/habits/habit_treat_yourself_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_self-care_package_action_15",
@@ -5618,7 +5618,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_relax_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_welcome_relax_action_2",
@@ -5952,7 +5952,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_relax_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_1on1_emo_action_5",
@@ -6629,7 +6629,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_spend_time_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: ["Back to stepper"],
                 uuid: "uuid_mod_1on1_activity_action_6",
@@ -10268,7 +10268,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Have you spent time with your teen already? Try it again today – you are doing so well! \n\nTap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg">: see your success! https://plh-demo1.idems.international/chat/msg-info?character=guide',
+                text: 'Have you spent time with your teen already? Try it again today – you are doing so well! \n\nTap your ParentPoint <img class="icon" src="plh_images/habits/habit_spend_time_icon.svg">: see your success! https://plh-demo1.idems.international/chat/msg-info?character=guide',
                 type: "send_msg",
                 quick_replies: ["Ideas to spend time with your teen"],
                 uuid: "uuid_mod_1on1_activity_reminder_action_0",
@@ -10664,7 +10664,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_spend_time_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: ["Back to stepper"],
                 uuid: "uuid_mod_1on1_fun_action_4",
@@ -11003,7 +11003,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_relax_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_praise_emo_action_6",
@@ -11406,7 +11406,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"> </p>\n<p>I was busy and my older daughter actually helped her sister with her homework. Usually they just fight!</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_1.svg"> </p>\n<p>I was busy and my older daughter actually helped her sister with her homework. Usually they just fight!</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next"],
                 uuid: "uuid_mod_praise_intro_action_2",
@@ -11466,7 +11466,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"></p>\n<p>Here’s the parenting skill: if I tell my daughters how proud I am of them for doing this, then they will want to do it again.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_praise/illustrated_story/@fields.guidenumber/is_2.svg"></p>\n<p>Here’s the parenting skill: if I tell my daughters how proud I am of them for doing this, then they will want to do it again.</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_praise_intro_action_3",
@@ -12754,7 +12754,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_praise_teen_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: ["Back to stepper"],
                 uuid: "uuid_mod_praise_activity_review_action_8",
@@ -12896,7 +12896,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_praise_teen_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_praise_teen_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_praise_act_teen_reminder_action_1",
@@ -13060,7 +13060,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_spend_time_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: ["Back to stepper"],
                 uuid: "uuid_mod_praise_fun_action_2",
@@ -13417,7 +13417,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'Tap your ParentPoint <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">: see your success!',
+                text: 'Tap your ParentPoint <img class="icon" src="plh_images/habits/habit_relax_icon.svg">: see your success!',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_mod_instruct_emo_action_7",
@@ -13695,7 +13695,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/teen_shout.svg"></p>\n<p>@fields.second_guide: "Stop making so much noise!"</p>\n<p>@fields.guide_teen: "I hate you!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/teen_shout.svg"></p>\n<p>@fields.second_guide: "Stop making so much noise!"</p>\n<p>@fields.guide_teen: "I hate you!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next"],
                 uuid: "uuid_mod_instruct_intro_action_0",
@@ -13833,7 +13833,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg">\nDO NOT THINK ABOUT AN ELEPHANT\n\nWhat are you thinking about?',
+                text: '<img class="block-image" src="plh_images/modules/mod_instruct/thought_experiment/te_1.svg">\nDO NOT THINK ABOUT AN ELEPHANT\n\nWhat are you thinking about?',
                 type: "send_msg",
                 quick_replies: ["Next"],
                 uuid: "uuid_mod_instruct_intro_action_3",
@@ -13893,7 +13893,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_2.svg"> \n‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)',
+                text: '<img class="block-image" src="plh_images/modules/mod_instruct/thought_experiment/te_2.svg"> \n‘Don’t do’ instructions make teens think about that thing. Sometimes they don’t understand what we do want from them. Also often they hate being told not to do things (don’t we all?)',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_intro_action_4",
@@ -13968,7 +13968,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_1.svg"> \nTHINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about? ',
+                text: '<img class="block-image" src="plh_images/modules/mod_instruct/thought_experiment/te_1.svg"> \nTHINK ABOUT A FURRY TIGER, THANK YOU! \n\nWhat are you thinking about? ',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_intro_action_5",
@@ -14043,7 +14043,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/thought_experiment/te_3.svg">\nPositive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.',
+                text: '<img class="block-image" src="plh_images/modules/mod_instruct/thought_experiment/te_3.svg">\nPositive, clear instructions help teens focus on what they should be doing. They also feel more respectful to a teenager.',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_intro_action_6",
@@ -14242,7 +14242,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_1.svg"></p>\n<p>@fields.neighbour: "Don’t make such a mess while I am cleaning the house. You are in the way!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_1.svg"></p>\n<p>@fields.neighbour: "Don’t make such a mess while I am cleaning the house. You are in the way!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next"],
                 uuid: "uuid_mod_instruct_story_action_1",
@@ -14302,7 +14302,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_2.svg"></p>\n<p>@fields.neighbour_teen_daughter: "But I need to practice for the school competition. You never let me do anything."</p>\n<p>@fields.neighbour: "Don\'t you talk back to me!"</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_2.svg"></p>\n<p>@fields.neighbour_teen_daughter: "But I need to practice for the school competition. You never let me do anything."</p>\n<p>@fields.neighbour: "Don\'t you talk back to me!"</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_story_action_2",
@@ -14377,7 +14377,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_3.svg"></p>\n<p>@fields.neighbour_teen_daughter: "Arrg!! Why am I being yelled at all the time????" </p>\n<p>@fields.neighbour: "That child is always making trouble."</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_3.svg"></p>\n<p>@fields.neighbour_teen_daughter: "Arrg!! Why am I being yelled at all the time????" </p>\n<p>@fields.neighbour: "That child is always making trouble."</p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_story_action_3",
@@ -14646,7 +14646,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_4.svg"></p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p>@fields.neighbour was cleaning the house while their daughter @fields.neighbour_teen_daughter was with her friends practicing dance moves.  </p>\n<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_4.svg"></p>\n<p></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next"],
                 uuid: "uuid_mod_instruct_story_action_9",
@@ -14706,7 +14706,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_5.svg"></p>\n<p>@fields.neighbour: "@fields.neighbour_teen_daughter, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance."</p>\n<p>@fields.neighbour_teen_daughter: "Okay!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_5.svg"></p>\n<p>@fields.neighbour: "@fields.neighbour_teen_daughter, it is nice to see you practicing your dance moves with your friends. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance."</p>\n<p>@fields.neighbour_teen_daughter: "Okay!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_story_action_10",
@@ -14781,7 +14781,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_6.svg"></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_6.svg"></p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_story_action_11",
@@ -14856,7 +14856,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_7.svg"></p>\n<p>@fields.neighbour: "Thank you for practicing outside while I finished cleaning the house, @fields.neighbour_teen_daughter . Now I have some time to watch your dance."</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_7.svg"></p>\n<p>@fields.neighbour: "Thank you for practicing outside while I finished cleaning the house, @fields.neighbour_teen_daughter . Now I have some time to watch your dance."</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_story_action_12",
@@ -14931,7 +14931,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: '<p><img class="block-image" src="assets/plh_assets/plh_images/modules/mod_instruct/illustrated_story/is_8.svg"> </p>\n<p>@fields.neighbour: "Wow, @fields.neighbour_teen_daughter! You have such good dance moves!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
+                text: '<p><img class="block-image" src="plh_images/modules/mod_instruct/illustrated_story/is_8.svg"> </p>\n<p>@fields.neighbour: "Wow, @fields.neighbour_teen_daughter! You have such good dance moves!"</p> https://plh-demo1.idems.international/chat/msg-info?isStory=true',
                 type: "send_msg",
                 quick_replies: ["Next", "Previous"],
                 uuid: "uuid_mod_instruct_story_action_13",
@@ -23087,7 +23087,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'This message contains an image inside the speech bubble. This text is above the image\n<img class="block-image" src="assets/plh_assets/plh_images/characters/guide1/neutral.svg">\nand this text is below.',
+                text: 'This message contains an image inside the speech bubble. This text is above the image\n<img class="block-image" src="plh_images/characters/guide1/neutral.svg">\nand this text is below.',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_example_media_action_2",
@@ -23433,7 +23433,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'After this text there is an in-line icon <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg"> followed by this text.',
+                text: 'After this text there is an in-line icon <img class="icon" src="plh_images/habits/habit_relax_icon.svg"> followed by this text.',
                 type: "send_msg",
                 quick_replies: [],
                 uuid: "uuid_example_icon_action_1",
@@ -23451,7 +23451,7 @@ const conversation: FlowTypes.Conversation[] = [
             actions: [
               {
                 attachments: [],
-                text: 'This message contains multiple icons: first icon <img class="icon" src="assets/plh_assets/plh_images/habits/habit_spend_time_icon.svg">, second <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">, third icon <img class="icon" src="assets/plh_assets/plh_images/habits/habit_relax_icon.svg">.',
+                text: 'This message contains multiple icons: first icon <img class="icon" src="plh_images/habits/habit_spend_time_icon.svg">, second <img class="icon" src="plh_images/habits/habit_relax_icon.svg">, third icon <img class="icon" src="plh_images/habits/habit_relax_icon.svg">.',
                 type: "send_msg",
                 quick_replies: ["Done"],
                 uuid: "uuid_example_icon_action_2",
