@@ -1917,10 +1917,6 @@ export const ASSETS_CONTENTS_LIST = {
     size: 13805802,
     checksum: "62f06faa95a979d128b4356db9bb396e",
   },
-  "quality_assurance/sample.mp3": {
-    size: 764176,
-    checksum: "0c481e87f2774b1bd41a0a70d9b70d11",
-  },
   "quality_assurance/test_audio.mp3": {
     size: 44397,
     checksum: "5ddddf934d2187d084c75b7e27797fae",
