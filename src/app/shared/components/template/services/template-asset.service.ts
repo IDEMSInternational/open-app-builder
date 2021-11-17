@@ -17,7 +17,7 @@ export class TemplateAssetService {
    * Fallsback to original path if does not exist
    */
   getTranslatedAssetPath(value: string) {
-    const currentLanguageCode = this.translateService.app_language_full_code;
+    const currentLanguageCode = this.translateService.app_language;
     const assetEntry = ASSETS_CONTENTS_LIST[value];
     if (!assetEntry) {
       console.error("Asset missing", value);
