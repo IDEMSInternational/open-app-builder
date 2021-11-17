@@ -162,37 +162,13 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Example Data List Title 1",
         _translations: {
           title: {
-            spa: true,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            es_sp: true,
           },
           text: {
-            spa: true,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            es_sp: true,
           },
-          bold_title: {
-            spa: false,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-          title_and_happy: {
-            spa: false,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
+          bold_title: {},
+          title_and_happy: {},
         },
         _translatedFields: {
           title: {
@@ -219,37 +195,13 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Example Data List Title 2",
         _translations: {
           title: {
-            spa: true,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            es_sp: true,
           },
           text: {
-            spa: true,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            es_sp: true,
           },
-          bold_title: {
-            spa: false,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-          title_and_happy: {
-            spa: false,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
+          bold_title: {},
+          title_and_happy: {},
         },
         _translatedFields: {
           title: {
@@ -274,12 +226,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "This text should define a default value for a field",
         _translations: {
           text: {
-            spa: true,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
+            es_sp: true,
           },
         },
         _translatedFields: {
