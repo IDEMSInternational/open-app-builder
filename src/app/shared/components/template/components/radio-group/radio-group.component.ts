@@ -20,7 +20,7 @@ import {
 import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
 import { TemplateService } from "../../services/template.service";
-import { getImageAssetPath, objectToArray } from "../../utils/template-utils";
+import { objectToArray } from "../../utils/template-utils";
 
 interface IButton {
   name: string | null;
@@ -161,10 +161,10 @@ export class TmplRadioGroupComponent
     Object.entries(button).forEach(([field, value]) => {
       switch (field) {
         case "image":
-          processed[field] = getImageAssetPath(value);
+          processed[field] = value;
           break;
         case "image_checked":
-          processed[field] = getImageAssetPath(value);
+          processed[field] = value;
           break;
         default:
           processed[field] = value;

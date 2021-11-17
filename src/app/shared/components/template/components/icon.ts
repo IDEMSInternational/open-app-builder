@@ -3,7 +3,7 @@ import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-tmpl-icon",
-  template: ` <svg-icon [src]="src"> </svg-icon> `,
+  template: ` <svg-icon [src]="src | plhAsset"> </svg-icon> `,
   encapsulation: ViewEncapsulation.ShadowDom,
   styles: [
     `
