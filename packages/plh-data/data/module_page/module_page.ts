@@ -10,7 +10,7 @@ const module_page: FlowTypes.Module_page[] = [
       {
         row_id: 1,
         type: "main_image",
-        media_asset: "assets/plh_assets/plh_images/modules/mod_welcome/image.svg",
+        media_asset: "plh_images/modules/mod_welcome/image.svg",
       },
       {
         row_id: 2,
@@ -59,7 +59,7 @@ const module_page: FlowTypes.Module_page[] = [
       {
         row_id: 1,
         type: "main_image",
-        media_asset: "assets/plh_assets/plh_images/modules/mod_1on1/image.svg",
+        media_asset: "plh_images/modules/mod_1on1/image.svg",
       },
       {
         row_id: 2,
@@ -120,7 +120,7 @@ const module_page: FlowTypes.Module_page[] = [
       {
         row_id: 1,
         type: "main_image",
-        media_asset: "assets/plh_assets/plh_images/modules/mod_praise/image.svg",
+        media_asset: "plh_images/modules/mod_praise/image.svg",
       },
       {
         row_id: 2,
@@ -181,7 +181,7 @@ const module_page: FlowTypes.Module_page[] = [
       {
         row_id: 1,
         type: "main_image",
-        media_asset: "assets/plh_assets/plh_images/modules/mod_instruct/image.svg",
+        media_asset: "plh_images/modules/mod_instruct/image.svg",
       },
       {
         row_id: 2,
@@ -242,7 +242,7 @@ const module_page: FlowTypes.Module_page[] = [
       {
         row_id: 1,
         type: "main_image",
-        media_asset: "assets/plh_assets/plh_images/modules/mod_1on1/image.svg",
+        media_asset: "plh_images/modules/mod_1on1/image.svg",
       },
       {
         row_id: 2,

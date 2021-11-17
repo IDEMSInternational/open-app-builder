@@ -10,8 +10,9 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently -r \"npm run data-models:serve\" \"npm run data:serve\" \"ng serve --open\"",
-    "build": "npm run data-models:build && npm run data:build && ng build --prod",
-    "build:dev": "npm run data-models:build && npm run data:build && ng build --configuration=development",
+    "precompile": "npm run data-models:build && npm run data:build",
+    "build": "npm run precompile && ng build --prod",
+    "build:dev": "npm run precompile && ng build --configuration=development",
     "data:build": "yarn workspace plh-data build",
     "data:serve": "yarn workspace plh-data serve",
     "data-models:build": "yarn workspace data-models build",

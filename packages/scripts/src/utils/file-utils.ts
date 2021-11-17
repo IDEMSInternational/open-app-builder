@@ -12,6 +12,13 @@ export function ArrayToChunks(array: any[], chunk_size: number) {
     .map((begin) => array.slice(begin, begin + chunk_size));
 }
 
+export function listFolderNames(folderPath: string) {
+  return fs
+    .readdirSync(folderPath, { withFileTypes: true })
+    .filter((v) => v.isDirectory())
+    .map((v) => v.name);
+}
+
 /**
  * find files by a given extension recursively, returning full paths
  * @param ext - file extension (without '.'), e.g. 'xlsx' or 'json' (leave blank for all files)
