@@ -1,9 +1,21 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
-import { capitalizeFirstLetter, recursiveFindByExtension, convertJsonToTs } from "./utils";
+import {
+  capitalizeFirstLetter,
+  recursiveFindByExtension,
+  convertJsonToTs,
+  generateFolderFlatMap,
+  isCountryLanguageCode,
+} from "./utils";
 import { spawnSync } from "child_process";
-import { PLH_ASSETS_PATH, PLH_DATA_PATH, ROOT_DIR } from "./paths";
+import {
+  PLH_ASSETS_INDEX_PATH,
+  PLH_DATA_ASSETS_PATH,
+  PLH_DATA_ASSETS_SUBFOLDER_PATH,
+  PLH_DATA_DATA_PATH,
+  ROOT_DIR,
+} from "./paths";
 
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
@@ -16,23 +28,27 @@ const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_a
 export function main(doAssetFolderCheck = true) {
   // Translations Compilation
   console.log(chalk.yellow("Compiling existing translations"));
-  const TRANSLATIONS_FOLDER = path.resolve(PLH_DATA_PATH, "../translations/from_translators");
-  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(PLH_DATA_PATH, "../translations/compiled");
+  const TRANSLATIONS_FOLDER = path.resolve(PLH_DATA_DATA_PATH, "../translations/from_translators");
+  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(PLH_DATA_DATA_PATH, "../translations/compiled");
   compileTranslationFiles(DATA_INPUT_FOLDER, TRANSLATIONS_OUTPUT_FOLDER, TRANSLATIONS_FOLDER);
 
   // App files
   console.log(chalk.yellow("Writing app files"));
-  writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_PATH);
+  writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_DATA_PATH);
+
   if (doAssetFolderCheck) {
-    copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_ASSETS_PATH);
+    copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_DATA_ASSETS_SUBFOLDER_PATH);
+    generateDataAssetsIndexFile();
   }
   generateAppDataIndexFiles();
   writeTranslationTsFiles(
     path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
-    path.resolve(PLH_DATA_PATH, "translation_strings")
+    path.resolve(PLH_DATA_DATA_PATH, "translation_strings")
   );
+
   console.log(chalk.yellow("Cleaning Output Files"));
-  cleanAppTsOutput(PLH_DATA_PATH);
+  runPrettierCodeTidy(PLH_DATA_DATA_PATH);
+  runPrettierCodeTidy(PLH_DATA_ASSETS_PATH);
 
   // New translations output
   console.log(chalk.yellow("Generating new translation files"));
@@ -50,7 +66,7 @@ if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
 function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
   fs.ensureDirSync(targetFolder);
   fs.emptyDirSync(targetFolder);
-  fs.removeSync(path.resolve(PLH_DATA_PATH, "translation_strings", "_combined.json"));
+  fs.removeSync(path.resolve(PLH_DATA_DATA_PATH, "translation_strings", "_combined.json"));
   // convert all individual strings to ts, but ignore combined
   const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
     (filepath) => path.basename(filepath) !== "_combined.json"
@@ -105,8 +121,12 @@ function generateLocalTsOutput(json: any, flow_type: string) {
   `;
 }
 
-function cleanAppTsOutput(outputFolder: string) {
-  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${outputFolder}/**/*.ts --loglevel error`;
+/**
+ * Run prettier to automatically format code in given folder path
+ * NOTE - by default will only format .ts files
+ */
+function runPrettierCodeTidy(folderPath: string) {
+  const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
@@ -134,13 +154,52 @@ function compileTranslationFiles(
 }
 
 /**
+ * Create an index recursively listing all assets in plh-data assets folder.
+ * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
+ * corresponding translation files
+ * */
+function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_SUBFOLDER_PATH) {
+  const topLevelFolders = fs
+    .readdirSync(assetsBase, { withFileTypes: true })
+    .filter((v) => v.isDirectory())
+    .map((v) => v.name);
+  const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
+
+  // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
+  const globalFolders = topLevelFolders.filter((name) => !isCountryLanguageCode(name));
+  const globalAassetsFilter = (pathName: string) => globalFolders.includes(pathName.split("/")[0]);
+  const globalAssets: any = generateFolderFlatMap(assetsBase, true, globalAassetsFilter);
+  const untrackedAssets: any = [];
+
+  // populate tracked and untracked translated assets
+  for (const languageFolder of languageFolders) {
+    const languageFolderPath = path.resolve(assetsBase, languageFolder);
+    const translatedAssets = generateFolderFlatMap(languageFolderPath);
+    Object.entries(translatedAssets).forEach(([name, value]) => {
+      if (globalAssets.hasOwnProperty(name)) {
+        globalAssets[name].translations = globalAssets[name].translations || {};
+        globalAssets[name].translations[languageFolder] = value;
+      } else {
+        untrackedAssets.push(`${languageFolder}/${name}`);
+      }
+    });
+  }
+
+  // write output index file for tracked and untracked assets
+  const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
+  \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
+
+  fs.writeFileSync(PLH_ASSETS_INDEX_PATH, outputTS);
+}
+
+/**
  * Create a default index.ts file in each data folder to export all other local
  * data files (and produce a singular import)
  */
 function generateAppDataIndexFiles() {
-  const dataDirs = fs.readdirSync(PLH_DATA_PATH);
+  const dataDirs = fs.readdirSync(PLH_DATA_DATA_PATH);
   for (const folderName of dataDirs) {
-    const dirPath = `${PLH_DATA_PATH}/${folderName}`;
+    const dirPath = `${PLH_DATA_DATA_PATH}/${folderName}`;
     const dataFiles = fs.readdirSync(dirPath);
     const importStatements = [];
     const exportStatements = [];

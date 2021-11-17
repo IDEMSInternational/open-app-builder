@@ -31,6 +31,11 @@ export class TemplateTranslateService {
     }
   }
 
+  /** Full country-language code, e.g. `za-eng` */
+  get app_language_full_code() {
+    return this.hackGetLanguageCodeFromName(this.app_language);
+  }
+
   /** Set the local storage variable that tracks the app language */
   setLanguage(code: string, updateDB = true) {
     if (code) {
@@ -115,5 +120,24 @@ export class TemplateTranslateService {
       // console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
     return translated;
+  }
+
+  /**
+   * When languages is set only the language code is provided instead of full specified
+   * (e.g. 'eng' instead of 'za-eng'). Ideally full language info should be provided
+   *
+   * HACK workaround to populate for current app languages
+   **/
+  private hackGetLanguageCodeFromName(name: string) {
+    if (!name.includes("-")) {
+      switch (name) {
+        case "spa":
+          return "es-spa";
+        case "swa":
+          return "tz-swa";
+        default:
+          return `za-${name}`;
+      }
+    }
   }
 }

@@ -11,3 +11,12 @@ export function booleanStringToBoolean(str: string) {
   }
   return str;
 }
+
+/**
+ * Simple regex to try and match standard country-language format
+ * Currently restricted to any codes in the format `ab-abc`
+ */
+export function isCountryLanguageCode(str: string) {
+  const regex = /[a-z]{2}-[a-z]{3}/gi;
+  return regex.test(str);
+}
