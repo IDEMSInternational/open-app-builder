@@ -244,7 +244,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "audio",
         name: "audio_1",
-        value: "plh_audio/sample.mp3",
+        value: "quality_assurance/test_audio.mp3",
         _translations: {
           value: {
             spa: false,
@@ -298,7 +298,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "audio",
         name: "audio_1",
-        value: "plh_audio/sample.mp3",
+        value: "quality_assurance/test_audio.mp3",
         _translations: {
           value: {
             spa: false,
@@ -19942,7 +19942,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "audio",
         name: "audio_src",
-        value: "plh_audio/sample.mp3",
+        value: "quality_assurance/test_audio.mp3",
         _translations: {
           value: {
             spa: false,
@@ -31368,24 +31368,9 @@ const template: FlowTypes.Template[] = [
         _nested_name: "global_box",
       },
       {
-        name: "audio_title",
-        value: "Audio message",
-        _translations: {
-          value: {
-            spa: true,
-            swa: false,
-            afr: false,
-            tsa: false,
-            xho: false,
-            zul: false,
-          },
-        },
-        type: "set_variable",
-        _nested_name: "audio_title",
-      },
-      {
-        name: "audio_src",
-        value: "plh_audio/quality_assurance/test.eng.mp3",
+        type: "title",
+        name: "translated_media",
+        value: "Translated Media",
         _translations: {
           value: {
             spa: false,
@@ -31396,6 +31381,110 @@ const template: FlowTypes.Template[] = [
             zul: false,
           },
         },
+        exclude_from_translation: true,
+        _nested_name: "translated_media",
+      },
+      {
+        type: "text",
+        name: "image_translated_text",
+        value: "The image below should change with language",
+        _translations: {
+          value: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "image_translated_text",
+      },
+      {
+        type: "image",
+        name: "image_translated",
+        value: "quality_assurance/test_image.png",
+        _translations: {
+          value: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        style_list: ["max-width:250px"],
+        _nested_name: "image_translated",
+      },
+      {
+        type: "text",
+        name: "image_translation_missing_text",
+        value: "The image below will not change as the translation file is missing",
+        _translations: {
+          value: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "image_translation_missing_text",
+      },
+      {
+        type: "image",
+        name: "image_translation_missing",
+        value: "quality_assurance/test_image_no_translations.png",
+        _translations: {
+          value: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        style_list: ["max-width:250px"],
+        _nested_name: "image_translation_missing",
+      },
+      {
+        name: "audio_title",
+        value: "Audio message (changes with language)",
+        _translations: {
+          value: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "audio_title",
+      },
+      {
+        name: "audio_src",
+        value: "quality_assurance/test_audio.mp3",
+        _translations: {
+          value: {
+            spa: false,
+            swa: false,
+            afr: false,
+            tsa: false,
+            xho: false,
+            zul: false,
+          },
+        },
+        exclude_from_translation: true,
         type: "set_variable",
         _nested_name: "audio_src",
       },
@@ -31413,6 +31502,7 @@ const template: FlowTypes.Template[] = [
             zul: false,
           },
         },
+        exclude_from_translation: true,
         parameter_list: {
           title: "@local.audio_title",
         },
@@ -33496,7 +33586,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "audio",
         name: "audio_1",
-        value: "plh_audio/sample.mp3",
+        value: "quality_assurance/test_audio.mp3",
         _translations: {
           value: {
             spa: false,
@@ -33558,7 +33648,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "audio",
         name: "audio_3",
-        value: "plh_audio/sample.mp3",
+        value: "quality_assurance/test_audio.mp3",
         _translations: {
           value: {
             spa: false,
@@ -33605,7 +33695,7 @@ const template: FlowTypes.Template[] = [
     rows: [
       {
         name: "source_file",
-        value: "plh_audio/sample.mp3",
+        value: "quality_assurance/test_audio.mp3",
         _translations: {
           value: {
             spa: false,

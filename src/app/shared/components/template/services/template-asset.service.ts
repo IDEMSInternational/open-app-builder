@@ -5,6 +5,9 @@ import { TemplateTranslateService } from "./template-translate.service";
 
 const ASSETS_BASE = `assets/${APP_ASSETS_SUBFOLDER}`;
 
+/** Expected folder containing global assets (TODO - merge with scripts) */
+const ASSETS_GLOBAL_FOLDER_NAME = "global";
+
 @Injectable({ providedIn: "root" })
 export class TemplateAssetService {
   constructor(private translateService: TemplateTranslateService) {}
@@ -16,10 +19,13 @@ export class TemplateAssetService {
   getTranslatedAssetPath(value: string) {
     const currentLanguageCode = this.translateService.app_language_full_code;
     const assetEntry = ASSETS_CONTENTS_LIST[value];
+    if (!assetEntry) {
+      console.error("Asset missing", value);
+    }
     if (assetEntry?.translations?.[currentLanguageCode]) {
       return this.convertPLHRelativePathToAssetPath(`${currentLanguageCode}/${value}`);
     }
-    return this.convertPLHRelativePathToAssetPath(value);
+    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${value}`);
   }
 
   /**

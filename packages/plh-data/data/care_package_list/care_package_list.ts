@@ -10,13 +10,13 @@ const care_package_list: FlowTypes.Care_package_list[] = [
         id: "care_package_self",
         label: "Self care",
         description: "Taking care of yourself is an important parenting skill!",
-        icon_asset: "assets/plh_assets/plh_images/care_packages/care_package_self.svg",
+        icon_asset: "plh_images/care_packages/care_package_self.svg",
         habit_list: ["habit_relax", "habit_treat_yourself", "habit_praise_yourself"],
       },
       {
         id: "care_package_teen",
         label: "Teen care",
-        icon_asset: "assets/plh_assets/plh_images/care_packages/care_package_teen.svg",
+        icon_asset: "plh_images/care_packages/care_package_teen.svg",
         habit_list: ["habit_spend_time", "habit_praise_teen"],
       },
       {

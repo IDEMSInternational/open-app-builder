@@ -11,12 +11,12 @@ const data_list: FlowTypes.Data_list[] = [
       {
         id: "item_1",
         text: "Item 1 text",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_relax.svg",
+        image_asset: "plh_images/habits/habit_relax.svg",
       },
       {
         id: "item_2",
         text: "Item 2 text",
-        image_asset: "assets/plh_assets/plh_images/icons/play_white.svg",
+        image_asset: "plh_images/icons/play_white.svg",
       },
       {
         id: "item_3",
@@ -157,8 +157,8 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "example_lang_1",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_relax.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_relax.json",
+        image_asset: "plh_images/habits/habit_relax.svg",
+        lottie_asset: "plh_lottie/habits/habit_relax.json",
         title: "Example Data List Title 1",
         _translations: {
           title: {
@@ -214,8 +214,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "example_lang_2",
-        image_asset: "assets/plh_assets/plh_images/habits/habit_treat_yourself.svg",
-        lottie_asset: "assets/plh_assets/plh_lottie/habits/habit_treat_yourself.json",
+        image_asset: "plh_images/habits/habit_treat_yourself.svg",
+        lottie_asset: "plh_lottie/habits/habit_treat_yourself.json",
         title: "Example Data List Title 2",
         _translations: {
           title: {
