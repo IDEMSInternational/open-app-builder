@@ -28,6 +28,7 @@ export class TmplParentPointBoxComponent
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
   lottie_src: string | null;
+  video_src: string | null;
   windowWidth: number;
   scaleFactor: number = 1;
   text: string | null;
@@ -77,6 +78,7 @@ export class TmplParentPointBoxComponent
   }
 
   getParams() {
+    this.video_src = getStringParamFromTemplateRow(this._row, "video_src", null);
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
     this.play_celebration = getBooleanParamFromTemplateRow(this._row, "play_celebration", true);
