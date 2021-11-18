@@ -15,7 +15,7 @@
     "app-data-convert": "ts-node src/app-data-convert/index.ts",
     "app-data-copy": "ts-node src/app-data-copy.ts",
     "app-data-sync": "npm run gdrive-download && npm run app-data-convert && npm run app-data-copy",
-    "sync-plh-content": "echo \"Script deprecated, run: app-data-sync\" && npm run sync-plh-content",
+    "sync-plh-content": "echo \"Script renamed, running: app-data-sync\" && npm run app-data-sync",
     "version": "ts-node  src/version.ts",
     "xlsx-to-json": "ts-node  src/plh-xlsx-to-json/index.ts",
     "sync-single": "ts-node src/sync-single.ts"
