@@ -16,7 +16,7 @@ export const RESOURCE_FOLDER_PATH = path.join(ROOT_DIR, "resources");
 export const ANDROID_RES_PATH = path.join(ROOT_DIR, "android/app/src/main/res");
 export const APP_BUILD_GRADLE_PATH = path.join(ROOT_DIR, "android/app/build.gradle");
 
-// PLH DATA
+// APP DATA
 // TODO - ideally should be renamed to more generic IDEMS app_data folder/package
 const APP_DATA_PACKAGE_PATH = path.join(ROOT_DIR, "packages/app-data");
 export const APP_DATA_DATA_PATH = path.join(APP_DATA_PACKAGE_PATH, "data");

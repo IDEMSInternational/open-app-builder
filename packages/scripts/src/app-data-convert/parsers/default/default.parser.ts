@@ -1,13 +1,24 @@
 import chalk from "chalk";
+import path from "path";
 import * as fs from "fs-extra";
 import { FlowTypes } from "../../../../types";
 import { AbstractParser } from "../abstract.parser";
-import { parsePLHListString, parsePLHCollectionString, parsePLHActionString } from "../../utils";
+import {
+  parseAppDataListString,
+  parseAppDataCollectionString,
+  parseAppDataActionString,
+} from "../../utils";
 import { SCRIPTS_WORKSPACE_PATH } from "../../../paths";
+import { getActiveDeployment } from "../../../deployments";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
 
-const ASSETS_CACHE_PATH = `${SCRIPTS_WORKSPACE_PATH}/src/gdrive-download/cache/plh_assets`;
+const APP_DEPLOYMENT = getActiveDeployment();
+const ASSETS_CACHE_PATH = path.join(
+  SCRIPTS_WORKSPACE_PATH,
+  "src/gdrive-download/cache",
+  APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER
+);
 
 /**
  * The default processor performs the following:
@@ -103,15 +114,15 @@ export class DefaultParser implements AbstractParser {
         row[field] = this.handleAssetLinks(row[field], flow.flow_name);
       }
       if (field.endsWith("_list")) {
-        row[field] = parsePLHListString(row[field]);
+        row[field] = parseAppDataListString(row[field]);
       }
       if (field.endsWith("_collection")) {
-        row[field] = parsePLHCollectionString(row[field]);
+        row[field] = parseAppDataCollectionString(row[field]);
       }
       // parse action list
       if (field.endsWith("action_list")) {
         row[field] = row[field]
-          .map((actionString) => parsePLHActionString(actionString))
+          .map((actionString) => parseAppDataActionString(actionString))
           .filter((action) => action != null);
       }
       // assign default translation and track as metadata
