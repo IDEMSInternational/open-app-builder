@@ -8,7 +8,7 @@ It's current functionality is limited mostly just to copy source and output fold
 
 Generate translations files from input
 ```
-yarn workspace translations start generate -i ../scripts/src/plh-data-convert/output -o ../plh-data/translations
+yarn workspace translations start generate -i ../scripts/src/app-data-convert/output -o ../app-data/translations
 ```
 
 ## References and Links
