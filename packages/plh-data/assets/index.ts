@@ -1,4 +1,4 @@
-export const UNTRACKED_ASSETS = ["es-spa/quality_assurance/test_image_untracked.png"];
+export const UNTRACKED_ASSETS = ["es_sp/quality_assurance/test_image_untracked.png"];
 
 export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/gb.svg": {
@@ -1921,7 +1921,7 @@ export const ASSETS_CONTENTS_LIST = {
     size: 44397,
     checksum: "5ddddf934d2187d084c75b7e27797fae",
     translations: {
-      "es-spa": {
+      es_sp: {
         size: 34365,
         checksum: "a53e8b35c7985e051a7b9b9742879b03",
       },
@@ -1931,7 +1931,7 @@ export const ASSETS_CONTENTS_LIST = {
     size: 2032,
     checksum: "e6d6c6a12ca13a6277084e01c088378c",
     translations: {
-      "es-spa": {
+      es_sp: {
         size: 1891,
         checksum: "f44069fc2c1d641dae929631c17fdbec",
       },

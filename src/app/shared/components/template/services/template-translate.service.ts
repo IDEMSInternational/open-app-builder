@@ -7,7 +7,7 @@ import { FlowTypes } from "../models";
 // assign a local storage field that also matches lookup for use in @fields._app_language
 // (might be changed in future to better indicate read-only field)
 const APP_LANGUAGE_FIELD = "rp-contact-field._app_language";
-const DEFAULT_LANGUAGE = "eng";
+const DEFAULT_LANGUAGE = "za_en";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -16,10 +16,12 @@ const DEFAULT_LANGUAGE = "eng";
  * are already pre-populated in the column (so just a case to return the current language field)
  */
 export class TemplateTranslateService {
-  /** Provide an observable so services can subscribe and respond to language changes*/
+  /**
+   * Provide an observable so services can subscribe and respond to language changes
+   * Formatted as country-language code, e.g. za-en
+   **/
   app_language$ = new BehaviorSubject<string>(null);
 
-  app_language: string;
   translation_strings = {};
 
   constructor(private localStorageService: LocalStorageService) {
@@ -31,9 +33,8 @@ export class TemplateTranslateService {
     }
   }
 
-  /** Full country-language code, e.g. `za-eng` */
-  get app_language_full_code() {
-    return this.hackGetLanguageCodeFromName(this.app_language);
+  get app_language() {
+    return this.app_language$.value;
   }
 
   /** Set the local storage variable that tracks the app language */
@@ -42,7 +43,6 @@ export class TemplateTranslateService {
       if (updateDB) {
         this.localStorageService.setString(APP_LANGUAGE_FIELD, code);
       }
-      this.app_language = code;
       this.translation_strings = TRANSLATION_STRINGS[code] || {};
       // update observable for subscribers
       this.app_language$.next(code);
@@ -120,24 +120,5 @@ export class TemplateTranslateService {
       // console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
     return translated;
-  }
-
-  /**
-   * When languages is set only the language code is provided instead of full specified
-   * (e.g. 'eng' instead of 'za-eng'). Ideally full language info should be provided
-   *
-   * HACK workaround to populate for current app languages
-   **/
-  private hackGetLanguageCodeFromName(name: string) {
-    if (!name.includes("-")) {
-      switch (name) {
-        case "spa":
-          return "es-spa";
-        case "swa":
-          return "tz-swa";
-        default:
-          return `za-${name}`;
-      }
-    }
   }
 }
