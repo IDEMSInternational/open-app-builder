@@ -167,6 +167,63 @@ const tour: FlowTypes.Tour[] = [
   },
   {
     flow_type: "tour",
+    flow_name: "debug_tour_translation",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "step",
+        title: "Welcome to @global.parent_app",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          message_text: {
+            tz_sw: true,
+            za_af: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        message_text:
+          "<p>Welcome to @global.parent_app.</p>\n\n<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app will support you and your family in three ways:</p>",
+        template_component_name: "home_screen",
+        route: "template/home_screen",
+      },
+      {
+        type: "step",
+        title: "@global.weekly_workshops quick start",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          message_text: {
+            tz_sw: true,
+            za_af: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        message_text:
+          "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
+        template_component_name: "tile_weekly_workshops",
+        route: "template/home_screen",
+      },
+    ],
+    _xlsxPath: "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_tour.xlsx",
+  },
+  {
+    flow_type: "tour",
     flow_name: "example_tour_templates",
     status: "released",
     flow_subtype: "debug",
