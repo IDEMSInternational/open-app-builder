@@ -18,7 +18,7 @@ export const APP_BUILD_GRADLE_PATH = path.join(ROOT_DIR, "android/app/build.grad
 
 // PLH DATA
 // TODO - ideally should be renamed to more generic IDEMS app_data folder/package
-const PLH_DATA_PACKAGE_PATH = path.join(ROOT_DIR, "packages/plh-data");
-export const PLH_DATA_DATA_PATH = path.join(PLH_DATA_PACKAGE_PATH, "data");
-export const PLH_DATA_ASSETS_PATH = path.join(PLH_DATA_PACKAGE_PATH, "assets");
-export const PLH_ASSETS_INDEX_PATH = path.resolve(PLH_DATA_ASSETS_PATH, "index.ts");
+const APP_DATA_PACKAGE_PATH = path.join(ROOT_DIR, "packages/app-data");
+export const APP_DATA_DATA_PATH = path.join(APP_DATA_PACKAGE_PATH, "data");
+export const APP_DATA_ASSETS_PATH = path.join(APP_DATA_PACKAGE_PATH, "assets");
+export const APP_DATA_ASSETS_INDEX_PATH = path.resolve(APP_DATA_ASSETS_PATH, "index.ts");
