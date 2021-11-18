@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { ASSETS_CONTENTS_LIST } from "plh-data";
+import { ASSETS_CONTENTS_LIST } from "app-data";
 import { TemplateTranslateService } from "./template-translate.service";
 
 /** Synced assets are automatically copied during build to asset subfolder */
-const ASSETS_BASE = `assets/_app_assets`;
+const ASSETS_BASE = `assets/_app_data_assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
@@ -29,11 +29,11 @@ export class TemplateAssetService {
   }
 
   /**
-   * When asset paths are provided it is relative to the plh_assets folder populated from
+   * When asset paths are provided it is relative to the assets folder populated from
    * google drive. Rewrite paths to add correct prefix, fixing common authoring mistakes
    */
   private convertPLHRelativePathToAssetPath(value: string) {
-    // ensure starts either "assets/plh_assets" or "/assets/plh_assets"
+    // ensure starts either "assets" or "/assets/"
     const regex = new RegExp(`^(\/)?assets\/`, "gi");
     let transformed = value;
     if (!regex.test(transformed)) {

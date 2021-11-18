@@ -5,8 +5,8 @@ Example `angular.json` config snippet
 ```
 {
     "glob": "**/*",
-    "input": "node_modules/plh-data/assets",
-    "output": "assets/_app_assets"
+    "input": "node_modules/app-data/assets",
+    "output": "assets/_app_data_assets"
 },
 ```
 

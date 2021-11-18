@@ -4,7 +4,7 @@ This package contains data used in the PLH version of the app
 ## Syncing data updates
 Data can be syncd from corresponding google drive folders via the script
 ```
-npm run scripts sync-plh-content
+npm run scripts app-data-sync
 ```
 
 ## Translations

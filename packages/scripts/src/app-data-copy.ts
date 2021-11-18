@@ -11,50 +11,62 @@ import {
   logError,
 } from "./utils";
 import { spawnSync } from "child_process";
-import { PLH_ASSETS_INDEX_PATH, PLH_DATA_ASSETS_PATH, PLH_DATA_DATA_PATH, ROOT_DIR } from "./paths";
+import {
+  APP_DATA_ASSETS_INDEX_PATH,
+  APP_DATA_ASSETS_PATH,
+  APP_DATA_DATA_PATH,
+  ROOT_DIR,
+} from "./paths";
+import { getActiveDeployment } from "./deployments";
+
+const APP_DEPLOYMENT = getActiveDeployment();
 
 // Setup folders
-const DATA_INPUT_FOLDER = path.join(__dirname, "./plh-data-convert/output");
-const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
+const DATA_INPUT_FOLDER = path.join(__dirname, "./app-data-convert/output");
+const ASSETS_INPUT_FOLDER = path.join(
+  __dirname,
+  "./gdrive-download/output",
+  APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER
+);
 
 /** Expected folder containing global assets */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 /**
- * A simple script to copy data exported from gdrive and processed for plh into the app data folder
+ * A simple script to copy data exported from gdrive and processed into the app data folder
  * @param doAssetFolderCheck whether to copy assets across (e.g. ignored when syncing single files)
  **/
 export function main(doAssetFolderCheck = true) {
   // Translations Compilation
   console.log(chalk.yellow("Compiling existing translations"));
-  const TRANSLATIONS_FOLDER = path.resolve(PLH_DATA_DATA_PATH, "../translations/from_translators");
-  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(PLH_DATA_DATA_PATH, "../translations/compiled");
+  const TRANSLATIONS_FOLDER = path.resolve(APP_DATA_DATA_PATH, "../translations/from_translators");
+  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(APP_DATA_DATA_PATH, "../translations/compiled");
   compileTranslationFiles(DATA_INPUT_FOLDER, TRANSLATIONS_OUTPUT_FOLDER, TRANSLATIONS_FOLDER);
 
   // App files
   console.log(chalk.yellow("Writing app files"));
-  writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), PLH_DATA_DATA_PATH);
+  writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), APP_DATA_DATA_PATH);
 
   if (doAssetFolderCheck) {
     assetsQualityCheck(ASSETS_INPUT_FOLDER);
-    copyAppAssetFiles(ASSETS_INPUT_FOLDER, PLH_DATA_ASSETS_PATH);
+    copyAppAssetFiles(ASSETS_INPUT_FOLDER, APP_DATA_ASSETS_PATH);
     generateDataAssetsIndexFile();
   }
   generateAppDataIndexFiles();
   writeTranslationTsFiles(
     path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
-    path.resolve(PLH_DATA_DATA_PATH, "translation_strings")
+    path.resolve(APP_DATA_DATA_PATH, "translation_strings")
   );
 
   console.log(chalk.yellow("Cleaning Output Files"));
-  runPrettierCodeTidy(PLH_DATA_DATA_PATH);
-  runPrettierCodeTidy(PLH_DATA_ASSETS_PATH);
+  runPrettierCodeTidy(APP_DATA_DATA_PATH);
+  runPrettierCodeTidy(APP_DATA_ASSETS_PATH);
 
   // New translations output
   console.log(chalk.yellow("Generating new translation files"));
   generateTranslationFiles(
-    "../scripts/src/plh-data-convert/output",
-    "../plh-data/translations/to_translate"
+    "../scripts/src/app-data-convert/output",
+    "../app-data/translations/to_translate"
   );
   console.log(chalk.green("Copy Complete"));
 }
@@ -66,7 +78,7 @@ if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
 function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
   fs.ensureDirSync(targetFolder);
   fs.emptyDirSync(targetFolder);
-  fs.removeSync(path.resolve(PLH_DATA_DATA_PATH, "translation_strings", "_combined.json"));
+  fs.removeSync(path.resolve(APP_DATA_DATA_PATH, "translation_strings", "_combined.json"));
   // convert all individual strings to ts, but ignore combined
   const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
     (filepath) => path.basename(filepath) !== "_combined.json"
@@ -158,7 +170,7 @@ function runPrettierCodeTidy(folderPath: string) {
 
 /**
  * Call translation scripts to also add a copy of files to translations
- * TODO - ideally this and all above scripts should be called from within plh-data workspace instead
+ * TODO - ideally this and all above scripts should be called from within app-data workspace instead
  * TODO - could also install as node_module and run as bin
  * */
 function generateTranslationFiles(inputFolder: string, outputFolder: string) {
@@ -168,7 +180,7 @@ function generateTranslationFiles(inputFolder: string, outputFolder: string) {
 
 /**
  * Call translation scripts to also process compiled translations
- * TODO - ideally this and all above scripts should be called from within plh-data workspace instead
+ * TODO - ideally this and all above scripts should be called from within app-data workspace instead
  **/
 function compileTranslationFiles(
   sourceFolder: string,
@@ -180,11 +192,11 @@ function compileTranslationFiles(
 }
 
 /**
- * Create an index recursively listing all assets in plh-data assets folder.
+ * Create an index recursively listing all assets in app-data assets folder.
  * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
  * corresponding translation files
  * */
-function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_PATH) {
+function generateDataAssetsIndexFile(assetsBase = APP_DATA_ASSETS_PATH) {
   const topLevelFolders = listFolderNames(assetsBase);
   const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
 
@@ -211,7 +223,7 @@ function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_PATH) {
   const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
   \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
 
-  fs.writeFileSync(PLH_ASSETS_INDEX_PATH, outputTS);
+  fs.writeFileSync(APP_DATA_ASSETS_INDEX_PATH, outputTS);
 }
 
 /**
@@ -219,9 +231,9 @@ function generateDataAssetsIndexFile(assetsBase = PLH_DATA_ASSETS_PATH) {
  * data files (and produce a singular import)
  */
 function generateAppDataIndexFiles() {
-  const dataDirs = fs.readdirSync(PLH_DATA_DATA_PATH);
+  const dataDirs = fs.readdirSync(APP_DATA_DATA_PATH);
   for (const folderName of dataDirs) {
-    const dirPath = `${PLH_DATA_DATA_PATH}/${folderName}`;
+    const dirPath = `${APP_DATA_DATA_PATH}/${folderName}`;
     const dataFiles = fs.readdirSync(dirPath);
     const importStatements = [];
     const exportStatements = [];

@@ -5369,6 +5369,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"app-data@workspace:*, app-data@workspace:packages/app-data":
+  version: 0.0.0-use.local
+  resolution: "app-data@workspace:packages/app-data"
+  dependencies:
+    "@types/node": ^15.12.4
+    typescript: ~4.2.4
+  languageName: unknown
+  linkType: soft
+
 "app-path@npm:^3.2.0":
   version: 3.3.0
   resolution: "app-path@npm:3.3.0"
@@ -10794,6 +10803,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin-tslint": ^4.28.0
     "@typescript-eslint/parser": 4.28.0
     angular-svg-icon: ^12.0.0
+    app-data: "workspace:*"
     capacitor-firebase-auth: ^3.0.0
     chart.js: ^2.9.4
     codelyzer: ^6.0.2
@@ -10832,7 +10842,6 @@ __metadata:
     ngx-lottie: ^6.4.0
     node-rsa: ^1.1.1
     nouislider: ^14.6.3
-    plh-data: 1.0.0
     prettier: 2.4.1
     protractor: ~7.0.0
     rxjs: ^6.6.7
@@ -17186,15 +17195,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"plh-data@1.0.0, plh-data@workspace:packages/plh-data":
-  version: 0.0.0-use.local
-  resolution: "plh-data@workspace:packages/plh-data"
-  dependencies:
-    "@types/node": ^15.12.4
-    typescript: ~4.2.4
-  languageName: unknown
-  linkType: soft
-
 "plist@npm:^3.0.1":
   version: 3.0.2
   resolution: "plist@npm:3.0.2"
@@ -21386,12 +21386,12 @@ fsevents@^1.2.7:
     "@types/fs-extra": ^9.0.12
     "@types/inquirer": ^7.3.3
     "@types/node": ^15.12.4
+    app-data: "workspace:*"
     boxen: ^5.0.1
     chalk: ^4.1.1
     commander: ^8.1.0
     fs-extra: ^10.0.0
     inquirer: ^8.1.2
-    plh-data: 1.0.0
     ts-node: ^10.1.0
     ts-node-dev: ^1.1.8
     typescript: ~4.2.4
