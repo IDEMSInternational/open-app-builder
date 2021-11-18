@@ -9,7 +9,7 @@ import { DB_TABLES, DB_VERSION } from "data-models/db.model";
 
 // As using commonJS can only import from built
 // TODO - ensure built before run
-import * as templateImport from "plh-data/dist/data/template/index";
+import * as templateImport from "app-data/dist/data/template/index";
 import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 const templateFlows = templateImport.template;
 
