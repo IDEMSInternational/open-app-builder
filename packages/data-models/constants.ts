@@ -32,9 +32,6 @@ export const APP_FIELDS = {
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
 };
 
-/** Name of folder synced from google drive and copied to src/app/assets */
-export const APP_ASSETS_SUBFOLDER = "plh_assets";
-
 /**
  * Some specific strings are currently hardcoded into the app
  * TODO - not all strings included, should add to when required

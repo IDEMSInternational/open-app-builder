@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { APP_ASSETS_SUBFOLDER } from "data-models";
 import { ASSETS_CONTENTS_LIST } from "plh-data";
 import { TemplateTranslateService } from "./template-translate.service";
 
-const ASSETS_BASE = `assets/${APP_ASSETS_SUBFOLDER}`;
+/** Synced assets are automatically copied during build to asset subfolder */
+const ASSETS_BASE = `assets/_app_assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
@@ -17,7 +17,7 @@ export class TemplateAssetService {
    * Fallsback to original path if does not exist
    */
   getTranslatedAssetPath(value: string) {
-    const currentLanguageCode = this.translateService.app_language_full_code;
+    const currentLanguageCode = this.translateService.app_language;
     const assetEntry = ASSETS_CONTENTS_LIST[value];
     if (!assetEntry) {
       console.error("Asset missing", value);
@@ -34,7 +34,7 @@ export class TemplateAssetService {
    */
   private convertPLHRelativePathToAssetPath(value: string) {
     // ensure starts either "assets/plh_assets" or "/assets/plh_assets"
-    const regex = new RegExp(`^(\/)?assets\/${APP_ASSETS_SUBFOLDER}`, "gi");
+    const regex = new RegExp(`^(\/)?assets\/`, "gi");
     let transformed = value;
     if (!regex.test(transformed)) {
       transformed = `${ASSETS_BASE}/${transformed}`.replace("//", "/");
