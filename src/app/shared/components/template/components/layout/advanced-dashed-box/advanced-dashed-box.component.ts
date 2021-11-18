@@ -12,8 +12,6 @@ export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implem
   @Input() inputRow: FlowTypes.TemplateRow;
   style: string;
   icon_src: string | null;
-  assetsPrefix = "/assets/plh_assets/";
-  icon_result: string;
   icon_position: string;
 
   constructor() {
@@ -28,12 +26,6 @@ export class TmplAdvancedDashedBoxComponent extends TemplateBaseComponent implem
   getParams() {
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", "");
     this.style = getStringParamFromTemplateRow(this._row, "style", "");
-    this.icon_result = this.getPathImg();
     this.icon_position = getStringParamFromTemplateRow(this._row, "icon_position", "top-left");
-  }
-
-  getPathImg(): string {
-    const src = this.assetsPrefix + this.icon_src;
-    return src.replace("//", "/");
   }
 }

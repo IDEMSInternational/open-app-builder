@@ -76,7 +76,7 @@ function compileTranslationStrings(translationsDir: string, outDir: string) {
   const translationsByCode: ITranslationsByCode = {};
   const translationsFiles = recursiveFindByExtension(translationsDir, "json");
   for (const filepath of translationsFiles) {
-    const [, countryCode, langCode] = path.basename(filepath, ".json").split(".");
+    const [, langCode] = path.basename(filepath, ".json").split(".");
     if (!langCode) {
       outputErrorMessage(
         "Translations file does not have language code in filename (e.g. translated.esp.json)",
@@ -163,10 +163,12 @@ function applyStringTranslations(
           translated["_translations"] = {};
         }
         translated["_translations"][field] = {};
-        // assign true/false to record whether translations exist for the string
+        // mark which translations exist for the string
         langCodes.forEach((code) => {
           const hasTranslation = translationsByCode[code][value] ? true : false;
-          translated["_translations"][field][code] = hasTranslation;
+          if (hasTranslation) {
+            translated["_translations"][field][code] = hasTranslation;
+          }
         });
       }
     }

@@ -9,7 +9,7 @@ import { Howl } from "howler";
 import { IonRange } from "@ionic/angular";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
-import { getImageAssetPath } from "../../utils/template-utils";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-audio",
@@ -36,7 +36,7 @@ export class TmplAudioComponent
   rangeBarDisabled: boolean = false;
   hasStarted: boolean = false;
 
-  constructor() {
+  constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
@@ -46,7 +46,7 @@ export class TmplAudioComponent
   }
 
   getParams() {
-    this.src = getImageAssetPath(
+    this.src = this.templateAssetService.getTranslatedAssetPath(
       this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
     );
     this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");
