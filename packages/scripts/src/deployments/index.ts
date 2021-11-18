@@ -1,19 +1,22 @@
 /**
- *
+ * Return deployment configuration for the current specified deployment
  * TODO - add support for setting/getting different deployments
  */
 export function getActiveDeployment(): IDeploymentConfig {
   return defaultConfig;
 }
 
+/** WiP - TODO */
 export function setActiveDeployment() {
   // check config, create if not exist
   // clear cache folders
   // prompt data sync
 }
 
+/** WiP - TODO */
 export function createDeployment(name: string) {}
 
+/** WiP - TODO */
 export function deleteDeployment(name: string) {}
 
 interface IDeploymentConfig {
