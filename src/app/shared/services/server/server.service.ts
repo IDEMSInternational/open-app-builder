@@ -51,6 +51,11 @@ export class ServerService {
   syncUserData() {
     console.log("[SERVER] sync data");
     const contact_fields = this.getUserStorageData();
+
+    // apply temp timestamp to contact fields to sync as latest
+    const timestamp = generateTimestamp();
+    contact_fields[APP_FIELDS.SERVER_SYNC_LATEST] = timestamp;
+
     // TODO - get DTO from api (?)
     const data = {
       contact_fields,
@@ -60,6 +65,7 @@ export class ServerService {
     return new Promise<string>((resolve, reject) => {
       this.http
         .post(`/app_users/${this.app_user_id}`, data)
+        /* WiP - code to handle optional automated retry */
         // .pipe(
         //   catchError(this.handleError)
         //   // retryWhen((errors) =>
@@ -72,8 +78,8 @@ export class ServerService {
         // )
         .subscribe(
           (res) => {
-            const timestamp = generateTimestamp();
             console.log("User data synced", res);
+            // finalise timestamp by storing locally
             localStorage.setItem(APP_FIELDS.SERVER_SYNC_LATEST, timestamp);
             resolve(timestamp);
           },

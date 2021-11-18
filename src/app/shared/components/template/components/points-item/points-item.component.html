@@ -1,5 +1,5 @@
 <div class="wrapper-point">
-  <div #celebretionAnim class="celebrationAnim">
+  <div *ngIf="showCelebrationAnimation" class="celebrationAnim">
     <ng-lottie [options]="animCelebrationOptions"></ng-lottie>
   </div>
   <div class="item" #item (click)="clickPointItem()">
