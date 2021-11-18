@@ -1,7 +1,7 @@
 import { FlowTypes } from "../../../../types";
 import { extractDynamicFields } from "../../../utils";
 import { DefaultParser } from "../default/default.parser";
-import { flattenJson, parsePLHCollectionString, parsePLHListString } from "../../utils";
+import { flattenJson, parseAppDataCollectionString, parseAppDataListString } from "../../utils";
 
 export class TemplateParser extends DefaultParser {
   constructor() {
@@ -36,10 +36,10 @@ export class TemplateParser extends DefaultParser {
     // convert any variables (local/global) list or collection strings (e.g. 'my_list_1')
     if (row.value && typeof row.value === "string") {
       if (row.name?.includes("_list") && row.value && typeof row.value === "string") {
-        row.value = parsePLHListString(row.value);
+        row.value = parseAppDataListString(row.value);
       }
       if (row.name?.includes("_collection") && row.value && typeof row.value === "string") {
-        row.value = parsePLHCollectionString(row.value);
+        row.value = parseAppDataCollectionString(row.value);
       }
     }
     if (row.parameter_list) {

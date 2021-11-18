@@ -13,7 +13,7 @@ import { booleanStringToBoolean } from "../../utils";
  * }
  * ```
  */
-export function parsePLHActionString(actionString: string): FlowTypes.TemplateRowAction {
+export function parseAppDataActionString(actionString: string): FlowTypes.TemplateRowAction {
   const _raw = actionString;
   actionString = _handleTextExceptions(actionString);
   // ensure action starts with named trigger (default 'click')
@@ -39,7 +39,7 @@ export function parsePLHActionString(actionString: string): FlowTypes.TemplateRo
   // CC 2021-03-27 - Above comment from Michael likely due to intentional catch of unparsed lists ';'
   // which this commit fixes. Should review in future
 
-  // const _parsed = parsePLHString(actionString);
+  // const _parsed = parsAppDataString(actionString);
   const parts = actionString.split("|").map((s) => s.trim());
   const trigger = parts[0] as any;
   // 3+ string format {trigger} | {action_id} | {arg[]}

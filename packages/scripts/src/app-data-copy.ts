@@ -17,16 +17,23 @@ import {
   APP_DATA_DATA_PATH,
   ROOT_DIR,
 } from "./paths";
+import { getActiveDeployment } from "./deployments";
+
+const APP_DEPLOYMENT = getActiveDeployment();
 
 // Setup folders
 const DATA_INPUT_FOLDER = path.join(__dirname, "./app-data-convert/output");
-const ASSETS_INPUT_FOLDER = path.join(__dirname, "./gdrive-download/output/plh_assets");
+const ASSETS_INPUT_FOLDER = path.join(
+  __dirname,
+  "./gdrive-download/output",
+  APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER
+);
 
 /** Expected folder containing global assets */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 /**
- * A simple script to copy data exported from gdrive and processed for plh into the app data folder
+ * A simple script to copy data exported from gdrive and processed into the app data folder
  * @param doAssetFolderCheck whether to copy assets across (e.g. ignored when syncing single files)
  **/
 export function main(doAssetFolderCheck = true) {
