@@ -6,11 +6,11 @@ import chalk from "chalk";
 import { authorizeGDrive } from "./auth";
 import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
 import { ArrayToChunks } from "../utils/file-utils";
+import { getActiveDeployment } from "../deployments";
 
 // constants
+const APP_DEPLOYMENT = getActiveDeployment();
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
-const GOOGLE_DRIVE_TARGET_FOLDER = "plh_sheets_beta";
-const GOOGLE_DRIVE_ASSETS_FOLDER = "plh_assets";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
@@ -26,7 +26,7 @@ export async function main(onlyFileName?: string) {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
-    const plhExcelFolder = await getGDriveFolder(GOOGLE_DRIVE_TARGET_FOLDER);
+    const sheetsFolderRef = await getGDriveFolder(APP_DEPLOYMENT.GOOGLE_DRIVE.SHEETS_FOLDER);
     if (onlyFileName) {
       console.log(chalk.magenta("Only downloading files matching name ", onlyFileName));
       const excelFilesFromCache: IGDriveFileWithFolder[] = JSON.parse(
@@ -47,14 +47,14 @@ export async function main(onlyFileName?: string) {
     } else {
       console.log("removing existing output folder");
       fs.emptyDirSync(OUTPUT_FOLDER);
-      // Download plh sheets
+      // Download app data sheets
       console.log("downloading sheets");
-      const excelFiles = await listGdriveFilesRecursively(plhExcelFolder.id, plhExcelFolder.name);
+      const excelFiles = await listGdriveFilesRecursively(sheetsFolderRef.id, sheetsFolderRef.name);
       fs.writeFileSync(`${LOGS_DIR}/excelFiles.json`, JSON.stringify(excelFiles, null, 2));
       await downloadGdriveFiles(excelFiles);
-      // Download plh assets
+      // Download app data assets
       console.log("downloading assets");
-      const assetsFolder = await getGDriveFolder(GOOGLE_DRIVE_ASSETS_FOLDER);
+      const assetsFolder = await getGDriveFolder(APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER);
       const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
       fs.writeFileSync(`${LOGS_DIR}/assetFiles.json`, JSON.stringify(assetFiles, null, 2));
       await downloadGdriveFiles(assetFiles);
@@ -69,10 +69,7 @@ if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
   main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
 }
 
-/**
- * Gets the name and id of a google drive folder
- * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
+/** Gets the name and id of a google drive folder */
 async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File> {
   const res = await drive.files.list({
     q: `mimeType='application/vnd.google-apps.folder' and name contains '${folderName}'`,

@@ -52,6 +52,11 @@ You should already see app and metabase databases created via the initialisation
 
 Note - as these scripts only ever run on first initialisation, if adjustments need to be made then SQL can be executed from within Adminer in a similar way as the scripts
 
+### Pgadmin DB Admin
+http://localhost/pgadmin/
+
+Use same configuration as adminer db above
+
 ### Api
 http://localhost/api/
 

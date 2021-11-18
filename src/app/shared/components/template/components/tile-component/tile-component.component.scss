@@ -1,5 +1,12 @@
 @import "../../../../../../theme/mixins.scss";
 
+.first ::ng-deep,
+.second ::ng-deep {
+  p {
+    margin: 0;
+  }
+}
+
 .tile-wrapper {
   @include flex-space-between;
   .text {

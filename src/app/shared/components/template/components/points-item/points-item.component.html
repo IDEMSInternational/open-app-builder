@@ -1,5 +1,5 @@
 <div class="wrapper-point">
-  <div #celebretionAnim class="celebrationAnim">
+  <div *ngIf="showCelebrationAnimation" class="celebrationAnim">
     <ng-lottie [options]="animCelebrationOptions"></ng-lottie>
   </div>
   <div class="item" #item (click)="clickPointItem()">
@@ -10,8 +10,16 @@
       </div>
     </div>
     <div class="image">
-      <img *ngIf="icon_src" [src]="icon_src | plhAsset" alt="" />
-      <ng-lottie *ngIf="lottie_src" [options]="animOptions"></ng-lottie>
+      <!-- order of preference - video, lottie, img -->
+      <video
+        *ngIf="video_src"
+        style="width: 100%; height: 100%"
+        [src]="video_src | plhAsset"
+        autoplay
+        loop
+      ></video>
+      <ng-lottie *ngIf="lottie_src && !video_src" [options]="animOptions"></ng-lottie>
+      <img *ngIf="icon_src && !lottie_src && !video_src" [src]="icon_src | plhAsset" alt="" />
     </div>
     <div class="text" *ngIf="text">
       {{ text }}

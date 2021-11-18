@@ -2,14 +2,13 @@ import { Injectable } from "@angular/core";
 import { HTTP } from "@ionic-native/http/ngx";
 import { Device } from "@ionic-native/device/ngx";
 import { Subject } from "rxjs";
-import {
-  Plugins,
-  PushNotification,
-  PushNotificationToken,
-  PushNotificationActionPerformed,
-} from "@capacitor/core";
 
-const { PushNotifications } = Plugins;
+import {
+  PushNotifications,
+  Token,
+  PushNotificationSchema,
+  ActionPerformed,
+} from "@capacitor/push-notifications";
 
 @Injectable({
   providedIn: "root",
@@ -30,14 +29,14 @@ export class PushNotificationService {
   public async init() {
     if (!this.initalized && !this.initializing) {
       this.initializing = true;
-      let result = await PushNotifications.requestPermission();
-      if (result.granted) {
+      let granted = await PushNotifications.requestPermissions();
+      if (granted) {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
       } else {
         // Show some error
       }
-      PushNotifications.addListener("registration", (token: PushNotificationToken) => {
+      PushNotifications.addListener("registration", (token: Token) => {
         this.token = token.value;
         console.log(`The token is ${token.value}`);
       });
@@ -48,7 +47,7 @@ export class PushNotificationService {
 
       PushNotifications.addListener(
         "pushNotificationReceived",
-        (notification: PushNotification) => {
+        (notification: PushNotificationSchema) => {
           console.log("Push received: " + JSON.stringify(notification));
           this.handleNotification(notification.data);
         }
@@ -56,8 +55,8 @@ export class PushNotificationService {
 
       PushNotifications.addListener(
         "pushNotificationActionPerformed",
-        (notification: PushNotificationActionPerformed) => {
-          alert("Push action performed: " + JSON.stringify(notification));
+        (action: ActionPerformed) => {
+          alert("Push action performed: " + JSON.stringify(action));
         }
       );
       this.initializing = false;

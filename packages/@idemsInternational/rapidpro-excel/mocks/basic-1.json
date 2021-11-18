@@ -1,0 +1,55 @@
+{
+  "rapidproModel": {
+    "campaigns": [],
+    "fields": [],
+    "flows": [
+      {
+        "name": "test_sheet_1",
+        "uuid": "uuid_test_sheet_1_flow_0",
+        "spec_version": "13.1.0",
+        "language": "base",
+        "type": "messaging",
+        "nodes": [
+          {
+            "uuid": "uuid_test_sheet_1_node_0",
+            "actions": [
+              {
+                "attachments": [],
+                "text": "Hi my friend, it’s really good to see you.",
+                "type": "send_msg",
+                "quick_replies": [],
+                "uuid": "uuid_test_sheet_1_action_0"
+              }
+            ],
+            "exits": [
+              {
+                "destination_uuid": null,
+                "uuid": "uuid_test_sheet_1_exit_0"
+              }
+            ]
+          }
+        ],
+        "_ui": null,
+        "revision": 0,
+        "expire_after_minutes": 60,
+        "metadata": {
+          "revision": 0
+        },
+        "localization": {}
+      }
+    ],
+    "groups": [],
+    "site": "https://rapidpro.idems.international",
+    "triggers": [],
+    "version": "13"
+  },
+  "excelModel": {
+    "flow_name": "test_sheet_1",
+    "rows": [
+      {
+        "type": "send_message",
+        "message_text": "Hi my friend, it’s really good to see you."
+      }
+    ]
+  }
+}
