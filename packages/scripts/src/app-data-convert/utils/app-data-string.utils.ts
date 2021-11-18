@@ -17,7 +17,7 @@ import { setNestedProperty } from "../../../../../src/app/shared/utils";
  * nest 2:    [[db_lookup,first] ,[app_events,event_id] , [app_launch] , [before,7,day]]
  *
  */
-export function parsePLHString(str: string): string[][] {
+export function parsAppDataString(str: string): string[][] {
   if (str.includes(";")) {
     console.error(chalk.red('lists should be pre-processed, but ";" found'));
     process.exit(1);
@@ -28,7 +28,7 @@ export function parsePLHString(str: string): string[][] {
 }
 
 /**
- * Convert plh map string to object
+ * Convert app data map string to object
  * @param str list string with key-value pairs, e.g
  * ```
  * "value_1; value_2; value_3;"
@@ -38,7 +38,7 @@ export function parsePLHString(str: string): string[][] {
  * ["value_1", "value_2", "value_3"]
  * ```
  */
-export function parsePLHListString(str: string): string[] {
+export function parseAppDataListString(str: string): string[] {
   return (
     str
       .split(";")
@@ -50,7 +50,7 @@ export function parsePLHListString(str: string): string[] {
 }
 
 /**
- * Convert plh collection string to object
+ * Convert app data collection string to object
  * @param str list string with key-value pairs, e.g
  * ```
  * "key_1:value_1; key_2:value_2"
@@ -60,9 +60,9 @@ export function parsePLHListString(str: string): string[] {
  * {"key_1":"value_1", "key_2":"value_2"}
  * ```
  */
-export function parsePLHCollectionString(str: string): { [key: string]: string } {
+export function parseAppDataCollectionString(str: string): { [key: string]: string } {
   const collection = {};
-  const entryList = parsePLHListString(str);
+  const entryList = parseAppDataListString(str);
   entryList.forEach((el) => {
     let [key, value] = el.split(":");
     value = value ? value.trim() : value;

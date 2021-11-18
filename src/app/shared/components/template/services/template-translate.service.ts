@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { TRANSLATION_STRINGS } from "plh-data";
+import { TRANSLATION_STRINGS } from "app-data";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";

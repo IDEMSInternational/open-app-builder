@@ -16,7 +16,7 @@ const OUTPUT_FOLDER = `${__dirname}/output`;
  * objects representing sheet names and data values
  */
 export async function main() {
-  console.log(chalk.yellow("Converting PLH Data"));
+  console.log(chalk.yellow("Converting APP Data"));
   fs.ensureDirSync(INPUT_FOLDER);
   fs.ensureDirSync(INTERMEDIATES_FOLDER);
   fs.emptyDirSync(INTERMEDIATES_FOLDER);
@@ -29,8 +29,8 @@ export async function main() {
     const json = convertXLSXSheetsToJson(xlsxPath);
     combined.push({ json, xlsxPath });
   }
-  // merge and collate plh data, write some extra files for logging/debugging purposes
-  const merged = mergePLHData(combined);
+  // merge and collate app data, write some extra files for logging/debugging purposes
+  const merged = mergeAppData(combined);
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
   const dataByFlowType = groupJsonByKey(merged, "flow_type");
   fs.writeFileSync(
@@ -64,12 +64,12 @@ if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
       console.error(err);
       process.exit(1);
     })
-    .then(() => console.log(chalk.green("PLH Data Converted")));
+    .then(() => console.log(chalk.green("App Data Converted")));
 }
 
-function applyDataParsers(
-  dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
-) {
+function applyDataParsers(dataByFlowType: {
+  [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[];
+}) {
   // All flow types will be processed by the default parser unless otherwise specified here
 
   // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
@@ -104,11 +104,11 @@ function applyDataParsers(
 }
 
 /**
- * PLH sheets contain contents page with metadata that can be merged into regular data
+ * App data sheets contain contents page with metadata that can be merged into regular data
  * Merge and collate with other existing data, warning in case of overwrites
  * @returns - array of all merged sheets (no grouping or collating)
  */
-function mergePLHData(jsons: { json: any; xlsxPath: string }[]) {
+function mergeAppData(jsons: { json: any; xlsxPath: string }[]) {
   const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
   const releasedSummary = {};
   const skippedSummary = {};
