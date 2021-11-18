@@ -5,7 +5,7 @@ import { TemplateLayoutComponent } from "./layout";
   selector: "plh-tmpl-group",
   template: `
     <plh-template-component
-      *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+      *ngFor="let childRow of _row.rows | filterDisplayComponent; trackBy: trackByRow"
       [row]="childRow"
       [parent]="parent"
     ></plh-template-component>
