@@ -1,5 +1,4 @@
 import fs from "fs";
-import path from "path";
 import readline from "readline";
 import { drive_v3, google } from "googleapis";
 import chalk from "chalk";

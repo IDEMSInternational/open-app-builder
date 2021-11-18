@@ -6,6 +6,7 @@ import { TOUR } from "../data/data.service";
 import { TemplateService } from "../../components/template/services/template.service";
 import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
 import { FlowTypes } from "packages/data-models/dist";
+import { TemplateAssetService } from "../../components/template/services/template-asset.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +19,8 @@ export class TourService {
   constructor(
     private router: Router,
     private templateService: TemplateService,
-    private translateService: TemplateTranslateService
+    private translateService: TemplateTranslateService,
+    private templateAssetService: TemplateAssetService
   ) {}
 
   listTourNames(): string[] {
@@ -38,6 +40,7 @@ export class TourService {
         buttonClass: "buttonClass",
         nextLabel: this.translateService.translateValue("Next"),
         prevLabel: this.translateService.translateValue("Previous"),
+        doneLabel: this.translateService.translateValue("Done"),
         steps: matchingTour.rows.map((row) => {
           // HACK - Ensure tour rows translated
           const translatedRow: FlowTypes.TourStep = this.translateService.translateRow(
@@ -130,20 +133,23 @@ export class TourService {
       }
     }
     if (imageTags) {
-      for (let i of imageTags) {
-        const imgSrcExp = new RegExp(/src=".*?"/g);
-        const src = i.match(imgSrcExp);
-        const finallySrc = i.replace(
-          src,
-          `src="/assets/plh_assets/${src[0]
-            .split("=")[1]
-            .split("")
-            .filter((v) => v !== '"')
-            .join("")
-            .replace("//", "/")}"`
-        );
-        field = field.replace(i, finallySrc);
-      }
+      console.error("Tour images not currently supported", imageTags);
+      // TODO - use templateAssetService to convert (not currently implemented)
+      // console.log('imageTags')
+      // for (let i of imageTags) {
+      //   const imgSrcExp = new RegExp(/src=".*?"/g);
+      //   const src = i.match(imgSrcExp);
+      //   const finallySrc = i.replace(
+      //     src,
+      //     `src="/assets/plh_assets/${src[0]
+      //       .split("=")[1]
+      //       .split("")
+      //       .filter((v) => v !== '"')
+      //       .join("")
+      //       .replace("//", "/")}"`
+      //   );
+      //   field = field.replace(i, finallySrc);
+      // }
     }
     return field;
   }
