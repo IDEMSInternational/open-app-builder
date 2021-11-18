@@ -45,7 +45,7 @@ You will see a warning message to connect the unverified app. Use the advanced d
 You can download the PLH folder from Google Drive on demand to view and changes. Simply run:
 
 ```
-npm run scripts sync-plh-content
+npm run scripts app-data-sync
 ```
 
 YOu will see an output showing folders checke and files changed, with status represented as:
