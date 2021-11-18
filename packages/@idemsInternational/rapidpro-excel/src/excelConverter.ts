@@ -774,7 +774,7 @@ export class ExcelToRapidproConverter {
     const regex = new RegExp(imageTag, "g");
     return text.replace(regex, () => {
       if (urls.length > 0) {
-        const imageUrl = "assets/plh_assets/" + urls.pop();
+        const imageUrl = urls.pop();
         return `<img class="${className}" src="${imageUrl}">`;
       }
       return "";

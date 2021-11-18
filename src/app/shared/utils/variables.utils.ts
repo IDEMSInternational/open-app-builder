@@ -1,4 +1,4 @@
-// import const from plh-data directly as typings can sometimes break otherwise
+// import const from app-data directly as typings can sometimes break otherwise
 import { DYNAMIC_PREFIXES } from "data-models";
 import { FlowTypes } from "../model";
 
