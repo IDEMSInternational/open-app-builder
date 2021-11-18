@@ -117,26 +117,6 @@ export function parseValueListItems(items: string[]): any[] {
 }
 
 /**
- * Ensure local assets have correct path name to local asset folder
- * @example getImageAssetPath("images/my_icon.svg") => "assets/plh_assets/images/my_icon"
- * TODO - share base folder / conversion method as util with scripts default.parser.ts
- */
-export function getImageAssetPath(value: string) {
-  const ASSETS_BASE = "assets/plh_assets";
-  // ensure starts either "assets/plh_assets" or "/assets/plh_assets"
-  const regex = /^(\/)?assets\/plh_assets/gi;
-  let transformed = value;
-  if (!regex.test(transformed)) {
-    transformed = `${ASSETS_BASE}/${transformed}`.replace("//", "/");
-  }
-  // remove duplicate path if exist (TODO - CC 2021-05-13 possibly no longer required)
-  if (transformed.includes(`${ASSETS_BASE}/${ASSETS_BASE}`)) {
-    transformed = transformed.replace(`${ASSETS_BASE}/${ASSETS_BASE}`, ASSETS_BASE);
-  }
-  return transformed;
-}
-
-/**
  * Take an object and return an array via the object.values method.
  * Provide additional check in case already is array (return array), or is not an object
  * (return empty array)
