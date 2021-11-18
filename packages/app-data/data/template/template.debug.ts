@@ -17792,6 +17792,44 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "debug_translation_hyphen",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "@global.weekly_workshops quick start",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.weekly_workshops quick start",
+              matchedExpression: "@global.weekly_workshops",
+              type: "global",
+              fieldName: "weekly_workshops",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.weekly_workshops": ["value"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "example_radio_group",
     status: "released",
     flow_subtype: "debug",
