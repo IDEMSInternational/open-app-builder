@@ -5,7 +5,7 @@
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ],
   "scripts": {
     "ng": "ng",
