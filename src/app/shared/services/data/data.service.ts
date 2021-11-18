@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FlowTypes } from "data-models";
 
-import * as data from "plh-data";
+import * as data from "app-data";
 
 export const COMPLETION_LIST = data.completion_list;
 export const CONVERSATION = data.conversation;

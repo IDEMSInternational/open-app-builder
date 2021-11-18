@@ -58,7 +58,7 @@ You will also see any potential issues flagged with warning messages, and two su
 
 ### Check for data issues
 
-When data is synced, a preview of the data as processed for the app is put in the `scripts/src/plh-data-convert/output` folder.
+When data is synced, a preview of the data as processed for the app is put in the `scripts/src/app-data-convert/output` folder.
 
 You will see several files with a `.ts` extension, representing all flows, collated by flow type. Opening each of these files will also perform a quick check for data consistency issues with the app definitions
 

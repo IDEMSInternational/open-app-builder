@@ -67,9 +67,9 @@ if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
     .then(() => console.log(chalk.green("PLH Data Converted")));
 }
 
-function applyDataParsers(
-  dataByFlowType: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] }
-) {
+function applyDataParsers(dataByFlowType: {
+  [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[];
+}) {
   // All flow types will be processed by the default parser unless otherwise specified here
 
   // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
