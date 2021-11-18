@@ -31,7 +31,7 @@ export function extractDynamicFields(data: any) {
         Object.entries(data).forEach(([key, value]) => {
           // skip processing some columns (remember these can be nested in other objects like parameter_list)
           if (!["comments", "_dynamicFields"].includes(key)) {
-            const nestedDynamic = this.extractDynamicFields(value);
+            const nestedDynamic = extractDynamicFields(value);
             if (nestedDynamic) {
               dynamicFields[key] = nestedDynamic;
             }
