@@ -1,5 +1,5 @@
 # Generate a full list of screenshots for current build
-name: Release Drafter
+name: Generate Screenshots
 on:
   push:
     branches:
