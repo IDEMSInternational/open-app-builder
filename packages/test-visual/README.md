@@ -29,10 +29,11 @@ Output will be updated as screenshots are produced, and image diffs populated to
 ### older versions
 As these scripts were not available to earlier versions process will involve
 1. Download release source code from repo, e.g. https://github.com/IDEMSInternational/parenting-app-ui/releases
-2. Extract to folder, setup environment/config as required
-3. Run app src from extracted folder (`yarn start`)
-4. Run generate scripts from this repo (`yarn workspace test-visual start -- generate --clean`)
-5. Manually edit release to upload generated `screenshots.zip`
+2. Extract to `cache/releases` folder, 
+3. setup environment/config as required
+4. Run app src from extracted folder (`yarn start`)
+5. Run generate scripts from this repo (`yarn workspace test-visual start -- generate --clean`)
+6. Manually edit release to upload generated `screenshots.zip`
 
 
 ## Developers
