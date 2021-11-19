@@ -1,5 +1,5 @@
 # Generate a set of screenshots on the current branch and store as an artifact for future comparison
-name: Generate Screenshots
+name: Test-Visual Generate
 on:
   workflow_dispatch:
   push:

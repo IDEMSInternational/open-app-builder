@@ -56,11 +56,11 @@ class ScreenshotComparator {
     // post-processing of each screenshot after it has been created
     const generator = new ScreenshotGenerate({
       clean: this.options.clean,
-      onScreenshotGenerated: async ({ screenshotPath, index, total }) => {
+      onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
         const filename = path.basename(screenshotPath);
         const releaseScreenshotPath = path.resolve(this.releaseScreenshotsFolder, filename);
         await this.compareScreenshots(releaseScreenshotPath, screenshotPath);
-        logUpdate(`${index}/${total}`, JSON.stringify(this.diffs, null, 2));
+        logUpdate(`${counter}/${total}`, JSON.stringify(this.diffs, null, 2));
       },
       onScreenshotsCompleted: async ({}) => {
         logUpdate.done();

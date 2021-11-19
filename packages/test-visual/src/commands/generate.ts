@@ -150,21 +150,18 @@ export class ScreenshotGenerate {
       await this.page.goto(APP_SERVER_URL, { waitUntil: "networkidle2" });
       await this.page.waitForTimeout(10000);
     }
+
+    // create a task queue for handling concurrent requests
     const concurrency = Number(this.options.concurrency);
     const queue = new PQueue({ concurrency, timeout: 10000, autoStart: false });
-    // create an array of browser page tabs for loading pages concurrently
-    // const pagePromises = new Array(concurrency + 1).fill(0).map(async () => this.setupPage());
-    // const pages = await Promise.all(pagePromises);
 
+    // setup screenshot requests
     templateFlows.forEach((template) => {
       const task = async () => {
-        // parallel
-
         const { flow_name } = template;
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
         if (!fs.existsSync(outputPath)) {
           const page = await this.browser.newPage();
-          await this.gotoTemplate("home", page);
           await this.gotoTemplate(flow_name, page);
           await page.screenshot({
             path: outputPath,
@@ -185,7 +182,6 @@ export class ScreenshotGenerate {
     });
     queue.start();
     await queue.onEmpty();
-    console.log("complete");
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
@@ -198,9 +194,10 @@ export class ScreenshotGenerate {
     await page.goto(`http://localhost:4200/template/${templatename}`, {
       waitUntil: "networkidle2",
     });
+    // wait for expected template container component to be in dom
+    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}"`);
     // Additional timeout to support page fully loading
     // TODO - replace with function call from the app
-    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}"`);
     await page.waitForTimeout(Number(this.options.pageWait));
     // Try to ensure all rendering complete by requesting animation frame
     await page.evaluate(async () => {
