@@ -181,7 +181,7 @@ export class ScreenshotGenerate {
       queue.add(task);
     });
     queue.start();
-    await queue.onEmpty();
+    await queue.onIdle();
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
