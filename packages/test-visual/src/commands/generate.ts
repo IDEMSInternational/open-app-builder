@@ -145,7 +145,6 @@ export class ScreenshotGenerate {
       fs.emptyDirSync(paths.SCREENSHOTS_FOLDER);
     }
     const totalTemplates = templateFlows.length;
-    let counter = 0;
 
     // run an initial request that can be used to check for console errors in debug mode
     if (this.options.debug) {
@@ -155,7 +154,12 @@ export class ScreenshotGenerate {
 
     // create a task queue for handling concurrent requests
     const concurrency = Number(this.options.concurrency);
-    const queue = new PQueue({ concurrency, timeout: 10000, autoStart: false });
+    const queue = new PQueue({
+      concurrency,
+      timeout: 60000,
+      autoStart: false,
+      throwOnTimeout: true,
+    });
 
     // setup screenshot requests
     templateFlows.slice(0, 50).forEach((template) => {
@@ -164,32 +168,36 @@ export class ScreenshotGenerate {
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
         if (!fs.existsSync(outputPath)) {
           const page = await this.browser.newPage();
-          await this.gotoTemplate(flow_name, page);
-          await page.screenshot({
-            path: outputPath,
-            fullPage: true,
-            captureBeyondViewport: true,
-            type: "png",
-          });
-          await page.close();
+          try {
+            await this.gotoTemplate(flow_name, page);
+            await page.screenshot({
+              path: outputPath,
+              fullPage: true,
+              captureBeyondViewport: true,
+              type: "png",
+            });
+            await page.close();
+          } catch (error) {
+            queue.pause();
+            console.error(error);
+            process.exit(1);
+          }
         }
-        counter++;
+        const counter = totalTemplates - queue.size - queue.pending;
+        console.log(`${counter}/${totalTemplates}`, flow_name);
         await this.options.onScreenshotGenerated({
           screenshotPath: outputPath,
           counter,
           total: totalTemplates,
         });
+        return;
       };
       queue.add(task);
     });
-    console.log("starting queue", queue.size, queue.pending);
     queue.start();
-    queue.on("idle", () => {
-      console.log("queue idle triggered", queue.size, queue.pending);
-    });
-    queue.on("next", () => console.log("next", queue.size, queue.pending));
     await queue.onIdle();
     console.log("queue idle awaited");
+    console.log(`✔️  Screenshots complete`);
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
