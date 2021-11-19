@@ -11615,7 +11615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventemitter3@npm:^4.0.0":
+"eventemitter3@npm:^4.0.0, eventemitter3@npm:^4.0.4":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
   checksum: 1875311c42fcfe9c707b2712c32664a245629b42bb0a5a84439762dd0fd637fc54d078155ea83c2af9e0323c9ac13687e03cfba79b03af9f40c89b4960099374
@@ -18958,6 +18958,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"p-queue@npm:^6.6.2":
+  version: 6.6.2
+  resolution: "p-queue@npm:6.6.2"
+  dependencies:
+    eventemitter3: ^4.0.4
+    p-timeout: ^3.2.0
+  checksum: 832642fcc4ab6477b43e6d7c30209ab10952969ed211c6d6f2931be8a4f9935e3578c72e8cce053dc34f2eb6941a408a2c516a54904e989851a1a209cf19761c
+  languageName: node
+  linkType: hard
+
 "p-retry@npm:^3.0.1":
   version: 3.0.1
   resolution: "p-retry@npm:3.0.1"
@@ -18977,7 +18987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-timeout@npm:^3.1.0":
+"p-timeout@npm:^3.1.0, p-timeout@npm:^3.2.0":
   version: 3.2.0
   resolution: "p-timeout@npm:3.2.0"
   dependencies:
@@ -23769,6 +23779,7 @@ __metadata:
     jpeg-js: ^0.4.3
     log-update: ^4.0.0
     octokit: ^1.5.0
+    p-queue: ^6.6.2
     pixelmatch: ^5.2.1
     pngjs: ^6.0.0
     puppeteer: ^10.2.0
