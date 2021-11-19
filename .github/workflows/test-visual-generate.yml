@@ -43,5 +43,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: screenshots-artifact
-          path: packages/test-visual/output/screenshots-generated.zip
+          path: packages/test-visual/output/screenshots/
           retention-days: 90
+          if-no-files-found: error
