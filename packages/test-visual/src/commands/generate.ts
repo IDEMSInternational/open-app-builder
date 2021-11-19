@@ -182,11 +182,12 @@ export class ScreenshotGenerate {
       };
       queue.add(task);
     });
-    console.log("starting queue", queue.size);
+    console.log("starting queue", queue.size, queue.pending);
     queue.start();
     queue.on("idle", () => {
-      console.log("queue idle triggered", queue.size);
+      console.log("queue idle triggered", queue.size, queue.pending);
     });
+    queue.on("next", () => console.log("next", queue.size, queue.pending));
     await queue.onIdle();
     console.log("queue idle awaited");
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
