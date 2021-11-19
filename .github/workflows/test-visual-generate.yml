@@ -1,6 +1,7 @@
-# Generate a set of screenshots from the test-visual package and upload as an artifact
+# Generate a set of screenshots on the current branch and store as an artifact for future comparison
 name: Generate Screenshots
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -8,6 +9,7 @@ on:
 jobs:
   screenshots_generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v1
         with:
@@ -17,16 +19,22 @@ jobs:
         with:
           node-version: 12.x
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-modules-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1-
       - name: Populate firebaseConfig.ts
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
       - name: Start server and generate screenshots
+        # Will always throw error even if successful at end as yarn start script terminated abruptly by\
+        # concurrently kill after test-visual complete
+        continue-on-error: true
         run: |
           npx concurrently --kill-others \
           "yarn start" \
@@ -34,5 +42,6 @@ jobs:
       - name: Upload screenshots
         uses: actions/upload-artifact@v2
         with:
-          name: screenshots
+          name: screenshots-artifact
           path: output/screenshots-generated.zip
+          retention-days: 90
