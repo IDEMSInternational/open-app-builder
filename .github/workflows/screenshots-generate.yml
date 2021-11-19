@@ -28,6 +28,6 @@ jobs:
       - run: yarn install
       - name: Start server and generate screenshots
         run: |
-          npx concurrently \
+          npx concurrently --kill-others \
           "yarn start" \
           "npx wait-on http-get://localhost:4200 && yarn workspace test-visual start generate"
