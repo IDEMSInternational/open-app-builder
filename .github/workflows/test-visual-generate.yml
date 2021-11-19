@@ -1,5 +1,5 @@
 # Generate a set of screenshots on the current branch and store as an artifact for future comparison
-name: Test-Visual Generate
+name: Test-Visual Generate Screenshots
 on:
   workflow_dispatch:
   push:
@@ -7,7 +7,7 @@ on:
       - master
       - feat/e2e-visual
 jobs:
-  screenshots_generate:
+  test_visual_generate:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -43,5 +43,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: screenshots-artifact
-          path: output/screenshots-generated.zip
+          path: packages/test-visual/output/screenshots-generated.zip
           retention-days: 90
