@@ -158,7 +158,7 @@ export class ScreenshotGenerate {
     const queue = new PQueue({ concurrency, timeout: 10000, autoStart: false });
 
     // setup screenshot requests
-    templateFlows.forEach((template) => {
+    templateFlows.slice(0, 50).forEach((template) => {
       const task = async () => {
         const { flow_name } = template;
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
@@ -182,7 +182,11 @@ export class ScreenshotGenerate {
       };
       queue.add(task);
     });
+    console.log("starting queue", queue.size);
     queue.start();
+    queue.on("idle", () => {
+      console.log("queue idle triggered", queue.size);
+    });
     await queue.onIdle();
     console.log("queue idle awaited");
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
