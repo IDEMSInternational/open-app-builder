@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import puppeteer from "puppeteer";
 import path from "path";
+import PQueue from "p-queue";
 import fs from "fs-extra";
 import logUpdate from "log-update";
 import { DEXIE_SRC_PATH, paths } from "../config";
@@ -31,25 +32,54 @@ const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.OUTPUT_FOLDER, "screenshots-ge
  * @example yarn workspace test-visual start generate --clean
  *************************************************************************************/
 
-const DEFAULT_OPTIONS = {
-  onScreenshotGenerated: async ({ screenshotPath, index, total }) => {
-    logUpdate(`${index}/${total} screenshots generated`);
+interface IProgramOptions {
+  onScreenshotGenerated: (args: {
+    screenshotPath: string;
+    counter: number;
+    total: number;
+  }) => Promise<void>;
+  onScreenshotsCompleted: (args: { total: number }) => Promise<void>;
+  /** clear existing snapshots and generate clean */
+  clean?: boolean;
+  /** run in debug mode with non-headless puppeteer */
+  debug?: boolean;
+  /** maximum tremplates to process in parallel */
+  concurrency?: string;
+  /**  */
+  pageWait?: string;
+}
+
+const DEFAULT_OPTIONS: Partial<IProgramOptions> = {
+  onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
+    logUpdate(`${counter}/${total} screenshots generated`);
   },
   onScreenshotsCompleted: async ({ total }) => {
     logUpdate.done();
     logUpdate(`✔️  Screenshots complete`);
   },
-  clean: false,
 };
 
+console.log("generate");
 const program = new Command("generate");
 export default program
   .description("Generate screenshots")
   .requiredOption("-c, --clean", "Clean output folder before generating", false)
+  .requiredOption("-D --debug", "Run in debug mode (not headless)", false)
+  .requiredOption(
+    "-C --concurrency <string>",
+    "Max number of browser pages to process in parallel",
+    "10"
+  )
+  .requiredOption(
+    "-PW --page-wait <string>",
+    "Additional wait time given to help ensure page loaded",
+    "500"
+  )
   .action(async (opts) => {
     console.log("Generating screenshots...");
     console.table(opts);
-    const options = { ...DEFAULT_OPTIONS, ...opts };
+
+    const options = { ...DEFAULT_OPTIONS, ...opts } as any;
     await new ScreenshotGenerate(options).run().then(() => process.exit(0));
   });
 
@@ -61,7 +91,7 @@ export class ScreenshotGenerate {
   browser: puppeteer.Browser;
   page: puppeteer.Page;
 
-  constructor(private options: typeof DEFAULT_OPTIONS) {}
+  constructor(private options: IProgramOptions) {}
 
   public async run() {
     await this.prepareBrowserRunner();
@@ -78,19 +108,26 @@ export class ScreenshotGenerate {
    */
   private async prepareBrowserRunner() {
     this.browser = await puppeteer.launch({
-      headless: true,
+      headless: !this.options.debug,
       defaultViewport: SCREEN_SIZE,
+      args: ["--disable-notifications"],
+      dumpio: this.options.debug,
     });
-    this.page = await this.browser.newPage();
+    this.page = await this.setupPage();
+    console.log("✔️  Browser ready");
+  }
+
+  private async setupPage() {
+    const page = await this.browser.newPage();
     // disable javascript during initial nav to prevent full load (can still seed db)
-    await this.page.setJavaScriptEnabled(false);
+    await page.setJavaScriptEnabled(false);
     try {
-      await this.page.goto(APP_SERVER_URL);
-      await this.page.setJavaScriptEnabled(true);
+      await page.goto(APP_SERVER_URL);
+      await page.setJavaScriptEnabled(true);
       // allow dexie to be accessed via window.dexie in page
       // https://stackoverflow.com/questions/48815565/how-to-pass-required-module-object-to-puppeteer-page-evaluate
-      await this.page.addScriptTag({ path: DEXIE_SRC_PATH });
-      console.log("✔️  Browser ready");
+      await page.addScriptTag({ path: DEXIE_SRC_PATH });
+      return page;
     } catch (error) {
       outputErrorMessage(`Could not load app on ${APP_SERVER_URL}`, "Is the server running?");
       process.exit(1);
@@ -106,26 +143,49 @@ export class ScreenshotGenerate {
       fs.emptyDirSync(paths.SCREENSHOTS_FOLDER);
     }
     const totalTemplates = templateFlows.length;
-    let index = 0;
-    for (const template of templateFlows) {
-      const { flow_name } = template;
-      const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
-      if (!fs.existsSync(outputPath)) {
-        await this.gotoTemplate(flow_name);
-        await this.page.screenshot({
-          path: outputPath,
-          fullPage: true,
-          captureBeyondViewport: true,
-          type: "png",
-        });
-      }
-      index++;
-      await this.options.onScreenshotGenerated({
-        screenshotPath: outputPath,
-        index,
-        total: totalTemplates,
-      });
+    let counter = 0;
+
+    // run an initial request that can be used to check for console errors in debug mode
+    if (this.options.debug) {
+      await this.page.goto(APP_SERVER_URL, { waitUntil: "networkidle2" });
+      await this.page.waitForTimeout(10000);
     }
+    const concurrency = Number(this.options.concurrency);
+    const queue = new PQueue({ concurrency, timeout: 10000, autoStart: false });
+    // create an array of browser page tabs for loading pages concurrently
+    // const pagePromises = new Array(concurrency + 1).fill(0).map(async () => this.setupPage());
+    // const pages = await Promise.all(pagePromises);
+
+    templateFlows.forEach((template) => {
+      const task = async () => {
+        // parallel
+
+        const { flow_name } = template;
+        const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
+        if (!fs.existsSync(outputPath)) {
+          const page = await this.browser.newPage();
+          await this.gotoTemplate("home", page);
+          await this.gotoTemplate(flow_name, page);
+          await page.screenshot({
+            path: outputPath,
+            fullPage: true,
+            captureBeyondViewport: true,
+            type: "png",
+          });
+          await page.close();
+        }
+        counter++;
+        await this.options.onScreenshotGenerated({
+          screenshotPath: outputPath,
+          counter,
+          total: totalTemplates,
+        });
+      };
+      queue.add(task);
+    });
+    queue.start();
+    await queue.onEmpty();
+    console.log("complete");
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
@@ -134,12 +194,16 @@ export class ScreenshotGenerate {
     console.log("✔️  Zip saved");
   }
 
-  private async gotoTemplate(templatename: string) {
-    await this.page.goto(`http://localhost:4200/template/${templatename}`, {
+  private async gotoTemplate(templatename: string, page: puppeteer.Page) {
+    await page.goto(`http://localhost:4200/template/${templatename}`, {
       waitUntil: "networkidle2",
     });
+    // Additional timeout to support page fully loading
+    // TODO - replace with function call from the app
+    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}"`);
+    await page.waitForTimeout(Number(this.options.pageWait));
     // Try to ensure all rendering complete by requesting animation frame
-    await this.page.evaluate(async () => {
+    await page.evaluate(async () => {
       async function waitForAnimationFrame() {
         return new Promise((resolve) => {
           window.requestAnimationFrame(() => resolve(true));

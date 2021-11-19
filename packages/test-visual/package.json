@@ -7,6 +7,7 @@
     "idems-test-visual": "./lib/index.js"
   },
   "scripts": {
+    "build": "tsc ",
     "dev": "ts-node-dev --respawn --watch 'src/**/*.ts' src/index.ts",
     "start": "ts-node src/index.ts"
   },
@@ -24,6 +25,7 @@
     "jpeg-js": "^0.4.3",
     "log-update": "^4.0.0",
     "octokit": "^1.5.0",
+    "p-queue": "^6.6.2",
     "pixelmatch": "^5.2.1",
     "pngjs": "^6.0.0",
     "puppeteer": "^10.2.0",
