@@ -33,19 +33,21 @@ const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.OUTPUT_FOLDER, "screenshots-ge
  *************************************************************************************/
 
 interface IProgramOptions {
+  /** Callback function to be triggered after every screenshot generated */
   onScreenshotGenerated: (args: {
     screenshotPath: string;
     counter: number;
     total: number;
   }) => Promise<void>;
+  /** Callback function to be triggered after all screenshots genereated */
   onScreenshotsCompleted: (args: { total: number }) => Promise<void>;
-  /** clear existing snapshots and generate clean */
+  /** clear existing snapshots and generate clean. Default: false */
   clean?: boolean;
-  /** run in debug mode with non-headless puppeteer */
+  /** run in debug mode with non-headless puppeteer. Default: false */
   debug?: boolean;
-  /** maximum tremplates to process in parallel */
+  /** maximum templates to process in parallel. Default: 10 */
   concurrency?: string;
-  /**  */
+  /** additional wait time (ms) added to ensure content loaded. Default: 500 */
   pageWait?: string;
 }
 
@@ -104,10 +106,7 @@ export class ScreenshotGenerate {
     outputCompleteMessage("Screenshots successfully generated", SCREENSHOTS_OUTPUT_ZIP);
   }
 
-  /**
-   * Create a headless browser window and inject dynamic scripts required
-   * for use during db seeding
-   */
+  /** Create initial puppeteer browser and custom page objects   */
   private async prepareBrowserRunner() {
     this.browser = await puppeteer.launch({
       headless: !this.options.debug,
@@ -119,6 +118,7 @@ export class ScreenshotGenerate {
     console.log("✔️  Browser ready");
   }
 
+  /** Create a custom browser page object and inject dynamic scripts required for use during db seeding */
   private async setupPage() {
     const page = await this.browser.newPage();
     // disable javascript during initial nav to prevent full load (can still seed db)
@@ -203,6 +203,7 @@ export class ScreenshotGenerate {
     console.log("✔️  Zip saved");
   }
 
+  /** Load a template page from within the app and wait for content to render */
   private async gotoTemplate(templatename: string, page: puppeteer.Page) {
     await page.goto(`http://localhost:4200/template/${templatename}`, {
       waitUntil: "networkidle2",
