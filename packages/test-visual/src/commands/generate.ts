@@ -53,10 +53,10 @@ const DEFAULT_OPTIONS: Partial<IProgramOptions> = {
   onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
     // TODO - does not work in CI. Need to add check for CI and toggle accordingly
     // logUpdate(`${counter}/${total} screenshots generated`);
-    console.log(`${counter}/${total} screenshots generated`);
+    console.log(`${counter}/${total} screenshots generated`, path.basename(screenshotPath, ".png"));
   },
   onScreenshotsCompleted: async ({ total }) => {
-    logUpdate.done();
+    // logUpdate.done();
     console.log(`✔️  Screenshots complete`);
   },
 };
@@ -162,7 +162,7 @@ export class ScreenshotGenerate {
     });
 
     // setup screenshot requests
-    templateFlows.slice(0, 50).forEach((template) => {
+    templateFlows.forEach((template) => {
       const task = async () => {
         const { flow_name } = template;
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
@@ -184,7 +184,6 @@ export class ScreenshotGenerate {
           }
         }
         const counter = totalTemplates - queue.size - queue.pending;
-        console.log(`${counter}/${totalTemplates}`, flow_name);
         await this.options.onScreenshotGenerated({
           screenshotPath: outputPath,
           counter,
@@ -196,8 +195,6 @@ export class ScreenshotGenerate {
     });
     queue.start();
     await queue.onIdle();
-    console.log("queue idle awaited");
-    console.log(`✔️  Screenshots complete`);
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
