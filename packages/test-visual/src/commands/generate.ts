@@ -51,11 +51,13 @@ interface IProgramOptions {
 
 const DEFAULT_OPTIONS: Partial<IProgramOptions> = {
   onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
-    logUpdate(`${counter}/${total} screenshots generated`);
+    // TODO - does not work in CI. Need to add check for CI and toggle accordingly
+    // logUpdate(`${counter}/${total} screenshots generated`);
+    console.log(`${counter}/${total} screenshots generated`);
   },
   onScreenshotsCompleted: async ({ total }) => {
     logUpdate.done();
-    logUpdate(`✔️  Screenshots complete`);
+    console.log(`✔️  Screenshots complete`);
   },
 };
 
@@ -182,6 +184,7 @@ export class ScreenshotGenerate {
     });
     queue.start();
     await queue.onIdle();
+    console.log("queue idle awaited");
     await this.options.onScreenshotsCompleted({ total: totalTemplates });
   }
 
