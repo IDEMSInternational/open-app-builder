@@ -47,7 +47,7 @@ jobs:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
-      - name: Start server and generate screenshots
+      - name: Start server and compare screenshots
         # Will always throw error even if successful at end as yarn start script terminated abruptly by\
         # concurrently kill after test-visual complete
         continue-on-error: true

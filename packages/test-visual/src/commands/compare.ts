@@ -40,11 +40,14 @@ class ScreenshotComparator {
   constructor(private options: typeof DEFAULT_OPTIONS) {}
 
   public async run() {
+    console.log("start compare screenshots");
     // const latestRelease = await this.getLatestRelease();
     // const { tag_name } = latestRelease;
     // this.releaseScreenshotsFolder = path.resolve(paths.DOWNLOADED_SCREENSHOTS_FOLDER, tag_name);
     const comparisonScreenshotsFolder = paths.DOWNLOADED_SCREENSHOTS_FOLDER;
-    if (!fs.existsSync(comparisonScreenshotsFolder)) {
+    const downloadRequired = !fs.existsSync(comparisonScreenshotsFolder);
+    console.log("download folder", comparisonScreenshotsFolder, downloadRequired);
+    if (downloadRequired) {
       // Ensure latest target screenshots are downloaded
       // TODO - could handle with github action and passing compare folder name
       await new ScreenshotDownload().run({
