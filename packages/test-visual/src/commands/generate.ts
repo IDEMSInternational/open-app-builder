@@ -53,38 +53,35 @@ interface IProgramOptions {
 
 const DEFAULT_OPTIONS: Partial<IProgramOptions> = {
   onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
-    // TODO - does not work in CI. Need to add check for CI and toggle accordingly
-    // logUpdate(`${counter}/${total} screenshots generated`);
-    console.log(`${counter}/${total} screenshots generated`, path.basename(screenshotPath, ".png"));
+    if (process.env.CI) {
+      console.log(
+        `${counter}/${total} screenshots generated`,
+        path.basename(screenshotPath, ".png")
+      );
+    } else {
+      logUpdate(`${counter}/${total} screenshots generated`);
+    }
   },
   onScreenshotsCompleted: async ({ total }) => {
     // logUpdate.done();
     console.log(`✔️  Screenshots complete`);
   },
+  clean: false,
+  concurrency: "10",
+  debug: false,
+  pageWait: "500",
 };
 
-console.log("generate");
 const program = new Command("generate");
 export default program
   .description("Generate screenshots")
-  .requiredOption("-c, --clean", "Clean output folder before generating", false)
-  .requiredOption("-D --debug", "Run in debug mode (not headless)", false)
-  .requiredOption(
-    "-C --concurrency <string>",
-    "Max number of browser pages to process in parallel",
-    "10"
-  )
-  .requiredOption(
-    "-PW --page-wait <string>",
-    "Additional wait time given to help ensure page loaded",
-    "500"
-  )
+  .option("-c, --clean", "Clean output folder before generating")
+  .option("-D --debug", "Run in debug mode (not headless)")
+  .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
+  .option("-PW --page-wait <string>", "Additional wait time given to help ensure page loaded")
   .action(async (opts) => {
     console.log("Generating screenshots...");
-    console.table(opts);
-
-    const options = { ...DEFAULT_OPTIONS, ...opts } as any;
-    await new ScreenshotGenerate(options).run().then(() => process.exit(0));
+    await new ScreenshotGenerate(opts).run().then(() => process.exit(0));
   });
 
 /***************************************************************************************
@@ -95,7 +92,11 @@ export class ScreenshotGenerate {
   browser: puppeteer.Browser;
   page: puppeteer.Page;
 
-  constructor(private options: IProgramOptions) {}
+  private options: IProgramOptions;
+  constructor(opts: Partial<IProgramOptions>) {
+    this.options = { ...DEFAULT_OPTIONS, ...opts } as IProgramOptions;
+    console.table(this.options);
+  }
 
   public async run() {
     await this.prepareBrowserRunner();
