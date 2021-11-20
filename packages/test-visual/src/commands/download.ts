@@ -2,10 +2,21 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { paths } from "../config";
-import { downloadToFile, outputErrorMessage, unzipFile } from "../utils";
-import { getGHRepoReleases, IGHReleaseData } from "../helpers";
+import { downloadToFile, outputCompleteMessage, outputErrorMessage, unzipFile } from "../utils";
+import {
+  getGHRepoArtifactDLLink,
+  getGHRepoArtifacts,
+  getGHRepoReleases,
+  IGHReleaseData,
+} from "../helpers";
 
 const program = new Command("download");
+const SCREENSHOT_ARTIFACT_NAME = "screenshots-artifact";
+
+const DEFAULT_OPTIONS = {
+  latest: true,
+  outputFolder: paths.DOWNLOADED_SCREENSHOTS_FOLDER,
+};
 
 export default program
   .description("Download screenshots for a given app version")
@@ -14,19 +25,40 @@ export default program
   });
 
 export class ScreenshotDownload {
-  private releaseData: IGHReleaseData;
-  private screenshotAsset: IGHReleaseData["assets"][0];
-  private archiveFilepath: string;
+  async run(options = DEFAULT_OPTIONS) {
+    const { outputFolder } = options;
+    if (options.latest) {
+      const { browser_download_url, id } = await this.getLatestScreenshotsArtifact();
+      await this.downloadCacheAsset(browser_download_url, `${id}.zip`);
+      const downloadFolderPath = await this.extractCacheAsset(`${id}.zip`, outputFolder);
+      return downloadFolderPath;
+    }
+    // TODO - handle passing release tag (methods require refactor)
+    else {
+      const { browser_download_url, name } = await this.getReleaseScreenshotAssetData();
+      await this.downloadCacheAsset(browser_download_url, `${name}.zip`);
+      const downloadFolderPath = await this.extractCacheAsset(`${name}.zip`, outputFolder);
+      return downloadFolderPath;
+    }
+  }
 
-  async run() {
-    await this.getReleaseScreenshotAssetData();
-    await this.downloadReleaseScreenshots();
-    await this.extractDownloadArchive();
+  /**
+   *
+   * TODO - not filtered to specific branch run (assume fine)
+   */
+  private async getLatestScreenshotsArtifact() {
+    const artifacts = await getGHRepoArtifacts();
+    const latestArtifact = artifacts.find((a) => a.name === SCREENSHOT_ARTIFACT_NAME);
+    if (!latestArtifact) {
+      throw new Error(`No artifacts found with name: ${SCREENSHOT_ARTIFACT_NAME}`);
+    }
+    console.log("latest artifact", latestArtifact);
+    const browser_download_url = getGHRepoArtifactDLLink(latestArtifact);
+    return { browser_download_url, id: latestArtifact.id };
   }
 
   private async getReleaseScreenshotAssetData() {
-    this.releaseData = await this.getTargetGHReleaseData();
-    const { tag_name, assets, html_url } = this.releaseData;
+    const { tag_name, assets, html_url } = await this.getTargetGHReleaseData();
     const screenshotsFilename = `screenshots-${tag_name}.zip`;
     const screenshotsAsset = assets.find((asset) => asset.name === screenshotsFilename);
     if (!screenshotsAsset) {
@@ -36,7 +68,7 @@ export class ScreenshotDownload {
       );
       process.exit(1);
     }
-    this.screenshotAsset = screenshotsAsset;
+    return screenshotsAsset;
   }
 
   /**
@@ -60,21 +92,22 @@ export class ScreenshotDownload {
     }
   }
 
-  private async downloadReleaseScreenshots() {
-    const { name, browser_download_url } = this.screenshotAsset;
-    this.archiveFilepath = path.resolve(paths.CACHED_SCREENSHOTS_FOLDER, name);
-    if (fs.existsSync(this.archiveFilepath)) {
-      console.log("Skipping screenshot download, already exists", this.archiveFilepath);
+  /** Check if asset with given filename already exists in cache, and if not download */
+  private async downloadCacheAsset(url: string, filename: string) {
+    const archiveFilepath = path.resolve(paths.CACHED_ASSETS, filename);
+    if (fs.existsSync(archiveFilepath)) {
+      console.log("Skipping screenshot download, already exists", archiveFilepath);
     } else {
-      await downloadToFile(browser_download_url, this.archiveFilepath);
+      await downloadToFile(url, archiveFilepath);
     }
+    return archiveFilepath;
   }
 
-  private async extractDownloadArchive() {
-    const { tag_name } = this.releaseData;
-    const extractedFolderpath = path.resolve(paths.CACHED_SCREENSHOTS_FOLDER, tag_name);
-    fs.ensureDirSync(extractedFolderpath);
-    fs.emptyDirSync(extractedFolderpath);
-    unzipFile(this.archiveFilepath, extractedFolderpath);
+  /** Extract the downloaded screenshots to a folder with the same name as the input zip file */
+  private async extractCacheAsset(assetName: string, targetDir: string) {
+    const srcFile = path.resolve(paths.CACHED_ASSETS, assetName);
+    await unzipFile(srcFile, targetDir);
+    outputCompleteMessage("Screenshots downloaded", targetDir);
+    return targetDir;
   }
 }

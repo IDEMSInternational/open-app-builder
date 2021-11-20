@@ -12,8 +12,8 @@ export const paths = {
   OUTPUT_FOLDER: path.resolve(REPO_FOLDER, "output"),
   SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "output/screenshots"),
   SCREENSHOT_DIFFS_FOLDER: path.resolve(REPO_FOLDER, "output/diffs"),
-  CACHED_RELEASES: path.resolve(REPO_FOLDER, "cache/releases"),
-  CACHED_SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "cache/screenshots"),
+  CACHED_ASSETS: path.resolve(REPO_FOLDER, "cache/assets"),
+  DOWNLOADED_SCREENSHOTS_FOLDER: path.resolve(REPO_FOLDER, "output/downloaded"),
 };
 
 Object.values(paths).forEach((p) => {
