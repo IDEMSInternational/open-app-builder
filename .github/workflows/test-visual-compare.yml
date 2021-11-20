@@ -69,11 +69,11 @@ jobs:
           echo "::set-output name=biggest_diffs_text::$(cat packages/test-visual/output/biggestDiffs.txt)"
 
       - name: "Post to PR"
-        uses: mshick/add-pr-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
+          recreate: true
           message: |
-            ## Visual Test Summary
-            ** Summary **
+            ** Visual Test Summary **
             ${{ steps.set_output_summary.outputs.comment_text }}
 
             ** Largest Differences **
