@@ -42,6 +42,7 @@ class ScreenshotComparator {
 
   public async run() {
     console.log("start compare screenshots");
+    // TODO - Add options back for comparing against a specific release
     // const latestRelease = await this.getLatestRelease();
     // const { tag_name } = latestRelease;
     // this.releaseScreenshotsFolder = path.resolve(paths.DOWNLOADED_SCREENSHOTS_FOLDER, tag_name);
@@ -78,7 +79,15 @@ class ScreenshotComparator {
       paths.SCREENSHOT_DIFFS_FOLDER
     );
     this.details = this.details.sort((a, b) => b.percentageDiff - a.percentageDiff);
+    this.generateOutputFiles();
+  }
 
+  /**
+   * Write txt files containing overall and diff summaries to disk for external use
+   * NOTE - filenames hardcoded here are also used by `test-visual-compare` github action
+   * so avoid changing unless reuqired (or pass as an option)
+   */
+  private async generateOutputFiles() {
     const summaryFile = path.resolve(paths.OUTPUT_FOLDER, "summary.txt");
     const summaryTxt = Object.entries(this.summary)
       .map(([key, value]) => `${pad(key, 10)}: ${value}`)

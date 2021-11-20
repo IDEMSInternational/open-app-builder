@@ -177,9 +177,10 @@ export class ScreenshotGenerate {
             });
             await page.close();
           } catch (error) {
-            queue.pause();
-            console.error(error);
-            process.exit(1);
+            // TODO - keep track of templates with errors
+            // queue.pause();
+            console.error("ERROR:", error);
+            // process.exit(1);
           }
         }
         const counter = totalTemplates - queue.size - queue.pending;

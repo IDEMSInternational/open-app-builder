@@ -37,7 +37,8 @@ jobs:
         run: |
           npx concurrently --kill-others \
           "yarn start" \
-          "npx wait-on http-get://localhost:4200 && yarn workspace test-visual start generate --concurrency 5"
+          "npx wait-on --timeout 1200000  http-get://localhost:4200 && \
+          yarn workspace test-visual start generate --concurrency 5"
       - name: test
         run: ls packages/test-visual/output/screenshots
       - name: Upload screenshots
