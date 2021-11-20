@@ -62,20 +62,18 @@ jobs:
           path: packages/test-visual/output/diffs
           retention-days: 90
           # if-no-files-found: error
-      - name: Add download link to summary
+      - name: Set output summary text
+        id: set_output_summary
         run: |
           echo "" >> packages/test-visual/output/summary.txt
+          echo "Download detailed results:" >> packages/test-visual/output/summary.txt
           echo "https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}" >> packages/test-visual/output/summary.txt
+          echo "::set-output name=comment_text::$(cat packages/test-visual/output/summary.txt)
       - name: "Post to PR"
-        uses: EliLillyCo/github-actions-post-to-pr@main
+        uses: mshick/add-pr-comment@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          post_to_pr_definition: |
-            [
-              {
-                "message_file": "packages/test-visual/output/summary.txt",
-                "title": "Visual Test Summary",
-                "artifact_name": "test-visual-diffs-artifact",
-                "compare_branches": []
-              }
-            ]
+          message: |
+            ## Visual Test Summary
+            ${{ steps.set_output_summary.outputs.comment_text }}
+
+            https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
