@@ -27,19 +27,21 @@ export default program
 export class ScreenshotDownload {
   async run(options = DEFAULT_OPTIONS) {
     const { outputFolder } = options;
+    console.log("downloading screenshots");
+    console.table(options);
     if (options.latest) {
       const { browser_download_url, id } = await this.getLatestScreenshotsArtifact();
       await this.downloadCacheAsset(browser_download_url, `${id}.zip`);
-      const downloadFolderPath = await this.extractCacheAsset(`${id}.zip`, outputFolder);
-      return downloadFolderPath;
+      await this.extractCacheAsset(`${id}.zip`, outputFolder);
     }
     // TODO - handle passing release tag (methods require refactor)
     else {
       const { browser_download_url, name } = await this.getReleaseScreenshotAssetData();
       await this.downloadCacheAsset(browser_download_url, `${name}.zip`);
-      const downloadFolderPath = await this.extractCacheAsset(`${name}.zip`, outputFolder);
-      return downloadFolderPath;
+      await this.extractCacheAsset(`${name}.zip`, outputFolder);
     }
+    console.log("✔️ Screenshots downloaded");
+    return outputFolder;
   }
 
   /**
@@ -108,6 +110,5 @@ export class ScreenshotDownload {
     const srcFile = path.resolve(paths.CACHED_ASSETS, assetName);
     await unzipFile(srcFile, targetDir);
     outputCompleteMessage("Screenshots downloaded", targetDir);
-    return targetDir;
   }
 }
