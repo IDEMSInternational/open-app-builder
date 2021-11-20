@@ -54,7 +54,8 @@ jobs:
         run: |
           npx concurrently --kill-others \
           "yarn start" \
-          "npx wait-on http-get://localhost:4200 && yarn workspace test-visual start compare"
+          "npx wait-on --timeout 1200000 http-get://localhost:4200 && \
+          yarn workspace test-visual start compare"
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
@@ -62,8 +63,10 @@ jobs:
           path: packages/test-visual/output/diffs
           retention-days: 90
           # if-no-files-found: error
+
       # Read from generated output txt files and save to env as multiline variables for display in comment
       # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
+      # Alt could be to append to existing text files and pass path to sticky comment action
       - name: Set output summary text
         id: set_output_summary
         run: |
@@ -79,7 +82,7 @@ jobs:
       - name: "Post to PR"
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          recreate: true
+          # recreate: true
           message: |
             **Visual Test Summary**
             ${{ env.SUMMARY_TEXT }}
