@@ -157,7 +157,7 @@ export class ScreenshotGenerate {
       concurrency,
       timeout: 60000,
       autoStart: false,
-      throwOnTimeout: true,
+      throwOnTimeout: false,
     });
 
     // setup screenshot requests
@@ -208,7 +208,7 @@ export class ScreenshotGenerate {
       waitUntil: "networkidle2",
     });
     // wait for expected template container component to be in dom
-    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}"`);
+    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}]"`);
     // Additional timeout to support page fully loading
     // TODO - replace with function call from the app
     await page.waitForTimeout(Number(this.options.pageWait));
