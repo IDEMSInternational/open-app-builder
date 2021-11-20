@@ -161,7 +161,8 @@ export class ScreenshotGenerate {
     });
 
     // setup screenshot requests
-    templateFlows.forEach((template) => {
+    // TODO - REMOVE LIMIT
+    templateFlows.slice(0, 20).forEach((template) => {
       const task = async () => {
         const { flow_name } = template;
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
@@ -208,7 +209,7 @@ export class ScreenshotGenerate {
       waitUntil: "networkidle2",
     });
     // wait for expected template container component to be in dom
-    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}]"`);
+    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}"]`);
     // Additional timeout to support page fully loading
     // TODO - replace with function call from the app
     await page.waitForTimeout(Number(this.options.pageWait));
