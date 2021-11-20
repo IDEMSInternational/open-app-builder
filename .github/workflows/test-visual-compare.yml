@@ -70,7 +70,8 @@ jobs:
             [
               {
                 "message_file": "packages/test-visual/output/summary.txt",
-                "title": "test-visual-diffs-artifact",
-                "artifact_name": "defaults to title"
+                "title": "Visual Template Tests",
+                "artifact_name": "test-visual-diffs-artifact",
+                "compare_branches": []
               }
             ]
