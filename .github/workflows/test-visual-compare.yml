@@ -62,12 +62,11 @@ jobs:
           path: packages/test-visual/output/diffs
           retention-days: 90
           # if-no-files-found: error
+      # Read from generated output txt files and save to env as multiline variables for display in comment
+      # https://docs.github.com/en/actions/learn-github-actions/workflow-commands-for-github-actions#multiline-strings
       - name: Set output summary text
         id: set_output_summary
-        # https://trstringer.com/github-actions-multiline-strings/
         run: |
-          echo ::set-output name=summary_text::$(cat packages/test-visual/output/summary.txt)
-          echo ::set-output name=biggest_diffs_text::$(cat packages/test-visual/output/biggestDiffs.txt)
           SUMMARY_TEXT=$(cat packages/test-visual/output/summary.txt)
           echo "SUMMARY_TEXT<<EOF" >> $GITHUB_ENV
           echo "$SUMMARY_TEXT" >> $GITHUB_ENV
@@ -83,11 +82,9 @@ jobs:
           recreate: true
           message: |
             **Visual Test Summary**
-            ${{ steps.set_output_summary.outputs.summary_text }}
             ${{ env.SUMMARY_TEXT }}
 
             **Largest Differences**
-            ${{ steps.set_output_summary.outputs.biggest_diffs_text }}
             ${{ env.BIGGEST_DIFFS }}
 
             **Download Link**

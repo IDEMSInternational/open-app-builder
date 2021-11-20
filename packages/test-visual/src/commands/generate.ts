@@ -161,8 +161,7 @@ export class ScreenshotGenerate {
     });
 
     // setup screenshot requests
-    // TODO - REMOVE LIMIT
-    templateFlows.slice(0, 20).forEach((template) => {
+    templateFlows.forEach((template) => {
       const task = async () => {
         const { flow_name } = template;
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
