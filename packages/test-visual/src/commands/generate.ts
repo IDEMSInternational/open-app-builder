@@ -53,17 +53,15 @@ interface IProgramOptions {
 
 const DEFAULT_OPTIONS: Partial<IProgramOptions> = {
   onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
-    if (process.env.CI) {
-      console.log(
-        `${counter}/${total} screenshots generated`,
-        path.basename(screenshotPath, ".png")
-      );
-    } else {
-      logUpdate(`${counter}/${total} screenshots generated`);
-    }
+    const screenshotName = path.basename(screenshotPath, ".png");
+    return process.env.CI
+      ? console.log(`${counter}/${total} screenshots generated`, screenshotName)
+      : logUpdate(`${counter}/${total} screenshots generated`);
   },
   onScreenshotsCompleted: async ({ total }) => {
-    // logUpdate.done();
+    if (!process.env.CI) {
+      logUpdate.done();
+    }
     console.log(`✔️  Screenshots complete`);
   },
   clean: false,
