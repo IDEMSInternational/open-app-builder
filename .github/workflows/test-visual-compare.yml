@@ -62,6 +62,10 @@ jobs:
           path: packages/test-visual/output/diffs
           retention-days: 90
           # if-no-files-found: error
+      - name: Add download link to summary
+        run: |
+          echo "" >> packages/test-visual/output/summary.txt
+          echo "https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}" >> packages/test-visual/output/summary.txt
       - name: "Post to PR"
         uses: EliLillyCo/github-actions-post-to-pr@main
         with:
@@ -70,7 +74,7 @@ jobs:
             [
               {
                 "message_file": "packages/test-visual/output/summary.txt",
-                "title": "Visual Template Tests",
+                "title": "Visual Test Summary",
                 "artifact_name": "test-visual-diffs-artifact",
                 "compare_branches": []
               }
