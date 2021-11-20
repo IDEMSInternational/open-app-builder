@@ -66,11 +66,10 @@ class ScreenshotComparator {
         const filename = path.basename(screenshotPath);
         const releaseScreenshotPath = path.resolve(comparisonScreenshotsFolder, filename);
         await this.compareScreenshots(releaseScreenshotPath, screenshotPath);
-        const msg = `${counter}/${total} [${path.basename(
-          screenshotPath,
-          ".png"
-        )}] \n\r${JSON.stringify(this.summary, null, 2)}`;
-        return process.env.CI ? console.log(msg) : logUpdate(msg);
+        const msg = `${counter}/${total} [${path.basename(screenshotPath, ".png")}]`;
+        return process.env.CI
+          ? console.log(msg)
+          : logUpdate(`${msg}\n\r${JSON.stringify(this.summary, null, 2)}`);
       },
     });
     await generator.run();
