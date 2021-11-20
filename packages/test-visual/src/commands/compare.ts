@@ -35,7 +35,8 @@ export default program
  * Main Methods
  *************************************************************************************/
 class ScreenshotComparator {
-  private diffs = { new: 0, different: 0, same: 0 };
+  private summary = { new: 0, different: 0, same: 0 };
+  private details: { percentageDiff: number; filename: string }[] = [];
 
   constructor(private options: typeof DEFAULT_OPTIONS) {}
 
@@ -68,17 +69,30 @@ class ScreenshotComparator {
         const msg = `${counter}/${total} [${path.basename(
           screenshotPath,
           ".png"
-        )}] \n\r${JSON.stringify(this.diffs, null, 2)}`;
+        )}] \n\r${JSON.stringify(this.summary, null, 2)}`;
         return process.env.CI ? console.log(msg) : logUpdate(msg);
       },
     });
     await generator.run();
     outputCompleteMessage(
-      `Compare found ${this.diffs.different} templates with differences:`,
+      `Compare found ${this.summary.different} templates with differences:`,
       paths.SCREENSHOT_DIFFS_FOLDER
     );
+    this.details = this.details.sort((a, b) => b.percentageDiff - a.percentageDiff);
+
     const summaryFile = path.resolve(paths.OUTPUT_FOLDER, "summary.txt");
-    fs.writeFileSync(summaryFile, JSON.stringify(this.diffs, null, 2));
+    const summaryTxt = JSON.stringify(this.summary, null, 2);
+    console.log(summaryTxt);
+
+    const biggestDiffsFile = path.resolve(paths.OUTPUT_FOLDER, "biggestDiffs.txt");
+    const biggestDiffs = this.details
+      .slice(0, 10)
+      .map((v, i) => `${pad(i + 1, 2)} | ${pad(v.percentageDiff, 4)}% | ${v.filename}`);
+    const biggestDiffTxt = JSON.stringify(biggestDiffs, null, 2);
+    console.log(biggestDiffTxt);
+
+    fs.writeFileSync(summaryFile, summaryTxt);
+    fs.writeFileSync(biggestDiffsFile, biggestDiffTxt);
   }
 
   private async getLatestRelease() {
@@ -89,7 +103,7 @@ class ScreenshotComparator {
   /** Take 2 image paths and calculate a pixel comparison, updating global diffs object with results */
   private async compareScreenshots(beforeImgPath: string, afterImgPath: string) {
     if (!fs.existsSync(beforeImgPath)) {
-      this.diffs.new++;
+      this.summary.new++;
       return;
     }
     if (!fs.existsSync(afterImgPath)) {
@@ -110,8 +124,11 @@ class ScreenshotComparator {
         beforeImg.height,
         options
       );
+      const percentageDiffCalc = (numDiffPixels / (beforeImg.width * beforeImg.height)) * 100;
+      const percentageDiff = Math.round(percentageDiffCalc * 10) / 10;
       if (numDiffPixels > 0) {
-        this.diffs.different++;
+        this.summary.different++;
+        this.details.push({ percentageDiff, filename: path.basename(beforeImgPath, ".png") });
         // populate before, after and diff images to output diff folder
 
         const extension = path.extname(afterImgPath);
@@ -126,7 +143,7 @@ class ScreenshotComparator {
         const diffImgPath = path.resolve(paths.SCREENSHOT_DIFFS_FOLDER, diffFilename);
         diff.pack().pipe(fs.createWriteStream(diffImgPath));
       } else {
-        this.diffs.same++;
+        this.summary.same++;
       }
     }
   }
@@ -153,4 +170,10 @@ class ScreenshotComparator {
         }
     }
   }
+}
+
+function pad(str: string | number, chars: number) {
+  str = `${str}`;
+  const padChars = Math.max(chars - str.length + 1, 0);
+  return str + new Array(padChars).join(" ");
 }
