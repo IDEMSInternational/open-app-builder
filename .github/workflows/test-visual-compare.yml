@@ -65,19 +65,22 @@ jobs:
       - name: Set output summary text
         id: set_output_summary
         run: |
-          echo "::set-output name=summary_text::$(cat packages/test-visual/output/summary.txt)"
-          echo "::set-output name=biggest_diffs_text::$(cat packages/test-visual/output/biggestDiffs.txt)"
+          echo ::set-output name=summary_text::$(cat packages/test-visual/output/summary.txt)
+          echo ::set-output name=biggest_diffs_text::$(cat packages/test-visual/output/biggestDiffs.txt)
 
       - name: "Post to PR"
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           recreate: true
           message: |
-            ** Visual Test Summary **
-            ${{ steps.set_output_summary.outputs.comment_text }}
+            **Visual Test Summary**
+            ${{ steps.set_output_summary.outputs.summary_text }}
 
-            ** Largest Differences **
+            **Largest Differences**
             ${{ steps.set_output_summary.outputs.biggest_diffs_text }}
 
-            ** Download Link **
+            **Download Link**
             https://nightly.link/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
+
+            **Run Details**
+            https://github.com/IDEMSInternational/parenting-app-ui/actions/runs/${{github.run_id}}
