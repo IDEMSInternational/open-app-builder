@@ -7,7 +7,7 @@ on:
       - master
 jobs:
   test_visual_compare:
-    if: contains(github.event.pull_request.labels.*.name, "Test - visual")
+    if: contains(github.event.pull_request.labels.*.name, 'Test - visual')
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
