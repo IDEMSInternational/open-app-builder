@@ -80,14 +80,17 @@ class ScreenshotComparator {
     this.details = this.details.sort((a, b) => b.percentageDiff - a.percentageDiff);
 
     const summaryFile = path.resolve(paths.OUTPUT_FOLDER, "summary.txt");
-    const summaryTxt = JSON.stringify(this.summary, null, 2);
+    const summaryTxt = Object.entries(this.summary)
+      .map(([key, value]) => `${pad(key, 10)}: ${value}`)
+      .join("\r\n");
     console.log(summaryTxt);
 
     const biggestDiffsFile = path.resolve(paths.OUTPUT_FOLDER, "biggestDiffs.txt");
     const biggestDiffs = this.details
       .slice(0, 10)
       .map((v, i) => `${pad(i + 1, 2)} | ${pad(v.percentageDiff, 4)}% | ${v.filename}`);
-    const biggestDiffTxt = JSON.stringify(biggestDiffs, null, 2);
+
+    const biggestDiffTxt = biggestDiffs.join("\r\n");
     console.log(biggestDiffTxt);
 
     fs.writeFileSync(summaryFile, summaryTxt);
