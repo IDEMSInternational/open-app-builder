@@ -36,19 +36,21 @@ export default program
  *************************************************************************************/
 class ScreenshotComparator {
   private diffs = { new: 0, different: 0, same: 0 };
-  /** path to folder of downloaded screenshots from release */
-  private releaseScreenshotsFolder: string;
 
   constructor(private options: typeof DEFAULT_OPTIONS) {}
 
   public async run() {
-    const latestRelease = await this.getLatestRelease();
-    const { tag_name } = latestRelease;
-    this.releaseScreenshotsFolder = path.resolve(paths.CACHED_SCREENSHOTS_FOLDER, tag_name);
-
-    if (!fs.existsSync(this.releaseScreenshotsFolder)) {
-      console.log("Downloading screenshots for comparison", tag_name);
-      await new ScreenshotDownload().run();
+    // const latestRelease = await this.getLatestRelease();
+    // const { tag_name } = latestRelease;
+    // this.releaseScreenshotsFolder = path.resolve(paths.DOWNLOADED_SCREENSHOTS_FOLDER, tag_name);
+    const comparisonScreenshotsFolder = paths.DOWNLOADED_SCREENSHOTS_FOLDER;
+    if (!fs.existsSync(comparisonScreenshotsFolder)) {
+      // Ensure latest target screenshots are downloaded
+      // TODO - could handle with github action and passing compare folder name
+      await new ScreenshotDownload().run({
+        latest: true,
+        outputFolder: comparisonScreenshotsFolder,
+      });
     }
     fs.emptyDirSync(paths.SCREENSHOT_DIFFS_FOLDER);
 
@@ -58,13 +60,13 @@ class ScreenshotComparator {
       clean: this.options.clean,
       onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
         const filename = path.basename(screenshotPath);
-        const releaseScreenshotPath = path.resolve(this.releaseScreenshotsFolder, filename);
+        const releaseScreenshotPath = path.resolve(comparisonScreenshotsFolder, filename);
         await this.compareScreenshots(releaseScreenshotPath, screenshotPath);
-        logUpdate(`${counter}/${total}`, JSON.stringify(this.diffs, null, 2));
-      },
-      onScreenshotsCompleted: async ({}) => {
-        logUpdate.done();
-        // console.log(JSON.stringify(this.diffs, null, 2));
+        if (process.env.CI) {
+          console.log(`${counter}/${total}`);
+        } else {
+          logUpdate(`${counter}/${total}`, JSON.stringify(this.diffs, null, 2));
+        }
       },
     });
     await generator.run();
@@ -72,6 +74,8 @@ class ScreenshotComparator {
       `Compare found ${this.diffs.different} templates with differences:`,
       paths.SCREENSHOT_DIFFS_FOLDER
     );
+    const summaryFile = path.resolve(paths.OUTPUT_FOLDER, "summary.txt");
+    fs.writeFileSync(summaryFile, JSON.stringify(this.diffs, null, 2));
   }
 
   private async getLatestRelease() {
