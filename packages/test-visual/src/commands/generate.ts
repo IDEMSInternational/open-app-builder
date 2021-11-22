@@ -10,9 +10,8 @@ import { DB_TABLES, DB_VERSION } from "data-models/db.model";
 
 // As using commonJS can only import from built
 // TODO - ensure built before run
-import * as templateImport from "app-data/dist/data/template/index";
+import { VISUAL_TEST_TEMPLATE_LIST } from "app-data/dist/test/index";
 import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
-const templateFlows = templateImport.template;
 
 // Import Dexie from the src folder so that same instance can be used to seed the DB
 // as is used in the app itself. Uses require import syntax for compatibility
@@ -151,7 +150,7 @@ export class ScreenshotGenerate {
     if (this.options.clean) {
       fs.emptyDirSync(paths.SCREENSHOTS_FOLDER);
     }
-    const totalTemplates = templateFlows.length;
+    const totalTemplates = VISUAL_TEST_TEMPLATE_LIST.length;
 
     // run an initial request that can be used to check for console errors in debug mode
     if (this.options.debug) {
@@ -169,14 +168,13 @@ export class ScreenshotGenerate {
     });
 
     // setup screenshot requests
-    templateFlows.forEach((template) => {
+    VISUAL_TEST_TEMPLATE_LIST.forEach(({ name, url, selector }) => {
       const task = async () => {
-        const { flow_name } = template;
-        const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${flow_name}.png`);
+        const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${name}.png`);
         if (!fs.existsSync(outputPath)) {
           const page = await this.browser.newPage();
           try {
-            await this.gotoTemplate(flow_name, page);
+            await this.goToUrl(url, selector, page);
             await page.screenshot({
               path: outputPath,
               fullPage: true,
@@ -212,12 +210,12 @@ export class ScreenshotGenerate {
   }
 
   /** Load a template page from within the app and wait for content to render */
-  private async gotoTemplate(templatename: string, page: puppeteer.Page) {
-    await page.goto(`http://localhost:4200/template/${templatename}`, {
+  private async goToUrl(url: string, selector: string, page: puppeteer.Page) {
+    await page.goto(`${APP_SERVER_URL}/${url}`, {
       waitUntil: "networkidle2",
     });
     // wait for expected template container component to be in dom
-    await page.waitForSelector(`plh-template-container[data-templatename="${templatename}"]`);
+    await page.waitForSelector(selector);
     // Additional timeout to support page fully loading
     // TODO - replace with function call from the app
     await page.waitForTimeout(Number(this.options.pageWait));
