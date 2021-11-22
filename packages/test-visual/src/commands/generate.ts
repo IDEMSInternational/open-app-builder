@@ -181,6 +181,9 @@ export class ScreenshotGenerate {
               captureBeyondViewport: true,
               type: "png",
             });
+            // free up memory before closing page tab
+            // https://github.com/puppeteer/puppeteer/issues/1490
+            await page.goto("about:blank");
             await page.close();
           } catch (error) {
             // TODO - keep track of templates with errors
@@ -198,6 +201,9 @@ export class ScreenshotGenerate {
         return;
       };
       queue.add(task);
+    });
+    queue.on("next", () => {
+      // TODO - might be good also to track resources, total pages or timestamps to prevent mem leaks
     });
     queue.start();
     await queue.onIdle();
