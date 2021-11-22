@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "./base";
 
@@ -9,8 +9,12 @@ import { TemplateBaseComponent } from "./base";
   </div>`,
   styleUrls: ["./tmpl-components-common.scss"],
 })
-export class TmplVideoComponent extends TemplateBaseComponent {
+export class TmplVideoComponent extends TemplateBaseComponent implements OnInit {
   style: string;
+
+  ngOnInit() {
+    this.getParams();
+  }
 
   getParams() {
     this.style = getStringParamFromTemplateRow(this._row, "style", null);
