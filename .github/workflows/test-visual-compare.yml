@@ -55,7 +55,7 @@ jobs:
           npx concurrently --kill-others \
           "yarn start" \
           "npx wait-on --timeout 1200000 http-get://localhost:4200 && \
-          yarn workspace test-visual start compare"
+          yarn workspace test-visual start compare --concurrency 5"
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:

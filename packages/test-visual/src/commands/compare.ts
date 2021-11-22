@@ -16,6 +16,7 @@ const program = new Command("compare");
 const DEFAULT_OPTIONS = {
   clean: false,
   "ignore-errors": false,
+  concurrency: "10",
 };
 
 /***************************************************************************************
@@ -25,6 +26,7 @@ const DEFAULT_OPTIONS = {
 export default program
   .description("Compare visual regression between screenshots")
   .option("-c, --clean", "Clear previous output screenshots to generate clean")
+  .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
   .option("-i, --ignore-errors", "Ignore errors thrown when comparing images")
   .action(async (opts) => {
     const options = { ...DEFAULT_OPTIONS, ...opts };
@@ -63,6 +65,8 @@ class ScreenshotComparator {
     // post-processing of each screenshot after it has been created
     const generator = new ScreenshotGenerate({
       clean: this.options.clean,
+      concurrency: this.options.concurrency,
+
       onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
         const filename = path.basename(screenshotPath);
         const releaseScreenshotPath = path.resolve(comparisonScreenshotsFolder, filename);

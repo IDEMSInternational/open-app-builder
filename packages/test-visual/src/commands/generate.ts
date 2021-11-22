@@ -51,7 +51,7 @@ interface IProgramOptions {
   pageWait?: string;
 }
 
-const DEFAULT_OPTIONS: Partial<IProgramOptions> = {
+const DEFAULT_OPTIONS: IProgramOptions = {
   onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
     const screenshotName = path.basename(screenshotPath, ".png");
     return process.env.CI
@@ -91,7 +91,15 @@ export class ScreenshotGenerate {
   page: puppeteer.Page;
 
   private options: IProgramOptions;
-  constructor(opts: Partial<IProgramOptions>) {
+  constructor(opts: Partial<IProgramOptions> = {}) {
+    this.options = DEFAULT_OPTIONS;
+    // Merge any options where passed. Avoid spread merge to avoid merging null/undefined
+    Object.entries(opts).forEach(([key, value]) => {
+      if (value) {
+        this.options[key] = value;
+      }
+    });
+
     this.options = { ...DEFAULT_OPTIONS, ...opts } as IProgramOptions;
     console.table(this.options);
   }
