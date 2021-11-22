@@ -142,6 +142,58 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "comp_number_button_5",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "number_selector",
+        name: "default",
+        _nested_name: "default",
+      },
+      {
+        type: "number_selector",
+        name: "par_5_1",
+        parameter_list: {
+          category_list: "",
+        },
+        _nested_name: "par_5_1",
+      },
+      {
+        name: "category_list",
+        value: ["0-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "80+"],
+        type: "set_variable",
+        _nested_name: "category_list",
+      },
+      {
+        type: "number_selector",
+        name: "par_5_2",
+        parameter_list: {
+          category_list: "@local.category_list",
+        },
+        _nested_name: "par_5_2",
+        _dynamicFields: {
+          parameter_list: {
+            category_list: [
+              {
+                fullExpression: "@local.category_list",
+                matchedExpression: "@local.category_list",
+                type: "local",
+                fieldName: "category_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.category_list": ["parameter_list.category_list"],
+        },
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/components_demo/component_number_selector.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "comp_round_button_3",
     status: "released",
     flow_subtype: "component_demo",
