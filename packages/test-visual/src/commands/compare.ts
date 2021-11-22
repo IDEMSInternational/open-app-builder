@@ -14,10 +14,7 @@ import logUpdate from "log-update";
 const program = new Command("compare");
 
 const DEFAULT_OPTIONS = {
-  clean: false,
   "ignore-errors": false,
-  concurrency: "10",
-  debug: false,
 };
 
 /***************************************************************************************
@@ -26,10 +23,13 @@ const DEFAULT_OPTIONS = {
  *************************************************************************************/
 export default program
   .description("Compare visual regression between screenshots")
+  // options for compare
+  .option("-i, --ignore-errors", "Ignore errors thrown when comparing images")
+  // options copied from/passed to generate
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
-  .option("-i, --ignore-errors", "Ignore errors thrown when comparing images")
+  .option("-PW --page-wait <string>", "Additional wait time given to help ensure page loaded")
   .action(async (opts) => {
     const options = { ...DEFAULT_OPTIONS, ...opts };
     await new ScreenshotComparator(options).run();
