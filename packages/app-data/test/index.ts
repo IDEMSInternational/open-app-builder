@@ -11,7 +11,7 @@ const ADDITIONAL_TEMPLATE_NAMES = ["home_screen", "weekly_workshops"];
 const SKIPPED_TEMPLATE_NAMES = [];
 
 /** Default time spent waiting to ensure page elements rendered fully */
-const PAGE_WAIT_DEFAULT = 500;
+const PAGE_WAIT_DEFAULT = 1000;
 
 /** Default viewport height used for test, in pixels */
 const PAGE_WIDTH_DEFAULT = 360;
@@ -23,9 +23,10 @@ const PAGE_HEIGHT_DEFAULT = 1280;
 const PAGE_WAIT_OVERRIDES = {
   example_lang_template_1: 2000,
   debug_advanced_dashed_box_1: 2000,
+  home_screen: 2000,
 };
 
-/** Custom overrides to set height for larger pages */
+/** Custom overrides to set height for larger pages, in pixels */
 const PAGE_HEIGHT_OVERRIDES = {
   example_lang_template_1: 3600,
 };
