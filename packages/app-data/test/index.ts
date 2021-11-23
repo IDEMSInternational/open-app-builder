@@ -24,6 +24,7 @@ const PAGE_WAIT_OVERRIDES = {
   example_lang_template_1: 2000,
   debug_advanced_dashed_box_1: 2000,
   home_screen: 2000,
+  example_calc_2: 2000,
 };
 
 /** Custom overrides to set height for larger pages, in pixels */
