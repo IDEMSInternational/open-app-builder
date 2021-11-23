@@ -44,8 +44,6 @@ interface IProgramOptions {
   debug?: boolean;
   /** maximum templates to process in parallel. Default: 10 */
   concurrency?: string;
-  /** additional wait time (ms) added to ensure content loaded. Default: 500 */
-  pageWait?: string;
 }
 
 const DEFAULT_OPTIONS: IProgramOptions = {
@@ -64,7 +62,6 @@ const DEFAULT_OPTIONS: IProgramOptions = {
   clean: false,
   concurrency: "10",
   debug: false,
-  pageWait: "500",
 };
 
 const program = new Command("generate");
@@ -73,7 +70,6 @@ export default program
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
-  .option("-PW --page-wait <string>", "Additional wait time given to help ensure page loaded")
   .action(async (opts) => {
     console.log("Generating screenshots...");
     await new ScreenshotGenerate(opts).run().then(() => process.exit(0));
@@ -230,7 +226,7 @@ export class ScreenshotGenerate {
     await page.waitForSelector(selector);
     // Additional timeout to support page fully loading
     // TODO - replace with function call from the app
-    await page.waitForTimeout(Number(this.options.pageWait));
+    await page.waitForTimeout(pageConfig.pageWait);
     // Try to ensure all rendering complete by requesting animation frame
     await page.evaluate(async () => {
       async function waitForAnimationFrame() {
