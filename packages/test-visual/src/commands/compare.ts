@@ -29,7 +29,6 @@ export default program
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
-  .option("-PW --page-wait <string>", "Additional wait time given to help ensure page loaded")
   .action(async (opts) => {
     const options = { ...DEFAULT_OPTIONS, ...opts };
     await new ScreenshotComparator(options).run();
