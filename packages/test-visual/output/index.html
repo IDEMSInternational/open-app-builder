@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test-Visual</title>
+    <!-- https://tailwindcss.com/docs/installation#using-tailwind-via-cdn -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css"
+    />
+  </head>
+  <body>
+    <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- WiP - Output display (requires local http server) -->
+    <div
+      class="container flex flex-col mx-auto max-h-screen"
+      x-data="{templateNames:[],selected:null}"
+      x-init="templateNames = loadTemplateNames()"
+    >
+      <div style="display: flex">
+        <div style="width: 200px">
+          <h1>Test Visual Comparison</h1>
+          <ul class="px-0">
+            <!-- <template x-if="selected">
+              <span x-text="selected"></span>
+            </template> -->
+            <template x-if="templateNames">
+              <template x-for="name in templateNames">
+                <li
+                  x-text="name"
+                  @click="selected=name;loadTemplateCompare(name)"
+                  class="border list-none rounded-sm px-3 py-3"
+                  x-bind:class="{ 'bg-blue-600 text-gray-200': name === selected }"
+                  style="border-bottom-width: 0"
+                ></li>
+              </template>
+            </template>
+          </ul>
+        </div>
+        <div style="flex: 1">
+          <template x-if="selected">
+            <div>
+              <img
+                style="width: 100%; max-height: 100vh; object-fit: contain"
+                x-bind:src="'screenshots/'+selected+'.png'"
+              />
+            </div>
+          </template>
+          <div id="imageCompare" class="max-w-sm" style="flex: 1">
+            <!-- <img src="screenshots/activity_check_in_chat.png" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main script -->
+    <script>
+      function loadTemplateNames() {
+        return ["activity_relax_1", "app_menu"];
+      }
+      function loadTemplateCompare(templateName) {
+        console.log("loading image", templateName);
+      }
+      function loadInteractiveCompare() {
+        const viewers = document.getElementById("image-compare");
+        const options = {
+          showLabels: true,
+          controlColor: "#FFFFFF",
+          controlShadow: true,
+          addCircle: false,
+          addCircleBlur: true,
+          labelOptions: {
+            before: "Master",
+            after: "PR",
+            onHover: true,
+          },
+          smoothing: true,
+          smoothingAmount: 100,
+          hoverStart: false,
+          verticalMode: true,
+        };
+        const viewer = new ImageCompare(element, options).mount();
+      }
+    </script>
+  </body>
+</html>

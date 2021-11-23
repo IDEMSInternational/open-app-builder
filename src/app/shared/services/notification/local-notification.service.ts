@@ -67,14 +67,19 @@ export class LocalNotificationService {
           types: Object.values(NOTIFICATION_ACTIONS),
         });
       }
+      this._addListeners();
+      await this.loadNotifications();
     }
-    this._addListeners();
-    await this.loadNotifications();
   }
 
   public async requestPermission(): Promise<boolean> {
-    const { display } = await LocalNotifications.requestPermissions();
-    return display === "granted";
+    if ("Notification" in window) {
+      const { display } = await LocalNotifications.requestPermissions();
+      return display === "granted";
+    } else {
+      console.log("notifications not supported");
+      return false;
+    }
   }
 
   /**
@@ -153,6 +158,7 @@ export class LocalNotificationService {
    * see named actions below for configurations
    */
   public async scheduleNotification(options: ILocalNotification, reloadNotifications = true) {
+    if (!this.permissionGranted) return;
     options.extra = { ...options.extra };
     const notifications = [{ ...NOTIFICATION_DEFAULTS, ...options }];
     await LocalNotifications.schedule({ notifications });
@@ -166,6 +172,7 @@ export class LocalNotificationService {
 
   /** Remove API and DB references for a given notification id **/
   public async removeNotification(id: number, reloadNotifications = true) {
+    if (!this.permissionGranted) return;
     const notifications = [{ id }];
     await LocalNotifications.cancel({ notifications });
     await this.removeDBNotification(id);
@@ -185,6 +192,7 @@ export class LocalNotificationService {
     delay = 3,
     forceBackground = true
   ) {
+    if (!this.permissionGranted) return;
     // remove any existing notificaiton and reschedule with a new id to allow action reprocessing
     await this.removeNotification(notification.id, false);
     const notificationDeliveryTime = addSeconds(new Date(), delay);
@@ -240,7 +248,7 @@ export class LocalNotificationService {
    *
    * TODO - handle removal/re-init methods to avoid memory leaks
    */
-  async _addListeners() {
+  private async _addListeners() {
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       async (action) => {
