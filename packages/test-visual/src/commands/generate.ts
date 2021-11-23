@@ -5,12 +5,13 @@ import PQueue from "p-queue";
 import fs from "fs-extra";
 import logUpdate from "log-update";
 import { DEXIE_SRC_PATH, paths } from "../config";
-import { USER_PROFILE_DEFAULT } from "../data/profiles";
-import { DB_TABLES, DB_VERSION } from "data-models/db.model";
 
 // As using commonJS can only import from built
-// TODO - ensure built before run
-import { VISUAL_TEST_TEMPLATE_LIST } from "app-data/dist/test/index";
+// TODO - Ensure built before run. Handle sharing of types between packages
+import { VISUAL_TEST_CONFIG } from "app-data/dist/test/index";
+type IPageConfig = typeof VISUAL_TEST_CONFIG["pageList"][number];
+type IDexieConfig = typeof VISUAL_TEST_CONFIG["dexieConfig"];
+
 import { outputCompleteMessage, outputErrorMessage, zipFolder } from "../utils";
 
 // Import Dexie from the src folder so that same instance can be used to seed the DB
@@ -20,10 +21,7 @@ const Dexie = require(DEXIE_SRC_PATH);
 /***************************************************************************************
  * Configuration
  *************************************************************************************/
-/** url where main app is served from */
-const APP_SERVER_URL = "http://localhost:4200";
-/** screen size to use during test - purposefully long to include more in screenshots */
-const SCREEN_SIZE = { width: 360, height: 1280 };
+const APP_SERVER_URL = VISUAL_TEST_CONFIG.appServerUrl;
 const SCREENSHOTS_OUTPUT_ZIP = path.resolve(paths.OUTPUT_FOLDER, "screenshots-generated.zip");
 
 /***************************************************************************************
@@ -114,9 +112,10 @@ export class ScreenshotGenerate {
 
   /** Create initial puppeteer browser and custom page objects   */
   private async prepareBrowserRunner() {
+    const { height, width } = VISUAL_TEST_CONFIG.pageDefaults;
     this.browser = await puppeteer.launch({
       headless: !this.options.debug,
-      defaultViewport: SCREEN_SIZE,
+      defaultViewport: { width, height },
       args: ["--disable-notifications"],
       dumpio: this.options.debug,
     });
@@ -150,7 +149,8 @@ export class ScreenshotGenerate {
     if (this.options.clean) {
       fs.emptyDirSync(paths.SCREENSHOTS_FOLDER);
     }
-    const totalTemplates = VISUAL_TEST_TEMPLATE_LIST.length;
+    const { pageList, pageDefaults } = VISUAL_TEST_CONFIG;
+    const totalTemplates = pageList.length;
 
     // run an initial request that can be used to check for console errors in debug mode
     if (this.options.debug) {
@@ -168,13 +168,18 @@ export class ScreenshotGenerate {
     });
 
     // setup screenshot requests
-    VISUAL_TEST_TEMPLATE_LIST.forEach(({ name, url, selector }) => {
+    pageList.forEach((pageConfig) => {
       const task = async () => {
+        const { name, height, width } = pageConfig;
         const outputPath = path.resolve(paths.SCREENSHOTS_FOLDER, `${name}.png`);
         if (!fs.existsSync(outputPath)) {
           const page = await this.browser.newPage();
+          // resize page viewport if override provided
+          if (height !== pageDefaults.height || width !== pageDefaults.width) {
+            await page.setViewport({ width: pageConfig.width, height: pageConfig.height });
+          }
           try {
-            await this.goToUrl(url, selector, page);
+            await this.goToUrl(pageConfig, page);
             await page.screenshot({
               path: outputPath,
               fullPage: true,
@@ -216,7 +221,8 @@ export class ScreenshotGenerate {
   }
 
   /** Load a template page from within the app and wait for content to render */
-  private async goToUrl(url: string, selector: string, page: puppeteer.Page) {
+  private async goToUrl(pageConfig: IPageConfig, page: puppeteer.Page) {
+    const { url, selector } = pageConfig;
     await page.goto(`${APP_SERVER_URL}/${url}`, {
       waitUntil: "networkidle2",
     });
@@ -238,15 +244,15 @@ export class ScreenshotGenerate {
 
   /** Run custom scripts to seed localstorage and indexeddb profile for app **/
   private async seedBrowserDB() {
-    const { fields, tables } = USER_PROFILE_DEFAULT;
+    const { dexieConfig, localStorageFields } = VISUAL_TEST_CONFIG;
     // load localstorage fields
     const mappedFields = {};
-    Object.entries(fields).forEach(([field, value]) => {
+    Object.entries(localStorageFields).forEach(([field, value]) => {
       mappedFields[`rp-contact-field.${field}`] = value;
     });
     await this.setLocalStorage(mappedFields);
     console.log("✔️  Localstorage set");
-    await this.setIndexedDB(tables);
+    await this.setIndexedDB(dexieConfig);
     console.log("✔️  IndexedDB set");
   }
 
@@ -263,20 +269,21 @@ export class ScreenshotGenerate {
    * Run evaluation to access page window and run commands on Dexie indexedDB
    * NOTE - requires dexie scripts to be included (handled in init)
    **/
-  private async setIndexedDB(tables: typeof USER_PROFILE_DEFAULT["tables"]) {
-    const passedArgs = { DB_TABLES, DB_VERSION, tables };
+  private async setIndexedDB(dexieConfig: IDexieConfig) {
+    const { data, tableSchema, version } = dexieConfig;
+    const passedArgs = { tableSchema, version, data };
     return this.page.evaluate(async (args: typeof passedArgs) => {
       const appWindow: IAppWindow = window as any;
       const db = new appWindow.Dexie("plh-app-db");
-      const { DB_TABLES, tables, DB_VERSION } = args;
+      const { tableSchema, data, version } = args;
       // when configuring database from seed require setting a lower version
       // so that it can be configured as the correct version in the app
-      db.version(DB_VERSION - 1).stores(DB_TABLES);
+      db.version(version - 1).stores(tableSchema);
       await db.open().catch((err) => {
         console.error("could not open db", err);
       });
-      for (const table_id of Object.keys(tables)) {
-        const rows = tables[table_id];
+      for (const table_id of Object.keys(data)) {
+        const rows = data[table_id];
         await db.table(table_id).bulkPut(rows);
       }
       const res = Object.keys(db._dbSchema);
