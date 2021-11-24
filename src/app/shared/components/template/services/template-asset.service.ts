@@ -18,14 +18,21 @@ export class TemplateAssetService {
    */
   getTranslatedAssetPath(value: string) {
     const currentLanguageCode = this.translateService.app_language;
-    const assetEntry = ASSETS_CONTENTS_LIST[value];
+    const assetName = this.cleanAssetName(value);
+    const assetEntry = ASSETS_CONTENTS_LIST[assetName];
     if (!assetEntry) {
-      console.error("Asset missing", value);
+      console.error("Asset missing", value, assetName);
     }
     if (assetEntry?.translations?.[currentLanguageCode]) {
-      return this.convertPLHRelativePathToAssetPath(`${currentLanguageCode}/${value}`);
+      return this.convertPLHRelativePathToAssetPath(`${currentLanguageCode}/${assetName}`);
     }
-    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${value}`);
+    return this.convertPLHRelativePathToAssetPath(`${ASSETS_GLOBAL_FOLDER_NAME}/${assetName}`);
+  }
+
+  private cleanAssetName(value: string) {
+    // remove prefix slash
+    if (value.startsWith("/")) value = value.replace("/", "");
+    return value;
   }
 
   /**

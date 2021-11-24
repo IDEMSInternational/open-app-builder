@@ -59,7 +59,7 @@ export async function convertFromRapidProMsg(rpMsg: IRapidProMessage): Promise<C
   msg = applyCustomMessageInfo(urlPartsList, msg);
   if (msg.choiceMediaUrls) {
     msg.responseOptions.forEach((option, idx) => {
-      option.imageUrl = "assets/plh_assets/" + msg.choiceMediaUrls[idx];
+      option.imageUrl = msg.choiceMediaUrls[idx];
       option.hideText = msg.choiceMediaDisplay === "media";
     });
   }
@@ -199,7 +199,8 @@ export function isHiddenURL(urlParts: URLParts): boolean {
 }
 
 export function getURLSInText(text: string): URLParts[] {
-  let urlRegex = /(?<protocol>http[s]?):\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)(?:[\:]?(?<port>[0-9]*))(?<path>\/[^?#\s]*)?[\?]?(?:(?<query>[^?#\s]*))?[#]?(?<fragment>[^?#\s]*)?/gm;
+  let urlRegex =
+    /(?<protocol>http[s]?):\/\/(?<domain>[a-zA-Z0-9\.\-\_]*)(?:[\:]?(?<port>[0-9]*))(?<path>\/[^?#\s]*)?[\?]?(?:(?<query>[^?#\s]*))?[#]?(?<fragment>[^?#\s]*)?/gm;
   const urls: URLParts[] = [];
   let regexResult: RegExpExecArray;
   while ((regexResult = urlRegex.exec(text))) {
@@ -248,9 +249,6 @@ export async function convertRapidProAttachments(attachments: string[]): Promise
       let urlRegexResult = urlRegex.exec(url);
       // Handle local asset
       if (!urlRegexResult) {
-        if (!url.startsWith("assets/plh_assets/")) {
-          url = `assets/plh_assets/${url}`;
-        }
         return { type, url };
       }
       // Handle web asset
