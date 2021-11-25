@@ -3,34 +3,6 @@ import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",
-    flow_subtype: "debug",
-    flow_name: "debug_campaign_global",
-    status: "released",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "example_text",
-        value: "example_text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "some_global",
-        value: "some_field",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "global",
     flow_name: "debug_full_stop_golbals",
     status: "released",
     flow_subtype: "debug",

@@ -286,412 +286,6 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
-    flow_subtype: "debug",
-    flow_name: "debug_campaign",
-    status: "released",
-    rows: [
-      {
-        name: "active_campaign",
-        value: "@campaign.debug_campaign",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "active_campaign",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@campaign.debug_campaign",
-              matchedExpression: "@campaign.debug_campaign",
-              type: "campaign",
-              fieldName: "debug_campaign",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@campaign.debug_campaign": ["value"],
-        },
-      },
-      {
-        type: "display_group",
-        condition: "@local.active_campaign.id",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "column",
-        },
-        rows: [
-          {
-            type: "text",
-            name: "campaign_id",
-            value: "Campaign id: @local.active_campaign.id",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.campaign_id",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "Campaign id: @local.active_campaign.id",
-                  matchedExpression: "@local.active_campaign.id",
-                  type: "local",
-                  fieldName: "active_campaign",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign.id": ["value"],
-            },
-          },
-          {
-            type: "round_button",
-            name: "campaign_quickstart",
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "trigger_actions",
-                args: ["@local.active_campaign.click_action_list"],
-                _raw: "click | trigger_actions: @local.active_campaign.click_action_list",
-                _cleaned: "click | trigger_actions: @local.active_campaign.click_action_list",
-              },
-              {
-                trigger: "click",
-                action_id: "set_local",
-                args: ["active_campaign", false],
-                _raw: "click | set_local: active_campaign : false",
-                _cleaned: "click | set_local: active_campaign : false",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.active_campaign.icon",
-              text: "@local.active_campaign.text",
-              style: "home_screen yellow",
-            },
-            style_list: ["padding: 0"],
-            _nested_name: "display_group.campaign_quickstart",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  args: {
-                    "0": [
-                      {
-                        fullExpression: "@local.active_campaign.click_action_list",
-                        matchedExpression: "@local.active_campaign.click_action_list",
-                        type: "local",
-                        fieldName: "active_campaign",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression:
-                        "click | trigger_actions: @local.active_campaign.click_action_list",
-                      matchedExpression: "@local.active_campaign.click_action_list",
-                      type: "local",
-                      fieldName: "active_campaign",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "click | trigger_actions: @local.active_campaign.click_action_list",
-                      matchedExpression: "@local.active_campaign.click_action_list",
-                      type: "local",
-                      fieldName: "active_campaign",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.active_campaign.icon",
-                    matchedExpression: "@local.active_campaign.icon",
-                    type: "local",
-                    fieldName: "active_campaign",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.active_campaign.text",
-                    matchedExpression: "@local.active_campaign.text",
-                    type: "local",
-                    fieldName: "active_campaign",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign.click_action_list": [
-                "action_list.0.args.0",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@local.active_campaign.icon": ["parameter_list.icon_src"],
-              "@local.active_campaign.text": ["parameter_list.text"],
-            },
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-        _dynamicFields: {
-          condition: [
-            {
-              fullExpression: "@local.active_campaign.id",
-              matchedExpression: "@local.active_campaign.id",
-              type: "local",
-              fieldName: "active_campaign",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.active_campaign.id": ["condition"],
-        },
-      },
-      {
-        type: "button",
-        name: "clear_reminders",
-        value: "Reset Reminders",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_default.sent", false],
-            _raw: "click | set_field : debug_reminder_default.sent : false",
-            _cleaned: "click | set_field : debug_reminder_default.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_1.sent", false],
-            _raw: "click | set_field : debug_reminder_1.sent : false",
-            _cleaned: "click | set_field : debug_reminder_1.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_2.sent", false],
-            _raw: "click | set_field : debug_reminder_2.sent : false",
-            _cleaned: "click | set_field : debug_reminder_2.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_3.sent", false],
-            _raw: "click | set_field : debug_reminder_3.sent : false",
-            _cleaned: "click | set_field : debug_reminder_3.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_number", "1"],
-            _raw: "click | set_field : debug_reminder_number: 1",
-            _cleaned: "click | set_field : debug_reminder_number: 1",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "clear_reminders",
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_subtype: "debug",
-    flow_name: "debug_campaign_2",
-    status: "released",
-    rows: [
-      {
-        name: "active_campaign_2",
-        value: "@campaign.debug_campaign_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "active_campaign_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@campaign.debug_campaign_2",
-              matchedExpression: "@campaign.debug_campaign_2",
-              type: "campaign",
-              fieldName: "debug_campaign_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@campaign.debug_campaign_2": ["value"],
-        },
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "column",
-        },
-        rows: [
-          {
-            type: "text",
-            name: "campaign_id",
-            value: "Campaign id: @local.active_campaign_2.id",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.campaign_id",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "Campaign id: @local.active_campaign_2.id",
-                  matchedExpression: "@local.active_campaign_2.id",
-                  type: "local",
-                  fieldName: "active_campaign_2",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign_2.id": ["value"],
-            },
-          },
-          {
-            type: "round_button",
-            name: "campaign_2_quickstart",
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "trigger_actions",
-                args: ["@local.active_campaign_2.click_action_list"],
-                _raw: "click | trigger_actions: @local.active_campaign_2.click_action_list",
-                _cleaned: "click | trigger_actions: @local.active_campaign_2.click_action_list",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.active_campaign_2.icon",
-              text: "@local.active_campaign_2.text",
-              style: "home_screen orange",
-            },
-            style_list: ["padding: 0"],
-            _nested_name: "display_group.campaign_2_quickstart",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  args: {
-                    "0": [
-                      {
-                        fullExpression: "@local.active_campaign_2.click_action_list",
-                        matchedExpression: "@local.active_campaign_2.click_action_list",
-                        type: "local",
-                        fieldName: "active_campaign_2",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression:
-                        "click | trigger_actions: @local.active_campaign_2.click_action_list",
-                      matchedExpression: "@local.active_campaign_2.click_action_list",
-                      type: "local",
-                      fieldName: "active_campaign_2",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "click | trigger_actions: @local.active_campaign_2.click_action_list",
-                      matchedExpression: "@local.active_campaign_2.click_action_list",
-                      type: "local",
-                      fieldName: "active_campaign_2",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.active_campaign_2.icon",
-                    matchedExpression: "@local.active_campaign_2.icon",
-                    type: "local",
-                    fieldName: "active_campaign_2",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.active_campaign_2.text",
-                    matchedExpression: "@local.active_campaign_2.text",
-                    type: "local",
-                    fieldName: "active_campaign_2",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign_2.click_action_list": [
-                "action_list.0.args.0",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@local.active_campaign_2.icon": ["parameter_list.icon_src"],
-              "@local.active_campaign_2.text": ["parameter_list.text"],
-            },
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "button",
-        name: "clear_reminders",
-        value: "Reset Reminders",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_default.sent", false],
-            _raw: "click | set_field : debug_reminder_default.sent : false",
-            _cleaned: "click | set_field : debug_reminder_default.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_5.sent", false],
-            _raw: "click | set_field : debug_reminder_5.sent : false",
-            _cleaned: "click | set_field : debug_reminder_5.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_6.sent", false],
-            _raw: "click | set_field : debug_reminder_6.sent : false",
-            _cleaned: "click | set_field : debug_reminder_6.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_7.sent", false],
-            _raw: "click | set_field : debug_reminder_7.sent : false",
-            _cleaned: "click | set_field : debug_reminder_7.sent : false",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "clear_reminders",
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "template",
     flow_name: "debug_changed_radio_group_1",
     status: "released",
     flow_subtype: "debug",
@@ -27163,6 +26757,112 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "example_tiles",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "tile_component",
+        name: "tile_example_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start_passive",
+        },
+        _nested_name: "tile_example_1",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start",
+        },
+        _nested_name: "tile_example_2",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start_blue",
+        },
+        _nested_name: "tile_example_3",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_4",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start_dark",
+        },
+        _nested_name: "tile_example_4",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_5",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_1",
+        },
+        _nested_name: "tile_example_5",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_6",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_2",
+        },
+        _nested_name: "tile_example_6",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_3",
+        },
+        _nested_name: "tile_example_7",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_8",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_4",
+        },
+        _nested_name: "tile_example_8",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_tiles.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_subtype: "debug",
     flow_name: "example_widget_audio_def",
     status: "released",
@@ -29888,6 +29588,18 @@ const template: FlowTypes.Template[] = [
           },
         ],
         _nested_name: "dg",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "First",
+          icon_src: "plh_images/icons/star.svg",
+          second_line_text: "Second",
+          style: "parent_centre_4",
+        },
+        _nested_name: "tile_example_1",
       },
       {
         type: "tile_component",
