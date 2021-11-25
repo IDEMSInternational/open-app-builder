@@ -1,5 +1,24 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Scheduled Campaigns</h2>
+    <ion-item class="clear">
+      <ion-label>Debug Notifications</ion-label>
+      <ion-toggle
+        #debugOptIn
+        [checked]="debugCampaignsEnabled"
+        (ionChange)="setDebugCampaignOptIn(debugOptIn.checked)"
+      ></ion-toggle>
+    </ion-item>
+  </div>
+
+  <ion-list>
+    <campaign-schedule-debug-row
+      *ngFor="let schedule of campaignService.scheduledCampaigns | objectValues"
+      [row]="schedule"
+    ></campaign-schedule-debug-row>
+  </ion-list>
+
+  <div style="display: flex; align-items: center">
     <h2 style="flex: 1">Campaign Debug</h2>
     <ion-button
       fill="outline"
@@ -18,7 +37,7 @@
       [value]="debugCampaignId"
     >
       <ion-select-option
-        *ngFor="let campaign_id of campaignService.campaigns | objectKeys | arraySort"
+        *ngFor="let campaign_id of campaignService.allCampaigns | objectKeys | arraySort"
       >
         <span>{{campaign_id}}</span>
       </ion-select-option>
