@@ -1,12 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
+import { CampaignService } from "../../../campaign.service";
 
 @Component({
   selector: "campaign-schedule-debug-row",
   template: ` <ion-item>
     <details style="width:100%">
       <summary class="row-header">
-        <span style="flex:1">{{ row.id }}</span>
+        <span class="row-counter">{{ row._campaign_rows.length }}</span>
+        <span style="flex:1; margin-left:10px">{{ row.id }}</span>
+        <!-- TODO - could be calculated in parent and passed down -->
+        <ion-button
+          fill="clear"
+          style="margin-right:5px"
+          *ngIf="(campaignService.scheduledNotifications[row.id] | objectValues).length > 0"
+        >
+          <ion-icon name="notifications" slot="start"></ion-icon>
+          {{ (campaignService.scheduledNotifications[row.id] | objectValues).length }}
+        </ion-button>
         <span class="tag activated" *ngIf="row._active">Active</span>
         <span class="tag deactivated" *ngIf="!row._active">Inactive</span>
       </summary>
@@ -78,6 +89,14 @@ import { FlowTypes } from "src/app/shared/model";
         padding: 16px;
         width: 100%;
         background: white;
+        align-items: center;
+      }
+      .row-counter {
+        min-width: 28px;
+        text-align: center;
+        border-radius: 8px;
+        border: 1px solid #787878;
+        padding: 2px;
       }
       ion-item {
         --background: white;
@@ -124,7 +143,7 @@ export class CampaignScheduleDebugRowComponent implements OnInit {
   @Output() manageVariablesClicked = new EventEmitter<FlowTypes.Campaign_Schedule>();
   @Output() triggerActionsClicked = new EventEmitter<FlowTypes.Campaign_Schedule>();
   @Output() scheduleNotificationClicked = new EventEmitter<FlowTypes.Campaign_Schedule>();
-  constructor() {}
+  constructor(public campaignService: CampaignService) {}
 
   ngOnInit() {}
 

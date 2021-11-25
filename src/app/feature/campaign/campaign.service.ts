@@ -8,7 +8,10 @@ import { TemplateService } from "src/app/shared/components/template/services/tem
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
-import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
+import {
+  ILocalNotification,
+  LocalNotificationService,
+} from "src/app/shared/services/notification/local-notification.service";
 import {
   arrayToHashmap,
   mergeArrayOfArrays,
@@ -18,14 +21,19 @@ import {
 type ICampaignHashmap = {
   [campaign_id: string]: FlowTypes.Campaign_listRow[];
 };
-type ICampaignScheduleHashmap = {
+type IScheduledCampaignsHashmap = {
   [schedule_id: string]: FlowTypes.Campaign_Schedule;
+};
+type IScheduledNotificationsHashmap = {
+  [campaign_id: string]: { [row_id: string]: ILocalNotification };
 };
 
 @Injectable({ providedIn: "root" })
 export class CampaignService {
   allCampaigns: ICampaignHashmap = {};
-  scheduledCampaigns: ICampaignScheduleHashmap = {};
+  scheduledCampaigns: IScheduledCampaignsHashmap = {};
+  scheduledNotifications: IScheduledNotificationsHashmap = {};
+
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
 
@@ -40,7 +48,7 @@ export class CampaignService {
     const schedules = await this.loadCampaignSchedules();
 
     const { allCampaigns, scheduledCampaigns } = this.loadCampaignRows(schedules);
-    console.log({ allCampaigns, scheduledCampaigns });
+
     this.scheduledCampaigns = scheduledCampaigns;
     this.allCampaigns = allCampaigns;
 
@@ -48,7 +56,6 @@ export class CampaignService {
     console.log("[All Campaigns]", this.allCampaigns);
 
     await this.scheduleCampaignNotifications();
-    // Note - not currently awaiting to allow faster initial load
 
     this._subscribeToNotificationUpdates();
   }
@@ -101,16 +108,22 @@ export class CampaignService {
    * any notifications requiring scheduling
    */
   private async scheduleCampaignNotifications() {
-    const scheduledCampaigns = Object.values(this.scheduledCampaigns);
-    for (const campaign of scheduledCampaigns) {
+    const scheduled: IScheduledNotificationsHashmap = {};
+    for (const campaign of Object.values(this.scheduledCampaigns)) {
+      scheduled[campaign.id] = {};
       // remove any previous notification
       await this.deactiveCampaignNotifications(campaign.id);
-      const nextRow = await this.getNextCampaignRow(campaign.id);
-      if (nextRow) {
-        // add new notification
-        await this.scheduleCampaignNotification(nextRow, campaign.id);
+      if (campaign._active) {
+        const nextRow = await this.getNextCampaignRow(campaign.id);
+        if (nextRow) {
+          // add new notification
+          const schedule = await this.scheduleCampaignNotification(nextRow, campaign.id);
+          scheduled[campaign.id][nextRow.id] = schedule;
+        }
       }
     }
+    this.scheduledNotifications = scheduled;
+    console.log("[Scheduled Notifications]", this.scheduledNotifications);
   }
 
   /**
@@ -164,14 +177,15 @@ export class CampaignService {
 
     title = this.translateService.translateValue(title || APP_STRINGS.NOTIFICATION_DEFAULT_TITLE);
     text = this.translateService.translateValue(text || APP_STRINGS.NOTIFICATION_DEFAULT_TEXT);
-
-    return this.localNotificationService.scheduleNotification({
+    const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
       title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
-    });
+    };
+    await this.localNotificationService.scheduleNotification(notificationSchedule);
+    return notificationSchedule;
   }
 
   /** Deactivate all notifications for a given campaign */
@@ -211,7 +225,7 @@ export class CampaignService {
    * Get a list of all campaign rows collated by campaign_id, and merge with campaign schedules
    * TODO - most of this logic could be handled in parser instead
    */
-  private loadCampaignRows(scheduledCampaigns: ICampaignScheduleHashmap) {
+  private loadCampaignRows(scheduledCampaigns: IScheduledCampaignsHashmap) {
     // Retrieve and merge list of all campaign rows
     const campaignListRows = DATA_LIST.filter((list) =>
       ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
