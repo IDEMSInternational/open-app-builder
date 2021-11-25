@@ -77,6 +77,15 @@ export function parseAppDataCollectionString(str: string): { [key: string]: stri
   return collection;
 }
 
+/**
+ * When excel sheets store dates the store a datevalue as number of days since 1900 (or sometimes 1904!)
+ * Convert to corresponding iso date string (e.g. 2021-11-24T18:03:36.002Z)
+ * https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript
+ */
+export function parseAppDateValue(dateValue: number) {
+  return new Date(Date.UTC(0, 0, dateValue - 1)).toISOString();
+}
+
 /** Convert a deeply nested json object to a flat json object (with nested key references) */
 export function flattenJson<T>(json: any, tree = {}, nestedPath?: string): { [key: string]: T } {
   Object.entries<T>(json).forEach(([key, value]) => {
