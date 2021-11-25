@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { addDays } from "@fullcalendar/angular";
-import { addHours, addMinutes, isAfter, isBefore } from "date-fns";
+import { addHours, addMinutes, isBefore, setISODay } from "date-fns";
 import { APP_STRINGS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
@@ -45,6 +45,8 @@ export class CampaignService {
   ) {}
 
   public async init() {
+    await this.hackDeactivateAllNotifications();
+
     const schedules = await this.loadCampaignSchedules();
 
     const { allCampaigns, scheduledCampaigns } = this.loadCampaignRows(schedules);
@@ -111,7 +113,7 @@ export class CampaignService {
     const scheduled: IScheduledNotificationsHashmap = {};
     for (const campaign of Object.values(this.scheduledCampaigns)) {
       scheduled[campaign.id] = {};
-      // remove any previous notification
+      // remove any previous notification for the campaign
       await this.deactiveCampaignNotifications(campaign.id);
       if (campaign._active) {
         const nextRow = await this.getNextCampaignRow(campaign.id);
@@ -195,6 +197,19 @@ export class CampaignService {
       (n) => n.extra.campaign_id === campaign_id
     );
     for (const notification of deactivatedNotifications) {
+      await this.localNotificationService.removeNotification(notification.id);
+    }
+  }
+
+  /**
+   * HACK 2021-11-25 - not sure if there might be notificaitons hanging from previous
+   * implementation so to stay safe just remove all old notifications when scheduling new
+   * TODO - we may want to keep in case campaign names changed, but probably only called
+   * as part of new version load (TBC)
+   */
+  private async hackDeactivateAllNotifications() {
+    const pendingNotifications = this.localNotificationService.pendingNotifications$.value;
+    for (const notification of pendingNotifications) {
       await this.localNotificationService.removeNotification(notification.id);
     }
   }
@@ -290,9 +305,14 @@ export class CampaignService {
     return { _activated, _deactivated, _active };
   }
 
-  private evaluateCampaignNotification(schedule: FlowTypes.Campaign_Schedule) {
-    const { time, delay } = schedule;
-    let d = new Date();
+  private evaluateCampaignNotification(scheduleRow: FlowTypes.Campaign_Schedule) {
+    const { time, delay } = scheduleRow;
+    const schedule: FlowTypes.Campaign_Schedule["schedule"] = scheduleRow.schedule || {};
+    // set a base date from today or schedule start (if provided)
+    let d = schedule.start_date ? new Date(schedule?.start_date) : new Date();
+    if (schedule.day_of_week) {
+      d = setISODay(d, schedule.day_of_week);
+    }
     if (time) {
       d.setHours(Number(time.hour || d.getHours()));
       d.setMinutes(Number(time.minute || d.getMinutes()));
@@ -302,19 +322,22 @@ export class CampaignService {
       d = addHours(d, Number(delay.hours || 0));
       d = addMinutes(d, Number(delay.minutes || 0));
     }
-    schedule._schedule_at = d;
-    return schedule;
+    scheduleRow._schedule_at = d;
+    return scheduleRow;
   }
 
   private evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
     return this.dataEvaluationService.evaluateReminderCondition(condition);
   }
 
+  /**
+   * Schedules can have `start_date` and `end_date` fields.
+   * A schedule will be deemed as active so long as the end_date has not already passed
+   * (even if not start date scheduling can happen in advance)
+   */
   private evaluateRowSchedule(scheduleRow: FlowTypes.Campaign_Schedule) {
     if (scheduleRow.schedule) {
-      const { start_date, end_date } = scheduleRow.schedule;
-      // schedule start date must not be later than current date
-      if (start_date && isAfter(new Date(start_date), new Date())) return false;
+      const { end_date } = scheduleRow.schedule;
       // schedule end date must not be before than current date
       if (end_date && isBefore(new Date(end_date), new Date())) return false;
     }
