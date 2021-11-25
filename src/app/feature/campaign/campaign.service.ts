@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { addDays } from "@fullcalendar/angular";
-import { addHours, addMinutes } from "date-fns";
+import { addHours, addMinutes, isAfter, isBefore } from "date-fns";
 import { APP_STRINGS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
@@ -15,13 +15,17 @@ import {
   randomElementFromArray,
   stringToIntegerHash,
 } from "src/app/shared/utils";
-type ICampaigns = {
-  [campaign_id: string]: { id: string; schedule?: any; rows: FlowTypes.Campaign_listRow[] };
+type ICampaignHashmap = {
+  [campaign_id: string]: FlowTypes.Campaign_listRow[];
+};
+type ICampaignScheduleHashmap = {
+  [schedule_id: string]: FlowTypes.Campaign_Schedule;
 };
 
 @Injectable({ providedIn: "root" })
 export class CampaignService {
-  campaigns: ICampaigns;
+  allCampaigns: ICampaignHashmap = {};
+  scheduledCampaigns: ICampaignScheduleHashmap = {};
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
 
@@ -33,10 +37,19 @@ export class CampaignService {
   ) {}
 
   public async init() {
-    this.loadCampaigns();
+    const schedules = await this.loadCampaignSchedules();
+
+    const { allCampaigns, scheduledCampaigns } = this.loadCampaignRows(schedules);
+    console.log({ allCampaigns, scheduledCampaigns });
+    this.scheduledCampaigns = scheduledCampaigns;
+    this.allCampaigns = allCampaigns;
+
+    console.log("[Scheduled Campaigns]", this.scheduledCampaigns);
+    console.log("[All Campaigns]", this.allCampaigns);
+
     await this.scheduleCampaignNotifications();
     // Note - not currently awaiting to allow faster initial load
-    console.log("[Campaigns]", this.campaigns);
+
     this._subscribeToNotificationUpdates();
   }
 
@@ -49,10 +62,6 @@ export class CampaignService {
         await this.handledTriggeredNotifications();
       }
     );
-  }
-
-  get scheduledCampaigns() {
-    return Object.values(this.campaigns).filter((campaign) => campaign.schedule);
   }
 
   private async handledTriggeredNotifications() {
@@ -92,7 +101,7 @@ export class CampaignService {
    * any notifications requiring scheduling
    */
   private async scheduleCampaignNotifications() {
-    const scheduledCampaigns = this.scheduledCampaigns;
+    const scheduledCampaigns = Object.values(this.scheduledCampaigns);
     for (const campaign of scheduledCampaigns) {
       // remove any previous notification
       await this.deactiveCampaignNotifications(campaign.id);
@@ -112,22 +121,22 @@ export class CampaignService {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
 
-    if (!this.campaigns[campaign_id]) {
+    if (!this.allCampaigns[campaign_id]) {
       console.error("no data exists for campaign", campaign_id);
       return null;
     }
-    const campaignRows = this.campaigns[campaign_id].rows.sort((a, b) => b.priority - a.priority);
+    const campaignRows = this.allCampaigns[campaign_id].sort((a, b) => b.priority - a.priority);
     const satisfiedRows: FlowTypes.Campaign_listRow[] = [];
     // Iterate over campaign rows in order of priority. If row satisfies conditions set as new benchmark priority
     let benchmarkRowPriority = -Infinity;
     for (const row of campaignRows) {
       if (!row.hasOwnProperty("priority")) row.priority = -Infinity;
       if (row.priority >= benchmarkRowPriority) {
-        const evaluated = await this.evaluateCampaignRow(row);
-        if (evaluated._active) {
+        const evaluation = await this.evaluateRowActivationConditions(row);
+        if (evaluation._active) {
           // set current row as new bar for activation processing
           benchmarkRowPriority = row.priority;
-          satisfiedRows.push(evaluated);
+          satisfiedRows.push({ ...row, ...evaluation });
         }
       }
     }
@@ -144,19 +153,14 @@ export class CampaignService {
    * @returns list of all currently scheduled notifications
    */
   public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow, campaign_id: string) {
-    // HACK - currently campaign schedules can either be defined within campaign rows or
-    // within a notification_schedule data list. Merge together.
-
-    // TODO - cc 2021-09-17 - might be better to refactor so all defined in schedule, although
-    // possibly requires revisit of how translations handled also
-    const campaignSchedule = this.campaigns[campaign_id]?.schedule || {};
-    const rowSchedule = row.notification_schedule || {};
-    const notification_schedule = this.evaluateCampaignNotification({
-      ...campaignSchedule,
-      ...rowSchedule,
-    });
-
-    let { _schedule_at, text, title } = notification_schedule;
+    const schedule = this.scheduledCampaigns[campaign_id];
+    if (!schedule) {
+      console.error("No notification schedule provided for campaign", campaign_id);
+      return;
+    }
+    const notification_schedule = this.evaluateCampaignNotification(schedule);
+    let { title, text } = row;
+    let { _schedule_at } = notification_schedule;
 
     title = this.translateService.translateValue(title || APP_STRINGS.NOTIFICATION_DEFAULT_TITLE);
     text = this.translateService.translateValue(text || APP_STRINGS.NOTIFICATION_DEFAULT_TEXT);
@@ -182,18 +186,33 @@ export class CampaignService {
   }
 
   /**
-   * Get a list of all campaign rows collated by campaign_id, with merged notification schedules
+   * Retreive all notification_schedule datalists, filter for satisfied activation conditions
+   * and schedule start/end
+   */
+  private async loadCampaignSchedules() {
+    const scheduleRows = DATA_LIST.filter((list) => list.flow_subtype === "campaign_schedule").map(
+      (list) => list.rows
+    );
+    const allCampaignSchedules: FlowTypes.Campaign_Schedule[] = mergeArrayOfArrays(scheduleRows);
+    const evaluatedCampaignSchedules = await Promise.all(
+      allCampaignSchedules.map(async (scheduleRow) => {
+        const activationEvaluation = await this.evaluateRowActivationConditions(scheduleRow);
+        const scheduleEvaluation = this.evaluateRowSchedule(scheduleRow);
+        scheduleRow._active = activationEvaluation._active && scheduleEvaluation;
+        scheduleRow._campaign_rows = [];
+        return scheduleRow;
+      })
+    );
+    const campaignSchedulesById = arrayToHashmap(evaluatedCampaignSchedules, "id");
+    return campaignSchedulesById;
+  }
+
+  /**
+   * Get a list of all campaign rows collated by campaign_id, and merge with campaign schedules
    * TODO - most of this logic could be handled in parser instead
    */
-  private loadCampaigns() {
-    // get list of notification schedules for merging with rows
-    const notificationScheduleRows = DATA_LIST.filter(
-      (list) => list.flow_subtype === "notification_schedule"
-    ).map((list) => list.rows);
-    const allCNotificationSchedules = mergeArrayOfArrays(notificationScheduleRows);
-    const notificationSchedulesById = arrayToHashmap(allCNotificationSchedules, "id");
-
-    // merge all campaign_row data lists
+  private loadCampaignRows(scheduledCampaigns: ICampaignScheduleHashmap) {
+    // Retrieve and merge list of all campaign rows
     const campaignListRows = DATA_LIST.filter((list) =>
       ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
     ).map((list) => list.rows);
@@ -202,24 +221,41 @@ export class CampaignService {
     const allCampaignRowsByPriority = allCampaignRows.sort(
       (a, b) => (b.priority || 0) - (a.priority || 0)
     );
-    const campaignsById: ICampaigns = {};
-    allCampaignRowsByPriority.forEach((row) => {
-      const campaign_list = row.campaign_list || [];
+
+    // Merge rows with lists of scheduled and all campaigns
+    const allCampaigns: ICampaignHashmap = {};
+
+    allCampaignRowsByPriority.forEach((campaignRow) => {
+      // add row to relevant campaign list
+      const campaign_list = campaignRow.campaign_list || [];
       campaign_list.forEach((campaign_id) => {
-        if (!campaignsById[campaign_id]) {
-          campaignsById[campaign_id] = { id: campaign_id, rows: [] };
-          // merge notification schedule
-          if (notificationSchedulesById[campaign_id]) {
-            campaignsById[campaign_id].schedule = notificationSchedulesById[campaign_id];
-          }
+        // store scheduled campaign row if relevant
+        // TODO - handle campaigns with inline notification schedule
+        if (scheduledCampaigns.hasOwnProperty(campaign_id)) {
+          scheduledCampaigns[campaign_id]._campaign_rows.push(campaignRow);
         }
-        campaignsById[campaign_id].rows.push(row);
+        // also store row to all campaign list
+        else {
+          allCampaigns[campaign_id] = allCampaigns[campaign_id] || [];
+          allCampaigns[campaign_id].push(campaignRow);
+        }
       });
     });
-    this.campaigns = campaignsById;
+
+    // merge any scheduled campaigns to all campaigns list
+    Object.values(scheduledCampaigns).forEach(
+      (schedule) => (allCampaigns[schedule.id] = schedule._campaign_rows)
+    );
+
+    return { allCampaigns, scheduledCampaigns };
   }
 
-  public async evaluateCampaignRow(row: FlowTypes.Campaign_listRow) {
+  /**
+   * Evaluate all statements within row activation_condition_list and deactivation_condition_list
+   * Return a summary of whether all activations satisifed, whether any deactivation satisfied,
+   * and overall active state based on all activations satisfied and not any deactivations satisfied
+   * */
+  public async evaluateRowActivationConditions(row: FlowTypes.RowWithActivationConditions) {
     const deactivation_condition_list = row.deactivation_condition_list || [];
     row.deactivation_condition_list = await Promise.all(
       deactivation_condition_list.map(async (condition) => {
@@ -234,14 +270,13 @@ export class CampaignService {
         return { ...condition, _satisfied };
       })
     );
-    row._activated = row.activation_condition_list.every((c) => c._satisfied === true);
-    row._deactivated = row.deactivation_condition_list.some((c) => c._satisfied === true);
-    // assume active if all activation criteria met and no deactivation criteria satisfied
-    row._active = row._activated && !row._deactivated;
-    return row;
+    const _activated = row.activation_condition_list.every((c) => c._satisfied === true);
+    const _deactivated = row.deactivation_condition_list.some((c) => c._satisfied === true);
+    const _active = _activated && !_deactivated;
+    return { _activated, _deactivated, _active };
   }
 
-  private evaluateCampaignNotification(schedule: FlowTypes.NotificationSchedule) {
+  private evaluateCampaignNotification(schedule: FlowTypes.Campaign_Schedule) {
     const { time, delay } = schedule;
     let d = new Date();
     if (time) {
@@ -259,5 +294,16 @@ export class CampaignService {
 
   private evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
     return this.dataEvaluationService.evaluateReminderCondition(condition);
+  }
+
+  private evaluateRowSchedule(scheduleRow: FlowTypes.Campaign_Schedule) {
+    if (scheduleRow.schedule) {
+      const { start_date, end_date } = scheduleRow.schedule;
+      // schedule start date must not be later than current date
+      if (start_date && isAfter(new Date(start_date), new Date())) return false;
+      // schedule end date must not be before than current date
+      if (end_date && isBefore(new Date(end_date), new Date())) return false;
+    }
+    return true;
   }
 }
