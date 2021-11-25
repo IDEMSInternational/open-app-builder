@@ -79,11 +79,15 @@ export function parseAppDataCollectionString(str: string): { [key: string]: stri
 
 /**
  * When excel sheets store dates the store a datevalue as number of days since 1900 (or sometimes 1904!)
- * Convert to corresponding iso date string (e.g. 2021-11-24T18:03:36.002Z)
+ * Convert to corresponding iso date string (e.g. 2021-11-24T18:03:36.002Z) and then leave as a local date string
+ * (without the Z UTC timezone suffix (zero UTC offset) so that it can be used relative to user's own timezone)
  * https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript
  */
 export function parseAppDateValue(dateValue: number) {
-  return new Date(Date.UTC(0, 0, dateValue - 1)).toISOString();
+  const isoString = new Date(Date.UTC(0, 0, dateValue - 1)).toISOString();
+  // remove zero-utc timezone suffix
+  const localDateString = isoString.slice(0, -1);
+  return localDateString;
 }
 
 /** Convert a deeply nested json object to a flat json object (with nested key references) */
