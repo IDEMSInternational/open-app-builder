@@ -9,6 +9,14 @@
         (ionChange)="setDebugCampaignOptIn(debugOptIn.checked)"
       ></ion-toggle>
     </ion-item>
+    <ion-button
+      fill="outline"
+      [routerLink]="['/','notifications']"
+      [disabled]="(localNotificationService.pendingNotifications$ | async).length===0"
+    >
+      <ion-icon name="notifications" slot="start"></ion-icon>
+      <span>{{(localNotificationService.pendingNotifications$ | async).length}}</span>
+    </ion-button>
   </div>
 
   <ion-list>
@@ -19,15 +27,7 @@
   </ion-list>
 
   <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Campaign Debug</h2>
-    <ion-button
-      fill="outline"
-      [routerLink]="['/','notifications']"
-      [disabled]="(localNotificationService.pendingNotifications$ | async).length===0"
-    >
-      <ion-icon name="notifications" slot="start"></ion-icon>
-      <span>{{(localNotificationService.pendingNotifications$ | async).length}}</span>
-    </ion-button>
+    <h2 style="flex: 1">All Campaigns</h2>
   </div>
   <ion-item>
     <ion-label>Campaign</ion-label>
