@@ -192,32 +192,29 @@ export namespace FlowTypes {
     habit_list: string[];
   }
 
-  export interface Campaign_listRow {
-    _id: string;
-    activation_condition_list: DataEvaluationCondition[];
-    deactivation_condition_list: DataEvaluationCondition[];
+  export interface Campaign_listRow extends RowWithActivationConditions {
+    id: string;
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
-    notification_schedule?: NotificationSchedule;
-    _activated?: boolean; // all activation criteria satisfied
-    _deactivated?: boolean; // any deactivation criteria satisfied
-    _active?: boolean; // activated and not deactivated
-
     // additional fields for current data_list but not required
     click_action_list?: TemplateRowAction[];
     icon?: string;
     text?: string;
-
     // placeholder for any extra fields to be added
     [field: string]: any;
   }
-  export interface NotificationSchedule {
-    text?: string;
-    title?: string;
-    time?: { minute?: string; hour?: string }; // specified time for notification, e.g. 19:30
-    delay?: { days?: string; hours?: string; minutes?: string }; // delay until first notification, e.g. 7 day
-
-    _schedule_at?: Date; // calculated from above info
+  export interface Campaign_Schedule extends RowWithActivationConditions {
+    id: string;
+    /** specified time for notification, e.g. 19:30. Day indicates day of week, starting with 1 = monday */
+    time?: { minute?: string; hour?: string; day?: number };
+    /** delay until first notification, e.g. 7 day */
+    delay?: { days?: string; hours?: string; minutes?: string };
+    /** fixed dates for start and end of schedule */
+    schedule?: { start_date?: string; end_date?: string };
+    /** computed list of campaign rows merged into campaign */
+    _campaign_rows?: Campaign_listRow[];
+    /** computed date for next notification as required by scheduling service */
+    _schedule_at?: Date;
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
@@ -249,6 +246,18 @@ export namespace FlowTypes {
     _raw?: string;
     _cleaned?: string;
     _parsed?: string[][];
+  }
+  export interface RowWithActivationConditions {
+    /** evaluated statements for activating campaign */
+    activation_condition_list?: DataEvaluationCondition[];
+    /** evaluated statements for deactivating campaign */
+    deactivation_condition_list?: DataEvaluationCondition[];
+    /** all activation criteria satisfied (stored for debugging)*/
+    _activated?: boolean; //
+    /** any deactivation criteria satisfied (stored for debugging)*/
+    _deactivated?: boolean;
+    /** all activation criteria satisfied and not any deactivation criteria satisfied */
+    _active?: boolean;
   }
 
   export interface Habit_ideas extends FlowTypeWithData {
