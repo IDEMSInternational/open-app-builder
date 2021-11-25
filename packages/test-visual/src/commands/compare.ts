@@ -29,7 +29,6 @@ export default program
   .option("-c, --clean", "Clean output folder before generating")
   .option("-D --debug", "Run in debug mode (not headless)")
   .option("-C --concurrency <string>", "Max number of browser pages to process in parallel")
-  .option("-PW --page-wait <string>", "Additional wait time given to help ensure page loaded")
   .action(async (opts) => {
     const options = { ...DEFAULT_OPTIONS, ...opts };
     await new ScreenshotComparator(options).run();
@@ -50,16 +49,18 @@ class ScreenshotComparator {
     // const latestRelease = await this.getLatestRelease();
     // const { tag_name } = latestRelease;
     // this.releaseScreenshotsFolder = path.resolve(paths.DOWNLOADED_SCREENSHOTS_FOLDER, tag_name);
-    const comparisonScreenshotsFolder = paths.DOWNLOADED_SCREENSHOTS_FOLDER;
+    const beforeScreenshotsFolder = paths.DOWNLOADED_SCREENSHOTS_FOLDER;
     // folder ensured in paths so check if empty
-    const existingScreenshots = fs.readdirSync(comparisonScreenshotsFolder);
+    const existingScreenshots = fs.readdirSync(beforeScreenshotsFolder);
     if (existingScreenshots.length === 0) {
       // Ensure latest target screenshots are downloaded
       // TODO - could handle with github action and passing compare folder name
       await new ScreenshotDownload().run({
         latest: true,
-        outputFolder: comparisonScreenshotsFolder,
+        outputFolder: beforeScreenshotsFolder,
       });
+    } else {
+      console.log("skipping screenshot download");
     }
     fs.emptyDirSync(paths.SCREENSHOT_DIFFS_FOLDER);
 
@@ -69,8 +70,8 @@ class ScreenshotComparator {
       ...this.options,
       onScreenshotGenerated: async ({ screenshotPath, counter, total }) => {
         const filename = path.basename(screenshotPath);
-        const releaseScreenshotPath = path.resolve(comparisonScreenshotsFolder, filename);
-        await this.compareScreenshots(releaseScreenshotPath, screenshotPath);
+        const beforeScreenshotPath = path.resolve(beforeScreenshotsFolder, filename);
+        await this.compareScreenshots(beforeScreenshotPath, screenshotPath);
         const msg = `${counter}/${total} [${path.basename(screenshotPath, ".png")}]`;
         return process.env.CI
           ? console.log(msg)
