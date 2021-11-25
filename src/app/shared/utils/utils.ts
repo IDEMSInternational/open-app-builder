@@ -83,7 +83,7 @@ export function mergeObjectArrays<T>(
   return Object.values(secondaryHash);
 }
 
-export function randomElementFromArray(arr: any[] = null) {
+export function randomElementFromArray<T>(arr: T[] = null) {
   try {
     const randomItem = arr[Math.floor(Math.random() * arr.length)];
     return randomItem;
