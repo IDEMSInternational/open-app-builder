@@ -205,12 +205,18 @@ export namespace FlowTypes {
   }
   export interface Campaign_Schedule extends RowWithActivationConditions {
     id: string;
-    /** specified time for notification, e.g. 19:30. Day indicates day of week, starting with 1 = monday */
-    time?: { minute?: string; hour?: string; day?: number };
+    /** specified time for notification, e.g. 19:30 */
+    time?: { minute?: string; hour?: string };
     /** delay until first notification, e.g. 7 day */
     delay?: { days?: string; hours?: string; minutes?: string };
-    /** fixed dates for start and end of schedule */
-    schedule?: { start_date?: string; end_date?: string };
+    schedule?: {
+      /** fixed dates for start of schedule */
+      start_date?: string;
+      /** fixed dates for end of schedule */
+      end_date?: string;
+      /** weekday number to schedule from (1-Monday, 7-Sunday etc.) */
+      day_of_week?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+    };
     /** computed list of campaign rows merged into campaign */
     _campaign_rows?: Campaign_listRow[];
     /** computed date for next notification as required by scheduling service */
