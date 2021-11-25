@@ -10,14 +10,17 @@ import { CampaignService } from "../../../campaign.service";
         <span class="row-counter">{{ row._campaign_rows.length }}</span>
         <span style="flex:1; margin-left:10px">{{ row.id }}</span>
         <!-- TODO - could be calculated in parent and passed down -->
-        <ion-button
-          fill="clear"
-          style="margin-right:5px"
-          *ngIf="(campaignService.scheduledNotifications[row.id] | objectValues).length > 0"
+        <div
+          *ngIf="
+            campaignService.scheduledNotifications[row.id] | objectValues as scheduledNotifications
+          "
         >
-          <ion-icon name="notifications" slot="start"></ion-icon>
-          {{ (campaignService.scheduledNotifications[row.id] | objectValues).length }}
-        </ion-button>
+          <span class="next-notification" *ngIf="scheduledNotifications[0] as nextNotification">
+            {{ nextNotification.schedule.at | date: "MMM d h:mm a" }}
+            <ion-icon name="notifications"></ion-icon>
+          </span>
+        </div>
+
         <span class="tag activated" *ngIf="row._active">Active</span>
         <span class="tag deactivated" *ngIf="!row._active">Inactive</span>
       </summary>
@@ -83,6 +86,11 @@ import { CampaignService } from "../../../campaign.service";
       }
       .tag.deactivated {
         background: hsl(0 100% 65%);
+      }
+      .next-notification {
+        margin-right: 10px;
+        font-size: smaller;
+        color: #03598f;
       }
       .row-header {
         display: flex;
