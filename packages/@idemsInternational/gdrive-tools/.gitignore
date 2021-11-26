@@ -3,3 +3,4 @@ token.json
 output
 cache
 .env
+logs
