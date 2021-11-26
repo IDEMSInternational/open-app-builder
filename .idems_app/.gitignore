@@ -1,0 +1,4 @@
+deployments/*
+!deployments/example.deployment.ts
+!deployments/plh.deployment.ts
+!deployments/deployment.type.ts

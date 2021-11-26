@@ -17,6 +17,11 @@ export async function promptOptions(
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
   return res.selected;
 }
+export async function promptInput(message: string) {
+  const name = "inputValue";
+  const res = await inquirer.prompt([{ type: "input", message, name }]);
+  return res[name];
+}
 
 /**
  * Decrypt any files encrypted in the config folder for use by other scripts
