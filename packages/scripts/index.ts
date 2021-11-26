@@ -17,10 +17,6 @@ const SCRIPT_NAMES = [
     value: "version",
     name: "Update App Version",
   },
-  // {
-  //   value: "resize-android-assets",
-  //   name: "Process Resources Folder Updates",
-  // },
 ];
 
 /**

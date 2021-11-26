@@ -10,8 +10,8 @@
     "decrypt-config": "ts-node src/decrypt-config.ts",
     "encrypt-config": "ts-node src/encrypt-config.ts",
     "gdrive-auth": "ts-node src/gdrive-download/auth.ts",
+    "generate": "ts-node src/commands/generate/index.ts ",
     "gdrive-download": "ts-node src/gdrive-download/index.ts",
-    "resize-android-assets": "ts-node src/resizeAndroidAssets.ts",
     "app-data-convert": "ts-node src/app-data-convert/index.ts",
     "app-data-copy": "ts-node src/app-data-copy.ts",
     "app-data-sync": "npm run gdrive-download && npm run app-data-convert && npm run app-data-copy",
@@ -24,6 +24,7 @@
   "license": "ISC",
   "dependencies": {
     "@IDEMSInternational/rapidpro-excel": "workspace:*",
+    "commander": "^8.3.0",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
@@ -34,7 +35,6 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
-    "@types/sharp": "0.28.3",
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
     "data-models": "1.0.0",
@@ -43,7 +43,6 @@
     "jasmine": "^3.6.3",
     "jasmine-ts": "^0.3.2",
     "log-update": "^4.0.0",
-    "sharp": "0.28.3",
     "ts-node": "~7.0.0",
     "ts-node-dev": "^1.0.0",
     "typescript": "^4.1.2"
