@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
+import { GlobSync } from "glob";
 import fs from "fs-extra";
 import path from "path";
 import { IDeploymentConfig } from "../../../types";
@@ -61,9 +62,9 @@ async function setActiveDeployment(deploymentName?: string) {
  */
 async function listDeployments() {
   const allDeployments: IDeploymentConfigWithFilename[] = [];
-  const allDeploymentFiles = fs
-    .readdirSync(IDEMS_APP_CONFIG.deployments)
-    .filter((filename) => path.extname(filename) === ".ts");
+  const { found: allDeploymentFiles } = new GlobSync("**/config.ts", {
+    cwd: IDEMS_APP_CONFIG.deployments,
+  });
   for (const filename of allDeploymentFiles) {
     try {
       const deployment: IDeploymentConfig = await loadDeploymentTS(filename);
