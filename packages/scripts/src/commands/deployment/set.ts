@@ -2,6 +2,7 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
+import { IDeploymentConfig } from "../../../types";
 import { IDEMS_APP_CONFIG } from "../../paths";
 import { promptOptions, logError } from "../../utils";
 
@@ -25,6 +26,9 @@ export default program
 /**
  * Specify or choose a deployment from a list of available deployments, and
  * populate as the active deployment to default deployment json file
+ *
+ * NOTE - when updating a deployment .ts this will need to be run again to ensure
+ * parsed data correct in default
  */
 async function setActiveDeployment(deploymentName?: string) {
   const allDeployments = await listDeployments();
@@ -42,11 +46,11 @@ async function setActiveDeployment(deploymentName?: string) {
   }
   const { filename, ...deployment } = matchingDeployment;
   const defaultDeploymentPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
-  const deploymentMeta = {
-    active: { name: deployment.name, filename },
-    targets: allDeployments.map((d) => ({ name: d.name, filename: d.filename })),
+  const deploymentJson: IDeploymentConfigJson = {
+    ...deployment,
+    _ts_filename: filename,
   };
-  fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentMeta, null, 2));
+  fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
   console.log("deployment set", deployment);
 }
 
@@ -55,14 +59,14 @@ async function setActiveDeployment(deploymentName?: string) {
  * Iterate over the files and dynamically import to resolve their values,
  * which can be passed back as an array of deployments
  */
-async function listDeployments(): Promise<{ filename: string; [key: string]: any }[]> {
-  const allDeployments = [];
+async function listDeployments() {
+  const allDeployments: IDeploymentConfigWithFilename[] = [];
   const allDeploymentFiles = fs
     .readdirSync(IDEMS_APP_CONFIG.deployments)
     .filter((filename) => path.extname(filename) === ".ts");
   for (const filename of allDeploymentFiles) {
     try {
-      const deployment = await loadDeploymentTS(filename);
+      const deployment: IDeploymentConfig = await loadDeploymentTS(filename);
       // should have default export with a name property
       if (deployment?.name) {
         allDeployments.push({ ...deployment, filename });
@@ -77,4 +81,11 @@ export async function loadDeploymentTS(filename: string) {
   const filepath = path.resolve(IDEMS_APP_CONFIG.deployments, filename);
   const res = await import(filepath);
   return res.default;
+}
+
+interface IDeploymentConfigWithFilename extends IDeploymentConfig {
+  filename: string;
+}
+export interface IDeploymentConfigJson extends IDeploymentConfig {
+  _ts_filename: string;
 }
