@@ -10,6 +10,7 @@
     "decrypt-config": "ts-node src/decrypt-config.ts",
     "encrypt-config": "ts-node src/encrypt-config.ts",
     "gdrive-auth": "ts-node src/gdrive-download/auth.ts",
+    "command": "ts-node src/commands",
     "generate": "ts-node src/commands/generate/index.ts ",
     "gdrive-download": "ts-node src/gdrive-download/index.ts",
     "app-data-convert": "ts-node src/app-data-convert/index.ts",
