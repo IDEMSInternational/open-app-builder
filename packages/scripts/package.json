@@ -12,7 +12,7 @@
     "gdrive-auth": "ts-node src/gdrive-download/auth.ts",
     "command": "ts-node src/commands",
     "generate": "ts-node src/commands/generate/index.ts ",
-    "gdrive-download": "ts-node src/gdrive-download/index.ts",
+    "gdrive-download": "ts-node src/gdrive-download/src/index.ts download",
     "app-data-convert": "ts-node src/app-data-convert/index.ts",
     "app-data-copy": "ts-node src/app-data-copy.ts",
     "app-data-sync": "npm run gdrive-download && npm run app-data-convert && npm run app-data-copy",
@@ -28,7 +28,7 @@
     "commander": "^8.3.0",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.1",
-    "glob": "^7.1.6",
+    "glob": "^7.2.0",
     "googleapis": "88.2.0",
     "ncp": "^2.0.0",
     "xlsx": "^0.16.6"

@@ -1,24 +1,43 @@
+#!/usr/bin/env node
 import * as fs from "fs-extra";
+
 import path from "path";
 import { drive_v3 } from "googleapis";
 import { GaxiosResponse, GaxiosOptions } from "gaxios";
 import chalk from "chalk";
-import { authorizeGDrive } from "./auth";
-import { GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "./mimetypes";
-import { ArrayToChunks } from "../utils/file-utils";
-import { getActiveDeployment } from "../deployments";
+import { authorizeGDrive, GDRIVE_OFFICE_MAPPING, MIMETYPE_EXTENSIONS } from "../utils";
+import { getActiveDeployment } from "../../commands/deployment/get";
+import { ArrayToChunks } from "../../utils/file-utils";
+import { logError } from "../../utils";
 
-// constants
-const APP_DEPLOYMENT = getActiveDeployment();
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 const OUTPUT_FOLDER = path.join(__dirname, "output");
 const CACHE_FOLDER = path.join(__dirname, "cache");
 const LOGS_DIR = path.join(__dirname, "logs", "gdrive-download");
 
+// CLI
+import { Command } from "commander";
+const program = new Command();
+program.description("Download data from google drive").action(async () => {
+  await gdriveDownload();
+});
+export default program;
+
+// Run if called directly from Node
+if (require.main === module) {
+  if (!process.argv.slice(2).length) {
+    console.log(chalk.yellow("No command specified. See help below:"));
+    program.outputHelp();
+    process.exit(0);
+  }
+  program.parse(process.argv);
+}
+
 // global vars
 let drive: drive_v3.Drive;
 
-export async function main(onlyFileName?: string) {
+export async function gdriveDownload(onlyFileName?: string) {
+  const APP_DEPLOYMENT = getActiveDeployment();
   // prepare folders
   fs.ensureDirSync(OUTPUT_FOLDER);
   fs.ensureDirSync(CACHE_FOLDER);
@@ -26,7 +45,8 @@ export async function main(onlyFileName?: string) {
   console.log(chalk.yellow("Downloading GDrive Data"));
   try {
     drive = await authorizeGDrive();
-    const sheetsFolderRef = await getGDriveFolder(APP_DEPLOYMENT.GOOGLE_DRIVE.SHEETS_FOLDER);
+    const { google_drive } = APP_DEPLOYMENT;
+    const { assets_folder_id, sheets_folder_id } = google_drive;
     if (onlyFileName) {
       console.log(chalk.magenta("Only downloading files matching name ", onlyFileName));
       const excelFilesFromCache: IGDriveFileWithFolder[] = JSON.parse(
@@ -38,7 +58,7 @@ export async function main(onlyFileName?: string) {
       if (matchingFilesFromCache.length === 0) {
         // we've never downloaded this file before so don't know the location. Require sync all
         console.log(chalk.red("File not found, full sync required"));
-        return main();
+        return gdriveDownload();
       }
       console.log(
         chalk.green("Matching files\n", matchingFilesFromCache.map((file) => file.name).join("\n"))
@@ -49,13 +69,12 @@ export async function main(onlyFileName?: string) {
       fs.emptyDirSync(OUTPUT_FOLDER);
       // Download app data sheets
       console.log("downloading sheets");
-      const excelFiles = await listGdriveFilesRecursively(sheetsFolderRef.id, sheetsFolderRef.name);
+      const excelFiles = await listGdriveFilesRecursively(sheets_folder_id);
       fs.writeFileSync(`${LOGS_DIR}/excelFiles.json`, JSON.stringify(excelFiles, null, 2));
       await downloadGdriveFiles(excelFiles);
       // Download app data assets
       console.log("downloading assets");
-      const assetsFolder = await getGDriveFolder(APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER);
-      const assetFiles = await listGdriveFilesRecursively(assetsFolder.id, assetsFolder.name);
+      const assetFiles = await listGdriveFilesRecursively(assets_folder_id);
       fs.writeFileSync(`${LOGS_DIR}/assetFiles.json`, JSON.stringify(assetFiles, null, 2));
       await downloadGdriveFiles(assetFiles);
     }
@@ -66,13 +85,13 @@ export async function main(onlyFileName?: string) {
 }
 
 if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
-  main().then(() => console.log(chalk.green("GDrive Data Downloaded")));
+  gdriveDownload().then(() => console.log(chalk.green("GDrive Data Downloaded")));
 }
 
 /** Gets the name and id of a google drive folder */
-async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File> {
+async function getGDriveFolderByName(folder_name: string): Promise<drive_v3.Schema$File> {
   const res = await drive.files.list({
-    q: `mimeType='application/vnd.google-apps.folder' and name contains '${folderName}'`,
+    q: `mimeType='application/vnd.google-apps.folder' and name contains '${folder_name}'`,
     pageSize: 1,
     fields: "nextPageToken, files(id, name)",
   });
@@ -80,8 +99,10 @@ async function getGDriveFolder(folderName: string): Promise<drive_v3.Schema$File
   if (files.length > 0) {
     return files[0];
   } else {
-    console.log(chalk.red(`folder "${folderName}" does not exist, perhaps it renamed?`));
-    process.exit(1);
+    logError({
+      msg1: `Google sheets folder not found, perhaps it has been removed?`,
+      msg2: folder_name,
+    });
   }
 }
 
@@ -237,57 +258,3 @@ interface IGDriveFileWithFolder extends drive_v3.Schema$File {
   /** list of parent folders to file */
   folderPath: string;
 }
-
-/***************************************************************************************************
- * Deprecated - 2020-12-01
- * (pending confirmation whether can be removed or not)
- ***************************************************************************************************/
-// function getFileNameWithExtension(file: drive_v3.Schema$File) {
-//   if (mimeTypeToExtension[file.mimeType]) {
-//     return file.name + "." + mimeTypeToExtension[file.mimeType];
-//   } else {
-//     return file.name;
-//   }
-// }
-// function getFilesInFolder(
-//   drive: drive_v3.Drive,
-//   folderId: string
-// ): Promise<drive_v3.Schema$File[]> {
-//   return new Promise((resolve, reject) => {
-//     drive.files.list(
-//       {
-//         q: `'${folderId}' in parents and trashed=false and name != 'Old' and mimeType != 'application/vnd.google-apps.folder'`,
-//         pageSize: 100,
-//         fields: "nextPageToken, files(id, name)",
-//       },
-//       (err, res) => {
-//         if (err) {
-//           console.log("The API returned an error: " + err);
-//           reject(err);
-//         }
-//         const files = res.data.files;
-//         resolve(files);
-//       }
-//     );
-//   });
-// }
-
-// async function getFilesRecursively(
-//   drive: drive_v3.Drive,
-//   folderId: string,
-//   relPath: string
-// ): Promise<{ file: drive_v3.Schema$File; relPath: string }[]> {
-//   const res = await drive.files.list({
-//     q: `'${folderId}' in parents and trashed=false`,
-//     pageSize: 100,
-//     fields: "nextPageToken, files(id, name, mimeType)",
-//   });
-//   const files = res.data.files.map((file) => ({ file: file, relPath: relPath }));
-//   const subFolders = res.data.files.filter((file) => file.mimeType === GOOGLE_FOLDER_MIMETYPE);
-//   const subFolderRequests = subFolders.map((file) =>
-//     getFilesRecursively(drive, file.id, path.join(relPath, file.name))
-//   );
-//   const subFolderFiles = await Promise.all(subFolderRequests);
-//   const flattened = subFolderFiles.reduce((acc, val) => acc.concat(val), []);
-//   return files.concat(flattened);
-// }

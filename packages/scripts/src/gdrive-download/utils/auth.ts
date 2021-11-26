@@ -2,7 +2,7 @@ import fs from "fs";
 import readline from "readline";
 import { drive_v3, google } from "googleapis";
 import chalk from "chalk";
-import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../paths";
+import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
 require("dotenv").config();
 
 // If modifying these scopes, delete token.json.
