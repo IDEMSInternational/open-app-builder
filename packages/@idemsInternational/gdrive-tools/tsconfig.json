@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "CommonJS",
+    "sourceMap": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    // Global type definitions.
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["src/*"]
+}
