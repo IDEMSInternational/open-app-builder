@@ -11,8 +11,8 @@
     "encrypt-config": "ts-node src/encrypt-config.ts",
     "gdrive-auth": "ts-node src/gdrive-download/auth.ts",
     "command": "ts-node src/commands",
-    "generate": "ts-node src/commands/generate/index.ts ",
-    "gdrive-download": "ts-node src/gdrive-download/src/index.ts download",
+    "generate": "ts-node src/commands/index.ts generate",
+    "gdrive-download": "ts-node src/commands/index.ts app-data download",
     "app-data-convert": "ts-node src/app-data-convert/index.ts",
     "app-data-copy": "ts-node src/app-data-copy.ts",
     "app-data-sync": "npm run gdrive-download && npm run app-data-convert && npm run app-data-copy",
@@ -25,27 +25,23 @@
   "license": "ISC",
   "dependencies": {
     "@IDEMSInternational/rapidpro-excel": "workspace:*",
+    "boxen": "^5.0.1",
+    "chalk": "^4.1.0",
     "commander": "^8.3.0",
-    "dotenv": "^8.2.0",
+    "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
     "glob": "^7.2.0",
-    "googleapis": "88.2.0",
-    "ncp": "^2.0.0",
+    "inquirer": "^7.3.3",
+    "node-rsa": "^1.1.1",
+    "typescript": "^4.1.2",
     "xlsx": "^0.16.6"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
-    "boxen": "^5.0.1",
-    "chalk": "^4.1.0",
-    "data-models": "1.0.0",
-    "inquirer": "^7.3.3",
-    "inquirer-autocomplete-prompt": "^1.3.0",
     "jasmine": "^3.6.3",
     "jasmine-ts": "^0.3.2",
-    "log-update": "^4.0.0",
     "ts-node": "~7.0.0",
-    "ts-node-dev": "^1.0.0",
-    "typescript": "^4.1.2"
+    "ts-node-dev": "^1.0.0"
   }
 }
