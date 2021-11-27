@@ -1,7 +1,6 @@
 import boxen from "boxen";
 import chalk from "chalk";
 import * as inquirer from "inquirer";
-import { decryptFolder } from "./file-utils";
 
 /**
  * Provide an interactive list of cli options for a user to selet from
@@ -23,26 +22,15 @@ export async function promptInput(message: string) {
   return res[name];
 }
 
-/**
- * Decrypt any files encrypted in the config folder for use by other scripts
- */
-export function loadConfig() {
-  decryptFolder("config", "config/private.key");
-  /** Not currently required, but if we want to also load into env we could do so here */
-  // const DOTENV_PATH = "config/.env";
-  // const e = dotenv.parse(fs.readFileSync(DOTENV_PATH));
-  // return e;
-}
-
 /** Record a 2-line error message in a box with additional optional logging and exit */
-export function logError(opts: Partial<ILogErrorOptions> = {}) {
-  const { msg1, msg2, error, logOnly } = { ...logErrorDefaultOptions, ...opts };
+export function logError(opts: Partial<ILogOptions> = {}) {
+  const { msg1, msg2, error, logOnly } = { ...defaultLog, ...opts };
   console.log(
     boxen(
       `
-        ${chalk.red(msg1)}
+  ${chalk.red(msg1)}
         
-        ${chalk.yellow(msg2)}
+  ${chalk.yellow(msg2)}
         
         `,
       { padding: 1, borderColor: "red" }
@@ -55,10 +43,26 @@ export function logError(opts: Partial<ILogErrorOptions> = {}) {
     process.exit(1);
   }
 }
-interface ILogErrorOptions {
+
+/** Display an output message in a blue box with 2 lines of text */
+export function logOutput(opts: Partial<ILogOptions> = {}) {
+  const { msg1, msg2 } = { ...defaultLog, ...opts };
+  console.log(
+    boxen(
+      `
+  ${chalk.blueBright(msg1)}
+          
+  ${chalk.cyanBright(msg2)}
+          `,
+      { padding: 1, borderColor: "blueBright" }
+    )
+  );
+}
+
+interface ILogOptions {
   msg1: string;
   msg2: string;
   error?: Error; // Optional error object to log
   logOnly?: boolean; // specify to log and continue processing instead of exiting
 }
-const logErrorDefaultOptions: ILogErrorOptions = { msg1: "", msg2: "", logOnly: false };
+const defaultLog: ILogOptions = { msg1: "", msg2: "", logOnly: false };

@@ -4,21 +4,6 @@ import { createHash } from "crypto";
 import NodeRSA from "node-rsa";
 import { getNestedProperty, setNestedProperty } from "../../../../src/app/shared/utils";
 
-/** Split an array into an array of arrays of a given chunk size */
-export function ArrayToChunks(array: any[], chunk_size: number) {
-  return Array(Math.ceil(array.length / chunk_size))
-    .fill(0)
-    .map((_, index) => index * chunk_size)
-    .map((begin) => array.slice(begin, begin + chunk_size));
-}
-
-export function listFolderNames(folderPath: string) {
-  return fs
-    .readdirSync(folderPath, { withFileTypes: true })
-    .filter((v) => v.isDirectory())
-    .map((v) => v.name);
-}
-
 /**
  * find files by a given extension recursively, returning full paths
  * @param ext - file extension (without '.'), e.g. 'xlsx' or 'json' (leave blank for all files)
@@ -192,34 +177,6 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
     }
   }
   return hashmap;
-}
-
-export function decryptFolder(folderPath: string, privateKeyPath: string) {
-  const privateKeyData = fs.readFileSync(privateKeyPath);
-  const key = new NodeRSA().importKey(privateKeyData, "private");
-  for (const filePath of fs.readdirSync(folderPath)) {
-    if (filePath.endsWith(".enc")) {
-      const encryptedData = fs.readFileSync(`${folderPath}/${filePath}`);
-      const decryptedData = key.decrypt(encryptedData);
-      fs.writeFileSync(`${folderPath}/${filePath.replace(".enc", "")}`, decryptedData);
-    }
-  }
-}
-
-export function encryptFolder(
-  folderPath: string,
-  publicKeyPath: string,
-  exclusions: string[] = []
-) {
-  const publicKeyData = fs.readFileSync(publicKeyPath);
-  const key = new NodeRSA().importKey(publicKeyData, "public");
-  fs.readdirSync(folderPath).forEach((filename) => {
-    if (!exclusions.includes(filename) && path.extname(filename) !== ".enc") {
-      const decryptedData = fs.readFileSync(`${folderPath}/${filename}`);
-      const encryptedData = key.encrypt(decryptedData);
-      fs.writeFileSync(`${folderPath}/${filename}.enc`, encryptedData);
-    }
-  });
 }
 
 /**
