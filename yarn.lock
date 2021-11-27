@@ -5,6 +5,25 @@ __metadata:
   version: 5
   cacheKey: 8
 
+"@IDEMSInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools":
+  version: 0.0.0-use.local
+  resolution: "@IDEMSInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools"
+  dependencies:
+    "@types/fs-extra": ^9.0.13
+    "@types/node": ^16.11.10
+    boxen: ^5.0.1
+    chalk: ^4.1.0
+    commander: ^8.3.0
+    fs-extra: ^10.0.0
+    googleapis: 88.2.0
+    log-update: ^4.0.0
+    p-queue: ^6.6.2
+    ts-node: ~7.0.0
+    ts-node-dev: ^1.0.0
+    typescript: ^4.1.2
+  languageName: unknown
+  linkType: soft
+
 "@IDEMSInternational/rapidpro-excel@workspace:*, @IDEMSInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel":
   version: 0.0.0-use.local
   resolution: "@IDEMSInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel"
@@ -5065,6 +5084,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^16.11.10":
+  version: 16.11.10
+  resolution: "@types/node@npm:16.11.10"
+  checksum: 9c79419c5c3d92d5825bffa30f3668533f598d8b63a73ea7fc24e47f162bdbed92b0f8e4f4261cc3314b39cee050e303366d2aa154abc95c63a572a110b8c160
+  languageName: node
+  linkType: hard
+
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -6283,7 +6309,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-escapes@npm:^4.1.0, ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.0, ansi-escapes@npm:^4.3.1":
+"ansi-escapes@npm:^4.1.0, ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.0":
   version: 4.3.2
   resolution: "ansi-escapes@npm:4.3.2"
   dependencies:
@@ -9632,7 +9658,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"data-models@1.0.0, data-models@workspace:packages/data-models":
+"data-models@1.0.0, data-models@workspace:*, data-models@workspace:packages/data-models":
   version: 0.0.0-use.local
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
@@ -10333,13 +10359,6 @@ __metadata:
   version: 6.2.0
   resolution: "dotenv@npm:6.2.0"
   checksum: d4aa189741ff45553038b0436dfdb79143c29760d3481b4b19d9f1c59fb8cc69190ab83674e07b32b3dd2ae477579619cde9f7586ea82086151dbbac5626c54c
-  languageName: node
-  linkType: hard
-
-"dotenv@npm:^8.2.0":
-  version: 8.6.0
-  resolution: "dotenv@npm:8.6.0"
-  checksum: 38e902c80b0666ab59e9310a3d24ed237029a7ce34d976796349765ac96b8d769f6df19090f1f471b77a25ca391971efde8a1ea63bb83111bd8bec8e5cc9b2cd
   languageName: node
   linkType: hard
 
@@ -13973,21 +13992,6 @@ __metadata:
   dependencies:
     source-map: ~0.5.3
   checksum: 1f7fa2ad1764d03a0a525d5c47993f9e3d0445f29c2e2413d2878deecb6ecb1e6f9137a6207e3db8dc129565bde15de88c1ba2665407e753e7f3ec768ca29262
-  languageName: node
-  linkType: hard
-
-"inquirer-autocomplete-prompt@npm:^1.3.0":
-  version: 1.4.0
-  resolution: "inquirer-autocomplete-prompt@npm:1.4.0"
-  dependencies:
-    ansi-escapes: ^4.3.1
-    chalk: ^4.0.0
-    figures: ^3.2.0
-    run-async: ^2.4.0
-    rxjs: ^6.6.2
-  peerDependencies:
-    inquirer: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
-  checksum: 863d60d6beee2424d3fd9fbdbc027dcc36b20106509f56edd0aab49dea8b033451edec5936ca929b24b685a7137097c98c21757889df8a87cd3919a732483586
   languageName: node
   linkType: hard
 
@@ -17848,15 +17852,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ncp@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ncp@npm:2.0.0"
-  bin:
-    ncp: ./bin/ncp
-  checksum: ea9b19221da1d1c5529bdb9f8e85c9d191d156bcaae408cce5e415b7fbfd8744c288e792bd7faf1fe3b70fd44c74e22f0d43c39b209bc7ac1fb8016f70793a16
-  languageName: node
-  linkType: hard
-
 "needle@npm:^2.5.2":
   version: 2.9.1
   resolution: "needle@npm:2.9.1"
@@ -21609,7 +21604,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.5.4, rxjs@npm:^6.6.0, rxjs@npm:^6.6.2, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
+"rxjs@npm:6.6.7, rxjs@npm:^6.4.0, rxjs@npm:^6.5.3, rxjs@npm:^6.5.4, rxjs@npm:^6.6.0, rxjs@npm:^6.6.3, rxjs@npm:^6.6.6, rxjs@npm:^6.6.7":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -21847,17 +21842,13 @@ __metadata:
     boxen: ^5.0.1
     chalk: ^4.1.0
     commander: ^8.3.0
-    data-models: 1.0.0
-    dotenv: ^8.2.0
+    data-models: "workspace:*"
     fs-extra: ^9.0.1
     glob: ^7.2.0
-    googleapis: 88.2.0
     inquirer: ^7.3.3
-    inquirer-autocomplete-prompt: ^1.3.0
     jasmine: ^3.6.3
     jasmine-ts: ^0.3.2
-    log-update: ^4.0.0
-    ncp: ^2.0.0
+    node-rsa: ^1.1.1
     ts-node: ~7.0.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
