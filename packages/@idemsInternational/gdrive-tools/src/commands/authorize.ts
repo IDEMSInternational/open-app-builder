@@ -2,8 +2,48 @@ import fs from "fs";
 import readline from "readline";
 import { drive_v3, google } from "googleapis";
 import chalk from "chalk";
-import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
 require("dotenv").config();
+
+/***************************************************************************************
+ * CLI
+ * @example gdrive-tools download -id 1bNvUKN47YZAbMnRA1ThzSLGxLTd0mfDb
+ *************************************************************************************/
+interface IProgramOptions {
+  credentialsPath: string;
+  authTokenPath: string;
+}
+
+import { Command } from "commander";
+import { PATHS } from "../paths";
+import { logError } from "../utils";
+import { OAuth2Client } from "google-auth-library";
+const program = new Command("authorize");
+export default program
+  .description("Authorize Google Drive API")
+  .requiredOption(
+    "-c --credentials-path <string>",
+    "Path to credentials JSON",
+    PATHS.DEFAULT_CREDENTIALS
+  )
+  .requiredOption("-a --auth-token-path <string>", "Path to token JSON", PATHS.DEFAULT_TOKEN)
+  .action(async (opts: IProgramOptions) => {
+    console.log("authorize", opts);
+    authorizeGDrive(opts);
+  });
+
+// Run if called directly from Node
+if (require.main === module) {
+  if (!process.argv.slice(2).length) {
+    console.log(chalk.yellow("No command specified. See help below:"));
+    program.outputHelp();
+    process.exit(0);
+  }
+  program.parse(process.argv);
+}
+
+/***************************************************************************************
+ * Main Methods
+ *************************************************************************************/
 
 // If modifying these scopes, delete token.json.
 const SCOPES = [
@@ -11,15 +51,11 @@ const SCOPES = [
   "https://www.googleapis.com/auth/drive.metadata.readonly",
 ];
 
-// if the file is run direct as opposed to imported function, run the main auth
-async function main() {
-  if (require.main === module) {
-    await authorizeGDrive();
-  }
-}
-main();
-
-export function authorizeGDrive(options?: drive_v3.Options): Promise<drive_v3.Drive> {
+export function authorizeGDrive(
+  options: IProgramOptions,
+  driveOptions?: drive_v3.Options
+): Promise<drive_v3.Drive> {
+  const { authTokenPath, credentialsPath } = options;
   return new Promise((resolve, reject) => {
     try {
       // The file token.json stores the user's access and refresh tokens, and is
@@ -27,15 +63,17 @@ export function authorizeGDrive(options?: drive_v3.Options): Promise<drive_v3.Dr
       // time.
 
       // Load client secrets from a local file or env variable
-      if (!fs.existsSync(CREDENTIALS_PATH)) {
-        console.log(chalk.red(`No credentials provided in ${CREDENTIALS_PATH}`));
-        process.exit(1);
+      if (!fs.existsSync(credentialsPath)) {
+        logError({
+          msg1: `No application credentials found in : ${credentialsPath}`,
+          msg2: "Application must be registered as per https://developers.google.com/identity/protocols/oauth2",
+        });
       }
-      const creds = getJSONFromEnvOrFile("GDRIVE_CREDENTIALS", CREDENTIALS_PATH);
+      const creds = getJSONFromEnvOrFile("GDRIVE_CREDENTIALS", credentialsPath);
 
       // Authorize a client with credentials, then call the Google Drive API.
-      authorize(creds, AUTH_TOKEN_PATH, SCOPES, (auth) => {
-        const drive = google.drive({ version: "v3", auth, ...options });
+      authorize(creds, authTokenPath, SCOPES, (auth) => {
+        const drive = google.drive({ version: "v3", auth, ...driveOptions });
         resolve(drive);
       });
     } catch (ex) {
@@ -64,7 +102,12 @@ function getJSONFromEnvOrFile(envVar: string, filepath: string) {
   }
 }
 
-function authorize(credentials: any, tokenPath: string, scopes: string[], callback) {
+function authorize(
+  credentials: any,
+  tokenPath: string,
+  scopes: string[],
+  callback: (authClient: OAuth2Client) => void
+) {
   const { client_secret, client_id, redirect_uris } = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
@@ -77,6 +120,7 @@ function authorize(credentials: any, tokenPath: string, scopes: string[], callba
   callback(oAuth2Client);
 }
 
+/** */
 function getAccessToken(oAuth2Client, scopes, tokenPath, callback) {
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
