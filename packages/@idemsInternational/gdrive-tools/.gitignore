@@ -1,3 +1,6 @@
+# Production credentials are currently ignored, but dev are exposed
+!credentials.dev.json
+# https://stackoverflow.com/questions/22266729/google-oauth-keeping-the-client-id-secret
 credentials.json
 token.json
 output
