@@ -17,7 +17,7 @@
     "data:serve": "yarn workspace app-data serve",
     "data-models:build": "yarn workspace data-models build",
     "data-models:serve": "yarn workspace data-models serve",
-    "scripts": "yarn workspace scripts",
+    "scripts": "yarn workspace scripts start",
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
     "test": "ng test",

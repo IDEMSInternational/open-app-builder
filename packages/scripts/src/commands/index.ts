@@ -12,11 +12,18 @@ const program = new Command();
 
 program.version("1.0.0").description("IDEMS App Scripts");
 
-// Handle legacy command renames so can still run `command gdrive-download`
+// Handle legacy command renames so can still run `npm run scripts gdrive-download`
 const legacyCommandMappings = {
   "gdrive-download": ["app-data", "download"],
   "decrypt-config": ["config", "decrypt"],
   "encrypt-config": ["config", "encrypt"],
+  // TO convert
+  "app-data-convert": ["ts-node src/app-data-convert/index.ts"],
+  "app-data-copy": ["ts-node src/app-data-copy.ts"],
+  "app-data-sync": ["npm run gdrive-download && npm run app-data-convert && npm run app-data-copy"],
+  "sync-plh-content": ["app-data", "sync"],
+  "sync-single": ["app-data", "sync-single"],
+  version: ["version.ts"],
 };
 const mapping = legacyCommandMappings[process.argv[2] || ""];
 if (mapping) {
