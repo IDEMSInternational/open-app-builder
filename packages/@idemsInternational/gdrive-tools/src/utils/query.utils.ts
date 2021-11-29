@@ -1,6 +1,10 @@
 import { drive_v3 } from "googleapis";
 import { logError } from ".";
 
+/** List of fields to retrieve when receiving file metadata via get/list apis */
+const FILE_META_FIELD_LIST =
+  "id, name, mimeType, modifiedTime, md5Checksum, size, fileExtension, fullFileExtension";
+
 /** Gets the name and id of a google drive folder */
 export async function getGDriveFolderByName(
   drive: drive_v3.Drive,
@@ -42,6 +46,24 @@ export async function getGDriveFolderById(
 }
 
 /** Query Gdrive list api to retrieve all non-deleted folders and files from a given folder id */
+export async function getGDriveFileById(drive: drive_v3.Drive, fileId: string) {
+  const res = await drive.files
+    .get({
+      fileId,
+      fields: FILE_META_FIELD_LIST,
+    })
+    .catch((error) => {
+      const errData = (error as any)?.response?.data?.error;
+      logError({
+        msg1: `File list failed for folder: '${fileId}'`,
+        error: errData,
+      });
+      process.exit(1);
+    });
+  return res.data;
+}
+
+/** Query Gdrive list api to retrieve all non-deleted folders and files from a given folder id */
 export async function listGdriveFolder(drive: drive_v3.Drive, folderId: string) {
   const res = await drive.files
     .list({
@@ -49,8 +71,7 @@ export async function listGdriveFolder(drive: drive_v3.Drive, folderId: string) 
       // TODO - handle case where files exceed pageSize
       pageSize: 1000,
       // list of possible file fields: https://developers.google.com/drive/api/v3/reference/files#resource
-      fields:
-        "nextPageToken, files(id, name, mimeType, modifiedTime, md5Checksum, size, fileExtension, fullFileExtension)",
+      fields: `nextPageToken, files(${FILE_META_FIELD_LIST})`,
     })
     .catch((error) => {
       const errData = (error as any)?.response?.data?.error;

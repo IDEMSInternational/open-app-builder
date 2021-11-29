@@ -2,8 +2,10 @@
 import chalk from "chalk";
 import { spawnSync } from "child_process";
 import { Command } from "commander";
+import fs from "fs-extra";
 import path from "path";
 import { CREDENTIALS_PATH } from "../../paths";
+import { logWarning, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 
 const program = new Command("download");
@@ -12,9 +14,20 @@ const program = new Command("download");
  * CLI
  * @example yarn
  *************************************************************************************/
-export default program.description("Download app data").action(async () => {
-  await appDataDownload();
-});
+interface IProgramOptions {
+  sheetname?: string;
+}
+export default program
+  .description("Download app data")
+  .option(
+    "-s --sheetname <string>",
+    "name of single google sheet to download (default downloads all)"
+  )
+  .action(async (options: IProgramOptions) => {
+    if (options.sheetname) {
+    }
+    await appDataDownload(options);
+  });
 
 /***************************************************************************************
  * Main Methods
@@ -22,26 +35,71 @@ export default program.description("Download app data").action(async () => {
 /**
  * Read the default deployment json and retrieve parsed ts for the named active deployment
  */
-export async function appDataDownload() {
+async function appDataDownload(options: IProgramOptions) {
   const activeDeployment = getActiveDeployment();
   const { _workspace_path } = activeDeployment;
   const { assets_folder_id, sheets_folder_id } = activeDeployment.google_drive;
-  const commonArgs = `--credentials-path "${CREDENTIALS_PATH}"`;
-  // download sheets
+  // setup paths for args
+  const gdriveToolsExec = `yarn workspace @IDEMSInternational/gdrive-tools start`;
   const sheetsOutput = path.resolve(_workspace_path, "app-data", "sheets");
   const sheetsCachePath = path.resolve(_workspace_path, "cache", "gdrive", "app_sheets");
-  const gdriveToolsExec = `yarn workspace @IDEMSInternational/gdrive-tools start`;
+  const assetsOutput = path.resolve(_workspace_path, "app-data", "assets");
+  const assetsCachePath = path.resolve(_workspace_path, "cache", "gdrive", "app_assets");
+
+  let commonArgs = `--credentials-path "${CREDENTIALS_PATH}"`;
+  // handle single file download
+  if (options.sheetname) {
+    const cachedEntry = await getFileCacheEntry(options.sheetname, sheetsCachePath);
+    if (cachedEntry) {
+      const fileEntry64 = Buffer.from(JSON.stringify(cachedEntry)).toString("base64");
+      const args = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --cache-path "${sheetsCachePath}" --file-entry-64 ${fileEntry64}`;
+      const singleDLCmd = `${gdriveToolsExec} download ${commonArgs} ${args}`;
+      return spawnSync(singleDLCmd, { shell: true, stdio: "inherit" });
+    } else {
+      logWarning({
+        msg1: "Could not find a matching sheet in cache, performing full sync",
+        msg2: options.sheetname,
+      });
+    }
+  }
+  // handle full sheets/assets sync
+  // download sheets
   const sheetsArgs = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --cache-path "${sheetsCachePath}"`;
   const sheetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${sheetsArgs}`;
   console.log(chalk.yellow("-----Sheets-----"));
   console.log(chalk.gray(sheetsDLCmd));
   spawnSync(sheetsDLCmd, { shell: true, stdio: "inherit" });
   // download assets
-  const assetsOutput = path.resolve(_workspace_path, "app-data", "assets");
-  const assetsCachePath = path.resolve(_workspace_path, "cache", "gdrive", "app_assets");
   const assetsArgs = `--folder-id ${assets_folder_id} --output-path "${assetsOutput}" --cache-path "${assetsCachePath}"`;
   const assetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${assetsArgs}`;
   console.log(chalk.yellow("-----Assets-----"));
   console.log(chalk.gray(assetsDLCmd));
   spawnSync(assetsDLCmd, { shell: true, stdio: "inherit" });
+}
+
+/**
+ * Use local cache contents to lookup all sheets by name and return entry of matching
+ * In case where multiple exist with same name give user prompt to select
+ * In case where non exist return null
+ */
+async function getFileCacheEntry(sheetname: string, cachePath: string) {
+  const cacheContents = path.resolve(cachePath, "_drive_contents.json");
+  if (fs.existsSync(cacheContents)) {
+    const contentsJson = fs.readJsonSync(cacheContents);
+    let matching = contentsJson.filter((entry) => entry.name === `${sheetname}.xlsx`);
+    // Handle no sheets with name
+    if (matching.length === 0) {
+      return null;
+    }
+    // Handle multiple sheets same name
+    if (matching.length > 1) {
+      const options = matching.map((match) => ({
+        name: `${match.folderPath ? match.folderPath + " / " : ""}${match.name}`,
+        value: match,
+      }));
+      const message = `Multiple sheets with the name "${sheetname}" found, select correct folder version`;
+      matching = await promptOptions(options, message);
+    }
+    return matching;
+  }
 }
