@@ -49,6 +49,7 @@ async function setActiveDeployment(deploymentName?: string) {
   const defaultDeploymentPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
   const deploymentJson: IDeploymentConfigJson = {
     ...deployment,
+    _workspace_path: path.resolve(IDEMS_APP_CONFIG.deployments, path.dirname(filename)),
     _ts_filename: filename,
   };
   fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
@@ -88,5 +89,6 @@ interface IDeploymentConfigWithFilename extends IDeploymentConfig {
   filename: string;
 }
 export interface IDeploymentConfigJson extends IDeploymentConfig {
+  _workspace_path: string;
   _ts_filename: string;
 }

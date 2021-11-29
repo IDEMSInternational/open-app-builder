@@ -28,22 +28,22 @@ export default program
  * Read the default deployment json and return compiled json of previously set active
  * deployment.
  */
-export function getActiveDeployment(): IDeploymentConfig {
+export function getActiveDeployment() {
   const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
   if (!fs.existsSync(defaultJsonPath)) {
     logError({
       msg1: "No default deployment has been specified",
-      msg2: "you must first run the `deployment set` command",
+      msg2: `Run "npm run scripts deployment set" to configure`,
     });
   }
   const deploymentJson: IDeploymentConfigJson = fs.readJsonSync(defaultJsonPath);
-  const { _ts_filename, ...deployment } = deploymentJson;
+  const { _ts_filename } = deploymentJson;
   const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _ts_filename);
 
   if (!fs.existsSync(deploymentTSPath)) {
     logError({
       msg1: `Deployment not found: ${_ts_filename}`,
-      msg2: "Run the `deployment set` command to specify a new active deployment",
+      msg2: `Run "npm run scripts deployment set" to specify a new active deployment`,
     });
   }
 
@@ -54,9 +54,9 @@ export function getActiveDeployment(): IDeploymentConfig {
   if (jsonModifiedTime < tsModifiedTime) {
     logError({
       msg1: `Deployment has been updated and requires compiling`,
-      msg2: "Run the `deployment set` command to update",
+      msg2: `Run "npm run scripts deployment set" to update`,
     });
   }
 
-  return deployment as IDeploymentConfig;
+  return deploymentJson;
 }

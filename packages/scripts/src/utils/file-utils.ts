@@ -1,7 +1,6 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { createHash } from "crypto";
-import NodeRSA from "node-rsa";
 import { getNestedProperty, setNestedProperty } from "../../../../src/app/shared/utils";
 
 /**
@@ -177,6 +176,13 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
     }
   }
   return hashmap;
+}
+
+export function listFolderNames(folderPath: string) {
+  return fs
+    .readdirSync(folderPath, { withFileTypes: true })
+    .filter((v) => v.isDirectory())
+    .map((v) => v.name);
 }
 
 /**
