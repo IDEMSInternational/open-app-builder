@@ -5,7 +5,7 @@ __metadata:
   version: 5
   cacheKey: 8
 
-"@IDEMSInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools":
+"@IDEMSInternational/gdrive-tools@workspace:*, @IDEMSInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools":
   version: 0.0.0-use.local
   resolution: "@IDEMSInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools"
   dependencies:
@@ -21836,6 +21836,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:
+    "@IDEMSInternational/gdrive-tools": "workspace:*"
     "@IDEMSInternational/rapidpro-excel": "workspace:*"
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
