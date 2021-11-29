@@ -7,6 +7,7 @@ import appDataCmd from "./app-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import generateCmd from "./generate";
+import { logWarning } from "../utils/logging.utils";
 
 const program = new Command();
 
@@ -25,8 +26,13 @@ const legacyCommandMappings = {
   "sync-single": ["app-data", "sync-single"],
   version: ["version.ts"],
 };
-const mapping = legacyCommandMappings[process.argv[2] || ""];
+const cmdName = process.argv[2] || "";
+const mapping = legacyCommandMappings[cmdName];
 if (mapping) {
+  logWarning({
+    msg1: "NOTE - Script has been renamed and will be deprecated",
+    msg2: `"${cmdName}" -> "${mapping.join(" ")}"`,
+  });
   process.argv.splice(2, 1, ...mapping);
 }
 

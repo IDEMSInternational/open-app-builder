@@ -22,6 +22,25 @@ export async function getGDriveFolderByName(
   }
 }
 
+export async function getGDriveFolderById(
+  drive: drive_v3.Drive,
+  folder_id: string
+): Promise<drive_v3.Schema$File> {
+  const res = await drive.files
+    .get({
+      fileId: folder_id,
+    })
+    .catch((err) => {
+      logError({
+        msg1: `Google Drive folder not found\nhttps://drive.google.com/drive/folders/${folder_id}`,
+        msg2: `Ensure the folder exists and you have access permission`,
+        logOnly: true,
+      });
+      process.exit(1);
+    });
+  return res.data;
+}
+
 /** Query Gdrive list api to retrieve all non-deleted folders and files from a given folder id */
 export async function listGdriveFolder(drive: drive_v3.Drive, folderId: string) {
   const res = await drive.files
