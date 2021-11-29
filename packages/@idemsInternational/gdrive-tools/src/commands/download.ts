@@ -125,14 +125,19 @@ class GDriveDownloader {
   }
 
   /**
-   *
+   * Download all files from google drive server to local, checking via cache
+   * for files that already exist, or have been modified/deleted etc.
    */
   private async syncServerFilesToLocal(files: IGDriveFileWithFolder[]) {
-    // generate list of files to download
+    // Generate list of files to download
     const comparison = this.compareServerAndLocalFiles(files);
-    const fileDownloads = [...comparison.new, ...comparison.updated];
     const { cachePath } = this.options;
+    // Remove cache files that no longer exist on server
+    for (const { folderPath } of comparison.deleted) {
+      fs.removeSync(path.resolve(cachePath, folderPath));
+    }
     // Handle download of files to cache
+    const fileDownloads = [...comparison.new, ...comparison.updated];
     const queue = new PQueue({ autoStart: false });
     for (const file of fileDownloads) {
       queue.add(async () => {

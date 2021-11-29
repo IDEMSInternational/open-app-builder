@@ -5045,24 +5045,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ncp@npm:^2.0.4":
-  version: 2.0.5
-  resolution: "@types/ncp@npm:2.0.5"
-  dependencies:
-    "@types/node": "*"
-  checksum: 43ef789a1f962590d9496df83b70dda79247df12a2785e14b9c9d868c19d4a312c4572735a1d834bdaacb7db62b0e3630a80bbbd4b6a97b4891fe3e2c9603dbf
-  languageName: node
-  linkType: hard
-
-"@types/node-rsa@npm:^1.1.0":
-  version: 1.1.1
-  resolution: "@types/node-rsa@npm:1.1.1"
-  dependencies:
-    "@types/node": "*"
-  checksum: dee0c318618991f115b6e757c54980324c3b2f7dfec8137dcb31e8e88955e7c048d5e89e1e3a572148697783f323dbf9af5738ac5bbe9069666663ad3737284d
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^16.11.4":
   version: 16.11.8
   resolution: "@types/node@npm:16.11.8"
@@ -12562,9 +12544,7 @@ __metadata:
     "@types/jasmine": ~3.7.7
     "@types/jasminewd2": ~2.0.9
     "@types/marked": ^2.0.3
-    "@types/ncp": ^2.0.4
     "@types/node": ^15.12.4
-    "@types/node-rsa": ^1.1.0
     "@types/nouislider": ^15.0.0
     "@types/swiper": ~4.2.0
     "@types/uuid": ^8.3.0
@@ -12609,7 +12589,6 @@ __metadata:
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^7.0.4
-    node-rsa: ^1.1.1
     nouislider: ^14.6.3
     prettier: 2.4.1
     protractor: ~7.0.0
