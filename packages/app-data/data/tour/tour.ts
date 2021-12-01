@@ -93,6 +93,7 @@ const tour: FlowTypes.Tour[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -100,6 +101,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -118,6 +120,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -136,6 +139,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -152,6 +156,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -170,6 +175,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -187,6 +193,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -209,6 +216,7 @@ const tour: FlowTypes.Tour[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -216,6 +224,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -233,6 +242,7 @@ const tour: FlowTypes.Tour[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -240,6 +250,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -257,6 +268,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -273,6 +285,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -289,6 +302,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -304,6 +318,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -320,6 +335,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -335,6 +351,7 @@ const tour: FlowTypes.Tour[] = [
           message_text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
