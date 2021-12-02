@@ -7,6 +7,7 @@ import {
   parseAppDataListString,
   parseAppDataCollectionString,
   parseAppDataActionString,
+  parseAppDateValue,
 } from "../../utils";
 import { SCRIPTS_WORKSPACE_PATH } from "../../../paths";
 import { getActiveDeployment } from "../../../deployments";
@@ -124,6 +125,12 @@ export class DefaultParser implements AbstractParser {
         row[field] = row[field]
           .map((actionString) => parseAppDataActionString(actionString))
           .filter((action) => action != null);
+      }
+      // convert google/excel number dates to dates (https://stackoverflow.com/questions/16229494/converting-excel-date-serial-number-to-date-using-javascript)
+      if (field.endsWith("_date")) {
+        if (typeof row[field] === "number") {
+          row[field] = parseAppDateValue(row[field]);
+        }
       }
       // assign default translation and track as metadata
       if (isTranslateField) {
