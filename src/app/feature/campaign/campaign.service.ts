@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { addDays } from "@fullcalendar/angular";
 import { addHours, addMinutes, isBefore, setISODay } from "date-fns";
-import { APP_STRINGS } from "packages/data-models/constants";
+import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
@@ -177,8 +177,8 @@ export class CampaignService {
     let { title, text } = row;
     let { _schedule_at } = notification_schedule;
 
-    title = this.translateService.translateValue(title || APP_STRINGS.NOTIFICATION_DEFAULT_TITLE);
-    text = this.translateService.translateValue(text || APP_STRINGS.NOTIFICATION_DEFAULT_TEXT);
+    title = this.translateService.translateValue(title || NOTIFICATION_DEFAULTS.title);
+    text = this.translateService.translateValue(text || NOTIFICATION_DEFAULTS.text);
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
@@ -306,6 +306,8 @@ export class CampaignService {
   }
 
   private evaluateCampaignNotification(scheduleRow: FlowTypes.Campaign_Schedule) {
+    // apply default settings
+    scheduleRow.time = scheduleRow.time || NOTIFICATION_DEFAULTS.time;
     const { time, delay } = scheduleRow;
     const schedule: FlowTypes.Campaign_Schedule["schedule"] = scheduleRow.schedule || {};
     // set a base date from today or schedule start (if provided)
