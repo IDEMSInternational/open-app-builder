@@ -4,6 +4,7 @@ import path from "path";
 import cp from "child_process";
 
 import { Command } from "commander";
+import { promptInput } from "../../utils";
 
 const program = new Command("app-data");
 
@@ -11,17 +12,26 @@ const DEFAULT_OPTIONS = {};
 
 /***************************************************************************************
  * CLI
- * @example yarn workspace test-visual start compare --clean
+ * @example
  *************************************************************************************/
 export default program
   .description("Generate a new app data repo")
   // options for compare
-  .option("-n, --name", "Ignore errors thrown when comparing images")
-  .option("-gh, --github", "Ignore errors thrown when comparing images")
+  .option("-n, --name <string>", "Specify name for repo", "prompt")
+  .option("-gh, --github_repo <url>", "Specify external github repo for data", "prompt")
   // options copied from/passed to generate
   .action(async (opts) => {
     const options = { ...DEFAULT_OPTIONS, ...opts };
-    console.log("generate app data", options);
+    const allInputOptions = program["options"];
+    for (const option of allInputOptions) {
+      const { description, long } = option;
+      const key = option.long.replace("--", "");
+      if (options[key] === "prompt") {
+        const value = await promptInput(description);
+        options[key] = value;
+      }
+    }
+    console.log("options", options);
   });
 
 /***************************************************************************

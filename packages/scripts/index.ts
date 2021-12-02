@@ -1,6 +1,6 @@
 import chalk from "chalk";
 
-import { loadConfig, promptOptions } from "./src/utils";
+import { logError, promptOptions } from "./src/utils";
 import { spawnSync } from "child_process";
 
 /**
@@ -26,7 +26,10 @@ const SCRIPT_NAMES = [
  * `npm run scripts version`
  */
 async function start() {
-  loadConfig();
+  // TODO - refactor to new commands system
+  logError({ msg1: "TODO - requires refactor" });
+  process.exit(1);
+  // loadConfig();
   const args = process.argv;
   const scriptToRun = args[2] ? args.slice(2).join(" ") : await promptOptions(SCRIPT_NAMES);
   spawnSync(`npm run ${scriptToRun}`, {
