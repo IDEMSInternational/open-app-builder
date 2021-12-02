@@ -64,6 +64,17 @@ const data_list: FlowTypes.Data_list[] = [
         image: "i18n/flags/za.svg",
       },
       {
+        id: "za_st",
+        country_code: "za",
+        country_label: "South Africa",
+        country_icon: "i18n/flags/za.svg",
+        language_code: "st",
+        language_label: "Sesotho",
+        name: "za_st",
+        text: "Sesotho",
+        image: "i18n/flags/za.svg",
+      },
+      {
         id: "tz_sw",
         country_code: "tz",
         country_label: "Tanzania",

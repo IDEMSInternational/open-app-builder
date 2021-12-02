@@ -9814,6 +9814,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -9879,6 +9880,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -9934,6 +9936,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -9999,6 +10002,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10054,6 +10058,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10119,6 +10124,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10174,6 +10180,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10239,6 +10246,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10294,6 +10302,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10359,6 +10368,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10414,6 +10424,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10479,6 +10490,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10534,6 +10546,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10599,6 +10612,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10654,6 +10668,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10719,6 +10734,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10774,6 +10790,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10839,6 +10856,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10894,6 +10912,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -10959,6 +10978,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11014,6 +11034,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11079,6 +11100,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11134,6 +11156,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11199,6 +11222,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11245,15 +11269,12 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         campaign_list: ["inactive_day"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Welcome to ParentApp. Click here to start your journey!",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11261,6 +11282,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11277,7 +11299,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Welcome to ParentApp. Click here to start your journey!",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/notification_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -11298,15 +11320,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_week"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11314,6 +11333,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11342,15 +11362,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_week"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11358,6 +11375,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11386,15 +11404,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_week"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11402,6 +11417,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11430,15 +11446,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_week"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11446,6 +11459,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11462,7 +11476,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/notification_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -11483,15 +11497,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_month"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11499,6 +11510,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11527,15 +11539,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_month"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11543,6 +11552,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11571,15 +11581,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_month"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11587,6 +11594,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11615,15 +11623,12 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 1,
         campaign_list: ["inactive_month"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11631,6 +11636,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11647,7 +11653,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/notification_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -11656,32 +11662,43 @@ const data_list: FlowTypes.Data_list[] = [
     status: "released",
     rows: [
       {
-        cam: "m_generic_1",
+        id: "m_generic_1",
         click_action_list: [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["undefined.sent", true],
-            _raw: "set_field: undefined.sent : true",
-            _cleaned: "click | set_field: undefined.sent : true",
+            args: ["m_generic_1.sent", true],
+            _raw: "set_field: m_generic_1.sent : true",
+            _cleaned: "click | set_field: m_generic_1.sent : true",
           },
         ],
         priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "m_generic_1.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | m_generic_1.sent : true",
+          },
+        ],
         campaign_list: ["generic"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
           },
-          text: {},
+          text: {
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -11694,32 +11711,43 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
       },
       {
-        cam: "m_generic_2",
+        id: "m_generic_2",
         click_action_list: [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["undefined.sent", true],
-            _raw: "set_field: undefined.sent : true",
-            _cleaned: "click | set_field: undefined.sent : true",
+            args: ["m_generic_2.sent", true],
+            _raw: "set_field: m_generic_2.sent : true",
+            _cleaned: "click | set_field: m_generic_2.sent : true",
           },
         ],
         priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "m_generic_2.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | m_generic_2.sent : true",
+          },
+        ],
         campaign_list: ["generic"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
           },
-          text: {},
+          text: {
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -11732,32 +11760,43 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
       },
       {
-        cam: "m_generic_3",
+        id: "m_generic_3",
         click_action_list: [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["undefined.sent", true],
-            _raw: "set_field: undefined.sent : true",
-            _cleaned: "click | set_field: undefined.sent : true",
+            args: ["m_generic_3.sent", true],
+            _raw: "set_field: m_generic_3.sent : true",
+            _cleaned: "click | set_field: m_generic_3.sent : true",
           },
         ],
         priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "m_generic_3.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | m_generic_3.sent : true",
+          },
+        ],
         campaign_list: ["generic"],
-        notification_schedule: {
-          title: "New message from PLH",
-          text: "Hi great parent! ParentApp is here to support you. Check it out now!",
-        },
         title: "New message from PLH",
         _translations: {
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
           },
-          text: {},
+          text: {
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -11770,7 +11809,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hi great parent! ParentApp is here to support you. Check it out now!",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/inactive_campaigns.xlsx",
+    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/notification_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -11819,6 +11858,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11826,6 +11866,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11861,6 +11902,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11868,6 +11910,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11924,6 +11967,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11931,6 +11975,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11987,6 +12032,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -11994,6 +12040,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12050,6 +12097,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12057,6 +12105,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12113,6 +12162,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12120,6 +12170,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12176,6 +12227,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12183,6 +12235,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12239,6 +12292,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12246,6 +12300,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12281,6 +12336,7 @@ const data_list: FlowTypes.Data_list[] = [
           title: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -12288,6 +12344,7 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
