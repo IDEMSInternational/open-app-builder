@@ -38,6 +38,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -60,6 +61,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -74,6 +76,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -156,6 +159,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -170,6 +174,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -184,6 +189,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -198,6 +204,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -212,6 +219,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -226,6 +234,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -240,6 +249,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -254,6 +264,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -276,6 +287,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -290,6 +302,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -304,6 +317,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -425,6 +439,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -439,6 +454,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -453,6 +469,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -521,6 +538,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -535,6 +553,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -971,6 +990,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -986,6 +1006,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1001,6 +1022,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1016,6 +1038,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1145,6 +1168,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1159,6 +1183,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1173,6 +1198,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1187,6 +1213,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1201,6 +1228,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1215,6 +1243,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1229,6 +1258,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1261,6 +1291,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1283,6 +1314,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1297,6 +1329,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1311,6 +1344,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1325,6 +1359,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1338,6 +1373,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             tz_sw: true,
+            za_st: true,
           },
         },
       },
@@ -1349,6 +1385,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1363,6 +1400,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1377,6 +1415,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1391,6 +1430,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1405,6 +1445,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1419,6 +1460,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1433,6 +1475,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1447,6 +1490,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1461,6 +1505,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1475,6 +1520,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1488,6 +1534,7 @@ const global: FlowTypes.Global[] = [
         _translations: {
           value: {
             tz_sw: true,
+            za_st: true,
           },
         },
       },
@@ -1499,6 +1546,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -1513,6 +1561,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2128,6 +2177,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2142,6 +2192,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2156,6 +2207,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2170,6 +2222,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2184,6 +2237,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2198,6 +2252,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2212,6 +2267,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2378,6 +2434,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2392,6 +2449,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2406,6 +2464,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2420,6 +2479,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2434,6 +2494,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2448,6 +2509,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2689,6 +2751,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2703,6 +2766,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2717,6 +2781,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2731,6 +2796,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2745,6 +2811,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2759,6 +2826,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2773,6 +2841,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2787,6 +2856,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2801,6 +2871,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2815,6 +2886,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2838,6 +2910,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2852,6 +2925,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2866,6 +2940,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2880,6 +2955,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2903,6 +2979,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2917,6 +2994,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2931,6 +3009,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2945,6 +3024,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2959,6 +3039,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2973,6 +3054,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2996,6 +3078,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3010,6 +3093,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3024,6 +3108,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3038,6 +3123,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3061,6 +3147,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3075,6 +3162,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3089,6 +3177,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3103,6 +3192,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3117,6 +3207,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3131,6 +3222,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3145,6 +3237,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3159,6 +3252,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3173,6 +3267,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3187,6 +3282,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3210,6 +3306,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3224,6 +3321,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3238,6 +3336,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3252,6 +3351,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3266,6 +3366,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3314,6 +3415,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3328,6 +3430,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3342,6 +3445,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3356,6 +3460,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3494,6 +3599,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3508,6 +3614,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3522,6 +3629,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3536,6 +3644,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3550,6 +3659,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3564,6 +3674,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3578,6 +3689,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3592,6 +3704,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3606,6 +3719,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3620,6 +3734,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3634,6 +3749,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3648,6 +3764,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3662,6 +3779,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3676,6 +3794,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3690,6 +3809,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3704,6 +3824,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3718,6 +3839,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3732,6 +3854,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3746,6 +3869,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3760,6 +3884,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3774,6 +3899,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3788,6 +3914,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3802,6 +3929,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3816,6 +3944,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3830,6 +3959,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3852,6 +3982,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3866,6 +3997,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -3880,6 +4012,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -4357,6 +4490,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -4371,6 +4505,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -4395,6 +4530,7 @@ const global: FlowTypes.Global[] = [
             es_sp: true,
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -4418,6 +4554,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,

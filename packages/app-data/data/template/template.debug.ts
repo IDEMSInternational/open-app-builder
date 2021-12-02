@@ -287,35 +287,147 @@ const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
     flow_subtype: "debug",
-    flow_name: "debug_campaign",
+    flow_name: "debug_campaign_tester",
     status: "released",
     rows: [
       {
-        name: "active_campaign",
-        value: "@campaign.debug_campaign",
+        type: "text",
+        name: "text",
+        value: "Campaign to be tested",
         _translations: {
           value: {},
         },
-        exclude_from_translation: true,
+        _nested_name: "text",
+      },
+      {
+        name: "active",
+        type: "set_variable",
+        _nested_name: "active",
+      },
+      {
+        name: "campaign",
+        value: "@campaign.",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "campaign",
+      },
+      {
+        name: "active_campaign",
+        value: "@local.campaign@local.active",
+        _translations: {
+          value: {},
+        },
+        condition: "@local.active",
         type: "set_variable",
         _nested_name: "active_campaign",
         _dynamicFields: {
           value: [
             {
-              fullExpression: "@campaign.debug_campaign",
-              matchedExpression: "@campaign.debug_campaign",
-              type: "campaign",
-              fieldName: "debug_campaign",
+              fullExpression: "@local.campaign@local.active",
+              matchedExpression: "@local.campaign",
+              type: "local",
+              fieldName: "campaign",
+            },
+            {
+              fullExpression: "@local.campaign@local.active",
+              matchedExpression: "@local.active",
+              type: "local",
+              fieldName: "active",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.active",
+              matchedExpression: "@local.active",
+              type: "local",
+              fieldName: "active",
             },
           ],
         },
         _dynamicDependencies: {
-          "@campaign.debug_campaign": ["value"],
+          "@local.campaign": ["value"],
+          "@local.active": ["value", "condition"],
+        },
+      },
+      {
+        name: "answer_list",
+        value: [
+          "name: debug_daily | text: debug_daily",
+          "name: debug_actions | text: debug_actions",
+          "name: debug_calc | text: debug_calc",
+        ],
+        type: "set_variable",
+        _nested_name: "answer_list",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group",
+        value: "radio_group",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_local",
+            args: ["active", "this.value"],
+            _raw: "changed | set_local: active: @local.radio_group",
+            _cleaned: "changed | set_local: active: @local.radio_group",
+          },
+          {
+            trigger: "changed",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "changed | emit: force_reprocess",
+            _cleaned: "changed | emit: force_reprocess",
+          },
+        ],
+        parameter_list: {
+          answer_list: "@local.answer_list",
+        },
+        _nested_name: "radio_group",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_local: active: @local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_local: active: @local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
         },
       },
       {
         type: "display_group",
-        condition: "@local.active_campaign.id",
+        condition: "@local.active",
         exclude_from_translation: true,
         parameter_list: {
           style: "column",
@@ -354,13 +466,6 @@ const template: FlowTypes.Template[] = [
                 args: ["@local.active_campaign.click_action_list"],
                 _raw: "click | trigger_actions: @local.active_campaign.click_action_list",
                 _cleaned: "click | trigger_actions: @local.active_campaign.click_action_list",
-              },
-              {
-                trigger: "click",
-                action_id: "set_local",
-                args: ["active_campaign", false],
-                _raw: "click | set_local: active_campaign : false",
-                _cleaned: "click | set_local: active_campaign : false",
               },
             ],
             exclude_from_translation: true,
@@ -439,252 +544,16 @@ const template: FlowTypes.Template[] = [
         _dynamicFields: {
           condition: [
             {
-              fullExpression: "@local.active_campaign.id",
-              matchedExpression: "@local.active_campaign.id",
+              fullExpression: "@local.active",
+              matchedExpression: "@local.active",
               type: "local",
-              fieldName: "active_campaign",
+              fieldName: "active",
             },
           ],
         },
         _dynamicDependencies: {
-          "@local.active_campaign.id": ["condition"],
+          "@local.active": ["condition"],
         },
-      },
-      {
-        type: "button",
-        name: "clear_reminders",
-        value: "Reset Reminders",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_default.sent", false],
-            _raw: "click | set_field : debug_reminder_default.sent : false",
-            _cleaned: "click | set_field : debug_reminder_default.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_1.sent", false],
-            _raw: "click | set_field : debug_reminder_1.sent : false",
-            _cleaned: "click | set_field : debug_reminder_1.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_2.sent", false],
-            _raw: "click | set_field : debug_reminder_2.sent : false",
-            _cleaned: "click | set_field : debug_reminder_2.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_3.sent", false],
-            _raw: "click | set_field : debug_reminder_3.sent : false",
-            _cleaned: "click | set_field : debug_reminder_3.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_number", "1"],
-            _raw: "click | set_field : debug_reminder_number: 1",
-            _cleaned: "click | set_field : debug_reminder_number: 1",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "clear_reminders",
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_subtype: "debug",
-    flow_name: "debug_campaign_2",
-    status: "released",
-    rows: [
-      {
-        name: "active_campaign_2",
-        value: "@campaign.debug_campaign_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "active_campaign_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@campaign.debug_campaign_2",
-              matchedExpression: "@campaign.debug_campaign_2",
-              type: "campaign",
-              fieldName: "debug_campaign_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@campaign.debug_campaign_2": ["value"],
-        },
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "column",
-        },
-        rows: [
-          {
-            type: "text",
-            name: "campaign_id",
-            value: "Campaign id: @local.active_campaign_2.id",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.campaign_id",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "Campaign id: @local.active_campaign_2.id",
-                  matchedExpression: "@local.active_campaign_2.id",
-                  type: "local",
-                  fieldName: "active_campaign_2",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign_2.id": ["value"],
-            },
-          },
-          {
-            type: "round_button",
-            name: "campaign_2_quickstart",
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "trigger_actions",
-                args: ["@local.active_campaign_2.click_action_list"],
-                _raw: "click | trigger_actions: @local.active_campaign_2.click_action_list",
-                _cleaned: "click | trigger_actions: @local.active_campaign_2.click_action_list",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.active_campaign_2.icon",
-              text: "@local.active_campaign_2.text",
-              style: "home_screen orange",
-            },
-            style_list: ["padding: 0"],
-            _nested_name: "display_group.campaign_2_quickstart",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  args: {
-                    "0": [
-                      {
-                        fullExpression: "@local.active_campaign_2.click_action_list",
-                        matchedExpression: "@local.active_campaign_2.click_action_list",
-                        type: "local",
-                        fieldName: "active_campaign_2",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression:
-                        "click | trigger_actions: @local.active_campaign_2.click_action_list",
-                      matchedExpression: "@local.active_campaign_2.click_action_list",
-                      type: "local",
-                      fieldName: "active_campaign_2",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "click | trigger_actions: @local.active_campaign_2.click_action_list",
-                      matchedExpression: "@local.active_campaign_2.click_action_list",
-                      type: "local",
-                      fieldName: "active_campaign_2",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.active_campaign_2.icon",
-                    matchedExpression: "@local.active_campaign_2.icon",
-                    type: "local",
-                    fieldName: "active_campaign_2",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.active_campaign_2.text",
-                    matchedExpression: "@local.active_campaign_2.text",
-                    type: "local",
-                    fieldName: "active_campaign_2",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign_2.click_action_list": [
-                "action_list.0.args.0",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@local.active_campaign_2.icon": ["parameter_list.icon_src"],
-              "@local.active_campaign_2.text": ["parameter_list.text"],
-            },
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "button",
-        name: "clear_reminders",
-        value: "Reset Reminders",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_default.sent", false],
-            _raw: "click | set_field : debug_reminder_default.sent : false",
-            _cleaned: "click | set_field : debug_reminder_default.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_5.sent", false],
-            _raw: "click | set_field : debug_reminder_5.sent : false",
-            _cleaned: "click | set_field : debug_reminder_5.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_6.sent", false],
-            _raw: "click | set_field : debug_reminder_6.sent : false",
-            _cleaned: "click | set_field : debug_reminder_6.sent : false",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["debug_reminder_7.sent", false],
-            _raw: "click | set_field : debug_reminder_7.sent : false",
-            _cleaned: "click | set_field : debug_reminder_7.sent : false",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "clear_reminders",
       },
     ],
     _xlsxPath:
@@ -2512,6 +2381,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2538,6 +2408,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2554,6 +2425,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2570,6 +2442,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2586,6 +2459,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2602,6 +2476,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2618,6 +2493,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -2634,6 +2510,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -4189,6 +4066,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -17638,6 +17516,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -17665,6 +17544,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -17702,6 +17582,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -17730,6 +17611,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -19300,6 +19182,294 @@ const template: FlowTypes.Template[] = [
     ],
     _xlsxPath:
       "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_var_in_bulleted_list.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_workshops_accordion",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "title_1",
+        value: "First title",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "title_1",
+      },
+      {
+        name: "text_1",
+        value: "Text 1",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "text_1",
+      },
+      {
+        name: "title_2",
+        value: "Second title",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "title_2",
+      },
+      {
+        name: "text_2",
+        value: "Text 2",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "text_2",
+      },
+      {
+        name: "title_3",
+        value: "Third title",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "title_3",
+      },
+      {
+        name: "text_3",
+        value: "Text 3",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "text_3",
+      },
+      {
+        type: "workshops_accordion",
+        name: "workshops_accordion",
+        rows: [
+          {
+            type: "accordion_section",
+            name: "first",
+            parameter_list: {
+              state: "open",
+              title: "@local.title_1",
+            },
+            rows: [
+              {
+                type: "template",
+                name: "template_1",
+                value: "example_text",
+                rows: [
+                  {
+                    name: "text",
+                    value: "@local.text_1",
+                    _translations: {
+                      value: {},
+                    },
+                    type: "set_variable",
+                    _nested_name: "workshops_accordion.first.template_1.text",
+                    _dynamicFields: {
+                      value: [
+                        {
+                          fullExpression: "@local.text_1",
+                          matchedExpression: "@local.text_1",
+                          type: "local",
+                          fieldName: "text_1",
+                        },
+                      ],
+                    },
+                    _dynamicDependencies: {
+                      "@local.text_1": ["value"],
+                    },
+                  },
+                ],
+                _nested_name: "workshops_accordion.first.template_1",
+              },
+            ],
+            _nested_name: "workshops_accordion.first",
+            _dynamicFields: {
+              parameter_list: {
+                title: [
+                  {
+                    fullExpression: "@local.title_1",
+                    matchedExpression: "@local.title_1",
+                    type: "local",
+                    fieldName: "title_1",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.title_1": ["parameter_list.title"],
+            },
+          },
+          {
+            name: "completion_level_2",
+            value: "+0",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "workshops_accordion.completion_level_2",
+          },
+          {
+            type: "accordion_section",
+            name: "second",
+            value: "@local.completion_level_2",
+            parameter_list: {
+              state: "closed",
+              title: "@local.title_2",
+              launch_when_locked: "true",
+            },
+            rows: [
+              {
+                type: "template",
+                name: "template_2",
+                value: "example_text_button",
+                rows: [
+                  {
+                    name: "text",
+                    value: "@local.text_2",
+                    _translations: {
+                      value: {},
+                    },
+                    type: "set_variable",
+                    _nested_name: "workshops_accordion.second.template_2.text",
+                    _dynamicFields: {
+                      value: [
+                        {
+                          fullExpression: "@local.text_2",
+                          matchedExpression: "@local.text_2",
+                          type: "local",
+                          fieldName: "text_2",
+                        },
+                      ],
+                    },
+                    _dynamicDependencies: {
+                      "@local.text_2": ["value"],
+                    },
+                  },
+                  {
+                    name: "button",
+                    value: "Complete this section",
+                    _translations: {
+                      value: {},
+                    },
+                    action_list: [
+                      {
+                        trigger: "click",
+                        action_id: "set_local",
+                        args: ["completion_level_2", "100"],
+                        _raw: "click | set_local : completion_level_2 : 100",
+                        _cleaned: "click | set_local : completion_level_2 : 100",
+                      },
+                    ],
+                    type: "set_variable",
+                    _nested_name: "workshops_accordion.second.template_2.button",
+                  },
+                ],
+                _nested_name: "workshops_accordion.second.template_2",
+              },
+            ],
+            _nested_name: "workshops_accordion.second",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.completion_level_2",
+                  matchedExpression: "@local.completion_level_2",
+                  type: "local",
+                  fieldName: "completion_level_2",
+                },
+              ],
+              parameter_list: {
+                title: [
+                  {
+                    fullExpression: "@local.title_2",
+                    matchedExpression: "@local.title_2",
+                    type: "local",
+                    fieldName: "title_2",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.completion_level_2": ["value"],
+              "@local.title_2": ["parameter_list.title"],
+            },
+          },
+          {
+            type: "accordion_section",
+            name: "third",
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "pop_up",
+                args: ["example_text"],
+                _raw: "click | pop_up: example_text",
+                _cleaned: "click | pop_up: example_text",
+              },
+            ],
+            parameter_list: {
+              state: "closed",
+              title: "@local.title_3",
+              launch_when_locked: "true",
+            },
+            disabled: true,
+            rows: [
+              {
+                type: "template",
+                name: "template_3",
+                value: "example_text",
+                rows: [
+                  {
+                    name: "text",
+                    value: "@local.text_3",
+                    _translations: {
+                      value: {},
+                    },
+                    type: "set_variable",
+                    _nested_name: "workshops_accordion.third.template_3.text",
+                    _dynamicFields: {
+                      value: [
+                        {
+                          fullExpression: "@local.text_3",
+                          matchedExpression: "@local.text_3",
+                          type: "local",
+                          fieldName: "text_3",
+                        },
+                      ],
+                    },
+                    _dynamicDependencies: {
+                      "@local.text_3": ["value"],
+                    },
+                  },
+                ],
+                _nested_name: "workshops_accordion.third.template_3",
+              },
+            ],
+            _nested_name: "workshops_accordion.third",
+            _dynamicFields: {
+              parameter_list: {
+                title: [
+                  {
+                    fullExpression: "@local.title_3",
+                    matchedExpression: "@local.title_3",
+                    type: "local",
+                    fieldName: "title_3",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.title_3": ["parameter_list.title"],
+            },
+          },
+        ],
+        _nested_name: "workshops_accordion",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_accordion.xlsx",
   },
   {
     flow_type: "template",
@@ -24591,6 +24761,7 @@ const template: FlowTypes.Template[] = [
             es_sp: true,
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -26556,6 +26727,7 @@ const template: FlowTypes.Template[] = [
                   value: {
                     tz_sw: true,
                     za_af: true,
+                    za_st: true,
                     za_tn: true,
                     za_xh: true,
                     za_zu: true,
@@ -27160,6 +27332,112 @@ const template: FlowTypes.Template[] = [
     ],
     _xlsxPath:
       "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_startup.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_tiles",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "tile_component",
+        name: "tile_example_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start_passive",
+        },
+        _nested_name: "tile_example_1",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start",
+        },
+        _nested_name: "tile_example_2",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start_blue",
+        },
+        _nested_name: "tile_example_3",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_4",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "quick_start_dark",
+        },
+        _nested_name: "tile_example_4",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_5",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_1",
+        },
+        _nested_name: "tile_example_5",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_6",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_2",
+        },
+        _nested_name: "tile_example_6",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_3",
+        },
+        _nested_name: "tile_example_7",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_8",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/play_white.svg",
+          first_line_text: "First text",
+          second_line_text: "Second text",
+          style: "parent_centre_4",
+        },
+        _nested_name: "tile_example_8",
+      },
+    ],
+    _xlsxPath:
+      "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_tiles.xlsx",
   },
   {
     flow_type: "template",
@@ -28289,6 +28567,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -28437,6 +28716,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -28463,6 +28743,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -28489,6 +28770,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -28515,6 +28797,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -28561,6 +28844,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -28587,6 +28871,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -28613,6 +28898,7 @@ const template: FlowTypes.Template[] = [
           value: {
             tz_sw: true,
             za_af: true,
+            za_st: true,
             za_tn: true,
             za_xh: true,
             za_zu: true,
@@ -29888,6 +30174,18 @@ const template: FlowTypes.Template[] = [
           },
         ],
         _nested_name: "dg",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "First",
+          icon_src: "plh_images/icons/star.svg",
+          second_line_text: "Second",
+          style: "parent_centre_4",
+        },
+        _nested_name: "tile_example_1",
       },
       {
         type: "tile_component",
@@ -32197,6 +32495,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -32365,6 +32664,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -32829,6 +33129,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -32850,6 +33151,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -32896,6 +33198,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -32931,6 +33234,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -32977,6 +33281,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33012,6 +33317,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33064,6 +33370,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33099,6 +33406,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33145,6 +33453,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33180,6 +33489,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33232,6 +33542,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33267,6 +33578,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33313,6 +33625,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33333,6 +33646,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33388,6 +33702,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
@@ -33408,6 +33723,7 @@ const template: FlowTypes.Template[] = [
               value: {
                 tz_sw: true,
                 za_af: true,
+                za_st: true,
                 za_tn: true,
                 za_xh: true,
                 za_zu: true,
