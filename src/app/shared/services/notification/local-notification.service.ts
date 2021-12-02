@@ -6,7 +6,7 @@ import {
   ActionType,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import { APP_STRINGS } from "packages/data-models/constants";
+import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
@@ -160,7 +160,7 @@ export class LocalNotificationService {
   public async scheduleNotification(options: ILocalNotification, reloadNotifications = true) {
     if (!this.permissionGranted) return;
     options.extra = { ...options.extra };
-    const notifications = [{ ...NOTIFICATION_DEFAULTS, ...options }];
+    const notifications = [{ ...LOCAL_NOTIFICATION_DEFAULTS, ...options }];
     await LocalNotifications.schedule({ notifications });
     // ensure extra field populated (TODO - could make stronger requirement elsewhere)
     options.extra = { ...options.extra };
@@ -319,10 +319,10 @@ const NOTIFICATION_ACTIONS: {
 /**
  * Default settings used where otherwise not specified
  */
-const NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
+const LOCAL_NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
   id: new Date().getUTCMilliseconds(),
-  title: APP_STRINGS.NOTIFICATION_DEFAULT_TITLE,
-  body: APP_STRINGS.NOTIFICATION_DEFAULT_TEXT,
+  title: NOTIFICATION_DEFAULTS.title,
+  body: NOTIFICATION_DEFAULTS.text,
   sound: null,
   attachments: null,
   // actionTypeId: "action_1", // Currently no action buttons included
