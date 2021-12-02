@@ -85,7 +85,10 @@ function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
   );
   convertJsonToTs(sourceFiles, {
     outputDir: targetFolder,
-    indexFile: { namedExport: "TRANSLATION_STRINGS" },
+    defaultExportType: "{[source_text:string]:string}",
+    indexFile: {
+      namedExport: "TRANSLATION_STRINGS",
+    },
   });
 }
 
