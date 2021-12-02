@@ -1,6 +1,16 @@
 import { Injectable } from "@angular/core";
 import { addDays } from "@fullcalendar/angular";
-import { addHours, addMinutes, isBefore, setISODay } from "date-fns";
+import {
+  addHours,
+  addMinutes,
+  addWeeks,
+  endOfDay,
+  isAfter,
+  isBefore,
+  isFuture,
+  isPast,
+  setISODay,
+} from "date-fns";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
@@ -174,6 +184,8 @@ export class CampaignService {
       return;
     }
     const notification_schedule = this.evaluateCampaignNotification(schedule);
+    // may return null if schedule would be outside permitted timeframe, in which case do not schedule
+    if (!notification_schedule) return;
     let { title, text } = row;
     let { _schedule_at } = notification_schedule;
 
@@ -310,14 +322,30 @@ export class CampaignService {
     scheduleRow.time = scheduleRow.time || NOTIFICATION_DEFAULTS.time;
     const { time, delay } = scheduleRow;
     const schedule: FlowTypes.Campaign_Schedule["schedule"] = scheduleRow.schedule || {};
-    // set a base date from today or schedule start (if provided)
-    let d = schedule.start_date ? new Date(schedule?.start_date) : new Date();
+
+    let d = new Date();
+    // Set notification start date (if in future, otherwise keep as today)
+    if (schedule.start_date && isFuture(new Date(schedule.start_date))) {
+      d = new Date(schedule.start_date);
+    }
+    // Set notification time, add 1 day if time already passed
+    d.setHours(Number(time.hour));
+    d.setMinutes(Number(time.minute));
+    if (isPast(d)) {
+      d = addDays(d, 1);
+    }
+    // Schedule notification day of week, add 1 week if time already passed
     if (schedule.day_of_week) {
       d = setISODay(d, schedule.day_of_week);
+      if (isPast(d)) {
+        d = addWeeks(d, 1);
+      }
     }
-    if (time) {
-      d.setHours(Number(time.hour || d.getHours()));
-      d.setMinutes(Number(time.minute || d.getMinutes()));
+    // Check schedule time not after provided end date, avoid scheduling if after
+    if (schedule.end_date) {
+      if (isAfter(d, endOfDay(new Date(schedule.end_date)))) {
+        return null;
+      }
     }
     if (delay) {
       d = addDays(d, Number(delay.days || 0));
