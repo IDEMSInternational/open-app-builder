@@ -55,27 +55,29 @@ class AppDataConverter {
   private paths = {
     SHEETS_INPUT_FOLDER: "",
     ASSETS_INPUT_FOLDER: "",
-    SHEETS_CACHE_FOLDER: "",
-    SHEETS_OUTPUT_FOLDER: "",
+    SHEETS_INDIVIDUAL_CACHE: "",
+    SHEETS_MERGED_CACHE: "",
   };
 
   private conversionErrors = [];
+  private conversionWarnings = [];
 
   constructor(private options: IProgramOptions) {
     console.log(chalk.yellow("App Data Convert"));
     console.table(options);
     // Setup Folders
     const { app_data, google_drive } = this.activeDeployment;
+    const SHEETS_CACHE_FOLDER = app_data.converter_cache_path;
     this.paths = {
       SHEETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_sheets"),
       ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
-      SHEETS_CACHE_FOLDER: app_data.converter_cache_path,
-      SHEETS_OUTPUT_FOLDER: app_data.sheets_output_path,
+      SHEETS_INDIVIDUAL_CACHE: path.resolve(SHEETS_CACHE_FOLDER, "individual"),
+      SHEETS_MERGED_CACHE: path.resolve(SHEETS_CACHE_FOLDER, "merged"),
     };
     Object.values(this.paths).forEach((p) => fs.ensureDir(p));
-    fs.emptyDirSync(this.paths.SHEETS_OUTPUT_FOLDER);
+    fs.emptyDirSync(this.paths.SHEETS_MERGED_CACHE);
     if (this.options.skipCache) {
-      fs.emptyDirSync(this.paths.SHEETS_CACHE_FOLDER);
+      fs.emptyDirSync(SHEETS_CACHE_FOLDER);
     }
   }
 
@@ -100,6 +102,12 @@ class AppDataConverter {
     console.log(chalk.yellow("Conversion Complete"));
 
     // TODO - handle errors
+    if (this.conversionWarnings.length > 0) {
+      console.log(chalk.red(this.conversionWarnings.length, "warnings"));
+      for (const warning of this.conversionWarnings) {
+        console.log(warning);
+      }
+    }
     if (this.conversionErrors.length > 0) {
       console.log(chalk.red(this.conversionErrors.length, "errors"));
       for (const err of this.conversionErrors) {
@@ -113,12 +121,12 @@ class AppDataConverter {
    * Generate a list of sheets requiring conversion and cached files requiring deletion
    */
   private prepareConversionActions() {
-    const { SHEETS_INPUT_FOLDER, SHEETS_CACHE_FOLDER } = this.paths;
+    const { SHEETS_INPUT_FOLDER, SHEETS_INDIVIDUAL_CACHE } = this.paths;
     const actions = { convert: [], delete: [], skip: [] };
     // generate hashmap of input and cache contents
     const hashKey = "relativePath";
     const inputContents = readContentsFileAsHashmap(SHEETS_INPUT_FOLDER, { hashKey });
-    const cacheContents = readContentsFileAsHashmap(SHEETS_CACHE_FOLDER, { hashKey });
+    const cacheContents = readContentsFileAsHashmap(SHEETS_INDIVIDUAL_CACHE, { hashKey });
     // run comparisons
     Object.entries<IGDriveContentsEntry>(inputContents).forEach(([key, sourceFile]) => {
       // track the filename of the downloaded file (avoid duplicate .xlsx.xlsx depending if gsheet or xlsx original)
@@ -136,7 +144,7 @@ class AppDataConverter {
     // handle deleting cache files no longer existing
     Object.entries<IGDriveContentsEntry>(cacheContents).forEach(([key, cacheFile]) => {
       const xlsxFilename = `${key.replace(".xlsx", "")}.xlsx`;
-      cacheFile.xlsxPath = path.resolve(SHEETS_CACHE_FOLDER, xlsxFilename);
+      cacheFile.xlsxPath = path.resolve(SHEETS_INDIVIDUAL_CACHE, xlsxFilename);
       if (!inputContents.hasOwnProperty(key)) {
         actions.delete.push(cacheFile);
       }
@@ -186,18 +194,6 @@ class AppDataConverter {
     // combine all processed
     // write cached contents
     // // merge and collate app data, write some extra files for logging/debugging purposes
-    // const merged = mergeAppData(SHEETS_INPUT_FOLDER, combined);
-    // fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
-    // const dataByFlowType = groupJsonByKey(merged, "flow_type");
-    // fs.writeFileSync(
-    //   `${INTERMEDIATES_FOLDER}/dataByFlowType.json`,
-    //   JSON.stringify(dataByFlowType, null, 2)
-    // );
-    // const convertedData = applyDataParsers(dataByFlowType as any, INTERMEDIATES_FOLDER);
-    // fs.writeFileSync(
-    //   `${INTERMEDIATES_FOLDER}/convertedData.json`,
-    //   JSON.stringify(convertedData, null, 2)
-    // );
     // // write to output files, named by flow_type and flow_subtype (if exists)
     // Object.entries(convertedData).forEach(([key, value]) => {
     //   const convertedDataBySubtype = groupJsonByKey(value as any, "flow_subtype", "_default");
@@ -216,7 +212,7 @@ class AppDataConverter {
   private writeCacheContentsJson() {
     const contentsFilename = "_contents.json";
     const cacheHashmap = generateFolderFlatMap(
-      this.paths.SHEETS_CACHE_FOLDER,
+      this.paths.SHEETS_INDIVIDUAL_CACHE,
       true,
       (p) => p !== contentsFilename
     );
@@ -231,7 +227,7 @@ class AppDataConverter {
       return contentsEntry;
     });
 
-    const contentsOutput = path.resolve(this.paths.SHEETS_CACHE_FOLDER, contentsFilename);
+    const contentsOutput = path.resolve(this.paths.SHEETS_INDIVIDUAL_CACHE, contentsFilename);
     fs.writeFileSync(contentsOutput, JSON.stringify(contentsData, null, 2));
     console.log(contentsOutput);
   }
@@ -239,7 +235,7 @@ class AppDataConverter {
   private saveCachedConversion(entry: IGDriveContentsEntry, convertedData: any) {
     const { xlsxPath } = entry;
     const relativePath = path.relative(this.paths.SHEETS_INPUT_FOLDER, xlsxPath);
-    const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
+    const cacheTarget = path.resolve(this.paths.SHEETS_INDIVIDUAL_CACHE, `${relativePath}.json`);
     fs.ensureDirSync(path.dirname(cacheTarget));
     fs.writeFileSync(cacheTarget, JSON.stringify(convertedData, null, 2));
     const modifiedTime = new Date(entry.modifiedTime);
@@ -250,7 +246,7 @@ class AppDataConverter {
   private loadCachedConversion(entry: IGDriveContentsEntry) {
     const { xlsxPath } = entry;
     const relativePath = path.relative(this.paths.SHEETS_INPUT_FOLDER, xlsxPath);
-    const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
+    const cacheTarget = path.resolve(this.paths.SHEETS_INDIVIDUAL_CACHE, `${relativePath}.json`);
     const cachedConversion = fs.readJSONSync(cacheTarget);
     return cachedConversion;
   }
@@ -291,20 +287,20 @@ class AppDataConverter {
             releasedSummary[flow_name] = { status, flow_type, module, filename };
             if (json.hasOwnProperty(flow_name)) {
               if (merged.hasOwnProperty(flow_name)) {
-                this.conversionErrors.push(`Duplicate flow: ${flow_name}`);
+                this.conversionWarnings.push(chalk.yellow(`Duplicate flow: ${flow_name}`));
               }
               // Ensure all paths use / to match HTTP style paths
               const _xlsxPath = path.relative(sheetsInputFolder, xlsxPath).replace(/\\/g, "/");
               merged[flow_name] = { ...contents, rows: json[flow_name], _xlsxPath };
             } else {
-              this.conversionErrors.push(`No Contents: ${flow_name}`);
+              this.conversionWarnings.push(chalk.yellow(`No Contents: ${flow_name}`));
             }
           } else {
             skippedSummary[flow_name] = { status, flow_type, module, filename };
           }
         }
       } else {
-        this.conversionErrors.push(`No Content List: ${path.basename(xlsxPath)}`);
+        this.conversionWarnings.push(chalk.yellow(`No Content List: ${path.basename(xlsxPath)}`));
       }
     }
     return Object.values(merged);
