@@ -17,3 +17,6 @@ ion-list {
 ion-item {
   --background: white;
 }
+ion-item.clear {
+  --background: unset;
+}

@@ -1,6 +1,6 @@
 import { main as download } from "./gdrive-download";
-import { main as convert } from "./plh-data-convert";
-import { main as copy } from "./plh-copy-app-data";
+import { main as convert } from "./app-data-convert";
+import { main as copy } from "./app-data-copy";
 
 async function main() {
   await download(process.argv[2]);
