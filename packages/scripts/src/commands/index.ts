@@ -20,10 +20,11 @@ const legacyCommandMappings = {
   "encrypt-config": ["config", "encrypt"],
   "sync-plh-content": ["app-data", "sync"],
   "sync-single": ["app-data", "sync", "--sheetname"],
-  // TO convert
-  "app-data-convert": ["ts-node src/app-data-convert/index.ts"],
-  "app-data-copy": ["ts-node src/app-data-copy.ts"],
-  "app-data-sync": ["npm run gdrive-download && npm run app-data-convert && npm run app-data-copy"],
+  "app-data-copy": ["app-data", "copy"],
+  "app-data-sync": ["app-data", "sync"],
+  "app-data-convert": ["app-data", "convert"],
+  // To convert
+
   version: ["version.ts"],
 };
 const cmdName = process.argv[2] || "";
