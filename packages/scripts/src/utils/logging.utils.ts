@@ -29,9 +29,9 @@ export function logOutput(opts: Partial<ILogOptions> = {}) {
   console.log(
     boxen(
       `
-    ${chalk.blueBright(msg1)}
+${chalk.blueBright(msg1)}
             
-    ${chalk.cyanBright(msg2)}
+${chalk.cyanBright(msg2)}
             `,
       { padding: 1, borderColor: "blueBright" }
     )

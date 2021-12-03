@@ -3,9 +3,9 @@ import { Command } from "commander";
 import { GlobSync } from "glob";
 import fs from "fs-extra";
 import path from "path";
-import { IDeploymentConfig } from "../../../types";
-import { IDEMS_APP_CONFIG } from "../../paths";
-import { promptOptions, logError } from "../../utils";
+import { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "../../../types";
+import { IDEMS_APP_CONFIG, ROOT_DIR } from "../../paths";
+import { promptOptions, logError, deepMergeObjects, logOutput } from "../../utils";
 
 const program = new Command("set");
 
@@ -50,7 +50,10 @@ async function setActiveDeployment(deploymentName?: string) {
 
   const deploymentJson = generateDeploymentJson(deployment, filename);
   fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
-  console.log("deployment set", deployment);
+  logOutput({
+    msg1: `Deployment set`,
+    msg2: JSON.stringify(deployment, null, 2),
+  });
 }
 
 /**
@@ -87,15 +90,14 @@ function generateDeploymentJson(deployment: IDeploymentConfig, filename: string)
   const _config_ts_path = path.resolve(IDEMS_APP_CONFIG.deployments, filename);
   const _workspace_path = path.dirname(_config_ts_path);
 
-  // ensure google cache path absolute
-  const { cache_path } = deployment.google_drive;
-  deployment.google_drive.cache_path = path.resolve(
-    _workspace_path,
-    cache_path || "./cache/gdrive"
-  );
+  // merge default values
+  const merged = deepMergeObjects(DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, deployment);
+
+  // rewrite relative urls to absolute
+  const rewritten = rewriteConfigPaths(merged, _workspace_path);
 
   // merge with metadata fields
-  const deploymentJson: IDeploymentConfigJson = { ...deployment, _workspace_path, _config_ts_path };
+  const deploymentJson: IDeploymentConfigJson = { ...rewritten, _workspace_path, _config_ts_path };
   return deploymentJson;
 }
 
@@ -105,4 +107,23 @@ interface IDeploymentConfigWithFilename extends IDeploymentConfig {
 export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;
   _config_ts_path: string;
+}
+
+function rewriteConfigPaths<T>(data: T, relativePathRoot: string) {
+  Object.entries(data).forEach(([key, value]) => {
+    if (value && typeof value === "object") {
+      data[key] = rewriteConfigPaths(value, relativePathRoot);
+    }
+    if (key.endsWith("_path") && typeof value === "string") {
+      // handle paths relative to config file
+      if (value.startsWith(".")) {
+        data[key] = path.resolve(relativePathRoot, value);
+      }
+      // assume all other paths are relative to workspace
+      else {
+        data[key] = path.resolve(ROOT_DIR, value);
+      }
+    }
+  });
+  return data;
 }

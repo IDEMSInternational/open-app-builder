@@ -2,4 +2,7 @@
 export { FlowTypes } from "data-models";
 
 // TODO - find cleaner way to share types
-export { IDeploymentConfig } from "../../../.idems_app/types/deployment.type";
+export {
+  IDeploymentConfig,
+  DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS,
+} from "../../../.idems_app/core/models";
