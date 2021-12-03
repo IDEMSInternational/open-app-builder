@@ -29,9 +29,16 @@ export default program
  */
 async function syncAppData(options: IProgramOptions) {
   const scriptsExec = `yarn workspace scripts start`;
-  let cmd = "app-data download";
+  // Download
+  let downloadCmd = "app-data download";
   if (options.sheetname) {
-    cmd += ` --sheetname ${options.sheetname}`;
+    downloadCmd += ` --sheetname ${options.sheetname}`;
   }
-  spawnSync(`${scriptsExec} ${cmd}`, { stdio: "inherit", shell: true });
+  spawnSync(`${scriptsExec} ${downloadCmd}`, { stdio: "inherit", shell: true });
+  // Copy
+  let copyCmd = "app-data copy";
+  if (options.sheetname) {
+    copyCmd += ` --skip-assets`;
+  }
+  spawnSync(`${scriptsExec} ${copyCmd}`, { stdio: "inherit", shell: true });
 }
