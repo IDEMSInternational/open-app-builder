@@ -206,7 +206,7 @@ export namespace FlowTypes {
   export interface Campaign_Schedule extends RowWithActivationConditions {
     id: string;
     /** specified time for notification, e.g. 19:30 */
-    time?: { minute?: string; hour?: string };
+    time?: { minute: number; hour: number };
     /** delay until first notification, e.g. 7 day */
     delay?: { days?: string; hours?: string; minutes?: string };
     schedule?: {
