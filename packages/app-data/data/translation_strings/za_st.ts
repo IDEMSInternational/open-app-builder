@@ -1,4 +1,4 @@
-export default {
+const data: { [source_text: string]: string } = {
   "You can always find these tools in the @global.parent_centre":
     "Kamehla o ka fumana dithulusi tsena ho @global.parent_centre",
   Home: "Leqephe le Qalang",
@@ -2723,3 +2723,4 @@ export default {
   "**Dealing with Crisis** workshop": "Wekshopo ya **Ho Sebetsana le Tsietsi**",
   "**Celebration and Next Steps** workshop": "Wekshopo ya **Ho Keteka le Mehato e Latelang**",
 };
+export default data;

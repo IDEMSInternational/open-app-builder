@@ -189,10 +189,28 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Debug Fixed Saturday",
       },
       {
-        id: "debug_fixed_december",
-        campaign_list: ["debug_fixed_december"],
-        text: "December daily greetings from PLH",
-        title: "Debug Fixed December",
+        id: "debug_fixed_december_no_time",
+        campaign_list: ["debug_fixed_december_no_time"],
+        text: "December daily - no time specified",
+        title: "Debug Fixed December No Time",
+      },
+      {
+        id: "debug_fixed_december_early",
+        campaign_list: ["debug_fixed_december_early"],
+        text: "December daily - early",
+        title: "Debug Fixed December Early",
+      },
+      {
+        id: "debug_fixed_december_noon",
+        campaign_list: ["debug_fixed_december_noon"],
+        text: "December daily - noon",
+        title: "Debug Fixed December Noon",
+      },
+      {
+        id: "debug_fixed_december_late",
+        campaign_list: ["debug_fixed_december_late"],
+        text: "December daily - late",
+        title: "Debug Fixed December Late",
       },
       {
         id: "debug_fixed_new_years_day",
@@ -216,10 +234,9 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "set_field",
-            args: ["@global.some_global", "value_set_through_notification_action"],
-            _raw: "set_field: @global.some_global : value_set_through_notification_action",
-            _cleaned:
-              "click | set_field: @global.some_global : value_set_through_notification_action",
+            args: ["debug_field", "value_set_through_notification_action"],
+            _raw: "set_field: debug_field : value_set_through_notification_action",
+            _cleaned: "click | set_field: debug_field : value_set_through_notification_action",
           },
           {
             trigger: "click",

@@ -1,4 +1,4 @@
-export default {
+const data: { [source_text: string]: string } = {
   "You can always find these tools in the @global.parent_centre":
     "Ka metlha o ka bona dithulusu tseno mo go @global.parent_centre",
   Home: "Gae",
@@ -1005,8 +1005,6 @@ export default {
     "@data.workshop.w_money.tools e tsenyeleditswe mo @data.parent_centre.my_tips.title.",
   "It is so stressful when children misbehave.":
     "Go tshwenya mo maikutlong tota fa bana ba sa itshware sentle.",
-  "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
-    "Mo bekeng e e fetileng, a o kile wa otlhaya bana ba gago mo mmeleng ka go ba itaya, go ba kgwathisa, kgotsa go ba faphola ka seatla sa gago kgotsa ka sengwe jaaka thupa kgotsa lebante?",
   "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!":
     "Go gontle fa o araba o kgobile makgwafo fa mosha wa gago a dira sengwe se se tenang. Ba ka ithuta go le gontsi go tswa mo go wena!",
   "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.":
@@ -1084,11 +1082,7 @@ export default {
     "App eno e remeletse mo batsading ba ba nang le basha ba dingwaga tsa  @global.teen_age_bracket, mme o letlelelwa go tswelela - o ka nna wa ithuta le dilo tse di nang le mosola!",
   "Are you sure you want to skip this question?":
     "A o a tlhomamisa gore o batla go tlola potso eno?",
-  "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.":
-    "Gopola, fa O araba, karabo ya gago e nna ya motlhokaina.\n\nO ka nna wa tlhopha gore o se ka wa araba potso ka go tshwaya lebokosotshwao le le mo selaedareng.",
   'You selected "I would rather not answer"': "O tlhophile “Ke tlhopha go se arabe”",
-  "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!":
-    "Ga se bothata!\n\nGopola, fa O araba, karabo ya gago e tla nna ya tlhokaina mme o tla romelelwa mafoko a a go tshwanetseng sentle!",
   "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
     "Re a itse seno se boima. Re tsentse dikakantsho tse di tla go thusang gore o iphe nako le mosha wa gago go @data.parent_centre.my_tips.location_text, gore o e bone ka nako e o e batlang ka yone. \n\nKa gonne @data.workshop.w_1on1.title e aga motheo wa thulusu ya batsadi botlhe, e tla bo e le @global.weekly_workshop o e amogelang beke e e tlang!",
   "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
@@ -1142,9 +1136,8 @@ export default {
     "A re simolole ka dipotso di le mmalwa ka wena le lelapa la gago.",
   "We would love to know your first name or nickname:":
     "Re ka rata go itse leina la gago la ntlha kgotsa leina le o tlwaelegileng ka lone:",
-  "Are you a lady or a gentleman?": "O mosadi kgotsa o monna?",
-  Lady: "Mosadi",
-  Gentleman: "Monna",
+  Woman: "Mosadi",
+  Man: "Monna",
   "How old are you?": "O nale dingwaga tse kae?",
   Adults: "Bagolo",
   Teens: "Basha",
@@ -2479,7 +2472,6 @@ export default {
     "<p>O amogetswe mo @global.parent_app.</p>\n\n<p>O tshwanelwa ke go ikutlwa sentle, le go nna le dikamano tse di itumedisang mo lelapeng.</p>\n\n<p>@global.parent_app e tla thusa wena le lelapa la gago ka ditsela tse tharo:</p>",
   "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. Press it to start your first workshop!</p>":
     "<p>Konopo eno e kgolo e go isa ko @global.weekly_workshops ya gago </p>\n\n<p> Gangwe ka beke go tla nna le workshop e ntšha - mme nako nngwe le nngwe fa e tsena, e tla bo e bua ka mokgwa o o farologaneng wa go godisa bana. E tobetse mme o simolole workshop ya gago ya ntlha!</p>",
-  "@global.weekly_workshops quick start": "@global.weekly_workshops simolola ka bonako",
   "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>":
     "<p>Konopo eno e e kgolokwe e tlhagelela fa go na le @global.weekly_workshop e ntšha e o tlhokang go e dira.</p>",
   "<p>Press this big button to get you to your @global.parent_points screen.</p>\n\n<p>Track your success in self-care and parenting. </p>\n\n<p>See your progress.</p>\n\n<p>Celebrate your daily achievements!</p>":
@@ -2505,6 +2497,26 @@ export default {
     "<p> O ka fetola fano fa o batla go dira @global.weekly_workshops lo le setlhopha kgotsa o le nosi. </p>",
   "<p> Tap here to change your group name. </p>":
     "<p> Tobetsa fano go fetola leina la setlhopha sa lona. </p>",
+  Continue: "Tswelela",
+  "Welcome to ParentApp. Click here to start your journey!":
+    "Re a go amogela mo ParentApp. Tobetsa fano gore o simolole go e dirisa!",
+  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
+    "Ke solofela gore lo SIAME. Go nna motsadi ga go motlhofo, mme gone, ga go ise go nne thari gore o leke gape go thusa mosha wa gago. Workshop ya gago ya ntlha ya batsadi e setse e le teng! Tobetsa fano gore o simolole go dirisa ParentApp!",
+  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
+    "Dumela! A o SIAME? Go bonala o ise o bule ParentApp. Goreng o sa leke go e dirisa? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno e ba thusitse. Re ikemiseditse go tswelela re go thusa.",
+  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
+    "Dumelang gape! Ga go thari gore o ka dirisa ParentApp gore o bone thuso e e tshwanetseng maemo a gago o le motsadi. Goreng o sa leke go e dirisa fa o le mo tseleng go ya tirong kgotsa fa o apeile? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno ya rona e ba thusitse.",
+  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
+    "O seka wa itetla go fetwa ke tshedimosetso ya botlhokwa e e mo ParentApp! E na le tshedimosetso e ntsi tota. Re ikemiseditse go tswelela re go thusa.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go rarabolola matshwenyego a go nna motsadi.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go thusa mosha wa gago gore a kgone go atlega mo botshelong.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go lepalepana le boitshwaro jwa mosha wa gago.",
+  "New message from PLH": "Molaetsa o mosha go tswa go PLH",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
+    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go nna tsala ya mosha wa gago gape!",
   "Reflect on the positive": "Akanya ka dilo tse di siameng",
   "Check-in chat": "Tlhola motlotlo",
   "Dream Travel": "Loeto lo lo Batlang go lo Tsaya",
@@ -2642,24 +2654,5 @@ export default {
   "**Teen Safety** workshop": "Workshop ya **Pabalesego ya Basha**",
   "**Dealing with Crisis** workshop": "Workshop ya **Go Lepalepana le Mathata a a Masisi**",
   "**Celebration and Next Steps** workshop": "Workshop ya **Go Keteka le Dikgato Tse di Latelang**",
-  Continue: "Tswelela",
-  "Welcome to ParentApp. Click here to start your journey!":
-    "Re a go amogela mo ParentApp. Tobetsa fano gore o simolole go e dirisa!",
-  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
-    "Ke solofela gore lo SIAME. Go nna motsadi ga go motlhofo, mme gone, ga go ise go nne thari gore o leke gape go thusa mosha wa gago. Workshop ya gago ya ntlha ya batsadi e setse e le teng! Tobetsa fano gore o simolole go dirisa ParentApp!",
-  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
-    "Dumela! A o SIAME? Go bonala o ise o bule ParentApp. Goreng o sa leke go e dirisa? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno e ba thusitse. Re ikemiseditse go tswelela re go thusa.",
-  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
-    "Dumelang gape! Ga go thari gore o ka dirisa ParentApp gore o bone thuso e e tshwanetseng maemo a gago o le motsadi. Goreng o sa leke go e dirisa fa o le mo tseleng go ya tirong kgotsa fa o apeile? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno ya rona e ba thusitse.",
-  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
-    "O seka wa itetla go fetwa ke tshedimosetso ya botlhokwa e e mo ParentApp! E na le tshedimosetso e ntsi tota. Re ikemiseditse go tswelela re go thusa.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go rarabolola matshwenyego a go nna motsadi.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go thusa mosha wa gago gore a kgone go atlega mo botshelong.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go lepalepana le boitshwaro jwa mosha wa gago.",
-  "New message from PLH": "Molaetsa o mosha go tswa go PLH",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
-    "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go nna tsala ya mosha wa gago gape!",
 };
+export default data;

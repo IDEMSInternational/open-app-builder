@@ -1,4 +1,4 @@
-export default {
+const data: { [source_text: string]: string } = {
   "Example Language Template": "Plantilla de Ejemplo de Idioma",
   "This is a default text that needs to be translated":
     "Esto es un texto predeterminado que necesita ser traducido",
@@ -68,3 +68,4 @@ export default {
   "awesome parent": "Padre asombroso",
   "Audio message": "Mensaje de audio",
 };
+export default data;

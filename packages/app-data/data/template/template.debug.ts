@@ -17683,13 +17683,7 @@ const template: FlowTypes.Template[] = [
         name: "text_1",
         value: "@global.weekly_workshops quick start",
         _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
+          value: {},
         },
         _nested_name: "text_1",
         _dynamicFields: {
