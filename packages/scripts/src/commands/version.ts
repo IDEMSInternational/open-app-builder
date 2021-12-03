@@ -1,23 +1,32 @@
 import * as fs from "fs-extra";
+import { Command } from "commander";
 import inquirer from "inquirer";
-import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "./paths";
+import { APP_BUILD_GRADLE_PATH, MAIN_PACKAGE_PATH } from "../paths";
+
+/***************************************************************************************
+ * CLI
+ * @example yarn
+ *************************************************************************************/
+interface IProgramOptions {}
+const program = new Command("version");
+export default program.description("Set app version").action(async (options: IProgramOptions) => {
+  await version(options);
+});
+
+/***************************************************************************************
+ * Main Methods
+ *************************************************************************************/
 
 /**
  * Set a consistent version number by incrementing the current
  * package.json version and also assigning to android version codes
  */
-async function main() {
+async function version(options: IProgramOptions) {
   const oldVersion = fs.readJSONSync(MAIN_PACKAGE_PATH).version;
   const newVersion = await promptNewVersion(oldVersion);
   updatePackageJson(newVersion);
   updateGradleBuild(newVersion);
 }
-main()
-  .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
 
 function updateGradleBuild(newVersionName: string) {
   let gradleBuildFile = fs.readFileSync(APP_BUILD_GRADLE_PATH, {
