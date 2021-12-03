@@ -10,7 +10,7 @@ export class TaskListParser extends DefaultParser {
     // Check linked flows exist
     const warnings = [];
     if (row.flow_name && row.flow_type) {
-      const linkedFlow = this.allFlowsByType[row.flow_type].find(
+      const linkedFlow = this.allFlowsByType[row.flow_type]?.find(
         (f) => f.flow_name === row.flow_name
       );
       if (!linkedFlow) {
