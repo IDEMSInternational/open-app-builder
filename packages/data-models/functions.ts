@@ -1,6 +1,6 @@
 // import const from app-data directly as typings can sometimes break otherwise
-import { DYNAMIC_PREFIXES } from "data-models";
-import { FlowTypes } from "../model";
+import { DYNAMIC_PREFIXES } from "./constants";
+import { FlowTypes } from "./flowTypes";
 
 /**
  * Regex used to match dynamic strings. Specific keypoints:
@@ -10,6 +10,7 @@ import { FlowTypes } from "../model";
  * For deeper understanding of this regex recommend view in https://regexr.com/
  */
 const DYNAMIC_STRING_REGEX = /[`!]?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
+
 /**
  * Process each column specified in VARIABLE_FIELDS, to check whether there are any references to
  * dynamic fields, such as @local.someVar. These can appear nested within objects or arrays so requires

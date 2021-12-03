@@ -64,7 +64,7 @@
     "app-data": "workspace:*",
     "capacitor-firebase-auth": "^3.0.0",
     "chart.js": "^2.9.4",
-    "data-models": "1.0.0",
+    "data-models": "workspace:*",
     "date-fns": "^2.22.1",
     "dexie": "^3.0.3",
     "dexie-observable": "3.0.0-beta.11",
