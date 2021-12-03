@@ -201,13 +201,7 @@ const tour: FlowTypes.Tour[] = [
         type: "step",
         title: "@global.weekly_workshops quick start",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
+          title: {},
           message_text: {
             tz_sw: true,
             za_af: true,
