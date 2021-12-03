@@ -13,111 +13,539 @@ export const ASSETS_CONTENTS_LIST = {
     size: 859,
     checksum: "14e7052257d9914b613fc992186d2e90",
   },
-  "plh_audio/relax/relax_10_audio.mp3": {
-    size: 766955,
-    checksum: "f763a01ba394cb5b8d7ecc03e421d8e0",
-  },
-  "plh_audio/relax/relax_11_audio.mp3": {
-    size: 825887,
-    checksum: "b68baf7ff115191d18e42c0c6ad575b2",
-  },
-  "plh_audio/relax/relax_12_audio.mp3": {
-    size: 1023582,
-    checksum: "c752bb8fb7caeb3b13ed009c11e043c1",
-  },
-  "plh_audio/relax/relax_13_audio.mp3": {
-    size: 738951,
-    checksum: "93a3a74b2251968d06888ddab297e6ac",
-  },
-  "plh_audio/relax/relax_14_audio.mp3": {
-    size: 504894,
-    checksum: "317c1409d3fd711862f044fde774fab4",
-  },
-  "plh_audio/relax/relax_15_audio.mp3": {
-    size: 529136,
-    checksum: "a954491b926d1690d8975207f27b5b3a",
-  },
-  "plh_audio/relax/relax_16_audio.mp3": {
-    size: 578037,
-    checksum: "e05b7c0dec49d45225cf5311bd931233",
-  },
-  "plh_audio/relax/relax_17_audio.mp3": {
-    size: 557139,
-    checksum: "7fa394d9131dd7a36ab842223644f82e",
-  },
-  "plh_audio/relax/relax_18_audio.mp3": {
-    size: 1258057,
-    checksum: "f1ced15e623ce6d21ea250317e602360",
-  },
-  "plh_audio/relax/relax_19_audio.mp3": {
-    size: 1788447,
-    checksum: "91b71aa328f31c46b56bf7949448ae55",
-  },
-  "plh_audio/relax/relax_1_audio.mp3": {
+  "plh_audio/relax/relax_1.mp3": {
     size: 504058,
     checksum: "0d23366a438bc1a5faf3d445e389a39a",
+    translations: {
+      za_st: {
+        size: 583725,
+        checksum: "661d966ecd4c3ac069007d4bf29d0a40",
+      },
+      za_tn: {
+        size: 533805,
+        checksum: "e50dbc959585eb83480887c083816412",
+      },
+      za_xh: {
+        size: 685485,
+        checksum: "238987ea4d6aec7ca7824027a0c6b649",
+      },
+      za_zu: {
+        size: 607533,
+        checksum: "ba938165b8c01f8c047d5647db90c650",
+      },
+    },
   },
-  "plh_audio/relax/relax_20_audio.mp3": {
-    size: 1947271,
-    checksum: "9131a3fecff580470e11d6735593260e",
+  "plh_audio/relax/relax_10.mp3": {
+    size: 766955,
+    checksum: "f763a01ba394cb5b8d7ecc03e421d8e0",
+    translations: {
+      za_st: {
+        size: 964653,
+        checksum: "690673d3804c5e2f5a96fc698910f854",
+      },
+      za_tn: {
+        size: 833325,
+        checksum: "b5dbea4ae785d3be159e155753815d39",
+      },
+      za_xh: {
+        size: 710445,
+        checksum: "8a498af4dc9f5b031718c5c7926c08e5",
+      },
+      za_zu: {
+        size: 884013,
+        checksum: "0293c044353be4624877c231dac72f94",
+      },
+    },
   },
-  "plh_audio/relax/relax_21_audio.mp3": {
-    size: 777822,
-    checksum: "9c12b2510304df021b5194d2b02a9899",
+  "plh_audio/relax/relax_11.mp3": {
+    size: 825887,
+    checksum: "b68baf7ff115191d18e42c0c6ad575b2",
+    translations: {
+      za_st: {
+        size: 887853,
+        checksum: "e0c4ac6bde25cd8b7c1a10410905b1dc",
+      },
+      za_tn: {
+        size: 718125,
+        checksum: "a2159af546cd63070cb48050aeeb46af",
+      },
+      za_xh: {
+        size: 1465773,
+        checksum: "037a9dab9a968a6f00fce104fd309852",
+      },
+      za_zu: {
+        size: 782253,
+        checksum: "c07d46d30b1fa3e6e4c83963abe94c6a",
+      },
+    },
   },
-  "plh_audio/relax/relax_22_audio.mp3": {
-    size: 440111,
-    checksum: "aa62a24a6c519beb75c88e613acd2c71",
+  "plh_audio/relax/relax_12.mp3": {
+    size: 1023582,
+    checksum: "c752bb8fb7caeb3b13ed009c11e043c1",
+    translations: {
+      za_st: {
+        size: 1026093,
+        checksum: "90cd0e96caf4f8981c463f0f05e89447",
+      },
+      za_tn: {
+        size: 549933,
+        checksum: "5fa21dee0c45a913b505e63b200ab528",
+      },
+      za_xh: {
+        size: 741165,
+        checksum: "0bbfa57f85dc65e90a86358b00075d2d",
+      },
+      za_zu: {
+        size: 784173,
+        checksum: "d4919bfdcba87980a0eea35e314b48f3",
+      },
+    },
   },
-  "plh_audio/relax/relax_23_audio.mp3": {
-    size: 512417,
-    checksum: "9550d5bac87fd1a97544dd886660d25e",
+  "plh_audio/relax/relax_13.mp3": {
+    size: 738951,
+    checksum: "93a3a74b2251968d06888ddab297e6ac",
+    translations: {
+      za_st: {
+        size: 824493,
+        checksum: "b72428408ed5603d5f29c9beb80c2cc2",
+      },
+      za_tn: {
+        size: 745005,
+        checksum: "c18869efccd20b619546d194e63a8ac7",
+      },
+      za_xh: {
+        size: 777645,
+        checksum: "4ef06758895eb2c9aa948fae5962ac00",
+      },
+      za_zu: {
+        size: 731565,
+        checksum: "9e6746f63c6ba71adfe2945b0c827975",
+      },
+    },
   },
-  "plh_audio/relax/relax_24_audio.mp3": {
-    size: 464770,
-    checksum: "c3db4db42e097fcc942e15f6f067737a",
+  "plh_audio/relax/relax_14.mp3": {
+    size: 504894,
+    checksum: "317c1409d3fd711862f044fde774fab4",
+    translations: {
+      za_st: {
+        size: 470445,
+        checksum: "280835b8bca8e1537e33949ccb0c6b55",
+      },
+      za_tn: {
+        size: 346413,
+        checksum: "f3702f201ab1b56c014462b33a0b9e0d",
+      },
+      za_xh: {
+        size: 282285,
+        checksum: "56f1f49e2126ef417c42bf78c7d814ba",
+      },
+      za_zu: {
+        size: 537645,
+        checksum: "d0bf01d6b176f58bc6780ec4ea1b9e25",
+      },
+    },
   },
-  "plh_audio/relax/relax_2_audio.mp3": {
+  "plh_audio/relax/relax_15.mp3": {
+    size: 529136,
+    checksum: "a954491b926d1690d8975207f27b5b3a",
+    translations: {
+      za_st: {
+        size: 664365,
+        checksum: "cffb2b0b3e141b3b3f44af3642e516a9",
+      },
+      za_tn: {
+        size: 501933,
+        checksum: "93fbc698201eef2b010899d77286efe3",
+      },
+      za_xh: {
+        size: 536493,
+        checksum: "6c8fe0ff21beab850431485b991475d2",
+      },
+      za_zu: {
+        size: 645933,
+        checksum: "4550d421e43aeb32ee83d16b94ba3c49",
+      },
+    },
+  },
+  "plh_audio/relax/relax_16.mp3": {
+    size: 578037,
+    checksum: "e05b7c0dec49d45225cf5311bd931233",
+    translations: {
+      za_st: {
+        size: 663213,
+        checksum: "fa9f97cad1a7ecd52e41a3862a42386d",
+      },
+      za_tn: {
+        size: 438573,
+        checksum: "53c8f5f83ba4e4f756626dcbf35f54c6",
+      },
+      za_xh: {
+        size: 645165,
+        checksum: "8cc1c5c6a411dd7ec4655279406694ab",
+      },
+      za_zu: {
+        size: 756525,
+        checksum: "2f50a6da8e35d993d24d2e381b0f89f7",
+      },
+    },
+  },
+  "plh_audio/relax/relax_17.mp3": {
+    size: 557139,
+    checksum: "7fa394d9131dd7a36ab842223644f82e",
+    translations: {
+      za_st: {
+        size: 845613,
+        checksum: "f5827ce4ba50660584b8c78b3f1f1f17",
+      },
+      za_tn: {
+        size: 599853,
+        checksum: "a29c36d1737e88714957a1ba7a56d7df",
+      },
+      za_xh: {
+        size: 497325,
+        checksum: "4584d92488fcba7248d1edfc5f36bc71",
+      },
+      za_zu: {
+        size: 658605,
+        checksum: "f2b6a8be8bbf7eaefef682e6597b09e4",
+      },
+    },
+  },
+  "plh_audio/relax/relax_18.mp3": {
+    size: 1258057,
+    checksum: "f1ced15e623ce6d21ea250317e602360",
+    translations: {
+      za_st: {
+        size: 1123245,
+        checksum: "304e682f2240cd8f2dd525a0367a2e1c",
+      },
+      za_tn: {
+        size: 860205,
+        checksum: "7c4834c346ced3d97fbe20fac7a697ea",
+      },
+      za_xh: {
+        size: 1219245,
+        checksum: "5a7d6a8462b7aa1bfba333863b25b79f",
+      },
+      za_zu: {
+        size: 1532973,
+        checksum: "9ea13916a414222cc3c722093ba91ecb",
+      },
+    },
+  },
+  "plh_audio/relax/relax_19.mp3": {
+    size: 1788447,
+    checksum: "91b71aa328f31c46b56bf7949448ae55",
+    translations: {
+      za_st: {
+        size: 2119725,
+        checksum: "108d12711b2f9e1fd57a281c7f7934de",
+      },
+      za_tn: {
+        size: 1839405,
+        checksum: "e1d123c1eb56892fcd7ed298a13b3879",
+      },
+      za_xh: {
+        size: 1705005,
+        checksum: "5bb720f14d469a2f3f9e80f3a2ac5c84",
+      },
+      za_zu: {
+        size: 2378925,
+        checksum: "969648b4fd406488a1fcefd445cdf8ff",
+      },
+    },
+  },
+  "plh_audio/relax/relax_2.mp3": {
     size: 729756,
     checksum: "b3b6bf1fdc26305e89da438bb1a3657c",
+    translations: {
+      za_st: {
+        size: 727725,
+        checksum: "d3ca3563a325e1a327f3c96aab1923bc",
+      },
+      za_tn: {
+        size: 760365,
+        checksum: "f02eddda65275a9c0047faeb4e7948ba",
+      },
+      za_xh: {
+        size: 917805,
+        checksum: "511b648f44b0d591d6cdae5d41ade36f",
+      },
+      za_zu: {
+        size: 972333,
+        checksum: "1b0abce098d63696cdef5925a628a8bf",
+      },
+    },
   },
-  "plh_audio/relax/relax_3_audio.mp3": {
+  "plh_audio/relax/relax_20.mp3": {
+    size: 1947271,
+    checksum: "9131a3fecff580470e11d6735593260e",
+    translations: {
+      za_st: {
+        size: 2537133,
+        checksum: "981654ab1fe076d0e903ca3287d18d2b",
+      },
+      za_tn: {
+        size: 1860525,
+        checksum: "dcd84b8b857ea1c3b3f0503d77db1a95",
+      },
+      za_xh: {
+        size: 2449965,
+        checksum: "ddd18b67f338742c74e607992f4de6a9",
+      },
+    },
+  },
+  "plh_audio/relax/relax_21.mp3": {
+    size: 777822,
+    checksum: "9c12b2510304df021b5194d2b02a9899",
+    translations: {
+      za_st: {
+        size: 899373,
+        checksum: "d73af6510293a35dddc6efb4e9d4e214",
+      },
+      za_tn: {
+        size: 622125,
+        checksum: "edb41d0680a5a555eab7137cb470e7a3",
+      },
+      za_xh: {
+        size: 468238,
+        checksum: "03c79e3e647be3511314778264f82a32",
+      },
+      za_zu: {
+        size: 681645,
+        checksum: "c0206105f0a4d7c142238a75d3e3ef3f",
+      },
+    },
+  },
+  "plh_audio/relax/relax_22.mp3": {
+    size: 440111,
+    checksum: "aa62a24a6c519beb75c88e613acd2c71",
+    translations: {
+      za_st: {
+        size: 560685,
+        checksum: "645385ea855acd711ade67bbdd67a8d6",
+      },
+      za_tn: {
+        size: 336045,
+        checksum: "6f1ab9b6bd86483ddf26b0537e55b200",
+      },
+      za_xh: {
+        size: 384910,
+        checksum: "953d5e6c04ba907a394bba4c955a4cb0",
+      },
+      za_zu: {
+        size: 378285,
+        checksum: "f798c84387f5c19e9ae7e2f3bec7e403",
+      },
+    },
+  },
+  "plh_audio/relax/relax_23.mp3": {
+    size: 512417,
+    checksum: "9550d5bac87fd1a97544dd886660d25e",
+    translations: {
+      za_st: {
+        size: 470445,
+        checksum: "62a89f08e6dad8b3906f1aba7bd410b8",
+      },
+      za_tn: {
+        size: 366765,
+        checksum: "6d51ee3f24248f30384b8b5c3ca0aaea",
+      },
+      za_xh: {
+        size: 541485,
+        checksum: "9c535b968f1cd7343be2f18d823eba3f",
+      },
+      za_zu: {
+        size: 587565,
+        checksum: "955de2717a7dfdc9a5a8600ca4246996",
+      },
+    },
+  },
+  "plh_audio/relax/relax_24.mp3": {
+    size: 464770,
+    checksum: "c3db4db42e097fcc942e15f6f067737a",
+    translations: {
+      za_st: {
+        size: 533805,
+        checksum: "6c8cc306f42e53b311554d10e7f2f47f",
+      },
+      za_tn: {
+        size: 380205,
+        checksum: "3912c232fce1a5e531673ccc32acffc0",
+      },
+      za_xh: {
+        size: 410925,
+        checksum: "49465c745ea126d6273921f0c9000ed3",
+      },
+      za_zu: {
+        size: 498093,
+        checksum: "20f9eca6cd6d90aa57a1d7c7ff0ce1b4",
+      },
+    },
+  },
+  "plh_audio/relax/relax_3.mp3": {
     size: 464770,
     checksum: "54a8f411e01f5ef440d4275e3c111c3c",
+    translations: {
+      za_st: {
+        size: 435885,
+        checksum: "95988499b97fa9fc84f2caa41fee57b1",
+      },
+      za_tn: {
+        size: 303405,
+        checksum: "bc4af987d0a159c48d0df284b412dc92",
+      },
+      za_xh: {
+        size: 293134,
+        checksum: "e82c07f03aeb155aadf0f3ebdd34233b",
+      },
+      za_zu: {
+        size: 410925,
+        checksum: "9cb874311438357d204e7141641b8e4f",
+      },
+    },
   },
-  "plh_audio/relax/relax_4_audio.mp3": {
+  "plh_audio/relax/relax_4.mp3": {
     size: 1021910,
     checksum: "f14b76a30bb3267a07968e7945bea98c",
+    translations: {
+      za_st: {
+        size: 1020333,
+        checksum: "709a455fe792883a25085e205e04dbc3",
+      },
+      za_tn: {
+        size: 615213,
+        checksum: "841f5fd8836bc8b24b65c19f4291e175",
+      },
+      za_xh: {
+        size: 1284525,
+        checksum: "8a66c4ca0b3ca3726a514d4ae4d4bc8f",
+      },
+      za_zu: {
+        size: 1279533,
+        checksum: "558adc62b004acf90aaf20b79443868a",
+      },
+    },
   },
-  "plh_audio/relax/relax_5_audio.mp3": {
+  "plh_audio/relax/relax_5.mp3": {
     size: 367804,
     checksum: "5cc39211a871f85a80d2d914ce2f9008",
+    translations: {
+      za_st: {
+        size: 461613,
+        checksum: "1878a8b2fbb03cb9803099230a02cd6d",
+      },
+      za_tn: {
+        size: 298413,
+        checksum: "ad5435c21ec653ff99976a45d1df5e0f",
+      },
+      za_xh: {
+        size: 230445,
+        checksum: "b0d0afe22c7500ab8e38eb7cedba4a7a",
+      },
+      za_zu: {
+        size: 385965,
+        checksum: "549d78cdfec6b9f36ce60f17fd64b56d",
+      },
+    },
   },
-  "plh_audio/relax/relax_6_audio.mp3": {
+  "plh_audio/relax/relax_6.mp3": {
     size: 539167,
     checksum: "cda7524dc0cf04d7567d8aba5cecb1ed",
+    translations: {
+      za_st: {
+        size: 620973,
+        checksum: "77bdf5152bb13e4608228f87a994a2ae",
+      },
+      za_tn: {
+        size: 403245,
+        checksum: "f14f7e11292d3c00d67023d40c5b19a7",
+      },
+      za_xh: {
+        size: 494350,
+        checksum: "56f3281a068fedb641d346de12d37a26",
+      },
+      za_zu: {
+        size: 558765,
+        checksum: "2cc0ae7a65abb67f56b25edbda58da81",
+      },
+    },
   },
-  "plh_audio/relax/relax_7_audio.mp3": {
+  "plh_audio/relax/relax_7.mp3": {
     size: 517015,
     checksum: "51ad97b7ea1e2344074ef130c4362682",
+    translations: {
+      za_st: {
+        size: 549165,
+        checksum: "eaf8ee0a20e047e137564430b0646fc5",
+      },
+      za_tn: {
+        size: 397485,
+        checksum: "0daf6960bbd80a6b43b5193b77abcb97",
+      },
+      za_xh: {
+        size: 380302,
+        checksum: "25521cbfeb54fdfd6d839bf928a0618a",
+      },
+      za_zu: {
+        size: 695085,
+        checksum: "59813428170576da03553236a3aa643f",
+      },
+    },
   },
-  "plh_audio/relax/relax_8_audio.mp3": {
+  "plh_audio/relax/relax_8.mp3": {
     size: 562155,
     checksum: "43e967ed477d23a2ac60b2786997e752",
+    translations: {
+      za_st: {
+        size: 725805,
+        checksum: "c76c825f6c9cc8048cfd2826a966800f",
+      },
+      za_tn: {
+        size: 505005,
+        checksum: "de634a9ac19d4ba72622b969a2c7ca4c",
+      },
+      za_xh: {
+        size: 504718,
+        checksum: "13c65abf540fc49e2736c662954b3ddc",
+      },
+      za_zu: {
+        size: 593325,
+        checksum: "22d2efe916509ef36ac9184426145037",
+      },
+    },
   },
-  "plh_audio/relax/relax_9_audio.mp3": {
+  "plh_audio/relax/relax_9.mp3": {
     size: 1082514,
     checksum: "4c28141c3416cf2df70d2a5464c3d34a",
+    translations: {
+      za_st: {
+        size: 1321005,
+        checksum: "ef63484981f74f4a776705fe1aed576c",
+      },
+      za_tn: {
+        size: 1014573,
+        checksum: "8a5b0e6e6df556fb596471e748a98a13",
+      },
+      za_xh: {
+        size: 983853,
+        checksum: "a4243b4b5c216c699fd2c440a758a021",
+      },
+      za_zu: {
+        size: 1081005,
+        checksum: "b8f116d0bb9bab6b21244f53ed648994",
+      },
+    },
   },
   "plh_audio/take_a_pause_64k.mp3": {
     size: 1387392,
     checksum: "03a593d94debd98384bff908450aa0d3",
   },
-  "plh_audio/testimonies/w_1on1.mp3": {
+  "plh_audio/testimonies/teen/w_1on1.mp3": {
     size: 322029,
     checksum: "3fae469b0b11e65d64eb4d4896ec46ba",
   },
-  "plh_audio/testimonies/w_rules.mp3": {
+  "plh_audio/testimonies/teen/w_rules.mp3": {
     size: 925101,
     checksum: "7eca3329c62136c1fe76b776ba2e7dfe",
   },
@@ -133,57 +561,283 @@ export const ASSETS_CONTENTS_LIST = {
     size: 849514,
     checksum: "a9cad2b710e4c0efc104be4eed375d80",
   },
-  "plh_audio/topic_intros/w_1on1.mp3": {
-    size: 386612,
-    checksum: "e9138d16ef537979a4eeb81656e0bdaf",
-  },
-  "plh_audio/topic_intros/w_celebrate.mp3": {
-    size: 1323676,
-    checksum: "472d6351714078d4c1977a7cb5880fdb",
-  },
-  "plh_audio/topic_intros/w_consequence.mp3": {
-    size: 642821,
-    checksum: "3ac9ad359f08f0da75f614e321c10aae",
-  },
-  "plh_audio/topic_intros/w_crisis.mp3": {
-    size: 787017,
-    checksum: "d1e8e52bd33407987894934de0bbf909",
-  },
-  "plh_audio/topic_intros/w_instruct.mp3": {
-    size: 458083,
-    checksum: "6f8021f84c5a941cc5a6d36faba92f29",
-  },
-  "plh_audio/topic_intros/w_money.mp3": {
-    size: 596009,
-    checksum: "adb875428eebfb8874e44b4526c2e62b",
-  },
-  "plh_audio/topic_intros/w_praise.mp3": {
-    size: 364460,
-    checksum: "584fe9154663243393a3512aae2c2cfc",
-  },
-  "plh_audio/topic_intros/w_rules.mp3": {
-    size: 522449,
-    checksum: "ab3df47339f5aaddab8293b014e788b2",
-  },
-  "plh_audio/topic_intros/w_safe.mp3": {
-    size: 978442,
-    checksum: "bc984f7cc77a1e8945eaa7036dc0b6ab",
-  },
-  "plh_audio/topic_intros/w_self_care.mp3": {
-    size: 733936,
-    checksum: "9ae6c9fd0275d6dda0b5f4e0bdddeba7",
-  },
-  "plh_audio/topic_intros/w_solve.mp3": {
-    size: 953364,
-    checksum: "2fe96fc09d75da24b11a5521159af31a",
-  },
-  "plh_audio/topic_intros/w_stress.mp3": {
-    size: 675422,
-    checksum: "aea123ef6dc786c86e38325e1ad04e17",
-  },
-  "plh_audio/workshops_reflection.mp3": {
+  "plh_audio/topic_intros/workshops_reflection.mp3": {
     size: 1043644,
     checksum: "4ca8a8f7fda21ecdbbfcbd7f38e69433",
+    translations: {
+      za_st: {
+        size: 1203885,
+        checksum: "10a1b7763d64c7c809c0db38baa37205",
+      },
+      za_tn: {
+        size: 1028013,
+        checksum: "e051706763b9593134cc68a319939bcc",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_1on1_intro.mp3": {
+    size: 386612,
+    checksum: "e9138d16ef537979a4eeb81656e0bdaf",
+    translations: {
+      za_st: {
+        size: 471213,
+        checksum: "6e2634ee14900dae30ae2f1669450868",
+      },
+      za_tn: {
+        size: 339885,
+        checksum: "2eb1661c3f3fc1a878282c4dbf88b820",
+      },
+      za_xh: {
+        size: 418605,
+        checksum: "a95e480e954a956b8e42747103139d0c",
+      },
+      za_zu: {
+        size: 350253,
+        checksum: "13105f013ebbd029c23798196e7253b0",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_celebrate_intro.mp3": {
+    size: 1323676,
+    checksum: "472d6351714078d4c1977a7cb5880fdb",
+    translations: {
+      za_st: {
+        size: 478125,
+        checksum: "9eb739df0b814a4cde2d8172a30d13dc",
+      },
+      za_tn: {
+        size: 442413,
+        checksum: "1159eb2c500d833c6cb0616be545d458",
+      },
+      za_xh: {
+        size: 434733,
+        checksum: "e2788bacf7f4de2d87c68528e2c95c97",
+      },
+      za_zu: {
+        size: 342573,
+        checksum: "f90737078d0f62afd960eba33d8536ad",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_consequence_intro.mp3": {
+    size: 642821,
+    checksum: "3ac9ad359f08f0da75f614e321c10aae",
+    translations: {
+      za_st: {
+        size: 667053,
+        checksum: "dad77e92a12f98471f5b5085220bd63b",
+      },
+      za_tn: {
+        size: 635565,
+        checksum: "ed915fcd8f82d7b1cdb3d20f8cff4952",
+      },
+      za_xh: {
+        size: 636333,
+        checksum: "f6060d16dd149bc6e2ccfe8a362e8929",
+      },
+      za_zu: {
+        size: 685485,
+        checksum: "15d21260df1f7f14d05e8d51000d829c",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_crisis_intro.mp3": {
+    size: 787017,
+    checksum: "d1e8e52bd33407987894934de0bbf909",
+    translations: {
+      za_st: {
+        size: 826413,
+        checksum: "08e1d61b052e3981eddc970f391d3569",
+      },
+      za_tn: {
+        size: 785325,
+        checksum: "27b3edaba4bb792f8181baebe18544aa",
+      },
+      za_xh: {
+        size: 745005,
+        checksum: "1c8c36d03b4f03b4a3e7d31f8fafc6ec",
+      },
+      za_zu: {
+        size: 896685,
+        checksum: "4e76400aa7e4f313b502af5d0d3c351a",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_instruct_intro.mp3": {
+    size: 458083,
+    checksum: "6f8021f84c5a941cc5a6d36faba92f29",
+    translations: {
+      za_st: {
+        size: 483885,
+        checksum: "7d1e2f4bb8b8f775319bb82d4561a972",
+      },
+      za_tn: {
+        size: 453933,
+        checksum: "63f4abdac9002f7716be0fb941f22d25",
+      },
+      za_xh: {
+        size: 428205,
+        checksum: "97fd6c8e2c444c6f4b2e18dcc7511b2e",
+      },
+      za_zu: {
+        size: 572973,
+        checksum: "99f93b267c285008e4c3b01e46b3b7ca",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_money_intro.mp3": {
+    size: 596009,
+    checksum: "adb875428eebfb8874e44b4526c2e62b",
+    translations: {
+      za_st: {
+        size: 658605,
+        checksum: "5d1a7d71c0cbb527f1648dcfbfefb94c",
+      },
+      za_tn: {
+        size: 585645,
+        checksum: "0a06cd3165613b3ae00f5414e64f0f57",
+      },
+      za_xh: {
+        size: 490413,
+        checksum: "15cfb620209560f0fdfbeaa24cbca9de",
+      },
+      za_zu: {
+        size: 501933,
+        checksum: "caf3547156d28c0959453700aa3293f4",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_praise_intro.mp3": {
+    size: 364460,
+    checksum: "584fe9154663243393a3512aae2c2cfc",
+    translations: {
+      za_st: {
+        size: 433965,
+        checksum: "5ae1f0b5e553300cb63a5a9e949acbdd",
+      },
+      za_tn: {
+        size: 320685,
+        checksum: "85c3ac0e46e8db5432d3fb34a716bec6",
+      },
+      za_xh: {
+        size: 336045,
+        checksum: "93debe5584a41f602a65e99f8a6e773d",
+      },
+      za_zu: {
+        size: 359853,
+        checksum: "44a5f15993c60d5328f6dedd108751ac",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_rules_intro.mp3": {
+    size: 522449,
+    checksum: "ab3df47339f5aaddab8293b014e788b2",
+    translations: {
+      za_st: {
+        size: 505773,
+        checksum: "c0f2db025179b3d886542931ab88b3ac",
+      },
+      za_tn: {
+        size: 524205,
+        checksum: "aa011ca8d7561151ce0a54ccb64aa159",
+      },
+      za_xh: {
+        size: 421293,
+        checksum: "8a4c463da31edfaf6c6b14155e65b6c3",
+      },
+      za_zu: {
+        size: 535725,
+        checksum: "a2a9309f19ca1bf343550b50cb3b8fc8",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_safe_intro.mp3": {
+    size: 978442,
+    checksum: "bc984f7cc77a1e8945eaa7036dc0b6ab",
+    translations: {
+      za_st: {
+        size: 825645,
+        checksum: "29bd2544fc0dd1a56a483e54d4857d01",
+      },
+      za_tn: {
+        size: 812973,
+        checksum: "8df3db10e43cfcc23164ccb627de2d00",
+      },
+      za_xh: {
+        size: 876333,
+        checksum: "8acfd0a97e2de9827213d0de8997a693",
+      },
+      za_zu: {
+        size: 892845,
+        checksum: "4558be041c9272bcc33df148f306b359",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_self_care_intro.mp3": {
+    size: 733936,
+    checksum: "9ae6c9fd0275d6dda0b5f4e0bdddeba7",
+    translations: {
+      za_st: {
+        size: 652845,
+        checksum: "576de9754b768f09c6f2941dfca5e91e",
+      },
+      za_tn: {
+        size: 603693,
+        checksum: "977f095f8358295dfab2182785456aa3",
+      },
+      za_xh: {
+        size: 714285,
+        checksum: "d3866810032baa2d991034fd78519bc3",
+      },
+      za_zu: {
+        size: 784173,
+        checksum: "939e63092063e2229f65a7cbc533a602",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_solve_intro.mp3": {
+    size: 953364,
+    checksum: "2fe96fc09d75da24b11a5521159af31a",
+    translations: {
+      za_st: {
+        size: 889773,
+        checksum: "672779e0fc71e00ac9bc98b49ffc0ea6",
+      },
+      za_tn: {
+        size: 895533,
+        checksum: "d03247d4b9a6cb33910e58ffefa8749a",
+      },
+      za_xh: {
+        size: 852525,
+        checksum: "9ff632390f3fb6947f7e2637875742f1",
+      },
+      za_zu: {
+        size: 754605,
+        checksum: "2a7bb1a059af2bc4a86c723db83cdb0a",
+      },
+    },
+  },
+  "plh_audio/topic_intros/w_stress_intro.mp3": {
+    size: 675422,
+    checksum: "aea123ef6dc786c86e38325e1ad04e17",
+    translations: {
+      za_st: {
+        size: 762285,
+        checksum: "374ebfa0bc1748f3cc5645ee1d00190c",
+      },
+      za_tn: {
+        size: 644013,
+        checksum: "949c4032e5b3b288cf291734e67159a8",
+      },
+      za_xh: {
+        size: 636333,
+        checksum: "1a0ef59590f509464cdf8cccf2ccb76d",
+      },
+      za_zu: {
+        size: 749613,
+        checksum: "afe1262013bbfb96ab05f32c5de77c01",
+      },
+    },
   },
   "plh_images/characters/elder/happy.svg": {
     size: 3118,

@@ -3546,12 +3546,6 @@
     "note": ""
   },
   {
-    "SourceText": "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
-    "text": "Mo bekeng e e fetileng, a o kile wa otlhaya bana ba gago mo mmeleng ka go ba itaya, go ba kgwathisa, kgotsa go ba faphola ka seatla sa gago kgotsa ka sengwe jaaka thupa kgotsa lebante?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
     "text": "Go gontle fa o araba o kgobile makgwafo fa mosha wa gago a dira sengwe se se tenang. Ba ka ithuta go le gontsi go tswa mo go wena!",
     "type": "template",
@@ -3798,20 +3792,8 @@
     "note": ""
   },
   {
-    "SourceText": "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.",
-    "text": "Gopola, fa O araba, karabo ya gago e nna ya motlhokaina.\n\nO ka nna wa tlhopha gore o se ka wa araba potso ka go tshwaya lebokosotshwao le le mo selaedareng.",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "You selected \"I would rather not answer\"",
     "text": "O tlhophile “Ke tlhopha go se arabe”",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!",
-    "text": "Ga se bothata!\n\nGopola, fa O araba, karabo ya gago e tla nna ya tlhokaina mme o tla romelelwa mafoko a a go tshwanetseng sentle!",
     "type": "template",
     "note": ""
   },
@@ -3978,19 +3960,13 @@
     "note": ""
   },
   {
-    "SourceText": "Are you a lady or a gentleman?",
-    "text": "O mosadi kgotsa o monna?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Lady",
+    "SourceText": "Woman",
     "text": "Mosadi",
     "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Gentleman",
+    "SourceText": "Man",
     "text": "Monna",
     "type": "template",
     "note": ""
@@ -8880,12 +8856,6 @@
     "note": "The string @global.weekly_workshops should not be translated."
   },
   {
-    "SourceText": "@global.weekly_workshops quick start",
-    "text": "@global.weekly_workshops simolola ka bonako",
-    "type": "tour",
-    "note": "The string @global.weekly_workshops should not be translated."
-  },
-  {
     "SourceText": "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
     "text": "<p>Konopo eno e e kgolokwe e tlhagelela fa go na le @global.weekly_workshop e ntšha e o tlhokang go e dira.</p>",
     "type": "tour",
@@ -8967,6 +8937,78 @@
     "SourceText": "<p> Tap here to change your group name. </p>",
     "text": "<p> Tobetsa fano go fetola leina la setlhopha sa lona. </p>",
     "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "Start",
+    "text": "Simolola",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Continue",
+    "text": "Tswelela",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Welcome to ParentApp. Click here to start your journey!",
+    "text": "Re a go amogela mo ParentApp. Tobetsa fano gore o simolole go e dirisa!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
+    "text": "Ke solofela gore lo SIAME. Go nna motsadi ga go motlhofo, mme gone, ga go ise go nne thari gore o leke gape go thusa mosha wa gago. Workshop ya gago ya ntlha ya batsadi e setse e le teng! Tobetsa fano gore o simolole go dirisa ParentApp!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+    "text": "Dumela! A o SIAME? Go bonala o ise o bule ParentApp. Goreng o sa leke go e dirisa? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno e ba thusitse. Re ikemiseditse go tswelela re go thusa.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+    "text": "Dumelang gape! Ga go thari gore o ka dirisa ParentApp gore o bone thuso e e tshwanetseng maemo a gago o le motsadi. Goreng o sa leke go e dirisa fa o le mo tseleng go ya tirong kgotsa fa o apeile? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno ya rona e ba thusitse.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
+    "text": "O seka wa itetla go fetwa ke tshedimosetso ya botlhokwa e e mo ParentApp! E na le tshedimosetso e ntsi tota. Re ikemiseditse go tswelela re go thusa.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
+    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go rarabolola matshwenyego a go nna motsadi.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
+    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go thusa mosha wa gago gore a kgone go atlega mo botshelong.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
+    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go lepalepana le boitshwaro jwa mosha wa gago.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "New message from PLH",
+    "text": "Molaetsa o mosha go tswa go PLH",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go nna tsala ya mosha wa gago gape!",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -9800,78 +9842,6 @@
   {
     "SourceText": "How to support each other",
     "text": "Kafa lo ka thusanang ka teng",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Start",
-    "text": "Simolola",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Continue",
-    "text": "Tswelela",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Welcome to ParentApp. Click here to start your journey!",
-    "text": "Re a go amogela mo ParentApp. Tobetsa fano gore o simolole go e dirisa!",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
-    "text": "Ke solofela gore lo SIAME. Go nna motsadi ga go motlhofo, mme gone, ga go ise go nne thari gore o leke gape go thusa mosha wa gago. Workshop ya gago ya ntlha ya batsadi e setse e le teng! Tobetsa fano gore o simolole go dirisa ParentApp!",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-    "text": "Dumela! A o SIAME? Go bonala o ise o bule ParentApp. Goreng o sa leke go e dirisa? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno e ba thusitse. Re ikemiseditse go tswelela re go thusa.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-    "text": "Dumelang gape! Ga go thari gore o ka dirisa ParentApp gore o bone thuso e e tshwanetseng maemo a gago o le motsadi. Goreng o sa leke go e dirisa fa o le mo tseleng go ya tirong kgotsa fa o apeile? Batsadi ba le bantsi ba bontsha gore tshedimosetso eno ya rona e ba thusitse.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
-    "text": "O seka wa itetla go fetwa ke tshedimosetso ya botlhokwa e e mo ParentApp! E na le tshedimosetso e ntsi tota. Re ikemiseditse go tswelela re go thusa.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
-    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go rarabolola matshwenyego a go nna motsadi.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
-    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go thusa mosha wa gago gore a kgone go atlega mo botshelong.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
-    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go lepalepana le boitshwaro jwa mosha wa gago.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "New message from PLH",
-    "text": "Molaetsa o mosha go tswa go PLH",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
-    "text": "Ke solofela gore lo SIAME. Re a itse gore ga go motlhofo go nna motsadi - dirisa ParentApp go go thusa go nna tsala ya mosha wa gago gape!",
     "type": "data_list",
     "note": ""
   }

@@ -31,7 +31,7 @@
   },
   {
     "SourceText": "In-Week Messages",
-    "text": "In-week-boodskappe",
+    "text": "In-Week Boodskappe",
     "type": "template",
     "note": ""
   },
@@ -55,25 +55,25 @@
   },
   {
     "SourceText": "App terms",
-    "text": "App-voorwaardes",
+    "text": "Toep-voorwaardes",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Open Survey",
-    "text": "Maak opname oop",
+    "text": "Maak Studie Oop",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Select Language",
-    "text": "Kies taal",
+    "text": "Kies Taal",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Workshop Options",
-    "text": "Werksessie-opsies",
+    "text": "Slypskool-opsies",
     "type": "template",
     "note": ""
   },
@@ -97,37 +97,37 @@
   },
   {
     "SourceText": "Unlock all workshops",
-    "text": "Ontsluit alle werksessies",
+    "text": "Ontsluit alle slypskole",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "By clicking in the button below you will unlock all the workshops.\n\nNOTE: Users should not use this functionality to unlock workshops, this is not recommended unless strictly necessary.",
-    "text": "Deur op die onderstaande knoppie te klik, ontsluit jy al die werksessies.\n\nLET WEL: Gebruikers moenie hierdie funksie gebruik om werksessies te ontsluit nie; dit word nie aanbeveel nie, tensy dit streng noodsaaklik is.",
+    "text": "Deur op die onderstaande knoppie te klik, sal jy al die slypskole ontsluit.\n\nLET WEL: Gebruikers moenie hierdie funksie gebruik om slypskole te ontsluit nie; dit word nie aanbeveel nie, tensy dit streng noodsaaklik is.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Unlock workshops",
-    "text": "Ontsluit werksessies",
+    "text": "Ontsluit Slypskole",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "All workshops are now unlocked.",
-    "text": "Alle werksessies is nou ontsluit.",
+    "text": "Alle slypskole is nou ontsluit.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "By clicking in the button below you will reset the app to its initial settings. \n\nThis means that all your progress and usage data will be deleted and your app will work as if it was just installed for the first time.\n\nNOTE: Resetting the app is permanent and you will not be able to recover any information.",
-    "text": "Deur op die onderstaande knoppie te klik, stel jy die app terug na die oorspronklike instellings.\n\nDit beteken dat al jou vordering- en gebruiksdata uitgevee sal word en dat jou app sal werk asof dit pas vir die eerste keer geïnstalleer is.\n\nLET WEL: Die terugstelling van die app is permanent en jy sal geen inligting kan herstel nie.",
+    "text": "Deur op die onderstaande knoppie te klik, stel jy die toep terug na die oorspronklike instellings.\n\nDit beteken dat al jou vordering- en gebruiksdata uitgevee sal word en dat jou toep sal werk asof dit pas vir die eerste keer geïnstalleer is.\n\nLET WEL: Die terugstelling van die app is permanent en jy sal geen inligting kan herstel nie.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Reset App",
-    "text": "Stel app terug",
+    "text": "Stel Toep terug",
     "type": "template",
     "note": ""
   },
@@ -157,13 +157,13 @@
   },
   {
     "SourceText": "I found it myself",
-    "text": "Ek het self daarvan uitgevind",
+    "text": "Ek het dit self ontdek",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "A friend or family",
-    "text": "Van ‘n vriend/vriendin of familielid",
+    "text": "Van ‘n Vriend/Vriendin of Familielid",
     "type": "template",
     "note": ""
   },
@@ -184,18 +184,6 @@
     "text": "Laas gesinchroniseer om: @local.sync_latest",
     "type": "template",
     "note": "The string @local.sync_latest should not be translated."
-  },
-  {
-    "SourceText": "This device has never been synced",
-    "text": "Hierdie toestel is nog nooit gesinchroniseer nie",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Sync Now",
-    "text": "Sinchroniseer nou",
-    "type": "template",
-    "note": ""
   },
   {
     "SourceText": "Syncing...",
@@ -235,7 +223,7 @@
   },
   {
     "SourceText": "I do the workshops...",
-    "text": "Ek doen die werksessies...",
+    "text": "Ek doen die slypskole...",
     "type": "template",
     "note": ""
   },
@@ -247,13 +235,13 @@
   },
   {
     "SourceText": "My group is now doing the workshop...",
-    "text": "My groep doen nou die werksessie...",
+    "text": "My groep doen nou die slypskool...",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "I am now doing the workshop...",
-    "text": "Ek doen nou die werksessie...",
+    "text": "Ek doen nou die slypskool...",
     "type": "template",
     "note": ""
   },
@@ -277,19 +265,19 @@
   },
   {
     "SourceText": "Something really bad happened",
-    "text": "Iets baie slegs het gebeur",
+    "text": "Iets baie sleg het gebeur",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "I have technical problems with the app",
-    "text": "Ek het tegniese probleme met die app",
+    "text": "Ek ervaar tegniese probleme met die toep",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "You will find tips that we think you may find useful here, based on your answers to the app customisation.",
-    "text": "Jy sal hier wenke kry wat ons dink jy nuttig kan vind, gebaseer op jou antwoorde op die app-aanpassing.",
+    "text": "Jy sal hier wenke kry wat ons dink jy nuttig kan vind, gebaseer op jou antwoorde op die toep-aanpassing.",
     "type": "template",
     "note": ""
   },
@@ -349,7 +337,7 @@
   },
   {
     "SourceText": "Update my workshop options",
-    "text": "Dateer my werksessie-opsies op",
+    "text": "Dateer my werksessie opsies op",
     "type": "template",
     "note": ""
   },
@@ -361,7 +349,7 @@
   },
   {
     "SourceText": "Are you experiencing any technical issues? Let us know and help to make @global.parent_app better!",
-    "text": "Ervaar jy tegniese probleme? Laat weet ons en help om @global.parent_app beter te maak!",
+    "text": "Ervaar jy enige tegniese probleme? Laat weet ons en help om @global.parent_app te verbeter!",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
@@ -403,19 +391,19 @@
   },
   {
     "SourceText": "The first time my mother asked me if I wanted to spend time with her, I told her to leave me alone because I was in the middle of a game. But she insisted like she always does. I said she could watch me playing if that's what she wanted. After a few minutes she started asking me questions about the game. It was annoying at the beginning, but after a while I was happy that she was finally interested in what I was doing. She even gave it a try!",
-    "text": "Die eerste keer dat my ma my gevra het of ek tyd saam met haar wou deurbring, het ek vir haar gesê om my uit te los, want ek was in die middel van ’n speletjie. Maar sy het soos altyd aangedring. Ek het gesê sy kan kyk hoe ek speel as dit is wat sy wil doen. Na ’n paar minute het sy my vrae begin vra oor die speletjie. Dit was aan die begin irriterend, maar na ’n rukkie was ek bly dat sy uiteindelik belangstelling getoon het in wat ek doen. Sy het selfs probeer speel!",
+    "text": "Die eerste keer dat my ma my gevra het of ek tyd saam met haar wou deurbring, het ek vir haar gesê om my uit te los, want ek was in die middel van ’n speletjie. Tog het sy soos altyd aangedring. Ek het gesê sy kan kyk hoe ek speel indien sy wil. Na ’n paar minute het sy my vrae begin vra oor die speletjie. Aanvanklik was dit irriterend, maar na ’n rukkie was ek bly dat sy uiteindelik belangstelling getoon het in wat ek doen. Sy het selfs probeer speel!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "My father told me I’m playing too much basketball after school, so we must set a family rule. He promised we'll think about a solution together, so we both feel good about it. I didn't believe it's possible but said, “OK, let's try”. We negotiated and agreed that the rule will be playing basketball is allowed after doing homework and until family dinner. It is hard for me to see my friends playing after school, so I'm doing my best to finish homework first and join them. I also have now the whole evening to do other things I want after the family dinner like watching basketball in the NBA.",
-    "text": "My pa het vir my gesê ek speel te veel basketbal na skool en ons moet ’n gesinsreël maak. Hy het belowe dat ons saam sal dink aan ’n oplossing, sodat ons albei goed sal voel daaroor. Ek het nie geglo dat dit moontlik is nie, maar ek het gesê: “Goed, laat ons probeer”. Ons het onderhandel en saamgestem dat die reël sal wees dat ek ná huiswerk basketbal mag speel, tot aandete. Dit is vir my moeilik om my vriende na skool te sien speel, daarom doen ek my bes om my huiswerk eers klaar te maak en dan by hulle aan te sluit. Nou het ek ook die hele aand om ander dinge na aandete te doen, soos om na basketbal in die NBA te kyk.",
+    "text": "My pa het vir my gesê ek speel te veel basketbal na skool en ons moet ’n gesinsreël instel. Hy het belowe dat ons saam sal dink aan ’n oplossing, sodat ons albei goed sal voel daaroor. Ek het nie geglo dat dit moontlik sou wees nie, maar ek het gesê: “Goed, laat ons probeer”. Ons het onderhandel en saamgestem dat die reël sal wees dat ek ná huiswerk basketbal mag speel, tot aandete. Dit is vir my moeilik om my vriende na skool te sien speel, daarom doen ek my bes om my huiswerk eers klaar te maak en dan by hulle aan te sluit. Nou het ek ook die hele aand om ander dinge na aandete te doen, soos om na basketbal in die NBA te kyk.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "You will find the in-week messages from the previous workshops here.",
-    "text": "Jy kan die in-week-boodskappe van die vorige werksessies hier vind.",
+    "text": "Jy kan die in-week-boodskappe van die vorige slypskole hier vind.",
     "type": "template",
     "note": ""
   },
@@ -439,7 +427,7 @@
   },
   {
     "SourceText": "Something fun to do with your teen",
-    "text": "Iets lekkers om saam met jou tiener te doen",
+    "text": "Iets prettig om saam met jou tiener te doen",
     "type": "template",
     "note": ""
   },
@@ -475,13 +463,13 @@
   },
   {
     "SourceText": "Days in the past month",
-    "text": "Dae in die afgelope maand",
+    "text": "Dae gedurende die afgelope maand",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Days in the past week",
-    "text": "Dae in die afgelope week",
+    "text": "Dae gedurende die afgelope week",
     "type": "template",
     "note": ""
   },
@@ -649,7 +637,7 @@
   },
   {
     "SourceText": "When I pay attention, I can learn so much about my teen’s interests, views and abilities.",
-    "text": "As ek oplettend is, kan ek soveel leer oor my tiener se belangstellings, sienings en vermoëns.",
+    "text": "Indien ek oplettend is, kan ek soveel leer oor my tiener se belangstellings, sienings en vermoëns.",
     "type": "template",
     "note": ""
   },
@@ -661,19 +649,19 @@
   },
   {
     "SourceText": "Many parents experience challenges in having one-on-one time with their teens. \n\nHere are the top 8 challenges parents told us they experience when planning or spending one-on-one time with their teen. If you experienced one of these or are afraid that you will, tap it to get a possible solution. You can tap and explore other challenges afterwards.",
-    "text": "Dis vir baie ouers ’n uitdaging om een-tot-een-tyd met hul tieners te spandeer.\n\nHier is die 8 grootste uitdagings wat ouers ons vertel het hulle ondervind wanneer hulle een-tot-een-tyd met hul tiener beplan of deurbring. As jy een hiervan ondervind het of bang is dat jy dit sal ondervind, tik daarop om ’n moontlike oplossing te kry. Jy kan daarná op ander uitdagings tik en dit verken.",
+    "text": "Baie ouers ervaar uitdagings om een-tot-een-tyd met hul tieners te spandeer.\n\nHier is die 8 grootste uitdagings volgens wat ouers ons vertel het hulle ondervind wanneer hulle een-tot-een-tyd met hul tiener beplan of deurbring. As jy een hiervan ondervind het of besord is dat jy dit sal ondervind, tik daarop om ’n moontlike oplossing te vind. Jy kan daarná op ander uitdagings tik en dit verken.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Did you have any challenges when trying to spend time with your teen?",
-    "text": "Het jy enige uitdagings gehad toe jy tyd met jou tiener wou deurbring?",
+    "text": "Het jy enige uitdagings ervaar toe jy tyd met jou tiener wou deurbring?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "What challenge did you have when trying to spend time with your teen?",
-    "text": "Watter uitdaging het jy gehad toe jy tyd met jou tiener wou deurbring?",
+    "text": "Watter uitdaging het jy ervaar toe jy tyd met jou tiener wou deurbring?",
     "type": "template",
     "note": ""
   },
@@ -697,7 +685,7 @@
   },
   {
     "SourceText": "My teen wants to do things that are not safe or that cost money.",
-    "text": "My tiener wil dinge doen wat nie veilig is nie of wat geld kos.",
+    "text": "My tiener wil dinge doen wat onveilig is of wat geld kos.",
     "type": "template",
     "note": ""
   },
@@ -721,13 +709,13 @@
   },
   {
     "SourceText": "All my children want one-on-one time with me at the same time.",
-    "text": "Al my kinders wou op dieselfde tyd een-tot-een-tyd hê.",
+    "text": "Al my kinders wil gelyktydig een-tot-een-tyd met my hê.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Yes, it can be really hard to find time during the day, with work, chores, and everything else.",
-    "text": "Ja, dit kan baie moeilik wees om gedurende die dag tyd te kry, met jou werk, huistake en alle ander dinge.",
+    "text": "Ja, dit kan baie moeilik wees om gedurende die dag tyd te kry met werk, huistake en talle ander dinge.",
     "type": "template",
     "note": ""
   },
@@ -739,7 +727,7 @@
   },
   {
     "SourceText": "Think of a time when my teen is more open to me, like in the morning or right before bedtime.",
-    "text": "Dink aan ’n tyd wanneer my tiener meer oop is teenoor my, soos in die oggend of net voor slaaptyd.",
+    "text": "Dink aan ’n tyd wanneer my tiener meer toegangklik is teenoor my, soos in die oggend of net voor slaaptyd.",
     "type": "template",
     "note": ""
   },
@@ -751,7 +739,7 @@
   },
   {
     "SourceText": "Do something fun with the whole family.",
-    "text": "Doen iets lekkers saam met die hele gesin.",
+    "text": "Doen iets prettig saam met die hele gesin.",
     "type": "template",
     "note": ""
   },
@@ -817,7 +805,7 @@
   },
   {
     "SourceText": "You are not alone here. Many parents sometimes have this challenge, too. One-on-one time should always be safe, and it does not have to cost a thing!",
-    "text": "Jy is nie alleen hier nie. Baie ouers het soms ook hierdie uitdaging. Een-tot-een-tyd moet altyd veilig wees, en dit hoef niks te kos nie!",
+    "text": "Jy is nie alleen hierin nie. Baie ouers het soms ook hierdie uitdaging. Een-tot-een-tyd moet altyd veilig wees, en dit hoef niks te kos nie!",
     "type": "template",
     "note": ""
   },
@@ -865,7 +853,7 @@
   },
   {
     "SourceText": "Wonderful! Even if you are watching instead of doing the activity together, you can show your interest by describing and praising what your teen is doing!",
-    "text": "Wonderlik! Selfs as jy kyk in plaas van om die aktiwiteit saam te doen, kan jy jou belangstelling toon deur wat jou tiener doen, te beskryf en te prys!",
+    "text": "Wonderlik! Selfs as jy toekyk in plaas van om die aktiwiteit saam te doen, kan jy jou belangstelling toon deur wat jou tiener doen, te beskryf en te prys!",
     "type": "template",
     "note": ""
   },
@@ -877,7 +865,7 @@
   },
   {
     "SourceText": "This sometimes happens! Competitive games can be challenging for teens (and adults!) if they have difficulty with losing.",
-    "text": "Dit gebeur soms! Kompeterende speletjies kan ’n probleem wees vir tieners (en volwassenes!) as hulle sukkel met verloor.",
+    "text": "Dit gebeur soms! Kompeterende speletjies kan ’n uitdaging wees vir tieners (en volwassenes!) as hulle sukkel met verloor.",
     "type": "template",
     "note": ""
   },
@@ -901,7 +889,7 @@
   },
   {
     "SourceText": "If you and your teen are in the same team, you can help them manage their emotions if your team loses.",
-    "text": "As jy en jou tiener in dieselfde span is, kan jy hulle help om hul emosies te hanteer as julle span verloor.",
+    "text": "As jy en jou tiener in dieselfde span is, kan jy hulle help om hul emosies te beheer as julle span verloor.",
     "type": "template",
     "note": ""
   },
@@ -919,7 +907,7 @@
   },
   {
     "SourceText": "Inform my teen of how much time I have for one-on-one time and ask them to keep track on a clock or watch.",
-    "text": "Laat my tiener weet hoeveel tyd ek vir een-tot-een-tyd het en vra hulle om ’n horlosie dop te hou.",
+    "text": "Maak my tiener bewus van hoeveel tyd ek vir een-tot-een-tyd het en vra hulle om ’n horlosie dop te hou.",
     "type": "template",
     "note": ""
   },
@@ -1003,19 +991,19 @@
   },
   {
     "SourceText": "introduce a consequence together",
-    "text": "stel saam ’n gevolg in",
+    "text": "kom oor 'n gevolg ooreen",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Did you have any challenges when trying to introduce a consequence together?",
-    "text": "Was daar enige probleme toe julle probeer het om saam ’n gevolg in te stel?",
+    "text": "Het jy enige uitdagings ervaar toe julle probeer het om saam oor ’n gevolg oor een te koml?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "What was difficult for you about introducing a consequence with your teen?",
-    "text": "Wat was vir jou moeilik toe jy ’n gevolg saam met jou tiener wou instel?",
+    "text": "Wat was vir jou moeilik toe jy ’n gevolg saam met jou tiener in te stel?",
     "type": "template",
     "note": ""
   },
@@ -1033,7 +1021,7 @@
   },
   {
     "SourceText": "My teen got very angry with me after I gave the consequence.",
-    "text": "My kind of tiener het baie kwaad geword vir my nadat ek die gevolg gegee het.",
+    "text": "My kind of tiener het baie kwaad geword vir my nadat ek die gevolg ingestel het.",
     "type": "template",
     "note": ""
   },
@@ -1075,13 +1063,13 @@
   },
   {
     "SourceText": "If your teen keeps breaking rules, you might need to spend more positive time with them. \n\nTry to keep going with your other goals  – like self-care, one-on-one time, and praise. All these skills will help your teen feel more loved and secure… and you less stressed!",
-    "text": "As jou tiener die reëls bly breek, moet jy dalk meer positiewe tyd met hulle spandeer.\n\nProbeer om voort te gaan met jou ander doelwitte – soos selfsorg, een-tot-een-tyd en lof. Al hierdie vaardighede sal jou tiener meer geliefd en veilig help voel ... en jy sal minder gestres wees!",
+    "text": "As jou tiener die reëls bly breek, moet jy dalk meer positiewe tyd met hulle spandeer.\n\nProbeer om voort te gaan met jou ander doelwitte – soos selfsorg, een-tot-een-tyd en lof. Al hierdie vaardighede sal bydra om jou tiener meer geliefd en veilig te laat voel... en jy sal minder gestres wees!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "We only created a negative consequence, not a positive consequence.",
-    "text": "Ons het net ’n negatiewe gevolg gemaak, nie ’n positiewe gevolg nie.",
+    "text": "Ons het net ’n negatiewe gevolg daargestel, nie ’n positiewe gevolg nie.",
     "type": "template",
     "note": ""
   },
@@ -1093,13 +1081,13 @@
   },
   {
     "SourceText": "My teen suggested being hit as a negative consequence.",
-    "text": "My tiener het ’n pak slae as negatiewe gevolg voorgestel.",
+    "text": "My tiener het ’n pakslae as negatiewe gevolg voorgestel.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Teens can be used to seeing hitting as the only possible consequence for breaking rules. \n\nBrainstorm some calm consequences with them that could help them understand that they have done something wrong. These will be more effective and will set positive examples!",
-    "text": "Tieners is dalk daaraan gewoond dat ’n pak slae die enigste gevolg is as die reëls gebreek word. \n\nDink saam aan ’n paar kalm gevolge wat hulle kan help verstaan dat hulle iets verkeerds gedoen het. Dit sal doeltreffender wees en sal positiewe voorbeelde stel!",
+    "text": "Tieners is dalk daaraan gewoond dat ’n pakslae die enigste gevolg is as die reëls gebreek word. \n\nDink saam aan ’n paar kalm gevolge wat hulle kan help verstaan dat hulle iets verkeerds gedoen het. Dit sal meer doeltreffend wees en sal positiewe voorbeelde stel!",
     "type": "template",
     "note": ""
   },
@@ -1111,13 +1099,13 @@
   },
   {
     "SourceText": "prepare for a possible crisis with their teens",
-    "text": "berei voor op ’n moontlike krisis met hul tieners",
+    "text": "berei vir ’n moontlike krisis met hul tieners voor",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "prepare for a possible crisis with your teen",
-    "text": "berei voor op ’n moontlike krisis met jou tiener",
+    "text": "berei vir ’n moontlike krisis met jou tiener voor",
     "type": "template",
     "note": ""
   },
@@ -1141,7 +1129,7 @@
   },
   {
     "SourceText": "The conversation made me very uncomfortable because I was reminded of a negative experience I had.",
-    "text": "Die gesprek het my baie ongemaklik laat voel want dit het my herinner aan ’n negatiewe ervaring wat ek gehad het.",
+    "text": "Die gesprek het my baie ongemaklik laat voel omdat dit my herinner het aan ’n negatiewe ervaring wat ek gehad het.",
     "type": "template",
     "note": ""
   },
@@ -1159,7 +1147,7 @@
   },
   {
     "SourceText": "This is difficult stuff to talk about. Find a relaxing time for it. We know it is much easier to not talk about these things and to hope they will never happen to us. However, learning to deal with crisis is like getting insurance; it is ALWAYS best to think about them and be prepared.",
-    "text": "Dit is moeilike dinge om oor te praat. Soek ’n ontspannende tyd daarvoor. Ons weet dit is baie makliker om nie oor hierdie dinge te praat nie en te hoop dat dit nooit met ons sal gebeur nie. Maar om te leer om krisisse te hanteer, is soos om versekering te kry; dit is ALTYD die beste om daaraan te dink en voorbereid te wees.",
+    "text": "Dit is moeilike dinge om oor te praat. Soek ’n ontspannende tyd daarvoor. Ons weet dit is baie makliker om nie oor hierdie dinge te praat nie en te hoop dat dit nooit met ons sal gebeur nie. Maar om te leer om krisisse te hanteer, is soos om versekering te bekom; dit is ALTYD die beste om daaraan te dink en voorbereid te wees.",
     "type": "template",
     "note": ""
   },
@@ -1171,7 +1159,7 @@
   },
   {
     "SourceText": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.",
-    "text": "Jou tuisoefening was om REALISTIESE, POSITIEWE en PRESIESE instruksies met jou tiener te probeer.",
+    "text": "Jou tuisoefening was om REALISTIESE, POSITIEWE en PRESIESE instruksies met jou tiener te poog.",
     "type": "template",
     "note": ""
   },
@@ -1207,13 +1195,13 @@
   },
   {
     "SourceText": "Wonderful! When we ask our teen to do something that is realistic, it is easier for them to succeed.",
-    "text": "Wonderlik! Wanneer ons ons tiener vra om iets te doen wat realisties is, is dit vir hulle makliker om dit reg te kry.",
+    "text": "Wonderlik! Wanneer ons ons tiener vra om iets te doen wat realisties is, is dit vir hulle makliker om daarin te slaag.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "When we praise them, our teens feel encouraged to listen to us again!",
-    "text": "Wanneer ons hulle prys, voel ons tieners gretig om weer na ons te luister!",
+    "text": "Wanneer ons hulle prys, voel ons tieners aangemoedig om weer na ons te luister!",
     "type": "template",
     "note": ""
   },
@@ -1225,13 +1213,13 @@
   },
   {
     "SourceText": "Did you have any challenges?",
-    "text": "Het jy enige uitdagings gehad?",
+    "text": "Het jy enige uitdagings ervaar?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "What challenge did you have?",
-    "text": "Watter uitdaging het jy gehad?",
+    "text": "Watter uitdaging het jy ervaar?",
     "type": "template",
     "note": ""
   },
@@ -1255,7 +1243,7 @@
   },
   {
     "SourceText": "I shouted at my teen when they behaved negatively, instead of giving them a positive instruction for what they should do.",
-    "text": "Ek het op my tiener geskreeu toe hulle hul negatief gedra het, in plaas van hulle ’n positiewe opdrag te gee vir wat hulle moes doen.",
+    "text": "Ek het op my tiener geskree toe hulle negatiewe gedrag getoon het, in plaas van om ’n positiewe opdrag te gee vir wat hulle moes doen.",
     "type": "template",
     "note": ""
   },
@@ -1297,13 +1285,13 @@
   },
   {
     "SourceText": "Great! That way you get your work done and have a fun time together with your teen!",
-    "text": "Wonderlik! Op dié manier kry jy jou werk gedoen en kan jy ’n lekker tyd saam met jou tiener hê!",
+    "text": "Wonderlik! Op dié manier kry jy jou werk gedoen en kan jy ’n aangename tyd saam met jou tiener hê!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Wonderful! By sharing responsibilities, you will have more time to do something fun with your teen – it’s so important!",
-    "text": "Wonderlik! Deur verantwoordelikhede te deel, sal jy meer tyd hê om iets lekkers saam met jou tiener te doen – dit is so belangrik!",
+    "text": "Wonderlik! Deur verantwoordelikhede te deel, sal jy meer tyd hê om iets aangenaam saam met jou tiener te doen – dit is so belangrik!",
     "type": "template",
     "note": ""
   },
@@ -1315,7 +1303,7 @@
   },
   {
     "SourceText": "It is difficult to come up with instructions while we are still angry. Try and find a time when you are calm to introduce a positive instruction to your teen. \n\nIn the next @global.weekly_workshop, we’ll talk more about how we can manage our emotions!  You can find more relaxation activities @data.parent_centre.relax_and_activities.location_text.",
-    "text": "Dit is moeilik om opdragte uit te dink terwyl ons nog kwaad is. Probeer om ’n tyd te vind wanneer jy kalm is om ’n positiewe opdrag aan jou tiener in te stel.\n\nIn die volgende @global.weekly_workshop sal ons meer praat oor hoe ons ons emosies kan hanteer! Jy kan meer ontspanningsaktiwiteite vind: @data.parent_centre.relax_and_activities.location_text.",
+    "text": "Dit is moeilik om opdragte uit te dink terwyl ons nog kwaad is. Probeer om ’n tyd te vind wanneer jy kalm is om ’n positiewe opdrag aan jou tiener in te stel.\n\nIn die volgende @global.weekly_workshop sal ons meer praat oor hoe ons, ons emosies kan hanteer! Jy kan meer ontspanningsaktiwiteite vind: @data.parent_centre.relax_and_activities.location_text.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.relax_and_activities.location_text"
   },
@@ -1327,7 +1315,7 @@
   },
   {
     "SourceText": "Your goal was to make a family budget and savings plan.",
-    "text": "Jou doel was om ’n gesinsbegroting en spaarplan te maak.",
+    "text": "Jou doelwit was om ’n gesinsbegroting en spaarplan te maak.",
     "type": "template",
     "note": ""
   },
@@ -1339,19 +1327,19 @@
   },
   {
     "SourceText": "make a budget together with their family",
-    "text": "maak ’n begroting saam met hul gesin",
+    "text": "stel ’n begroting op saam met hul gesin",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Did you have any challenges when making your budget together?",
-    "text": "Het julle enige uitdagings gehad toe julle saam julle begroting gemaak het?",
+    "text": "Het julle enige uitdagings gehad toe julle saam julle begroting opgestel het?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "What whas difficult for you about making your budget together?",
-    "text": "Wat was vir jou moeilik toe julle saam julle begroting gemaak het?",
+    "text": "Wat was vir jou moeilik toe julle saam julle begroting opgestel het?",
     "type": "template",
     "note": ""
   },
@@ -1489,7 +1477,7 @@
   },
   {
     "SourceText": "Well done for observing how your teen felt; keep it up!",
-    "text": "Welgedaan dat jy opgelet het hoe jou tiener voel, hou so aan!",
+    "text": "Welgedaan dat jy jou tiener se gevoelens opgelet het, hou so aan!",
     "type": "template",
     "note": ""
   },
@@ -1519,7 +1507,7 @@
   },
   {
     "SourceText": "make rules with their teens",
-    "text": "maak reëls saam met hulle tieners",
+    "text": "maak saam met hulle tieners reëls",
     "type": "template",
     "note": ""
   },
@@ -1531,7 +1519,7 @@
   },
   {
     "SourceText": "What was difficult for you about making a rule with your teen?",
-    "text": "Wat was vir jou moeilik wanneer dit kom by ’n reël saam met jou tiener maak?",
+    "text": "Wat was vir jou moeilik toe dit kom by ’n reël saam met jou tiener maak?",
     "type": "template",
     "note": ""
   },
@@ -1555,7 +1543,7 @@
   },
   {
     "SourceText": "We should always remember that children learn best from us. The more we follow the rules, the more they will follow the rules, too. \n\nYou can adjust the rule to make sure that it is realistic for everyone to follow, considering your responsibilities and your teen’s responsibilities (for example, school or work activities).",
-    "text": "Ons moet altyd onthou dat kinders die beste by ons leer. Hoe meer ons die reëls volg, hoe meer sal hulle ook die reëls volg.\n\nJy kan die reël aanpas om seker te maak dat dit realisties is vir almal om te volg, met inagneming van jou verantwoordelikhede en jou tiener se verantwoordelikhede (byvoorbeeld skool- of werksaktiwiteite).",
+    "text": "Ons moet altyd onthou dat kinders die beste by ons leer. Hoe meer ons die reëls volg, hoe meer sal hulle die reëls ook volg.\n\nJy kan die reël aanpas om seker te maak dat dit realisties is vir almal om te volg, met inagneming van jou verantwoordelikhede en dié van jou tiener (byvoorbeeld skool- of werksaktiwiteite).",
     "type": "template",
     "note": ""
   },
@@ -1579,7 +1567,7 @@
   },
   {
     "SourceText": "When we tried to set a rule, we got into an argument.",
-    "text": "Toe ons ’n reël probeer neerlê het, het ons begin stry.",
+    "text": "Toe ons ’n reël probeer neerlê het, het ons begin argumenteer.",
     "type": "template",
     "note": ""
   },
@@ -1597,7 +1585,7 @@
   },
   {
     "SourceText": "The rule needs to be specific and realistic. Make sure to have a rule that can be kept easily, like having one meal together every Sunday instead of every night. Do you need to be more flexible about the rule?",
-    "text": "Die reël moet spesifiek en realisties wees. Maak seker dat jy ’n reël het wat maklik gehou kan word, soos om elke Sondag een maaltyd saam te eet in plaas van elke aand. Moet jy meer buigsaam wees oor die reël?",
+    "text": "Die reël moet spesifiek en realisties wees. Maak seker dat jy ’n reël het wat maklik gehou kan word, soos om elke Sondag een maaltyd saam te eet in plaas van elke aand. Moet jy dalk meer buigsaam wees oor die reël?",
     "type": "template",
     "note": ""
   },
@@ -1663,7 +1651,7 @@
   },
   {
     "SourceText": "Our teenagers may know things about our communities and technology that we are not aware of. When we actively involve our teens in the mapping activity and really listen to them, they feel heard and valued, and it can be easier to come up with a plan that everyone agrees on.",
-    "text": "Ons tieners kan dinge oor ons gemeenskappe en tegnologie weet waarvan ons nie bewus is nie. Wanneer ons ons tieners aktief by die kaart-aktiwiteit betrek en regtig na hulle luister, voel hulle gehoor en gewaardeer, en dit kan makliker wees om ’n plan op te stel wat vir almal aanvaarbaar is.",
+    "text": "Ons tieners kan dinge oor ons gemeenskappe en tegnologie weet waarvan ons nie bewus is nie. Wanneer ons, ons tieners aktief by die kaart-aktiwiteit betrek en regtig na hulle luister, voel hulle gehoor en gewaardeer, en dit kan makliker wees om ’n plan op te stel wat vir almal aanvaarbaar is.",
     "type": "template",
     "note": ""
   },
@@ -1687,7 +1675,7 @@
   },
   {
     "SourceText": "That's totally fine! You can still support your teen. Ask your teen to explain the gadgets they use - you could do this during one-on-one time. This is a great opportunity to show interest in your teen’s life and to discuss potential risks together. If you are not sure which rules to set, you can always agree, with your teen, to try a new rule for two weeks and then discuss how things are going and change the rule if needed!",
-    "text": "Dit is heeltemal oukei! Jy kan nog steeds jou tiener ondersteun. Vra jou tiener om die toestelletjies wat hulle gebruik, te verduidelik – jy kan dit in een-tot-een-tyd doen. Dit is ’n wonderlike geleentheid om belangstelling in jou tiener se lewe te toon en om moontlike risiko's saam te bespreek. As jy nie seker is watter reëls jy moet neerlê nie, kan jy altyd met jou tiener ooreenkom om ’n nuwe reël vir twee weke te probeer en dan te bespreek hoe dit gaan, en indien nodig, die reël te verander!",
+    "text": "Dit is heeltemal oukei! Jy kan nog steeds jou tiener ondersteun. Vra jou tiener om die toestelletjies wat hulle gebruik, te verduidelik – jy kan dit tydens een-tot-een-tyd doen. Dit is ’n wonderlike geleentheid om belangstelling in jou tiener se lewe te toon en om moontlike risiko's saam te bespreek. As jy nie seker is watter reëls jy moet neerlê nie, kan jy altyd met jou tiener ooreenkom om ’n nuwe reël vir twee weke te probeer en dan te bespreek hoe dit gaan, en indien nodig, die reël te verander!",
     "type": "template",
     "note": ""
   },
@@ -1759,7 +1747,7 @@
   },
   {
     "SourceText": "When a problem comes up, we all get angry or stressed sometimes. Remember, when you feel angry or stressed, you can take a pause to help you stay calm and then solve the problem you are facing.",
-    "text": "Wanneer ’n probleem opduik, word ons almal soms kwaad of gestres. Onthou, as jy kwaad of gestres voel, kan jy ’n pouse neem om jou te help kalm bly en dan die probleem wat jy ondervind, op te los.",
+    "text": "Wanneer ’n probleem opduik, word ons almal soms kwaad of gespanne. Onthou, as jy kwaad of gestres voel, kan jy ’n pouse neem om jou te help kalm bly en dan die probleem wat jy ondervind, op te los.",
     "type": "template",
     "note": ""
   },
@@ -1813,7 +1801,7 @@
   },
   {
     "SourceText": "What was difficult for you about sharing how you feel with your teen?",
-    "text": "Wat het jy moeilik gevind toe jy met jou tiener praat oor hoe jy voel?",
+    "text": "Wat het jy moeilik gevind toe jy jou gevoelens met jou tiener deel?",
     "type": "template",
     "note": ""
   },
@@ -1921,13 +1909,13 @@
   },
   {
     "SourceText": "It seems you haven’t finished the @local.workshop_data.in_text_title yet. It won’t take long, and you will get valuable information. \n\nWell done for trying to be a better parent. Tomorrow, you can access a new workshop.",
-    "text": "Dit lyk asof jy nog nie die @local.workshop_data.in_text_title voltooi het nie. Dit sal nie lank neem nie, en jy sal waardevolle inligting kry. \n\nWelgedaan dat jy ’n beter ouer probeer wees. Môre sal jy toegang tot ’n nuwe werksessie kry.",
+    "text": "Dit lyk asof jy nog nie die @local.workshop_data.in_text_title voltooi het nie. Dit sal nie lank neem nie, en jy sal waardevolle inligting kry. \n\nWelgedaan dat jy ’n beter ouer probeer wees. Môre kan jy toegang tot ’n nuwe slypskool kry.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!",
-    "text": "Geluk met die voltooiing van @local.workshop_data.in_text_title. Môre sal jy toegang tot ’n nuwe werksessie kry om jou te help ontspan en nuwe vaardighede om te geniet en aan te leer!",
+    "text": "Geluk met die voltooiing van @local.workshop_data.in_text_title. Môre kan jy toegang tot ’n nuwe werksessie kry om jou te help ontspan en nuwe vaardighede om te geniet en aan te leer!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
@@ -1969,7 +1957,7 @@
   },
   {
     "SourceText": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn useful skills!",
-    "text": "Geluk met die voltooiing van @local.workshop_data.in_text_title. Môre sal jy toegang tot ’n nuwe werksessie kry om jou te help ontspan en nuttige vaardighede om te geniet en aan te leer!",
+    "text": "Geluk met die voltooiing van @local.workshop_data.in_text_title. Môre kan jy toegang tot ’n nuwe slypskool kry om jou te help ontspan en nuttige vaardighede om te geniet en aan te leer!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
@@ -2011,25 +1999,25 @@
   },
   {
     "SourceText": "Tomorrow the final @global.parent_app workshop is ready for you. \n\nTry to complete @local.workshop_data.in_text_title before starting the new workshop. That way, you can complete your set of parenting skills and decide what to do next!",
-    "text": "Môre sal die laaste @global.parent_app-werksessie vir jou gereed wees.\n\nProbeer om @local.workshop_data.in_text_title te voltooi voordat jy met die nuwe werksessie begin. Op hierdie manier kan jy jou ouerskapvaardighede voltooi en besluit wat jy volgende moet doen!",
+    "text": "Môre sal die laaste @global.parent_app-slypskool vir jou gereed wees.\n\nProbeer om @local.workshop_data.in_text_title te voltooi voordat jy met die nuwe slypskool begin. Op hierdie manier kan jy jou ouerskapvaardighede voltooi en besluit wat jy volgende moet doen!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_app\n@local.workshop_data.in_text_title"
   },
   {
     "SourceText": "Well done for completing @local.workshop_data.in_text_title. Tomorrow, you can access the final workshop to reflect on your @global.parent_app journey and on what you can do next!",
-    "text": "Geluk met die voltooiing van @local.workshop_data.in_text_title. Môre sal jy toegang tot die laaste werksessie kry om na te dink oor jou @global.parent_app-reis en wat jy volgende kan doen!",
+    "text": "Geluk met die voltooiing van @local.workshop_data.in_text_title. Môre kan jy toegang tot die laaste slypskool kry om na te dink oor jou @global.parent_app-reis en wat jy volgende kan doen!",
     "type": "template",
     "note": "The following strings should not be translated:\n@local.workshop_data.in_text_title\n@global.parent_app"
   },
   {
     "SourceText": "Hi @field.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
-    "text": "Hallo, @field.user_name! Baie geluk met die begin van @global.parent_app se Week 4.\n\nHierdie week se werksessie handel oor hoe jy jou kanse kan verhoog om jou tiener te laat doen wat jy hulle vra.",
+    "text": "Hallo, @field.user_name! Baie geluk met die begin van @global.parent_app Week 4.\n\nHierdie week se werksessie handel oor hoe jy jou kanse kan verhoog om jou tiener te laat doen wat jy hulle vra.",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.user_name\n@global.parent_app"
   },
   {
     "SourceText": "Hi @field.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
-    "text": "Hallo, @field.group_name! Baie geluk met die begin van @global.parent_app se Week 4.\n\nHierdie week se werksessie handel oor hoe julle jul kanse kan verhoog om jul tieners te laat doen wat julle hulle vra.",
+    "text": "Hallo, @field.group_name! Baie geluk met die begin van @global.parent_app Week 4.\n\nHierdie week se werksessie handel oor hoe julle jul kanse kan verhoog om jul tieners te laat doen wat van hulle gevra word.",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.group_name\n@global.parent_app"
   },
@@ -2059,37 +2047,37 @@
   },
   {
     "SourceText": "Does your teen always listen to you? If not (like the rest of us), have a look at this week's workshop to learn how giving positive instructions can help - a lot.",
-    "text": "Luister jou tiener altyd na jou? Indien nie (soos die res van ons), kyk na die werksessie van hierdie week om uit te vind hoe positiewe opdragte kan help – en baie.",
+    "text": "Luister jou tiener altyd na jou? Indien nie (soos die res van ons), kyk na die werksessie van hierdie week om uit te vind hoe positiewe opdragte kan help – baie.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Positive instructions help to see more and more good behaviour! \n\nComplete the @local.workshop_data.in_text_title to get some ideas on how this could work in your family.",
-    "text": "Positiewe opdragte help om meer en meer goeie gedrag te sien!\n\nVoltooi die @local.workshop_data.in_text_title om ’n paar idees te kry oor hoe dit in jou gesin kan werk.",
+    "text": "Positiewe opdragte help om al hoe meer goeie gedrag te sien!\n\nVoltooi die @local.workshop_data.in_text_title om ’n paar idees te kry oor hoe dit in jou gesin kan werk.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "As usual, you can access a new workshop tomorrow. It will help to complete the previous workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
-    "text": "Soos gewoonlik kry jy môre toegang tot ’n nuwe werksessie. Dit sal help as jy die vorige werksessie voor die tyd voltooi.\n\nSommige ouers gebruik die app terwyl hulle werk toe ry. Waarom gebruik jy die app nie as jy ’n paar minute het nie?\n\nWeereens baie dankie vir jou gebruik van @global.parent_app.",
+    "text": "Soos gewoonlik kry jy môre toegang tot ’n nuwe slypskool. Dit sal help as jy die vorige slypskool voor die tyd voltooi.\n\nSommige ouers gebruik die toep terwyl hulle werk toe ry. Waarom gebruik jy die toep nie as jy ’n paar minute het nie?\n\nWeereens baie dankie vir jou gebruik van @global.parent_app.",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop is ready for you: you will see a big difference by making small changes!",
-    "text": "Veels geluk met jou voltooiing van @local.workshop_data.in_text_title.\n\nMôre staan ’n nuwe werksessie vir jou gereed: jy sal ’n groot verskil sien deur klein veranderinge aan te bring!",
+    "text": "Veels geluk met jou voltooiing van @local.workshop_data.in_text_title.\n\nMôre staan ’n nuwe slypskool vir jou gereed: jy sal ’n groot verskil sien deur klein veranderinge aan te bring!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Hi @field.user_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
-    "text": "Hallo, @field.user_name! Jy begin jou tweede maand met @global.parent_app. Ongelooflik!\n\nByna elke gesin sukkel met geldkwessies, daarom bied die werksessie van hierdie week jou ’n hulpmiddel wat jou kan help om jou uitgawes te beplan, sodat jy genoeg geld kan hê om deur die maand te kom.",
+    "text": "Hallo, @field.user_name! Jy begin jou tweede maand met @global.parent_app. Ongelooflik!\n\nByna elke gesin sukkel met geldkwessies, daarom bied die slypskool van hierdie week vir jou ’n hulpmiddel wat jou kan help om jou uitgawes te beplan, sodat jy genoeg geld kan hê om deur die maand te kom.",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.user_name\n@global.parent_app"
   },
   {
     "SourceText": "Hi @field.group_name! You are starting your second month of using @global.parent_app. Amazing! \n\nAlmost every family struggles with money issues, therefore, this week’s workshop will give you a tool that will help you to plan your expenses so you can have enough money to get through the month.",
-    "text": "Hallo, @field.group_name! Julle begin jul tweede maand met @global.parent_app. Ongelooflik!\n\nByna elke gesin sukkel met geldkwessies, daarom bied die werksessie van hierdie week julle ’n hulpmiddel wat julle kan help om jul uitgawes te beplan, sodat julle genoeg geld kan hê om deur die maand te kom.",
+    "text": "Hallo, @field.group_name! Julle begin jul tweede maand met @global.parent_app. Ongelooflik!\n\nByna elke gesin sukkel met geldkwessies, daarom bied die slypskool van hierdie week vir julle ’n hulpmiddel wat julle kan help om jul uitgawes te beplan, sodat julle genoeg geld kan hê om deur die maand te kom.",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.group_name\n@global.parent_app"
   },
@@ -2113,7 +2101,7 @@
   },
   {
     "SourceText": "Involving your family in how you spend your money can take away a lot of stress and arguments. \n\nComplete the @local.workshop_data.in_text_title to help your family with budgeting and saving. It's actually easy - you will see!",
-    "text": "Deur jou gesin te betrek by die manier waarop jy jou geld spandeer, kan baie stres en stryery wegneem.\n\nVoltooi die @local.workshop_data.in_text_title om jou gesin met begroting en besparing te help. Dit is eintlik maklik – jy sal sien!",
+    "text": "Deur jou gesin te betrek by die manier waarop jy jou geld spandeer, kan baie spanning en stryery weggeneem word.\n\nVoltooi die @local.workshop_data.in_text_title om jou gesin met begroting en besparing te help. Dit is eintlik maklik – jy sal sien!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
@@ -2125,7 +2113,7 @@
   },
   {
     "SourceText": "Great that you completed @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you set family rules that work.",
-    "text": "Welgedaan met jou voltooiing van @local.workshop_data.in_text_title. Môre word ’n nuwe werksessie ontsluit om jou te help om gesinsreëls wat werk, op te stel.",
+    "text": "Welgedaan met jou voltooiing van @local.workshop_data.in_text_title. Môre word ’n nuwe slypskool ontsluit om jou te help om gesinsreëls wat werk, op te stel.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
@@ -2173,25 +2161,25 @@
   },
   {
     "SourceText": "Hi awesome parent, a new workshop awaits you tomorrow. It seems like you haven’t finished the @local.workshop_data.in_text_title yet. It’s really a short one (promise!) – you can even complete it while waiting for dinner to cook. Why don’t you go through it when you have a few minutes? \n\nThank you again for using @global.parent_app.",
-    "text": "Hallo wonderlike ouer, môre wag ’n nuwe werksessie op jou. Dit lyk asof jy nog nie die @local.workshop_data.in_text_title voltooi het nie. Dis regtig ’n korte (ons belowe!) – jy kan dit selfs voltooi terwyl jy wag vir aandete om te gaar te word. Waarom gaan jy nie daardeur wanneer jy ’n paar minute het nie?\n\nWeereens baie dankie vir jou gebruik van @global.parent_app.",
+    "text": "Hallo wonderlike ouer, môre wag ’n nuwe slypskool op jou. Dit lyk asof jy nog nie die @local.workshop_data.in_text_title voltooi het nie. Dis regtig ’n kort een (ons belowe!) – jy kan dit selfs voltooi terwyl jy wag vir aandete om gaar te word. Hoekom gaan jy nie daardeur wanneer jy ’n paar minute het nie?\n\nWeereens baie dankie vir jou gebruik van @global.parent_app.",
     "type": "template",
     "note": "The following strings should not be translated:\n@local.workshop_data.in_text_title\n@global.parent_app"
   },
   {
     "SourceText": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked. Try it - you will see the difference in your teen’s behaviour.",
-    "text": "Wonderlik vir jou voltooiing van die @local.workshop_data.in_text_title.. Môre word ’n nuwe werksessie ontsluit. Probeer dit – jy sal die verskil in jou tiener se gedrag sien.",
+    "text": "Dit is wonderlik dat jy die @local.workshop_data.in_text_title.voltooi het. Môre word ’n nuwe slypskool ontsluit. Probeer dit – jy sal die verskil in jou tiener se gedrag sien.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Hi @field.user_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
-    "text": "Hallo, @field.user_name! Nuwe week, nuwe werksessie! Leer hoe jy huisreëls kan opstel op ’n manier wat die kans vergroot dat jou tiener daarby sal bly.",
+    "text": "Hallo, @field.user_name! Nuwe week, nuwe werksessie! Leer hoe jy huisreëls kan opstel op ’n manier wat die kanse sal vergroot dat jou tiener daarby sal bly.",
     "type": "template",
     "note": "The string @field.user_name should not be translated."
   },
   {
     "SourceText": "Hi @field.group_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
-    "text": "Hallo, @field.group_name! Nuwe week, nuwe werksessie! Leer hoe julle huisreëls kan opstel op ’n manier wat die kans vergroot dat jul tieners daarby sal bly.",
+    "text": "Hallo, @field.group_name! Nuwe week, nuwe werksessie! Leer hoe julle huisreëls kan opstel op ’n manier wat die kanse sal vergroot dat jul tieners daarby sal bly.",
     "type": "template",
     "note": "The string @field.group_name should not be translated."
   },
@@ -2209,7 +2197,7 @@
   },
   {
     "SourceText": "You are close to gaining another parenting tool! Complete the @local.workshop_data.in_text_title, set ONE simple and realistic rule with your teen, and see things change!",
-    "text": "Jy is op die punt om nog ’n ouerskaphulpmiddel te kry! Voltooi die @local.workshop_data.in_text_title, stel EEN eenvoudige en realistiese reël saam met jou tiener op, en kyk hoe dinge verander!",
+    "text": "Jy is op die punt om nog ’n ouerskaphulpmiddel te verkry! Voltooi die @local.workshop_data.in_text_title, stel EEN eenvoudige en realistiese reël saam met jou tiener op, en kyk hoe dinge verander!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
@@ -2221,49 +2209,49 @@
   },
   {
     "SourceText": "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. It won’t take long and will help your teen to follow rules better!",
-    "text": "Môre staan ’n splinternuwe @global.parent_app-werksessie vir jou gereed.\n\nProbeer die @local.workshop_data.in_text_title voltooi voordat jy met die nuwe werksessie begin. Dit sal nie lank neem nie en dit sal jou tiener help om die reëls beter te volg!",
+    "text": "Môre staan ’n splinternuwe @global.parent_app-slypskool vir jou gereed.\n\nProbeer die @local.workshop_data.in_text_title voltooi voordat jy met die nuwe slypskool begin. Dit sal nie lank neem nie en dit sal jou tiener help om die reëls beter te volg!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_app\n@local.workshop_data.in_text_title"
   },
   {
     "SourceText": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop will help you know what to do when teens show bad (or good) behaviour!",
-    "text": "Baie geluk met jou voltooiing van die @local.workshop_data.in_text_title.\n\nMôre sal ’n nuwe werksessie jou help om te weet wat jy moet doen as tieners slegte (of goeie) gedrag toon!",
+    "text": "Baie geluk met jou voltooiing van die @local.workshop_data.in_text_title.\n\nMôre sal ’n nuwe slypskool jou help om te weet wat jy moet doen as tieners slegte (of goeie) gedrag toon!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Hi @field.user_name! You are nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
-    "text": "Hallo,@field.user_name! Jy is amper aan die einde van jou @global.parent_app-werksessies! Dankie vir jou langdurige toewyding.\n\nHierdie week se werksessie handel oor die beskerming van ons tieners, aanlyn sowel as in die gemeenskap. Geniet dit!",
+    "text": "Hallo,@field.user_name! Jy is amper aan die einde van jou @global.parent_app-werksessies! Dankie vir jou volgehoue toewyding.\n\nHierdie week se werksessie handel oor die beskerming van ons tieners, aanlyn sowel as in die gemeenskap. Geniet dit!",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.user_name\n@global.parent_app"
   },
   {
     "SourceText": "Hi @field.group_name! You are all nearly at the end of your @global.parent_app workshops! Thank you for your long-lasting commitment. \n\nThis week’s workshop is about keeping our teens safe, both online and in the community. Enjoy!",
-    "text": "Hallo, @field.group_name! Julle almal is amper aan die einde van jul @global.parent_app-werksessies! Dankie vir julle langdurige toewyding.\n\nHierdie week se werksessie handel oor die beskerming van ons tieners, aanlyn sowel as in die gemeenskap. Geniet dit!",
+    "text": "Hallo, @field.group_name! Julle almal is amper aan die einde van jul @global.parent_app-werksessies! Dankie vir julle volgehoue toewyding.\n\nHierdie week se werksessie handel oor die beskerming van ons tieners, aanlyn sowel as in die gemeenskap. Geniet dit!",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.group_name\n@global.parent_app"
   },
   {
     "SourceText": "This has been the hardest of times to be a parent. You should be so proud of yourself for everything you have done. \n\nThink about every time you have made your teen smile and all the care you have given them. Parents are incredible, and you are incredible!",
-    "text": "Dis die moeilikste tye om ’n ouer te wees. Jy moet so trots op jouself wees oor alles wat jy gedoen het.\n\nDink aan elke keer dat jy jou tiener laat glimlag het en al die sorg wat jy hulle gegee het. Ouers is ongelooflik, en jy is ongelooflik!",
+    "text": "Hierdie is van die moeilikste tye om ’n ouer te wees. Jy moet so trots op jouself wees oor alles wat jy gedoen het.\n\nDink aan elke keer dat jy jou tiener laat glimlag het en al die sorg wat jy hulle gegee het. Ouers is ongelooflik, en jy is ongelooflik!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "You have have gained so many parenting skills already over the past weeks!\n\nComplete the next workshop to gain another helpful skill.",
-    "text": "Jy het die afgelope paar weke soveel ouerskapvaardighede aangeleer!\n\nVoltooi die volgende werksessie om nog ’n nuttige vaardigheid aan te leer.",
+    "text": "Jy het die afgelope paar weke reeds soveel ouerskapvaardighede aangeleer!\n\nVoltooi die volgende slypskool om nog ’n nuttige vaardigheid aan te leer.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "To keep your teen safe, it helps to chat together about your community and their online experiences. \n\nComplete the @local.workshop_data.in_text_title and see how you can do this!",
-    "text": "Om jou tiener veilig te hou, help dit om saam te gesels oor julle gemeenskap en hul aanlyn ervarings.\n\nVoltooi die @local.workshop_data.in_text_title en kyk hoe julle dit kan doen!",
+    "text": "Om jou tiener veilig te hou, dra dit by om saam te gesels oor julle gemeenskap en hul aanlyn ervarings.\n\nVoltooi die @local.workshop_data.in_text_title en kyk hoe julle dit kan doen!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Have you talked with your teen about safety measures?",
-    "text": "Het jy al met jou tiener oor veiligheidsmaatreëls gepraat?",
+    "text": "Het jy al met jou tiener oor veiligheidsmaatreëls gesels?",
     "type": "template",
     "note": ""
   },
@@ -2287,13 +2275,13 @@
   },
   {
     "SourceText": "Start a brand new @global.parent_app workshop tomorrow. You will see the good results!",
-    "text": "Begin môre met ’n splinternuwe @global.parent_app-werksessie. Jy sal die goeie resultate sien!",
+    "text": "Begin môre met ’n splinternuwe @global.parent_app-slypskool. Jy sal die goeie resultate sien!",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Have you told your @global.parent_app partners about the app yet? From tomorrow, you can start doing your @global.parent_app workshops together!",
-    "text": "Het jy jou @global.parent_app-maats al van die app vertel? Vanaf môre kan julle jul @global.parent_app-werksessies saam begin doen!",
+    "text": "Het jy jou @global.parent_app-maats al van die toep vertel? Vanaf môre kan julle jul @global.parent_app-slypskool saam begin doen!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_app\n@global.parent_app"
   },
@@ -2317,7 +2305,7 @@
   },
   {
     "SourceText": "With teenagers, and in life, unexpected problems come up and we have to deal with them. \n\nStart the next workshop to learn how to successfully address these problems.",
-    "text": "Met tieners, en in die lewe, duik onverwagte probleme op en ons moet dit hanteer.\n\nBegin met die volgende werksessie om te leer hoe jy hierdie probleme suksesvol kan hanteer.",
+    "text": "Met tieners, en die lewe, duik onverwagte probleme op en ons moet dit hanteer.\n\nBegin met die volgende werksessie om te leer hoe jy hierdie probleme suksesvol kan hanteer.",
     "type": "template",
     "note": ""
   },
@@ -2335,31 +2323,31 @@
   },
   {
     "SourceText": "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nTry to complete the @local.workshop_data.in_text_title before starting the new workshop. Knowing how to solve problems together will help in many situations!",
-    "text": "Môre staan ’n splinternuwe @global.parent_app-werksessie vir jou gereed.\n\nProbeer die @local.workshop_data.in_text_title voltooi voordat jy met die nuwe werksessie begin. As julle weet hoe om probleme saam op te los, sal baie situasies makliker wees!",
+    "text": "Môre staan ’n splinternuwe @global.parent_app-slypskool vir jou gereed.\n\nProbeer die @local.workshop_data.in_text_title voltooi voordat jy met die nuwe slypskool begin. As julle weet hoe om probleme saam op te los, sal baie situasies makliker wees!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_app\n@local.workshop_data.in_text_title"
   },
   {
     "SourceText": "Great that you completed the @local.workshop_data.in_text_title. Tomorrow, a new workshop is unlocked to help you keep your teen safe.",
-    "text": "Wonderlik vir jou voltooiing van @local.workshop_data.in_text_title. Môre word ’n nuwe werksessie ontsluit om jou te help om jou tiener veilig te hou.",
+    "text": "Dit is wonderlik dat jy die @local.workshop_data.in_text_title voltooi het. Môre word ’n nuwe slypskool ontsluit om jou te help om jou tiener veilig te hou.",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Hi @field.user_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips on how we can stay calm and in control when our teens are driving us crazy.",
-    "text": "Hallo, @field.user_name! Baie geluk met die begin van@global.parent_app se Week 5.\n\n’n Nuwe ouerskapwerksessie wag op jou met wenke oor hoe ons kalm en in beheer kan bly wanneer ons tieners ons mal maak.",
+    "text": "Hallo, @field.user_name! Baie geluk met die begin van@global.parent_app Week 5.\n\n’n Nuwe ouerskapwerksessie wag op jou met wenke oor hoe om kalm en in beheer te kan bly wanneer ons tieners ons mal maak.",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.user_name\n@global.parent_app"
   },
   {
     "SourceText": "Hi @field.group_name! Congratulations for starting @global.parent_app week 5.\n\nA new parenting workshop awaits you with tips how we can stay calm and in control when our teens are driving us crazy.",
-    "text": "Hallo, @field.group_name! Baie geluk met die begin van@global.parent_app se Week 5.\n\n’n Nuwe ouerskapwerksessie wag op julle met wenke oor hoe ons kalm en in beheer kan bly wanneer ons tieners ons mal maak.",
+    "text": "Hallo, @field.group_name! Baie geluk met die begin van@global.parent_app Week 5.\n\n’n Nuwe ouerskapwerksessie wag op julle met wenke oor hoe om kalm en in beheer te kan bly wanneer ons tieners ons mal maak.",
     "type": "template",
     "note": "The following strings should not be translated:\n@field.group_name\n@global.parent_app"
   },
   {
     "SourceText": "We have a new workshop available for you about managing anger and stress. It will help you take better care of yourself.",
-    "text": "Ons het ’n nuwe werksessie vir jou beskikbaar oor die hantering van woede en stres. Dit sal jou help om beter vir jouself te sorg.",
+    "text": "Ons het ’n nuwe werksessie vir jou beskikbaar oor die hantering van woede en stres. Dit sal jou help om beter na jouself om te sien.",
     "type": "template",
     "note": ""
   },
@@ -2389,19 +2377,19 @@
   },
   {
     "SourceText": "Tomorrow a brand new @global.parent_app workshop is ready for you. \n\nBy completing the @local.workshop_data.in_text_title first, you lay a really important foundation: If you feel good, your family will do better too!",
-    "text": "Môre is ’n splinternuwe @global.parent_app-werksessie vir jou gereed.\n\nDeur eers die @local.workshop_data.in_text_title te voltooi, lê jy ’n baie belangrike grondslag: as jy goed voel, sal jou gesin ook beter doen!",
+    "text": "Môre is ’n splinternuwe @global.parent_app-slypskool vir jou gereed.\n\nDeur eers die @local.workshop_data.in_text_title te voltooi, lê jy ’n baie belangrike grondslag: as jy goed voel, sal jou gesin ook beter doen!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_app\n@local.workshop_data.in_text_title"
   },
   {
     "SourceText": "Well done for completing the @local.workshop_data.in_text_title. Tomorrow, you can access a new workshop to help you relax and build valuable skills!",
-    "text": "Geluk met die voltooiing van die @local.workshop_data.in_text_title. Môre sal jy toegang tot ’n nuwe werksessie kry om jou te help ontspan en nuttige vaardighede te bou!",
+    "text": "Geluk met die voltooiing van die @local.workshop_data.in_text_title. Môre sal jy toegang tot ’n nuwe slypskool kry om jou te help ontspan en nuttige vaardighede te bou!",
     "type": "template",
     "note": "The string @local.workshop_data.in_text_title should not be translated."
   },
   {
     "SourceText": "Finish current workshop",
-    "text": "Voltooi huidige werksessie",
+    "text": "Voltooi huidige slypskool",
     "type": "template",
     "note": ""
   },
@@ -2467,7 +2455,7 @@
   },
   {
     "SourceText": "Tap yourself on the shoulder. You deserve this.",
-    "text": "Tik jouself op die skouer. Jy verdien dit.",
+    "text": "Klop jouself op die skouer. Jy verdien dit.",
     "type": "template",
     "note": ""
   },
@@ -2869,7 +2857,7 @@
   },
   {
     "SourceText": "You are showing such commitment to being a parent and to caring for yourself. \n\nYou are fantastic.",
-    "text": "Jy wys regtig dat jy toegewyd daaraan is om ’n ouer te wees en om vir jouself te sorg.\n\nJy is fantasties.",
+    "text": "Jy wys regtig hoe toegewyd jy is om ’n ouer te wees en om vir jouself te sorg.\n\nJy is fantasties.",
     "type": "template",
     "note": ""
   },
@@ -2947,7 +2935,7 @@
   },
   {
     "SourceText": "You and your teenager can plan a guestlist of the famous people you’d most like to invite to your party. You can each have five people – they can be from the past or from the present time. Who would you invite? And would your guests get on well together?",
-    "text": "Jy en jou tiener kan ’n gastelys beplan van die beroemde mense wat jy die graagste na julle partytjie wil nooi. Elkeen kan vyf mense hê – dit kan uit die verlede of uit die huidige tyd wees. Wie sou jy nooi? En sal julle gaste goed met mekaar oor die weg kom?",
+    "text": "Jy en jou tiener kan ’n gastelys beplan van die beroemde mense wat jy die graagste na julle partytjie wil nooi. Elkeen kan vyf mense hê – hulle kan uit die verlede of uit die huidige tyd wees. Wie sou jy nooi? En sal julle gaste goed met mekaar oor die weg kom?",
     "type": "template",
     "note": ""
   },
@@ -2959,7 +2947,7 @@
   },
   {
     "SourceText": "Tell your teenager something about when you were a teenager yourself. What things didn’t exist then? Phones with internet? What did you do for fun? What did you worry about? Don’t worry if they don’t tell you something in return – what’s important is that they listen and remember. Sometimes our teenagers forget that their parents are people too!",
-    "text": "Vertel jou tiener iets van toe jy self ’n tiener was. Watter dinge het toe nog nie bestaan nie? Fone met internet? Wat het jy vir die pret gedoen? Waaroor was jy bekommerd? Moenie bekommerd wees as hulle jou niks terugvertel nie – wat belangrik is, is dat hulle luister en onthou. Soms vergeet ons tieners dat hul ouers ook mense is!",
+    "text": "Vertel jou tiener iets van jouself toe jy ’n tiener was. Watter dinge het toe nog nie bestaan nie? Fone met internet? Wat het jy vir die pret gedoen? Waaroor was jy bekommerd? Moenie bekommerd wees as hulle jou niks terugvertel nie – wat belangrik is, is dat hulle luister en onthou. Soms vergeet ons tieners dat hul ouers ook mense is!",
     "type": "template",
     "note": ""
   },
@@ -2995,19 +2983,19 @@
   },
   {
     "SourceText": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday.",
-    "text": "* Die eerste persoon sê: “Saterdag gaan ek... (bv. na die park)”\n* Tweede persoon voeg by tot die eerste persoon: “Saterdag gaan ek na die park en ...” (bv. by my beste vriend kuier).\n* Elke persoon voeg by tot die vorige en probeer dink aan al die lekker dinge om Saterdag te doen.",
+    "text": "* Die eerste persoon sê: “Saterdag gaan ek... (bv. na die park)”\n* Tweede persoon voeg by tot die eerste persoon: “Saterdag gaan ek na die park en...” (bv. by my beste vriend kuier).\n* Elke persoon voeg by tot die vorige en probeer dink aan al die prettige dinge om Saterdag te doen.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "* Start the story with “Once upon a time there was a…”\n* Let your teen make up the next sentence.\n* Then you make up a sentence.\n* Take turns until you have a wonderful new story.\n* Make sure to end the story on a positive note.\n* Ask your teen what was their favourite part of the story!",
-    "text": "* Begin die storie met “Eendag was daar ...”\n* Laat jou tiener die volgende sin opmaak.\n* Dan maak jy ’n sin op.\n* Maak beurte totdat julle ’n wonderlike nuwe storie het.\n* Maak seker dat julle die storie op ’n positiewe noot afsluit.\n* Vra jou tiener wat sy/haar gunstelingdeel van die storie was!",
+    "text": "* Begin die storie met “Eendag was daar...”\n* Laat jou tiener die volgende sin opmaak.\n* Dan maak jy ’n sin op.\n* Maak beurte totdat julle ’n wonderlike nuwe storie het.\n* Maak seker dat julle die storie op ’n positiewe noot afsluit.\n* Vra jou tiener wat sy/haar gunsteling deel van die storie was!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "* Ask your teen what kind of meal they would like to eat. \n* Prepare it together!    \n* Let them have a turn at being the head chef – they lead, and you follow their instructions. \n* You can even help them to make a budget for the ingredients! \n\nDon’t think it will work? Ask your teens what THEY would like for you and them to do together. Let them lead. Relax. Have fun.",
-    "text": "* Vra jou tiener watter ete hy/sy wil eet.\n* Berei dit saam voor!\n* Gee jou tiener ’n beurt om die hoofkok te wees – hy/sy neem die leiding en jy volg sy/haar instruksies.\n* Jy kan hulle selfs help om ’n begroting vir die bestanddele te maak!\n\nDink jy dat dit nie sal werk nie? Vra jou tieners wat hulle wil hê dat jy en hulle saam moet doen. Laat hulle die leiding neem. Ontspan. Geniet dit.",
+    "text": "* Vra jou tiener watter ete hy/sy wil eet.\n* Berei dit saam voor!\n* Gee jou tiener ’n beurt om die hoofkok te wees – hy/sy neem die leiding en jy volg sy/haar instruksies.\n* Jy kan hulle selfs help om ’n begroting vir die bestanddele op te stel!\n\nDink jy dat dit nie sal werk nie? Vra jou tieners wat hulle wil hê dat jy en hulle saam moet doen. Laat hulle die leiding neem. Ontspan. Geniet dit.",
     "type": "template",
     "note": ""
   },
@@ -3037,7 +3025,7 @@
   },
   {
     "SourceText": "* Come up with three types of exercise together. For example, walking, jogging, soccer or dancing.\n* Pick one together and try it out. \n* If you both like it, decide how often you are going to do it. Once or twice a week? Every morning?\n* Together think of ways to make it even more fun. Can you jog to a certain point? Take turns in being the coach? Motivate each other with a small free reward?",
-    "text": "* Dink saam aan drie soorte oefeninge. Byvoorbeeld, stap, draf, sokker speel of dans.\n* Kies een saam en probeer dit.\n* As julle albei daarvan hou, besluit hoe gereeld julle dit gaan doen. Een of twee keer per week? Elke oggend?\n* Dink saam aan maniere om dit nog lekkerder te maak. Kan julle tot by ’n sekere punt draf? Beurte maak om die afrigter te wees? Mekaar motiveer met ’n klein gratis beloning?",
+    "text": "* Dink saam aan drie soorte oefeninge. Byvoorbeeld, stap, draf, sokker speel of dans.\n* Kies een saam en probeer dit.\n* As julle albei daarvan hou, besluit hoe gereeld julle dit gaan doen. Een of twee keer per week? Elke oggend?\n* Dink saam aan maniere om dit nog prettiger te maak. Kan julle tot by ’n sekere punt draf? Beurte maak om die afrigter te wees? Mekaar motiveer met ’n klein gratis beloning?",
     "type": "template",
     "note": ""
   },
@@ -3049,7 +3037,7 @@
   },
   {
     "SourceText": "This game is best with at least 3 people.\n* Start in a circle and pass one “snap” around the circle (or a “clap” if you cannot snap).\n* You “snap” once to throw the “snap”, and once to catch it. Look at the person you are throwing it to.  \n* The direction (up, down, straight, curved, rolling the ground) and force (hard, soft, medium) that you throw the snap should affect how the person catches it.  \n* You can bounce the “snap”, throw it in the air, and catch it a few times before passing it.  \n* When everyone gets good at this, you can start moving around the room, still passing the “snap”.  \n* Can you throw under the leg? Behind the back? Through your head? Intercept a pass? Have fun with the “snap”!",
-    "text": "Hierdie speletjie is die beste met ten minste 3 mense.\n* Begin in ’n kring en gee een “klap” met die vingers in die kring om (of klap hande as jy nie jou vingers kan klap nie).\n* Jy “klap” een keer om die “klap” te gooi, en een keer om dit te vang. Kyk na die persoon na wie jy dit gooi.\n* Die rigting (op, af, reguit, geboë, oor die grond) en krag (hard, sag, gemiddeld) waarmee jy die klap gooi, moet ’n invloed hê op hoe die persoon dit vang.\n* Jy kan die “klap” laat hop, dit in die lug gooi en dit ’n paar keer vang voordat jy dit aanstuur.\n* As almal goed daarmee word, kan julle in die kamer begin rondbeweeg en steeds die “klap” aanstuur.\n* Kan jy onder die been deur gooi? Agter die rug om? Deur jou kop? ’n Aangee onderskep? Geniet dit om te “klap”!",
+    "text": "Hierdie speletjie is die beste met ten minste 3 mense.\n* Begin in ’n kring en gee een “klap” met die vingers in die kring om (of klap hande as jy nie jou vingers kan klap nie).\n* Jy “klap” een keer om die “klap” te gooi, en een keer om dit te vang. Kyk na die persoon na wie jy dit gooi.\n* Die rigting (op, af, reguit, geboë, oor die grond) en krag (hard, sag, gemiddeld) waarmee jy die klap gooi, moet ’n invloed hê op hoe die persoon dit vang.\n* Jy kan die “klap” laat hop, dit in die lug gooi en dit ’n paar keer vang voordat jy dit aanstuur.\n* As almal daarmee vaardig raak, kan julle in die kamer begin rondbeweeg en steeds die “klap” aanstuur.\n* Kan jy onder die been deur gooi? Agter die rug om? Deur jou kop? ’n Aangee onderskep? Geniet dit om te “klap”!",
     "type": "template",
     "note": ""
   },
@@ -3061,7 +3049,7 @@
   },
   {
     "SourceText": "Take turns being the “leader”. Say the intro sentences to activate everyone. Then the “leader” gives an instruction and everyone does the activity as fast as possible:\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Touch something red.” \n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Jump up and down ten times.”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “There’s a fire on the mountain!”        \n* Together: “Run, run, run!”\n* Leader: “Put the shoes in the shoe rack.”",
-    "text": "Maak beurte om die “leier” te wees. Sê die inleidingsinne om almal te aktiveer. Dan gee die “leier” ’n opdrag en almal doen die aktiwiteit so vinnig as moontlik:\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Raak iets roois aan.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Spring tien keer op en af.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Sit die skoene op die skoenrak.”",
+    "text": "Maak beurte om die “leier” te wees. Sê die inleidingsinne om almal te aktiveer. Dan gee die “leier” ’n opdrag en almal doen die aktiwiteit so vinnig as moontlik:\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Raak iets rooi van kleur.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Spring tien keer op en af.”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Daar is ’n brand op die berg!”\n* Saam: “Hardloop, hardloop, hardloop!”\n* Leier: “Sit die skoene op die skoenrak.”",
     "type": "template",
     "note": ""
   },
@@ -3127,7 +3115,7 @@
   },
   {
     "SourceText": "Close your eyes.\n\nListen to your breath as it goes in and out five times.\n\nNotice how you feel.",
-    "text": "Maak jou oë toe.\n\nLuister na jou asem soos dit vyf keer in en uit gaan.\n\nLet op hoe jy voel.",
+    "text": "Maak jou oë toe.\n\nLuister na jou asem soos wat dit vyf keer in en uit gaan.\n\nLet op hoe jy voel.",
     "type": "template",
     "note": ""
   },
@@ -3157,7 +3145,7 @@
   },
   {
     "SourceText": "Close your eyes.  \n\nTake a moment to stop what you are doing and connect with your breath.   \n\nWhat is one thing you can be grateful for right now?  \nWhat is one thing that brings you happiness?  \nWhat is one thing that you love?  \n\nThey don't have to be big. Sometimes the small things in life count the most!",
-    "text": "Maak jou oë toe.\n\nNeem ’n rukkie om te stop waarmee jy besig is en dink aan jou asem.\n\nWat is een ding waarvoor jy op die oomblik dankbaar kan wees?\nWat is een ding wat jou geluk bring?\nWat is een ding waarvan jy hou?\n\nDit hoef nie groot te wees nie. Soms tel die klein dingetjies in die lewe die meeste!",
+    "text": "Maak jou oë toe.\n\nNeem ’n rukkie om te stop waarmee jy besig is en dink aan jou asem.\n\nWat is een ding waarvoor jy op die oomblik dankbaar kan wees?\nWat is een ding wat jou geluk bring?\nWat is een ding waarvan jy hou?\n\nHulle hoef nie groot dinge te wees nie. Soms tel die klein dingetjies in die lewe die meeste!",
     "type": "template",
     "note": ""
   },
@@ -3199,7 +3187,7 @@
   },
   {
     "SourceText": "Here is something fun to help you let go of stress:   \n\nChoose a song that reflects what you need in this moment. Do you need a gentle song to soothe your tired soul or an upbeat song to help you shake some stress out?   \n\nMake a space and move your body to the music. Remember to breathe while you move. Let your breath and the movement go together.",
-    "text": "Hier is iets lekkers om jou te help om stres los te laat:\n\nKies ’n liedjie wat weerspieël wat jy op hierdie oomblik nodig het. Het jy ’n sagte liedjie nodig om jou moeë siel te kalmeer, of ’n opgewekte liedjie om jou te help om ’n bietjie spanning af te skud?\n\nMaak ’n ruimte en beweeg jou liggaam op maat van die musiek. Onthou om asem te haal terwyl jy beweeg. Laat jou asem en die beweging saamgaan.",
+    "text": "Hier is iets lekkers om jou te help om stres te verlig:\n\nKies ’n liedjie wat weerspieël wat jy op hierdie oomblik nodig het. Het jy ’n sagte liedjie nodig om jou moeë siel te kalmeer, of ’n opgewekte liedjie om jou te help om ’n bietjie spanning af te skud?\n\nMaak ’n ruimte en beweeg jou liggaam op maat van die musiek. Onthou om asem te haal terwyl jy beweeg. Laat jou asem en die beweging saamgaan.",
     "type": "template",
     "note": ""
   },
@@ -3265,13 +3253,13 @@
   },
   {
     "SourceText": "Well done for Taking a Pause. You can do this anytime you are feeling stressed. It gives you a chance to be calmer. Even a few deep breaths or connecting with the ground beneath you can make a difference. You can also Take a Pause with your Children!",
-    "text": "Dit is goed dat jy ’n pouse geneem het. Jy kan dit altyd doen as jy gestres voel. Dit gee jou ’n kans om rustiger te word. Selfs om ’n paar keer diep asem te haal of om met die grond onder jou ’n verbinding te maak, kan ’n verskil maak. Jy kan ook ’n pouse saam met jou kinders neem!",
+    "text": "Dit is goed dat jy ’n pouse geneem het. Jy kan dit altyd doen wanneer jy stres ervaar. Dit gee jou ’n kans om rustiger te word. Selfs om ’n paar keer diep asem te haal of om met die grond onder jou ’n verbinding te maak, kan ’n verskil maak. Jy kan ook ’n pouse saam met jou kinders neem!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Stand up and stretch your arms up to the sky. Push away any clouds and let the sun shine down on you. Stretch to both sides. Stretch to the front and to the back.\n\nLet your hand hang by your side. Squeeze your shoulders tightly up to your ears as you breathe in, scrunch your eyes, and hold your breath. Release your shoulders as you relax your body.\n\nRelax your arms and let your arms to swing sideways, and turn your upper body. Your arms should gently hit your back as you twist from side to side.\n\nPlace one foot in front of the other and make small circles from ankles, remember to turn to both sides. Do each foot with four circles in each direction.\n\nNow shake your whole body as fast as you can. Shake it up high! Shake it down low! Shake it all around!\n\nClose your eyes and raise your arms slowly above your head as you breathe in. Lower your arms slowly to your side as you breathe out.\n\nTake a moment to reflect on your experience.",
-    "text": "Staan op en strek jou arms in die lug. Druk enige wolke weg en laat die son op jou skyn. Strek na albei kante. Strek vorentoe en agtertoe.\n\nLaat jou hand aan jou sy hang. Druk jou skouers styf tot by jou ore terwyl jy inasem, knyp jou oë styf toe en hou jou asem in. Laat jou skouers los terwyl jy jou liggaam ontspan.\n\nOntspan jou arms en laat jou arms sywaarts swaai, en draai jou bolyf. Jou arms moet jou rug saggies raak terwyl jy van kant tot kant draai.\n\nPlaas die een voet voor die ander en maak klein sirkels vanaf die enkels, onthou om na albei kante te draai. Doen elke voet met vier sirkels in elke rigting.\n\nSkud nou jou hele liggaam so vinnig as wat jy kan. Skud dit hoog! Skud dit laag! Skud dit oral rond!\n\nMaak jou oë toe en lig jou arms stadig bo jou kop terwyl jy inasem. Laat sak jou arms stadig tot aan jou sy terwyl jy uitasem.\n\nNeem ’n rukkie om na te dink oor jou ervaring.",
+    "text": "Staan op en strek jou arms in die lug. Druk enige wolke weg en laat die son op jou skyn. Strek na albei kante. Strek vorentoe en agtertoe.\n\nLaat jou hand aan jou sy hang. Druk jou skouers styf tot by jou ore terwyl jy inasem, knyp jou oë styf toe en hou jou asem in. Laat jou skouers los terwyl jy jou liggaam ontspan.\n\nOntspan jou arms en laat jou arms sywaarts swaai, en draai jou bolyf. Jou arms moet jou rug saggies raak terwyl jy van kant tot kant draai.\n\nPlaas die een voet voor die ander en maak klein sirkels vanaf die enkels, onthou om na albei kante te draai. Doen elke voet met vier sirkels in elke rigting.\n\nSkud nou jou hele liggaam so vinnig as wat jy kan. Skud dit hoog! Skud dit laag! Skud dit oral rond!\n\nMaak jou oë toe en lig jou arms stadig bo jou kop terwyl jy inasem. Laat sak jou arms stadig tot aan jou sy terwyl jy uitasem.\n\nNeem ’n oomblik om na te dink oor jou ervaring.",
     "type": "template",
     "note": ""
   },
@@ -3289,7 +3277,7 @@
   },
   {
     "SourceText": "When you take care of yourself, you take care of your children. We all need to connect. Try to talk to friends, family, and other support networks every day. If it has been a while since you reached out to someone, do it now!",
-    "text": "As jy na jouself omsien, sorg jy vir jou kinders. Ons moet almal met mekaar ’n verbinding maak. Probeer om elke dag met vriende, familie en ander ondersteuningsnetwerke te praat. As dit al ’n rukkie is sedert jy laas na iemand uitgereik het, doen dit nou!",
+    "text": "As jy na jouself omsien, sorg jy vir jou kinders. Ons moet almal met mekaar in verbinding kom. Probeer om elke dag met vriende, familie en ander ondersteuningsnetwerke te praat. As dit al ’n rukkie is sedert jy laas na iemand uitgereik het, doen dit nou!",
     "type": "template",
     "note": ""
   },
@@ -3301,7 +3289,7 @@
   },
   {
     "SourceText": "Managing anger can be really difficult. Take a break when you feel you are getting angry at your children or someone else.\n\nGo somewhere else for 5 minutes to regain control of your emotions. If you have safe outdoor space, go outside. You can get through this!",
-    "text": "Dit kan baie moeilik wees om woede te beheers. Vat ’n blaaskans as jy voel dat jy vir jou kinders of iemand anders kwaad word.\n\nGaan vir 5 minute na ’n ander plek om weer beheer oor jou emosies te kry. As jy ’n veilige plek in buitelug het, gaan buitentoe. Jy kán hierdeur kom!",
+    "text": "Dit kan baie moeilik wees om woede te beheer. Vat ’n blaaskans as jy voel dat jy vir jou kinders of iemand anders kwaad word.\n\nGaan vir 5 minute na ’n ander plek om weer beheer oor jou emosies te kry. As jy ’n veilige plek in buitelug het, gaan buitentoe. Jy kán hierdeur kom!",
     "type": "template",
     "note": ""
   },
@@ -3361,7 +3349,7 @@
   },
   {
     "SourceText": "I have a different problem…",
-    "text": "Ek het ’n ander probleem...",
+    "text": "Ek het ’n ander probleem…",
     "type": "template",
     "note": ""
   },
@@ -3439,13 +3427,13 @@
   },
   {
     "SourceText": "It is not easy to look after our families. We all have challenges sometimes, but we hope this app will help you navigate them well. @global.parent_app is based on ten years of experience running parenting programmes in South Africa, and thousands of parents have found that the tips that are shared help with many parenting challenges. We hope this app will help you and your family too.\n\nHere are some of the key proven tips for you:",
-    "text": "Dit is nie maklik om na ons gesinne om te sien nie. Ons het almal soms uitdagings, maar ons hoop dat hierdie app jou sal help om dit goed te hanteer.@global.parent_app is gebaseer op tien jaar se ervaring met die bestuur van ouerskapsprogramme in Suid-Afrika, en duisende ouers het gevind dat die wenke wat gedeel word, baie help met baie ouerskapuitdagings. Ons hoop dat hierdie app jou en jou gesin ook sal help.\n\nHier is ’n paar van die belangrikste bewese wenke vir jou:",
+    "text": "Dit is nie maklik om na ons gesinne om te sien nie. Ons het almal soms uitdagings, maar ons hoop dat hierdie toep jou sal help om dit goed te hanteer.@global.parent_app is gebaseer op tien jaar se ervaring met die bestuur van ouerskapsprogramme in Suid-Afrika, en duisende ouers het gevind dat die wenke wat gedeel word, baie help met baie ouerskapuitdagings. Ons hoop dat hierdie toep jou en jou gesin ook sal help.\n\nHier is ’n paar van die belangrikste bewese wenke vir jou:",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Start your first parenting workshop",
-    "text": "Begin jou eerste ouerskapwerksessie",
+    "text": "Begin jou eerste ouerskapslypskool",
     "type": "template",
     "note": ""
   },
@@ -3499,13 +3487,13 @@
   },
   {
     "SourceText": "It is hard to find time to have fun with your teenager.",
-    "text": "Dis moeilik om tyd te kry om lekker dinge saam met jou tiener te doen.",
+    "text": "Dis moeilik om tyd te kry om prettige dinge saam met jou tiener te doen.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "How many days in the past week were you able to give them your attention and do something that they enjoyed with them?",
-    "text": "Hoeveel dae die afgelope week kon jy hulle aandag gee en iets saam met hulle doen wat hulle geniet het?",
+    "text": "Hoeveel dae die afgelope week kon jy aan hulle aandag gee en iets saam met hulle doen wat hulle geniet het?",
     "type": "template",
     "note": ""
   },
@@ -3541,7 +3529,7 @@
   },
   {
     "SourceText": "How many days in the past week did you feel very stressed as a parent/caregiver?",
-    "text": "Hoeveel dae die afgelope week het jy as ouer/versorger gestres gevoel?",
+    "text": "Hoeveel dae die afgelope week het jy as ouer/versorger stres ervaar?",
     "type": "template",
     "note": ""
   },
@@ -3559,7 +3547,7 @@
   },
   {
     "SourceText": "Money is one of the biggest stresses for families now.",
-    "text": "Geld is een van die dinge wat nou die meeste stres by gesinne veroorsaak.",
+    "text": "Geld is een van die dinge wat tans die meeste stres by gesinne veroorsaak.",
     "type": "template",
     "note": ""
   },
@@ -3588,12 +3576,6 @@
     "note": ""
   },
   {
-    "SourceText": "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
-    "text": "Hoeveel keer die afgelope week het jy jou kinders fisies gedissiplineer deur hulle te klap, pak te gee of te slaan met jou hand of ’n voorwerp soos ’n stok of ’n belt?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
     "text": "Dit is wonderlik dat jy kalm reageer as jou tiener iets ontstellends doen. Hulle kan soveel by jou leer!",
     "type": "template",
@@ -3607,7 +3589,7 @@
   },
   {
     "SourceText": "It’s hard to keep track of your teenagers when they are becoming independent.",
-    "text": "Dit is moeilik om toesig oor jou tieners te hou wanneer hulle onafhanklik word.",
+    "text": "Dit is moeilik om toesig oor jou tieners te hou wanneer hulle onafhanklik raak.",
     "type": "template",
     "note": ""
   },
@@ -3703,19 +3685,19 @@
   },
   {
     "SourceText": "Using this app shows that you care about your teen. You can review how to use praise under @data.parent_centre.my_tips.location_text.\n\nFor more tips on how to use this skill well, you can also have another look at the @data.workshop.w_praise.in_text_title.",
-    "text": "Deurdat jy hierdie app gebruik, wys jy dat jy vir jou tiener omgee. Jy kan kyk hoe om lof te gebruik onder @data.parent_centre.my_tips.location_text.\n\nVir meer wenke oor hoe om hierdie vaardigheid goed te gebruik, kan jy ook weer kyk na die @data.workshop.w_praise.in_text_title.",
+    "text": "Deurdat jy hierdie toep gebruik, wys jy dat jy vir jou tiener omgee. Jy kan kyk hoe om lof te gebruik onder @data.parent_centre.my_tips.location_text.\n\nVir meer wenke oor hoe om hierdie vaardigheid goed te gebruik, kan jy ook weer kyk na die @data.workshop.w_praise.in_text_title.",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.parent_centre.my_tips.location_text\n@data.workshop.w_praise.in_text_title"
   },
   {
     "SourceText": "Wonderful that you are praising your teen! This helps them feel valued – your encouragement means a lot. \n\nYou can always have another look at the @data.workshop.w_praise.in_text_title for more tips on how to use this skill well.",
-    "text": "Wonderlik dat jy jou tiener prys! Dit help hulle om waardevol te voel – jou aanmoediging beteken baie.\n\nJy kan altyd weer na @data.workshop.w_praise.in_text_title kyk vir meer wenke oor hoe jy hierdie vaardigheid goed kan gebruik.",
+    "text": "Dit is wonderlik dat jy jou tiener prys! Dit help hulle om waardevol te voel – jou aanmoediging beteken baie.\n\nJy kan altyd weer na @data.workshop.w_praise.in_text_title kyk vir meer wenke oor hoe jy hierdie vaardigheid goed kan gebruik.",
     "type": "template",
     "note": "The string @data.workshop.w_praise.in_text_title should not be translated."
   },
   {
     "SourceText": "Great that this has been a good week!\n\nWe will keep reminding you to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Dis wonderlik dat dit ’n goeie week was!\n\nOns sal jou steeds daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou stres kan bly beheer en kalm kan bly voel.",
+    "text": "Dit is wonderlik dat dit ’n goeie week was!\n\nOns sal jou steeds daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou stres kan bly beheer en kalm kan bly voel.",
     "type": "template",
     "note": ""
   },
@@ -3733,43 +3715,43 @@
   },
   {
     "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons stres te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om stres te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om stres te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Thank you for being honest. It can be so difficult to control our stress. You can always find some helpful stress management tools under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons stres te beheer. Jy kan altyd ’n paar nuttige hulpmiddels vir streshantering vind onder @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Jy kan altyd ’n paar nuttige hulpmiddels oor hoe om spanning te hanteer vind onder @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
   },
   {
     "SourceText": "Great. If any stress or disagreements around money do come up in your family in the future, you can always review the @data.workshop.w_money.in_text_title or @data.parent_centre.my_tips.location_text!",
-    "text": "Uitstekend. As daar in die toekoms in jou gesin stres of meningsverskille oor geld opduik, kan jy altyd die @data.workshop.w_money.in_text_title of @data.parent_centre.my_tips.location_text raadpleeg!",
+    "text": "Uitstekend. As daar in die toekoms in jou gesin spanning of meningsverskille oor geld opduik, kan jy altyd die @data.workshop.w_money.in_text_title of @data.parent_centre.my_tips.location_text raadpleeg!",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Money stress can be overwhelming. \n\nWhenever stress or disagreements around money come up in your family, you can find tips in the @data.workshop.w_money.in_text_title or under @data.parent_centre.my_tips.location_text!",
-    "text": "Geldstres kan oorweldigend wees.\n\nAs stres of meningsverskille oor geld in jou gesin opduik, kan jy wenke in die @data.workshop.w_money.in_text_title of onder @data.parent_centre.my_tips.location_text vind!",
+    "text": "Geldstres kan oorweldigend wees.\n\nAs spanning of meningsverskille oor geld in jou gesin opduik, kan jy wenke in die @data.workshop.w_money.in_text_title of onder @data.parent_centre.my_tips.location_text vind!",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.workshop.w_money.in_text_title\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om stres te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou aanhou herinner daaraan om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nJy kan meer idees vind om spanning te hanteer in @global.weekly_workshop of onder @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and continuing to use @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns voel almal soms oorweldig, en om @global.parent_app aan te gebruik, is ’n goeie stap om jou en jou gesin te help!\n\nOns materiaal het duisende ouers en gesinne gehelp om minder gestres te wees en meer positiewe tyd saam te geniet. Ons is hier om jou te ondersteun.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns voel almal soms oorweldig, en om @global.parent_app aan te gebruik, is ’n goeie stap om jou en jou gesin te help!\n\nOns materiaal het duisende ouers en gesinne gehelp om minder gespanne te wees en meer positiewe tyd saam te geniet. Ons is hier om jou te ondersteun.",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
   {
     "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will continue to help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns hoop dat ons hulpmiddels vir streshantering jou steeds sal help om rustiger te voel in moeilike situasies. Jy kan dit vind onder @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns hoop dat ons hulpmiddels hoe om spanning te hanteer jou steeds sal help om rustiger te voel in moeilike situasies. Jy kan dit vind onder @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
   },
@@ -3817,7 +3799,7 @@
   },
   {
     "SourceText": "This app focuses on families with teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things for your family too!",
-    "text": "Hierdie app fokus op gesinne met tieners van @global.teen_age_bracket jaar oud, maar jy is welkom om voort te gaan – jy kan ook nuttige dinge vir jou gesin leer!",
+    "text": "Hierdie toep fokus op gesinne met tieners van @global.teen_age_bracket jaar oud, maar jy is welkom om voort te gaan – jy kan ook nuttige dinge vir jou gesin leer!",
     "type": "template",
     "note": "The string @global.teen_age_bracket should not be translated."
   },
@@ -3829,7 +3811,7 @@
   },
   {
     "SourceText": "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!",
-    "text": "Hierdie app fokus op ouers van tieners van @global.teen_age_bracket jaar oud, maar jy is welkom om voort te gaan – jy kan ook nuttige dinge vir jou gesin leer!",
+    "text": "Hierdie toep fokus op ouers van tieners van @global.teen_age_bracket jaar oud, maar jy is welkom om voort te gaan – jy kan ook nuttige dinge vir jou gesin leer!",
     "type": "template",
     "note": "The string @global.teen_age_bracket should not be translated."
   },
@@ -3840,20 +3822,8 @@
     "note": ""
   },
   {
-    "SourceText": "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.",
-    "text": "Onthou, as jy WEL antwoord, bly jou antwoord anoniem.\n\nJy kan altyd kies om ’n vraag nie te beantwoord nie deur die blokkie langs die skuifbalk te merk.",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "You selected \"I would rather not answer\"",
     "text": "Jy het “Ek wil liewer nie antwoord nie” gekies",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!",
-    "text": "Dis in die haak!\n\nOnthou, as jy WEL antwoord, bly jou antwoord anoniem en ontvang jy inhoud wat presies by jou pas!",
     "type": "template",
     "note": ""
   },
@@ -3871,7 +3841,7 @@
   },
   {
     "SourceText": "Using this app shows that you care about your teen. We have added some essential tools on how to use praise to @data.parent_centre.my_tips.location_text for quick access.\n\nIn our @data.workshop.w_praise.in_text_title you will learn even more on how to use this skill well.",
-    "text": "Deur hierdie app te gebruik, wys jy dat jy vir jou tiener omgee. Ons het ’n paar noodsaaklike hulpmiddels oor hoe jy lof kan gebruik by @data.parent_centre.my_tips.location_text gevoeg vir vinnige toegang.\n\nIn ons @data.workshop.w_praise.in_text_title sal jy nog meer leer oor hoe jy hierdie vaardigheid goed kan gebruik.",
+    "text": "Deur hierdie toep te gebruik, wys jy dat jy vir jou tiener omgee. Ons het ’n paar noodsaaklike hulpmiddels oor hoe jy lof kan gebruik by @data.parent_centre.my_tips.location_text gevoeg vir vinnige toegang.\n\nIn ons @data.workshop.w_praise.in_text_title sal jy nog meer leer oor hoe jy hierdie vaardigheid goed kan gebruik.",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.parent_centre.my_tips.location_text\n@data.workshop.w_praise.in_text_title"
   },
@@ -3883,19 +3853,19 @@
   },
   {
     "SourceText": "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Dis wonderlik dat dit ’n goeie week was!\n\nOns sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou stres kan bly beheer en kalm kan bly voel.",
+    "text": "Dis wonderlik dat dit ’n goeie week was!\n\nOns sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou spanning kan bly beheer en kalm kan bly voel.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
-    "text": "Dis wonderlik dat jy die grootste deel van die week kalm gevoel het!\n\nOns sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou stres kan bly beheer en kalm kan bly voel.",
+    "text": "Dis wonderlik dat jy die grootste deel van die week kalm gevoel het!\n\nOns sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou spanning kan bly beheer en kalm kan bly voel.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
-    "text": "Ons verstaan hoe stresvol die lewe kan wees. Ons sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou stres kan hanteer en kalmer kan voel.\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops sal ons meer leer oor die hantering van stres – maar onder @data.parent_centre.my_tips.location_text het jy reeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom!",
+    "text": "Ons verstaan hoe spanningsvol die lewe kan wees. Ons sal jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon, sodat jy jou spanning kan hanteer en kalmer kan voel.\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops sal ons meer leer oor die hantering van spanning – maar onder @data.parent_centre.my_tips.location_text het jy reeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom!",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
   },
@@ -3907,19 +3877,19 @@
   },
   {
     "SourceText": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons stres te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops kan jy meer idees vind om stres te hanteer, maar onder @data.parent_centre.my_tips.location_text het jy alreeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom.",
+    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Om na jouself om te sien en jou rustiger te laat voel wanneer dit moeilik gaan, sal ons jou gereeld daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nIn week @data.workshop.w_stress.number van die @global.weekly_workshops kan jy meer idees vind om spanning te hanteer, maar onder @data.parent_centre.my_tips.location_text het jy alreeds toegang tot ’n paar nuttige hulpmiddels om aan die gang te kom.",
     "type": "template",
     "note": "The following strings should not be translated:\n@data.workshop.w_stress.number\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
   },
   {
     "SourceText": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons stres te beheer. Ons hoop dat ons hulpmiddels vir streshantering vir jou nuttig sal wees. Jy kan dit reeds vind onder @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid. Dit kan so moeilik wees om ons spanning te beheer. Ons hoop dat ons hulpmiddels oor hoe om spanning te hanteer vir jou nuttig sal wees. Jy kan dit reeds vind onder @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
   },
   {
     "SourceText": "Great. We have a workshop on family budgeting that can help with money stress more generally, and reduce money-related arguments.",
-    "text": "Uitstekend. Ons het ’n werksessie oor gesinsbegroting wat met geldstres in die algemeen kan help, en geldverwante argumente kan verminder.",
+    "text": "Uitstekend. Ons het ’n slypskool oor gesinsbegroting wat met geldstres in die algemeen kan help, en geldverwante argumente kan verminder.",
     "type": "template",
     "note": ""
   },
@@ -3931,7 +3901,7 @@
   },
   {
     "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het. Om na jouself om te sien en jou rustiger te laat voel as dit moeilik gaan, sal ons jou elke dag daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nOns sal in week 5 van die @global.weekly_workshops meer leer oor die hantering van stres, maar jy het alreeds toegang tot ’n paar nuttige hulpmiddels onder @data.parent_centre.my_tips.location_text om aan die gang te kom.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het. Om na jouself om te sien en jou rustiger te laat voel as dit moeilik gaan, sal ons jou elke dag daaraan herinner om te ontspan, jouself te erken en te beloon. Jy maak saak!\n\nOns sal in week 5 van die @global.weekly_workshops meer leer oor die hantering van spanning, maar jy het alreeds toegang tot ’n paar nuttige hulpmiddels onder @data.parent_centre.my_tips.location_text om aan die gang te kom.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
   },
@@ -3943,7 +3913,7 @@
   },
   {
     "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns hoop dat ons hulpmiddels vir streshantering jou sal help om rustiger te voel in moeilike situasies. Jy kan dit vind onder @data.parent_centre.my_tips.location_text.",
+    "text": "Dankie vir jou eerlikheid – en ons is jammer dat jy ’n moeilike tyd met jou tiener het.\n\nOns hoop dat ons hulpmiddels hoe om spanning te hanteer jou sal help om rustiger te voel in moeilike situasies. Jy kan dit vind onder @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
   },
@@ -3955,7 +3925,7 @@
   },
   {
     "SourceText": "This is really great. Parenting is hard, but you’re really succeeding in this.",
-    "text": "Dit is regtig wonderlik. Ouerskap is moeilik, maar jy slaag regtig daarin.",
+    "text": "Dit is regtig wonderlik. Ouerskap is moeilik, maar jy slaag regtig goed daarin.",
     "type": "template",
     "note": ""
   },
@@ -4003,7 +3973,7 @@
   },
   {
     "SourceText": "These quick questions will fit this app to your needs.",
-    "text": "Hierdie vinnige vrae sal hierdie app by jou behoeftes aanpas.",
+    "text": "Hierdie vinnige vrae sal hierdie toep by jou behoeftes aanpas.",
     "type": "template",
     "note": ""
   },
@@ -4020,19 +3990,7 @@
     "note": ""
   },
   {
-    "SourceText": "Are you a lady or a gentleman?",
-    "text": "Is jy ’n man of ’n vrou?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Lady",
-    "text": "Man",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Gentleman",
+    "SourceText": "Woman",
     "text": "Vrou",
     "type": "template",
     "note": ""
@@ -4075,7 +4033,7 @@
   },
   {
     "SourceText": "You can do the @global.weekly_workshops by yourself OR you can invite some other family members or friends to join you - you will learn a lot from each other. It's up to you!",
-    "text": "Jy kan die @global.weekly_workshops self doen OF jy kan ander familielede of vriende nooi om by jou aan te sluit – julle sal baie van mekaar leer. Dit hang van jou af!",
+    "text": "Jy kan die @global.weekly_workshops self doen OF jy kan ander familielede of vriende nooi om by jou aan te sluit – julle sal baie by mekaar leer. Dit hang van jou af!",
     "type": "template",
     "note": "The string @global.weekly_workshops should not be translated."
   },
@@ -4141,13 +4099,13 @@
   },
   {
     "SourceText": "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
-    "text": "Uitstekend! Ons sal elke week ’n nuwe werksessie vir jou groep ontsluit. Dit laat julle toe om dit wat julle saam met julle gesinne geleer het, te probeer voordat julle die volgende vaardigheid opbou.",
+    "text": "Uitstekend! Ons sal elke week ’n nuwe slypskool vir jou groep ontsluit. Dit laat julle toe om dit wat julle saam met julle gesinne geleer het, te probeer voordat julle die volgende vaardigheid opbou.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
-    "text": "Uitstekend! Ons sal elke week ’n nuwe werksessie vir jou ontsluit. Dit laat jou toe om dit wat jy saam met jou gesin geleer het, te probeer voordat julle die volgende vaardigheid opbou.",
+    "text": "Uitstekend! Ons sal elke week ’n nuwe slypskool vir jou ontsluit. Dit laat jou toe om dit wat jy saam met jou gesin geleer het, te probeer voordat julle die volgende vaardigheid opbou.",
     "type": "template",
     "note": ""
   },
@@ -4165,7 +4123,7 @@
   },
   {
     "SourceText": "I know life can be hard. I’m proud of you. \n\nWhatever you are feeling, it’s great that you are here!",
-    "text": "Ek weet die lewe kan moeilik wees. Ek is trots op jou.\n\nWat jy ook al voel, dit is wonderlik dat jy hier is!",
+    "text": "Ek weet die lewe kan moeilik wees. Ek is trots op jou.\n\nHoe jy ook al voel, dit is wonderlik dat jy hier is!",
     "type": "template",
     "note": ""
   },
@@ -4177,19 +4135,19 @@
   },
   {
     "SourceText": "It’s great to see you!\n\nFirst, let’s help your group get started.",
-    "text": "Dit is wonderlik om jou te sien!\n\nLaat ons eers jou groep help om aan die gang te kom.",
+    "text": "Dit is wonderlik om jou te sien!\n\nEerstens, kom ons help jou groep om aan die gang te kom.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Agree on your ground rules together:\n* Which day(s)/time(s) will we meet in the week?\n* Who will hold the phone(s) during our activities?\n* How can we make sure everyone can share freely?\n* What can we do so we all feel respected?",
-    "text": "Stem saam oor jul grondreëls:\n* Op watter dag/dae en tyd/tye ontmoet ons in die week?\n* Wie hou die foon/fone tydens ons aktiwiteite?\n* Hoe kan ons seker maak dat almal vrylik kan deel?\n* Wat kan ons doen sodat ons almal gerespekteer voel?",
+    "text": "Stem saam oor jul grondreëls:\n* Op watter dag/dae en tyd/tye sal ons in die week bymekaarkom?\n* Wie sal die foon/fone hou tydens ons aktiwiteite?\n* Hoe kan ons seker maak dat almal openlik kan deel?\n* Wat kan ons doen sodat ons almal gerespekteerd voel?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "You always can change your workshop day and your group name in the @global.weekly_workshop_options.",
-    "text": "Jy kan altyd jou werksessiedag en jou groepnaam verander in die @global.weekly_workshop_options.",
+    "text": "Jy kan altyd jou slypskooldag en jou groepnaam verander in die @global.weekly_workshop_options.",
     "type": "template",
     "note": "The string @global.weekly_workshop_options should not be translated."
   },
@@ -4243,7 +4201,7 @@
   },
   {
     "SourceText": "Share ideas! \n\nWhat are things you could do to spend one-on-one time with your teens?\n\nFeel like you have NO TIME and you are exhausted? Come up with ideas for one-on-one time that do not take up extra time, like walking to the shop together.",
-    "text": "Deel idees!\n\nWat kan jy doen om een-tot-een-tyd met jou tieners deur te bring?\n\nVoel jy asof jy GEEN TYD het nie en voel jy uitgeput? Dink aan idees vir een-tot-een-tyd wat nie ekstra tyd verg nie, soos om saam na die winkel toe te stap.",
+    "text": "Deel idees!\n\nWat kan jy doen om een-tot-een-tyd met jou tieners deur te bring?\n\nVoel jy asof jy GEEN TYD het nie en dat jy uitgeput is? Dink aan idees vir een-tot-een-tyd wat nie ekstra tyd verg nie, soos om saam na die winkel toe te stap.",
     "type": "template",
     "note": ""
   },
@@ -4267,13 +4225,13 @@
   },
   {
     "SourceText": "Feel like you have NO TIME and you are exhausted? Remember to also think of ways that do not take up extra time.",
-    "text": "Voel dit asof jy GEEN TYD het nie en jy uitgeput is? Onthou om ook aan maniere te dink wat nie ekstra tyd in beslag neem nie.",
+    "text": "Voel dit asof jy GEEN TYD het nie en dat jy uitgeput is? Onthou om ook aan maniere te dink wat nie ekstra tyd in beslag neem nie.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "It may take some time to get used to one-on-one time, but the more you do it the better it gets!\n\nYou are an amazing parent for trying this.",
-    "text": "Dit kan ’n rukkie neem om aan een-tot-een-tyd gewoond te raak, maar hoe meer jy dit doen, hoe makliker raak dit!\n\nDis ongelooflik dat jy as ouer dit wil probeer.",
+    "text": "Dit mag ’n rukkie neem om aan een-tot-een-tyd gewoond te raak, maar hoe meer jy dit doen, hoe makliker raak dit!\n\nDis ongelooflik dat jy as ouer dit wil probeer.",
     "type": "template",
     "note": ""
   },
@@ -4297,7 +4255,7 @@
   },
   {
     "SourceText": "Tell your teen that you would like to spend some time with them and that they can choose what to do or talk about. They might think this is weird at first, but will come to enjoy this time with you!",
-    "text": "Sê vir jou tiener dat jy graag tyd met hulle wil deurbring en dat hulle kan kies wat om te doen of waaroor om te praat. Hulle mag dalk aan die begin dink dis vreemd, maar hulle sal hierdie spesiale tyd saam met jou begin geniet!",
+    "text": "Sê vir jou tiener dat jy graag tyd met hulle wil deurbring en dat hulle kan kies wat om te doen of waaroor om te gesels. Hulle mag dalk aan die begin dink dis vreemd, maar hulle sal hierdie spesiale tyd saam met jou begin geniet!",
     "type": "template",
     "note": ""
   },
@@ -4411,7 +4369,7 @@
   },
   {
     "SourceText": "Close eyes and relax.\n\nThink of your family life before you started your journey with this app.\n       \nThink back of skills you learned:\n* Self-care\n* One-on-one time\n* Praise\n* Positive instructions\n* Managing stress\n* Family budgeting\n* Rules\n* Calm consequences\n* Problem solving\n* Teen safety\n* Dealing with crisis\n\nReflect on the journey – how was it for you to:\n* Share ideas and experiences\n* Reflect on and learn from the stories\n* Practice skills with your teen\n\nDid anything change for you and your family?\n\nWhat do you need to continue to use skills?",
-    "text": "Sluit oë en ontspan.\n\nDink aan jou gesinslewe voordat jy jou reis met hierdie app begin het.\n\nDink terug aan vaardighede wat jy aangeleer het:\n* Selfsorg\n* Een-tot-een-tyd\n* Lof\n* Positiewe instruksies\n* Hantering van spanning\n* Gesinsbegroting\n* Reëls\n* Kalm gevolge\n* Probleemoplossing\n* Tienerveiligheid\n* Hantering van krisisse\n\nDink na oor die reis – hoe was dit vir jou om:\n* Idees en ondervindings te deel\n* Na te dink oor die stories, en daaruit te leer\n* Vaardighede saam met jou tiener te oefen\n\nHet enigiets vir jou en jou gesin verander?\n\nWat het jy nodig om die vaardighede aan te hou gebruik?",
+    "text": "Sluit oë en ontspan.\n\nDink aan jou gesinslewe voordat jy jou reis met hierdie toep begin het.\n\nDink terug aan vaardighede wat jy aangeleer het:\n* Selfsorg\n* Een-tot-een-tyd\n* Lof\n* Positiewe instruksies\n* Hantering van spanning\n* Gesinsbegroting\n* Reëls\n* Kalm gevolge\n* Probleemoplossing\n* Tienerveiligheid\n* Hantering van krisisse\n\nDink na oor die reis – hoe was dit vir jou om:\n* Idees en ondervindings te deel\n* Na te dink oor die stories, en daaruit te leer\n* Vaardighede saam met jou tiener te oefen\n\nHet enigiets vir jou en jou gesin verander?\n\nWat het jy nodig om die vaardighede aan te hou gebruik?",
     "type": "template",
     "note": ""
   },
@@ -4453,7 +4411,7 @@
   },
   {
     "SourceText": "Be ‘parenting buddies’ to call when you are upset or don’t know what to do.",
-    "text": "Wees ‘ouerskapvriende’ wat mekaar kan skakel wanneer julle ontsteld is en nie weet wat om te doen nie.",
+    "text": "Wees ‘ouerskapsvriende’ wat mekaar kan skakel wanneer julle ontsteld is en nie weet wat om te doen nie.",
     "type": "template",
     "note": ""
   },
@@ -4519,7 +4477,7 @@
   },
   {
     "SourceText": "Sorry that things are difficult right now. Take a deep breath and know that you are valued.",
-    "text": "Ek is jammer dat dinge nou moeilik is. Haal diep asem en weet dat jy waardeer word.",
+    "text": "Ek is jammer dat dinge nou moeilik gaan. Haal diep asem en weet dat jy waardeer word.",
     "type": "template",
     "note": ""
   },
@@ -4531,7 +4489,7 @@
   },
   {
     "SourceText": "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible.",
-    "text": "Goeiedag, almal. \n\nVandag se onderwerp is kalm gevolge.\n\nDit is belangrik dat, wanneer ons gevolge aan ons tieners bekendstel, ons hulle betrek, maar dit is ook belangrik dat ons kalm is wanneer ons gevolge bekendstel.\n\nDit sal ons help om saam te stem om kalm gevolge aan ons tieners bekend te stel en ons tieners sal die gevolge maklik onthou wanneer hulle betrek word en dit sal hulle verantwoordelik maak.",
+    "text": "Goeiedag, almal. \n\nVandag se onderwerp is kalm gevolge.\n\nDit is belangrik dat, wanneer ons gevolge aan ons tieners bekendstel, ons hulle betrek, maar dit is ook belangrik dat ons kalm bly wanneer ons gevolge bekendstel.\n\nDit sal ons help om saam te stem om kalm gevolge aan ons tieners bekend te stel en ons tieners sal die gevolge maklik onthou wanneer hulle betrek word en dit sal hulle verantwoordelik maak.",
     "type": "template",
     "note": ""
   },
@@ -4567,7 +4525,7 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”",
-    "text": "@global.w_consequence_teen_boy_1: “Ek kan verduidelik, @global.w_consequence_male_caregiver, ek kan.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, jy hou nie by ons reël nie! Ek gaan jou ’n pak slae gee!”",
+    "text": "@global.w_consequence_teen_boy_1: “Ek kan verduidelik, @global.w_consequence_male_caregiver, ek kan.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, jy hou nie by ons reël nie! Ek gaan jou ’n pakslae gee!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_boy_1\n@global.w_consequence_male_caregiver\n@global.w_consequence_male_caregiver\n@global.w_consequence_teen_boy_1"
   },
@@ -4633,7 +4591,7 @@
   },
   {
     "SourceText": "Calm consequences should be... \n\nFAIR: Not too harsh and you can actually do it \n\nIMMEDIATE: Give them as soon as possible \n\nCONSISTENT: The same consequence every time",
-    "text": "Kalm gevolge behoort... \n\nREGVERDIG te wees: Nie te kras nie en jy kan dit in werklikheid uitvoer \n\nONMIDDELLIK te gebeur: Gee dit so gou as moontlik \n\nKONSEKWENT te wees: Elke keer dieselfde gevolg",
+    "text": "Kalm gevolge behoort... \n\nREGVERDIG te wees: Nie te hewig nie en jy kan dit in werklikheid uitvoer \n\nONMIDDELLIK te gebeur: Gee dit so gou as moontlik \n\nKONSEKWENT te wees: Elke keer dieselfde gevolg",
     "type": "template",
     "note": ""
   },
@@ -4735,7 +4693,7 @@
   },
   {
     "SourceText": "They will feel respected and valued. Remember: The more we praise them, the more they will show that good behaviour!",
-    "text": "Hulle sal voel hulle word gerespekteer en gewaardeer. Hoe meer ons hulle prys, hoe meer sal hulle daardie goeie gedrag wys!",
+    "text": "Hulle sal voel hulle word gerespekteer en gewaardeer. Hoe meer ons hulle prys, hoe meer sal hulle daardie goeie gedrag toon!",
     "type": "template",
     "note": ""
   },
@@ -4765,7 +4723,7 @@
   },
   {
     "SourceText": "@global.w_consequence_male_caregiver: \"I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1. What can we do to help you remember to come home in time?\"\n\n@global.w_consequence_teen_boy_1: \"If I come home in time, maybe I can stay up 30 minutes later than usual?\"",
-    "text": "@global.w_consequence_male_caregiver: “Ek is besorg daaroor dat jy steeds dikwels laat huis toe kom, @global.w_consequence_teen_boy_1. Wat kan ons doen om jou te help onthou om betyds huis toe te kom?”\n\n@global.w_consequence_teen_boy_1: “As ek betyds huis toe kom, kan ek dan miskien 30 minute later as gewoonlik opbly?”",
+    "text": "@global.w_consequence_male_caregiver: “Ek is besorg daaroor dat jy steeds dikwels laat huis toe kom, @global.w_consequence_teen_boy_1. Wat kan ons doen om jou te help onthou om betyds huis toe te kom?”\n\n@global.w_consequence_teen_boy_1: “As ek betyds huis toe kom, kan ek dan miskien 30 minute later as gewoonlik wakkerbly?”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_male_caregiver\n@global.w_consequence_teen_boy_1\n@global.w_consequence_teen_boy_1"
   },
@@ -4795,7 +4753,7 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep.”  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
-    "text": "@global.w_consequence_teen_boy_1: “Jammer @global.w_consequence_male_caregiver – jy kan weer gaan slaap.”  \n\n@global.w_consequence_male_caregiver: “Dit is BAIE later as wat jy veronderstel was om by die huis te wees!”",
+    "text": "@global.w_consequence_teen_boy_1: “Jammer @global.w_consequence_male_caregiver – jy kan maar weer gaan slaap.”  \n\n@global.w_consequence_male_caregiver: “Dit is BAIE later as wat jy veronderstel was om by die huis te wees!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_boy_1\n@global.w_consequence_male_caregiver\n@global.w_consequence_male_caregiver"
   },
@@ -4867,7 +4825,7 @@
   },
   {
     "SourceText": "What would be a calm consequence for your teenagers arguing with each other during dinner? \n\nRemember it needs to be: \nFAIR - IMMEDIATE - CONSISTENT",
-    "text": "Wat sou ’n kalm gevolg wees vir jou tieners wat gedurende aandete met mekaar argumenteer? \n\nOnthou, dit moet: \nREGVERDIG – ONMIDDELLIK – KONSEKWENT wees",
+    "text": "Wat sou ’n kalm gevolg wees vir jou tieners wat tydens aandete met mekaar argumenteer? \n\nOnthou, dit moet: \nREGVERDIG – ONMIDDELLIK – KONSEKWENT wees",
     "type": "template",
     "note": ""
   },
@@ -4879,7 +4837,7 @@
   },
   {
     "SourceText": "This may be hard to do for you and also too harsh!",
-    "text": "Dit mag dalk vir jou moeilik wees, en ook te straf!",
+    "text": "Dit mag dalk vir jou moeilik wees, en ook 'n te hewige straf!",
     "type": "template",
     "note": ""
   },
@@ -4909,13 +4867,13 @@
   },
   {
     "SourceText": "Plan a calm consequence for your teenagers arguing with each other during dinner. Remember they need to be \n\nFAIR - IMMEDIATE - CONSISTENT",
-    "text": "Beplan ’n kalm gevolg vir jou tieners wat gedurende aandete met mekaar argumenteer. Onthou dit moet:\n \nREGVERDIG – ONMIDDELLIK – KONSEKWENT wees",
+    "text": "Beplan ’n kalm gevolg vir jou tieners wat tydens aandete met mekaar argumenteer. Onthou dit moet:\n \nREGVERDIG – ONMIDDELLIK – KONSEKWENT wees",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Your home practice for this week will be to talk together with your teen about a ONE negative consequence and ONE positive consequence.\n\nConsequences should be:\nFAIR (not too harsh)\nIMMEDIATE (do it straight away)\nCONSISTENT (same every time)",
-    "text": "Julle huiswerk hierdie week is om met jou tiener te gesels oor EEN negatiewe gevolg en EEN positiewe gevolg.\n\nGevolge moet: \nREGVERDIG wees (nie te straf nie)\nONMIDDELLIK wees (doen dit dadelik)\nKONSEKWENT wees (elke keer dieselfde)",
+    "text": "Julle tuis oefenwerk hierdie week is om met jou tiener te gesels oor EEN negatiewe gevolg en EEN positiewe gevolg.\n\nGevolge moet: \nREGVERDIG wees (nie te hewige straf nie)\nONMIDDELLIK wees (doen dit dadelik)\nKONSEKWENT wees (elke keer dieselfde)",
     "type": "template",
     "note": ""
   },
@@ -4939,7 +4897,7 @@
   },
   {
     "SourceText": "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.",
-    "text": "Jammer om te hoor dat jy nie vandag goed voel nie. Dis goed dat jy daardie emosies uitspreek en probeer om kalm en goedhartig teenoor jouself te wees. Jy stel ’n baie mooi voorbeeld vir jou gesin.",
+    "text": "Jammer om te hoor dat jy nie vandag goed voel nie. Dis goed dat jy sulke emosies uitspreek en probeer om kalm en goedhartig teenoor jouself te wees. Jy stel ’n baie mooi voorbeeld vir jou gesin.",
     "type": "template",
     "note": ""
   },
@@ -4957,7 +4915,7 @@
   },
   {
     "SourceText": "Greetings, everyone.\n\nToday's topic is dealing with crises.\n\nCrises may occur anywhere. Crises may occur anytime. Therefore, it is important as a family to have plans in place should any family member find themselves in a crisis situation. \n\nIt is important to have plans so that every family member may feel protected. \n\nWhen we are dealing with crises, remember to take a pause, breathe, and keep yourself calm. That will help you to deal with crises better.",
-    "text": "Goeiedag, almal\n\nVandag se onderwerp is die hantering van krisisse.\n\nKrisisse kan enige plek voorkom. Krisisse kan enige tyd voorkom. Daarom is dit belangrik om as gesin planne in plek te hê ingeval enige lid van die gesin hulself in ’n krisissituasie bevind. \n\nDit is belangrik om planne te hê sodat elke lid van die gesin beskerm kan voel. \n\nWanneer ons krisisse hanteer, onthou om stil te staan, asem te haal en jouself kalm te hou. Dit sal jou help om die krisis beter te hanteer.",
+    "text": "Goeiedag, almal\n\nVandag se onderwerp is die hantering van krisisse.\n\nKrisisse kan enige plek voorkom. Krisisse kan enige tyd voorkom. Daarom is dit belangrik om as gesin planne in plek te hê ingeval enige lid van die gesin hulself in ’n krisissituasie bevind. \n\nDit is belangrik om planne te hê sodat elke lid van die gesin beskerm kan voel. \n\nWanneer ons krisisse hanteer, onthou om stil te gaan staan, asem te haal en jouself kalm te hou. Dit sal jou help om die krisis beter te hanteer.",
     "type": "template",
     "note": ""
   },
@@ -5035,7 +4993,7 @@
   },
   {
     "SourceText": "Another problem that many parents are worried about is violence and crime. Let’s look at an example together.",
-    "text": "’n Ander probleem waaroor baie ouers hulle bekommer, is geweld en misdaad. Kom ons kyk saam na ’n voorbeeld.",
+    "text": "’n Ander probleem waaroor baie ouers bekommerd is, is geweld en misdaad. Kom ons kyk saam na ’n voorbeeld.",
     "type": "template",
     "note": ""
   },
@@ -5131,7 +5089,7 @@
   },
   {
     "SourceText": "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later.",
-    "text": "Gesels met jou tiener. Wat kan dalk die situasie help? Jy sal dalk nou dadelik planne moet maak, en dan langtermynplanne later.",
+    "text": "Gesels met jou tiener. Wat kan dalk die situasie help? Jy sal dalk nou dadelik planne moet beraam, en dan langtermynplanne later.",
     "type": "template",
     "note": ""
   },
@@ -5263,7 +5221,7 @@
   },
   {
     "SourceText": "Sorry that things are difficult. All families struggle. We are here to help!",
-    "text": "Jammer dat dinge moeilik is. Alle gesinne sukkel. Ons is hier om te help!",
+    "text": "Jammer dat dinge moeilik gaan. Alle gesinne sukkel. Ons is hier om te help!",
     "type": "template",
     "note": ""
   },
@@ -5311,7 +5269,7 @@
   },
   {
     "SourceText": "You probably DID think about an elephant...\n\n‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we DID want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)",
-    "text": "Jy HET waarskynlik aan ’n olifant gedink...\n\n‘Moenie’-opdragte laat tieners juis aan daardie ding dink. \n\nSoms verstaan hulle nie wat ons WEL van hulle verwag nie. \n\nHulle hou ook nie daarvan om gesê te word om iets nie te doen nie (is ons nie maar almal so nie?)",
+    "text": "Jy HET waarskynlik aan ’n olifant gedink...\n\n‘Moenie’-opdragte laat tieners juis aan daardie ding dink. \n\nSoms verstaan hulle nie wat ons WEL van hulle verwag nie. \n\nHulle hou ook nie daarvan om aangesê te word om iets nie te doen nie (is ons nie maar almal so nie?)",
     "type": "template",
     "note": ""
   },
@@ -5563,19 +5521,19 @@
   },
   {
     "SourceText": "Take a moment and just be impressed at what you’ve achieved, despite all the other things you have to do each day.",
-    "text": "Neem ’n oomblik en wees beïndruk met wat jy bereik het, ten spyte van al die ander dinge wat jy elke dag moet doen.",
+    "text": "Neem ’n oomblik en wees beïndruk met wat jy bereik het, ten spyte van die talle ander dinge wat jy elke dag moet doen.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.",
-    "text": "Baie gesinne verkeer onder spanning weens geld, veral as tieners aanhoudend vir goed vra!\n\nWanneer ons saam ’n begroting doen, kan ons ooreenkom oor hoe om te bestee EN te bespaar, om spanning te voorkom en ons gesin se doelwitte na te streef.",
+    "text": "Baie gesinne verkeer onder spanning weens geld, veral as tieners aanhoudend vir goed vra!\n\nWanneer ons saam ’n begroting opstel, kan ons ooreenkom oor hoe om te bestee EN te bespaar, om spanning te voorkom en ons gesin se doelwitte na te streef.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Greetings, everyone. \n\nToday's topic is family budgeting. \n\nIt is important to create a budget, but it is even more important to create a budget involving the entire family. \n\nDoing it together helps increase the level of understanding of how you spend money as a family and how much you save for the family, and you can even come up with plans of how you can save as a family.",
-    "text": "Goeiedag, almal.\n\nVandag se onderwerp is begrotings. \n\nDit is belangrik om te begroot, maar dis selfs meer belangrik om die hele gesin by die opstel van ’n begroting te betrek.\n\nWanneer dit saam gedoen word, help dit om die vlak van begrip oor hoe julle as gesin geld bestee en hoeveel julle vir die gesin spaar, te verhoog, en julle kan selfs planne maak oor hoe julle as gesin kan spaar.",
+    "text": "Goeiedag, almal.\n\nVandag se onderwerp is begrotings. \n\nDit is belangrik om te begroot, maar dis selfs belangriker om die hele gesin by die opstel van ’n begroting te betrek.\n\nWanneer dit saam gedoen word, help dit om die vlak van begrip oor hoe julle as gesin geld bestee en hoeveel julle vir die gesin spaar, te verhoog, en julle kan selfs planne maak oor hoe julle as gesin kan spaar.",
     "type": "template",
     "note": ""
   },
@@ -5623,13 +5581,13 @@
   },
   {
     "SourceText": "You need: \n* Papers (or old newspaper or a cardboard box) and pens \n* Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.",
-    "text": "Jy benodig: \n* Papier (of ou koerante of ’n kartonboks) en penne\n* Klippies of boontjies of enigiets waarvan jy baie het, om geld voor te stel\n \nNeem ’n minuut om hierdie goed te kry voor ons met die eerste stap begin.",
+    "text": "Jy benodig: \n* Papier (of ou koerante of ’n kartonboks) en penne\n* Klippies of boontjies of enigiets waarvan jy baie het, om geld voor te stel\n \nNeem ’n minuut om hierdie goed bymekaar te kry voor ons met die eerste stap begin.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Think about what we spend money on each month.",
-    "text": "Dink oor waarop ons elke maand ons geld bestee.",
+    "text": "Dink oor waaraan ons elke maand ons geld bestee.",
     "type": "template",
     "note": ""
   },
@@ -5833,13 +5791,13 @@
   },
   {
     "SourceText": "Let's think about different ways we can save.",
-    "text": "Kom ons dink oor verskillende maniere waarop ons kan spaar.",
+    "text": "Kom ons dink aan verskillende maniere hoe ons kan spaar.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "There are different ways we can save: at home, buying things we can sell later, at a bank, or in a savings group.\n\nThink of the advantages and disadvantages of each savings option.",
-    "text": "Daar is verskillende maniere waarop ons kan spaar: tuis, om goed te koop wat ons later kan verkoop, by ’n bank, of in ’n spaargroep.\n\nDink aan die voor- en nadele van elke spaaropsie.",
+    "text": "Daar is verskillende maniere hoe ons kan spaar: tuis, om goed te koop wat ons later kan verkoop, by ’n bank, of in ’n spaargroep.\n\nDink aan die voor- en nadele van elke spaaropsie.",
     "type": "template",
     "note": ""
   },
@@ -6163,7 +6121,7 @@
   },
   {
     "SourceText": "To get them to do it more often",
-    "text": "Om hulle sover te kry om dit meer gereeld te doen",
+    "text": "Om hulle sovêr te kry om dit meer gereeld te doen",
     "type": "template",
     "note": ""
   },
@@ -6463,7 +6421,7 @@
   },
   {
     "SourceText": "TEAM RULES",
-    "text": "SPANWERK IS BO",
+    "text": "SPANWERK REËLS",
     "type": "template",
     "note": ""
   },
@@ -6475,7 +6433,7 @@
   },
   {
     "SourceText": "REAL RULES",
-    "text": "REALISTIES IS BO",
+    "text": "REALISTIES REËLS",
     "type": "template",
     "note": ""
   },
@@ -6487,7 +6445,7 @@
   },
   {
     "SourceText": "PRAISE RULES!",
-    "text": "PRYS IS BO!",
+    "text": "REËLS VIR PRYS!",
     "type": "template",
     "note": ""
   },
@@ -6505,7 +6463,7 @@
   },
   {
     "SourceText": "Rules are important to keep your teens safe - also online. There’s more about this in the Weekly Workshop on safety planning, but let’s already have a first look now!",
-    "text": "Reëls is belangrik om jou tieners veilig te hou – ook aanlyn. Daar’s meer hieroor in die weeklikse werksessie oor die beplanning van veiligheid, maar kom ons kyk nou daarna!",
+    "text": "Reëls is belangrik om jou tieners veilig te hou – ook aanlyn. Daar is meer hieroor in die weeklikse slypskool oor die beplanning van veiligheid, maar kom ons kyk nou daarna!",
     "type": "template",
     "note": ""
   },
@@ -6529,7 +6487,7 @@
   },
   {
     "SourceText": "@global.w_rules_female_caregiver_2: \"Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you.\n\nSo you can accept people you know from school and our community, but not people who contact you online.\n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!”",
-    "text": "@global.w_rules_female_caregiver_2: “Kom ons kyk saam aanlyn hoe ons dit vir jou pret, maar ook veilig kan maak. Kyk – jy kan jou rekening privaat maak en beheer wie jou kan volg.\n\nSo kan jy mense wat jy van jou skool en ons gemeenskap ken, aanvaar, maar nie mense wat jou aanlyn kontak nie.\n\nKan ons saam ’n reël maak dat jy @global.teen_social_medium kan gebruik, maar met ’n private rekening? Ek vertrou jou om te weet wie om te aanvaar!”",
+    "text": "@global.w_rules_female_caregiver_2: “Kom ons kyk saam aanlyn hoe ons dit vir jou prettig, maar ook veilig kan maak. Kyk – jy kan jou rekening privaat maak en beheer wie jou kan volg.\n\nSo kan jy mense wat jy van jou skool en ons gemeenskap ken, aanvaar, maar nie mense wat jou aanlyn kontak nie.\n\nKan ons saam ’n reël maak dat jy @global.teen_social_medium kan gebruik, maar met ’n private rekening? Ek vertrou jou om te weet wie om te aanvaar!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_rules_female_caregiver_2\n@global.teen_social_medium"
   },
@@ -6559,7 +6517,7 @@
   },
   {
     "SourceText": "Let's practice making rules.",
-    "text": "Kom ons oefen dit om reëls te maak.",
+    "text": "Kom ons oefen om reëls te maak.",
     "type": "template",
     "note": ""
   },
@@ -6583,13 +6541,13 @@
   },
   {
     "SourceText": "Great. And amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.",
-    "text": "Wonderlik. En fantasties dat jy hierdie app gebruik – dit wys jou toewyding as ’n ouer. Maak seker jy gee jouself krediet en prys jouself vir wat jy doen.",
+    "text": "Wonderlik. En fantasties dat jy hierdie toep gebruik – dit wys jou toewyding as ’n ouer. Maak seker jy gee jouself krediet en prys jouself vir wat jy doen.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Being a parent is hard. But it is amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.",
-    "text": "Dis moeilik om ’n ouer te wees. Maar dit is fantasties dat jy hierdie app gebruik – dit wys jou toewyding as ’n ouer. Maak seker jy gee jouself krediet en prys jouself vir wat jy doen.",
+    "text": "Dis moeilik om ’n ouer te wees. Maar dit is fantasties dat jy hierdie toep gebruik – dit wys jou toewyding as ’n ouer. Maak seker jy gee jouself krediet en prys jouself vir wat jy doen.",
     "type": "template",
     "note": ""
   },
@@ -6667,7 +6625,7 @@
   },
   {
     "SourceText": "Let's talk about what happened to @global.w_safe_teen_girl_1",
-    "text": "Kom ons gesels oor wat met @global.w_safe_teen_girl_1 gebeur het.",
+    "text": "Kom ons gesels oor wat met @global.w_safe_teen_girl_1 gebeur het",
     "type": "template",
     "note": "The string @global.w_safe_teen_girl_1 should not be translated."
   },
@@ -6679,7 +6637,7 @@
   },
   {
     "SourceText": "The situation was risky because...",
-    "text": "Dit was ’n riskante situasie omdat ...",
+    "text": "Dit was ’n riskante situasie omdat...",
     "type": "template",
     "note": ""
   },
@@ -6775,7 +6733,7 @@
   },
   {
     "SourceText": "* Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things \n* People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country\n* People put things online to persuade teenagers to hurt themselves or commit suicide\n* Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them\n* People can often be nasty to teenagers online – they feel like they can bully people safely",
-    "text": "* Volwassenes gebruik sosiale media, speletjie- en boodskap-apps en -webwerwe om tieners te ontmoet en hulle te oorreed om seksuele goed te doen\n* Mense plaas goed aanlyn sodat ons ander mense seermaak – soos om geweld aanvaarbaar te laat lyk, of om mense van ’n ander rassegroep of land te haat\n* Mense plaas goed aanlyn om tieners te oorreed om hulself te beseer of om selfmoord te pleeg\n* Tieners deel wulpse video’s of foto’s of inligting oor hulself, en mense wys dit vir ander, of gebruik dit om hulle te ontstel\n*Mense kan dikwels aanlyn gemeen wees met tieners – hulle voel dat hulle mense maklik kan boelie",
+    "text": "* Volwassenes gebruik sosiale media, speletjie- en boodskap-toeps en -webwerwe om tieners te ontmoet en hulle te oorreed om seksuele goed te doen\n* Mense plaas goed aanlyn sodat ons ander mense seermaak – soos om geweld aanvaarbaar te laat lyk, of om mense van ’n ander rassegroep of land te haat\n* Mense plaas goed aanlyn om tieners te oorreed om hulself te beseer of om selfmoord te pleeg\n* Tieners deel wulpse video’s of foto’s of inligting oor hulself, en mense wys dit vir ander, of gebruik dit om hulle te ontstel\n*Mense kan dikwels aanlyn gemeen wees met tieners – hulle voel dat hulle mense maklik kan boelie",
     "type": "template",
     "note": ""
   },
@@ -6793,7 +6751,7 @@
   },
   {
     "SourceText": "Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things",
-    "text": "Volwassenes gebruik sosiale media, speletjie- en boodskap-apps en -webwerwe om tieners te ontmoet en hulle te oorreed om seksuele goed te doen",
+    "text": "Volwassenes gebruik sosiale media, speletjie- en boodskap-toeps en -webwerwe om tieners te ontmoet en hulle te oorreed om seksuele goed te doen",
     "type": "template",
     "note": ""
   },
@@ -6841,7 +6799,7 @@
   },
   {
     "SourceText": "* Draw pictures of the apps and websites your teenagers use \n* Praise each other for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?",
-    "text": "* Teken prentjies van die apps en webwerwe wat jou tieners gebruik.\n* Prys mekaar vir hoe goed julle is met gebruik van die web! \n* Praat oor watter webwerwe onveilig kan wees. Waarom? \n* Wat kan jy en jou tiener doen om gebruik van die internet vir jou tiener en hulle vriende veiliger te maak?",
+    "text": "* Teken prentjies van die toeps en webwerwe wat jou tieners gebruik.\n* Prys mekaar vir hoe goed julle is met gebruik van die web! \n* Praat oor watter webwerwe onveilig kan wees. Waarom? \n* Wat kan jy en jou tiener doen om gebruik van die internet vir jou tiener en hulle vriende veiliger te maak?",
     "type": "template",
     "note": ""
   },
@@ -6937,13 +6895,13 @@
   },
   {
     "SourceText": "* Draw pictures of the apps and websites your teenagers use \n* Praise your teens for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?",
-    "text": " * Teken prentjies van die apps en webwerwe wat julle tieners gebruik\n* Prys julle tieners vir hoe goed hulle is met gebruik van die web! \n* Praat oor watter webwerwe onveilig kan wees. Waarom? \n* Wat kan jy en jou tiener doen om gebruik van die internet  vir jou tiener en hulle vriende veiliger te maak?",
+    "text": "* Teken prentjies van die toeps en webwerwe wat julle tieners gebruik\n* Prys julle tieners vir hoe goed hulle is met gebruik van die web! \n* Praat oor watter webwerwe onveilig kan wees. Waarom? \n* Wat kan jy en jou tiener doen om gebruik van die internet  vir jou tiener en hulle vriende veiliger te maak?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "* Draw pictures of the apps and websites your teenagers use \n* Recognise how good they are at using the web!  \n* Think about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?",
-    "text": "* Teken prentjies van die apps en webwerwe wat julle tieners gebruik\n* Gee erkenning vir hoe goed hulle is met gebruik van die web! \n* Dink oor watter webwerwe onveilig kan wees. Waarom? \n* Wat kan jy en jou tiener doen om gebruik van die internet  vir jou tiener en hulle vriende veiliger te maak?",
+    "text": "* Teken prentjies van die toeps en webwerwe wat julle tieners gebruik\n* Gee erkenning vir hoe goed hulle is met gebruik van die web! \n* Dink oor watter webwerwe onveilig kan wees. Waarom? \n* Wat kan jy en jou tiener doen om gebruik van die internet  vir jou tiener en hulle vriende veiliger te maak?",
     "type": "template",
     "note": ""
   },
@@ -6967,7 +6925,7 @@
   },
   {
     "SourceText": "Make RULES with your teen about safely using the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.",
-    "text": "Lê saam met jou tiener reëls neer oor die veilige gebruik van die apps en webwerwe waarvan hulle hou.\n\nOnthou julle die storie oor veiligheid aanlyn? Kyk hier weer daarna.",
+    "text": "Lê saam met jou tiener reëls neer oor die veilige gebruik van die toeps en webwerwe waarvan hulle hou.\n\nOnthou julle die storie oor veiligheid aanlyn? Kyk hier weer daarna.",
     "type": "template",
     "note": ""
   },
@@ -7009,13 +6967,13 @@
   },
   {
     "SourceText": "Make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
-    "text": "Maak saam met jou tiener twee kaarte van veilige en onveilige plekke:\n* Kaart van julle gemeenskap\n* Kaart van apps en webwerwe wat jou tiener gebruik\n\nMaak seker julle is albei tevrede met die veiligheidsplan. \n\nWat werklik saak maak, is dat jy met jou tiener gesels terwyl julle dit doen – tieners weet dikwels meer as ons oor waar dit veilig en onveilig is!",
+    "text": "Maak saam met jou tiener twee kaarte van veilige en onveilige plekke:\n* Kaart van julle gemeenskap\n* Kaart van toeps en webwerwe wat jou tiener gebruik\n\nMaak seker julle is albei tevrede met die veiligheidsplan. \n\nWat werklik saak maak, is dat jy met jou tiener gesels terwyl julle dit doen – tieners weet dikwels meer as ons oor waar dit veilig en onveilig is!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "If you have not done it together yet, make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!",
-    "text": "As jy dit nog nie gedoen het nie, maak saam met jou tiener twee kaarte van veilige en onveilige plekke:\n* Kaart van julle gemeenskap\n* Kaart van apps en webwerwe wat jou tiener gebruik\n\nMaak seker julle is albei tevrede met die veiligheidsplan. \n\nWat werklik saak maak, is dat jy met jou tiener gesels terwyl julle dit doen – tieners weet dikwels meer as ons oor waar dit veilig en onveilig is!",
+    "text": "As jy dit nog nie gedoen het nie, maak saam met jou tiener twee kaarte van veilige en onveilige plekke:\n* Kaart van julle gemeenskap\n* Kaart van toeps en webwerwe wat jou tiener gebruik\n\nMaak seker julle is albei tevrede met die veiligheidsplan. \n\nWat werklik saak maak, is dat jy met jou tiener gesels terwyl julle dit doen – tieners weet dikwels meer as ons oor waar dit veilig en onveilig is!",
     "type": "template",
     "note": ""
   },
@@ -7027,7 +6985,7 @@
   },
   {
     "SourceText": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
-    "text": "Welkom! Dis wonderlik om julle hier te hê. Hierdie week gaan oor JOU.\n\nIn hierdie verwelkomingswerksessie sal jy:\n* Hulpmiddels kry om na jouself om te sien\n* Die app pasmaak vir jou behoeftes",
+    "text": "Welkom! Dis wonderlik om julle hier te hê. Hierdie week gaan oor JOU.\n\nIn hierdie verwelkomingsslypskool sal jy:\n* Hulpmiddels kry om na jouself om te sien\n* Die toep pasmaak vir jou behoeftes",
     "type": "template",
     "note": ""
   },
@@ -7051,7 +7009,7 @@
   },
   {
     "SourceText": "We often don’t look after ourselves enough. But this is so important, especially as a parent! \n\nReducing our stress and treating ourselves well helps us AND our teenagers.",
-    "text": "Ons sorg dikwels nie genoeg vir onsself nie. Maar dit is so belangrik, veral as ’n ouer! \n\nOm ons stres te verminder en goed na onsself om te sien, help ons EN ons tieners.",
+    "text": "Ons sorg dikwels nie genoeg vir onsself nie. Maar dit is so belangrik, veral as ’n ouer! \n\nOm ons spanning te verminder en goed na onsself om te sien, help ons EN ons tieners.",
     "type": "template",
     "note": ""
   },
@@ -7063,7 +7021,7 @@
   },
   {
     "SourceText": "Today you will experience 3 activities that can help you care for yourself, and we will ask you a few\nquestions to ensure the app is exactly right for you.",
-    "text": "Vandag sal jy 3 aktiwiteite ervaar wat jou kan help om na jouself om te sien en ons sal jou ’n paar\nvrae vra om seker te maak dat die app presies reg is vir jou.",
+    "text": "Vandag sal jy 3 aktiwiteite ervaar wat jou kan help om na jouself om te sien en ons sal jou ’n paar\nvrae vra om seker te maak dat die toep presies reg is vir jou.",
     "type": "template",
     "note": ""
   },
@@ -7081,7 +7039,7 @@
   },
   {
     "SourceText": "As parents, we often don’t have time to look after ourselves - but this is so important to do! Reducing our stress helps us AND our teens. \n\nLet’s take a first step and do a short relaxation activity together.",
-    "text": "As ouers het ons dikwels nie tyd om na onsself om te sien nie – maar dit is so belangrik! Om ons stres te verminder help ons EN ons tieners.\n\nKom ons doen ’n eerste stap en doen saam ’n kort ontspanning-aktiwiteit.",
+    "text": "As ouers het ons dikwels nie tyd om na onsself om te sien nie – maar dit is so belangrik! Om ons spanning te verminder help ons EN ons tieners.\n\nKom ons doen ’n eerste stap en doen saam ’n kort ontspanning-aktiwiteit.",
     "type": "template",
     "note": ""
   },
@@ -7093,7 +7051,7 @@
   },
   {
     "SourceText": "Think of one thing YOU have done well recently.\n\nSay it aloud to each other: \"Well done to me for…\"\n\nHere is one thing you deserve praise for: Well done for using @global.parent_app!",
-    "text": "Dink aan een ding wat JY onlangs goed gedoen het.\n\nSê dit hardop vir mekaar: “Mooi so aan my vir ....”\n\nHier is een ding waarvoor jy verdien om geprys te word. Mooi so dat jy @global.parent_app gebruik!",
+    "text": "Dink aan een ding wat JY onlangs goed gedoen het.\n\nSê dit hardop vir mekaar: “Mooi so aan my vir....”\n\nHier is een ding waarvoor jy verdien om geprys te word. Mooi so dat jy @global.parent_app gebruik!",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
@@ -7117,19 +7075,19 @@
   },
   {
     "SourceText": "\"Well done to me for...\"",
-    "text": "“Mooi so aan my vir ....”",
+    "text": "“Mooi so aan my vir....”",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Showing love to my children",
-    "text": "Liefde wat ek aan my kinders wys",
+    "text": "Liefde aan my kinders wys",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Getting up even though I felt tired",
-    "text": "Opstaan, al het ek moeg gevoel",
+    "text": "Opgestaan het, al het ek moeg gevoel",
     "type": "template",
     "note": ""
   },
@@ -7375,7 +7333,7 @@
   },
   {
     "SourceText": "You've completed this week's workshop.\n\nWe’ll do some of the self-care activities again when you get together with your group for the first time - you all deserve some extra self-care!",
-    "text": "Jy het hierdie week se werksessie voltooi.\n\nOns sal weer party van die selfsorg-aktiwiteite doen wanneer jy vir die eerste keer met jou groep bymekaar kom – julle verdien almal ’n bietjie ekstra selfsorg!",
+    "text": "Jy het hierdie week se slypskool voltooi.\n\nOns sal weer party van die selfsorg-aktiwiteite doen wanneer jy vir die eerste keer met jou groep bymekaar kom – julle verdien almal ’n bietjie ekstra selfsorg!",
     "type": "template",
     "note": ""
   },
@@ -7531,7 +7489,7 @@
   },
   {
     "SourceText": "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”",
-    "text": "@global.w_solve_teen_boy_2 : “Jammer, @global.w_solve_female_caregiver_2, ek was net honger. Ek kan verduidelik, jy sien, daar is ’n ou by die skool... \n\n@global.w_solve_female_caregiver_2 ( dink): “Neem ’n blaaskans...haal net asem…”",
+    "text": "@global.w_solve_teen_boy_2: “Jammer, @global.w_solve_female_caregiver_2, ek was net honger.Ek kan verduidelik, jy sien, daar is ’n ou by die skool... \n\n@global.w_solve_female_caregiver_2 ( dink): “Neem ’n blaaskans...haal net asem…”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_solve_teen_boy_2\n@global.w_solve_female_caregiver_2\n@global.w_solve_female_caregiver_2"
   },
@@ -7747,7 +7705,7 @@
   },
   {
     "SourceText": "Sometimes things go great. Sometimes they don't. And sometimes we don't quite know what to think... and that's totally okay! Remember that you are not alone.",
-    "text": "Soms gaan dinge goed. Soms nie. En soms weet ons nie heeltemal wat om te dink nie...en dit is heeltemal oukei! Onthou, jy is nie alleen nie.",
+    "text": "Soms gaan dinge goed. Soms nie. En soms weet ons nie heeltemal wat om te dink nie... en dit is heeltemal oukei! Onthou, jy is nie alleen nie.",
     "type": "template",
     "note": ""
   },
@@ -7765,7 +7723,7 @@
   },
   {
     "SourceText": "Greetings everyone. \n\nToday's topic is managing stress. \n\nIt is important to know how to manage our stress. At times our children can behave in ways that makes us feel stressed and us as parents can make our children feel stressed too. \n\nSo, it is important to notice when we feel stressed and take a pause and breathe. That will help you manage your stress.",
-    "text": "Goeiedag, almal. \n\nVandag se onderwerp is hoe om stres te hanteer.\n\nDit is belangrik om te weet hoe om stres te hanteer. Soms gedra ons kinders hulle op maniere wat ons gespanne maak, en ons as ouers kan ons kinders ook gespanne laat voel.\n\nDit is dus belangrik om te besef wanneer ons stres ervaar en om dan ’n blaaskans te neem en asem te haal. Dit sal jou help om jou stres te hanteer.",
+    "text": "Goeiedag, almal. \n\nVandag se onderwerp is hoe om spanning te hanteer.\n\nDit is belangrik om te weet hoe om spanning te hanteer. Soms gedra ons kinders hulle op maniere wat ons gespanne maak, en ons as ouers kan ons kinders ook gespanne laat voel.\n\nDit is dus belangrik om te besef wanneer ons spanning ervaar en om dan ’n blaaskans te neem en asem te haal. Dit sal jou help om jou spanning te hanteer.",
     "type": "template",
     "note": ""
   },
@@ -7789,7 +7747,7 @@
   },
   {
     "SourceText": "Let’s look at an example of how stress can sometimes just get too much, for all of us:",
-    "text": "Kom ons kyk na ’n voorbeeld van hoe stres soms net te veel kan raak, vir ons almal:",
+    "text": "Kom ons kyk na ’n voorbeeld van hoe spanning soms net te veel kan raak, vir ons almal:",
     "type": "template",
     "note": ""
   },
@@ -7909,7 +7867,7 @@
   },
   {
     "SourceText": "Think about solutions together with @global.w_stress_teen_boy_1",
-    "text": "Dink saam met @global.w_stress_teen_boy_1 oor oplossings",
+    "text": "Dink saam met @global.w_stress_teen_boy_1 aan oplossings",
     "type": "template",
     "note": ""
   },
@@ -7963,7 +7921,7 @@
   },
   {
     "SourceText": "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”",
-    "text": "@global.w_stress_male_caregiver: “Kom ons gaan speel saam sokker. Dit sal my help om ’n bietjie van hierdie stres te vergeet.”\n\n@global.w_stress_teen_boy_1: “Oukei, @global.w_stress_male_caregiver!”",
+    "text": "@global.w_stress_male_caregiver: “Kom ons gaan speel saam sokker. Dit sal my help om ’n bietjie van hierdie spanning te vergeet.”\n\n@global.w_stress_teen_boy_1: “Oukei, @global.w_stress_male_caregiver!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_stress_male_caregiver\n@global.w_stress_teen_boy_1\n@global.w_stress_male_caregiver"
   },
@@ -8053,7 +8011,7 @@
   },
   {
     "SourceText": "This is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say ‘I understand’. It can change everything.",
-    "text": "Dit is ook moeilik!. Stres maak dat ons op onsself fokus. Maar ons tieners het ons ondersteuning nodig. Vra hulle hoe hulle voel. Luister na hulle en stel hulle gerus. Probeer hulle ’n drukkie gee of sê ‘ek verstaan’. Dit kan alles verander.",
+    "text": "Dit is ook moeilik!. Spanning maak dat ons op onsself fokus. Maar ons tieners het ons ondersteuning nodig. Vra hulle hoe hulle voel. Luister na hulle en stel hulle gerus. Probeer hulle ’n drukkie gee of sê ‘ek verstaan’. Dit kan alles verander.",
     "type": "template",
     "note": ""
   },
@@ -8107,7 +8065,7 @@
   },
   {
     "SourceText": "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n* a sheet of paper/cardboard\n* a pen\n* 20 small rocks/beans/kernels\n\nIt will be fun!",
-    "text": "Julle het hierdie week se werksessie voltooi.\n\nVolgende week sal ons oor geld praat – julle sal die volgende nodig hê:\n* ’n vel papier/karton\n* ’n pen\n* 20 klein klippies/boontjies/pitte\n\nDit sal pret wees!",
+    "text": "Julle het hierdie week se slypskool voltooi.\n\nVolgende week sal ons oor geld praat – julle sal die volgende nodig hê:\n* ’n vel papier/karton\n* ’n pen\n* 20 klein klippies/boontjies/pitte\n\nDit sal pret wees!",
     "type": "template",
     "note": ""
   },
@@ -8131,19 +8089,19 @@
   },
   {
     "SourceText": "New workshop ready tomorrow!",
-    "text": "Nuwe werksessie môre gereed!",
+    "text": "Nuwe slypskool môre gereed!",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "New workshop!",
-    "text": "Nuwe werksessie!",
+    "text": "Nuwe slypskool!",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "Workshop Reminder",
-    "text": "Werksessie-herinnering",
+    "text": "Slypskool-herinnering",
     "type": "global",
     "note": ""
   },
@@ -8179,7 +8137,7 @@
   },
   {
     "SourceText": "To solve this challenge, I will try to:",
-    "text": "Om hierdie uitdaging te oorkom, sal ek probeer om::",
+    "text": "Om hierdie uitdaging te oorkom, sal ek probeer om:",
     "type": "global",
     "note": ""
   },
@@ -8227,43 +8185,43 @@
   },
   {
     "SourceText": "Sending this message requires internet access. To limit data use, send this message when on WiFi.",
-    "text": "Om hierdie boodskap te stuur, het mens toegang tot die internet nodig. Om die gebruik van data te beperk,stuur hierdie boodskap wanneer jy op wifi is.",
+    "text": "Om hierdie boodskap te stuur, het mens toegang tot die internet nodig. Om die gebruik van data te beperk, stuur hierdie boodskap wanneer jy op wifi is.",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "ParentApp",
-    "text": "ParentApp",
+    "text": "OuerToep",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "Weekly Workshops",
-    "text": "Weeklikse werksessies",
+    "text": "Weeklikse Slypskole",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "Weekly Workshop",
-    "text": "Weeklikse werksessie",
+    "text": "Weeklikse Slypskole",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "Weekly Workshop Options",
-    "text": "Opsies vir weeklikse werksessies",
+    "text": "Opsies vir weeklikse Slypskole",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "ParentPoints",
-    "text": "Ouerpunte",
+    "text": "OuerPunte",
     "type": "global",
     "note": ""
   },
   {
     "SourceText": "ParentPoint",
-    "text": "Ouerpunt",
+    "text": "OuerPunt",
     "type": "global",
     "note": ""
   },
@@ -8293,7 +8251,7 @@
   },
   {
     "SourceText": "Ideas from other families...",
-    "text": "Idees van ander gesinne ...",
+    "text": "Idees van ander gesinne...",
     "type": "global",
     "note": ""
   },
@@ -8377,7 +8335,7 @@
   },
   {
     "SourceText": "My Favourite Relaxes",
-    "text": "My gunstelingmaniere om te ontspan",
+    "text": "My gunsteling maniere om te ontspan",
     "type": "global",
     "note": ""
   },
@@ -8419,7 +8377,7 @@
   },
   {
     "SourceText": "My Favourite Activities",
-    "text": "My gunstelingaktiwiteite",
+    "text": "My gunsteling aktiwiteite",
     "type": "global",
     "note": ""
   },
@@ -8773,7 +8731,7 @@
   },
   {
     "SourceText": "How to manage stress",
-    "text": "Hoe om stres te hanteer",
+    "text": "Hoe om spanning te hanteer",
     "type": "global",
     "note": ""
   },
@@ -8917,13 +8875,7 @@
   },
   {
     "SourceText": "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. Press it to start your first workshop!</p>",
-    "text": "<p>Hierdie groot knoppie neem jou na jou @global.weekly_workshops </p>\n\n<p>’n Werksessie sal een keer per week vir jou gereed wees – elke keer met die fokus op ’n verskillende ouervaardigheid. Druk dit om jou eerste werksessie te begin!</p>",
-    "type": "tour",
-    "note": "The string @global.weekly_workshops should not be translated."
-  },
-  {
-    "SourceText": "@global.weekly_workshops quick start",
-    "text": "@global.weekly_workshops-kitsbegin",
+    "text": "<p>Hierdie groot knoppie neem jou na jou @global.weekly_workshops </p>\n\n<p>’n Slypskool sal een keer per week vir jou gereed wees – elke keer met die fokus op ’n verskillende ouervaardigheid. Druk dit om jou eerste slypskool te begin!</p>",
     "type": "tour",
     "note": "The string @global.weekly_workshops should not be translated."
   },
@@ -8947,7 +8899,7 @@
   },
   {
     "SourceText": "<p>However you start, just the fact you are here shows you care.</p>",
-    "text": "<p>Hoe jy ook al begin,die blote feit dat jy hier is, wys jy gee om.</p>",
+    "text": "<p>Hoe jy ook al begin, die blote feit dat jy hier is, wys jy gee om.</p>",
     "type": "tour",
     "note": ""
   },
@@ -8977,7 +8929,7 @@
   },
   {
     "SourceText": "<p>Use the @global.weekly_workshop_options to change your workshop settings. </p>",
-    "text": "<p>Gebruik die @global.weekly_workshop_options om jou werksessie-instellings te verander. </p>",
+    "text": "<p>Gebruik die @global.weekly_workshop_options om jou slypskool-instellings te verander. </p>",
     "type": "tour",
     "note": "The string @global.weekly_workshop_options should not be translated."
   },
@@ -9009,6 +8961,96 @@
     "SourceText": "<p> Tap here to change your group name. </p>",
     "text": "<p> Tik hier om jou groep se naam te verander. </p>",
     "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "Start",
+    "text": "Begin",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Continue",
+    "text": "Gaan voort",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
+    "text": "Hallo ongelooflike ouer! Onthou om ook vir jouself te sorg - dit sal jou EN jou gesin help! Kry jou wenke en meer in @global.parent_app.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
+    "text": "Hallo ongelooflike ouer! Onthou, jy kan baie nuttige wenke in @global.parent_app vind.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hi great parent! ParentApp is here to support you. Check it out now!",
+    "text": "Hallo ongelooflike ouer! @global.parent_app is hier om jou te ondersteun. Kom kyk nou!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Welcome to ParentApp. Click here to start your journey!",
+    "text": "Welkom by OuerToep. Klik hier om jou reis te begin!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
+    "text": "Hoop jy voel oukei. Ouerskap is moeilik, maar dit is nooit te laat om weer met jou tiener te begin nie. Jou eerste ouerskapwerksessie is gereed! Klik hier om jou OuerToep-reis te begin!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+    "text": "Hallo! Is alles oukei? Dit lyk asof jy OuerToep nie onlangs oopgemaak het nie. Hoekom probeer jy nie? Miljoene ouers het hierdie materiaal nuttig gevind. Ons is steeds hier om jou te ondersteun.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+    "text": "Hallo, weereens! Dit is nooit te laat om OuerToep te gebruik en aangepaste ouerskapondersteuning te kry nie. Hoekom probeer jy dit nie terwyl jy werk toe pendel, of terwyl jy kos kook nie? Miljoene ouers het ons materiaal nuttig gevind.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
+    "text": "OuerToep mis jou! Daar is baie om te ondersoek. Ons is steeds hier om jou te ondersteun.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
+    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik OuerToep om jou te help om jou spanning as ouer te hanteer.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
+    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik OuerToep om jou tiener voor te berei vir sukses.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
+    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik OuerToep om jou te help om jou tiener se gedrag te hanteer.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "New message from PLH",
+    "text": "Nuwe boodskap van PLH",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik OuerToep om jou te help om weer ’n band met jou tiener te vorm!",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -9223,13 +9265,13 @@
   },
   {
     "SourceText": "Breathe not yell",
-    "text": "Haal asem, moenie skree nie",
+    "text": "Haal asem, moenie skreeu nie",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "**Breathe not yell** @global.parent_point",
-    "text": "**Haal asem, moenie skree nie** @global.parent_point",
+    "text": "**Haal asem, moenie skreeu nie** @global.parent_point",
     "type": "data_list",
     "note": "The string @global.parent_point should not be translated."
   },
@@ -9361,7 +9403,7 @@
   },
   {
     "SourceText": "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!",
-    "text": "Soms sal dit maklik en prettig wees om tyd met jul tieners te bestee, en soms sal dit meer van ’n uitdaging wees.Tyd wat julle saam deurbring, sal julle verhouding baie verbeter; welgedaan dat jy probeer het!",
+    "text": "Soms sal dit maklik en prettig wees om tyd met jul tieners te bestee, en soms sal dit meer van ’n uitdaging wees. Tyd wat julle saam deurbring, sal julle verhouding baie verbeter; welgedaan dat jy probeer het!",
     "type": "data_list",
     "note": ""
   },
@@ -9625,7 +9667,7 @@
   },
   {
     "SourceText": "**Welcome and Self-Care** workshop",
-    "text": "**Welkom en selfsorg**-werksessie",
+    "text": "**Welkom en selfsorg**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9649,7 +9691,7 @@
   },
   {
     "SourceText": "**One-on-One Time** workshop",
-    "text": "**Een-tot-een-tyd**-werksessie",
+    "text": "**Een-tot-een-tyd**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9667,7 +9709,7 @@
   },
   {
     "SourceText": "**Praise** workshop",
-    "text": "**Prys**-werksessie",
+    "text": "**Prys**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9685,7 +9727,7 @@
   },
   {
     "SourceText": "**Positive Instructions** workshop",
-    "text": "**Positiewe opdragte**-werksessie",
+    "text": "**Positiewe opdragte**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9697,19 +9739,19 @@
   },
   {
     "SourceText": "Managing Stress",
-    "text": "Hantering van stres",
+    "text": "Hantering van spanning",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "**Managing Stress** workshop",
-    "text": "**Streshantering**-werksessie",
+    "text": "**Streshantering**-slypskool",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "How to manage stress",
-    "text": "Hoe om stres te hanteer",
+    "text": "Hoe om spanning te hanteer",
     "type": "data_list",
     "note": ""
   },
@@ -9721,7 +9763,7 @@
   },
   {
     "SourceText": "**Family Budgets** workshop",
-    "text": "**Gesinsbegrotings**-werksessie",
+    "text": "**Gesinsbegrotings**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9739,7 +9781,7 @@
   },
   {
     "SourceText": "**Rules** workshop",
-    "text": "**Reëls**-werksessie",
+    "text": "**Reëls**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9757,7 +9799,7 @@
   },
   {
     "SourceText": "**Calm Consequences** workshop",
-    "text": "**Kalm gevolge**-werksessie",
+    "text": "**Kalm gevolge**-slypskole",
     "type": "data_list",
     "note": ""
   },
@@ -9775,7 +9817,7 @@
   },
   {
     "SourceText": "**Problem Solving** workshop",
-    "text": "**Probleemoplossing**-werksessie",
+    "text": "**Probleemoplossing**-slypskole",
     "type": "data_list",
     "note": ""
   },
@@ -9793,7 +9835,7 @@
   },
   {
     "SourceText": "**Teen Safety** workshop",
-    "text": "**Tienerveiligheid**-werksessie",
+    "text": "**Tienerveiligheid**-slypskole",
     "type": "data_list",
     "note": ""
   },
@@ -9811,7 +9853,7 @@
   },
   {
     "SourceText": "**Dealing with Crisis** workshop",
-    "text": "**Krisishantering**-werksessie",
+    "text": "**Krisishantering**-slypskool",
     "type": "data_list",
     "note": ""
   },
@@ -9829,85 +9871,13 @@
   },
   {
     "SourceText": "**Celebration and Next Steps** workshop",
-    "text": "**Viering en volgende stappe**-werksessie",
+    "text": "**Viering en volgende stappe**-slypskool",
     "type": "data_list",
     "note": ""
   },
   {
     "SourceText": "How to support each other",
     "text": "Hoe om mekaar te ondersteun",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Start",
-    "text": "Begin",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Continue",
-    "text": "Gaan voort",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Welcome to ParentApp. Click here to start your journey!",
-    "text": "Welkom by ParentApp. Klik hier om jou reis te begin!",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
-    "text": "Hoop jy voel oukei. Ouerskap is moeilik, maar dit is nooit te laat om weer met jou tiener te begin nie. Jou eerste ouerskapwerksessie is gereed! Klik hier om jou ParentApp-reis te begin!",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-    "text": "Hallo! Is alles oukei? Dit lyk asof jy ParentApp nie onlangs oopgemaak het nie. Hoekom probeer jy nie? Miljoene ouers het hierdie materiaal nuttig gevind. Ons is steeds hier om jou te ondersteun.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-    "text": "Hallo, weereens! Dit is nooit te laat om ParentApp te gebruik en aangepaste ouerskapondersteuning te kry nie. Hoekom probeer jy dit nie terwyl jy werk toe pendel, of terwyl jy kos kook nie? Miljoene ouers het ons materiaal nuttig gevind.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
-    "text": "ParentApp mis jou! Daar is baie om te ondersoek. Ons is steeds hier om jou te ondersteun.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
-    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik ParentApp om jou te help om jou stres as ouer te hanteer.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
-    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik ParentApp om jou tiener voor te berei vir sukses.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
-    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik ParentApp om jou te help om jou tiener se gedrag te hanteer.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "New message from PLH",
-    "text": "Nuwe boodskap van PLH",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
-    "text": "Hoop jy voel oukei. Ons weet ouerskap is moeilik – gebruik ParentApp om jou te help om weer ’n band met jou tiener te vorm!",
     "type": "data_list",
     "note": ""
   }

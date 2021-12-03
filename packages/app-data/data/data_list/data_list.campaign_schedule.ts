@@ -4,7 +4,7 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "inactive_campaigns_schedule",
+    flow_name: "campaign_schedule",
     status: "released",
     rows: [
       {
@@ -37,15 +37,6 @@ const data_list: FlowTypes.Data_list[] = [
           days: 30,
         },
       },
-    ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/notification_campaigns.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_schedule",
-    flow_name: "generic_campaign_schedule",
-    status: "released",
-    rows: [
       {
         id: "generic",
         schedule: {
@@ -163,7 +154,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
       {
-        id: "debug_fixed_december",
+        id: "debug_fixed_december_no_time",
         activation_condition_list: [
           {
             condition_type: "field_evaluation",
@@ -191,6 +182,111 @@ const data_list: FlowTypes.Data_list[] = [
         schedule: {
           start_date: "2021-12-01T00:00:00.000",
           end_date: "2021-12-31T00:00:00.000",
+        },
+      },
+      {
+        id: "debug_fixed_december_early",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:FALSE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+        time: {
+          hour: 6,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_fixed_december_noon",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:FALSE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+        time: {
+          hour: 12,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_fixed_december_late",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:FALSE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+        time: {
+          hour: 22,
+          minute: 0,
         },
       },
       {

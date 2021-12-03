@@ -36,7 +36,13 @@ export const APP_FIELDS = {
  * Some specific strings are currently hardcoded into the app
  * TODO - not all strings included, should add to when required
  */
-export const APP_STRINGS = {
-  NOTIFICATION_DEFAULT_TITLE: "Notification",
-  NOTIFICATION_DEFAULT_TEXT: "You have a new message from PLH",
+export const APP_STRINGS = {};
+
+export const NOTIFICATION_DEFAULTS = {
+  title: "Notification",
+  text: "You have a new message from PLH",
+  time: {
+    hour: 12,
+    minute: 0,
+  },
 };
