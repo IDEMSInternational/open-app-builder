@@ -2389,7 +2389,7 @@
   },
   {
     "SourceText": "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
-    "text": "Sawubona @fields.user_name! Siyakubonga ngokusebenzisa i-@global.parent_app nangokuzibophezela ekubeni umzali. \n\nUkhumbule ukucofa i-@global.parent_pointsyakho!",
+    "text": "Sawubona @fields.user_name! Siyakubonga ngokusebenzisa i-@global.parent_app nangokuzibophezela ekubeni umzali. \n\nUkhumbule ukucofa i-@global.parent_points zakho!",
     "type": "template",
     "note": "The following strings should not be translated:\n@fields.user_name\n@global.parent_app\n@global.parent_points"
   },
@@ -3546,12 +3546,6 @@
     "note": ""
   },
   {
-    "SourceText": "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
-    "text": "Esontweni elidlule, ingabe ujezise izingane zakho ngokuzishaya ngesandla sakho noma ngento enjengenduku noma ibhande?",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
     "text": "Kuhle ukuthi uphendula ngomoya ophansi lapho ingane yakho yenza okuthile okucasulayo. Bangafunda okuningi kuwe!",
     "type": "template",
@@ -3715,7 +3709,7 @@
   },
   {
     "SourceText": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we will keep reminding you to relax, recognise and reward yourself. You matter!\n\nYou can find more ideas to manage stress in the @global.weekly_workshop or under @data.parent_centre.my_tips.location_text.",
-    "text": "Siyakubonga ngokuba qotho – siyaxolisa ngokuthi ingane yakho esebusheni bayo ikuthwalise kanzima. Ukuze nizinakekele futhi sinisize nizizwe nizolile lapho izimo ziba nzima, sizonikhumbuza nsuku zonke ukuba niphumule, niqaphele futhi nizivuze. Ubalulekile!\n\nUngathola amacebiso engeziwe okubhekana nokucindezeleka ku-@global.weekly_workshop noma ngaphansi kokuthi-@data.parent_centre.my_tips.location_text.",
+    "text": "Siyakubonga ngokuba neqiniso – siyaxolisa ngokuthi ingane yakho esebusheni bayo ikuthwalise kanzima. Ukuze nizinakekele futhi sinisize nizizwe nizolile lapho izimo ziba nzima, sizonikhumbuza nsuku zonke ukuba niphumule, niqaphele futhi nizivuze. Ubalulekile!\n\nUngathola amacebiso engeziwe okubhekana nokucindezeleka ku-@global.weekly_workshop noma ngaphansi kokuthi-@data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.weekly_workshop\n@data.parent_centre.my_tips.location_text"
   },
@@ -3757,7 +3751,7 @@
   },
   {
     "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
-    "text": "Ukuba umzali akulula. Wenze kahle ngokugxila ekugcineni ingane yakho eyevile eminyakeni eyishumi nambili iphephile. \n\nKhumbula, ungathola ukusekelwa okwengeziwe mayelana nalokhu ku-@data.workshop.w_safe.in_text_title noma nini lapho ukudinga!",
+    "text": "Ukuba umzali akulula. Wenze kahle ngokugxila ekugcineni ingane yakho iphephile. \n\nKhumbula, ungathola ukusekwa okwengeziwe mayelana nalokhu ku-@data.workshop.w_safe.in_text_title noma nini lapho ukudinga!",
     "type": "template",
     "note": "The string @data.workshop.w_safe.in_text_title should not be translated."
   },
@@ -3798,20 +3792,8 @@
     "note": ""
   },
   {
-    "SourceText": "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.",
-    "text": "Khumbula, UMA uwuphendula, impendulo yakho ngeke idalule igama lakho.\n\nUngahlala ukhetha ukungawuphenduli umbuzo ngokuqoka ibhokisi lokuhlola eduze kwesilayidi.",
-    "type": "template",
-    "note": ""
-  },
-  {
     "SourceText": "You selected \"I would rather not answer\"",
     "text": "Ukhethe okuthi \"Angithandi ukungaphenduli\"",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!",
-    "text": "Kulungile!\n\nKhumbula, UMA uphendula, impendulo yakho ngeke idalule igama lakho futhi uzothola okuqukethwe okulungele wena!",
     "type": "template",
     "note": ""
   },
@@ -3871,7 +3853,7 @@
   },
   {
     "SourceText": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.",
-    "text": "Siyakubonga ngokuba qotho. Kungaba nzima kakhulu ukulawula ukucindezeleka kwethu. Sithemba ukuthi imicebiso yethu okulawula ukucindezeleka izoba usizo kuwe. Ungawathola kakade ngaphansi kokuthi @data.parent_centre.my_tips.location_text.",
+    "text": "Siyakubonga ngokuba neqiniso. Kungaba nzima kakhulu ukulawula ukucindezeleka kwethu. Sithemba ukuthi imicebiso yethu okulawula ukucindezeleka izoba usizo kuwe. Ungawathola kakade ngaphansi kokuthi @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The string @data.parent_centre.my_tips.location_text should not be translated."
   },
@@ -3907,7 +3889,7 @@
   },
   {
     "SourceText": "This is a real concern for parents everywhere. We’ll make sure you get support with building communication. \n\nWe’ll talk more about planning for your teen’s safety later in the @global.weekly_workshops, but you can already access some first core tips to keep your teen safe under @data.parent_centre.my_tips.location_text!",
-    "text": "Lokhu kubakhathaza ngempela abazali yonke indawo. Sizoqinisekisa ukuthi uthola ukwesekwa ngokwakha ukukhulumisana. \n\nSizokhuluma kabanzi ngokuhlela ukuphepha kwengane yakho eyevile eminyakeni eyishumi nambili kamuva ku @global.weekly_workshops, kodwa ungawathola kakade amanye amacebiso ayisisekelo okugcina ingane yakho iphephile ngaphansi kokuthi @data.parent_centre.my_tips.location_text!",
+    "text": "Lokhu kuyabakhathaza abazali yonke indawo. Sizoqinisekisa ukuthi uthola ukwesekwa ngokwakha ukukhulumisana. \n\nSizokhuluma kabanzi ngokuhlela kokuphepha kwengane yakho kamuva ku @global.weekly_workshops, kodwa ungawathola kakade amanye amacebiso ayisisekelo okugcina ingane yakho iphephile ngaphansi kokuthi @data.parent_centre.my_tips.location_text!",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.weekly_workshops\n@data.parent_centre.my_tips.location_text"
   },
@@ -3919,7 +3901,7 @@
   },
   {
     "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules and safety planning under @data.parent_centre.my_tips.location_text.",
-    "text": "Ukuba umzali akulula. Kungase kube nzima ukwazi indlela yokugcina intsha yethu iphephile. Ngokuvamile sizizwa singenamandla njengabazali kulokhu, kodwa silapha ukuze sikusekele! Ungathola amathuluzi agxilile, okuqukethwe okwengeziwe kanye nezinsiza kulokhu @global.parent_centre nganoma yisiphi isikhathi. \n\nUngakwazi ukuthola amacebiso athile okuqala ayinhloko azokusiza ubeke imithetho futhi uhlele ezokuphepha ngaphansi kokuthi @data.parent_centre.my_tips.location_text.",
+    "text": "Ukuba umzali akulula. Kungase kube nzima ukwazi indlela yokugcina izingane zethu ziphephile. Ngokuvamile sizizwa singenamandla njengabazali kulokhu, kodwa silapha ukuze sikweseke! Ungathola amathuluzi agxilile, okuqukethwe okwengeziwe kanye nezinsiza kulokhu @global.parent_centre nganoma yisiphi isikhathi. \n\nUngakwazi ukuthola amacebiso athile okuqala ayinhloko azokusiza ubeke imithetho futhi uhlele ezokuphepha ku @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
   },
@@ -3931,7 +3913,7 @@
   },
   {
     "SourceText": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules under @data.parent_centre.my_tips.location_text.",
-    "text": "Ukuba umzali akulula. Kungase kube nzima ukwazi indlela yokugcina intsha yethu iphephile. Ngokuvamile sizizwa singenamandla njengabazali kulokhu, kodwa silapha ukuze sikusekele! Ungathola amathuluzi agxilile, okuqukethwe okwengeziwe kanye nezinsiza kulokhu @global.parent_centre nganoma yisiphi isikhathi. \n\nUngakwazi ukuthola amacebiso athile okuqala ayinhloko azokusiza ubeke imithetho ngaphansi kokuthi @data.parent_centre.my_tips.location_text.",
+    "text": "Ukuba umzali akulula. Kungase kube nzima ukwazi indlela yokugcina intsha yethu iphephile. Ngokuvamile sizizwa singenamandla njengabazali kulokhu, kodwa silapha ukuze sikweseke! Ungathola amathuluzi agxilile, okuqukethwe okwengeziwe kanye nezinsiza kulokhu @global.parent_centre nganoma yisiphi isikhathi. \n\nUngakwazi ukuthola amacebiso athile okuqala ayinhloko azokusiza ubeke imithetho ku @data.parent_centre.my_tips.location_text.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.parent_centre\n@data.parent_centre.my_tips.location_text"
   },
@@ -3943,7 +3925,7 @@
   },
   {
     "SourceText": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
-    "text": "Ukuba umzali akulula. Wenze kahle ngokugxila ekugcineni ingane yakho eyevile eminyakeni eyishumi nambili iphephile. \n\nSizokunikeza ukwesekwa okwengeziwe kulokhu kamuva ku @global.weekly_workshops uma ungathanda ukwazi okwengeziwe!",
+    "text": "Ukuba umzali akulula. Wenze kahle ngokugxila ekugcineni ingane yakho iphephile. \n\nSizokunikeza ukwesekwa okwengeziwe kulokhu kamuva ku @global.weekly_workshops uma ungathanda ukwazi okwengeziwe!",
     "type": "template",
     "note": "The string @global.weekly_workshops should not be translated."
   },
@@ -3978,32 +3960,26 @@
     "note": ""
   },
   {
-    "SourceText": "Are you a lady or a gentleman?",
-    "text": "Ingabe ungowesifazane noma owesilisa?",
-    "type": "template",
-    "note": ""
-  },
-  {
-    "SourceText": "Lady",
+    "SourceText": "Woman",
     "text": "Owesifazane",
     "type": "template",
     "note": ""
   },
   {
-    "SourceText": "Gentleman",
+    "SourceText": "Man",
     "text": "Owesilisa",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "How old are you?",
-    "text": "Umdala kangakanani?",
+    "text": "Uneminyaka emingaki?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Adults",
-    "text": "Abadala",
+    "text": "Bangaki abadala",
     "type": "template",
     "note": ""
   },
@@ -4015,13 +3991,13 @@
   },
   {
     "SourceText": "Children",
-    "text": "Izingane",
+    "text": "Zingaki izingane",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Babies",
-    "text": "Izinsana",
+    "text": "Zingaki izingane ezincane",
     "type": "template",
     "note": ""
   },
@@ -4045,7 +4021,7 @@
   },
   {
     "SourceText": "Can you think of a name for your group?",
-    "text": "Likhona igama ongabiza ngalo iqembu lakho?",
+    "text": "Ungacabanga igama ongabiza ngalo iqembu lakho?",
     "type": "template",
     "note": ""
   },
@@ -4099,13 +4075,13 @@
   },
   {
     "SourceText": "Great! We will unlock a new workshop for your group every week. This allows all of you to try what you learned with your families before building the next skill.",
-    "text": "Kuhle! Sizovula ukuqeqeshwa okusha kweqembu lakho njalo ngesonto. Lokhu kunivumela nonke ukuba nizame lokho enikufundile nemindeni yenu ngaphambi kokuba nakhe elinye ikhono.",
+    "text": "Kuhle! Sizovula ukuqeqeshwa okusha kweqembu lakho njalo ngesonto. Lokhu kunivumela nonke ukuba nizame lokho enikufundile nemindeni yenu ngaphambi kokuba nifunde elinye ikhono.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Great! We will unlock a new workshop for you every week. This allows you to try what you learned with your family before building the next skill.",
-    "text": "Kuhle! Sizovula ukuqeqeshwa okusha kwakho njalo ngesonto. Lokhu kuzokuvumela ukuba uzame lokho okufundile nomndeni wakho ngaphambi kokuba wakhe elinye ikhono.",
+    "text": "Kuhle! Sizovula ukuqeqeshwa okusha kwakho njalo ngesonto. Lokhu kuzokuvumela ukuba uzame lokho okufundile nomndeni wakho ngaphambi kokuba nifunde elinye ikhono.",
     "type": "template",
     "note": ""
   },
@@ -4129,13 +4105,13 @@
   },
   {
     "SourceText": "Using the app together",
-    "text": "Ukusebenzisa i-app ndawonye",
+    "text": "Ukusebenzisa i-app sisonke",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "It’s great to see you!\n\nFirst, let’s help your group get started.",
-    "text": "Kuhle ukukubona!\n\nOkokuqala, masisize iqembu lakho liqale.",
+    "text": "Kuhle ukukubona!\n\nOkokuqala, masisize iqembu lakho ukuthi liqale.",
     "type": "template",
     "note": ""
   },
@@ -4153,13 +4129,13 @@
   },
   {
     "SourceText": "Some rules that other groups made:",
-    "text": "Eminye yemithetho ebekwe amanye amaqembu:",
+    "text": "Eminye yemigaqo/imithetho ebekwe amanye amaqembu:",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "* Tuesday at 7pm is our @global.parent_app time together\n* Take turns holding the phone (1 activity per person)\n* Accept each other’s experiences. We are all different!\n* Take turns speaking and listening\n* All questions are welcome\n* What we share stays among us",
-    "text": "* NgoLwesibili ngo-7pm yisikhathi sethu esisichitha ndawonye si-@global.parent_app\n* Shintshanani ngokubamba ucingo (umsebenzi owodwa umuntu ngamunye)\n* Yamukelani okwenzeka kumuntu ngamunye. Sonke sihlukile!\n* Shintshanani ngokukhuluma nokulalela\n* Yonke imibuzo yamukelekile\n* Esabelana ngakho kuhlala phakathi kwethu",
+    "text": "Vumelanani ngemigaqo ndawonye\n* Yiluphi usuku (izinsuku)/isikhathi (izikhathi) enizohlangana ngaso phakathi nesonto\n* Ubani ozogcina omakhalekhukhwini ngesikhathi senza imisebenzi yethu\n* Singaqinisekisa kanjani ukuthi wonke umuntu uhlanganyela ngokukhululekile\n* Yini esingayenza ukuze sonke sizizwe sihlonishwa",
     "type": "template",
     "note": "The string @global.parent_app should not be translated."
   },
@@ -4171,7 +4147,7 @@
   },
   {
     "SourceText": "Being a parent can be so hard. Sometimes it feels like our children never listen to us.\n\nBut science shows that spending just a few minutes each day of focused one-on-one time with your teen helps build trust and love.",
-    "text": "Ukuba umzali kungaba nzima kakhulu. Ngezinye izikhathi siba nomuzwa wokuthi izingane zethu azisilaleli nhlobo.\n\nKodwa isayensi ibonisa ukuthi ukuchitha imizuzu nje embalwa usuku ngalunye nobabili nengane yakho eyevile eminyakeni eyishumi nambili kusiza ekwakheni ukwethembana nothando.",
+    "text": "Ukuba umzali kungaba nzima kakhulu. Ngezinye izikhathi siba nomuzwa wokuthi izingane zethu azisilaleli.\n\nKodwa isayensi ibonisa ukuthi ukuchitha imizuzu nje embalwa usuku ngalunye nobabili nengane yakho kusiza ekwakheni ukwethembana nothando.",
     "type": "template",
     "note": ""
   },
@@ -4471,7 +4447,7 @@
   },
   {
     "SourceText": "So good to hear you are feeling well today. You are incredible!",
-    "text": "Kuyajabulisa ukuzwa ukuthi uzizwa kahle namuhlanje. Uyamangalisa!",
+    "text": "Kuyajabulisa ukuzwa ukuthi uzizwa uphilile namuhlanje. Uyamangalisa!",
     "type": "template",
     "note": ""
   },
@@ -4483,13 +4459,13 @@
   },
   {
     "SourceText": "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do this matters. \n\nGetting consequences right helps teens behave better and makes family life calmer...",
-    "text": "Ungasiza ingane yakho eyevile eminyakeni eyishumi nambili iqonde ukuthi ukuphula imithetho yasekhaya kunemiphumela. \n\nKodwa INDLELA okwenza ngayo lokhu ibalulekile. \n\nUkuthola imiphumela efanele kusiza intsha ukuthi iziphathe kahle futhi kwenza ukuphila komndeni kube nokuthula...",
+    "text": "Ungasiza ingane yakho iqonde ukuthi ukuphula imithetho yasekhaya kunemiphumela. \n\nKodwa INDLELA owenza ngayo ebalulekile. \n\nUkuthola imiphumela efanele kusiza umntwana ukuthi aziphathe kahle futhi kwenza umndeni uphile ngokuthula...",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible.",
-    "text": "Sanibonani, nonke. \n\nIsihloko sanamuhla sithi imiphumela eyethulwa ngendlela ezolile.\n\nKubalulekile ukuthi lapho sethula umphumela entsheni yethu siyihilele, kodwa kubalulekile nokuthi sizole lapho sethula imiphumela.\n\nLokhu kuzosisiza sivumelane ngokwethula imiphumela ngendlela ezolile entsheni yethu futhi intsha yethu izoyikhumbula kalula lapho ihilelwa futhi lokho kuzoyenza iziphathe kahle.",
+    "text": "Sanibonani, nonke. \n\nIsihloko sanamuhla sithi imiphumela eyethulwa ngendlela ezolile.\n\nKubalulekile ukuthi lapho sethula umphumela ebantwaneni bethu sibabandakanye nabo, kodwa kubalulekile nokuthi sizole lapho sethula imiphumela.\n\nLokhu kuzosisiza sivumelane ngokwethula imiphumela ngendlela ezolile ebantwaneni bethu futhi abantwana bazoyikhumbula kalula lapho sibabandakanya futhi lokho kuzobenza iziphathe kahle.",
     "type": "template",
     "note": ""
   },
@@ -4507,7 +4483,7 @@
   },
   {
     "SourceText": "Let's read what happened with @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver:",
-    "text": "Ake sifunde ngokwenzeke ku @global.w_consequence_teen_boy_1 no @global.w_consequence_male_caregiver wakhe:",
+    "text": "Ake sifunde ngokwenzekile ku @global.w_consequence_teen_boy_1 no @global.w_consequence_male_caregiver wakhe:",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_boy_1\n@global.w_consequence_male_caregiver"
   },
@@ -4519,7 +4495,7 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep”.  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
-    "text": "@global.w_consequence_teen_boy_1: “Ngiyaxolisa @global.w_consequence_male_caregiver – ungabuyela uyolala.”  \n\n@global.w_consequence_male_caregiver: “Sesidlule KUDALA isikhathi obekumelwe ufike ngaso ekhaya!”",
+    "text": "@global.w_consequence_teen_boy_1: “Ngiyaxolisa @global.w_consequence_male_caregiver – ungabuyela uyolala.”  \n\n@global.w_consequence_male_caregiver: “Sesidlule KUDALA isikhathi obekumele ufike ngaso ekhaya!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_boy_1\n@global.w_consequence_male_caregiver\n@global.w_consequence_male_caregiver"
   },
@@ -4531,7 +4507,7 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_1: “That’s unfair! You never listen to me!! I hate you!”",
-    "text": "@global.w_consequence_teen_boy_1: “Akunabo ubulungisa lokho! Awungilaleli neze!! Ngiyakuzonda!”",
+    "text": "@global.w_consequence_teen_boy_1: “Akunabo ubulungiswa lokho! Awungilaleli neze!! Ngiyakuzonda!”",
     "type": "template",
     "note": "The string @global.w_consequence_teen_boy_1 should not be translated."
   },
@@ -4549,7 +4525,7 @@
   },
   {
     "SourceText": "@global.w_consequence_male_caregiver was angry",
-    "text": "@global.w_consequence_male_caregiver bengicasukile",
+    "text": "@global.w_consequence_male_caregiver ubediniwe",
     "type": "template",
     "note": "The string @global.w_consequence_male_caregiver should not be translated."
   },
@@ -4561,7 +4537,7 @@
   },
   {
     "SourceText": "The consequence was not discussed beforehand with @global.w_consequence_teen_boy_1",
-    "text": "Imiphumela beyingachazwanga kusengaphambili no @global.w_consequence_teen_boy_1",
+    "text": "Imiphumela beyingaxoxwanga kusengaphambili no @global.w_consequence_teen_boy_1",
     "type": "template",
     "note": "The string @global.w_consequence_teen_boy_1 should not be translated."
   },
@@ -4585,13 +4561,13 @@
   },
   {
     "SourceText": "Teenagers often break rules. Growing up is a difficult time when they are learning about who they are. \n\nLuckily, there are ways to discipline your teen without getting angry or using violence… and they work well!\n\nGiving calm consequences helps teach our children responsibility for what they do – good and bad. \n\nHere are some examples - imagine you are the parent:",
-    "text": "Ngokuvamile intsha iyayiphula imithetho. Ukukhula kuyisikhathi ezinzima uma besafunda ukuthi bangobani. \n\nNgenhlanhla, kunezindlela zokukhuza abantu abasha ngaphandle kokucasuka noma ukuba nodlame... futhi zisebenza kahle!\n\nUkwethula imiphumela ngomoya ophansi kusiza izingane zifunde ukuthi ezikwenzayo kunemiphumela – emihle noma emibi. \n\nNazi ezinye izibonelo - zicabange uwumzali:",
+    "text": "Kuvamile ukuthi abantwana bayiphule imithetho. Ukukhula kuyisikhathi ezinzima uma besafunda ukuthi bangobani. \n\nNgenhlanhla, kunezindlela zokukhuza abantwana ngaphandle kokucasuka noma ukuba nodlame... futhi zisebenza kahle!\n\nUkwethula imiphumela ngomoya ophansi kusiza izingane zifunde ukuthi ezikwenzayo kunemiphumela – emihle noma emibi. \n\nNazi ezinye izibonelo - zicabange uwumzali:",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Calm consequences should be... \n\nFAIR: Not too harsh and you can actually do it \n\nIMMEDIATE: Give them as soon as possible \n\nCONSISTENT: The same consequence every time",
-    "text": "Ukwethula imiphumela ngomoya ophansi kumelwe kube... \n\nOKUNOBULUNGISA: Okungaqinile ngokweqile futhi cishe ongakwazi ukukwenza  \n\nNGOKUSHESHA: Yinike ngokushesha ngangokunokwenzeka \n\nNGENDLELA ENGAGUQUGUQUKI: Umphumela ofanayo ngaso sonke isikhathi",
+    "text": "Ukwethula imiphumela ngomoya ophansi kumelwe kube... \n\nOKUNOBULUNGISWA: Okungaqinile ngokweqile futhi  angakwazi ukukwenza  \n\nNJENGAMANJE: Nika umntwana imiphumela ngalesosikhathi kwenzeka \n\nNGENDLELA EFANAYO : Nika umphumela ofanayo ngaso sonke isikhathi",
     "type": "template",
     "note": ""
   },
@@ -4603,7 +4579,7 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_1 came home late.\n\nWhat consequence would help here?",
-    "text": "@global.w_consequence_teen_boy_1 ufike ekhaya sekwephuzile.\n\nYimuphi umphumela engasiza lapha?",
+    "text": "@global.w_consequence_teen_boy_1 ufike ekhaya sekwephuzile.\n\nYimuphi umphumela ongasiza lapha?",
     "type": "template",
     "note": "The string @global.w_consequence_teen_boy_1 should not be translated."
   },
@@ -4615,13 +4591,13 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_girl_1 and @global.w_consequence_teen_girl_2 fight over a phone.",
-    "text": "@global.w_consequence_teen_girl_1 kanye @global.w_consequence_teen_girl_2 nokulwela ucingo.",
+    "text": "@global.w_consequence_teen_girl_1 no @global.w_consequence_teen_girl_2 bayalwa babanga ucingo.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_girl_1\n@global.w_consequence_teen_girl_2"
   },
   {
     "SourceText": "@global.w_consequence_teen_girl_1 and @global.w_consequence_teen_girl_2 fight over a phone.\n\nWhat consequence would help here?",
-    "text": "@global.w_consequence_teen_girl_1 kanye @global.w_consequence_teen_girl_2 nokulwela ucingo.\n\nYimuphi umphumela engasiza lapha?",
+    "text": "@global.w_consequence_teen_girl_1 no @global.w_consequence_teen_girl_2 bayalwa babanga ucingo.\n\nYimuphi umphumela ongasiza lapha?",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_girl_1\n@global.w_consequence_teen_girl_2"
   },
@@ -4633,19 +4609,19 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_2 helps washing dishes.",
-    "text": "@global.w_consequence_teen_boy_2 ukusiza ukugeza izitsha.",
+    "text": "@global.w_consequence_teen_boy_2 usiza ngokugeza izitsha.",
     "type": "template",
     "note": "The string @global.w_consequence_teen_boy_2 should not be translated."
   },
   {
     "SourceText": "What consequence would help here?",
-    "text": "Yimuphi umphumela engasiza lapha?",
+    "text": "Yimuphi umphumela ongasiza lapha?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_2 helps washing dishes.\n\nWhat positive consequence would help here?",
-    "text": "@global.w_consequence_teen_boy_2 ukusiza ukugeza izitsha.\n\nYimiphi imiphumela emihle engasiza lapha?",
+    "text": "@global.w_consequence_teen_boy_2 usiza ngokugeza izitsha.\n\nYimiphi imiphumela emihle engasiza lapha?",
     "type": "template",
     "note": "The string @global.w_consequence_teen_boy_2 should not be translated."
   },
@@ -4693,7 +4669,7 @@
   },
   {
     "SourceText": "They will feel respected and valued. Remember: The more we praise them, the more they will show that good behaviour!",
-    "text": "Bazozizwa behlonishwa futhi baziswa. Khumbula: Uma ubancoma kakhulu, bazothuthukisa kakhulu ukuziphatha okuhle!",
+    "text": "Bazozizwa behlonishwa futhi bebalulekile. Khumbula: Uma sibancoma njalo, bazothuthukisa kakhulu ukuziphatha okuhle!",
     "type": "template",
     "note": ""
   },
@@ -4711,7 +4687,7 @@
   },
   {
     "SourceText": "Discuss together:\n* What rules do your teens often break? \n* What consequence could you use for each specific broken rule? \n\nConsequences should be: \nFAIR (not too harsh)\nIMMEDIATE (do it straight away) \nCONSISTENT (same every time).\n\nPraise and encourage each other – we can give each other strength!",
-    "text": "Xoxani ndawonye:\n* Yimiphi imithetho izingane zakho ezevile eminyakeni eyishumi nambili ezivame ukuyiphula? \n * Yimuphi umphumela ongawusebenzisa emthethweni othile ophuliwe? \n\nImiphumela kumelwe ibe: \nENOBULUNGISA (engaqinile ngokwedlulele)\nNGOKUSHESHA (kwenze ngaso leso sikhathi) \nUNGASHINTSHI (okufanayo ngaso sonke isikhathi).\n\nNcomanani futhi nikhuthazane – singanikana amandla!",
+    "text": "Xoxani ndawonye:\n* Yimiphi imithetho izingane zakho ezivame ukuyiphula? \n * Yimuphi umphumela ongawusebenzisa emthethweni othile ophuliwe? \n\nImiphumela kumelwe ibe: \nENOBULUNGISWA (engaqinile ngokwedlulele)\nNGOKUSHESHA (kwenze ngaso leso sikhathi) \nUNGASHINTSHI (okufanayo ngaso sonke isikhathi).\n\nNcomanani futhi nikhuthazane – singanikana amandla!",
     "type": "template",
     "note": ""
   },
@@ -4735,13 +4711,13 @@
   },
   {
     "SourceText": "@global.w_consequence_male_caregiver: \"Oh come on, I know you have some ideas.\"\n\n@global.w_consequence_teen_boy_1: \"Okay…. What about: I have to do my homework?\"",
-    "text": "@global.w_consequence_male_caregiver: “Woza nazo, ngiyazi ukuthi kukhona okuthile okucabangayo.” \n\n@global.w_consequence_teen_boy_1: “Kulungile…. Kuthiwani ngokuthi: Kumelwe ngenze umsebenzi wesikole?”",
+    "text": "@global.w_consequence_male_caregiver: “Khuluma, ngiyazi ukuthi kukhona okuthile okucabangayo.” \n\n@global.w_consequence_teen_boy_1: “Kulungile…. Kunganjani: uma ngenza umsebenzi wesikole?”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_male_caregiver\n@global.w_consequence_teen_boy_1"
   },
   {
     "SourceText": "@global.w_consequence_male_caregiver: \"You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day.\"\n\n@global.w_consequence_teen_boy_1: \"Okay, @global.w_consequence_male_caregiver.\"",
-    "text": "@global.w_consequence_male_caregiver: “Kumelwe uwenze umsebenzi wakho wesikole noma kunjalo. Uma uwukhohlwa umthetho, kuyinto elungile ukuthi ungababoni abangane bakho ngosuku olulandelayo.\" \n\n@global.w_consequence_teen_boy_1: “Kulungile, @global.w_consequence_male_caregiver.\"",
+    "text": "@global.w_consequence_male_caregiver: “Kumele uwenze umsebenzi wakho wesikole noma kunjalo. Uma uwukhohlwa umthetho, kuyinto elungile ukuthi ungababoni abangane bakho ngosuku olulandelayo.\" \n\n@global.w_consequence_teen_boy_1: “Kulungile, @global.w_consequence_male_caregiver.\"",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_male_caregiver\n@global.w_consequence_teen_boy_1\n@global.w_consequence_male_caregiver"
   },
@@ -4753,7 +4729,7 @@
   },
   {
     "SourceText": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep.”  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
-    "text": "@global.w_consequence_teen_boy_1: “Ngiyaxolisa @global.w_consequence_male_caregiver – ungabuyela uyolala.”  \n\n@global.w_consequence_male_caregiver: “Sesidlule KUDALA isikhathi obekumelwe ufike ngaso ekhaya!”",
+    "text": "@global.w_consequence_teen_boy_1: “Ngiyaxolisa @global.w_consequence_male_caregiver – ungabuyela uyolala.”  \n\n@global.w_consequence_male_caregiver: “Sesidlule KUDALA isikhathi obekumele ufike ngaso ekhaya!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_consequence_teen_boy_1\n@global.w_consequence_male_caregiver\n@global.w_consequence_male_caregiver"
   },
@@ -4879,7 +4855,7 @@
   },
   {
     "SourceText": "Negative Behaviour: Coming home after the agreed hour. \n\nNegative Consequence: Cannot see friends the next day. \n\nNegative Behaviour: Talking rudely. \n\nNegative Consequence: Write a letter of apology. \n \nPositive Behaviour: Helping out with shopping. \n\nPositive Consequence: 30 minutes extra of loved activity of their choice.  \n\nPositive Behaviour: Helping look after younger siblings. \n\nPositive Consequence: One hour of extra time with friends on the weekend.",
-    "text": "Ukuziphatha Kabi: Ukufika ekhaya sekudlule isikhathi esivumelene ngaso. \n\nUmphumela Obuhlungu: Awuvunyelwe ukubona abangane bakho kusasa. \n\nUkuziphatha Kabi: Ukukhuluma kabi ngokungenanhlonipho. \n\nUmphumela Obuhlungu: Bhala incwadi yokuxolisa. \n \nUkuziphatha Okuhle: Ukusiza ngokuyothenga. \n\nUmphumela Omuhle: Imizuzu engu-30 eyengeziwe yokwenza okuthile akuthandayo.  \n\nUkuziphatha Okuhle: Ukusiza ngokugada izingane zakubo ezincane. \n\nUmphumela Omuhle: Ihora elilodwa elengeziwe lokuba nabangani ngempelasonto.",
+    "text": "Ukuziphatha okungamukelekile: Ukufika ekhaya sekudlule isikhathi ekuvunyelwene ngaso. \n\nUmphumela Ongemuhle: Awuvunyelwe ukubona abangane bakho nosuku olulandelayo. \n\nUkuziphatha okungamukelekile: Ukukhuluma kabi ngokungenanhlonipho. \n\nUmphumela Ongemuhle: Bhala incwadi yokuxolisa. \n \nUkuziphatha Okuhle: Ukusiza ngokuyothenga. \n\nUmphumela Omuhle: Imizuzu engu-30 eyengeziwe yokwenza okuthile akuthandayo.  \n\nUkuziphatha Okuhle: Ukusiza ngokugada izingane zasekhaya ezincane. \n\nUmphumela Omuhle: Ihora elilodwa elengeziwe lokuba nabangani ngempelasonto.",
     "type": "template",
     "note": ""
   },
@@ -4945,7 +4921,7 @@
   },
   {
     "SourceText": "@global.w_crisis_teen_girl_1: \"It’s my Uncle, he… he… he touched me.\"  \n\n@global.w_crisis_female_caregiver (thinking): \"Take a deep breath... What does my child need? She needs me to be calm and listen\" \n\n@global.w_crisis_female_caregiver: \"Come and sit down next to me. Take your time, I’m listening.\"",
-    "text": "@global.w_crisis_teen_girl_1: “Umalume, u... u... ubengithinta.”  \n\n@global.w_crisis_female_caregiver (uyacabanga): “Donsa umoya kakhulu... Idingani ingane yami? Idinga ukuthi ngehlise umoya bese ngiyalalela” \n\n@global.w_crisis_female_caregiver: “Woza uzohlala la eduze kwami. Ungajahi, ngikulalele.”",
+    "text": "@global.w_crisis_teen_girl_1: “Umalume, u... u... ubengithinta.”  \n\n@global.w_crisis_female_caregiver (uyacabanga): “Donsa umoya kakhulu... Idingani ingane yami? Idinga ukuthi ngehlise umoya bese ngiyalalela” \n\n@global.w_crisis_female_caregiver: “Woza uzohlala la eduze kwami. Thatha isikhathi, ngikulalele.”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_crisis_teen_girl_1\n@global.w_crisis_female_caregiver\n@global.w_crisis_female_caregiver"
   },
@@ -4957,7 +4933,7 @@
   },
   {
     "SourceText": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
-    "text": "@global.w_crisis_teen_girl_1: “Izolo ngesikhathi uhambile uyobona u@global.w_crisis_adult_friend. Uvele wafika futhi kungaleso sikhathi okwenzeke ngaso.”\n\n@global.w_crisis_female_caregiver:  “Kulungile, ngiyakukholwa ngane yami. Yinto enkulu lena futhi sizoyithola indlela yokuthola usizo esiludingayo. Singaya kuphi ukuze sithole usizo?\n\n@global.w_crisis_teen_girl_1: “Esikoleni sami?”",
+    "text": "@global.w_crisis_teen_girl_1: “Izolo ngesikhathi uhambile uyobona u@global.w_crisis_adult_friend. Uvele wafika  kungaleso sikhathi okwenzeke ngaso.”\n\n@global.w_crisis_female_caregiver:  “Kulungile, ngiyakukholwa ngane yami. Yinto enkulu lena futhi sizoyithola indlela yokuthola usizo esiludingayo. Singaya kuphi ukuze sithole usizo?\n\n@global.w_crisis_teen_girl_1: “Esikoleni sami?”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_crisis_teen_girl_1\n@global.w_crisis_adult_friend\n@global.w_crisis_female_caregiver\n@global.w_crisis_teen_girl_1"
   },
@@ -4975,13 +4951,13 @@
   },
   {
     "SourceText": "This was such a difficult situation for @global.w_crisis_teen_girl_1 and her @global.w_crisis_female_caregiver! This can happen to boys and girls.",
-    "text": "Lesi bekuyisimo esinzima kakhulu ku@global.w_crisis_teen_girl_1 naku @global.w_crisis_female_caregiver! Loku kungenzeka kubafana nakumantombazane.",
+    "text": "Lesi bekuyisimo esinzima kakhulu ku@global.w_crisis_teen_girl_1 naku @global.w_crisis_female_caregiver! Lokhu kungenzeka kubafana nakumantombazane.",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_crisis_teen_girl_1\n@global.w_crisis_female_caregiver"
   },
   {
     "SourceText": "What skills did @global.w_crisis_female_caregiver use?",
-    "text": "Yiwaphi amakhono u @global.w_crisis_female_caregiver awasebenzisile?",
+    "text": "Imaphi amakhono u @global.w_crisis_female_caregiver awasebenzisile?",
     "type": "template",
     "note": "The string @global.w_crisis_female_caregiver should not be translated."
   },
@@ -5149,13 +5125,13 @@
   },
   {
     "SourceText": "Crisis 4: Someone in the family gets sick",
-    "text": "Inkinga 4: Othile emndenini uyagula",
+    "text": "Inkinga 4: Ilunga lomndeni liyagula",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "\"The test said I have HIV. I’m scared I’m going to die\"",
-    "text": "“Ukuhlolwa kuveze ukuba ngine-HIV. Ngiyesaba ukuthi ngizofa”",
+    "text": "“Ukuhlolwa kwegazi kuveze ukuba ngine-HIV. Ngiyesaba ukuthi ngizofa”",
     "type": "template",
     "note": ""
   },
@@ -5167,7 +5143,7 @@
   },
   {
     "SourceText": "Crisis 5: @global.w_crisis_teen_girl_1 is pressured into sex by her boyfriend",
-    "text": "Inkinga 5: @global.w_crisis_teen_girl_1 ucindezelwe yisoka lakhe ukuba aye ocansini",
+    "text": "Inkinga 5: @global.w_crisis_teen_girl_1 uphoqwe yisoka lakhe ukuba enze ucansi",
     "type": "template",
     "note": "The string @global.w_crisis_teen_girl_1 should not be translated."
   },
@@ -5191,7 +5167,7 @@
   },
   {
     "SourceText": "With your teen choose one of these situations (or think of one yourself!). Look at the cartoon, and discuss what you would do together if this happened to a friend or in your family. \n\nAnd remember: BREATHE  - LISTEN - THINK",
-    "text": "Wena nengane yakho eseminyakeni yokuthomba khethani isimo esisodwa kulezi (noma ungacabanga esinye!). Buka opopayi, nixoxe ngokuthi nizokwenzani uma lokhu kungenzeka kumngane noma ilungu lomndeni. \n\nBese uyakhumbula: PHEFUMULA - LALELA - CABANGA",
+    "text": "Wena nengane yakho khethani isimo esisodwa kulezi (noma ungacabanga esinye!). Buka opopayi, nixoxe ngokuthi ningenze njani uma lokhu kungenzeka kumngani noma ilungu lomndeni. \n\nBese uyakhumbula: PHEFUMULA - LALELA - CABANGA",
     "type": "template",
     "note": ""
   },
@@ -5203,7 +5179,7 @@
   },
   {
     "SourceText": "You’ve completed this week’s workshop. \n\nNext week’s workshop will celebrate you all, and help you plan for the future. \n\nWhy don’t you plan some party food together, and have some music ready if you like to dance!",
-    "text": "Ukuqedile ukuqeqeshwa kwaleli viki. \n\nUkuqeqeshwa okuzayo kuzobungaza nina nonke, futhi kunisize nihlelele ikusasa. \n\nKungani ningahleli ukuba nomcimbi wokudla ndawonye, nilungiselele nomculo uma nithanda ukudansa!",
+    "text": "Ukuqedile ukuqeqeshwa kwaleli viki. \n\nUkuqeqeshwa kweviki elizayo kuzobungaza nina nonke, futhi kunisize nihlelele ikusasa. \n\nKungani ningahleli ukuba nomcimbi wokudla ndawonye, nilungise nomculo uma nithanda ukudansa!",
     "type": "template",
     "note": ""
   },
@@ -5221,7 +5197,7 @@
   },
   {
     "SourceText": "Sorry that things are difficult. All families struggle. We are here to help!",
-    "text": "Ngiyaxolisa ngokuthi isimo sinzima. Yonke imindeni idonsa kanzima. Silapha ukuba sisize!",
+    "text": "Ngiyaxolisa ngokuthi isimo sinzima. Isimo sinzima kuyoyonke imindeni. Silapha ukuba sisize!",
     "type": "template",
     "note": ""
   },
@@ -5233,7 +5209,7 @@
   },
   {
     "SourceText": "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference.",
-    "text": "Gxila kokuhle! \n\nUkutshela intsha yethu ukuthi YINI esifuna iyenze kusebenza kangcono kunokuyitshela ukuthi IYEKE ukwenza okuthile.\n\nUzowubona umehluko.",
+    "text": "Gxila kokuhle! \n\nUkutshela abantwana bethu ukuthi YINI esifuna bayenze kusebenza kangcono kunokubatshela ukuthi BAYEKE ukwenza okuthile.\n\nUzowubona umehluko.",
     "type": "template",
     "note": ""
   },
@@ -5293,7 +5269,7 @@
   },
   {
     "SourceText": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
-    "text": "@global.w_instruct_female_caregiver ubehlanza indlu ngesikhathi @global.w_instruct_teen_girl eprakthiza ukudansa nomngane wakhe.\n\n@global.w_instruct_female_caregiver: “Ungahlikizi lapho kuyilapho ngisahlanza indlu. Uhamba ngakho!”",
+    "text": "@global.w_instruct_female_caregiver ubehlanza indlu ngesikhathi @global.w_instruct_teen_girl eprakthiza ukudansa nomngane wakhe.\n\n@global.w_instruct_female_caregiver: “Ungangcolisi njengoba ngisahlanza indlu. Uyangiphazamisa!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_female_caregiver\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver"
   },
@@ -5305,13 +5281,13 @@
   },
   {
     "SourceText": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n@global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
-    "text": "@global.w_instruct_teen_girl: “Arrg!! Kungani ngithethiswa njalo????” \n\n@global.w_instruct_female_caregiver ekhuluma yedwa: “Le ngane ihlale idala izinkinga.”",
+    "text": "@global.w_instruct_teen_girl: “Arrg!! Kungani ngithethiswa ngaso sonke isikhathi????” \n\n@global.w_instruct_female_caregiver ekhuluma yedwa: “Le ngane ihlale idala izinkinga.”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver"
   },
   {
     "SourceText": "Discuss together: \n\n* How do you think @global.w_instruct_teen_girl felt about the way @global.w_instruct_female_caregiver responded?  \n* What could @global.w_instruct_female_caregiver have done differently?",
-    "text": "Xoxani ndawonye: \n\n* Ucabanga ukuthi @global.w_instruct_teen_girl uzizwe kanjani ngendlela @global.w_instruct_female_caregiver aphendule ngayo?  \n* Yini @global.w_instruct_teen_girl abengayenza ngokuhlukile?",
+    "text": "Xoxani ndawonye: \n\n* Ucabanga ukuthi @global.w_instruct_teen_girl uzizwe kanjani ngendlela @global.w_instruct_female_caregiver aphendule ngayo?  \n* Yini @global.w_instruct_female_caregiver abengayenza ngokuhlukile?",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver\n@global.w_instruct_female_caregiver"
   },
@@ -5323,7 +5299,7 @@
   },
   {
     "SourceText": "* Said something nice first \n* Spoken to @global.w_instruct_teen_girl in a calm voice \n* Told @global.w_instruct_teen_girl what she wants her to do",
-    "text": "* Ubengasho okuthile okuhle kuqala \n* Ubengakhuluma no @global.w_instruct_teen_girl ngezwi elizolile \n* Ubengamtshela @global.w_instruct_teen_girl ukuthi ufuna enzeni",
+    "text": "* Ubengasho okuthile okuhle kuqala \n* Ubengakhuluma no @global.w_instruct_teen_girl ngezwi elizolile \n* Ubengatshela @global.w_instruct_teen_girl ukuthi ufuna enzeni",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_teen_girl\n@global.w_instruct_teen_girl"
   },
@@ -5377,7 +5353,7 @@
   },
   {
     "SourceText": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\"",
-    "text": "@global.w_instruct_female_caregiver: “Kwaze kwakuhle, @global.w_instruct_teen_girl! Udansa kamnandi ngempela!”",
+    "text": "@global.w_instruct_female_caregiver: “Kwaze kwakuhle, @global.w_instruct_teen_girl! Udansa kahle ngempela!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_female_caregiver\n@global.w_instruct_teen_girl"
   },
@@ -5389,7 +5365,7 @@
   },
   {
     "SourceText": "Discuss together: \n\n* How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?\n* Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
-    "text": "Xoxani ndawonye: \n\n* U @global.w_instruct_teen_girl no @global.w_instruct_female_caregiver bazizwa kanjani njengamanje?\n* Kungani ucabanga ukuthi isimo sibe ngcono @global.w_instruct_teen_girl kulokhu?",
+    "text": "Xoxani ndawonye: \n\n* U @global.w_instruct_teen_girl no @global.w_instruct_female_caregiver bazizwa kanjani njengamanje?\n* Kungani ucabanga ukuthi isimo sibe ngcono @global.w_instruct_female_caregiver kulokhu?",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver\n@global.w_instruct_female_caregiver"
   },
@@ -5401,7 +5377,7 @@
   },
   {
     "SourceText": "* @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n* @global.w_instruct_female_caregiver was able to stay calm  \n* @global.w_instruct_female_caregiver  kept a positive attitude",
-    "text": "* @global.w_instruct_teen_girl uzizwe ahlonishwa futhi athandwa u @global.w_instruct_female_caregiver wakhe\n* @global.w_instruct_female_caregiver ukwazile ukuhlala ezolile  \n* @global.w_instruct_female_caregiver ulondoloze isimo sengqondo esihle",
+    "text": "* @global.w_instruct_teen_girl uzizwe ehlonishwa futhi ethandwa u @global.w_instruct_female_caregiver wakhe\n* @global.w_instruct_female_caregiver ukwazile ukuhlala ezolile  \n* @global.w_instruct_female_caregiver ulondoloze isimo sengqondo esihle",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver\n@global.w_instruct_female_caregiver\n@global.w_instruct_female_caregiver"
   },
@@ -5419,7 +5395,7 @@
   },
   {
     "SourceText": "@global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver",
-    "text": "@global.w_instruct_teen_girl uzizwe ahlonishwa futhi athandwa u @global.w_instruct_female_caregiver wakhe",
+    "text": "@global.w_instruct_teen_girl uzizwe ehlonishwa futhi ethandwa u @global.w_instruct_female_caregiver wakhe",
     "type": "template",
     "note": ""
   },
@@ -5683,13 +5659,13 @@
   },
   {
     "SourceText": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
-    "text": "“Ngiyazi - ake siqale ngokuhlela! Okokuqala, ake ngenze isabelomali - uhlelo lokuthi ngizoyonga kanjani imali yami. Ngemva kwalokho ngizokonga imali encane ngesikhathi - ngizophinde ngijoyine namaqembu okonga imali nokubolekisa.”",
+    "text": "“Ngiyazi - ake siqale ngokuhlela! Okokuqala, ake ngenze isabelomali - uhlelo lokuthi ngizoyonga kanjani imali yami. Ngemva kwalokho ngizokonga imali encane ngesikhathi - ngizophinde ngijoyine namaqembu okonga imali nokubolekisa ngemali.”",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\"",
-    "text": "“Ngizophinde ngikhulume nabazukulu bami sikhethe izinto esizosebenzisa imali encani kuzona njalo ngeviki. Bazongisiza ngicabange ngezinto esizifunayo kodwa esingazidingi.”",
+    "text": "“Ngizophinde ngikhulume nabazukulu bami sikhethe izinto esizosebenzisa imali encane kuzona njalo ngeviki. Bazongisiza ngicabange ngezinto esizifunayo kodwa esingazidingi.”",
     "type": "template",
     "note": ""
   },
@@ -5701,7 +5677,7 @@
   },
   {
     "SourceText": "What are your  family savings goals?",
-    "text": "Uyini umgomo wokonga womndeni wakho?",
+    "text": "Imiphi imigomo yokonga yomndeni wakho?",
     "type": "template",
     "note": ""
   },
@@ -5719,7 +5695,7 @@
   },
   {
     "SourceText": "What are your family savings goals?",
-    "text": "Uyini umgomo wokonga womndeni wakho?",
+    "text": "Imiphi imigomo yokonga womndeni wakho?",
     "type": "template",
     "note": ""
   },
@@ -5731,13 +5707,13 @@
   },
   {
     "SourceText": "Saving is important for one more reason: emergencies! @global.w_money_grandma also learned this along the way:",
-    "text": "Esinye isizathu esengeziwe esenza ukonga kubaluleke: izimo eziphuthumayo! @global.w_money_grandma uye wakufunda lokhu njengoba siqhubeka:",
+    "text": "Ukonga kubaluleke ngalesi sezinye izizathu: izimo eziphuthumayo! @global.w_money_grandma uye wakufunda lokhu ngendlela:",
     "type": "template",
     "note": "The string @global.w_money_grandma should not be translated."
   },
   {
     "SourceText": "“One night there was a horrible storm that broke my roof. Everything was flooded. I suddenly had to find money to fix the roof. I just felt defeated.”",
-    "text": "“Ngelinye ilanga kwaba nemvula enkulu eyalimaza uphahla lwami. Kwakhukhuleka yonke into. Kwadingeka ngithole imali ngokushesha ukuze ngilungise uphahla. Ngazizwa ngiphelelwe ngamandla.”",
+    "text": "“Ngelinye ilanga kwaba nemvula enesiphepho esibi eyalimaza uphahla lwami. Kwakhukhuleka yonke into. Kwadingeka ngithole imali ngokushesha ukuze ngilungise uphahla. Ngazizwa ngiphelelwe ngamandla.”",
     "type": "template",
     "note": ""
   },
@@ -5749,7 +5725,7 @@
   },
   {
     "SourceText": "For @global.w_money_grandma, a storm happened. \n\nWhat other emergencies could come up for us?",
-    "text": "Ku @global.w_money_grandma, kwaba nemvula enamandla. \n\nIziphi ezinye izimo eziphuthumayo ezingasehlela?",
+    "text": "Ku @global.w_money_grandma, kwaba nemvula enesiphepho esinamandla. \n\nIziphi ezinye izimo eziphuthumayo ezingasehlela?",
     "type": "template",
     "note": "The string @global.w_money_grandma should not be translated."
   },
@@ -5761,19 +5737,19 @@
   },
   {
     "SourceText": "For @global.w_money_grandma, a storm happened.",
-    "text": "Ku @global.w_money_grandma, kwaba nemvula enamandla.",
+    "text": "Ku @global.w_money_grandma, kwaba nemvula enesiphepho esinamandla.",
     "type": "template",
     "note": "The string @global.w_money_grandma should not be translated."
   },
   {
     "SourceText": "What other emergencies could come up for your family?",
-    "text": "Yisiphi esinye isimo esiphuthumayo esingavelela imindeni yethu?",
+    "text": "Yiziphi ezinye izimo eziphuthumayo ezingavelela imindeni yethu?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Emergencies can happen in any family. Saving some money for these emergencies BEFORE they happen prevents a lot of sudden worry and stress!",
-    "text": "Isimo esiphuthumayo singavelela noma imuphi umndeni. Ukonga imali yokusiza uma kuvela isimo esiphuthumayo NGAPHAMBI kokuthi siqubuke kuzovimbela ukukhathazeka kungalindelekile nokucindezeleka!",
+    "text": "Isimo esiphuthumayo singavelela noma imuphi umndeni. Ukonga imali yokusiza uma kuvela isimo esiphuthumayo NGAPHAMBI kokuthi siqubuke kuzovimbela ukukhathazeka kungalindelekile nokuba nengcindezi!",
     "type": "template",
     "note": ""
   },
@@ -5791,13 +5767,13 @@
   },
   {
     "SourceText": "Let's think about different ways we can save.",
-    "text": "Ake sicabange ngezindlela ezihlukahlukene esingonga ngazo.",
+    "text": "Ake sicabange ngezindlela ezihlukahlukene esingonga imali ngazo.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "There are different ways we can save: at home, buying things we can sell later, at a bank, or in a savings group.\n\nThink of the advantages and disadvantages of each savings option.",
-    "text": "Kunezindlela ezihlukahlukene esingakwazi ngazo ukonga: ekhaya, ukuthenga izinto esingakwazi ukuzithengisa kamuva, ebhange, noma eqenjini lokonga.\n\nCabanga ngobuhle nobubi bendlela ngayinye yokonga.",
+    "text": "Kunezindlela ezihlukahlukene esingakwazi ukonga ngazo: ekhaya, ukuthenga izinto esingakwazi ukuzithengisa kamuva, ebhange, noma eqenjini lokonga.\n\nCabanga ngobuhle nobubi bendlela ngayinye yokonga imali.",
     "type": "template",
     "note": ""
   },
@@ -5809,7 +5785,7 @@
   },
   {
     "SourceText": "Whatever savings plan you choose, it will really help your family move forward!",
-    "text": "Noma ngabe iyiphi indlela yokonga oyikhethayo, izosiza umndeni wakhe uqhubekele phambili!",
+    "text": "Noma ngabe iyiphi indlela yokonga oyikhethayo, izosiza umndeni wakho uqhubekele phambili!",
     "type": "template",
     "note": ""
   },
@@ -5839,7 +5815,7 @@
   },
   {
     "SourceText": "CONGRATULATIONS!!! You’ve made your budget – remember to do this exercise again with your other family members - if you agree on a plan together it will make a huge difference!",
-    "text": "SIYAKUHALALISELA!!! Wenze isabelomali sakho - khumbula ukuphinde wenze lesi sivivinyo futhi namalungu womndeni wakho - uma nivumelana ndawonye ngohlelo kuzokwenza umehluko omkhulu!",
+    "text": "SIYAKUHALALISELA!!! Wenze isabelomali sakho - khumbula ukuphinde wenze lesi sabelo mali futhi namalungu womndeni wakho - uma nivumelana ndawonye ngohlelo kuzokwenza umehluko omkhulu!",
     "type": "template",
     "note": ""
   },
@@ -5887,7 +5863,7 @@
   },
   {
     "SourceText": "Make your own budget",
-    "text": "Zakhele isabelomali sakho",
+    "text": "Zenzele  isabelomali sakho",
     "type": "template",
     "note": ""
   },
@@ -5917,19 +5893,19 @@
   },
   {
     "SourceText": "Make a budget again - this time WITH your teen and family! \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
-    "text": "Yenza isabelomali futhi - manje senze KANYE nengane yakho eseminyakeni yokuthomba kanye nomndeni wakho! \n\nLena yinto ebalulekile nokumnandi ukuyenza nomndeni - kungathatha imizuzu engaba ngu-30.\n\nUkwenza isabelomali njengomndeni kusiza intsha iqonde ukuthi ngezinye izikhathi sonke kudingeka senze izinqumo ezinzima - kodwa lokho kusisiza sibe nemali eyanele ekupheleni kwenyanga futhi sikwazi ukufinyelela imigomo yethu!\n\nIsabelomali sisize izigidi zemindeni.",
+    "text": "Yenza isabelomali futhi - manje senze KANYE nengane yakho nomndeni wakho! \n\nLena yinto ebalulekile nokumnandi ukuyenza nomndeni - kuthatha imizuzu engaba ngu-30.\n\nUkwenza isabelomali njengomndeni kusiza abantwana baqonde ukuthi ngezinye izikhathi sonke kudingeka senze izinqumo ezinzima - kodwa lokho kusisiza sibe nemali eyanele ekupheleni kwenyanga futhi sikwazi ukufinyelela imigomo yethu!\n\nIsabelomali sesisize izigidi zemindeni.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Make a budget with your teen and family. \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
-    "text": "Yenza isabelomali nosemusha kanye nomndeni wakho. \n\nLena yinto ebalulekile nokumnandi ukuyenza nomndeni - kungathatha imizuzu engaba ngu-30.\n\nUkwenza isabelomali njengomndeni kusiza intsha iqonde ukuthi ngezinye izikhathi sonke kudingeka senze izinqumo ezinzima - kodwa lokho kusisiza sibe nemali eyanele ekupheleni kwenyanga futhi sikwazi ukufinyelela imigomo yethu!\n\nIsabelomali sisize izigidi zemindeni.",
+    "text": "Yenza isabelomali nomntwana kanye nomndeni wakho. \n\nLena yinto ebalulekile nokumnandi ukuyenza nomndeni - kuthatha imizuzu engaba ngu-30.\n\nUkwenza isabelomali njengomndeni kusiza abantwana baqonde ukuthi ngezinye izikhathi sonke kudingeka senze izinqumo ezinzima - kodwa lokho kusisiza sibe nemali eyanele ekupheleni kwenyanga futhi sikwazi ukufinyelela imigomo yethu!\n\nIsabelomali sesisize izigidi zemindeni.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Review your budget with your teen and family. This will remind everyone that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped millions of families.",
-    "text": "Buyekeza isabelomali nentshakanye nomndeni wakho. Ukwenza kanjalo kuzokhumbuza wonke umuntu sidinga ukwenza izinqumo ezinzima ngezinye izikhathi - kodwa lokho kusisiza sibe nemali eyanele ekupheleni kwenyanga futhi sikwazi ukufinyelela imigomo yethu!\n\nIsabelomali sisize izigidi zemindeni.",
+    "text": "Buyekeza isabelomali nomntwana kanye nomndeni wakho. Ukwenza kanjalo kuzokhumbuza wonke umuntu sidinga ukwenza izinqumo ezinzima ngezinye izikhathi - kodwa lokho kusisiza sibe nemali eyanele ekupheleni kwenyanga futhi sikwazi ukufinyelela imigomo yethu!\n\nIsabelomali sisize izigidi zemindeni.",
     "type": "template",
     "note": ""
   },
@@ -5941,7 +5917,7 @@
   },
   {
     "SourceText": "Great to hear that you are doing well. You are a wonderful parent!",
-    "text": "Ngiyajabula ukwazi ukuthi kukuhambela kahle. Ungumzali omangalisayo!",
+    "text": "Ngiyajabula ukuzwa ukuthi kukuhambela kahle. Ungumzali omangalisayo!",
     "type": "template",
     "note": ""
   },
@@ -5953,19 +5929,19 @@
   },
   {
     "SourceText": "Sorry to hear that you are not having a good day. Well done for getting up every morning and trying again, even when you are tired. That is real courage and dedication!",
-    "text": "Ngiyaxolisa ukuzwa ukuthi usuku lwakho aluhambi kahle. Wenza kahle ngokuthi uvuke njalo ekuseni ukuze uzame futhi, ngisho noma ukhathele. Lokhu kubonisa isibindi nokuzinikela!",
+    "text": "Ngiyaxolisa ukuzwa ukuthi usuku lwakho aluhambi kahle. Wenza kahle ngokuthi uvuke njalo ekuseni ukuze uzame futhi, ngisho noma ukhathele. Lokhu kubonisa ukuzimisela nokuzinikela!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Step 1: Share what went well and what was hard",
-    "text": "Isinyathelo 1: Khuluma ngokuhambe kahle nokube nzima",
+    "text": "Isinyathelo 1: Sixoxele ngokuhambe kahle nokuthi ikuphi okube nzima",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "\"I learned so much more about my teen’s life when we spent one-on-one time! But after the first day, my teen only wanted to play on his phone.\"",
-    "text": "“Ngafunda okuningi ngokuphila kwentsha yami ngesikhathi sichitha isikhathi ndawonye! Kodwa ngemva kosuku lokuqala, ingane yami esanda kweva eminyakeni eyishumi nambili ibifuna ukudlala ngefoni yayo kuphela.”",
+    "text": "“Ngifunde okuningi ngompilo yomntwana wami, uma sichitha isikhathi ndawonye! Kodwa ngemva kosuku lokuqala, umntwana wami ubefuna ukudlala ngefoni yakhe kuphela.”",
     "type": "template",
     "note": ""
   },
@@ -5977,7 +5953,7 @@
   },
   {
     "SourceText": "\"Well done for trying! Maybe you could suggest some other fun things you could do together with your teen.\"\n\n\"Yes, or you could do something together on his phone? Or he could show you how his phone works?\"",
-    "text": "“Wenze kahle ngokuzama! Mhlawumbe ungasikisela ezinye izinto ezimnandi eningazenza ndawonye nengane yakho eyevile eminyakeni eyishumi nambili. \n\n“Yebo, noma ningenza okuthile kumakhalekhukhwini wakhe ndawonye? Noma angakubonisa ukuthi ifoni yakhe isebenza kanjani?”",
+    "text": "“Wenze kahle ngokuzama! Mhlawumbe ungaveza ezinye izinto ezimnandi eningazenza ndawonye nengane yakho. \n\n“Yebo, noma ningenza okuthile kumakhalekhukhwini wakhe ndawonye? Noma angakubonisa ukuthi ifoni yakhe isebenza kanjani?”",
     "type": "template",
     "note": ""
   },
@@ -5989,25 +5965,25 @@
   },
   {
     "SourceText": "“Thank you for those great ideas! Yes, let me ask my teen to show how his phone works tomorrow after school. Can one of you pretend to be my teen now, so I can practice asking?”",
-    "text": "“Ngiyabonga ngala macebiso amahle! Yebo, ake ngicele ingane yami eseyintsha ingibonise ukuthi ifoni yayo isebenza kanjani kusasa ngemva kwesikole. Ngicela manje omunye kini azenze ingane yami eseyintsha, ukuze ngikwazi ukuprakthizela ukumcela?”",
+    "text": "“Ngiyabonga ngala macebiso amahle! Yebo, ake ngicele ingane yami ingibonise ukuthi ifoni yayo isebenza kanjani kusasa uma iphuma esikoleni. Ngicela manje omunye kini azenze ingane yami, ukuze ngikwazi ukuprakthiza ukumcela?”",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Think about how your home activities went this week. \n\nTake turns to discuss:\n\n* What went well and what was a problem?\n* What solutions can you think of together?\n* Pick one solution and try it later with your teen! \n\n(Or you can even practice it now  so it will be easier later!)",
-    "text": "Cabanga ngokuthi imisebenzi yakho yasekhaya ihambe kanjani kuleli sonto. \n\nNikanani amathuba okuxoxa:\n\n* Yini ehambe kahle futhi yini ebe yinkinga?\n* Yiziphi izixazululo eningazicabanga ndawonye?\n* Khetha isixazululo esisodwa bese uyasizama kamuva nengane yakho eyevile eminyakeni eyishumi nambili! \n\n(Noma ungayiprakthiza khona manje ukuze kube lula kamuva!)",
+    "text": "Cabanga ngokuthi imisebenzi yakho yasekhaya ihambe kanjani kuleli sonto. \n\nNikanani amathuba okuxoxa:\n\n* Yini ehambe kahle futhi yini ebe yinkinga?\n* Yiziphi izixazululo eningazicabanga ndawonye?\n* Khetha isixazululo esisodwa bese uyasizama kamuva nengane yakho! \n\n(Noma ungayiprakthiza khona manje ukuze kube lula kamuva!)",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Praise is a powerful parenting skill.\n\nIf we praise our teens when they do something well, we will see them do more and more positive things!",
-    "text": "Ukuncoma kuyikhono elinamandla lokuba umzali.\n\nUma sincoma intsha yethu uma yenze okuthile okuhle, sizoyibona yenza izinto ezingeziwe ezinhle!",
+    "text": "Ukuncoma kuyikhono elinamandla lokuba umzali.\n\nUma sincoma abantwana bethu uma benze okuthile okuhle, sizobona benza izinto ezingeziwe ezinhle!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Greetings everyone. \n\nOur topic today is about praise. \n\nIt is good to praise our children when they've done good because when we do that, they will do more of that good behavior we want to see. \n\nAnd let's not forget to praise ourselves when we do good too!",
-    "text": "Sanibonani nonke. \n\nIsihloko sethu sanamuhla sikhuluma ngokuncoma. \n\nKuyinto enhle ukuncoma intsha yethu uma yenze kahle ngoba uma senza kanjalo, zizokwenza okungeziwe okuhle esifuna ukukubona. \n\nFuthi asingakhohlwa ukuzincoma nathi uma senze kahle!",
+    "text": "Sanibonani nonke. \n\nIsihloko sethu sanamuhla sikhuluma ngokuncoma. \n\nKuyinto enhle ukuncoma abantwana bethu uma benze kahle ngoba uma senza kanjalo, bazokwenza okungeziwe okuhle esifuna ukukubona. \n\nFuthi singakhohlwa ukuzincoma nathi uma senze kahle!",
     "type": "template",
     "note": ""
   },
@@ -6025,25 +6001,25 @@
   },
   {
     "SourceText": "Share with each other:\n\n* When last did someone thank you or say you did something great? \n* How did it make you feel? \n* How does it feel if you are not thanked or praised for what you do? \n\nWe usually don’t get thanked or praised enough as parents. Maybe you can give your teens the right example and praise them first when they do something well!",
-    "text": "Xoxelanani:\n\n* Ugcine nini ukubongwa othile noma othile athi uyenze kahle into ethile? \n* Kwakwenza wazizwa kanjani? \n* Uzizwa kanjani uma ungabongwa noma unconywe ngokuthile okwenzayo? \n\nNgokuvamile asibongwa noma sinconywe ngokwanele njengabazali. Mhlawumbe singabekela intsha yethu isibonelo esihle ngokuthi siyincome kuqala uma yenze kahle okuthile!",
+    "text": "Xoxelanani:\n\n* Ugcine nini ukubongwa noma kuthiwe wenze kahle? \n* Kwakwenza wazizwa kanjani? \n* Uzizwa kanjani uma ungabongwa noma unconywe ngokuthile okwenzayo? \n\nNgokuvamile asibongwa noma sinconywe ngokwanele njengabazali. Mhlawumbe ungenza isibonelo esihle ngokuthi sincome abantwana bethu kuqala uma benze kahle!",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Think about the last time someone thanked you, or said you did something great.",
-    "text": "Cabanga ngesikhathi lapho othile akubonga, noma wathi wenze into enhle.",
+    "text": "Cabanga ngesikhathi lapho kukhona owakubonga, noma owathi wenze into enhle.",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "How did it make you feel?",
-    "text": "Kwakwenza wazizwa kanjani?",
+    "text": "Wazizwa kanjani?",
     "type": "template",
     "note": ""
   },
   {
     "SourceText": "Parents usually don’t get thanked or praised enough.",
-    "text": "Ngokuvamile abazali ababongwa noma banconywe ngokwanele.",
+    "text": "Akuvamile ukuthi abazali babongwe noma banconywe ngokwanele.",
     "type": "template",
     "note": ""
   },
@@ -6061,7 +6037,7 @@
   },
   {
     "SourceText": "Your teen can feel this way too. That's what makes this week's parenting tool simple but important: Praise them for what they do right.",
-    "text": "Intsha yakho nayo ingase izizwe ngalendlela. Yilokho okwenza ithuluzi lokuba umzali laleli viki libe elibalulekile kodwa elilula: Bancome ngezinto ezinhle abazenzayo.",
+    "text": "Ingane yakho ingazizwa ngalendlela nayo. Yilokho okwenza ithuluzi lokuba umzali laleli viki libe elibalulekile kodwa elilula: Bancome ngezinto ezinhle abazenzayo.",
     "type": "template",
     "note": ""
   },
@@ -6073,7 +6049,7 @@
   },
   {
     "SourceText": "When @global.w_praise_female_caregiver_name is busy, her two daughters often fight. But today, her older daughter actually helped her sister with her schoolwork!",
-    "text": "Ngesikhathi u @global.w_praise_female_caregiver_name ematasa, ngokuvamile amadodakazi akhe amabili ayalwa. Kodwa namuhla, indodakazi yakhe indala isize udadewabo ngomsebenzi wesikole!",
+    "text": "Ngesikhathi u @global.w_praise_female_caregiver_name ematasa,  amadodakazi akhe amabili avamise ukulwa. Kodwa namuhla, indodakazi yakhe endala isize udadewabo ngomsebenzi wesikole!",
     "type": "template",
     "note": "The string @global.w_praise_female_caregiver_name should not be translated."
   },
@@ -7399,7 +7375,7 @@
   },
   {
     "SourceText": "@global.w_solve_female_caregiver_1: “I don’t want to see that expensive thing! That boy is no good! How does he think you are going to repay him for this?!”  \n\n@global.w_solve_teen_girl: “That’s not how it works, @global.w_solve_female_caregiver_1! That’s not fair!”",
-    "text": "@global.w_solve_female_caregiver_1: “Angifuni ukuyibona leya nto ebizayo! Lo mfana akalungile! Ucabanga ukuthi uzomkhokhela ngani ngalokhu?!” @global.w_solve_female_caregiver_1:  \n\n@global.w_solve_teen_girl: “Akuyona indlela okusebenza ngayo lokho, @global.w_solve_female_caregiver_1! Akubona ubulungisa lokho!”",
+    "text": "@global.w_solve_female_caregiver_1: “Angifuni ukuyibona leya nto ebizayo! Lo mfana akalungile! Ucabanga ukuthi uzomkhokhela ngani ngalokhu?!”\n\n@global.w_solve_teen_girl: “Akuyona indlela okusebenza ngayo lokho, @global.w_solve_female_caregiver_1! Akubona ubulungisa lokho!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_solve_female_caregiver_1\n@global.w_solve_teen_girl\n@global.w_solve_female_caregiver_1"
   },
@@ -8880,12 +8856,6 @@
     "note": "The string @global.weekly_workshops should not be translated."
   },
   {
-    "SourceText": "@global.weekly_workshops quick start",
-    "text": "@global.weekly_workshops ukukuqala ngokushesha",
-    "type": "tour",
-    "note": "The string @global.weekly_workshops should not be translated."
-  },
-  {
     "SourceText": "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
     "text": "<p>Inkinobho eyindilinga ivela uma @global.weekly_workshop okusha sekutholakala kuwe.</p>",
     "type": "tour",
@@ -8967,6 +8937,78 @@
     "SourceText": "<p> Tap here to change your group name. </p>",
     "text": "<p> Chofoza lapha uma ufuna ukushintsha igama leqembu lakho. </p>",
     "type": "tour",
+    "note": ""
+  },
+  {
+    "SourceText": "Start",
+    "text": "Qala",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Continue",
+    "text": "Qhubeka",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Welcome to ParentApp. Click here to start your journey!",
+    "text": "Siyakwamukela kuParentApp. Chofoza lapha ukuze uqale uhambo lwakho!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
+    "text": "Sithembe ukuthi uzizwa KAHLE. Ukuba umzali kunzima, kodwa akwephuzanga ukuthi uphinde uqale futhi nosemusha wakho. Sekuyatholakala ukuqeqeshwa kwakho kokuqala kokuba umzali! Chofoza lapha ukuze uqale uhambo lwakho ParentApp!",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+    "text": "Sawubona! Ingabe konke kuhamba KAHLE? Kubonakala sengathi muva nje awuyivulanga i-ParentApp. Kungani ungayizami? Izigidi zabazali zithole ewusizo la mathuluzi. Sisekhona lapha ukuba sikusekele.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+    "text": "Sawubona futhi! Akukaze kwephuza ukuthi usebenzise i-ParentApp bese uthola ukusekelwa okuqhubekayo ekubeni umzali. Kungani ungakuzami lapho usendleleni eya emsebenzini noma uma upheka? Izigidi zabazali ziwathole ewusizo amathuluzi ethu.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
+    "text": "I-ParentApp iyakukhumbula! Kuningi ongakuhlola. Sisekhona lapha ukuba sikusekele.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
+    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba wumzali - sebenzisa i-app yabazali ukuze uzisize ukulawula ukucindezeleka.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
+    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ulungiselele intsha yakho ukuthi iphumelele empilweni.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
+    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ikusize ulawule indlela osemusha wakho aziphatha ngayo.",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "New message from PLH",
+    "text": "Umlayezo omusha ovela ku-PLH",
+    "type": "data_list",
+    "note": ""
+  },
+  {
+    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
+    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze nizwane kakhulu nengane yakho eseminyakeni yokuthomba!",
+    "type": "data_list",
     "note": ""
   },
   {
@@ -9800,78 +9842,6 @@
   {
     "SourceText": "How to support each other",
     "text": "Indlela yokusekelana",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Start",
-    "text": "Qala",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Continue",
-    "text": "Qhubeka",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Welcome to ParentApp. Click here to start your journey!",
-    "text": "Siyakwamukela kuParentApp. Chofoza lapha ukuze uqale uhambo lwakho!",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
-    "text": "Sithembe ukuthi uzizwa KAHLE. Ukuba umzali kunzima, kodwa akwephuzanga ukuthi uphinde uqale futhi nosemusha wakho. Sekuyatholakala ukuqeqeshwa kwakho kokuqala kokuba umzali! Chofoza lapha ukuze uqale uhambo lwakho ParentApp!",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-    "text": "Sawubona! Ingabe konke kuhamba KAHLE? Kubonakala sengathi muva nje awuyivulanga i-ParentApp. Kungani ungayizami? Izigidi zabazali zithole ewusizo la mathuluzi. Sisekhona lapha ukuba sikusekele.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-    "text": "Sawubona futhi! Akukaze kwephuza ukuthi usebenzise i-ParentApp bese uthola ukusekelwa okuqhubekayo ekubeni umzali. Kungani ungakuzami lapho usendleleni eya emsebenzini noma uma upheka? Izigidi zabazali ziwathole ewusizo amathuluzi ethu.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "ParentApp misses you! There is a lot to explore. We are still here to support you.",
-    "text": "I-ParentApp iyakukhumbula! Kuningi ongakuhlola. Sisekhona lapha ukuba sikusekele.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
-    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba wumzali - sebenzisa i-app yabazali ukuze uzisize ukulawula ukucindezeleka.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
-    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ulungiselele intsha yakho ukuthi iphumelele empilweni.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
-    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ikusize ulawule indlela osemusha wakho aziphatha ngayo.",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "New message from PLH",
-    "text": "Umlayezo omusha ovela ku-PLH",
-    "type": "data_list",
-    "note": ""
-  },
-  {
-    "SourceText": "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
-    "text": "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze nizwane kakhulu nengane yakho eseminyakeni yokuthomba!",
     "type": "data_list",
     "note": ""
   }
