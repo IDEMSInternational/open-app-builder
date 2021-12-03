@@ -6,7 +6,7 @@ Example `angular.json` config snippet
 {
     "glob": "**/*",
     "input": "node_modules/app-data/assets",
-    "output": "assets/_app_data_assets"
+    "output": "assets/app_data_assets"
 },
 ```
 
