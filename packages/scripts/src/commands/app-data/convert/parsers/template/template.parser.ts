@@ -1,10 +1,5 @@
 import { FlowTypes } from "data-models";
-// TODO - check if requires import from child or works from parent
-import { extractDynamicFields } from "data-models/functions";
-if (!extractDynamicFields) {
-  throw new Error("Extract dynamic fields failed to import");
-}
-console.log("extract dynamic fileds imported", extractDynamicFields);
+import { extractDynamicFields } from "data-models";
 import { DefaultParser } from "../default/default.parser";
 import { flattenJson, parseAppDataCollectionString, parseAppDataListString } from "../../utils";
 
