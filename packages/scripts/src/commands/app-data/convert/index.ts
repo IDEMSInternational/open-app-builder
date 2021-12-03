@@ -17,7 +17,7 @@ const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
  *************************************************************************************/
 const program = new Command("convert");
 interface IProgramOptions {}
-export default program.description("Copy app data").action(async (options: IProgramOptions) => {
+export default program.description("Convert app data").action(async (options: IProgramOptions) => {
   await appDataConvert(options);
 });
 

@@ -7,6 +7,7 @@ import appDataCmd from "./app-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import generateCmd from "./generate";
+import versionCmd from "./version";
 import { logWarning } from "../utils/logging.utils";
 
 const program = new Command();
@@ -23,9 +24,6 @@ const legacyCommandMappings = {
   "app-data-copy": ["app-data", "copy"],
   "app-data-sync": ["app-data", "sync"],
   "app-data-convert": ["app-data", "convert"],
-  // To convert
-
-  version: ["version.ts"],
 };
 const cmdName = process.argv[2] || "";
 const mapping = legacyCommandMappings[cmdName];
@@ -42,6 +40,7 @@ program.addCommand(appDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
 program.addCommand(generateCmd);
+program.addCommand(versionCmd);
 
 if (!process.argv.slice(2).length) {
   console.log(chalk.yellow("No command specified. See help below:"));
