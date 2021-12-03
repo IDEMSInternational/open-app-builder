@@ -86,7 +86,7 @@ async function appDataDownload(options: IProgramOptions) {
  * In case where non exist return null
  */
 async function getFileCacheEntry(sheetname: string, cachePath: string) {
-  const cacheContents = path.resolve(cachePath, "_drive_contents.json");
+  const cacheContents = path.resolve(cachePath, "_contents.json");
   if (fs.existsSync(cacheContents)) {
     const contentsJson = fs.readJsonSync(cacheContents);
     let matching = contentsJson.filter((entry) => entry.name === `${sheetname}.xlsx`);

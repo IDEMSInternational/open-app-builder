@@ -19,7 +19,7 @@ import {
 } from "../utils";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
-const CONTENTS_FILE_NAME = "_drive_contents.json";
+const CONTENTS_FILE_NAME = "_contents.json";
 
 /***************************************************************************************
  * CLI
@@ -136,7 +136,12 @@ class GDriveDownloader {
 
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
     const { cachePath } = this.options;
-    const contents = JSON.stringify(files, null, 2);
+    // also add a relativePath for full path to local file
+    const filesWithRelativePath = files.map((f) => ({
+      ...f,
+      relativePath: getRelativeLocalPath(f),
+    }));
+    const contents = JSON.stringify(filesWithRelativePath, null, 2);
     const contentsPath = path.resolve(cachePath, CONTENTS_FILE_NAME);
     fs.writeFileSync(contentsPath, contents);
   }
@@ -205,24 +210,18 @@ class GDriveDownloader {
     // Compare server with local
     for (const serverFile of serverFiles) {
       (() => {
-        const { folderPath, mimeType } = serverFile;
-        let targetFilename = serverFile.name;
-        // assign correct file extension if exporting
-        if (GDRIVE_OFFICE_MAPPING[mimeType]) {
-          targetFilename += `.${MIMETYPE_EXTENSIONS[mimeType]}`;
-        }
+        // add to hashmap for use in local-server comparison
+        const cacheRelativePath = getRelativeLocalPath(serverFile);
+        serverFilesHashmap[cacheRelativePath] = serverFile;
 
         // run a regex test for anything ending .abc(d)
         // gdrive keeps duplicate open office formats of gsheets without extension
         // if uploaded as excel files, so these will be omitted (duplicate of converted export)
-        const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(targetFilename);
+        const hasExtension = /\.([a-z0-9]){3,4}$/gi.test(cacheRelativePath);
         if (!hasExtension) {
           output.ignored.push(serverFile);
           return;
         }
-        // add to hashmap for use in local-server comparison
-        const cacheRelativePath = folderPath ? `${folderPath}/${targetFilename}` : targetFilename;
-        serverFilesHashmap[cacheRelativePath] = serverFile;
 
         const cacheFile = localFilesHashmap[cacheRelativePath];
         if (cacheFile) {
@@ -347,6 +346,22 @@ class GDriveDownloader {
       }
     });
   }
+}
+
+/**
+ * Gdrive file meta only includes extensions if a native file type (not gsheet, gdoc etc.),
+ * It also separates out relative parent folder path with file name prefix.
+ * Generate a path that combines the relative path with file name and extension
+ */
+function getRelativeLocalPath(entry: IGDriveFileWithFolder) {
+  const { folderPath, mimeType } = entry;
+  let targetFilename = entry.name;
+  // assign correct file extension if exporting
+  if (GDRIVE_OFFICE_MAPPING[mimeType]) {
+    targetFilename += `.${MIMETYPE_EXTENSIONS[mimeType]}`;
+  }
+  // add to hashmap for use in local-server comparison
+  return folderPath ? `${folderPath}/${targetFilename}` : targetFilename;
 }
 
 function handleFileDownloadError(err: Error, file: IGDriveFileWithFolder, localTargetPath: string) {
