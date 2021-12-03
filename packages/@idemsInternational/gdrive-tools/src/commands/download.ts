@@ -6,6 +6,7 @@ import path from "path";
 import PQueue from "p-queue";
 import { drive_v3 } from "googleapis";
 import { GaxiosResponse, GaxiosOptions } from "gaxios";
+import { logProgramHelp } from "../utils";
 
 import {
   GDRIVE_OFFICE_MAPPING,
@@ -31,6 +32,7 @@ interface IProgramOptions {
   cachePath: string;
   credentialsPath: string;
   authTokenPath: string;
+  logName: string;
 }
 
 import { Command } from "commander";
@@ -60,6 +62,11 @@ export default program
     PATHS.DEFAULT_CREDENTIALS
   )
   .requiredOption("-a --auth-token-path <string>", "Path to token JSON", PATHS.DEFAULT_TOKEN)
+  .requiredOption(
+    "-l --log-name <string>",
+    "Name provided for logs (defaults action.log)",
+    "actions.log"
+  )
   .action(async (options: IProgramOptions) => {
     new GDriveDownloader(options).run();
   });
@@ -67,9 +74,7 @@ export default program
 // Run if called directly from Node
 if (require.main === module) {
   if (!process.argv.slice(2).length) {
-    console.log(chalk.yellow("No command specified. See help below:"));
-    program.outputHelp();
-    process.exit(0);
+    logProgramHelp(program);
   }
   program.parse(process.argv);
 }
@@ -181,7 +186,7 @@ class GDriveDownloader {
     queue.start();
     await queue.onIdle();
     // Update logs
-    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, "actions.log.json");
+    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, `${this.options.logName}.json`);
     console.log(chalk.gray(actionsLogPath));
     fs.writeFileSync(actionsLogPath, JSON.stringify(actions, null, 2));
   }

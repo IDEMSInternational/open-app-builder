@@ -34,13 +34,23 @@ async function appDataConvert(options: IProgramOptions) {
 
   // Setup Folders
   const activeDeployment = getActiveDeployment();
-  const SHEETS_OUTPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "sheets");
   const SHEETS_INPUT_FOLDER = path.resolve(activeDeployment.google_drive.cache_path, "app_sheets");
+  const ASSETS_INPUT_FOLDER = path.resolve(activeDeployment.google_drive.cache_path, "app_assets");
+  const SHEETS_OUTPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "sheets");
+  const ASSETS_OUTPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "assets");
   fs.ensureDirSync(SHEETS_INPUT_FOLDER);
+  fs.ensureDirSync(ASSETS_INPUT_FOLDER);
   fs.ensureDirSync(INTERMEDIATES_FOLDER);
   fs.emptyDirSync(INTERMEDIATES_FOLDER);
   fs.ensureDirSync(SHEETS_OUTPUT_FOLDER);
   fs.emptyDirSync(SHEETS_OUTPUT_FOLDER);
+  fs.ensureDirSync(ASSETS_OUTPUT_FOLDER);
+  fs.emptyDirSync(ASSETS_OUTPUT_FOLDER);
+
+  // Process asset files (currently no additional work done)
+  fs.copySync(ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER);
+
+  // Process sheets
 
   const xlsxFiles = listFilesForConversion(SHEETS_INPUT_FOLDER);
 

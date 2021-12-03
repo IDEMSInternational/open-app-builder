@@ -6,8 +6,9 @@ import convertCmd from "./convert";
 import copyCmd from "./copy";
 import downloadCmd from "./download";
 import syncCmd from "./sync";
+import { logProgramHelp } from "../../utils";
 
-const program = new Command("app-data");
+const program = new Command("app-data").description("Manage app data");
 
 /** add sub-commands from child folders */
 program.addCommand(convertCmd);
@@ -20,9 +21,7 @@ export default program;
 // Run if called directly from Node
 if (require.main === module) {
   if (!process.argv.slice(2).length) {
-    console.log(chalk.yellow("No command specified. See help below:"));
-    program.outputHelp();
-    process.exit(0);
+    logProgramHelp(program);
   }
   program.parse(process.argv);
 }

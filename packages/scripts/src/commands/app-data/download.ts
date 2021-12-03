@@ -67,13 +67,13 @@ async function appDataDownload(options: IProgramOptions) {
   }
   // handle full sheets/assets sync
   // download sheets
-  const sheetsArgs = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --cache-path "${sheetsCachePath}"`;
+  const sheetsArgs = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --cache-path "${sheetsCachePath}" --log-name sheets.log`;
   const sheetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${sheetsArgs}`;
   console.log(chalk.yellow("-----Sheets-----"));
   console.log(chalk.gray(sheetsDLCmd));
   spawnSync(sheetsDLCmd, { shell: true, stdio: "inherit" });
   // download assets
-  const assetsArgs = `--folder-id ${assets_folder_id} --output-path "${assetsOutput}" --cache-path "${assetsCachePath}"`;
+  const assetsArgs = `--folder-id ${assets_folder_id} --output-path "${assetsOutput}" --cache-path "${assetsCachePath}" --log-name assets.log`;
   const assetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${assetsArgs}`;
   console.log(chalk.yellow("-----Assets-----"));
   console.log(chalk.gray(assetsDLCmd));

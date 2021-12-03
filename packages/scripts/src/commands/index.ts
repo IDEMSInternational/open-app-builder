@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
 
 // Commands
 import appDataCmd from "./app-data";
@@ -8,7 +7,7 @@ import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import generateCmd from "./generate";
 import versionCmd from "./version";
-import { logWarning } from "../utils/logging.utils";
+import { logWarning, logProgramHelp } from "../utils/logging.utils";
 
 const program = new Command();
 
@@ -39,13 +38,11 @@ if (mapping) {
 program.addCommand(appDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
-program.addCommand(generateCmd);
+// program.addCommand(generateCmd);
 program.addCommand(versionCmd);
 
 if (!process.argv.slice(2).length) {
-  console.log(chalk.yellow("No command specified. See help below:"));
-  program.outputHelp();
-  process.exit(0);
+  logProgramHelp(program);
 }
 
 const handleExit = () => {

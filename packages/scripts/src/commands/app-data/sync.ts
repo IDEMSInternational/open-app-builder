@@ -35,6 +35,9 @@ async function syncAppData(options: IProgramOptions) {
     downloadCmd += ` --sheetname ${options.sheetname}`;
   }
   spawnSync(`${scriptsExec} ${downloadCmd}`, { stdio: "inherit", shell: true });
+  // Convert
+  let convertCmd = "app-data convert";
+  spawnSync(`${scriptsExec} ${convertCmd}`, { stdio: "inherit", shell: true });
   // Copy
   let copyCmd = "app-data copy";
   if (options.sheetname) {
