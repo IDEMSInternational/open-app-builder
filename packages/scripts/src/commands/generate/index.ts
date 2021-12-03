@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
 
 import appDataCmd from "./app_data";
+import { logProgramHelp } from "../../utils";
 
 const program = new Command("generate");
 
@@ -14,9 +14,7 @@ export default program;
 // Run if called directly from Node
 if (require.main === module) {
   if (!process.argv.slice(2).length) {
-    console.log(chalk.yellow("No command specified. See help below:"));
-    program.outputHelp();
-    process.exit(0);
+    logProgramHelp(program);
   }
   program.parse(process.argv);
 }

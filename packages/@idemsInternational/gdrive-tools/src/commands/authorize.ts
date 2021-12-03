@@ -15,7 +15,7 @@ interface IProgramOptions {
 
 import { Command } from "commander";
 import { PATHS } from "../paths";
-import { logError } from "../utils";
+import { logError, logProgramHelp } from "../utils";
 import { OAuth2Client } from "google-auth-library";
 const program = new Command("authorize");
 export default program
@@ -34,9 +34,7 @@ export default program
 // Run if called directly from Node
 if (require.main === module) {
   if (!process.argv.slice(2).length) {
-    console.log(chalk.yellow("No command specified. See help below:"));
-    program.outputHelp();
-    process.exit(0);
+    logProgramHelp(program);
   }
   program.parse(process.argv);
 }

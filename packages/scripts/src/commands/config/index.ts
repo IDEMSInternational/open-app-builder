@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
 
 import decryptCmd from "./decrypt";
 import encryptCmd from "./encrypt";
+import { logProgramHelp } from "../../utils";
 
-const program = new Command("config");
+const program = new Command("config").description("Encrypt and Decrypt sensitive configurations");
 
 /** add sub-commands from child folders */
 program.addCommand(decryptCmd);
@@ -16,9 +16,7 @@ export default program;
 // Run if called directly from Node
 if (require.main === module) {
   if (!process.argv.slice(2).length) {
-    console.log(chalk.yellow("No command specified. See help below:"));
-    program.outputHelp();
-    process.exit(0);
+    logProgramHelp(program);
   }
   program.parse(process.argv);
 }

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
 
 import setCmd from "./set";
 import getCmd from "./get";
+import { logProgramHelp } from "../../utils";
 
-const program = new Command("deployment");
+const program = new Command("deployment").description("Manage active deployment workspace");
 
 /** add sub-commands from child folders */
 program.addCommand(setCmd);
@@ -16,9 +16,7 @@ export default program;
 // Run if called directly from Node
 if (require.main === module) {
   if (!process.argv.slice(2).length) {
-    console.log(chalk.yellow("No command specified. See help below:"));
-    program.outputHelp();
-    process.exit(0);
+    logProgramHelp(program);
   }
   program.parse(process.argv);
 }

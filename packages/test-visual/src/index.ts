@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
 
 import compareCmd from "./commands/compare";
 import generateCmd from "./commands/generate";
 import downloadCmd from "./commands/download";
+import { logProgramHelp } from "./utils";
 
 const program = new Command();
 
@@ -16,10 +16,7 @@ program.addCommand(generateCmd);
 program.addCommand(downloadCmd);
 
 if (!process.argv.slice(2).length) {
-  console.log(chalk.yellow("No command specified. See help below:"));
-  program.outputHelp();
-  process.exit(0);
-  // program.parseAsync([...process.argv, "interactive"]);
+  logProgramHelp(program);
 }
 
 async function main() {

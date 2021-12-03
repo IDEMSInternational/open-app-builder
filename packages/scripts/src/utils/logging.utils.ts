@@ -1,5 +1,6 @@
 import boxen from "boxen";
 import chalk from "chalk";
+import { Command } from "commander";
 
 /** Record a 2-line error message in a box with additional optional logging and exit */
 export function logError(opts: Partial<ILogOptions> = {}) {
@@ -51,6 +52,13 @@ export function logWarning(opts: Partial<ILogOptions> = {}) {
       { padding: 1, borderColor: "yellowBright" }
     )
   );
+}
+
+export function logProgramHelp(program: Command) {
+  console.log(chalk.yellow("No command specified. See help below:\n"));
+  program.outputHelp();
+  console.log("\n");
+  process.exit(0);
 }
 
 interface ILogOptions {
