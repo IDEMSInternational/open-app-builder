@@ -1,4 +1,4 @@
-export default {
+const data: { [source_text: string]: string } = {
   "You can always find these tools in the @global.parent_centre":
     "Unokuzifumana ngalo lonke ixesha ezi zixhobo kwi-@global.parent_centre",
   Home: "Iphepha Lokuqala",
@@ -7,9 +7,14 @@ export default {
   Tour: "Ukhenketho",
   "In-Week Messages": "Imiyalezo Yeveki ",
   Campaigns: "Amaphulo",
+  Notifications: "Izaziso",
   "Privacy Policy": "Ipolisi Yobumfihlo",
   "App terms": "Imimiselo ye-App",
+  "About @global.parent_app": "Malunga",
+  "@global.parent_app was developed by Parenting for Lifelong Health (PLH) – a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa. Parents and teens worked with us on the app and helped to ensure it is easy-to-use, fun and engaging. Some of the content in this app, like suggestions of activities and illustrated stories, were created with parents and teens to make sure it fits families’ needs.\n\nParenting for Lifelong Health (PLH) is committed to supporting free and shareable parenting materials and programmes, to support parents worldwide to promote the well-being of their children.":
+    "@global.parent_app yaphuhliswa yiParenting for Lifelong Health (PLH) - intsebenziswano yehlabathi lonke phakathi kweengcali zobuzali ezivela kwi-UNICEF, i-WHO kunye neeYunivesithi zaseMzantsi Afrika nase-UK, kunye nee-NGO zase-Afrika kunye neentsapho kunye nolutsha kwi-Afrika iphela. Abazali kunye nabantwana abafikisayo basebenze nathi kwi-app kwaye bancedise ekuqinisekiseni ukuba kulula ukuyisebenzisa, imnandi kwaye iyabandakanya. Enye ikhontenti kule app, njenga macebiso kwizinto ezinokwenziwa kunye namabali anemifanekiso, yenziwe nabazali kunye nabantwana abafikisayo ukuqinisekisa ukuba iyahambelana nemfuno zentsapho\n\ni-Parenting for Lifelong Health (PLH) izibophelele ekuxhaseni izixhobo nenkqubo ezisimahla nokwabelwana ngazo zobuzali, ukuxhasa abazali kwihlabathi jikelele ukukhuthaza impilo-ntle yabantwana babo.",
   "Open Survey": "Isaveyi Evulekileyo",
+  "Select Language": "Khetha Ulwimi",
   "Workshop Options": "Iinketho Zocweyo",
   "Demo Presentation": "Iprezenteyishini yedemo",
   "Organisation Registration": "Ukubhaliswa Kombutho",
@@ -24,18 +29,25 @@ export default {
   "Reset App": "Setha kwakhona i-App",
   "You have successfully entered developer mode.": "Ungene ngempumelelo kwimowudi yomphuhlisi.",
   "You have entered an incorrect code.": "Ufake ikhowudi engachananga.",
+  Language: "Ulwimi",
   "How did you hear about @global.parent_app?": "Uve njani malunga ne @global.parent_app?",
   "I found it myself": "Ndiyifumanisile ngokwam",
   "A friend or family": "Umhlobo okanye usapho",
   Other: "Enye indlela",
   "You may be asked to share this code with people who will support your @global.parent_app journey.":
     "Unokucelwa ukuba wabelane ngale khowudi nabantu abaza kuxhasa uhambo lwakho lwe@global.parent_app.",
+  "Last sync at: @local.sync_latest": "Ungqamaniso Lokugqibela e: @local.sync_latest",
+  "This device has never been synced. Sync to reveal your code.":
+    "Esi sixhobo asizange singqanyaniswe. Ngqamanisa uzokuveza ikhowudi yakho.",
+  "Sync now": "Ngqamanisa ngoku",
+  "Syncing...": "Ungqamaniso...",
   Start: "Qalisa",
   "How would you like to do this workshop?": "Ungathanda ukuyenza njani iindabano zocweyo?",
   "Coming soon": "Kuza ngokukhawuleza",
   "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.":
     "Kuya kufuneka sigubungele eminye imiba yobuzali khaphambi koba singaqala sisebenze kwi-@local.workshop_data.title.\n\nUnokufumana izixhobo ezibalulekileyo kwi-@local.workshop_data.title usebenzisa i-@global.parent_centre.",
   "My name": "Igama lam",
+  "@global.weekly_workshop day": "Usuku lwe @global.weekly_workshop",
   "I do the workshops...": "Ndenza iindabano zocweyo...",
   "My group's name": "Igama le qela lam",
   "My group is now doing the workshop...": "Iqela lam ngoku lenza iindabano zocweyo...",
@@ -1006,8 +1018,8 @@ export default {
     "I-@data.workshop.w_money.tools ifakwe kwi-@data.parent_centre.my_tips.title.",
   "It is so stressful when children misbehave.":
     "Xa abantwana besenza ukusa, oko kubangela uxinezeleko.",
-  "In the past week, did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
-    "Kwiveki ephelileyo, ngaba abantwana bakho uye wabaqeqesha ngokubabetha, ukubabetha ezimpundu okanye ukubabetha ngesandla sakho okanye ngenye into efana noswazi okanye ibhanti?",
+  "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
+    "Zingaphi intsuku kule veki idlulileyo oye waqeqesha abantwana bakho ngokubabetha, ukubabetha ezimpundu okanye ukubabetha ngesandla sakho okanye ngenye into efana noswazi okanye ibhanti?",
   "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!":
     "Kuhle ukubona ukuba uyazola xa umntwana wakho ofikisayo esenza into ecaphukisayo. Ininzi into abanokuyifunda kuwe!",
   "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.":
@@ -1083,11 +1095,11 @@ export default {
   "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!":
     "Le app ijolise kubazali babantwana abafikisayo @global.teen_age_bracket, kodwa wamkelekile ukuba uqhubeke - ungafunda izinto eziluncedo!",
   "Are you sure you want to skip this question?": "Uqinisekile ufuna ukuwutsiba lo mbuzo?",
-  "Remember, if you DO answer, your answer stays anonymous.\n\nYou can always choose not to answer a question by checking the check box next to the slider.":
-    "Khumbula, ukuba UYAPHENDULA, impendulo yakho ihlala ingaziwa ukuba yeyakho.\n\nUngakhetha ukungawuphenduli umbuzo ngokuthikisha kwibhokisi yokuphawula ecaleni kwesilayidi.",
+  "Are you sure you want to skip this question? Remember, your answer will be kept private and will help us understand your parenting needs. \n\nYou can also choose not to answer any question by selecting the circle.":
+    "Uqinisekile ukuba ufuna ukuwudlula lo mbuzo? Khumbula, impedulo yakho izokugcinwa bucala kwaye izosinceda siqonde iimfuno zobuzali bakho. \n\nUngakwazi ukukhetha ukungaphenduli noba ngowuphi umbuzo ngokukhetha isangqa.",
   'You selected "I would rather not answer"': 'Ukhethe "Ndikhetha ukungaphenduli"',
-  "That's okay!\n\nRemember, if you DO answer, your answer stays anonymous and you will receive content that is exactly right for you!":
-    "Oko kulungile!\n\nKhumbula, ukuba UYAPHENDULA, impendulo yakho ihlala ingaziwa ukuba yeyakho kwaye uza kufumana umbandela olungele wena!",
+  "That’s ok! \n\nRemember, if you do answer your answer will be kept private and will help us to provide you with content that is exactly right for you.":
+    "Kulungile!\n\nKhumbula, ukuba uyakhetha ukunikeza impendulo yakho izokugcinwa bucala kwaye izokusinceda ekukuboneleleni umxholo olungele wena kanye.",
   "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
     "Siyayiqonda ukuba inzima le nto. Siye songeza amacebiso aluncedo angendlela onokuchitha ngalo ixesha nomntwana wakho ofikisayo kwi@data.parent_centre.my_tips.location_text, ngoko ungawafikelela ngoku. \n\nNgenxa yokuba i-@data.workshop.w_1on1.title isisiseko sazo zonke izixhobo zokuba ngumzali, iza kuba yi-@global.weekly_workshop oza kuyifumana kwiveki ezayo!",
   "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
@@ -1141,9 +1153,9 @@ export default {
     "Masiqale ngemibuzo embalwa malunga nawe kunye nentsapho yakho.",
   "We would love to know your first name or nickname:":
     "Singathanda ukwazi igama okanye isiteketiso sakho:",
-  "Are you a lady or a gentleman?": "Ngaba uyindoda okanye ulibhinqa?",
-  Lady: "Libhinqa",
-  Gentleman: "Yindoda",
+  "Are you a woman or a man?": "Ungumfazi okanye uyindoda?",
+  Woman: "Mfazi",
+  Man: "Indoda",
   "How old are you?": "Mingaphi iminyaka yakho?",
   Adults: "Abantu abadala",
   Teens: "Abantwana Abafikisayo",
@@ -1263,8 +1275,11 @@ export default {
   SHARE: "YABELANANI",
   "Share @global.parent_app and help other families start their journey.":
     "Yabelanani nge-@global.parent_app nize nincede ezinye iintsapho ziqale uhambo lwazo.",
+  "End of programme check-in": "Uphela kwenkqubo yokungena",
   "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
     "Uye wasebenzisa i@global.parent_app kwezi nyanga zidlulileyo, kodwa ukuba ngumzali kumntwana ofikisayo kokwexesha elide!  Imibuzo elandelayo malunga namava akho okuba ngumzali iza kusinceda sihlole ukuba ngumzali kwakho.\n\nNyaniseka. Ukhumbule ukuba izigidi zabazali zivakalelwa ngale ndlela ovakalelwa ngayo kwaye sonke siyayifuna inkxaso. Awukho wedwa!",
+  "You seem to have completed the end of programme check-in already. You can now skip this activity.":
+    "Kubonakala ngathi sele uyigqibile inkqubo yokuzivumelanisa. Ngoku ungawutsiba lo msebenzi.",
   "Plan how you will support each other going forward. \n\nYou can use the ideas from other families, or make up your own!":
     "Cebani ngendlela eniza kuxhasana ngayo ukususela ngoku. \n\nNingasebenzisa amacebiso avela kwezinye iintsapho okanye nizicingele awenu!",
   "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!":
@@ -2355,6 +2370,7 @@ export default {
   Ideas: "Iingcamango",
   "Ideas from other families...": "Amacebiso avela kwezinye iintsapho...",
   "Challenges & solutions": "Imicelimingeni nezisombululo",
+  Submit: "Ngenisa",
   "Find out more": "Fumana okungakumbi",
   "Show me how": "Ndibonise ukuba kwenziwa njani",
   "Tell me more!": "Ndixelele okungakumbi!",
@@ -2364,8 +2380,9 @@ export default {
   Next: "Elandelayo",
   Previous: "Edluleyo",
   Save: "Gcina",
-  "Finish with a song": "Gqibezela ngengoma",
-  "Goodbye!": "Kamnandi!",
+  Skip: "Tsiba",
+  "Finish with a song": "Gqibezela nge ngoma",
+  "Goodbye!": "Sala kakuhle!",
   "My Favourite Relaxes": "Ukuphola Okuthandayo",
   "All Relaxes": "Konke Ukuphola",
   "Random Relax": "Ukuphumla Ngokungacwangciswanga",
@@ -2466,7 +2483,6 @@ export default {
     "<p>Wamkelekile ku @global.parent_app.</p>\n\n<p>Uyakufanelekela ukuziva kamnandi, uze ube nolwalamano oluhle nentsapho yakho.</p>\n\n<p>@global.parent_app uya kukuxhasa wena nentsapho yakho ngeendlela ezintathu:</p>",
   "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. Press it to start your first workshop!</p>":
     "<p>Eli qhosha likhulu liya kukusa kwi @global.weekly_workshopsyakho </p>\n\n<p> Kanye ngeveki uqeqesho olutsha luya kukulindela - ngalo lonke ixesha unikela ingqalelo kubugcisa obahlukileyo bokuba ngumzali. Yicofe ukuze uqalise uqeqesho lwakho lokuqala!</p>",
-  "@global.weekly_workshops quick start": "@global.weekly_workshops qalisa ngokukhawuleza",
   "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>":
     "<p>Iqhosha elisisangqa livela xa i @global.weekly_workshop entsha ilungele ukuba uyenze.</p>",
   "<p>Press this big button to get you to your @global.parent_points screen.</p>\n\n<p>Track your success in self-care and parenting. </p>\n\n<p>See your progress.</p>\n\n<p>Celebrate your daily achievements!</p>":
@@ -2492,6 +2508,32 @@ export default {
     "<p> Ungatshintsha apha enoba nifuna ukwenza i @global.weekly_workshops yenu njengeqela okanye wedwa. </p>",
   "<p> Tap here to change your group name. </p>":
     "<p> Cofa apha ukuze utshintshe igama leqela. </p>",
+  Continue: "Qhubeka",
+  "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.":
+    "Molo mzali ogqwesileyo, khumbula ukuzinakekela nawe - izokunceda KWAYE nosapho lwakho! Fumana iingcebiso nezingakumbi Kwi-app Yomzali.",
+  "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.":
+    "Molo mzali ogqwesileyo! Khumbula, ungafumana iingcebiso eziluncedo Kwi-app Yomzali.",
+  "Hi great parent! ParentApp is here to support you. Check it out now!":
+    "Molo mzali ogqwesileyo! I-app Yomzali ilapha ukukuxhasa. Yijonge!",
+  "Welcome to ParentApp. Click here to start your journey!":
+    "Wamkelekile kwiApp Yomzali. Cofa apha ukuze uqalise uhambo lwakho!",
+  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
+    "Ndiyathemba uziva bhetele. Ukuba ngumzali kunzima, kodwa awukashiywa lixesha lokuphinda uqalise nomntwana wakho ofikisayo. Uqeqesho lwakho lokuba ngumzali lulinde wena! Cofa apha ukuze uqalise uhambo lwakho lweApp Yomzali!",
+  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
+    "Molo! Ngaba yonke into ihamba KAKUHLE? Kubonakala ngathi khange uyivule iApp Yomzali kutshanje. Kutheni ungakhe uyizame? Izigidi zabazali zIye zafumanisa ezi zixhobo ziluncedo. Sisekhona ukuze sikuxhase.",
+  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
+    "Molo kwakhona! Awukashiywa lixesha lokusebenzisa i-App yoMzali uze ufumane inkxaso efanele wena yokuba ngumzali. Kutheni ungakhe uyizame xa usiya emsebenzini okanye xa usapheke ukutya? Izigidi zabazali ziye zafumanisa izixhobo zethu ziluncedo.",
+  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
+    "I-App yoMzali iyakukhumbuza! Kuninzi omele ukuhlole. Sisekhona ukuze sikuxhase.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp yoMzali ukukunceda ulawule uxinezeleko lokuba ngumzali.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali - sebenzisa iApp yoMzali ukulungiselela umntwana wakho ofikisayo ukuba aphumelele ebomini.",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp yoMzali ukukunceda ulawule isimilo somntwana wakho ofikisayo.",
+  "New message from PLH": "Umyalezo omtsha ovela kwi-PLH",
+  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
+    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp yoMzali ukuze uphinde usondelelane nomntwana wakho ofikisayo kwakhona!",
   "Reflect on the positive": "Cinga ngezinto ezakhayo",
   "Check-in chat": "Ngena kwincoko",
   "Dream Travel": "UHambo Oluliphupha",
@@ -2514,37 +2556,93 @@ export default {
   "Pass the snap": "Dlulisa umfanekiso",
   "Family workout": "Umthambo wosapho",
   "Make housework fun": "Ukwenza umsebenzi wekhaya ube mnandi",
+  "Household chores aren’t fun… or are they? You can make them into a game!":
+    "Imisebenzi yasekhaya ayikhomnandi... okanye? Ningabenza babe ngumdlalo!",
   "What are you doing?": "Wenza ntoni?",
+  "Here is a fun game you can do with your family!":
+    "Nantsi imidlalo eyonwabiswayo onoyenza nosapho lwakho!",
   "Crazy chicken": "Inkukhu ephambeneyo",
   "**Relax** @global.parent_point": "**Phola** @global.parent_point",
+  "Doing a relaxation activity": "Ukwenza umsebenzi wokuzipholisa",
+  "Every time you do a relax, tap the @global.parent_point and celebrate your success!":
+    "Ixesha ngalinye uphola, cofa u @global.parent_point ubhiyozele impulelo yakho!",
   "Treat yourself well": "Zinonophele kakuhle",
   "**Treat yourself well** @global.parent_point": "**Zinonophele kakuhle** @global.parent_point",
+  "Doing something they like for themselves": "Bazenzela into abayithandayo",
+  "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!":
+    "Xesha ngalinye xawu zinonophele kakuhle, cofa i @global.parent_point ubhiyozele impumelelo yakho!",
   "**Praise yourself** @global.parent_point": "**Zincome** @global.parent_point",
+  "Praising themselves": "Bayazincoma",
+  "Every time you praise yourself, tap the @global.parent_point and celebrate your success!":
+    "Xesha ngalinye xawu zinonophele kakuhle, cofa i @global.parent_point ubhiyozele impumelelo yakho!",
   "One-on-one time": "Ixesha lenu nobabini",
   "**One-on-one time** @global.parent_point": "**Ixesha lenu nobabini** @global.parent_point",
+  "Spending time with their teen": "Ukuchitha ixesha nabantwana babo abafikisayo",
+  "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!":
+    "Xesha ngalinye nichitha ixesha lenu nobabini cofa u @global.parent_point ubhiyozele impumelelo yakho!",
   "Praise your teen": "Mncome umntwana wakho ofikisayo",
   "**Praise your teen** @global.parent_point":
     "**Mncome umntwana wakho ofikisayo** @global.parent_point",
+  "Praising their teen when they did positive thing":
+    "Ukuncoma abantwana babo abafikisayo xabenze into eyokhayo",
+  "Every time you praise your teen, tap the @global.parent_point and celebrate your success!":
+    "Xesha ngalinye uncoma umntwana wakho ofikisayo, cofa u @global.parent_point ubhiyozele impumelelo yakho!",
   "Get positive": "Yiba nethemba",
   "**Get positive** @global.parent_point": "**Yiba nethemba** @global.parent_point",
+  "Giving their teen a positive instruction":
+    "Ukunika imiyalelo eyakhayo kwabantwana babo abafikisayo",
+  "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!":
+    "Ixesha ngalinye unikeza imiyalelo yakhayo, cofa u @global.parent_point ubhiyozele impumelelo yakho!",
   "Breathe not yell": "Thatha umoya ungangxoli",
   "**Breathe not yell** @global.parent_point": "**Thatha umoya ungangxoli** @global.parent_point",
+  "Taking a pause before responding": "Nqumama phambi koba uphendule",
+  "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!":
+    "Ixesha ngalinye unqumama phambi koba uphendule, cofa u @global.parent_point ubhiyozele impumelelo yakho!",
   "Good money choice": "Ukhetho olululo lwemali",
   "**Good money choice** @global.parent_point": "**Ukhetho olululo lwemali** @global.parent_point",
+  "Keeping the budget": "Ukugcina uhlahlo lwabiwo-mali",
+  "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!":
+    "Ixesha ngalinye owenza ukhetho olululo ngokweentswelo, iimfuno, ukonga, cofa u @global.parent_point ubhiyozele impumelelo yakho!",
   "Calm consequence": "Imiphumo Ezolileyo",
   "**Calm consequence** @global.parent_point": "**Imiphumo Ezolileyo** @global.parent_point",
+  "Giving their teen a consequence in a calm way":
+    "Indlela yokunika abantwana abafikisayo imiphumo ezolileyo",
+  "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!":
+    "Ixesha ngalinye unikeza imiphumo ezolileyo, cofa u @global.parent_point ubhiyozele impumelelo yakho!",
   Safe: "Ikhuselekile",
   "**Safe** @global.parent_point": "**Ikhuselekile** @global.parent_point",
+  "Planning or keeping a family safety plan":
+    "Ukucwangcisa okanye ukugcina isicwangciso sokhuseleko losapho",
+  "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!":
+    "Ixesha ngalinye wenza into yokukhusela umntwana wakho ofikisayo, cofa u @global.parent_point ubhiyozele impumelelo yakho!",
+  "Did it? Tap it!": "Uyenzile? Uyicofile!",
   Help: "Uncedo",
+  "**Help** in the @global.parent_centre": "**Uncedo** kwi @global.parent_centre",
   "My Tips": "Amacebiso Am",
+  "**My Tips** in the @global.parent_centre": "**Iingcebiso Zam** kwi @global.parent_centre",
   "Essential Tools": "Izixhobo Ezibalulekileyo",
+  "**Essential Tools** in the @global.parent_centre":
+    "**Izixhobo Ezibalulekileyo** kwi @global.parent_centre",
   COVID: "I-COVID",
+  "**COVID** in the @global.parent_centre": "**i-Covid** kwi @global.parent_centre",
   "Customise Again": "Phinda Uzivumelanise",
+  "**Customise @global.parent_app** in the @global.parent_centre":
+    "**Yenza Ngokwezifiso ze @global.parent_app** kwi @global.parent_centre",
   "Relax & Activities": "Ukuphola Nemisebenzi",
+  "under **Relax & Activities** in the @global.parent_centre":
+    "phantsi **Phola & Imisebenzi** kwi @global.parent_centre",
   "Support Contacts": "Abaqhagamshelwa Benkxaso",
+  "**Support Contacts** in the @global.parent_centre":
+    "**Abaqhagamshelwa Benkxaso** kwi @global.parent_centre",
   "Evidence Base": "Isiseko Sobungqina",
+  "**Evidence Base** in the @global.parent_centre":
+    "**Ubungqina Siseko** kwi @global.parent_centre",
   "Technical Support": "Inkxaso Yobunjineli",
+  "**Technical Support** in the @global.parent_centre":
+    "**Uxhaso Lobuchwepheshe** kwi @global.parent_centre",
   "Message Archive": "Ugcino Lwemiyalezo",
+  "**Message Archive** in the @global.parent_centre":
+    "**Uvimba Womyalezo** kwi @global.parent_centre",
   "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!":
     "Isemagqabini! Wenze kakuhle ngokuchitha ixesha kunye. Ibeka isiseko solwalamano olusemagqabini nomntwana wakho ofikisayo!",
   "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!":
@@ -2623,31 +2721,12 @@ export default {
   "**Positive Instructions** workshop": "Uqeqesho **Lwemiyalelo Eyakhayo**",
   "**Managing Stress** workshop": "Uqeqesho **lokulawula Uxinezeleko**",
   "**Family Budgets** workshop": "Uqeqesho **Lwebhajethi Yentsapho**",
-  "**Rules** workshop": "Uqeqesho **Lwemigaqo**",
-  "**Calm Consequences** workshop": "Uqeqesho **Lwemiphumo Ezolileyo**",
-  "**Problem Solving** workshop": "Uqeqesho **Lokusombulula Iingxaki**",
-  "**Teen Safety** workshop": "Uqeqesho **Lokhuseleko Lomntu Ofikisayo**",
-  "**Dealing with Crisis** workshop": "Uqeqesho **lokuhlangabezana Neengxaki**",
+  "**Rules** workshop": "Uqeqesho **Umthetho**",
+  "**Calm Consequences** workshop": "Uqeqesho **Imiphumo Ezolileyo**",
+  "**Problem Solving** workshop": "Uqeqesho **Ukucombulula Iingxaki**",
+  "**Teen Safety** workshop": "Uqeqesho **Ukhuseleko Lwabantwana Abafikisayo**",
+  "**Dealing with Crisis** workshop": "Uqeqesho **Ukuhlangabezana Neengxaki**",
   "**Celebration and Next Steps** workshop":
     "Uqeqesho **Lokubhiyoza kunye Namanyathelo Alandelayo**",
-  Continue: "Qhubeka",
-  "Welcome to ParentApp. Click here to start your journey!":
-    "Wamkelekile kwiApp Yomzali. Cofa apha ukuze uqalise uhambo lwakho!",
-  "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
-    "Ndiyathemba uziva bhetele. Ukuba ngumzali kunzima, kodwa awukashiywa lixesha lokuphinda uqalise nomntwana wakho ofikisayo. Uqeqesho lwakho lokuba ngumzali lulinde wena! Cofa apha ukuze uqalise uhambo lwakho lweApp Yomzali!",
-  "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
-    "Molo! Ngaba yonke into ihamba KAKUHLE? Kubonakala ngathi khange uyivule iApp Yomzali kutshanje. Kutheni ungakhe uyizame? Izigidi zabazali zIye zafumanisa ezi zixhobo ziluncedo. Sisekhona ukuze sikuxhase.",
-  "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
-    "Molo kwakhona! Awukashiywa lixesha lokusebenzisa i-App yoMzali uze ufumane inkxaso efanele wena yokuba ngumzali. Kutheni ungakhe uyizame xa usiya emsebenzini okanye xa usapheke ukutya? Izigidi zabazali ziye zafumanisa izixhobo zethu ziluncedo.",
-  "ParentApp misses you! There is a lot to explore. We are still here to support you.":
-    "I-App yoMzali iyakukhumbuza! Kuninzi omele ukuhlole. Sisekhona ukuze sikuxhase.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp yoMzali ukukunceda ulawule uxinezeleko lokuba ngumzali.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali - sebenzisa iApp yoMzali ukulungiselela umntwana wakho ofikisayo ukuba aphumelele ebomini.",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp yoMzali ukukunceda ulawule isimilo somntwana wakho ofikisayo.",
-  "New message from PLH": "Umyalezo omtsha ovela kwi-PLH",
-  "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
-    "Ndiyathemba uziva bhetele. Siyazi ukuba kunzima ukuba ngumzali -sebenzisa iApp yoMzali ukuze uphinde usondelelane nomntwana wakho ofikisayo kwakhona!",
 };
+export default data;
