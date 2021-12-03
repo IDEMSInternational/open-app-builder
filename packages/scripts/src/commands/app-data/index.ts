@@ -2,14 +2,16 @@
 import { Command } from "commander";
 import chalk from "chalk";
 
-import syncCmd from "./sync";
+import copyCmd from "./copy";
 import downloadCmd from "./download";
+import syncCmd from "./sync";
 
 const program = new Command("app-data");
 
 /** add sub-commands from child folders */
-program.addCommand(syncCmd);
+program.addCommand(copyCmd);
 program.addCommand(downloadCmd);
+program.addCommand(syncCmd);
 
 export default program;
 

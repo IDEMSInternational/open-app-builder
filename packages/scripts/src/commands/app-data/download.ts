@@ -4,7 +4,7 @@ import { spawnSync } from "child_process";
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { CREDENTIALS_PATH } from "../../paths";
+import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
 import { logWarning, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 
@@ -38,15 +38,19 @@ export default program
 async function appDataDownload(options: IProgramOptions) {
   const activeDeployment = getActiveDeployment();
   const { _workspace_path } = activeDeployment;
-  const { assets_folder_id, sheets_folder_id } = activeDeployment.google_drive;
+  const { assets_folder_id, sheets_folder_id, auth_token_path, cache_path } =
+    activeDeployment.google_drive;
   // setup paths for args
   const gdriveToolsExec = `yarn workspace @IDEMSInternational/gdrive-tools start`;
+  const authTokenPath = auth_token_path
+    ? path.resolve(_workspace_path, auth_token_path)
+    : AUTH_TOKEN_PATH;
   const sheetsOutput = path.resolve(_workspace_path, "app-data", "sheets");
-  const sheetsCachePath = path.resolve(_workspace_path, "cache", "gdrive", "app_sheets");
+  const sheetsCachePath = path.resolve(_workspace_path, cache_path, "app_sheets");
   const assetsOutput = path.resolve(_workspace_path, "app-data", "assets");
-  const assetsCachePath = path.resolve(_workspace_path, "cache", "gdrive", "app_assets");
+  const assetsCachePath = path.resolve(_workspace_path, cache_path, "app_assets");
 
-  let commonArgs = `--credentials-path "${CREDENTIALS_PATH}"`;
+  let commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
   // handle single file download
   if (options.sheetname) {
     const cachedEntry = await getFileCacheEntry(options.sheetname, sheetsCachePath);

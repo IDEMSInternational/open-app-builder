@@ -5,7 +5,7 @@ import fs from "fs-extra";
 import path from "path";
 import { IDeploymentConfig } from "../../../types";
 import { IDEMS_APP_CONFIG } from "../../paths";
-import { promptOptions, logError } from "../../utils";
+import { promptOptions, logError, deepMergeObjects } from "../../utils";
 
 const program = new Command("set");
 
@@ -52,7 +52,10 @@ async function setActiveDeployment(deploymentName?: string) {
     _workspace_path: path.resolve(IDEMS_APP_CONFIG.deployments, path.dirname(filename)),
     _ts_filename: filename,
   };
-  fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
+  // Merge with defaults
+  const mergedJson = deepMergeObjects(DEPLOYMENT_CONFIG_DEFAULTS, deploymentJson);
+
+  fs.writeFileSync(defaultDeploymentPath, JSON.stringify(mergedJson, null, 2));
   console.log("deployment set", deployment);
 }
 
@@ -92,3 +95,12 @@ export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;
   _ts_filename: string;
 }
+
+const DEPLOYMENT_CONFIG_DEFAULTS: Partial<IDeploymentConfigJson> = {
+  google_drive: {
+    assets_folder_id: "",
+    sheets_folder_id: "",
+    auth_token_path: "",
+    cache_path: "./cache/gdrive",
+  },
+};

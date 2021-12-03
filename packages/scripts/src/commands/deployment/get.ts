@@ -2,7 +2,6 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
-import { IDeploymentConfig } from "../../../types";
 import { IDEMS_APP_CONFIG } from "../../paths";
 import { logError } from "../../utils";
 import { IDeploymentConfigJson } from "./set";
