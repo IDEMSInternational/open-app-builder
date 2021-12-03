@@ -14,8 +14,8 @@ export interface IDeploymentConfig {
   app_data?: {
     /** processed sheets for use in app (defaults to ./app_data/sheets) */
     sheets_output_path?: string;
-    /** partially compiled sheets for use in repopulation (defaults to ./cache/converted_sheets) */
-    converted_cache_path?: string;
+    /** partially compiled sheets for use in repopulation (defaults to ./cache/converter) */
+    converter_cache_path?: string;
     /** processed assets for use in app (defaults to ./app_data/assets) */
     assets_output_path?: string;
   };
@@ -42,7 +42,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   },
   app_data: {
     sheets_output_path: "./app_data/sheets",
-    converted_cache_path: "./cache/converted_sheets",
+    converter_cache_path: "./cache/converter",
     assets_output_path: "./app_data/assets",
   },
   translations: {

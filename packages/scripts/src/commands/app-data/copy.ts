@@ -55,6 +55,7 @@ async function appDataCopy(options: IProgramOptions) {
     "translations"
   );
   const TRANSLATIONS_INPUT_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "from_translators");
+  const TRANSLATIONS_REQUIRED_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "to_translate");
   const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "compiled");
 
   // Translations Compilation
@@ -86,12 +87,7 @@ async function appDataCopy(options: IProgramOptions) {
 
   // New translations output
   console.log(chalk.yellow("Generating new translation files"));
-  logError({ msg1: "TODO - handle changes to input/output paths" });
-  process.exit(1);
-  generateTranslationFiles(
-    "../scripts/src/app-data-convert/output",
-    "../app-data/translations/to_translate"
-  );
+  generateTranslationFiles(SHEETS_INPUT_FOLDER, TRANSLATIONS_REQUIRED_FOLDER);
   console.log(chalk.green("Copy Complete"));
 }
 
@@ -147,6 +143,7 @@ function copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
 }
 
 function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
+  fs.ensureDirSync(sourceFolder);
   fs.ensureDirSync(targetFolder);
   fs.emptyDirSync(targetFolder);
   console.log(chalk.yellow("Copying Data To App"));

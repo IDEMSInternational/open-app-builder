@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import chalk from "chalk";
 
 import { Command } from "commander";
 import downloadCmd from "./commands/download";
 import authorizeCmd from "./commands/authorize";
+import { logProgramHelp } from "./utils";
 
 const program = new Command();
 program.version("1.0.0").description("IDEMS Gdrive Tools");

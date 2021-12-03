@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { createHash } from "crypto";
+import { logWarning } from "./logging.utils";
 
 /**
  * Retrieve a nested property from a json object
@@ -128,16 +129,18 @@ export function generateFolderFlatMap(
 ) {
   const allFiles = recursiveFindByExtension(folderPath);
   // const relativeFiles = allFiles.map(filepath => path.relative(folderPath, filepath))
-  let flatMap = {};
+  let flatMap: {
+    [relativePath: string]: boolean | { size: number; checksum: string; mtime: Date };
+  } = {};
   for (const filePath of allFiles) {
     const relativePath = path.relative(folderPath, filePath).split(path.sep).join("/");
     const shouldInclude = filterFn(relativePath);
     if (shouldInclude) {
       if (includeStats) {
         // generate size and md5 checksum stats
-        const { size } = fs.statSync(filePath);
+        const { size, mtime } = fs.statSync(filePath);
         const checksum = getFileMD5Checksum(filePath);
-        flatMap[relativePath] = { size, checksum };
+        flatMap[relativePath] = { size, checksum, mtime };
       } else {
         flatMap[relativePath] = true;
       }
@@ -304,4 +307,51 @@ export function deepMergeObjects(target: any, ...sources: any) {
 
 function isObject(item: any) {
   return item && typeof item === "object" && !Array.isArray(item);
+}
+
+/** Search a folder for a file ending _contents and return parsed json  */
+export function readContentsFile<T = any>(folderPath: string) {
+  if (!fs.existsSync(folderPath)) {
+    logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
+    return [];
+  }
+  const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
+  if (!contentsFilePath) {
+    logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
+    return [];
+  }
+  const contentsJson = fs.readJsonSync(path.resolve(folderPath, contentsFilePath));
+  return contentsJson as T[];
+}
+
+/**
+ * Search a folder for a file ending _contents, parse json and convert to hashmap
+ * Requires one of hashKey or hashKeyfn
+ * @param options.hashkey named key to use for hashmap entries
+ * @param options.hashKeyFn function to generate hahamap key from entry
+ */
+export function readContentsFileAsHashmap(
+  folderPath: string,
+  options: { hashKey?: string; hashKeyFn?: (entry: any) => string }
+) {
+  const contentsJson = readContentsFile(folderPath);
+  const hashmap = {};
+  const { hashKey, hashKeyFn } = options;
+  for (const entry of contentsJson) {
+    if (hashKey) {
+      if (entry.hasOwnProperty(hashKey)) {
+        const entryKey = entry[hashKey];
+        if (entryKey) {
+          hashmap[entryKey] = entry;
+        }
+      }
+    }
+    if (hashKeyFn) {
+      const entryKey = hashKeyFn(entry);
+      if (entryKey) {
+        hashmap[entryKey] = entry;
+      }
+    }
+  }
+  return hashmap;
 }

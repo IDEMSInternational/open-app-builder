@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
 
 import convertCmd from "./convert";
 import copyCmd from "./copy";
