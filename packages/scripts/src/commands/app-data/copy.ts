@@ -87,6 +87,8 @@ async function appDataCopy(options: IProgramOptions) {
 
   // New translations output
   console.log(chalk.yellow("Generating new translation files"));
+  logError({ msg1: "TODO - handle changes to input/output paths" });
+  process.exit(1);
   generateTranslationFiles(
     "../scripts/src/app-data-convert/output",
     "../app-data/translations/to_translate"

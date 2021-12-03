@@ -130,6 +130,7 @@ class GDriveDownloader {
       JSON.stringify(actions, null, 2)
     );
     console.log(chalk.green("Download Complete"));
+    console.log(chalk.green("Logs:", PATHS.LOGS_DIR));
   }
 
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {

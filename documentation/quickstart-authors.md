@@ -48,17 +48,13 @@ You can download the PLH folder from Google Drive on demand to view and changes.
 npm run scripts app-data-sync
 ```
 
-YOu will see an output showing folders checke and files changed, with status represented as:
-
-`[M]` - The file has been modified
-`[-]` - The file is unchanged
-`[N]` - The file is new
+You will see a summary of the output showing and details can be found in the referenced log folder:
 
 You will also see any potential issues flagged with warning messages, and two summary tables - one of data that was `skipped` (ignored) and one of `App Data` that has been passed for processing
 
 ### Check for data issues
 
-When data is synced, a preview of the data as processed for the app is put in the `scripts/src/app-data-convert/output` folder.
+When data is synced, a preview of the data as processed for the app is put in the `.idems_app/deployments` folder for the active deployment.
 
 You will see several files with a `.ts` extension, representing all flows, collated by flow type. Opening each of these files will also perform a quick check for data consistency issues with the app definitions
 
