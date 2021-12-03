@@ -1,5 +1,5 @@
-import { FlowTypes } from "../../../types";
-import { booleanStringToBoolean } from "../../utils";
+import { FlowTypes } from "data-models";
+import { booleanStringToBoolean } from "../utils";
 /**
  * Convert action_list string to row action object, e.g.
  *

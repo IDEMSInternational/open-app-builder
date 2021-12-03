@@ -5,7 +5,7 @@ import fs from "fs-extra";
 import path from "path";
 import { IDeploymentConfig } from "../../../types";
 import { IDEMS_APP_CONFIG } from "../../paths";
-import { promptOptions, logError, deepMergeObjects } from "../../utils";
+import { promptOptions, logError } from "../../utils";
 
 const program = new Command("set");
 
@@ -47,15 +47,9 @@ async function setActiveDeployment(deploymentName?: string) {
   }
   const { filename, ...deployment } = matchingDeployment;
   const defaultDeploymentPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
-  const deploymentJson: IDeploymentConfigJson = {
-    ...deployment,
-    _workspace_path: path.resolve(IDEMS_APP_CONFIG.deployments, path.dirname(filename)),
-    _ts_filename: filename,
-  };
-  // Merge with defaults
-  const mergedJson = deepMergeObjects(DEPLOYMENT_CONFIG_DEFAULTS, deploymentJson);
 
-  fs.writeFileSync(defaultDeploymentPath, JSON.stringify(mergedJson, null, 2));
+  const deploymentJson = generateDeploymentJson(deployment, filename);
+  fs.writeFileSync(defaultDeploymentPath, JSON.stringify(deploymentJson, null, 2));
   console.log("deployment set", deployment);
 }
 
@@ -88,19 +82,27 @@ export async function loadDeploymentTS(filename: string) {
   return res.default;
 }
 
+/** Take a base deployment config, merge with metadata fields, evaluate relative paths */
+function generateDeploymentJson(deployment: IDeploymentConfig, filename: string) {
+  const _config_ts_path = path.resolve(IDEMS_APP_CONFIG.deployments, filename);
+  const _workspace_path = path.dirname(_config_ts_path);
+
+  // ensure google cache path absolute
+  const { cache_path } = deployment.google_drive;
+  deployment.google_drive.cache_path = path.resolve(
+    _workspace_path,
+    cache_path || "./cache/gdrive"
+  );
+
+  // merge with metadata fields
+  const deploymentJson: IDeploymentConfigJson = { ...deployment, _workspace_path, _config_ts_path };
+  return deploymentJson;
+}
+
 interface IDeploymentConfigWithFilename extends IDeploymentConfig {
   filename: string;
 }
 export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;
-  _ts_filename: string;
+  _config_ts_path: string;
 }
-
-const DEPLOYMENT_CONFIG_DEFAULTS: Partial<IDeploymentConfigJson> = {
-  google_drive: {
-    assets_folder_id: "",
-    sheets_folder_id: "",
-    auth_token_path: "",
-    cache_path: "./cache/gdrive",
-  },
-};

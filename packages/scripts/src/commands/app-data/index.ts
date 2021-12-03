@@ -2,6 +2,7 @@
 import { Command } from "commander";
 import chalk from "chalk";
 
+import convertCmd from "./convert";
 import copyCmd from "./copy";
 import downloadCmd from "./download";
 import syncCmd from "./sync";
@@ -9,6 +10,7 @@ import syncCmd from "./sync";
 const program = new Command("app-data");
 
 /** add sub-commands from child folders */
+program.addCommand(convertCmd);
 program.addCommand(copyCmd);
 program.addCommand(downloadCmd);
 program.addCommand(syncCmd);

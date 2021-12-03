@@ -1,6 +1,6 @@
 import chalk from "chalk";
-import { FlowTypes } from "../../../types";
-import { booleanStringToBoolean } from "../../utils";
+import { FlowTypes } from "data-models";
+import { booleanStringToBoolean } from "../utils";
 
 type ICondition = FlowTypes.DataEvaluationCondition;
 

@@ -8,8 +8,6 @@ import { CREDENTIALS_PATH, AUTH_TOKEN_PATH } from "../../paths";
 import { logWarning, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 
-const program = new Command("download");
-
 /***************************************************************************************
  * CLI
  * @example yarn
@@ -17,6 +15,7 @@ const program = new Command("download");
 interface IProgramOptions {
   sheetname?: string;
 }
+const program = new Command("download");
 export default program
   .description("Download app data")
   .option(
@@ -45,9 +44,9 @@ async function appDataDownload(options: IProgramOptions) {
   const authTokenPath = auth_token_path
     ? path.resolve(_workspace_path, auth_token_path)
     : AUTH_TOKEN_PATH;
-  const sheetsOutput = path.resolve(_workspace_path, "app-data", "sheets");
+  const sheetsOutput = path.resolve(_workspace_path, "app_data", "sheets");
   const sheetsCachePath = path.resolve(_workspace_path, cache_path, "app_sheets");
-  const assetsOutput = path.resolve(_workspace_path, "app-data", "assets");
+  const assetsOutput = path.resolve(_workspace_path, "app_data", "assets");
   const assetsCachePath = path.resolve(_workspace_path, cache_path, "app_assets");
 
   let commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;

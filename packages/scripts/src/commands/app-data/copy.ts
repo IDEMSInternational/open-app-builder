@@ -20,8 +20,6 @@ import {
 } from "../../paths";
 import { getActiveDeployment } from "../deployment/get";
 
-const program = new Command("copy");
-
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
 /***************************************************************************************
@@ -31,6 +29,7 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
 interface IProgramOptions {
   skipAssets: boolean;
 }
+const program = new Command("copy");
 export default program
   .description("Copy app data")
   .option("-s --skip-assets", "Skip copying of asset files if only processing template sheets")

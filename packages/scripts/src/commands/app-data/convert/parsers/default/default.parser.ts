@@ -9,17 +9,9 @@ import {
   parseAppDataActionString,
   parseAppDateValue,
 } from "../../utils";
-import { SCRIPTS_WORKSPACE_PATH } from "../../../paths";
-import { getActiveDeployment } from "../../../deployments";
+import { getActiveDeployment } from "../../../../deployment/get";
 // When running this parser assumes there is a 'type' column
 type IRowData = { type: string; name?: string; rows?: IRowData };
-
-const APP_DEPLOYMENT = getActiveDeployment();
-const ASSETS_CACHE_PATH = path.join(
-  SCRIPTS_WORKSPACE_PATH,
-  "src/gdrive-download/cache",
-  APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER
-);
 
 /**
  * The default processor performs the following:
@@ -29,6 +21,13 @@ const ASSETS_CACHE_PATH = path.join(
  * - Rewrite `_list` content as string array
  */
 export class DefaultParser implements AbstractParser {
+  activeDeployment = getActiveDeployment();
+  ASSETS_CACHE_PATH = path.resolve(
+    this.activeDeployment.google_drive.cache_path,
+    "app_assets",
+    "global"
+  );
+
   public groupSuffix = "_group";
 
   /** All rows are handled in a queue, processing linearly */
@@ -180,7 +179,7 @@ export class DefaultParser implements AbstractParser {
   /** Rewrite urls for local assets and check if currently exists in assets cache */
   private handleAssetLinks(assetPath: string, flow_name: string) {
     // log missing asset
-    if (!fs.existsSync(`${ASSETS_CACHE_PATH}/${assetPath}`)) {
+    if (!fs.existsSync(`${this.ASSETS_CACHE_PATH}/${assetPath}`)) {
       this.summary.missingAssets.push({ flow_name, assetPath });
     }
     return assetPath;

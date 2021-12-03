@@ -1,7 +1,5 @@
 import { FlowTypes } from "data-models";
-import { setNestedProperty } from "../../../../../utils";
-
-import { extractConditionList, parseAppDataCollectionString } from "../../utils";
+import { extractConditionList, parseAppDataCollectionString, setNestedProperty } from "../../utils";
 import { DefaultParser } from "../default/default.parser";
 
 export class DataListParser extends DefaultParser {
