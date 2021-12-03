@@ -1,28 +1,48 @@
 import * as fs from "fs-extra";
+import { Command } from "commander";
 import * as xlsx from "xlsx";
 import * as path from "path";
 import boxen from "boxen";
 import chalk from "chalk";
 import * as Parsers from "./parsers";
-import { recursiveFindByExtension, arrayToHashmap, groupJsonByKey } from "../utils";
-import { FlowTypes } from "../../types";
+import { recursiveFindByExtension, arrayToHashmap, groupJsonByKey } from "./utils";
+import { FlowTypes } from "data-models";
+import { getActiveDeployment } from "../../deployment/get";
 
-const INPUT_FOLDER = path.join(__dirname, "../gdrive-download/output");
 const INTERMEDIATES_FOLDER = `${__dirname}/intermediates`;
-const OUTPUT_FOLDER = `${__dirname}/output`;
+
+/***************************************************************************************
+ * CLI
+ * @example yarn
+ *************************************************************************************/
+const program = new Command("convert");
+interface IProgramOptions {}
+export default program.description("Copy app data").action(async (options: IProgramOptions) => {
+  await appDataConvert(options);
+});
+
+/***************************************************************************************
+ * Main Methods
+ *************************************************************************************/
 
 /**
  * Reads xlsx files from gdrive-download output and converts to json
  * objects representing sheet names and data values
  */
-export async function main() {
+async function appDataConvert(options: IProgramOptions) {
   console.log(chalk.yellow("Converting APP Data"));
-  fs.ensureDirSync(INPUT_FOLDER);
+
+  // Setup Folders
+  const activeDeployment = getActiveDeployment();
+  const SHEETS_OUTPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "sheets");
+  const SHEETS_INPUT_FOLDER = path.resolve(activeDeployment.google_drive.cache_path, "app_sheets");
+  fs.ensureDirSync(SHEETS_INPUT_FOLDER);
   fs.ensureDirSync(INTERMEDIATES_FOLDER);
   fs.emptyDirSync(INTERMEDIATES_FOLDER);
-  fs.ensureDirSync(OUTPUT_FOLDER);
-  fs.emptyDirSync(OUTPUT_FOLDER);
-  const xlsxFiles = listFilesForConversion(INPUT_FOLDER);
+  fs.ensureDirSync(SHEETS_OUTPUT_FOLDER);
+  fs.emptyDirSync(SHEETS_OUTPUT_FOLDER);
+
+  const xlsxFiles = listFilesForConversion(SHEETS_INPUT_FOLDER);
 
   const combined: { json: any; xlsxPath: string }[] = [];
   for (let xlsxPath of xlsxFiles) {
@@ -30,7 +50,7 @@ export async function main() {
     combined.push({ json, xlsxPath });
   }
   // merge and collate app data, write some extra files for logging/debugging purposes
-  const merged = mergeAppData(combined);
+  const merged = mergeAppData(SHEETS_INPUT_FOLDER, combined);
   fs.writeFileSync(`${INTERMEDIATES_FOLDER}/merged.json`, JSON.stringify(merged, null, 2));
   const dataByFlowType = groupJsonByKey(merged, "flow_type");
   fs.writeFileSync(
@@ -51,20 +71,11 @@ export async function main() {
       if (subkey !== "_default") {
         outputName = `${key}.${subkey}`;
       }
-      fs.ensureDirSync(`${OUTPUT_FOLDER}/${key}`);
-      fs.writeFileSync(`${OUTPUT_FOLDER}/${key}/${outputName}.json`, outputJson);
+      fs.ensureDirSync(`${SHEETS_OUTPUT_FOLDER}/${key}`);
+      fs.writeFileSync(`${SHEETS_OUTPUT_FOLDER}/${key}/${outputName}.json`, outputJson);
     });
   });
   console.log(chalk.yellow("Conversion Complete"));
-}
-
-if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
-  main()
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
-    })
-    .then(() => console.log(chalk.green("App Data Converted")));
 }
 
 function applyDataParsers(dataByFlowType: {
@@ -108,7 +119,7 @@ function applyDataParsers(dataByFlowType: {
  * Merge and collate with other existing data, warning in case of overwrites
  * @returns - array of all merged sheets (no grouping or collating)
  */
-function mergeAppData(jsons: { json: any; xlsxPath: string }[]) {
+function mergeAppData(sheetsInputFolder: string, jsons: { json: any; xlsxPath: string }[]) {
   const merged: { [flow_name: string]: FlowTypes.FlowTypeWithData } = {};
   const releasedSummary = {};
   const skippedSummary = {};
@@ -127,7 +138,7 @@ function mergeAppData(jsons: { json: any; xlsxPath: string }[]) {
               console.log(chalk.yellow("duplicate flow:", flow_name));
             }
             // Ensure all paths use / to match HTTP style paths
-            const _xlsxPath = path.relative(INPUT_FOLDER, xlsxPath).replace(/\\/g, "/");
+            const _xlsxPath = path.relative(sheetsInputFolder, xlsxPath).replace(/\\/g, "/");
             merged[flow_name] = { ...contents, rows: json[flow_name], _xlsxPath };
           } else {
             console.log(chalk.red("No Contents:", flow_name));

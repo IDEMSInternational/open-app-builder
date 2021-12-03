@@ -36,12 +36,12 @@ export function getActiveDeployment() {
     });
   }
   const deploymentJson: IDeploymentConfigJson = fs.readJsonSync(defaultJsonPath);
-  const { _ts_filename } = deploymentJson;
-  const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _ts_filename);
+  const { _config_ts_path } = deploymentJson;
+  const deploymentTSPath = path.resolve(IDEMS_APP_CONFIG.deployments, _config_ts_path);
 
   if (!fs.existsSync(deploymentTSPath)) {
     logError({
-      msg1: `Deployment not found: ${_ts_filename}`,
+      msg1: `Deployment not found: ${_config_ts_path}`,
       msg2: `Run "npm run scripts deployment set" to specify a new active deployment`,
     });
   }

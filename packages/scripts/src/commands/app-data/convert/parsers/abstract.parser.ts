@@ -1,4 +1,4 @@
-import { FlowTypes } from "../../../types";
+import { FlowTypes } from "data-models";
 
 /**
  * If we decide to apply any generic conversions system-wide we can do them

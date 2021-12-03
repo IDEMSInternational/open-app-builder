@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { setNestedProperty } from "../../../../utils";
+import { setNestedProperty } from "../utils";
 
 /**
  * Xls data represents nested objects in the following ways
