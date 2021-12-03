@@ -186,19 +186,26 @@ export function listFolderNames(folderPath: string) {
 }
 
 /**
- * WiP function to simplify process of converting .json files to .ts, with addtional export
+ * Function to simplify process of converting .json files to .ts, with addtional export
  * and index file options
  */
 export function convertJsonToTs(
   filepaths: string[],
   config: {
-    indexFile?: { namedExport?: string };
-    exportDataType?: string;
+    indexFile?: {
+      /** Provide a specific const name for index file to export as, e.g. export const index = [...] */
+      namedExport?: string;
+      /** Specify type definition for individual files, e.g. `string[] => export const index:string[] = [...] */
+      namedExportType?: string;
+    };
+    /** Specify type definition for individual files, e.g. `any` => export const data:any = [...] */
+    defaultExportType?: string;
     outputDir?: string;
-    importStatements?: string[];
+    /** TODO */
+    _wip_importStatements?: string[];
   }
 ) {
-  let { exportDataType, indexFile, importStatements, outputDir } = config;
+  let { defaultExportType, indexFile, _wip_importStatements, outputDir } = config;
   if (outputDir) {
     fs.ensureDirSync(outputDir);
     fs.emptyDirSync(outputDir);
@@ -211,7 +218,12 @@ export function convertJsonToTs(
     outputDir = outputDir || path.dirname(filepath);
     const filename = path.basename(filepath).replace(".json", ".ts");
     const jsonData = fs.readJSONSync(filepath);
-    const tsData = `export default ${JSON.stringify(jsonData, null, 2)}`;
+    let defaultExportName = "data";
+    if (defaultExportType) {
+      defaultExportName += `:${defaultExportType}`;
+    }
+    const defaultExportData = JSON.stringify(jsonData, null, 2);
+    const tsData = `const ${defaultExportName} = ${defaultExportData}; export default data`;
     fs.writeFileSync(path.resolve(outputDir, filename), tsData);
     if (indexFilePath) {
       const importName = path.basename(filename, ".ts");
@@ -225,6 +237,10 @@ export function convertJsonToTs(
   // Create single export, e.g. ```export const NAMED_EXPORT = {import_1,import_2}```
   if (indexFilePath && indexFile.namedExport) {
     const namedExports = filepaths.map((filepath) => path.basename(filepath, ".json")).join(",");
-    fs.appendFileSync(indexFilePath, `export const ${indexFile.namedExport} = { ${namedExports} }`);
+    let exportName = indexFile.namedExport;
+    if (indexFile.namedExportType) {
+      exportName += `:${indexFile.namedExportType}`;
+    }
+    fs.appendFileSync(indexFilePath, `export const ${exportName} = { ${namedExports} }`);
   }
 }
