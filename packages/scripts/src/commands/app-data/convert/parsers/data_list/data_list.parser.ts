@@ -1,5 +1,6 @@
-import { setNestedProperty } from "../../../../../../src/app/shared/utils";
-import { FlowTypes } from "../../../../types";
+import { FlowTypes } from "data-models";
+import { setNestedProperty } from "../../../../../utils";
+
 import { extractConditionList, parseAppDataCollectionString } from "../../utils";
 import { DefaultParser } from "../default/default.parser";
 

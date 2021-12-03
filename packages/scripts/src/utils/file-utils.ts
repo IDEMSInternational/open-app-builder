@@ -1,7 +1,40 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { createHash } from "crypto";
-import { getNestedProperty, setNestedProperty } from "../../../../src/app/shared/utils";
+
+/**
+ * Retrieve a nested property from a json object
+ * using a single path string accessor
+ * (modified from https://gist.github.com/jasonrhodes/2321581)
+ *
+ * @returns value if exists, or null otherwise
+ *
+ * @example
+ * const obj = {"a":{"b":{"c":1}}}
+ * getNestedProperty(obj,'a.b.c')  // returns 1
+ * getNestedProperty(obj,'a.b.c.d')  // returns null
+ *
+ * @param obj data object to iterate over
+ * @param path nested path, such as data.subfield1.deeperfield2
+ */
+export function getNestedProperty(obj: any, path: string) {
+  return path.split(".").reduce((prev, current) => {
+    return prev ? prev[current] : null;
+  }, obj);
+}
+
+/** Set a nested json property namespaced as parent.child1.subchild1 */
+export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
+  let childKeys = path.split(".");
+  const currentKey = childKeys[0];
+  if (childKeys.length > 1) {
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
+  } else {
+    obj[currentKey] = value;
+  }
+  return obj as T;
+}
 
 /**
  * find files by a given extension recursively, returning full paths
