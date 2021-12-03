@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import path from "path";
 import * as fs from "fs-extra";
-import { FlowTypes } from "../../../../types";
+import { FlowTypes } from "data-models";
 import { AbstractParser } from "../abstract.parser";
 import {
   parseAppDataListString,

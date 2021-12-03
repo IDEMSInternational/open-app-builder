@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { FlowTypes } from "../../../../types";
+import { FlowTypes } from "data-models";
 import { DefaultParser } from "../default/default.parser";
 
 export class TaskListParser extends DefaultParser {
