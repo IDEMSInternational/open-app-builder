@@ -125,12 +125,8 @@ class GDriveDownloader {
     const actions = this.prepareSyncActionsList(files);
     await this.processSyncActions(actions);
     this.writeCacheContentsFile(files);
-    fs.writeFileSync(
-      path.resolve(PATHS.LOGS_DIR, "actions.log.json"),
-      JSON.stringify(actions, null, 2)
-    );
+
     console.log(chalk.green("Download Complete"));
-    console.log(chalk.green("Logs:", PATHS.LOGS_DIR));
   }
 
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
@@ -184,6 +180,10 @@ class GDriveDownloader {
     logUpdate.done();
     queue.start();
     await queue.onIdle();
+    // Update logs
+    const actionsLogPath = path.resolve(PATHS.LOGS_DIR, "actions.log.json");
+    console.log(chalk.gray(actionsLogPath));
+    fs.writeFileSync(actionsLogPath, JSON.stringify(actions, null, 2));
   }
 
   /**
