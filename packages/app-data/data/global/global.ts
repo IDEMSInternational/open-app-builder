@@ -1374,6 +1374,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_st: true,
+            za_xh: true,
           },
         },
       },
@@ -1535,6 +1536,7 @@ const global: FlowTypes.Global[] = [
           value: {
             tz_sw: true,
             za_st: true,
+            za_xh: true,
           },
         },
       },
