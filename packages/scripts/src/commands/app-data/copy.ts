@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as fs from "fs-extra";
 import chalk from "chalk";
+import { Command } from "commander";
 import {
   capitalizeFirstLetter,
   recursiveFindByExtension,
@@ -9,45 +10,67 @@ import {
   isCountryLanguageCode,
   listFolderNames,
   logError,
-} from "./utils";
+} from "../../utils";
 import { spawnSync } from "child_process";
 import {
   APP_DATA_ASSETS_INDEX_PATH,
   APP_DATA_ASSETS_PATH,
   APP_DATA_DATA_PATH,
   ROOT_DIR,
-} from "./paths";
-import { getActiveDeployment } from "./deployments";
+} from "../../paths";
+import { getActiveDeployment } from "../deployment/get";
 
-const APP_DEPLOYMENT = getActiveDeployment();
+const program = new Command("copy");
 
-// Setup folders
-const DATA_INPUT_FOLDER = path.join(__dirname, "./app-data-convert/output");
-const ASSETS_INPUT_FOLDER = path.join(
-  __dirname,
-  "./gdrive-download/output",
-  APP_DEPLOYMENT.GOOGLE_DRIVE.ASSETS_FOLDER
-);
-
-/** Expected folder containing global assets */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
+/***************************************************************************************
+ * CLI
+ * @example yarn
+ *************************************************************************************/
+interface IProgramOptions {
+  skipAssets: boolean;
+}
+export default program
+  .description("Copy app data")
+  .option("-s --skip-assets", "Skip copying of asset files if only processing template sheets")
+  .action(async (options: IProgramOptions) => {
+    await appDataCopy(options);
+  });
+
+/***************************************************************************************
+ * Main Methods
+ *************************************************************************************/
 /**
  * A simple script to copy data exported from gdrive and processed into the app data folder
- * @param doAssetFolderCheck whether to copy assets across (e.g. ignored when syncing single files)
  **/
-export function main(doAssetFolderCheck = true) {
+
+async function appDataCopy(options: IProgramOptions) {
+  const activeDeployment = getActiveDeployment();
+
+  const SHEETS_INPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "sheets");
+  const ASSETS_INPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "assets");
+  const TRANSLATIONS_FOLDER = path.resolve(
+    activeDeployment._workspace_path,
+    "app_data",
+    "translations"
+  );
+  const TRANSLATIONS_INPUT_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "from_translators");
+  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "compiled");
+
   // Translations Compilation
   console.log(chalk.yellow("Compiling existing translations"));
-  const TRANSLATIONS_FOLDER = path.resolve(APP_DATA_DATA_PATH, "../translations/from_translators");
-  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(APP_DATA_DATA_PATH, "../translations/compiled");
-  compileTranslationFiles(DATA_INPUT_FOLDER, TRANSLATIONS_OUTPUT_FOLDER, TRANSLATIONS_FOLDER);
+  compileTranslationFiles(
+    SHEETS_INPUT_FOLDER,
+    TRANSLATIONS_OUTPUT_FOLDER,
+    TRANSLATIONS_INPUT_FOLDER
+  );
 
   // App files
   console.log(chalk.yellow("Writing app files"));
   writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), APP_DATA_DATA_PATH);
 
-  if (doAssetFolderCheck) {
+  if (!options.skipAssets) {
     assetsQualityCheck(ASSETS_INPUT_FOLDER);
     copyAppAssetFiles(ASSETS_INPUT_FOLDER, APP_DATA_ASSETS_PATH);
     generateDataAssetsIndexFile();
@@ -69,10 +92,6 @@ export function main(doAssetFolderCheck = true) {
     "../app-data/translations/to_translate"
   );
   console.log(chalk.green("Copy Complete"));
-}
-
-if (process.argv[1] && process.argv[1].indexOf("sync-single") < 0) {
-  main();
 }
 
 function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
