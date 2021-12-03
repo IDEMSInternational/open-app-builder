@@ -18,6 +18,7 @@ import {
 } from "../utils";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
+const CONTENTS_FILE_NAME = "_drive_contents.json";
 
 /***************************************************************************************
  * CLI
@@ -124,18 +125,22 @@ class GDriveDownloader {
     const actions = this.prepareSyncActionsList(files);
     await this.processSyncActions(actions);
     this.writeCacheContentsFile(files);
+    fs.writeFileSync(
+      path.resolve(PATHS.LOGS_DIR, "actions.log.json"),
+      JSON.stringify(actions, null, 2)
+    );
     console.log(chalk.green("Download Complete"));
   }
 
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
     const { cachePath } = this.options;
     const contents = JSON.stringify(files, null, 2);
-    const contentsPath = path.resolve(cachePath, "_drive_contents.json");
+    const contentsPath = path.resolve(cachePath, CONTENTS_FILE_NAME);
     fs.writeFileSync(contentsPath, contents);
   }
   private updateCacheContentsFile(file: IGDriveFileWithFolder) {
     const { cachePath } = this.options;
-    const contentsPath = path.resolve(cachePath, "_drive_contents.json");
+    const contentsPath = path.resolve(cachePath, CONTENTS_FILE_NAME);
     const contents: IGDriveFileWithFolder[] = fs.readJSONSync(contentsPath);
     const updateIndex = contents.findIndex((entry) => entry.id === file.id);
     console.log("update contents", contents[updateIndex], file);
@@ -228,9 +233,11 @@ class GDriveDownloader {
         }
       })();
     }
-    // compare local with server to check for delete
+    // compare local with server, mark for delete files no longer on server (except local contents file)
     Object.keys(localFilesHashmap).forEach((relativePath) => {
-      if (!serverFilesHashmap[relativePath]) output.deleted.push({ folderPath: relativePath });
+      if (!serverFilesHashmap[relativePath] && path.basename(relativePath) !== CONTENTS_FILE_NAME) {
+        output.deleted.push({ folderPath: relativePath });
+      }
     });
     // generate summary
     const summary = {} as any;
