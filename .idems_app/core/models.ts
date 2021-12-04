@@ -18,6 +18,10 @@ export interface IDeploymentConfig {
     converter_cache_path?: string;
     /** processed assets for use in app (defaults to ./app_data/assets) */
     assets_output_path?: string;
+    /** */
+    sheets_filter_function?: (flow) => boolean;
+    /** filter function that receives basic file info such as relativePath and size */
+    assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
   };
   translations?: {
     /** */
@@ -44,8 +48,18 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_output_path: "./app_data/sheets",
     converter_cache_path: "./cache/converter",
     assets_output_path: "./app_data/assets",
+    sheets_filter_function: (fileEntry) => true,
+    assets_filter_function: (fileEntry) => true,
   },
   translations: {
     translated_jsons_path: "./app_data/translations/translated_jsons",
   },
 };
+
+/** Duplicate type defintion from scripts (TODO - find better way to share) */
+interface IContentsEntry {
+  relativePath: string;
+  size_kb: number;
+  modifiedTime: string;
+  md5Checksum: string;
+}
