@@ -96,8 +96,12 @@ function generateDeploymentJson(deployment: IDeploymentConfig, filename: string)
   // rewrite relative urls to absolute
   const rewritten = rewriteConfigPaths(merged, _workspace_path);
 
+  const converted = convertFunctionsToStrings(rewritten);
+
   // merge with metadata fields
-  const deploymentJson: IDeploymentConfigJson = { ...rewritten, _workspace_path, _config_ts_path };
+  const deploymentJson: IDeploymentConfigJson = { ...converted, _workspace_path, _config_ts_path };
+
+  // TODO - convert functions to strings
   return deploymentJson;
 }
 
@@ -123,6 +127,18 @@ function rewriteConfigPaths<T>(data: T, relativePathRoot: string) {
       else {
         data[key] = path.resolve(ROOT_DIR, value);
       }
+    }
+  });
+  return data;
+}
+
+function convertFunctionsToStrings<T>(data: T) {
+  Object.entries(data).forEach(([key, value]) => {
+    if (value && typeof value === "object") {
+      data[key] = convertFunctionsToStrings(value);
+    }
+    if (typeof value === "function") {
+      data[key] = (value as Function).toString();
     }
   });
   return data;
