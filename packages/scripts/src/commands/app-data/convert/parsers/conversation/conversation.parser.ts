@@ -6,6 +6,10 @@ import { AbstractParser } from "../abstract.parser";
 export class ConversationParser implements AbstractParser {
   public run(flow: FlowTypes.FlowTypeWithData) {
     const parser = new ExcelToRapidproConverter(flow.flow_name, flow.rows);
-    return parser.run();
+    const result = parser.run();
+    // Manually include flow_type property for use with other methods
+    if (result?.flows) {
+      result["flow_type"] = "conversation";
+    }
   }
 }
