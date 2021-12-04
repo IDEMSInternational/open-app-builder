@@ -4,6 +4,7 @@ import fs from "fs-extra";
 import path from "path";
 import { IDEMS_APP_CONFIG } from "../../paths";
 import { logError } from "../../utils";
+import { DEPLOYMENT_CONFIG_VERSION } from "./common";
 import { IDeploymentConfigJson } from "./set";
 
 const program = new Command("get");
@@ -57,5 +58,28 @@ export function getActiveDeployment() {
     });
   }
 
-  return deploymentJson;
+  // ensure json compiled any time core config set methods updated
+  if (deploymentJson._config_version !== DEPLOYMENT_CONFIG_VERSION) {
+    logError({
+      msg1: `Deployment set methods updated and requires compiling`,
+      msg2: `Run "npm run scripts deployment set" to update`,
+    });
+  }
+
+  const convertedJson = convertStringsToFunctions(deploymentJson);
+
+  return convertedJson;
+}
+
+/** When JSON is stored functions are stringified. Convert back */
+function convertStringsToFunctions<T>(data: T) {
+  Object.entries(data).forEach(([key, value]) => {
+    if (value && typeof value === "object") {
+      data[key] = convertStringsToFunctions(value);
+    }
+    if (key.endsWith("_function") && typeof value === "string") {
+      data[key] = new Function(`return ${value}`)();
+    }
+  });
+  return data;
 }
