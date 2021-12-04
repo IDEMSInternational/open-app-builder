@@ -130,7 +130,7 @@ export function generateFolderFlatMap(
   const allFiles = recursiveFindByExtension(folderPath);
   // const relativeFiles = allFiles.map(filepath => path.relative(folderPath, filepath))
   let flatMap: {
-    [relativePath: string]: boolean | { size: number; checksum: string; mtime: Date };
+    [relativePath: string]: boolean | IContentsEntry;
   } = {};
   for (const filePath of allFiles) {
     const relativePath = path.relative(folderPath, filePath).split(path.sep).join("/");
@@ -139,14 +139,25 @@ export function generateFolderFlatMap(
       if (includeStats) {
         // generate size and md5 checksum stats
         const { size, mtime } = fs.statSync(filePath);
-        const checksum = getFileMD5Checksum(filePath);
-        flatMap[relativePath] = { size, checksum, mtime };
+        const modifiedTime = mtime.toISOString();
+        // write size in kb to 1 dpclear
+        const size_kb = Math.round(size / 100) / 10;
+        const md5Checksum = getFileMD5Checksum(filePath);
+        const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
+        flatMap[relativePath] = entry;
       } else {
         flatMap[relativePath] = true;
       }
     }
   }
   return flatMap;
+}
+
+export interface IContentsEntry {
+  relativePath: string;
+  size_kb: number;
+  modifiedTime: string;
+  md5Checksum: string;
 }
 
 export function getFileMD5Checksum(filePath: string) {
@@ -310,7 +321,7 @@ function isObject(item: any) {
 }
 
 /** Search a folder for a file ending _contents and return parsed json  */
-export function readContentsFile<T = any>(folderPath: string) {
+export function readContentsFile(folderPath: string) {
   if (!fs.existsSync(folderPath)) {
     logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
     return [];
@@ -321,7 +332,7 @@ export function readContentsFile<T = any>(folderPath: string) {
     return [];
   }
   const contentsJson = fs.readJsonSync(path.resolve(folderPath, contentsFilePath));
-  return contentsJson as T[];
+  return contentsJson as IContentsEntry[];
 }
 
 /**

@@ -6,6 +6,7 @@ import path from "path";
 import { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "../../../types";
 import { IDEMS_APP_CONFIG, ROOT_DIR } from "../../paths";
 import { promptOptions, logError, deepMergeObjects, logOutput } from "../../utils";
+import { DEPLOYMENT_CONFIG_VERSION } from "./common";
 
 const program = new Command("set");
 
@@ -89,6 +90,7 @@ export async function loadDeploymentTS(filename: string) {
 function generateDeploymentJson(deployment: IDeploymentConfig, filename: string) {
   const _config_ts_path = path.resolve(IDEMS_APP_CONFIG.deployments, filename);
   const _workspace_path = path.dirname(_config_ts_path);
+  const _config_version = DEPLOYMENT_CONFIG_VERSION;
 
   // merge default values
   const merged = deepMergeObjects(DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS, deployment);
@@ -99,7 +101,12 @@ function generateDeploymentJson(deployment: IDeploymentConfig, filename: string)
   const converted = convertFunctionsToStrings(rewritten);
 
   // merge with metadata fields
-  const deploymentJson: IDeploymentConfigJson = { ...converted, _workspace_path, _config_ts_path };
+  const deploymentJson: IDeploymentConfigJson = {
+    ...converted,
+    _workspace_path,
+    _config_ts_path,
+    _config_version,
+  };
 
   // TODO - convert functions to strings
   return deploymentJson;
@@ -111,6 +118,7 @@ interface IDeploymentConfigWithFilename extends IDeploymentConfig {
 export interface IDeploymentConfigJson extends IDeploymentConfig {
   _workspace_path: string;
   _config_ts_path: string;
+  _config_version: number;
 }
 
 function rewriteConfigPaths<T>(data: T, relativePathRoot: string) {
@@ -132,12 +140,13 @@ function rewriteConfigPaths<T>(data: T, relativePathRoot: string) {
   return data;
 }
 
+/** When stringifying json functions cannot be converted, so pre-convert any using function .toString() method */
 function convertFunctionsToStrings<T>(data: T) {
   Object.entries(data).forEach(([key, value]) => {
     if (value && typeof value === "object") {
       data[key] = convertFunctionsToStrings(value);
     }
-    if (typeof value === "function") {
+    if (key.endsWith("_function") && typeof value === "function") {
       data[key] = (value as Function).toString();
     }
   });
