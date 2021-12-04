@@ -10,6 +10,7 @@ const config: IDeploymentConfig = {
   app_data: {
     sheets_output_path: "packages/app-data/data",
     assets_output_path: "packages/app-data/assets",
+    sheets_filter_function: (flow) => !["conversation"].includes(flow.flow_subtype),
   },
 };
 export default config;

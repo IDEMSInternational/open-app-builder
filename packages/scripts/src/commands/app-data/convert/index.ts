@@ -90,15 +90,19 @@ class AppDataConverter {
     const actions = this.prepareConversionActions();
 
     this.processCacheDeletions(actions.delete);
+
     const converted = this.processSheetConversions(actions.convert);
+
     const cached: IParsedWorkbookData[] = actions.skip.map((entry) =>
       this.loadCachedConversion(entry)
     );
 
     this.writeCacheContentsJson();
 
-    const allConversions = [...converted, ...cached];
-    const mergedData = this.mergeConvertedData(allConversions);
+    const allConvertedData = [...converted, ...cached].filter((data) =>
+      this.applySheetFilters(data)
+    );
+    const mergedData = this.mergeConvertedData(allConvertedData);
     this.writeMergedOutputJsons(mergedData);
 
     console.log(chalk.yellow("Conversion Complete"));
@@ -153,7 +157,7 @@ class AppDataConverter {
     // log summary
     const summary = {};
     Object.entries(actions).forEach(([key, value]) => (summary[key] = value.length));
-    console.log(summary);
+    console.log("\nFile Summary\n", summary);
     return actions;
   }
 
@@ -190,6 +194,18 @@ class AppDataConverter {
     return processed;
   }
 
+  /** If sheets filter function specified apply here */
+  private applySheetFilters(data: IParsedWorkbookData) {
+    const { sheets_filter_function } = this.activeDeployment.app_data;
+    if (sheets_filter_function) {
+      Object.entries(data).forEach(([flow_type, flows]) => {
+        // ensure flows exist and apply and deployment filters
+        data[flow_type] = flows.filter((flow) => flow).filter(sheets_filter_function);
+      });
+    }
+    return data;
+  }
+
   /**
    * Each converted sheet may contain a mixture of different flow types (e.g. template, data_list),
    * and subtypes within. Collate all sheets by flow type and subtype
@@ -216,6 +232,7 @@ class AppDataConverter {
     const logOutput = Object.keys(merged)
       .sort()
       .map((subtype) => ({ subtype, total: merged[subtype].length }));
+    console.log("\nSheet Summary");
     console.table(logOutput);
     return merged;
   }
