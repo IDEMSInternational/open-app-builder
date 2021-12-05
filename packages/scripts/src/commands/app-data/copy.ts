@@ -10,15 +10,12 @@ import {
   isCountryLanguageCode,
   listFolderNames,
   logError,
+  readContentsFile,
 } from "../../utils";
 import { spawnSync } from "child_process";
-import {
-  APP_DATA_ASSETS_INDEX_PATH,
-  APP_DATA_ASSETS_PATH,
-  APP_DATA_DATA_PATH,
-  ROOT_DIR,
-} from "../../paths";
+
 import { getActiveDeployment } from "../deployment/get";
+import { ROOT_DIR } from "../../paths";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -34,78 +31,196 @@ export default program
   .description("Copy app data")
   .option("-s --skip-assets", "Skip copying of asset files if only processing template sheets")
   .action(async (options: IProgramOptions) => {
-    await appDataCopy(options);
+    new AppDataCopy(options).run();
   });
 
 /***************************************************************************************
  * Main Methods
  *************************************************************************************/
 /**
- * A simple script to copy data exported from gdrive and processed into the app data folder
+ *
  **/
+class AppDataCopy {
+  private paths = {
+    SHEETS_INPUT_FOLDER: "",
+    SHEETS_OUTPUT_FOLDER: "",
+    ASSETS_INPUT_FOLDER: "",
+    ASSETS_OUTPUT_FOLDER: "",
+    TRANSLATIONS_TRANSLATED_STRINGS: "",
+    TRANSLATIONS_SOURCE_STRINGS: "",
+    TRANSLATIONS_OUTPUT_FOLDER: "",
+  };
+  private activeDeployment = getActiveDeployment();
+  constructor(private options: IProgramOptions) {
+    const { google_drive, app_data, translations } = this.activeDeployment;
+    this.paths = {
+      // Sheets will be copied from converter output folder
+      SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "merged"),
+      SHEETS_OUTPUT_FOLDER: app_data.sheets_output_path,
+      // Assets will be copied directly from downloaded drive (currently no postprocessing)
+      ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
+      ASSETS_OUTPUT_FOLDER: app_data.assets_output_path,
 
-async function appDataCopy(options: IProgramOptions) {
-  const activeDeployment = getActiveDeployment();
-
-  const SHEETS_INPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "sheets");
-  const ASSETS_INPUT_FOLDER = path.resolve(activeDeployment._workspace_path, "app_data", "assets");
-  const TRANSLATIONS_FOLDER = path.resolve(
-    activeDeployment._workspace_path,
-    "app_data",
-    "translations"
-  );
-  const TRANSLATIONS_INPUT_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "from_translators");
-  const TRANSLATIONS_REQUIRED_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "to_translate");
-  const TRANSLATIONS_OUTPUT_FOLDER = path.resolve(TRANSLATIONS_FOLDER, "compiled");
-
-  // Translations Compilation
-  console.log(chalk.yellow("Compiling existing translations"));
-  compileTranslationFiles(
-    SHEETS_INPUT_FOLDER,
-    TRANSLATIONS_OUTPUT_FOLDER,
-    TRANSLATIONS_INPUT_FOLDER
-  );
-
-  // App files
-  console.log(chalk.yellow("Writing app files"));
-  writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), APP_DATA_DATA_PATH);
-
-  if (!options.skipAssets) {
-    assetsQualityCheck(ASSETS_INPUT_FOLDER);
-    copyAppAssetFiles(ASSETS_INPUT_FOLDER, APP_DATA_ASSETS_PATH);
-    generateDataAssetsIndexFile();
+      TRANSLATIONS_TRANSLATED_STRINGS: translations.translated_strings_path,
+      TRANSLATIONS_SOURCE_STRINGS: translations.source_strings_path,
+      TRANSLATIONS_OUTPUT_FOLDER: translations.output_cache_path,
+    };
   }
-  generateAppDataIndexFiles();
-  writeTranslationTsFiles(
-    path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
-    path.resolve(APP_DATA_DATA_PATH, "translation_strings")
-  );
 
-  console.log(chalk.yellow("Cleaning Output Files"));
-  runPrettierCodeTidy(APP_DATA_DATA_PATH);
-  runPrettierCodeTidy(APP_DATA_ASSETS_PATH);
+  public run() {
+    // export const ASSETS_OUTPUT_FOLDER = path.join(APP_DATA_PACKAGE_PATH, "assets");
 
-  // New translations output
-  console.log(chalk.yellow("Generating new translation files"));
-  generateTranslationFiles(SHEETS_INPUT_FOLDER, TRANSLATIONS_REQUIRED_FOLDER);
-  console.log(chalk.green("Copy Complete"));
-}
+    // Translations Compilation
+    console.log(chalk.yellow("Compiling existing translations"));
+    const {
+      SHEETS_INPUT_FOLDER,
+      TRANSLATIONS_OUTPUT_FOLDER,
+      SHEETS_OUTPUT_FOLDER,
+      ASSETS_INPUT_FOLDER,
+      ASSETS_OUTPUT_FOLDER,
+      TRANSLATIONS_SOURCE_STRINGS,
+    } = this.paths;
 
-function writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
-  fs.ensureDirSync(targetFolder);
-  fs.emptyDirSync(targetFolder);
-  fs.removeSync(path.resolve(APP_DATA_DATA_PATH, "translation_strings", "_combined.json"));
-  // convert all individual strings to ts, but ignore combined
-  const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
-    (filepath) => path.basename(filepath) !== "_combined.json"
-  );
-  convertJsonToTs(sourceFiles, {
-    outputDir: targetFolder,
-    defaultExportType: "{[source_text:string]:string}",
-    indexFile: {
-      namedExport: "TRANSLATION_STRINGS",
-    },
-  });
+    // Translations
+    this.compileTranslationFiles();
+
+    // App files
+    console.log(chalk.yellow("Writing app files"));
+    writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), SHEETS_OUTPUT_FOLDER);
+
+    if (!this.options.skipAssets) {
+      assetsQualityCheck(ASSETS_INPUT_FOLDER);
+      this.copyAppAssetFiles(ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER);
+      this.generateDataAssetsIndexFile();
+    }
+    this.generateAppDataIndexFiles();
+    this.writeTranslationTsFiles(
+      path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
+      path.resolve(SHEETS_OUTPUT_FOLDER, "translation_strings")
+    );
+
+    console.log(chalk.yellow("Cleaning Output Files"));
+    runPrettierCodeTidy(SHEETS_OUTPUT_FOLDER);
+    runPrettierCodeTidy(ASSETS_OUTPUT_FOLDER);
+
+    // New translations output
+    console.log(chalk.yellow("Generating new translation files"));
+    generateTranslationFiles(SHEETS_INPUT_FOLDER, TRANSLATIONS_SOURCE_STRINGS);
+    console.log(chalk.green("Copy Complete"));
+  }
+
+  private writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
+    fs.ensureDirSync(targetFolder);
+    fs.emptyDirSync(targetFolder);
+    fs.removeSync(
+      path.resolve(this.paths.SHEETS_OUTPUT_FOLDER, "translation_strings", "_combined.json")
+    );
+    // convert all individual strings to ts, but ignore combined
+    const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
+      (filepath) => path.basename(filepath) !== "_combined.json"
+    );
+    convertJsonToTs(sourceFiles, {
+      outputDir: targetFolder,
+      defaultExportType: "{[source_text:string]:string}",
+      indexFile: {
+        namedExport: "TRANSLATION_STRINGS",
+      },
+    });
+  }
+
+  /**
+   * Create an index recursively listing all assets in app-data assets folder.
+   * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
+   * corresponding translation files
+   * */
+  private generateDataAssetsIndexFile(assetsBase = this.paths.ASSETS_OUTPUT_FOLDER) {
+    const topLevelFolders = listFolderNames(assetsBase);
+    const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
+
+    // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
+    const globalAssetsFolder = path.join(assetsBase, ASSETS_GLOBAL_FOLDER_NAME);
+    const globalAssets: any = generateFolderFlatMap(globalAssetsFolder, true);
+    const untrackedAssets: any = [];
+
+    // populate tracked and untracked translated assets
+    for (const languageFolder of languageFolders) {
+      const languageFolderPath = path.resolve(assetsBase, languageFolder);
+      const translatedAssets = generateFolderFlatMap(languageFolderPath);
+      Object.entries(translatedAssets).forEach(([name, value]) => {
+        if (globalAssets.hasOwnProperty(name)) {
+          globalAssets[name].translations = globalAssets[name].translations || {};
+          globalAssets[name].translations[languageFolder] = value;
+        } else {
+          untrackedAssets.push(`${languageFolder}/${name}`);
+        }
+      });
+    }
+
+    // write output index file for tracked and untracked assets
+    const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
+  \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
+    const APP_DATA_ASSETS_INDEX_PATH = path.resolve(this.paths.ASSETS_OUTPUT_FOLDER, "index.ts");
+    fs.writeFileSync(APP_DATA_ASSETS_INDEX_PATH, outputTS);
+  }
+
+  /**
+   * Create a default index.ts file in each data folder to export all other local
+   * data files (and produce a singular import)
+   */
+  private generateAppDataIndexFiles() {
+    const dataDirs = fs.readdirSync(this.paths.SHEETS_OUTPUT_FOLDER);
+    for (const folderName of dataDirs) {
+      const dirPath = `${this.paths.SHEETS_OUTPUT_FOLDER}/${folderName}`;
+      const dataFiles = fs.readdirSync(dirPath);
+      const importStatements = [];
+      const exportStatements = [];
+      dataFiles.forEach((filePath, i) => {
+        const importPath = path.basename(filePath, ".ts");
+        let importName = importPath.replace(".", "_");
+        if (importName === folderName) {
+          importName += `_${i}`;
+        }
+        importStatements.push(`import ${importName} from "./${importPath}"`);
+        exportStatements.push(importName);
+      });
+      const indexFilePath = `${dirPath}/index.ts`;
+      fs.createFileSync(indexFilePath);
+      fs.appendFileSync(indexFilePath, `import { FlowTypes } from "data-models";\r\n`);
+      fs.appendFileSync(indexFilePath, `${importStatements.join("\r\n")};\r\n`);
+      fs.appendFileSync(
+        indexFilePath,
+        `export const ${folderName}:FlowTypes.${capitalizeFirstLetter(
+          folderName
+        )}[] = [].concat(${exportStatements.join(",")})`
+      );
+    }
+  }
+
+  private copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
+    const assetFiles = readContentsFile(sourceFolder);
+    const { assets_filter_function } = this.activeDeployment.app_data;
+    const filteredFiles = assetFiles.filter(assets_filter_function);
+    console.log("copying assets", assetFiles.length, filteredFiles.length);
+    // TODO - only copy filtered files
+
+    fs.ensureDirSync(targetFolder);
+    fs.emptyDirSync(targetFolder);
+    if (fs.existsSync(sourceFolder)) {
+      fs.copySync(sourceFolder, targetFolder);
+    }
+  }
+
+  /**
+   * Call translation scripts to also process compiled translations
+   * TODO - ideally this and all above scripts should be called from within app-data workspace instead
+   **/
+  private compileTranslationFiles() {
+    const sourceFolder = this.paths.SHEETS_INPUT_FOLDER;
+    const outputFolder = this.paths.TRANSLATIONS_OUTPUT_FOLDER;
+    const translationsFolder = this.paths.TRANSLATIONS_TRANSLATED_STRINGS;
+    const cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
+    return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+  }
 }
 
 /** Ensure asset folders are named correctly */
@@ -132,14 +247,6 @@ function assetsQualityCheck(sourceFolder: string) {
     });
   }
   console.log(chalk.green("Preparing assets for:", "global", output.languageFolders.join(", ")));
-}
-
-function copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
-  fs.ensureDirSync(targetFolder);
-  fs.emptyDirSync(targetFolder);
-  if (fs.existsSync(sourceFolder)) {
-    fs.copySync(sourceFolder, targetFolder);
-  }
 }
 
 function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
@@ -196,85 +303,4 @@ function runPrettierCodeTidy(folderPath: string) {
 function generateTranslationFiles(inputFolder: string, outputFolder: string) {
   const cmd = `yarn workspace translations start generate -i ${inputFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
-
-/**
- * Call translation scripts to also process compiled translations
- * TODO - ideally this and all above scripts should be called from within app-data workspace instead
- **/
-function compileTranslationFiles(
-  sourceFolder: string,
-  outputFolder: string,
-  translationsFolder: string
-) {
-  const cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
-
-/**
- * Create an index recursively listing all assets in app-data assets folder.
- * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
- * corresponding translation files
- * */
-function generateDataAssetsIndexFile(assetsBase = APP_DATA_ASSETS_PATH) {
-  const topLevelFolders = listFolderNames(assetsBase);
-  const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
-
-  // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
-  const globalAssetsFolder = path.join(assetsBase, ASSETS_GLOBAL_FOLDER_NAME);
-  const globalAssets: any = generateFolderFlatMap(globalAssetsFolder, true);
-  const untrackedAssets: any = [];
-
-  // populate tracked and untracked translated assets
-  for (const languageFolder of languageFolders) {
-    const languageFolderPath = path.resolve(assetsBase, languageFolder);
-    const translatedAssets = generateFolderFlatMap(languageFolderPath);
-    Object.entries(translatedAssets).forEach(([name, value]) => {
-      if (globalAssets.hasOwnProperty(name)) {
-        globalAssets[name].translations = globalAssets[name].translations || {};
-        globalAssets[name].translations[languageFolder] = value;
-      } else {
-        untrackedAssets.push(`${languageFolder}/${name}`);
-      }
-    });
-  }
-
-  // write output index file for tracked and untracked assets
-  const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
-  \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
-
-  fs.writeFileSync(APP_DATA_ASSETS_INDEX_PATH, outputTS);
-}
-
-/**
- * Create a default index.ts file in each data folder to export all other local
- * data files (and produce a singular import)
- */
-function generateAppDataIndexFiles() {
-  const dataDirs = fs.readdirSync(APP_DATA_DATA_PATH);
-  for (const folderName of dataDirs) {
-    const dirPath = `${APP_DATA_DATA_PATH}/${folderName}`;
-    const dataFiles = fs.readdirSync(dirPath);
-    const importStatements = [];
-    const exportStatements = [];
-    dataFiles.forEach((filePath, i) => {
-      const importPath = path.basename(filePath, ".ts");
-      let importName = importPath.replace(".", "_");
-      if (importName === folderName) {
-        importName += `_${i}`;
-      }
-      importStatements.push(`import ${importName} from "./${importPath}"`);
-      exportStatements.push(importName);
-    });
-    const indexFilePath = `${dirPath}/index.ts`;
-    fs.createFileSync(indexFilePath);
-    fs.appendFileSync(indexFilePath, `import { FlowTypes } from "data-models";\r\n`);
-    fs.appendFileSync(indexFilePath, `${importStatements.join("\r\n")};\r\n`);
-    fs.appendFileSync(
-      indexFilePath,
-      `export const ${folderName}:FlowTypes.${capitalizeFirstLetter(
-        folderName
-      )}[] = [].concat(${exportStatements.join(",")})`
-    );
-  }
 }
