@@ -28,8 +28,12 @@ export interface IDeploymentConfig {
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
   };
   translations?: {
-    /** */
-    translated_jsons_path?: string;
+    /** generated output of list of strings to translate. Default `./app_data/translations/source_strings` */
+    source_strings_path?: string;
+    /** translated string for import. Default `./app_data/translations/translated_strings */
+    translated_strings_path?: string;
+    /** generated output cache. Default `./cache/translations` */
+    output_cache_path?: string;
   };
 }
 
@@ -58,7 +62,9 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   translations: {
-    translated_jsons_path: "./app_data/translations/translated_jsons",
+    source_strings_path: "./app_data/translations/source_strings",
+    translated_strings_path: "./app_data/translations/translated_strings",
+    output_cache_path: "./cache/translations",
   },
 };
 

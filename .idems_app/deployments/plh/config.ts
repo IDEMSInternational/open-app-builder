@@ -18,5 +18,9 @@ const config: IDeploymentConfig = {
     assets_output_path: "packages/app-data/assets",
     sheets_filter_function: (flow) => !["conversation"].includes(flow.flow_subtype),
   },
+  translations: {
+    translated_strings_path: "packages/app-data/translations/from_translators",
+    source_strings_path: "packages/app-data/translations/to_translate",
+  },
 };
 export default config;
