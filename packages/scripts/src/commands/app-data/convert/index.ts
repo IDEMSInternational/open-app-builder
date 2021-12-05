@@ -37,17 +37,6 @@ export default program
  * Main Methods
  *************************************************************************************/
 
-// TODO - move to configuration code instead
-// return inputContents.filter(
-//   (f) =>
-//     // ignore temp files and anything in an 'old' directory
-//     !f.name.startsWith("~$") &&
-//     !f.folderPath
-//       .split("/")
-//       .map((p) => p.toLowerCase())
-//       .includes("old")
-// );
-
 class AppDataConverter {
   /** Change version to invalidate any cached conversions */
   public converterVersion = 1;
