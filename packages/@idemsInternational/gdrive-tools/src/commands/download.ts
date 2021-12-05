@@ -19,7 +19,6 @@ import {
 } from "../utils";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
-const CONTENTS_FILE_NAME = "_contents.json";
 
 /***************************************************************************************
  * CLI
@@ -33,6 +32,8 @@ interface IProgramOptions {
   credentialsPath: string;
   authTokenPath: string;
   logName: string;
+  contentsFileName: string;
+  filterFunction64?: string;
 }
 
 import { Command } from "commander";
@@ -66,6 +67,15 @@ export default program
     "-l --log-name <string>",
     "Name provided for logs (defaults action.log)",
     "actions.log"
+  )
+  .requiredOption(
+    "-contents --contents-file-name <string>",
+    "Specify name of summary contents file to generate. Default `_contents.json`",
+    "_contents.json"
+  )
+  .option(
+    "-filter --filter-function-64 <base64>",
+    "Function applied to omit downloads based on file entry, encoded as base64. e.g. decoded: (entry)=>entry.folderPath.includes('temp/')"
   )
   .action(async (options: IProgramOptions) => {
     new GDriveDownloader(options).run();
@@ -142,12 +152,12 @@ class GDriveDownloader {
       relativePath: getRelativeLocalPath(f),
     }));
     const contents = JSON.stringify(filesWithRelativePath, null, 2);
-    const contentsPath = path.resolve(cachePath, CONTENTS_FILE_NAME);
+    const contentsPath = path.resolve(cachePath, this.options.contentsFileName);
     fs.writeFileSync(contentsPath, contents);
   }
   private updateCacheContentsFile(file: IGDriveFileWithFolder) {
     const { cachePath } = this.options;
-    const contentsPath = path.resolve(cachePath, CONTENTS_FILE_NAME);
+    const contentsPath = path.resolve(cachePath, this.options.contentsFileName);
     const contents: IGDriveFileWithFolder[] = fs.readJSONSync(contentsPath);
     const updateIndex = contents.findIndex((entry) => entry.id === file.id);
     console.log("update contents", contents[updateIndex], file);
@@ -200,12 +210,17 @@ class GDriveDownloader {
    * Compare list of server files with local cache to determine new/updated/same/deleted
    */
   private prepareSyncActionsList(serverFiles: IGDriveFileWithFolder[]) {
-    const { cachePath } = this.options;
+    const { cachePath, filterFunction64, contentsFileName } = this.options;
     const output: ISyncActions = { new: [], updated: [], same: [], deleted: [], ignored: [] };
 
     // generate hashmaps for easier lookup and compare of server and local files
     const localFilesHashmap = generateFolderFlatMapStats(cachePath);
     const serverFilesHashmap: { [relative_path: string]: IGDriveFileWithFolder } = {};
+
+    // convert string filter function to function if included
+    const filterFn: Function = filterFunction64
+      ? new Function(`return ${Buffer.from(filterFunction64, "base64").toString()}`)()
+      : null;
 
     // Compare server with local
     for (const serverFile of serverFiles) {
@@ -221,6 +236,13 @@ class GDriveDownloader {
         if (!hasExtension) {
           output.ignored.push(serverFile);
           return;
+        }
+        if (filterFn) {
+          const included = filterFn(serverFile);
+          if (!included) {
+            output.ignored.push(serverFile);
+            return;
+          }
         }
 
         const cacheFile = localFilesHashmap[cacheRelativePath];
@@ -240,7 +262,7 @@ class GDriveDownloader {
     }
     // compare local with server, mark for delete files no longer on server (except local contents file)
     Object.keys(localFilesHashmap).forEach((relativePath) => {
-      if (!serverFilesHashmap[relativePath] && path.basename(relativePath) !== CONTENTS_FILE_NAME) {
+      if (!serverFilesHashmap[relativePath] && path.basename(relativePath) !== contentsFileName) {
         output.deleted.push({ folderPath: relativePath });
       }
     });

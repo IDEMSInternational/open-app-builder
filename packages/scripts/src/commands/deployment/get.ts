@@ -54,7 +54,7 @@ export function getActiveDeployment() {
   if (jsonModifiedTime < tsModifiedTime) {
     logError({
       msg1: `Deployment has been updated and requires compiling`,
-      msg2: `Run "npm run scripts deployment set" to update`,
+      msg2: `Run "npm run scripts deployment set ${deploymentJson.name}" to update`,
     });
   }
 
@@ -62,7 +62,7 @@ export function getActiveDeployment() {
   if (deploymentJson._config_version !== DEPLOYMENT_CONFIG_VERSION) {
     logError({
       msg1: `Deployment set methods updated and requires compiling`,
-      msg2: `Run "npm run scripts deployment set" to update`,
+      msg2: `Run "npm run scripts deployment set ${deploymentJson.name}" to update`,
     });
   }
 
