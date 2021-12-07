@@ -46,3 +46,6 @@ export const NOTIFICATION_DEFAULTS = {
     minute: 0,
   },
 };
+
+/** Template to show at base urls ('/' and '/home') */
+export const HOME_SCREEN_TEMPLATE = "home_screen";
