@@ -219,7 +219,14 @@ class AppDataCopy {
     const outputFolder = this.paths.TRANSLATIONS_OUTPUT_FOLDER;
     const translationsFolder = this.paths.TRANSLATIONS_TRANSLATED_STRINGS;
     const cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
-    return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+    console.log(chalk.gray(cmd));
+    const { status, stderr } = spawnSync(cmd, {
+      stdio: ["inherit", "inherit", "inherit"],
+      shell: true,
+    });
+    if (status === 1) {
+      logError({ msg1: "Translations failed", msg2: stderr.toString() });
+    }
   }
 }
 
@@ -236,7 +243,7 @@ function assetsQualityCheck(sourceFolder: string) {
   }
   if (!output.hasGlobalFolder) {
     logError({
-      msg1: "Global folder not found",
+      msg1: "Assets global folder not found",
       msg2: `Assets folder should include a folder named "${ASSETS_GLOBAL_FOLDER_NAME}"`,
     });
   }
