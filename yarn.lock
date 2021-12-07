@@ -553,23 +553,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cdk@npm:^13.0.0":
-  version: 13.0.2
-  resolution: "@angular/cdk@npm:13.0.2"
-  dependencies:
-    parse5: ^5.0.0
-    tslib: ^2.3.0
-  peerDependencies:
-    "@angular/common": ^13.0.0 || ^14.0.0-0
-    "@angular/core": ^13.0.0 || ^14.0.0-0
-    rxjs: ^6.5.3 || ^7.4.0
-  dependenciesMeta:
-    parse5:
-      optional: true
-  checksum: 04b15122d824e2a33ca3f5fd06bae86cdae6b5de34d3da0132934612b3784e7ed2ca4df5e34592d1c2c450b1724397237dd3b72dc9760a6572854c30458dd0bb
-  languageName: node
-  linkType: hard
-
 "@angular/cli@npm:~13.0.1":
   version: 13.0.3
   resolution: "@angular/cli@npm:13.0.3"
@@ -724,22 +707,6 @@ __metadata:
   version: 13.0.2
   resolution: "@angular/language-service@npm:13.0.2"
   checksum: 71b95154cec79f52fa741ff7f4975677981db63d7aab565914b40c3333961ab0480a853b1f2b377669e02e71e035805fd39689861aa405f96030670f8d33fac3
-  languageName: node
-  linkType: hard
-
-"@angular/material@npm:^13.0.0":
-  version: 13.0.2
-  resolution: "@angular/material@npm:13.0.2"
-  dependencies:
-    tslib: ^2.3.0
-  peerDependencies:
-    "@angular/animations": ^13.0.0 || ^14.0.0-0
-    "@angular/cdk": 13.0.2
-    "@angular/common": ^13.0.0 || ^14.0.0-0
-    "@angular/core": ^13.0.0 || ^14.0.0-0
-    "@angular/forms": ^13.0.0 || ^14.0.0-0
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: 3aa5faac4c26de3a3f865b00f62453e0fa56bae8413f3195e6cbf554098cef295eeca0c95dee2bebfe87a44952652d5c2bb566d21d504f3dc8e3cc6f1b89a8f2
   languageName: node
   linkType: hard
 
@@ -2920,60 +2887,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fullcalendar/angular@npm:^5.8.0":
-  version: 5.10.1
-  resolution: "@fullcalendar/angular@npm:5.10.1"
-  dependencies:
-    "@fullcalendar/core": ~5.10.1
-    fast-deep-equal: ^3.1.1
-    tslib: ^2.0.0
-  peerDependencies:
-    "@angular/common": 9 - 12
-    "@angular/core": 9 - 12
-  checksum: 3a81e7685880e98f6cb629ed560ce5cadd32751ec254bf388837c6c9f5c7a4f2cbaa9e0c884f8593a43192b037a5faf449a79b372250288f0495a45b0549c0be
-  languageName: node
-  linkType: hard
-
-"@fullcalendar/common@npm:~5.10.1":
-  version: 5.10.1
-  resolution: "@fullcalendar/common@npm:5.10.1"
-  dependencies:
-    tslib: ^2.1.0
-  checksum: ac5ad04c9ade350ad51a87146ba6c5e679e74c237229ced8057e3a4cc6af9ab93894375c8004beff6f45594bca73ed13763b91604c2b9851b78810dcd991729e
-  languageName: node
-  linkType: hard
-
-"@fullcalendar/core@npm:~5.10.1":
-  version: 5.10.1
-  resolution: "@fullcalendar/core@npm:5.10.1"
-  dependencies:
-    "@fullcalendar/common": ~5.10.1
-    preact: ^10.0.5
-    tslib: ^2.1.0
-  checksum: ee7decffe89b28fae3fe690fa3d738bdfc7d927c108d0725a186a43b2b264105f3bbb272601e20e4679e8f12805753f5b33d806b7f5c7b0758a687d2aa6735b1
-  languageName: node
-  linkType: hard
-
-"@fullcalendar/daygrid@npm:^5.8.0":
-  version: 5.10.1
-  resolution: "@fullcalendar/daygrid@npm:5.10.1"
-  dependencies:
-    "@fullcalendar/common": ~5.10.1
-    tslib: ^2.1.0
-  checksum: 005e8e829a47eb49bcb6c9cd66a32e0b6b0a371f4554dfe67396818d26c109669cb91bb87c4d17f371aad82d27dadd272a11d19c5291795063a0c2edd912936f
-  languageName: node
-  linkType: hard
-
-"@fullcalendar/interaction@npm:^5.8.0":
-  version: 5.10.1
-  resolution: "@fullcalendar/interaction@npm:5.10.1"
-  dependencies:
-    "@fullcalendar/common": ~5.10.1
-    tslib: ^2.1.0
-  checksum: 5a90bcee3a704fca10c08cc3b96269a9b9c9a7268668947fb42abc48dace81c2b79b9f45440a6c07f57d335734c4c00cc84d02d2a08b97ff646fbc44977de8fd
-  languageName: node
-  linkType: hard
-
 "@gar/promisify@npm:^1.0.1":
   version: 1.1.2
   resolution: "@gar/promisify@npm:1.1.2"
@@ -3147,18 +3060,6 @@ __metadata:
     "@ionic-native/core": ^5.1.0
     rxjs: ^5.5.0 || ^6.5.0
   checksum: be7f54d316e012cea2d578a75b3d7047291cdb8eba89122f883e88654546b5d1e22de529275fd6c91f46c1ac1bf6e4b1040f5a49710e7953e4cfbe225e9d816b
-  languageName: node
-  linkType: hard
-
-"@ionic-native/splash-screen@npm:^5.33.1":
-  version: 5.36.0
-  resolution: "@ionic-native/splash-screen@npm:5.36.0"
-  dependencies:
-    "@types/cordova": latest
-  peerDependencies:
-    "@ionic-native/core": ^5.1.0
-    rxjs: ^5.5.0 || ^6.5.0
-  checksum: 4675603dddde9683810a26c30226031006530b0184b5547bdc67c47258e595618a1db58153aa1694ddd49c431cf838745a57c3d8c2e7eeca40d3374850487397
   languageName: node
   linkType: hard
 
@@ -4689,15 +4590,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chart.js@npm:^2.9.24":
-  version: 2.9.34
-  resolution: "@types/chart.js@npm:2.9.34"
-  dependencies:
-    moment: ^2.10.2
-  checksum: 400a38c59c8e4729bcf189e82dee14fa2e0fe8b9b7ea6c535c3356ee20ba6bc1a8b82da9e46eb92324677d4011dd33d8d60a217dc3fc99ee5dd5ef6332e1f81a
-  languageName: node
-  linkType: hard
-
 "@types/component-emitter@npm:^1.2.10":
   version: 1.2.11
   resolution: "@types/component-emitter@npm:1.2.11"
@@ -5026,24 +4918,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ncp@npm:^2.0.4":
-  version: 2.0.5
-  resolution: "@types/ncp@npm:2.0.5"
-  dependencies:
-    "@types/node": "*"
-  checksum: 43ef789a1f962590d9496df83b70dda79247df12a2785e14b9c9d868c19d4a312c4572735a1d834bdaacb7db62b0e3630a80bbbd4b6a97b4891fe3e2c9603dbf
-  languageName: node
-  linkType: hard
-
-"@types/node-rsa@npm:^1.1.0":
-  version: 1.1.1
-  resolution: "@types/node-rsa@npm:1.1.1"
-  dependencies:
-    "@types/node": "*"
-  checksum: dee0c318618991f115b6e757c54980324c3b2f7dfec8137dcb31e8e88955e7c048d5e89e1e3a572148697783f323dbf9af5738ac5bbe9069666663ad3737284d
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^16.11.4":
   version: 16.11.8
   resolution: "@types/node@npm:16.11.8"
@@ -5273,13 +5147,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 9578470db0b527c26e246a1220ae9bffc6bf47f20f89c54aac467c083ab1f7e16c00d9a7b4bb6cb4e2dfae465027270827e5908a6236063f6214625e50585d78
-  languageName: node
-  linkType: hard
-
-"@types/uuid@npm:^8.3.0":
-  version: 8.3.3
-  resolution: "@types/uuid@npm:8.3.3"
-  checksum: 3f340155bb1161f9ffa7163926d6222fea8f3505c23619b72bcc230883354926672c08a06510c7a543f73553c792a84444cc1744cff631b4ba988763e4bd7a8f
   languageName: node
   linkType: hard
 
@@ -6754,7 +6621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"asn1@npm:^0.2.4, asn1@npm:~0.2.3":
+"asn1@npm:~0.2.3":
   version: 0.2.6
   resolution: "asn1@npm:0.2.6"
   dependencies:
@@ -8009,35 +7876,6 @@ __metadata:
   version: 0.7.0
   resolution: "chardet@npm:0.7.0"
   checksum: 6fd5da1f5d18ff5712c1e0aed41da200d7c51c28f11b36ee3c7b483f3696dabc08927fc6b227735eb8f0e1215c9a8abd8154637f3eff8cada5959df7f58b024d
-  languageName: node
-  linkType: hard
-
-"chart.js@npm:^2.9.4":
-  version: 2.9.4
-  resolution: "chart.js@npm:2.9.4"
-  dependencies:
-    chartjs-color: ^2.1.0
-    moment: ^2.10.2
-  checksum: cbdc7abe2fa65e4838848e68b035ae6048ebcc512b9057d7cdb6d361e728400d39e3fde75e0b4da815ab43f7890c31787d8f80d4e6ab75a3e80fc75b47cd173c
-  languageName: node
-  linkType: hard
-
-"chartjs-color-string@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "chartjs-color-string@npm:0.6.0"
-  dependencies:
-    color-name: ^1.0.0
-  checksum: 2355bc8e9514b779d0dc057c5ee6707e8166f270531c27287a399d6bfeb0d891b00a6f6c20e764453a062de0de8b298b11d3850fc94c323df66efb4720ece4c7
-  languageName: node
-  linkType: hard
-
-"chartjs-color@npm:^2.1.0":
-  version: 2.4.1
-  resolution: "chartjs-color@npm:2.4.1"
-  dependencies:
-    chartjs-color-string: ^0.6.0
-    color-convert: ^1.9.3
-  checksum: 254d7b2f103980417703331c49fba18877ac797fd9056d79f0d566dc4fd8d41f91b7f63d4b19602462b91110bee2fe0c9fd57266ce871e498ac1c25742fffb11
   languageName: node
   linkType: hard
 
@@ -12535,7 +12373,6 @@ __metadata:
     "@angular-eslint/schematics": 12.6.1
     "@angular-eslint/template-parser": 12.6.1
     "@angular/animations": ^13.0.0
-    "@angular/cdk": ^13.0.0
     "@angular/cli": ~13.0.1
     "@angular/common": ~13.0.0
     "@angular/compiler": ~13.0.0
@@ -12545,7 +12382,6 @@ __metadata:
     "@angular/fire": ^6.1.5
     "@angular/forms": ~13.0.0
     "@angular/language-service": ~13.0.0
-    "@angular/material": ^13.0.0
     "@angular/platform-browser": ~13.0.0
     "@angular/platform-browser-dynamic": ~13.0.0
     "@angular/router": ~13.0.0
@@ -12557,14 +12393,10 @@ __metadata:
     "@capacitor/local-notifications": ^1.0.6
     "@capacitor/push-notifications": ^1.0.4
     "@capacitor/splash-screen": ^1.1.2
-    "@fullcalendar/angular": ^5.8.0
-    "@fullcalendar/daygrid": ^5.8.0
-    "@fullcalendar/interaction": ^5.8.0
     "@ionic-native/core": ^5.33.1
     "@ionic-native/device": ^5.33.1
     "@ionic-native/http": ^5.33.1
     "@ionic-native/media": ^5.33.1
-    "@ionic-native/splash-screen": ^5.33.1
     "@ionic-native/status-bar": ^5.33.1
     "@ionic/angular": ^5.8.5
     "@ionic/angular-toolkit": ^5.0.3
@@ -12577,19 +12409,15 @@ __metadata:
     "@types/jasmine": ~3.7.7
     "@types/jasminewd2": ~2.0.9
     "@types/marked": ^2.0.3
-    "@types/ncp": ^2.0.4
     "@types/node": ^15.12.4
-    "@types/node-rsa": ^1.1.0
     "@types/nouislider": ^15.0.0
     "@types/swiper": ~4.2.0
-    "@types/uuid": ^8.3.0
     "@typescript-eslint/eslint-plugin": 4.28.0
     "@typescript-eslint/eslint-plugin-tslint": ^4.28.0
     "@typescript-eslint/parser": 4.28.0
     angular-svg-icon: ^12.0.0
     app-data: "workspace:*"
     capacitor-firebase-auth: ^3.0.0
-    chart.js: ^2.9.4
     codelyzer: ^6.0.2
     concurrently: ^6.2.0
     data-models: 1.0.0
@@ -12620,20 +12448,16 @@ __metadata:
     lint-staged: ^11.0.0
     lottie-web: ^5.7.14
     marked: ^2.0.1
-    ng2-charts: ^2.4.2
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^7.0.4
-    node-rsa: ^1.1.1
     nouislider: ^14.6.3
     prettier: 2.4.1
     protractor: ~7.0.0
     rxjs: ^6.6.7
     simple-git-hooks: ^2.4.1
     survey-angular: ^1.8.76
-    tslib: ^2.3.0
     typescript: 4.4.2
-    uuid: ^8.3.2
     zone.js: ~0.11.4
   languageName: unknown
   linkType: soft
@@ -16649,13 +16473,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:^4.17.15":
-  version: 4.17.21
-  resolution: "lodash-es@npm:4.17.21"
-  checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
-  languageName: node
-  linkType: hard
-
 "lodash._baseassign@npm:^3.0.0":
   version: 3.2.0
   resolution: "lodash._baseassign@npm:3.2.0"
@@ -17720,7 +17537,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:>= 2.9.0, moment@npm:^2.10.2, moment@npm:^2.26.0":
+"moment@npm:>= 2.9.0, moment@npm:^2.26.0":
   version: 2.29.1
   resolution: "moment@npm:2.29.1"
   checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
@@ -17967,22 +17784,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ng2-charts@npm:^2.4.2":
-  version: 2.4.3
-  resolution: "ng2-charts@npm:2.4.3"
-  dependencies:
-    "@types/chart.js": ^2.9.24
-    lodash-es: ^4.17.15
-    tslib: ^2.0.0
-  peerDependencies:
-    "@angular/common": ">=7.2.0"
-    "@angular/core": ">=7.2.0"
-    chart.js: ^2.9.3
-    rxjs: ^6.3.3
-  checksum: 7cefe19ae79478412490340fbb24ce3e29d8b1d0b087c7d7a7d6f8be7a4f4163058e9da94b535ee317f279159a2eb6055e98ebedb165d22752f123a6e6145904
-  languageName: node
-  linkType: hard
-
 "ng2-nouislider@npm:^1.8.3":
   version: 1.8.3
   resolution: "ng2-nouislider@npm:1.8.3"
@@ -18169,15 +17970,6 @@ __metadata:
   version: 2.0.1
   resolution: "node-releases@npm:2.0.1"
   checksum: b20dd8d4bced11f75060f0387e05e76b9dc4a0451f7bb3516eade6f50499ea7768ba95d8a60d520c193402df1e58cb3fe301510cc1c1ad68949c3d57b5149866
-  languageName: node
-  linkType: hard
-
-"node-rsa@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "node-rsa@npm:1.1.1"
-  dependencies:
-    asn1: ^0.2.4
-  checksum: c03a6c8f69557326d2110086ce9610b4b17ef0fd594f76202225b7eb93fc0b342fb31714f6b3cf8d38320cf63c4790a3034e5d47a12f2c27d1900599ec9bd545
   languageName: node
   linkType: hard
 
@@ -19197,13 +18989,6 @@ __metadata:
   version: 6.0.1
   resolution: "parse5@npm:6.0.1"
   checksum: 7d569a176c5460897f7c8f3377eff640d54132b9be51ae8a8fa4979af940830b2b0c296ce75e5bd8f4041520aadde13170dbdec44889975f906098ea0002f4bd
-  languageName: node
-  linkType: hard
-
-"parse5@npm:^5.0.0":
-  version: 5.1.1
-  resolution: "parse5@npm:5.1.1"
-  checksum: 613a714af4c1101d1cb9f7cece2558e35b9ae8a0c03518223a4a1e35494624d9a9ad5fad4c13eab66a0e0adccd9aa3d522fc8f5f9cc19789e0579f3fa0bdfc65
   languageName: node
   linkType: hard
 
@@ -20465,13 +20250,6 @@ __metadata:
   bin:
     pg-validate-migrations: dist/bin/validate.js
   checksum: 6fe9bebf4e9b15f9b42a1b1b0c553b56714a4ffd0a147ec740ea852677f10bbe9a814147380dd484064ee6c2926fa8e23348b7b91cdef340f78aac75cbea139f
-  languageName: node
-  linkType: hard
-
-"preact@npm:^10.0.5":
-  version: 10.5.15
-  resolution: "preact@npm:10.5.15"
-  checksum: 1c9f025ed6ff9c6cbe85da4feb88011795914d615244089396d1157376897a09f478eac0d582c66bc5a96c2841ebd9f8dfbe0a28e8c1820bdd7c314083350d40
   languageName: node
   linkType: hard
 
