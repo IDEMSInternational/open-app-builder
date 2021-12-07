@@ -21,7 +21,7 @@ import { TemplateVariablesService } from "./services/template-variables.service"
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
 import { TemplateTranslateService } from "./services/template-translate.service";
-import { SettingsService } from "src/app/pages/settings/settings.service";
+import { SettingsService } from "src/app/shared/services/settings.service";
 import { ServerService } from "../../services/server/server.service";
 import { AnalyticsService } from "../../services/analytics/analytics.service";
 
