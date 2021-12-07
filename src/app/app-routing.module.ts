@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { HOME_SCREEN_TEMPLATE } from "packages/data-models/constants";
+import { HOME_SCREEN_TEMPLATE } from "data-models/constants";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
 import { TourComponent } from "./feature/tour/tour.component";
 

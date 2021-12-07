@@ -1,6 +1,7 @@
 import { Location } from "@angular/common";
-import { Component, Input, NgZone, OnDestroy, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
+import { HOME_SCREEN_TEMPLATE } from "data-models/constants";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -58,11 +59,8 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    * It cannot subscribe to standard router methods as sits outside ion-router-outlet
    */
   handleRouteChange() {
-    // As component sits outside main ion-router-outlet need to access via firstChild method
-    // if wanting to access route params directly (not currently required)
-    const HOME_ROUTE = "/home";
     // track if home page, allowing case where hosted from subdirectory (e.g. our pr preview system)
-    this.isHomePage = location.pathname.endsWith(HOME_ROUTE);
+    this.isHomePage = location.pathname == `/template/${HOME_SCREEN_TEMPLATE}`;
     this.isSettingsPage = location.pathname.endsWith("/settings");
   }
 
