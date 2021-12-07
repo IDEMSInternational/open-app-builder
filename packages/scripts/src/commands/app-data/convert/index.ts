@@ -92,7 +92,10 @@ class AppDataConverter {
       this.applySheetFilters(data)
     );
     const mergedData = this.mergeConvertedData(allConvertedData);
-    this.writeMergedOutputJsons(mergedData);
+
+    const mergedWithLegacy = hackEnsureLegacyDataTypesExist(mergedData);
+
+    this.writeMergedOutputJsons(mergedWithLegacy);
 
     console.log(chalk.yellow("Conversion Complete"));
 
@@ -392,6 +395,35 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
     json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
   });
   return json;
+}
+
+/**
+ * Data imported are currently hardcoded in `packages\app-data\index.ts`
+ * Ensure data exists for every type so that all expected files are populated
+ */
+function hackEnsureLegacyDataTypesExist(merged: IParsedWorkbookData): IParsedWorkbookData {
+  const data: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
+    care_package_list: [],
+    completion_list: [],
+    component_defaults: [],
+    conversation: [],
+    data_list: [],
+    global: [],
+    goal_list: [],
+    habit_ideas: [],
+    habit_list: [],
+    home_page: [],
+    module_list: [],
+    module_page: [],
+    task_list: [],
+    template: [],
+    tips: [],
+    tour: [],
+  };
+  Object.keys(data).forEach((flowtype) => {
+    if (!merged.hasOwnProperty(flowtype)) merged[flowtype] = [];
+  });
+  return merged;
 }
 
 /**
