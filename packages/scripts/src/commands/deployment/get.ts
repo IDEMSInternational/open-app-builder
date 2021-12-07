@@ -2,10 +2,12 @@
 import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
+import chalk from "chalk";
 import { IDEMS_APP_CONFIG } from "../../paths";
 import { logError } from "../../utils";
 import { DEPLOYMENT_CONFIG_VERSION } from "./common";
 import { IDeploymentConfigJson } from "./set";
+import { spawnSync } from "child_process";
 
 const program = new Command("get");
 
@@ -52,23 +54,27 @@ export function getActiveDeployment() {
   const { mtime: tsModifiedTime } = fs.statSync(deploymentTSPath);
 
   if (jsonModifiedTime < tsModifiedTime) {
-    logError({
-      msg1: `Deployment has been updated and requires compiling`,
-      msg2: `Run "npm run scripts deployment set ${deploymentJson.name}" to update`,
-    });
+    console.log(chalk.grey("Config has been updated, recompile required"));
+    promptConfigSet();
+    return getActiveDeployment();
   }
 
   // ensure json compiled any time core config set methods updated
   if (deploymentJson._config_version !== DEPLOYMENT_CONFIG_VERSION) {
-    logError({
-      msg1: `Deployment set methods updated and requires compiling`,
-      msg2: `Run "npm run scripts deployment set ${deploymentJson.name}" to update`,
-    });
+    console.log(chalk.grey("Config core has been updated, recompile required"));
+    promptConfigSet();
+    return getActiveDeployment();
   }
 
   const convertedJson = convertStringsToFunctions(deploymentJson);
 
   return convertedJson;
+}
+
+/** Run interactive command prompt to specify config */
+function promptConfigSet() {
+  const cmd = `yarn workspace scripts start deployment set`;
+  spawnSync(cmd, { stdio: "inherit", shell: true });
 }
 
 /** When JSON is stored functions are stringified. Convert back */
