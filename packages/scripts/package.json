@@ -2,17 +2,26 @@
   "name": "scripts",
   "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "bin": {
+    "idapp": "./build/commands.js",
+    "idems-app-scripts": "./build/commands.js"
+  },
+  "main": "src/commands/index.ts",
   "scripts": {
     "start": "ts-node src/commands/index.ts",
     "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
-    "test": "jasmine-ts"
+    "test": "jasmine-ts",
+    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node12.22 --outfile=build/commands.js",
+    "pkg": "pkg . --output ./exec/idems-app-scripts"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@IDEMSInternational/gdrive-tools": "workspace:*",
-    "@IDEMSInternational/rapidpro-excel": "workspace:*",
+    "@idemsInternational/gdrive-tools": "workspace:*",
+    "@idemsInternational/rapidpro-excel": "workspace:*",
     "boxen": "^5.0.1",
     "chalk": "^4.1.0",
     "commander": "^8.3.0",
@@ -27,8 +36,10 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
+    "esbuild": "^0.14.2",
     "jasmine": "^3.6.3",
     "jasmine-ts": "^0.3.2",
+    "pkg": "^5.5.1",
     "ts-node": "~7.0.0",
     "ts-node-dev": "^1.0.0"
   }
