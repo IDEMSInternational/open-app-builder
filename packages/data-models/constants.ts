@@ -1,3 +1,5 @@
+/// <reference lib="dom" />
+
 /*********************************************************************************************
  *  Constants used to generate types
  *
@@ -74,6 +76,7 @@ export const APP_HEADER_DEFAULTS = {
   should_show_back_button: (location: Location) =>
     location.pathname !== APP_ROUTE_DEFAULTS.home_path,
 };
+
 export const APP_SIDEMENU_DEFAULTS = {
   title: "ParentApp",
   // name of template to display in sidebar
