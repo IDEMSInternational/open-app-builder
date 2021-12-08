@@ -3,4 +3,4 @@ export * from "./flowTypes";
 export * from "./tips.model";
 export * from "./functions";
 // Re-export rapidpro excel types
-export { RapidProFlowExport, RapidproExcelModel } from "@IDEMSInternational/rapidpro-excel/types";
+export { RapidProFlowExport, RapidproExcelModel } from "@idemsInternational/rapidpro-excel";
