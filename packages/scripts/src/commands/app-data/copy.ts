@@ -153,19 +153,27 @@ class AppDataCopy {
       Object.entries(translatedAssets).forEach(([name, value]) => {
         if (globalAssets.hasOwnProperty(name)) {
           globalAssets[name].translations = globalAssets[name].translations || {};
-          globalAssets[name].translations[languageFolder] = value;
+          globalAssets[name].translations[languageFolder] = value as IContentsEntry;
         } else {
           untrackedAssets.push(`${languageFolder}/${name}`);
         }
       });
     }
-    // clean output to exclude modifiedTime and relativePath fields
+    // clean output to exclude modifiedTime and relativePath fields. Track totals
     const cleanedContents: { [relative_path: string]: Partial<IAssetEntry> } = {};
     let assetsTotal_kb = 0;
     Object.entries(globalAssets).forEach(([key, entry]) => {
       const { modifiedTime, relativePath, ...fieldsToKeep } = entry;
       cleanedContents[key] = fieldsToKeep;
       assetsTotal_kb += entry.size_kb;
+      // repeat for nested translation entries
+      if (entry.translations) {
+        Object.entries(entry.translations).forEach(([translated_key, translatedEntry]) => {
+          const { modifiedTime, relativePath, ...translatedFieldsToKeep } = entry;
+          cleanedContents[key][translated_key] = translatedFieldsToKeep;
+          assetsTotal_kb += translatedEntry.size_kb;
+        });
+      }
     });
 
     // write output index file for tracked and untracked assets
@@ -332,5 +340,5 @@ function generateTranslationFiles(inputFolder: string, outputFolder: string) {
 
 /**  Subset of IContentsEntry (with additional translations) */
 interface IAssetEntry extends IContentsEntry {
-  translations?: any;
+  translations?: { [language_code: string]: IContentsEntry };
 }
