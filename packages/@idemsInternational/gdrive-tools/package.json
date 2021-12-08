@@ -1,8 +1,8 @@
 {
-  "name": "@IDEMSInternational/gdrive-tools",
+  "name": "@idemsInternational/gdrive-tools",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/src/index.js",
+  "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev --respawn --watch src/**/*.ts --",
