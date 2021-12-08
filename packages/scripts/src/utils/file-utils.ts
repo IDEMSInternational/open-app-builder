@@ -141,7 +141,7 @@ export function generateFolderFlatMap(
         const { size, mtime } = fs.statSync(filePath);
         const modifiedTime = mtime.toISOString();
         // write size in kb to 1 dpclear
-        const size_kb = Math.round(size / 100) / 10;
+        const size_kb = Math.round(size / 102.4) / 10;
         const md5Checksum = getFileMD5Checksum(filePath);
         const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
         flatMap[relativePath] = entry;

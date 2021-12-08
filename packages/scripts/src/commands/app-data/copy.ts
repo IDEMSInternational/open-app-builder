@@ -11,6 +11,8 @@ import {
   listFolderNames,
   logError,
   readContentsFile,
+  IContentsEntry,
+  logOutput,
 } from "../../utils";
 import { spawnSync } from "child_process";
 
@@ -139,7 +141,9 @@ class AppDataCopy {
 
     // TODO - ideally "global" folder should sit at top level but refactoring required so for now use filter
     const globalAssetsFolder = path.join(assetsBase, ASSETS_GLOBAL_FOLDER_NAME);
-    const globalAssets: any = generateFolderFlatMap(globalAssetsFolder, true);
+    const globalAssets = generateFolderFlatMap(globalAssetsFolder, true) as {
+      [relative_path: string]: IAssetEntry;
+    };
     const untrackedAssets: any = [];
 
     // populate tracked and untracked translated assets
@@ -155,12 +159,24 @@ class AppDataCopy {
         }
       });
     }
+    // clean output to exclude modifiedTime and relativePath fields
+    const cleanedContents: { [relative_path: string]: Partial<IAssetEntry> } = {};
+    let assetsTotal_kb = 0;
+    Object.entries(globalAssets).forEach(([key, entry]) => {
+      const { modifiedTime, relativePath, ...fieldsToKeep } = entry;
+      cleanedContents[key] = fieldsToKeep;
+      assetsTotal_kb += entry.size_kb;
+    });
 
     // write output index file for tracked and untracked assets
     const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
-  \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(globalAssets, null, 2)}`;
+  \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}`;
     const APP_DATA_ASSETS_INDEX_PATH = path.resolve(this.paths.ASSETS_OUTPUT_FOLDER, "index.ts");
     fs.writeFileSync(APP_DATA_ASSETS_INDEX_PATH, outputTS);
+
+    // Log total size of all exports
+    const assetsTotal_mb = Math.round(assetsTotal_kb / 102.4) / 10;
+    logOutput({ msg1: "Assets copied", msg2: `Total size: ${assetsTotal_mb} MB` });
   }
 
   /**
@@ -312,4 +328,9 @@ function runPrettierCodeTidy(folderPath: string) {
 function generateTranslationFiles(inputFolder: string, outputFolder: string) {
   const cmd = `yarn workspace translations start generate -i ${inputFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+}
+
+/**  Subset of IContentsEntry (with additional translations) */
+interface IAssetEntry extends IContentsEntry {
+  translations?: any;
 }
