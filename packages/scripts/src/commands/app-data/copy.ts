@@ -170,8 +170,8 @@ class AppDataCopy {
       // repeat for nested translation entries (TODO - could give breakdown by language)
       if (entry.translations) {
         Object.entries(entry.translations).forEach(([translated_key, translatedEntry]) => {
-          const { modifiedTime, relativePath, ...translatedFieldsToKeep } = entry;
-          cleanedContents[key][translated_key] = translatedFieldsToKeep;
+          const { modifiedTime, relativePath, ...translatedFieldsToKeep } = translatedEntry;
+          cleanedContents[key].translations[translated_key] = translatedFieldsToKeep as any;
           if (!sizeTotals[translated_key]) sizeTotals[translated_key] = 0;
           sizeTotals[translated_key] += Math.round(translatedEntry.size_kb / 102.4) / 10;
         });
