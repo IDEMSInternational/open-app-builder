@@ -47,5 +47,39 @@ export const NOTIFICATION_DEFAULTS = {
   },
 };
 
-/** Template to show at base urls ('/' and '/home') */
-export const HOME_SCREEN_TEMPLATE = "home_screen";
+export const APP_ROUTE_DEFAULTS = {
+  /** Default redirect form landing '/' route */
+  home_path: "/template/home_screen",
+  /** Redirect path if no other routes found */
+  fallback_path: "/template/home_screen",
+  /** Specific list of url redirects from within the app */
+  redirects: [
+    {
+      path: "home",
+      redirectTo: "/template/home_screen",
+    },
+    {
+      path: "privacy",
+      redirectTo: "/template/app_menu_privacy_policy",
+    },
+  ],
+};
+
+export const APP_HEADER_DEFAULTS = {
+  title: "ParentApp",
+  // default only show menu button on home screen
+  should_show_menu_button: (location: Location) =>
+    location.pathname == APP_ROUTE_DEFAULTS.home_path,
+  // default show back button on all screens except home screen
+  should_show_back_button: (location: Location) =>
+    location.pathname !== APP_ROUTE_DEFAULTS.home_path,
+};
+export const APP_SIDEMENU_DEFAULTS = {
+  title: "ParentApp",
+  // name of template to display in sidebar
+  template_name: "app_menu",
+  // show the current version number in the menu
+  should_show_version: true,
+  // show the current env (e.g. dev/prod)
+  should_show_env: false,
+};

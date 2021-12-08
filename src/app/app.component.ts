@@ -21,6 +21,7 @@ import { TemplateProcessService } from "./shared/components/template/services/te
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
+import { APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 
 @Component({
   selector: "app-root",
@@ -30,6 +31,7 @@ import { LocalNotificationService } from "./shared/services/notification/local-n
 export class AppComponent {
   APP_VERSION = environment.version;
   ENV_NAME = environment.envName;
+  sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
   constructor(

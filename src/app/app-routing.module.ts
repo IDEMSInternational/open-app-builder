@@ -1,20 +1,18 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { HOME_SCREEN_TEMPLATE } from "data-models/constants";
+import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
+import { APP_ROUTE_DEFAULTS } from "packages/data-models/constants";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
 import { TourComponent } from "./feature/tour/tour.component";
 
+/** Routes specified from data-models */
+const DataRoutes: Routes = [
+  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_path, pathMatch: "full" },
+  ...APP_ROUTE_DEFAULTS.redirects,
+];
+const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_path };
+
+/** Routes required for main app features */
 const FeatureRoutes: Routes = [
-  {
-    path: "",
-    redirectTo: `/template/${HOME_SCREEN_TEMPLATE}`,
-    pathMatch: "full",
-  },
-  {
-    path: "home",
-    redirectTo: `/template/${HOME_SCREEN_TEMPLATE}`,
-    pathMatch: "full",
-  },
   {
     path: "campaigns",
     loadChildren: () => import("./feature/campaign/campaign.module").then((m) => m.CampaignModule),
@@ -43,26 +41,9 @@ const FeatureRoutes: Routes = [
   },
 ];
 
-/** Hardcoded pages, not linked to any feature modules */
-const StaticPages: Routes = [
-  {
-    path: "about",
-    loadChildren: () => import("./pages/about/about.module").then((m) => m.AboutPageModule),
-  },
-  {
-    path: "privacy",
-    loadChildren: () => import("./pages/privacy/privacy.module").then((m) => m.PrivacyPageModule),
-  },
-  {
-    path: "app-terms",
-    loadChildren: () =>
-      import("./pages/app-terms/app-terms.module").then((m) => m.AppTermsPageModule),
-  },
-];
-
 @NgModule({
   imports: [
-    RouterModule.forRoot([...StaticPages, ...FeatureRoutes], {
+    RouterModule.forRoot([...FeatureRoutes, ...DataRoutes, fallbackRoute], {
       preloadingStrategy: PreloadAllModules,
       useHash: false,
       anchorScrolling: "enabled",
