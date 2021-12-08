@@ -2,3 +2,5 @@
 config/*
 !config/public.key
 !config/*.enc
+build
+exec
