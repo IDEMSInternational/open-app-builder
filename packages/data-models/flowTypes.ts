@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { DYNAMIC_PREFIXES } from "./constants";
-import { RapidProFlowExport } from "@IDEMSInternational/rapidpro-excel/types";
+import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
 
 /*********************************************************************************************
