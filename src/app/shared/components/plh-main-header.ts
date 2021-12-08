@@ -1,7 +1,7 @@
 import { Location } from "@angular/common";
-import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
-import { HOME_SCREEN_TEMPLATE } from "data-models/constants";
+import { APP_HEADER_DEFAULTS } from "data-models/constants";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -9,32 +9,26 @@ import { Subscription } from "rxjs";
   template: `<ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start" style="position:absolute">
-        <ion-menu-button *ngIf="isHomePage"></ion-menu-button>
-        <ion-button [style.display]="isHomePage ? 'none' : 'block'" (click)="onBackButtonClick()">
+        <ion-menu-button *ngIf="showMenuButton"></ion-menu-button>
+        <ion-button
+          [style.display]="showBackButton ? 'block' : 'none'"
+          (click)="onBackButtonClick()"
+        >
           <ion-icon name="chevron-back-outline" slot="icon-only"></ion-icon>
         </ion-button>
       </ion-buttons>
       <ion-title style="text-align: center" routerLink="/">
-        <!-- <ion-icon src="assets/images/star.svg" style="margin: -1px 8px"></ion-icon> -->
         <span>{{ title }}</span>
       </ion-title>
-      <ion-buttons slot="end">
-        <!-- <ion-button routerLink="/reminders"
-          ><ion-icon slot="icon-only" name="notifications-outline"></ion-icon
-        ></ion-button> -->
-        <ion-button routerLink="/template" *ngIf="isSettingsPage"
-          ><ion-icon slot="icon-only" name="list-circle-outline"></ion-icon
-        ></ion-button>
-      </ion-buttons>
+      <ion-buttons slot="end"> </ion-buttons>
     </ion-toolbar>
   </ion-header>`,
 })
 export class PLHMainHeaderComponent implements OnInit, OnDestroy {
-  isHomePage = true;
-  isSettingsPage = false;
-  @Input() title: string = "ParentApp";
-  // TODO - link debug toggle to build environment or advanced setting (hide for general users)
-  showDebugToggle = true;
+  title = APP_HEADER_DEFAULTS.title;
+  showMenuButton = false;
+  showBackButton = false;
+
   routeChanges$: Subscription;
   /** track if navigation has been used to handle back button click behaviour */
   hasBackHistory = false;
@@ -59,9 +53,9 @@ export class PLHMainHeaderComponent implements OnInit, OnDestroy {
    * It cannot subscribe to standard router methods as sits outside ion-router-outlet
    */
   handleRouteChange() {
-    // track if home page, allowing case where hosted from subdirectory (e.g. our pr preview system)
-    this.isHomePage = location.pathname == `/template/${HOME_SCREEN_TEMPLATE}`;
-    this.isSettingsPage = location.pathname.endsWith("/settings");
+    const { should_show_back_button, should_show_menu_button } = APP_HEADER_DEFAULTS;
+    this.showBackButton = should_show_back_button(location);
+    this.showMenuButton = should_show_menu_button(location);
   }
 
   onBackButtonClick() {
