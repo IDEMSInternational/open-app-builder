@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { spawnSync } from "child_process";
 import { Command } from "commander";
+import fs from "fs-extra";
+import { getActiveDeployment } from "../deployment/get";
 
 const program = new Command("sync");
 
@@ -10,6 +12,7 @@ const program = new Command("sync");
  *************************************************************************************/
 interface IProgramOptions {
   sheetname?: string;
+  clean?: boolean;
 }
 export default program
   .description("Sync app data")
@@ -17,6 +20,7 @@ export default program
     "-s --sheetname <string>",
     "name of single google sheet to download (default downloads all)"
   )
+  .option("-c --clean", "clear all cached data for a clean sync")
   .action(async (options: IProgramOptions) => {
     await syncAppData(options);
   });
@@ -34,6 +38,9 @@ async function syncAppData(options: IProgramOptions) {
   if (options.sheetname) {
     downloadCmd += ` --sheetname ${options.sheetname}`;
   }
+  if (options.clean) {
+    cleanFolders();
+  }
   spawnSync(`${scriptsExec} ${downloadCmd}`, { stdio: "inherit", shell: true });
   // Convert
   let convertCmd = "app-data convert";
@@ -44,4 +51,18 @@ async function syncAppData(options: IProgramOptions) {
     copyCmd += ` --skip-assets`;
   }
   spawnSync(`${scriptsExec} ${copyCmd}`, { stdio: "inherit", shell: true });
+}
+
+function cleanFolders() {
+  const { google_drive, app_data, translations } = getActiveDeployment();
+  const targetFolders: string[] = [
+    google_drive.cache_path,
+    app_data.converter_cache_path,
+    translations.output_cache_path,
+  ];
+  for (const targetFolder of targetFolders) {
+    if (fs.existsSync(targetFolder)) {
+      fs.emptyDirSync(targetFolder);
+    }
+  }
 }
