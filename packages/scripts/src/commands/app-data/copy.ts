@@ -160,18 +160,20 @@ class AppDataCopy {
       });
     }
     // clean output to exclude modifiedTime and relativePath fields. Track totals
+    // TODO - size calcs could be tidied to own function
     const cleanedContents: { [relative_path: string]: Partial<IAssetEntry> } = {};
-    let assetsTotal_kb = 0;
+    let sizeTotals = { global: 0 };
     Object.entries(globalAssets).forEach(([key, entry]) => {
       const { modifiedTime, relativePath, ...fieldsToKeep } = entry;
       cleanedContents[key] = fieldsToKeep;
-      assetsTotal_kb += entry.size_kb;
-      // repeat for nested translation entries
+      sizeTotals.global += Math.round(entry.size_kb / 102.4) / 10;
+      // repeat for nested translation entries (TODO - could give breakdown by language)
       if (entry.translations) {
         Object.entries(entry.translations).forEach(([translated_key, translatedEntry]) => {
           const { modifiedTime, relativePath, ...translatedFieldsToKeep } = entry;
           cleanedContents[key][translated_key] = translatedFieldsToKeep;
-          assetsTotal_kb += translatedEntry.size_kb;
+          if (!sizeTotals[translated_key]) sizeTotals[translated_key] = 0;
+          sizeTotals[translated_key] += Math.round(translatedEntry.size_kb / 102.4) / 10;
         });
       }
     });
@@ -183,8 +185,19 @@ class AppDataCopy {
     fs.writeFileSync(APP_DATA_ASSETS_INDEX_PATH, outputTS);
 
     // Log total size of all exports
-    const assetsTotal_mb = Math.round(assetsTotal_kb / 102.4) / 10;
-    logOutput({ msg1: "Assets copied", msg2: `Total size: ${assetsTotal_mb} MB` });
+    let assetsTotal = 0;
+    Object.keys(sizeTotals).forEach((key) => {
+      sizeTotals[key] = Math.round(sizeTotals[key] * 10) / 10;
+      assetsTotal += sizeTotals[key];
+    });
+    const totalsByLang = JSON.stringify(sizeTotals, null, 2)
+      .replace(/[{}]/gim, "")
+      .replace(/[ ]{2}/gim, "")
+      .replace(/"/gim, "");
+    logOutput({
+      msg1: "Assets copied",
+      msg2: `Total size: ${Math.round(assetsTotal * 10) / 10} MB\n\n${totalsByLang}`,
+    });
   }
 
   /**
