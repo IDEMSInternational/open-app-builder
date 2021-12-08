@@ -119,7 +119,7 @@ class AppDataConverter {
    */
   private prepareConversionActions() {
     const { SHEETS_INPUT_FOLDER, SHEETS_INDIVIDUAL_CACHE } = this.paths;
-    const actions = { convert: [], delete: [], skip: [] };
+    const actions: IConverterActions = { convert: [], delete: [], skip: [] };
     // generate hashmap of input and cache contents
     const hashKey = "relativePath";
     const inputContents = readContentsFileAsHashmap(SHEETS_INPUT_FOLDER, { hashKey });
@@ -153,10 +153,13 @@ class AppDataConverter {
     return actions;
   }
 
-  private processCacheDeletions(xlsxPaths: string[]) {
-    for (const xlsxPath of xlsxPaths) {
-      logWarning({ msg1: "TODO - handle cache invalidated" });
-      process.exit(1);
+  private processCacheDeletions(entries: IGDriveContentsEntry[]) {
+    const cacheBase = this.paths.SHEETS_INDIVIDUAL_CACHE;
+    for (const entry of entries) {
+      const targetFile = path.resolve(cacheBase, `${entry.relativePath}.json`);
+      if (fs.existsSync(targetFile)) {
+        fs.removeSync(targetFile);
+      }
     }
   }
 
@@ -469,3 +472,10 @@ interface IGDriveContentsEntry {
 interface IConvertedContentsEntry extends IContentsEntry {
   converterVersion: number;
 }
+
+interface IConverterActions {
+  convert: IGDriveContentsEntry[];
+  delete: IGDriveContentsEntry[];
+  skip: IGDriveContentsEntry[];
+}
+const ACTIONS_DEFAULT: IConverterActions = { convert: [], delete: [], skip: [] };
