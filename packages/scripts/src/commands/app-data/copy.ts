@@ -197,16 +197,18 @@ class AppDataCopy {
   }
 
   private copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
+    // setup folders
+    fs.ensureDirSync(targetFolder);
+    fs.emptyDirSync(targetFolder);
+    // filter and copy
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
     const filteredFiles = assetFiles.filter(assets_filter_function);
-    console.log("copying assets", assetFiles.length, filteredFiles.length);
-    // TODO - only copy filtered files
-
-    fs.ensureDirSync(targetFolder);
-    fs.emptyDirSync(targetFolder);
-    if (fs.existsSync(sourceFolder)) {
-      fs.copySync(sourceFolder, targetFolder);
+    for (const fileEntry of filteredFiles) {
+      const src = path.resolve(sourceFolder, fileEntry.relativePath);
+      const dest = path.resolve(targetFolder, fileEntry.relativePath);
+      fs.ensureDir(path.dirname(dest));
+      fs.copySync(src, dest, { preserveTimestamps: true });
     }
   }
 
