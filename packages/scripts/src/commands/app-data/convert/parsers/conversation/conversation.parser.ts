@@ -1,4 +1,4 @@
-import { ExcelToRapidproConverter } from "@IDEMSInternational/rapidpro-excel/src";
+import { ExcelToRapidproConverter } from "@idemsInternational/rapidpro-excel";
 import { FlowTypes } from "data-models";
 
 import { AbstractParser } from "../abstract.parser";

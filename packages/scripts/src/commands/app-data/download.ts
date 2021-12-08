@@ -46,7 +46,7 @@ async function appDataDownload(options: IProgramOptions) {
     sheets_filter_function,
   } = activeDeployment.google_drive;
   // setup paths for args
-  const gdriveToolsExec = `yarn workspace @IDEMSInternational/gdrive-tools start`;
+  const gdriveToolsExec = `yarn workspace @idemsInternational/gdrive-tools start`;
   const authTokenPath = auth_token_path
     ? path.resolve(_workspace_path, auth_token_path)
     : AUTH_TOKEN_PATH;

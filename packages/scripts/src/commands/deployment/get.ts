@@ -30,7 +30,7 @@ export default program
  * Read the default deployment json and return compiled json of previously set active
  * deployment.
  */
-export function getActiveDeployment() {
+export function getActiveDeployment(): IDeploymentConfigJson {
   const defaultJsonPath = path.resolve(IDEMS_APP_CONFIG.deployments, "default.json");
   if (!fs.existsSync(defaultJsonPath)) {
     logError({
