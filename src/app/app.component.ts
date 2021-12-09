@@ -21,7 +21,7 @@ import { TemplateProcessService } from "./shared/components/template/services/te
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
-import { APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
+import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 
 @Component({
   selector: "app-root",
@@ -67,12 +67,9 @@ export class AppComponent {
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
-        await this.surveyService.runSurvey("analytics");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
-        await this.templateService.runStandaloneTemplate("language_select");
-        await this.templateService.runStandaloneTemplate("organisation_registration");
-        await this.tourService.startTour("intro_tour");
+        await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
@@ -108,6 +105,24 @@ export class AppComponent {
     await this.templateProcessService.init();
     await this.localNotificationService.init();
     await this.campaignService.init();
+  }
+
+  /**
+   * Run app-specific first launch tasks
+   **/
+  private async handleFirstLaunchDataActions() {
+    for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
+      switch (initAction.type) {
+        case "template_popup":
+          await this.templateService.runStandaloneTemplate(initAction.value);
+          break;
+        case "tour_start":
+          await this.templateService.runStandaloneTemplate(initAction.value);
+        default:
+          console.error("Startup action not defined:", initAction.type);
+          break;
+      }
+    }
   }
 
   clickOnMenuItem(id: string) {

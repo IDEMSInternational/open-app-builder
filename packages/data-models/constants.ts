@@ -86,3 +86,28 @@ export const APP_SIDEMENU_DEFAULTS = {
   // show the current env (e.g. dev/prod)
   should_show_env: false,
 };
+
+/** Define app-specific startup tasks and logic */
+export const APP_INITIALISATION_DEFAULTS = {
+  /** Define initial launch tasks to be performed before main content loaded */
+  app_first_launch_actions: [
+    {
+      type: "template_popup",
+      value: "accept_terms",
+    },
+    {
+      type: "template_popup",
+      value: "language_select",
+    },
+    {
+      type: "template_popup",
+      value: "organisation_registration",
+    },
+    {
+      type: "tour_start",
+      value: "intro_tour",
+    },
+  ] as const,
+  // TODO - better if refactored to more general handler with condition to filter
+  // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
+};
