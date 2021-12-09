@@ -117,7 +117,7 @@ export class AppComponent {
           await this.templateService.runStandaloneTemplate(initAction.value);
           break;
         case "tour_start":
-          await this.templateService.runStandaloneTemplate(initAction.value);
+          await this.tourService.startTour(initAction.value);
         default:
           console.error("Startup action not defined:", initAction.type);
           break;
