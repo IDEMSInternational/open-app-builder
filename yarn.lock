@@ -4918,6 +4918,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-rsa@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@types/node-rsa@npm:1.1.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: dee0c318618991f115b6e757c54980324c3b2f7dfec8137dcb31e8e88955e7c048d5e89e1e3a572148697783f323dbf9af5738ac5bbe9069666663ad3737284d
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^16.11.4":
   version: 16.11.8
   resolution: "@types/node@npm:16.11.8"
@@ -6621,7 +6630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"asn1@npm:~0.2.3":
+"asn1@npm:^0.2.4, asn1@npm:~0.2.3":
   version: 0.2.6
   resolution: "asn1@npm:0.2.6"
   dependencies:
@@ -17973,6 +17982,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-rsa@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "node-rsa@npm:1.1.1"
+  dependencies:
+    asn1: ^0.2.4
+  checksum: c03a6c8f69557326d2110086ce9610b4b17ef0fd594f76202225b7eb93fc0b342fb31714f6b3cf8d38320cf63c4790a3034e5d47a12f2c27d1900599ec9bd545
+  languageName: node
+  linkType: hard
+
 "nopt@npm:^5.0.0":
   version: 5.0.0
   resolution: "nopt@npm:5.0.0"
@@ -21716,6 +21734,7 @@ __metadata:
     "@IDEMSInternational/rapidpro-excel": "workspace:*"
     "@types/fs-extra": ^9.0.4
     "@types/inquirer": ^7.3.1
+    "@types/node-rsa": ^1.1.1
     "@types/sharp": 0.28.3
     boxen: ^5.0.1
     chalk: ^4.1.0
@@ -21730,6 +21749,7 @@ __metadata:
     jasmine-ts: ^0.3.2
     log-update: ^4.0.0
     ncp: ^2.0.0
+    node-rsa: ^1.1.1
     sharp: 0.28.3
     ts-node: ~7.0.0
     ts-node-dev: ^1.0.0
