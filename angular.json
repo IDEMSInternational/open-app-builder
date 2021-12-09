@@ -43,7 +43,6 @@
               }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/intro.js/introjs.css",
               {
                 "input": "src/theme/variables.scss",
