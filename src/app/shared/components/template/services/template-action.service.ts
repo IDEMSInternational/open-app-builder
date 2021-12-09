@@ -2,7 +2,7 @@ import { BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
-import { SettingsService } from "src/app/pages/settings/settings.service";
+import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";

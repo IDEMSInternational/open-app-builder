@@ -1,0 +1,97 @@
+@import "src/theme/mixins.scss";
+::ng-deep {
+  .my-custom-modal {
+    --height: auto;
+    @media (max-width: 450px) {
+      //padding: 20% 2%  !important;
+    }
+
+    //padding: 20% 10%  !important;
+    .modal-wrapper {
+      max-width: 90vw;
+      background: var(--ion-color-primary-contrast);
+      border: var(--ion-border-standard);
+      border-radius: var(--ion-border-radius-secondary);
+      .ion-page {
+        max-height: 90vh;
+        position: relative;
+        contain: content;
+      }
+    }
+  }
+  .wrapper {
+    padding: 0;
+    .text-box-input {
+      background: var(--ion-color-primary-contrast);
+      border: var(--ion-border-standard);
+      border-radius: var(--ion-border-radius-secondary);
+      width: 100%;
+      min-height: 55px;
+      font-size: var(--combo-box-font-size-standard);
+      color: var(--ion-color-primary);
+      text-align: center;
+      font-weight: 500;
+      box-shadow: var(--ion-default-box-shadow);
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.container-modal {
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 0 20px;
+  overflow: auto;
+  .header {
+    font-size: 20px;
+    text-align: center;
+    color: var(--ion-color-primary);
+    margin-bottom: 20px;
+  }
+  .form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .reverse {
+      flex-direction: column-reverse;
+    }
+    .container-radio {
+      margin-bottom: 20px;
+      min-height: 55px;
+      width: 100%;
+      background: var(--ion-color-primary-contrast);
+      border: var(--ion-border-standard);
+      border-radius: var(--ion-border-radius-secondary);
+      box-shadow: var(--ion-default-box-shadow);
+      @include flex-centered;
+      input {
+        display: none;
+      }
+      label {
+        padding: 5px;
+        width: 100%;
+        text-align: center;
+        @include flex-centered;
+        font-weight: var(--font-weight-standard);
+        font-size: var(--combo-box-font-size-standard);
+        color: var(--ion-color-primary);
+        min-height: 50px;
+        border-radius: 20px;
+      }
+    }
+    .checked-radio {
+      background: var(--combo-box-with-answer-bg);
+    }
+    .active {
+      background: var(--combo-box-active-with-answer-bg);
+    }
+    .passive {
+      background: var(--combo-box-passive-with-answer-bg);
+    }
+  }
+}

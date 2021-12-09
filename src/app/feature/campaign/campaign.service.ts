@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { addDays } from "@fullcalendar/angular";
+import { addDays } from "date-fns";
 import {
   addHours,
   addMinutes,
