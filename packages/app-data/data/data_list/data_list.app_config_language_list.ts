@@ -86,7 +86,7 @@ const data_list: FlowTypes.Data_list[] = [
         image: "i18n/flags/tz.svg",
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/app_config/language_data_list.xlsx",
+    _xlsxPath: "app_config/language_data_list.xlsx",
   },
 ];
 export default data_list;
