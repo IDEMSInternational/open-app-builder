@@ -2,12 +2,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
-import {
-  checkInputOutputDirs,
-  outputCompleteMessage,
-  outputErrorMessage,
-  recursiveFindByExtension,
-} from "../utils";
+import { checkInputOutputDirs, outputErrorMessage, recursiveFindByExtension } from "../utils";
 
 const program = new Command("compile");
 

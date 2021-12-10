@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
-import chalk from "chalk";
+import * as chalk from "chalk";
 import { RapidProFlowExport } from "../types/rapidpro.model";
-import { RapidproExcelModel } from "../types";
+import { RapidproExcelModel } from "../types/excel.model";
 
 // Default settings
 const version: string = "13";

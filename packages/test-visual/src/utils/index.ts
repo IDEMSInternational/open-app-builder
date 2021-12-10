@@ -5,6 +5,7 @@ import extract from "extract-zip";
 import chalk from "chalk";
 import boxen from "boxen";
 import logUpdate from "log-update";
+import { Command } from "commander";
 
 /** Display an output message in a blue box with 2 lines of text */
 export function outputCompleteMessage(text1: string, text2 = "") {
@@ -84,4 +85,11 @@ export async function downloadToFile(url: string, outputFilePath: string) {
     });
     writer.on("error", reject);
   });
+}
+
+export function logProgramHelp(program: Command) {
+  console.log(chalk.yellow("No command specified. See help below:\n"));
+  program.outputHelp();
+  console.log("\n");
+  process.exit(0);
 }

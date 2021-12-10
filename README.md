@@ -32,6 +32,15 @@ $ yarn install
 Note - you may have to do this from time to time when content is updated)
 
 ## Configuration
+### Set Deployment
+The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](./.idems_app/deployments)
+
+An initial deployment should be specified via the command
+```
+npm run scripts deployment set
+```
+
+### Firebase
 To be able to run the full project a specific configuration file needs to be included to access
 the online database and authentication methods.
 ```
