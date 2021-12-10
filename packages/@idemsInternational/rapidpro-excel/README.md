@@ -11,7 +11,7 @@ yarn add @idemsInternational/rapidpro-excel
 
 Convert excel to rapidpro
 ```
-import { ExcelToRapidproConverter } from "@IDEMSInternational/rapidpro-excel/src";
+import  {ExcelToRapidproConverter}  from "@idemsInternational/rapidpro-excel";
 
 const parser = new ExcelToRapidproConverter(flow_name, excelRows);
 const converted = parser.run();

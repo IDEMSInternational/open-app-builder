@@ -1,22 +1,40 @@
 import * as fs from "fs-extra";
 import * as path from "path";
 import { createHash } from "crypto";
-import NodeRSA from "node-rsa";
-import { getNestedProperty, setNestedProperty } from "../../../../src/app/shared/utils";
+import { logWarning } from "./logging.utils";
 
-/** Split an array into an array of arrays of a given chunk size */
-export function ArrayToChunks(array: any[], chunk_size: number) {
-  return Array(Math.ceil(array.length / chunk_size))
-    .fill(0)
-    .map((_, index) => index * chunk_size)
-    .map((begin) => array.slice(begin, begin + chunk_size));
+/**
+ * Retrieve a nested property from a json object
+ * using a single path string accessor
+ * (modified from https://gist.github.com/jasonrhodes/2321581)
+ *
+ * @returns value if exists, or null otherwise
+ *
+ * @example
+ * const obj = {"a":{"b":{"c":1}}}
+ * getNestedProperty(obj,'a.b.c')  // returns 1
+ * getNestedProperty(obj,'a.b.c.d')  // returns null
+ *
+ * @param obj data object to iterate over
+ * @param path nested path, such as data.subfield1.deeperfield2
+ */
+export function getNestedProperty(obj: any, path: string) {
+  return path.split(".").reduce((prev, current) => {
+    return prev ? prev[current] : null;
+  }, obj);
 }
 
-export function listFolderNames(folderPath: string) {
-  return fs
-    .readdirSync(folderPath, { withFileTypes: true })
-    .filter((v) => v.isDirectory())
-    .map((v) => v.name);
+/** Set a nested json property namespaced as parent.child1.subchild1 */
+export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
+  let childKeys = path.split(".");
+  const currentKey = childKeys[0];
+  if (childKeys.length > 1) {
+    const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
+    obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
+  } else {
+    obj[currentKey] = value;
+  }
+  return obj as T;
 }
 
 /**
@@ -111,22 +129,35 @@ export function generateFolderFlatMap(
 ) {
   const allFiles = recursiveFindByExtension(folderPath);
   // const relativeFiles = allFiles.map(filepath => path.relative(folderPath, filepath))
-  let flatMap = {};
+  let flatMap: {
+    [relativePath: string]: boolean | IContentsEntry;
+  } = {};
   for (const filePath of allFiles) {
     const relativePath = path.relative(folderPath, filePath).split(path.sep).join("/");
     const shouldInclude = filterFn(relativePath);
     if (shouldInclude) {
       if (includeStats) {
         // generate size and md5 checksum stats
-        const { size } = fs.statSync(filePath);
-        const checksum = getFileMD5Checksum(filePath);
-        flatMap[relativePath] = { size, checksum };
+        const { size, mtime } = fs.statSync(filePath);
+        const modifiedTime = mtime.toISOString();
+        // write size in kb to 1 dpclear
+        const size_kb = Math.round(size / 102.4) / 10;
+        const md5Checksum = getFileMD5Checksum(filePath);
+        const entry: IContentsEntry = { relativePath, size_kb, md5Checksum, modifiedTime };
+        flatMap[relativePath] = entry;
       } else {
         flatMap[relativePath] = true;
       }
     }
   }
   return flatMap;
+}
+
+export interface IContentsEntry {
+  relativePath: string;
+  size_kb: number;
+  modifiedTime: string;
+  md5Checksum: string;
 }
 
 export function getFileMD5Checksum(filePath: string) {
@@ -194,32 +225,11 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
   return hashmap;
 }
 
-export function decryptFolder(folderPath: string, privateKeyPath: string) {
-  const privateKeyData = fs.readFileSync(privateKeyPath);
-  const key = new NodeRSA().importKey(privateKeyData, "private");
-  for (const filePath of fs.readdirSync(folderPath)) {
-    if (filePath.endsWith(".enc")) {
-      const encryptedData = fs.readFileSync(`${folderPath}/${filePath}`);
-      const decryptedData = key.decrypt(encryptedData);
-      fs.writeFileSync(`${folderPath}/${filePath.replace(".enc", "")}`, decryptedData);
-    }
-  }
-}
-
-export function encryptFolder(
-  folderPath: string,
-  publicKeyPath: string,
-  exclusions: string[] = []
-) {
-  const publicKeyData = fs.readFileSync(publicKeyPath);
-  const key = new NodeRSA().importKey(publicKeyData, "public");
-  fs.readdirSync(folderPath).forEach((filename) => {
-    if (!exclusions.includes(filename) && path.extname(filename) !== ".enc") {
-      const decryptedData = fs.readFileSync(`${folderPath}/${filename}`);
-      const encryptedData = key.encrypt(decryptedData);
-      fs.writeFileSync(`${folderPath}/${filename}.enc`, encryptedData);
-    }
-  });
+export function listFolderNames(folderPath: string) {
+  return fs
+    .readdirSync(folderPath, { withFileTypes: true })
+    .filter((v) => v.isDirectory())
+    .map((v) => v.name);
 }
 
 /**
@@ -280,4 +290,79 @@ export function convertJsonToTs(
     }
     fs.appendFileSync(indexFilePath, `export const ${exportName} = { ${namedExports} }`);
   }
+}
+
+/**
+ * Deep merge two objects.
+ * Copied from https://stackoverflow.com/a/34749873/5693245
+ * @param target
+ * @param ...sources
+ */
+export function deepMergeObjects(target: any, ...sources: any) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        deepMergeObjects(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return deepMergeObjects(target, ...sources);
+}
+
+function isObject(item: any) {
+  return item && typeof item === "object" && !Array.isArray(item);
+}
+
+/** Search a folder for a file ending _contents and return parsed json  */
+export function readContentsFile(folderPath: string) {
+  if (!fs.existsSync(folderPath)) {
+    logWarning({ msg1: "Folder path does not exist", msg2: folderPath });
+    return [];
+  }
+  const contentsFilePath = fs.readdirSync(folderPath).find((f) => f.endsWith("_contents.json"));
+  if (!contentsFilePath) {
+    logWarning({ msg1: "Contents file not found in folder", msg2: folderPath });
+    return [];
+  }
+  const contentsJson = fs.readJsonSync(path.resolve(folderPath, contentsFilePath));
+  return contentsJson as IContentsEntry[];
+}
+
+/**
+ * Search a folder for a file ending _contents, parse json and convert to hashmap
+ * Requires one of hashKey or hashKeyfn
+ * @param options.hashkey named key to use for hashmap entries
+ * @param options.hashKeyFn function to generate hahamap key from entry
+ */
+export function readContentsFileAsHashmap(
+  folderPath: string,
+  options: { hashKey?: string; hashKeyFn?: (entry: any) => string }
+) {
+  const contentsJson = readContentsFile(folderPath);
+  const hashmap = {};
+  const { hashKey, hashKeyFn } = options;
+  for (const entry of contentsJson) {
+    if (hashKey) {
+      if (entry.hasOwnProperty(hashKey)) {
+        const entryKey = entry[hashKey];
+        if (entryKey) {
+          hashmap[entryKey] = entry;
+        }
+      }
+    }
+    if (hashKeyFn) {
+      const entryKey = hashKeyFn(entry);
+      if (entryKey) {
+        hashmap[entryKey] = entry;
+      }
+    }
+  }
+  return hashmap;
 }

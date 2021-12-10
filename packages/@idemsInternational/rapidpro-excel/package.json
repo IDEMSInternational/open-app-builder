@@ -1,13 +1,8 @@
 {
-  "name": "@IDEMSInternational/rapidpro-excel",
+  "name": "@idemsInternational/rapidpro-excel",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/src/index.js",
-  "types": "./types",
-  "files": [
-    "build",
-    "types"
-  ],
+  "main": "src/index.ts",
   "scripts": {
     "compile": "tsc -p .",
     "test": "ts-mocha -p tsconfig.spec.json src/**/*.spec.ts",
