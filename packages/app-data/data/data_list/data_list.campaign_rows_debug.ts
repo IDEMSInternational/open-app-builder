@@ -219,8 +219,7 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Debug Fixed New Years Day",
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -332,8 +331,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -676,8 +674,7 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["debug_calc"],
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
 ];
 export default data_list;
