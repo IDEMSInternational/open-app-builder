@@ -887,6 +887,10 @@ export const ASSETS_CONTENTS_LIST = {
     size: 8481,
     checksum: "0f0c41812fbb43e02a7e4cd6d8ae8fa6",
   },
+  "plh_images/first_app_launch/shield.svg": {
+    size: 2917,
+    checksum: "7bef996b92b5d2cadd4e1ca2bac7c2d1",
+  },
   "plh_images/habits/habit_breathe.svg": {
     size: 2404,
     checksum: "284285870cd683c71190ab4004cf4d70",
@@ -1476,8 +1480,8 @@ export const ASSETS_CONTENTS_LIST = {
     checksum: "470c92b1672274efad8a318d99f7a095",
   },
   "plh_images/survey/welcome/guide_2_key.svg": {
-    size: 4263,
-    checksum: "f46f5010fb6dce0fe3db84a6e444d303",
+    size: 4230,
+    checksum: "cffd391706ed7fb4740c625e0dba6b3e",
   },
   "plh_images/survey/welcome/guide_2_nervous.svg": {
     size: 3159,

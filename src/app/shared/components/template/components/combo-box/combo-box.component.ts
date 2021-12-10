@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
-import { ComboBoxModalComponent } from "../../../common/components/combo-box-modal/combo-box-modal.component";
+import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
   getBooleanParamFromTemplateRow,
   getParamFromTemplateRow,
