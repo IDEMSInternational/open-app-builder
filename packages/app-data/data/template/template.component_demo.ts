@@ -3,6 +3,96 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
+    flow_name: "comp_round_button_3",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "round_button",
+        name: "button_default",
+        value: "Default",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "button_default",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_1",
+        value: "Style  parameter information",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "information",
+        },
+        _nested_name: "button_par_3_1",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_2",
+        value: "Style parameter navigation",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "navigation",
+        },
+        _nested_name: "button_par_3_2",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_3",
+        value: "Style parameter yellow",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "yellow",
+        },
+        _nested_name: "button_par_3_3",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_4",
+        value: "Style parameter orange",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "orange",
+        },
+        _nested_name: "button_par_3_4",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_5",
+        value: "Style parameter dark orange",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "dark_orange",
+        },
+        _nested_name: "button_par_3_5",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_6",
+        value: "Style parameter home screen",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "home_screen",
+        },
+        _nested_name: "button_par_3_6",
+      },
+    ],
+    _xlsxPath: "quality_assurance/components_demo/component_round_button .xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "comp_button_par_2",
     status: "released",
     flow_subtype: "component_demo",
@@ -137,99 +227,7 @@ const template: FlowTypes.Template[] = [
         _nested_name: "button_par_2_10",
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/components_demo/component_button.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "comp_round_button_3",
-    status: "released",
-    flow_subtype: "component_demo",
-    rows: [
-      {
-        type: "round_button",
-        name: "button_default",
-        value: "Default",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "button_default",
-      },
-      {
-        type: "round_button",
-        name: "button_par_3_1",
-        value: "Style  parameter information",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "information",
-        },
-        _nested_name: "button_par_3_1",
-      },
-      {
-        type: "round_button",
-        name: "button_par_3_2",
-        value: "Style parameter navigation",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "navigation",
-        },
-        _nested_name: "button_par_3_2",
-      },
-      {
-        type: "round_button",
-        name: "button_par_3_3",
-        value: "Style parameter yellow",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "yellow",
-        },
-        _nested_name: "button_par_3_3",
-      },
-      {
-        type: "round_button",
-        name: "button_par_3_4",
-        value: "Style parameter orange",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "orange",
-        },
-        _nested_name: "button_par_3_4",
-      },
-      {
-        type: "round_button",
-        name: "button_par_3_5",
-        value: "Style parameter dark orange",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "dark_orange",
-        },
-        _nested_name: "button_par_3_5",
-      },
-      {
-        type: "round_button",
-        name: "button_par_3_6",
-        value: "Style parameter home screen",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "home_screen",
-        },
-        _nested_name: "button_par_3_6",
-      },
-    ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/components_demo/component_round_button .xlsx",
+    _xlsxPath: "quality_assurance/components_demo/component_button.xlsx",
   },
 ];
 export default template;
