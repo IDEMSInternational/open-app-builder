@@ -118,8 +118,9 @@ export class AppComponent {
           break;
         case "tour_start":
           await this.tourService.startTour(initAction.value);
+          break;
         default:
-          console.error("Startup action not defined:", initAction.type);
+          console.error("Startup action not defined:", initAction);
           break;
       }
     }
