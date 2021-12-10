@@ -48,7 +48,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "plh_sheets_beta/plh_templating/campaigns/notification_campaigns.xlsx",
+    _xlsxPath: "campaigns/notification_campaigns.xlsx",
   },
   {
     flow_type: "data_list",
@@ -386,8 +386,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/quality_assurance/debug_templates/debug_campaigns.xlsx",
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
 ];
 export default data_list;

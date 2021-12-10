@@ -34,8 +34,7 @@ const home_page: FlowTypes.Home_page[] = [
         left_image: "plh_images/home_page/home_page_parent_center.svg",
       },
     ],
-    _xlsxPath:
-      "plh_sheets_beta/plh_templating/core_templates/core_templates_navigation_temporary.xlsx",
+    _xlsxPath: "core_templates/core_templates_navigation_temporary.xlsx",
   },
 ];
 export default home_page;
