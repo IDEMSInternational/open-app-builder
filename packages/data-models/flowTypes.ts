@@ -363,7 +363,6 @@ export namespace FlowTypes {
     | "text_area"
     | "radio_group"
     | "tile_component"
-    | "css_anim"
     | "combo_box"
     | "icon_banner"
     | "dashed_box"

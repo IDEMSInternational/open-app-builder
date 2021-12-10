@@ -31,12 +31,10 @@ describe("[First Load]", () => {
     cy.get("[data-cy=skip-intro]").should("not.exist");
   });
   it("[Shows consent form]", () => {
-    cy.get("analytics-survey").should("be.visible");
+    cy.get("[data-templatename=accept_terms]").should("be.visible");
   });
   it("[Dismisses consent form]", () => {
-    // we don't currently have a good identifier for the continue button (should add)
-    // so just search for anything containing the word Continue
-    cy.get("analytics-survey").contains("Continue").click();
+    cy.get("[data-rowname=button_completed]").contains("Continue").click();
   });
   it("[Shows language select template]", () => {
     cy.get("[data-templatename=language_select]").contains("English").click();
