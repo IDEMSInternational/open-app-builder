@@ -467,7 +467,7 @@
 
 # TextBox - TmplTextBoxComponent 
    ## Type 
-   type: text 
+   type: text_box 
    ## Value
    value: string or null. Input value
    ## Parameters 
