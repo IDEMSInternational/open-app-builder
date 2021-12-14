@@ -12,6 +12,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
+      - name: Remove Git LFS requirements
+        # Github pages fails when expecting LFS, so remove hook
+        run: rm .git/hooks/pre-push
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
