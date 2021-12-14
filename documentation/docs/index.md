@@ -33,7 +33,7 @@ Note - you may have to do this from time to time when content is updated)
 
 ## Configuration
 ### Set Deployment
-The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](./.idems_app/deployments)
+The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](../../.idems_app/deployments)
 
 An initial deployment should be specified via the command
 ```
@@ -61,8 +61,8 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](/authors/quickstart)
+Please see [Quickstart Authors](./authors/quickstart.md)
 
 # For Developers
 
-Please see [Quickstart Developers](/developers/1.%20quickstart)
+Please see [Quickstart Developers](./developers/1.%20quickstart.md)

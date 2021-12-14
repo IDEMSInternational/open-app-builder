@@ -8,7 +8,9 @@ https://www.mkdocs.org/
 
 
 ## Quickstart
-
+```
+cd documentation
+```
 ```
 pip install -r requirements.txt
 ```
