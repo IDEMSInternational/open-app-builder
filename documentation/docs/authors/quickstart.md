@@ -1,4 +1,4 @@
-# Quickstart - Authors
+# Quickstart
 
 ## Initial Setup
 
