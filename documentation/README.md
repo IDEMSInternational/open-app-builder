@@ -2,9 +2,9 @@
 
 This repo contains documentation for the repository. 
 
-The docs are created with mkdocs and deployed via readthedocs
+The docs are created with MKDocs and deployed via Github Actions
 
-https://docs.readthedocs.io/en/stable/intro/getting-started-with-mkdocs.html
+https://www.mkdocs.org/
 
 
 ## Quickstart
@@ -45,5 +45,5 @@ deactivate
 ## Theming
 https://squidfunk.github.io/mkdocs-material/
 
-## ReadTheDocs
-Additional config to deploy via readthedocs can be found in [.readthedocs.yml](../.readthedocs.yml)
+## Deploying
+Additional config to deploy via Github Actions can be found in [documentation-deploy.yml](../.github/workflows/documentation-deploy.yml)
