@@ -44,3 +44,6 @@ deactivate
 
 ## Theming
 https://squidfunk.github.io/mkdocs-material/
+
+## ReadTheDocs
+Additional config to deploy via readthedocs can be found in [.readthedocs.yml](../.readthedocs.yml)
