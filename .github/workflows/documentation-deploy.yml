@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - feat/mkdocs-docs
-
 jobs:
   build:
     name: Deploy docs
@@ -11,7 +10,8 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
-
+        with:
+          lfs: true
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
