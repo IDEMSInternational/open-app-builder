@@ -2,7 +2,7 @@ name: Documentation - Deploy to GitHub Pages
 on:
   push:
     branches:
-      - feat/mkdocs-docs
+      - master
 jobs:
   build:
     name: Deploy docs
