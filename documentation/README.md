@@ -49,3 +49,8 @@ https://squidfunk.github.io/mkdocs-material/
 
 ## Deploying
 Additional config to deploy via Github Actions can be found in [documentation-deploy.yml](../.github/workflows/documentation-deploy.yml)
+
+Alternatively, documentation can be manually deployed via
+```
+mkdocs gh-deploy
+```
