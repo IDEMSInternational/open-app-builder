@@ -178,7 +178,13 @@ class GDriveDownloader {
     }
     // Handle New and Updated
     const fileDownloads = [...actions.new, ...actions.updated];
-    const queue = new PQueue({ autoStart: false });
+    // Create a queue, rate-limit to 20 reqs per second
+    // This is to try and keep within an overall allowance of 20,000 reqs per 100 second across all users
+    const queue = new PQueue({
+      autoStart: false,
+      interval: 1000 * 1,
+      intervalCap: 20,
+    });
     for (const file of fileDownloads) {
       queue.add(async () => {
         const { folderPath } = file;
@@ -194,7 +200,7 @@ class GDriveDownloader {
     }
     const total = fileDownloads.length;
     queue.on("next", () => {
-      logUpdate(chalk.blue(`${total - queue.pending}/${total} downloaded`));
+      logUpdate(chalk.blue(`${total - queue.pending + queue.size}/${total} downloaded`));
     });
     logUpdate.done();
     queue.start();
