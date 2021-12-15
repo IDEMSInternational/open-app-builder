@@ -9,6 +9,7 @@ import { SharedPipesModule } from "src/app/shared/pipes";
 import { CampaignDebugVariablesEditorComponent } from "./pages/campaign-debug/components/campaign-variables-editor";
 import { CampaignDebugRowComponent } from "./pages/campaign-debug/components/campaign-debug-row";
 import { CalcDaysDiffPipe } from "./pages/campaign-debug/components/calcDays.pipe";
+import { CampaignScheduleDebugRowComponent } from "./pages/campaign-debug/components/campaign-schedule-debug-row";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, CampaignPageRoutingModule, SharedPipesModule],
@@ -16,6 +17,7 @@ import { CalcDaysDiffPipe } from "./pages/campaign-debug/components/calcDays.pip
     CampaignDebugPage,
     CampaignDebugVariablesEditorComponent,
     CampaignDebugRowComponent,
+    CampaignScheduleDebugRowComponent,
     CalcDaysDiffPipe,
   ],
 })

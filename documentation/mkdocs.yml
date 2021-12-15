@@ -1,0 +1,10 @@
+site_name: IDEMS Apps
+theme:
+  name: material
+  palette:
+    primary: black
+    accent: a mber
+  font:
+    text: "Open Sans"
+repo_url: https://github.com/IDEMSInternational/parenting-app-ui
+edit_uri: edit/master/documentation/docs/

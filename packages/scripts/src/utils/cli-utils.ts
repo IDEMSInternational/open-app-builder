@@ -1,5 +1,4 @@
 import * as inquirer from "inquirer";
-import { decryptFolder } from "./file-utils";
 
 /**
  * Provide an interactive list of cli options for a user to selet from
@@ -15,14 +14,8 @@ export async function promptOptions(
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
   return res.selected;
 }
-
-/**
- * Decrypt any files encrypted in the config folder for use by other scripts
- */
-export function loadConfig() {
-  decryptFolder("config", "config/private.key");
-  /** Not currently required, but if we want to also load into env we could do so here */
-  // const DOTENV_PATH = "config/.env";
-  // const e = dotenv.parse(fs.readFileSync(DOTENV_PATH));
-  // return e;
+export async function promptInput(message: string) {
+  const name = "inputValue";
+  const res = await inquirer.prompt([{ type: "input", message, name }]);
+  return res[name];
 }

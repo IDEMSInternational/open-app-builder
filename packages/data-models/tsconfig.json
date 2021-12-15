@@ -6,8 +6,10 @@
     "typeRoots": ["node_modules/@types"],
     "declaration": true,
     "skipLibCheck": true,
-    "composite": true
+    "composite": true,
+    "lib": ["es2016", "dom"],
+    "target": "es5"
   },
-  "include": ["**/*.ts","index.ts"],
-  "exclude": ["node_modules","dist"]
+  "include": ["**/*.ts", "index.ts"],
+  "exclude": ["node_modules", "dist"]
 }
