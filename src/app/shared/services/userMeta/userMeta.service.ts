@@ -57,5 +57,5 @@ const USER_DEFAULTS: IUserMeta = {
   first_app_open: null,
   current_date: null,
   // Set default module id as first defined in module list
-  active_module: MODULE_LIST[0].rows[0].id,
+  active_module: MODULE_LIST?.[0]?.rows?.[0]?.id,
 };

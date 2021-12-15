@@ -1,6 +1,14 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Campaign Debug</h2>
+    <h2 style="flex: 1">Scheduled Campaigns</h2>
+    <ion-item class="clear">
+      <ion-label>Debug Notifications</ion-label>
+      <ion-toggle
+        #debugOptIn
+        [checked]="debugCampaignsEnabled"
+        (ionChange)="setDebugCampaignOptIn(debugOptIn.checked)"
+      ></ion-toggle>
+    </ion-item>
     <ion-button
       fill="outline"
       [routerLink]="['/','notifications']"
@@ -10,6 +18,17 @@
       <span>{{(localNotificationService.pendingNotifications$ | async).length}}</span>
     </ion-button>
   </div>
+
+  <ion-list>
+    <campaign-schedule-debug-row
+      *ngFor="let schedule of campaignService.scheduledCampaigns | objectValues"
+      [row]="schedule"
+    ></campaign-schedule-debug-row>
+  </ion-list>
+
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">All Campaigns</h2>
+  </div>
   <ion-item>
     <ion-label>Campaign</ion-label>
     <ion-select
@@ -18,7 +37,7 @@
       [value]="debugCampaignId"
     >
       <ion-select-option
-        *ngFor="let campaign_id of campaignService.campaigns | objectKeys | arraySort"
+        *ngFor="let campaign_id of campaignService.allCampaigns | objectKeys | arraySort"
       >
         <span>{{campaign_id}}</span>
       </ion-select-option>
