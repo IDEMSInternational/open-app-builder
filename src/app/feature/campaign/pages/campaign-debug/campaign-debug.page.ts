@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
@@ -20,11 +21,13 @@ interface IDebugCampaignRows {
 export class CampaignDebugPage implements OnInit {
   debugCampaignId: string;
   debugCampaignRows: IDebugCampaignRows;
+  debugCampaignsEnabled: boolean;
 
   constructor(
     public campaignService: CampaignService,
     public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
+    private templateService: TemplateService,
     private router: Router,
     private route: ActivatedRoute,
     private modalCtrl: ModalController
@@ -36,6 +39,7 @@ export class CampaignDebugPage implements OnInit {
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
     }
+    this.debugCampaignsEnabled = this.templateService.getField("debug_campaigns_enabled");
   }
 
   /***************************************************************************************
@@ -54,6 +58,12 @@ export class CampaignDebugPage implements OnInit {
       });
       return this.processCampaign();
     }
+  }
+
+  public setDebugCampaignOptIn(value: boolean) {
+    this.templateService.setField("debug_campaigns_enabled", `${value}`);
+    this.debugCampaignsEnabled = this.templateService.getField("debug_campaigns_enabled");
+    this.campaignService.init();
   }
 
   public scheduleNotification(row: FlowTypes.Campaign_listRow) {
@@ -75,10 +85,11 @@ export class CampaignDebugPage implements OnInit {
   private async processCampaign() {
     const debugCampaignRows: IDebugCampaignRows = { activated: [], deactivated: [], pending: [] };
     const campaign_id = this.debugCampaignId;
-    const campaignRows = this.campaignService.campaigns[campaign_id].rows;
+    const campaignRows = this.campaignService.allCampaigns[campaign_id];
     const evaluated = await Promise.all(
       campaignRows.map(async (row) => {
-        return await this.campaignService.evaluateCampaignRow(row);
+        const evaluation = await this.campaignService.evaluateRowActivationConditions(row);
+        return { ...row, ...evaluation };
       })
     );
     evaluated.forEach((row) => {
