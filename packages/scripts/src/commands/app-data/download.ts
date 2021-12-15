@@ -79,14 +79,22 @@ async function appDataDownload(options: IProgramOptions) {
   const sheetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${sheetsArgs}`;
   console.log(chalk.yellow("-----Sheets-----"));
   console.log(chalk.gray(sheetsDLCmd));
-  spawnSync(sheetsDLCmd, { shell: true, stdio: "inherit" });
+  const { status: sheetsDlStatus } = spawnSync(sheetsDLCmd, { shell: true, stdio: "inherit" });
+  // pass any null exit code back up
+  if (sheetsDlStatus === 1) {
+    process.exit(1);
+  }
 
   // download assets
   const assetsArgs = `--folder-id ${assets_folder_id} --output-path "${assetsOutput}" --cache-path "${assetsCachePath}" --log-name assets.log --filter-function-64 "${assetsFilter}"`;
   const assetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${assetsArgs}`;
   console.log(chalk.yellow("-----Assets-----"));
   console.log(chalk.gray(assetsDLCmd));
-  spawnSync(assetsDLCmd, { shell: true, stdio: "inherit" });
+  const { status: assetDlStatus } = spawnSync(assetsDLCmd, { shell: true, stdio: "inherit" });
+  // pass any null exit code back up
+  if (assetDlStatus === 1) {
+    process.exit(1);
+  }
 }
 
 /**
