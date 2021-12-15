@@ -14,6 +14,7 @@ import { getActiveDeployment } from "../deployment/get";
  *************************************************************************************/
 interface IProgramOptions {
   sheetname?: string;
+  authorize?: boolean;
 }
 const program = new Command("download");
 export default program
@@ -22,6 +23,7 @@ export default program
     "-s --sheetname <string>",
     "name of single google sheet to download (default downloads all)"
   )
+  .option("-a --authorize", "generate auth token for download")
   .action(async (options: IProgramOptions) => {
     if (options.sheetname) {
     }
@@ -58,6 +60,13 @@ async function appDataDownload(options: IProgramOptions) {
   const assetsFilter = Buffer.from(assets_filter_function.toString()).toString("base64");
 
   let commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
+  // handle re-auth
+  if (options.authorize) {
+    if (fs.existsSync(authTokenPath)) fs.removeSync(authTokenPath);
+    const authCmd = `${gdriveToolsExec} authorize ${commonArgs}`;
+    spawnSync(authCmd, { stdio: "inherit", shell: true });
+    return;
+  }
   // handle single file download
   if (options.sheetname) {
     const cachedEntry = await getFileCacheEntry(options.sheetname, sheetsCachePath);
