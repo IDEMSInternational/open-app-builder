@@ -6,8 +6,8 @@ import path from "path";
 import PQueue from "p-queue";
 import { drive_v3 } from "googleapis";
 import { GaxiosResponse, GaxiosOptions } from "gaxios";
-import { logProgramHelp } from "../utils";
-
+import { Command } from "commander";
+import { PATHS } from "../paths";
 import {
   GDRIVE_OFFICE_MAPPING,
   MIMETYPE_EXTENSIONS,
@@ -16,7 +16,9 @@ import {
   generateFolderFlatMapStats,
   ILocalFileWithStats,
   getGDriveFileById,
+  logProgramHelp,
 } from "../utils";
+import { authorizeGDrive } from "./authorize";
 
 const GOOGLE_FOLDER_MIMETYPE = "application/vnd.google-apps.folder";
 
@@ -36,9 +38,6 @@ interface IProgramOptions {
   filterFunction64?: string;
 }
 
-import { Command } from "commander";
-import { authorizeGDrive } from "./authorize";
-import { PATHS } from "../paths";
 const program = new Command("download");
 export default program
   .description("Get active deployment")
@@ -390,11 +389,25 @@ function handleFileDownloadError(err: Error, file: IGDriveFileWithFolder, localT
   fs.removeSync(localTargetPath);
   let response = (err as any).response;
   const msg2 = response?.statusText || err.message || "";
-  logError({
-    msg1: `failed to download file: ${file.folderPath}/${file.name}`,
-    msg2,
-    logOnly: true,
-  });
+
+  // 403 usually critical (e.g. reached max limit)
+  if (response.status === 403 && response?.statusText === "Forbidden") {
+    logError({
+      msg1: "Access to resource has been blocked, see more info at link below",
+      logOnly: true,
+    });
+    console.log(chalk.yellow(response.request.responseURL));
+    // prevent further processing
+    process.exit(1);
+  }
+  // Otherwise just log for now
+  else {
+    logError({
+      msg1: `failed to download file: ${file.folderPath}/${file.name}`,
+      msg2,
+      logOnly: true,
+    });
+  }
 }
 
 interface IGDriveFileWithFolder extends drive_v3.Schema$File {
