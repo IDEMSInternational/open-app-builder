@@ -1,43 +1,39 @@
+$toggleHeight: 22px;
+$toggleWidth: 42px;
+$togglePadding: 12px;
+
 ion-toggle {
-  --background: #b4b7b7;
-  width: 42px;
-  height: 22px;
+  width: $toggleWidth;
+  height: $toggleHeight;
 }
 
 ion-toggle {
   --background: #b4b7b7;
+  --handle-spacing: 2px;
   --background-checked: var(--ion-color-primary, "darkblue");
   --handle-background: var(--ion-item-background, #fefefe);
-}
-
-ion-toggle {
-  --handle-spacing: 2px;
-  --handle-background-checked: #fff url(/assets/icon/shared/tick.svg) no-repeat center / contain;
+  --handle-background-checked: #fff;
+  --padding-inline: $togglePadding;
 }
 
 .show-tick-cross {
-  $togglePadding: 12px;
-  ion-toggle {
-    --padding-inline: $togglePadding;
-  }
+  $iconPadding: 3px;
   ion-toggle[aria-checked="true"]::before,
   ion-toggle[aria-checked="false"]::after {
     position: absolute;
-    top: $togglePadding;
+    top: $togglePadding + $iconPadding;
+    left: $togglePadding + $iconPadding;
     color: white;
-    font-size: 16px;
     z-index: 1;
-    font-weight: 500;
+    content: " ";
+    width: $toggleWidth - 2 * $iconPadding;
+    height: $toggleHeight - 2 * $iconPadding;
   }
   ion-toggle[aria-checked="true"]::before {
-    content: "✓";
-    left: $togglePadding;
-    padding-left: 5px;
+    background: url(/assets/icon/shared/tick.svg) no-repeat left / contain;
   }
   ion-toggle[aria-checked="false"]::after {
-    content: "✗";
-    right: $togglePadding;
-    padding-right: 7px;
+    background: url(/assets/icon/shared/cross.svg) no-repeat right / contain;
   }
 }
 
