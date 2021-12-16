@@ -1,5 +1,40 @@
 @import "../mixins.scss";
+/** Custom overrides for specific templates **/
 
+/// w_self_care_stepper
+plh-template-container[data-templatename="w_self_care_stepper"] {
+  // start page higher than default padding
+  margin-top: -20px;
+}
+
+/// parent_center
+plh-template-container[data-templatename="parent_centre"] {
+  plh-tmpl-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: block;
+  }
+  plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+    // ensure tiles are at least 200px and provide a larger gap between icons
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 32px;
+  }
+}
+
+/// weekly_workshops
+plh-template-container[data-templatename="weekly_workshops"] {
+  plh-template-component[data-name="heading"] {
+    margin: 0 0 30px 0 !important; // TODO - hardcoded with authoring, can fix and remove
+  }
+  plh-template-component[data-name="options"] {
+    flex: unset; // TODO - hardcoded with authoring, can fix and remove
+  }
+  plh-tile-component .tile-wrapper.default_style.workshop_page {
+    margin: var(--regular-margin) auto;
+  }
+}
+
+/// home_screen
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
   @include flex-centered;
   border-radius: var(--ion-border-radius-secondary);
@@ -52,25 +87,10 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
     // make offset slightly out of bottom
     margin-bottom: -10px;
   }
-}
 
-// background colours
-plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
-  background: var(--home-screen-light-bg);
-}
-plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
-  background: var(--home-screen-shade-bg);
-}
-plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
-  background: var(--home-screen-dark-bg);
-}
-
-/// HACK - (TODO handle with authoring) remove margins for summary elements
-plh-template-container > .template-container > plh-template-component[data-name="clicks_all_time"] {
-  margin-bottom: 0;
-}
-plh-template-container
-  > .template-container
-  > plh-template-component[data-name="clicks_this_week"] {
-  margin-bottom: 0;
+  /// HACK - (TODO handle with authoring) remove margins for summary elements
+  plh-template-component[data-name="clicks_all_time"],
+  plh-template-component[data-name="clicks_this_week"] {
+    margin-bottom: 0;
+  }
 }
