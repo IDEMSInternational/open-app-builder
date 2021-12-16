@@ -1,0 +1,79 @@
+// background colours
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
+  background: var(--home-screen-light-bg);
+}
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
+  background: var(--home-screen-shade-bg);
+}
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
+  background: var(--home-screen-dark-bg);
+}
+
+/// Wrap parent_point display groups in grid
+/// @example /template/example_buttons_padding */
+plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+  // ensure all tiles are at least 120px (wrap to multiple lines if not), and size equally
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 16px;
+}
+
+/// Remove additional padding from around images which make
+/// @example /template/feature_two_columns_images
+.display-group-wrapper[data-param-style="two_columns_images"] .tmpl-image-container {
+  padding: 0 !important;
+}
+
+/// Space navigation group items at start and end of row
+.display-group-wrapper[data-param-style="navigation"] {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.display-group-wrapper[data-param-style="two_columns"],
+.display-group-wrapper[data-param-style="two_columns_images"] {
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 2fr;
+}
+/// 2-column display with enforced image max-height (only for logo display page)
+/// @example /feature_two_columns_images
+.display-group-wrapper[data-param-style="two_columns_images"] {
+  grid-gap: 32px;
+  align-items: center;
+  justify-items: center;
+  plh-template-component {
+    display: block;
+    max-height: 160px;
+    max-width: 160px;
+    padding: 16px;
+  }
+  .tmpl-image-container {
+    padding: 0 !important;
+  }
+}
+
+.display-group .display-group-wrapper plh-template-component.heading {
+  height: auto;
+}
+
+.display-group .display-group-wrapper plh-template-component.banner {
+  background: transparent;
+}
+
+///
+/// @example /template/w_self_care_stepper
+.display-group-wrapper[data-param-style="banner_welcome"] {
+  margin-top: var(--regular-margin);
+  border-radius: var(--ion-border-radius-secondary);
+  width: 100%;
+  margin-bottom: var(--largest-margin) !important;
+  background: var(--ion-dg-bg-default);
+  justify-content: center;
+
+  plh-template-component > .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
+    height: 220px;
+    img {
+      margin-bottom: -30px;
+    }
+  }
+}
