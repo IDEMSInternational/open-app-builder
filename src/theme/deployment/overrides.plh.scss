@@ -1,16 +1,20 @@
 @import "./variables.plh.scss";
 
-/// Ensure template rows have spacing below for all top-level rows (not necessarily all nested)
-plh-template-container > .template-container > plh-template-component {
-  margin-bottom: var(--template-container-margin-bottom, 10px);
-}
-
 /// Ensure pages have margin at top of first element
-plh-template-page plh-template-container:first-of-type {
-  padding-top: var(--large-margin);
+plh-template-container.main-layout-padding {
+  padding: 24px;
 }
 
 /// Remove padding from plh-button component so they can fit more nicely in containers
 plh-button > ion-button {
   padding: 0 !important;
+}
+
+/// Ensure every other template row has spacing applied (ignore case of 1 child nested)
+plh-template-container > .template-container > plh-template-component:nth-of-type(2n) {
+  margin: 1em 0;
+}
+/// Ensure last component doesn't add unnecessary padding to bottom of page per above rule
+plh-template-container > .template-container > plh-template-component:last-of-type {
+  margin-bottom: 0;
 }
