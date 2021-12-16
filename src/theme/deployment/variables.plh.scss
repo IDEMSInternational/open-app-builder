@@ -1,1 +1,4 @@
-// TODO - move plh-specific variables from theme variables.scss to here and import into theme
+:root {
+  /// margin applied to bottom of template rows
+  --template-container-margin-bottom: 16px;
+}
