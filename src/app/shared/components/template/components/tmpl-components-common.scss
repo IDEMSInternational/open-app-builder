@@ -1,4 +1,4 @@
-@import "../../../../../theme/mixins.scss";
+@import "/src/theme/mixins.scss";
 
 .plh-tmpl-comp {
   // border:2px solid purple;
@@ -15,18 +15,6 @@
   width: 100%;
 }
 
-.display-group {
-  @include flex-centered;
-  flex-direction: row;
-  width: 100%;
-  .offset {
-    display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-    flex-direction: inherit;
-    width: inherit;
-  }
-}
 .tool_1 {
   @include essential-tool;
   background: var(--tool-one-bg);
@@ -216,25 +204,6 @@ p {
   background: var(--ion-color-primary-contrast);
 }
 
-.banner_welcome {
-  margin-top: var(--regular-margin);
-  border-radius: var(--ion-border-radius-secondary);
-  width: 100%;
-  margin-bottom: var(--largest-margin) !important;
-  background: var(--ion-dg-bg-default);
-  .offset {
-    margin-bottom: -30px !important;
-  }
-  .offset {
-    plh-template-component > .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
-      height: 220px;
-      &.margin-t-regular {
-        margin-top: 0 !important;
-      }
-    }
-  }
-}
-
 .banner_short {
   margin-top: var(--regular-margin);
   border-radius: var(--ion-border-radius-secondary);
@@ -260,59 +229,6 @@ p {
       }
     }
   }
-}
-
-.home_screen {
-  border-radius: var(--ion-border-radius-secondary);
-  width: 100%;
-  height: var(--home-screen-height);
-  justify-content: space-between;
-  @media (max-width: 320px) {
-    height: var(--home-screen-height-small);
-  }
-  & .offset {
-    width: 100%;
-    plh-template-component:first-child {
-      margin-bottom: var(--huge-margin);
-      padding-left: var(--small-padding);
-      max-width: 15%;
-      @media (max-width: 1024px) {
-        max-width: 20%;
-      }
-      @media (max-width: 768px) {
-        max-width: 25%;
-      }
-      @media (max-width: 414px) {
-        max-width: 48%;
-      }
-      @media (max-width: 375px) {
-        max-width: 50%;
-      }
-    }
-    plh-template-component:last-child {
-      flex: 1;
-      padding-top: var(--huge-padding);
-      @media (max-width: 375px) {
-        h1 {
-          font-size: var(--font-size-title-small-device) !important;
-        }
-      }
-      @media (max-width: 320px) {
-        h1 {
-          font-size: 18px !important;
-        }
-      }
-    }
-  }
-}
-.light {
-  background: var(--home-screen-light-bg);
-}
-.shade {
-  background: var(--home-screen-shade-bg);
-}
-.dark {
-  background: var(--home-screen-dark-bg);
 }
 
 .left {
