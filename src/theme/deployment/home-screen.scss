@@ -13,6 +13,8 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
   plh-template-component[data-display-component="TmplLottieAnimation"] {
     @include flex-centered;
     flex-direction: column;
+    // make offset slightly out of top
+    margin-top: -30px;
     padding: var(--small-padding);
     max-width: 15%;
     @media (max-width: 1024px) {
@@ -47,6 +49,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
   // quick-access button
   plh-round-button {
     display: block;
+    // make offset slightly out of bottom
     margin-bottom: -10px;
   }
 }
@@ -60,4 +63,14 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
 }
 plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
   background: var(--home-screen-dark-bg);
+}
+
+/// HACK - (TODO handle with authoring) remove margins for summary elements
+plh-template-container > .template-container > plh-template-component[data-name="clicks_all_time"] {
+  margin-bottom: 0;
+}
+plh-template-container
+  > .template-container
+  > plh-template-component[data-name="clicks_this_week"] {
+  margin-bottom: 0;
 }
