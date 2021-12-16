@@ -16,6 +16,7 @@ program.version("1.0.0").description("IDEMS App Scripts");
 // Handle legacy command renames so can still run `npm run scripts gdrive-download`
 const legacyCommandMappings = {
   "gdrive-download": ["app-data", "download"],
+  "gdrive-auth": ["app-data", "download", "--authorize"],
   "decrypt-config": ["config", "decrypt"],
   "encrypt-config": ["config", "encrypt"],
   "sync-plh-content": ["app-data", "sync"],
