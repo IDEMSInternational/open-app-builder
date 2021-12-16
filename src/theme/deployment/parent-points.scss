@@ -1,5 +1,5 @@
 /// Wrap parent_point display groups in grid
-/// @example example_buttons_padding */
+/// @example /template/example_buttons_padding */
 plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   display: grid;
   // ensure all tiles are at least 120px (wrap to multiple lines if not), and size equally
@@ -9,30 +9,17 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   width: 100%;
 }
 
-// TODO - CC 2021-12-16 - resolve what is still required
-.parent_point {
-  padding: calc(var(--regular-padding) * var(--scale-factor-tile)) var(--small-padding);
-  width: calc(var(--tile-parent-point-width) * var(--scale-factor-tile));
-  height: calc(var(--tile-parent-point-height) * var(--scale-factor-tile));
-  min-height: unset;
-  max-width: unset;
-  &.tile-wrapper {
-    .text {
-      div {
-        font-size: calc(var(--font-size-text-large) * var(--scale-factor-tile));
-        line-height: calc(var(--line-height-text-largest) * var(--scale-factor-tile));
-      }
-    }
-    .button-wrapper {
-      .btn-tile {
-        width: calc(63px * var(--scale-factor-tile));
-        height: calc(63px * var(--scale-factor-tile));
-        border: none;
-        img {
-          width: calc(50px * var(--scale-factor-tile));
-          height: calc(50px * var(--scale-factor-tile));
-        }
-      }
-    }
+/// Parent center template page
+/// @example /template/parent_centre
+plh-template-container[data-templatename="parent_centre"] {
+  plh-tmpl-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: block;
+  }
+  plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+    // ensure tiles are at least 200px and provide a larger gap between icons
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 32px;
   }
 }
