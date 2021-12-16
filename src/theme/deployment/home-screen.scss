@@ -1,0 +1,63 @@
+@import "../mixins.scss";
+
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
+  @include flex-centered;
+  border-radius: var(--ion-border-radius-secondary);
+  width: 100%;
+  height: var(--home-screen-height);
+  justify-content: space-between;
+  @media (max-width: 320px) {
+    height: var(--home-screen-height-small);
+  }
+  // animated start icon
+  plh-template-component[data-display-component="TmplLottieAnimation"] {
+    @include flex-centered;
+    flex-direction: column;
+    padding: var(--small-padding);
+    max-width: 15%;
+    @media (max-width: 1024px) {
+      max-width: 20%;
+    }
+    @media (max-width: 768px) {
+      max-width: 25%;
+    }
+    @media (max-width: 414px) {
+      max-width: 48%;
+    }
+    @media (max-width: 375px) {
+      max-width: 50%;
+    }
+  }
+
+  // main content block (e.g. weekly workshops)
+  plh-template-component:last-child {
+    flex: 1;
+    padding-top: var(--huge-padding);
+    @media (max-width: 375px) {
+      h1 {
+        font-size: var(--font-size-title-small-device) !important;
+      }
+    }
+    @media (max-width: 320px) {
+      h1 {
+        font-size: 18px !important;
+      }
+    }
+  }
+  // quick-access button
+  plh-round-button {
+    display: block;
+    margin-bottom: -10px;
+  }
+}
+
+// background colours
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
+  background: var(--home-screen-light-bg);
+}
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
+  background: var(--home-screen-shade-bg);
+}
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
+  background: var(--home-screen-dark-bg);
+}
