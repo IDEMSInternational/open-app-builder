@@ -35,7 +35,7 @@ ion-toggle {
     padding-left: 5px;
   }
   ion-toggle[aria-checked="false"]::after {
-    content: "x";
+    content: "✗";
     right: $togglePadding;
     padding-right: 7px;
   }
