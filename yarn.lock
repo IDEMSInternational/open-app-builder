@@ -3122,19 +3122,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/angular@npm:^5.8.5":
-  version: 5.9.1
-  resolution: "@ionic/angular@npm:5.9.1"
+"@ionic/angular@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@ionic/angular@npm:6.0.1"
   dependencies:
-    "@ionic/core": 5.9.1
-    tslib: ^1.9.3
+    "@ionic/core": 6.0.1
+    jsonc-parser: ^3.0.0
+    tslib: ^2.0.0
   peerDependencies:
-    "@angular/core": ">=8.2.7"
-    "@angular/forms": ">=8.2.7"
-    "@angular/router": ">=8.2.7"
-    rxjs: ">=6.2.0"
-    zone.js: ">=0.8.26"
-  checksum: 9ea92450e2b0b831e5371448264e46a1586274827b2dac6ab113f81b427225a93aaf5c575b109a2b849a04d9336af25a70b3271e593b7b622025c8e23d7f962c
+    "@angular/core": ">=12.0.0"
+    "@angular/forms": ">=12.0.0"
+    "@angular/router": ">=12.0.0"
+    rxjs: ">=6.6.0"
+    zone.js: ">=0.11.0"
+  checksum: 63306498ebf4f0a8c70742d7403b0ecf1c5b775e5f41b5bd61aa5f58dfdaf36bf8d7951986799f0f541feaea5ec876ace9ab99b7e966c462f42c506054a2cabb
   languageName: node
   linkType: hard
 
@@ -3220,14 +3221,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ionic/core@npm:5.9.1":
-  version: 5.9.1
-  resolution: "@ionic/core@npm:5.9.1"
+"@ionic/core@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@ionic/core@npm:6.0.1"
   dependencies:
-    "@stencil/core": ^2.4.0
-    ionicons: ^5.5.3
+    "@stencil/core": ~2.11.0-0
+    ionicons: ^6.0.0
     tslib: ^2.1.0
-  checksum: 4cba591888db31614c9075fd65e277c340b0a85e1de72e360b564172dfd044efc9730d403285cec29efa4111eac44dcf623ac2aeec18da27ceafe485dc6ecf79
+  checksum: f7c7096f806654fc7bb76ce94d1a94fb99a25fb26ee71d5ef2a15810c2804a09a66a19ab7e8155be52156d8c6d3665cc84ed5403158336c92faefc578d4b9619
   languageName: node
   linkType: hard
 
@@ -4463,12 +4464,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:^2.4.0, @stencil/core@npm:~2.10.0":
+"@stencil/core@npm:~2.10.0":
   version: 2.10.0
   resolution: "@stencil/core@npm:2.10.0"
   bin:
     stencil: bin/stencil
   checksum: 035f74e71c2428a69f15df2a3e234845e3105f3481a352a7aed65f64714fc8b4b3b135a6bb90dfd90aca559d7f80b488cf7b5b2247e96e94fccb5e1bee676634
+  languageName: node
+  linkType: hard
+
+"@stencil/core@npm:~2.11.0-0":
+  version: 2.11.0
+  resolution: "@stencil/core@npm:2.11.0"
+  bin:
+    stencil: bin/stencil
+  checksum: 90bbf7d8866507b1758b44d5f1a5d197853c135e32a9b665643c4b034d41dedbe17af282c9328cfe0d0e3f57fa0b07c660ec834e4f7656de82cb5ac69cf9a8b5
   languageName: node
   linkType: hard
 
@@ -12617,7 +12627,7 @@ __metadata:
     "@ionic-native/http": ^5.33.1
     "@ionic-native/media": ^5.33.1
     "@ionic-native/status-bar": ^5.33.1
-    "@ionic/angular": ^5.8.5
+    "@ionic/angular": ^6.0.1
     "@ionic/angular-toolkit": ^5.0.3
     "@ionic/cli": ^6.18.0
     "@ionic/pwa-elements": ^3.0.2
@@ -14213,12 +14223,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ionicons@npm:^5.5.3":
-  version: 5.5.4
-  resolution: "ionicons@npm:5.5.4"
+"ionicons@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "ionicons@npm:6.0.0"
   dependencies:
     "@stencil/core": ~2.10.0
-  checksum: 02d59b7d3a380a52b6c65ebf1ef56c8ba62f1db70fad474b1171c1ec0988b80d6a6cc4ca2a37a26768a4afaa38fa08f4af3499d222dd60e235a89fe7f37fae37
+  checksum: 237e788466b7b2b1fca1b0c7b14ffd84f5490d0d10d50d61b7ac2a2ac621d9627ac7600191214916ca4cd453dbb728ef8c99cb1549cb99bab445ed08cf6f942f
   languageName: node
   linkType: hard
 
@@ -15990,7 +16000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:3.0.0":
+"jsonc-parser@npm:3.0.0, jsonc-parser@npm:^3.0.0":
   version: 3.0.0
   resolution: "jsonc-parser@npm:3.0.0"
   checksum: 1df2326f1f9688de30c70ff19c5b2a83ba3b89a1036160da79821d1361090775e9db502dc57a67c11b56e1186fc1ed70b887f25c5febf9a3ec4f91435836c99d
@@ -24388,7 +24398,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0, tslib@npm:^1.9.3":
+"tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
