@@ -19,6 +19,10 @@ import { getStringParamFromTemplateRow } from "../../../utils";
         width: 100%;
         height: 100%;
         object-fit: contain;
+        padding: var(--tiny-padding);
+      }
+      img[data-param-style="no-padding"] {
+        padding: 0;
       }
       .tmpl-image-container {
         width: 100%;
@@ -28,11 +32,11 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   ],
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
-  style: string = null;
+  style: "no-padding" = null;
 
   ngOnInit() {
     if (this._row && this._row.parameter_list) {
-      this.style = getStringParamFromTemplateRow(this._row, "style", null);
+      this.style = getStringParamFromTemplateRow(this._row, "style", null) as any;
     }
   }
 }
