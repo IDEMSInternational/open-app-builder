@@ -1,17 +1,5 @@
 @import "../../../../theme/mixins.scss";
 
-plh-template-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  h1 {
-    p {
-      margin: 0;
-    }
-  }
-}
-
 //   &.passive {
 //     background-color: var(--theme-var-templatePassiveBg, #e1f2fd);
 //   }

@@ -61,16 +61,8 @@ export class TmplCompHostDirective {
   encapsulation: ViewEncapsulation.None,
   styles: [
     `
-      plh-template-component {
-        width: 100%;
-      }
       plh-template-component[data-hidden="true"] {
         display: none !important;
-      }
-      plh-template-component[data-debug-hidden="true"] {
-        display: flex !important;
-        flex: 1 !important;
-        height: unset !important;
       }
     `,
   ],
