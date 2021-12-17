@@ -59,13 +59,7 @@ export class TmplCompHostDirective {
     <ng-template plhTemplateComponentHost></ng-template>
   `,
   encapsulation: ViewEncapsulation.None,
-  styles: [
-    `
-      plh-template-component[data-hidden="true"] {
-        display: none !important;
-      }
-    `,
-  ],
+  styleUrls: ["./template-component.scss"],
 })
 export class TemplateComponent implements OnInit, ITemplateRowProps {
   /**
@@ -90,7 +84,7 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   // Add bindings to track key data attributes on the component itself, e.g.
   // <plh-template-component data-debug-hidden="false" data-display-component="TmplNumberComponent" data-name="number_selector_6" data-type="number_selector">
   @HostBinding("attr.data-hidden") get getAttrHidden() {
-    return this._row && this._row.hidden ? true : null;
+    return this._row && this._row.hidden ? true : false; // explictly state for all components to allow css selection
   }
   @HostBinding("attr.data-debug-hidden") get getAttrDat() {
     return this.parent && this.parent.debugMode ? true : null;
