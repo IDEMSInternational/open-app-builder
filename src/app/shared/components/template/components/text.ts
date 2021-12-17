@@ -5,7 +5,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 @Component({
   selector: "plh-tmpl-text",
   template: `<p
-    *ngIf="_row"
+    *ngIf="_row && _row.value"
     class="large standard normal margin-t-large"
     [class]="style"
     [ngStyle]="isFalsy ? { display: 'none' } : { display: 'block' }"
