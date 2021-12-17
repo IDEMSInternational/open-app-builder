@@ -1,5 +1,6 @@
-@import "../../../../../../theme/variables.scss";
-@import "../../../../../../theme/mixins.scss";
+@import "src/theme/variables.scss";
+@import "src/theme/mixins.scss";
+
 .workshops-accordion {
   position: relative;
   margin-top: var(--large-margin);

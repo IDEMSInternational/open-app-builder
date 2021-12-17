@@ -44,17 +44,6 @@
   flex-direction: row;
 }
 
-.tmpl-image-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  padding: var(--large-padding) 0 var(--small-padding) 0;
-  & .rounded_corners {
-    border-radius: var(--ion-border-radius-standard);
-  }
-}
-
 .tmpl-video-container {
   width: 100%;
   display: flex;
@@ -161,49 +150,6 @@ p {
     padding: var(--accordion-section-title-padding);
     @media (max-width: 320px) {
       font-size: var(--font-size-subtitle-small-device);
-    }
-  }
-}
-
-.banner_active {
-  background: var(--ion-banner-secondary);
-  @include banner;
-}
-
-.banner_passive {
-  background: var(--ion-banner-primary);
-  @include banner;
-}
-
-.banner_light {
-  color: var(--ion-color-primary);
-  @include banner;
-  background: var(--ion-color-primary-contrast);
-}
-
-.banner_short {
-  margin-top: var(--regular-margin);
-  border-radius: var(--ion-border-radius-secondary);
-  width: 100%;
-  margin-bottom: var(--largest-margin) !important;
-  padding: 0 var(--large-padding);
-  background: var(--ion-dg-bg-default);
-  min-height: var(--banner-short-height);
-  max-height: var(--banner-short-height);
-  .offset {
-    plh-template-component:first-child {
-      flex: 2;
-      padding: 0 var(--regular-padding) var(--regular-padding) 0;
-    }
-    plh-template-component:last-child {
-      flex: 1;
-      min-width: var(--banner-short-image-width);
-      max-width: fit-content;
-      plh-tmpl-image > .tmpl-image-container {
-        &.margin-t-regular {
-          margin-top: 0 !important;
-        }
-      }
     }
   }
 }

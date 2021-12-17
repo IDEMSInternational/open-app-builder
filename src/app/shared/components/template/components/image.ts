@@ -1,45 +1,38 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "data-models";
+import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container" [class]="style">
-      <img *ngIf="imageSrc" [src]="imageSrc | plhAsset" />
+    <div class="tmpl-image-container" [class]="style" [attr.data-param-style]="style">
+      <img *ngIf="_row.value" [src]="_row.value | plhAsset" />
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
       :host {
+        display: contents;
+      }
+      img {
         width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .tmpl-image-container {
+        width: 100%;
+        height: 100%;
       }
     `,
   ],
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
-  style = "";
-
-  constructor() {
-    super();
-  }
-
-  imageSrc: string;
-
-  @Input() set row(r: FlowTypes.TemplateRow) {
-    if (r.value) {
-      this.style += ` ${r.parameter_list?.style}`;
-      this.imageSrc = r.value;
-    } else {
-      console.warn("No image specified", { ...r });
-    }
-  }
+  style: string = null;
 
   ngOnInit() {
     if (this._row && this._row.parameter_list) {
-      this.style = getStringParamFromTemplateRow(this._row, "style", "");
+      this.style = getStringParamFromTemplateRow(this._row, "style", null);
     }
   }
 }
