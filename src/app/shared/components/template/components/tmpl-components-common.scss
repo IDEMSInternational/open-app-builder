@@ -88,7 +88,6 @@ p {
 .title-wrapper {
   display: flex;
   align-items: center;
-  margin-top: var(--large-margin);
   h1 {
     margin: 0;
     line-height: var(--line-height-text-largest);
@@ -227,9 +226,4 @@ p {
 }
 .whiteText {
   color: var(--ion-color-primary-contrast);
-}
-:host {
-  plh-template-container {
-    width: 100%;
-  }
 }
