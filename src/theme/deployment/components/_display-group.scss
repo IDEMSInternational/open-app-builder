@@ -13,6 +13,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
 /// @example /template/example_buttons_padding */
 plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   // ensure all tiles are at least 120px (wrap to multiple lines if not), and size equally
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 16px;
 }
@@ -32,12 +33,14 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
 
 .display-group-wrapper[data-param-style="two_columns"],
 .display-group-wrapper[data-param-style="two_columns_images"] {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 2fr;
 }
 /// 2-column display with enforced image max-height (only for logo display page)
 /// @example /feature_two_columns_images
 .display-group-wrapper[data-param-style="two_columns_images"] {
+  display: grid;
   grid-gap: 32px;
   align-items: center;
   justify-items: center;

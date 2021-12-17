@@ -81,16 +81,6 @@ ion-button.no-padding {
   margin-top: var(--huge-margin);
 }
 
-.main-layout-padding {
-  @media (max-width: 339px) {
-    padding: 0 var(--regular-margin);
-  }
-
-  @media (min-width: 340px) {
-    padding: 0 var(--large-margin);
-  }
-}
-
 .margin-lr-small {
   margin: 0 var(--small-margin);
 }
