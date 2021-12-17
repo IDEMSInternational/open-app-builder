@@ -1,4 +1,17 @@
-:root {
-  /// margin applied to bottom of template rows
-  --template-container-margin-bottom: 16px;
+@use "sass:color";
+
+// deployment-variables are assigned at app-root instead of root to take priority
+app-root {
+  // Banner //
+  --banner-short-height: 95px;
+  --banner-short-image-width: 75px;
+
+  //BUTTONS
+  --buttons-min-height: 71px;
+  --buttons-short-height: 50px;
+  --buttons-medium-height: 65px;
+  --buttons-tall-height: 80px;
+  --buttons-font-size-small: 20px;
+  --buttons-font-size: 25px;
+  --buttons-size: 64px;
 }
