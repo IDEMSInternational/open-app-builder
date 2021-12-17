@@ -55,11 +55,48 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   }
 }
 
-.display-group .display-group-wrapper plh-template-component.heading {
+/// Display banners
+@mixin banner {
+  border-radius: var(--ion-border-radius-secondary);
+  margin-top: var(--regular-margin);
+  width: 100%;
+  margin: 0 auto 5px auto;
+}
+.display-group-wrapper[data-param-style="banner_active"] {
+  background: var(--ion-banner-secondary);
+  @include banner;
+}
+.display-group-wrapper[data-param-style="banner_passive"] {
+  background: var(--ion-banner-primary);
+  @include banner;
+}
+.display-group-wrapper[data-param-style="banner_light"] {
+  color: var(--ion-color-primary);
+  @include banner;
+  background: var(--ion-color-primary-contrast);
+}
+.display-group-wrapper[data-param-style="banner_short"] {
+  margin-top: var(--regular-margin);
+  border-radius: var(--ion-border-radius-secondary);
+  width: 100%;
+  margin-bottom: var(--largest-margin) !important;
+  padding: 0 var(--large-padding);
+  background: var(--ion-dg-bg-default);
+  height: var(--banner-short-height);
+  /// short banner title
+  plh-template-component[data-type="subtitle"] {
+    flex: 1;
+  }
+  plh-template-component[data-type="image"] {
+    padding: var(--small-padding);
+  }
+}
+
+.display-group-wrapper plh-template-component.heading {
   height: auto;
 }
 
-.display-group .display-group-wrapper plh-template-component.banner {
+.display-group-wrapper plh-template-component.banner {
   background: transparent;
 }
 
