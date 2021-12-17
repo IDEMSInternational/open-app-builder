@@ -3,27 +3,6 @@ plh-button > ion-button {
   padding: 0 !important;
 }
 
-/// Ensure all directly nested template rows have spacing between elements,
-/// except in case where only one row (e.g. deep-nested)
-plh-template-container > plh-template-component {
-  margin-top: 1em;
-}
-plh-template-container > plh-template-component:first-of-type {
-  margin-top: 0;
-}
-/// Ensure standalone containers and components fill all available space
-plh-template-container:only-child,
-plh-template-component:only-child {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
-}
-plh-template-container,
-plh-template-component {
-  display: block;
-}
-
 /// Ensure all pages have padding
 ion-content {
   --padding-top: 24px;
