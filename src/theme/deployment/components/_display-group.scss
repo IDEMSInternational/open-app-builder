@@ -70,7 +70,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   background: var(--ion-dg-bg-default);
   justify-content: center;
 
-  plh-template-component > .plh-tmpl-comp > plh-tmpl-image > .tmpl-image-container {
+  plh-template-component > plh-tmpl-image > .tmpl-image-container {
     height: 220px;
     img {
       margin-bottom: -30px;

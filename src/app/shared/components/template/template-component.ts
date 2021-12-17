@@ -48,29 +48,37 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div
+    <!-- <div
       class="plh-tmpl-comp"
       [attr.data-hidden]="_row.hidden"
       [attr.data-debug]="parent.debugMode"
       [ngClass]="{ disabled: _row.disabled }"
       [attr.data-rowname]="_row.name"
-    >
-      <!-- Template Debugger -->
-      <plh-template-debugger
-        *ngIf="parent.debugMode"
-        [row]="_row"
-        [parent]="parent"
-      ></plh-template-debugger>
-      <!-- Injected template component -->
-      <ng-template plhTemplateComponentHost></ng-template>
-    </div>
+    > -->
+    <!-- Template Debugger -->
+    <plh-template-debugger
+      *ngIf="parent.debugMode"
+      [row]="_row"
+      [parent]="parent"
+    ></plh-template-debugger>
+    <!-- Injected template component -->
+    <ng-template plhTemplateComponentHost></ng-template>
+    <!-- </div> -->
   `,
-  styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
+  // styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
   encapsulation: ViewEncapsulation.None,
   styles: [
     `
-      :host :nth-child(1n) {
+      plh-template-component {
         width: 100%;
+      }
+      plh-template-component[data-hidden="true"] {
+        display: none !important;
+      }
+      plh-template-component[data-debug-hidden="true"] {
+        display: flex !important;
+        flex: 1 !important;
+        height: unset !important;
       }
     `,
   ],
@@ -161,57 +169,54 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
    * Also assume more could be handle with stylesheets instead of specific style
    */
   private setStyleList() {
-    const styles = {};
-    const row = this._row;
-    if (row.style_list) {
-      for (let i = 0; i < row.style_list.length; i++) {
-        let splited = row.style_list[i].split(":");
-        styles[splited[0]] = splited[1];
-        this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
-      }
-    }
-    if (
-      row.parameter_list &&
-      row.parameter_list["style"] === "navigation" &&
-      row.type === "display_group"
-    ) {
-      this.elRef.nativeElement.style.setProperty("display", "flex");
-      this.elRef.nativeElement.style.setProperty("height", "100%");
-      this.elRef.nativeElement.style.setProperty("min-height", "75px");
-      this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
-      let el_component = this.elRef.nativeElement.parentElement.closest("plh-template-component");
-      let el_container = this.elRef.nativeElement.parentElement.closest("plh-template-container");
-      while (el_component && el_container) {
-        try {
-          if (el_component) {
-            el_component.style.setProperty("height", "100%");
-            el_component.style.setProperty("display", "flex");
-            el_component.style.setProperty("align-items", "flex-end");
-          }
-
-          if (el_container) {
-            el_container.style.setProperty("height", "100%");
-            el_container.style.setProperty("display", "flex");
-            el_container.style.setProperty("align-items", "flex-end");
-
-            el_component = el_container.parentElement.closest("plh-template-component");
-          }
-
-          if (el_component) {
-            el_container = el_component.parentElement.closest("plh-template-container");
-          }
-        } catch (ex) {
-          console.error("navigation style settings exception");
-          console.error(ex);
-        }
-      }
-    }
-    if (row.type === "button") {
-      this.elRef.nativeElement.style.setProperty("align-self", "normal");
-    }
-    if (row.type === "help_icon") {
-      this.elRef.nativeElement.style.setProperty("width", "40px");
-    }
+    // const styles = {};
+    // const row = this._row;
+    // if (row.style_list) {
+    //   for (let i = 0; i < row.style_list.length; i++) {
+    //     let splited = row.style_list[i].split(":");
+    //     styles[splited[0]] = splited[1];
+    //     this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
+    //   }
+    // }
+    // if (
+    //   row.parameter_list &&
+    //   row.parameter_list["style"] === "navigation" &&
+    //   row.type === "display_group"
+    // ) {
+    //   // this.elRef.nativeElement.style.setProperty("display", "flex");
+    //   // this.elRef.nativeElement.style.setProperty("height", "100%");
+    //   // this.elRef.nativeElement.style.setProperty("min-height", "75px");
+    //   // this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
+    //   let el_component = this.elRef.nativeElement.parentElement.closest("plh-template-component");
+    //   let el_container = this.elRef.nativeElement.parentElement.closest("plh-template-container");
+    //   while (el_component && el_container) {
+    //     try {
+    //       if (el_component) {
+    //         el_component.style.setProperty("height", "100%");
+    //         el_component.style.setProperty("display", "flex");
+    //         el_component.style.setProperty("align-items", "flex-end");
+    //       }
+    //       if (el_container) {
+    //         el_container.style.setProperty("height", "100%");
+    //         el_container.style.setProperty("display", "flex");
+    //         el_container.style.setProperty("align-items", "flex-end");
+    //         el_component = el_container.parentElement.closest("plh-template-component");
+    //       }
+    //       if (el_component) {
+    //         el_container = el_component.parentElement.closest("plh-template-container");
+    //       }
+    //     } catch (ex) {
+    //       console.error("navigation style settings exception");
+    //       console.error(ex);
+    //     }
+    //   }
+    // }
+    // if (row.type === "button") {
+    //   this.elRef.nativeElement.style.setProperty("align-self", "normal");
+    // }
+    // if (row.type === "help_icon") {
+    //   this.elRef.nativeElement.style.setProperty("width", "40px");
+    // }
   }
 
   /** Create and render a nested template component */
