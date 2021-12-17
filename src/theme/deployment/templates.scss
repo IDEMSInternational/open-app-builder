@@ -70,6 +70,8 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
   plh-template-component:last-child {
     flex: 1;
     padding-top: var(--huge-padding);
+    height: 100%;
+    position: relative;
     @media (max-width: 375px) {
       h1 {
         font-size: var(--font-size-title-small-device) !important;
@@ -81,10 +83,13 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
       }
     }
   }
+
   // quick-access button
-  plh-round-button {
-    display: block;
-    // make offset slightly out of bottom
-    margin-bottom: -10px;
+  plh-template-component[data-display-component="RoundIconButtonComponent"] {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 80px;
+    height: 80px;
   }
 }

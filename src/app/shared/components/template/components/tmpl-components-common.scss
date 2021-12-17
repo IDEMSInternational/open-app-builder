@@ -1,13 +1,5 @@
 @import "/src/theme/mixins.scss";
 
-.plh-tmpl-comp {
-  // border:2px solid purple;
-
-  &.disabled {
-    filter: grayscale(100%);
-  }
-}
-
 .hidden {
   display: none;
 }
@@ -261,4 +253,8 @@ p {
   border: 1px solid #c7c7c7;
   padding: 2px;
   margin: 2px;
+  position: relative;
+  &.disabled {
+    filter: grayscale(100%);
+  }
 }
