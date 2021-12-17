@@ -87,10 +87,4 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
     // make offset slightly out of bottom
     margin-bottom: -10px;
   }
-
-  /// HACK - (TODO handle with authoring) remove margins for summary elements
-  plh-template-component[data-name="clicks_all_time"],
-  plh-template-component[data-name="clicks_this_week"] {
-    margin-bottom: 0;
-  }
 }
