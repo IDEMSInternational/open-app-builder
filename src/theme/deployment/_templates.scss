@@ -28,8 +28,8 @@ plh-template-container[data-templatename="weekly_workshops"] {
   plh-template-component[data-name="heading"] {
     margin: 0 0 30px 0 !important; // TODO - hardcoded with authoring, can fix and remove
   }
-  plh-template-component[data-name="options"] {
-    flex: unset; // TODO - hardcoded with authoring, can fix and remove
+  plh-template-component[data-type="title"] {
+    flex: 1;
   }
   plh-tile-component .tile-wrapper.default_style.workshop_page {
     margin: var(--regular-margin) auto;
