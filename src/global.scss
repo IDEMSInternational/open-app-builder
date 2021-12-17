@@ -58,17 +58,7 @@
   }
 }
 // TODO - these need to be resolved with some of the hardcoded methods that set height:100% and display:flex
-plh-template-component[data-hidden="true"] {
-  display: none !important;
-}
-plh-template-component[data-debug-hidden="true"] {
-  display: flex !important;
-  flex: 1 !important;
-  height: unset !important;
-}
-.plh-tmpl-comp[data-debug="true"] {
-  height: unset;
-}
+
 .no_padding {
   padding: 0 !important;
 }
