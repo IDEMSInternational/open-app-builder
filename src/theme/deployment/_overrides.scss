@@ -1,5 +1,3 @@
-@import "./variables.plh.scss";
-
 /// Ensure pages have margin at top of first element
 plh-template-container.main-layout-padding {
   padding: 24px;
@@ -17,10 +15,4 @@ plh-template-container > .template-container > plh-template-component:nth-of-typ
 /// Ensure last component doesn't add unnecessary padding to bottom of page per above rule
 plh-template-container > .template-container > plh-template-component:last-of-type {
   margin-bottom: 0;
-}
-
-/// HACK - (TODO handle with authoring) remove margins for summary elements
-plh-template-component[data-name="clicks_all_time"],
-plh-template-component[data-name="clicks_this_week"] {
-  margin: 0 !important;
 }
