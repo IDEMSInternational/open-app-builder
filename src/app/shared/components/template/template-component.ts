@@ -108,10 +108,25 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
 
   @ViewChild(TmplCompHostDirective, { static: true }) tmplComponentHost: TmplCompHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private elRef: ElementRef
+  ) {}
 
   ngOnInit() {
     this.renderRow(this._row);
+  }
+  ngAfterContentInit() {
+    this.setStyleList();
+  }
+
+  /** apply any hard-coded styles from template sheet */
+  private setStyleList() {
+    const styles = this._row.style_list || [];
+    styles.forEach((style) => {
+      const [key, value] = style.split(":");
+      this.elRef.nativeElement.style.setProperty(key, value);
+    });
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
