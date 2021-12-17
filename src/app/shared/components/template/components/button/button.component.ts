@@ -93,7 +93,7 @@ export class TmplButtonComponent extends TemplateBaseComponent implements OnInit
     );
   }
   private isTwoColumns(): boolean {
-    const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
+    const displayGroupElement = this.elRef.nativeElement.closest(".display-group-wrapper");
     if (displayGroupElement) {
       return displayGroupElement.classList.contains("two_columns");
     } else {
