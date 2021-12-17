@@ -1,0 +1,37 @@
+/** Custom overrides for specific templates **/
+
+/// import any template styles defined in child folder
+@import "./templates/index";
+
+// w_self_care_stepper
+plh-template-container[data-templatename="w_self_care_stepper"] {
+  // start page higher than default padding
+  margin-top: -20px;
+}
+
+/// parent_center
+plh-template-container[data-templatename="parent_centre"] {
+  plh-tmpl-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    display: block;
+  }
+  plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+    // ensure tiles are at least 200px and provide a larger gap between icons
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 32px;
+  }
+}
+
+/// weekly_workshops
+plh-template-container[data-templatename="weekly_workshops"] {
+  plh-template-component[data-name="heading"] {
+    margin: 0 0 30px 0 !important; // TODO - hardcoded with authoring, can fix and remove
+  }
+  plh-template-component[data-name="options"] {
+    flex: unset; // TODO - hardcoded with authoring, can fix and remove
+  }
+  plh-tile-component .tile-wrapper.default_style.workshop_page {
+    margin: var(--regular-margin) auto;
+  }
+}
