@@ -29,7 +29,7 @@
           <div style="text-align: right">
             <div>
               <ion-button
-                (click)="showCustomNotificationSchedule(notification, picker)"
+                (click)="showCustomNotificationSchedule(notification)"
                 fill="clear"
                 class="no-padding"
                 style="margin: 0"
@@ -106,11 +106,18 @@
   </ion-card>
 
   <!-- Hidden picker used when creating custom datetime -->
-  <ion-datetime
-    style="display: none"
-    (ionChange)="setCustomNotificationSchedule(picker.value)"
-    #picker
-    locale="en-GB-u-hc-h12"
-  ></ion-datetime>
+  <ion-modal #datetimePickerModal [breakpoints]="[0.1, 0.5, 1]" [initialBreakpoint]="0.75">
+    <ng-template>
+      <ion-content>
+        <ion-datetime
+          (ionChange)="setCustomNotificationSchedule(picker.value)"
+          #picker
+          locale="en-GB-u-hc-h12"
+          [value]="pickerValue"
+          [min]="pickerMin"
+        ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
   <!-- displayFormat="MMM DD, h:mm A" -->
 </ion-content>
