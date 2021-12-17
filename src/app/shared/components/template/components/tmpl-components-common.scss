@@ -3,9 +3,6 @@
 .hidden {
   display: none;
 }
-:host .display-group .offset :nth-child(1n) {
-  width: 100%;
-}
 
 .tool_1 {
   @include essential-tool;
