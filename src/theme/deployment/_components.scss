@@ -5,3 +5,17 @@ plh-template-component[data-name="clicks_all_time"],
 plh-template-component[data-name="clicks_this_week"] {
   margin: 0 !important;
 }
+
+/// Move nav footer to bottom of page
+plh-template-component[data-name="nav_buttons"],
+plh-template-component[data-name="intro_nav_buttons"] {
+  margin-top: auto;
+}
+
+/// Ensure animated sections fill all available height
+plh-template-component[data-type="animated_section"] {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
