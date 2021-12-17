@@ -4,14 +4,14 @@ import { getStringParamFromTemplateRow } from "../../../utils";
 
 @Component({
   selector: "plh-tmpl-text",
-  template: `<p
+  template: `<div
     *ngIf="_row && _row.value"
     class="large standard normal margin-t-large"
     [class]="style"
     [ngStyle]="isFalsy ? { display: 'none' } : { display: 'block' }"
     [innerHTML]="type === 'numbered' ? (_row.value | number) : (_row.value?.toString() | markdown)"
     [style.textAlign]="textAlign"
-  ></p> `,
+  ></div> `,
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
