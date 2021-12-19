@@ -13,34 +13,6 @@ import { getStringParamFromTemplateRow } from "../../../utils";
     [style.textAlign]="textAlign"
   ></div> `,
   styleUrls: ["./tmpl-components-common.scss"],
-  styles: [
-    `
-      .margin-t-large {
-        margin-bottom: -0.75em;
-      }
-      .small {
-        font-size: var(--font-size-text-small);
-      }
-      .tiny {
-        font-size: var(--font-size-text-tiny);
-      }
-      .medium {
-        font-size: var(--font-size-text-medium);
-      }
-      .large {
-        font-size: var(--font-size-text-large);
-      }
-      .right {
-        text-align: right;
-      }
-      .left {
-        text-align: left;
-      }
-      .center {
-        text-align: center;
-      }
-    `,
-  ],
 })
 export class TmplTextComponent extends TemplateBaseComponent implements OnInit {
   textAlign: string | null;
