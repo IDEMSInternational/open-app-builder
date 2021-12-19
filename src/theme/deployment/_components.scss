@@ -20,11 +20,6 @@ plh-template-component[data-type="animated_section"] {
   height: 100%;
 }
 
-plh-template-component[data-name="button_completed"] {
-  flex: 1;
-  margin-left: 8px;
-}
-
 /// Apply flex to content box to help ensure nav buttons fill to bottom
 plh-template-component[data-name="content_box"] {
   flex: 1;
