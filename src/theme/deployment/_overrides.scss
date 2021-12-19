@@ -16,3 +16,29 @@ h1 {
     margin: 0;
   }
 }
+
+/// Typography overrides/custom code appled across multiple components
+.margin-t-large {
+  margin-top: 0.75em;
+}
+.small {
+  font-size: var(--font-size-text-small);
+}
+.tiny {
+  font-size: var(--font-size-text-tiny);
+}
+.medium {
+  font-size: var(--font-size-text-medium);
+}
+.large {
+  font-size: var(--font-size-text-large);
+}
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
