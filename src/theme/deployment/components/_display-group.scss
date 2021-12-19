@@ -62,6 +62,15 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   width: 100%;
   margin: 0 auto 5px auto;
 }
+
+.display-group-wrapper[data-param-style="banner"] {
+  margin-top: var(--regular-margin);
+  padding: var(--regular-padding);
+  border-radius: var(--ion-border-radius-secondary);
+  background: var(--ion-dg-bg-default);
+  margin-bottom: var(--regular-margin);
+}
+
 .display-group-wrapper[data-param-style="banner_active"] {
   background: var(--ion-banner-secondary);
   @include banner;
@@ -116,4 +125,38 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
       margin-bottom: -30px;
     }
   }
+}
+
+/// Essential Tools
+@mixin essential-tool {
+  margin-top: var(--regular-margin);
+  padding: var(--regular-padding);
+  flex-direction: column;
+  border-radius: var(--ion-border-radius-secondary);
+}
+
+.display-group-wrapper[data-param-style="tool_1"] {
+  @include essential-tool;
+  background: var(--tool-one-bg);
+}
+.display-group-wrapper[data-param-style="tool_2"] {
+  @include essential-tool;
+  background: var(--tool-two-bg);
+}
+.display-group-wrapper[data-param-style="tool_3"] {
+  @include essential-tool;
+  background: var(--tool-three-bg);
+}
+.display-group-wrapper[data-param-style="tool_4"] {
+  @include essential-tool;
+  background: var(--tool-four-bg);
+}
+.display-group-wrapper[data-param-style="tool_5"] {
+  @include essential-tool;
+  background: var(--tool-five-bg);
+}
+.display-group-wrapper[data-param-style="white_box"] {
+  @include essential-tool;
+  background: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
 }
