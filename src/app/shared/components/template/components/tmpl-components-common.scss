@@ -1,49 +1,5 @@
 @import "/src/theme/mixins.scss";
 
-.hidden {
-  display: none;
-}
-
-.tool_1 {
-  @include essential-tool;
-  background: var(--tool-one-bg);
-}
-.tool_2 {
-  @include essential-tool;
-  background: var(--tool-two-bg);
-}
-.tool_3 {
-  @include essential-tool;
-  background: var(--tool-three-bg);
-}
-.tool_4 {
-  @include essential-tool;
-  background: var(--tool-four-bg);
-}
-.tool_5 {
-  @include essential-tool;
-  background: var(--tool-five-bg);
-}
-.white_box {
-  @include essential-tool;
-  background: var(--ion-color-primary-contrast);
-  border: var(--ion-border-standard);
-}
-.banner {
-  margin-top: var(--regular-margin);
-  padding: var(--regular-padding);
-  border-radius: var(--ion-border-radius-secondary);
-  background: var(--ion-dg-bg-default);
-  margin-bottom: var(--regular-margin);
-}
-
-.column {
-  flex-direction: column;
-}
-.row {
-  flex-direction: row;
-}
-
 .tmpl-video-container {
   width: 100%;
   display: flex;
