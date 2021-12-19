@@ -76,7 +76,7 @@ export class TmplComboBoxComponent
   async openModal() {
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
-      cssClass: "my-custom-modal",
+      cssClass: "combo-box-modal",
       componentProps: {
         row: this._row,
         template: this.template,

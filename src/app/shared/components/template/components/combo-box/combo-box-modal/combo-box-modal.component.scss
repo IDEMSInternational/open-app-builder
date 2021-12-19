@@ -1,39 +1,22 @@
 @import "src/theme/mixins.scss";
-::ng-deep {
-  .my-custom-modal {
-    --height: auto;
-    @media (max-width: 450px) {
-      //padding: 20% 2%  !important;
-    }
+:host {
+  display: contents;
+}
 
-    //padding: 20% 10%  !important;
-    .modal-wrapper {
-      max-width: 90vw;
-      background: var(--ion-color-primary-contrast);
-      border: var(--ion-border-standard);
-      border-radius: var(--ion-border-radius-secondary);
-      .ion-page {
-        max-height: 90vh;
-        position: relative;
-        contain: content;
-      }
-    }
-  }
-  .wrapper {
-    padding: 0;
-    .text-box-input {
-      background: var(--ion-color-primary-contrast);
-      border: var(--ion-border-standard);
-      border-radius: var(--ion-border-radius-secondary);
-      width: 100%;
-      min-height: 55px;
-      font-size: var(--combo-box-font-size-standard);
-      color: var(--ion-color-primary);
-      text-align: center;
-      font-weight: 500;
-      box-shadow: var(--ion-default-box-shadow);
-      margin-bottom: 20px;
-    }
+.wrapper {
+  padding: 0;
+  .text-box-input {
+    background: var(--ion-color-primary-contrast);
+    border: var(--ion-border-standard);
+    border-radius: var(--ion-border-radius-secondary);
+    width: 100%;
+    min-height: 55px;
+    font-size: var(--combo-box-font-size-standard);
+    color: var(--ion-color-primary);
+    text-align: center;
+    font-weight: 500;
+    box-shadow: var(--ion-default-box-shadow);
+    margin-bottom: 20px;
   }
 }
 

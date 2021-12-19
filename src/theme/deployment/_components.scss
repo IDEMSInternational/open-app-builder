@@ -9,7 +9,7 @@ plh-template-component[data-name="clicks_this_week"] {
 /// Move nav footer to bottom of page
 plh-template-component[data-name="nav_buttons"],
 plh-template-component[data-name="intro_nav_buttons"] {
-  margin-top: auto;
+  margin-top: auto !important;
 }
 
 /// Ensure animated sections fill all available height
@@ -23,4 +23,9 @@ plh-template-component[data-type="animated_section"] {
 plh-template-component[data-name="button_completed"] {
   flex: 1;
   margin-left: 8px;
+}
+
+/// Apply flex to content box to help ensure nav buttons fill to bottom
+plh-template-component[data-name="content_box"] {
+  flex: 1;
 }
