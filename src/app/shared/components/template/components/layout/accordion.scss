@@ -47,7 +47,7 @@
     width: var(--accordion-section-width);
     border-radius: var(--ion-border-radius-standard);
     overflow: hidden;
-    padding: var(--accordion-section-padding);
+    padding: var(--small-padding);
     border: var(--ion-border-thin-standard);
     transition: max-height 0.4s;
     overflow-y: hidden;
@@ -70,7 +70,6 @@
       color: var(--ion-color-primary);
     }
     &.openSection {
-      max-height: var(--accordion-section-open-height) !important;
       background: var(--ion-accordion-bg);
       transition: max-height 0.4s;
       .progress {
@@ -86,6 +85,19 @@
       background: var(--ion-accordion-bg);
       opacity: 1;
       transition: opacity 0.4s ease-in;
+    }
+  }
+  .accordion-section {
+    h2 {
+      z-index: 2;
+      text-align: left;
+      margin: 0;
+      font-size: var(--font-size-subtitle-small);
+      font-weight: var(--font-weight-bold);
+      padding: var(--accordion-section-title-padding);
+      @media (max-width: 320px) {
+        font-size: var(--font-size-subtitle-small-device);
+      }
     }
   }
   .accordion-section-content {
