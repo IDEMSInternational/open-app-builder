@@ -12,13 +12,6 @@
   }
 }
 
-.template {
-  width: 100%;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 p {
   width: 100%;
   white-space: pre-line;
@@ -27,86 +20,6 @@ p {
   ol {
     display: table;
     margin: 0;
-  }
-}
-
-.title-wrapper {
-  display: flex;
-  align-items: center;
-  h1 {
-    margin: 0;
-    line-height: var(--line-height-text-largest);
-    font-weight: var(--font-weight-bold);
-    @media (max-width: 375px) {
-      font-size: var(--font-size-title-tiny);
-    }
-    @media (max-width: 320px) {
-      font-size: var(--font-size-title-small-device);
-    }
-  }
-  .alternative {
-    line-height: var(--line-height-text-largest);
-    color: var(--ion-color-primary-contrast);
-    @media (max-width: 320px) {
-      font-size: var(--font-size-title-small-device);
-    }
-  }
-  .tiny {
-    font-size: var(--font-size-title-tiny);
-    @media (max-width: 320px) {
-      font-size: var(--font-size-title-small-device);
-    }
-  }
-  .small {
-    font-size: var(--font-size-title-small);
-  }
-  .medium {
-    font-size: var(--font-size-title-medium);
-  }
-  .large {
-    font-size: var(--font-size-title-large);
-  }
-  .huge {
-    font-size: var(--font-size-title-largest);
-  }
-
-  .title-help {
-    margin-left: var(--tiny-margin);
-    color: var(--ion-color-primary);
-    @include small-square;
-  }
-}
-
-.subtitle-wrapper {
-  display: flex;
-  align-items: center;
-  color: var(--ion-color-primary);
-  h2 {
-    line-height: var(--line-height-text);
-    margin: 0;
-    &.medium {
-      font-size: var(--font-size-subtitle-medium);
-    }
-    &.small {
-      font-size: var(--font-size-subtitle-small);
-    }
-    &.large {
-      font-size: var(--font-size-subtitle-large);
-    }
-  }
-}
-
-.accordion-section {
-  h2 {
-    z-index: 2;
-    text-align: left;
-    margin: 0;
-    font-size: var(--font-size-subtitle-small);
-    font-weight: var(--font-weight-bold);
-    padding: var(--accordion-section-title-padding);
-    @media (max-width: 320px) {
-      font-size: var(--font-size-subtitle-small-device);
-    }
   }
 }
 
