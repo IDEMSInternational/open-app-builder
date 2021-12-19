@@ -1,8 +1,8 @@
 <ion-button
-  [style.--background]="nestedProperty"
   [class]="'full standard medium' + ' ' + style + ' ' + buttonAlign"
   [disabled]="disabled"
   (click)="triggerActions('click')"
+  [attr.data-param-style]="style"
 >
   <span *ngIf="innerHTML" [class]="textAlign" [innerHTML]="_row.value | markdown"> </span>
 </ion-button>
