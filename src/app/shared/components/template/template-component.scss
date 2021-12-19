@@ -3,6 +3,12 @@
 /// render nested templates/components, and display everything else
 /// as block elements of a full-height flex-column layout
 
+/// By default most block elements are already 100% width, however if displayed in flex
+/// container aligned center this will not be the case
+plh-template-component {
+  width: 100%;
+}
+
 /// Do not display hidden components
 plh-template-component[data-hidden="true"] {
   display: none !important;
