@@ -17,6 +17,17 @@ h1 {
   }
 }
 
+p {
+  width: 100%;
+  white-space: pre-line;
+  // display: table;
+  ul,
+  ol {
+    display: table;
+    margin: 0;
+  }
+}
+
 /// Typography overrides/custom code appled across multiple components
 .margin-t-large {
   margin-top: 0.75em;
