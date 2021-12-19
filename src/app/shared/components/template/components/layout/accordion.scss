@@ -85,6 +85,7 @@
       background: var(--ion-accordion-bg);
       opacity: 1;
       transition: opacity 0.4s ease-in;
+      margin-top: calc(var(--small-padding) * -1); // offset for padding in .accordion-section
     }
   }
   .accordion-section {
@@ -94,7 +95,6 @@
       margin: 0;
       font-size: var(--font-size-subtitle-small);
       font-weight: var(--font-weight-bold);
-      padding: var(--accordion-section-title-padding);
       @media (max-width: 320px) {
         font-size: var(--font-size-subtitle-small-device);
       }
