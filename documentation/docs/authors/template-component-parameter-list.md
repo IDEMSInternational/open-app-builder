@@ -1,46 +1,5 @@
 # Template Components
 
-## Audio - TmplAudioComponent 
-### Type 
-type: audio 
-### Value
-value: link to file
-### Parameters 
-#### Parameter 1 
-Parameter Name: src
-##### Values and descriptions
-value_1: null (default) 
-value_2: string 
-description: Audio file source link if value is null try to find link in here
-#### Parameter 2 
-Parameter Name: title 
-##### Values and descriptions 
-value_1: 'Title' - (default) 
-description: Defalut value if this parameter is null
-value_2: string 
-description: Any string as a title 
-#### Parameter 3 
-Parameter Name: help 
-##### Values and descriptions 
-value_1: null - (default) 
-description: No help tooltip if value is null
-value_2: string 
-description: Any string for tooltip 
-#### Parameter 4 
-Parameter Name: range_bar_disabled 
-##### Values and descriptions 
-value_1: false - (default) 
-description: Allows select audio seconds on range bar
-value_2: true 
-description: Disable select audio seconds on range bar
-#### Parameter 5 
-Parameter Name: time_to_rewind 
-##### Values and descriptions
-value_1: number (15) - (default) 
-description: Time to rewind in seconds. Default: 15 seconds
-value_2: number 
-description: Any number as a time to rewind in seconds
-
 ## Button - TmplButtonComponent 
 ### Type 
 type: button 
