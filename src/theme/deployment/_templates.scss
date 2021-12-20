@@ -45,3 +45,21 @@ plh-template-container[data-templatename="weekly_workshops"] {
     margin: var(--regular-margin) auto;
   }
 }
+
+/// parent_centre_essential_tools
+plh-template-container[data-templatename="parent_centre_essential_tools"] {
+  // convert two-column display to regular grid
+  .display-group-wrapper[data-param-style="two_columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-gap: 16px;
+  }
+  plh-tile-component {
+    flex: 1;
+  }
+  plh-tile-component > .tile-wrapper {
+    height: 100%;
+    margin: 0;
+    max-width: 250px;
+    width: 100%;
+  }
+}
