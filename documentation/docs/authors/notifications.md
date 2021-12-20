@@ -5,6 +5,8 @@ Notifications can be authored to be sent from the app, and are handled from with
 !!! Tip
     Campaigns only ever send one notification at their scheduled time, preventing the user being inundated with notifications if multiple are present in a campaign.
 
+Here is an example of two rows added to a `==content_list==` for creating notifications. Information about the specific flow subtypes can be found below
+
 | flow_type | flow_subtype      | flow_name |
 | --------- | ------------      | --------- |
 |data_list	| campaign_schedule	| example_campaign_schedule |
