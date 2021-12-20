@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { APP_FIELDS, SERVER_SYNC_FREQUENCY } from "data-models";
+import { APP_FIELDS, SERVER_SYNC_FREQUENCY_MS } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -20,7 +20,7 @@ import { generateTimestamp } from "../../utils";
 export class ServerService {
   app_user_id: string;
   device_info: DeviceInfo;
-  syncSchedule = interval(SERVER_SYNC_FREQUENCY);
+  syncSchedule = interval(SERVER_SYNC_FREQUENCY_MS);
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(private http: HttpClient) {}
