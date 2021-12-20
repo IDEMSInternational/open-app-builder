@@ -23,6 +23,16 @@ plh-template-container[data-templatename="parent_centre"] {
   }
 }
 
+/// parent_points
+plh-template-container[data-templatename="parent_points"] {
+  plh-template-component[data-type="parent_point_box"] {
+    margin-top: 0;
+  }
+  .display-group-wrapper[data-param-style="parent_point"] {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+}
+
 /// weekly_workshops
 plh-template-container[data-templatename="weekly_workshops"] {
   plh-template-component[data-name="heading"] {
