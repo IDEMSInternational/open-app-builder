@@ -68,6 +68,12 @@ ion-button.no-padding {
   --padding-end: 0;
 }
 
+ion-popover.debugger-popover {
+  --max-width: 90vw;
+  --max-height: 75vh;
+  --width: 100%;
+}
+
 .margin-t-small {
   margin-top: var(--small-margin);
 }

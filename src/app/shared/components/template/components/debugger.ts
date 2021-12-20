@@ -4,34 +4,43 @@ import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-template-debugger",
-  template: `<details #details class="debug-container" [attr.data-hidden]="_row.hidden">
-    <summary style="display:flex">
-      <span class="debug-row-type">{{ _row.type }}</span>
-      <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
-      <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
-        ><ion-icon name="eye-off"></ion-icon
-      ></span>
-    </summary>
-    <div *ngIf="details.open">
-      <table>
-        <th></th>
-        <th></th>
-        <div *ngFor="let key of _row | objectKeys" style="display:contents">
-          <tr *ngIf="!debugFieldExclusions.includes(key) && _row[key]">
-            <td>{{ key }}</td>
-            <td>{{ _row[key] | json }}</td>
-          </tr>
+  template: `
+    <details #details class="debug-container" [attr.data-hidden]="_row.hidden">
+      <summary style="display:flex" (click)="handleSummaryClick($event)">
+        <span class="debug-row-type">{{ _row.type }}</span>
+        <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
+        <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
+          ><ion-icon name="eye-off"></ion-icon
+        ></span>
+      </summary>
+    </details>
+    <ion-popover [isOpen]="details.open" class="debugger-popover">
+      <ng-template>
+        <div style="padding:8px">
+          <table>
+            <th></th>
+            <th></th>
+            <div *ngFor="let key of _row | objectKeys" style="display:contents">
+              <tr *ngIf="!debugFieldExclusions.includes(key) && _row[key]">
+                <td>{{ key }}</td>
+                <td>{{ _row[key] | json }}</td>
+              </tr>
+            </div>
+          </table>
+          <ion-button fill="clear" size="small" (click)="logDebugInfo()">
+            (log full details)
+          </ion-button>
         </div>
-      </table>
-      <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log full details)</ion-button>
-    </div>
-  </details>`,
+      </ng-template>
+    </ion-popover>
+  `,
   styles: [
     `
       .debug-container {
         padding: 5px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.95);
         font-size: small;
+        overflow: auto;
       }
       .debug-container > p {
         text-align: left;
@@ -84,5 +93,8 @@ export class TemplateDebuggerComponent extends TemplateBaseComponent {
     console.log("parent", this.parent);
     console.log("children", this._row.rows);
     console.groupEnd();
+  }
+  public handleSummaryClick(e: Event) {
+    e.stopPropagation();
   }
 }
