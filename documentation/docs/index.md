@@ -65,4 +65,4 @@ Please see [Quickstart Authors](./authors/quickstart.md)
 
 # For Developers
 
-Please see [Quickstart Developers](./developers/1.%20quickstart.md)
+Please see [Quickstart Developers](./developers/quickstart.md)
