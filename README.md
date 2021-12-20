@@ -1,5 +1,7 @@
 # Parenting App UI
 
+[Online Documentation](https://idemsinternational.github.io/parenting-app-ui/)
+
 # Quickstart
 
 ## Prequisites
@@ -61,8 +63,8 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](/documentation/quickstart-authors.md)
+Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/developers/1.%20quickstart/)
 
 # For Developers
 
-Please see [Quickstart Developers](/documentation/quickstart-developers.md)
+Please see [Quickstart Developers]([/documentation/quickstart-developers.md](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/))
