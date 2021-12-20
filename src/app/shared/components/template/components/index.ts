@@ -46,6 +46,7 @@ import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplIconComponent } from "./icon";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
 import { TmplGroupComponent } from "./layout/group";
+import { TemplateHTMLComponent } from "./html/html.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -89,6 +90,7 @@ export const TEMPLATE_COMPONENTS = [
   TmplParentPointBoxComponent,
   TmplLottieAnimation,
   TmplGroupComponent,
+  TemplateHTMLComponent,
 ];
 
 /***************************************************************************************
@@ -148,4 +150,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   debug_toggle: PLHDebugToggleComponent as any,
   items: null,
   group: TmplGroupComponent,
+  html: TemplateHTMLComponent,
 };
