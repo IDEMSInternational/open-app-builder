@@ -53,7 +53,7 @@ export const NOTIFICATION_DEFAULTS = {
 export const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
 
 /** How often to attempt sync - currently every 15mins */
-export const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 15;
+export const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
 
 export const APP_ROUTE_DEFAULTS = {
   /** Default redirect form landing '/' route */
