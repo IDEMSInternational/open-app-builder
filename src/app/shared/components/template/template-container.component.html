@@ -1,23 +1,22 @@
 <ng-template [ngIf]="debugMode && !parent" [ngIfElse]="noDebugger">
   <!-- Debugger Mode -->
-  <div class="debug-container" [attr.data-enabled]="debugMode" [attr.data-debug]="debugMode" *>
-    <div class="debug-name">
-      <div>template: {{ templatename || "(undefined)" }}</div>
-      <div>name: {{ name || "(undefined)" }}</div>
-    </div>
-    <!-- Template Component-->
-    <plh-template-component
-      *ngFor="
-        let row of templateRowService.renderedRows | filterDisplayComponent;
-        trackBy: trackByRow
-      "
-      class="row"
-      [row]="row"
-      [parent]="this"
-      [attr.data-name]="row.name"
-      [attr.data-type]="row.type"
-    ></plh-template-component>
+  <div class="debug-name">
+    <div>template: {{ templatename || "(undefined)" }}</div>
+    <div>name: {{ name || "(undefined)" }}</div>
   </div>
+  <!-- Template Component-->
+  <plh-template-component
+    *ngFor="
+      let row of templateRowService.renderedRows | filterDisplayComponent;
+      trackBy: trackByRow
+    "
+    class="row"
+    [row]="row"
+    [parent]="this"
+    [attr.data-name]="row.name"
+    [attr.data-type]="row.type"
+    data-debug-mode
+  ></plh-template-component>
 </ng-template>
 
 <!-- Normal Mode -->

@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 
