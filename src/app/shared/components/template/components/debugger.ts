@@ -36,6 +36,9 @@ import { TemplateBaseComponent } from "./base";
   `,
   styles: [
     `
+      :host {
+        width: 100%;
+      }
       .debug-container {
         padding: 5px;
         background: rgba(255, 255, 255, 0.95);
