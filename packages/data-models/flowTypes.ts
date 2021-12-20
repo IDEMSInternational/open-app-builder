@@ -370,7 +370,8 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
-    | "group";
+    | "group"
+    | "html";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;
