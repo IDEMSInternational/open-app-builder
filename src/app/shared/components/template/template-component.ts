@@ -82,12 +82,9 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
   @Input() parent: TemplateContainerComponent;
 
   // Add bindings to track key data attributes on the component itself, e.g.
-  // <plh-template-component data-debug-hidden="false" data-display-component="TmplNumberComponent" data-name="number_selector_6" data-type="number_selector">
+  // <plh-template-component data-display-component="TmplNumberComponent" data-name="number_selector_6" data-type="number_selector">
   @HostBinding("attr.data-hidden") get getAttrHidden() {
     return this._row && this._row.hidden ? true : false; // explictly state for all components to allow css selection
-  }
-  @HostBinding("attr.data-debug-hidden") get getAttrDat() {
-    return this.parent && this.parent.debugMode ? true : null;
   }
   @HostBinding("attr.data-display-component") get getComponentDisplayType() {
     return TEMPLATE_COMPONENT_MAPPING[this._row?.type]?.name || "none";
