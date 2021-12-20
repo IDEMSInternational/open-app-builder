@@ -45,15 +45,15 @@ The default settings for notifications will schedule a daily at 12pm. These sett
 ### Notification Debugging
 The app provides a `/campaigns` page that can be used to provide an overview of currently scheduled campaigns and can be used to see which campaign schedules are active
 
-![](./_images/notifications-campaigns-screen.png)
+![](./images/notifications-campaigns-screen.png)
 
 Additionally an individual campaign can be examined to see all evaluated rows and their current status from the **All Campaigns** dropdown on the same page
 
-![](_images/notifications-campaign-dropdown.png)
+![](images/notifications-campaign-dropdown.png)
 
 Clicking the notification icon in the top-right will lead to another `/notifications` page that shows details of scheduled notifications
 
-![](./_images/notifications-debug-screen.png)
+![](./images/notifications-debug-screen.png)
 
 
 ### Scheduling Frequency
