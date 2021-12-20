@@ -38,14 +38,6 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   bgColor: string;
   type: "form" | "dashed_box" | "default";
 
-  constructor(private elRef: ElementRef) {
-    super();
-  }
-
-  @HostBinding("attr.color") get color() {
-    return this.setBackground();
-  }
-
   ngOnInit() {
     this.getParams();
   }
@@ -66,31 +58,5 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
       if (styles.includes("dashed_box")) return "dashed_box";
     }
     return "default";
-  }
-
-  /** TODO CC 2021-12-16 - should be handled by authoring and custom styles */
-  setBackground() {
-    const { style } = this.params;
-    if (style) {
-      if (style.includes("tool_1")) return "#F89B2D";
-      if (style.includes("tool_2")) return "#FF7A00";
-      if (style.includes("tool_3")) return "#0F8AB2";
-      if (style.includes("tool_4")) return "#096B8B";
-      if (style.includes("tool_5")) return "#0D3F60";
-      if (style.includes("white_box")) return "#fff";
-      if (style.includes("active_banner")) return;
-      if (style.includes("passive_banner")) return;
-      if (style.includes("banner")) {
-        const currentBgColor = document.body.style
-          .getPropertyValue("--ion-background-color")
-          .toLocaleLowerCase();
-        const nameBgColor: string =
-          currentBgColor === "#FFF6D6".toLocaleLowerCase() ? "active" : "passive";
-        return this.elRef.nativeElement.style.setProperty(
-          "background",
-          `var(--combo-box-${nameBgColor}-with-answer-bg)`
-        );
-      }
-    }
   }
 }
