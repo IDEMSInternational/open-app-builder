@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import {} from "@ionic/angular";
 import { TemplateBaseComponent } from "src/app/shared/components/template/components/base";
 
 @Component({
