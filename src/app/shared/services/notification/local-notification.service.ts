@@ -6,7 +6,11 @@ import {
   ActionType,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
+import {
+  NOTIFICATION_DEFAULTS,
+  NOTIFICATIONS_SYNC_FREQUENCY_MS,
+} from "packages/data-models/constants";
+import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
@@ -54,6 +58,9 @@ export class LocalNotificationService {
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
 
+  /** How frequently to re-evaluate notification schedule for cases such as changing fields */
+  private syncSchedule = interval(NOTIFICATIONS_SYNC_FREQUENCY_MS);
+
   constructor(dbService: DbService) {
     this.db = dbService.table<ILocalNotification>("local_notifications");
   }
@@ -69,6 +76,7 @@ export class LocalNotificationService {
       }
       this._addListeners();
       await this.loadNotifications();
+      this.syncSchedule.subscribe(() => this.loadNotifications());
     }
   }
 
