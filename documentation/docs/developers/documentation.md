@@ -15,3 +15,20 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
+
+## Adding pages
+These can be created in any sensible nested folder structure, and linked in the `nav` section of `mkdocs.yml` (used to prevent default alphabetical order), e.g.
+
+```yml
+nav:
+  - Intro: index.md
+  - Authors:
+      - authors/quickstart.md
+      - authors/notifications.md
+      - authors/template-component-parameter-list.md
+  - Developers:
+      - developers/quickstart.md
+      - developers/documentation.md
+      - developers/device-testing.md
+```
