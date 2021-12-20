@@ -18,6 +18,7 @@ nav:
       - contributors/adding-documentation.md
   - Developers:
       - developers/quickstart.md
+      - developers/adding-components.md
       - developers/device-testing.md
   - Display Components:
       - components/audio.md
