@@ -63,7 +63,7 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/developers/1.%20quickstart/)
+Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)
 
 # For Developers
 
