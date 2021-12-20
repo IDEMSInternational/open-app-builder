@@ -55,6 +55,10 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
       padding: 10px 10px 40px 10px;
     }
   }
+  // title text
+  plh-template-component[data-display-component="TmplTitleComponent"] {
+    margin-left: unset !important;
+  }
 
   // quick-access button
   plh-template-component[data-display-component="RoundIconButtonComponent"] {
