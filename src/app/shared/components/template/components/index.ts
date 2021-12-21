@@ -43,7 +43,6 @@ import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplLottieAnimation } from "./lottie-animation";
-import { TmplIconComponent } from "./icon";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
 import { TmplGroupComponent } from "./layout/group";
 import { TemplateHTMLComponent } from "./html/html.component";
@@ -78,7 +77,6 @@ export const TEMPLATE_COMPONENTS = [
   RoundIconButtonComponent,
   SquareIconButtonComponent,
   TmplRadioGroupComponent,
-  TmplIconComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplTextBoxComponent,
@@ -116,7 +114,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   button: TmplButtonComponent,
   image: TmplImageComponent,
   help_icon: TmplHelpIconComponent,
-  icon: TmplIconComponent,
   parent_point_counter: TmplParentPointCounterComponent,
   // set variable and nested properties are handled by parent
   set_variable: null as any,
