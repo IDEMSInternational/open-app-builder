@@ -1,46 +1,5 @@
 # Template Components
 
-## Audio - TmplAudioComponent 
-### Type 
-type: audio 
-### Value
-value: link to file
-### Parameters 
-#### Parameter 1 
-Parameter Name: src
-##### Values and descriptions
-value_1: null (default) 
-value_2: string 
-description: Audio file source link if value is null try to find link in here
-#### Parameter 2 
-Parameter Name: title 
-##### Values and descriptions 
-value_1: 'Title' - (default) 
-description: Defalut value if this parameter is null
-value_2: string 
-description: Any string as a title 
-#### Parameter 3 
-Parameter Name: help 
-##### Values and descriptions 
-value_1: null - (default) 
-description: No help tooltip if value is null
-value_2: string 
-description: Any string for tooltip 
-#### Parameter 4 
-Parameter Name: range_bar_disabled 
-##### Values and descriptions 
-value_1: false - (default) 
-description: Allows select audio seconds on range bar
-value_2: true 
-description: Disable select audio seconds on range bar
-#### Parameter 5 
-Parameter Name: time_to_rewind 
-##### Values and descriptions
-value_1: number (15) - (default) 
-description: Time to rewind in seconds. Default: 15 seconds
-value_2: number 
-description: Any number as a time to rewind in seconds
-
 ## Button - TmplButtonComponent 
 ### Type 
 type: button 
@@ -172,7 +131,18 @@ Parameter Name: text
 value_1: empty string - (default) 
 description: no text for the button
 value_2: string 
-description: any string as a button text   
+description: any string as a button text
+#### Parameter 6
+Parameter Name: starting_seconds
+##### Values and descriptions
+value_1: 0 - (default) 
+description: 0 seconds by default
+value_2: number
+description: any number as starting seconds
+#### Parameter 7
+Parameter Name: ping
+##### Values and descriptions
+value_1: '' - (default) 
 
 ## Number Selector - TmplNumberComponent 
 ### Type 
@@ -422,6 +392,18 @@ value_1: 2 - (default)
 description: by default two buttons in one row
 value_2: number
 description: any number for buttons in one row
+#### Parameter 4
+Parameter Name: style
+##### Values and descriptions
+description: String. Class name for button. 
+value_1: '' - (default) 
+description: Primary background color for label  (--ion-color-primary-contrast)
+value_2: full - (default) 
+description: Full width
+value_3: standard - (default) 
+description: Text color white (--ion-color-primary-contrast) 
+value_4: '' - (default)
+description: active radio button background color  (--ion-color-primary-contrast)
 
 ## ComboBox - TmplComboBoxComponent 
 ### Type 

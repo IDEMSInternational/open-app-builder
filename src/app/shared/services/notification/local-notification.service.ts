@@ -6,7 +6,11 @@ import {
   ActionType,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
+import {
+  NOTIFICATION_DEFAULTS,
+  NOTIFICATIONS_SYNC_FREQUENCY_MS,
+} from "packages/data-models/constants";
+import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
@@ -54,6 +58,9 @@ export class LocalNotificationService {
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
 
+  /** How frequently to re-evaluate notification schedule for cases such as changing fields */
+  private syncSchedule = interval(NOTIFICATIONS_SYNC_FREQUENCY_MS);
+
   constructor(dbService: DbService) {
     this.db = dbService.table<ILocalNotification>("local_notifications");
   }
@@ -69,17 +76,29 @@ export class LocalNotificationService {
       }
       this._addListeners();
       await this.loadNotifications();
+      this.syncSchedule.subscribe(() => this.loadNotifications());
     }
   }
 
   public async requestPermission(): Promise<boolean> {
-    if ("Notification" in window) {
-      const { display } = await LocalNotifications.requestPermissions();
-      return display === "granted";
-    } else {
-      console.log("notifications not supported");
-      return false;
+    // If running in browser first check to ensure notification api exists
+    if (!Capacitor.isNativePlatform()) {
+      if (!window.Notification) {
+        console.log("[Notifications Unsupported]");
+        return false;
+      }
     }
+    // Use notifications api to check permissions. Run in parallel with a 5-second
+    // timeout to resolve in cases where prompt does not appear or user fails to interact with it
+    const granted = await Promise.race([
+      new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
+      new Promise<boolean>(async (resolve) => {
+        const { display } = await LocalNotifications.requestPermissions();
+        resolve(display === "granted");
+      }),
+    ]);
+    console.log("[Notifications Enabled]", granted);
+    return granted;
   }
 
   /**

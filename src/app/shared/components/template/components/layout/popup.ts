@@ -27,32 +27,24 @@ import { TemplateContainerComponent } from "../../template-container.component";
   `,
   styles: [
     `
-      .popup-backdrop,
-      .popup-content {
+      .popup-backdrop {
+        height: 100vh;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        position: relative;
-      }
-      .popup-backdrop {
-        height: calc(100vh - 40px);
-        width: 100%;
-        margin-top: 40px;
-        background: rgba(0, 0, 0, 0.6);
       }
       .popup-backdrop[data-standalone] {
-        height: 100vh;
-        margin-top: 0;
         background: white;
       }
 
       .popup-content {
-        width: 85%;
-        max-height: calc(100vh - 140px);
+        margin: 30px;
+        max-height: calc(100vh - 60px);
         background: white;
-        border-radius: 30px;
-        padding: 0px 20px 20px 20px;
+        border-radius: 20px;
+        padding: 20px;
         overflow: auto;
       }
       .popup-content[data-standalone] {
@@ -60,30 +52,29 @@ import { TemplateContainerComponent } from "../../template-container.component";
         height: 100%;
         max-height: 100%;
         border-radius: 0;
+        margin: 0;
       }
       .popup-content::-webkit-scrollbar {
         display: none;
       }
       .close-button {
         position: sticky;
-        min-height: 40px;
-        width: 105%;
-        padding-top: 7px;
-        top: 0;
+        height: 40px;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+        top: -20px;
+        margin-top: -30px;
         right: 0;
         z-index: 3;
+        background: white;
       }
       ion-button::part(native) {
-        font-size: 14px;
-        width: 30%;
-        height: 30px;
+        font-size: 16px;
+        width: 70px;
+        height: 20px;
         position: absolute;
-        right: -35px;
-        top: 15px;
-      }
-      .template-container {
-        flex: 1;
-        width: 100%;
+        right: -20px;
+        top: 10px;
       }
     `,
   ],

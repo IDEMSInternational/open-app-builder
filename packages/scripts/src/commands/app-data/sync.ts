@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { spawnSync } from "child_process";
+import { execSync, spawn, spawnSync } from "child_process";
 import { Command } from "commander";
 import fs from "fs-extra";
 import { getActiveDeployment } from "../deployment/get";
@@ -41,7 +41,14 @@ async function syncAppData(options: IProgramOptions) {
   if (options.clean) {
     cleanFolders();
   }
-  spawnSync(`${scriptsExec} ${downloadCmd}`, { stdio: "inherit", shell: true });
+  const { status } = spawnSync(`${scriptsExec} ${downloadCmd}`, {
+    stdio: "inherit",
+    shell: true,
+  });
+  if (status === 1) {
+    process.exit(1);
+  }
+
   // Convert
   let convertCmd = "app-data convert";
   spawnSync(`${scriptsExec} ${convertCmd}`, { stdio: "inherit", shell: true });

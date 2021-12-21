@@ -8,3 +8,54 @@ theme:
     text: "Open Sans"
 repo_url: https://github.com/IDEMSInternational/parenting-app-ui
 edit_uri: edit/master/documentation/docs/
+
+nav:
+  - Intro: index.md
+  - Authors:
+      - authors/quickstart.md
+      - authors/notifications.md
+  - Contributors:
+      - contributors/adding-documentation.md
+  - Developers:
+      - developers/quickstart.md
+      - developers/adding-components.md
+      - developers/device-testing.md
+  - Display Components:
+      - components/audio.md
+      - components/html.md
+
+# Enable all extension for authoring as per https://squidfunk.github.io/mkdocs-material/setup/extensions/
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde

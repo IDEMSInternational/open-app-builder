@@ -1,0 +1,18 @@
+.subtitle-wrapper {
+  display: flex;
+  align-items: center;
+  color: var(--ion-color-primary);
+  h2 {
+    line-height: var(--line-height-text);
+    margin: 0;
+    &.medium {
+      font-size: var(--font-size-subtitle-medium);
+    }
+    &.small {
+      font-size: var(--font-size-subtitle-small);
+    }
+    &.large {
+      font-size: var(--font-size-subtitle-large);
+    }
+  }
+}

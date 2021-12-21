@@ -22,7 +22,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       ></ion-icon>
     </div>
   `,
-  styleUrls: ["./tmpl-components-common.scss"],
+  styleUrls: ["./title.scss"],
 })
 export class TmplTitleComponent extends TemplateBaseComponent implements ITemplateRowProps, OnInit {
   help: string | null;

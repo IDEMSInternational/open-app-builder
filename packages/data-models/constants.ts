@@ -49,6 +49,12 @@ export const NOTIFICATION_DEFAULTS = {
   },
 };
 
+/** How often to attempt to re-evaluate scheduled notifications - currently every minutes */
+export const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
+
+/** How often to attempt sync - currently every 15mins */
+export const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
+
 export const APP_ROUTE_DEFAULTS = {
   /** Default redirect form landing '/' route */
   home_path: "/template/home_screen",
