@@ -61,3 +61,5 @@ report.*
 .pnp.*
 node_modules
 .vs/slnx.sqlite
+
+.angular

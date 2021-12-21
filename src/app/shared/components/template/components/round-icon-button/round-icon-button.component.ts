@@ -32,7 +32,7 @@ export class RoundIconButtonComponent
   }
 
   ngAfterViewInit() {
-    const el = this.elRef.nativeElement.closest(".display-group");
+    const el = this.elRef.nativeElement.closest(".display-group-wrapper");
     if (el && el.classList.value.includes("navigation")) {
       this.elRef.nativeElement.parentElement.parentElement.style.setProperty("flex", "0");
     }

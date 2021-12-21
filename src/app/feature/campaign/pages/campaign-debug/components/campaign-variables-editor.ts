@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input } from "@angular/core";
-import { addDays } from "@fullcalendar/common";
+import { addDays } from "date-fns";
 import { ModalController } from "@ionic/angular";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";

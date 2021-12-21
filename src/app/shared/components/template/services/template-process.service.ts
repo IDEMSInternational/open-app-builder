@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FlowTypes } from "data-models";
-import { SettingsService } from "src/app/pages/settings/settings.service";
+import { SettingsService } from "src/app/shared/services/settings.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
 import { ServerService } from "src/app/shared/services/server/server.service";

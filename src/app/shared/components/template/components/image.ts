@@ -1,57 +1,42 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "data-models";
+import { Component, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
-import { getImageAssetPath } from "../utils/template-utils";
 
 @Component({
   selector: "plh-tmpl-image",
   template: `
-    <div class="tmpl-image-container" [class]="style">
-      <img *ngIf="imageSrc" [src]="imageSrc" />
+    <div class="tmpl-image-container" [class]="style" [attr.data-param-style]="style">
+      <img *ngIf="_row.value" [src]="_row.value | plhAsset" />
     </div>
   `,
   styleUrls: ["./tmpl-components-common.scss"],
   styles: [
     `
       :host {
+        display: contents;
+      }
+      img {
         width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: var(--tiny-padding);
+      }
+      img[data-param-style="no-padding"] {
+        padding: 0;
+      }
+      .tmpl-image-container {
+        width: 100%;
+        height: 100%;
       }
     `,
   ],
 })
 export class TmplImageComponent extends TemplateBaseComponent implements OnInit {
-  style = "";
-
-  constructor(private http: HttpClient) {
-    super();
-  }
-
-  imageSrc: string;
-
-  @Input() set row(r: FlowTypes.TemplateRow) {
-    if (r.value) {
-      const imageSrc = getImageAssetPath(r.value);
-      this.http
-        .get(imageSrc, { responseType: "arraybuffer" })
-        .toPromise()
-        .then(() => {
-          this.imageSrc = imageSrc;
-          this.style += ` ${r.parameter_list?.style}`;
-        })
-        .catch(() => {
-          console.error("image not found", r.value, imageSrc);
-          // could add fallback image here if desired
-        });
-    } else {
-      console.warn("No image specified", { ...r });
-    }
-  }
+  style: "no-padding" = null;
 
   ngOnInit() {
     if (this._row && this._row.parameter_list) {
-      this.style = getStringParamFromTemplateRow(this._row, "style", "");
+      this.style = getStringParamFromTemplateRow(this._row, "style", null) as any;
     }
   }
 }

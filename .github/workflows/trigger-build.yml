@@ -24,12 +24,13 @@ jobs:
       - name: Checkout LFS objects
         run: git lfs checkout
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-yarn-v1-
       - name: Setup node
         uses: actions/setup-node@v1
         with:

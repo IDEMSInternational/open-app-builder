@@ -17,20 +17,6 @@
   transform: translateY(-50%) translateX(50%);
 }
 
-@mixin banner {
-  border-radius: var(--ion-border-radius-secondary);
-  margin-top: var(--regular-margin);
-  width: 100%;
-  margin: 0 auto 5px auto;
-}
-
-@mixin essential-tool {
-  margin-top: var(--regular-margin);
-  padding: var(--regular-padding);
-  flex-direction: column;
-  border-radius: var(--ion-border-radius-secondary);
-}
-
 @mixin tiny-square {
   width: 25px;
   height: 25px;

@@ -34,10 +34,10 @@ import { TmplSliderComponent } from "./slider/slider.component";
 import { TmplRadioGroupComponent } from "./radio-group/radio-group.component";
 import { TmplTileComponent } from "./tile-component/tile-component.component";
 import { TmplSimpleCheckboxComponent } from "./simple-checkbox/simple-checkbox.component";
-import { TmplAnimationComponent } from "./animation";
 import { TmplTextBoxComponent } from "./text-box/text-box.component";
 import { TmplTextAreaComponent } from "./text-area/text-area.component";
 import { TmplComboBoxComponent } from "./combo-box/combo-box.component";
+import { ComboBoxModalComponent } from "./combo-box/combo-box-modal/combo-box-modal.component";
 import { TemplatePopupComponent } from "./layout/popup";
 import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
@@ -46,7 +46,7 @@ import { TmplLottieAnimation } from "./lottie-animation";
 import { TmplIconComponent } from "./icon";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
 import { TmplGroupComponent } from "./layout/group";
-import { SelectTextComponent } from "./select-text/select-text.component";
+import { TemplateHTMLComponent } from "./html/html.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -81,16 +81,16 @@ export const TEMPLATE_COMPONENTS = [
   TmplIconComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
-  TmplAnimationComponent,
   TmplTextBoxComponent,
   TmplTextAreaComponent,
   TmplComboBoxComponent,
+  ComboBoxModalComponent,
   TmplIconBannerComponent,
   TmplDashedBoxComponent,
   TmplParentPointBoxComponent,
   TmplLottieAnimation,
   TmplGroupComponent,
-  SelectTextComponent,
+  TemplateHTMLComponent,
 ];
 
 /***************************************************************************************
@@ -110,7 +110,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   accordion_section: AccordionSectionComponent,
   advanced_dashed_box: TmplAdvancedDashedBoxComponent,
   form: FormComponent,
-  select_text: SelectTextComponent,
   animated_section: AnimatedSectionComponent,
   display_group: TmplDisplayGroupComponent,
   audio: TmplAudioComponent,
@@ -144,7 +143,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   radio_group: TmplRadioGroupComponent,
   tile_component: TmplTileComponent,
   simple_checkbox: TmplSimpleCheckboxComponent,
-  css_anim: TmplAnimationComponent,
   icon_banner: TmplIconBannerComponent,
   dashed_box: TmplDashedBoxComponent,
   parent_point_box: TmplParentPointBoxComponent,
@@ -152,4 +150,5 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   debug_toggle: PLHDebugToggleComponent as any,
   items: null,
   group: TmplGroupComponent,
+  html: TemplateHTMLComponent,
 };

@@ -29,6 +29,7 @@
 @import "./theme/layout";
 @import "./theme/typography";
 @import "./theme/tooltip";
+@import "./theme/deployment/deployment.scss";
 .slide-up-modal {
   .modal-wrapper {
     max-width: 80%;
@@ -57,17 +58,6 @@
   }
 }
 // TODO - these need to be resolved with some of the hardcoded methods that set height:100% and display:flex
-plh-template-component[data-hidden="true"] {
-  display: none !important;
-}
-plh-template-component[data-debug-hidden="true"] {
-  display: flex !important;
-  flex: 1 !important;
-  height: unset !important;
-}
-.plh-tmpl-comp[data-debug="true"] {
-  height: unset;
-}
 .no_padding {
   padding: 0 !important;
 }
@@ -158,5 +148,4 @@ plh-template-component[data-debug-hidden="true"] {
     border: none;
   }
 }
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~nouislider/distribute/nouislider.min.css";

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Injector, NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { IonicModule, IonicRouteStrategy } from "@ionic/angular";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
 import { LottieModule } from "ngx-lottie";
 import { NouisliderModule } from "ng2-nouislider";
 import { AngularSvgIconModule } from "angular-svg-icon";
@@ -16,14 +16,11 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
 
-// Import plugin
-import { Clipboard } from "@ionic-native/clipboard/ngx";
-import { RouteReuseStrategy } from "@angular/router";
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     SharedPipesModule,
     NouisliderModule,
@@ -42,7 +39,6 @@ import { RouteReuseStrategy } from "@angular/router";
   ],
   // Include the container component as an entry component so that we can a custom elements for it (see below)
   entryComponents: [TemplateContainerComponent],
-  providers: [Clipboard, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
 })
 export class TemplateComponentsModule {
   // Create a custom element for the template container

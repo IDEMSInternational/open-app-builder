@@ -33,8 +33,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "node_modules/plh-data/assets",
-                "output": "assets"
+                "input": "node_modules/app-data/assets",
+                "output": "assets/app_data_assets"
               },
               {
                 "glob": "**/*.svg",
@@ -43,7 +43,6 @@
               }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/intro.js/introjs.css",
               {
                 "input": "src/theme/variables.scss",
@@ -193,7 +192,6 @@
     }
   },
   "cli": {
-    "analytics": false,
     "defaultCollection": "@ionic/angular-toolkit",
     "packageManager": "yarn"
   },
