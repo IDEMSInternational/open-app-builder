@@ -52,22 +52,6 @@ $primary-radio-border-rd: 15px;
             max-width: 27vw;
             min-height: unset;
           }
-
-          svg-icon {
-            @include flex-centered;
-            max-width: calc(100% * 0.8);
-            min-width: calc(100% * 0.8);
-            width: 100%;
-            height: 100%;
-            margin-bottom: 3px;
-
-            svg {
-              max-width: 95%;
-              max-height: 95%;
-              width: 95%;
-              height: 95%;
-            }
-          }
         }
       }
     }
@@ -90,22 +74,6 @@ $primary-radio-border-rd: 15px;
             max-height: 27vw;
             max-width: 27vw;
             min-height: unset;
-          }
-
-          svg-icon {
-            @include flex-centered;
-            min-width: 25px;
-            min-height: 22px;
-            width: 100%;
-            height: 100%;
-            margin-bottom: 3px;
-
-            svg {
-              max-width: 95%;
-              max-height: 95%;
-              width: 95%;
-              height: 95%;
-            }
           }
         }
       }
