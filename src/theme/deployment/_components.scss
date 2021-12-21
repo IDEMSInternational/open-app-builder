@@ -6,11 +6,10 @@ plh-template-component[data-name="clicks_this_week"] {
   margin: 0 !important;
 }
 
-/// Move nav footer to bottom of page, and ensure padding above
-plh-template-component[data-name="nav_buttons"],
-plh-template-component[data-name="intro_nav_buttons"] {
-  margin-top: auto !important;
-  padding-top: 1em;
+/// Ensure any container ending with name nav_buttons (intro_nav_button, outro_nav_buttons etc.)
+/// fills all available space so child components can justify-content end
+plh-template-component[data-name$="nav_buttons"] {
+  flex: 1;
 }
 
 /// Ensure animated sections fill all available height
