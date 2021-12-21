@@ -6,7 +6,11 @@ import {
   ActionType,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import { APP_STRINGS } from "packages/data-models/constants";
+import {
+  NOTIFICATION_DEFAULTS,
+  NOTIFICATIONS_SYNC_FREQUENCY_MS,
+} from "packages/data-models/constants";
+import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
@@ -54,6 +58,9 @@ export class LocalNotificationService {
   /** Track session start time to resolve list of notifications processed during session */
   private sessionStartTime = new Date().getTime();
 
+  /** How frequently to re-evaluate notification schedule for cases such as changing fields */
+  private syncSchedule = interval(NOTIFICATIONS_SYNC_FREQUENCY_MS);
+
   constructor(dbService: DbService) {
     this.db = dbService.table<ILocalNotification>("local_notifications");
   }
@@ -67,14 +74,31 @@ export class LocalNotificationService {
           types: Object.values(NOTIFICATION_ACTIONS),
         });
       }
+      this._addListeners();
+      await this.loadNotifications();
+      this.syncSchedule.subscribe(() => this.loadNotifications());
     }
-    this._addListeners();
-    await this.loadNotifications();
   }
 
   public async requestPermission(): Promise<boolean> {
-    const { display } = await LocalNotifications.requestPermissions();
-    return display === "granted";
+    // If running in browser first check to ensure notification api exists
+    if (!Capacitor.isNativePlatform()) {
+      if (!window.Notification) {
+        console.log("[Notifications Unsupported]");
+        return false;
+      }
+    }
+    // Use notifications api to check permissions. Run in parallel with a 5-second
+    // timeout to resolve in cases where prompt does not appear or user fails to interact with it
+    const granted = await Promise.race([
+      new Promise<boolean>((resolve) => setTimeout(resolve, 5000, false)),
+      new Promise<boolean>(async (resolve) => {
+        const { display } = await LocalNotifications.requestPermissions();
+        resolve(display === "granted");
+      }),
+    ]);
+    console.log("[Notifications Enabled]", granted);
+    return granted;
   }
 
   /**
@@ -153,8 +177,9 @@ export class LocalNotificationService {
    * see named actions below for configurations
    */
   public async scheduleNotification(options: ILocalNotification, reloadNotifications = true) {
+    if (!this.permissionGranted) return;
     options.extra = { ...options.extra };
-    const notifications = [{ ...NOTIFICATION_DEFAULTS, ...options }];
+    const notifications = [{ ...LOCAL_NOTIFICATION_DEFAULTS, ...options }];
     await LocalNotifications.schedule({ notifications });
     // ensure extra field populated (TODO - could make stronger requirement elsewhere)
     options.extra = { ...options.extra };
@@ -166,6 +191,7 @@ export class LocalNotificationService {
 
   /** Remove API and DB references for a given notification id **/
   public async removeNotification(id: number, reloadNotifications = true) {
+    if (!this.permissionGranted) return;
     const notifications = [{ id }];
     await LocalNotifications.cancel({ notifications });
     await this.removeDBNotification(id);
@@ -185,6 +211,7 @@ export class LocalNotificationService {
     delay = 3,
     forceBackground = true
   ) {
+    if (!this.permissionGranted) return;
     // remove any existing notificaiton and reschedule with a new id to allow action reprocessing
     await this.removeNotification(notification.id, false);
     const notificationDeliveryTime = addSeconds(new Date(), delay);
@@ -240,7 +267,7 @@ export class LocalNotificationService {
    *
    * TODO - handle removal/re-init methods to avoid memory leaks
    */
-  async _addListeners() {
+  private async _addListeners() {
     LocalNotifications.addListener(
       "localNotificationActionPerformed",
       async (action) => {
@@ -311,10 +338,10 @@ const NOTIFICATION_ACTIONS: {
 /**
  * Default settings used where otherwise not specified
  */
-const NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
+const LOCAL_NOTIFICATION_DEFAULTS: LocalNotificationSchema = {
   id: new Date().getUTCMilliseconds(),
-  title: APP_STRINGS.NOTIFICATION_DEFAULT_TITLE,
-  body: APP_STRINGS.NOTIFICATION_DEFAULT_TEXT,
+  title: NOTIFICATION_DEFAULTS.title,
+  body: NOTIFICATION_DEFAULTS.text,
   sound: null,
   attachments: null,
   // actionTypeId: "action_1", // Currently no action buttons included

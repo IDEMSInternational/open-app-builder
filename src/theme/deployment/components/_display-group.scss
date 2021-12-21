@@ -1,0 +1,162 @@
+// background colours
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="light"] {
+  background: var(--home-screen-light-bg);
+}
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="shade"] {
+  background: var(--home-screen-shade-bg);
+}
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
+  background: var(--home-screen-dark-bg);
+}
+
+/// Wrap parent_point display groups in grid
+/// @example /template/example_buttons_padding */
+plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+  // ensure all tiles are at least 120px (wrap to multiple lines if not), and size equally
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 16px;
+}
+
+/// Remove additional padding from around images which make
+/// @example /template/feature_two_columns_images
+.display-group-wrapper[data-param-style="two_columns_images"] .tmpl-image-container {
+  padding: 0 !important;
+}
+
+/// Space navigation group items at start and end of row
+.display-group-wrapper[data-param-style="navigation"] {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.display-group-wrapper[data-param-style="two_columns"],
+.display-group-wrapper[data-param-style="two_columns_images"] {
+  display: grid !important; // default would override with flex
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 2fr;
+}
+/// 2-column display with enforced image max-height (only for logo display page)
+/// @example /feature_two_columns_images
+.display-group-wrapper[data-param-style="two_columns_images"] {
+  display: grid;
+  grid-gap: 32px;
+  align-items: center;
+  justify-items: center;
+  plh-template-component {
+    display: block;
+    max-height: 160px;
+    max-width: 160px;
+    padding: 16px;
+  }
+  .tmpl-image-container {
+    padding: 0 !important;
+  }
+}
+
+/// Display banners
+@mixin banner {
+  border-radius: var(--ion-border-radius-secondary);
+  margin-top: var(--regular-margin);
+  width: 100%;
+  margin: 0 auto 5px auto;
+}
+
+.display-group-wrapper[data-param-style="banner"] {
+  margin-top: var(--regular-margin);
+  padding: var(--regular-padding);
+  border-radius: var(--ion-border-radius-secondary);
+  background: var(--ion-dg-bg-default);
+  margin-bottom: var(--regular-margin);
+}
+
+.display-group-wrapper[data-param-style="banner_active"] {
+  background: var(--ion-banner-secondary);
+  @include banner;
+}
+.display-group-wrapper[data-param-style="banner_passive"] {
+  background: var(--ion-banner-primary);
+  @include banner;
+}
+.display-group-wrapper[data-param-style="banner_light"] {
+  color: var(--ion-color-primary);
+  @include banner;
+  background: var(--ion-color-primary-contrast);
+}
+.display-group-wrapper[data-param-style="banner_short"] {
+  margin-top: var(--regular-margin);
+  border-radius: var(--ion-border-radius-secondary);
+  width: 100%;
+  margin-bottom: var(--largest-margin) !important;
+  padding: 0 var(--large-padding);
+  background: var(--ion-dg-bg-default);
+  height: var(--banner-short-height);
+  /// short banner title
+  plh-template-component[data-type="subtitle"] {
+    flex: 1;
+  }
+  plh-template-component[data-type="image"] {
+    padding: var(--small-padding);
+  }
+}
+
+.display-group-wrapper plh-template-component.heading {
+  height: auto;
+}
+
+.display-group-wrapper plh-template-component.banner {
+  background: transparent;
+}
+
+///
+/// @example /template/w_self_care_stepper
+.display-group-wrapper[data-param-style="banner_welcome"] {
+  margin-top: var(--regular-margin);
+  border-radius: var(--ion-border-radius-secondary);
+  width: 100%;
+  margin-bottom: var(--largest-margin) !important;
+  background: var(--ion-dg-bg-default);
+  justify-content: center;
+
+  plh-template-component > plh-tmpl-image > .tmpl-image-container {
+    height: 220px;
+    img {
+      margin-bottom: -30px;
+    }
+  }
+}
+
+/// Essential Tools
+@mixin essential-tool {
+  margin-top: var(--regular-margin);
+  padding: var(--regular-padding);
+  flex-direction: column;
+  border-radius: var(--ion-border-radius-secondary);
+}
+
+.display-group-wrapper[data-param-style="tool_1"] {
+  @include essential-tool;
+  background: var(--tool-one-bg);
+}
+.display-group-wrapper[data-param-style="tool_2"] {
+  @include essential-tool;
+  background: var(--tool-two-bg);
+}
+.display-group-wrapper[data-param-style="tool_3"] {
+  @include essential-tool;
+  background: var(--tool-three-bg);
+}
+.display-group-wrapper[data-param-style="tool_4"] {
+  @include essential-tool;
+  background: var(--tool-four-bg);
+}
+.display-group-wrapper[data-param-style="tool_5"] {
+  @include essential-tool;
+  background: var(--tool-five-bg);
+}
+.display-group-wrapper[data-param-style="white_box"] {
+  @include essential-tool;
+  background: var(--ion-color-primary-contrast);
+  border: var(--ion-border-standard);
+}
