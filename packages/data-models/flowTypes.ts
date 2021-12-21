@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { DYNAMIC_PREFIXES } from "./constants";
-import { RapidProFlowExport } from "./rapidpro.model";
+import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
-// import { IDBTable } from "../../../src/app/shared/services/db/db.service";
 
 /*********************************************************************************************
  *  Base flow types
@@ -99,7 +98,6 @@ export namespace FlowTypes {
   }
 
   export interface Conversation extends RapidProFlowExport.RootObject {}
-
   export interface Translation_strings {
     [sourceText: string]: string;
   }
@@ -185,71 +183,6 @@ export namespace FlowTypes {
   /** As not all tasks will launch flows, use actions to specify different ways to handle a task  */
   export type Start_action = "start_new_flow" | "give_award" | "open_app";
 
-  // To Sort - possibly these typings affect the input and not the output???
-
-  /** Format of conversation rows prior to processing */
-  export interface ConversationSheet extends FlowTypeWithData {
-    flow_type: "conversation";
-    rows: ConversationRow[];
-  }
-  /** Format of conversation rows post processing */
-  export interface ConversationRow {
-    row_id?: string | number;
-    type:
-      | "start_new_flow"
-      | "send_message"
-      | "story_slide"
-      | "go_to"
-      | "save_value"
-      | "exit"
-      | "mark_as_completed"
-      | "split_random";
-    from?: string | number;
-    condition?: string | number;
-    condition_var?: string;
-    character?: string;
-    message_text: string;
-    media?: string;
-    icon?: string;
-    choose_multi?: boolean;
-    display_as_tick?: boolean;
-    ticked_by_default?: boolean;
-    default_choice?: string;
-    save_name?: string;
-    choice_media_display?: "both" | "media" | "text";
-    choice_1?: string;
-    choice_1_Media?: string;
-    choice_2?: string;
-    choice_2_Media?: string;
-    choice_3?: string;
-    choice_3_Media?: string;
-    choice_4?: string;
-    choice_4_Media?: string;
-    choice_5?: string;
-    choice_5_Media?: string;
-    choice_6?: string;
-    choice_6_Media?: string;
-    choice_7?: string;
-    choice_7_Media?: string;
-    choice_8?: string;
-    choice_8_Media?: string;
-    choice_9?: string;
-    choice_9_Media?: string;
-    choice_10?: string;
-    choice_10_Media?: string;
-    choice_11?: string;
-    choice_11_Media?: string;
-    choice_12?: string;
-    choice_12_Media?: string;
-    condition_type?: RapidProFlowExport.RouterCaseType;
-    // This is the UUID of the Node first created for this row, which is used to set how nodes go into this node.
-    // This is set once.
-    nodeUUIDForExit?: string;
-    // This is the node to refer to when this row is mentioned as a from in another row.
-    // This is updated e.g. when looping through from nodes.
-    _rapidProNode?: RapidProFlowExport.Node;
-  }
-
   export interface CarePackage {
     id: string;
     label: string;
@@ -259,32 +192,35 @@ export namespace FlowTypes {
     habit_list: string[];
   }
 
-  export interface Campaign_listRow {
-    _id: string;
-    activation_condition_list: DataEvaluationCondition[];
-    deactivation_condition_list: DataEvaluationCondition[];
+  export interface Campaign_listRow extends RowWithActivationConditions {
+    id: string;
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
-    notification_schedule?: NotificationSchedule;
-    _activated?: boolean; // all activation criteria satisfied
-    _deactivated?: boolean; // any deactivation criteria satisfied
-    _active?: boolean; // activated and not deactivated
-
     // additional fields for current data_list but not required
     click_action_list?: TemplateRowAction[];
     icon?: string;
     text?: string;
-
     // placeholder for any extra fields to be added
     [field: string]: any;
   }
-  export interface NotificationSchedule {
-    text?: string;
-    title?: string;
-    time?: { minute?: string; hour?: string }; // specified time for notification, e.g. 19:30
-    delay?: { days?: string; hours?: string; minutes?: string }; // delay until first notification, e.g. 7 day
-
-    _schedule_at?: Date; // calculated from above info
+  export interface Campaign_Schedule extends RowWithActivationConditions {
+    id: string;
+    /** specified time for notification, e.g. 19:30 */
+    time?: { minute: number; hour: number };
+    /** delay until first notification, e.g. 7 day */
+    delay?: { days?: string; hours?: string; minutes?: string };
+    schedule?: {
+      /** fixed dates for start of schedule */
+      start_date?: string;
+      /** fixed dates for end of schedule */
+      end_date?: string;
+      /** weekday number to schedule from (1-Monday, 7-Sunday etc.) */
+      day_of_week?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+    };
+    /** computed list of campaign rows merged into campaign */
+    _campaign_rows?: Campaign_listRow[];
+    /** computed date for next notification as required by scheduling service */
+    _schedule_at?: Date;
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
@@ -316,6 +252,18 @@ export namespace FlowTypes {
     _raw?: string;
     _cleaned?: string;
     _parsed?: string[][];
+  }
+  export interface RowWithActivationConditions {
+    /** evaluated statements for activating campaign */
+    activation_condition_list?: DataEvaluationCondition[];
+    /** evaluated statements for deactivating campaign */
+    deactivation_condition_list?: DataEvaluationCondition[];
+    /** all activation criteria satisfied (stored for debugging)*/
+    _activated?: boolean; //
+    /** any deactivation criteria satisfied (stored for debugging)*/
+    _deactivated?: boolean;
+    /** all activation criteria satisfied and not any deactivation criteria satisfied */
+    _active?: boolean;
   }
 
   export interface Habit_ideas extends FlowTypeWithData {
@@ -415,7 +363,6 @@ export namespace FlowTypes {
     | "text_area"
     | "radio_group"
     | "tile_component"
-    | "css_anim"
     | "combo_box"
     | "icon_banner"
     | "dashed_box"
@@ -424,7 +371,8 @@ export namespace FlowTypes {
     | "debug_toggle"
     | "items"
     | "group"
-    | "select_text";
+    | "select_text"
+    | "html";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;

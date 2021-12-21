@@ -57,7 +57,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   }
 
   private isParentPoint(): boolean {
-    const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
+    const displayGroupElement = this.elRef.nativeElement.closest(".display-group-wrapper");
     if (displayGroupElement) {
       return displayGroupElement.classList.contains("parent_point");
     } else {
@@ -66,7 +66,7 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   }
 
   private isTwoColumns(): boolean {
-    const displayGroupElement = this.elRef.nativeElement.closest(".display-group");
+    const displayGroupElement = this.elRef.nativeElement.closest(".display-group-wrapper");
     if (displayGroupElement) {
       return displayGroupElement.classList.contains("two_columns");
     } else {

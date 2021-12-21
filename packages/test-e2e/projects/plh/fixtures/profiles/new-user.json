@@ -1,5 +1,5 @@
 {
-  "fields": { "_app_language": "eng", "name": "test new user" },
+  "fields": { "_app_language": "za_en", "name": "test new user" },
   "tables": {
     "user_meta": []
   }

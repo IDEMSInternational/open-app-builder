@@ -12,7 +12,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
       </h2>
     </div>
   `,
-  styleUrls: ["./tmpl-components-common.scss"],
+  styleUrls: ["./subtitle.scss"],
 })
 export class TmplSubtitleComponent
   extends TemplateBaseComponent
