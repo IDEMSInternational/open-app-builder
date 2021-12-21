@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
+import { Clipboard } from "@capacitor/clipboard";
+import { Subscription, timer } from "rxjs";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
-} from "../../../../utils";
+} from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
 // RxJS v6+
-import { Subscription, timer } from "rxjs";
-import { Clipboard } from "@ionic-native/clipboard/ngx";
 
 @Component({
   selector: "plh-select-text",
@@ -25,8 +25,7 @@ export class SelectTextComponent
   public style: string | any;
   public isNumberInput: boolean | any;
   public prioritisePlaceholder: boolean | any;
-  toggle: boolean = false;
-  private clipboard: Clipboard = new Clipboard();
+  public toggle: boolean = false;
 
   //emit after 1 second
   public source = timer(1000);
@@ -50,7 +49,7 @@ export class SelectTextComponent
     );
   }
 
-  triggerCopyContent($event: MouseEvent, _row: FlowTypes.TemplateRow) {
+  async triggerCopyContent($event: MouseEvent, _row: FlowTypes.TemplateRow) {
     this.toggle = !this.toggle;
 
     this.subscribe = this.source.subscribe((val) => {
@@ -68,7 +67,7 @@ export class SelectTextComponent
         }
       );
     } else {
-      this.clipboard.copy(text).then((r) => console.log(r));
+      await Clipboard.write(text).then((r) => console.log(r));
     }
   }
 }
