@@ -70,7 +70,7 @@ plh-template-container[data-templatename="nav_buttons"] {
   plh-template-component[data-type="display_group"] {
     justify-content: end; // assume parent has flex:1 property
     plh-template-component[data-type="round_button"] {
-      flex: unset !important; // removed incorrect hardcoded flex
+      flex: 0 !important; // removed incorrect hardcoded flex
     }
     // ensure gap between buttons
     plh-template-component:not([data-hidden="true"]) {
