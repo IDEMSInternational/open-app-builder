@@ -1,7 +1,9 @@
-@import "../../../../../../theme/mixins.scss";
+@import "/src/theme/mixins.scss";
 
-.first ::ng-deep,
-.second ::ng-deep {
+// NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
+// (but ideally should be handled from within markdown itself)
+.first-line-text ::ng-deep,
+.second-line-text ::ng-deep {
   p {
     margin: 0;
   }
@@ -9,13 +11,11 @@
 
 .tile-wrapper {
   @include flex-space-between;
-  .text {
-    div {
-      font-weight: var(--font-weight-bold);
-      font-size: var(--font-size-text-large);
-      line-height: var(--line-height-text-largest);
-      color: var(--ion-color-primary-contrast);
-    }
+  .text > div {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-text-large);
+    line-height: var(--line-height-text-largest);
+    color: var(--ion-color-primary-contrast);
   }
 
   .button-wrapper {
@@ -37,14 +37,15 @@
   }
 }
 .default_style {
-  padding: var(--regular-padding) var(--large-padding);
+  padding: var(--regular-padding, 10px);
   box-shadow: var(--ion-default-box-shadow);
   min-height: var(--tile-default-height);
-  max-width: var(--tile-default-width);
   border-radius: var(--ion-border-radius-standard);
-  margin: var(--regular-margin) auto;
 }
 
+/***********************************************************************************************
+*     PLH-specific page type stylings
+************************************************************************************************/
 .workshop_page {
   display: flex;
   flex-direction: column;
@@ -131,33 +132,6 @@
 }
 .quick_start_dark {
   background: var(--tile-secondary-gradient);
-}
-// PARENT CENTRE
-.parent_point {
-  padding: calc(var(--regular-padding) * var(--scale-factor-tile)) var(--small-padding);
-  width: calc(var(--tile-parent-point-width) * var(--scale-factor-tile));
-  height: calc(var(--tile-parent-point-height) * var(--scale-factor-tile));
-  min-height: unset;
-  max-width: unset;
-  &.tile-wrapper {
-    .text {
-      div {
-        font-size: calc(var(--font-size-text-large) * var(--scale-factor-tile));
-        line-height: calc(var(--line-height-text-largest) * var(--scale-factor-tile));
-      }
-    }
-    .button-wrapper {
-      .btn-tile {
-        width: calc(63px * var(--scale-factor-tile));
-        height: calc(63px * var(--scale-factor-tile));
-        border: none;
-        img {
-          width: calc(50px * var(--scale-factor-tile));
-          height: calc(50px * var(--scale-factor-tile));
-        }
-      }
-    }
-  }
 }
 .parent_centre_1 {
   background: var(--parent-centre-primary-light-gradient);

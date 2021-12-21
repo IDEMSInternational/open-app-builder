@@ -1,0 +1,35 @@
+/// This code handles laying out deeply-nested components in a sensible way
+/// The main idea is to ignore/bypass containers and components that only
+/// render nested templates/components, and display everything else
+/// as block elements of a full-height flex-column layout
+
+/// By default most block elements are already 100% width, however if displayed in flex
+/// container aligned center this will not be the case
+plh-template-component {
+  width: 100%;
+}
+
+/// Do not display hidden components
+plh-template-component[data-hidden="true"] {
+  display: none !important;
+}
+/// Ensure all directly nested template rows have spacing between elements,
+/// except in case where only one row (e.g. deep-nested)
+plh-template-container > plh-template-component:not([data-hidden="true"]) {
+  margin-top: 1em;
+}
+plh-template-container > plh-template-component:not([data-hidden="true"]):first-of-type {
+  margin-top: 0;
+}
+/// Ensure standalone containers and components fill all available space
+plh-template-container:not([data-hidden="true"]):only-child,
+plh-template-component:not([data-hidden="true"]):only-child {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+plh-template-container:not([data-hidden="true"]),
+plh-template-component:not([data-hidden="true"]) {
+  display: block;
+}

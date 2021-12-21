@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { IonDatetime } from "@ionic/angular";
+import { Component, ViewChild } from "@angular/core";
+import { IonDatetime, IonModal } from "@ionic/angular";
 import { timer } from "rxjs";
 import { map, take } from "rxjs/operators";
 import {
@@ -14,6 +14,10 @@ import {
 export class NotificationsDebugPage {
   public editableNotification: ILocalNotification;
   public previewCountdown: { [id: number]: number } = {};
+  pickerValue: string;
+  pickerMin = new Date().toISOString().substring(0, 10);
+  @ViewChild("picker", { static: false }) datetime: IonDatetime;
+  @ViewChild("datetimePickerModal", { static: true }) datetimePickerModal: IonModal;
 
   constructor(public localNotificationService: LocalNotificationService) {}
 
@@ -41,18 +45,17 @@ export class NotificationsDebugPage {
     await this.localNotificationService.removeNotification(notification.id);
   }
 
-  public showCustomNotificationSchedule(notification: ILocalNotification, picker: IonDatetime) {
+  public async showCustomNotificationSchedule(notification: ILocalNotification) {
     this.editableNotification = notification;
-    const pickerValue = new Date(notification.schedule.at).toISOString();
-    picker.value = pickerValue;
-    picker.open();
+    this.pickerValue = new Date(notification.schedule.at).toISOString();
+    await this.datetimePickerModal.present();
   }
 
   public async setCustomNotificationSchedule(pickerValue: string) {
+    this.pickerValue = pickerValue;
     if (this.editableNotification) {
       this.editableNotification.schedule.at = new Date(pickerValue);
       await this.localNotificationService.scheduleNotification(this.editableNotification as any);
-      // await this.localNotificationService.loadNotifications();
     }
   }
 
