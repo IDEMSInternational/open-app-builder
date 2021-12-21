@@ -240,7 +240,7 @@ class AppDataCopy {
     // filter and copy
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
-    const filterLanguages = this.activeDeployment.translations?.supported_language_codes;
+    const filterLanguages = this.activeDeployment.translations?.filter_language_codes;
 
     if (filterLanguages) {
       filterLanguages.push("global");
@@ -275,7 +275,7 @@ class AppDataCopy {
     let cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
 
     // apply language filter if exists
-    const languagesFilter = this.activeDeployment.translations?.supported_language_codes;
+    const languagesFilter = this.activeDeployment.translations?.filter_language_codes;
     if (languagesFilter) {
       cmd += ` -f ${languagesFilter.join(",")}`;
     }

@@ -5,6 +5,6 @@ import DEFAULT_CONFIG from "./default.config";
 const config = DEFAULT_CONFIG;
 config.name = "PLH TZ";
 config.app_data.sheets_filter_function = (flow) => !["debug"].includes(flow.flow_subtype);
-config.translations.supported_language_codes = ["tz_sw"];
+config.translations.filter_language_codes = ["tz_sw"];
 
 export default config;
