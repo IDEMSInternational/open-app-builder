@@ -38,7 +38,7 @@ async function setActiveDeployment(deploymentName?: string) {
     deploymentName = await promptOptions(allDeployments.map((d) => d.name));
   }
   const matchingDeployment = allDeployments.find(
-    (deployment) => deployment.name === deploymentName
+    (deployment) => deployment.name.toLowerCase() === deploymentName.toLowerCase()
   );
   if (!matchingDeployment) {
     logError({
@@ -64,7 +64,7 @@ async function setActiveDeployment(deploymentName?: string) {
  */
 async function listDeployments() {
   const allDeployments: IDeploymentConfigWithFilename[] = [];
-  const { found: allDeploymentFiles } = new GlobSync("**/config.ts", {
+  const { found: allDeploymentFiles } = new GlobSync("**/*.config.ts", {
     cwd: IDEMS_APP_CONFIG.deployments,
   });
   for (const filename of allDeploymentFiles) {

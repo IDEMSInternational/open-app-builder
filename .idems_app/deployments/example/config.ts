@@ -1,4 +1,4 @@
-import { IDeploymentConfig } from "../../core/models";
+import { IDeploymentConfig } from "data-models";
 
 const config: IDeploymentConfig = {
   name: "Example Config",
