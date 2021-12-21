@@ -6,10 +6,11 @@ plh-template-component[data-name="clicks_this_week"] {
   margin: 0 !important;
 }
 
-/// Move nav footer to bottom of page
+/// Move nav footer to bottom of page, and ensure padding above
 plh-template-component[data-name="nav_buttons"],
 plh-template-component[data-name="intro_nav_buttons"] {
   margin-top: auto !important;
+  padding-top: 1em;
 }
 
 /// Ensure animated sections fill all available height
