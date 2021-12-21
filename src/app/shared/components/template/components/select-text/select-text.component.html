@@ -1,6 +1,6 @@
 <div
   class="bordered-line mt-20 individual-select-text-box"
-  [ngClass]="{ green: toggle == true, red: toggle == false }"
+  [attr.data-toggled]="toggle"
   (click)="triggerCopyContent($event, _row)"
 >
   <div class="">
@@ -39,11 +39,7 @@
         </ng-container>
 
         <ng-template #copy_img_replace>
-          <img
-            alt="{{ _row?.parameter_list?.copied_icon.toString() }}"
-            class="image-based-icon"
-            src="/assets/plh_assets/{{ _row?.parameter_list?.copied_icon }}"
-          />
+          <img class="image-based-icon" [src]="_row.parameter_list.copied_icon | plhAsset" />
         </ng-template>
       </ng-container>
     </div>
