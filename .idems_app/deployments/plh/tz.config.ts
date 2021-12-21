@@ -3,8 +3,8 @@ import DEFAULT_CONFIG from "./default.config";
 /** ZA config extends the default config **/
 
 const config = DEFAULT_CONFIG;
-config.name = "PLH ZA";
+config.name = "PLH TZ";
 config.app_data.sheets_filter_function = (flow) => !["debug"].includes(flow.flow_subtype);
-config.translations.supported_language_codes = ["za_zu", "za_xh", "za_tn", "za_st", "za_af"];
+config.translations.supported_language_codes = ["tz_sw"];
 
 export default config;
