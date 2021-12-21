@@ -2,7 +2,7 @@
 
 Example adding a `subtitle` component
 
-## Register type defintion and component mapping
+## Register type definition and component mapping
 All google sheet template rows are type-checked, and as such any new row types need to have their type definitions and component mappings registered.
 
   ```ts title="packages\data-models\flowTypes.ts"
