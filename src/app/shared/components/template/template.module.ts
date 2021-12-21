@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Injector, NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { LottieModule } from "ngx-lottie";
 import { NouisliderModule } from "ng2-nouislider";
@@ -20,6 +20,7 @@ import { createCustomElement } from "@angular/elements";
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     SharedPipesModule,
     NouisliderModule,

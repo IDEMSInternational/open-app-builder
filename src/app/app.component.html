@@ -2,17 +2,19 @@
   <ion-menu #menu side="start" menuId="main-side-menu" contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>ParentApp</ion-title>
-
+        <ion-title>{{ sideMenuDefaults.title }}</ion-title>
         <div class="app-version" slot="end">
-          <span>{{ APP_VERSION }} ({{ ENV_NAME }})</span>
+          <span *ngIf="sideMenuDefaults.should_show_version">{{ APP_VERSION }} </span>
+          <span *ngIf="sideMenuDefaults.should_show_env" style="margin-left: 16px"
+            >({{ ENV_NAME }})</span
+          >
         </div>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <plh-template-container
         class="main-layout-padding"
-        templatename="app_menu"
+        [templatename]="sideMenuDefaults.template_name"
         (click)="menu.close()"
         [ignoreQueryParamChanges]="true"
       ></plh-template-container>

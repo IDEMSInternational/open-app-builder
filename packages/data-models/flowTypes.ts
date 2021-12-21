@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { DYNAMIC_PREFIXES } from "./constants";
-import { RapidProFlowExport } from "@IDEMSInternational/rapidpro-excel/types";
+import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
 
 /*********************************************************************************************
@@ -363,7 +363,6 @@ export namespace FlowTypes {
     | "text_area"
     | "radio_group"
     | "tile_component"
-    | "css_anim"
     | "combo_box"
     | "icon_banner"
     | "dashed_box"

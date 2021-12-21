@@ -1,14 +1,11 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { APP_FIELDS } from "data-models";
+import { APP_FIELDS, SERVER_SYNC_FREQUENCY_MS } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
-
-/** How often to attempt sync - currently every 15mins */
-const SYNC_FREQUENCY_MS = 1000 * 60 * 15;
 
 /**
  * Backend API
@@ -23,7 +20,7 @@ const SYNC_FREQUENCY_MS = 1000 * 60 * 15;
 export class ServerService {
   app_user_id: string;
   device_info: DeviceInfo;
-  syncSchedule = interval(SYNC_FREQUENCY_MS);
+  syncSchedule = interval(SERVER_SYNC_FREQUENCY_MS);
   //   Requires update (?) - https://angular.io/api/common/http/HttpContext
   //   context =  new HttpContext().set(SERVER_API, true),
   constructor(private http: HttpClient) {}

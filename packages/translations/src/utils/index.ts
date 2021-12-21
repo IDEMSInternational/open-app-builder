@@ -30,13 +30,15 @@ export function recursiveFindByExtension(
 }
 
 /**
- * Check an input directory exists with files, throwing error if not.
+ * Check an input directory exists with files, create to populate empty if not.
  * Check an output directory exists, creating if required and emptying
  */
 export function checkInputOutputDirs(inDir: string, outDir: string) {
   if (!fs.existsSync(inDir)) {
-    console.error(chalk.red("Input files do not exist", inDir));
-    process.exit(1);
+    fs.mkdirSync(inDir, { recursive: true });
+  }
+  if (fs.readdirSync(inDir).length === 0) {
+    console.warn(chalk.red("Warning - No source tranlsations found\n", inDir));
   }
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir, { recursive: true });
