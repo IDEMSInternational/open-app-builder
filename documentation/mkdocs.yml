@@ -22,6 +22,7 @@ nav:
       - developers/device-testing.md
   - Display Components:
       - components/audio.md
+      - components/html.md
 
 # Enable all extension for authoring as per https://squidfunk.github.io/mkdocs-material/setup/extensions/
 
