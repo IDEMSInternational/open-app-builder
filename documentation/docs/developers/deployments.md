@@ -12,7 +12,7 @@ mkdir .idems_app/deployments my_deployment
 ```
 
 !!! tip
-    The folder can have any name, but it is recommended to avoid special characters and spaces.
+    The folder can have any name, but it is recommended to avoid special characters and spaces to ensure compatibility across different devices and operating systems.
 
 Create a configuration file inside the folder with either named `config.ts` or, a with name that ends `.config.ts` such as `default.config.ts`.
 
@@ -22,7 +22,7 @@ Populate the file with configuration settings. A minimal example could be:
 import { IDeploymentConfig } from "data-models";
 
 const config: IDeploymentConfig = {
-  name: "My Deployment",
+  name: "My Deployment Default",
   google_drive: { assets_folder_id: "", sheets_folder_id: "" },
 };
 
@@ -48,7 +48,7 @@ For example, we could create a `prod.config.ts` file that filters out sheets of 
 import DEFAULT_CONFIG from "./default.config.ts";
 
 const config = DEFAULT_CONFIG
-config.name = "Production Config"
+config.name = "My Deployment Production"
 config.app_data.sheets_filter_function = (flow) => flow.subtype!=='debug'
 
 export default config
@@ -56,3 +56,16 @@ export default config
 
 !!! Tip
     When using multiple configs it is recommended to have a default config that does not include any filters, so that complete data can be synced and populated to the cache for use by other deployments
+
+
+## Change Deployment
+To set the active deployment for the workspace run the following script:
+```sh
+npm run scripts deployment set
+```
+This will present an interactive list of deployments to select from
+
+Alternative a name can be provided to select directly
+```sh
+npm run scripts deployment set "My Deployment Production"
+```
