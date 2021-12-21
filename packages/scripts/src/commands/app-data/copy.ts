@@ -240,7 +240,21 @@ class AppDataCopy {
     // filter and copy
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
-    const filteredFiles = assetFiles.filter(assets_filter_function);
+    const filterLanguages = this.activeDeployment.translations?.supported_language_codes;
+
+    if (filterLanguages) {
+      filterLanguages.push("global");
+    }
+    const filteredFiles = assetFiles.filter((fileEntry) => {
+      // language filter
+      if (filterLanguages) {
+        const [lang_folder] = fileEntry.relativePath.split("/");
+        if (!filterLanguages.includes(lang_folder)) return false;
+      }
+      // global filter
+      return assets_filter_function(fileEntry);
+    });
+
     for (const fileEntry of filteredFiles) {
       const src = path.resolve(sourceFolder, fileEntry.relativePath);
       const dest = path.resolve(targetFolder, fileEntry.relativePath);
@@ -257,7 +271,15 @@ class AppDataCopy {
     const sourceFolder = this.paths.SHEETS_INPUT_FOLDER;
     const outputFolder = this.paths.TRANSLATIONS_OUTPUT_FOLDER;
     const translationsFolder = this.paths.TRANSLATIONS_TRANSLATED_STRINGS;
-    const cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
+
+    let cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
+
+    // apply language filter if exists
+    const languagesFilter = this.activeDeployment.translations?.supported_language_codes;
+    if (languagesFilter) {
+      cmd += ` -f ${languagesFilter.join(",")}`;
+    }
+
     console.log(chalk.gray(cmd));
     const { status, stderr } = spawnSync(cmd, {
       stdio: ["inherit", "inherit", "inherit"],
@@ -292,7 +314,6 @@ function assetsQualityCheck(sourceFolder: string) {
       msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
     });
   }
-  console.log(chalk.green("Preparing assets for:", "global", output.languageFolders.join(", ")));
 }
 
 function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
