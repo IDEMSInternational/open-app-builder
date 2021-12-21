@@ -9,12 +9,6 @@ const config: IDeploymentConfig = {
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
-    // exclude anything in an 'old' folder, e.g. sheets/core/old/navigation
-    sheets_filter_function: (gdriveEntry) =>
-      !gdriveEntry.folderPath
-        .split("/")
-        .map((folder) => folder.toLowerCase())
-        .includes("old"),
   },
   // Legacy mapping to output to existing workspace
   app_data: {
