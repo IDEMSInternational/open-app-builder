@@ -148,7 +148,7 @@ $horizontal: 90deg;
   --timer-counter-height: 73px;
   --timer-counter-font-size: 40px;
   --timer-title-width: 80%;
-  --timer-buttons-color: #{color.adjust($primary, $hue: 1, $saturation: 3, $lightness: 25%)};
+  --timer-buttons-color: #{color.adjust($primary, $hue: 1%, $saturation: 3%, $lightness: 25%)};
 
   // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
@@ -188,10 +188,10 @@ $horizontal: 90deg;
   --help-icon-alternative-color: $light;
 
   //TOOLS
-  --tool-one-bg: #{color.adjust($secondary, $hue: -2)}; // #FA8E29
-  --tool-two-bg: #{color.adjust($secondary, $hue: -2, $saturation: 5%, $lightness: -7%)}; // #FF7B00
-  --tool-three-bg: #{color.adjust($primary, $hue: -8, $saturation: 8%, $lightness: 17%)}; // #108AB2
-  --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)}; //#096A8B
+  --tool-one-bg: #{color.adjust($secondary, $hue: -2%)}; // #FA8E29
+  --tool-two-bg: #{color.adjust($secondary, $hue: -2%, $saturation: 5%, $lightness: -7%)}; // #FF7B00
+  --tool-three-bg: #{color.adjust($primary, $hue: -8%, $saturation: 8%, $lightness: 17%)}; // #108AB2
+  --tool-four-bg: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 8%)}; //#096A8B
   --tool-five-bg: var(--ion-color-primary);
 
   //BUTTONS
@@ -203,7 +203,7 @@ $horizontal: 90deg;
   --buttons-font-size: 25px;
   --buttons-size: 64px;
   //primary-gradient
-  --ion-btn-control-bg: #{color.adjust($primary, $hue: 1, $saturation: 3, $lightness: 25%)}; //#1989D4
+  --ion-btn-control-bg: #{color.adjust($primary, $hue: 1%, $saturation: 3%, $lightness: 25%)}; //#1989D4
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
   --ion-btn-primary: linear-gradient(
@@ -251,13 +251,13 @@ $horizontal: 90deg;
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
-      $hue: 17,
+      $hue: 17%,
       $saturation: 5%,
       $lightness: 14%
     )}; //#FFE16A
   --ion-banner-gradient-secondary-end: #{color.adjust(
       $secondary,
-      $hue: 8,
+      $hue: 8%,
       $saturation: 5%,
       $lightness: 3%
     )}; //#FFB833
@@ -297,7 +297,7 @@ $horizontal: 90deg;
   );
   --ion-accordion-progress-gradient-primery-start: #{color.adjust(
       $primary,
-      $hue: -9,
+      $hue: -9%,
       $saturation: 3%,
       $lightness: 11%
     )};
@@ -309,7 +309,7 @@ $horizontal: 90deg;
   );
   --ion-accordion-progress-gradient-secondary-start: #{color.adjust(
       $secondary,
-      $hue: 17,
+      $hue: 17%,
       $saturation: -5%,
       $lightness: -6%
     )};
@@ -482,8 +482,8 @@ $horizontal: 90deg;
     var(--parent-centre-secondary-gradient-end) 100%
   );
 
-  --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
-  --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
+  --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
+  --ion-color-slider: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
 
   --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};
