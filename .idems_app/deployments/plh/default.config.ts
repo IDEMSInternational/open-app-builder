@@ -5,7 +5,7 @@ import { IDeploymentConfig } from "data-models";
  * to allow for easier post-processing
  */
 const config: IDeploymentConfig = {
-  name: "PLH",
+  name: "PLH Default",
   google_drive: {
     sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
     assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
