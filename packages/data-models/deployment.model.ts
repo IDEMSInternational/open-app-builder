@@ -64,6 +64,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   translations: {
+    supported_language_codes: null,
     source_strings_path: "./app_data/translations/source_strings",
     translated_strings_path: "./app_data/translations/translated_strings",
     output_cache_path: "./cache/translations",
