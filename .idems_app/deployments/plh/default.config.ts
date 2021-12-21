@@ -1,5 +1,9 @@
-import { IDeploymentConfig } from "../../core/models";
+import { IDeploymentConfig } from "data-models";
 
+/**
+ * The default config should ideally be a superset of any extended configs
+ * to allow for easier post-processing
+ */
 const config: IDeploymentConfig = {
   name: "PLH",
   google_drive: {
@@ -16,7 +20,6 @@ const config: IDeploymentConfig = {
   app_data: {
     sheets_output_path: "packages/app-data/data",
     assets_output_path: "packages/app-data/assets",
-    // sheets_filter_function: (flow) => !["conversation"].includes(flow.flow_subtype),
   },
   translations: {
     translated_strings_path: "packages/app-data/translations/from_translators",
