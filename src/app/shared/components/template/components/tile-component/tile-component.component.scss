@@ -24,15 +24,20 @@
       height: var(--tile-button-height);
       --background: transparent;
       --box-shadow: none;
-      border: var(--ion-border-light-thicker);
-      --border-radius: var(--ion-border-radius-rounded);
-      border-radius: var(--ion-border-radius-rounded);
+
       box-shadow: none;
       --ripple-color: transparent;
       img {
         width: calc(60px * var(--scale-factor-tile));
         height: calc(60px * var(--scale-factor-tile));
       }
+    }
+    // Note - CC 2021-12-21 - Currently not in use in any templates, but keeping in case we want
+    // to expose as a parameter option in the future
+    .circle-border {
+      border: var(--ion-border-light-thicker);
+      --border-radius: var(--ion-border-radius-rounded);
+      border-radius: var(--ion-border-radius-rounded);
     }
   }
 }
