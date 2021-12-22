@@ -12,4 +12,7 @@ export class ConversationParser implements AbstractParser {
       result["flow_type"] = "conversation";
     }
   }
+  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
+    return flows;
+  }
 }
