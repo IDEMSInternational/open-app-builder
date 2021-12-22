@@ -9,7 +9,7 @@ In the following a template named `default_template` will be overidden by a temp
 | flow_type |	flow_name	        |	override_target	 | override_condition |
 |---------  |---------------    |----------------- |------------------- |
 | template	|	default_template  |	                 |                    |
-| template	|	override_template | default_template | @fields.app_language.startsWith("es") |
+| template	|	override_template | default_template | @fields._app_language.startsWith("es") |
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1MpoH3BxhECZRmYM10HZ0pTOoe69FJ-fEW9FwzK-Q6yw/edit#gid=1745157248)   
 [Live Preview Demo](https://plh-teens-app1.web.app/template/example_override_default)
