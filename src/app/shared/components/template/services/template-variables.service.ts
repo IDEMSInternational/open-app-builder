@@ -108,9 +108,14 @@ export class TemplateVariablesService {
   }
 
   /** Evaluate a dynamic expression that has not been pre-processed or evaluated for dynamic expressions */
-  public async evaluateConditionString(conditionString: string, context: IVariableContext) {
+  public async evaluateConditionString(conditionString: string) {
     const dynamicEvaluators = extractDynamicEvaluators(conditionString);
     if (dynamicEvaluators) {
+      // Assumes that no specific row information available (@local undefined)
+      const context: IVariableContext = {
+        row: {} as any,
+        templateRowMap: {} as any,
+      };
       return this.evaluatePLHString(dynamicEvaluators, context);
     }
     return conditionString;

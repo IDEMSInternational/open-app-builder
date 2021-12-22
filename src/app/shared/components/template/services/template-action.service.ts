@@ -143,9 +143,9 @@ export class TemplateActionService {
         return;
       case "process_template":
         // HACK - create an embedded template processor service instance to process template programatically
-        const templateToProcess = this.container.templateService.getTemplateByName(
+        const templateToProcess = await this.container.templateService.getTemplateByName(
           args[0],
-          this.container.row?.is_override_target
+          this.container.row
         );
         const processor = new TemplateProcessService(
           this.container.templateService,
