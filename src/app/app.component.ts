@@ -22,6 +22,7 @@ import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
+import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 
 @Component({
   selector: "app-root",
@@ -45,6 +46,7 @@ export class AppComponent {
     private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
     private campaignService: CampaignService,
@@ -63,7 +65,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
-      const isDeveloperMode = this.templateService.getField("user_mode") === false;
+      const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
@@ -170,9 +172,9 @@ export class AppComponent {
   /** ensure localhost dev can see all non-user content */
   private hackSetDeveloperOptions() {
     if (location.hostname === "localhost" && !environment.production) {
-      const isUserMode = this.templateService.getField("user_mode");
+      const isUserMode = this.templateFieldService.getField("user_mode");
       if (isUserMode !== false) {
-        this.templateService.setField("user_mode", "false");
+        this.templateFieldService.setField("user_mode", "false");
       }
     }
   }
@@ -182,10 +184,10 @@ export class AppComponent {
    * TODO CC 2021-07-23 - Review if methods still required
    */
   private hackSetFirstOpenFields() {
-    this.templateService.setField(".w_1on1_completion_status", "uncompleted");
-    this.templateService.setField("second_week", "false");
-    this.templateService.setField(".w_praise_completion_status", "uncompleted");
-    this.templateService.setField("third_week", "false");
+    this.templateFieldService.setField(".w_1on1_completion_status", "uncompleted");
+    this.templateFieldService.setField("second_week", "false");
+    this.templateFieldService.setField(".w_praise_completion_status", "uncompleted");
+    this.templateFieldService.setField("third_week", "false");
   }
 
   /**
@@ -196,25 +198,25 @@ export class AppComponent {
     let old_date = this.userMetaService.getUserMeta("current_date");
     await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
     let current_date = this.userMetaService.getUserMeta("current_date");
-    this.templateService.setField("first_app_open", user.first_app_open);
-    this.templateService.setField("current_date", current_date);
+    this.templateFieldService.setField("first_app_open", user.first_app_open);
+    this.templateFieldService.setField("current_date", current_date);
     if (old_date != current_date) {
-      this.templateService.setField("daily_relax_done", "false");
+      this.templateFieldService.setField("daily_relax_done", "false");
     }
-    this.templateService.setField("first_week", "true");
+    this.templateFieldService.setField("first_week", "true");
     if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
-      this.templateService.setField("second_week", "true");
-      this.templateService.setField("w_1on1_disabled", "false");
+      this.templateFieldService.setField("second_week", "true");
+      this.templateFieldService.setField("w_1on1_disabled", "false");
     } else {
-      this.templateService.setField("second_week", "false");
+      this.templateFieldService.setField("second_week", "false");
     }
     if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
-      this.templateService.setField("third_week", "true");
-      this.templateService.setField("w_praise_disabled", "false");
+      this.templateFieldService.setField("third_week", "true");
+      this.templateFieldService.setField("w_praise_disabled", "false");
     } else {
-      this.templateService.setField("third_week", "false");
+      this.templateFieldService.setField("third_week", "false");
     }
-    this.templateService.setField(
+    this.templateFieldService.setField(
       "days_since_start",
       (
         (Date.parse(current_date) - Date.parse(user.first_app_open)) /

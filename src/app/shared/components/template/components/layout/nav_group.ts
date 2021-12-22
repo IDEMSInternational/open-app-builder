@@ -2,8 +2,8 @@ import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "data-models";
 import { hackAddRowWithDefaultActions } from "../../hacks";
-import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";
+import { TemplateFieldService } from "../../services/template-field.service";
 
 @Component({
   selector: "plh-tmpl-nav-group",
@@ -96,7 +96,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
   /** Temp row to pass emit completed/uncompleted actions to parent */
   containerRow = hackAddRowWithDefaultActions();
 
-  constructor(private templateService: TemplateService) {
+  constructor(private templateFieldService: TemplateFieldService) {
     super();
   }
 
@@ -138,10 +138,10 @@ export class NavGroupComponent extends TemplateLayoutComponent {
    */
   getActiveSectionIdx(progressField: string): number {
     let result: number;
-    const currentProgress = this.templateService.getField(progressField);
+    const currentProgress = this.templateFieldService.getField(progressField);
     if (+currentProgress === 100) {
       result = 0;
-      this.templateService.setField(progressField, `${result}`);
+      this.templateFieldService.setField(progressField, `${result}`);
       return result;
     }
     result = Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
@@ -177,8 +177,8 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       let maximumPercentDone: number;
 
       let currentMaximumPercentDone: number = Number.parseInt(
-        this.templateService.getField(progressFieldMaximum)
-          ? this.templateService.getField(progressFieldMaximum)
+        this.templateFieldService.getField(progressFieldMaximum)
+          ? this.templateFieldService.getField(progressFieldMaximum)
           : currentPercentDone
       );
 
