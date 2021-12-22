@@ -1,5 +1,6 @@
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
+import { TemplateFieldService } from "./template-field.service";
 import { TemplateContainerComponent } from "../template-container.component";
 import { mergeTemplateRows, objectToArray } from "../utils/template-utils";
 
@@ -28,7 +29,10 @@ export class TemplateRowService {
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: ITemplateRowMap = {};
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
-  constructor(public container: TemplateContainerComponent) {}
+  constructor(
+    public container: TemplateContainerComponent,
+    private templateFieldService: TemplateFieldService
+  ) {}
 
   /***************************************************************************************
    *  Row Initialisation
@@ -260,7 +264,7 @@ export class TemplateRowService {
       switch (type) {
         case "set_field":
           // console.warn("[W] Setting fields from template is not advised", row);
-          await this.container.templateService.setField(name, value);
+          await this.templateFieldService.setField(name, value);
           return;
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)

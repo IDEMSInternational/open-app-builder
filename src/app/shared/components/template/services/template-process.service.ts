@@ -11,6 +11,7 @@ import { TemplateNavService } from "./template-nav.service";
 import { TemplateTranslateService } from "./template-translate.service";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateService } from "./template.service";
+import { TemplateFieldService } from "./template-field.service";
 
 /**
  * The template process service is a slightly hacky wrapper around the template container component so that
@@ -26,6 +27,7 @@ export class TemplateProcessService {
     templateService: TemplateService,
     templateVariables: TemplateVariablesService,
     templateTranslateService: TemplateTranslateService,
+    templateFieldService: TemplateFieldService,
     tourService: TourService,
     router: Router,
     route: ActivatedRoute,
@@ -41,6 +43,7 @@ export class TemplateProcessService {
       templateService,
       templateVariables,
       templateTranslateService,
+      templateFieldService,
       tourService,
       router,
       route,

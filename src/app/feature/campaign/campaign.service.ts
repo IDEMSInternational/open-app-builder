@@ -13,8 +13,8 @@ import {
 } from "date-fns";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
+import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -51,7 +51,7 @@ export class CampaignService {
     private dataEvaluationService: DataEvaluationService,
     private localNotificationService: LocalNotificationService,
     private translateService: TemplateTranslateService,
-    private templateService: TemplateService
+    private templateFieldService: TemplateFieldService
   ) {}
 
   public async init() {
@@ -107,7 +107,7 @@ export class CampaignService {
       for (const action of row.click_action_list) {
         if (action.action_id === "set_field") {
           const [key, value] = action.args;
-          this.templateService.setField(key, value);
+          this.templateFieldService.setField(key, value);
         } else {
           console.error("Only set_field actions supported by debugger");
         }
