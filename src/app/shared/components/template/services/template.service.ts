@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, PLHDataService, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
@@ -19,7 +19,7 @@ export class TemplateService {
   currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
-    private dataService: PLHDataService,
+    private appDataService: AppDataService,
     private dbService: DbService,
     private modalCtrl: ModalController,
     private translateService: TemplateTranslateService
@@ -164,7 +164,7 @@ export class TemplateService {
 
   /** Get the value of a data_list item as defined within templates */
   getDataListByPath(path: string) {
-    const data = getNestedProperty(this.dataService.dataLists, path);
+    const data = getNestedProperty(this.appDataService.dataLists, path);
     return data;
   }
 

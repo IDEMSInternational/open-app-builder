@@ -57,7 +57,7 @@ class AppDataCopy {
     const { google_drive, app_data, translations } = this.activeDeployment;
     this.paths = {
       // Sheets will be copied from converter output folder
-      SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "merged"),
+      SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "byFlowtype"),
       SHEETS_OUTPUT_FOLDER: app_data.sheets_output_path,
       // Assets will be copied directly from downloaded drive (currently no postprocessing)
       ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
@@ -88,14 +88,13 @@ class AppDataCopy {
 
     // App files
     console.log(chalk.yellow("Writing app files"));
-    writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), SHEETS_OUTPUT_FOLDER);
+    copyAppSheetFiles(SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER);
 
     if (!this.options.skipAssets) {
       assetsQualityCheck(ASSETS_INPUT_FOLDER);
       this.copyAppAssetFiles(ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER);
       this.generateDataAssetsIndexFile();
     }
-    this.generateAppDataIndexFiles();
     this.writeTranslationTsFiles(
       path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
       path.resolve(SHEETS_OUTPUT_FOLDER, "translation_strings")
@@ -204,7 +203,7 @@ class AppDataCopy {
    * Create a default index.ts file in each data folder to export all other local
    * data files (and produce a singular import)
    */
-  private generateAppDataIndexFiles() {
+  private generateAppSheetsIndexFiles() {
     const dataDirs = fs.readdirSync(this.paths.SHEETS_OUTPUT_FOLDER);
     for (const folderName of dataDirs) {
       const dirPath = `${this.paths.SHEETS_OUTPUT_FOLDER}/${folderName}`;
@@ -295,41 +294,11 @@ function assetsQualityCheck(sourceFolder: string) {
   console.log(chalk.green("Preparing assets for:", "global", output.languageFolders.join(", ")));
 }
 
-function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
+function copyAppSheetFiles(sourceFolder: string, targetFolder: string) {
   fs.ensureDirSync(sourceFolder);
   fs.ensureDirSync(targetFolder);
   fs.emptyDirSync(targetFolder);
-  console.log(chalk.yellow("Copying Data To App"));
-  const localTsFiles = recursiveFindByExtension(sourceFolder, "json");
-  for (const filepath of localTsFiles) {
-    const fileJson = fs.readJSONSync(filepath);
-    // files are organised by flow_type, so get name of parent folder for type
-    const flow_type = path.dirname(filepath).split(path.sep).pop();
-    // create output ts from json
-    const appOutputTs = generateLocalTsOutput(fileJson, flow_type);
-    const outputPath = path.join(targetFolder, path.relative(sourceFolder, filepath));
-    const outputDir = path.dirname(outputPath);
-    const outputName = path.basename(filepath).replace(".json", ".ts");
-    // write outputs
-    fs.ensureDirSync(outputDir);
-    fs.writeFileSync(path.resolve(outputDir, outputName), appOutputTs);
-  }
-}
-
-/**
- * Create a ts file of json export, importing what would be the relevant local
- * typings to allow checking against data (and disabling unwanted additional linting)
- *
- * When copying to the app simply replace the path to local typings imported to
- * the path imported from within the app
- */
-function generateLocalTsOutput(json: any, flow_type: string) {
-  const typeName = capitalizeFirstLetter(flow_type);
-  return `/* eslint-disable */
-  import { FlowTypes } from "data-models"
-  const ${flow_type}: FlowTypes.${typeName}[] = ${JSON.stringify(json, null, 2)};
-  export default ${flow_type}
-  `;
+  fs.copySync(sourceFolder, targetFolder);
 }
 
 /**
@@ -354,4 +323,46 @@ function generateTranslationFiles(inputFolder: string, outputFolder: string) {
 /**  Subset of IContentsEntry (with additional translations) */
 interface IAssetEntry extends IContentsEntry {
   translations?: { [language_code: string]: IContentsEntry };
+}
+
+/**********************************************************************
+ * Deprecated 2021-12-26
+ * Likely no longer required TS file creation as move to JSON imports
+ * Retain for short period for ease of method migration (recommend 2022-03)
+ *********************************************************************/
+function _deprecatedWriteAppTsFiles(sourceFolder: string, targetFolder: string) {
+  fs.ensureDirSync(sourceFolder);
+  fs.ensureDirSync(targetFolder);
+  fs.emptyDirSync(targetFolder);
+  console.log(chalk.yellow("Copying Data To App"));
+  const localTsFiles = recursiveFindByExtension(sourceFolder, "json");
+  for (const filepath of localTsFiles) {
+    const fileJson = fs.readJSONSync(filepath);
+    // files are organised by flow_type, so get name of parent folder for type
+    const flow_type = path.dirname(filepath).split(path.sep).pop();
+    // create output ts from json
+    const appOutputTs = _deprecatedGenerateLocalTsOutput(fileJson, flow_type);
+    const outputPath = path.join(targetFolder, path.relative(sourceFolder, filepath));
+    const outputDir = path.dirname(outputPath);
+    const outputName = path.basename(filepath).replace(".json", ".ts");
+    // write outputs
+    fs.ensureDirSync(outputDir);
+    fs.writeFileSync(path.resolve(outputDir, outputName), appOutputTs);
+  }
+}
+
+/**
+ * Create a ts file of json export, importing what would be the relevant local
+ * typings to allow checking against data (and disabling unwanted additional linting)
+ *
+ * When copying to the app simply replace the path to local typings imported to
+ * the path imported from within the app
+ */
+function _deprecatedGenerateLocalTsOutput(json: any, flow_type: string) {
+  const typeName = capitalizeFirstLetter(flow_type);
+  return `/* eslint-disable */
+  import { FlowTypes } from "data-models"
+  const ${flow_type}: FlowTypes.${typeName}[] = ${JSON.stringify(json, null, 2)};
+  export default ${flow_type}
+  `;
 }
