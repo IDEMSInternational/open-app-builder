@@ -15,7 +15,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   // ensure all tiles are at least 120px (wrap to multiple lines if not), and size equally
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-gap: 16px;
+  grid-gap: 4px;
 }
 
 /// Remove additional padding from around images which make

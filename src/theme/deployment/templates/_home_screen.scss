@@ -11,7 +11,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
     height: var(--home-screen-height-small);
   }
   // animated start icon
-  plh-template-component[data-display-component="TmplLottieAnimation"] {
+  plh-template-component[data-type="lottie_animation"] {
     @include flex-centered;
     flex-direction: column;
     // make offset slightly out of top
@@ -56,12 +56,12 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="home_screen"] {
     }
   }
   // title text
-  plh-template-component[data-display-component="TmplTitleComponent"] {
+  plh-template-component[data-type="title"] {
     margin-left: unset !important;
   }
 
   // quick-access button
-  plh-template-component[data-display-component="RoundIconButtonComponent"] {
+  plh-template-component[data-type="round_button"] {
     position: absolute;
     right: -15px;
     bottom: -15px;
