@@ -9,7 +9,7 @@ import {
 @Component({
   selector: "plh-tmpl-toggle-bar",
   template: `
-    <div class="container margin-t-regular" [class]="position">
+    <div class="container" [class]="position">
       <div class="toggle_wrapper" [class.show-tick-cross]="showTickAndCross">
         <ion-toggle
           mode="md"
