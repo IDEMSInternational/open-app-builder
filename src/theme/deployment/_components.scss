@@ -1,0 +1,26 @@
+@import "./components/index";
+
+/// HACK - (TODO handle with authoring) remove margins for summary elements
+plh-template-component[data-name="clicks_all_time"],
+plh-template-component[data-name="clicks_this_week"] {
+  margin: 0 !important;
+}
+
+/// Ensure any container ending with name nav_buttons (intro_nav_button, outro_nav_buttons etc.)
+/// fills all available space so child components can justify-content end
+plh-template-component[data-name$="nav_buttons"] {
+  flex: 1;
+}
+
+/// Ensure animated sections fill all available height
+plh-template-component[data-type="animated_section"] {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+/// Apply flex to content box to help ensure nav buttons fill to bottom
+plh-template-component[data-name="content_box"] {
+  flex: 1;
+}

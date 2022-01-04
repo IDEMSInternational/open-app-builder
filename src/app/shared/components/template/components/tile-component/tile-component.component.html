@@ -3,10 +3,14 @@
     <ion-icon *ngIf="!isCustomIcon" [name]="left_icon_src"></ion-icon>
   </div>
   <div class="text">
-    <div class="first" *ngIf="first_line_text" [innerHTML]="first_line_text | markdown">
+    <div class="first-line-text" *ngIf="first_line_text" [innerHTML]="first_line_text | markdown">
       {{ first_line_text }}
     </div>
-    <div class="second" *ngIf="second_line_text" [innerHTML]="second_line_text | markdown">
+    <div
+      class="second-line-text"
+      *ngIf="second_line_text"
+      [innerHTML]="second_line_text | markdown"
+    >
       {{ second_line_text }}
     </div>
   </div>
