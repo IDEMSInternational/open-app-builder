@@ -34,8 +34,9 @@ import { TemplateLayoutComponent } from "./layout";
   styles: [
     `
       :host {
-        width: 100%;
-        height: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
       }
 
       .slide {
@@ -43,7 +44,7 @@ import { TemplateLayoutComponent } from "./layout";
       }
 
       .nav-group {
-        height: calc(100% - 27px);
+        flex: 1;
       }
 
       .nav-buttons {

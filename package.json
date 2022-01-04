@@ -50,7 +50,7 @@
     "@ionic-native/http": "^5.33.1",
     "@ionic-native/media": "^5.33.1",
     "@ionic-native/status-bar": "^5.33.1",
-    "@ionic/angular": "^5.8.5",
+    "@ionic/angular": "^6.0.1",
     "@ionic/pwa-elements": "^3.0.2",
     "@ngx-matomo/router": "^1.3.3",
     "@ngx-matomo/tracker": "^1.3.3",
