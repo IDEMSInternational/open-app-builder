@@ -63,3 +63,19 @@ plh-template-container[data-templatename="parent_centre_essential_tools"] {
     width: 100%;
   }
 }
+
+/// nav_buttons
+plh-template-container[data-templatename="nav_buttons"] {
+  margin-top: 1em;
+  plh-template-component[data-type="display_group"] {
+    justify-content: end; // assume parent has flex:1 property
+    plh-template-component[data-type="round_button"] {
+      flex: 0 !important; // removed incorrect hardcoded flex
+    }
+    // ensure gap between buttons
+    plh-template-component:not([data-hidden="true"]) {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  }
+}

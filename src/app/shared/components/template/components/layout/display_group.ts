@@ -27,6 +27,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
       *ngSwitchCase="'dashed_box'"
       [inputRow]="_row"
       [parent]="parent"
+      style="flex:1"
     ></plh-advanced-dashed-box>
     <!-- Form layout -->
     <plh-tmpl-form *ngSwitchCase="'form'" [inputRow]="_row" [parent]="parent"></plh-tmpl-form>
