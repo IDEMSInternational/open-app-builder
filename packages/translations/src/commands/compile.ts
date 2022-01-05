@@ -6,6 +6,13 @@ import { checkInputOutputDirs, outputErrorMessage, recursiveFindByExtension } fr
 
 const program = new Command("compile");
 
+interface IProgramOptions {
+  input: string;
+  output: string;
+  translations: string;
+  filterLanguageCodes?: string;
+}
+
 export default program
   .description("Generate files for translation")
   .requiredOption(
@@ -26,111 +33,122 @@ export default program
     (v) => path.resolve(process.cwd(), v),
     path.resolve(process.cwd(), "./examples/translations")
   )
+  .option("-f, --filter-language-codes <list>", "comma-separated list of language codes to include")
   .action((opts) => {
-    compileTranslations(opts.input, opts.translations, opts.output);
+    new TranslationsCompiler(opts).run();
   });
 
-/**
- * Main function - Compile a masterlist of all translation strings and used to
- * replace text from input files
- **/
-function compileTranslations(inDir: string, translationsDir: string, outDir: string) {
-  checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
-  checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
-  const { translationsByCode } = compileTranslationStrings(translationsDir, outDir);
-  populateTranslations(inDir, outDir, translationsByCode);
-  // outputCompleteMessage("Translations Compiled", outDir);
-}
+class TranslationsCompiler {
+  constructor(private options: IProgramOptions) {}
 
-/**
- * Takes a list of all translation entry jsons and compiles into single list of strings
- * @returns translationsByCode - json object with strings by lang code
- * ```
- * {
- *  "esp":{
- *    "How are you feeling today?": "¿Cómo te sientes hoy?"
- *  },
- * "eng":{
- *    "How are you feeling today?": "How are you feeling today?"
- *  }
- * }
- * ```
- * @returns translationsCombined - json object with translations by sourceText
- * ```
- * {
- *   "How are you feeling today?":{
- *      "eng": "How are you feeling today?",
- *      "esp": "¿Cómo te sientes hoy?"
- *    }
- * }
- * ```
- **/
-function compileTranslationStrings(translationsDir: string, outDir: string) {
-  // Create masterlist of all translations strings
-  const translationsCombined: ITranslationsCombined = {};
-  const translationsByCode: ITranslationsByCode = {};
-  const translationsFiles = recursiveFindByExtension(translationsDir, "json");
-  for (const filepath of translationsFiles) {
-    const [, langCode] = path.basename(filepath, ".json").split(".");
-    if (!langCode) {
-      outputErrorMessage(
-        "Translations file does not have language code in filename (e.g. translated.esp.json)",
-        filepath
-      );
-    }
-    if (!translationsByCode[langCode]) {
-      translationsByCode[langCode] = {};
-    }
-
-    const translationsEntries: ITranslationEntry[] = fs.readJSONSync(filepath);
-    translationsEntries.forEach((entry) => {
-      const { SourceText, text } = entry;
-      translationsByCode[langCode][SourceText] = text;
-      if (!translationsCombined[SourceText]) {
-        translationsCombined[SourceText] = {};
-      }
-      translationsCombined[SourceText][langCode] = text;
-    });
+  /**
+   * Main function - Compile a masterlist of all translation strings and used to
+   * replace text from input files
+   **/
+  public run() {
+    const { input: inDir, output: outDir, translations: translationsDir } = this.options;
+    checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
+    checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
+    const { translationsByCode } = this.compileTranslationStrings();
+    this.populateTranslations(inDir, outDir, translationsByCode);
+    // outputCompleteMessage("Translations Compiled", outDir);
   }
-  // Handle output files
-  // const indexOutput = path.resolve(outDir, "index.ts");
-  // fs.createFileSync(indexOutput);
-  for (const [langCode, strings] of Object.entries(translationsByCode)) {
-    const stringsOutput = path.resolve(outDir, "strings", `${langCode}.json`);
-    fs.writeFileSync(stringsOutput, JSON.stringify(strings, null, 2));
-    // fs.appendFileSync(indexOutput, `import ${langCode} from "./strings/${langCode}";\r\n`);
-  }
-  const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
-  fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
-  // fs.appendFileSync(
-  //   indexOutput,
-  //   `export const TRANSLATION_STRINGS = {${Object.keys(translationsByCode).join(",")}} `
-  // );
-  return { translationsCombined, translationsByCode };
-}
 
-/**
- *
- */
-function populateTranslations(inDir: string, outDir: string, strings: ITranslationsByCode) {
-  const inputFiles = recursiveFindByExtension(inDir, "json");
-  for (const filepath of inputFiles) {
-    const inputEntries: IInputEntry[] = fs.readJSONSync(filepath);
-    const translatedEntries: IInputEntry[] = [];
-    for (let entry of inputEntries) {
-      const { flow_type, rows } = entry;
-      // Handle text replacements. For data_lists this can be any column, otherwise assume
-      // only value column to replace recursively within rows.
-      const translatedFields = getTranslatedFields(flow_type, rows);
-      if (translatedFields.length > 0) {
-        entry = applyStringTranslations(entry, translatedFields, strings);
+  /**
+   * Takes a list of all translation entry jsons and compiles into single list of strings
+   * @returns translationsByCode - json object with strings by lang code
+   * ```
+   * {
+   *  "esp":{
+   *    "How are you feeling today?": "¿Cómo te sientes hoy?"
+   *  },
+   * "eng":{
+   *    "How are you feeling today?": "How are you feeling today?"
+   *  }
+   * }
+   * ```
+   * @returns translationsCombined - json object with translations by sourceText
+   * ```
+   * {
+   *   "How are you feeling today?":{
+   *      "eng": "How are you feeling today?",
+   *      "esp": "¿Cómo te sientes hoy?"
+   *    }
+   * }
+   * ```
+   **/
+  private compileTranslationStrings() {
+    const { translations: translationsDir, output: outDir, filterLanguageCodes } = this.options;
+    // Create masterlist of all translations strings
+    const translationsCombined: ITranslationsCombined = {};
+    const translationsByCode: ITranslationsByCode = {};
+    let translationsFiles = recursiveFindByExtension(translationsDir, "json")
+      .map((filepath) => {
+        const [, langCode] = path.basename(filepath, ".json").split(".");
+        return { filepath, langCode };
+      })
+      .filter((v) => {
+        if (filterLanguageCodes) {
+          const included = filterLanguageCodes.split(",");
+          return included.includes(v.langCode);
+        }
+        return true;
+      });
+    for (const { filepath, langCode } of translationsFiles) {
+      if (!langCode) {
+        outputErrorMessage(
+          "Translations file does not have language code in filename (e.g. translated.esp.json)",
+          filepath
+        );
       }
-      translatedEntries.push(entry);
+      if (!translationsByCode[langCode]) {
+        translationsByCode[langCode] = {};
+      }
+
+      const translationsEntries: ITranslationEntry[] = fs.readJSONSync(filepath);
+      translationsEntries.forEach((entry) => {
+        const { SourceText, text } = entry;
+        translationsByCode[langCode][SourceText] = text;
+        if (!translationsCombined[SourceText]) {
+          translationsCombined[SourceText] = {};
+        }
+        translationsCombined[SourceText][langCode] = text;
+      });
     }
-    const relativePath = path.relative(inDir, filepath);
-    const outputFilepath = path.resolve(outDir, "jsons", relativePath);
-    fs.ensureDirSync(path.dirname(outputFilepath));
-    fs.writeFileSync(outputFilepath, JSON.stringify(translatedEntries, null, 2));
+    // Handle output files
+    // const indexOutput = path.resolve(outDir, "index.ts");
+    for (const [langCode, strings] of Object.entries(translationsByCode)) {
+      const stringsOutput = path.resolve(outDir, "strings", `${langCode}.json`);
+      fs.writeFileSync(stringsOutput, JSON.stringify(strings, null, 2));
+    }
+    const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
+    fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
+    return { translationsCombined, translationsByCode };
+  }
+
+  /**
+   *
+   */
+  private populateTranslations(inDir: string, outDir: string, strings: ITranslationsByCode) {
+    const inputFiles = recursiveFindByExtension(inDir, "json");
+    for (const filepath of inputFiles) {
+      const inputEntries: IInputEntry[] = fs.readJSONSync(filepath);
+      const translatedEntries: IInputEntry[] = [];
+      for (let entry of inputEntries) {
+        const { flow_type, rows } = entry;
+        // Handle text replacements. For data_lists this can be any column, otherwise assume
+        // only value column to replace recursively within rows.
+        const translatedFields = getTranslatedFields(flow_type, rows);
+        if (translatedFields.length > 0) {
+          entry = applyStringTranslations(entry, translatedFields, strings);
+        }
+        translatedEntries.push(entry);
+      }
+      const relativePath = path.relative(inDir, filepath);
+      const outputFilepath = path.resolve(outDir, "jsons", relativePath);
+      fs.ensureDirSync(path.dirname(outputFilepath));
+      fs.writeFileSync(outputFilepath, JSON.stringify(translatedEntries, null, 2));
+    }
   }
 }
 
