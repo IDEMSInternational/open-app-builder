@@ -1,15 +1,8 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Injectable, Injector } from "@angular/core";
 import { FlowTypes } from "data-models";
-import { SettingsService } from "src/app/shared/services/settings.service";
-import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
-import { ServerService } from "src/app/shared/services/server/server.service";
-import { TourService } from "src/app/shared/services/tour/tour.service";
 import { TemplateContainerComponent } from "../template-container.component";
 import { TemplateNavService } from "./template-nav.service";
-import { TemplateTranslateService } from "./template-translate.service";
-import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateService } from "./template.service";
 
 /**
@@ -24,33 +17,11 @@ export class TemplateProcessService {
   container: TemplateContainerComponent;
   constructor(
     templateService: TemplateService,
-    templateVariables: TemplateVariablesService,
-    templateTranslateService: TemplateTranslateService,
-    tourService: TourService,
-    router: Router,
-    route: ActivatedRoute,
-    // elRef: ElementRef,
     templateNavService: TemplateNavService,
-    // cdr: ChangeDetectorRef,
-    settingsService: SettingsService,
-    serverService: ServerService,
-    analyticsService: AnalyticsService
+    injector: Injector
   ) {
     // Create mock template container component
-    this.container = new TemplateContainerComponent(
-      templateService,
-      templateVariables,
-      templateTranslateService,
-      tourService,
-      router,
-      route,
-      null as any,
-      templateNavService,
-      null as any,
-      settingsService,
-      serverService,
-      analyticsService
-    );
+    this.container = new TemplateContainerComponent(templateService, templateNavService, injector);
   }
 
   public async init() {

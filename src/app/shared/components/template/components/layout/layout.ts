@@ -49,7 +49,9 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
   public scrollToTop() {
     let parent = this.parent;
     while (parent) {
-      parent.elRef.nativeElement.scrollTop = 0;
+      if (parent.elRef) {
+        parent.elRef.nativeElement.scrollTop = 0;
+      }
       parent = parent.parent;
     }
     const ionContentContainers = document.querySelectorAll("ion-content") || [];

@@ -1,7 +1,12 @@
+import { Injector } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
-import { TemplateContainerComponent } from "../template-container.component";
-import { mergeTemplateRows, objectToArray } from "../utils/template-utils";
+import { TemplateContainerComponent } from "../../template-container.component";
+import { mergeTemplateRows, objectToArray } from "../../utils/template-utils";
+import { TemplateTranslateService } from "../template-translate.service";
+import { TemplateVariablesService } from "../template-variables.service";
+import { TemplateService } from "../template.service";
+import { TemplateInstanceService } from "./template-instance.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -23,12 +28,21 @@ export type ITemplateRowMap = { [row_nested_name: string]: FlowTypes.TemplateRow
  * NOTE - the service is not injected as every template should instantiate their own copy
  * for processed row tracking *
  */
-export class TemplateRowService {
+export class TemplateRowService extends TemplateInstanceService {
   /** List of overrides set by parent templates for access during parent processing */
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: ITemplateRowMap = {};
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
-  constructor(public container: TemplateContainerComponent) {}
+
+  private templateVariablesService: TemplateVariablesService;
+  private templateTranslateService: TemplateTranslateService;
+  private templateService: TemplateService;
+  constructor(public container: TemplateContainerComponent, injector: Injector) {
+    super(injector);
+    this.templateVariablesService = this.getGlobalService(TemplateVariablesService);
+    this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
+    this.templateService = this.getGlobalService(TemplateService);
+  }
 
   /***************************************************************************************
    *  Row Initialisation
@@ -207,11 +221,10 @@ export class TemplateRowService {
       templateRowMap: this.templateRowMap,
       row: preProcessedRow,
     };
-    const { templateVariables } = this.container;
 
     // First process any dynamic condition. If evaluates as false can stop processing any further
     if (preProcessedRow.hasOwnProperty("condition")) {
-      const { condition } = await templateVariables.evaluatePLHData(
+      const { condition } = await this.templateVariablesService.evaluatePLHData(
         { condition: preProcessedRow.condition },
         evalContext
       );
@@ -221,10 +234,10 @@ export class TemplateRowService {
     }
     // As translations are applied in raw format (e.g. "Hello @global.some_field")
     // strings should be translated before dynamic processing
-    const translatedRow = this.container.templateTranslateService.translateRow(preProcessedRow);
+    const translatedRow = this.templateTranslateService.translateRow(preProcessedRow);
 
     // Continue processing full row
-    const parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
+    const parsedRow: FlowTypes.TemplateRow = await this.templateVariablesService.evaluatePLHData(
       { ...translatedRow },
       evalContext
     );
@@ -260,7 +273,7 @@ export class TemplateRowService {
       switch (type) {
         case "set_field":
           // console.warn("[W] Setting fields from template is not advised", row);
-          await this.container.templateService.setField(name, value);
+          await this.templateService.setField(name, value);
           return;
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
