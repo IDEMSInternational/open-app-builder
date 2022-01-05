@@ -19,6 +19,7 @@ nav:
   - Developers:
       - developers/quickstart.md
       - developers/adding-components.md
+      - developers/deployments.md
       - developers/device-testing.md
   - Display Components:
       - components/audio.md
