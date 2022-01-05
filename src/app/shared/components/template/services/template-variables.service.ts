@@ -5,7 +5,7 @@ import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/
 import { TemplateService } from "./template.service";
 import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { TemplateTranslateService } from "./template-translate.service";
-import { ITemplateRowMap } from "./template-row.service";
+import { ITemplateRowMap } from "./instance/template-row.service";
 import { extractDynamicEvaluators } from "data-models";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
