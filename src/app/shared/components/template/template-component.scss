@@ -9,9 +9,10 @@ plh-template-component {
   width: 100%;
 }
 
-/// Do not display hidden components
+/// Do not display hidden components or let them take up flex space
 plh-template-component[data-hidden="true"] {
   display: none !important;
+  flex: 0 !important;
 }
 /// Ensure all directly nested template rows have spacing between elements,
 /// except in case where only one row (e.g. deep-nested)
