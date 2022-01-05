@@ -48,7 +48,7 @@ export class TmplDisplayGroupComponent extends TemplateBaseComponent implements 
   }
 
   getParams() {
-    this.params.style = getStringParamFromTemplateRow(this._row, "style", null);
+    this.params.style = getStringParamFromTemplateRow(this._row, "style", "row");
     this.params.offset = getNumberParamFromTemplateRow(this._row, "offset", 0);
     this.type = this.getTypeFromStyles(this.params.style || "");
   }
