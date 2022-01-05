@@ -337,7 +337,6 @@ export namespace FlowTypes {
     | "display_group"
     | "set_variable"
     | "set_theme"
-    | "icon"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
     | "set_local"
