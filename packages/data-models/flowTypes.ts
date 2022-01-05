@@ -370,6 +370,7 @@ export namespace FlowTypes {
     | "debug_toggle"
     | "items"
     | "group"
+    | "select_text"
     | "html";
 
   export interface TemplateRow extends Row_with_translations {
