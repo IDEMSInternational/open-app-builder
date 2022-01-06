@@ -17,7 +17,7 @@ import { TemplateService } from "./shared/components/template/services/template.
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
-import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
+import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
