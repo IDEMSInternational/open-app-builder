@@ -1,42 +1,49 @@
 import { Component } from "@angular/core";
-import { mapToJson } from "src/app/shared/utils";
-import { TemplateService } from "../services/template.service";
+import { TemplateFieldService } from "../services/template-field.service";
 import { TemplateBaseComponent } from "./base";
 
 @Component({
   selector: "plh-template-debugger",
-  template: `<details #details class="debug-container" [attr.data-hidden]="_row.hidden">
-    <summary style="display:flex">
-      <span class="debug-row-type">{{ _row.type }}</span>
-      <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
-      <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
-        ><ion-icon name="eye-off"></ion-icon
-      ></span>
-    </summary>
-    <div *ngIf="details.open">
-      <table>
-        <th></th>
-        <th></th>
-        <div *ngFor="let key of _row | objectKeys" style="display:contents">
-          <tr *ngIf="!debugFieldExclusions.includes(key) && _row[key]">
-            <td>{{ key }}</td>
-            <td>{{ _row[key] | json }}</td>
-          </tr>
+  template: `
+    <details #details class="debug-container" [attr.data-hidden]="_row.hidden">
+      <summary style="display:flex" (click)="handleSummaryClick($event)">
+        <span class="debug-row-type">{{ _row.type }}</span>
+        <span class="debug-row-name">{{ _row._debug_name || _row.name || "(no name)" }}</span>
+        <span *ngIf="_row.hidden === 'true'" class="debug-row-hidden"
+          ><ion-icon name="eye-off"></ion-icon
+        ></span>
+      </summary>
+    </details>
+    <ion-popover [isOpen]="details.open" class="debugger-popover">
+      <ng-template>
+        <div style="padding:8px">
+          <table>
+            <th></th>
+            <th></th>
+            <div *ngFor="let key of _row | objectKeys" style="display:contents">
+              <tr *ngIf="!debugFieldExclusions.includes(key) && _row[key]">
+                <td>{{ key }}</td>
+                <td>{{ _row[key] | json }}</td>
+              </tr>
+            </div>
+          </table>
+          <ion-button fill="clear" size="small" (click)="logDebugInfo()">
+            (log full details)
+          </ion-button>
         </div>
-        <!-- <tr *ngIf="_row._dynamicFields">
-          <td>@local</td>
-          <td>{{ parent.localVariables | json }}</td>
-        </tr> -->
-      </table>
-      <ion-button fill="clear" size="small" (click)="logDebugInfo()">(log full details)</ion-button>
-    </div>
-  </details>`,
+      </ng-template>
+    </ion-popover>
+  `,
   styles: [
     `
+      :host {
+        width: 100%;
+      }
       .debug-container {
         padding: 5px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.95);
         font-size: small;
+        overflow: auto;
       }
       .debug-container > p {
         text-align: left;
@@ -71,7 +78,7 @@ import { TemplateBaseComponent } from "./base";
   ],
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
-  constructor(private templateService: TemplateService) {
+  constructor(private templateFieldService: TemplateFieldService) {
     super();
   }
   public debugFieldExclusions = ["comments", "rows", "_dynamicFields", "action_list"];
@@ -79,16 +86,19 @@ export class TemplateDebuggerComponent extends TemplateBaseComponent {
     // retrieve local storage keys in the same way they would be populated in a template
     const fields = {};
     Object.keys(localStorage).forEach(
-      (key) => (fields[key] = this.templateService.getField(key.replace("rp-contact-field.", "")))
+      (key) =>
+        (fields[key] = this.templateFieldService.getField(key.replace("rp-contact-field.", "")))
     );
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
-    console.log("parent rows", mapToJson(this.parent.templateRowMap));
-    console.log("local overrides", this.parent.localVariables);
+    console.log("parent rows", this.parent.templateRowMap);
     console.log("fields", fields);
-    console.log("globals", this.templateService.globals);
+    console.log("globals", this.templateFieldService.globals);
     console.log("parent", this.parent);
     console.log("children", this._row.rows);
     console.groupEnd();
+  }
+  public handleSummaryClick(e: Event) {
+    e.stopPropagation();
   }
 }

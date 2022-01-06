@@ -1,0 +1,48 @@
+@import "src/theme/mixins";
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  h1 {
+    margin: 0;
+    line-height: var(--line-height-text-largest);
+    font-weight: var(--font-weight-bold);
+    @media (max-width: 375px) {
+      font-size: var(--font-size-title-tiny);
+    }
+    @media (max-width: 320px) {
+      font-size: var(--font-size-title-small-device);
+    }
+  }
+  .alternative {
+    line-height: var(--line-height-text-largest);
+    color: var(--ion-color-primary-contrast);
+    @media (max-width: 320px) {
+      font-size: var(--font-size-title-small-device);
+    }
+  }
+  .tiny {
+    font-size: var(--font-size-title-tiny);
+    @media (max-width: 320px) {
+      font-size: var(--font-size-title-small-device);
+    }
+  }
+  .small {
+    font-size: var(--font-size-title-small);
+  }
+  .medium {
+    font-size: var(--font-size-title-medium);
+  }
+  .large {
+    font-size: var(--font-size-title-large);
+  }
+  .huge {
+    font-size: var(--font-size-title-largest);
+  }
+
+  .title-help {
+    margin-left: var(--tiny-margin);
+    color: var(--ion-color-primary);
+    @include small-square;
+  }
+}

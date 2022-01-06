@@ -1,15 +1,21 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { getImageAssetPath } from "../utils/template-utils";
+import { TemplateAssetService } from "../services/template-asset.service";
 /**
- * Ensure local assets have correct path name to local asset folder
+ * Retrieve an asset for the current language from nested data asset folder,
+ * returning original if not available
  * @example <img src="images/my_icon.svg | plhAsset" />
- * Will rewrite image source to "assets/plh_assets/images/my_icon.svg"
- *
  */
 
 @Pipe({ name: "plhAsset" })
 export class PLHAssetPipe implements PipeTransform {
+  constructor(private templateAssetService: TemplateAssetService) {}
+
   transform(value: string) {
-    return getImageAssetPath(value);
+    // keep external links
+    if (value.startsWith("http")) {
+      return value;
+    }
+    const path = this.templateAssetService.getTranslatedAssetPath(value);
+    return path;
   }
 }

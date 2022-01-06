@@ -51,6 +51,17 @@ export function arrayToHashmapArray<T>(arr: T[], keyfield: keyof T) {
 }
 
 /**
+ * Takes an array of arrays and merges into single array
+ * @example ```
+ * mergeArrayOfArrays([['a','b'],['c','d']])
+ * // [ 'a', 'b', 'c', 'd' ]
+ * ```
+ */
+export function mergeArrayOfArrays<T>(arr: T[][]) {
+  return [].concat.apply([], arr);
+}
+
+/**
  * Take 2 object arrays identified by a given key field, and merge rows together.
  * In case of rows with identical keys, only one will be retained
  *
@@ -70,6 +81,15 @@ export function mergeObjectArrays<T>(
     }
   });
   return Object.values(secondaryHash);
+}
+
+export function randomElementFromArray<T>(arr: T[] = null) {
+  try {
+    const randomItem = arr[Math.floor(Math.random() * arr.length)];
+    return randomItem;
+  } catch (error) {
+    return null;
+  }
 }
 
 /**
@@ -93,16 +113,16 @@ export function getNestedProperty(obj: any, path: string) {
   }, obj);
 }
 
-export function setNestedProperty(path: string, value: any, obj = {}) {
+export function setNestedProperty<T>(path: string, value: any, obj: T = {} as any) {
   let childKeys = path.split(".");
   const currentKey = childKeys[0];
   if (childKeys.length > 1) {
     const nestedValue = setNestedProperty(childKeys.slice(1).join("."), value);
-    obj[currentKey] = { ...obj[currentKey], ...nestedValue };
+    obj[currentKey] = { ...obj[currentKey], ...(nestedValue as any) };
   } else {
     obj[currentKey] = value;
   }
-  return obj;
+  return obj as T;
 }
 
 /**
@@ -169,25 +189,56 @@ export function getBooleanParamFromTemplateRow(
 /**
  * Evaluate a javascript expression in a safe context
  * @param expression string expression, e.g. "!true", "5 - 4"
- * @param context variables and methods that will be available in the function's `this.exampleVar` scope
+ * @param thisCtxt variables and methods that will be available in the function's `this.exampleVar` scope
+ * @param globalFunctions functions declared here will be bound to the global scope, so can be called directly
  * @throws Error if the expression is not valid within the context
  * */
-export function evaluateJSExpression(expression: string, context = {}): any {
-  const funcString = `"use strict"; return (${expression});`;
-  const func = new Function(funcString);
-  return func.apply(context);
+export function evaluateJSExpression(
+  expression: string,
+  thisCtxt = {},
+  globalFunctions: IFunctionHashmap = {},
+  globalConstants: IConstantHashmap = {}
+): any {
+  const globalConstString = Object.entries(globalConstants)
+    .map(
+      ([name, value]) =>
+        // convert global constants to variable strings, adding quotation marks for string types
+        `var ${name} = ${typeof value === "string" ? `'${value}'` : value}`
+    )
+    .join(";");
+  // convert global functions to variable strings. Note, cannot simply parse function.toString() as optimiser
+  // strips names and just leaves all as anonymous functions
+  const globalString = Object.entries(globalFunctions)
+    .map(([name, fn]) => `var ${name} = ${fn}`)
+    .join(";");
+  const funcString = `"use strict"; ${globalConstString}; ${globalString}; return (${expression});`;
+  try {
+    const func = new Function(funcString);
+    const evaluated = func.apply(thisCtxt);
+    return evaluated;
+  } catch (error) {
+    // console.warn('Could not evaluate expression', { expression, error, thisCtxt, globalFunctions, funcString })
+    // still throw error so that calling function can decide how to handle, e.g. attempt string replace
+    throw error;
+  }
 }
+
+/** Generic object containing list of functions */
+export type IFunctionHashmap = { [function_name: string]: (...args: any) => any };
+
+/** Generic object containing list of variables. Note - only simple types can be parsed */
+export type IConstantHashmap = { [constant_name: string]: string | number | boolean };
 
 /**
  * convert strings containing "TRUE", "true", "FALSE" or "false" to booleans
  * TODO - combine with script util
  */
-export function booleanStringToBoolean(str: string) {
-  if (typeof str === "string") {
-    if (str.match(/^true$/gi)) return true;
-    if (str.match(/^false$/gi)) return false;
+export function booleanStringToBoolean(val: any) {
+  if (typeof val === "string") {
+    if (val.match(/^true$/gi)) return true;
+    if (val.match(/^false$/gi)) return false;
   }
-  return str;
+  return val;
 }
 
 /**

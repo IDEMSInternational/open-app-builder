@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "data-models";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
@@ -10,7 +10,7 @@ import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
 import { AudioService } from "src/app/shared/services/audio/audio.service";
 import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
-import { getImageAssetPath } from "../../utils/template-utils";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-timer",
@@ -23,7 +23,6 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this._row = value;
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
   state: TimerState;
@@ -72,7 +71,8 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   constructor(
     private pickerController: PickerController,
     private platform: Platform,
-    private audioService: AudioService
+    private audioService: AudioService,
+    private templateAssetService: TemplateAssetService
   ) {
     super();
     this.changeState(new PausedState(this));
@@ -81,7 +81,10 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   ngOnInit() {
     this.getParams();
     this.state.callOnInit();
-    this.player = this.ping ? this.audioService.createPlayer(getImageAssetPath(this.ping)) : null;
+    if (this.ping) {
+      const pingSrc = this.templateAssetService.getTranslatedAssetPath(this.ping);
+      this.player = this.audioService.createPlayer(pingSrc);
+    }
   }
 
   changeState(state: TimerState) {

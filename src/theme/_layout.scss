@@ -68,6 +68,13 @@ ion-button.no-padding {
   --padding-end: 0;
 }
 
+ion-popover.debugger-popover {
+  --max-width: 90vw;
+  --max-height: 75vh;
+  --width: 100%;
+  --background: white;
+}
+
 .margin-t-small {
   margin-top: var(--small-margin);
 }
@@ -79,16 +86,6 @@ ion-button.no-padding {
 }
 .margin-t-huge {
   margin-top: var(--huge-margin);
-}
-
-.main-layout-padding {
-  @media (max-width: 339px) {
-    padding: 0 var(--regular-margin);
-  }
-
-  @media (min-width: 340px) {
-    padding: 0 var(--large-margin);
-  }
 }
 
 .margin-lr-small {

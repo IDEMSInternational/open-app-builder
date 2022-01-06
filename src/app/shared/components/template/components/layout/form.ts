@@ -1,18 +1,21 @@
-import { Component, Input, OnInit, ViewChild, ViewChildren } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
-import { Plugins } from "@capacitor/core";
 import { FlowTypes } from "../../models";
 import {
   getBooleanParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "src/app/shared/utils";
 
-const { Device } = Plugins;
+import { Device } from "@capacitor/device";
 
 @Component({
   selector: "plh-tmpl-form",
   template: ` <div>
-    <plh-template-component *ngFor="let childRow of _row.rows" [row]="childRow" [parent]="parent">
+    <plh-template-component
+      *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+      [row]="childRow"
+      [parent]="parent"
+    >
     </plh-template-component>
     <ion-button (click)="submit()">{{ button_text }}</ion-button>
   </div>`,

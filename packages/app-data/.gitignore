@@ -1,0 +1,4 @@
+merged
+dist
+translations/*
+!translations/from_translators

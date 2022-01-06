@@ -1,0 +1,200 @@
+# Use postgres/example user/password credentials
+version: "3.1"
+services:
+  ####################################################################
+  # Primary Webserver (Nginx)
+  # Alt: https://hub.docker.com/r/jonasal/nginx-certbot
+  ####################################################################
+  nginx:
+    # image: jonasal/nginx-certbot:latest
+    image: nginx:stable
+    container_name: plh_webserver
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - webserver_network
+    volumes:
+      # - nginx_secrets:/etc/letsencrypt
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      # - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx/conf:/etc/nginx/conf
+      # NOTE - the bind volumes directly from motomo (could be another service)
+  ####################################################################
+  # IDEMS Apps API
+  ####################################################################
+  api:
+    container_name: api
+    restart: unless-stopped
+    build:
+      context: ../../api
+      dockerfile: Dockerfile
+      target: prod-env
+    image: idems/apps-api:latest
+    env_file:
+      - ../../api/.env
+    environment:
+      DB_HOST: db
+      API_BASE_PATH: api
+    networks:
+      - db_network
+      - webserver_network
+    depends_on:
+      - db
+    # ports:
+    #   - 3000:3000
+  ####################################################################
+  # Postgres DB
+  ####################################################################
+  db:
+    image: postgres:13
+    container_name: plh_db
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    volumes:
+      # store db data to volume
+      - db_data:/var/lib/postgresql
+      # bind db init scripts
+      - ./config/db:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+      # - "${DB_PORT}:5432"  - requires additional env file to set (https://github.com/docker/compose/pull/1765)
+    networks:
+      - db_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  ####################################################################
+  # Postgres DB admin (pgadmin)
+  ####################################################################
+  pgadmin:
+    image: dpage/pgadmin4:6
+    container_name: plh_pg_admin
+    restart: unless-stopped 
+    env_file:
+      - ../.env
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      # expose on port 5050 to allow easier connect on docker for windows
+      - 5050:80
+    networks:
+      - db_network
+      - webserver_network       
+  ####################################################################
+  # Adminer DB Admin
+  # Works with both Postgres and MariaDB
+  ####################################################################
+  db_admin:
+    image: adminer:4.8.1
+    container_name: plh_db_admin
+    restart: unless-stopped
+    networks:
+      - db_network
+      - webserver_network
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+    ports:
+      - 8080:8080
+  ####################################################################
+  # Metabase DB Dashboard
+  # https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-docker.html
+  # https://www.metabase.com/docs/latest/operations-guide/environment-variables.html
+  # TODO - Add custom env credentials
+  ####################################################################
+  db_dashboard:
+    image: metabase/metabase:v0.41.0
+    container_name: plh_db_dashboard
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - dashboard_data:/metabase-data
+    env_file:
+      - ../.env
+    # ports:
+    #   - 3000:3000
+    networks:
+      - db_network
+      - webserver_network
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_PORT=5432
+      - MB_DB_HOST=db
+  ####################################################################
+  # Analytics (DB, Matomo App, Webserver)
+  # NOTE - requires run after any clean install (TBC - might not be needed anymore)
+  # ```docker exec analytics_dashboard chown -R www-data:www-data /var/www/html```
+  ####################################################################
+  analytics_db:
+    image: mariadb:10.5.12
+    container_name: plh_analytics_db
+    command: --max-allowed-packet=64MB
+    restart: unless-stopped
+    volumes:
+      - analytics_db:/var/lib/mysql
+      - ./config/analytics_db:/docker-entrypoint-initdb.d
+    networks:
+      - analytics_network
+      - db_network
+    env_file:
+      - ../.env
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  analytics_dashboard:
+    image: matomo:4.5.0-fpm-alpine
+    container_name: analytics_dashboard
+    restart: unless-stopped
+    depends_on:
+      - analytics_db
+    volumes:
+      # NOTE - The volume below will expose config generated by Matomo during setup
+      # This config then needs to be modified to include contents from
+      # ./config/analtytics_dashboard/config.ini
+      - ./config/analytics_dashboard/matomo_config:/var/www/html/config:rw
+      - matomo_www:/var/www/html
+    environment:
+      - MATOMO_DATABASE_HOST=analytics_db
+      - MATOMO_DATABASE_ADAPTER=mysql
+    env_file:
+      - ../.env
+    networks:
+      - analytics_network
+  analytics_webserver:
+    image: nginx:stable
+    container_name: analytics_webserver
+    restart: unless-stopped
+    env_file:
+      - ../.env
+    networks:
+      - analytics_network
+      - webserver_network
+    # ports:
+    #   - 9000:80
+    volumes:
+      - matomo_www:/var/www/html:ro
+      - ./config/analytics_dashboard/matomo.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  db_data:
+  dashboard_data:
+  analytics_db:
+  matomo_www:
+  nginx_secrets:
+  pgadmin:
+# NOTE - networks aren't actually required unless we used multiple docker-compose files
+networks:
+  db_network:
+  analytics_network:
+  webserver_network:

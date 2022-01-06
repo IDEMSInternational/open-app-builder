@@ -1,0 +1,71 @@
+[
+  {
+    "flow_type": "data_list",
+    "flow_name": "example_lang_data_list",
+    "status": "released",
+    "data_list_name": "language",
+    "rows": [
+      {
+        "id": "example_lang_1",
+        "image_asset": "plh_images/habits/habit_relax.svg",
+        "lottie_asset": "plh_lottie/habits/habit_relax.json",
+        "title": "Example Data List Title 1",
+        "_translations": {
+          "title": {
+            "esp": true
+          },
+          "text": {
+            "esp": true
+          }
+        },
+        "_translatedFields": {
+          "title": {
+            "eng": "Example Data List Title 1"
+          },
+          "text": {
+            "eng": "This text is loaded through the first data row."
+          }
+        },
+        "text": "This text is loaded through the first data row."
+      },
+      {
+        "id": "example_lang_2",
+        "image_asset": "plh_images/habits/habit_treat_yourself.svg",
+        "lottie_asset": "plh_lottie/habits/habit_treat_yourself.json",
+        "title": "Example Data List Title 2",
+        "_translations": {
+          "title": {
+            "esp": true
+          },
+          "text": {
+            "esp": true
+          }
+        },
+        "_translatedFields": {
+          "title": {
+            "eng": "Example Data List Title 2"
+          },
+          "text": {
+            "eng": "This text is loaded through the second data row."
+          }
+        },
+        "text": "This text is loaded through the second data row."
+      },
+      {
+        "id": "example_lang_3",
+        "text": "This text should define a default value for a field",
+        "_translations": {
+          "text": {
+            "esp": true
+          }
+        },
+        "_translatedFields": {
+          "text": {
+            "eng": "This text should define a default value for a field"
+          }
+        }
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  }
+]

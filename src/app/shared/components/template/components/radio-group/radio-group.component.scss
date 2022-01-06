@@ -1,7 +1,11 @@
-@import "../../../../../../theme/mixins.scss";
+@import "src/theme/mixins.scss";
 
 $primary-radio-border: 2px solid;
-$primary-radio-border-rd: calc(15px * var(--scale-factor));
+$primary-radio-border-rd: 15px;
+
+img {
+  padding: 5px;
+}
 
 .wrapper-radio-group {
   width: 100%;
@@ -13,12 +17,12 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
 
     .btn_triangle {
       &_container {
-        width: calc(150px * var(--scale-factor));
-        height: calc(44px * var(--scale-factor));
-        margin: calc(5px * var(--scale-factor));
+        width: 150px;
+        height: 44px;
+        margin: 5px;
 
         label {
-          height: calc(44px * var(--scale-factor));
+          height: 44px;
           background-color: var(--ion-color-primary-contrast);
         }
       }
@@ -35,14 +39,13 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
     .btn_square {
       &_container {
         label {
-          width: calc(115px * var(--scale-factor));
-          height: calc(115px * var(--scale-factor));
-          padding: calc(5px * var(--scale-factor));
+          width: 115px;
+          height: 115px;
+          padding: 5px;
           max-width: calc(6rem * 0.9);
           max-height: calc(115px * 0.9);
           min-height: calc(115px * 0.9);
           min-width: unset;
-          font-size: 4vw;
           @media (max-width: 320px) {
             max-height: calc(100px * 0.9);
             max-width: calc(5rem * 0.9);
@@ -52,22 +55,6 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
             max-height: 27vw;
             max-width: 27vw;
             min-height: unset;
-          }
-
-          svg-icon {
-            @include flex-centered;
-            max-width: calc(100% * 0.8);
-            min-width: calc(100% * 0.8);
-            width: calc(100% * var(--scale-factor));
-            height: calc(100% * var(--scale-factor));
-            margin-bottom: calc(3px * var(--scale-factor));
-
-            svg {
-              max-width: 95%;
-              max-height: 95%;
-              width: 95%;
-              height: 95%;
-            }
           }
         }
       }
@@ -76,12 +63,12 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
     .btn_image {
       &_container {
         label {
-          width: calc(115px * var(--scale-factor));
-          height: calc(115px * var(--scale-factor));
+          width: 115px;
+          height: 115px;
           min-width: unset;
           max-width: calc(6rem * 0.9);
           max-height: calc(115px * 0.9);
-          padding: calc(5px * var(--scale-factor));
+          padding: 5px;
           @media (max-width: 320px) {
             max-height: calc(100px * 0.9);
             max-width: calc(5rem * 0.9);
@@ -91,22 +78,6 @@ $primary-radio-border-rd: calc(15px * var(--scale-factor));
             max-height: 27vw;
             max-width: 27vw;
             min-height: unset;
-          }
-
-          svg-icon {
-            @include flex-centered;
-            min-width: 25px;
-            min-height: 22px;
-            width: calc(100% * var(--scale-factor));
-            height: calc(100% * var(--scale-factor));
-            margin-bottom: calc(3px * var(--scale-factor));
-
-            svg {
-              max-width: 95%;
-              max-height: 95%;
-              width: 95%;
-              height: 95%;
-            }
           }
         }
       }
@@ -184,7 +155,6 @@ input {
 }
 
 label {
-  font-size: calc(16px * var(--scale-factor));
   height: 100%;
   font-weight: 700;
   text-align: center;
