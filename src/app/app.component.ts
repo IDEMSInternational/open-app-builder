@@ -23,7 +23,7 @@ import { AnalyticsService } from "./shared/services/analytics/analytics.service"
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
-import { ReviewingService } from "./shared/services/reviewing/reviewing.service";
+import { ReviewingService } from "./feature/reviewing-content/reviewing.service";
 
 @Component({
   selector: "app-root",
@@ -57,7 +57,7 @@ export class AppComponent {
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService,
-    private reviewingService: ReviewingService
+    public reviewingService: ReviewingService
   ) {
     this.initializeApp();
   }
