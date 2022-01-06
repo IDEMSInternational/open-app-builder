@@ -8,7 +8,7 @@ import {
   ModalController,
   ToastController,
 } from "@ionic/angular";
-import { SuggestFormComponent } from "src/app/feature/reviewing-content/components/suggest-form/suggest-form.component";
+import { SuggestFormComponent } from "./components/suggest-form/suggest-form.component";
 import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 import { FlowTypes } from "data-models";
@@ -17,7 +17,7 @@ import { Device } from "@capacitor/device";
 @Injectable({
   providedIn: "root",
 })
-export class ReviewingService {
+export class ContentReviewService {
   public isReviewingMode$ = new BehaviorSubject(false);
   private longPressActive = false;
   private targetRow: FlowTypes.TemplateRow;
