@@ -1,7 +1,6 @@
-@import "../../../../../../../theme/mixins.scss";
+@import "src/theme/mixins.scss";
 
 .box-wrapper {
-  padding: var(--large-padding);
   .item {
     @include flex-centered;
     flex-direction: column;
@@ -57,4 +56,8 @@
       color: var(--ion-color-secondary);
     }
   }
+}
+.box-wrapper[data-hasicon="true"] {
+  // add margin to top to account for offset icon
+  margin-top: 8px;
 }

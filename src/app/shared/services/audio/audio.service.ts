@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
 import { AudioPlayer, HTML5AudioPlayer } from "./audio.player";
-import { IonicNativeAudioPlayer } from "./ionic.audio.player";
-import { Capacitor } from "@capacitor/core";
 
 @Injectable({
   providedIn: "root",
@@ -9,7 +7,7 @@ import { Capacitor } from "@capacitor/core";
 export class AudioService {
   constructor() {}
 
-  playersBySrc: { [ src: string]: AudioPlayer } = {};
+  playersBySrc: { [src: string]: AudioPlayer } = {};
 
   createPlayer(src: string): AudioPlayer {
     if (!this.playersBySrc[src]) {

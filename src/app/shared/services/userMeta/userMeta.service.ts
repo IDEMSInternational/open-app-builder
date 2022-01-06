@@ -41,7 +41,7 @@ interface IUserMetaEntry {
   value: any;
 }
 
-interface IUserMeta {
+export interface IUserMeta {
   uuid: string;
   first_app_open: isostring;
   current_date: isostring;
@@ -50,7 +50,6 @@ interface IUserMeta {
 }
 
 type isostring = string;
-
 const USER_DEFAULTS: IUserMeta = {
   // TODO - better to use different service to ensure UUID unique
   uuid: null,
@@ -58,5 +57,5 @@ const USER_DEFAULTS: IUserMeta = {
   first_app_open: null,
   current_date: null,
   // Set default module id as first defined in module list
-  active_module: MODULE_LIST[0].rows[0].id,
+  active_module: MODULE_LIST?.[0]?.rows?.[0]?.id,
 };

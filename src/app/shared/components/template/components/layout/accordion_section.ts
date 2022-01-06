@@ -20,7 +20,7 @@ import { TemplateBaseComponent } from "../base";
       <img
         *ngIf="completed && !_row.disabled"
         class="tick-icon"
-        [src]="'plh_images/icons/tick_white.svg' | plhAsset"
+        [src]="'plh_images/icons/tick.svg' | plhAsset"
       />
       <img *ngIf="_row.disabled" [src]="'plh_images/icons/temporarily_disabled.svg' | plhAsset" />
       <img
@@ -39,13 +39,20 @@ import { TemplateBaseComponent } from "../base";
     >
       <div class="progress" [ngStyle]="{ width: percentComplete + '%' }"></div>
       <h2 (click)="toggleOpen()">{{ title }}</h2>
-      <plh-template-component
-        style="z-index: 2"
-        *ngFor="let childRow of _row.rows"
-        [row]="childRow"
-        [parent]="parent"
+      <div
+        class="accordion-section-content"
+        [ngClass]="{
+          openSection: _row.parameter_list.state === 'open'
+        }"
       >
-      </plh-template-component>
+        <plh-template-component
+          style="z-index: 2"
+          *ngFor="let childRow of _row.rows; trackBy: trackByRow"
+          [row]="childRow"
+          [parent]="parent"
+        >
+        </plh-template-component>
+      </div>
     </div>
   </div>`,
   styleUrls: ["./accordion.scss", "../tmpl-components-common.scss"],
@@ -57,6 +64,7 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   private launch_when_locked: boolean;
 
   @Input() id: string;
+  /** Emit output event so parent can respond to open/close events (e.g. close other sections when new section opened) */
   @Output() toggleState = new EventEmitter<string>();
 
   ngOnInit() {
@@ -64,7 +72,6 @@ export class AccordionSectionComponent extends TemplateBaseComponent implements 
   }
 
   public toggleOpen() {
-    console.log("ROW??", this._row);
     if (!this._row.disabled) {
       this.toggleState.emit(this.id);
     } else if (this._row.disabled && this.launch_when_locked) {

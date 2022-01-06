@@ -5,10 +5,11 @@
   }
   span {
     padding: var(--tiny-padding) 0;
+    display: contents;
   }
 }
 ion-button {
-  font-size: var(--buttons-font-size);
+  font-size: var(--buttons-font-size-small);
   font-family: Roboto, sans-serif;
   font-weight: var(--font-weight-standard);
   color: var(--ion-color-primary-contrast);
@@ -31,6 +32,13 @@ ion-button:disabled,
 ion-button[disabled] {
   filter: brightness(55%);
 }
+
+/// nested_color style applies semi-transparent background to match container
+ion-button[data-param-style~="nested_color"] {
+  --background: linear-gradient(rgb(0 0 0 / 13%) 0%, rgb(0 0 0 / 20%) 100%);
+}
+
+/// TODO CC-2021-12-19 - the code below should likely be refactored to param selectors and moved
 
 .navigation {
   --background: var(--ion-btn-secondary);
@@ -66,11 +74,16 @@ ion-button[disabled] {
   color: var(--ion-color-primary);
 }
 
-.left {
+.left ::ng-deep {
   margin: 0 auto 0 2px;
+  text-align: left;
+  p {
+    margin: 0 0 0 2px;
+  }
 }
 .right {
   margin: 0 2px 0 auto;
+  text-align: right;
 }
 
 // width

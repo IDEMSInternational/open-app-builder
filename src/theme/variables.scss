@@ -54,6 +54,7 @@ $horizontal: 90deg;
   --ion-border-thin-standard: 1px solid #{$primary};
   --ion-border-standard: 2px solid #{$primary};
   --ion-border-light: 1px solid #{$light};
+  --ion-border-light-thicker: 2px solid #{$light};
   --border-dashed: 2px dashed $primary;
   // --- border-radiuses
   --ion-border-radius-small: 8px;
@@ -87,7 +88,7 @@ $horizontal: 90deg;
   --line-height-text-largest: 25px;
 
   // Font Weight //
-  --font-weight-standard: 500;
+  --font-weight-standard: 400;
   --font-weight-bold: 700;
 
   // Text box //
@@ -146,8 +147,8 @@ $horizontal: 90deg;
   // Timer //
   --timer-counter-height: 73px;
   --timer-counter-font-size: 40px;
-  --timer-title-width: 298px;
-  --timer-buttons-color: #{color.adjust($primary, $hue: -10, $saturation: 14%, $lightness: 19%)};
+  --timer-title-width: 80%;
+  --timer-buttons-color: #{color.adjust($primary, $hue: 1%, $saturation: 3%, $lightness: 25%)};
 
   // Combo box //
   --combo-box-placeholder-primary: rgba(13, 64, 96, 0.5);
@@ -187,10 +188,10 @@ $horizontal: 90deg;
   --help-icon-alternative-color: $light;
 
   //TOOLS
-  --tool-one-bg: #{color.adjust($secondary, $hue: -2)}; // #FA8E29
-  --tool-two-bg: #{color.adjust($secondary, $hue: -2, $saturation: 5%, $lightness: -7%)}; // #FF7B00
-  --tool-three-bg: #{color.adjust($primary, $hue: -8, $saturation: 8%, $lightness: 17%)}; // #108AB2
-  --tool-four-bg: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 8%)}; //#096A8B
+  --tool-one-bg: #{color.adjust($secondary, $hue: -2%)}; // #FA8E29
+  --tool-two-bg: #{color.adjust($secondary, $hue: -2%, $saturation: 5%, $lightness: -7%)}; // #FF7B00
+  --tool-three-bg: #{color.adjust($primary, $hue: -8%, $saturation: 8%, $lightness: 17%)}; // #108AB2
+  --tool-four-bg: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 8%)}; //#096A8B
   --tool-five-bg: var(--ion-color-primary);
 
   //BUTTONS
@@ -202,7 +203,7 @@ $horizontal: 90deg;
   --buttons-font-size: 25px;
   --buttons-size: 64px;
   //primary-gradient
-  --ion-btn-control-bg: #{color.adjust($primary, $saturation: -3%, $lightness: 31%)}; //#2B99DE
+  --ion-btn-control-bg: #{color.adjust($primary, $hue: 1%, $saturation: 3%, $lightness: 25%)}; //#1989D4
   --ion-gradient-primary-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
   --ion-gradient-primary-end: #{color.adjust($primary, $saturation: 2%, $lightness: 13%)}; //#136E9C
   --ion-btn-primary: linear-gradient(
@@ -243,16 +244,20 @@ $horizontal: 90deg;
   --round-button-font-size: 12px;
   --round-button-home-screen-font-size: 11px;
 
+  // Square button //
+  --square-button-navigation-min-height: 50px;
+  --square-button-min-width: 60px;
+
   //BANNER
   --ion-banner-gradient-secondary-start: #{color.adjust(
       $secondary,
-      $hue: 17,
+      $hue: 17%,
       $saturation: 5%,
       $lightness: 14%
     )}; //#FFE16A
   --ion-banner-gradient-secondary-end: #{color.adjust(
       $secondary,
-      $hue: 8,
+      $hue: 8%,
       $saturation: 5%,
       $lightness: 3%
     )}; //#FFB833
@@ -273,9 +278,7 @@ $horizontal: 90deg;
     var(--ion-banner-gradient-primary-end) 105.68%
   );
   //ACCORDION
-  --accordion-section-title-padding: var(--small-padding) 0 var(--small-padding) 0;
-  --accordion-section-padding: 0 10px 10px 10px;
-  --accordion-section-max-height: 43px;
+  --accordion-section-padding: 0 10px;
   --accordion-section-open-height: 400px;
   --accordion-section-width: 85%;
   --ion-accordion-status-bg-start: #{color.adjust($primary, $lightness: 33%)}; //#309EE3
@@ -294,7 +297,7 @@ $horizontal: 90deg;
   );
   --ion-accordion-progress-gradient-primery-start: #{color.adjust(
       $primary,
-      $hue: -9,
+      $hue: -9%,
       $saturation: 3%,
       $lightness: 11%
     )};
@@ -306,7 +309,7 @@ $horizontal: 90deg;
   );
   --ion-accordion-progress-gradient-secondary-start: #{color.adjust(
       $secondary,
-      $hue: 17,
+      $hue: 17%,
       $saturation: -5%,
       $lightness: -6%
     )};
@@ -375,15 +378,18 @@ $horizontal: 90deg;
 
   // TILES
   --tile-default-height: 104px;
-  --tile-default-width: 371px;
   --tile-button-height: 73px;
   --tile-button-width: 73px;
-  --tile-workshop-page-height: 100px;
-  --tile-workshop-page-width: 132px;
+  --tile-workshop-page-height: 132px;
+  --tile-workshop-page-width: 111px;
   --tile-workshop-page-button-height: 55px;
   --tile-workshop-page-button-width: 100%;
   --tile-parent-point-width: 200px;
   --tile-parent-point-height: 104px;
+  --tile-image-text-width: 176px;
+  --tile-button-style-height: 60px;
+
+  --tile-button-background: #{color.adjust($primary, $saturation: 14%, $lightness: 60%)};
 
   --tile-primary-light-gradient-start: #{color.adjust(
       $quaternary,
@@ -476,8 +482,8 @@ $horizontal: 90deg;
     var(--parent-centre-secondary-gradient-end) 100%
   );
 
-  --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
-  --ion-color-slider: #{color.adjust($primary, $hue: -8, $saturation: 12%, $lightness: 9%)};
+  --ion-color-help-tooltip: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
+  --ion-color-slider: #{color.adjust($primary, $hue: -8%, $saturation: 12%, $lightness: 9%)};
 
   --ion-dg-bg-default: var(--ion-banner-primary);
   --ion-btn-dark-box-shadow: 0px 4px 4px #{$dark};

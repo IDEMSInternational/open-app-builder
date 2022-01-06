@@ -39,14 +39,19 @@ export class TemplateNavService {
     if (popup_child && !parent && popup_parent !== name) {
       await this.handlePopupActionsFromOther(params, container);
     }
-    if (popup_child && popup_child === name) {
-      await this.handlePopupActionsFromChild(params, container);
-    }
+
     // HACK - handle rerender on return
     // TODO - merge with hacks folder on merge
-    // TODO - CC 2021-06-01 this will require refactor after nav-actions.service merge
     if (!popup_child && !popup_parent && container.template) {
-      await container.forceRerender(true);
+      // TODO - this could also be handled by having a default nav_resume action that emits force_rerender
+      // force rerender on top-most template only
+      if (!parent) {
+        await container.forceRerender(false);
+      }
+      // trigger any actions defined for the nav_resume trigger on all templates
+      await container.templateActionService.handleActions([
+        { action_id: "emit", args: ["nav_resume"], trigger: "nav_resume" },
+      ]);
     }
   }
   /*****************************************************************************************************
@@ -61,7 +66,9 @@ export class TemplateNavService {
     const [templatename] = action.args;
     const nav_parent_triggered_by = action._triggeredBy.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
-    return container.router.navigate(["template", templatename], {
+    // handle direct page or template navigation
+    const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
+    return container.router.navigate(navTarget, {
       queryParams,
       queryParamsHandling: "merge",
     });
@@ -77,7 +84,7 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    const { nav_child_emit, nav_parent_triggered_by, nav_child } = params;
+    const { nav_child_emit, nav_parent_triggered_by } = params;
     const { router, template } = container;
     log("[Nav] - Parent", { params, container });
     // remove query param
@@ -100,7 +107,7 @@ export class TemplateNavService {
       if (triggerRow) {
         log("trigger row", triggerRow);
         const triggeredActions = triggerRow.action_list.filter((a) => a.trigger === nav_child_emit);
-        await container.handleActions(triggeredActions, triggerRow);
+        await container.templateActionService.handleActions(triggeredActions, triggerRow);
         // back history will have changed (2 duplicate pages), so nav back to restore correct back button
         history.back();
       } else {
@@ -152,6 +159,10 @@ export class TemplateNavService {
     }
   }
 
+  public handleNavActionExternal(url) {
+    window.open(url, "_blank");
+  }
+
   /*****************************************************************************************************
    *  Popup Actions
    ****************************************************************************************************/
@@ -169,20 +180,6 @@ export class TemplateNavService {
       popup_parent_triggered_by: action._triggeredBy.name,
     };
     router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
-  }
-
-  public handleClosePopupAction(
-    action: FlowTypes.TemplateRowAction,
-    container: TemplateContainerComponent
-  ) {
-    return this.modalCtrl.dismiss();
-  }
-
-  private async handlePopupActionsFromChild(
-    params: INavQueryParams,
-    container: TemplateContainerComponent
-  ) {
-    log("[Popup] - other", { params, container });
   }
 
   private async handlePopupActionsFromParent(
@@ -204,7 +201,7 @@ export class TemplateNavService {
         // process any completed/uncompleted actions as specified
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
-          await container.handleActions(emittedActions, triggerRow);
+          await container.templateActionService.handleActions(emittedActions, triggerRow);
           await this.modalCtrl.dismiss(nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there
@@ -260,9 +257,9 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    // Hide any open popup that was trigggered on a previous page prior to navigation
+    // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
     const existingPopup = await this.modalCtrl.getTop();
-    if (existingPopup) {
+    if (existingPopup?.id === `popup-${params.popup_child}`) {
       existingPopup.classList.add("hide-popup-on-template");
     } else {
       this.createPopupAndWaitForDismiss(params.popup_child, container);
@@ -279,6 +276,7 @@ export class TemplateNavService {
     return this.modalCtrl.create({
       component: TemplatePopupComponent,
       componentProps: childContainerProps,
+      id: `popup-${popup_child}`,
       // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "template-popup-modal",
       showBackdrop: false,

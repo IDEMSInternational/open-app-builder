@@ -1,7 +1,6 @@
-@import "../../../../../../theme/mixins.scss";
+@import "src/theme/mixins.scss";
 
 .box-wrapper {
-  padding: var(--large-padding);
   .item {
     @include flex-centered;
     margin-left: auto;

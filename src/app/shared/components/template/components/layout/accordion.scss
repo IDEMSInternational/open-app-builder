@@ -1,5 +1,6 @@
-@import "../../../../../../theme/variables.scss";
-@import "../../../../../../theme/mixins.scss";
+@import "src/theme/variables.scss";
+@import "src/theme/mixins.scss";
+
 .workshops-accordion {
   position: relative;
   margin-top: var(--large-margin);
@@ -7,7 +8,7 @@
     content: "";
     width: 1px;
     height: calc(100% - 35px);
-    background: var(--ion-color-tertiary);
+    background: var(--ion-color-primary);
     position: absolute;
     left: 21px;
     top: 0;
@@ -17,24 +18,26 @@
 .accordion-wrapper {
   display: flex;
   justify-content: space-between;
+  // align-items: center; // aligns dot in center while closed but open will connecting line looks off
   margin-bottom: var(--regular-margin);
   height: 100%;
   .accordion-status {
     @include medium-square;
     border-radius: var(--ion-border-radius-rounded);
+    border: var(--ion-border-thin-standard);
     padding: var(--tiny-padding);
+    background: var(--ion-color-primary-contrast);
     display: flex;
     justify-content: center;
-    background: var(--ion-color-primary-contrast);
     z-index: 2;
     &.inProgress {
-      background: var(--ion-accrodion-status-gradient);
+      background: var(--ion-accordion-bg);
     }
     &.disabled {
       background: var(--ion-color-primary-contrast);
     }
     &.completed {
-      background: var(--ion-accrodion-status-gradient);
+      background: var(--ion-accordion-bg);
     }
   }
   .accordion-section {
@@ -44,8 +47,7 @@
     width: var(--accordion-section-width);
     border-radius: var(--ion-border-radius-standard);
     overflow: hidden;
-    max-height: var(--accordion-section-max-height);
-    padding: var(--accordion-section-padding);
+    padding: var(--small-padding);
     border: var(--ion-border-thin-standard);
     transition: max-height 0.4s;
     overflow-y: hidden;
@@ -68,7 +70,6 @@
       color: var(--ion-color-primary);
     }
     &.openSection {
-      max-height: var(--accordion-section-open-height) !important;
       background: var(--ion-accordion-bg);
       transition: max-height 0.4s;
       .progress {
@@ -84,6 +85,27 @@
       background: var(--ion-accordion-bg);
       opacity: 1;
       transition: opacity 0.4s ease-in;
+      margin-top: calc(var(--small-padding) * -1); // offset for padding in .accordion-section
+    }
+  }
+  .accordion-section {
+    h2 {
+      z-index: 2;
+      text-align: left;
+      margin: 0;
+      font-size: var(--font-size-subtitle-small);
+      font-weight: var(--font-weight-bold);
+      @media (max-width: 320px) {
+        font-size: var(--font-size-subtitle-small-device);
+      }
+    }
+  }
+  .accordion-section-content {
+    max-height: 0;
+    z-index: 2;
+    transition: max-height 0.4s;
+    &.openSection {
+      max-height: var(--accordion-section-open-height);
     }
   }
 }

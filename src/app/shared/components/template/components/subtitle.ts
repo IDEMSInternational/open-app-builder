@@ -7,16 +7,17 @@ import { getStringParamFromTemplateRow } from "../../../utils";
   selector: "plh-tmpl-subtitle",
   template: `
     <div class="subtitle-wrapper margin-t-regular" [class]="style">
-      <h2 [style.text-align]="textAlign" [class]="'standard medium' + ' ' + style">
-        {{ _row.value }}
+      <h2 [style.text-align]="textAlign" [class]="'standard normal' + ' ' + style">
+        <span [innerHTML]="_row.value | markdown"></span>
       </h2>
     </div>
   `,
-  styleUrls: ["./tmpl-components-common.scss"],
+  styleUrls: ["./subtitle.scss"],
 })
 export class TmplSubtitleComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   textAlign: string;
   style: string | null;
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "data-models";
 import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
@@ -12,7 +12,8 @@ import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from ".
 })
 export class RoundIconButtonComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, AfterViewInit {
+  implements ITemplateRowProps, OnInit, AfterViewInit
+{
   @Input() parent: TemplateContainerComponent;
   @Input() template: FlowTypes.Template;
   icon_src: string;
@@ -31,7 +32,7 @@ export class RoundIconButtonComponent
   }
 
   ngAfterViewInit() {
-    const el = this.elRef.nativeElement.closest(".display-group");
+    const el = this.elRef.nativeElement.closest(".display-group-wrapper");
     if (el && el.classList.value.includes("navigation")) {
       this.elRef.nativeElement.parentElement.parentElement.style.setProperty("flex", "0");
     }

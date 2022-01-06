@@ -19,7 +19,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
  *
  * @example template (rendering child rows with reference to this parent container)
  * ```
- *  <plh-template-component *ngFor="let childRow of _row.rows" [row]="childRow" [parent]="parent"></plh-template-component>
+ *  <plh-template-component *ngFor="let childRow of _row.rows; trackBy: trackByRow" [row]="childRow" [parent]="parent"></plh-template-component>
  * ```
  */
 export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
@@ -75,27 +75,11 @@ export class TemplateLayoutComponent implements ITemplateRowProps, OnInit {
     return true;
   }
 
-  // CC - 2021-05-07 - Assumed legacy but to verify (?)
-  // private addRowDefaultActions(actions?: FlowTypes.TemplateRowAction[]) {
-  //   if (!actions) {
-  //     actions = [
-  //       {
-  //         trigger: "completed",
-  //         action_id: "emit",
-  //         args: ["completed"],
-  //       },
-  //       {
-  //         trigger: "uncompleted",
-  //         action_id: "emit",
-  //         args: ["uncompleted"],
-  //       },
-  //     ];
-  //     return actions;
-  //   }
-  // }
+  public trackByRow = (index: number, row: FlowTypes.TemplateRow) =>
+    this.parent.trackByRow(index, row);
 
   private addParentActionsFilter() {
-    this.parent.handleActionsInterceptor = async (actions) => {
+    this.parent.templateActionService.handleActionsInterceptor = async (actions) => {
       return actions.filter((action) => {
         const shouldHandleByParent = this.interceptTemplateContainerAction(action);
         // continue to process on parent unless specific return says not to

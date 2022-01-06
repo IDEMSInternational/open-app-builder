@@ -1,13 +1,14 @@
 import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
-import { TemplateService } from "../../services/template.service";
+import { FlowTypes } from "data-models";
+import { hackAddRowWithDefaultActions } from "../../hacks";
 import { TemplateLayoutComponent } from "./layout";
+import { TemplateFieldService } from "../../services/template-field.service";
 
 @Component({
   selector: "plh-tmpl-nav-group",
   animations: PLHAnimations.fadeEntryExit,
-  template: `<div class="nav-group">
+  template: ` <div class="nav-group">
     <div class="nav-progress">
       <div
         *ngFor="let templateName of templateNames; index as i"
@@ -23,6 +24,7 @@ import { TemplateLayoutComponent } from "./layout";
             [name]="templateName"
             [templatename]="templateName"
             [parent]="parent"
+            [row]="containerRow"
           >
           </plh-template-container>
         </div>
@@ -32,15 +34,19 @@ import { TemplateLayoutComponent } from "./layout";
   styles: [
     `
       :host {
-        width: 100%;
-        height: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
       }
+
       .slide {
         width: 95vw;
       }
+
       .nav-group {
-        height: calc(100% - 27px);
+        flex: 1;
       }
+
       .nav-buttons {
         width: 100%;
         display: flex;
@@ -56,15 +62,17 @@ import { TemplateLayoutComponent } from "./layout";
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        gap: 5px;
         padding: var(--small-padding) 0;
       }
+
       .nav-section :nth-child(1) {
         height: 100%;
       }
+
       .nav-progress-part {
         height: 7px;
         flex: 1;
+        margin: 0 2px;
         background-color: var(--ion-primary-color, #0d3f60);
         border-radius: var(--ion-border-radius-standard);
         max-width: 40px;
@@ -83,9 +91,12 @@ import { TemplateLayoutComponent } from "./layout";
 })
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
-  sectionIndex = 0;
+  sectionIndex: number;
 
-  constructor(private templateService: TemplateService) {
+  /** Temp row to pass emit completed/uncompleted actions to parent */
+  containerRow = hackAddRowWithDefaultActions();
+
+  constructor(private templateFieldService: TemplateFieldService) {
     super();
   }
 
@@ -93,7 +104,11 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     if (Array.isArray(row?.value)) {
       this.templateNames = row.value;
       row._debug_name = this.templateNames[this.sectionIndex];
-      this.sectionIndex = this.getActiveSectionIdx(row.parameter_list.progress_field);
+      // only set the active section the first time value received
+      // (handle via goToSection method internally for other cases)
+      if (!this.sectionIndex) {
+        this.sectionIndex = this.getActiveSectionIdx(row?.parameter_list?.progress_field);
+      }
     }
     return row;
   }
@@ -109,7 +124,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     }
     if (action_id === "emit" && args[0] === "uncompleted") {
       if (this.sectionIndex > 0) {
-        this.goToSection(this.sectionIndex - 1);
+        this.goToSection(this.sectionIndex - 1).then();
         return false;
       }
     }
@@ -117,44 +132,69 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     return true;
   }
 
+  /**
+   * Function that will return Current Slider Index
+   * @param progressField
+   */
   getActiveSectionIdx(progressField: string): number {
     let result: number;
-    const currentProgress = this.templateService.getField(progressField);
+    const currentProgress = this.templateFieldService.getField(progressField);
     if (+currentProgress === 100) {
       result = 0;
-      this.templateService.setField(progressField, `${result}`);
+      this.templateFieldService.setField(progressField, `${result}`);
       return result;
     }
     result = Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
     return result > 0 ? result : 0;
   }
 
-  goToSection(index: number) {
+  /**
+   * Function that will move forward or back to Section
+   * @param index
+   */
+  async goToSection(index: number) {
     this.sectionIndex = index;
     this.scrollToTop();
     this._row._debug_name = this.templateNames[index];
-    this.updateSectionProgress();
+    await this.updateSectionProgress();
   }
 
-  updateSectionProgress() {
+  /**
+   * Function to Update Progress of Stepper
+   */
+  async updateSectionProgress() {
     //update the field provided in progress_variable to be equal to the max of it's current value
     //and the percentage of this.sectionIndex from this.templateNames.length. the value should
     //be an integer between 0 and 100 inclusive.
     const progressField = this._row.parameter_list["progress_field"];
+    const progressFieldMaximum = this._row.parameter_list["max_progress_field"];
+
     if (progressField && progressField.indexOf("{{") < 0) {
       const currentPercentDone = Math.ceil(
         ((this.sectionIndex + 1) / this.templateNames.length) * 100
       );
-      const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
-      let percentDone = currentPercentDone;
-      if (previousPercentDone && previousPercentDone != NaN) {
-        percentDone = Math.max(currentPercentDone, previousPercentDone);
-      }
-      this.parent.handleActions(
+
+      let maximumPercentDone: number;
+
+      let currentMaximumPercentDone: number = Number.parseInt(
+        this.templateFieldService.getField(progressFieldMaximum)
+          ? this.templateFieldService.getField(progressFieldMaximum)
+          : currentPercentDone
+      );
+
+      maximumPercentDone = Math.max(currentPercentDone, currentMaximumPercentDone);
+
+      await this.parent.handleActions(
         [
           {
             action_id: "set_field",
-            args: [progressField, "" + percentDone],
+            args: [progressField, "" + currentPercentDone],
+            trigger: "completed",
+            _triggeredBy: this._row,
+          },
+          {
+            action_id: "set_field",
+            args: [progressFieldMaximum, "" + maximumPercentDone],
             trigger: "completed",
             _triggeredBy: this._row,
           },
