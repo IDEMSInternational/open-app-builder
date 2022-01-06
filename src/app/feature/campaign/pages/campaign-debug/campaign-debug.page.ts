@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
+import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
@@ -27,7 +27,7 @@ export class CampaignDebugPage implements OnInit {
     public campaignService: CampaignService,
     public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
-    private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private router: Router,
     private route: ActivatedRoute,
     private modalCtrl: ModalController
@@ -39,7 +39,7 @@ export class CampaignDebugPage implements OnInit {
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
     }
-    this.debugCampaignsEnabled = this.templateService.getField("debug_campaigns_enabled");
+    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
   }
 
   /***************************************************************************************
@@ -61,8 +61,8 @@ export class CampaignDebugPage implements OnInit {
   }
 
   public setDebugCampaignOptIn(value: boolean) {
-    this.templateService.setField("debug_campaigns_enabled", `${value}`);
-    this.debugCampaignsEnabled = this.templateService.getField("debug_campaigns_enabled");
+    this.templateFieldService.setField("debug_campaigns_enabled", `${value}`);
+    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
     this.campaignService.init();
   }
 
