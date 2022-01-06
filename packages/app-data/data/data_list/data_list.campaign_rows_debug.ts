@@ -293,9 +293,9 @@ const data_list: FlowTypes.Data_list[] = [
           {
             trigger: "click",
             action_id: "go_to",
-            args: ["activity_@data.workshop.1on1.something_fun"],
-            _raw: "go_to: activity_@data.workshop.1on1.something_fun",
-            _cleaned: "click | go_to: activity_@data.workshop.1on1.something_fun",
+            args: ["@data.something_fun.co_chef.text_template"],
+            _raw: "go_to: @data.something_fun.co_chef.text_template",
+            _cleaned: "click | go_to: @data.something_fun.co_chef.text_template",
           },
           {
             trigger: "click",
