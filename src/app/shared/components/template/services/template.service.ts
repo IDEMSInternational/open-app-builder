@@ -1,28 +1,29 @@
 import { Injectable } from "@angular/core";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
-import { GLOBAL, PLHDataService, TEMPLATE } from "src/app/shared/services/data/data.service";
+import { GLOBAL, TEMPLATE } from "src/app/shared/services/data/data.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
-import { booleanStringToBoolean, getNestedProperty } from "src/app/shared/utils";
 import { BehaviorSubject } from "rxjs";
 import { ModalController } from "@ionic/angular";
 import { TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
-import { IFlowEvent } from "packages/data-models/db.model";
+import { IFlowEvent } from "data-models/db.model";
+import { TemplateVariablesService } from "./template-variables.service";
+import { TemplateFieldService } from "./template-field.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class TemplateService {
-  globals: { [name: string]: FlowTypes.GlobalRow } = {};
   private themeValue = new BehaviorSubject("passive");
   currentTheme = this.themeValue.asObservable();
   constructor(
     private localStorageService: LocalStorageService,
-    private dataService: PLHDataService,
     private dbService: DbService,
     private modalCtrl: ModalController,
-    private translateService: TemplateTranslateService
+    private translateService: TemplateTranslateService,
+    private templateVariablesService: TemplateVariablesService,
+    private templateFieldService: TemplateFieldService
   ) {}
 
   /** Initialise global and startup templates */
@@ -65,12 +66,12 @@ export class TemplateService {
         switch (row.type) {
           case "declare_field_default":
             if (this.localStorageService.getString("rp-contact-field." + row.name) === null) {
-              this.setField(row.name, row.value);
+              this.templateFieldService.setField(row.name, row.value);
             }
             break;
           case "declare_global_constant":
             const translatedGlobal = this.translateService.translateRow(row as any);
-            this.setGlobal(translatedGlobal as any);
+            this.templateFieldService.setGlobal(translatedGlobal as any);
             break;
           default:
             console.warn(`[${row.type}] row type not supported in global template`);
@@ -80,13 +81,26 @@ export class TemplateService {
     });
   }
 
-  public getTemplateByName(templateName: string): FlowTypes.Template {
+  /**
+   * Load a template by a given name. If overrides exist for the template they will be evaluated
+   * and returned instead.
+   * @param templateName name of template to load
+   * @param row container row as source of getTemplate request
+   */
+  public async getTemplateByName(
+    templateName: string,
+    row?: FlowTypes.TemplateRow
+  ): Promise<FlowTypes.Template> {
     const foundTemplate: FlowTypes.Template = TEMPLATE.find((t) => t.flow_name === templateName);
     if (foundTemplate) {
+      const overiddenTemplate = await this.getTemplateOverride(
+        foundTemplate,
+        row?.is_override_target
+      );
       // create a deep clone of the object to prevent accidental reference changes
       // assign a name (in case top-level template) and store breadcrumb path for nested
       // (NOTE - would no longer be required if reading in json objects instead of ts import)
-      const template = JSON.parse(JSON.stringify(foundTemplate));
+      const template = JSON.parse(JSON.stringify(overiddenTemplate));
       return template;
     }
     // Template not found
@@ -97,75 +111,27 @@ export class TemplateService {
   }
 
   /**
-   * Retrieve fields from localstorage. These are automatically prefixed with 'rp-contact-field'
-   * and will be returned as string or boolean
-   * TODO - ideally showWarnings should be linked to some sort of debug mode
+   * Check if target template contains any conditional overrides. Evaluate condition and override if satisfied.
+   * @param isOverrideTarget indicate if self-referencing override target from override (prevent infinite loop)
    */
-  getField(key: string, showWarnings = true) {
-    let val: any = this.localStorageService.getString("rp-contact-field." + key);
-    // provide a fallback if the target variable does not exist in local storage
-    if (val === null && showWarnings) {
-      // console.warn("field value not found for key:", key);
-      val = undefined;
-    }
-    // convert boolean strings if required
-    val = booleanStringToBoolean(val);
-    // convert undefined string to undefined type
-    if (val === "undefined") val = undefined;
-    // console.log("[Field Retrieved]", key, val);
-    return val;
-  }
-
-  /**
-   * Store a contact field in localstorage and create a backup also in the database
-   *
-   * @remark whilst writing to the db is an async event, the data will be immediately
-   * available in local storage so does not require await for further processing
-   * */
-  setField(key: string, value: string) {
-    if (typeof value === "object") {
-      console.warn("Warning - expected string field but received", { key, value });
-      try {
-        value = JSON.stringify(value);
-      } catch (error) {
-        console.warn("string conversion failed", error);
+  private async getTemplateOverride(foundTemplate: FlowTypes.Template, isOverrideTarget?: boolean) {
+    const { _overrides } = foundTemplate;
+    if (_overrides && !isOverrideTarget) {
+      for (const [templatename, condition] of Object.entries(_overrides)) {
+        const satisfied = await this.templateVariablesService.evaluateConditionString(condition);
+        if (satisfied) {
+          // retrieve override template via main methods (avoid re-override by providing is_override_target)
+          const overrideTemplate = await this.getTemplateByName(templatename, {
+            is_override_target: true,
+          } as any);
+          // return if a template has been found
+          if (overrideTemplate) {
+            return overrideTemplate;
+          }
+        }
       }
     }
-    // write to local storage - this will cast to string
-    this.localStorageService.setString("rp-contact-field." + key, value);
-
-    // write to db - note this can handle more data formats but only string/number will be available to queries
-    if (typeof value === "boolean") value = "value";
-    const evt: IFlowEvent = {
-      ...this.dbService.generateDBMeta(),
-      event: "set",
-      value,
-      name: key,
-      type: "contact_field" as any,
-    };
-    return this.dbService.table("data_events").add(evt);
-  }
-
-  getGlobal(key: string): string {
-    // provide a fallback if the target global variable has never been set
-    if (!this.globals.hasOwnProperty(key)) {
-      console.warn("global value not found for key:", key);
-      return undefined;
-    }
-    let global = this.globals[key];
-    // HACK - ensure global value is translated (if exists)
-    // (could possibly be handled better from within translate service)
-    return this.translateService.translateValue(global.value);
-  }
-
-  private setGlobal(row: FlowTypes.GlobalRow) {
-    this.globals[row.name] = row;
-  }
-
-  /** Get the value of a data_list item as defined within templates */
-  getDataListByPath(path: string) {
-    const data = getNestedProperty(this.dataService.dataLists, path);
-    return data;
+    return foundTemplate;
   }
 
   /** Record a template event to the database */

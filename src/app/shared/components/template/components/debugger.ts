@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { TemplateService } from "../services/template.service";
+import { TemplateFieldService } from "../services/template-field.service";
 import { TemplateBaseComponent } from "./base";
 
 @Component({
@@ -78,7 +78,7 @@ import { TemplateBaseComponent } from "./base";
   ],
 })
 export class TemplateDebuggerComponent extends TemplateBaseComponent {
-  constructor(private templateService: TemplateService) {
+  constructor(private templateFieldService: TemplateFieldService) {
     super();
   }
   public debugFieldExclusions = ["comments", "rows", "_dynamicFields", "action_list"];
@@ -86,13 +86,14 @@ export class TemplateDebuggerComponent extends TemplateBaseComponent {
     // retrieve local storage keys in the same way they would be populated in a template
     const fields = {};
     Object.keys(localStorage).forEach(
-      (key) => (fields[key] = this.templateService.getField(key.replace("rp-contact-field.", "")))
+      (key) =>
+        (fields[key] = this.templateFieldService.getField(key.replace("rp-contact-field.", "")))
     );
     console.group(this._row.type, this._row.name);
     console.log("row", this._row);
     console.log("parent rows", this.parent.templateRowMap);
     console.log("fields", fields);
-    console.log("globals", this.templateService.globals);
+    console.log("globals", this.templateFieldService.globals);
     console.log("parent", this.parent);
     console.log("children", this._row.rows);
     console.groupEnd();

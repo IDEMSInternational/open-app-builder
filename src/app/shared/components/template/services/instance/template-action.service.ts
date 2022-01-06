@@ -12,6 +12,7 @@ import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
+import { TemplateFieldService } from "../template-field.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -34,6 +35,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private templateService: TemplateService;
   private tourService: TourService;
   private templateTranslateService: TemplateTranslateService;
+  private templateFieldService: TemplateFieldService;
 
   constructor(public container: TemplateContainerComponent, injector: Injector) {
     super(injector);
@@ -43,6 +45,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.templateNavService = this.getGlobalService(TemplateNavService);
     this.templateService = this.getGlobalService(TemplateService);
     this.tourService = this.getGlobalService(TourService);
+    this.templateFieldService = this.getGlobalService(TemplateFieldService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -137,7 +140,7 @@ export class TemplateActionService extends TemplateInstanceService {
         return this.templateNavService.handlePopupAction(action, this.container);
       case "set_field":
         console.log("[SET FIELD]", key, value);
-        return this.templateService.setField(key, value);
+        return this.templateFieldService.setField(key, value);
       case "set_theme":
         return this.templateService.setTheme(this.container.template, "set_theme", action.args);
       case "start_tour":
@@ -154,7 +157,7 @@ export class TemplateActionService extends TemplateInstanceService {
         return;
       case "process_template":
         // HACK - create an embedded template processor service instance to process template programatically
-        const templateToProcess = this.templateService.getTemplateByName(args[0]);
+        const templateToProcess = await this.templateService.getTemplateByName(args[0]);
         const processor = new TemplateProcessService(
           this.templateService,
           this.templateNavService,

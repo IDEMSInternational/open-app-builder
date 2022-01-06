@@ -3,9 +3,9 @@ import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { mergeTemplateRows, objectToArray } from "../../utils/template-utils";
+import { TemplateFieldService } from "../template-field.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateVariablesService } from "../template-variables.service";
-import { TemplateService } from "../template.service";
 import { TemplateInstanceService } from "./template-instance.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
@@ -36,12 +36,12 @@ export class TemplateRowService extends TemplateInstanceService {
 
   private templateVariablesService: TemplateVariablesService;
   private templateTranslateService: TemplateTranslateService;
-  private templateService: TemplateService;
+  private templateFieldService: TemplateFieldService;
   constructor(public container: TemplateContainerComponent, injector: Injector) {
     super(injector);
     this.templateVariablesService = this.getGlobalService(TemplateVariablesService);
     this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
-    this.templateService = this.getGlobalService(TemplateService);
+    this.templateFieldService = this.getGlobalService(TemplateFieldService);
   }
 
   /***************************************************************************************
@@ -273,7 +273,8 @@ export class TemplateRowService extends TemplateInstanceService {
       switch (type) {
         case "set_field":
           // console.warn("[W] Setting fields from template is not advised", row);
-          await this.templateService.setField(name, value);
+
+          await this.templateFieldService.setField(name, value);
           return;
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
