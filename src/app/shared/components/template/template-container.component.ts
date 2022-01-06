@@ -68,8 +68,8 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public elRef?: ElementRef,
     private route?: ActivatedRoute
   ) {
-    this.templateActionService = new TemplateActionService(this, injector);
-    this.templateRowService = new TemplateRowService(this, injector);
+    this.templateActionService = new TemplateActionService(injector, this);
+    this.templateRowService = new TemplateRowService(injector, this);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
   @HostBinding("attr.data-templatename") get getTemplatename() {
