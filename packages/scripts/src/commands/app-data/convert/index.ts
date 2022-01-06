@@ -11,7 +11,6 @@ import {
   groupJsonByKey,
   readContentsFileAsHashmap,
   generateFolderFlatMap,
-  logWarning,
   IContentsEntry,
 } from "./utils";
 import { FlowTypes } from "data-models";
@@ -91,11 +90,18 @@ class AppDataConverter {
     const allConvertedData = [...converted, ...cached].filter((data) =>
       this.applySheetFilters(data)
     );
-    const mergedData = this.mergeConvertedData(allConvertedData);
 
-    const mergedWithLegacy = hackEnsureLegacyDataTypesExist(mergedData);
+    const dataByFlowType = this.mergeDataByFlowtype(allConvertedData);
+
+    const postProcessedByType = this.postProcessSheets(dataByFlowType);
+
+    const dataBySubType = this.mergeDataByFlowSubtype(postProcessedByType);
+
+    const mergedWithLegacy = hackEnsureLegacyDataTypesExist(dataBySubType);
 
     this.writeMergedOutputJsons(mergedWithLegacy);
+
+    this.logSheetsSummary(mergedWithLegacy);
 
     console.log(chalk.yellow("Conversion Complete"));
 
@@ -201,35 +207,52 @@ class AppDataConverter {
     return data;
   }
 
+  private mergeDataByFlowtype(convertedData: IParsedWorkbookData[]) {
+    const merged: IParsedWorkbookData = {};
+    for (const entry of convertedData) {
+      Object.values(entry).forEach((values) => {
+        values.forEach((v) => {
+          if (!merged[v.flow_type]) {
+            merged[v.flow_type] = [];
+          }
+          merged[v.flow_type].push(v);
+        });
+      });
+    }
+    return merged;
+  }
+
   /**
    * Each converted sheet may contain a mixture of different flow types (e.g. template, data_list),
    * and subtypes within. Collate all sheets by flow type and subtype
    */
-  private mergeConvertedData(convertedData: IParsedWorkbookData[]) {
+  private mergeDataByFlowSubtype(convertedData: IParsedWorkbookData) {
     const merged: IParsedWorkbookData = {};
-    for (const entry of convertedData) {
-      Object.entries(entry).forEach(([key, value]) => {
-        const convertedDataBySubtype = groupJsonByKey(value as any, "flow_subtype", "_default");
-        // split by subtype
-        Object.entries(convertedDataBySubtype).forEach(([subkey, subValues]) => {
-          let outputName = key;
-          if (subkey !== "_default") {
-            outputName = `${key}.${subkey}`;
-          }
-          if (!merged[outputName]) {
-            merged[outputName] = [];
-          }
-          // merge all sheets of given subtype into main
-          subValues.forEach((subValue) => merged[outputName].push(subValue));
-        });
+    Object.entries(convertedData).forEach(([flow_type, values]) => {
+      const convertedDataBySubtype = groupJsonByKey(values, "flow_subtype", "_default");
+
+      // split by subtype
+      Object.entries(convertedDataBySubtype).forEach(([subkey, subValues]) => {
+        let outputName = flow_type;
+        if (subkey !== "_default") {
+          outputName = `${flow_type}.${subkey}`;
+        }
+        if (!merged[outputName]) {
+          merged[outputName] = [];
+        }
+        // merge all sheets of given subtype into main
+        subValues.forEach((subValue) => merged[outputName].push(subValue));
       });
-    }
-    const logOutput = Object.keys(merged)
+    });
+    return merged;
+  }
+
+  private logSheetsSummary(data: IParsedWorkbookData) {
+    const logOutput = Object.keys(data)
       .sort()
-      .map((subtype) => ({ subtype, total: merged[subtype].length }));
+      .map((subtype) => ({ subtype, total: data[subtype].length }));
     console.log("\nSheet Summary");
     console.table(logOutput);
-    return merged;
   }
 
   /** Take final merged list of data keyed by [type].[subtype?] and write output jsons */
@@ -298,6 +321,12 @@ class AppDataConverter {
     return false;
   }
 
+  private postProcessSheets(sheets: IParsedWorkbookData) {
+    // console.log("post process sheets", sheets);
+    const postProcessed = applyDataParsers(sheets, "postProcess");
+    return postProcessed;
+  }
+
   /**
    * App data sheets contain contents page with metadata that can be merged into regular data
    * Merge and collate with other existing data, warning in case of overwrites
@@ -340,7 +369,10 @@ class AppDataConverter {
 }
 type IParsedWorkbookData = { [type in FlowTypes.FlowType]?: FlowTypes.FlowTypeWithData[] };
 
-function applyDataParsers(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
+function applyDataParsers(
+  dataByFlowType: IParsedWorkbookData,
+  processType: "run" | "postProcess" = "run"
+): IParsedWorkbookData {
   // All flow types will be processed by the default parser unless otherwise specified here
 
   // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
@@ -356,18 +388,26 @@ function applyDataParsers(dataByFlowType: IParsedWorkbookData): IParsedWorkbookD
   };
   const parsedData: IParsedWorkbookData = {};
   Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
-    const parser = customParsers[flow_type]
+    const parser: Parsers.AbstractParser = customParsers[flow_type]
       ? customParsers[flow_type]
       : new Parsers.DefaultParser();
-    // parse all flows through the parser
-    parsedData[flow_type] = contentFlows.map((flow) => {
-      try {
-        const parsed = parser.run(flow);
-        return parsed;
-      } catch (error) {
-        throwTemplateParseError(error, flow);
-      }
-    });
+    // apply parser for current process type
+    switch (processType) {
+      case "run":
+        // process individual rows via parser.run method
+        parsedData[flow_type] = contentFlows.map((flow) => {
+          try {
+            const parsed = parser.run(flow);
+            return parsed;
+          } catch (error) {
+            throwTemplateParseError(error, flow);
+          }
+        });
+        break;
+      case "postProcess":
+        parsedData[flow_type] = parser.postProcessFlows(contentFlows);
+        break;
+    }
   });
   return parsedData;
 }

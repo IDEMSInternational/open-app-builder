@@ -6,6 +6,7 @@ import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
+import { TemplateFieldService } from "./template-field.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -25,7 +26,8 @@ export class TemplateActionService {
     public container: TemplateContainerComponent,
     private settingsService: SettingsService,
     private serverService: ServerService,
-    private analyticsService: AnalyticsService
+    private analyticsService: AnalyticsService,
+    private templateFieldService: TemplateFieldService
   ) {}
 
   /** Public method to add actions to processing queue and process */
@@ -120,7 +122,7 @@ export class TemplateActionService {
         return this.container.templateNavService.handlePopupAction(action, this.container);
       case "set_field":
         console.log("[SET FIELD]", key, value);
-        return this.container.templateService.setField(key, value);
+        return this.templateFieldService.setField(key, value);
       case "set_theme":
         return this.container.templateService.setTheme(
           this.container.template,
@@ -141,11 +143,15 @@ export class TemplateActionService {
         return;
       case "process_template":
         // HACK - create an embedded template processor service instance to process template programatically
-        const templateToProcess = this.container.templateService.getTemplateByName(args[0]);
+        const templateToProcess = await this.container.templateService.getTemplateByName(
+          args[0],
+          this.container.row
+        );
         const processor = new TemplateProcessService(
           this.container.templateService,
           this.container.templateVariables,
           this.container.templateTranslateService,
+          this.container.templateFieldService,
           this.container.tourService,
           this.container.router,
           this.container.route,

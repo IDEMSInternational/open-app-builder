@@ -24,6 +24,7 @@ import { TemplateTranslateService } from "./services/template-translate.service"
 import { SettingsService } from "src/app/shared/services/settings.service";
 import { ServerService } from "../../services/server/server.service";
 import { AnalyticsService } from "../../services/analytics/analytics.service";
+import { TemplateFieldService } from "./services/template-field.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -70,6 +71,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
     public templateService: TemplateService,
     public templateVariables: TemplateVariablesService,
     public templateTranslateService: TemplateTranslateService,
+    public templateFieldService: TemplateFieldService,
     public tourService: TourService,
     public router: Router,
     public route: ActivatedRoute,
@@ -84,9 +86,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       this,
       this.settingsService,
       this.serverService,
-      this.analyticsService
+      this.analyticsService,
+      this.templateFieldService
     );
-    this.templateRowService = new TemplateRowService(this);
+    this.templateRowService = new TemplateRowService(this, this.templateFieldService);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
   @HostBinding("attr.data-templatename") get getTemplatename() {
@@ -186,7 +189,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   private async renderTemplate() {
     // Lookup template
-    const template = this.templateService.getTemplateByName(this.templatename);
+    const template = await this.templateService.getTemplateByName(this.templatename, this.row);
     this.name = this.name || this.templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;

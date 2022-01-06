@@ -47,6 +47,14 @@ export namespace FlowTypes {
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
     comments?: string;
+    /** if specified, template will override target template (e.g. A/B testing) */
+    override_target?: string;
+    /** condition to evaluate for applying override */
+    override_condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    /** computed list of all other templates with override conditions that targetthis template */
+    _overrides?: {
+      [templatename: string]: any; // override condition
+    };
     _xlsxPath?: string; // debug info
     process_on_start?: number; // priority order to process template variable setters on startup
   }
@@ -384,7 +392,7 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
-
+    is_override_target?: boolean; // prevent template being overridden when calling self via override_target (prevent infinite loops)
     _debug_name?: string; // some components may optionally provide a different name for debugging purposes
     _nested_name: string; // track full path to row when nested in a template (e.g. contentBox1.row2.title)
 
