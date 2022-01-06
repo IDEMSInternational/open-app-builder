@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
 import { APP_ROUTE_DEFAULTS } from "packages/data-models/constants";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
-import { ExistingCommentsComponent } from "./feature/reviewing-content/components/existing-comments/existing-comments.component";
 import { TourComponent } from "./feature/tour/tour.component";
 
 /** Routes specified from data-models */
@@ -41,8 +40,9 @@ const FeatureRoutes: Routes = [
     component: TourComponent,
   },
   {
-    path: "existing-comments",
-    component: ExistingCommentsComponent,
+    path: "content-review",
+    loadChildren: () =>
+      import("./feature/content-review/content-review.module").then((m) => m.ContentReviewModule),
   },
 ];
 

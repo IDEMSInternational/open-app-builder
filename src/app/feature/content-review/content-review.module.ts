@@ -6,9 +6,10 @@ import { ContextMenuComponent } from "./components/context-menu/context-menu.com
 import { ReviewingComponent } from "./components/reviewing.component";
 import { SuggestFormComponent } from "./components/suggest-form/suggest-form.component";
 import { FormsModule } from "@angular/forms";
+import { ContentReviewRoutingModule } from "./content-review-routing.module";
 
 @NgModule({
-  imports: [CommonModule, IonicModule, FormsModule],
+  imports: [CommonModule, IonicModule, FormsModule, ContentReviewRoutingModule],
   declarations: [
     ExistingCommentsComponent,
     SuggestFormComponent,
@@ -17,4 +18,4 @@ import { FormsModule } from "@angular/forms";
   ],
   exports: [ReviewingComponent],
 })
-export class ReviewingModule {}
+export class ContentReviewModule {}

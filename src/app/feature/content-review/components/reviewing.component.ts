@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { fromEvent, merge, Subscription } from "rxjs";
-import { ReviewingService } from "src/app/feature/reviewing-content/reviewing.service";
+import { ContentReviewService } from "../content-review.service";
 import { FlowTypes } from "data-models";
 import { ContextMenuData } from "./context-menu/context-menu.component";
 
@@ -63,7 +63,7 @@ export class ReviewingComponent implements AfterViewInit, OnDestroy {
     fromEvent(document, "click")
   );
 
-  constructor(private reviewingService: ReviewingService) {}
+  constructor(private contentReviewService: ContentReviewService) {}
 
   ngAfterViewInit() {
     this.subscription$ = this.subscribeDocumentEvents$.subscribe((e: Event) => {
@@ -85,8 +85,8 @@ export class ReviewingComponent implements AfterViewInit, OnDestroy {
 
   private handleContextmenuEvent(e: Event) {
     e.preventDefault();
-    this.targetRow = this.reviewingService.getTargetRow(e);
-    this.isTypeTextRow = this.reviewingService.isText(this.targetRow);
+    this.targetRow = this.contentReviewService.getTargetRow(e);
+    this.isTypeTextRow = this.contentReviewService.isText(this.targetRow);
     if (this.targetRow) {
       this.openContextMenu(e);
     }
