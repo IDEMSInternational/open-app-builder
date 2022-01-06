@@ -157,7 +157,10 @@ export class TemplateActionService extends TemplateInstanceService {
         return;
       case "process_template":
         // HACK - create an embedded template processor service instance to process template programatically
-        const templateToProcess = await this.templateService.getTemplateByName(args[0]);
+        const templateToProcess = await this.templateService.getTemplateByName(
+          args[0],
+          this.container?.row?.is_override_target
+        );
         const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
