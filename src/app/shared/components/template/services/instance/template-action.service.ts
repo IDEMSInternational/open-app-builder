@@ -3,7 +3,7 @@ import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { SettingsService } from "src/app/shared/services/settings.service";
-import { TemplateProcessService } from "../template-process.service";
+import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { Injector } from "@angular/core";
@@ -158,11 +158,7 @@ export class TemplateActionService extends TemplateInstanceService {
       case "process_template":
         // HACK - create an embedded template processor service instance to process template programatically
         const templateToProcess = await this.templateService.getTemplateByName(args[0]);
-        const processor = new TemplateProcessService(
-          this.templateService,
-          this.templateNavService,
-          this.injector
-        );
+        const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
         const [emit_value, emit_from] = args;

@@ -1,9 +1,10 @@
 import { Injectable, Injector } from "@angular/core";
 import { FlowTypes } from "data-models";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
-import { TemplateContainerComponent } from "../template-container.component";
-import { TemplateNavService } from "./template-nav.service";
-import { TemplateService } from "./template.service";
+import { TemplateContainerComponent } from "../../template-container.component";
+import { TemplateNavService } from "../template-nav.service";
+import { TemplateService } from "../template.service";
+import { TemplateInstanceService } from "./template-instance.service";
 
 /**
  * The template process service is a slightly hacky wrapper around the template container component so that
@@ -13,15 +14,20 @@ import { TemplateService } from "./template.service";
  * component extending it (instead of vice-versa)
  */
 @Injectable({ providedIn: "root" })
-export class TemplateProcessService {
+export class TemplateProcessService extends TemplateInstanceService {
   container: TemplateContainerComponent;
-  constructor(
-    templateService: TemplateService,
-    templateNavService: TemplateNavService,
-    injector: Injector
-  ) {
+  templateService: TemplateService;
+  templateNavService: TemplateNavService;
+  constructor(injector: Injector) {
+    super(injector);
+    this.templateService = this.getGlobalService(TemplateService);
+    this.templateNavService = this.getGlobalService(TemplateNavService);
     // Create mock template container component
-    this.container = new TemplateContainerComponent(templateService, templateNavService, injector);
+    this.container = new TemplateContainerComponent(
+      this.templateService,
+      this.templateNavService,
+      injector
+    );
   }
 
   public async init() {
