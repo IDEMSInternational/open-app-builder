@@ -1,7 +1,4 @@
 import { Injectable, NgZone } from "@angular/core";
-import { Plugins } from "@capacitor/core";
-import { BehaviorSubject } from "scripts/node_modules/rxjs";
-import { FlowTypes } from "../../../shared/model/flowTypes";
 
 import {
   ActionSheetController,
@@ -13,8 +10,9 @@ import {
 } from "@ionic/angular";
 import { SuggestFormComponent } from "src/app/feature/reviewing-content/components/suggest-form/suggest-form.component";
 import { Router } from "@angular/router";
-
-const { Device } = Plugins;
+import { BehaviorSubject } from "rxjs";
+import { FlowTypes } from "data-models";
+import { Device } from "@capacitor/device";
 
 @Injectable({
   providedIn: "root",
@@ -36,7 +34,8 @@ export class ReviewingService {
     private modal: ModalController,
     public toastController: ToastController,
     private router: Router
-  ) {
+  ) {}
+  public init() {
     Device.getInfo().then((v) => {
       this.currentPlatform = v.platform;
     });
