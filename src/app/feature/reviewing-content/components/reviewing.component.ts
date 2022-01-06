@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
-import { fromEvent, merge, Subscription } from "scripts/node_modules/rxjs";
-import { ReviewingService } from "src/app/shared/services/reviewing/reviewing.service";
-import { FlowTypes } from "../../../shared/model/flowTypes";
+import { fromEvent, merge, Subscription } from "rxjs";
+import { ReviewingService } from "src/app/feature/reviewing-content/reviewing.service";
+import { FlowTypes } from "data-models";
 import { ContextMenuData } from "./context-menu/context-menu.component";
 
 @Component({
