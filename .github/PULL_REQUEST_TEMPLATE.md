@@ -9,7 +9,7 @@ _What this PR does_
 
 ## Git Issues
 
-_Closes #_
+Closes #
 
 ## Screenshots/Videos
 

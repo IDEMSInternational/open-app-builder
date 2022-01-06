@@ -17,9 +17,9 @@ import { Options } from "nouislider";
 })
 export class TmplSliderComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: string };
   @ViewChild("slider") slider: NouisliderComponent;
   help: string | null;
   no_value_text: string = "no_value";
@@ -28,12 +28,13 @@ export class TmplSliderComponent
   disabled: boolean = false;
   title: string | null;
   step: number = 1;
-  sliderValue: number | null = 0;
   min_value_label: string | null;
   max_value_label: string | null;
   listNumbers: Array<number> = [];
   no_value: boolean = false;
   labels_count: number | null = 8;
+  /** Track the previous value when toggling NA on/off */
+  previousValue: number;
 
   // Note - not all config options are actually supported by ng2-nouislider (need to dig into code to see what is)
   sliderConfig: Options = {
@@ -66,7 +67,6 @@ export class TmplSliderComponent
     this.step = getNumberParamFromTemplateRow(this._row, "step", this.step);
     this.min_value_label = getStringParamFromTemplateRow(this._row, "min_value_label", null);
     this.max_value_label = getStringParamFromTemplateRow(this._row, "max_value_label", null);
-    this.sliderValue = this._row.value > this.maxValue ? undefined : this._row.value;
     this.labels_count = getNumberParamFromTemplateRow(this._row, "labels_count", 8);
     this.no_value_text = getStringParamFromTemplateRow(this._row, "no_value_text", "no_value");
     this.updateConfigParams();
@@ -75,9 +75,10 @@ export class TmplSliderComponent
 
   async toggleNACheckbox() {
     if (this._row.value === "no_value") {
-      // if restoring functionality assume the value reverts to last known or undefined
-      await this.changeValue(this.sliderValue);
+      // if restoring functionality assume the value reverts to last known (if a number)
+      await this.changeValue(typeof this.previousValue === "number" ? this.previousValue : 0);
     } else {
+      this.previousValue = this._row.value;
       // if removing functionality specify the value as no_value
       await this.changeValue("no_value");
     }
@@ -92,7 +93,7 @@ export class TmplSliderComponent
     this.sliderConfig.range.min = this.minValue;
     this.sliderConfig.range.max = this.maxValue;
     this.sliderConfig.step = this.step;
-    this.sliderConfig.start = this.sliderValue || 0;
+    this.sliderConfig.start = Number(this._row.value) || 0;
     this.sliderConfig.pips.values = this.labels_count;
   }
 }

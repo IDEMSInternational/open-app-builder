@@ -9,185 +9,121 @@ namespace FlowTypes {
 }
 
 const data = {
+  originalRows: [
+    {
+      type: "template",
+      name: "subtemplate_1",
+      rows: [],
+      _nested_name: "subtemplate_1",
+    },
+  ],
   overrides: {
-    workshop_activity: {
-      name: "workshop_activity",
+    text: {
+      name: "text",
+      value: "New text",
+      _processed: true,
+    },
+    subtemplate_1: {
+      name: "subtemplate_1",
+      value: "debug_text_and_blank_child_1",
       rows: [
         {
-          name: "intro_text",
-          value: "Let's try it out and do a short relaxation activity together!",
-          type: "set_variable",
-          _nested_name: "relax.workshop_activity.intro_text",
+          name: "subtemplate_1",
+        },
+      ],
+      _processed: true,
+    },
+    "subtemplate_1.subtemplate_1": {
+      name: "subtemplate_1",
+      rows: [
+        {
+          name: "text_1",
+          value: "example_text",
         },
       ],
     },
   },
-  originalRows: [
-    {
-      type: "template",
-      name: "workshop_activity",
-      value: "workshop_activity",
-      rows: [
-        {
-          name: "intro_text",
-          value: "Let’s do a 30 second relaxation activity together.",
-          condition: "@field.do_workshops_together",
-          type: "set_variable",
-          _nested_name: "workshop_activity.intro_text",
-          _dynamicFields: {
-            condition: [
-              {
-                fullExpression: "@field.do_workshops_together",
-                matchedExpression: "@field.do_workshops_together",
-                type: "field",
-                fieldName: "do_workshops_together",
-              },
-            ],
-          },
-          _dynamicDependencies: {
-            "@field.do_workshops_together": ["condition"],
-          },
-        },
-        {
-          name: "intro_text",
-          value: "Let’s do a 30 second relaxation activity.",
-          condition: "!@field.do_workshops_together",
-          type: "set_variable",
-          _nested_name: "workshop_activity.intro_text",
-          _dynamicFields: {
-            condition: [
-              {
-                fullExpression: "!@field.do_workshops_together",
-                matchedExpression: "@field.do_workshops_together",
-                type: "field",
-                fieldName: "do_workshops_together",
-              },
-            ],
-          },
-        },
-      ],
-      _nested_name: "workshop_activity",
-    },
-  ],
-  parentRows: [
-    {
-      name: "relax",
-      value: "relax_5",
-      type: "set_variable",
-      _nested_name: "relax.relax",
-    },
-    {
-      type: "nested_properties",
-      name: "workshop_activity",
-      rows: [
-        {
-          name: "intro_text",
-          value: "Let's try it out and do a short relaxation activity together!",
-          type: "set_variable",
-          _nested_name: "relax.workshop_activity.intro_text",
-        },
-        {
-          name: "outro_text",
-          value: "Well done! Try to do this every day.",
-          type: "set_variable",
-          _nested_name: "relax.workshop_activity.outro_text",
-        },
-        {
-          name: "outro_habit_text",
-          value: "Every time you do a relax, click the ParentPoint and celebrate your success",
-          hidden: false,
-          type: "set_variable",
-          _nested_name: "relax.workshop_activity.outro_habit_text",
-          _dynamicFields: {
-            value: [
-              {
-                fullExpression:
-                  "Every time you do a relax, click the @global.parent_point and celebrate your success",
-                matchedExpression: "@global.parent_point",
-                type: "global",
-                fieldName: "parent_point",
-              },
-            ],
-          },
-          _dynamicDependencies: {
-            "@global.parent_point": ["value"],
-          },
-        },
-      ],
-      _nested_name: "relax.workshop_activity",
-    },
-  ],
 };
 
 export class TestClass {
-  constructor() {}
-  rowOverrides = data.overrides;
-  processRowOverride(originalRow: FlowTypes.TemplateRow) {
-    const override = this.rowOverrides[originalRow.name];
-    let overriddenRow: FlowTypes.TemplateRow = { ...originalRow };
+  private parentRowOverrides = data.overrides;
 
-    if (override) {
-      const { rows, _processed, ...mergeFields } = override;
-      // If an override has child rows this implies we are in a deep nested_properties structure
-      // As the template may also have a deep nested properties structure we need to merge the two
-      if (override.rows) {
-        console.warn("[W] - handle nested overrides");
-        this.rowOverrides[originalRow.name]._processed = true;
-        return mergeNestedTemplates(override as any, originalRow) as any;
-      }
-      // merge and remove dynamic references
-      // TODO - also remove _dynamicDependencies references
-      else {
-        Object.keys(mergeFields).forEach((field) => {
-          overriddenRow[field] = override[field];
-          if (overriddenRow._dynamicFields && overriddenRow._dynamicFields.hasOwnProperty(field)) {
-            delete overriddenRow._dynamicFields[field];
-            if (Object.keys(overriddenRow._dynamicFields).length === 0) {
-              delete overriddenRow._dynamicFields;
-            }
-          }
-        });
-        // keep track of applied overrides for debugging
-        this.rowOverrides[originalRow.name]._processed = true;
-      }
+  /****************************************************************************
+   * template-row.service methods
+   ***************************************************************************/
+
+  public processParentOverrides(
+    originalRows: FlowTypes.TemplateRow[]
+    // isNested = false
+  ) {
+    if (Object.keys(this.parentRowOverrides).length > 0) {
+      const processedRows = originalRows.map((r) => {
+        const processed = this.processRowOverride(r);
+        // Note, whilst the main template merge function performs a recursive merge
+        // we also want to process any nested overrides
+        if (processed.rows && processed.rows.length > 0) {
+          const mapped = processed.rows.map((r) => {
+            r.name = `${processed.name}.${r.name}`;
+            return r;
+          });
+          const processedNested = this.processParentOverrides(mapped);
+          processed.rows = processedNested.map((r) => {
+            r.name = r.name.replace(`${processed.name}.`, "");
+            return r;
+          });
+        }
+        return processed;
+      });
+      return processedRows;
     } else {
-      if (originalRow.rows) {
-        const processedNestedRows: FlowTypes.TemplateRow[] = [];
-        originalRow.rows.forEach((r) => {
-          const processed = this.processRowOverride(r);
-          processedNestedRows.push(processed);
-        });
-        overriddenRow = { ...overriddenRow, rows: processedNestedRows };
-      }
+      return originalRows;
     }
+  }
 
-    return overriddenRow;
+  /**
+   *  Lookup any overrides for a row or a row's nested child rows and apply
+   */
+  private processRowOverride(originalRow: FlowTypes.TemplateRow) {
+    const override = this.parentRowOverrides[originalRow.name];
+    if (override) {
+      this.parentRowOverrides[originalRow.name]._processed = true;
+    }
+    return mergeTemplateRows(override as any, originalRow);
   }
 }
 
 /****************************************************************************
- * Main Test Run
+ * template-utils methods
  ***************************************************************************/
-const t1 = new TestClass();
-const parsed = data.originalRows.map((r) => t1.processRowOverride(r as any));
-
-console.log(JSON.stringify(parsed, null, 2));
-
-export function mergeNestedTemplates(
-  primary: FlowTypes.TemplateRow,
-  secondary: FlowTypes.TemplateRow
+export function mergeTemplateRows(
+  primaryRow?: FlowTypes.TemplateRow,
+  secondaryRow?: FlowTypes.TemplateRow
 ) {
-  const merge = { ...secondary, ...primary };
-  if (merge.rows) {
-    merge.rows = mergeNestedTemplateRows(primary.rows, secondary.rows);
+  let mergedRow = { ...secondaryRow };
+  if (primaryRow) {
+    // merge
+    mergedRow = { ...secondaryRow, ...primaryRow };
+    // remove overriden dynamic references
+    // TODO - also remove _dynamicDependencies references (or recalc at end)
+    Object.keys(primaryRow).forEach((field) => {
+      if (mergedRow._dynamicFields?.[field]) {
+        delete mergedRow._dynamicFields[field];
+        if (Object.keys(mergedRow._dynamicFields).length === 0) {
+          delete mergedRow._dynamicFields;
+        }
+      }
+    });
   }
-  return merge;
+  if (mergedRow.rows) {
+    mergedRow.rows = mergeTemplateNestedRows(primaryRow?.rows, secondaryRow.rows);
+  }
+  return mergedRow;
 }
 
 /**
  * Given two sets of template rows, perform a deep merge on them and any nested child rows
  */
-function mergeNestedTemplateRows(
+function mergeTemplateNestedRows(
   primary: FlowTypes.TemplateRow[] = [],
   secondary: FlowTypes.TemplateRow[] = []
 ): FlowTypes.TemplateRow[] {
@@ -197,25 +133,8 @@ function mergeNestedTemplateRows(
   // make sure all secondary rows exist are overridden
   secondary.forEach((secondaryRow) => {
     const primaryRow = primaryHashmap[secondaryRow.name];
-    let mergedRow = { ...secondaryRow };
-    if (primaryRow) {
-      // merge
-      mergedRow = { ...secondaryRow, ...primaryRow };
-      // remove overriden dynamic references
-      // TODO - also remove _dynamicDependencies references
-      // TODO - merge with processRowOverrideMethod
-      Object.keys(primaryRow).forEach((field) => {
-        if (mergedRow._dynamicFields?.[field]) {
-          delete mergedRow._dynamicFields[field];
-          if (Object.keys(mergedRow._dynamicFields).length === 0) {
-            delete mergedRow._dynamicFields;
-          }
-        }
-      });
-    }
-    if (mergedRow.rows) {
-      mergedRow.rows = mergeNestedTemplateRows(primaryRow?.rows, secondaryRow.rows);
-    }
+    const mergedRow = mergeTemplateRows(primaryRow, secondaryRow);
+
     merged.push(mergedRow);
   });
   // make sure all primary rows exist
@@ -227,6 +146,10 @@ function mergeNestedTemplateRows(
   return merged;
 }
 
+/****************************************************************************
+ * shared/utils methods
+ ***************************************************************************/
+
 export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: T } {
   const hashmap: { [key: string]: T } = {};
   for (const el of arr) {
@@ -236,3 +159,11 @@ export function arrayToHashmap<T>(arr: T[], keyfield: string): { [key: string]: 
   }
   return hashmap;
 }
+
+/****************************************************************************
+ * Main Test Run
+ ***************************************************************************/
+const t1 = new TestClass();
+const result = t1.processParentOverrides(data.originalRows as any[]);
+
+console.log(JSON.stringify(result, null, 2));

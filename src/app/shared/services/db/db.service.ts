@@ -1,9 +1,18 @@
 import { Injectable } from "@angular/core";
 import Dexie, { DbEvents } from "dexie";
 import "dexie-observable";
+import "dexie-syncable";
+// import "./db-sync.service";
 import { ICreateChange, IDatabaseChange, IDeleteChange, IUpdateChange } from "dexie-observable/api";
-import { Subject } from "scripts/node_modules/rxjs";
-import { FlowTypes } from "scripts/types";
+import { Subject } from "rxjs";
+import {
+  DB_TABLES,
+  DB_VERSION,
+  IDBMeta,
+  IDBEvent,
+  IDBTable,
+  IFlowEvent,
+} from "data-models/db.model";
 import { arrayToHashmapArray, generateTimestamp } from "../../utils";
 import { EventService } from "../event/event.service";
 
@@ -15,56 +24,6 @@ window.addEventListener("unhandledrejection", (event) => {
   console.warn("Unhandled promise rejection:", reason && (reason.stack || reason));
 });
 
-const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_created", "_synced"];
-
-/**
- * All tables used must be defined with any indices required (other columns freely added)
- * Include auto-increment primary key via `++`
- * https://dexie.org/docs/API-Reference#quick-reference
- */
-const DB_TABLES = {
-  /** Track template flow events such as completion emit **/
-  flow_events: "++id," + FLOW_EVENT_INDEXES.join(","),
-  /** Long term tracking of changes to user data, such as contact fields */
-  data_events: "++id," + FLOW_EVENT_INDEXES.join(","),
-
-  /**********************************************************************************************************
-   * 2021-04-06
-   * TODO - Resolve tables below and determine which are still relevant, or could be merged into tables above
-   **********************************************************************************************************/
-  surveys: "++id,surveyId",
-  reminders: "++id,type",
-  reminder_events: "++id,event_id",
-  /** task_actions track content the user has interacted with */
-  task_actions: "id,task_id,_created",
-  /** session_actions track meta interactions such as start and end of session */
-  session_actions: "id,task_id,_created",
-  /** track app events such as open */
-  app_events: "++id,event_id,_created",
-  /** user */
-  user_meta: "key,value",
-  /** habits */
-  habits: "habitId",
-  habit_activity_ideas: "++id,flowName",
-  habit_occurrence: "++id,habitId,created",
-};
-
-export type IDBTable = keyof typeof DB_TABLES;
-/**
- * For any tables with automatic id assignment the following fields will be populated
- */
-export interface IDBDoc {
-  id: number;
-}
-
-/**
- * All databases must contain an incremented version number, and any migration logic
- * required between versions. Currently using app version number to track when the
- * breaking changes occurred (does not need to be updated every version)
- * e.g. v1.5.3 => 100500300
- * e.g. v0.1.0 => 000001000
- */
-const DB_VERSION = 9000;
 db.version(DB_VERSION).stores(DB_TABLES);
 
 @Injectable({
@@ -87,22 +46,35 @@ export class DbService {
       console.error("could not open db", err);
       // NOTE - invalid state error suggests dexie not supported, so
       // try reloading with cachedb disabled (see db index for implementation)
-      if (err.name === Dexie.errnames.InvalidStateError) {
-        if (err.inner.name === Dexie.errnames.InvalidStateError) {
+      if (err.name === Dexie.errnames.InvalidState) {
+        if (err.inner.name === Dexie.errnames.InvalidState) {
           // TODO
           // location.replace(location.href + "?no-cache");
         }
       }
       // NOTE - upgrade error can be avoided by defining legacy db caches
       // with corresponding upgrade functions (see below method TODO)
-      if (err.name === Dexie.errnames.UpgradeError) {
+      if (err.name === Dexie.errnames.Upgrade) {
         console.log("upgrade error");
         // TODO - backup db elsewhere, delete and reload
         // await Dexie.delete(CACHE_DB_NAME).catch(() => location.reload());
         // return location.reload();
       }
     });
+
     this._addEventListeners();
+  }
+
+  /** TODO - CC 2021-07-08 tidy up legacy methods for using dexie sync protocol (not sure if need or not in future) */
+  private wipSyncServerDB() {
+    // db.syncable.connect("websocket", "ws://127.0.0.1:8080/");
+    // db.syncable.on("statusChanged", function (newStatus, url) {
+    //   console.log("Sync Status changed: " + Dexie.Syncable.StatusTexts[newStatus]);
+    // });
+  }
+  private wipDeleteServerDB() {
+    // db.syncable.disconnect("ws://127.0.0.1:8080/");
+    // db.syncable.delete("ws://127.0.0.1:8080/");
   }
   deleteDatabase() {
     return this.db.delete();
@@ -147,17 +119,17 @@ export class DbService {
         switch (change.type) {
           case 1: // CREATED
             change = change as ICreateChange;
-            console.log("[DB CREATED]", change);
+            // console.log("[DB CREATED]", change);
             this.tableChanges$[change.table].next(change.obj);
             break;
           case 2: // UPDATED
             change = change as IUpdateChange;
-            console.log("[DB CHANGED]", change);
+            // console.log("[DB CHANGED]", change);
             this.tableChanges$[change.table].next(change.obj);
             break;
           case 3: // DELETED
             change = change as IDeleteChange;
-            console.log("[DB DELETED]", change);
+          // console.log("[DB DELETED]", change);
         }
       });
     });
@@ -182,40 +154,9 @@ export class DbService {
     });
   }
 }
-export interface IDBEvent {
-  topic: "DB";
-  payload: {
-    id?: string;
-    tableId: keyof typeof DB_TABLES;
-    operation: "CREATE" | "UPDATE" | "DELETE";
-    data: any;
-  };
-  eventId?: string;
-}
 
 type IDBChangEvent = (
   eventName: "changes",
   subscriber: (changes: IDatabaseChange[]) => any,
   bSticky?: boolean
 ) => void;
-
-/**
- * Data written to the database from flows will usually retain the following format
- * @param type flow type triggering the event, e.g. 'template'
- * @param name identifier for the source of the event, i.e. the flow_name
- * @param event name given to the event for indexing/query/lookup, e.g. 'emit'
- * @param value (not indexed) - specific value corresponding to the event
- * @param _created timestamp in isostring format generated on write
- * @param _synced whether the data has been succesfully synced to the database
- */
-export interface IFlowEvent extends IDBMeta {
-  type: FlowTypes.FlowType;
-  name: string;
-  event: string;
-  value: any;
-}
-
-interface IDBMeta {
-  _created: string;
-  _synced: boolean;
-}

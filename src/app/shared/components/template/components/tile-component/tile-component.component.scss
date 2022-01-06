@@ -1,25 +1,30 @@
-@import "../../../../../../theme/mixins.scss";
+@import "/src/theme/mixins.scss";
+
+// NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
+// (but ideally should be handled from within markdown itself)
+.first-line-text ::ng-deep,
+.second-line-text ::ng-deep {
+  p {
+    margin: 0;
+  }
+}
 
 .tile-wrapper {
   @include flex-space-between;
-  .text {
-    div {
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 28px;
-      color: var(--ion-color-primary-contrast);
-    }
+  .text > div {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-text-large);
+    line-height: var(--line-height-text-largest);
+    color: var(--ion-color-primary-contrast);
   }
 
   .button-wrapper {
     .btn-tile {
-      width: 73px;
-      height: 73px;
+      width: var(--tile-button-width);
+      height: var(--tile-button-height);
       --background: transparent;
       --box-shadow: none;
-      border: var(--ion-border-light);
-      --border-radius: 50%;
-      border-radius: var(--ion-border-radius-rounded);
+
       box-shadow: none;
       --ripple-color: transparent;
       img {
@@ -27,56 +32,86 @@
         height: calc(60px * var(--scale-factor-tile));
       }
     }
+    // Note - CC 2021-12-21 - Currently not in use in any templates, but keeping in case we want
+    // to expose as a parameter option in the future
+    .circle-border {
+      border: var(--ion-border-light-thicker);
+      --border-radius: var(--ion-border-radius-rounded);
+      border-radius: var(--ion-border-radius-rounded);
+    }
   }
 }
 .default_style {
-  padding: 17px 27px;
+  padding: var(--regular-padding, 10px);
   box-shadow: var(--ion-default-box-shadow);
-  min-height: 104px;
-  max-width: 371px;
+  min-height: var(--tile-default-height);
   border-radius: var(--ion-border-radius-standard);
-  margin: var(--regular-margin) auto;
 }
 
+/***********************************************************************************************
+*     PLH-specific page type stylings
+************************************************************************************************/
 .workshop_page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: calc(132px * var(--scale-factor-tile));
-  max-height: calc(111px * var(--scale-factor-tile));
-  background: white;
+  width: 8rem;
+  height: 7rem;
   border-radius: var(--ion-border-radius-standard);
+  border: var(--ion-border-thin-standard);
   background: var(--ion-color-primary-contrast);
   text-align: center;
-  padding: var(--large-padding);
+  padding: var(--tiny-padding);
   box-shadow: var(--ion-default-box-shadow);
   @media (max-width: 375px) {
-    width: calc(122px * var(--scale-factor-tile));
-    max-height: calc(101px * var(--scale-factor-tile));
+    width: 7rem;
+    height: 6rem;
+    padding: calc(var(--tiny-padding) * var(--scale-factor-tile));
     &.default_style {
-      min-height: calc(101px * var(--scale-factor-tile));
+      min-height: unset;
     }
   }
   @media (max-width: 320px) {
-    width: calc(102px * var(--scale-factor-tile));
-    max-height: calc(91px * var(--scale-factor-tile));
-    padding: calc(5px * var(--scale-factor-tile));
-    resize: both;
-    &.default_style {
-      min-height: calc(91px * var(--scale-factor-tile));
-    }
+    width: 6rem;
+    height: 5rem;
+  }
+  @media (max-width: 319px) {
+    max-width: calc(var(--tile-workshop-page-width) * var(--scale-factor-tile));
+    max-height: calc(var(--tile-workshop-page-height) * var(--scale-factor-tile));
   }
   .button-wrapper {
     order: 1;
     width: 100%;
+    @media (max-width: 320px) {
+      width: unset;
+    }
     .btn-tile {
       pointer-events: none;
       border: 0;
+      margin-top: 0;
       --border-radius: unset;
       border-radius: unset;
-      width: calc(100% * var(--scale-factor-tile));
-      height: calc(55px * var(--scale-factor-tile));
+      width: calc(var(--tile-workshop-page-button-width) * var(--scale-factor-tile));
+      height: calc(100% * var(--scale-factor-tile));
+      @media (max-width: 375px) {
+        height: 4rem;
+      }
+      @media (max-width: 320px) {
+        height: 3rem;
+      }
       img {
+        width: 6rem;
+        height: 4.5rem;
+        @media (max-width: 375px) {
+          width: 5.5rem;
+          height: 4rem;
+        }
+        @media (max-width: 320px) {
+          height: 3.5rem;
+        }
+        @media (max-width: 320px) {
+          max-height: calc(4.5rem * var(--scale-factor-tile));
+        }
       }
     }
   }
@@ -84,7 +119,7 @@
     order: 2;
     div {
       font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
-      line-height: calc(16px * var(--scale-factor-tile));
+      line-height: calc(var(--line-height-text-tiny) * var(--scale-factor-tile));
       color: var(--ion-color-primary);
     }
   }
@@ -103,33 +138,6 @@
 .quick_start_dark {
   background: var(--tile-secondary-gradient);
 }
-// PARENT CENTRE
-.parent_point {
-  padding: calc(17px * var(--scale-factor-tile)) 10px;
-  width: calc(200px * var(--scale-factor-tile));
-  height: calc(104px * var(--scale-factor-tile));
-  min-height: unset;
-  max-width: unset;
-  &.tile-wrapper {
-    .text {
-      div {
-        font-size: calc(20px * var(--scale-factor-tile));
-        line-height: calc(28px * var(--scale-factor-tile));
-      }
-    }
-    .button-wrapper {
-      .btn-tile {
-        width: calc(63px * var(--scale-factor-tile));
-        height: calc(63px * var(--scale-factor-tile));
-        border: none;
-        img {
-          width: calc(50px * var(--scale-factor-tile));
-          height: calc(50px * var(--scale-factor-tile));
-        }
-      }
-    }
-  }
-}
 .parent_centre_1 {
   background: var(--parent-centre-primary-light-gradient);
 }
@@ -141,4 +149,122 @@
 }
 .parent_centre_4 {
   background: var(--parent-centre-primary-gradient);
+}
+
+.image_text {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+  padding: var(--small-padding);
+  width: 10rem;
+  margin-bottom: var(--regular-margin);
+  max-width: var(--tile-image-text-width);
+  background: var(--points-item-bg);
+  box-shadow: var(--ion-default-box-shadow);
+  border-radius: var(--ion-border-radius-standard);
+  position: relative;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: nowrap;
+  .button-wrapper {
+    order: 1;
+    height: auto;
+    width: 100%;
+    margin-bottom: calc(10px * var(--scale-factor-tile));
+    .btn-tile {
+      pointer-events: none;
+      border: 0;
+      --border-radius: unset;
+      border-radius: unset;
+      width: 100%;
+      height: 100%;
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+  .text {
+    //height: 3rem;
+    //overflow-y: scroll;
+    order: 2;
+    div {
+      font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
+      line-height: calc(var(--line-height-text-tiny) * var(--scale-factor-tile));
+      color: var(--ion-color-primary);
+      text-align: center;
+    }
+  }
+}
+
+.two_columns {
+  &.image_text {
+    height: 100%;
+    @media (max-width: 375px) {
+      width: 9rem;
+    }
+    @media (max-width: 325px) {
+      width: 8rem;
+    }
+  }
+}
+
+.button_tile {
+  background: var(--tile-button-background);
+  overflow: hidden;
+  justify-content: space-between;
+  height: var(--tile-button-style-height);
+  &.default_style {
+    min-height: unset;
+    padding: var(--regular-padding);
+  }
+  .left-icon {
+    flex: 1;
+    height: 80%;
+    img {
+      height: 100%;
+    }
+    ion-icon {
+      font-size: x-large;
+      color: var(--ion-color-primary);
+      .icon-inner {
+        width: 60px;
+      }
+    }
+  }
+  &.tile-wrapper {
+    margin-bottom: 0;
+    .text {
+      flex: 6;
+      div {
+        font-size: var(--font-size-text-medium);
+        line-height: var(--line-height-text-small);
+        font-weight: var(--font-weight-standard);
+        color: var(--ion-color-primary);
+      }
+    }
+    .button-wrapper {
+      width: 50px;
+      ion-button::part(native) {
+        padding-inline-end: 0;
+      }
+      .btn-tile {
+        border: none;
+        width: 100%;
+        margin-left: 10px;
+        img {
+          width: 100%;
+          margin-right: 10px;
+        }
+        ion-icon {
+          font-size: xxx-large;
+          color: var(--ion-color-primary);
+          .icon-inner {
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
 }

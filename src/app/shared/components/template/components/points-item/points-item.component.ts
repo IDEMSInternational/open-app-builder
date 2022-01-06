@@ -9,32 +9,35 @@ import {
 } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { FlowTypes, ITemplateRowProps } from "../../models";
-import { getStringParamFromTemplateRow } from "../../../../utils";
+import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
 import { AnimationOptions } from "ngx-lottie";
-import player from "lottie-web";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-points-item",
   templateUrl: "./points-item.component.html",
   styleUrls: ["./points-item.component.scss"],
 })
+// TODO - why does the class name not match the file name??
 export class TmplParentPointBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("star", { static: false }) star: ElementRef;
   @ViewChild("item", { static: false }) item: ElementRef;
   icon_src: string | null;
   lottie_src: string | null;
+  video_src: string | null;
   windowWidth: number;
   scaleFactor: number = 1;
   text: string | null;
-  assetsPrefix = "/assets/plh_assets/";
-  img_result: string;
   wasClicked: boolean = false;
   value: number | null = 0;
   animOptions: AnimationOptions;
+  animCelebrationOptions: AnimationOptions;
+  play_celebration: boolean;
+  showCelebrationAnimation = false;
   @HostListener("window:resize", ["$event"]) onResize(event) {
     this.windowWidth = event.target.innerWidth - 10;
     this.getScaleFactor();
@@ -43,7 +46,7 @@ export class TmplParentPointBoxComponent
   @HostBinding("style.--scale-factor--point") get scale() {
     return this.scaleFactor;
   }
-  constructor() {
+  constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
@@ -51,24 +54,39 @@ export class TmplParentPointBoxComponent
     this.getParams();
     this.getScaleFactor();
     if (this.lottie_src) {
-      this.animOptions = this.setAnimOptions(this.img_result, this.text, false);
+      this.lottie_src = this.templateAssetService.getTranslatedAssetPath(this.lottie_src);
+      this.animOptions = {
+        path: this.lottie_src,
+        name: this.text,
+        autoplay: true,
+        loop: true,
+      };
     }
+    const celebrationAnimationPath = this.templateAssetService.getTranslatedAssetPath(
+      "/plh_lottie/habits/cascading_stars.json"
+    );
+    this.animCelebrationOptions = {
+      path: celebrationAnimationPath,
+      name: "celebration",
+      autoplay: true,
+      loop: false,
+      rendererSettings: {
+        // svg scaling options: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+        preserveAspectRatio: "xMinYMin slice",
+      },
+    };
   }
 
   getParams() {
+    this.video_src = getStringParamFromTemplateRow(this._row, "video_src", null);
     this.icon_src = getStringParamFromTemplateRow(this._row, "icon_src", null);
     this.lottie_src = getStringParamFromTemplateRow(this._row, "lottie_src", null);
+    this.play_celebration = getBooleanParamFromTemplateRow(this._row, "play_celebration", true);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
-    this.img_result = this.getPathImg();
     this.windowWidth = window.innerWidth - 10;
     if (!this._row.value) {
       this._row.value = 0;
     }
-  }
-
-  getPathImg(): string {
-    const src = this.assetsPrefix + (this.icon_src || this.lottie_src);
-    return src.replace("//", "/");
   }
 
   async clickPointItem() {
@@ -78,24 +96,20 @@ export class TmplParentPointBoxComponent
     this._row.value = parseInt(this._row.value) + 1;
     this.value = this._row.value;
     this.star.nativeElement.classList.add("on-add");
+    if (this.play_celebration) {
+      this.showCelebrationAnimation = true;
+    }
     setTimeout((_) => {
       this.star.nativeElement.classList.remove("on-add");
+      this.showCelebrationAnimation = false;
     }, 1000);
     if (!this.wasClicked) {
       this.item.nativeElement.classList.add("complete");
     }
     this.wasClicked = true;
-    await this.setValue(`${this.value}`);
+    await this.setValue(this.value);
     await this.triggerActions("click");
     await this.triggerActions("changed");
-    if (this.lottie_src) {
-      player.play(this.animOptions.name);
-    }
-  }
-
-  private setAnimOptions(path: string, name: string, autoplay: boolean): AnimationOptions {
-    const animOptions = { path, name, autoplay };
-    return animOptions;
   }
 
   getScaleFactor(): number {

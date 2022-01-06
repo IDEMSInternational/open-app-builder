@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "data-models";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
@@ -8,6 +8,9 @@ import {
 import { PickerController, Platform } from "@ionic/angular";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
+import { AudioService } from "src/app/shared/services/audio/audio.service";
+import { AudioPlayer } from "src/app/shared/services/audio/audio.player";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-timer",
@@ -20,7 +23,6 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this._row = value;
   }
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("min", { static: false }) minInput: ElementRef;
   @ViewChild("sec", { static: false }) secInput: ElementRef;
   state: TimerState;
@@ -41,6 +43,8 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   starting_seconds: number;
   minutes: string;
   seconds: string;
+  ping: string | null;
+  player: AudioPlayer | null;
   timeValues = () => {
     const data = [];
     for (let i = 0; i <= 9; i++) {
@@ -64,7 +68,12 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
     this.minutes = _minutes < 10 ? `0${_minutes}` : String(_minutes);
   }
 
-  constructor(private pickerController: PickerController, private platform: Platform) {
+  constructor(
+    private pickerController: PickerController,
+    private platform: Platform,
+    private audioService: AudioService,
+    private templateAssetService: TemplateAssetService
+  ) {
     super();
     this.changeState(new PausedState(this));
   }
@@ -72,6 +81,10 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   ngOnInit() {
     this.getParams();
     this.state.callOnInit();
+    if (this.ping) {
+      const pingSrc = this.templateAssetService.getTranslatedAssetPath(this.ping);
+      this.player = this.audioService.createPlayer(pingSrc);
+    }
   }
 
   changeState(state: TimerState) {
@@ -81,6 +94,7 @@ export class TmplTimerComponent extends TemplateBaseComponent implements ITempla
   getParams() {
     this.title = getStringParamFromTemplateRow(this._row, "title", "Timer");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
+    this.ping = getStringParamFromTemplateRow(this._row, "ping", null);
     this.timerDurationExtension =
       getNumberParamFromTemplateRow(this._row, "duration_extension", 1) * 60;
     this.is_editable_on_playing = getBooleanParamFromTemplateRow(
@@ -248,6 +262,7 @@ class PlayingState extends State {
       if (this.timer.value === 0) {
         clearInterval(this.intervalRef);
         this.timer.changeState(new PausedState(this.timer));
+        if (this.timer.player) this.timer.player.play();
         return;
       }
       this.timer.value -= 1;

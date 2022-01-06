@@ -1,25 +1,26 @@
-@import "../../../../../../theme/mixins.scss";
+@import "src/theme/mixins.scss";
 .container-player {
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
   box-sizing: border-box;
   box-shadow: var(--ion-default-box-shadow);
   border-radius: var(--ion-border-radius-standard);
-  padding: 17px 14px 16px 20px;
+  padding: var(--regular-padding);
   display: flex;
   position: relative;
   flex-direction: column;
   .top-row {
     @include flex-space-between;
     .title_and_help {
+      width: 85%;
       display: flex;
       align-items: center;
-      min-height: 30px;
+      min-height: var(--audio-title-and-help-height);
       h3 {
         margin: 0;
-        margin-right: 11px;
+        margin-right: var(--small-margin);
         color: var(--ion-color-primary);
-        max-width: 280px;
+        max-width: 85%;
         font-weight: var(--font-weight-bold);
         font-size: var(--audio-title-size);
       }
@@ -31,18 +32,16 @@
     }
     .volume {
       position: absolute;
-      top: 17px;
-      right: 14px;
+      top: 15px;
+      right: 15px;
       .volume-icon {
         color: var(--ion-color-primary);
-        height: 36px;
-        width: 36px;
+        @include small-square;
       }
     }
   }
   .progress-block {
     .audio-range {
-      padding-inline: 0;
       --bar-background-active: var(--ion-btn-control-bg);
       --bar-background: transparent;
       --bar-height: 4px;
@@ -50,11 +49,12 @@
       --knob-size: 0px;
       --pin-background: var(--ion-color-primary);
       --knob-background: var(--ion-color-primary);
+      padding-inline: 0;
     }
 
     ion-range::part(bar) {
-      border: 1px solid var(--ion-color-primary);
-      height: 10px;
+      border: var(--ion-border-thin-standard);
+      height: var(--audio-bar-height);
     }
 
     ion-range::part(bar-active) {
@@ -66,29 +66,26 @@
     margin-top: -12px;
     @include flex-space-between;
     &-value {
-      font-size: 20px;
-      line-height: 20px;
+      font-size: var(--font-size-text-large);
+      line-height: var(--line-height-text-small);
       color: var(--ion-color-primary);
     }
   }
   .controls {
-    display: flex;
-    min-width: 240px;
+    @include flex-space-between;
+    min-width: var(--audio-controls-width);
     align-self: center;
-    justify-content: space-between;
-    align-items: center;
     .rewind,
     .forward {
       ion-button {
-        width: var(--ion-btn-tmpl-components-size);
-        height: var(--ion-btn-tmpl-components-size);
+        @include large-square;
         --background: transparent;
         --padding: 0;
         --border-radius: var(--ion-border-radius-rounded);
         --box-shadow: transparent;
         img {
           position: absolute;
-          min-width: 48px;
+          min-width: var(--audio-controls-img-width);
         }
       }
     }
@@ -99,24 +96,20 @@
     }
     .play {
       .btn-play {
-        width: var(--ion-btn-tmpl-components-size);
-        height: var(--ion-btn-tmpl-components-size);
+        @include large-square;
         --background: var(--ion-btn-control-bg);
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;
         --box-shadow: var(--ion-default-box-shadow);
         img {
           position: absolute;
-          width: 35px;
-        }
-        .ml-5 {
-          margin-left: 5px;
+          width: var(--audio-play-img-width);
         }
       }
     }
   }
   .error-text {
-    margin: 10px 0;
+    margin: var(--small-margin) 0;
     text-align: center;
   }
 }

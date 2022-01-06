@@ -1,0 +1,23 @@
+{
+  "name": "test-e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "concurrently \"yarn workspace frontend start\" \"npm run start:plh\"",
+    "start:plh": "cypress open --config-file projects/plh/cypress.json",
+    "start:example": "cypress open --config-file projects/example/cypress.json",
+    "run:plh": "cypress run --config-file projects/plh/cypress.json",
+    "run:example": "cypress run --config-file projects/example/cypress.json"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "concurrently": "^6.2.1",
+    "cypress": "^8.3.0",
+    "cypress-image-snapshot": "^4.0.1",
+    "data-models": "1.0.0",
+    "typescript": "~4.2.4",
+    "wait-on": "^6.0.0"
+  }
+}

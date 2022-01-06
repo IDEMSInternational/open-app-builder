@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { FlowTypes } from "src/app/shared/model";
-import {
-  evaluateJSExpression,
-  extractDynamicEvaluators,
-  getNestedProperty,
-} from "src/app/shared/utils";
-import { TemplateService } from "./template.service";
+import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/app/shared/utils";
+import { ICalcContext, TemplateCalcService } from "./template-calc.service";
+import { TemplateTranslateService } from "./template-translate.service";
+import { ITemplateRowMap } from "./template-row.service";
+import { extractDynamicEvaluators } from "data-models";
+import { TemplateFieldService } from "./template-field.service";
+import { PLHDataService } from "src/app/shared/services/data/data.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -19,21 +20,30 @@ const log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  * (e.g.row, variables etc.). Store as a single object to make it easier to pass between methods
  * @param templateRowMap hashmap containing list of all template rows, keyed by their nested row name
  */
-interface IVariableContext {
-  templateRowMap: Map<string, FlowTypes.TemplateRow>;
+export interface IVariableContext {
+  templateRowMap: ITemplateRowMap;
   row: FlowTypes.TemplateRow;
   field?: string;
+  calcContext?: ICalcContext;
+  itemContext?: any; // used when iterating over items
 }
 
 @Injectable({ providedIn: "root" })
 export class TemplateVariablesService {
   /**
-   *
+   * The template variable service handles the processing and evaluation of dynamic variables, such as
+   * @local.some_value or @campaign.my_campaign.
    *
    * TODO - ideally this should be a more general data-lookup/query service, possibly communicating via events
    * to all campaign service or similar to return a response for @campaign or similar
    */
-  constructor(private templateService: TemplateService, private campaignService: CampaignService) {}
+  constructor(
+    private templateFieldService: TemplateFieldService,
+    private campaignService: CampaignService,
+    private templateTranslateService: TemplateTranslateService,
+    private templateCalcService: TemplateCalcService,
+    private dataService: PLHDataService
+  ) {}
 
   /**
    * Data populated in PLH fields may contain references to specific helper or lookup functions,
@@ -91,76 +101,173 @@ export class TemplateVariablesService {
       ) as FlowTypes.TemplateRowDynamicEvaluator[];
       if (evaluators && evaluators.length > 0) {
         value = await this.evaluatePLHString(evaluators, context);
-        log("[evaluated]", evaluators[0].fullExpression, { value, evaluators, field, context });
       }
     }
     return value;
   }
 
+  /** Evaluate a dynamic expression that has not been pre-processed or evaluated for dynamic expressions */
+  public async evaluateConditionString(conditionString: string) {
+    const dynamicEvaluators = extractDynamicEvaluators(conditionString);
+    if (dynamicEvaluators) {
+      // Assumes that no specific row information available (@local undefined)
+      const context: IVariableContext = {
+        row: {} as any,
+        templateRowMap: {} as any,
+      };
+      return this.evaluatePLHString(dynamicEvaluators, context);
+    }
+    return conditionString;
+  }
+
   /**
    * The main method to evaluate expressions
-   * These vary in complexity, from single lookups to javascript operations, e.g.
+   * These vary in complexity, from single lookups to javascript operations and function calls
+   * @example
+   * `hello @local.some_name`
+   * `!@local.some_field`
+   * `@local.val_1 - @local.val_2` (in case of numbers perform subtracation)
+   * `@local.val_1 - @local.val_2` (in case of text show with dash)
+   * `pick_random(@local.some_list)`
+   * `Math.max(@local.val_1,@local.val_2)`
+   * `@local.some_field.nestedfield.deeperNest`
+   * `@local.@local.dynamic_field_selector`
    *
-   * @local.somefield.nestedfield.deeperNest
-   * hello @local.namefield
-   * !@local.somefield
-   * @local.somefield + @local.otherfield
-   *
-   *
-   * @param expression
-   * @param localVariables
-   * @param template
-   * @returns
+   * In order to evaluate effectively we try to convert everything to be JavaScript-friendly,
+   * and evaluate as a function
    */
   private async evaluatePLHString(
     evaluators: FlowTypes.TemplateRowDynamicEvaluator[],
     context: IVariableContext
   ) {
-    let parsedExpression = evaluators[0].fullExpression;
-    // main evaluation
-    for (let evaluator of evaluators) {
-      const { matchedExpression, type, fieldName } = evaluator;
-      // evaluate the core @keyword.someVar part
-      const { parsedValue } = await this.processDynamicEvaluator(evaluator, context);
-      // if no change simply stop processing and return (e.g. text contains email @example.com that will not be processed)
-      if (parsedValue === evaluator.matchedExpression) {
-        return parsedValue;
-      }
-      // replace '@' with 'this.' so we can evaluate as a statement. E.g. @local.someVar => this.local.someVar
-      // create a custom context with the correct variables assigned (e.g. this.local = {someVar:'value'}) and evaluate
-      const contextExpression = matchedExpression.replace("@", "this.");
-      const evalContext = { [type]: { [fieldName]: parsedValue } };
-      try {
-        const evaluatedExpression = evaluateJSExpression(contextExpression, evalContext);
-        // if we have an array, object, null or undefined no further processing required
-        if (typeof evaluatedExpression === "object") {
-          return evaluatedExpression;
-        }
-        // otherwise replace the part of the expression that was matched and evaluated
-        parsedExpression = parsedExpression.replace(matchedExpression, evaluatedExpression);
-        // if the expression contains further nested dynamic expressions, create a dynamic evaluator and continue to process
-        // (most are extracted at runtime, except something like @local.@local.dynamicLookup will not be, so recalculate at runtime)
-        const dynamicNested = extractDynamicEvaluators(parsedExpression);
-        if (dynamicNested) {
-          return this.evaluatePLHString(dynamicNested, context);
-        }
-      } catch (error) {
-        console.error("failed to evaluate expression", { contextExpression, evalContext });
-      }
-    }
+    const fullExpression = evaluators[0].fullExpression;
+    log_group(fullExpression);
+    // create a base context of variables and functions that will be available when evaluating javascript
+    let calcContext = this.templateCalcService.getCalcContext();
 
-    // Individual variables such as @local.someVar will have been replaced, but now evaluate the entire statement
-    // to also evaluate mathematical operations. e.g.
-    // "@local.someVar + 1" => "1 + 1"  => 2
-    // "!@local.someBool"   => "!true"  => false
-    // NOTE - cases where text and inline variables (e.g. "hello @someVar" => "hello 1") will throw error expecting variables
-    // for the text detected, however this is fine as the current evaluation already contains everything we need (@someVar was evaluated previously)
-    try {
-      const evaluatedExpression = evaluateJSExpression(parsedExpression);
-      return evaluatedExpression;
-    } catch (error) {
-      return parsedExpression;
+    // evaluate each dynamic expression and store to the 'this' context that will be used to evaluate
+    // at the end. E.g. this.fields = { some_value: 4 }. Update the context and full expression
+    // (replacing references to @local.some_value with this.local.some_value)
+    const parsedEvaluators: FlowTypes.TemplateRowDynamicEvaluator[] = [];
+    for (const evaluator of evaluators) {
+      const { type, fieldName, matchedExpression } = evaluator;
+      context.calcContext = calcContext;
+
+      // If a raw evaluator exists for any part of expression, return full expression unparsed
+      // e.g. "Example syntax is `@field.my_name`" -> "Example syntax is @field.my_name"
+      if (type === "raw") {
+        return evaluator.fullExpression.replace(/`/gi, "");
+      }
+
+      // process the main lookup, e.g. @local.some_val, @campaign.some_val
+      // NOTE - if parse fail an empty string will be returned
+      let { parsedValue, parseSuccess } = await this.processDynamicEvaluator(evaluator, context);
+
+      // update context for use in expression evaluation. Don't overwrite calc function
+      if (type !== "calc") {
+        const { thisCtxt } = calcContext;
+        calcContext.thisCtxt = setNestedProperty(`${type}.${fieldName}`, parsedValue, thisCtxt);
+      }
+
+      // Updated the expression so that we can use it in JS evaluation later
+      const parsedExpression = matchedExpression.replace("@", "this.");
+
+      // The value parsed represents just top level @local.some_value. If the full expression contains
+      // nested property (e.g. @local.some_value.nested_prop) extract. Add to list of processed evaluators
+      if (parseSuccess && matchedExpression !== `@${type}.${fieldName}`) {
+        parsedValue = getNestedProperty({ this: calcContext.thisCtxt }, parsedExpression);
+      } else {
+      }
+      log("parsed", { matchedExpression, parsedValue });
+      parsedEvaluators.push({ ...evaluator, parsedExpression, parsedValue });
     }
+    log("parsedEvaluators", { parsedEvaluators, thisCtxt: calcContext.thisCtxt });
+
+    // Rough sort so that if one dynamic variable includes another it will be replaced first
+    // e.g. Answer is: @calc(Math.min(@local.value_a,@local.value_b) => this.calc(....)
+    const sortedEvaluators = parsedEvaluators.sort(
+      (a, b) => b.matchedExpression.length - a.matchedExpression.length
+    );
+
+    const evaluated = await this.parseContextExpression(context, fullExpression, sortedEvaluators);
+    log("[evaluated]", fullExpression, { evaluated, evaluators, context });
+    log_groupEnd();
+    return evaluated;
+  }
+
+  /**
+   * Take an expression and evaulate within a custom JavaScript context
+   * This is done in 3 ways:
+   *
+   * 1) Try to evaluate directly. This should work for cases where the full expression is valid
+   * javascript, i.e. there is no additional text floating around
+   * @example
+   * ```
+   * Math.round(this.local.some_value * this.local.other_value)
+   * ```
+   *
+   * 2) If fail to evaulate directly, evaluate by replacing individual dynamic variables as strings in
+   * the overal expression
+   * @example
+   * ```
+   * The answer is: this.some_value
+   * ```
+   *
+   * 3) Check if either of the newly evaluated expressions are themselves dynamic
+   *
+   * Known Limitations
+   * a) Combined string and calculations.
+   * The calculation should be carried out in an intermediate variable.
+   * @example
+   * ```
+   * The answer is: this.some_value + this.other_value
+   * ```
+   * @param evaluators
+   */
+  private async parseContextExpression(
+    context: IVariableContext,
+    fullExpression: string,
+    evaluators: FlowTypes.TemplateRowDynamicEvaluator[]
+  ) {
+    const { calcContext } = context;
+    const { thisCtxt, globalFunctions, globalConstants } = calcContext;
+    let evaluated: any;
+    try {
+      // first pass - full evaluation
+      // It will fail for cases where string and statement combined (e.g. number is: this.some_value)
+      let contextExpression = fullExpression;
+      evaluators.forEach((evaluator) => {
+        const { matchedExpression, parsedExpression } = evaluator;
+        contextExpression = contextExpression.replace(matchedExpression, parsedExpression);
+      });
+      // line break characters can mess up so handle separately
+      // make sure to not map a single line string as this will make the return type always string
+      const lines = contextExpression.split("\n");
+      evaluated =
+        lines.length > 1
+          ? lines
+              .map((s) => evaluateJSExpression(s, thisCtxt, globalFunctions, globalConstants))
+              .join("\n")
+          : evaluateJSExpression(contextExpression, thisCtxt, globalFunctions, globalConstants);
+      log("evaluated (JS)", evaluated);
+    } catch (error) {
+      // second pass - string replacement methods
+      let replacedExpression = fullExpression;
+      evaluators.forEach((evaluator) => {
+        const { matchedExpression, parsedValue } = evaluator;
+        replacedExpression = replacedExpression.replace(matchedExpression, parsedValue);
+      });
+      evaluated = replacedExpression;
+      log("fail to evaluate as JS", { error, fullExpression });
+      log("evaluated (string replace)", evaluated, error);
+    }
+    // in case the replacement has introduced a new dynamic expression (e.g. @local.@local.some_var => @local.new_var)
+    // check for new dynamic evaluators and reprocess
+    const dynamicNested = extractDynamicEvaluators(evaluated);
+    if (dynamicNested) {
+      return this.evaluatePLHString(dynamicNested, context);
+    }
+    return evaluated;
   }
 
   /**
@@ -173,8 +280,8 @@ export class TemplateVariablesService {
   ) {
     let parsedValue: any;
     let parseSuccess = true;
-    const { matchedExpression, type, fieldName } = evaluator;
-    const { templateRowMap } = context;
+    const { type, fieldName } = evaluator;
+    const { templateRowMap, field } = context;
     switch (type) {
       case "local":
         // TODO - assumed 'value' field will be returned but this could be provided instead as an arg
@@ -182,19 +289,22 @@ export class TemplateVariablesService {
 
         // find any rows where nested path corresponds to match path
         let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
-        templateRowMap.forEach((row, nestedName) => {
+        Object.entries(templateRowMap).forEach(([nestedName, row]) => {
           if (nestedName === fieldName || nestedName.endsWith(`.${fieldName}`)) {
             matchedRows.push({ row, nestedName });
           }
         });
-        // no match found
+        // no match found. If condition assume this is fine, otherwise authoring error
         if (matchedRows.length === 0) {
-          parseSuccess = false;
-          console.error(`@local.${fieldName} not found`, {
-            evaluator,
-            rowMap: mapToJson(templateRowMap),
-          });
-          // parsedValue = `{{local.${fieldName}}}`;
+          if (field === "condition") {
+            parsedValue = false;
+          } else {
+            parseSuccess = false;
+            console.error(`@local.${fieldName} not found`, {
+              evaluator,
+              rowMap: templateRowMap,
+            });
+          }
         }
         // match found - return least nested (in case of duplicates)
         else {
@@ -210,28 +320,68 @@ export class TemplateVariablesService {
         break;
       case "field":
         // console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
-        parsedValue = this.templateService.getField(fieldName);
+        parsedValue = this.templateFieldService.getField(fieldName);
         break;
       case "fields":
-        parsedValue = this.templateService.getField(fieldName);
+        parsedValue = this.templateFieldService.getField(fieldName);
         break;
       case "global":
-        parsedValue = this.templateService.getGlobal(fieldName);
+        parsedValue = this.templateFieldService.getGlobal(fieldName);
         break;
       case "data":
-        parsedValue = this.templateService.getDataListByPath(fieldName);
+        parsedValue = this.dataService.getDataListByPath(fieldName);
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
       case "campaign":
         parsedValue = await this.campaignService.getNextCampaignRow(fieldName);
         break;
+      case "calc":
+        const expression = fieldName.replace(/@/gi, "this.");
+        const { thisCtxt, globalFunctions, globalConstants } = context.calcContext;
+        log("evaluate calc", { expression, thisCtxt, globalFunctions });
+        // TODO - merge string replacements with above methods
+        parsedValue = evaluateJSExpression(expression, thisCtxt, globalFunctions, globalConstants);
+        break;
+      case "item":
+        log("evaluate item", evaluator, context);
+        try {
+          parsedValue = context.itemContext[fieldName];
+        } catch (error) {
+          // field may not exist
+        }
+        break;
       default:
         parseSuccess = false;
         console.error("No evaluator for dynamic field:", evaluator.matchedExpression);
-        parsedValue = matchedExpression;
+        // By default return an empty string if could not be evaluated successfully
+        // NOTE - any value is fine to return EXCEPT a dynamic expression (e.g. same @local.some_var)
+        // This will be checked a second time and could cause an infinite loop
+        parsedValue = "";
     }
+    parsedValue = this.ensureValueTranslated(parsedValue);
     return { parsedValue, parseSuccess };
+  }
+
+  /**
+   * HACK - make sure objects (e.g. campaign, global, data_lists) are translated
+   * (ideally should find way to handle alongside main translations)
+   * TODO - could also merge with standalone global method
+   */
+  private ensureValueTranslated(value: any) {
+    // If translatable value should be an object with _tranlsations property
+    // TODO - check if case needs to be added to translate arrays
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      if (value.hasOwnProperty("_translations")) {
+        value = this.templateTranslateService.translateRow(value);
+      } else {
+        // Check in case object with nested translations (e.g. data list)
+        Object.keys(value).forEach((k) => {
+          value[k] = this.ensureValueTranslated(value[k]);
+        });
+      }
+    }
+    return value;
   }
 }
 

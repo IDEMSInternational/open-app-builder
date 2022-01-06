@@ -10,12 +10,12 @@ import { getStringParamFromTemplateRow } from "../../../../utils";
 })
 export class TmplIconBannerComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   image_src: string | null;
   title: string | null;
   text: string | null;
   style: string | null;
-  baseSrcAssets = "/assets/plh_assets/";
   constructor() {
     super();
   }
@@ -29,9 +29,5 @@ export class TmplIconBannerComponent
     this.title = getStringParamFromTemplateRow(this._row, "title", null);
     this.text = getStringParamFromTemplateRow(this._row, "text", null);
     this.style = getStringParamFromTemplateRow(this._row, "style", "primary");
-  }
-  getPathImg(path): string {
-    const src = this.baseSrcAssets + path;
-    return src.replace("//", "/");
   }
 }

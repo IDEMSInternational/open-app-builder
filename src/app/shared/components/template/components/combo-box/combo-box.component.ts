@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
-import { ComboBoxModalComponent } from "../../../common/components/combo-box-modal/combo-box-modal.component";
+import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
   getBooleanParamFromTemplateRow,
   getParamFromTemplateRow,
@@ -20,9 +20,9 @@ import { takeUntil } from "rxjs/operators";
 })
 export class TmplComboBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy {
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   placeholder: string;
   prioritisePlaceholder: boolean;
   style: string;
@@ -37,7 +37,6 @@ export class TmplComboBoxComponent
   ngOnInit(): void {
     this.getParams();
     const listAnswers: string[] = getParamFromTemplateRow(this._row, "answer_list", null);
-
     this.customAnswerSelected =
       listAnswers && this._row.value
         ? !listAnswers.find((x) => x.includes(this._row.value))
@@ -63,9 +62,12 @@ export class TmplComboBoxComponent
 
   getText(aValue: string, listAnswers: string[]): string {
     if (aValue) {
+      if (aValue === "other") {
+        return this._row.parameter_list["customAnswer"];
+      }
       const textFromList = listAnswers
         .find((answer: string) => answer.includes(aValue))
-        .match(/(?<=text:).+/)[0]
+        ?.match(/(?<=text:).+/)[0]
         .trim();
       return textFromList ? textFromList : aValue;
     }
@@ -74,11 +76,10 @@ export class TmplComboBoxComponent
   async openModal() {
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
-      cssClass: "my-custom-modal",
+      cssClass: "combo-box-modal",
       componentProps: {
         row: this._row,
         template: this.template,
-        localVariables: this.localVariables,
         selectedValue: this.customAnswerSelected ? this.text : this._row.value,
         customAnswerSelected: this.customAnswerSelected,
         style: this.style,
@@ -91,6 +92,11 @@ export class TmplComboBoxComponent
       const value = data?.data?.answer?.name;
       this.text = data?.data?.answer?.text;
       this.customAnswerSelected = data?.data?.customAnswerSelected;
+      if (this.customAnswerSelected) {
+        this._row.parameter_list["customAnswer"] = data?.data?.answer?.text;
+      } else {
+        this._row.parameter_list["customAnswer"] = null;
+      }
       await this.setValue(value);
       await this.triggerActions("changed");
     });

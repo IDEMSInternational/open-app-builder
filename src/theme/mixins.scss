@@ -10,16 +10,30 @@
   align-items: center;
 }
 
-@mixin banner {
-  border-radius: var(--ion-border-radius-secondary);
-  margin-top: var(--regular-margin);
-  width: 100%;
-  margin: 0 auto 5px auto;
+@mixin absolute-centered {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%) translateX(50%);
 }
 
-@mixin essential-tool {
-  margin-top: var(--regular-margin);
-  padding: var(--largest-padding);
-  flex-direction: column;
-  border-radius: var(--ion-border-radius-secondary);
+@mixin tiny-square {
+  width: 25px;
+  height: 25px;
+}
+@mixin small-square {
+  height: 35px;
+  width: 35px;
+}
+@mixin medium-square {
+  height: 40px;
+  width: 40px;
+}
+@mixin large-square {
+  height: 64px;
+  width: 64px;
+}
+@mixin largest-square {
+  height: 80px;
+  width: 80px;
 }

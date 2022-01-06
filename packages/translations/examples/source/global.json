@@ -1,0 +1,25 @@
+[
+  {
+    "flow_type": "global",
+    "flow_name": "example_lang_global",
+    "status": "released",
+    "rows": [
+      {
+        "type": "declare_global_constant",
+        "name": "languge_global",
+        "value": "This is a global variable set in a global"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "language_field_1",
+        "value": "This is a field set by default"
+      },
+      {
+        "type": "declare_field_default",
+        "name": "language_field_2",
+        "value": "@data.language.example_lang_3.text"
+      }
+    ],
+    "_xlsxPath": "plh_sheets_beta/plh_templating/quality_assurance/example_templates/example_languages.xlsx"
+  }
+]

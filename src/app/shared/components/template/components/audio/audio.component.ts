@@ -9,6 +9,7 @@ import { Howl } from "howler";
 import { IonRange } from "@ionic/angular";
 import { ITemplateRowProps } from "../../models";
 import { TemplateBaseComponent } from "../base";
+import { TemplateAssetService } from "../../services/template-asset.service";
 
 @Component({
   selector: "plh-audio",
@@ -17,9 +18,9 @@ import { TemplateBaseComponent } from "../base";
 })
 export class TmplAudioComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, OnDestroy {
+  implements ITemplateRowProps, OnInit, OnDestroy
+{
   @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
   @ViewChild("range", { static: false }) range: IonRange;
   src: string | null;
   titleAudio: string | null;
@@ -35,7 +36,7 @@ export class TmplAudioComponent
   rangeBarDisabled: boolean = false;
   hasStarted: boolean = false;
 
-  constructor() {
+  constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
@@ -45,9 +46,9 @@ export class TmplAudioComponent
   }
 
   getParams() {
-    const audioPath = "assets/plh_assets/";
-    this.src =
-      audioPath + (this._row.value || getStringParamFromTemplateRow(this._row, "src", null));
+    this.src = this.templateAssetService.getTranslatedAssetPath(
+      this._row.value || getStringParamFromTemplateRow(this._row, "src", null)
+    );
     this.titleAudio = getStringParamFromTemplateRow(this._row, "title", "Title");
     this.help = getStringParamFromTemplateRow(this._row, "help", null);
     this.rangeBarDisabled = getBooleanParamFromTemplateRow(this._row, "range_bar_disabled", false);

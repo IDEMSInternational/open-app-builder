@@ -1,13 +1,14 @@
 @import "../../../../../../theme/mixins.scss";
 
 .wrapper-point {
-  padding: calc(15px * var(--scale-factor--point)) calc(5px * var(--scale-factor--point));
+  padding: calc(var(--regular-padding) * var(--scale-factor--point))
+    calc(5px * var(--scale-factor--point));
   .item {
     @include flex-centered;
     margin: 0 auto;
     padding: calc(20px * var(--scale-factor--point)) 0;
-    width: calc(176px * var(--scale-factor--point));
-    height: calc(152px * var(--scale-factor--point));
+    width: calc(var(--points-item-width) * var(--scale-factor--point));
+    height: calc(var(--points-item-height) * var(--scale-factor--point));
     background: var(--points-item-bg);
     box-shadow: var(--ion-default-box-shadow);
     border-radius: var(--ion-border-radius-standard);
@@ -21,8 +22,8 @@
       top: -16px;
       .star-value {
         padding-top: 4px;
-        font-weight: 500;
-        font-size: calc(15px * var(--scale-factor--point));
+        font-weight: var(--font-weight-standard);
+        font-size: calc(var(--line-height-text-tiny) * var(--scale-factor--point));
         color: var(--ion-color-primary);
         position: absolute;
       }
@@ -39,18 +40,27 @@
       }
     }
     .text {
-      margin: 7px 0;
-      font-weight: 500;
-      font-size: calc(16px * var(--scale-factor--point));
-      line-height: 18px;
+      margin: var(--tiny-margin) 0;
+      font-weight: var(--font-weight-standard);
+      font-size: calc(var(--font-size-text-small) * var(--scale-factor--point));
+      line-height: var(--line-height-text-small);
       text-align: center;
       color: var(--ion-color-primary);
-      padding: 0 5px;
+      padding: 0 var(--tiny-padding);
     }
   }
   .complete {
     background: var(--ion-color-primary-contrast);
   }
+}
+.celebrationAnim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
 }
 .on-add {
   animation: bounce;

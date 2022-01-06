@@ -1,0 +1,73 @@
+<ion-content class="ion-padding">
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Scheduled Campaigns</h2>
+    <ion-item class="clear">
+      <ion-label>Debug Notifications</ion-label>
+      <ion-toggle
+        #debugOptIn
+        [checked]="debugCampaignsEnabled"
+        (ionChange)="setDebugCampaignOptIn(debugOptIn.checked)"
+      ></ion-toggle>
+    </ion-item>
+    <ion-button
+      fill="outline"
+      [routerLink]="['/','notifications']"
+      [disabled]="(localNotificationService.pendingNotifications$ | async).length===0"
+    >
+      <ion-icon name="notifications" slot="start"></ion-icon>
+      <span>{{(localNotificationService.pendingNotifications$ | async).length}}</span>
+    </ion-button>
+  </div>
+
+  <ion-list>
+    <campaign-schedule-debug-row
+      *ngFor="let schedule of campaignService.scheduledCampaigns | objectValues"
+      [row]="schedule"
+    ></campaign-schedule-debug-row>
+  </ion-list>
+
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">All Campaigns</h2>
+  </div>
+  <ion-item>
+    <ion-label>Campaign</ion-label>
+    <ion-select
+      #campaignSelect
+      (ionChange)="setDebugCampaign(campaignSelect.value)"
+      [value]="debugCampaignId"
+    >
+      <ion-select-option
+        *ngFor="let campaign_id of campaignService.allCampaigns | objectKeys | arraySort"
+      >
+        <span>{{campaign_id}}</span>
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <h4 *ngIf="debugCampaignId">Rows</h4>
+  <ion-list *ngIf="debugCampaignRows">
+    <ion-list-header class="list-header activated">Activated</ion-list-header>
+    <campaign-debug-row
+      *ngFor="let row of debugCampaignRows.activated"
+      [row]="row"
+      (manageVariablesClicked)="manageFieldVariables($event)"
+      (triggerActionsClicked)="triggerRowActions($event)"
+      (scheduleNotificationClicked)="scheduleNotification($event)"
+    ></campaign-debug-row>
+    <ion-list-header class="list-header pending">Pending</ion-list-header>
+    <campaign-debug-row
+      *ngFor="let row of debugCampaignRows.pending"
+      [row]="row"
+      (manageVariablesClicked)="manageFieldVariables($event)"
+      (triggerActionsClicked)="triggerRowActions($event)"
+      (scheduleNotificationClicked)="scheduleNotification($event)"
+    ></campaign-debug-row>
+    <ion-list-header class="list-header deactivated">Deactivated</ion-list-header>
+    <campaign-debug-row
+      *ngFor="let row of debugCampaignRows.deactivated"
+      [row]="row"
+      (manageVariablesClicked)="manageFieldVariables($event)"
+      (triggerActionsClicked)="triggerRowActions($event)"
+      (scheduleNotificationClicked)="scheduleNotification($event)"
+    ></campaign-debug-row>
+  </ion-list>
+</ion-content>

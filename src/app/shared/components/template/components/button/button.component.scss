@@ -4,19 +4,20 @@
     height: 100%;
   }
   span {
-    padding: 5px 0;
+    padding: var(--tiny-padding) 0;
+    display: contents;
   }
 }
 ion-button {
-  font-size: 25px;
+  font-size: var(--buttons-font-size-small);
   font-family: Roboto, sans-serif;
-  font-weight: 500;
+  font-weight: var(--font-weight-standard);
   color: var(--ion-color-primary-contrast);
   text-transform: none;
   white-space: pre-line;
-  min-height: 71px;
-  padding: var(--regular-margin) var(--regular-padding) 0;
-  --border-radius: 15px;
+  min-height: var(--buttons-min-height);
+  padding: var(--regular-margin) var(--tiny-padding) 0;
+  --border-radius: var(--ion-border-radius-standard);
   --box-shadow: var(--ion-btn-dark-box-shadow);
   display: flex;
   width: fit-content;
@@ -31,6 +32,13 @@ ion-button:disabled,
 ion-button[disabled] {
   filter: brightness(55%);
 }
+
+/// nested_color style applies semi-transparent background to match container
+ion-button[data-param-style~="nested_color"] {
+  --background: linear-gradient(rgb(0 0 0 / 13%) 0%, rgb(0 0 0 / 20%) 100%);
+}
+
+/// TODO CC-2021-12-19 - the code below should likely be refactored to param selectors and moved
 
 .navigation {
   --background: var(--ion-btn-secondary);
@@ -66,11 +74,16 @@ ion-button[disabled] {
   color: var(--ion-color-primary);
 }
 
-.left {
+.left ::ng-deep {
   margin: 0 auto 0 2px;
+  text-align: left;
+  p {
+    margin: 0 0 0 2px;
+  }
 }
 .right {
   margin: 0 2px 0 auto;
+  text-align: right;
 }
 
 // width
@@ -83,26 +96,26 @@ ion-button[disabled] {
 }
 // height
 .medium {
-  min-height: 65px;
+  min-height: var(--buttons-medium-height);
 }
 .short {
-  min-height: 50px;
-  font-size: 20px;
+  min-height: var(--buttons-short-height);
+  font-size: var(--buttons-font-size-small);
 }
 .tall {
-  min-height: 80px;
+  min-height: var(--buttons-tall-height);
 }
 
 .medium_round {
-  --border-radius: 20px;
+  --border-radius: var(--ion-border-radius-secondary);
 }
 .no_shadow {
   --box-shadow: none;
 }
 .two_columns {
   max-width: 12rem;
-  min-height: 71px;
-  font-size: calc(25px * var(--scale-factor-btn));
+  min-height: var(--buttons-min-height);
+  font-size: calc(var(--buttons-font-size) * var(--scale-factor-btn));
   min-width: 5rem;
   @media (max-width: 375px) {
     max-width: 11rem;

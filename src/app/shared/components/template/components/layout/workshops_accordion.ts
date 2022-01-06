@@ -1,7 +1,6 @@
-import { Component, OnInit, QueryList, ViewChild, ViewChildren } from "@angular/core";
-import { FlowTypes } from "scripts/types";
+import { Component, OnInit } from "@angular/core";
+import { FlowTypes } from "src/app/shared/model";
 import { TemplateBaseComponent } from "../base";
-import { AccordionSectionComponent } from "./accordion_section";
 
 @Component({
   selector: "plh-tmpl-workshops-accordion",
@@ -11,7 +10,7 @@ import { AccordionSectionComponent } from "./accordion_section";
         *ngFor="let childRow of rows; let idx = index"
         [row]="childRow"
         [parent]="parent"
-        [id]="idx"
+        [id]="idx.toString()"
         (toggleState)="toggleState($event)"
       >
       </plh-tmpl-accordion-section>

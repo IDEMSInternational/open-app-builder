@@ -1,0 +1,44 @@
+<div class="container-modal">
+  <div class="header" *ngIf="textTitle">
+    {{ textTitle }}
+  </div>
+  <div class="form">
+    <form [formGroup]="form" [class.reverse]="inputPosition">
+      <div class="checkboxes">
+        <div
+          class="container-radio"
+          [ngClass]="{
+            active: style === 'active' && form.get('answer').value === radio.name,
+            passive: style === 'passive' && form.get('answer').value === radio.name
+          }"
+          [class.checked-radio]="form.get('answer').value === radio.name"
+          *ngFor="let radio of valuesFromListAnswers"
+        >
+          <label>
+            <input
+              type="radio"
+              (click)="check(radio)"
+              formControlName="answer"
+              [value]="radio.name"
+            />
+            {{ radio.text | translate }}
+          </label>
+        </div>
+      </div>
+      <div class="wrapper" *ngIf="inputAllowed">
+        <ion-input
+          formControlName="customAnswer"
+          [class]="customAnswerClass"
+          (keyup.enter)="enterCustomAnswer()"
+          [placeholder]="placeholder"
+          [ngClass]="{
+            active: style === 'active' && form.get('customAnswer').value === selectedValue,
+            passive: style === 'passive' && form.get('customAnswer').value === selectedValue
+          }"
+          [class.checked-radio]="form.get('customAnswer').value === selectedValue"
+        >
+        </ion-input>
+      </div>
+    </form>
+  </div>
+</div>

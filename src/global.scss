@@ -29,6 +29,7 @@
 @import "./theme/layout";
 @import "./theme/typography";
 @import "./theme/tooltip";
+@import "./theme/deployment/deployment.scss";
 .slide-up-modal {
   .modal-wrapper {
     max-width: 80%;
@@ -57,17 +58,6 @@
   }
 }
 // TODO - these need to be resolved with some of the hardcoded methods that set height:100% and display:flex
-plh-template-component[data-hidden="true"] {
-  display: none !important;
-}
-plh-template-component[data-debug-hidden="true"] {
-  display: flex !important;
-  flex: 1 !important;
-  height: unset !important;
-}
-.plh-tmpl-comp[data-debug="true"] {
-  height: unset;
-}
 .no_padding {
   padding: 0 !important;
 }
@@ -99,15 +89,15 @@ plh-template-component[data-debug-hidden="true"] {
   border-radius: var(--ion-border-radius-standard);
   color: var(--ion-color-primary);
   min-width: 90vw;
-  font-size: 18px;
+  font-size: var(--font-size-text-medium);
   right: 0;
   @media (max-width: 320px) {
     font-size: 16px;
   }
   .introjs-tooltip-header {
-    padding-top: 30px;
+    padding-top: var(--largest-padding);
     .introjs-tooltip-title {
-      font-size: 24px;
+      font-size: var(--font-size-title-tiny);
       @media (max-width: 320px) {
         font-size: 20px;
       }
@@ -132,7 +122,7 @@ plh-template-component[data-debug-hidden="true"] {
     transform: translate(-50%, -5%);
   }
   .introjs-bullets ul li a {
-    border: var(--ion-tour-border-standard);
+    border: var(--ion-border-thin-standard);
     background: var(--ion-color-primary-contrast);
   }
   .introjs-bullets ul li a.active {
@@ -141,7 +131,7 @@ plh-template-component[data-debug-hidden="true"] {
   }
 }
 .buttonClass {
-  border: var(--ion-tour-border-standard);
+  border: var(--ion-border-thin-standard);
   padding: 10px 15px;
   border-radius: var(--ion-border-radius-small);
   box-shadow: var(--ion-default-box-shadow);
@@ -152,6 +142,10 @@ plh-template-component[data-debug-hidden="true"] {
   @media (max-width: 320px) {
     font-size: 16px;
   }
+  &.introjs-nextbutton {
+    background: var(--ion-btn-secondary);
+    color: var(--ion-color-primary-contrast);
+    border: none;
+  }
 }
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~nouislider/distribute/nouislider.min.css";

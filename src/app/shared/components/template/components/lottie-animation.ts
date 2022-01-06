@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { FlowTypes } from "data-models";
 import { TemplateBaseComponent } from "./base";
 import { getStringParamFromTemplateRow } from "../../../utils";
 import { AnimationOptions } from "ngx-lottie";
+import { TemplateAssetService } from "../services/template-asset.service";
 
 @Component({
   selector: "plh-tmpl-lottie-animation",
@@ -22,33 +22,26 @@ import { AnimationOptions } from "ngx-lottie";
   ],
 })
 export class TmplLottieAnimation extends TemplateBaseComponent implements OnInit {
-  assetsPrefix = "/assets/plh_assets/";
   style: string;
   animOptions: AnimationOptions;
 
-  constructor(private http: HttpClient) {
+  constructor(private templateAssetService: TemplateAssetService) {
     super();
   }
 
   @Input() set row(r: FlowTypes.TemplateRow) {
+    this.loadAnimation(r);
+  }
+
+  private loadAnimation(r: FlowTypes.TemplateRow) {
     // Loop by default
     const loop = r?.parameter_list?.loop === "false" ? false : true;
     if (r.value) {
-      this.http
-        .get(this.assetsPrefix + r.value)
-        .toPromise()
-        .then(() => {
-          this.animOptions = {
-            path: this.assetsPrefix + r.value,
-            loop: loop,
-          };
-        })
-        .catch(() => {
-          this.animOptions = {
-            path: r.value.replace("//", "/"),
-            loop: loop,
-          };
-        });
+      const path = this.templateAssetService.getTranslatedAssetPath(r.value);
+      this.animOptions = {
+        path,
+        loop,
+      };
     }
   }
 

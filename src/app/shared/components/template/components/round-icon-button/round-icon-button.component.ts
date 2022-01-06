@@ -1,21 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  Directive,
-  ElementRef,
-  Inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  PLATFORM_ID,
-  ViewEncapsulation,
-} from "@angular/core";
-import { FlowTypes } from "src/app/shared/model/flowTypes";
+import { AfterViewInit, Component, ElementRef, Input, OnInit } from "@angular/core";
+import { FlowTypes } from "data-models";
 import { ITemplateRowProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateBaseComponent } from "../base";
 import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from "../../../../utils";
-import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   selector: "plh-round-button",
@@ -24,7 +12,8 @@ import { isPlatformBrowser } from "@angular/common";
 })
 export class RoundIconButtonComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit, AfterViewInit {
+  implements ITemplateRowProps, OnInit, AfterViewInit
+{
   @Input() parent: TemplateContainerComponent;
   @Input() template: FlowTypes.Template;
   icon_src: string;
@@ -35,7 +24,6 @@ export class RoundIconButtonComponent
   buttonAlign: string;
   isHomeScreen: boolean = false;
   isCustomIcon: boolean = false;
-  assetsPrefix = "/assets/plh_assets/";
   constructor(private elRef: ElementRef) {
     super();
   }
@@ -44,7 +32,7 @@ export class RoundIconButtonComponent
   }
 
   ngAfterViewInit() {
-    const el = this.elRef.nativeElement.closest(".display-group");
+    const el = this.elRef.nativeElement.closest(".display-group-wrapper");
     if (el && el.classList.value.includes("navigation")) {
       this.elRef.nativeElement.parentElement.parentElement.style.setProperty("flex", "0");
     }
@@ -66,10 +54,5 @@ export class RoundIconButtonComponent
     this.buttonAlign = getStringParamFromTemplateRow(this._row, "button_align", "center");
     this.isHomeScreen = this.style.includes("home_screen");
     this.isCustomIcon = this.icon_src.includes("/");
-  }
-
-  getPathImg(iconSrc: string): string {
-    const src = this.assetsPrefix + iconSrc;
-    return src.replace("//", "/");
   }
 }

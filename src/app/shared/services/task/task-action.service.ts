@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import { Subject } from "scripts/node_modules/rxjs";
+import { Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";

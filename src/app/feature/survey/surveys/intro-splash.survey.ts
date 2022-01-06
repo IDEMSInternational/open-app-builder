@@ -6,7 +6,9 @@ import { ISurvey } from "../types/survey.types";
 @Component({
   animations: PLHAnimations.fadeInOut,
   template: `
-    <ion-button fill="clear" (click)="skipIntro()" class="skip-button">Skip Intro</ion-button>
+    <ion-button fill="clear" (click)="skipIntro()" class="skip-button" data-cy="skip-intro"
+      >Skip Intro</ion-button
+    >
     <div class="section-container">
       <section [@fadeInOut]="fadeSection[0]">
         <img src="assets/images/splash-screen/0.svg" />
@@ -18,7 +20,7 @@ import { ISurvey } from "../types/survey.types";
       </section>
       <section [@fadeInOut]="fadeSection[2]">
         <img src="assets/images/splash-screen/2.svg" />
-        <p>Join the 152.4 million parents who have used our resources</p>
+        <p>Join the 169 million parents who have used our resources</p>
       </section>
       <section [@fadeInOut]="fadeSection[3]">
         <div>Powered by Parenting for Lifelong Health</div>
@@ -143,7 +145,7 @@ export class IntroSplashSurveyComponent implements OnInit {
   private _wait(ms: number) {
     return new Promise((resolve) =>
       setTimeout(() => {
-        resolve();
+        resolve(true);
       }, ms)
     );
   }

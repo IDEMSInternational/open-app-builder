@@ -2,7 +2,6 @@
   "appId": "international.idems.plh_teens",
   "appName": "PLH Teens",
   "bundledWebRuntime": false,
-  "npmClient": "yarn",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
@@ -16,6 +15,5 @@
         "google": ["profile"]
       }
     }
-  },
-  "allowNavigation": []
+  }
 }

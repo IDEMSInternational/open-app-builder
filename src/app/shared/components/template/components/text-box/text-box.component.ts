@@ -1,35 +1,30 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { FlowTypes } from "../../../../model";
+import { Component, OnInit } from "@angular/core";
 import {
   getBooleanParamFromTemplateRow,
   getNumberParamFromTemplateRow,
   getStringParamFromTemplateRow,
 } from "../../../../utils";
 import { TemplateBaseComponent } from "../base";
-import { ITemplateRowProps } from "../../models";
 
 @Component({
   selector: "plh-text-box",
   templateUrl: "./text-box.component.html",
   styleUrls: ["./text-box.component.scss"],
 })
-export class TmplTextBoxComponent
-  extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
-  @Input() template: FlowTypes.Template;
-  @Input() localVariables: { [name: string]: any };
+export class TmplTextBoxComponent extends TemplateBaseComponent implements OnInit {
   prioritisePlaceholder: boolean;
   isNumberInput = false;
   placeholder: string;
   textAlign: string;
   maxLength: number;
   style: string;
-  constructor() {
-    super();
-  }
 
   ngOnInit() {
     this.getParams();
+  }
+  public async handleChange(value: any) {
+    await this.setValue(value);
+    this.triggerActions("changed");
   }
 
   getParams() {

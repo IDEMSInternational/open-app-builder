@@ -1,6 +1,6 @@
-import { FlowTypes } from "scripts/types";
+import { FlowTypes } from "src/app/shared/model";
 import { TemplateContainerComponent } from "../template-container.component";
-export { FlowTypes } from "scripts/types";
+export { FlowTypes } from "src/app/shared/model";
 
 /**
  * Properties passed to a template container instance
@@ -19,7 +19,6 @@ export interface ITemplateContainerProps {
 /**
  * Properties passed to a template row instance
  * @param row specific data used in component rendering
- * @param localVariables compiled list of variables used across all template rows
  * @param parent reference to parent template container
  */
 export interface ITemplateRowProps {

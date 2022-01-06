@@ -1,0 +1,3 @@
+deployments/**/*.*
+!deployments/example/config.ts
+!deployments/plh/*.ts
