@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, Output, ViewChild } from "@angular/core";
 import { EventEmitter } from "@angular/core";
-import { FlowTypes } from "../../../../shared/model/flowTypes";
+import { FlowTypes } from "data-models";
 
 export interface ContextMenuData {
   top: string;

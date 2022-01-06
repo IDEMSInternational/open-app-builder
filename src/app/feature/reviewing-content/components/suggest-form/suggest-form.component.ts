@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
-import { FlowTypes } from "../../../../shared/model/flowTypes";
+import { FlowTypes } from "data-models";
 
 @Component({
   selector: "suggest-form",
