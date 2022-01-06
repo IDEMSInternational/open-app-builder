@@ -67,7 +67,7 @@ export class TemplateNavService {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename] = action.args;
-    const nav_parent_triggered_by = action._triggeredBy.name;
+    const nav_parent_triggered_by = action._triggeredBy?.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     // handle direct page or template navigation
     const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
@@ -170,16 +170,22 @@ export class TemplateNavService {
    ****************************************************************************************************/
   public async handlePopupAction(
     action: FlowTypes.TemplateRowAction,
-    container: TemplateContainerComponent
+    container?: TemplateContainerComponent
   ) {
-    const { name } = container;
     const templatename = action.args[0];
+    // handle case when triggered outside of templating system
+    if (!container) {
+      console.log("handling popup without container");
+      return this.createPopupAndWaitForDismiss(templatename, null);
+    }
+
+    const { name } = container;
     // simply set the query params which will be handled in method below so that
     // opening can also be handled following navigation or on refresh
     const queryParams: INavQueryParams = {
       popup_child: templatename,
       popup_parent: name,
-      popup_parent_triggered_by: action._triggeredBy.name,
+      popup_parent_triggered_by: action._triggeredBy?.name || null,
     };
     this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
