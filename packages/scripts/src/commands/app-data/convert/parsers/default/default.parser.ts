@@ -67,6 +67,10 @@ export class DefaultParser implements AbstractParser {
     return row;
   }
 
+  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
+    return flows;
+  }
+
   /** Handle a single row */
   private processRow(row: IRowData, flow: FlowTypes.FlowTypeWithData) {
     // Handle specific data manipulations for fields
