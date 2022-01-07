@@ -16,7 +16,7 @@ import { Observable } from "rxjs";
 /**
  * The context menu service tracks interaction with right-click and text-selection actions
  * and presents a custom context menu where required
- * TODO - add mobile long-press (and test on mobile). E.g. via getstureController or hammerjs
+ * TODO - add mobile long-press (and test on mobile). E.g. via getstureController, hammerjs or touch start/end events
  * https://ionicframework.com/docs/utilities/gestures#overview
  * https://levelup.gitconnected.com/making-hammerjs-work-with-angular-9-81d289159320
  */

@@ -6,4 +6,4 @@ export interface IContextMenuAction {
 export interface IContextMenuActionHashmap {
   [id: string]: IContextMenuAction;
 }
-export type IContextMenuType = "rightClick" | "textSelect";
+export type IContextMenuType = "rightClick" | "textSelect" | "longPress";
