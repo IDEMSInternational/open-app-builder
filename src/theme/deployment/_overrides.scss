@@ -10,6 +10,12 @@ ion-content {
   --padding-start: 24px;
   --padding-end: 24px;
 }
+ion-content.no-padding {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+}
 
 h1 {
   p {

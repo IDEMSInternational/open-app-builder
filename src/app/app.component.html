@@ -24,11 +24,5 @@
     <div class="route-container">
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </div>
-    <!-- TODO - check implementation -->
-    <plh-reviewing
-      *ngIf="
-        (reviewingService.isReviewingMode$ | async) && reviewingService.currentPlatform === 'web'
-      "
-    ></plh-reviewing>
   </div>
 </ion-app>
