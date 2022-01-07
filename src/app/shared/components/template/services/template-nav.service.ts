@@ -3,8 +3,7 @@ import { Injectable } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
-import { TemplatePopupComponent } from "../components/layout/popup";
-import { ITemplateContainerProps } from "../models";
+import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateContainerComponent } from "../template-container.component";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
@@ -267,7 +266,7 @@ export class TemplateNavService {
   }
 
   private async createChildPopupModal(popup_child: string, container: TemplateContainerComponent) {
-    const childContainerProps: ITemplateContainerProps = {
+    const childContainerProps: ITemplatePopupComponentProps = {
       // make the popup share the same name as the container so that nav events return to parent container page
       name: popup_child,
       templatename: popup_child,
@@ -275,7 +274,7 @@ export class TemplateNavService {
     };
     return this.modalCtrl.create({
       component: TemplatePopupComponent,
-      componentProps: childContainerProps,
+      componentProps: { props: childContainerProps },
       id: `popup-${popup_child}`,
       // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "template-popup-modal",

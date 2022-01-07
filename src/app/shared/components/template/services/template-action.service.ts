@@ -162,16 +162,8 @@ export class TemplateActionService {
         );
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
-        const [emit_value, emit_from] = args;
+        const [emit_value, emit_data] = args;
         let container: TemplateContainerComponent = this.container;
-        if (emit_from) {
-          // emit from the named template container instead of this one if specified (assumed sibling of current)
-          const targetContainer = container.children[emit_from];
-          if (targetContainer) {
-            action.args = [emit_value];
-            container = targetContainer;
-          }
-        }
         let { parent, row, name, template, templatename } = container;
         console.log("[EMIT]", `${name || templatename}:${emit_value}`);
         if (emit_value === "completed") {
@@ -195,13 +187,8 @@ export class TemplateActionService {
           await this.serverService.syncUserData();
         }
         if (parent) {
-          // continue to emit any actions to parent where defined
-          log(
-            "Emiting",
-            emit_value,
-            ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`,
-            parent
-          );
+          const msg = ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`;
+          log("Emiting", emit_value, msg, emit_data, parent);
         }
         // Process any actions specified when row defined by parent (triggered on parent)
         // or from own update_action_list statement (triggered on self)
@@ -217,7 +204,7 @@ export class TemplateActionService {
           }
         }
         // Emit value so manual container bindings can also track (e.g. closing modal in popup from runStandaloneTemplate method)
-        this.container.emittedValue.next(emit_value);
+        this.container.emittedValue.next({ emit_value, emit_data });
         break;
       default:
         console.warn("[W] No handler for action", { action_id, args });
