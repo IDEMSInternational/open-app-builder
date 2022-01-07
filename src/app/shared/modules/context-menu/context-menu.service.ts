@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { PopoverController } from "@ionic/angular";
 import { fromEvent } from "rxjs";
-import { first } from "rxjs/operators";
+import { filter, first, map, switchMap, tap } from "rxjs/operators";
 import { ContextMenuComponent } from "./context-menu.component";
 import { BehaviorSubject } from "rxjs";
 import { Subscription } from "rxjs";
@@ -10,24 +10,31 @@ import {
   IContextMenuActionHashmap,
   IContextMenuType,
 } from "./context-menu.types";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 /**
  * The context menu service tracks interaction with right-click and text-selection actions
  * and presents a custom context menu where required
+ * TODO - add mobile long-press (and test on mobile). E.g. via getstureController or hammerjs
+ * https://ionicframework.com/docs/utilities/gestures#overview
+ * https://levelup.gitconnected.com/making-hammerjs-work-with-angular-9-81d289159320
  */
 export class ContextMenuService {
   /** Subscription list for tracking events */
-  private events$: { [context in IContextMenuType]: Subscription } = {
+  private eventListeners$: { [context in IContextMenuType]: Subscription } = {
     rightClick: new Subscription(),
     textSelect: new Subscription(),
+    longPress: new Subscription(),
   };
   /** Subscribeable list of all registered action handlers */
-  private actions$: { [context in IContextMenuType]: BehaviorSubject<IContextMenuActionHashmap> } =
-    {
-      rightClick: new BehaviorSubject({}),
-      textSelect: new BehaviorSubject({}),
-    };
+  private actionHandlers$: {
+    [context in IContextMenuType]: BehaviorSubject<IContextMenuActionHashmap>;
+  } = {
+    rightClick: new BehaviorSubject({}),
+    textSelect: new BehaviorSubject({}),
+    longPress: new BehaviorSubject({}),
+  };
 
   /** Utility variable to help detect start/end of text selection events */
   private isSelectingText = false;
@@ -38,38 +45,21 @@ export class ContextMenuService {
 
   /** Add an item to appear in the context menu */
   public registerContextMenuAction(context: IContextMenuType, action: IContextMenuAction) {
-    const actions = this.actions$[context].value;
+    const actions = this.actionHandlers$[context].value;
     actions[action.id] = action;
-    this.actions$[context].next(actions);
+    this.actionHandlers$[context].next(actions);
   }
 
   /** Remove an item from the context menu */
   public removeContextMenuAction(context: IContextMenuType, id: string) {
-    const actions = this.actions$[context].value;
+    const actions = this.actionHandlers$[context].value;
     if (actions.hasOwnProperty(id)) {
       delete actions[id];
     }
-    this.actions$[context].next(actions);
+    this.actionHandlers$[context].next(actions);
   }
 
-  /** Trigger actions following right-click events */
-  private async handleRightClickAction(ev: PointerEvent) {
-    ev.preventDefault();
-    await this.showContextMenu("rightClick", ev);
-  }
-
-  /** Trigger actions following text-select events */
-  private async handleTextSelectionAction(ev: PointerEvent) {
-    ev.preventDefault();
-    try {
-      const selectedText = window.getSelection().toString();
-      if (selectedText) {
-        this.showContextMenu("textSelect", ev);
-      }
-    } catch (error) {}
-  }
-
-  private async showContextMenu(context: IContextMenuType, ev: Event) {
+  private async showContextMenu(context: IContextMenuType, ev: Event, data: any = {}) {
     // if already open close before reopening
     const existingPopover = await this.popoverController.getTop();
     if (existingPopover) {
@@ -77,7 +67,7 @@ export class ContextMenuService {
     }
     // pass registered action handlers and event as input props to display in the ContextMenuComponent
     const componentProps = {
-      actions: Object.values(this.actions$[context].value),
+      actions: Object.values(this.actionHandlers$[context].value),
       event: ev,
     };
     const popover = await this.popoverController.create({
@@ -97,36 +87,41 @@ export class ContextMenuService {
    * events to trigger event handlers
    **/
   private addEventListeners() {
-    // Right-click
-    this.actions$.rightClick.subscribe((actions) => {
-      if (Object.keys(actions).length === 0) {
-        this.events$.rightClick.unsubscribe();
-      } else {
-        this.events$.rightClick = fromEvent(document, "contextmenu").subscribe(
-          (ev: PointerEvent) => {
-            this.handleRightClickAction(ev);
-          }
-        );
-      }
-    });
-    // Text select
-    // As events are continously triggered during selection add mouseup event listener
-    // to determine when selection complete
-    this.actions$.textSelect.subscribe((actions) => {
-      if (Object.keys(actions).length === 0) {
-        this.events$.textSelect.unsubscribe();
-      } else {
-        this.events$.textSelect = fromEvent(document, "selectionchange").subscribe(() => {
-          if (!this.isSelectingText) {
-            this.isSelectingText = true;
-            const keyupEvent = fromEvent(document, "mouseup");
-            keyupEvent.pipe(first()).subscribe((ev: PointerEvent) => {
-              this.isSelectingText = false;
-              this.handleTextSelectionAction(ev);
-            });
-          }
-        });
-      }
-    });
+    const eventListeners: {
+      [context in IContextMenuType]: Observable<{ ev: PointerEvent; data?: any }>;
+    } = {
+      // Long-press (TODO)
+      longPress: fromEvent(document, "TODO").pipe(map((ev: PointerEvent) => ({ ev }))),
+      // Right-click
+      rightClick: fromEvent(document, "contextmenu").pipe(map((ev: PointerEvent) => ({ ev }))),
+      // Text select
+      // Events continously triggered so include additional mapping to detect start/end of selection
+      textSelect: fromEvent(document, "selectionchange").pipe(
+        filter(() => !this.isSelectingText), // ignore events while waiting for current selection to end
+        tap(() => (this.isSelectingText = true)), // trigger variable to ignore events
+        switchMap(() => fromEvent(document, "mouseup").pipe(first())), // switch to wait for next mouseup instead of selectionchange
+        tap(() => (this.isSelectingText = false)), // trigger variable to resume event listener
+        map((ev: PointerEvent) => ({
+          ev,
+          data: { selectedText: window.getSelection().toString() },
+        })), // extract selected text
+        filter((v) => (v.data.selectedText ? true : false)) // ignore cases where no text selected
+      ),
+    };
+
+    // Subscribe to any changes in action handlers. If handlers exist subscribe to correct event and show menu when triggered,
+    // if no handlers exist remove any previous event listeners
+    for (const [type, actionHandlers$] of Object.entries(this.actionHandlers$)) {
+      actionHandlers$.subscribe((handlers) => {
+        if (Object.keys(handlers).length === 0) {
+          this.eventListeners$[type].unsubscribe();
+        } else {
+          this.eventListeners$[type] = eventListeners[type].subscribe(async ({ ev, data }) => {
+            ev.preventDefault();
+            await this.showContextMenu(type as IContextMenuType, ev, data);
+          });
+        }
+      });
+    }
   }
 }
