@@ -117,7 +117,9 @@ export class AppComponent {
     for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
       switch (initAction.type) {
         case "template_popup":
-          await this.templateService.runStandaloneTemplate(initAction.value);
+          await this.templateService.runStandaloneTemplate(initAction.value, {
+            showCloseButton: false,
+          });
           break;
         case "tour_start":
           await this.tourService.startTour(initAction.value);
