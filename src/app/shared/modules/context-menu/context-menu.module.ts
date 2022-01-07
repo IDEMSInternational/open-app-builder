@@ -10,6 +10,11 @@ import { ContextMenuService } from "./context-menu.service";
   imports: [CommonModule, FormsModule, IonicModule],
   declarations: [ContextMenuComponent],
 })
+/**
+ * The contextMenuModule handles tracking events such as right-click and text selection that can
+ * be used to trigger a custom context menu, allowing for registered actions to be made available.
+ * This should be imported into main app.module to allow tracking across the app
+ */
 export class ContextMenuModule {
   // ensure service intialised when module imported
   constructor(public contextMenuService: ContextMenuService) {}
