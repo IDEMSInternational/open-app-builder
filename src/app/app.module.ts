@@ -26,9 +26,9 @@ import player from "lottie-web";
 import { NgxMatomoTrackerModule } from "@ngx-matomo/tracker";
 import { NgxMatomoRouterModule } from "@ngx-matomo/router";
 import { TourComponent } from "./feature/tour/tour.component";
-import { ReviewingModule } from "./feature/reviewing-content/reviewing.module";
 import { httpInterceptorProviders } from "./shared/services/server/interceptors";
 import { TemplateComponentsModule } from "./shared/components/template/template.module";
+import { ContextMenuModule } from "./shared/modules/context-menu/context-menu.module";
 
 // Note we need a separate function as it's required
 // by the AOT compiler.
@@ -53,7 +53,6 @@ export function lottiePlayerFactory() {
     ReactiveFormsModule,
     ReactiveFormsModule,
     ColorSketchModule,
-    ReviewingModule,
     SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
     // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
@@ -64,6 +63,7 @@ export function lottiePlayerFactory() {
       trackerUrl: environment.analytics.endpoint,
     }),
     NgxMatomoRouterModule,
+    ContextMenuModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
