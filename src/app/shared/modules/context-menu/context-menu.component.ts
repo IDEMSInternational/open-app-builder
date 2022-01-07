@@ -5,19 +5,23 @@ import { IContextMenuAction } from "./context-menu.types";
 @Component({
   selector: "app-context-menu",
   template: `
-    <ion-content class="no-padding">
-      <ion-list>
+    <ion-content class="no-padding ">
+      <ion-list class="context-menu-content">
         <ion-list-header>Menu</ion-list-header>
-        <ion-item button *ngFor="let action of actions" (click)="handleActionButtonClick(action)">{{
-          action.menuButtonText
-        }}</ion-item>
+        <ion-item
+          class="context-menu-button"
+          button
+          *ngFor="let action of actions"
+          (click)="handleActionButtonClick(action)"
+          >{{ action.menuButtonText }}</ion-item
+        >
       </ion-list>
     </ion-content>
   `,
+  styleUrls: ["./context-menu.component.scss"],
 })
-/**
- * Component rendered when context menu launched (e.g. right-click event). Displays list of buttons
- * for any registered context-menu actions
+/** Component rendered when context menu launched (e.g. right-click event). Displays list of buttons
+ * for any registered context-menuactions
  */
 export class ContextMenuComponent {
   @Input() actions: IContextMenuAction[] = [];
