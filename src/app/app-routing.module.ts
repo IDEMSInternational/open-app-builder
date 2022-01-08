@@ -40,9 +40,8 @@ const FeatureRoutes: Routes = [
     component: TourComponent,
   },
   {
-    path: "content-review",
-    loadChildren: () =>
-      import("./feature/content-review/content-review.module").then((m) => m.ContentReviewModule),
+    path: "feedback",
+    loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
   },
 ];
 
