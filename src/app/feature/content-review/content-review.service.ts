@@ -1,169 +1,160 @@
-import { Injectable, NgZone } from "@angular/core";
+import { Injectable } from "@angular/core";
 
-import {
-  ActionSheetController,
-  Gesture,
-  GestureController,
-  GestureDetail,
-  ModalController,
-  ToastController,
-} from "@ionic/angular";
-import { SuggestFormComponent } from "./components/suggest-form/suggest-form.component";
-import { Router } from "@angular/router";
+import { ToastController, ToastOptions } from "@ionic/angular";
 import { BehaviorSubject } from "rxjs";
-import { FlowTypes } from "data-models";
-import { Device } from "@capacitor/device";
+import { Device, DeviceInfo } from "@capacitor/device";
+import { EventService } from "src/app/shared/services/event/event.service";
+import { ContextMenuService } from "src/app/shared/modules/context-menu/context-menu.service";
+import {
+  IContextMenuAction,
+  IContextMenuType,
+} from "src/app/shared/modules/context-menu/context-menu.types";
+import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
+import { TemplateService } from "src/app/shared/components/template/services/template.service";
+
+interface IFeedbackButton {
+  id: string;
+  menuButtonText: string;
+  appearInMenus: IContextMenuType[];
+  displayedTemplate: string;
+}
+
+const FEEDBACK_BUTTONS: IFeedbackButton[] = [
+  {
+    id: "feedback-addFeedback",
+    menuButtonText: "Add Feedback",
+    appearInMenus: ["rightClick", "longPress", "textSelect"],
+    displayedTemplate: "feature_content_review_feedback",
+  },
+  {
+    id: "feedback-suggestChange",
+    menuButtonText: "Suggest Change",
+    appearInMenus: ["textSelect"],
+    displayedTemplate: "feature_content_review_suggest",
+  },
+];
 
 @Injectable({
   providedIn: "root",
 })
 export class ContentReviewService {
   public isReviewingMode$ = new BehaviorSubject(false);
-  private longPressActive = false;
-  private targetRow: FlowTypes.TemplateRow;
-  private isTextType: boolean;
-  private actionSheet: HTMLIonActionSheetElement;
-  private guesture: Gesture;
 
-  public currentPlatform: string;
+  private deviceInfo: DeviceInfo;
 
   constructor(
-    public actionSheetController: ActionSheetController,
-    private gestureCtrl: GestureController,
-    private zone: NgZone,
-    private modal: ModalController,
-    public toastController: ToastController,
-    private router: Router
-  ) {}
-  public init() {
-    Device.getInfo().then((v) => {
-      this.currentPlatform = v.platform;
+    private contextMenuService: ContextMenuService,
+    private eventService: EventService,
+    private templateService: TemplateService,
+    private userMetaService: UserMetaService,
+    private toastController: ToastController
+  ) {
+    this.registerEventHandlers();
+    // retrieve device info for passing in metadata
+    Device.getInfo().then((deviceInfo) => {
+      this.deviceInfo = deviceInfo;
     });
-    this.useLongPress();
-    this.isReviewingMode$.subscribe((response) => {
-      if (response && this.currentPlatform === "android") {
-        this.presentToast("Reviewing mode. Use long press on specific component");
-        this.guesture.enable(true);
-      } else if (!response && this.currentPlatform === "android") {
-        this.presentToast("Exit reviewing mode");
-        this.guesture.enable(false);
-      }
+    // Handle enabling/disabling context menu actions depending on whether review mode enabled
+    this.isReviewingMode$.subscribe((isReviewMode) => {
+      this.setContextMenuActions(isReviewMode);
     });
   }
 
-  async presentToast(message: string) {
+  /** Handle registration of all defined feedback actions to the relevant context menus */
+  private setContextMenuActions(isReviewMode: boolean) {
+    for (const feedbackButton of FEEDBACK_BUTTONS) {
+      const action: IContextMenuAction = {
+        ...feedbackButton,
+        actionHandler: async (ev) => await this.handleContextMenuAction(ev, feedbackButton),
+      };
+      for (const contextMenu of feedbackButton.appearInMenus) {
+        if (isReviewMode) {
+          this.contextMenuService.registerContextMenuAction(contextMenu, action);
+        } else {
+          this.contextMenuService.removeContextMenuAction(contextMenu, action.id);
+        }
+      }
+    }
+  }
+
+  /**
+   * Callback triggered from context menu when action selected
+   * @param ev pointer event that initiated context menu call, such as right-click event
+   * @param feedbackButton button that was clicked from the context menu to trigger action
+   * */
+  private async handleContextMenuAction(ev: PointerEvent, feedbackButton: IFeedbackButton) {
+    const data = await this.templateService.runStandaloneTemplate(
+      feedbackButton.displayedTemplate,
+      { fullscreen: false }
+    );
+    // Submit feedback if popup dismissed by emit:completed event
+    const { emit_data, emit_value } = data || {};
+    if (emit_value === "completed") {
+      const metadata = this.generateFeedbackMetadata(ev);
+      const feedback = emit_data;
+      console.log("submitting feedback", { metadata, feedback });
+    }
+  }
+
+  /**
+   * Collate various pieces of feedback info including page url, path to element in focus,
+   * device info and user uuid
+   */
+  private generateFeedbackMetadata(ev: PointerEvent) {
+    const elementPath: HTMLElement[] = (ev as any).path;
+    // filter just to include template components and containers
+    const templatePath = elementPath.filter((e) =>
+      ["plh-template-component", "plh-template-container"].includes(e.localName)
+    );
+    // create a list with only custom data- attributes
+    const templatePathData = templatePath.map((e) => ({ ...e.dataset }));
+    console.log("elementPath", { elementPath, templatePath, templatePathData });
+    return {
+      templatePathData,
+      deviceInfo: this.deviceInfo,
+      pathname: location.pathname,
+      uuid: this.userMetaService.getUserMeta("uuid"),
+    };
+  }
+
+  public async toggleReviewMode() {
+    this.isReviewingMode$.next(!this.isReviewingMode$.value);
+  }
+
+  // TODO
+  private registerEventHandlers() {
+    this.eventService.all("CONTENT_REVIEW").subscribe((event) => {
+      console.log("content review event triggered", event);
+    });
+  }
+
+  private async presentToast(message: string, opts: Partial<ToastOptions> = {}) {
     const toast = await this.toastController.create({
       message,
       duration: 2000,
+      ...opts,
     });
     toast.present();
   }
-
-  public useLongPress() {
-    this.guesture = this.gestureCtrl.create({
-      el: document.body,
-      threshold: 0,
-      gestureName: "long-press",
-      onStart: (ev) => {
-        this.longPressActive = true;
-        this.longPressAction(ev);
-      },
-      onEnd: (ev) => {
-        this.longPressActive = false;
-      },
-    });
-  }
-
-  private longPressAction(ev: GestureDetail) {
-    setTimeout(() => {
-      this.zone.run(() => {
-        if (this.longPressActive === true) {
-          this.targetRow = this.getTargetRow(ev.event);
-          this.isTextType = this.isText(this.targetRow);
-          this.longPressActive = false;
-          this.presentActionSheet();
-        }
-      });
-    }, 1000);
-  }
-
-  async presentActionSheet() {
-    const buttons = [
-      {
-        text: "Saggest change",
-        handler: async () => {
-          const modal = await this.modal.create({
-            component: SuggestFormComponent,
-            cssClass: "my-custom-modal",
-            componentProps: {
-              isComment: false,
-              isSuggest: true,
-              isInPopUp: true,
-              targetRow: this.targetRow,
-            },
-            showBackdrop: false,
-          });
-          await modal.present();
-        },
-      },
-      {
-        text: "Leave comment",
-        handler: async () => {
-          const modal = await this.modal.create({
-            component: SuggestFormComponent,
-            cssClass: "my-custom-modal",
-            componentProps: {
-              targetRow: this.targetRow,
-              isInPopUp: true,
-            },
-            showBackdrop: false,
-          });
-          await modal.present();
-        },
-      },
-    ];
-    if (!this.isTextType) {
-      buttons.shift();
-    }
-    this.actionSheet = await this.actionSheetController.create({
-      cssClass: "my-custom-class",
-      buttons: [
-        ...buttons,
-        {
-          text: "See existing comments",
-          handler: () => {
-            this.router.navigate(["/", "existing-comments"]);
-          },
-        },
-        {
-          text: "Cancel",
-          role: "cancel",
-        },
-      ],
-    });
-    if (this.isTextType) {
-      this.actionSheet["header"] = `text: ${this.targetRow?.value}`;
-    }
-    await this.actionSheet.present();
-  }
-
-  public getTargetRow(e: Event | TouchEvent): FlowTypes.TemplateRow | null {
-    let result = null;
-    if (e["path"]) {
-      result = e["path"].find((c) => c.localName === "plh-template-component")?.__ngContext__[21];
-      return result;
-    } else {
-      return result;
-    }
-  }
-
-  public isText(row: FlowTypes.TemplateRow): boolean {
-    if (row && row.type) {
-      if (row.type === "title" || row.type === "subtitle" || row.type === "text") {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  }
 }
+
+// this.useLongPress();
+
+//   if (this.currentPlatform === "android") {
+//     this.presentToast("Reviewing mode. Use long press on specific component");
+//     this.guesture.enable(true);
+//   }
+// private useLongPress() {
+//   this.guesture = this.gestureCtrl.create({
+//     el: document.body,
+//     threshold: 0,
+//     gestureName: "long-press",
+//     onStart: (ev) => {
+//       this.longPressActive = true;
+//       this.longPressAction(ev);
+//     },
+//     onEnd: (ev) => {
+//       this.longPressActive = false;
+//     },
+//   });
+// }
