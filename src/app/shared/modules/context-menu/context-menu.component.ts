@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { ContextMenuService } from "./context-menu.service";
-import { IContextMenuAction } from "./context-menu.types";
+import { IContextMenuAction, IContextMenuActionData } from "./context-menu.types";
 
 @Component({
   selector: "app-context-menu",
@@ -26,10 +26,11 @@ import { IContextMenuAction } from "./context-menu.types";
 export class ContextMenuComponent {
   @Input() actions: IContextMenuAction[] = [];
   @Input() event: PointerEvent;
+  @Input() data: IContextMenuActionData;
   constructor(public contextMenuService: ContextMenuService) {}
 
   /** Trigger callbacks of passed action handlers when selected from context menu */
   public handleActionButtonClick(action: IContextMenuAction) {
-    return action.actionHandler(this.event);
+    return action.actionHandler(this.event, this.data);
   }
 }

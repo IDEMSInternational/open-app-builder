@@ -2,7 +2,7 @@
   <div style="display: flex; align-items: center">
     <h2 style="flex: 1">Feedback</h2>
     <ion-item class="clear">
-      <ion-label>Review Mode</ion-label>
+      <ion-label>Enabled</ion-label>
       <ion-toggle
         [checked]="feedbackService.isReviewingMode$ | async"
         (ionChange)="feedbackService.toggleReviewMode()"
