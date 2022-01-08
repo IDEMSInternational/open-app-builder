@@ -72,7 +72,7 @@ export class ContextMenuService {
       await this.popoverController.dismiss();
     }
     // pass registered action handlers and event as input props to display in the ContextMenuComponent
-    const componentProps = { actions, event: ev };
+    const componentProps = { actions, event: ev, data };
     const popover = await this.popoverController.create({
       component: ContextMenuComponent,
       cssClass: "context-menu",

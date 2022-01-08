@@ -7,10 +7,15 @@ import { EventService } from "src/app/shared/services/event/event.service";
 import { ContextMenuService } from "src/app/shared/modules/context-menu/context-menu.service";
 import {
   IContextMenuAction,
+  IContextMenuActionData,
   IContextMenuType,
 } from "src/app/shared/modules/context-menu/context-menu.types";
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
+import { FEEDBACK_MODULE_DEFAULTS } from "data-models/constants";
+import { generateTimestamp } from "src/app/shared/utils";
+import { environment } from "src/environments/environment";
+import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 
 interface IFeedbackButton {
   id: string;
@@ -19,20 +24,7 @@ interface IFeedbackButton {
   displayedTemplate: string;
 }
 
-const FEEDBACK_BUTTONS: IFeedbackButton[] = [
-  {
-    id: "feedback-addFeedback",
-    menuButtonText: "Add Feedback",
-    appearInMenus: ["rightClick", "longPress", "textSelect"],
-    displayedTemplate: "feature_content_review_feedback",
-  },
-  {
-    id: "feedback-suggestChange",
-    menuButtonText: "Suggest Change",
-    appearInMenus: ["textSelect"],
-    displayedTemplate: "feature_content_review_suggest",
-  },
-];
+const FEEDBACK_BUTTONS: IFeedbackButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
 
 @Injectable({
   providedIn: "root",
@@ -46,6 +38,7 @@ export class FeedbackService {
     private contextMenuService: ContextMenuService,
     private eventService: EventService,
     private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private userMetaService: UserMetaService,
     private toastController: ToastController
   ) {
@@ -65,7 +58,8 @@ export class FeedbackService {
     for (const feedbackButton of FEEDBACK_BUTTONS) {
       const action: IContextMenuAction = {
         ...feedbackButton,
-        actionHandler: async (ev) => await this.handleContextMenuAction(ev, feedbackButton),
+        actionHandler: async (ev, data) =>
+          await this.handleContextMenuAction(ev, feedbackButton, data),
       };
       for (const contextMenu of feedbackButton.appearInMenus) {
         if (isReviewMode) {
@@ -82,18 +76,32 @@ export class FeedbackService {
    * @param ev pointer event that initiated context menu call, such as right-click event
    * @param feedbackButton button that was clicked from the context menu to trigger action
    * */
-  private async handleContextMenuAction(ev: PointerEvent, feedbackButton: IFeedbackButton) {
-    const data = await this.templateService.runStandaloneTemplate(
+  private async handleContextMenuAction(
+    ev: PointerEvent,
+    feedbackButton: IFeedbackButton,
+    contextData: IContextMenuActionData = {}
+  ) {
+    // set selected text to field for access in templates
+    const { selected_text_field } = FEEDBACK_MODULE_DEFAULTS;
+    if (contextData?.selectedText) {
+      await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
+    }
+    // launch feedback template
+    const templateData = await this.templateService.runStandaloneTemplate(
       feedbackButton.displayedTemplate,
       { fullscreen: false }
     );
     // Submit feedback if popup dismissed by emit:completed event
-    const { emit_data, emit_value } = data || {};
+    const { emit_data, emit_value } = templateData || {};
     if (emit_value === "completed") {
       const metadata = this.generateFeedbackMetadata(ev);
       const feedback = emit_data;
-      console.log("submitting feedback", { metadata, feedback });
+      const context = { ...contextData, id: feedbackButton.id };
+      console.log("submitting feedback", { metadata, feedback, context });
+      // TODO - handle submit
     }
+    // clear previously set field
+    await this.templateFieldService.setField(selected_text_field, null);
   }
 
   /**
@@ -106,14 +114,20 @@ export class FeedbackService {
     const templatePath = elementPath.filter((e) =>
       ["plh-template-component", "plh-template-container"].includes(e.localName)
     );
-    // create a list with only custom data- attributes
-    const templatePathData = templatePath.map((e) => ({ ...e.dataset }));
-    console.log("elementPath", { elementPath, templatePath, templatePathData });
+    // create a list with only custom data- attributes, ignoring hidden and rowname
+    const templateTarget = templatePath.map((e) => {
+      const dataFields = { ...e.dataset };
+      const { hidden, rowname, ...keptFields } = dataFields;
+      return keptFields;
+    });
     return {
-      templatePathData,
+      templateTarget,
       deviceInfo: this.deviceInfo,
       pathname: location.pathname,
       uuid: this.userMetaService.getUserMeta("uuid"),
+      timestamp: generateTimestamp(),
+      app_version: environment.version,
+      envName: environment.envName,
     };
   }
 
@@ -123,7 +137,7 @@ export class FeedbackService {
 
   // TODO
   private registerEventHandlers() {
-    this.eventService.all("CONTENT_REVIEW").subscribe((event) => {
+    this.eventService.all("FEEDBACK").subscribe((event) => {
       console.log("content review event triggered", event);
     });
   }
