@@ -60,16 +60,19 @@ export class ContextMenuService {
   }
 
   private async showContextMenu(context: IContextMenuType, ev: Event, data: any = {}) {
+    // if no registered actions return (should be unsubscribed but does not always seem to manage correctly)
+    // (likely requires better register/remove in batch instead of sequentially)
+    const actions = Object.values(this.actionHandlers$[context].value);
+    if (actions.length === 0) {
+      return;
+    }
     // if already open close before reopening
     const existingPopover = await this.popoverController.getTop();
     if (existingPopover) {
       await this.popoverController.dismiss();
     }
     // pass registered action handlers and event as input props to display in the ContextMenuComponent
-    const componentProps = {
-      actions: Object.values(this.actionHandlers$[context].value),
-      event: ev,
-    };
+    const componentProps = { actions, event: ev };
     const popover = await this.popoverController.create({
       component: ContextMenuComponent,
       cssClass: "context-menu",
