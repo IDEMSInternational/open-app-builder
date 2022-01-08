@@ -1,11 +1,11 @@
 <ion-content class="ion-padding">
   <div style="display: flex; align-items: center">
-    <h2 style="flex: 1">Content Review</h2>
+    <h2 style="flex: 1">Feedback</h2>
     <ion-item class="clear">
       <ion-label>Review Mode</ion-label>
       <ion-toggle
-        [checked]="contentReviewService.isReviewingMode$ | async"
-        (ionChange)="contentReviewService.toggleReviewMode()"
+        [checked]="feedbackService.isReviewingMode$ | async"
+        (ionChange)="feedbackService.toggleReviewMode()"
       ></ion-toggle>
     </ion-item>
   </div>

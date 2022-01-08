@@ -37,7 +37,7 @@ const FEEDBACK_BUTTONS: IFeedbackButton[] = [
 @Injectable({
   providedIn: "root",
 })
-export class ContentReviewService {
+export class FeedbackService {
   public isReviewingMode$ = new BehaviorSubject(false);
 
   private deviceInfo: DeviceInfo;

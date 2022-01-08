@@ -1,0 +1,13 @@
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FeedbackDebugPage } from "./pages/feedback-debug.page";
+import { IonicModule } from "@ionic/angular";
+import { FormsModule } from "@angular/forms";
+import { FeedbackRoutingModule } from "./feedback-routing.module";
+
+@NgModule({
+  imports: [CommonModule, IonicModule, FormsModule, FeedbackRoutingModule],
+  declarations: [FeedbackDebugPage],
+  exports: [],
+})
+export class FeedbackModule {}
