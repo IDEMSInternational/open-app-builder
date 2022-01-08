@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { ExistingCommentsComponent } from "./components/existing-comments/existing-comments.component";
+import { ContentReviewDebugPage } from "./pages/content-review-debug.page";
 
 const routes: Routes = [
   {
     path: "",
-    component: ExistingCommentsComponent,
+    component: ContentReviewDebugPage,
   },
 ];
 
