@@ -16,6 +16,9 @@ ion-content.no-padding {
   --padding-start: 0;
   --padding-end: 0;
 }
+ion-item.clear {
+  --background: unset;
+}
 
 h1 {
   p {
