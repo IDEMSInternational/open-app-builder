@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { ToastController, ToastOptions } from "@ionic/angular";
 import { BehaviorSubject } from "rxjs";
 import { Device, DeviceInfo } from "@capacitor/device";
-import { EventService } from "src/app/shared/services/event/event.service";
 import { ContextMenuService } from "src/app/shared/modules/context-menu/context-menu.service";
 import {
   IContextMenuAction,
@@ -36,13 +35,11 @@ export class FeedbackService {
 
   constructor(
     private contextMenuService: ContextMenuService,
-    private eventService: EventService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
     private userMetaService: UserMetaService,
     private toastController: ToastController
   ) {
-    this.registerEventHandlers();
     // retrieve device info for passing in metadata
     Device.getInfo().then((deviceInfo) => {
       this.deviceInfo = deviceInfo;
@@ -134,12 +131,8 @@ export class FeedbackService {
   public async toggleReviewMode() {
     this.isReviewingMode$.next(!this.isReviewingMode$.value);
   }
-
-  // TODO
-  private registerEventHandlers() {
-    this.eventService.all("FEEDBACK").subscribe((event) => {
-      console.log("content review event triggered", event);
-    });
+  public async setReviewMode(isEnabled = false) {
+    this.isReviewingMode$.next(isEnabled);
   }
 
   private async presentToast(message: string, opts: Partial<ToastOptions> = {}) {
