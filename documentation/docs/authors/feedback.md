@@ -1,9 +1,22 @@
 # Feedback
 
-The feedback feature provides means by which users can provide contextual feedback within the app.
+The feedback feature provides means by which users can provide contextual feedback within the app, such as a bug report, content suggestion or short survey
+
+## Enabling Feedback
+There are two ways of enabling feedback, either by globally enabling feedback mode, or opening a specific template as a feedback popup. See full list of actions below
 
 
-## Enabling Feedback Mode
+## Template Actions
+Various actions can be called from the templating system for use with the feedback module
+
+| action            | description   |
+| ---------         | ------------  |
+| feedback:enable	| 	 |
+| feedback:disable	| 	 |
+| feedback:open	    | Open a template in feedback mode.	This will present a popup, which will submit as feedback any data passed from an `emit:completed` event |
+
+
+
 
 
 ## Context Menus
