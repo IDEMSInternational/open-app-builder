@@ -7,6 +7,7 @@ import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { TemplateFieldService } from "./template-field.service";
+import { EventService } from "src/app/shared/services/event/event.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -27,7 +28,7 @@ export class TemplateActionService {
     private settingsService: SettingsService,
     private serverService: ServerService,
     private analyticsService: AnalyticsService,
-    private templateFieldService: TemplateFieldService
+    private templateFieldService: TemplateFieldService // private eventService: EventService
   ) {}
 
   /** Public method to add actions to processing queue and process */
@@ -131,6 +132,8 @@ export class TemplateActionService {
         );
       case "start_tour":
         return this.container.tourService.startTour(key);
+      // case "feedback":
+      //   return this.eventService.publish({ topic: "FEEDBACK", eventId: args[1], payload: args[2] });
       case "track_event":
         this.analyticsService.trackEvent(key);
         break;
