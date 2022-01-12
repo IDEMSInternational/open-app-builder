@@ -3,21 +3,16 @@
 The feedback feature provides means by which users can provide contextual feedback within the app, such as a bug report, content suggestion or short survey
 
 ## Enabling Feedback
-There are two ways of enabling feedback, either by globally enabling feedback mode, or opening a specific template as a feedback popup. See full list of actions below
-
+There are two ways of enabling feedback, either by globally enabling feedback mode, or opening a specific template as a feedback popup. Enabling feedback mode will make it so that contextual actions (right click, long tap, text select) trigger a custom menu that can be used to trigger opening of specific templates for collecting feedback.
 
 ## Template Actions
 Various actions can be called from the templating system for use with the feedback module
 
 | action            | description   |
 | ---------         | ------------  |
-| feedback:enable	| 	 |
-| feedback:disable	| 	 |
+| feedback:enable	| Enable feedback mode	 |
+| feedback:disable	| Disable feedback mode	 |
 | feedback:open	    | Open a template in feedback mode.	This will present a popup, which will submit as feedback any data passed from an `emit:completed` event |
-
-
-
-
 
 ## Context Menus
 By default feedback options will be presented when the user carries out different *context* actions, such as right-click (web) on long-press (mobile) actions, as well as text selection.
