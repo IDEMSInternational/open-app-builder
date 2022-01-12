@@ -1,30 +1,23 @@
 import {
-  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   HostBinding,
+  Injector,
   Input,
   OnDestroy,
   OnInit,
   Output,
 } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { Subject } from "rxjs";
-import { TourService } from "../../services/tour/tour.service";
 import { FlowTypes, ITemplateContainerProps } from "./models";
-import { TemplateActionService } from "./services/template-action.service";
+import { TemplateActionService } from "./services/instance/template-action.service";
 import { TemplateNavService } from "./services/template-nav.service";
-import { TemplateRowService } from "./services/template-row.service";
-import { TemplateVariablesService } from "./services/template-variables.service";
+import { TemplateRowService } from "./services/instance/template-row.service";
 import { TemplateService } from "./services/template.service";
 import { getIonContentScrollTop, setElStyleAnimated, setIonContentScrollTop } from "./utils";
-import { TemplateTranslateService } from "./services/template-translate.service";
-import { SettingsService } from "src/app/shared/services/settings.service";
-import { ServerService } from "../../services/server/server.service";
-import { AnalyticsService } from "../../services/analytics/analytics.service";
-import { TemplateFieldService } from "./services/template-field.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -68,28 +61,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   debugMode: boolean;
 
   constructor(
-    public templateService: TemplateService,
-    public templateVariables: TemplateVariablesService,
-    public templateTranslateService: TemplateTranslateService,
-    public templateFieldService: TemplateFieldService,
-    public tourService: TourService,
-    public router: Router,
-    public route: ActivatedRoute,
-    public elRef: ElementRef,
-    public templateNavService: TemplateNavService,
-    public cdr: ChangeDetectorRef,
-    public settingsService: SettingsService,
-    public serverService: ServerService,
-    public analyticsService: AnalyticsService
+    private templateService: TemplateService,
+    private templateNavService: TemplateNavService,
+    injector: Injector,
+    // Containers created in headless context may not have specific injectors
+    public elRef?: ElementRef,
+    private route?: ActivatedRoute
   ) {
-    this.templateActionService = new TemplateActionService(
-      this,
-      this.settingsService,
-      this.serverService,
-      this.analyticsService,
-      this.templateFieldService
-    );
-    this.templateRowService = new TemplateRowService(this, this.templateFieldService);
+    this.templateActionService = new TemplateActionService(this, injector);
+    this.templateRowService = new TemplateRowService(this, injector);
   }
   /** Assign the templatename as metdaata on the component for easier debugging and testing */
   @HostBinding("attr.data-templatename") get getTemplatename() {
@@ -164,20 +144,22 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
       if (this.parent) {
         return this.parent.forceRerender(full, shouldProcess);
       } else {
-        // we have the top-most parent. Process re-renders, taking note of current
-        // page scroll position and trying to return to it once complete
-        shouldProcess = true;
-        const top = getIonContentScrollTop(this.elRef);
-        // if page scrolled, fade the content out and in during re-render to avoid ugly content flicker
-        if (full && top > 0) {
-          await setElStyleAnimated(this.elRef, "opacity", 0, { duration: 100 });
-        }
-        await this.forceRerender(full, shouldProcess);
-        if (full && top > 0) {
-          setTimeout(async () => {
-            setIonContentScrollTop(this.elRef, top);
-            await setElStyleAnimated(this.elRef, "opacity", 1, { duration: 200 });
-          }, 0);
+        if (this.elRef) {
+          // we have the top-most parent. Process re-renders, taking note of current
+          // page scroll position and trying to return to it once complete
+          shouldProcess = true;
+          const top = getIonContentScrollTop(this.elRef);
+          // if page scrolled, fade the content out and in during re-render to avoid ugly content flicker
+          if (full && top > 0) {
+            await setElStyleAnimated(this.elRef, "opacity", 0, { duration: 100 });
+          }
+          await this.forceRerender(full, shouldProcess);
+          if (full && top > 0) {
+            setTimeout(async () => {
+              setIonContentScrollTop(this.elRef, top);
+              await setElStyleAnimated(this.elRef, "opacity", 1, { duration: 200 });
+            }, 0);
+          }
         }
       }
     }
@@ -189,7 +171,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   private async renderTemplate() {
     // Lookup template
-    const template = await this.templateService.getTemplateByName(this.templatename, this.row);
+    const template = await this.templateService.getTemplateByName(
+      this.templatename,
+      this.row?.is_override_target
+    );
     this.name = this.name || this.templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
@@ -224,13 +209,15 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   /** Query params are used to track state across navigation events */
   private subscribeToQueryParamChanges() {
-    this.route.queryParams
-      .pipe(takeUntil(this.componentDestroyed$))
-      .subscribe(async (params: any) => {
-        this.debugMode = params.debugMode ? true : false;
-        // allow templateNavService to process actions based on query param change
-        await this.templateNavService.handleQueryParamChange(params, this);
-      });
+    if (this.route) {
+      this.route.queryParams
+        .pipe(takeUntil(this.componentDestroyed$))
+        .subscribe(async (params: any) => {
+          this.debugMode = params.debugMode ? true : false;
+          // allow templateNavService to process actions based on query param change
+          await this.templateNavService.handleQueryParamChange(params, this);
+        });
+    }
   }
 
   private setLogging(showLogs: boolean) {

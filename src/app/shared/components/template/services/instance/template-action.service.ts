@@ -1,13 +1,18 @@
 import { BehaviorSubject } from "rxjs";
 import { takeWhile } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
-import { TemplateContainerComponent } from "../template-container.component";
+import { TemplateContainerComponent } from "../../template-container.component";
 import { SettingsService } from "src/app/shared/services/settings.service";
 import { TemplateProcessService } from "./template-process.service";
 import { ServerService } from "src/app/shared/services/server/server.service";
 import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
-import { TemplateFieldService } from "./template-field.service";
-import { EventService } from "src/app/shared/services/event/event.service";
+import { Injector } from "@angular/core";
+import { TemplateInstanceService } from "./template-instance.service";
+import { TemplateNavService } from "../template-nav.service";
+import { TemplateService } from "../template.service";
+import { TourService } from "src/app/shared/services/tour/tour.service";
+import { TemplateTranslateService } from "../template-translate.service";
+import { TemplateFieldService } from "../template-field.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -19,17 +24,29 @@ let log_groupEnd = SHOW_DEBUG_LOGS ? console.groupEnd : () => null;
  *
  *
  */
-export class TemplateActionService {
+export class TemplateActionService extends TemplateInstanceService {
   private actionsQueue: FlowTypes.TemplateRowAction[] = [];
   private actionsQueueProcessing$ = new BehaviorSubject<boolean>(false);
 
-  constructor(
-    public container: TemplateContainerComponent,
-    private settingsService: SettingsService,
-    private serverService: ServerService,
-    private analyticsService: AnalyticsService,
-    private templateFieldService: TemplateFieldService // private eventService: EventService
-  ) {}
+  private settingsService: SettingsService;
+  private serverService: ServerService;
+  private analyticsService: AnalyticsService;
+  private templateNavService: TemplateNavService;
+  private templateService: TemplateService;
+  private tourService: TourService;
+  private templateTranslateService: TemplateTranslateService;
+  private templateFieldService: TemplateFieldService;
+
+  constructor(public container: TemplateContainerComponent, injector: Injector) {
+    super(injector);
+    this.settingsService = this.getGlobalService(SettingsService);
+    this.serverService = this.getGlobalService(ServerService);
+    this.analyticsService = this.getGlobalService(AnalyticsService);
+    this.templateNavService = this.getGlobalService(TemplateNavService);
+    this.templateService = this.getGlobalService(TemplateService);
+    this.tourService = this.getGlobalService(TourService);
+    this.templateFieldService = this.getGlobalService(TemplateFieldService);
+  }
 
   /** Public method to add actions to processing queue and process */
   public async handleActions(
@@ -41,7 +58,7 @@ export class TemplateActionService {
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
     if (!this.container.parent) {
-      await this.container.templateNavService.handleNavActionsFromChild(actions, this.container);
+      await this.templateNavService.handleNavActionsFromChild(actions, this.container);
     }
   }
   /** Optional method child component can add to handle post-action callback */
@@ -107,7 +124,7 @@ export class TemplateActionService {
         console.log("[SET LOCAL]", { key, value });
         return this.setLocalVariable(key, value);
       case "go_to":
-        return this.container.templateNavService.handleNavAction(action, this.container);
+        return this.templateNavService.handleNavAction(action);
       case "go_to_url":
         // because a normal url starts with https://, the ':' separates it into a key and a value and the value
         // is sufficient for the url to launch.
@@ -118,20 +135,16 @@ export class TemplateActionService {
         if (!value) {
           value = "//" + key;
         }
-        return this.container.templateNavService.handleNavActionExternal(value);
+        return this.templateNavService.handleNavActionExternal(value);
       case "pop_up":
-        return this.container.templateNavService.handlePopupAction(action, this.container);
+        return this.templateNavService.handlePopupAction(action, this.container);
       case "set_field":
         console.log("[SET FIELD]", key, value);
         return this.templateFieldService.setField(key, value);
       case "set_theme":
-        return this.container.templateService.setTheme(
-          this.container.template,
-          "set_theme",
-          action.args
-        );
+        return this.templateService.setTheme(this.container.template, "set_theme", action.args);
       case "start_tour":
-        return this.container.tourService.startTour(key);
+        return this.tourService.startTour(key);
       // case "feedback":
       //   return this.eventService.publish({ topic: "FEEDBACK", eventId: args[1], payload: args[2] });
       case "track_event":
@@ -146,23 +159,11 @@ export class TemplateActionService {
         return;
       case "process_template":
         // HACK - create an embedded template processor service instance to process template programatically
-        const templateToProcess = await this.container.templateService.getTemplateByName(
+        const templateToProcess = await this.templateService.getTemplateByName(
           args[0],
-          this.container.row
+          this.container?.row?.is_override_target
         );
-        const processor = new TemplateProcessService(
-          this.container.templateService,
-          this.container.templateVariables,
-          this.container.templateTranslateService,
-          this.container.templateFieldService,
-          this.container.tourService,
-          this.container.router,
-          this.container.route,
-          this.container.templateNavService,
-          this.container.settingsService,
-          this.container.serverService,
-          this.analyticsService
-        );
+        const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
         const [emit_value, emit_data] = args;
@@ -171,7 +172,7 @@ export class TemplateActionService {
         console.log("[EMIT]", `${name || templatename}:${emit_value}`);
         if (emit_value === "completed") {
           // write completions to the database for data tracking
-          await this.container.templateService.recordEvent(template, "emit", emit_value);
+          await this.templateService.recordEvent(template, "emit", emit_value);
         }
         // TODO - trigger emit in shared service to allow individual services/components to subscribe
         // themselves instead of relying on hardcoded calls here
@@ -184,7 +185,7 @@ export class TemplateActionService {
           await this.container.forceRerender(false);
         }
         if (emit_value === "set_language") {
-          this.container.templateTranslateService.setLanguage(args[1]);
+          this.templateTranslateService.setLanguage(args[1]);
         }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();
