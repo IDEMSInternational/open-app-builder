@@ -171,7 +171,10 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
 
   private async renderTemplate() {
     // Lookup template
-    const template = await this.templateService.getTemplateByName(this.templatename, this.row);
+    const template = await this.templateService.getTemplateByName(
+      this.templatename,
+      this.row?.is_override_target
+    );
     this.name = this.name || this.templatename;
     this.templateBreadcrumbs = [...(this.parent?.templateBreadcrumbs || []), this.name];
     this.template = template;
