@@ -3,282 +3,6 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
-    flow_name: "feature_select_text",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "user_id",
-        value: "@calc(this.app_user_id)",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "user_id",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@calc(this.app_user_id)",
-              matchedExpression: "@calc(this.app_user_id)",
-              type: "calc",
-              fieldName: "this.app_user_id",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@calc(this.app_user_id)": ["value"],
-        },
-      },
-      {
-        name: "copy_text",
-        value: "Copy this",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copy_text",
-      },
-      {
-        name: "copy_icon_1",
-        value: "clipboard-outline",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copy_icon_1",
-      },
-      {
-        name: "copy_icon_2",
-        value: "copy-outline",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copy_icon_2",
-      },
-      {
-        name: "copied_text",
-        value: "Copied!",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copied_text",
-      },
-      {
-        name: "copied_icon_1",
-        value: "checkmark-outline",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copied_icon_1",
-      },
-      {
-        name: "copied_icon_2",
-        value: "plh_images/icons/tick.svg",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copied_icon_2",
-      },
-      {
-        type: "select_text",
-        name: "select_text_1",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_text: "@local.copy_text",
-          copied_text: "@local.copied_text",
-        },
-        _nested_name: "select_text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_text: [
-              {
-                fullExpression: "@local.copy_text",
-                matchedExpression: "@local.copy_text",
-                type: "local",
-                fieldName: "copy_text",
-              },
-            ],
-            copied_text: [
-              {
-                fullExpression: "@local.copied_text",
-                matchedExpression: "@local.copied_text",
-                type: "local",
-                fieldName: "copied_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_text": ["parameter_list.copy_text"],
-          "@local.copied_text": ["parameter_list.copied_text"],
-        },
-      },
-      {
-        type: "select_text",
-        name: "select_text_2",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_icon: "@local.copy_icon_1",
-          copied_text: "@local.copied_text",
-        },
-        _nested_name: "select_text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_icon: [
-              {
-                fullExpression: "@local.copy_icon_1",
-                matchedExpression: "@local.copy_icon_1",
-                type: "local",
-                fieldName: "copy_icon_1",
-              },
-            ],
-            copied_text: [
-              {
-                fullExpression: "@local.copied_text",
-                matchedExpression: "@local.copied_text",
-                type: "local",
-                fieldName: "copied_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_icon_1": ["parameter_list.copy_icon"],
-          "@local.copied_text": ["parameter_list.copied_text"],
-        },
-      },
-      {
-        type: "select_text",
-        name: "select_text_3",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_text: "@local.copy_text",
-          copied_icon: "@local.copied_icon_1",
-        },
-        _nested_name: "select_text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_text: [
-              {
-                fullExpression: "@local.copy_text",
-                matchedExpression: "@local.copy_text",
-                type: "local",
-                fieldName: "copy_text",
-              },
-            ],
-            copied_icon: [
-              {
-                fullExpression: "@local.copied_icon_1",
-                matchedExpression: "@local.copied_icon_1",
-                type: "local",
-                fieldName: "copied_icon_1",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_text": ["parameter_list.copy_text"],
-          "@local.copied_icon_1": ["parameter_list.copied_icon"],
-        },
-      },
-      {
-        type: "select_text",
-        name: "select_text_4",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_icon: "@local.copy_icon_2",
-          copied_icon: "@local.copied_icon_2",
-        },
-        _nested_name: "select_text_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_icon: [
-              {
-                fullExpression: "@local.copy_icon_2",
-                matchedExpression: "@local.copy_icon_2",
-                type: "local",
-                fieldName: "copy_icon_2",
-              },
-            ],
-            copied_icon: [
-              {
-                fullExpression: "@local.copied_icon_2",
-                matchedExpression: "@local.copied_icon_2",
-                type: "local",
-                fieldName: "copied_icon_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_icon_2": ["parameter_list.copy_icon"],
-          "@local.copied_icon_2": ["parameter_list.copied_icon"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_select_text.xlsx",
-  },
-  {
-    flow_type: "template",
     flow_name: "feature_tile",
     status: "released",
     flow_subtype: "debug",
@@ -6189,6 +5913,282 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "feature_select_text",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "user_id",
+        value: "@calc(this.app_user_id)",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "user_id",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.app_user_id)",
+              matchedExpression: "@calc(this.app_user_id)",
+              type: "calc",
+              fieldName: "this.app_user_id",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.app_user_id)": ["value"],
+        },
+      },
+      {
+        name: "copy_text",
+        value: "Copy this",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copy_text",
+      },
+      {
+        name: "copy_icon_1",
+        value: "clipboard-outline",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copy_icon_1",
+      },
+      {
+        name: "copy_icon_2",
+        value: "copy-outline",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copy_icon_2",
+      },
+      {
+        name: "copied_text",
+        value: "Copied!",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copied_text",
+      },
+      {
+        name: "copied_icon_1",
+        value: "checkmark-outline",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copied_icon_1",
+      },
+      {
+        name: "copied_icon_2",
+        value: "plh_images/icons/tick.svg",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copied_icon_2",
+      },
+      {
+        type: "select_text",
+        name: "select_text_1",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_text: "@local.copy_text",
+          copied_text: "@local.copied_text",
+        },
+        _nested_name: "select_text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_text: [
+              {
+                fullExpression: "@local.copy_text",
+                matchedExpression: "@local.copy_text",
+                type: "local",
+                fieldName: "copy_text",
+              },
+            ],
+            copied_text: [
+              {
+                fullExpression: "@local.copied_text",
+                matchedExpression: "@local.copied_text",
+                type: "local",
+                fieldName: "copied_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_text": ["parameter_list.copy_text"],
+          "@local.copied_text": ["parameter_list.copied_text"],
+        },
+      },
+      {
+        type: "select_text",
+        name: "select_text_2",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_icon: "@local.copy_icon_1",
+          copied_text: "@local.copied_text",
+        },
+        _nested_name: "select_text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_icon: [
+              {
+                fullExpression: "@local.copy_icon_1",
+                matchedExpression: "@local.copy_icon_1",
+                type: "local",
+                fieldName: "copy_icon_1",
+              },
+            ],
+            copied_text: [
+              {
+                fullExpression: "@local.copied_text",
+                matchedExpression: "@local.copied_text",
+                type: "local",
+                fieldName: "copied_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_icon_1": ["parameter_list.copy_icon"],
+          "@local.copied_text": ["parameter_list.copied_text"],
+        },
+      },
+      {
+        type: "select_text",
+        name: "select_text_3",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_text: "@local.copy_text",
+          copied_icon: "@local.copied_icon_1",
+        },
+        _nested_name: "select_text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_text: [
+              {
+                fullExpression: "@local.copy_text",
+                matchedExpression: "@local.copy_text",
+                type: "local",
+                fieldName: "copy_text",
+              },
+            ],
+            copied_icon: [
+              {
+                fullExpression: "@local.copied_icon_1",
+                matchedExpression: "@local.copied_icon_1",
+                type: "local",
+                fieldName: "copied_icon_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_text": ["parameter_list.copy_text"],
+          "@local.copied_icon_1": ["parameter_list.copied_icon"],
+        },
+      },
+      {
+        type: "select_text",
+        name: "select_text_4",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_icon: "@local.copy_icon_2",
+          copied_icon: "@local.copied_icon_2",
+        },
+        _nested_name: "select_text_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_icon: [
+              {
+                fullExpression: "@local.copy_icon_2",
+                matchedExpression: "@local.copy_icon_2",
+                type: "local",
+                fieldName: "copy_icon_2",
+              },
+            ],
+            copied_icon: [
+              {
+                fullExpression: "@local.copied_icon_2",
+                matchedExpression: "@local.copied_icon_2",
+                type: "local",
+                fieldName: "copied_icon_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_icon_2": ["parameter_list.copy_icon"],
+          "@local.copied_icon_2": ["parameter_list.copied_icon"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_select_text.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "feature_dg_dashed_box",
     status: "released",
     flow_subtype: "debug",
@@ -8267,84 +8267,6 @@ const template: FlowTypes.Template[] = [
       },
       {
         type: "display_group",
-        name: "dg_4",
-        parameter_list: {
-          style: "parent_point",
-        },
-        rows: [
-          {
-            type: "tile_component",
-            name: "tile_7",
-            parameter_list: {
-              first_line_text: "@local.label_individual",
-              style: "workshop_page",
-              icon_src: "@local.image_individual",
-            },
-            _nested_name: "dg_4.tile_7",
-            _dynamicFields: {
-              parameter_list: {
-                first_line_text: [
-                  {
-                    fullExpression: "@local.label_individual",
-                    matchedExpression: "@local.label_individual",
-                    type: "local",
-                    fieldName: "label_individual",
-                  },
-                ],
-                icon_src: [
-                  {
-                    fullExpression: "@local.image_individual",
-                    matchedExpression: "@local.image_individual",
-                    type: "local",
-                    fieldName: "image_individual",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.label_individual": ["parameter_list.first_line_text"],
-              "@local.image_individual": ["parameter_list.icon_src"],
-            },
-          },
-          {
-            type: "tile_component",
-            name: "tile_8",
-            parameter_list: {
-              first_line_text: "@local.label_group",
-              style: "workshop_page",
-              icon_src: "@local.image_group",
-            },
-            _nested_name: "dg_4.tile_8",
-            _dynamicFields: {
-              parameter_list: {
-                first_line_text: [
-                  {
-                    fullExpression: "@local.label_group",
-                    matchedExpression: "@local.label_group",
-                    type: "local",
-                    fieldName: "label_group",
-                  },
-                ],
-                icon_src: [
-                  {
-                    fullExpression: "@local.image_group",
-                    matchedExpression: "@local.image_group",
-                    type: "local",
-                    fieldName: "image_group",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.label_group": ["parameter_list.first_line_text"],
-              "@local.image_group": ["parameter_list.icon_src"],
-            },
-          },
-        ],
-        _nested_name: "dg_4",
-      },
-      {
-        type: "display_group",
         name: "dg_5",
         parameter_list: {
           style: "column",
@@ -8573,7 +8495,9 @@ const template: FlowTypes.Template[] = [
       {
         type: "display_group",
         name: "dg_3",
-        value: "style:parent_point",
+        parameter_list: {
+          style: "parent_point",
+        },
         rows: [
           {
             type: "button",
@@ -8599,7 +8523,9 @@ const template: FlowTypes.Template[] = [
       {
         type: "display_group",
         name: "dg_4",
-        value: "style:column",
+        parameter_list: {
+          style: "column",
+        },
         rows: [
           {
             type: "button",
@@ -8622,8 +8548,573 @@ const template: FlowTypes.Template[] = [
         ],
         _nested_name: "dg_4",
       },
+      {
+        type: "button",
+        name: "button_9",
+        value: "Text 9",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "button_9",
+      },
+      {
+        type: "button",
+        name: "button_10",
+        value: "Text 10",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "button_10",
+      },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_dg.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_dg_tool",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "tool_style",
+        value: "tool_1",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "tool_style",
+      },
+      {
+        type: "display_group",
+        parameter_list: {
+          style: "tool_1",
+        },
+        rows: [
+          {
+            type: "title",
+            name: "title",
+            value: "Title",
+            _translations: {
+              value: {},
+            },
+            parameter_list: {
+              style: "alternative",
+            },
+            _nested_name: "display_group.title",
+          },
+          {
+            type: "subtitle",
+            name: "subtitle_1",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            parameter_list: {
+              style: "alternative",
+            },
+            _nested_name: "display_group.subtitle_1",
+          },
+          {
+            type: "text",
+            name: "text_1",
+            value: "Text",
+            _translations: {
+              value: {},
+            },
+            parameter_list: {
+              style: "alternative",
+            },
+            _nested_name: "display_group.text_1",
+          },
+          {
+            type: "button",
+            name: "button_1",
+            value: "Button",
+            _translations: {
+              value: {},
+            },
+            parameter_list: {
+              style: "navigation",
+            },
+            _nested_name: "display_group.button_1",
+          },
+          {
+            type: "button",
+            name: "button_2",
+            value: "Button 2",
+            _translations: {
+              value: {},
+            },
+            parameter_list: {
+              style: "information",
+            },
+            _nested_name: "display_group.button_2",
+          },
+          {
+            type: "button",
+            name: "button_3",
+            value: "Third button",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "display_group.button_3",
+          },
+          {
+            type: "button",
+            name: "button_4",
+            value: "Button 4",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "display_group.button_4",
+          },
+          {
+            type: "image",
+            name: "image_src",
+            value: "plh_images/workshops/options/individual.svg",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "display_group.image_src",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_dg.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_w_accordion_padding",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "label_group",
+        value: "@global.together",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "label_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "image_group",
+        value: "@global.together_image",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "image_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together_image",
+              matchedExpression: "@global.together_image",
+              type: "global",
+              fieldName: "together_image",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together_image": ["value"],
+        },
+      },
+      {
+        name: "label_individual",
+        value: "@global.individual",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "label_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        name: "image_individual",
+        value: "@global.individual_image",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "image_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual_image",
+              matchedExpression: "@global.individual_image",
+              type: "global",
+              fieldName: "individual_image",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual_image": ["value"],
+        },
+      },
+      {
+        type: "workshops_accordion",
+        name: "workshops_accordion",
+        rows: [
+          {
+            type: "accordion_section",
+            name: "fifth",
+            parameter_list: {
+              title: "Title 1",
+            },
+            rows: [
+              {
+                type: "text",
+                name: "text_1",
+                value: "Text 1",
+                _translations: {
+                  value: {},
+                },
+                _nested_name: "workshops_accordion.fifth.text_1",
+              },
+              {
+                type: "display_group",
+                name: "sub",
+                rows: [
+                  {
+                    type: "tile_component",
+                    name: "sub_1",
+                    parameter_list: {
+                      first_line_text: "@local.label_individual",
+                      style: "workshop_page",
+                      icon_src: "@local.image_individual",
+                    },
+                    _nested_name: "workshops_accordion.fifth.sub.sub_1",
+                    _dynamicFields: {
+                      parameter_list: {
+                        first_line_text: [
+                          {
+                            fullExpression: "@local.label_individual",
+                            matchedExpression: "@local.label_individual",
+                            type: "local",
+                            fieldName: "label_individual",
+                          },
+                        ],
+                        icon_src: [
+                          {
+                            fullExpression: "@local.image_individual",
+                            matchedExpression: "@local.image_individual",
+                            type: "local",
+                            fieldName: "image_individual",
+                          },
+                        ],
+                      },
+                    },
+                    _dynamicDependencies: {
+                      "@local.label_individual": ["parameter_list.first_line_text"],
+                      "@local.image_individual": ["parameter_list.icon_src"],
+                    },
+                  },
+                  {
+                    type: "tile_component",
+                    name: "sub_2",
+                    parameter_list: {
+                      first_line_text: "@local.label_group",
+                      style: "workshop_page",
+                      icon_src: "@local.image_group",
+                    },
+                    _nested_name: "workshops_accordion.fifth.sub.sub_2",
+                    _dynamicFields: {
+                      parameter_list: {
+                        first_line_text: [
+                          {
+                            fullExpression: "@local.label_group",
+                            matchedExpression: "@local.label_group",
+                            type: "local",
+                            fieldName: "label_group",
+                          },
+                        ],
+                        icon_src: [
+                          {
+                            fullExpression: "@local.image_group",
+                            matchedExpression: "@local.image_group",
+                            type: "local",
+                            fieldName: "image_group",
+                          },
+                        ],
+                      },
+                    },
+                    _dynamicDependencies: {
+                      "@local.label_group": ["parameter_list.first_line_text"],
+                      "@local.image_group": ["parameter_list.icon_src"],
+                    },
+                  },
+                ],
+                _nested_name: "workshops_accordion.fifth.sub",
+              },
+              {
+                type: "button",
+                name: "button_1",
+                value: "Button 1",
+                _translations: {
+                  value: {},
+                },
+                _nested_name: "workshops_accordion.fifth.button_1",
+              },
+              {
+                type: "button",
+                name: "button_2",
+                value: "Button 2",
+                _translations: {
+                  value: {},
+                },
+                _nested_name: "workshops_accordion.fifth.button_2",
+              },
+            ],
+            _nested_name: "workshops_accordion.fifth",
+          },
+          {
+            type: "accordion_section",
+            name: "sixth",
+            parameter_list: {
+              title: "Title 2",
+            },
+            rows: [
+              {
+                type: "template",
+                name: "template",
+                value: "debug_w_accordion_section",
+                rows: [],
+                _nested_name: "workshops_accordion.sixth.template",
+              },
+            ],
+            _nested_name: "workshops_accordion.sixth",
+          },
+        ],
+        _nested_name: "workshops_accordion",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_accordion.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_w_accordion_section",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "label_group",
+        value: "@global.together",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "label_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "image_group",
+        value: "@global.together_image",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "image_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together_image",
+              matchedExpression: "@global.together_image",
+              type: "global",
+              fieldName: "together_image",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together_image": ["value"],
+        },
+      },
+      {
+        name: "label_individual",
+        value: "@global.individual",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "label_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        name: "image_individual",
+        value: "@global.individual_image",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "image_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual_image",
+              matchedExpression: "@global.individual_image",
+              type: "global",
+              fieldName: "individual_image",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual_image": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "Text 1",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "display_group",
+        name: "sub",
+        rows: [
+          {
+            type: "tile_component",
+            name: "sub_1",
+            parameter_list: {
+              first_line_text: "@local.label_individual",
+              style: "workshop_page",
+              icon_src: "@local.image_individual",
+            },
+            _nested_name: "sub.sub_1",
+            _dynamicFields: {
+              parameter_list: {
+                first_line_text: [
+                  {
+                    fullExpression: "@local.label_individual",
+                    matchedExpression: "@local.label_individual",
+                    type: "local",
+                    fieldName: "label_individual",
+                  },
+                ],
+                icon_src: [
+                  {
+                    fullExpression: "@local.image_individual",
+                    matchedExpression: "@local.image_individual",
+                    type: "local",
+                    fieldName: "image_individual",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.label_individual": ["parameter_list.first_line_text"],
+              "@local.image_individual": ["parameter_list.icon_src"],
+            },
+          },
+          {
+            type: "tile_component",
+            name: "sub_2",
+            parameter_list: {
+              first_line_text: "@local.label_group",
+              style: "workshop_page",
+              icon_src: "@local.image_group",
+            },
+            _nested_name: "sub.sub_2",
+            _dynamicFields: {
+              parameter_list: {
+                first_line_text: [
+                  {
+                    fullExpression: "@local.label_group",
+                    matchedExpression: "@local.label_group",
+                    type: "local",
+                    fieldName: "label_group",
+                  },
+                ],
+                icon_src: [
+                  {
+                    fullExpression: "@local.image_group",
+                    matchedExpression: "@local.image_group",
+                    type: "local",
+                    fieldName: "image_group",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.label_group": ["parameter_list.first_line_text"],
+              "@local.image_group": ["parameter_list.icon_src"],
+            },
+          },
+        ],
+        _nested_name: "sub",
+      },
+      {
+        type: "button",
+        name: "button_1",
+        value: "Button 1",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "button_1",
+      },
+      {
+        type: "button",
+        name: "button_2",
+        value: "Button 2",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "button_2",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_accordion.xlsx",
   },
   {
     flow_type: "template",
@@ -27462,143 +27953,98 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
-    flow_name: "example_buttons_padding",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "tile_component",
-        name: "tile_1",
-        parameter_list: {
-          style: "parent_centre_1",
-          first_line_text: "Tile 1",
-        },
-        _nested_name: "tile_1",
-      },
-      {
-        type: "display_group",
-        name: "dg_1",
-        rows: [
-          {
-            type: "tile_component",
-            name: "tile_2",
-            parameter_list: {
-              style: "parent_centre_1",
-              first_line_text: "Tile 2",
-            },
-            _nested_name: "dg_1.tile_2",
-          },
-          {
-            type: "tile_component",
-            name: "tile_3",
-            parameter_list: {
-              style: "parent_centre_1",
-              first_line_text: "Tile 3",
-            },
-            _nested_name: "dg_1.tile_3",
-          },
-        ],
-        _nested_name: "dg_1",
-      },
-      {
-        type: "display_group",
-        name: "dg_1",
-        parameter_list: {
-          style: "parent_point",
-        },
-        rows: [
-          {
-            type: "tile_component",
-            name: "tile_2",
-            parameter_list: {
-              style: "parent_centre_1",
-              first_line_text: "Tile 2",
-            },
-            _nested_name: "dg_1.tile_2",
-          },
-          {
-            type: "tile_component",
-            name: "tile_3",
-            parameter_list: {
-              style: "parent_centre_1",
-              first_line_text: "Tile 3",
-            },
-            _nested_name: "dg_1.tile_3",
-          },
-        ],
-        _nested_name: "dg_1",
-      },
-      {
-        type: "button",
-        name: "button_1",
-        value: "Button 1",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "button_1",
-      },
-      {
-        type: "display_group",
-        name: "dg_2",
-        rows: [
-          {
-            type: "button",
-            name: "button_2",
-            value: "Button 2",
-            _translations: {
-              value: {},
-            },
-            _nested_name: "dg_2.button_2",
-          },
-          {
-            type: "button",
-            name: "button_3",
-            value: "Button 3",
-            _translations: {
-              value: {},
-            },
-            _nested_name: "dg_2.button_3",
-          },
-        ],
-        _nested_name: "dg_2",
-      },
-      {
-        type: "display_group",
-        name: "dg_2",
-        parameter_list: {
-          style: "parent_point",
-        },
-        rows: [
-          {
-            type: "button",
-            name: "button_2",
-            value: "Button 2",
-            _translations: {
-              value: {},
-            },
-            _nested_name: "dg_2.button_2",
-          },
-          {
-            type: "button",
-            name: "button_3",
-            value: "Button 3",
-            _translations: {
-              value: {},
-            },
-            _nested_name: "dg_2.button_3",
-          },
-        ],
-        _nested_name: "dg_2",
-      },
-    ],
-    _xlsxPath: "quality_assurance/example_templates/example_buttons.xlsx",
-  },
-  {
-    flow_type: "template",
     flow_name: "example_workshops_accordion",
     status: "released",
     flow_subtype: "debug",
     rows: [
+      {
+        name: "label_group",
+        value: "@global.together",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "label_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "image_group",
+        value: "@global.together_image",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "image_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together_image",
+              matchedExpression: "@global.together_image",
+              type: "global",
+              fieldName: "together_image",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together_image": ["value"],
+        },
+      },
+      {
+        name: "label_individual",
+        value: "@global.individual",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "label_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        name: "image_individual",
+        value: "@global.individual_image",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "image_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual_image",
+              matchedExpression: "@global.individual_image",
+              type: "global",
+              fieldName: "individual_image",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual_image": ["value"],
+        },
+      },
       {
         name: "title_1",
         value: "First title",
@@ -27977,6 +28423,139 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/example_templates/example_accordion.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_buttons_padding",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "tile_component",
+        name: "tile_1",
+        parameter_list: {
+          style: "parent_centre_1",
+          first_line_text: "Tile 1",
+        },
+        _nested_name: "tile_1",
+      },
+      {
+        type: "display_group",
+        name: "dg_1",
+        rows: [
+          {
+            type: "tile_component",
+            name: "tile_2",
+            parameter_list: {
+              style: "parent_centre_1",
+              first_line_text: "Tile 2",
+            },
+            _nested_name: "dg_1.tile_2",
+          },
+          {
+            type: "tile_component",
+            name: "tile_3",
+            parameter_list: {
+              style: "parent_centre_1",
+              first_line_text: "Tile 3",
+            },
+            _nested_name: "dg_1.tile_3",
+          },
+        ],
+        _nested_name: "dg_1",
+      },
+      {
+        type: "display_group",
+        name: "dg_1",
+        parameter_list: {
+          style: "parent_point",
+        },
+        rows: [
+          {
+            type: "tile_component",
+            name: "tile_2",
+            parameter_list: {
+              style: "parent_centre_1",
+              first_line_text: "Tile 2",
+            },
+            _nested_name: "dg_1.tile_2",
+          },
+          {
+            type: "tile_component",
+            name: "tile_3",
+            parameter_list: {
+              style: "parent_centre_1",
+              first_line_text: "Tile 3",
+            },
+            _nested_name: "dg_1.tile_3",
+          },
+        ],
+        _nested_name: "dg_1",
+      },
+      {
+        type: "button",
+        name: "button_1",
+        value: "Button 1",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "button_1",
+      },
+      {
+        type: "display_group",
+        name: "dg_2",
+        rows: [
+          {
+            type: "button",
+            name: "button_2",
+            value: "Button 2",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "dg_2.button_2",
+          },
+          {
+            type: "button",
+            name: "button_3",
+            value: "Button 3",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "dg_2.button_3",
+          },
+        ],
+        _nested_name: "dg_2",
+      },
+      {
+        type: "display_group",
+        name: "dg_2",
+        parameter_list: {
+          style: "parent_point",
+        },
+        rows: [
+          {
+            type: "button",
+            name: "button_2",
+            value: "Button 2",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "dg_2.button_2",
+          },
+          {
+            type: "button",
+            name: "button_3",
+            value: "Button 3",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "dg_2.button_3",
+          },
+        ],
+        _nested_name: "dg_2",
+      },
+    ],
+    _xlsxPath: "quality_assurance/example_templates/example_buttons.xlsx",
   },
   {
     flow_type: "template",

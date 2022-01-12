@@ -21,6 +21,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "text_area",
         name: "feedback",
+        exclude_from_translation: true,
         parameter_list: {
           placeholder: "Write feedback here",
         },
@@ -29,6 +30,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "display_group",
         name: "dg_buttons",
+        exclude_from_translation: true,
         rows: [
           {
             type: "button",
@@ -143,6 +145,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {},
         },
+        exclude_from_translation: true,
         _nested_name: "selected_text",
         _dynamicFields: {
           value: [
@@ -185,6 +188,7 @@ const template: FlowTypes.Template[] = [
                 _cleaned: "click | emit:uncompleted",
               },
             ],
+            exclude_from_translation: true,
             _nested_name: "dg_buttons.button_cancel",
           },
           {
@@ -209,6 +213,7 @@ const template: FlowTypes.Template[] = [
                 _cleaned: "click | emit:completed:@local.feedback",
               },
             ],
+            exclude_from_translation: true,
             _nested_name: "dg_buttons.button_submit",
             _dynamicFields: {
               action_list: {
@@ -269,6 +274,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {},
         },
+        exclude_from_translation: true,
         name: "title",
         _nested_name: "title",
       },
@@ -278,6 +284,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {},
         },
+        exclude_from_translation: true,
         name: "text",
         _nested_name: "text",
         _dynamicFields: {
@@ -300,6 +307,7 @@ const template: FlowTypes.Template[] = [
         _translations: {
           value: {},
         },
+        exclude_from_translation: true,
         name: "title",
         _nested_name: "title",
       },
@@ -318,6 +326,7 @@ const template: FlowTypes.Template[] = [
             _cleaned: "click | feedback:enable",
           },
         ],
+        exclude_from_translation: true,
         name: "button",
         _nested_name: "button",
       },
@@ -336,6 +345,7 @@ const template: FlowTypes.Template[] = [
             _cleaned: "click | feedback:disable",
           },
         ],
+        exclude_from_translation: true,
         name: "button",
         _nested_name: "button",
       },
@@ -354,6 +364,7 @@ const template: FlowTypes.Template[] = [
             _cleaned: "click | feedback:open:feature_feedback_default",
           },
         ],
+        exclude_from_translation: true,
         name: "button",
         _nested_name: "button",
       },
