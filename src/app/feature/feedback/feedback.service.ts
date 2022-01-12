@@ -7,7 +7,6 @@ import { ContextMenuService } from "src/app/shared/modules/context-menu/context-
 import {
   IContextMenuAction,
   IContextMenuActionData,
-  IContextMenuType,
 } from "src/app/shared/modules/context-menu/context-menu.types";
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
@@ -15,15 +14,17 @@ import { FEEDBACK_MODULE_DEFAULTS } from "data-models/constants";
 import { generateTimestamp } from "src/app/shared/utils";
 import { environment } from "src/environments/environment";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
+import { DbService } from "src/app/shared/services/db/db.service";
+import {
+  IFeedbackContextMenuButton,
+  IFeedbackEntry,
+  IFeedbackEntryAdditional,
+  IFeedbackEntryDB,
+  IFeedbackMetadata,
+  ITemplateTargetEntry,
+} from "./feedback.types";
 
-interface IFeedbackButton {
-  id: string;
-  menuButtonText: string;
-  appearInMenus: IContextMenuType[];
-  displayedTemplate: string;
-}
-
-const FEEDBACK_BUTTONS: IFeedbackButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
+const FEEDBACK_BUTTONS: IFeedbackContextMenuButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
 
 @Injectable({
   providedIn: "root",
@@ -38,7 +39,8 @@ export class FeedbackService {
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
     private userMetaService: UserMetaService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private dbService: DbService
   ) {
     // retrieve device info for passing in metadata
     Device.getInfo().then((deviceInfo) => {
@@ -56,9 +58,17 @@ export class FeedbackService {
     }
   }
 
+  /**
+   * Create a standalone popup of the provided template and use to collect user feedback.
+   * On completed emit retrieve any passed values, combine with metadata and submit to server
+   * @param additional optional additional user data to be included alongside generated metadata
+   * @param ev pointer event captured if context menu created via pointer action
+   * (e.g. right-click/long-press/text-select). Will be used to generate specific component metadata
+   */
   public async runFeedbackTemplate(
     templatename: string,
-    meta: { ev?: PointerEvent; data?: any } = {}
+    additional: IFeedbackEntryAdditional = {},
+    ev?: PointerEvent
   ) {
     const templateData = await this.templateService.runStandaloneTemplate(templatename, {
       fullscreen: false,
@@ -66,12 +76,22 @@ export class FeedbackService {
     // Submit feedback if popup dismissed by emit:completed event
     const { emit_data, emit_value } = templateData || {};
     if (emit_value === "completed") {
-      const metadata = this.generateFeedbackMetadata(meta.ev);
-      const feedback = emit_data;
-      console.log("FEEDBACK", { metadata, feedback, data: meta.data });
-      await this.presentToast("TODO - submit feedback (see console log for details)");
-      // TODO - handle submit
+      const metadata = this.generateFeedbackMetadata();
+      const feedbackEntry: IFeedbackEntry = { metadata, user_feedback: emit_data, additional };
+      if (ev) {
+        feedbackEntry.additional.templateTarget = this.generateFeedbackTemplateMeta(ev);
+      }
+      await this.sendFeedback(feedbackEntry);
     }
+  }
+
+  public async sendFeedback(entry: IFeedbackEntry) {
+    const dbEntry: IFeedbackEntryDB = { ...this.dbService.generateDBMeta(), ...entry };
+    await this.dbService.table("feedback").add(dbEntry);
+    // Show toast after small delay
+    setTimeout(async () => {
+      await this.presentToast("Thank you for your feedback");
+    }, 1000);
   }
 
   /** Handle registration of all defined feedback actions to the relevant context menus */
@@ -99,7 +119,7 @@ export class FeedbackService {
    * */
   private async handleContextMenuAction(
     ev: PointerEvent,
-    feedbackButton: IFeedbackButton,
+    feedbackButton: IFeedbackContextMenuButton,
     contextData: IContextMenuActionData = {}
   ) {
     // set selected text to field for access in templates
@@ -110,7 +130,7 @@ export class FeedbackService {
     // launch feedback template
     await this.runFeedbackTemplate(feedbackButton.displayedTemplate, {
       ev,
-      data: { ...contextData, id: feedbackButton.id },
+      additional: { ...contextData, id: feedbackButton.id },
     });
 
     // clear previously set field
@@ -118,33 +138,44 @@ export class FeedbackService {
   }
 
   /**
+   * Generate a path mapping to clicked template element
+   */
+  private generateFeedbackTemplateMeta(ev: PointerEvent) {
+    const elementPath: HTMLElement[] = (ev as any).path;
+    // filter just to include template components and containers
+    const templatePath = elementPath.filter((e) =>
+      ["plh-template-component", "plh-template-container"].includes(e.localName)
+    );
+    // map custom data- attributes to list of kept fields for entry
+    const templateTarget: ITemplateTargetEntry[] = templatePath.map((e) => {
+      const templateTargetEntry: ITemplateTargetEntry = {
+        el: e.localName === "plh-template-component" ? "component" : "container",
+      };
+      const dataFields = { ...e.dataset };
+      const fields: (keyof ITemplateTargetEntry)[] = ["el", "name", "templatename", "type"];
+      for (const field of fields) {
+        if (dataFields.hasOwnProperty(field)) {
+          templateTargetEntry[field] = dataFields[field] as any;
+        }
+      }
+      return templateTargetEntry;
+    });
+    return templateTarget;
+  }
+
+  /**
    * Collate various pieces of feedback info including page url, path to element in focus,
    * device info and user uuid
    */
-  private generateFeedbackMetadata(ev?: PointerEvent) {
-    const metadata = {
+  public generateFeedbackMetadata() {
+    const metadata: IFeedbackMetadata = {
       deviceInfo: this.deviceInfo,
       pathname: location.pathname,
       uuid: this.userMetaService.getUserMeta("uuid"),
       timestamp: generateTimestamp(),
       app_version: environment.version,
       envName: environment.envName,
-      templateTarget: null,
     };
-    if (ev) {
-      const elementPath: HTMLElement[] = (ev as any).path;
-      // filter just to include template components and containers
-      const templatePath = elementPath.filter((e) =>
-        ["plh-template-component", "plh-template-container"].includes(e.localName)
-      );
-      // create a list with only custom data- attributes, ignoring hidden and rowname
-      const templateTarget = templatePath.map((e) => {
-        const dataFields = { ...e.dataset };
-        const { hidden, rowname, ...keptFields } = dataFields;
-        return keptFields;
-      });
-      metadata.templateTarget = templateTarget;
-    }
     return metadata;
   }
 
