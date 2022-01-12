@@ -18,7 +18,7 @@ import { SharedModule } from "./shared/shared.module";
 import { environment } from "src/environments/environment";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
 import { ColorSketchModule } from "ngx-color/sketch";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { SurveyModule } from "src/app/feature/survey/survey.module";
 
 import { LottieModule } from "ngx-lottie";
@@ -50,8 +50,6 @@ export function lottiePlayerFactory() {
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     FormsModule,
-    ReactiveFormsModule,
-    ReactiveFormsModule,
     ColorSketchModule,
     SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
