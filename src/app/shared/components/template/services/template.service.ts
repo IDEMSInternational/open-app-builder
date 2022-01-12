@@ -97,18 +97,16 @@ export class TemplateService {
    * Load a template by a given name. If overrides exist for the template they will be evaluated
    * and returned instead.
    * @param templateName name of template to load
-   * @param row container row as source of getTemplate request
+   * @param is_override_target boolean (passed from row property) to identify if self has been overridden
+   * (and could therefore lead to infinite loop overwise)
    */
   public async getTemplateByName(
     templateName: string,
-    row?: FlowTypes.TemplateRow
+    is_override_target: boolean
   ): Promise<FlowTypes.Template> {
     const foundTemplate: FlowTypes.Template = TEMPLATE.find((t) => t.flow_name === templateName);
     if (foundTemplate) {
-      const overiddenTemplate = await this.getTemplateOverride(
-        foundTemplate,
-        row?.is_override_target
-      );
+      const overiddenTemplate = await this.getTemplateOverride(foundTemplate, is_override_target);
       // create a deep clone of the object to prevent accidental reference changes
       // assign a name (in case top-level template) and store breadcrumb path for nested
       // (NOTE - would no longer be required if reading in json objects instead of ts import)
