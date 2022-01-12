@@ -1,5 +1,6 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
@@ -19,7 +20,12 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  * ...
  */
 export class TemplateNavService {
-  constructor(private modalCtrl: ModalController, private location: Location) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   public async handleQueryParamChange(
     params: INavQueryParams,
@@ -57,10 +63,7 @@ export class TemplateNavService {
   /*****************************************************************************************************
    *  Nav Actions
    ****************************************************************************************************/
-  public handleNavAction(
-    action: FlowTypes.TemplateRowAction,
-    container: TemplateContainerComponent
-  ) {
+  public handleNavAction(action: FlowTypes.TemplateRowAction) {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename] = action.args;
@@ -68,7 +71,7 @@ export class TemplateNavService {
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     // handle direct page or template navigation
     const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
-    return container.router.navigate(navTarget, {
+    return this.router.navigate(navTarget, {
       queryParams,
       queryParamsHandling: "merge",
     });
@@ -85,7 +88,7 @@ export class TemplateNavService {
     container: TemplateContainerComponent
   ) {
     const { nav_child_emit, nav_parent_triggered_by } = params;
-    const { router, template } = container;
+    const { template } = container;
     log("[Nav] - Parent", { params, container });
     // remove query param
     const queryParams: INavQueryParams = {
@@ -94,7 +97,7 @@ export class TemplateNavService {
       nav_parent: null,
       nav_parent_triggered_by: null,
     };
-    router.navigate([], {
+    this.router.navigate([], {
       queryParams,
       replaceUrl: true,
       queryParamsHandling: "merge",
@@ -124,8 +127,7 @@ export class TemplateNavService {
     actions: FlowTypes.TemplateRowAction[],
     container: TemplateContainerComponent
   ) {
-    const { route, router } = container;
-    const params = route.snapshot.queryParams as INavQueryParams;
+    const params = this.route.snapshot.queryParams as INavQueryParams;
     const { nav_parent, popup_parent } = params;
     log("[Nav] - Child", { params, container });
     // only process nav events for child if a nav_parent has been set
@@ -170,7 +172,7 @@ export class TemplateNavService {
     action: FlowTypes.TemplateRowAction,
     container: TemplateContainerComponent
   ) {
-    const { router, name } = container;
+    const { name } = container;
     const templatename = action.args[0];
     // simply set the query params which will be handled in method below so that
     // opening can also be handled following navigation or on refresh
@@ -179,7 +181,7 @@ export class TemplateNavService {
       popup_parent: name,
       popup_parent_triggered_by: action._triggeredBy.name,
     };
-    router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
 
   private async handlePopupActionsFromParent(
@@ -248,8 +250,7 @@ export class TemplateNavService {
       nav_parent: null,
       nav_parent_triggered_by: null,
     };
-    const { router } = container;
-    router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
 
   /** Popups persist nav operations, so also need to handle from top-level templates that are not the parent */

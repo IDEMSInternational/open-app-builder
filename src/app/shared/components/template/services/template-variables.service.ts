@@ -4,7 +4,7 @@ import { FlowTypes } from "src/app/shared/model";
 import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/app/shared/utils";
 import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { TemplateTranslateService } from "./template-translate.service";
-import { ITemplateRowMap } from "./template-row.service";
+import { ITemplateRowMap } from "./instance/template-row.service";
 import { extractDynamicEvaluators } from "data-models";
 import { TemplateFieldService } from "./template-field.service";
 import { PLHDataService } from "src/app/shared/services/data/data.service";
