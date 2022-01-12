@@ -4,16 +4,17 @@
     <ion-item class="clear">
       <ion-label>Enabled</ion-label>
       <ion-toggle
+        #toggle
         [checked]="feedbackService.isReviewingMode$ | async"
-        (ionChange)="feedbackService.toggleReviewMode()"
+        (ionChange)="feedbackService.setReviewMode(toggle.checked)"
       ></ion-toggle>
     </ion-item>
   </div>
 
   <plh-template-container templatename="feature_feedback_debug"></plh-template-container>
 
-  <div class="comments">
+  <!-- <div class="comments">
     <h2>Existing comments about this screen</h2>
     <p>no comments submitted yet</p>
-  </div>
+  </div> -->
 </ion-content>

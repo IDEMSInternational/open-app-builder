@@ -50,6 +50,30 @@ export class FeedbackService {
     });
   }
 
+  public async setReviewMode(isEnabled = false) {
+    if (this.isReviewingMode$.value !== isEnabled) {
+      this.isReviewingMode$.next(isEnabled);
+    }
+  }
+
+  public async runFeedbackTemplate(
+    templatename: string,
+    meta: { ev?: PointerEvent; data?: any } = {}
+  ) {
+    const templateData = await this.templateService.runStandaloneTemplate(templatename, {
+      fullscreen: false,
+    });
+    // Submit feedback if popup dismissed by emit:completed event
+    const { emit_data, emit_value } = templateData || {};
+    if (emit_value === "completed") {
+      const metadata = this.generateFeedbackMetadata(meta.ev);
+      const feedback = emit_data;
+      console.log("FEEDBACK", { metadata, feedback, data: meta.data });
+      await this.presentToast("TODO - submit feedback (see console log for details)");
+      // TODO - handle submit
+    }
+  }
+
   /** Handle registration of all defined feedback actions to the relevant context menus */
   private setContextMenuActions(isReviewMode: boolean) {
     for (const feedbackButton of FEEDBACK_BUTTONS) {
@@ -84,19 +108,11 @@ export class FeedbackService {
       await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
     }
     // launch feedback template
-    const templateData = await this.templateService.runStandaloneTemplate(
-      feedbackButton.displayedTemplate,
-      { fullscreen: false }
-    );
-    // Submit feedback if popup dismissed by emit:completed event
-    const { emit_data, emit_value } = templateData || {};
-    if (emit_value === "completed") {
-      const metadata = this.generateFeedbackMetadata(ev);
-      const feedback = emit_data;
-      const context = { ...contextData, id: feedbackButton.id };
-      console.log("submitting feedback", { metadata, feedback, context });
-      // TODO - handle submit
-    }
+    await this.runFeedbackTemplate(feedbackButton.displayedTemplate, {
+      ev,
+      data: { ...contextData, id: feedbackButton.id },
+    });
+
     // clear previously set field
     await this.templateFieldService.setField(selected_text_field, null);
   }
@@ -105,34 +121,31 @@ export class FeedbackService {
    * Collate various pieces of feedback info including page url, path to element in focus,
    * device info and user uuid
    */
-  private generateFeedbackMetadata(ev: PointerEvent) {
-    const elementPath: HTMLElement[] = (ev as any).path;
-    // filter just to include template components and containers
-    const templatePath = elementPath.filter((e) =>
-      ["plh-template-component", "plh-template-container"].includes(e.localName)
-    );
-    // create a list with only custom data- attributes, ignoring hidden and rowname
-    const templateTarget = templatePath.map((e) => {
-      const dataFields = { ...e.dataset };
-      const { hidden, rowname, ...keptFields } = dataFields;
-      return keptFields;
-    });
-    return {
-      templateTarget,
+  private generateFeedbackMetadata(ev?: PointerEvent) {
+    const metadata = {
       deviceInfo: this.deviceInfo,
       pathname: location.pathname,
       uuid: this.userMetaService.getUserMeta("uuid"),
       timestamp: generateTimestamp(),
       app_version: environment.version,
       envName: environment.envName,
+      templateTarget: null,
     };
-  }
-
-  public async toggleReviewMode() {
-    this.isReviewingMode$.next(!this.isReviewingMode$.value);
-  }
-  public async setReviewMode(isEnabled = false) {
-    this.isReviewingMode$.next(isEnabled);
+    if (ev) {
+      const elementPath: HTMLElement[] = (ev as any).path;
+      // filter just to include template components and containers
+      const templatePath = elementPath.filter((e) =>
+        ["plh-template-component", "plh-template-container"].includes(e.localName)
+      );
+      // create a list with only custom data- attributes, ignoring hidden and rowname
+      const templateTarget = templatePath.map((e) => {
+        const dataFields = { ...e.dataset };
+        const { hidden, rowname, ...keptFields } = dataFields;
+        return keptFields;
+      });
+      metadata.templateTarget = templateTarget;
+    }
+    return metadata;
   }
 
   private async presentToast(message: string, opts: Partial<ToastOptions> = {}) {
