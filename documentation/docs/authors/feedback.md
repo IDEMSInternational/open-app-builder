@@ -12,7 +12,9 @@ Various actions can be called from the templating system for use with the feedba
 | ---------         | ------------  |
 | feedback:enable	| Enable feedback mode	 |
 | feedback:disable	| Disable feedback mode	 |
-| feedback:open	    | Open a template in feedback mode.	This will present a popup, which will submit as feedback any data passed from an `emit:completed` event |
+| feedback:open:[templatename]	    | Open a template in feedback mode.	This will present a popup, which will submit as feedback any data passed from an `emit:completed` event |
+| feedback:send:[data]	    | Send any arbitrary data to the feedback server without using a template (mostly used in debugging|
+
 
 ## Context Menus
 By default feedback options will be presented when the user carries out different *context* actions, such as right-click (web) on long-press (mobile) actions, as well as text selection.
