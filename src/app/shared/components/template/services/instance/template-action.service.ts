@@ -167,8 +167,8 @@ export class TemplateActionService extends TemplateInstanceService {
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
         const [emit_value, emit_data] = args;
-        let container: TemplateContainerComponent = this.container;
-        let { parent, row, name, template, templatename } = container;
+        const container: TemplateContainerComponent = this.container;
+        const { parent, row, name, template, templatename } = container;
         console.log("[EMIT]", `${name || templatename}:${emit_value}`);
         if (emit_value === "completed") {
           // write completions to the database for data tracking
