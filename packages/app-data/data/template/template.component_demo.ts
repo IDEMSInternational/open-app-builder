@@ -3,25 +3,6 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
-    flow_name: "comp_html",
-    status: "released",
-    flow_subtype: "component_demo",
-    rows: [
-      {
-        type: "html",
-        value:
-          "<ion-card>\n  <ion-card-header>\n    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>\n    <ion-card-title>Card Title</ion-card-title>\n  </ion-card-header>\n  <ion-card-content>\n    Keep close to Nature's heart... and break clear away, once in awhile,\n    and climb a mountain or spend a week in the woods. Wash your spirit clean.\n  </ion-card-content>\n</ion-card>",
-        _translations: {
-          value: {},
-        },
-        name: "html",
-        _nested_name: "html",
-      },
-    ],
-    _xlsxPath: "quality_assurance/components_demo/component_html.xlsx",
-  },
-  {
-    flow_type: "template",
     flow_name: "comp_round_button_3",
     status: "released",
     flow_subtype: "component_demo",
