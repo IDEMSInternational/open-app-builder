@@ -10,11 +10,44 @@
       ></ion-toggle>
     </ion-item>
   </div>
+  <hr class="spacer" />
 
   <plh-template-container templatename="feature_feedback_debug"></plh-template-container>
+  <hr class="spacer" />
+  <div style="display: flex">
+    <h3 style="flex: 1">Database Pending ({{feedbackPending.length}})</h3>
+    <ion-button (click)="syncFeedback()">Sync</ion-button>
+  </div>
+  <ion-card *ngFor="let feedback of feedbackPending" style="padding: 1em">
+    <ng-container
+      [ngTemplateOutlet]="feedbackItem"
+      [ngTemplateOutletContext]="{feedback}"
+    ></ng-container>
+  </ion-card>
 
-  <!-- <div class="comments">
-    <h2>Existing comments about this screen</h2>
-    <p>no comments submitted yet</p>
-  </div> -->
+  <h3>Database Sent ({{feedbackSent.length}})</h3>
+  <ion-card *ngFor="let feedback of feedbackSent">
+    <ng-container
+      [ngTemplateOutlet]="feedbackItem"
+      [ngTemplateOutletContext]="{feedback}"
+    ></ng-container
+  ></ion-card>
+
+  <!-- Shorthand method to create reusable feedback item template insted of component -->
+  <ng-template #feedbackItem let-feedback="feedback">
+    <div style="flex: 1">{{feedback.user_feedback}}</div>
+    <div style="font-size: small">{{feedback._created}}</div>
+    <div style="display: flex">
+      <div *ngIf="feedback.additional" style="flex: 1; margin-top: 1em">
+        {{feedback.additional | json}}
+      </div>
+      <ion-button
+        fill="clear"
+        size="small"
+        style="margin-left: auto"
+        (click)="logFeedback(feedback)"
+        >Log</ion-button
+      >
+    </div>
+  </ng-template>
 </ion-content>
