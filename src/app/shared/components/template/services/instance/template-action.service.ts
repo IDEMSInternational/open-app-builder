@@ -13,6 +13,7 @@ import { TemplateService } from "../template.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
+import { EventService } from "src/app/shared/services/event/event.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -36,6 +37,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private tourService: TourService;
   private templateTranslateService: TemplateTranslateService;
   private templateFieldService: TemplateFieldService;
+  private eventService: EventService;
 
   constructor(public container: TemplateContainerComponent, injector: Injector) {
     super(injector);
@@ -46,6 +48,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.templateService = this.getGlobalService(TemplateService);
     this.tourService = this.getGlobalService(TourService);
     this.templateFieldService = this.getGlobalService(TemplateFieldService);
+    this.eventService = this.getGlobalService(EventService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -145,8 +148,10 @@ export class TemplateActionService extends TemplateInstanceService {
         return this.templateService.setTheme(this.container.template, "set_theme", action.args);
       case "start_tour":
         return this.tourService.startTour(key);
-      // case "feedback":
-      //   return this.eventService.publish({ topic: "FEEDBACK", eventId: args[1], payload: args[2] });
+      case "feedback": {
+        const [subtopic, ...payload] = args;
+        return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });
+      }
       case "track_event":
         this.analyticsService.trackEvent(key);
         break;
