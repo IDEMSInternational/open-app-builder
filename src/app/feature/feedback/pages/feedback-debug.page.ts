@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Subject } from "packages/api/node_modules/rxjs";
 import { interval } from "rxjs";
 import { debounce, takeUntil } from "rxjs/operators";
+import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { FeedbackService } from "../feedback.service";
 import { IFeedbackEntryDB } from "../feedback.types";
@@ -14,7 +15,11 @@ export class FeedbackDebugPage implements OnInit {
   private destroyed$ = new Subject<boolean>();
   public feedbackPending: IFeedbackEntryDB[] = [];
   public feedbackSent: IFeedbackEntryDB[] = [];
-  constructor(public feedbackService: FeedbackService, private dbService: DbService) {}
+  constructor(
+    public feedbackService: FeedbackService,
+    private dbService: DbService,
+    private dbSyncService: DBSyncService
+  ) {}
 
   ngOnDestroy() {
     this.destroyed$.next(true);
@@ -36,8 +41,7 @@ export class FeedbackDebugPage implements OnInit {
     console.log(feedback);
   }
   public async syncFeedback() {
-    await this.dbService.syncToServer();
-    await this.loadDBFeedback();
+    await this.dbSyncService.syncTable("feedback");
   }
 
   private async loadDBFeedback() {
@@ -47,7 +51,7 @@ export class FeedbackDebugPage implements OnInit {
       .toArray();
     this.feedbackSent = await this.dbService
       .table("feedback")
-      .where({ _sync_status: "sent" })
+      .where({ _sync_status: "synced" })
       .toArray();
     console.log("feedback", { pending: this.feedbackPending, sent: this.feedbackSent });
   }
