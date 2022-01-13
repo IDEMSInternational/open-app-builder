@@ -130,8 +130,8 @@ export class FeedbackService {
     }
     // launch feedback template
     await this.runFeedbackTemplate(feedbackButton.displayedTemplate, {
-      ev,
-      additional: { ...contextData, id: feedbackButton.id },
+      ...contextData,
+      id: feedbackButton.id,
     });
 
     // clear previously set field
