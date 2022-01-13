@@ -7,8 +7,8 @@ export class AppFeedback extends Model<AppFeedback> {
   app_user_id: string;
 
   @Column({ allowNull: false })
-  user_feedback_id: string;
+  app_user_record_id: string;
 
   @Column({ allowNull: false, type: DataType.JSONB })
-  raw: any;
+  data: any;
 }

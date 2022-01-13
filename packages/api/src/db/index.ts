@@ -73,7 +73,6 @@ async function runMigrations() {
     storage: new SequelizeStorage({ sequelize }),
     logger: console,
   });
-
   const pending = await migrator.pending();
   console.log("[Migrations] pending", pending);
   try {
