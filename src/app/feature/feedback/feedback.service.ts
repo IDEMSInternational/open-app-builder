@@ -129,10 +129,8 @@ export class FeedbackService {
       await this.templateFieldService.setField(selected_text_field, contextData.selectedText);
     }
     // launch feedback template
-    await this.runFeedbackTemplate(feedbackButton.displayedTemplate, {
-      ...contextData,
-      id: feedbackButton.id,
-    });
+    const additional = { ...contextData, id: feedbackButton.id };
+    await this.runFeedbackTemplate(feedbackButton.displayedTemplate, additional, ev);
 
     // clear previously set field
     await this.templateFieldService.setField(selected_text_field, null);
