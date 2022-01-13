@@ -54,15 +54,39 @@ export const DB_TABLES = {
 
 /**
  * Provide mapping from tables stored in local dexie indexeddb to server postgres tables
+ * Data is synced via api endpoints as the app does not have direct DB access
  */
-export const DB_SERVER_MAPPING: IDBServerMapping[] = [
-  {
-    source: "feedback",
-    target: "plh_feedback",
+export const DB_SERVER_MAPPING: { [key in IDBTable]?: IDBServerMapping } = {
+  feedback: {
+    api_endpoint: () => "/app_feedback",
+    is_user_record: true,
+    user_record_id_field: "id",
   },
-];
+};
 
-type IDBServerMapping = { source: IDBTable; target: string };
+/** Metadata required to sync between local records and the server */
+export type IDBServerMapping = {
+  /** function to evaluate determine api enpoint (in cases where dynamic parameter needs to be applied) */
+  api_endpoint: (data?: any) => string;
+  /** If syncing a user record to a global table entry will refactor to ensure entry unique on server */
+  is_user_record: boolean;
+  /** record unique ID field which will be combined with user id to generate globally unique identifier */
+  user_record_id_field: string;
+};
+
+/**
+ * For cases where user record synced to global table, record data is placed in nested folder alongside
+ * app_user and app_user_record identifiers.
+ * @important - Should be kept in sync with UserLocalRecordDto
+ */
+export interface IDBServerUserRecord {
+  /** Unique ID of user */
+  app_user_id: string;
+  /** ID of original record in local database */
+  app_user_record_id: number;
+  /** Data to sync to server */
+  data: any;
+}
 
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -112,5 +136,6 @@ export interface IFlowEvent extends IDBMeta {
 export interface IDBMeta {
   _created: string;
   _synced: boolean; // legacy
-  _sync_status: "ignored" | "pending" | "synced";
+  _sync_status: ISyncStatus;
 }
+export type ISyncStatus = "ignored" | "pending" | "synced";
