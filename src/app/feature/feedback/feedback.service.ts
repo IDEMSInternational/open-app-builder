@@ -81,11 +81,12 @@ export class FeedbackService {
       if (ev) {
         feedbackEntry.additional.templateTarget = this.generateFeedbackTemplateMeta(ev);
       }
-      await this.sendFeedback(feedbackEntry);
+      await this.saveFeedback(feedbackEntry);
     }
   }
 
-  public async sendFeedback(entry: IFeedbackEntry) {
+  /** Save feedback to local db. Will automatically be synced to server DB */
+  public async saveFeedback(entry: IFeedbackEntry) {
     const dbEntry: IFeedbackEntryDB = { ...this.dbService.generateDBMeta(), ...entry };
     await this.dbService.table("feedback").add(dbEntry);
     // Show toast after small delay

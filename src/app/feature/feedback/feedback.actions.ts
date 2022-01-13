@@ -27,7 +27,7 @@ export class FeedbackActionsService {
     },
     send: ([data]) => {
       const metadata = this.feedbackService.generateFeedbackMetadata();
-      return this.feedbackService.sendFeedback({ metadata, user_feedback: data, additional: {} });
+      return this.feedbackService.saveFeedback({ metadata, user_feedback: data, additional: {} });
     },
   };
 
