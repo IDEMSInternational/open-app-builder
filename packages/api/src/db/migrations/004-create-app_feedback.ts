@@ -16,12 +16,12 @@ export const up = async (options: UmzugOptions<QueryInterface>) => {
       autoIncrement: false,
       type: DataTypes.STRING,
     },
-    user_feedback_id: {
+    app_user_record_id: {
       allowNull: false,
       autoIncrement: false,
       type: DataTypes.INTEGER,
     },
-    raw: {
+    data: {
       allowNull: false,
       type: DataTypes.JSONB,
     },

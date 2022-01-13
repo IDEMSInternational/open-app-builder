@@ -63,14 +63,23 @@
             "type": "string",
             "description": "App user ID"
           },
-          "user_feedback_id": {
+          "app_user_record_id": {
             "type": "number",
-            "description": "Local feedback ID for user"
+            "description": "Local ID for local db record"
+          },
+          "data": {
+            "description": "Feedback entry",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
           }
         },
         "required": [
           "app_user_id",
-          "user_feedback_id"
+          "app_user_record_id",
+          "data"
         ]
       },
       "STRING": {

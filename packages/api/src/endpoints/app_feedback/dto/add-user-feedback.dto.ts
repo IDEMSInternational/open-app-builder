@@ -1,9 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { UserLocalRecordDto } from "src/endpoints/common";
 
-export class UserFeedbackDto {
-  @ApiProperty({ description: "App user ID" })
-  app_user_id: string;
-
-  @ApiProperty({ description: "Local feedback ID for user" })
-  user_feedback_id: number;
+export class UserFeedbackDto extends UserLocalRecordDto {
+  @ApiProperty({ description: "Feedback entry" })
+  data: any;
 }
