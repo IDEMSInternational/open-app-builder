@@ -1,6 +1,18 @@
 import { FlowTypes } from "./flowTypes";
 
-const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_created", "_synced"];
+/** Name of index field included on any table that might be synced to server */
+const SYNC_INDEX = "_sync_status"; // tracked as boolean;
+
+/** List of fields to include in index for flow events */
+const FLOW_EVENT_INDEX_LIST: (keyof IFlowEvent)[] = [
+  "type",
+  "name",
+  "event",
+  "_created",
+  "_synced", // legacy
+];
+/** Concatenated list of indexes used in flow_event system for import into DB schema */
+const FLOW_EVENT_INDEXES = FLOW_EVENT_INDEX_LIST.join(",");
 
 /**
  * All tables used must be defined with any indices required (other columns freely added)
@@ -11,9 +23,9 @@ const FLOW_EVENT_INDEXES: (keyof IFlowEvent)[] = ["type", "name", "event", "_cre
  */
 export const DB_TABLES = {
   /** Track template flow events such as completion emit **/
-  flow_events: "++id," + FLOW_EVENT_INDEXES.join(","),
+  flow_events: "++id," + FLOW_EVENT_INDEXES,
   /** Long term tracking of changes to user data, such as contact fields */
-  data_events: "++id," + FLOW_EVENT_INDEXES.join(","),
+  data_events: "++id," + FLOW_EVENT_INDEXES,
   /** Scheduled and sent local notifications, including whether the app has had chance to process callbacks */
   local_notifications: "id,_created,_callbacks_processed",
 
@@ -36,7 +48,21 @@ export const DB_TABLES = {
   habits: "habitId",
   habit_activity_ideas: "++id,flowName",
   habit_occurrence: "++id,habitId,created",
+  /** feedback - includes tracking of server synced */
+  feedback: `++id,_created,${SYNC_INDEX}`,
 };
+
+/**
+ * Provide mapping from tables stored in local dexie indexeddb to server postgres tables
+ */
+export const DB_SERVER_MAPPING: IDBServerMapping[] = [
+  {
+    source: "feedback",
+    target: "plh_feedback",
+  },
+];
+
+type IDBServerMapping = { source: IDBTable; target: string };
 
 export type IDBTable = keyof typeof DB_TABLES;
 /**
@@ -54,7 +80,7 @@ export interface IDBDoc {
  * e.g. v0.1.0 => 000001000
  * e.g. v0.10.4 => 000010004
  */
-export const DB_VERSION = 12000;
+export const DB_VERSION = 14001;
 
 export interface IDBEvent {
   topic: "DB";
@@ -85,5 +111,6 @@ export interface IFlowEvent extends IDBMeta {
 
 export interface IDBMeta {
   _created: string;
-  _synced: boolean;
+  _synced: boolean; // legacy
+  _sync_status: "ignored" | "pending" | "synced";
 }
