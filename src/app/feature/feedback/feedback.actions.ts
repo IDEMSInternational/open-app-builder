@@ -8,6 +8,7 @@ export namespace IFeedbackAction {
     disable: () => void;
     enable: () => void;
     open: ([templatename]) => void;
+    send: ([data]) => void;
   }
   export type name = keyof handlers;
 }
@@ -23,6 +24,10 @@ export class FeedbackActionsService {
     enable: () => this.feedbackService.setReviewMode(true),
     open: ([templatename]) => {
       return this.feedbackService.runFeedbackTemplate(templatename);
+    },
+    send: ([data]) => {
+      const metadata = this.feedbackService.generateFeedbackMetadata();
+      return this.feedbackService.saveFeedback({ metadata, user_feedback: data, additional: {} });
     },
   };
 
