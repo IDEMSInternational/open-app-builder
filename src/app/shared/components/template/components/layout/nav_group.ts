@@ -56,7 +56,7 @@ import { TemplateFieldService } from "../../services/template-field.service";
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        padding-bottom: 1em;
+        padding: 1em 0;
       }
 
       .nav-progress-part {
