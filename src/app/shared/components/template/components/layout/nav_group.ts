@@ -71,11 +71,6 @@ import { TemplateFieldService } from "../../services/template-field.service";
       .nav-progress-part[data-seen] {
         background-color: var(--ion-primary-color, #f88923);
       }
-
-      ion-button {
-        --border-radius: 20px;
-        --background: linear-gradient(to bottom, #ffb833 28.12%, #f88923 100%);
-      }
     `,
   ],
 })
