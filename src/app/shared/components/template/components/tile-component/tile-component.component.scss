@@ -50,6 +50,8 @@
 
 /***********************************************************************************************
 *     PLH-specific page type stylings
+    TODO - CC 2022-01-13 - Most of this should be reviewed and ideally replaced with more
+    simple components (e.g. display groups)
 ************************************************************************************************/
 .workshop_page {
   display: flex;
@@ -91,8 +93,8 @@
       margin-top: 0;
       --border-radius: unset;
       border-radius: unset;
-      width: calc(var(--tile-workshop-page-button-width) * var(--scale-factor-tile));
-      height: calc(100% * var(--scale-factor-tile));
+      width: 100%;
+      height: 100%;
       @media (max-width: 375px) {
         height: 4rem;
       }
