@@ -13,6 +13,7 @@ import { TemplateService } from "../template.service";
 import { TourService } from "src/app/shared/services/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
+import { EventService } from "src/app/shared/services/event/event.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -36,6 +37,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private tourService: TourService;
   private templateTranslateService: TemplateTranslateService;
   private templateFieldService: TemplateFieldService;
+  private eventService: EventService;
 
   constructor(public container: TemplateContainerComponent, injector: Injector) {
     super(injector);
@@ -46,6 +48,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.templateService = this.getGlobalService(TemplateService);
     this.tourService = this.getGlobalService(TourService);
     this.templateFieldService = this.getGlobalService(TemplateFieldService);
+    this.eventService = this.getGlobalService(EventService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -145,6 +148,10 @@ export class TemplateActionService extends TemplateInstanceService {
         return this.templateService.setTheme(this.container.template, "set_theme", action.args);
       case "start_tour":
         return this.tourService.startTour(key);
+      case "feedback": {
+        const [subtopic, ...payload] = args;
+        return this.eventService.publish({ topic: "FEEDBACK", subtopic, payload });
+      }
       case "track_event":
         this.analyticsService.trackEvent(key);
         break;
@@ -164,17 +171,9 @@ export class TemplateActionService extends TemplateInstanceService {
         const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
       case "emit":
-        const [emit_value, emit_from] = args;
-        let container: TemplateContainerComponent = this.container;
-        if (emit_from) {
-          // emit from the named template container instead of this one if specified (assumed sibling of current)
-          const targetContainer = container.children[emit_from];
-          if (targetContainer) {
-            action.args = [emit_value];
-            container = targetContainer;
-          }
-        }
-        let { parent, row, name, template, templatename } = container;
+        const [emit_value, emit_data] = args;
+        const container: TemplateContainerComponent = this.container;
+        const { parent, row, name, template, templatename } = container;
         console.log("[EMIT]", `${name || templatename}:${emit_value}`);
         if (emit_value === "completed") {
           // write completions to the database for data tracking
@@ -197,13 +196,8 @@ export class TemplateActionService extends TemplateInstanceService {
           await this.serverService.syncUserData();
         }
         if (parent) {
-          // continue to emit any actions to parent where defined
-          log(
-            "Emiting",
-            emit_value,
-            ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`,
-            parent
-          );
+          const msg = ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`;
+          log("Emiting", emit_value, msg, emit_data, parent);
         }
         // Process any actions specified when row defined by parent (triggered on parent)
         // or from own update_action_list statement (triggered on self)
@@ -219,7 +213,7 @@ export class TemplateActionService extends TemplateInstanceService {
           }
         }
         // Emit value so manual container bindings can also track (e.g. closing modal in popup from runStandaloneTemplate method)
-        this.container.emittedValue.next(emit_value);
+        this.container.emittedValue.next({ emit_value, emit_data });
         break;
       default:
         console.warn("[W] No handler for action", { action_id, args });

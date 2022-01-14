@@ -117,3 +117,23 @@ export const APP_INITIALISATION_DEFAULTS = {
   // TODO - better if refactored to more general handler with condition to filter
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
 };
+
+export const FEEDBACK_MODULE_DEFAULTS = {
+  /** Buttons that will be made available during feedback mode when context events triggered (e.g. right-click) */
+  buttons: [
+    {
+      id: "feedback-addFeedback",
+      menuButtonText: "Add Feedback",
+      appearInMenus: ["rightClick", "longPress", "textSelect"] as any[],
+      displayedTemplate: "feature_feedback_default",
+    },
+    {
+      id: "feedback-suggestChange",
+      menuButtonText: "Suggest Change",
+      appearInMenus: ["textSelect"] as any[],
+      displayedTemplate: "feature_feedback_text_select",
+    },
+  ],
+  /** Field to populate with selected text for use in templates */
+  selected_text_field: "_feedback_selected_text",
+};

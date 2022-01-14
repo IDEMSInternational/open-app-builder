@@ -444,6 +444,7 @@ export namespace FlowTypes {
       | "set_field"
       | "set_local"
       | "emit"
+      | "feedback"
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"
