@@ -377,7 +377,6 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
-    | "group"
     | "select_text"
     | "html";
 
