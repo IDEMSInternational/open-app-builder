@@ -1,3 +1,4 @@
 deployments/**/*.*
 !deployments/example/config.ts
+!deployments/family-based-math/config.ts
 !deployments/plh/*.ts
