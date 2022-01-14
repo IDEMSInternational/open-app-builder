@@ -1,7 +1,7 @@
-import { Component, ElementRef, HostBinding, HostListener, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit } from "@angular/core";
 import { TemplateBaseComponent } from "../base";
 import { ITemplateRowProps } from "../../models";
-import { getStringParamFromTemplateRow } from "../../../../utils";
+import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 
 @Component({
   selector: "plh-tile-component",
@@ -18,22 +18,14 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
   icon_result: string;
   is_play_icon: boolean;
   windowWidth: number;
-  scaleFactor: number = 1;
   isCustomIcon: boolean;
-  @HostListener("window:resize", ["$event"]) onResize(event) {
-    this.windowWidth = event.target.innerWidth - 10;
-    this.getScaleFactor();
-  }
-  @HostBinding("style.--scale-factor-tile") get scale() {
-    return this.scaleFactor;
-  }
+
   constructor(private elRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
     this.getParams();
-    this.getScaleFactor();
   }
 
   getParams() {
@@ -76,13 +68,5 @@ export class TmplTileComponent extends TemplateBaseComponent implements ITemplat
 
   isPlayIcon(iconSrc: string): boolean {
     if (iconSrc) return iconSrc.includes("play");
-  }
-
-  getScaleFactor(): number {
-    this.scaleFactor =
-      this.windowWidth / (this.isParentPoint() ? 470 : 400) > 1
-        ? 1
-        : this.windowWidth / (((this.isParentPoint() ? 220 : 200) + 20) * 2);
-    return this.scaleFactor;
   }
 }
