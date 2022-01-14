@@ -8,29 +8,32 @@ import { TemplateFieldService } from "../../services/template-field.service";
 @Component({
   selector: "plh-tmpl-nav-group",
   animations: PLHAnimations.fadeEntryExit,
-  template: ` <div class="nav-group">
+  template: `
     <div class="nav-progress">
       <div
         *ngFor="let templateName of templateNames; index as i"
         class="nav-progress-part"
-        [ngClass]="{ seen: i <= sectionIndex }"
+        [attr.data-seen]="i <= sectionIndex ? true : null"
         (click)="goToSection(i)"
       ></div>
     </div>
-    <ng-template ngFor let-i="index" let-templateName [ngForOf]="templateNames">
-      <div class="nav-section" [class.selected]="sectionIndex === i">
-        <div *ngIf="sectionIndex === i" @fadeEntryExit>
-          <plh-template-container
-            [name]="templateName"
-            [templatename]="templateName"
-            [parent]="parent"
-            [row]="containerRow"
-          >
-          </plh-template-container>
-        </div>
-      </div>
-    </ng-template>
-  </div>`,
+    <!-- Render placeholders for each section but omit content -->
+    <div
+      *ngFor="let templateName of templateNames; index as i"
+      class="nav-section"
+      [attr.data-selected]="sectionIndex === i ? true : null"
+    >
+      <plh-template-container
+        *ngIf="sectionIndex === i"
+        [name]="templateName"
+        [templatename]="templateName"
+        [parent]="parent"
+        [row]="containerRow"
+        @fadeEntryExit
+      >
+      </plh-template-container>
+    </div>
+  `,
   styles: [
     `
       :host {
@@ -38,35 +41,22 @@ import { TemplateFieldService } from "../../services/template-field.service";
         display: flex;
         flex-direction: column;
       }
-
-      .slide {
-        width: 95vw;
-      }
-
-      .nav-group {
-        flex: 1;
-      }
-
-      .nav-buttons {
-        width: 100%;
+      .nav-section {
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
+        position: relative;
+        /* sections not active are kept off-screen to avoid content height jump */
+        right: 100vw;
       }
-
-      .selected {
-        height: 100%;
+      .nav-section[data-selected] {
+        flex: 1;
+        right: unset;
       }
-
       .nav-progress {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        padding: var(--small-padding) 0;
-      }
-
-      .nav-section :nth-child(1) {
-        height: 100%;
+        padding-bottom: 1em;
       }
 
       .nav-progress-part {
@@ -78,7 +68,7 @@ import { TemplateFieldService } from "../../services/template-field.service";
         max-width: 40px;
       }
 
-      .nav-progress-part.seen {
+      .nav-progress-part[data-seen] {
         background-color: var(--ion-primary-color, #f88923);
       }
 
