@@ -10,10 +10,11 @@ import {
 } from "@nestjs/common";
 import { TableColumnMappingDto } from "./dto/column-mapping.dto";
 import { TableService } from "./tables.service";
-import { ApiBody, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { listTableColumns, listTableNames } from "src/utils";
 import { DataType } from "sequelize-typescript";
 
+@ApiTags("DB Tables")
 @Controller("tables")
 export class TablesController {
   constructor(private readonly TableService: TableService) {}
