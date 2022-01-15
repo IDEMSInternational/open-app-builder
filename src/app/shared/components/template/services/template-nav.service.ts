@@ -5,6 +5,7 @@ import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
+import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
 // Toggle logs used across full service for debugging purposes (there's quite a few and tedious to comment)
