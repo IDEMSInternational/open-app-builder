@@ -1,16 +1,13 @@
 import { Injectable } from "@angular/core";
 import { CampaignService } from "src/app/feature/campaign/campaign.service";
 import { FlowTypes } from "src/app/shared/model";
-import {
-  evaluateJSExpression,
-  extractDynamicEvaluators,
-  getNestedProperty,
-  setNestedProperty,
-} from "src/app/shared/utils";
-import { TemplateService } from "./template.service";
+import { evaluateJSExpression, getNestedProperty, setNestedProperty } from "src/app/shared/utils";
 import { ICalcContext, TemplateCalcService } from "./template-calc.service";
 import { TemplateTranslateService } from "./template-translate.service";
-import { ITemplateRowMap } from "./template-row.service";
+import { ITemplateRowMap } from "./instance/template-row.service";
+import { extractDynamicEvaluators } from "data-models";
+import { TemplateFieldService } from "./template-field.service";
+import { PLHDataService } from "src/app/shared/services/data/data.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -41,10 +38,11 @@ export class TemplateVariablesService {
    * to all campaign service or similar to return a response for @campaign or similar
    */
   constructor(
-    private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private campaignService: CampaignService,
     private templateTranslateService: TemplateTranslateService,
-    private templateCalcService: TemplateCalcService
+    private templateCalcService: TemplateCalcService,
+    private dataService: PLHDataService
   ) {}
 
   /**
@@ -107,6 +105,20 @@ export class TemplateVariablesService {
       }
     }
     return value;
+  }
+
+  /** Evaluate a dynamic expression that has not been pre-processed or evaluated for dynamic expressions */
+  public async evaluateConditionString(conditionString: string) {
+    const dynamicEvaluators = extractDynamicEvaluators(conditionString);
+    if (dynamicEvaluators) {
+      // Assumes that no specific row information available (@local undefined)
+      const context: IVariableContext = {
+        row: {} as any,
+        templateRowMap: {} as any,
+      };
+      return this.evaluatePLHString(dynamicEvaluators, context);
+    }
+    return conditionString;
   }
 
   /**
@@ -309,16 +321,16 @@ export class TemplateVariablesService {
         break;
       case "field":
         // console.warn("To keep consistency with rapidpro, @fields should be used instead of @field");
-        parsedValue = this.templateService.getField(fieldName);
+        parsedValue = this.templateFieldService.getField(fieldName);
         break;
       case "fields":
-        parsedValue = this.templateService.getField(fieldName);
+        parsedValue = this.templateFieldService.getField(fieldName);
         break;
       case "global":
-        parsedValue = this.templateService.getGlobal(fieldName);
+        parsedValue = this.templateFieldService.getGlobal(fieldName);
         break;
       case "data":
-        parsedValue = this.templateService.getDataListByPath(fieldName);
+        parsedValue = this.dataService.getDataListByPath(fieldName);
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.

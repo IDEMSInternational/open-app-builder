@@ -3,14 +3,9 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { SurveyJSModalComponent } from "./components/surveyJS-modal.component";
-import { AnalyticsSurveyComponent } from "./surveys/analytics/analytics.survey";
 import { IntroSplashSurveyComponent } from "./surveys/intro-splash.survey";
 
-const SurveyComponents = [
-  SurveyJSModalComponent,
-  AnalyticsSurveyComponent,
-  IntroSplashSurveyComponent,
-];
+const SurveyComponents = [SurveyJSModalComponent, IntroSplashSurveyComponent];
 
 /**
  * The survey module provides a service, components, and data to generate survey forms,

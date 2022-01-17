@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -17,10 +17,12 @@ import { TemplateService } from "./shared/components/template/services/template.
 import { CampaignService } from "./feature/campaign/campaign.service";
 import { ServerService } from "./shared/services/server/server.service";
 import { DataEvaluationService } from "./shared/services/data/data-evaluation.service";
-import { TemplateProcessService } from "./shared/components/template/services/template-process.service";
+import { TemplateProcessService } from "./shared/components/template/services/instance/template-process.service";
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
+import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
+import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 
 @Component({
   selector: "app-root",
@@ -30,8 +32,10 @@ import { LocalNotificationService } from "./shared/services/notification/local-n
 export class AppComponent {
   APP_VERSION = environment.version;
   ENV_NAME = environment.envName;
+  sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+
   constructor(
     private platform: Platform,
     private menuController: MenuController,
@@ -43,6 +47,7 @@ export class AppComponent {
     private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private templateProcessService: TemplateProcessService,
     private appEventService: AppEventService,
     private campaignService: CampaignService,
@@ -61,15 +66,13 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
-      const isDeveloperMode = this.templateService.getField("user_mode") === false;
+      const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = await this.userMetaService.init();
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
-        await this.surveyService.runSurvey("analytics");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
-        await this.templateService.runStandaloneTemplate("language_select");
-        await this.tourService.startTour("intro_tour");
+        await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
@@ -105,6 +108,27 @@ export class AppComponent {
     await this.templateProcessService.init();
     await this.localNotificationService.init();
     await this.campaignService.init();
+  }
+
+  /**
+   * Run app-specific first launch tasks
+   **/
+  private async handleFirstLaunchDataActions() {
+    for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
+      switch (initAction.type) {
+        case "template_popup":
+          await this.templateService.runStandaloneTemplate(initAction.value, {
+            showCloseButton: false,
+          });
+          break;
+        case "tour_start":
+          await this.tourService.startTour(initAction.value);
+          break;
+        default:
+          console.error("Startup action not defined:", initAction);
+          break;
+      }
+    }
   }
 
   clickOnMenuItem(id: string) {
@@ -151,9 +175,9 @@ export class AppComponent {
   /** ensure localhost dev can see all non-user content */
   private hackSetDeveloperOptions() {
     if (location.hostname === "localhost" && !environment.production) {
-      const isUserMode = this.templateService.getField("user_mode");
+      const isUserMode = this.templateFieldService.getField("user_mode");
       if (isUserMode !== false) {
-        this.templateService.setField("user_mode", "false");
+        this.templateFieldService.setField("user_mode", "false");
       }
     }
   }
@@ -163,10 +187,10 @@ export class AppComponent {
    * TODO CC 2021-07-23 - Review if methods still required
    */
   private hackSetFirstOpenFields() {
-    this.templateService.setField(".w_1on1_completion_status", "uncompleted");
-    this.templateService.setField("second_week", "false");
-    this.templateService.setField(".w_praise_completion_status", "uncompleted");
-    this.templateService.setField("third_week", "false");
+    this.templateFieldService.setField(".w_1on1_completion_status", "uncompleted");
+    this.templateFieldService.setField("second_week", "false");
+    this.templateFieldService.setField(".w_praise_completion_status", "uncompleted");
+    this.templateFieldService.setField("third_week", "false");
   }
 
   /**
@@ -177,25 +201,25 @@ export class AppComponent {
     let old_date = this.userMetaService.getUserMeta("current_date");
     await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
     let current_date = this.userMetaService.getUserMeta("current_date");
-    this.templateService.setField("first_app_open", user.first_app_open);
-    this.templateService.setField("current_date", current_date);
+    this.templateFieldService.setField("first_app_open", user.first_app_open);
+    this.templateFieldService.setField("current_date", current_date);
     if (old_date != current_date) {
-      this.templateService.setField("daily_relax_done", "false");
+      this.templateFieldService.setField("daily_relax_done", "false");
     }
-    this.templateService.setField("first_week", "true");
+    this.templateFieldService.setField("first_week", "true");
     if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
-      this.templateService.setField("second_week", "true");
-      this.templateService.setField("w_1on1_disabled", "false");
+      this.templateFieldService.setField("second_week", "true");
+      this.templateFieldService.setField("w_1on1_disabled", "false");
     } else {
-      this.templateService.setField("second_week", "false");
+      this.templateFieldService.setField("second_week", "false");
     }
     if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
-      this.templateService.setField("third_week", "true");
-      this.templateService.setField("w_praise_disabled", "false");
+      this.templateFieldService.setField("third_week", "true");
+      this.templateFieldService.setField("w_praise_disabled", "false");
     } else {
-      this.templateService.setField("third_week", "false");
+      this.templateFieldService.setField("third_week", "false");
     }
-    this.templateService.setField(
+    this.templateFieldService.setField(
       "days_since_start",
       (
         (Date.parse(current_date) - Date.parse(user.first_app_open)) /

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { TRANSLATION_STRINGS } from "plh-data";
+import { TRANSLATION_STRINGS } from "app-data";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
@@ -7,7 +7,7 @@ import { FlowTypes } from "../models";
 // assign a local storage field that also matches lookup for use in @fields._app_language
 // (might be changed in future to better indicate read-only field)
 const APP_LANGUAGE_FIELD = "rp-contact-field._app_language";
-const DEFAULT_LANGUAGE = "eng";
+const DEFAULT_LANGUAGE = "za_en";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -16,10 +16,12 @@ const DEFAULT_LANGUAGE = "eng";
  * are already pre-populated in the column (so just a case to return the current language field)
  */
 export class TemplateTranslateService {
-  /** Provide an observable so services can subscribe and respond to language changes*/
+  /**
+   * Provide an observable so services can subscribe and respond to language changes
+   * Formatted as country-language code, e.g. za-en
+   **/
   app_language$ = new BehaviorSubject<string>(null);
 
-  app_language: string;
   translation_strings = {};
 
   constructor(private localStorageService: LocalStorageService) {
@@ -31,13 +33,16 @@ export class TemplateTranslateService {
     }
   }
 
+  get app_language() {
+    return this.app_language$.value;
+  }
+
   /** Set the local storage variable that tracks the app language */
   setLanguage(code: string, updateDB = true) {
     if (code) {
       if (updateDB) {
         this.localStorageService.setString(APP_LANGUAGE_FIELD, code);
       }
-      this.app_language = code;
       this.translation_strings = TRANSLATION_STRINGS[code] || {};
       // update observable for subscribers
       this.app_language$.next(code);

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { differenceInHours } from "date-fns";
 import { IDBTable } from "packages/data-models/db.model";
 import { FlowTypes } from "src/app/shared/model";
-import { TemplateService } from "../../components/template/services/template.service";
+import { TemplateFieldService } from "../../components/template/services/template-field.service";
 import { arrayToHashmapArray } from "../../utils";
 import { AppEventService } from "../app-events/app-events.service";
 import { DbService } from "../db/db.service";
@@ -19,7 +19,7 @@ export class DataEvaluationService {
   constructor(
     private dbService: DbService,
     private appEventService: AppEventService,
-    private templateService: TemplateService
+    private templateFieldService: TemplateFieldService
   ) {}
 
   /**
@@ -143,7 +143,7 @@ export class DataEvaluationService {
   ) {
     log("field evaluate", args.field);
     // TODO - ideally this should be a shared method, not related to template service
-    const fieldValue = this.templateService.getField(args.field);
+    const fieldValue = this.templateFieldService.getField(args.field);
     return fieldValue === args.value;
   }
 

@@ -1,49 +1,47 @@
 {
   "name": "scripts",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "bin": {
+    "idapp": "./build/commands.js",
+    "idems-app-scripts": "./build/commands.js"
+  },
+  "main": "src/commands/index.ts",
   "scripts": {
-    "start": "ts-node index.ts",
-    "dev": "ts-node-dev --respawn --watch src/**/*.ts index.ts --",
+    "start": "ts-node src/commands/index.ts",
+    "dev": "ts-node-dev --respawn --watch src/**/*.ts src/commands/index.ts",
     "test": "jasmine-ts",
-    "decrypt-config": "ts-node src/decrypt-config.ts",
-    "encrypt-config": "ts-node src/encrypt-config.ts",
-    "gdrive-auth": "ts-node src/gdrive-download/auth.ts",
-    "gdrive-download": "ts-node src/gdrive-download/index.ts",
-    "resize-android-assets": "ts-node src/resizeAndroidAssets.ts",
-    "plh-data-convert": "ts-node src/plh-data-convert/index.ts",
-    "plh-copy-app-data": "ts-node src/plh-copy-app-data.ts",
-    "sync-plh-content": "npm run gdrive-download && npm run plh-data-convert && npm run plh-copy-app-data",
-    "version": "ts-node  src/version.ts",
-    "xlsx-to-json": "ts-node  src/plh-xlsx-to-json/index.ts",
-    "sync-single": "ts-node src/sync-single.ts"
+    "build": "esbuild src/commands/index.ts --bundle --platform=node --target=node12.22 --outfile=build/commands.js",
+    "pkg": "pkg . --output ./exec/idems-app-scripts"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
+    "@idemsInternational/gdrive-tools": "workspace:*",
+    "@idemsInternational/rapidpro-excel": "workspace:*",
+    "boxen": "^5.0.1",
+    "chalk": "^4.1.0",
+    "commander": "^8.3.0",
+    "data-models": "workspace:*",
     "fs-extra": "^9.0.1",
-    "glob": "^7.1.6",
-    "googleapis": "39",
-    "ncp": "^2.0.0",
+    "glob": "^7.2.0",
+    "inquirer": "^7.3.3",
+    "node-rsa": "^1.1.1",
+    "typescript": "^4.1.2",
     "xlsx": "^0.16.6"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.4",
     "@types/inquirer": "^7.3.1",
-    "@types/sharp": "0.28.3",
-    "boxen": "^5.0.1",
-    "chalk": "^4.1.0",
-    "data-models": "1.0.0",
-    "inquirer": "^7.3.3",
-    "inquirer-autocomplete-prompt": "^1.3.0",
+    "@types/node-rsa": "^1.1.1",
+    "esbuild": "^0.14.2",
     "jasmine": "^3.6.3",
     "jasmine-ts": "^0.3.2",
-    "log-update": "^4.0.0",
-    "sharp": "0.28.3",
+    "pkg": "^5.5.1",
     "ts-node": "~7.0.0",
-    "ts-node-dev": "^1.0.0",
-    "typescript": "^4.1.2"
+    "ts-node-dev": "^1.0.0"
   }
 }

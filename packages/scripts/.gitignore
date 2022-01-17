@@ -2,4 +2,5 @@
 config/*
 !config/public.key
 !config/*.enc
-logs
+build
+exec

@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { FlowTypes } from "data-models";
 
-import * as data from "plh-data";
+import * as data from "app-data";
+import { getNestedProperty } from "../../utils";
 
 export const COMPLETION_LIST = data.completion_list;
 export const CONVERSATION = data.conversation;
@@ -83,6 +84,12 @@ export class PLHDataService {
       });
     });
     return dataLists;
+  }
+
+  public; /** Get the value of a data_list item as defined within templates */
+  getDataListByPath(path: string) {
+    const data = getNestedProperty(this.dataLists, path);
+    return data;
   }
 
   /** Simple function to create a hashmap of all flows by name */

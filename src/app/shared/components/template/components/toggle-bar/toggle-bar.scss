@@ -1,66 +1,39 @@
+$toggleHeight: 22px;
+$toggleWidth: 42px;
+$togglePadding: 12px;
+
 ion-toggle {
-  --background: #b4b7b7;
-  width: 42px;
-  height: 22px;
+  width: $toggleWidth;
+  height: $toggleHeight;
 }
 
 ion-toggle {
   --background: #b4b7b7;
+  --handle-spacing: 2px;
   --background-checked: var(--ion-color-primary, "darkblue");
   --handle-background: var(--ion-item-background, #fefefe);
-  --handle-background-checked: var(--ion-item-background, #fefefe);
+  --handle-background-checked: #fff;
+  --padding-inline: $togglePadding;
 }
 
-ion-toggle {
-  --handle-spacing: 2px;
-}
-
-.with_icons {
-  ion-toggle.toggle-checked::before {
+.show-tick-cross {
+  $iconPadding: 3px;
+  ion-toggle[aria-checked="true"]::before,
+  ion-toggle[aria-checked="false"]::after {
     position: absolute;
-    left: 16px;
-    top: 16px;
-    right: auto;
+    top: $togglePadding + $iconPadding;
+    left: $togglePadding + $iconPadding;
+    color: white;
+    z-index: 1;
     content: " ";
-    background-size: 14px 14px;
-    height: 16px;
-    width: 16px;
-    color: white;
-    background-image: url(../../../../../../../src/assets/icon/shared/tick.svg);
-    font-size: 20px;
-    z-index: 1;
-    font-weight: 500;
+    width: $toggleWidth - 2 * $iconPadding;
+    height: $toggleHeight - 2 * $iconPadding;
   }
-
-  ion-toggle.toggle-checked::after {
-    position: absolute;
-    left: auto;
-    top: 16px;
-    right: 14px;
-    background-size: 14px 14px;
-    height: 16px;
-    width: 16px;
-    color: white;
-    background-image: none;
-    font-size: 20px;
-    z-index: 1;
-    font-weight: 500;
+  ion-toggle[aria-checked="true"]::before {
+    background: url(/assets/icon/shared/tick.svg) no-repeat left / contain;
   }
-
-  ion-toggle::after {
-    position: absolute;
-    left: auto;
-    top: 16px;
-    right: 14px;
-    content: " ";
-    background-size: 14px 14px;
-    height: 16px;
-    width: 16px;
-    color: white;
-    background-image: url(../../../../../../../src/assets/icon/shared/cross.svg);
-    font-size: 20px;
-    z-index: 1;
-    font-weight: 500;
+  ion-toggle[aria-checked="false"]::after {
+    background: url(/assets/icon/shared/cross.svg) no-repeat right / contain;
   }
 }
 

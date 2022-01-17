@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FlowTypes } from "../../../../model";
 import { ModalController } from "@ionic/angular";
-import { ComboBoxModalComponent } from "../../../common/components/combo-box-modal/combo-box-modal.component";
+import { ComboBoxModalComponent } from "./combo-box-modal/combo-box-modal.component";
 import {
   getBooleanParamFromTemplateRow,
   getParamFromTemplateRow,
@@ -76,7 +76,7 @@ export class TmplComboBoxComponent
   async openModal() {
     const modal = await this.modalController.create({
       component: ComboBoxModalComponent,
-      cssClass: "my-custom-modal",
+      cssClass: "combo-box-modal",
       componentProps: {
         row: this._row,
         template: this.template,

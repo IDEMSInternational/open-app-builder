@@ -1,5 +1,7 @@
 # Parenting App UI
 
+[Online Documentation](https://idemsinternational.github.io/parenting-app-ui/)
+
 # Quickstart
 
 ## Prequisites
@@ -32,6 +34,15 @@ $ yarn install
 Note - you may have to do this from time to time when content is updated)
 
 ## Configuration
+### Set Deployment
+The app supports using different workspace or deployment configurations. These are stored in [.idems_app/deployments](./.idems_app/deployments)
+
+An initial deployment should be specified via the command
+```
+npm run scripts deployment set
+```
+
+### Firebase
 To be able to run the full project a specific configuration file needs to be included to access
 the online database and authentication methods.
 ```
@@ -52,8 +63,8 @@ This will start a local server and serve the app in your browser on http://local
 
 # For Content Coders
 
-Please see [Quickstart Authors](/documentation/quickstart-authors.md)
+Please see [Quickstart Authors](https://idemsinternational.github.io/parenting-app-ui/developers/quickstart/)
 
 # For Developers
 
-Please see [Quickstart Developers](/documentation/quickstart-developers.md)
+Please see [Quickstart Developers]([/documentation/quickstart-developers.md](https://idemsinternational.github.io/parenting-app-ui/authors/quickstart/))

@@ -20,7 +20,7 @@ import {
 import { takeUntil } from "rxjs/operators";
 import { ReplaySubject } from "rxjs";
 import { TemplateService } from "../../services/template.service";
-import { getImageAssetPath, objectToArray } from "../../utils/template-utils";
+import { objectToArray } from "../../utils/template-utils";
 
 interface IButton {
   name: string | null;
@@ -46,20 +46,11 @@ export class TmplRadioGroupComponent
   radioButtonType: string | null;
   options_per_row: number = 2;
   windowWidth: number;
-  scaleFactor: number = 1;
   style: string;
   destroy$ = new ReplaySubject(1);
   imageCheckedColor = "#0D3F60";
   flexWidth: string;
   checkIfContainsStyleParameter: boolean = false;
-  @HostListener("window:resize", ["$event"]) onResize(event) {
-    this.windowWidth = event.target.innerWidth;
-    this.getScaleFactor();
-  }
-
-  @HostBinding("style.--scale-factor") get scale() {
-    return this.scaleFactor;
-  }
 
   constructor(private templateService: TemplateService) {
     super();
@@ -67,17 +58,8 @@ export class TmplRadioGroupComponent
 
   ngOnInit() {
     this.getParams();
-    this.getScaleFactor();
     this.setAutoBackground();
     this.checkTheme();
-  }
-
-  getScaleFactor(): number {
-    this.scaleFactor =
-      this.windowWidth / (150 * this.options_per_row) > 1
-        ? 1
-        : this.windowWidth / ((120 + 20) * this.options_per_row);
-    return this.scaleFactor;
   }
 
   getParams() {
@@ -161,10 +143,10 @@ export class TmplRadioGroupComponent
     Object.entries(button).forEach(([field, value]) => {
       switch (field) {
         case "image":
-          processed[field] = getImageAssetPath(value);
+          processed[field] = value;
           break;
         case "image_checked":
-          processed[field] = getImageAssetPath(value);
+          processed[field] = value;
           break;
         default:
           processed[field] = value;

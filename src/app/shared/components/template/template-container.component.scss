@@ -1,57 +1,15 @@
 @import "../../../../theme/mixins.scss";
 
-:host ::ng-deep {
-  @include flex-centered;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+//   &.passive {
+//     background-color: var(--theme-var-templatePassiveBg, #e1f2fd);
+//   }
 
-  h1 {
-    p {
-      margin: 0;
-    }
-  }
-}
-plh-template-container {
-  width: 100%;
-}
-// Do not attempt to show components that do not have a display component
-// and do not have child rows (e.g. set_variable)
-plh-template-component[data-display-component="none"]:not([has-child-rows]) {
-  display: none;
-}
-.template-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  &.passive {
-    background-color: var(--theme-var-templatePassiveBg, #e1f2fd);
-  }
-
-  &.active {
-    background-color: var(--theme-var-templateActiveBg, #fff6d6);
-  }
-}
-.template-container[data-debug="true"] {
-  overflow: auto;
-}
-
-.debug-container {
-  display: flex;
-  align-items: center;
-}
+//   &.active {
+//     background-color: var(--theme-var-templateActiveBg, #fff6d6);
+//   }
+// }
 
 .debug-name {
   padding: 4px;
   font-size: small;
-}
-
-.plh-tmpl-comp[data-debug="true"] {
-  display: block;
-  border: 1px solid #c7c7c7;
-  padding: 2px;
-  margin: 2px;
 }
