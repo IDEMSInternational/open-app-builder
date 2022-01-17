@@ -22,6 +22,8 @@ services:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
       # - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./config/nginx/conf:/etc/nginx/conf
+      - /root/certs-data/:/data/letsencrypt/
+      - /etc/letsencrypt/:/etc/letsencrypt/
       # NOTE - the bind volumes directly from motomo (could be another service)
   ####################################################################
   # IDEMS Apps API
@@ -29,10 +31,11 @@ services:
   api:
     container_name: api
     restart: unless-stopped
-    build:
-      context: ../../api
-      dockerfile: Dockerfile
-      target: prod-env
+    # TODO - possibly better to build first or push to docker hub
+    # build:
+    #   context: ../../api
+    #   dockerfile: Dockerfile
+    #   target: prod-env
     image: idems/apps-api:latest
     env_file:
       - ../../api/.env
