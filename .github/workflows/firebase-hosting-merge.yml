@@ -2,7 +2,7 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on merge
-'on':
+"on":
   push:
     branches:
       - master
@@ -18,10 +18,13 @@ jobs:
         with:
           node-version: 12.x
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-node-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ./.yarn/cache
+          # If cachebusting required (e.g. breaking yarn changes on update) change `v1` to another number
+          key: ${{ runner.os }}-node-modules-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1-
       - name: Populate firebaseConfig.ts
         env:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
@@ -30,10 +33,10 @@ jobs:
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
           projectId: plh-teens-app1
           channelId: live
-          target: app 
+          target: app
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

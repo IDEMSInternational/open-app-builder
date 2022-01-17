@@ -2,67 +2,63 @@ import { Component } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { FlowTypes } from "data-models";
 import { hackAddRowWithDefaultActions } from "../../hacks";
-import { TemplateService } from "../../services/template.service";
 import { TemplateLayoutComponent } from "./layout";
+import { TemplateFieldService } from "../../services/template-field.service";
 
 @Component({
   selector: "plh-tmpl-nav-group",
   animations: PLHAnimations.fadeEntryExit,
-  template: `<div class="nav-group">
+  template: `
     <div class="nav-progress">
       <div
         *ngFor="let templateName of templateNames; index as i"
         class="nav-progress-part"
-        [ngClass]="{ seen: i <= sectionIndex }"
+        [attr.data-seen]="i <= sectionIndex ? true : null"
         (click)="goToSection(i)"
       ></div>
     </div>
-    <ng-template ngFor let-i="index" let-templateName [ngForOf]="templateNames">
-      <div class="nav-section" [class.selected]="sectionIndex === i">
-        <div *ngIf="sectionIndex === i" @fadeEntryExit>
-          <plh-template-container
-            [name]="templateName"
-            [templatename]="templateName"
-            [parent]="parent"
-            [row]="containerRow"
-          >
-          </plh-template-container>
-        </div>
-      </div>
-    </ng-template>
-  </div>`,
+    <!-- Render placeholders for each section but omit content -->
+    <div
+      *ngFor="let templateName of templateNames; index as i"
+      class="nav-section"
+      [attr.data-selected]="sectionIndex === i ? true : null"
+    >
+      <plh-template-container
+        *ngIf="sectionIndex === i"
+        [name]="templateName"
+        [templatename]="templateName"
+        [parent]="parent"
+        [row]="containerRow"
+        @fadeEntryExit
+      >
+      </plh-template-container>
+    </div>
+  `,
   styles: [
     `
       :host {
-        width: 100%;
-        height: 100%;
-      }
-      .slide {
-        width: 95vw;
-      }
-      .nav-group {
-        height: calc(100% - 27px);
-      }
-      .nav-buttons {
-        width: 100%;
+        flex: 1;
         display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
       }
-
-      .selected {
-        height: 100%;
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        /* sections not active are kept off-screen to avoid content height jump */
+        right: 100vw;
       }
-
+      .nav-section[data-selected] {
+        flex: 1;
+        right: unset;
+      }
       .nav-progress {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        padding: var(--small-padding) 0;
+        padding: 1em 0;
       }
-      .nav-section :nth-child(1) {
-        height: 100%;
-      }
+
       .nav-progress-part {
         height: 7px;
         flex: 1;
@@ -72,13 +68,8 @@ import { TemplateLayoutComponent } from "./layout";
         max-width: 40px;
       }
 
-      .nav-progress-part.seen {
+      .nav-progress-part[data-seen] {
         background-color: var(--ion-primary-color, #f88923);
-      }
-
-      ion-button {
-        --border-radius: 20px;
-        --background: linear-gradient(to bottom, #ffb833 28.12%, #f88923 100%);
       }
     `,
   ],
@@ -86,10 +77,11 @@ import { TemplateLayoutComponent } from "./layout";
 export class NavGroupComponent extends TemplateLayoutComponent {
   templateNames: string[] = [];
   sectionIndex: number;
+
   /** Temp row to pass emit completed/uncompleted actions to parent */
   containerRow = hackAddRowWithDefaultActions();
 
-  constructor(private templateService: TemplateService) {
+  constructor(private templateFieldService: TemplateFieldService) {
     super();
   }
 
@@ -100,8 +92,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
       // only set the active section the first time value received
       // (handle via goToSection method internally for other cases)
       if (!this.sectionIndex) {
-        const defaultIndex = this.getActiveSectionIdx(row.parameter_list.progress_field);
-        this.sectionIndex = defaultIndex;
+        this.sectionIndex = this.getActiveSectionIdx(row?.parameter_list?.progress_field);
       }
     }
     return row;
@@ -118,7 +109,7 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     }
     if (action_id === "emit" && args[0] === "uncompleted") {
       if (this.sectionIndex > 0) {
-        this.goToSection(this.sectionIndex - 1);
+        this.goToSection(this.sectionIndex - 1).then();
         return false;
       }
     }
@@ -126,18 +117,26 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     return true;
   }
 
+  /**
+   * Function that will return Current Slider Index
+   * @param progressField
+   */
   getActiveSectionIdx(progressField: string): number {
     let result: number;
-    const currentProgress = this.templateService.getField(progressField);
+    const currentProgress = this.templateFieldService.getField(progressField);
     if (+currentProgress === 100) {
       result = 0;
-      this.templateService.setField(progressField, `${result}`);
+      this.templateFieldService.setField(progressField, `${result}`);
       return result;
     }
     result = Math.floor((currentProgress * this.templateNames.length) / 100 - 1);
     return result > 0 ? result : 0;
   }
 
+  /**
+   * Function that will move forward or back to Section
+   * @param index
+   */
   async goToSection(index: number) {
     this.sectionIndex = index;
     this.scrollToTop();
@@ -145,23 +144,42 @@ export class NavGroupComponent extends TemplateLayoutComponent {
     await this.updateSectionProgress();
   }
 
+  /**
+   * Function to Update Progress of Stepper
+   */
   async updateSectionProgress() {
     //update the field provided in progress_variable to be equal to the max of it's current value
     //and the percentage of this.sectionIndex from this.templateNames.length. the value should
     //be an integer between 0 and 100 inclusive.
     const progressField = this._row.parameter_list["progress_field"];
+    const progressFieldMaximum = this._row.parameter_list["max_progress_field"];
+
     if (progressField && progressField.indexOf("{{") < 0) {
       const currentPercentDone = Math.ceil(
         ((this.sectionIndex + 1) / this.templateNames.length) * 100
       );
-      const previousPercentDone = Number.parseInt(this.templateService.getField(progressField));
-      let percentDone = currentPercentDone;
-     
+
+      let maximumPercentDone: number;
+
+      let currentMaximumPercentDone: number = Number.parseInt(
+        this.templateFieldService.getField(progressFieldMaximum)
+          ? this.templateFieldService.getField(progressFieldMaximum)
+          : currentPercentDone
+      );
+
+      maximumPercentDone = Math.max(currentPercentDone, currentMaximumPercentDone);
+
       await this.parent.handleActions(
         [
           {
             action_id: "set_field",
-            args: [progressField, "" + percentDone],
+            args: [progressField, "" + currentPercentDone],
+            trigger: "completed",
+            _triggeredBy: this._row,
+          },
+          {
+            action_id: "set_field",
+            args: [progressFieldMaximum, "" + maximumPercentDone],
             trigger: "completed",
             _triggeredBy: this._row,
           },

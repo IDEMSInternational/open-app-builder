@@ -3,9 +3,9 @@ import { Router } from "@angular/router";
 
 import introJs from "intro.js";
 import { TOUR } from "../data/data.service";
-import { TemplateService } from "../../components/template/services/template.service";
 import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
 import { FlowTypes } from "packages/data-models/dist";
+import { TemplateFieldService } from "../../components/template/services/template-field.service";
 
 @Injectable({
   providedIn: "root",
@@ -17,7 +17,7 @@ export class TourService {
 
   constructor(
     private router: Router,
-    private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private translateService: TemplateTranslateService
   ) {}
 
@@ -38,6 +38,7 @@ export class TourService {
         buttonClass: "buttonClass",
         nextLabel: this.translateService.translateValue("Next"),
         prevLabel: this.translateService.translateValue("Previous"),
+        doneLabel: this.translateService.translateValue("Done"),
         steps: matchingTour.rows.map((row) => {
           // HACK - Ensure tour rows translated
           const translatedRow: FlowTypes.TourStep = this.translateService.translateRow(
@@ -126,24 +127,27 @@ export class TourService {
     if (globalVariables) {
       for (let i of globalVariables) {
         const name = i.split(".");
-        field = field.replace(i, this.templateService.getGlobal(name[1]));
+        field = field.replace(i, this.templateFieldService.getGlobal(name[1]));
       }
     }
     if (imageTags) {
-      for (let i of imageTags) {
-        const imgSrcExp = new RegExp(/src=".*?"/g);
-        const src = i.match(imgSrcExp);
-        const finallySrc = i.replace(
-          src,
-          `src="/assets/plh_assets/${src[0]
-            .split("=")[1]
-            .split("")
-            .filter((v) => v !== '"')
-            .join("")
-            .replace("//", "/")}"`
-        );
-        field = field.replace(i, finallySrc);
-      }
+      console.error("Tour images not currently supported", imageTags);
+      // TODO - use templateAssetService to convert (not currently implemented)
+      // console.log('imageTags')
+      // for (let i of imageTags) {
+      //   const imgSrcExp = new RegExp(/src=".*?"/g);
+      //   const src = i.match(imgSrcExp);
+      //   const finallySrc = i.replace(
+      //     src,
+      //     `src="${src[0]
+      //       .split("=")[1]
+      //       .split("")
+      //       .filter((v) => v !== '"')
+      //       .join("")
+      //       .replace("//", "/")}"`
+      //   );
+      //   field = field.replace(i, finallySrc);
+      // }
     }
     return field;
   }

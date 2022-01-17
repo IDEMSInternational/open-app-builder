@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, Input } from "@angular/core";
-import { addDays } from "@fullcalendar/common";
+import { addDays } from "date-fns";
 import { ModalController } from "@ionic/angular";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
 import { FlowTypes } from "src/app/shared/model";
 import { AppEventService } from "src/app/shared/services/app-events/app-events.service";
 import {
@@ -10,6 +9,7 @@ import {
 } from "src/app/shared/services/data/data-evaluation.service";
 import { DbService } from "src/app/shared/services/db/db.service";
 import { generateTimestamp } from "src/app/shared/utils";
+import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 
 @Component({
   template: `<ion-header>
@@ -86,7 +86,7 @@ export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
   dbData: IDataEvaluationCache;
   constructor(
     public modalCtrl: ModalController,
-    private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private dataEvaluationService: DataEvaluationService,
     private appEvents: AppEventService,
     private dbService: DbService
@@ -108,7 +108,7 @@ export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
       value = null;
     }
     // set contact field (make sure string as bool won't work for indexes in dexie)
-    await this.templateService.setField(field, value);
+    await this.templateFieldService.setField(field, value);
 
     // If firstdate specified, db operation - remove existing entries, create new
     // Note - value should not be cast to boolean as we want to query later and bools can't be used for indexes
@@ -218,7 +218,8 @@ export class CampaignDebugVariablesEditorComponent implements AfterViewInit {
     // retrieve local storage keys in the same way they would be populated in a template
     const fields = {};
     Object.keys(localStorage).forEach(
-      (key) => (fields[key] = this.templateService.getField(key.replace("rp-contact-field.", "")))
+      (key) =>
+        (fields[key] = this.templateFieldService.getField(key.replace("rp-contact-field.", "")))
     );
     return fields;
   }
