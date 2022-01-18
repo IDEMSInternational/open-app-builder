@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { interval } from "packages/api/node_modules/rxjs";
+import { SERVER_SYNC_FREQUENCY_MS } from "packages/data-models";
 import {
   DB_SERVER_MAPPING,
   IDBMeta,
@@ -7,6 +9,7 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
+import { environment } from "src/environments/environment";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
 
@@ -19,11 +22,20 @@ import { DbService } from "./db.service";
  * - 2-way sync (possibly via sync protocol)
  */
 export class DBSyncService {
+  private syncSchedule = interval(SERVER_SYNC_FREQUENCY_MS);
   constructor(
     private dbService: DbService,
     private http: HttpClient,
     private userMetaService: UserMetaService
-  ) {}
+  ) {
+    // Automatically sync data periodically
+    if (environment.production) {
+      this.syncToServer();
+      this.syncSchedule.subscribe(() => {
+        this.syncToServer();
+      });
+    }
+  }
 
   /** sync local tables to server */
   public async syncToServer() {
