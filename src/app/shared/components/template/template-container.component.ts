@@ -44,7 +44,7 @@ export class TemplateContainerComponent implements OnInit, OnDestroy, ITemplateC
   @Input() parent?: TemplateContainerComponent;
   @Input() row?: FlowTypes.TemplateRow;
   /** Allow parents to also see emitted value (note - currently responding to emit is done in service, not output bindings except for ) */
-  @Output() emittedValue = new EventEmitter<string>();
+  @Output() emittedValue = new EventEmitter<{ emit_value: string; emit_data: any }>();
   /** Query params are used for trigger template actions such as opening popups or enabling debug_mode. Ignored if required (e.g. app sidemenu template) */
   @Input() ignoreQueryParamChanges?: boolean;
   children: { [name: string]: TemplateContainerComponent } = {};

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -35,6 +35,7 @@ export class AppComponent {
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+
   constructor(
     private platform: Platform,
     private menuController: MenuController,
@@ -116,7 +117,9 @@ export class AppComponent {
     for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
       switch (initAction.type) {
         case "template_popup":
-          await this.templateService.runStandaloneTemplate(initAction.value);
+          await this.templateService.runStandaloneTemplate(initAction.value, {
+            showCloseButton: false,
+          });
           break;
         case "tour_start":
           await this.tourService.startTour(initAction.value);

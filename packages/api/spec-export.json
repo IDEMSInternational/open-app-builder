@@ -3,7 +3,7 @@
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.0",
+    "version": "1.1",
     "contact": {}
   },
   "tags": [
@@ -14,7 +14,7 @@
   ],
   "servers": [
     {
-      "url": "//api/"
+      "url": ""
     }
   ],
   "components": {
@@ -54,6 +54,32 @@
           "contact_fields",
           "app_version",
           "device_info"
+        ]
+      },
+      "UserFeedbackDto": {
+        "type": "object",
+        "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_user_record_id": {
+            "type": "number",
+            "description": "Local ID for local db record"
+          },
+          "data": {
+            "description": "Feedback entry",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          }
+        },
+        "required": [
+          "app_user_id",
+          "app_user_record_id",
+          "data"
         ]
       },
       "STRING": {
@@ -121,7 +147,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "Users"
+        ]
       }
     },
     "/app_users/{app_user_id}": {
@@ -142,7 +171,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "Users"
+        ]
       },
       "post": {
         "operationId": "AppUsersController_setUserData",
@@ -178,7 +210,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Users"
+        ]
       }
     },
     "/contact_fields": {
@@ -190,7 +225,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "Contact Fields"
+        ]
       }
     },
     "/contact_fields/{app_user_id}": {
@@ -219,7 +257,55 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Contact Fields"
+        ]
+      }
+    },
+    "/app_feedback": {
+      "get": {
+        "operationId": "AppFeedbackController_findAll",
+        "summary": "List all feedback",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      },
+      "post": {
+        "operationId": "AppFeedbackController_addUserFeedback",
+        "summary": "Add feedback entry",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserFeedbackDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Feedback Added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFeedbackDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
       }
     },
     "/tables": {
@@ -241,7 +327,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "DB Tables"
+        ]
       }
     },
     "/tables/{table_name}": {
@@ -253,7 +342,10 @@
           "200": {
             "description": ""
           }
-        }
+        },
+        "tags": [
+          "DB Tables"
+        ]
       }
     },
     "/tables/{table_name}/columns": {
@@ -282,7 +374,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "DB Tables"
+        ]
       },
       "post": {
         "operationId": "TablesController_addMappedTableColumns",
@@ -309,7 +404,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "DB Tables"
+        ]
       },
       "delete": {
         "operationId": "TablesController_removeMappedTableColumns",
@@ -336,7 +434,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "DB Tables"
+        ]
       }
     }
   }

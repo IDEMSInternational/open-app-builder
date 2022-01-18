@@ -10,7 +10,8 @@ import { getStringParamFromTemplateRow } from "src/app/shared/utils";
 })
 export class TmplTextAreaComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   public placeholder: string;
 
   constructor() {

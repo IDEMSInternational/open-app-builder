@@ -39,6 +39,10 @@ const FeatureRoutes: Routes = [
     path: "tour/:tourName",
     component: TourComponent,
   },
+  {
+    path: "feedback",
+    loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
+  },
 ];
 
 @NgModule({
