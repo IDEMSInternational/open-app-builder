@@ -37,7 +37,7 @@ export class TemplateRowService extends TemplateInstanceService {
   private templateVariablesService: TemplateVariablesService;
   private templateTranslateService: TemplateTranslateService;
   private templateFieldService: TemplateFieldService;
-  constructor(public container: TemplateContainerComponent, injector: Injector) {
+  constructor(injector: Injector, public container: TemplateContainerComponent) {
     super(injector);
     this.templateVariablesService = this.getGlobalService(TemplateVariablesService);
     this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
