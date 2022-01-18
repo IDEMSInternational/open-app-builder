@@ -173,7 +173,7 @@ export class TemplateActionService extends TemplateInstanceService {
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
-        const { parent, row, name, template, templatename } = container;
+        const { parent, row, name, template, templatename } = container || ({} as any);
         console.log("[EMIT]", `${name || templatename}:${emit_value}`);
         if (emit_value === "completed") {
           // write completions to the database for data tracking
@@ -213,7 +213,7 @@ export class TemplateActionService extends TemplateInstanceService {
           }
         }
         // Emit value so manual container bindings can also track (e.g. closing modal in popup from runStandaloneTemplate method)
-        this.container.emittedValue.next({ emit_value, emit_data });
+        this.container?.emittedValue.next({ emit_value, emit_data });
         break;
       default:
         console.warn("[W] No handler for action", { action_id, args });
