@@ -146,10 +146,13 @@ class GDriveDownloader {
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
     const { cachePath } = this.options;
     // also add a relativePath for full path to local file
-    const filesWithRelativePath = files.map((f) => ({
-      ...f,
-      relativePath: getRelativeLocalPath(f),
-    }));
+    const filesWithRelativePath = files
+      .map((f) => ({
+        ...f,
+        relativePath: getRelativeLocalPath(f),
+      }))
+      // only include files downloaded in contents
+      .filter((f) => fs.existsSync(path.resolve(cachePath, f.relativePath)));
     const contents = JSON.stringify(filesWithRelativePath, null, 2);
     const contentsPath = path.resolve(cachePath, this.options.contentsFileName);
     fs.writeFileSync(contentsPath, contents);
