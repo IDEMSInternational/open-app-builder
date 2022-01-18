@@ -36,7 +36,7 @@ services:
     #   context: ../../api
     #   dockerfile: Dockerfile
     #   target: prod-env
-    image: idems/apps-api:latest
+    image: idems/apps-api:1.0.1
     env_file:
       - ../../api/.env
     environment:
@@ -79,17 +79,17 @@ services:
   pgadmin:
     image: dpage/pgadmin4:6
     container_name: plh_pg_admin
-    restart: unless-stopped 
+    restart: unless-stopped
     env_file:
       - ../.env
     volumes:
-       - pgadmin:/var/lib/pgadmin
+      - pgadmin:/var/lib/pgadmin
     ports:
       # expose on port 5050 to allow easier connect on docker for windows
       - 5050:80
     networks:
       - db_network
-      - webserver_network       
+      - webserver_network
   ####################################################################
   # Adminer DB Admin
   # Works with both Postgres and MariaDB
@@ -131,6 +131,24 @@ services:
       - MB_DB_DBNAME=metabase
       - MB_DB_PORT=5432
       - MB_DB_HOST=db
+  ####################################################################
+  # N8N automation triggers
+  # Note - will run on exposed port (can't get reverse proxy working, notes in readme)
+  ####################################################################
+  triggers:
+    image: n8nio/n8n:0.158.0
+    container_name: plh_triggers
+    restart: unless-stopped
+    volumes:
+      - triggers:/home/node/.n8n
+    env_file:
+      - ../.env
+    ports:
+      - 5678:5678
+    networks:
+      - db_network
+      - webserver_network
+      - analytics_network
   ####################################################################
   # Analytics (DB, Matomo App, Webserver)
   # NOTE - requires run after any clean install (TBC - might not be needed anymore)
@@ -196,6 +214,7 @@ volumes:
   matomo_www:
   nginx_secrets:
   pgadmin:
+  triggers:
 # NOTE - networks aren't actually required unless we used multiple docker-compose files
 networks:
   db_network:
