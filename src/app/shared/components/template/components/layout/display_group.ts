@@ -11,7 +11,7 @@ import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "..
     [attr.data-rowname]="_row.name"
     [style.marginBottom.px]="params.offset"
     [ngSwitch]="type"
-    [style]="_row.style_list | stylesList"
+    [style]="_row.style_list | styleList"
   >
     <!-- Default Layout -->
     <ng-container *ngSwitchDefault>
