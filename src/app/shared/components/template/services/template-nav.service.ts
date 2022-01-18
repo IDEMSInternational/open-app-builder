@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
-import { TemplatePopupComponent } from "../components/layout/popup";
+import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
@@ -26,6 +26,15 @@ export class TemplateNavService {
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  /**
+   * Track list of modals created. As we can navigate repeatedly to the same page we want to avoid recreating same modals
+   * We also want to retain modal open state following circular navigate (a->b->c->a), so by default we leave modals opened
+   * unless specifically closed (e.g. nav triggered from modal)
+   */
+  private openPopupsByName: {
+    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
+  } = {};
 
   public async handleQueryParamChange(
     params: INavQueryParams,
@@ -196,7 +205,7 @@ export class TemplateNavService {
   ) {
     const { popup_child, nav_child_emit, popup_parent_triggered_by } = params;
     const { template } = container;
-    const existingPopup = await this.modalCtrl.getTop();
+    const existingPopup = this.openPopupsByName[popup_child];
     log("[Popup] - parent", { params, parent: container.name });
 
     // process any actions triggered by nav from the popup
@@ -210,17 +219,17 @@ export class TemplateNavService {
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
           await container.templateActionService.handleActions(emittedActions, triggerRow);
-          await this.modalCtrl.dismiss(nav_child_emit);
+          await this.dismissPopup(popup_child, nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there
         // is a trigger for the alternate completed/uncompleted event (otherwise dismiss)
         // - confusing logic I know!
         else {
           if (!actionsByTrigger["completed"] && !actionsByTrigger["uncompleted"]) {
-            await this.modalCtrl.dismiss(nav_child_emit);
+            await this.dismissPopup(popup_child, nav_child_emit);
           } else {
             // ensure popup visible if previously put behind on navigated template
-            existingPopup.classList.remove("hide-popup-on-template");
+            existingPopup.modal.classList.remove("hide-popup-on-template");
           }
         }
       }
@@ -243,20 +252,29 @@ export class TemplateNavService {
     container: TemplateContainerComponent
   ) {
     const childTemplateModal = await this.createChildPopupModal(popup_child, container);
-    await childTemplateModal.present();
-    const { data } = await childTemplateModal.onDidDismiss();
-    log("dismissed", data);
-    // clear both popup and query params
-    const queryParams: INavQueryParams = {
-      popup_child: null,
-      popup_parent: null,
-      popup_parent_triggered_by: null,
-      nav_child_emit: null,
-      nav_child: null,
-      nav_parent: null,
-      nav_parent_triggered_by: null,
-    };
-    this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    if (childTemplateModal) {
+      await childTemplateModal.present();
+      const { data } = await childTemplateModal.onDidDismiss();
+      // remove reference to popup (will be auto removed if dismissed programatically, but not by background dismiss)
+      if (this.openPopupsByName[popup_child]) {
+        delete this.openPopupsByName[popup_child];
+      }
+      log("dismissed", data);
+      // clear any existing popup query params on dismiss
+      const queryParams: INavQueryParams = {
+        popup_child: null,
+        popup_parent: null,
+        popup_parent_triggered_by: null,
+      };
+      this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    }
+  }
+  private async dismissPopup(name: string, data: any = undefined) {
+    const existingPopup = this.openPopupsByName[name];
+    if (existingPopup) {
+      await existingPopup.modal.dismiss(data);
+      delete this.openPopupsByName[name];
+    }
   }
 
   /** Popups persist nav operations, so also need to handle from top-level templates that are not the parent */
@@ -265,29 +283,39 @@ export class TemplateNavService {
     container: TemplateContainerComponent
   ) {
     // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
-    const existingPopup = await this.modalCtrl.getTop();
-    if (existingPopup?.id === `popup-${params.popup_child}`) {
-      existingPopup.classList.add("hide-popup-on-template");
+    const { popup_child } = params;
+    const existingPopup = this.openPopupsByName[popup_child];
+    if (existingPopup) {
+      existingPopup.modal.classList.add("hide-popup-on-template");
     } else {
       this.createPopupAndWaitForDismiss(params.popup_child, container);
     }
   }
 
   private async createChildPopupModal(popup_child: string, container: TemplateContainerComponent) {
-    const childContainerProps: ITemplateContainerProps = {
+    const childContainerProps: ITemplatePopupComponentProps = {
       // make the popup share the same name as the container so that nav events return to parent container page
       name: popup_child,
       templatename: popup_child,
       parent: container,
     };
-    return this.modalCtrl.create({
+    // If trying to recreate a popup that already exists simply mark as visible
+    const existingPopup = this.openPopupsByName[popup_child];
+    if (existingPopup) {
+      existingPopup.modal.classList.remove("hide-popup-on-template");
+      return;
+    }
+
+    const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
-      componentProps: childContainerProps,
+      componentProps: { props: childContainerProps },
       id: `popup-${popup_child}`,
       // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "template-popup-modal",
       showBackdrop: false,
     });
+    this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
+    return modal;
   }
 }
 

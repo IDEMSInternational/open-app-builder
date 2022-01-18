@@ -44,7 +44,6 @@ import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplLottieAnimation } from "./lottie-animation";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
-import { TmplGroupComponent } from "./layout/group";
 import { SelectTextComponent } from "./select-text/select-text.component";
 import { TemplateHTMLComponent } from "./html/html.component";
 
@@ -88,7 +87,6 @@ export const TEMPLATE_COMPONENTS = [
   TmplDashedBoxComponent,
   TmplParentPointBoxComponent,
   TmplLottieAnimation,
-  TmplGroupComponent,
   SelectTextComponent,
   TemplateHTMLComponent,
 ];
@@ -148,7 +146,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   lottie_animation: TmplLottieAnimation,
   debug_toggle: PLHDebugToggleComponent as any,
   items: null,
-  group: TmplGroupComponent,
   select_text: SelectTextComponent,
   html: TemplateHTMLComponent,
 };
