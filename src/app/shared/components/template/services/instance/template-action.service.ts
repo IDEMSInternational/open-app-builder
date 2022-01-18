@@ -39,7 +39,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private templateFieldService: TemplateFieldService;
   private eventService: EventService;
 
-  constructor(public container: TemplateContainerComponent, injector: Injector) {
+  constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
     this.settingsService = this.getGlobalService(SettingsService);
     this.serverService = this.getGlobalService(ServerService);
@@ -60,7 +60,7 @@ export class TemplateActionService extends TemplateInstanceService {
     unhandledActions.forEach((action) => this.actionsQueue.push({ ...action, _triggeredBy }));
     const res = await this.processActionQueue();
     await this.handleActionsCallback([...unhandledActions], res);
-    if (!this.container.parent) {
+    if (!this.container?.parent) {
       await this.templateNavService.handleNavActionsFromChild(actions, this.container);
     }
   }
@@ -82,7 +82,7 @@ export class TemplateActionService extends TemplateInstanceService {
     const processedActions: FlowTypes.TemplateRowAction[] = [];
     // start the queue if it is not already running
     if (!this.actionsQueueProcessing$.value) {
-      log_group(`Process Actions - ${this.container.name}`, [...this.actionsQueue]);
+      log_group(`Process Actions - ${this.container?.name}`, [...this.actionsQueue]);
       this.actionsQueueProcessing$.next(true);
       while (this.actionsQueue.length > 0) {
         const action = this.actionsQueue[0];
@@ -95,8 +95,8 @@ export class TemplateActionService extends TemplateInstanceService {
     }
     // resolve once full queue processed
     await this.actionsQueueProcessing$.pipe(takeWhile((v) => v === true)).toPromise();
-    // once all actions have been processed re-render rows
-    if (processedActions.length > 0) {
+    // once all actions have been processed re-render rows (ignore if running standalone without container)
+    if (processedActions.length > 0 && this.container) {
       // assume rows might need re-evaluation if actions contain set_field or set_local
       // TODO - further optimise (link to specific row dynamic dependencies)
       const reprocessActions: FlowTypes.TemplateRowAction["action_id"][] = [
@@ -114,7 +114,7 @@ export class TemplateActionService extends TemplateInstanceService {
     args = args.map((arg) => {
       // HACK - update any self referenced values (see note from template.parser method)
       if (arg === "this.value") {
-        arg = this.container.templateRowMap[action._triggeredBy?._nested_name]?.value;
+        arg = this.container?.templateRowMap[action._triggeredBy?._nested_name]?.value;
       }
       return arg;
     });
@@ -145,7 +145,7 @@ export class TemplateActionService extends TemplateInstanceService {
         console.log("[SET FIELD]", key, value);
         return this.templateFieldService.setField(key, value);
       case "set_theme":
-        return this.templateService.setTheme(this.container.template, "set_theme", action.args);
+        return this.templateService.setTheme(this.container?.template, "set_theme", action.args);
       case "start_tour":
         return this.tourService.startTour(key);
       case "feedback": {
@@ -173,7 +173,7 @@ export class TemplateActionService extends TemplateInstanceService {
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
-        const { parent, row, name, template, templatename } = container;
+        const { parent, row, name, template, templatename } = container || ({} as any);
         console.log("[EMIT]", `${name || templatename}:${emit_value}`);
         if (emit_value === "completed") {
           // write completions to the database for data tracking
@@ -184,10 +184,10 @@ export class TemplateActionService extends TemplateInstanceService {
 
         // Handle a forced rerender
         if (emit_value === "force_reload") {
-          await this.container.forceRerender(true);
+          await this.container?.forceRerender(true);
         }
         if (emit_value === "force_reprocess") {
-          await this.container.forceRerender(false);
+          await this.container?.forceRerender(false);
         }
         if (emit_value === "set_language") {
           this.templateTranslateService.setLanguage(args[1]);
@@ -213,7 +213,7 @@ export class TemplateActionService extends TemplateInstanceService {
           }
         }
         // Emit value so manual container bindings can also track (e.g. closing modal in popup from runStandaloneTemplate method)
-        this.container.emittedValue.next({ emit_value, emit_data });
+        this.container?.emittedValue.next({ emit_value, emit_data });
         break;
       default:
         console.warn("[W] No handler for action", { action_id, args });
@@ -226,6 +226,7 @@ export class TemplateActionService extends TemplateInstanceService {
    *
    */
   private setLocalVariable(key: string, value: any) {
+    if (!this.container) return;
     const row_name = key;
     // convert values likely intended as boolean
     if (value === "true") value = true;
@@ -246,7 +247,7 @@ export class TemplateActionService extends TemplateInstanceService {
       console.warn("Setting local variable which does not exist", { key, value }, "TODO");
     }
     // TODO - prompt any rows to re-process if they depend on the value (and other @ types)
-    Object.values(this.container.templateRowService.templateRowMap).forEach((r) => {
+    Object.values(this.container?.templateRowService.templateRowMap).forEach((r) => {
       if (r._dynamicDependencies?.[`@local.${key}`]) {
         // console.warn("[Dynamic Deps] - TODO - handle single row update]", r);
       }
@@ -264,6 +265,7 @@ export class TemplateActionService extends TemplateInstanceService {
    * If multiple rows are found with the same name the least nested will be returned
    */
   private getTemplateRowByName(name: string): FlowTypes.TemplateRow {
+    if (!this.container) return;
     // find any rows where nested path corresponds to match path
     let matchedRows: { row: FlowTypes.TemplateRow; nestedName: string }[] = [];
     Object.entries(this.container.templateRowService.templateRowMap).forEach(
