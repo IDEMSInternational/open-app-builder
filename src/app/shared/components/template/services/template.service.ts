@@ -5,7 +5,7 @@ import { DbService } from "src/app/shared/services/db/db.service";
 import { FlowTypes } from "src/app/shared/model";
 import { BehaviorSubject } from "rxjs";
 import { ModalController } from "@ionic/angular";
-import { TemplatePopupComponent } from "../components/layout/popup";
+import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { TemplateTranslateService } from "./template-translate.service";
 import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
@@ -43,15 +43,27 @@ export class TemplateService {
    * It will not respond to nav actions so is only designed for basic templates
    * TODO - could be better-merged with template-nav service popup creation methods
    */
-  async runStandaloneTemplate(templatename: string) {
+  async runStandaloneTemplate(
+    templatename: string,
+    options: Partial<ITemplatePopupComponentProps> = {}
+  ) {
+    const props: ITemplatePopupComponentProps = {
+      name: templatename,
+      templatename,
+      dismissOnEmit: true, // defaults will be overridden by passed options
+      fullscreen: true,
+      showCloseButton: true,
+      ...options,
+    };
     const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
       cssClass: "template-popup-modal",
-      componentProps: { templatename, standalone: true },
+      componentProps: { props },
     });
     await modal.present();
     const { data } = await modal.onDidDismiss();
-    return data;
+    const emitData: { emit_value?: string; emit_data?: any } = data;
+    return emitData;
   }
 
   /**

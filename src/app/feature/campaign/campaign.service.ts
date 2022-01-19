@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { addDays } from "date-fns";
 import {
   addHours,
@@ -13,8 +13,9 @@ import {
 } from "date-fns";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
-import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
+import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
+import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -50,8 +51,8 @@ export class CampaignService {
   constructor(
     private dataEvaluationService: DataEvaluationService,
     private localNotificationService: LocalNotificationService,
-    private translateService: TemplateTranslateService,
-    private templateFieldService: TemplateFieldService
+    private templateTranslateService: TemplateTranslateService,
+    private injector: Injector
   ) {}
 
   public async init() {
@@ -87,7 +88,7 @@ export class CampaignService {
     for (const notification of this.localNotificationService.sessionNotifications$.value) {
       if (!this._handledNotifications[notification.id]) {
         this._handledNotifications[notification.id] = true;
-        this.triggerRowActions(notification.extra);
+        await this.triggerRowActions(notification.extra);
         // reschedule if actions handled, allow time for notifications to be loaded
         setTimeout(async () => {
           await this.scheduleCampaignNotifications();
@@ -97,21 +98,33 @@ export class CampaignService {
   }
 
   /**
-   *
-   * @param row
-   * TODO - find better way to link with template actions
-   * TODO - find way to identify any named action list (not just click_action_list)
+   * Utilise template services to process campaign actions
    */
-  public triggerRowActions(row: FlowTypes.Campaign_listRow) {
+  public async triggerRowActions(row: FlowTypes.Campaign_listRow) {
     if (row.click_action_list) {
+      // make a dynamic call to TemplateVariablesService as it also has handling
+      // for @campaigns which would otherwise result in cyclic dependency in constructor
+      const templateVariablesService = this.injector.get(TemplateVariablesService);
+
+      // Process any dynamic variables that might be present in args
+      const parsedActions = [];
       for (const action of row.click_action_list) {
-        if (action.action_id === "set_field") {
-          const [key, value] = action.args;
-          this.templateFieldService.setField(key, value);
-        } else {
-          console.error("Only set_field actions supported by debugger");
-        }
+        action.args = await Promise.all(
+          action.args.map(
+            async (arg) => await templateVariablesService.evaluateConditionString(arg)
+          )
+        );
+        parsedActions.push(action);
       }
+
+      // create a standalone service that can process actions in the same way as templates
+      // provides support all action types that do not require a container
+      // e.g. nav actions, setting fields etc. supported, (do not require rendered template container)
+      // e.g. set_local, force_reprocess etc. not supported (require rendered template container)
+      const templateActionService = new TemplateActionService(this.injector);
+
+      // Process via template action service
+      return templateActionService.handleActions(parsedActions);
     }
   }
 
@@ -189,8 +202,8 @@ export class CampaignService {
     let { title, text } = row;
     let { _schedule_at } = notification_schedule;
 
-    title = this.translateService.translateValue(title || NOTIFICATION_DEFAULTS.title);
-    text = this.translateService.translateValue(text || NOTIFICATION_DEFAULTS.text);
+    title = this.templateTranslateService.translateValue(title || NOTIFICATION_DEFAULTS.title);
+    text = this.templateTranslateService.translateValue(text || NOTIFICATION_DEFAULTS.text);
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,

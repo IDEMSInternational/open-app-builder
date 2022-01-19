@@ -28,8 +28,8 @@
       box-shadow: none;
       --ripple-color: transparent;
       img {
-        width: calc(60px * var(--scale-factor-tile));
-        height: calc(60px * var(--scale-factor-tile));
+        width: 60px;
+        height: 60px;
       }
     }
     // Note - CC 2021-12-21 - Currently not in use in any templates, but keeping in case we want
@@ -50,76 +50,44 @@
 
 /***********************************************************************************************
 *     PLH-specific page type stylings
+    TODO - CC 2022-01-13 - Most of this should be reviewed and ideally replaced with more
+    simple components (e.g. display groups)
 ************************************************************************************************/
 .workshop_page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 8rem;
-  height: 7rem;
+  min-height: 7rem;
   border-radius: var(--ion-border-radius-standard);
   border: var(--ion-border-thin-standard);
   background: var(--ion-color-primary-contrast);
   text-align: center;
   padding: var(--tiny-padding);
   box-shadow: var(--ion-default-box-shadow);
-  @media (max-width: 375px) {
-    width: 7rem;
-    height: 6rem;
-    padding: calc(var(--tiny-padding) * var(--scale-factor-tile));
-    &.default_style {
-      min-height: unset;
-    }
-  }
-  @media (max-width: 320px) {
-    width: 6rem;
-    height: 5rem;
-  }
-  @media (max-width: 319px) {
-    max-width: calc(var(--tile-workshop-page-width) * var(--scale-factor-tile));
-    max-height: calc(var(--tile-workshop-page-height) * var(--scale-factor-tile));
-  }
+
   .button-wrapper {
     order: 1;
     width: 100%;
-    @media (max-width: 320px) {
-      width: unset;
-    }
+
     .btn-tile {
       pointer-events: none;
       border: 0;
-      margin-top: 0;
+      margin: 0;
       --border-radius: unset;
       border-radius: unset;
-      width: calc(var(--tile-workshop-page-button-width) * var(--scale-factor-tile));
-      height: calc(100% * var(--scale-factor-tile));
-      @media (max-width: 375px) {
-        height: 4rem;
-      }
-      @media (max-width: 320px) {
-        height: 3rem;
-      }
+      width: 100%;
+      height: 100%;
+
       img {
         width: 6rem;
         height: 4.5rem;
-        @media (max-width: 375px) {
-          width: 5.5rem;
-          height: 4rem;
-        }
-        @media (max-width: 320px) {
-          height: 3.5rem;
-        }
-        @media (max-width: 320px) {
-          max-height: calc(4.5rem * var(--scale-factor-tile));
-        }
       }
     }
   }
   .text {
     order: 2;
     div {
-      font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
-      line-height: calc(var(--line-height-text-tiny) * var(--scale-factor-tile));
       color: var(--ion-color-primary);
     }
   }
@@ -171,7 +139,7 @@
     order: 1;
     height: auto;
     width: 100%;
-    margin-bottom: calc(10px * var(--scale-factor-tile));
+    margin-bottom: 1em;
     .btn-tile {
       pointer-events: none;
       border: 0;
@@ -186,12 +154,8 @@
     }
   }
   .text {
-    //height: 3rem;
-    //overflow-y: scroll;
     order: 2;
     div {
-      font-size: calc(var(--font-size-text-small) * var(--scale-factor-tile));
-      line-height: calc(var(--line-height-text-tiny) * var(--scale-factor-tile));
       color: var(--ion-color-primary);
       text-align: center;
     }
@@ -201,12 +165,6 @@
 .two_columns {
   &.image_text {
     height: 100%;
-    @media (max-width: 375px) {
-      width: 9rem;
-    }
-    @media (max-width: 325px) {
-      width: 8rem;
-    }
   }
 }
 
