@@ -74,9 +74,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release_abb
-          path: android/app/build/outputs/bundle/release
+          path: android/app/build/outputs/bundle/release/app-release.aab
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: debug_apk
-          path: android/app/build/outputs/apk/debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
