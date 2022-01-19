@@ -1,6 +1,6 @@
 # Manually trigger an android build from Github Actions
 
-name: Trigger Android Debug Build
+name: Trigger Android Debug/Signed Build
 on:
   workflow_dispatch:
     inputs:
@@ -8,6 +8,9 @@ on:
         required: true
         description: "Specify branch for build"
         default: "master"
+  push:
+    branches:
+      - actions/trigger-signed-build
 jobs:
   log_build_inputs:
     runs-on: ubuntu-latest
@@ -55,10 +58,22 @@ jobs:
           java-version: 1.8
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - name: Assemble Debug Android APK
+      - name: Build Android Debug APK
         working-directory: android
         run: ./gradlew :app:assembleDebug
-      - name: Upload build artifact
+      - name: Build Android Release Bundle
+        working-directory: android
+        run: ./gradlew :app:bundleRelease
+      - name: Sign Android Release
+        id: sign_aab
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: ./android/app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: outputs
