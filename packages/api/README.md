@@ -9,8 +9,9 @@ The API workspace provides methods to communicate from the frontend app to the b
 
 ## Installation
 
+Install just dependencies required for this workspace
 ```bash
-$ npm install
+$ yarn workspaces focus api
 ```
 
 ## Running the app

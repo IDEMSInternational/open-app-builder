@@ -14,7 +14,9 @@ nav:
   - Authors:
       - authors/quickstart.md
       - authors/notifications.md
+      - authors/feedback.md
       - Advanced:
+          - authors/advanced/looping-data.md
           - authors/advanced/overrides.md
   - Contributors:
       - contributors/adding-documentation.md
