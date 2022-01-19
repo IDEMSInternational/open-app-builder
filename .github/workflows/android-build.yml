@@ -8,9 +8,6 @@ on:
         required: true
         description: "Specify branch for build"
         default: "master"
-  push:
-    branches:
-      - actions/trigger-signed-build
 jobs:
   log_build_inputs:
     runs-on: ubuntu-latest
@@ -76,5 +73,10 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: outputs
-          path: android/app/build/outputs
+          name: release_abb
+          path: android/app/build/outputs/bundle/release
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug_apk
+          path: android/app/build/outputs/apk/debug
