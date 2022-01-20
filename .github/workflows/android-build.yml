@@ -46,7 +46,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Build Angular Project
-        run: npm run build
+        run: yarn build
       - name: Sync Android Files
         run: npx cap sync
       - name: Set up JDK 1.8

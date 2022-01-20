@@ -61,11 +61,11 @@ export default config
 ## Change Deployment
 To set the active deployment for the workspace run the following script:
 ```sh
-npm run scripts deployment set
+yarn scripts deployment set
 ```
 This will present an interactive list of deployments to select from
 
 Alternative a name can be provided to select directly
 ```sh
-npm run scripts deployment set "My Deployment Production"
+yarn scripts deployment set "My Deployment Production"
 ```
