@@ -46,8 +46,8 @@ jobs:
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - name: yarn install
         run: yarn install
-      - name: npm run build
-        run: npm run build
+      - name: yarn build
+        run: yarn build
       - id: upload-files
         name: Upload files to Google Cloud Storage (rsync)
         timeout-minutes: 15
