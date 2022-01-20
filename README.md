@@ -39,7 +39,7 @@ The app supports using different workspace or deployment configurations. These a
 
 An initial deployment should be specified via the command
 ```
-npm run scripts deployment set
+yarn scripts deployment set
 ```
 
 ### Firebase

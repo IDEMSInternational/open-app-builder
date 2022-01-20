@@ -3,11 +3,11 @@
 ## 1. Install all packages
 ``` npm i ```
 ## 2. Before start please run migrations to be sure you have an updated version of DB
-``` npm run migrate ```
+``` yarn migrate ```
 ## 3. Build the project
-``` npm run build ```
+``` yarn build ```
 ## 4. Run server
-``` npm run start ```
+``` yarn start ```
 
 ___
 ## [Migration rules](https://www.npmjs.com/package/postgres-migrations)

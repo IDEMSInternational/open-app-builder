@@ -35,7 +35,7 @@ export function getActiveDeployment(): IDeploymentConfigJson {
   if (!fs.existsSync(defaultJsonPath)) {
     logError({
       msg1: "No default deployment has been specified",
-      msg2: `Run "npm run scripts deployment set" to configure`,
+      msg2: `Run "yarn scripts deployment set" to configure`,
     });
   }
   const deploymentJson: IDeploymentConfigJson = fs.readJsonSync(defaultJsonPath);
@@ -45,7 +45,7 @@ export function getActiveDeployment(): IDeploymentConfigJson {
   if (!fs.existsSync(deploymentTSPath)) {
     logError({
       msg1: `Deployment not found: ${_config_ts_path}`,
-      msg2: `Run "npm run scripts deployment set" to specify a new active deployment`,
+      msg2: `Run "yarn scripts deployment set" to specify a new active deployment`,
     });
   }
 

@@ -29,7 +29,7 @@ Note - this file will only be populated after initial config has been completed 
 2. Use the start script
 ```bash
 # From server directory
-npm run start
+yarn start
 
 # From parent directory
 yarn workspace server start
