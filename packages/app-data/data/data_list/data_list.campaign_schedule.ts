@@ -24,7 +24,7 @@ const data_list: FlowTypes.Data_list[] = [
           minute: 30,
         },
         delay: {
-          days: 7,
+          days: 6,
         },
       },
       {
