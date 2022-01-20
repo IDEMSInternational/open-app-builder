@@ -464,6 +464,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -516,6 +517,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -568,6 +570,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
