@@ -13,7 +13,7 @@ const program = new Command();
 
 program.version("1.0.0").description("IDEMS App Scripts");
 
-// Handle legacy command renames so can still run `npm run scripts gdrive-download`
+// Handle legacy command renames so can still run `yarn scripts gdrive-download`
 const legacyCommandMappings = {
   "gdrive-download": ["app-data", "download"],
   "gdrive-auth": ["app-data", "download", "--authorize"],
