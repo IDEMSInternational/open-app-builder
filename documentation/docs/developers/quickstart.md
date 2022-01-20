@@ -19,7 +19,7 @@ The main tech stack comprises of:
 2. Install Android SDK Tools (26.0.1 or greater), as illustrated here: https://capacitorjs.com/docs/android#getting-started
 3. Build the project locally and sync android files
    ```
-   $npm run build
+   $yarn build
    $npx cap sync
    ```
 4. Open the project in Android Studio `npx cap open android`
