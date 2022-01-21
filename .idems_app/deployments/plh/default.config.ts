@@ -7,8 +7,8 @@ import { IDeploymentConfig } from "data-models";
 const config: IDeploymentConfig = {
   name: "PLH Default",
   google_drive: {
-    sheets_folder_id: "1n221Zv9LYuwxmjhiboq8vhQg67_K9L5f",
-    assets_folder_id: "1dp9QAQ84m8pm0IBQTSPXe1ramyynKPNn",
+    sheets_folder_id: "1hiIYr8nnLcP1kd2xTFAQx3MvVp7IlPQL",
+    assets_folder_id: "1VkoezEbbeCIeV5IksorFt5lFp6AURYur",
   },
   // Legacy mapping to output to existing workspace
   app_data: {
