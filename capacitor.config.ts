@@ -4,8 +4,8 @@
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "international.idems.plh_teens",
-  appName: "PLH Teens",
+  appId: "international.idems.family_based_math",
+  appName: "Family Based Math",
   bundledWebRuntime: false,
   webDir: "www",
   plugins: {
