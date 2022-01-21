@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.13.0",
+  "version": "0.14.1",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
@@ -9,10 +9,10 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -r \"npm run data-models:serve\" \"npm run data:serve\" \"ng serve --open\"",
-    "precompile": "npm run data-models:build && npm run data:build",
-    "build": "npm run precompile && ng build --prod",
-    "build:dev": "npm run precompile && ng build --configuration=development",
+    "start": "concurrently -r \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
+    "precompile": "yarn data-models:build && yarn data:build",
+    "build": "yarn precompile && ng build --prod",
+    "build:dev": "yarn precompile && ng build --configuration=development",
     "data:build": "yarn workspace app-data build",
     "data:serve": "yarn workspace app-data serve",
     "data-models:build": "yarn workspace data-models build",
@@ -24,7 +24,7 @@
     "test:e2e": "yarn workspace test-e2e start",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "analyse": "npm run build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
+    "analyse": "yarn build -- --stats-json && npx webpack-bundle-analyzer www/stats.json"
   },
   "private": true,
   "dependencies": {

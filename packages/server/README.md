@@ -29,7 +29,7 @@ Note - this file will only be populated after initial config has been completed 
 2. Use the start script
 ```bash
 # From server directory
-npm run start
+yarn start
 
 # From parent directory
 yarn workspace server start
@@ -133,11 +133,44 @@ If deploying to a site that is hosted on a different domain, CORS should be enab
 
 Additionally, privacy settings on the platform might need to be visited (such as `DoNotTrack` browser defaults). More information at https://matomo.org/privacy
 
+## N8N Automation Triggers
+http://localhost/triggers/
+
+This uses the tool [N8N](https://n8n.io/) to provide access to automation and triggers based on events.
+Currently the tool only supports single user authentication provided by username and password provided in the `.env` file
+
+```
+Username: ($N8N_BASIC_AUTH_USER in .env)
+Password: ($N8N_BASIC_AUTH_PASSWORD in .env)
+```
+
+Other server containers can be accessed as part of automation processes, such as the local api at `http://api:3000` or the postgres db at `http://db:5432`
+
+Note - The url currently redirects to the exposed port on localhost as subfolder confiugration has not been possible.
+See community discussion on issue (https://community.n8n.io/t/n8n-as-a-subfolder-with-nginx/7958).
+Roughly the issue is:
+- Enable frontend to serve from subdirectory (requires setting VUE_APP_URL_BASE_API env var before build and release as custom docker image)
+- Enable backend communication (tbc - not currently working with subdirectory)
+- Handle nginx proxy pass config and headers (tbc - possibly adaptable from [example traefik docker-compose.yml](https://github.com/n8n-io/n8n/tree/master/docker/compose/subfolderWithSSL) )
+
+
 ## Server Deployment (WiP docs)
 To deploy on a server the same ensure docker and docker-compse are installed and run the same way as locally
 
 ### Securing with HTTPS
 The recommended approach is to use [Certbot](https://certbot.eff.org/). An example of creating certificates whilst running a docker nginx container can be found here: https://dbillinghamuk.medium.com/certbot-certificate-verification-through-nginx-container-710c299ec549
+
+Example command
+```
+sudo certbot certonly --webroot -w /root/certs-data/ -d welcome.co.uk -d apps-server.idems.international
+```
+
+Certificates will auto-renew, or can be manually renewed via `sudo certbot renew`.
+The new certificates will be populated to the same local folder, and so to update those inside the container the container must be restarted, e.g.
+```
+docker restart plh_webserver
+```
+This can either be scheduled as a cron task, or handled manually.
 
 TODO - in future this could be handled with nginx-certbot image all similar docker container system
 
