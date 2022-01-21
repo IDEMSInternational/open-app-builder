@@ -9,7 +9,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         name: "title",
-        value: "Early Family Math",
+        value: "Welcome!",
         _translations: {
           value: {},
         },
