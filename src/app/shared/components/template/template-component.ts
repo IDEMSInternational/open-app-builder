@@ -111,10 +111,16 @@ export class TemplateComponent implements OnInit, ITemplateRowProps {
     this.renderRow(this._row);
   }
   ngAfterContentInit() {
-    this.setStyleList();
+    if (this._row.style_list) {
+      this.setStyleList();
+    }
   }
 
-  /** apply any hard-coded styles from template sheet */
+  /**
+   * apply any hard-coded styles from template sheet
+   * TODO - CC 2021-01-18 - to be reviewed given that often styles need to be applied to
+   * child elements and not main container (e.g. display group has custom override method)
+   * */
   private setStyleList() {
     const styles = this._row.style_list || [];
     styles.forEach((style) => {
