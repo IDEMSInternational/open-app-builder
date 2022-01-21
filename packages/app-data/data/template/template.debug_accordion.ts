@@ -85,7 +85,7 @@ const template: FlowTypes.Template[] = [
         parameter_list: {
           open_icon_src: "add",
           close_icon_src: "remove",
-          openMultiple: "true",
+          open_multiple: "true",
         },
         rows: [
           {
