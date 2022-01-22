@@ -59,11 +59,11 @@ jobs:
           file-path: android/app/build/outputs/apk/debug/app-debug.apk
           platform: "android"
           timeout: 30
-          # Include to overwrite existing app instead of creating new
+          # Include to overwrite existing app instead of creating new (will only allow single build at a time)
           public-key: ${{secrets.APPETIZE_APP_KEY}}
       - name: "Post to PR"
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           message: |
             **Android Appetize URL**
-            ${{ steps.upload.outputs.APPETIZE_APP_URL }}
+            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=nexus5&osVersion=10.0&scale=75
