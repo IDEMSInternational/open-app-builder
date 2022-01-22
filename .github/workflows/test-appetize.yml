@@ -52,13 +52,16 @@ jobs:
         working-directory: android
         run: ./gradlew :app:assembleDebug
       - name: Upload to Appetize.io
+        id: upload
         uses: maxep/appetize-upload-action@0.1.0
         with:
           api-token: ${{ secrets.APPETIZE_TOKEN }}
           file-path: android/app/build/outputs/apk/debug/app-debug.apk
           platform: "android"
-      - name: Upload to Appetize.io
+      - name: Log outputs
         run: |
-          echo $APP_URL
+          echo $APP_URL;
+          echo $OUTPUTS;
         env:
           APP_URL: ${{steps.upload.outputs.APPETIZE_APP_URL}}
+          OUTPUTS: ${{join(steps.upload.outputs.*, '\n')}}
