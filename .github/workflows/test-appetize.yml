@@ -8,7 +8,7 @@ on:
       - master
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'Test - device appetize')
+    if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
