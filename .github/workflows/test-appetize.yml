@@ -7,10 +7,6 @@ on:
     branches:
       - master
 jobs:
-  log_labels:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Labels ${{github.event.pull_request.labels}}"
   build:
     if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
     runs-on: ubuntu-latest
@@ -56,7 +52,7 @@ jobs:
         working-directory: android
         run: ./gradlew :app:assembleDebug
       - name: Upload to Appetize.io
-        uses: maxep/github-action-appetize@0.1.0
+        uses: maxep/appetize-upload-action@0.1.0
         with:
           api-token: ${{ secrets.APPETIZE_TOKEN }}
           file-path: android/app/build/outputs/apk/debug/app-debug.apk
