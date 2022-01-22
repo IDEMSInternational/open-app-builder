@@ -7,6 +7,10 @@ on:
     branches:
       - master
 jobs:
+  log_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Labels ${{github.event.pull_request.labels}}"
   build:
     if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
     runs-on: ubuntu-latest
