@@ -432,7 +432,8 @@ export namespace FlowTypes {
     | "audio_pause"
     | "audio_end"
     | "audio_first_start"
-    | "nav_resume"; // return to template after navigation or popup close;
+    | "nav_resume" // return to template after navigation or popup close;
+    | "sent"; // notification sent
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
