@@ -101,14 +101,14 @@ export class CampaignService {
    * Utilise template services to process campaign actions
    */
   public async triggerRowActions(row: FlowTypes.Campaign_listRow) {
-    if (row.click_action_list) {
+    if (row.action_list) {
       // make a dynamic call to TemplateVariablesService as it also has handling
       // for @campaigns which would otherwise result in cyclic dependency in constructor
       const templateVariablesService = this.injector.get(TemplateVariablesService);
 
       // Process any dynamic variables that might be present in args
       const parsedActions = [];
-      for (const action of row.click_action_list) {
+      for (const action of row.action_list) {
         action.args = await Promise.all(
           action.args.map(
             async (arg) => await templateVariablesService.evaluateConditionString(arg)

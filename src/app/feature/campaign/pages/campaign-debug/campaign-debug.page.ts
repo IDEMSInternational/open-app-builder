@@ -74,7 +74,7 @@ export class CampaignDebugPage implements OnInit {
    *
    * @param row
    * TODO - find better way to link with template actions
-   * TODO - find way to identify any named action list (not just click_action_list)
+   * TODO - find way to identify any named action list (not just action_list)
    */
   public async triggerRowActions(row: FlowTypes.Campaign_listRow) {
     await this.campaignService.triggerRowActions(row);

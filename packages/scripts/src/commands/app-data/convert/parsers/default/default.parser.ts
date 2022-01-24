@@ -83,6 +83,15 @@ export class DefaultParser implements AbstractParser {
       if (field.startsWith("comment")) {
         delete row[field];
       }
+      // rename legacy fields
+      if (LEGACY_FIELD_RENAME.hasOwnProperty(field)) {
+        const replacement = LEGACY_FIELD_RENAME[field];
+        const warning = `[${field}] is deprecated and should be replaced with [${replacement}]`;
+        console.warn(chalk.gray(warning));
+        row[replacement] = JSON.parse(JSON.stringify(row[field]));
+        delete row[field];
+        field = replacement;
+      }
       // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
       // TODO - should find better long term option that can update based on dynamic value and translations
       if (typeof row[field] === "string") {
@@ -135,6 +144,7 @@ export class DefaultParser implements AbstractParser {
           row[field] = parseAppDateValue(row[field]);
         }
       }
+
       // assign default translation and track as metadata
       if (isTranslateField) {
         row["_translatedFields"] = {
@@ -224,3 +234,7 @@ function throwRowParseError(error: Error, row: IRowData) {
   // add more context to error
   throw error;
 }
+
+const LEGACY_FIELD_RENAME = {
+  click_action_list: "action_list",
+};
