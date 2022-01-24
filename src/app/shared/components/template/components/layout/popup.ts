@@ -71,10 +71,11 @@ import { TemplateContainerComponent } from "../../template-container.component";
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border: 2px solid var(--ion-color-primary);
+        border: 1px solid var(--ion-color-primary);
         font-size: 24px;
         z-index: 1;
         box-shadow: var(--ion-default-box-shadow);
+        color: var(--ion-color-primary);
       }
     `,
   ],
