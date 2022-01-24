@@ -11,7 +11,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="dark"] {
 
 /// Wrap parent_point display groups in grid
 /// @example /template/example_buttons_padding */
-plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] {
   // ensure all tiles are at least 120px (wrap to multiple lines if not), and size equally
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -20,26 +20,26 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
 
 /// Remove additional padding from around images which make
 /// @example /template/feature_two_columns_images
-.display-group-wrapper[data-param-style="two_columns_images"] .tmpl-image-container {
+.display-group-wrapper[data-param-style~="two_columns_images"] .tmpl-image-container {
   padding: 0 !important;
 }
 
 /// Space navigation group items at start and end of row
-.display-group-wrapper[data-param-style="navigation"] {
+.display-group-wrapper[data-param-style~="navigation"] {
   display: flex;
   justify-content: space-between;
   padding-bottom: 10px;
 }
 
-.display-group-wrapper[data-param-style="two_columns"],
-.display-group-wrapper[data-param-style="two_columns_images"] {
+.display-group-wrapper[data-param-style~="two_columns"],
+.display-group-wrapper[data-param-style~="two_columns_images"] {
   display: grid !important; // default would override with flex
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 2fr;
 }
 /// 2-column display with enforced image max-height (only for logo display page)
 /// @example /feature_two_columns_images
-.display-group-wrapper[data-param-style="two_columns_images"] {
+.display-group-wrapper[data-param-style~="two_columns_images"] {
   display: grid;
   grid-gap: 32px;
   align-items: center;
@@ -63,7 +63,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   margin: 0 auto 5px auto;
 }
 
-.display-group-wrapper[data-param-style="banner"] {
+.display-group-wrapper[data-param-style~="banner"] {
   margin-top: var(--regular-margin);
   padding: var(--regular-padding);
   border-radius: var(--ion-border-radius-secondary);
@@ -71,20 +71,20 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   margin-bottom: var(--regular-margin);
 }
 
-.display-group-wrapper[data-param-style="banner_active"] {
+.display-group-wrapper[data-param-style~="banner_active"] {
   background: var(--ion-banner-secondary);
   @include banner;
 }
-.display-group-wrapper[data-param-style="banner_passive"] {
+.display-group-wrapper[data-param-style~="banner_passive"] {
   background: var(--ion-banner-primary);
   @include banner;
 }
-.display-group-wrapper[data-param-style="banner_light"] {
+.display-group-wrapper[data-param-style~="banner_light"] {
   color: var(--ion-color-primary);
   @include banner;
   background: var(--ion-color-primary-contrast);
 }
-.display-group-wrapper[data-param-style="banner_short"] {
+.display-group-wrapper[data-param-style~="banner_short"] {
   margin-top: var(--regular-margin);
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
@@ -111,7 +111,7 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
 
 ///
 /// @example /template/w_self_care_stepper
-.display-group-wrapper[data-param-style="banner_welcome"] {
+.display-group-wrapper[data-param-style~="banner_welcome"] {
   margin-top: var(--regular-margin);
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
@@ -135,27 +135,27 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   border-radius: var(--ion-border-radius-secondary);
 }
 
-.display-group-wrapper[data-param-style="tool_1"] {
+.display-group-wrapper[data-param-style~="tool_1"] {
   @include essential-tool;
   background: var(--tool-one-bg);
 }
-.display-group-wrapper[data-param-style="tool_2"] {
+.display-group-wrapper[data-param-style~="tool_2"] {
   @include essential-tool;
   background: var(--tool-two-bg);
 }
-.display-group-wrapper[data-param-style="tool_3"] {
+.display-group-wrapper[data-param-style~="tool_3"] {
   @include essential-tool;
   background: var(--tool-three-bg);
 }
-.display-group-wrapper[data-param-style="tool_4"] {
+.display-group-wrapper[data-param-style~="tool_4"] {
   @include essential-tool;
   background: var(--tool-four-bg);
 }
-.display-group-wrapper[data-param-style="tool_5"] {
+.display-group-wrapper[data-param-style~="tool_5"] {
   @include essential-tool;
   background: var(--tool-five-bg);
 }
-.display-group-wrapper[data-param-style="white_box"] {
+.display-group-wrapper[data-param-style~="white_box"] {
   @include essential-tool;
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
