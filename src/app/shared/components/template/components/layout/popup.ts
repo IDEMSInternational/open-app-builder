@@ -10,23 +10,20 @@ import { TemplateContainerComponent } from "../../template-container.component";
       (click)="dismissOnBackdrop($event)"
       [attr.data-fullscreen]="props.fullscreen ? true : null"
     >
-      <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
-        <ion-button
-          (click)="dismiss()"
-          class="close-button"
-          fill="clear"
-          *ngIf="props.showCloseButton"
-        >
+      <div style="position:relative">
+        <div (click)="dismiss()" class="close-button" fill="clear" *ngIf="props.showCloseButton">
           <ion-icon slot="icon-only" name="close"></ion-icon>
-        </ion-button>
-        <plh-template-container
-          class="template-container"
-          [name]="props.name"
-          [templatename]="props.templatename"
-          [parent]="props.parent"
-          [row]="props.row"
-          (emittedValue)="handleEmittedValue($event)"
-        ></plh-template-container>
+        </div>
+        <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
+          <plh-template-container
+            class="template-container"
+            [name]="props.name"
+            [templatename]="props.templatename"
+            [parent]="props.parent"
+            [row]="props.row"
+            (emittedValue)="handleEmittedValue($event)"
+          ></plh-template-container>
+        </div>
       </div>
     </div>
   `,
@@ -63,23 +60,21 @@ import { TemplateContainerComponent } from "../../template-container.component";
         display: none;
       }
       .close-button {
-        position: sticky;
-        height: 40px;
-        width: calc(100% + 20px);
-        margin-left: -10px;
-        top: -20px;
-        margin-top: -30px;
-        right: 0;
-        z-index: 3;
-        background: white;
-      }
-      ion-button::part(native) {
-        font-size: 16px;
-        width: 70px;
-        height: 20px;
         position: absolute;
-        right: -20px;
-        top: 10px;
+        top: 16px;
+        right: 22px;
+        background: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--ion-color-primary);
+        font-size: 24px;
+        z-index: 1;
+        box-shadow: var(--ion-default-box-shadow);
       }
     `,
   ],
@@ -124,6 +119,8 @@ export interface ITemplatePopupComponentProps extends ITemplateContainerProps {
   parent?: TemplateContainerComponent;
   row?: FlowTypes.TemplateRow;
   showCloseButton?: boolean;
+  /** Dismiss popup when completed or uncompleted is emitted from child template */
   dismissOnEmit?: boolean;
+  /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
 }
