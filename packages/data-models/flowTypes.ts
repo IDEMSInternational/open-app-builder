@@ -329,6 +329,7 @@ export namespace FlowTypes {
   }
 
   export type TemplateRowType =
+    | "accordion"
     | "image"
     | "title"
     | "subtitle"
