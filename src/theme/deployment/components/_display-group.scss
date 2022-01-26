@@ -85,10 +85,10 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
   background: var(--ion-color-primary-contrast);
 }
 .display-group-wrapper[data-param-style="banner_short"] {
-  margin-top: var(--regular-margin);
+  margin-top: var(--small-margin);
   border-radius: var(--ion-border-radius-secondary);
   width: 100%;
-  margin-bottom: var(--largest-margin) !important;
+  margin-bottom: var(--small-margin) !important;
   padding: 0 var(--large-padding);
   background: var(--ion-dg-bg-default);
   height: var(--banner-short-height);
