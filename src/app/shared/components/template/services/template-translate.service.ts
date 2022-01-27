@@ -32,6 +32,8 @@ export class TemplateTranslateService {
       this.setLanguage(DEFAULT_LANGUAGE, true);
     }
   }
+  // Init handled in constructor, but kept here as reminder to import/call from main app component
+  public async init() {}
 
   get app_language() {
     return this.app_language$.value;

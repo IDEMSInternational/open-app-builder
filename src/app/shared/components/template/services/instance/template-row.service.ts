@@ -37,7 +37,7 @@ export class TemplateRowService extends TemplateInstanceService {
   private templateVariablesService: TemplateVariablesService;
   private templateTranslateService: TemplateTranslateService;
   private templateFieldService: TemplateFieldService;
-  constructor(public container: TemplateContainerComponent, injector: Injector) {
+  constructor(injector: Injector, public container: TemplateContainerComponent) {
     super(injector);
     this.templateVariablesService = this.getGlobalService(TemplateVariablesService);
     this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
@@ -195,7 +195,12 @@ export class TemplateRowService extends TemplateInstanceService {
       const processed = await this.processSingleRow(preProcessedRow, isNestedTemplate);
       // only include rows that do not return undefined (e.g. set_variable)
       if (processed) {
-        processedRows.push(processed);
+        // in case of processing items one row will be mapped to multiple so include all
+        if (Array.isArray(processed)) {
+          processed.forEach((p) => processedRows.push(p));
+        } else {
+          processedRows.push(processed);
+        }
       }
     }
     this.container.template.rows = processedRows;
@@ -252,11 +257,12 @@ export class TemplateRowService extends TemplateInstanceService {
 
     if (type === "template") isNestedTemplate = true;
 
-    // Prepare rows for child item-loop
+    // Instead of returning themselves items looped child rows
     if (type === "items") {
       const itemsToIterateOver = objectToArray(row.value);
-      row.type = "group";
-      row.rows = this.generateLoopItemRows(row, itemsToIterateOver);
+      const itemRows = this.generateLoopItemRows(row, itemsToIterateOver);
+      const processedItems = await this.processRows(itemRows, isNestedTemplate, row.name);
+      return processedItems;
     }
 
     // process any nested rows in same way
@@ -327,30 +333,32 @@ export class TemplateRowService extends TemplateInstanceService {
    * @param items - list of items to iterate over
    */
   private generateLoopItemRows(row: FlowTypes.TemplateRow, items: any[]) {
-    let item_rows = items.map((item, index) => {
+    const loopItemRows: FlowTypes.TemplateRow[] = [];
+    for (const [index, item] of Object.entries(items)) {
       item._index = index;
       const evalContext = { itemContext: item };
-      const itemRow: FlowTypes.TemplateRow = {
-        type: "group",
-        rows: row.rows.map((r) => this.setRecursiveRowEvalContext(r, evalContext)),
-      } as any;
-      return itemRow;
-    });
-    return item_rows;
+      for (const r of row.rows) {
+        const itemRow = this.setRecursiveRowEvalContext(r, evalContext);
+        loopItemRows.push(itemRow);
+      }
+    }
+    return loopItemRows;
   }
   /** Update the evaluation context of a row and recursively any nested rows */
   private setRecursiveRowEvalContext(
     row: FlowTypes.TemplateRow,
     evalContext: FlowTypes.TemplateRow["_evalContext"]
   ) {
-    const { rows, ...rest } = row;
+    // Workaround destructure for memory allocation issues (applying click action of last item only)
+    const { rows, ...rest } = JSON.parse(JSON.stringify(row));
     const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
     // handle child rows independently to avoid accidental property leaks
     if (row.rows) {
       rowWithEvalContext.rows = [];
-      row.rows.forEach((r) =>
-        rowWithEvalContext.rows.push(this.setRecursiveRowEvalContext(r, evalContext))
-      );
+      for (const r of row.rows) {
+        const recursivelyEvaluated = this.setRecursiveRowEvalContext(r, evalContext);
+        rowWithEvalContext.rows.push(recursivelyEvaluated);
+      }
     }
     return rowWithEvalContext;
   }

@@ -10,6 +10,9 @@ const data: { [source_text: string]: string } = {
   Notifications: "Kennisgewings",
   "Privacy Policy": "Privaatheidsbeleid",
   "App terms": "Toep-voorwaardes",
+  "About @global.parent_app": "Oor @global.parent_app",
+  "@global.parent_app was developed by Parenting for Lifelong Health (PLH) – a worldwide collaboration between parenting experts from UNICEF, the WHO and Universities in South Africa and the UK, as well as African NGOs and families and teens all across Africa. Parents and teens worked with us on the app and helped to ensure it is easy-to-use, fun and engaging. Some of the content in this app, like suggestions of activities and illustrated stories, were created with parents and teens to make sure it fits families’ needs.\n\nParenting for Lifelong Health (PLH) is committed to supporting free and shareable parenting materials and programmes, to support parents worldwide to promote the well-being of their children.":
+    "@global.parent_app is ontwikkel deur Parenting for Lifelong Health (PLH) – 'n wêreldwye samewerking tussen ouerskapkundiges van UNICEF, die Wêreldgesondheidsorganisasie en universiteite in Suid-Afrika en Engeland, sowel as NPO's in Afrika en gesinne en tieners regoor Afrika. Ouers en tieners het saam met ons aan die toepassing gewerk en gehelp om te verseker dat dit maklik om te gebruik, pret en boeiend is. Sommige van die inhoud in hierdie toepassing, soos voorstelle van aktiwiteite en geïllustreerde stories, is saam met ouers en tieners geskep om seker te maak dit pas by gesinne se behoeftes.\n\nParenting for Lifelong Health (PLH) is toegewy om gratis en deelbare ouerskapmateriale en -programme te ondersteun, om ouers wêreldwyd te ondersteun om die welstand van hul kinders te bevorder.",
   "Open Survey": "Maak Studie Oop",
   "Select Language": "Kies Taal",
   "Workshop Options": "Slypskool-opsies",
@@ -34,6 +37,9 @@ const data: { [source_text: string]: string } = {
   "You may be asked to share this code with people who will support your @global.parent_app journey.":
     "Jy sal moontlik gevra word om hierdie kode te deel met mense wat jou @global.parent_app-reis sal ondersteun.",
   "Last sync at: @local.sync_latest": "Laas gesinchroniseer om: @local.sync_latest",
+  "This device has never been synced. Sync to reveal your code.":
+    "Hierdie toestel is nog nooit gesinkroniseer nie. Sinkroniseer om jou kode te toon.",
+  "Sync now": "Sinkroniseer nou",
   "Syncing...": "Besig om te sinchroniseer...",
   Start: "Begin",
   "How would you like to do this workshop?": "Hoe sou jy hierdie werksessie wou doen?",
@@ -41,6 +47,7 @@ const data: { [source_text: string]: string } = {
   "We will need to cover other parenting issues before we can start working on @local.workshop_data.title.\n\nYou can get essential tools on @local.workshop_data.title via the @global.parent_centre.":
     "Ons sal ander ouerskapkwessies moet behandel voordat ons kan begin werk aan @local.workshop_data.title.\n\nJy kan die belangrikste hulpmiddels kry by @local.workshop_data.title via die @global.parent_centre.",
   "My name": "My naam",
+  "@global.weekly_workshop day": "@global.weekly_workshop dag",
   "I do the workshops...": "Ek doen die slypskole...",
   "My group's name": "My groep se naam",
   "My group is now doing the workshop...": "My groep doen nou die slypskool...",
@@ -1001,6 +1008,8 @@ const data: { [source_text: string]: string } = {
     "@data.workshop.w_money.tools bygevoeg tot @data.parent_centre.my_tips.title.",
   "It is so stressful when children misbehave.":
     "Dis so stresvol as kinders stout of ongehoorsaam is.",
+  "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
+    "Hoeveel dae die afgelope week het jy jou kinders fisies gedissiplineer deur hulle te klap, pak te gee of te slaan met jou hand of ’n voorwerp soos ’n stok of ’n belt?",
   "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!":
     "Dit is wonderlik dat jy kalm reageer as jou tiener iets ontstellends doen. Hulle kan soveel by jou leer!",
   "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.":
@@ -1076,7 +1085,11 @@ const data: { [source_text: string]: string } = {
   "This app focuses on parents of teenagers age @global.teen_age_bracket, but you are welcome to continue - you may learn useful things too!":
     "Hierdie toep fokus op ouers van tieners van @global.teen_age_bracket jaar oud, maar jy is welkom om voort te gaan – jy kan ook nuttige dinge vir jou gesin leer!",
   "Are you sure you want to skip this question?": "Is jy seker dat jy hierdie vraag wil oorslaan?",
+  "Are you sure you want to skip this question? Remember, your answer will be kept private and will help us understand your parenting needs. \n\nYou can also choose not to answer any question by selecting the circle.":
+    "Is jy seker jy wil hierdie vraag oorslaan? Onthou, jou antwoord sal privaat gehou word en sal ons help om jou ouerskapbehoeftes te verstaan.\n\nJy kan ook kies om enige vraag nie te beantwoord nie deur die sirkel te kies.",
   'You selected "I would rather not answer"': "Jy het “Ek wil liewer nie antwoord nie” gekies",
+  "That’s ok! \n\nRemember, if you do answer your answer will be kept private and will help us to provide you with content that is exactly right for you.":
+    "Dis oukei!\n\nOnthou, as jy antwoord sal jou antwoord privaat gehou word en sal dit ons help om jou te voorsien van inhoud wat presies reg is vir jou.",
   "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
     "Ons weet dit is moeilik. Ons het ’n paar nuttige wenke by @data.parent_centre.my_tips.location_text gevoeg oor hoe jy tyd met jou tiener kan deurbring, so jy kan dadelik toegang daartoe kry.\n\nOmdat @data.workshop.w_1on1.title die basis vorm vir alle ander hulpmiddels vir ouerskap, sal jy volgende week die @global.weekly_workshop ontvang!",
   "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
@@ -1130,7 +1143,9 @@ const data: { [source_text: string]: string } = {
     "Kom ons begin met ’n paar vrae oor jou en jou gesin.",
   "We would love to know your first name or nickname:":
     "Ons sal graag jou voornaam of bynaam wil weet:",
+  "Are you a woman or a man?": "Is jy 'n vrou of 'n man?",
   Woman: "Vrou",
+  Man: "Man",
   "How old are you?": "Hoe oud is jy?",
   Adults: "Volwassenes",
   Teens: "Tieners",
@@ -1250,8 +1265,11 @@ const data: { [source_text: string]: string } = {
   SHARE: "DEEL",
   "Share @global.parent_app and help other families start their journey.":
     "Deel @global.parent_app en help ander gesinne om hul reis te begin.",
+  "End of programme check-in": "Programeinde check-in",
   "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
     "Jy het @global.parent_app vir die afgelope maande gebruik, maar ouerskap van ’n tiener is ’n langdurige proses! Die volgende vrae oor jou ouerskap-ervarings sal ons help om jou ouerskap te assesseer.\n\nWees eerlik. Onthou dat miljoene ouers soos jy voel, en ons almal verdien ondersteuning. Jy is nie alleen nie!",
+  "You seem to have completed the end of programme check-in already. You can now skip this activity.":
+    "Dit kom voor dat jy reeds die programeinde check-in voltooi het. Jy kan nou hierdie aktiwiteit oorslaan.",
   "Plan how you will support each other going forward. \n\nYou can use the ideas from other families, or make up your own!":
     "Beplan hoe julle mekaar vorentoe sal ondersteun. \n\nJy kan ander gesinne se idees gebruik, of jou eie idees uitdink!",
   "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!":
@@ -2337,6 +2355,7 @@ const data: { [source_text: string]: string } = {
   Ideas: "Idees",
   "Ideas from other families...": "Idees van ander gesinne...",
   "Challenges & solutions": "Uitdagings en oplossings",
+  Submit: "Dien in",
   "Find out more": "Vind meer uit",
   "Show me how": "Wys my hoe",
   "Tell me more!": "Vertel my meer!",
@@ -2346,6 +2365,7 @@ const data: { [source_text: string]: string } = {
   Next: "Volgende",
   Previous: "Vorige",
   Save: "Stoor",
+  Skip: "Slaan oor",
   "Finish with a song": "Sluit af met ’n liedjie",
   "Goodbye!": "Totsiens!",
   "My Favourite Relaxes": "My gunsteling maniere om te ontspan",
@@ -2517,36 +2537,89 @@ const data: { [source_text: string]: string } = {
   "Pass the snap": "Vingerklap",
   "Family workout": "Gesinoefensessie",
   "Make housework fun": "Maak huistake pret",
+  "Household chores aren’t fun… or are they? You can make them into a game!":
+    "Huistake is nie pret nie... of is dit? Jy kan 'n speletjie daarvan maak!",
   "What are you doing?": "Wat doen jy?",
+  "Here is a fun game you can do with your family!":
+    "Hier is 'n prettige speletjie wat jy saam met jou gesin kan doen!",
   "Crazy chicken": "Mal hoender",
   "**Relax** @global.parent_point": "**Ontspan** @global.parent_point",
+  "Doing a relaxation activity": "Doen 'n ontspanningsaktiwiteit",
+  "Every time you do a relax, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy ’n ontspanningsaktiwiteit doen, klik op die @global.parent_point en vier jou sukses!",
   "Treat yourself well": "Behandel jouself goed",
   "**Treat yourself well** @global.parent_point": "**Behandel jouself goed** @global.parent_point",
+  "Doing something they like for themselves": "Doen iets vir hulself waarvan hulle hou",
+  "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy jouself goed behandel, klik op die @global.parent_point en vier jou sukses!",
   "**Praise yourself** @global.parent_point": "**Prys jouself** @global.parent_point",
+  "Praising themselves": "Hulself prys",
+  "Every time you praise yourself, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy jouself prys, klik op die @global.parent_point en vier jou sukses!",
   "One-on-one time": "Een-tot-een-tyd",
   "**One-on-one time** @global.parent_point": "**Een-tot-een-tyd** @global.parent_point",
+  "Spending time with their teen": "Tyd spandeer met hulle tiener",
+  "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy een-tot-een tyd spandeer, klik op die @global.parent_point en vier jou sukses!",
   "Praise your teen": "Prys jou tiener",
   "**Praise your teen** @global.parent_point": "**Prys jou tiener** @global.parent_point",
+  "Praising their teen when they did positive thing":
+    "Hul tiener prys wanneer hulle positiewe dinge gedoen het",
+  "Every time you praise your teen, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy jou tiener prys, klik op die @global.parent_point en vier jou sukses!",
   "Get positive": "Wees positief",
   "**Get positive** @global.parent_point": "**Wees positief** @global.parent_point",
+  "Giving their teen a positive instruction": "Hul tiener 'n positiewe instruksie gee",
+  "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy 'n positiewe instruksie gee, klik op die @global.parent_point en vier jou sukses!",
   "Breathe not yell": "Haal asem, moenie skreeu nie",
   "**Breathe not yell** @global.parent_point":
     "**Haal asem, moenie skreeu nie** @global.parent_point",
+  "Taking a pause before responding": "'n Blaaskans vat voor jy reageer",
+  "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy 'n blaaskans vat voor jy reageer, klik op die @global.parent_point en vier jou sukses!",
   "Good money choice": "Goeie geldkeuse",
   "**Good money choice** @global.parent_point": "**Goeie geldkeuse** @global.parent_point",
+  "Keeping the budget": "Hou die begroting",
+  "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy 'n goeie keuse maak oor behoeftes, klik op die @global.parent_point en vier jou sukses!",
   "Calm consequence": "Kalm gevolg",
   "**Calm consequence** @global.parent_point": "**Kalm gevolg** @global.parent_point",
+  "Giving their teen a consequence in a calm way": "Hul tiener op 'n kalm manier 'n gevolg gee",
+  "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy op 'n kalm manier 'n gevolg gee, klik op die @global.parent_point en vier jou sukses!",
   Safe: "Veilig",
   "**Safe** @global.parent_point": "**Veilig** @global.parent_point",
+  "Planning or keeping a family safety plan": "'n Gesinsveiligheidsplan maak of hou",
+  "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!":
+    "Elke keer wanneer jy iets doen om jou tiener veilig te hou, klik op die @global.parent_point en vier jou sukses!",
+  "Did it? Tap it!": "Gedoen? Klik dit!",
   Help: "Hulp",
+  "**Help** in the @global.parent_centre": "**Hulp** in die @global.parent_centre",
   "My Tips": "My wenke",
+  "**My Tips** in the @global.parent_centre": "**My wenke** in die @global.parent_centre",
   "Essential Tools": "Noodsaaklike hulpmiddels",
+  "**Essential Tools** in the @global.parent_centre":
+    "**Noodsaaklike hulpmiddels** in die @global.parent_centre",
   COVID: "COVID",
+  "**COVID** in the @global.parent_centre": "**COVID** in die @global.parent_centre",
+  "Customise Again": "Pas weer aan",
+  "**Customise @global.parent_app** in the @global.parent_centre":
+    "**Pas @global.parent_app aan** in die @global.parent_centre",
   "Relax & Activities": "Ontspan en aktiwiteite",
+  "under **Relax & Activities** in the @global.parent_centre":
+    "onder **Ontspan & aktiwiteite** in die @global.parent_centre",
   "Support Contacts": "Ondersteuningskontakte",
+  "**Support Contacts** in the @global.parent_centre":
+    "**Ondersteuning kontakte** in die @global.parent_centre",
   "Evidence Base": "Bewysbasis",
+  "**Evidence Base** in the @global.parent_centre": "**Bewysbasis** in die @global.parent_centre",
   "Technical Support": "Tegniese steun",
+  "**Technical Support** in the @global.parent_centre":
+    "**Tegniese ondersteuning** in die @global.parent_centre",
   "Message Archive": "Boodskapargief",
+  "**Message Archive** in the @global.parent_centre":
+    "**Boodskapargief** in die @global.parent_centre",
   "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!":
     "Dis wonderlik! Mooi so dat julle tyd saam deurgebring het. Dit lê die grondslag vir ’n wonderlike verhouding met jou tiener!",
   "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!":

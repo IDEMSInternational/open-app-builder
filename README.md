@@ -1,6 +1,9 @@
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/IDEMSInternational/parenting-app-ui.git)
+
 # Parenting App UI
 
 [Online Documentation](https://idemsinternational.github.io/parenting-app-ui/)
+
 
 # Quickstart
 
@@ -39,7 +42,7 @@ The app supports using different workspace or deployment configurations. These a
 
 An initial deployment should be specified via the command
 ```
-npm run scripts deployment set
+yarn scripts deployment set
 ```
 
 ### Firebase

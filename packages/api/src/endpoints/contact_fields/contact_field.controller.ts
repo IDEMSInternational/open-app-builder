@@ -1,9 +1,10 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
 import { ContactFieldEntry } from "./contact_field.model";
 import { ContactFieldService } from "./contact_field.service";
-import { ApiBody, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ContactFieldDto } from "../app_users/dto/set-user-data.dto";
 
+@ApiTags("Contact Fields")
 @Controller("contact_fields")
 export class ContactFieldController {
   constructor(private readonly ContactFieldService: ContactFieldService) {}

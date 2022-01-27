@@ -205,7 +205,7 @@ export namespace FlowTypes {
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
     // additional fields for current data_list but not required
-    click_action_list?: TemplateRowAction[];
+    action_list?: TemplateRowAction[];
     icon?: string;
     text?: string;
     // placeholder for any extra fields to be added
@@ -329,6 +329,7 @@ export namespace FlowTypes {
   }
 
   export type TemplateRowType =
+    | "accordion"
     | "image"
     | "title"
     | "subtitle"
@@ -377,7 +378,6 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
-    | "group"
     | "select_text"
     | "html";
 
@@ -433,7 +433,8 @@ export namespace FlowTypes {
     | "audio_pause"
     | "audio_end"
     | "audio_first_start"
-    | "nav_resume"; // return to template after navigation or popup close;
+    | "nav_resume" // return to template after navigation or popup close;
+    | "sent"; // notification sent
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
@@ -445,6 +446,7 @@ export namespace FlowTypes {
       | "set_field"
       | "set_local"
       | "emit"
+      | "feedback"
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"

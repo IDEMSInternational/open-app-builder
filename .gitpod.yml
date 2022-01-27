@@ -1,0 +1,28 @@
+# Commands to start on workspace startup
+tasks:
+  - name: Start App Server
+    # stored as project environment variable in gitpod
+    before: echo $FIREBASE_CONFIG_TS_B64 | base64 -d > src/environments/firebaseConfig.ts
+    init: yarn install
+    command: yarn start
+  ## Could provide additional task to run in parallel terminal
+  # - name: Sync content
+
+# Ports to expose on workspace startup
+ports:
+  - port: 4200
+    onOpen: open-preview
+github:
+  prebuilds:
+    master: true
+    branches: false
+    pullRequests: false
+    pullRequestsFromForks: false
+    addCheck: false
+    addComment: false
+    addBadge: false
+vscode:
+  extensions:
+    - Angular.ng-template
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode

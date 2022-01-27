@@ -21,7 +21,7 @@ import { getStringParamFromTemplateRow } from "../../../utils";
         object-fit: contain;
         padding: var(--tiny-padding);
       }
-      img[data-param-style="no-padding"] {
+      img[data-param-style~="no-padding"] {
         padding: 0;
       }
       .tmpl-image-container {
