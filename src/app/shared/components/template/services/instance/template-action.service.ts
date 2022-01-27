@@ -48,6 +48,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.templateService = this.getGlobalService(TemplateService);
     this.tourService = this.getGlobalService(TourService);
     this.templateFieldService = this.getGlobalService(TemplateFieldService);
+    this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
     this.eventService = this.getGlobalService(EventService);
   }
 
