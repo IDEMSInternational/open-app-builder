@@ -12,12 +12,12 @@ import { FlowTypes } from "src/app/shared/model";
         <!-- Info -->
         <div style="flex:1">
           <!-- Click Action List -->
-          <div *ngIf="row.click_action_list && row.click_action_list.length > 0">
+          <div *ngIf="row.action_list && row.action_list.length > 0">
             <div class="divider"></div>
             <h4>Click Action List</h4>
             <div style="display: flex" class="info-text">
               <div style="flex: 1">
-                <div *ngFor="let action of row.click_action_list">{{ action._raw }}</div>
+                <div *ngFor="let action of row.action_list">{{ action._raw }}</div>
               </div>
             </div>
           </div>
