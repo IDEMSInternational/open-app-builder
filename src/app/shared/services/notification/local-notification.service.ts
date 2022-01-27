@@ -4,6 +4,7 @@ import {
   LocalNotifications,
   LocalNotificationSchema,
   ActionType,
+  ActionPerformed,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
 import {
@@ -51,6 +52,8 @@ export class LocalNotificationService {
   /** Observable list of all scheduled notifications */
   public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
+  /** Observable list of notificaitons interacted with */
+  public interactedNotification$ = new BehaviorSubject<ActionPerformed>(null);
 
   /** Typed wrapper around database table used to store local notifications */
   private db: Dexie.Table<ILocalNotification, number>;
@@ -275,6 +278,7 @@ export class LocalNotificationService {
         await this.updateDBNotification(action.notification.id, {
           _action_performed: action.actionId,
         });
+        this.interactedNotification$.next(action);
         await this.loadNotifications();
       }
       // TODO emit event for action to other listeners?

@@ -50,24 +50,21 @@
       *ngFor="let row of debugCampaignRows.activated"
       [row]="row"
       (manageVariablesClicked)="manageFieldVariables($event)"
-      (triggerActionsClicked)="triggerRowActions($event)"
-      (scheduleNotificationClicked)="scheduleNotification($event)"
+      (sendNotificationClicked)="sendNotification(row)"
     ></campaign-debug-row>
     <ion-list-header class="list-header pending">Pending</ion-list-header>
     <campaign-debug-row
       *ngFor="let row of debugCampaignRows.pending"
       [row]="row"
       (manageVariablesClicked)="manageFieldVariables($event)"
-      (triggerActionsClicked)="triggerRowActions($event)"
-      (scheduleNotificationClicked)="scheduleNotification($event)"
+      (sendNotificationClicked)="sendNotification(row)"
     ></campaign-debug-row>
     <ion-list-header class="list-header deactivated">Deactivated</ion-list-header>
     <campaign-debug-row
       *ngFor="let row of debugCampaignRows.deactivated"
       [row]="row"
       (manageVariablesClicked)="manageFieldVariables($event)"
-      (triggerActionsClicked)="triggerRowActions($event)"
-      (scheduleNotificationClicked)="scheduleNotification($event)"
+      (sendNotificationClicked)="sendNotification(row)"
     ></campaign-debug-row>
   </ion-list>
 </ion-content>
