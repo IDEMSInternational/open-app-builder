@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "concurrently \"yarn workspace frontend start\" \"npm run start:plh\"",
+    "start": "concurrently \"yarn workspace frontend start\" \"yarn start:plh\"",
     "start:plh": "cypress open --config-file projects/plh/cypress.json",
     "start:example": "cypress open --config-file projects/example/cypress.json",
     "run:plh": "cypress run --config-file projects/plh/cypress.json",

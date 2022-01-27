@@ -1,4 +1,4 @@
-import { Component, HostListener } from "@angular/core";
+import { Component } from "@angular/core";
 import { Platform, MenuController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
@@ -23,6 +23,7 @@ import { AnalyticsService } from "./shared/services/analytics/analytics.service"
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
+import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
 
 @Component({
   selector: "app-root",
@@ -54,6 +55,7 @@ export class AppComponent {
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
+    private templateTranslateService: TemplateTranslateService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -104,6 +106,7 @@ export class AppComponent {
     await this.appEventService.init();
     await this.serverService.init();
     await this.dataEvaluationService.refreshDBCache();
+    await this.templateTranslateService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
     await this.localNotificationService.init();

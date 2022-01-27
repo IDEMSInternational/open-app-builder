@@ -3,6 +3,480 @@ import { FlowTypes } from "data-models";
 const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
+    flow_name: "parent_centre_data_list",
+    status: "released",
+    data_list_name: "parent_centre",
+    rows: [
+      {
+        id: "help",
+        icon_asset: "plh_images/icons/question_mark_white.svg",
+        title: "Help",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Help",
+          },
+          location_text: {
+            eng: "**Help** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Help** in the @global.parent_centre",
+      },
+      {
+        id: "my_tips",
+        icon_asset: "plh_images/icons/light_bulb_heart_white.svg",
+        title: "My Tips",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "My Tips",
+          },
+          location_text: {
+            eng: "**My Tips** in the @global.parent_centre",
+          },
+        },
+        location_text: "**My Tips** in the @global.parent_centre",
+      },
+      {
+        id: "essential_tools",
+        icon_asset: "plh_images/icons/light_bulb_white.svg",
+        title: "Essential Tools",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Essential Tools",
+          },
+          location_text: {
+            eng: "**Essential Tools** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Essential Tools** in the @global.parent_centre",
+      },
+      {
+        id: "covid",
+        icon_asset: "plh_images/icons/ask_question_white.svg",
+        title: "Coping with @global.covid",
+        _translations: {
+          title: {},
+          location_text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Coping with @global.covid",
+          },
+          location_text: {
+            eng: "**Coping with @global.covid** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Coping with @global.covid** in the @global.parent_centre",
+      },
+      {
+        id: "customisation",
+        icon_asset: "plh_images/icons/phone_heart_white.svg",
+        title: "Customise @global.parent_app",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          title_2: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Customise @global.parent_app",
+          },
+          title_2: {
+            eng: "Customise Again",
+          },
+          location_text: {
+            eng: "**Customise @global.parent_app** in the @global.parent_centre",
+          },
+        },
+        title_2: "Customise Again",
+        location_text: "**Customise @global.parent_app** in the @global.parent_centre",
+      },
+      {
+        id: "relax_and_activities",
+        icon_asset: "plh_images/icons/smile_eyes_up_white.svg",
+        title: "Relax & Activities",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Relax & Activities",
+          },
+          location_text: {
+            eng: "under **Relax & Activities** in the @global.parent_centre",
+          },
+        },
+        location_text: "under **Relax & Activities** in the @global.parent_centre",
+      },
+      {
+        id: "support_contacts",
+        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
+        title: "Support Contacts",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Support Contacts",
+          },
+          location_text: {
+            eng: "**Support Contacts** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Support Contacts** in the @global.parent_centre",
+      },
+      {
+        id: "evidence_base",
+        icon_asset: "plh_images/icons/documents_white.svg",
+        title: "Evidence Base",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Evidence Base",
+          },
+          location_text: {
+            eng: "**Evidence Base** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Evidence Base** in the @global.parent_centre",
+      },
+      {
+        id: "technical_support",
+        icon_asset: "plh_images/icons/info_phone_white.svg",
+        title: "Technical Support",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Technical Support",
+          },
+          location_text: {
+            eng: "**Technical Support** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Technical Support** in the @global.parent_centre",
+      },
+      {
+        id: "message_archive",
+        icon_asset: "plh_images/icons/letter_white.svg",
+        title: "Message Archive",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Message Archive",
+          },
+          location_text: {
+            eng: "**Message Archive** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Message Archive** in the @global.parent_centre",
+      },
+      {
+        id: "bereavement",
+        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
+        title: "Coping with grief",
+        _translations: {
+          title: {},
+          location_text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Coping with grief",
+          },
+          location_text: {
+            eng: "**Coping with grief** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Coping with grief** in the @global.parent_centre",
+      },
+    ],
+    _xlsxPath: "data/parent_centre_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "covid_data_list",
+    status: "released",
+    data_list_name: "covid",
+    rows: [
+      {
+        id: "talk_to_teen",
+        content_template: "tools_talk_to_teen",
+        library_activity: "lib_act_talk_to_teen",
+        image_asset: "plh_images/parent_centre/covid/talk_to_teen.svg",
+        title: "How to talk to my teen",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "How to talk to my teen",
+          },
+        },
+      },
+      {
+        id: "deal_with_news",
+        content_template: "tools_deal_with_news",
+        library_activity: "lib_act_deal_with_news",
+        image_asset: "plh_images/parent_centre/covid/deal_with_news.svg",
+        title: "Steps to deal with news",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Steps to deal with news",
+          },
+        },
+      },
+      {
+        id: "help_teen_choose",
+        content_template: "tools_help_teen_choose",
+        library_activity: "lib_act_help_teen_choose",
+        image_asset: "plh_images/parent_centre/covid/help_teen_choose.svg",
+        title: "How can I help my teen choose well?",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "How can I help my teen choose well?",
+          },
+        },
+      },
+      {
+        id: "teen_influences",
+        content_template: "understand_teen_influences",
+        library_activity: "lib_act_teen_influences",
+        image_asset: "plh_images/parent_centre/covid/teen_influences.svg",
+        title: "What influences teen decisions?",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "What influences teen decisions?",
+          },
+        },
+      },
+      {
+        id: "teen_feelings",
+        content_template: "understand_teen_feelings",
+        library_activity: "lib_act_teen_feelings",
+        image_asset: "plh_images/parent_centre/covid/teen_feelings.svg",
+        title: "How does my teen feel?",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "How does my teen feel?",
+          },
+        },
+      },
+      {
+        id: "change_thoughts",
+        content_template: "change_thoughts",
+        library_activity: "lib_act_change_thoughts",
+        image_asset: "plh_images/parent_centre/covid/change_thoughts.svg",
+        title: "Changing negative to positive",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Changing negative to positive",
+          },
+        },
+      },
+    ],
+    _xlsxPath: "data/parent_centre_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "bereavement_data_list",
+    status: "released",
+    data_list_name: "bereavement",
+    rows: [
+      {
+        id: "self",
+        content_template: "bereavement_self",
+        title: "Help yourself cope",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Help yourself cope",
+          },
+        },
+      },
+      {
+        id: "teen",
+        content_template: "bereavement_teen",
+        title: "Help your teen cope",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Help your teen cope",
+          },
+        },
+      },
+      {
+        id: "practical",
+        content_template: "bereavement_practical",
+        title: "Practical steps",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Practical steps",
+          },
+        },
+      },
+    ],
+    _xlsxPath: "data/parent_centre_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
     flow_name: "relax_list",
     data_list_name: "relax",
     status: "released",
@@ -1298,16 +1772,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1362,16 +1841,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1426,16 +1910,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1490,16 +1979,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1554,16 +2048,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1618,16 +2117,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1682,16 +2186,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1746,16 +2255,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1810,16 +2324,19 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1874,16 +2391,19 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1913,316 +2433,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "data/habit_data_list.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_name: "parent_centre_data_list",
-    status: "released",
-    data_list_name: "parent_centre",
-    rows: [
-      {
-        id: "help",
-        icon_asset: "plh_images/icons/question_mark_white.svg",
-        title: "Help",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Help",
-          },
-          location_text: {
-            eng: "**Help** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Help** in the @global.parent_centre",
-      },
-      {
-        id: "my_tips",
-        icon_asset: "plh_images/icons/light_bulb_heart_white.svg",
-        title: "My Tips",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "My Tips",
-          },
-          location_text: {
-            eng: "**My Tips** in the @global.parent_centre",
-          },
-        },
-        location_text: "**My Tips** in the @global.parent_centre",
-      },
-      {
-        id: "essential_tools",
-        icon_asset: "plh_images/icons/light_bulb_white.svg",
-        title: "Essential Tools",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Essential Tools",
-          },
-          location_text: {
-            eng: "**Essential Tools** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Essential Tools** in the @global.parent_centre",
-      },
-      {
-        id: "covid",
-        icon_asset: "plh_images/icons/ask_question_white.svg",
-        title: "COVID",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "COVID",
-          },
-          location_text: {
-            eng: "**COVID** in the @global.parent_centre",
-          },
-        },
-        location_text: "**COVID** in the @global.parent_centre",
-      },
-      {
-        id: "customisation",
-        icon_asset: "plh_images/icons/phone_heart_white.svg",
-        title: "Customise @global.parent_app",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          title_2: {
-            tz_sw: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Customise @global.parent_app",
-          },
-          title_2: {
-            eng: "Customise Again",
-          },
-          location_text: {
-            eng: "**Customise @global.parent_app** in the @global.parent_centre",
-          },
-        },
-        title_2: "Customise Again",
-        location_text: "**Customise @global.parent_app** in the @global.parent_centre",
-      },
-      {
-        id: "relax_and_activities",
-        icon_asset: "plh_images/icons/smile_eyes_up_white.svg",
-        title: "Relax & Activities",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Relax & Activities",
-          },
-          location_text: {
-            eng: "under **Relax & Activities** in the @global.parent_centre",
-          },
-        },
-        location_text: "under **Relax & Activities** in the @global.parent_centre",
-      },
-      {
-        id: "support_contacts",
-        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
-        title: "Support Contacts",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Support Contacts",
-          },
-          location_text: {
-            eng: "**Support Contacts** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Support Contacts** in the @global.parent_centre",
-      },
-      {
-        id: "evidence_base",
-        icon_asset: "plh_images/icons/documents_white.svg",
-        title: "Evidence Base",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Evidence Base",
-          },
-          location_text: {
-            eng: "**Evidence Base** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Evidence Base** in the @global.parent_centre",
-      },
-      {
-        id: "technical_support",
-        icon_asset: "plh_images/icons/info_phone_white.svg",
-        title: "Technical Support",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Technical Support",
-          },
-          location_text: {
-            eng: "**Technical Support** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Technical Support** in the @global.parent_centre",
-      },
-      {
-        id: "message_archive",
-        icon_asset: "plh_images/icons/letter_white.svg",
-        title: "Message Archive",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Message Archive",
-          },
-          location_text: {
-            eng: "**Message Archive** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Message Archive** in the @global.parent_centre",
-      },
-    ],
-    _xlsxPath: "data/parent_centre_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -3229,8 +3439,10 @@ const data_list: FlowTypes.Data_list[] = [
           },
           intro_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -3285,8 +3497,10 @@ const data_list: FlowTypes.Data_list[] = [
           },
           intro_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -3318,8 +3532,10 @@ const data_list: FlowTypes.Data_list[] = [
           },
           intro_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {

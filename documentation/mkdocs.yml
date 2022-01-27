@@ -19,7 +19,8 @@ nav:
           - authors/advanced/looping-data.md
           - authors/advanced/overrides.md
   - Contributors:
-      - contributors/adding-documentation.md
+      - contributors/documentation/running-server.md
+      - contributors/documentation/authoring.md
   - Developers:
       - developers/quickstart.md
       - developers/adding-components.md
