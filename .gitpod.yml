@@ -1,0 +1,26 @@
+# Commands to start on workspace startup
+tasks:
+  - name: Start App Server
+    init: yarn install
+    command: yarn start
+  ## Could provide additional task to run in parallel terminal
+  # - name: Sync content
+
+# Ports to expose on workspace startup
+ports:
+  - port: 4200
+    onOpen: open-preview
+github:
+  prebuilds:
+    master: true
+    branches: false
+    pullRequests: false
+    pullRequestsFromForks: false
+    addCheck: false
+    addComment: false
+    addBadge: false
+vscode:
+  extensions:
+    - Angular.ng-template
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
