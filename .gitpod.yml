@@ -1,12 +1,12 @@
 # Commands to start on workspace startup
 tasks:
   - name: Start App Server
-    before: echo "$FIREBASE_CONFIG_TS" > src/environments/firebaseConfig.ts
+    before: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
     init: yarn install
     command: yarn start
     env:
       # stored as project environment variable in gitpod
-      FIREBASE_CONFIG_TS: $(echo FIREBASE_CONFIG_TS_B64 | base64)
+      FIREBASE_CONFIG_TS: $(FIREBASE_CONFIG_TS_B64 | base64)
   ## Could provide additional task to run in parallel terminal
   # - name: Sync content
 
