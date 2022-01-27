@@ -2,7 +2,7 @@
 tasks:
   - name: Start App Server
     # stored as project environment variable in gitpod
-    before: echo $(FIREBASE_CONFIG_TS_B64 | base64) > src/environments/firebaseConfig.ts
+    before: echo $FIREBASE_CONFIG_TS_B64 | base64 -d > src/environments/firebaseConfig.ts
     init: yarn install
     command: yarn start
   ## Could provide additional task to run in parallel terminal
