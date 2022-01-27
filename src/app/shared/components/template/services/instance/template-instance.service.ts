@@ -5,6 +5,10 @@ export class TemplateInstanceService {
   constructor(public injector: Injector) {}
 
   getGlobalService<T>(token: ProviderToken<T>) {
-    return this.injector.get(token);
+    const service = this.injector.get(token);
+    if (!service) {
+      console.warn("Global service requested but not found", token);
+    }
+    return service;
   }
 }

@@ -21,7 +21,7 @@ You must optain a `private.key` file from the development team which you can cop
 Once the file is copied run the following command:
 
 ```
-npm run scripts decrypt-config
+yarn scripts decrypt-config
 ```
 
 You will see additional files populate to the `scripts/config` folder such as they become decrypted
@@ -33,7 +33,7 @@ All users need to connect to their personal google drive account to access files
 To connect to your google account you must run:
 
 ```
-npm run scripts gdrive-auth
+yarn scripts gdrive-auth
 ```
 
 You will see a warning message to connect the unverified app. Use the advanced dropdown to accept.
@@ -45,7 +45,7 @@ You will see a warning message to connect the unverified app. Use the advanced d
 You can download the PLH folder from Google Drive on demand to view and changes. Simply run:
 
 ```
-npm run scripts app-data-sync
+yarn scripts app-data-sync
 ```
 
 You will see a summary of the output showing and details can be found in the referenced log folder:
@@ -64,7 +64,7 @@ Any changes downloaded will also be available to the app when running locally.
 To run the app with your latest downloaded data simply run
 
 ```
-npm run start
+yarn start
 ```
 
 ### Comitting changes

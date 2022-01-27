@@ -7,14 +7,17 @@ const data: { [source_text: string]: string } = {
   Tour: "Uhambo",
   "In-Week Messages": "Imiyalezo Yaphakathi Nesonto",
   Campaigns: "Imikhankaso",
+  Notifications: "Imiyalezo",
   "Privacy Policy": "Inqubomgomo Yobumfihlo",
   "App terms": "Imibandela Ye-App",
+  "About @global.parent_app": "Mayelana@global.parent_app",
   "Open Survey": "Vula Ucwaningo",
+  "Select Language": "Khetha ulimi",
   "Workshop Options": "Umhlangano wokufundisana ongakhetha kukho",
-  "Demo Presentation": "Ukuboniswa noma Isethulo Komkhiqizo",
+  "Demo Presentation": "Ukuboniswa noma Isethulo somkhiqizo",
   "Organisation Registration": "Ukubhaliswa Kwenhlangano",
   "Developer Mode": "Uhlelo Lonjiniyela",
-  "Unlock all workshops": "Vula onke imihlangano yokufundisana",
+  "Unlock all workshops": "Vula yonke imihlangano yokufundisana",
   "By clicking in the button below you will unlock all the workshops.\n\nNOTE: Users should not use this functionality to unlock workshops, this is not recommended unless strictly necessary.":
     "Ngokuchofoza inkinobho engezansi uzovula konke ukuqeqeshwa.\n\nQAPHELA: Abasebenzisi akufanele basebenzise lokhu ukuze bavule ukuqeqeshwa, lokhu akutuswa ngaphandle uma kudingeka ngempela.",
   "Unlock workshops": "Vula umhlangano wokufundisana",
@@ -24,6 +27,7 @@ const data: { [source_text: string]: string } = {
   "Reset App": "Setha kabusha uhlelo lokusebenza I-App",
   "You have successfully entered developer mode.": "Ufake ngempumelelo imodi yonjiniyela.",
   "You have entered an incorrect code.": "Ufake ikhodi engalungile. noma fake ikhodi ekungasiyona.",
+  Language: "Ulimi",
   "How did you hear about @global.parent_app?": "Uzwe kanjani nge @global.parent_app?",
   "I found it myself": "Ngizitholele ngokwami",
   "A friend or family": "Umngani noma ilunga lomndeni",
@@ -695,7 +699,7 @@ const data: { [source_text: string]: string } = {
   "Hi @fields.user_name! This week you did:":
     "Sawubona @fields.user_name! Kuleli sonto wenze lokhu:",
   "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!":
-    "Sawubona @fields.user_name! Siyakubonga ngokusebenzisa i-@global.parent_app nangokuzibophezela ekubeni umzali. \n\nUkhumbule ukucofa i-@global.parent_points zakho!",
+    "Sawubona @fields.user_name! Siyakubonga ngokusebenzisa i-@global.parent_app nangokuzibophezela ekubeni umzali. \n\nUkhumbule ukucofa ku i-@global.parent_points amaphuzu!",
   "That’s wonderful!": "Kuhle kakhulu lokho!",
   "Nice work!": "Umsebenzi omuhle!",
   "Your commitment is not taken for granted.": "Ukuzibophezela kwakho akusiyona into encane.",
@@ -1010,6 +1014,8 @@ const data: { [source_text: string]: string } = {
     "@data.workshop.w_money.tools ifakwe ku-@data.parent_centre.my_tips.title.",
   "It is so stressful when children misbehave.":
     "Kuyacindezela kakhulu lapho izingane ziziphatha kabi.",
+  "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?":
+    "Zingaki izinsuku kulelisonto elidlulile othe wajezisa izingane ngokuzishaya ngoswazi noma ibhande noma ngempama ",
   "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!":
     "Kuhle ukuthi uphendula ngomoya ophansi lapho ingane yakho yenza okuthile okucasulayo. Bangafunda okuningi kuwe!",
   "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.":
@@ -1087,6 +1093,8 @@ const data: { [source_text: string]: string } = {
   "Are you sure you want to skip this question?":
     "Ingabe uyaqiniseka ukuthi ufuna ukuweqa lo mbuzo?",
   'You selected "I would rather not answer"': 'Ukhethe okuthi "Angithandi ukungaphenduli"',
+  "That’s ok! \n\nRemember, if you do answer your answer will be kept private and will help us to provide you with content that is exactly right for you.":
+    "Kulungile!\n\nKhumbula, uma uphendula impendulo yakho izogcinwa iyimfihlo futhi izosiza ukuthi sikuhlinzeke ulwazi olulungele wena ngqo",
   "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!":
     "Siyazi ukuthi kunzima lokho. Senezele amacebiso awusizo endlela ongachitha ngayo isikhathi nengane yakho eyevile eminyakeni eyishumi nambili ukuze @data.parent_centre.my_tips.location_text, uzokwazi ukuwafinyelela ngokushesha. \n\nNgenxa yokuthi i-@data.workshop.w_1on1.title yakha isisekelo sawo wonke amanye amathuluzi okuba umzali, izoba yi-@global.weekly_workshop ozoyithola ngesonto elizayo!",
   "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!":
@@ -1140,6 +1148,7 @@ const data: { [source_text: string]: string } = {
     "Masiqale ngemibuzo embalwa emayelana nawe nomndeni wakho.",
   "We would love to know your first name or nickname:":
     "Singathanda ukwazi igama lakho noma isiteketiso sakho:",
+  "Are you a woman or a man?": "Ungumuntu wesilisa noma wesifazane?",
   Woman: "Owesifazane",
   Man: "Owesilisa",
   "How old are you?": "Uneminyaka emingaki?",
@@ -1261,8 +1270,11 @@ const data: { [source_text: string]: string } = {
   SHARE: "YABELANA",
   "Share @global.parent_app and help other families start their journey.":
     "Yabelana @global.parent_app futhi usize eminye imindeni iqale uhambo lwayo.",
+  "End of programme check-in": "Ukwabelana ukuthi sizizwa kanjani ekupheleni kwesifundo",
   "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!":
     "Ubulokhu usebenzisa i-@global.parent_app ezinyangeni ezidlule, kodwa ukukhulisa ingane esebusheni bayo kuthatha isikhathi eside!  Imibuzo elandelayo emayelana nobhekana nakho njengomzali izosisiza sihlole indlela okhulisa ngayo ingane yakho.\n\nYiba qotho. Khumbula ukuthi izigidi zabazali zizizwa njengawe, futhi sonke siyakufanelekela ukwesekwa. Awuwedwa!",
+  "You seem to have completed the end of programme check-in already. You can now skip this activity.":
+    "Kubukeka ngathi usuqedile ukwabelana ngemizwa yakho. Usungadlulela komunye umsebenzi.",
   "Plan how you will support each other going forward. \n\nYou can use the ideas from other families, or make up your own!":
     "Hlelani ukuthi nizosekelana kanjani ukuya phambili. \n\nNingasebenzisa amacebiso avela kweminye imindeni noma nizakhele awenu!",
   "We are so proud of you. You have shown strength, courage, and love for your family. Parents are amazing. You are amazing. \n\nThis song is for parents everywhere. Listen, dance together and celebrate yourselves!":
@@ -1271,21 +1283,21 @@ const data: { [source_text: string]: string } = {
     "Siyaziqhenya ngawe. Uye wabonisa amandla, isibindi kanye nothando lomndeni wakho. Abazali bayamangalisa. Uyamangalisa. \n\nLe ngoma eyabazali yonke indawo. Yilalele, udanse futhi uzihalalisele!",
   "Self-care is a key parenting tool.": "Ukuzinakekela kuyikhono elibalulekile lokuba umzali.",
   "So good to hear you are feeling well today. You are incredible!":
-    "Kuyajabulisa ukuzwa ukuthi uzizwa uphilile namuhlanje. Uyamangalisa!",
+    "Kuyajabulisa ukuzwa ukuthi uzizwa uphilile namhlanje. Uyamangalisa!",
   "Sorry that things are difficult right now. Take a deep breath and know that you are valued.":
-    "Siyaxolisa ngokuthi isimo sinzima njengamanje. Donsa/khokhe umoya kakhulu futhi wazi ukuthi ubalulekile.",
+    "Uxolo ngokuthi isimo sinzima njengamanje. Donsa/khokhe umoya, uphefumule futhi wazi ukuthi ubalulekile.",
   "You can help your teenager to understand that breaking family rules leads to consequences. \n\nBut HOW you do this matters. \n\nGetting consequences right helps teens behave better and makes family life calmer...":
     "Ungasiza ingane yakho iqonde ukuthi ukuphula imithetho yasekhaya kunemiphumela. \n\nKodwa INDLELA owenza ngayo ebalulekile. \n\nUkuthola imiphumela efanele kusiza umntwana ukuthi aziphathe kahle futhi kwenza umndeni uphile ngokuthula...",
   "Greetings, everyone. \n\nToday's topic is calm consequences.\n\nIt is important that when we introduce consequences to our teenagers we involve them, but also important that we are calm when we introduce consequences.\n\nThat will assist in us to agree on introducing calm consequences to our teenagers and our teenagers will easily remember them when they are involved and that will make them responsible.":
-    "Sanibonani, nonke. \n\nIsihloko sanamuhla sithi imiphumela eyethulwa ngendlela ezolile.\n\nKubalulekile ukuthi lapho sethula umphumela ebantwaneni bethu sibabandakanye nabo, kodwa kubalulekile nokuthi sizole lapho sethula imiphumela.\n\nLokhu kuzosisiza sivumelane ngokwethula imiphumela ngendlela ezolile ebantwaneni bethu futhi abantwana bazoyikhumbula kalula lapho sibabandakanya futhi lokho kuzobenza iziphathe kahle.",
+    "Sanibonani, nonke. \n\nIsihloko sanamuhla sithi imiphumela eyethulwa ngendlela ezolile.\n\nKubalulekile ukuthi lapho sethula umphumela ebantwaneni bethu sibabandakanye nabo, kodwa kubalulekile nokuthi sizole lapho sethula imiphumela.\n\nLokhu kuzosisiza sivumelane ngokwethula imiphumela ngendlela ezolile ebantwaneni bethu futhi abantwana bazoyikhumbula kalula lapho sibabandakanya futhi lokho kuzobenza baziphathe kahle.",
   "* Story & discussion – that didn’t work…\n* Examples of consequences\n* Tools: How to give calm consequences\nEXPLAIN - AGREE - ACT\n* Discussion on rules & consequences\n* Story & discussion – that worked!\n* Try it out!\n* Home practice suggestions":
     "* Indatshana kanye nengxoxo – okungasebenzanga ...\n* Izibonelo zemiphumela\n* Amathuluzi: Indlela yokwethula imiphumela ngomoya ophansi\nCHAZA - VUMA - THATHA ISINYATHELO\n* Ingxoxo ngemithetho nemiphumela\n* Indatshana kanye nengxoxo – okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "* Story & reflection – that didn’t work…\n* Examples of consequences\n* Tools: How to give calm consequences\nEXPLAIN - AGREE - ACT\n* Discussion on rules & consequences\n* Story & reflection – that worked!\n* Try it out!\n* Home practice suggestions":
-    "* Indatshana kanye nokucabanga ujule - okungasebenzanga ...\n* Izibonelo zemiphumela\n* Amathuluzi: Indlela yokwethula imiphumela ngomoya ophansi\nCHAZA - VUMA - THATHA ISINYATHELO\n* Ingxoxo ngemithetho nemiphumela\n* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nokubuyekezwa kwendaba - lokho akungasebenzanga ...\n* Izibonelo zemiphumela\n* Izindlela: Indlela yokwethula imiphumela ngesizotha\nCHAZA - VUMA - THATHA ISINYATHELO\n* Ingxoxo ngemithetho nemiohumela yokungayilandeli imithetho\n* Indaba kanye nokubuyekezwa kwendaba - kusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "Let's read what happened with @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver:":
     "Ake sifunde ngokwenzekile ku @global.w_consequence_teen_boy_1 no @global.w_consequence_male_caregiver wakhe:",
   "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is this? You are late!”":
-    "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! Ubani isikhathi manje? Ufike sekwephuzile!”",
+    "@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! Ubani isikhathi manje? Ufike emva kweskhathi!”",
   "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep”.  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”":
     "@global.w_consequence_teen_boy_1: “Ngiyaxolisa @global.w_consequence_male_caregiver – ungabuyela uyolala.”  \n\n@global.w_consequence_male_caregiver: “Sesidlule KUDALA isikhathi obekumele ufike ngaso ekhaya!”",
   "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, you are not keeping our rule! I will give you a hiding!”":
@@ -1306,51 +1318,51 @@ const data: { [source_text: string]: string } = {
   "Why did giving a consequence this way not work well?":
     "Kungani ukwethulwa kwemiphumela ngalendlela kungasebenzanga kahle?",
   "Yes, a strong reaction like that just made everyone more angry and upset.":
-    "Yebo, ukusabela ngendlela enokhahlo ngalendlela kwenze wonke umuntu wathukuthela kakhulu futhi wacasuka.",
+    "Yebo, ukusabela ngendlela enokuchwensa ngalendlela kwenze wonke umuntu wathukuthela kakhulu futhi wacasuka.",
   "Teenagers often break rules. Growing up is a difficult time when they are learning about who they are. \n\nLuckily, there are ways to discipline your teen without getting angry or using violence… and they work well!\n\nGiving calm consequences helps teach our children responsibility for what they do – good and bad. \n\nHere are some examples - imagine you are the parent:":
     "Kuvamile ukuthi abantwana bayiphule imithetho. Ukukhula kuyisikhathi ezinzima uma besafunda ukuthi bangobani. \n\nNgenhlanhla, kunezindlela zokukhuza abantwana ngaphandle kokucasuka noma ukuba nodlame... futhi zisebenza kahle!\n\nUkwethula imiphumela ngomoya ophansi kusiza izingane zifunde ukuthi ezikwenzayo kunemiphumela – emihle noma emibi. \n\nNazi ezinye izibonelo - zicabange uwumzali:",
   "Calm consequences should be... \n\nFAIR: Not too harsh and you can actually do it \n\nIMMEDIATE: Give them as soon as possible \n\nCONSISTENT: The same consequence every time":
     "Ukwethula imiphumela ngomoya ophansi kumelwe kube... \n\nOKUNOBULUNGISWA: Okungaqinile ngokweqile futhi  angakwazi ukukwenza  \n\nNJENGAMANJE: Nika umntwana imiphumela ngalesosikhathi kwenzeka \n\nNGENDLELA EFANAYO : Nika umphumela ofanayo ngaso sonke isikhathi",
   "@global.w_consequence_teen_boy_1 came home late.":
-    "@global.w_consequence_teen_boy_1 ufike ekhaya sekwephuzile.",
+    "@global.w_consequence_teen_boy_1 ufike ekhaya emva kwesikhathi.",
   "@global.w_consequence_teen_boy_1 came home late.\n\nWhat consequence would help here?":
-    "@global.w_consequence_teen_boy_1 ufike ekhaya sekwephuzile.\n\nYimuphi umphumela ongasiza lapha?",
+    "@global.w_consequence_teen_boy_1 ufike ekhaya emva kwesikhathi.\n\nYimuphi umphumela ongasiza lapha?",
   "Consequences are not quite the same as punishment: they give our teens a chance to learn responsibility for their actions.\n\nAnd they are more controlled AND effective than hitting or shouting!":
-    "Imiphumela ayifani nesijeziso: inikela intsha yethu ithuba lokufunda ukuthwala umthwalo wezenzo zayo.\n\nFuthi iyalawuleka FUTHI isebenza kangcono kunokushaya noma ukuthetha!",
+    "Imiphumela ayifani nesijeziso: inika izingane zethu ithuba lokufunda ukumelana nezenzo zabo.\n\nIyalawuleka FUTHI isebenza kangcono kunokushaya noma ukuthetha!",
   "@global.w_consequence_teen_girl_1 and @global.w_consequence_teen_girl_2 fight over a phone.":
     "@global.w_consequence_teen_girl_1 no @global.w_consequence_teen_girl_2 bayalwa babanga ucingo.",
   "@global.w_consequence_teen_girl_1 and @global.w_consequence_teen_girl_2 fight over a phone.\n\nWhat consequence would help here?":
     "@global.w_consequence_teen_girl_1 no @global.w_consequence_teen_girl_2 bayalwa babanga ucingo.\n\nYimuphi umphumela ongasiza lapha?",
   "Consequences are more successful if you discuss and agree in advance with teens before you apply them.\n\nAnd: consequences are not all negative… You can also agree on GOOD consequences for GOOD actions to see more positive behaviour!":
-    "Imiphumela isebenza kangcono uma kuxoxisanwa futhi kuvunyelwana ngayo kusengaphambili nomuntu omusha ngaphambi kokuthi isetshenziswe.\n\nOkunye futhi: akuyona yonke imiphumela emibi... Ningabuye nivumelane ngemiphumela EMIHLE yokwenza izinto EZINHLE ukuze ubone ukuziphatha okuhle okwengeziwe!",
+    "Imiphumela isebenza kangcono uma kuxoxisanwa futhi kuvunyelwane ngayo nomntwana ngaphambi kokuthi isetshenziswe.\n\nOkunye futhi: akuyona yonke imiphumela emibi... Ningabuye nivumelane ngemiphumela EMIHLE yokwenza izinto EZINHLE ukuze ubone ukuziphatha okuhle okwengeziwe!",
   "@global.w_consequence_teen_boy_2 helps washing dishes.":
     "@global.w_consequence_teen_boy_2 usiza ngokugeza izitsha.",
   "What consequence would help here?": "Yimuphi umphumela ongasiza lapha?",
   "@global.w_consequence_teen_boy_2 helps washing dishes.\n\nWhat positive consequence would help here?":
     "@global.w_consequence_teen_boy_2 usiza ngokugeza izitsha.\n\nYimiphi imiphumela emihle engasiza lapha?",
   "How you introduce calm consequences is important. Remember, when you involve your teen, things usually go better!":
-    "Indlela owethula ngayo imiphumela ngomoya ophansi iyasiza. Khumbula, uma uvumela intsha yakho ukuba ifake isandla, izinto ziba ngcono!",
+    "Indlela owethula ngayo imiphumela ngesizotha iyasiza. Khumbula, uma ubandakanya umntwana wakho, izinto ziba ngcono!",
   EXPLAIN: "CHAZA",
   "Check you are both calm. Take a few breaths. Explain to your teen why you are concerned about their behaviour.\n\nExplain the reasons why the rule mattered. You can share your feelings - it’s okay to say you are disappointed.":
-    "Bheka ukuthi nobabili ninomoya ophansi yini. Donsa umoya izikhathi ezimbalwa. Chazela ingane yakho eyevile eminyakeni eyishumi nambili ukuthi kungani ukhathazekile ngokuzipha kwayo.\n\nChaza ukuthi kungani lo mthetho ubalulekile. Ungaveza indlela ozizwa ngayo - kulungile ukusho ukuthi uphoxekile.",
+    "Bheka ukuthi nobabili ninomoya ophansi yini. Phefumula izikhathi ezimbalwa. Chazela ingane yakho ukuthi kungani ukhathazekile ngokuziphatha kwayo.\n\nChaza ukuthi kungani umthetho ubalulekile. Ungamtshela indlela ozizwa ngayo - kulungile ukusho ukuthi uphoxekile.",
   AGREE: "VUMA",
   "Plan consequences with your teen for following and not following the rule.\n\nAsk for their ideas. Talk until you agree on something realistic.\n\nMake a consequence for NOT following the rule and a privilege when they DO follow the rule.":
-    "Hlela ingane yakho eseminyakeni yokuthomba ngemiphumela yokulandela neyokungawulandeli umthetho.\n\nBacela baveze imibono yabo. Khulumani kuze kube yilapho nivumelana khona ngokuthile okuzosebenza.\n\nYenza umphumela WOKUNGALANDELI umthetho nelungelo azolithola uma EWULANDELE umthetho.",
+    "Hlela nengane yakho ngemiphumela yokulandela neyokungawulandeli umthetho.\n\nBacele baveze imibono yabo. Khulumani nize nivumelane ngokuthile okuzosebenza.\n\nYenza umphumela WOKUNGALANDELI umthetho nelungelo azolithola uma ethe WALANDELA umthetho.",
   ACT: "THATHA ISINYATHELO",
   "When your teen follows the rule, give praise and privileges!":
-    "Uma ingane yakho eseminyakeni yokuthomba iwulandela umthetho, yincome bese uyinikeza amalungelo!",
+    "Uma ingane yakho iwulandela umthetho, yincome bese uyinikeza amalungelo!",
   "They will feel respected and valued. Remember: The more we praise them, the more they will show that good behaviour!":
     "Bazozizwa behlonishwa futhi bebalulekile. Khumbula: Uma sibancoma njalo, bazothuthukisa kakhulu ukuziphatha okuhle!",
   "When your teen does not follow the rule, follow through with the consequence.":
-    "Uma ingane yakho eseminyakeni yokuthomba ingawulandele umthetho, namathela emphumeleni.",
+    "Uma ingane yakho ingawulandeli umthetho, qhubeka nomphumela enivumelene ngawo.",
   "When your teen breaks the rule, calmly give the consequence. This should be FAIR (not too harsh), IMMEDIATE (do it straight away) CONSISTENT (same every time).":
-    "Uma ingane yakho eseminyakeni yokuthomba iphula umthetho, ngomoya ophansi khipha umphumela walokho. Lokho kumelwe kube OKUNOBULUNGISA (akumelwe kube nokhahlo kakhulu), NGOKUSHESHA (kwenze ngaso leso sikhathi) UNGASHINTSHI (okufanayo ngaso sonke isikhathi).",
+    "Uma ingane yakho iphula umthetho, ngomoya ophansi mkhumbuze ngomphumela walokho. Lokho kumelwe kube OKUNOBULUNGISWA (akumelwe kube nokhahlo kakhulu), NGALESOSIKHATHI (kwenze ngaso leso sikhathi) UNGASHINTSHI (okufanayo ngaso sonke isikhathi).",
   "Discuss together:\n* What rules do your teens often break? \n* What consequence could you use for each specific broken rule? \n\nConsequences should be: \nFAIR (not too harsh)\nIMMEDIATE (do it straight away) \nCONSISTENT (same every time).\n\nPraise and encourage each other – we can give each other strength!":
     "Xoxani ndawonye:\n* Yimiphi imithetho izingane zakho ezivame ukuyiphula? \n * Yimuphi umphumela ongawusebenzisa emthethweni othile ophuliwe? \n\nImiphumela kumelwe ibe: \nENOBULUNGISWA (engaqinile ngokwedlulele)\nNGOKUSHESHA (kwenze ngaso leso sikhathi) \nUNGASHINTSHI (okufanayo ngaso sonke isikhathi).\n\nNcomanani futhi nikhuthazane – singanikana amandla!",
   "Let's go back to @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver":
     "Ake sibuyele ku @global.w_consequence_teen_boy_1 naku @global.w_consequence_male_caregiver wakhe",
   '@global.w_consequence_male_caregiver: "I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1. What can we do to help you remember to come home in time?"\n\n@global.w_consequence_teen_boy_1: "If I come home in time, maybe I can stay up 30 minutes later than usual?"':
-    '@global.w_consequence_male_caregiver: “Ngikhathazekile ngokuthi namanje usabuya sekwephuzile ekhaya, @global.w_consequence_teen_boy_1. Yini esingayenza ukuze sikusize ukhumbule ukuthi ubuye ngesikhathi ekhaya?"\n\n@global.w_consequence_teen_boy_1: “Uma ngingafika ngesikhathi ekhaya, mhlawumbe ngingahlala imizuzu engu-30 kunangesikhathi esivamile sokulala?”',
+    '@global.w_consequence_male_caregiver: “Ngikhathazekile ngokuthi namanje usabuya kuhlwile ekhaya, @global.w_consequence_teen_boy_1. Yini esingayenza ukuze sikusize ukhumbule ukuthi ubuye ngesikhathi esivumelene ngaso ekhaya?"\n\n@global.w_consequence_teen_boy_1: “Uma ngingafika ngesikhathi ekhaya, mhlawumbe ngingahlala imizuzu engu-30 kunangesikhathi esivamile sokulala?”',
   "@global.w_consequence_male_caregiver: That is a good idea! And what should we do if you don’t follow the rule?  \n\n@global.w_consequence_teen_boy_1 (mumbles): “Mgmluuhm”":
     "@global.w_consequence_male_caregiver: Umbono omuhle lowo! Yini okumelwe siyenze uma ungawulandeli umthetho?  \n\n@global.w_consequence_teen_boy_1 (uyabubula): “Ngmluuhm”",
   '@global.w_consequence_male_caregiver: "Oh come on, I know you have some ideas."\n\n@global.w_consequence_teen_boy_1: "Okay…. What about: I have to do my homework?"':
@@ -1358,7 +1370,7 @@ const data: { [source_text: string]: string } = {
   '@global.w_consequence_male_caregiver: "You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day."\n\n@global.w_consequence_teen_boy_1: "Okay, @global.w_consequence_male_caregiver."':
     '@global.w_consequence_male_caregiver: “Kumele uwenze umsebenzi wakho wesikole noma kunjalo. Uma uwukhohlwa umthetho, kuyinto elungile ukuthi ungababoni abangane bakho ngosuku olulandelayo." \n\n@global.w_consequence_teen_boy_1: “Kulungile, @global.w_consequence_male_caregiver."',
   "The next day...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is it! It is late!”":
-    "Ngosuku olulandelayo...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! Ngubani isikhathi! Sekwephuzile!”",
+    "Ngosuku olulandelayo...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! Ngubani isikhathi! Sekuhlwile!”",
   "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep.”  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”":
     "@global.w_consequence_teen_boy_1: “Ngiyaxolisa @global.w_consequence_male_caregiver – ungabuyela uyolala.”  \n\n@global.w_consequence_male_caregiver: “Sesidlule KUDALA isikhathi obekumele ufike ngaso ekhaya!”",
   "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, it is the middle of the night and you came home later than we agreed. Whatever the reason is, you must understand that this is not acceptable. @global.w_consequence_female_caregiver and I felt really worried.”":
@@ -1395,14 +1407,14 @@ const data: { [source_text: string]: string } = {
   "Plan a calm consequence for your teenagers arguing with each other during dinner. Remember they need to be \n\nFAIR - IMMEDIATE - CONSISTENT":
     "Hlela umphumela owethulwa ngomoya ophansi wezingane zakho eziseminyakeni yokuthomba uma ziphikisana phakathi nesikhathi sokudla. Khumbula ukuthi kudingeka ube \n\nONOBULUNGISA - NGOKUSHESHA - UNGASHINTSHI",
   "Your home practice for this week will be to talk together with your teen about a ONE negative consequence and ONE positive consequence.\n\nConsequences should be:\nFAIR (not too harsh)\nIMMEDIATE (do it straight away)\nCONSISTENT (same every time)":
-    "Enizokuprakthiza ekhaya kuleli viki kuzoba ukukhulumisana nengane yakho eseminyakeni yokuthomba ngomphumela OWODWA obuhlungu nomphumela OWODWA omuhle.\n\nImiphumela kumelwe ibe:\nENOBULUNGISA (engaqinile ngokwedlulele)\nNGOKUSHESHA (kwenze ngaso leso sikhathi)\nUNGASHINTSHI (okufanayo ngaso sonke isikhathi)",
+    "Umsebenzi wasekhaya kuleli viki kuzoba ukukhulumisana nengane yakho ngomphumela OWODWA ongemuhle nomphumela OWODWA omuhle.\n\nImiphumela kumelwe ibe:\nENOBULUNGISWA (engaqinile ngokwedlulele)\nNGALESOSIKHATHI (kwenze ngaso leso sikhathi)\nUNGASHINTSHI (okufanayo ngaso sonke isikhathi)",
   "Negative Behaviour: Coming home after the agreed hour. \n\nNegative Consequence: Cannot see friends the next day. \n\nNegative Behaviour: Talking rudely. \n\nNegative Consequence: Write a letter of apology. \n \nPositive Behaviour: Helping out with shopping. \n\nPositive Consequence: 30 minutes extra of loved activity of their choice.  \n\nPositive Behaviour: Helping look after younger siblings. \n\nPositive Consequence: One hour of extra time with friends on the weekend.":
     "Ukuziphatha okungamukelekile: Ukufika ekhaya sekudlule isikhathi ekuvunyelwene ngaso. \n\nUmphumela Ongemuhle: Awuvunyelwe ukubona abangane bakho nosuku olulandelayo. \n\nUkuziphatha okungamukelekile: Ukukhuluma kabi ngokungenanhlonipho. \n\nUmphumela Ongemuhle: Bhala incwadi yokuxolisa. \n \nUkuziphatha Okuhle: Ukusiza ngokuyothenga. \n\nUmphumela Omuhle: Imizuzu engu-30 eyengeziwe yokwenza okuthile akuthandayo.  \n\nUkuziphatha Okuhle: Ukusiza ngokugada izingane zasekhaya ezincane. \n\nUmphumela Omuhle: Ihora elilodwa elengeziwe lokuba nabangani ngempelasonto.",
   "How are you feeling today?": "Uzizwa kanjani namuhla?",
   "Great that today is going well! What is one thing that has gone well today? Remember to praise yourself for it.":
     "Kuhle ukuthi kuhamba kahle namuhla! Iyiphi into eyodwa ehambe kahle namuhla? Khumbula ukuzincoma ngayo.",
   "Sorry to hear you are feeling difficult feelings today. Well done for recognising those emotions, and trying to be calm and kind to yourself. You are setting a great example for your family.":
-    "Ngiyaxolisa ukuzwa ukuthi awuzizwa kahle namuhla. Wenze kahle ngokuthi uyiqaphele leyo mizwa, nokuzama ukwehlisa umoya nokuba nomusa kuwe. Ubekela umndeni wakho isibonelo esihle.",
+    "Uxolo ukuzwa ukuthi awuzizwa kahle namuhla. Wenze kahle ngokuthi uyiqaphele leyo mizwa, nokuzama ukwehlisa umoya nokuba nomusa kuwe. Ubekela umndeni wakho isibonelo esihle.",
   "Every small thing you do matters. We hope you are proud of yourself too.":
     "Zonke izinto ezincane ozenzayo zibalulekile. Sethemba ukuthi nawe uyaziqhenya ngawe.",
   "All families experience crises. When we prepare together and know where to get help BEFORE something bad happens, we can overcome any crisis.":
@@ -1412,7 +1424,7 @@ const data: { [source_text: string]: string } = {
   "* Story & discussion\n* Story & discussion\n* Tools: How to deal with crisis\nBREATHE - LISTEN - THINK\n* Try it out!\n* Home practice suggestions":
     "* Indatshana kanye nengxoxo\n* Indatshana kanye nengxoxo\n* Amathuluzi: Indlela yokubhekana nezinkinga\nPHEFUMULA - LALELA - CABANGA\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "* Story & reflection\n* Story & reflection\n* Tools: How to deal with crisis\nBREATHE - LISTEN - THINK\n* Try it out!\n* Home practice suggestions":
-    "* Indatshana kanye nokucabanga ujule\n* Indatshana kanye nokucabanga ujule\n* Amathuluzi: Indlela yokubhekana nezinkinga\nPHEFUMULA - LALELA - CABANGA\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nokubuyekeza indaba\n* Indatshana kanye nokubuyekeza indaba\n* Amathuluzi: Indlela yokubhekana nezinkinga\nPHEFUMULA - LALELA - CABANGA\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:":
     "Inkinga ingavelela noma ubani. \n\nAke sibone ukuthi yini eyenzeke ku @global.w_crisis_teen_girl_1 no @global.w_crisis_female_caregiver wakhe:",
   '@global.w_crisis_female_caregiver: "Shame my dear, you look really upset, do you want to tell me what happened?"':
@@ -1426,13 +1438,13 @@ const data: { [source_text: string]: string } = {
   '@global.w_crisis_female_caregiver: "Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?"\n\n@global.w_crisis_teen_girl_1: "Yes… Okay… But will you come with me?"':
     "@global.w_crisis_female_caregiver: “Ah ngiyazi, ake sihambe siye emtholampilo. Bazokwazi ukuthi yini okumelwe siyenze ukuze sikusize. Ingabe lokhu kuzwakala kukahle kuwe?”\n\n@global.w_crisis_teen_girl_1: “Yebo... Kulungile... Kodwa ngicela ukuhamba nawe?”",
   '@global.w_crisis_female_caregiver: "Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this."':
-    "@global.w_crisis_female_caregiver: “Nakanjani ngizohamba nawe. Bese @global.w_crisis_teen_girl_1? Khumbula ukuthi lokhu akulona iphutha lakho.” Ngiyakuthanda. Uwumuntu okahle. Sizodlula kulokhu.”",
+    "@global.w_crisis_female_caregiver: “Nakanjani ngizokwenza . Bese @global.w_crisis_teen_girl_1? Khumbula ukuthi lokhu akulona iphutha lakho.” Ngiyakuthanda. Ungumuntu okahle. Sizodlula kulokhu.”",
   "This was such a difficult situation for @global.w_crisis_teen_girl_1 and her @global.w_crisis_female_caregiver! This can happen to boys and girls.":
     "Lesi bekuyisimo esinzima kakhulu ku@global.w_crisis_teen_girl_1 naku @global.w_crisis_female_caregiver! Lokhu kungenzeka kubafana nakumantombazane.",
   "What skills did @global.w_crisis_female_caregiver use?":
     "Imaphi amakhono u @global.w_crisis_female_caregiver awasebenzisile?",
   "Yes, @global.w_crisis_female_caregiver actually used all those skills – and so can you!":
-    "Yebo, empeleni @global.w_crisis_female_caregiver uwasebenzise wonke lawo makhono – nawe ungakwazi ukwenza kanjalo!",
+    "Yebo, @global.w_crisis_female_caregiver uwasebenzise wonke amakhono – nawe ungenza kanjalo!",
   "Another problem that many parents are worried about is violence and crime. Let’s look at an example together.":
     "Enye inkinga abazali abakhathazeke ngayo udlame nobugebengu. Ake sibheke isibonelo ndawonye.",
   '@global.w_crisis_male_caregiver_1: "@global.w_crisis_teen_boy_1, you look worried since yesterday. What is wrong?"':
@@ -1442,29 +1454,29 @@ const data: { [source_text: string]: string } = {
   '@global.w_crisis_teen_boy_1: "I didn’t want to, but I couldn’t just stand there and let them beat up my friend, so…"\n\n@global.w_crisis_male_caregiver_1: "So, did you fight in order to help defend your friend?"':
     "@global.w_crisis_teen_boy_1: “Bengingafuni, kodwa bengingeke ngime ngibukele beshaya umngane wami, ngakho-ke...”\n\n@global.w_crisis_male_caregiver_1: “Ngakho, ulwile ukuze uvikele umngane wakho?”",
   '@global.w_crisis_teen_boy_1: “Everyone was fighting. I saw someone lying on the field in a pool of blood. He looked… dead."':
-    "@global.w_crisis_teen_boy_1: “Wonke umuntu ubelwa. Ngibone othile alele phansi kugcwele igazi yonke indawo. Ubebonakala... efile.”",
+    "@global.w_crisis_teen_boy_1: “Wonke umuntu ubelwa. Ngibone umuntu elele phansi kwidamu legazi. Ubebonakala... efile.”",
   '@global.w_crisis_male_caregiver_1: "I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help."':
-    "@global.w_crisis_male_caregiver_1: “Ngiyajabula ukuthi ungitshele ngalokhu, @global.w_crisis_teen_boy_1. Ake sihlale phansi manje sixoxe ngokuthi ingabe kuyadingeka sifake amaphoyisa noma omunye umuntu ukuba asize.”",
+    "@global.w_crisis_male_caregiver_1: “Ngiyajabula ukuthi ungitshele ngalokhu, @global.w_crisis_teen_boy_1. Ake sihlale phansi manje sixoxe ngokuthi ingabe kuyadingeka ukuthi sibandakanye amaphoyisa noma omunye umuntu ukuba asize.”",
   '@global.w_crisis_teen_boy_1: "Thank you, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: "We will get through this. Remember, we will support you as a family."':
-    '@global.w_crisis_teen_boy_1: “Ngiyabonga, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: “Sizodlula kulokhu. Khumbula, sizokusekela njengomndeni.”',
+    '@global.w_crisis_teen_boy_1: “Ngiyabonga, @global.w_crisis_male_caregiver_1"\n\n@global.w_crisis_male_caregiver_1: “Sizodlula kulokhu. Khumbula, sizokweseka njengomndeni.”',
   "This was such a difficult situation for @global.w_crisis_teen_boy_1 and his @global.w_crisis_male_caregiver_1!":
     "Lesi bekuyisimo esinzima kakhulu ku@global.w_crisis_teen_boy_1 naku @global.w_crisis_male_caregiver_1!",
   "What skills did @global.w_crisis_male_caregiver_1 use?":
     "Imaphi amakhono u @global.w_crisis_male_caregiver_1 awasebenzisile?",
-  "All these skills can help in a crisis.": "Onke la makhono angasebenza lapho kunenkinga.",
+  "All these skills can help in a crisis.": "Wonke lamakhono angasiza lapho kunenkinga.",
   "Crisis can make us feel angry or helpless. But this is when our teens really need us to breathe, listen and think.":
-    "Inkinga ingakwenza uzizwe ucasukile noma ungelusizo lwalutho. Kodwa kungaleso sikhathi lapho intsha yethu idinga sidonse umoya, silalele futhi sicabange.",
-  BREATHE: "DONSA UMOYA",
+    "Inkinga ingasenza sizizwe sicasukile noma singenalusizo. Kodwa kungaleso sikhathi lapho abantwana bethu bedinga siphefumule, silalele futhi sicabange.",
+  BREATHE: "PHEFUMULA",
   "Stay calm. Ask yourself ‘what does my teen need right now’":
-    "Hlala uzolile. Zibuze ‘yini edingwa ingane yami eseminyakeni yokuthomba njengamanje’",
+    "Hlala uzolile. Zibuze ‘yini edingwa ingane yami njengamanje’",
   LISTEN: "LALELA",
   "Tell them you are there for them and love them.":
-    "Batshele ukuba ukhonela bona bese uyabathanda.",
+    "Batshele ukuba ukhonela bona futhi uyabathanda.",
   THINK: "CABANGA",
   "Talk with your teen. What might help the situation? You might need to make immediate plans now, and then long-term plans later.":
-    "Khuluma ingane yami eseminyakeni yokuthomba. Yini engasiza kulesi simo? Kungase kudingeke wenze izinhlelo ezisheshayo manje, bese wenza izinhlelo zesikhathi esizayo kamuva.",
+    "Khuluma nengane yakho. Yini engasiza kulesi simo? Kungase kudingeke wenze izinhlelo ezisheshayo manje, bese wenza izinhlelo zesikhathi esizayo kamuva.",
   "You can be proud of yourself for exploring ways to get help!":
-    "Uzoziqhenya ngawe ngokwakho ngokuhlola izindlela ongathola ngazo usizo!",
+    "Ungaziqhenya ngokuthola izindlela zokuthola usizo!",
   "It’s helpful to practice dealing with crisis before something happens. \n\nLook at these five family crisis times. Imagine you are the parent: What would you do?\n\nRemember:  BREATHE - LISTEN - THINK":
     "Kuyasiza ukukuprakthiza ukubhekana nenkinga engaqubuka ngaphambi kokuba yenzeke. \n\nBheka lezi zikhathi ezinhlanu zezinkinga zomndeni. Zicabange uwumzali: Yini obungayenza?\n\nKhumbula:  PHEFUMULA - LALELA - CABANGA",
   "Crisis 1: @global.w_crisis_teen_boy_2 fights at school":
@@ -1474,9 +1486,9 @@ const data: { [source_text: string]: string } = {
   "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant":
     "Inkinga 2: @global.w_crisis_teen_girl_1 uyakhulelwa",
   '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do"':
-    '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, Ngizizwa nginamahloni. Angazi ukuthi ngenzeni”',
+    '@global.w_crisis_teen_girl_1: "@global.w_crisis_male_caregiver_1, Ngizizwa nginamahloni. Angazi ukuthi ngenzenjani”',
   "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant":
-    "Inkinga 3: @global.w_crisis_teen_boy_2 ukhulelisa intombi",
+    "Inkinga 3: @global.w_crisis_teen_boy_2 ukhulelisa intombazane",
   '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, I don’t want to have a baby"':
     '@global.w_crisis_teen_boy_2: "@global.w_crisis_male_caregiver_2, Angifuni ukuba nengane"',
   "How could you respond to @global.w_crisis_teen_boy_2?":
@@ -1509,20 +1521,20 @@ const data: { [source_text: string]: string } = {
   "Focus on the positive! \n\nTelling our teens what we DO want them to do works better than telling them to STOP doing something.\n\nYou will see the difference.":
     "Gxila kokuhle! \n\nUkutshela abantwana bethu ukuthi YINI esifuna bayenze kusebenza kangcono kunokubatshela ukuthi BAYEKE ukwenza okuthile.\n\nUzowubona umehluko.",
   "Greetings, greetings everyone.\n\nToday our topic is positive instructions. \n\nIt is important to give positive instructions to our children, because when we give them positive instructions they know and understand what we are expecting them to do, and they do it the way we want them to do it. \n\nSo, at the end it keeps everyone happy.":
-    "Sanibonani, sanibonani nonke.\n\nIsihloko sethu namuhla sikhuluma ngeziqondiso ezinhle. \n\nKubalulekile ukunika izingane zakho iziqondiso ezinhle, ngoba uma uzinikeza iziqondiso ezinhle ziyazi futhi ziqonde ukuthi yini esilindele ukuthi ziyenze, futhi zizokwenza ngendlela esifuna ukuthi zikwenze ngayo. \n\nEkugcineni, kwenza wonke umuntu ajabule.",
+    "Sanibonani, sanibonani nonke.\n\nIsihloko sethu namuhla sikhuluma ngemiyalelo emihle. \n\nKubalulekile ukunika izingane zakho imiyalelo emihle, ngoba uma sibanikeza imiyalelo emihle bayazi futhi bayaqonda ukuthi yini esilindele ukuthi bayenze, futhi bayenza ngalendlela esifuna bayenze ngayo. \n\nEkugcineni, kwenza wonke umuntu ajabule.",
   "* Thought experiment\n* Story & discussion – that didn’t work…\n* Story & discussion – that worked!\n* Tools: How to give positive instructions\nGET REAL - GET POSITIVE - GET CLEAR\n* Try it out!\n* Home practice suggestions":
-    "* Ukuhlola umcabango\n* Indatshana kanye nengxoxo – okungasebenzanga ...\n* Indatshana kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokunikeza iziqondiso ezinhle\nBHEKANA NAMAQINISO - CABANGA NGEZINTO EZAKHAYO - CACISA\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Ukuhlola umcabango\n* Indaba kanye nengxoxo – okungasebenzanga ...\n* Indaba kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokunikeza imiyalelo emihle\nIBA NEQINISO - CABANGA IZINTO EZAKHAYO - CACISA\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "* Thought experiment\n* Story & reflection – that didn’t work…\n* Story & reflection – that worked!\n* Tools: How to give positive instructions\nGET REAL - GET POSITIVE - GET CLEAR\n* Home practice suggestions":
-    "* Ukuhlola umcabango\n* Indatshana kanye nokucabanga ujule - okungasebenzanga ...\n* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Amathuluzi: Indlela yokunikeza iziqondiso ezinhle\nBHEKANA NAMAQINISO - CABANGA NGEZINTO EZAKHAYO - CACISA\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Ukuhlola umcabango\n* Indaba kanye nokubuyekeza - okungasebenzanga ...\n* Indatshana kanye nokubuyekeza - okusebenzile!\n* Amathuluzi: Indlela yokunikeza imiyalelo emihle\nIBA NEQINISO - CABANGA IZINTO EZAKHAYO - CACISA\n* Amacebiso alokho ongakwenza ekhaya",
   "Let’s do a thought experiment!": "Ake senze ukuhlola okucatshangiwe!",
   "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?":
     "UNGACABANGI NGENDLOVU \n\nYini ocabanga ngayo?",
   "You probably DID think about an elephant...\n\n‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we DID want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)":
-    "Ngokuqinisekile kungenzeka UCABANGE ngayo indlovu...\n\nIziqondiso ezithi ‘ungakwenzi’ yenza intsha icabange ngaleyo nto. \n\nNgezinye izikhathi abaqondi ukuthi YINI esifuna bayenze. \n\nKanti futhi ngokuvamile abafuni ukutshelwa ukuthi benzeni (cishe kunjalo nangathi sonke.)",
+    "Ngokuqinisekile UKE wacabanga ngendlovu...\n\n Unganiki imiyalelo eyenza abantwana bacabange ngalokho.\n\nNgezinye izikhathi abaqondi ukuthi YINI esifuna bayenze. \n\nKanti futhi ngokuvamile abathandi ukutshelwa ukuthi yini ekumele bangayenzi (cishe kunjalo nangathi sonke.)",
   "NOW, THINK ABOUT A CHEETAH! \n\nWhat are you thinking about?":
     "MANJE, CABANGA NGENGULULE! \n\nYini ocabanga ngayo?",
   "That’s right! Positive, clear instructions help teens focus on what they should be doing. \n\nTeens will also feel more respected this way, and are more likely to listen.":
-    "Kunjalo! Iziqondiso ezinhle nezicacile zisiza intsha ukuthi igxile kulokho okumelwe ikwenze. \n\nUma wenza kanjalo intsha izozizwa ihlonishwa, futhi ithambekele kakhulu ekulaleleni.",
+    "Kuhle! Imiyalelo emihle, imiyalelo ecacile isiza abantwana bagxile kulokho okumele bakwenze.\n\n Abantwana bazozizwa behlonishwa kakhulu futhi bangalalela.",
   'Let’s see what happens if @global.w_instruct_female_caregiver tells @global.w_instruct_teen_girl "DON\'T":':
     'Ake sibone ukuthi kwenzekani uma @global.w_instruct_female_caregiver ethi @global.w_instruct_teen_girl "UNGENZI LOKHU":',
   "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”":
@@ -1547,7 +1559,7 @@ const data: { [source_text: string]: string } = {
   "Told @global.w_instruct_teen_girl what she wants her to do":
     "Ubengamtshela @global.w_instruct_teen_girl ukuthi ufuna enzeni",
   "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:":
-    "Siyabonga ngokuthi nicabanga kanye nathi! \n\nAke sibuyele emuva sibone ukuthi kuzokwenzekani uma @global.w_instruct_female_caregiver enikeza isiqondiso esicacile:",
+    "Siyabonga ngokuthi nicabanga kanye nathi! \n\nAke sibuyele emuva sibone ukuthi kuzokwenzekani uma @global.w_instruct_female_caregiver enikeza umyalelo omuhle:",
   '@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance."\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”':
     "@global.w_instruct_female_caregiver ubehlanza indlu ngesikhathi @global.w_instruct_teen_girl eprakthiza ukudansa nomngane wakhe.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, kuyajabulisa ukukubona uprakthiza ukudansa nomngane wakho. Ngicela niyodansela ngaphandle ukuze ngiqedele ukuhlanza indlu. Ngemva kwalokho, ningangibonisa umdanso wenu.”\n\n@global.w_instruct_teen_girl: “Kulungile, @global.w_instruct_female_caregiver!”",
   '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance."':
@@ -1556,7 +1568,7 @@ const data: { [source_text: string]: string } = {
     "@global.w_instruct_female_caregiver: “Kwaze kwakuhle, @global.w_instruct_teen_girl! Udansa kahle ngempela!”",
   "Let's discuss what happened this time.": "Ake sixoxe ngalokho okwenzeke manje.",
   "Discuss together: \n\n* How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?\n* Why do you think the situation went better for @global.w_instruct_female_caregiver this time?":
-    "Xoxani ndawonye: \n\n* U @global.w_instruct_teen_girl no @global.w_instruct_female_caregiver bazizwa kanjani njengamanje?\n* Kungani ucabanga ukuthi isimo sibe ngcono @global.w_instruct_female_caregiver kulokhu?",
+    "Xoxani ndawonye: \n\n* U @global.w_instruct_teen_girl no @global.w_instruct_female_caregiver uzizwa kanjani njengamanje?\n* Ucabanga ukuthi kungani isimo sibe ngcono @global.w_instruct_female_caregiver kulokhu?",
   "It worked better this time because...": "Kusebenze kangcono manje ngoba...",
   "* @global.w_instruct_teen_girl felt respected and loved by her @global.w_instruct_female_caregiver\n* @global.w_instruct_female_caregiver was able to stay calm  \n* @global.w_instruct_female_caregiver  kept a positive attitude":
     "* @global.w_instruct_teen_girl uzizwe ehlonishwa futhi ethandwa u @global.w_instruct_female_caregiver wakhe\n* @global.w_instruct_female_caregiver ukwazile ukuhlala ezolile  \n* @global.w_instruct_female_caregiver ulondoloze isimo sengqondo esihle",
@@ -1571,50 +1583,50 @@ const data: { [source_text: string]: string } = {
   "@global.w_instruct_female_caregiver kept a positive attitude":
     "@global.w_instruct_female_caregiver ulondoloze isimo sengqondo esihle",
   "Positive instructions can work with your teen too!":
-    "Ukunikeza iziqondiso ezinhle kungasebenza nasenganeni yakho eseminyakeni yokuthomba!",
-  "GET REAL": "BHAKANA NAMAQINISO",
+    "Ukunikeza imiyalelo emihle kungasebenza nasenganeni yakho!",
+  "GET REAL": "IBA NEQINISO",
   "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.":
-    "Ingabe ingane yakho eyevile eminyakeni eyishumi nambili izokwenza ngempela yini lokho ozokucela? Kungase kungenzeki ukuthi ifundele phansi usuku lonke, kodwa isigamu sehora uma ubhekana namaqiniso.",
-  "GET POSITIVE": "CABANGA NGEZINTO EZAKHAYO",
+    "Ingabe ingane yakho ingakwenza ngempela yini lokho ozokucela? Kungase kungenzeki ukuthi ifundele phansi usuku lonke, kodwa isigamu sehora uma usidinga singalunga.",
+  "GET POSITIVE": "CABANGA IZINTO EZAKHAYO",
   "Smile, look them in the eye, and use positive words. Praise them as soon as they start to do what you ask!":
-    "Momotheka, babuke emehlweni, usebenzise amazwi akhuthazayo. Bancome ngokushesha uma beqala ukwenza obacela ukuthi bakwenze!",
+    "Mamatheka, babuke emehlweni, usebenzise amazwi akhuthazayo. Bancome ngokushesha uma beqala ukwenza obacela ukuthi bakwenze!",
   "GET  CLEAR": "CACISA",
   "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want your teen to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.":
-    "Ngokuvamile ezingqondweni zethu siyakwazi esikufunayo, kodwa asikusho kucace ngokwanele. Yisho ngokucacile ukuthi ufuna ingane yakho eseminyakeni yokuthomba yenzeni. Zama ukuthi ‘ngicela ubuye ekhaya ngo-7pm’ kungokuba ‘buya ekhaya ngesikhathi’.",
+    "Ngokuvamile siyakwazi esikufunayo emiqondweni yethu, kodwa asikusho kucace ngokwanele. Yisho ngokucacile ukuthi ufuna ingane yakho yenzeni. Zama ukuthi ‘ngicela ubuye ekhaya ngo-7pm’ kungokuthi ‘buya ekhaya ngesikhathi’.",
   "Let's practice giving REAL, POSITIVE and CLEAR instructions. Practice will help you be successful with your teen!":
-    "Ake sizame ukunikeza iziqondiso EZINGOKOQOBO, EZAKHAYO neziCACILE. Ukuprakthiza kuzokusiza wena uphumelele nengane yakho eseminyakeni yokuthomba!",
+    "Ake sizame ukunikeza imiyalelo EMIHLE, EYIQINISO neCACILE. Ukuprakthiza kuzokusiza wena uphumelele nengane yakho!",
   "Choose two people from your group:\n* One person pretends to be a teenager\n* The other pretends to be the teenager’s parent\n* “Parent”: Give your “teen” a positive instruction with encouragement and praise\n* “Teen”: Respond as you think a teen may respond to this \n\nDiscuss together how that went:\n* How did this make you feel as “parent” and as “teen”?\n* Could you do anything better?\n\nGive everyone a chance to be the “parent” and the “teen” if you can. Practice brings success!":
-    "Khetha abantu ababili eqenjini lakho:\n* Omunye enze sengathi uyingane eyevile eminyakeni eyishumi nambili\n* Kuthi omunye enze sengathi ungumzali wengane eyevile eminyakeni eyishumi nambili\n* “Mzali: Nikeza “ingane eyevile eminyakeni eyishumi nambili” isiqondiso esihle kanye nesikhuthazo esakhayo ngemva kwalokho uyincome\n* “Ingane eyevile eminyakeni eyishumi nambili”: Phendula ngendlela ocabanga ukuthi ingane eyevile eminyakeni eyishumi nambili ingaphendula ngayo kulokhu \n\nXoxani ndawonye ngokuthi kuhambe kanjani:\n* Lokhu kukwenze wazizwa kanjani “njengomzali” “nanjengengane yeyevile eminyakeni eyishumi nambili”?\n* Ingabe kukhona ongakwenza kangcono?\n\nNikela wonke umuntu ithuba lokuba “umzali” nokuba “umuntu omusha” uma kungenzeka. Ukuprakthiza kuveza imiphumela emihle!",
-  "Examples of positive instructions:": "Izibonelo zeziqondiso ezinhle:",
+    "Khetha abantu ababili eqenjini lakho:\n* Omunye enze sengathi uyingane\n* Kuthi omunye enze sengathi ungumzali wengane \n* “Mzali: Nikeza “ingane yakho” umyalelo omuhle  umkhuthaze futhi umncome \n* “Ngane”: Phendula ngendlela ocabanga ukuthi ingane  ingaphendula ngayo kulokhu \n\nXoxani ndawonye ngokuthi kuhambe kanjani:\n* Kukwenze wazizwa kanjani “njengomzali” “nanjengengane yeyevile eminyakeni eyishumi nambili”?\n* Ingabe kukhona ongakwenza kangcono?\n\nNikela wonke umuntu ithuba lokuba “umzali” nokuba “ingane” uma kungenzeka. Ukuprakthiza kuveza imiphumela emihle!",
+  "Examples of positive instructions:": "Izibonelo zemiyalelo emihle:",
   "* I like your music. Could you turn it down during dinner so that we can talk? Thank you – I really appreciate it. \n* That’s great music. Who is the singer? Please turn the music off when you come in the house. You can play it in your room quietly if you want. Thank you!":
     "* Ngiyawuthanda umculo wakho. Ungakwazi yini ukuwunciphisa ngesikhathi sesidlo sakusihlwa ukuze sikwazi ukuxoxa? Ngiyabonga - ngiyakwazisa kakhulu lokho. \n * Umnandi umculo wakho. Ubani umculi wawo? Ngicela uwuvale umculo uma ungena endlini. Ungawudlalela phansi ekamelweni lakho uma uthanda. Ngiyabonga!",
   "This week's home practice is to give your teen positive instructions.\n\nRemember – GET REAL, GET POSITIVE, GET CLEAR = GET EXACTLY WHAT YOU WANT (as much as is possible with a teenager!)":
-    "Ongakuprakthiza ekhaya kuleli viki ukuthi unikeze ingane yakho isiqondiso esihle.\n\nKhumbula - BHEKANA NAMAQINISO, KHULUMA IZINTO EZAKHAYO, CACISA = THOLA LOKHO OKUFUNAYO (ngendlela okungenzeka ngayo kosemusha!)",
-  "Caring for yourself is so essential.": "Ukuzinakekela kubalulekile.",
+    "Ongakwenza ekhaya kuleli viki ukuthi unikeze ingane yakho umyalelo omuhle.\n\nKhumbula - IBA NEQINISO, KHULUMA IZINTO EZAKHAYO, CACISA = THOLA LOKHO OKUFUNAYO (ngendlela okungenzeka ngayo kosemusha!)",
+  "Caring for yourself is so essential.": "Kubalulekile ukuzinakekela.",
   "Wonderful, I am so happy things are going well. Keep up the good work.":
     "Kuhle kakhulu, ngiyajabula ukuthi izinto zikuhambela kahle. Qhubeka nokwenza umsebenzi omuhle.",
   "Take a moment and just be impressed at what you’ve achieved, despite all the other things you have to do each day.":
     "Thatha isikhashana ujabulele izinto ozenzile, ngaphezu kwazo zonke ezinye ezinto okumelwe uzenze zinsuku zonke.",
   "Many families are stressed about money, especially if teens keep asking for things! \n\nWhen we make a budget together, we can agree how to spend AND save to prevent stress and work towards our family’s goals.":
-    "Imindeni eminingi ikhathazeke ngemali, ikakhulu uma abantu abasha belokhu bacela izinto! \n\nUma senza ibhajethi ndawonye, singavumelana ukuthi siyisebenzisa kanjani imali NOKUTHI siyonge ukuze sigweme ukukhathazeka futhi sisebenzele ukufinyelela imigomo esizibekele yona njengomndeni.",
+    "Imindeni eminingi ikhathazeke ngemali, ikakhulu uma abantwana bethu belokhu becela izinto! \n\nUma senza isabelomali ndawonye, singavumelana ukuthi siyisebenzisa kanjani imali NOKUTHI siyonge ukuze sigweme ukukhathazeka futhi sisebenzele ukufinyelela imigomo esizibekele yona njengomndeni.",
   "Greetings, everyone. \n\nToday's topic is family budgeting. \n\nIt is important to create a budget, but it is even more important to create a budget involving the entire family. \n\nDoing it together helps increase the level of understanding of how you spend money as a family and how much you save for the family, and you can even come up with plans of how you can save as a family.":
-    "Sanibonani, nonke. \n\nIsihloko sanamuhla ibhajethi yomndeni. \n\nKubalulekile ukwenza ibhajethi, kodwa okubaluleke nakakhulu ukwenza isabelomali esihlanganisa umndeni wonke. \n\nUkuyenza ndawonye kukhulisa izinga lokuqonda indlela imali esentshenziswa ngayo njengomndeni nokuthi malini ozowongela umndeni wakho, ungaze wenze nezinhlelo zokuthi nizoyonga kanjani imali njengomndeni.",
+    "Sanibonani, nonke. \n\nIsihloko sanamuhla ibhajethi yomndeni. \n\nKubalulekile ukwenza ibhajethi, kodwa okubaluleke nakakhulu ukwenza isabelomali esihlanganisa umndeni wonke. \n\nUkuyenza ndawonye kukhulisa izinga lokuqonda indlela imali esentshenziswa ngayo njengomndeni nokuthi malini ozoyongela umndeni wakho, ungenza nezinhlelo zokuthi nizoyonga kanjani imali njengomndeni.",
   "* Story – that didn’t work… \n* Budgeting exercise\n* Story & discussion – that worked!\n* Story & discussion – that didn’t work…\n* Discussion on saving options\n* Saving exercise\n* Tools: How to budget & save\nTHINK - CHOOSE - BUILD - PLAN\n* Home practice suggestions":
-    "* Indatshana – lokho akusebenzanga… \n* Ukufunda ukwenza isabelomali\n* Indatshana kanye nengxoxo – okusebenzile!\n* Indatshana kanye nengxoxo – okungasebenzanga ...\n* Ingxoxo ngezindlela zokonga imali\n* Ukufunda ukonga imali\n* Amathuluzi: Indlela yokwenza isabelomali kanye nokonga\nCABANGA - KHETHA - YAKHA - HLELA\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba – lokho akusebenzanga… \n* Ukufunda ukwenza isabelomali\n* Indaba kanye nengxoxo – okusebenzile!\n* Indaba kanye nengxoxo – okungasebenzanga ...\n* Ingxoxo ngezindlela zokonga imali\n* Ukufunda ukonga imali\n* Amathuluzi: Indlela yokwenza isabelomali kanye nokonga\nCABANGA - KHETHA - YAKHA - HLELA\n* Amacebiso alokho ongakwenza ekhaya",
   "It can be hard to make ends meet every month. Many families have this problem! \n\nIncluding @global.w_money_grandma - let's have a look:":
-    "Kungaba nzima ukuthola zonke izinto ozidingayo nyanga zonke. Imindeni eminingi inale nkinga! \n\nKuhlanganise @global.w_money_grandma - Ake sibone:",
+    "Kungaba nzima ukuthola zonke izinto ozidingayo nyanga zonke. Imindeni eminingi ihlangabezana  nalenkinga! \n\nKuhlanganise @global.w_money_grandma - Ake sibone:",
   '@global.w_money_grandma: "I have been taking care of my grandchildren, @global.w_money_teen_girl and @global.w_money_teen_boy, since their parents died when they were young. We often struggle with money, as I only receive a small grant."':
     "@global.w_money_grandma: “Bengilokhu nginakekela abazukulu bami, @global.w_money_teen_girl no @global.w_money_teen_boy, njengoba abazali babo bashona besebancane. Ngokuvamile siba nezinkinga zemali, njengoba ngithola kuphela imali yesibonelelo sikahulumeni esincane.”",
   '@global.w_money_grandma: "I am so stressed. I don’t have any money left. And now I’m fighting with my teens over things they want – again."':
-    "@global.w_money_grandma: “Ngicindezeleke kakhulu. Ayikho enye imali esele. Futhi manje siyaxabana nezingane zami ngezinto ezizifunayo futhi.”",
+    "@global.w_money_grandma: “Nginengcindezi kakhulu. Anginayo imali esele. Futhi manje siyaxabana nezingane zami ngezinto abazifunayo futhi.”",
   "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together. You need:\n\n- Papers (or old newspaper or a cardboard box) and pens\n- Stones or beans or anything with lots of bits to represent money\n \nTake a minute to get these things before we start with the first step.":
-    "Kunezinyathelo ezine zokwenza ibhajethi yomndeni: \n\nIsinyathelo 1: CABANGA\nIsinyathelo 2: KHETHA\nIsinyathelo 3: YAKHA\nIsinyathelo 4: HLELA\n\nAke sizihlole ndawonye lezi zinyathelo. Udinga:\n\n- Amaphepha (noma iphephandaba elidala noma ikhadibhodi) kanye namapeni\n- Amatshe noma obhontshisi noma kungaba yinoma yini eyizingcezu ezomelela imali\n \n Thatha umzuzu uthole lezi zinto ngaphambi kokuthi uqale ngesinyathelo sokuqala.",
+    "Kunezinyathelo ezine zokwenza isabelomali somndeni: \n\nIsinyathelo 1: CABANGA\nIsinyathelo 2: KHETHA\nIsinyathelo 3: YAKHA\nIsinyathelo 4: HLELA\n\nAke sizihlole ndawonye lezi zinyathelo. Udinga:\n\n- Amaphepha (noma iphephandaba elidala noma ikhadibhodi) kanye namapeni\n- Amatshe noma obhontshisi noma kungaba yinoma yini eyizingcezu ezizomela imali\n \n Thatha umzuzu uthole lezi zinto ngaphambi kokuthi uqale ngesinyathelo sokuqala.",
   "A family budget can help @global.w_money_grandma - and YOU!":
     "Isabelomali somndeni singasiza @global.w_money_grandma - sisize NAWE!",
   "There are four steps for doing a family budget: \n\nStep 1: THINK\nStep 2: CHOOSE\nStep 3: BUILD\nStep 4: PLAN\n\nLet’s go through the steps together.":
     "Kunezinyathelo ezine zokwenza ibhajethi yomndeni: \n\nIsinyathelo 1: CABANGA\nIsinyathelo 2: KHETHA\nIsinyathelo 3: YAKHA\nIsinyathelo 4: HLELA\n\nAke sizihlole ndawonye lezi zinyathelo.",
   "You need: \n* Papers (or old newspaper or a cardboard box) and pens \n* Stones or beans or anything with lots of bits to represent money \n\nTake a minute to get these things before we start with the first step.":
-    "Udinga: \n* Amaphepha (noma iphephandaba elidala noma ikhadibhodi) kanye namapeni \n* Amatshe noma obhontshisi noma kungaba yinoma yini eyizingcezu ezomelela imali \n\n Thatha umzuzu uthole lezi zinto ngaphambi kokuthi uqale ngesinyathelo sokuqala.",
+    "Udinga: \n* Amaphepha (noma iphephandaba elidala noma ikhadibhodi) kanye namapeni \n* Amatshe noma obhontshisi noma kungaba yinoma yini eyizingcezu ezizomela imali \n\n Thatha umzuzu uthole lezi zinto ngaphambi kokuthi uqale ngesinyathelo sokuqala.",
   "Think about what we spend money on each month.":
     "Cabanga ngokuthi siyisebenzisela ini imali inyanga nenyanga.",
   "* Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n* Draw pictures of all the things that you and your family spend money on each month. \n* Write next to each picture how much each thing costs each month. (There is no need to share the numbers if you don’t want to.)\n* Add up how much money you have to spend each month.":
@@ -1628,22 +1640,22 @@ const data: { [source_text: string]: string } = {
   "People often don’t see things in the same way. When we talk about our needs and wants, we understand each other better and can make good choices together on how to spend our money.\n\nLook at your lists of things you spend money on and discuss:\n* Which are NEEDS that you can’t live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on as a family?":
     "Ngokuvamile abantu ababoni izinto ngendlela efanayo. Uma sikhuluma ngezinto esizidingayo kanye nesizifunayo, siqondana kancono futhi senze izinqumo ezinhle ezimayelana nokuthi sizoyisebenzisa kanjani imali yethu.\n\nBheka uhlu lwezinto osebenzisa imali kuzo bese niyaxoxa: \n*Yiziphi EZIYISIDINGO esingeke sikwazi ukuphila ngaphandle kwazo? Kungani?\n* Yiziphi ESIZIFUNAYO okumnandi ukuba nazo kodwa ezingabalulekile? Kungani? \n* Yiziphi izinto eningazama ukusebenzisa imali encane kuzo njengomndeni?",
   "Think about your needs and wants\n\nWANT: Something you can live without\nNEED: Something you cannot live without":
-    "Cabanga ngezidingo nezinto ozifunayo \n\nOKUFUNAYO: Izinto ongaphila ngaphandle kwazo \nISIDINGO: Izinto ongeke uphile ngaphandle kwazo",
+    "Cabanga ngezidingo nezimfuno \n\nIZIMFUNO: Izinto ongaphila ngaphandle kwazo \nISIDINGO: Izinto ongeke uphile ngaphandle kwazo",
   "Look at your list of things you spend money on and choose:\n* Which are NEEDS that you can’t live without? Why?\n* Which are WANTS which are nice to have but not essential? Why? \n* Which things could you try to spend less money on?":
     "Bheka uhlu lwezinto osebenzisa imali kuzo bese uyakhetha: \n*Yiziphi EZIYISIDINGO esingeke sikwazi ukuphila ngaphandle kwazo? Kungani?\n* Yiziphi ESIZIFUNAYO okumnandi ukuba nazo kodwa ezingabalulekile? Kungani? \n* Yiziphi izinto eningazama ukusebenzisa imali encane kuzo?",
   "Make a budget!": "Yenza isabelomali!",
   "Make a budget as one big family!": "Yenzani isabelomali njengomndeni owodwa omkhulu!",
   '* One person will volunteer to share his/her list (If no one volunteers you can make a new list together) \n* Take roles - some will be adults, some will be teens. \n* Decide what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)  \n* Decide together what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
-    "* Umuntu oyedwa uzovolontiyela ukuveza olwakhe uhlu (uma engekho ofuna ukuvolontiya ningenza uhlu olusha ndawonye) \n* Thathani izindima - abanye bazoba abantu abadala, kuthi abanye baba abantu abasha. \n* Khetha ukuthi uzoba yimalini umholo wakho wenyanga.\n* Thathani amatshe noma ubhontshisi nanoma yini enezingcezu eziningi - lokhu kuzoba umholo wakho wenyanga. \n(Ngokwesibonelo: Uma umholo wakho ungu-@global.currency@local.monthly_income, kodwa unobhontshisi abangu-@local.number_of_beans, ubhontshisi owodwa uzoba ngu-@global.currency@local.bean_value.)  \n* Yenza isinqumo ndawonye sokuthi malini enizoyisebenzisela ini, bese nibeka amatshe/okuthile kuleso sithombe. \n\nAniqiniseki ngesinqumo sakho? Nikuthola kunzima ukunquma ukuthi yiziphi izinto “enizidingayo” kanye ”nenizifunayo”? Lokho akunankinga ngempela!",
+    "* Umuntu oyedwa uzovolontiyela ukuveza olwakhe uhlu (uma engekho ofuna ukuvolontiya ningenza uhlu olusha ndawonye) \n* Thathani izindima - abanye bazoba abantu abadala, kuthi abanye babe ngabantwana. \n* Khetha ukuthi uzoba yimalini umholo wakho wenyanga.\n* Thathani amatshe noma ubhontshisi nanoma yini enezingcezu eziningi - lokhu kuzoba umholo wakho wenyanga. \n(Ngokwesibonelo: Uma umholo wakho ungu-@global.currency@local.monthly_income, kodwa unobhontshisi abangu-@local.number_of_beans, ubhontshisi owodwa uzoba ngu-@global.currency@local.bean_value.)  \n* Yenza isinqumo ndawonye sokuthi malini enizoyisebenzisela ini, bese nibeka amatshe/okuthile kuleso sithombe. \n\nAniqinisekanga ngesinqumo senu? Nikuthola kunzima ukunquma ukuthi yiziphi izinto “enizidingayo” kanye ”nenizifunayo”? Lokho akunankinga ngempela!",
   "Make a budget as a family!": "Yenzani isabelomali njengomndeni!",
   '* Write down what your income is for the month.\n* Take some stones or beans or anything with lots of bits - this is your income for the month. \n(For example: If your income is @global.currency@local.monthly_income, and you have @local.number_of_beans beans, each bean is @global.currency@local.bean_value.)\n* Decide what you will spend on what, and put the stones/objects on that image. \n\nNot sure about your decisions? Having trouble deciding between "needs" and "wants"? That’s totally fine!':
     "* Bhala phansi ukuthi uzoba yimalini umholo wakho wenyanga.\n* Thathani amatshe noma ubhontshisi nanoma yini enezingcezu eziningi - lokhu kuzoba umholo wakho wenyanga. \n(Ngokwesibonelo: Uma umholo wakho ungu-@global.currency@local.monthly_income, kodwa unobhontshisi abangu-@local.number_of_beans, ubhontshisi owodwa uzoba ngu-@global.currency@local.bean_value.)\n* Yenza isinqumo ukuthi malini uzoyisebenzisela ini, bese ubeka amatshe/okuthile kuleso sithombe. \n\nAniqiniseki ngesinqumo sakho? Nikuthola kunzima ukunquma ukuthi yiziphi izinto “enizidingayo” kanye ”nenizifunayo”? Lokho akunankinga ngempela!",
   "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:":
     "Nenze umsebenzi omuhle, seniqede izinyathelo ezi-3 zokuqala! \n\nAke sibone ukuthi @global.w_money_grandma ulwenze kanjani uhlelo lokusebenzisa imali yakhe, njengoba nje wenza:",
   '"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!"':
-    "“Ngifunela abazukulu bami ikusasa elihle, kodwa angazi ukuthi ngizoyithola kuphi imali. Ukuboleka imali komashonisa kuyingozi kanti futhi kuyabiza ukuyikhokha. \n\nKumelwe ngonge, kodwa lokho kubonakala kungeke kwenzeke!”",
+    "“Ngifunela abazukulu bami ikusasa elihle, kodwa angazi ukuthi ngizoyithola kuphi imali. Ukuboleka imali komashonisa kuyingozi kanti futhi kuyabiza ukuyikhokha. \n\nKumele ngonge imali, kodwa lokho kubonakala kungeke kwenzeke!”",
   '"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?"':
-    "“Umgomo wami ukuthi umzukulu wami womfana aye esikoleni samabanga aphezulu bese kuthi umzukulu wami wentombazane aye enyuvesi. Ngingakwazi kanjani ukonga imali eningi ngemadlana yami encane enginayo?”",
+    "“Umgomo wami ukuthi umzukulu wami womfana aye esikoleni samabanga aphezulu bese kuthi umzukulu wami wentombazane aye enyuvesi. Ngingakwazi kanjani ukonga imali eningi ngemadlana  encane enginayo?”",
   '"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group."':
     "“Ngiyazi - ake siqale ngokuhlela! Okokuqala, ake ngenze isabelomali - uhlelo lokuthi ngizoyonga kanjani imali yami. Ngemva kwalokho ngizokonga imali encane ngesikhathi - ngizophinde ngijoyine namaqembu okonga imali nokubolekisa ngemali.”",
   '"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need."':
@@ -1759,117 +1771,116 @@ const data: { [source_text: string]: string } = {
     '@global.w_praise_female_caregiver_name: "Ngiyabonga ngokuthi wenze umsebenzi wakho wesikole, @global.w_praise_girl, ngiyabonga ngokuthi usize udadewenu, @global.w_praise_teen_girl. Ngiyaziqhenya kakhulu ngani!"',
   "Let's discuss this story.": "Ake sixoxe ngale ndaba.",
   "Discuss together:\n\n* How did praise make @global.w_praise_female_caregiver_name's teens feel?\n* Why did she praise them?":
-    "Xoxani ndawonye:\n\n* Ukunconywa kwenze izingane zika-@global.w_praise_female_caregiver_name ezevile eminyakeni eyishumi nambili zazizwa kanjani?\n* Kungani eye wazincoma?",
+    "Xoxani ndawonye:\n\n* Ukunconywa kwenze-@global.w_praise_female_caregiver_name izingane zizizwe kanjani?\n* Kungani eye wazincoma?",
   "@global.w_praise_female_caregiver_name praised her teens...":
-    "@global.w_praise_female_caregiver_name uncome izingane zakhe ezevile eminyakeni eyishumi nambili...",
+    "@global.w_praise_female_caregiver_name uncome izingane zakhe..... ",
   "* To get them to do it more often\n* To help her finish her work \n* To make them feel good \n* To make herself feel good":
-    "* Ukuze azenze zikwenze ngokwengeziwe\n* Ukuze amsize aqedele umsebenzi wakhe \n* Ukuze azenze zizizwe zijabule \n* Ukuze azizwe ejabule",
+    "* Ukuze ezikwenzayo zikwenze ngokwengeziwe\n* Ukuze amsize aqedele umsebenzi wakhe \n* Ukuze azenze zizizwe zijabule \n* Ukuze azizwe ejabule",
   "How did praise make @global.w_praise_female_caregiver_name's teens feel?":
-    "Ukunconywa kwenze izingane zika-@global.w_praise_female_caregiver_name ezisezintsha zazizwa kanjani?",
+    "Ukunconywa kwenze -@global.w_praise_female_caregiver_name izingane zazizwa kanjani?",
   "Why did she praise them?": "Kungani aye wazincoma?",
-  "To get them to do it more often": "Ukuze abenze bakwenze ngokwengeziwe",
+  "To get them to do it more often": "Ukuze abakwenzayo bakwenze ngokwengeziwe",
   "To help her finish her work": "Ukuze amsize aqedele umsebenzi wakhe",
   "To make them feel good": "Ukubenza bazizwe bejabule",
   "To make herself feel good": "Ukuze azizwe ejabule",
   "All of those things are true! \n\nWhen her teens are happy, @global.w_praise_female_caregiver_name feels happy. And she got her work done.":
-    "Zonke lezi zinto ziyiqiniso! \n\nUma intsha yakhe ijabule, @global.w_praise_female_caregiver_name uyajabula. Futhi ukwaze ukuqeda umsebenzi wakhe.",
+    "Zonke lezi zinto ziyiqiniso! \n\nUma abantwana bakhe bejabule, @global.w_praise_female_caregiver_name uyajabula. Futhi ukwaze ukuqeda umsebenzi wakhe.",
   "The same can work for you!": "Nawe kungakusebenzela lokhu!",
   "SEE IT": "KUBONE",
   "Look for anything your teen does that is helpful or good, and praise them for it. They may not show it, but you’ll see them doing that good thing again. It will also reassure them that you notice and care.":
-    "Funa okuthile ingane yakho eseminyakeni yokuthomba ekwenzayo okuwusizo noma okuhle, bese uyayincoma. Kungenzeka zingakubonisi kona, kodwa uzozibona ziphinde zikwenza lokho okuhle futhi. Kuzobaqinisekisa ukuthi uyakubona futhi uyabakhathalela.",
+    "Bheka noma yini ingane yakho ekwenzayo ewusizo noma okuhle, bese umncomela kona. Kungenzeka ingakubonisi kona, kodwa uzobona ziphinde zikwenza lokho okuhle futhi. Kuzobaqinisekisa ukuthi uyakubona futhi uyabakhathalela.",
   "SAY IT": "KUSHO",
   "Be enthusiastic – really mean it when you say it!":
     "Yiba nentshiseko - yiba qotho kulokho okushoyo!",
   "REPEAT IT": "KUPHINDE",
   "Try to find something to thank them for every day. Even something really small.":
-    "Zama ukuthola okuthile ongayibonga ngakho usuku nosuku. Ngisho nento encane kakhulu.",
+    "Zama ukuthola okuthile ongayibonga ngakho ingane yakho usuku nosuku. Ngisho nento encane .",
   "You can also praise other adults in your household, too. Notice how they respond!":
-    "Ungaphinde uncome nabanye asebebadala endlini yakho. Qaphela indlela abasabela ngayo!",
-  "Let's practice giving praise.": "Ake sikwenze umkhuba ukuncoma.",
+    "Ungancoma nabantu abadala ekhaya lakho. Qaphela indlela abasabela ngayo!",
+  "Let's practice giving praise.": "Ake siphrakthize ukuncoma.",
   "Share with each other: \n\n* What can you praise your teen for? \n* What has someone else done well during this workshop? Tell them!\n* How did it make you feel to praise someone?\n* How did it make you feel to be praised?":
-    "Khulumisanani: \n\n* Yisiphi isizathu esingakwenza uncome ingane yakho eyevile eminyakeni eyishumi nambili? \n* Yini othile ayenze kahle phakathi nalokhu kuqeqeshwa? Batshele! \n* Kukwenze wazizwa kanjani lapho uncoma omunye umuntu? \n* Kukwenza wazizwa kanjani lapho unconywa?",
+    "Khulumisanani: \n\n* Yisiphi isizathu esingakwenza uncome ingane yakho? \n* Yini othile ayenze kahle phakathi nalokhu kuqeqeshwa? Batshele! \n* Kukwenze wazizwa kanjani lapho uncoma omunye umuntu? \n* Kukwenza wazizwa kanjani lapho unconywa?",
   "Sometimes it’s hard to think of what to praise your teen for! Here are some ideas from other parents:":
-    "Ngezinye izikhathi kunzima ukucabanga ukuthi yini ongancoma intsha yakho ngakho! Nakhu okunye ukusikisela okuvela kwabanye abazali:",
+    "Ngezinye izikhathi kunzima ukucabanga ukuthi yini ongamncomela yona umntwana wakho! Nanka amanye amacebo avela kwabanye abazali:",
   "* Being kind to someone \n* Cleaning their room \n* Joining a family meal \n* Greeting other family members \n* Looking after siblings \n* Coming home in time \n* Showing thoughtfulness \n* Saying 'please' or 'thank you' \n* Going to school  \n* Doing chores or schoolwork  \n* Getting through mealtime peacefully":
-    "* Ukuba nomusa kothile \n* Ukuhlanza igumbi lakhe \n* Ukuhlanganyela esidlweni somndeni \n* Ukubingelela amanye amalungu omndeni \n* Ukunakekela ozalwa nabo \n* Ukufika ekhaya ngesikhathi \n* Ukubonisa ukucabangela \n* Ukuthi 'ngiyacela' noma 'ngiyabonga' \n* Ukuya esikoleni  \n* Ukwenza imisebenzi yasekhaya noma ukwenza umsebenzi wesikole wasekhaya  \n* Ukudla ngokuthula",
+    "* Ukuba nomusa komunye umuntu \n* Ukuhlanza igumbi lakhe \n* Ukuhlanganyela esidlweni somndeni \n* Ukubingelela amanye amalungu omndeni \n* Ukunakekela ozalwa nabo \n* Ukufika ekhaya ngesikhathi \n* Ukubonisa ukucabangela \n* Ukuthi 'ngiyacela' noma 'ngiyabonga' \n* Ukuya esikoleni  \n* Ukwenza imisebenzi yasekhaya noma ukwenza umsebenzi wesikole wasekhaya  \n* Ukudla ngokuthula",
   "This week's home practice is to praise your teen once a day. It will only take 10 seconds!":
-    "Umsebenzi ozowuprakthiza ekhaya kuleli viki ukuncoma ingane yakho eseminyakeni yokuthomba kanye ngosuku. Kuzothatha imizuzwana eyishumi nje kuphela!",
-  "Remember that YOU matter!": "Khumbula ukuthi UWENA obalulekile!",
+    "Umsebenzi wasekhaya kuleli viki ukuncoma ingane yakho kanye ngosuku. Kuzothatha imizuzwana eyishumi nje kuphela!",
+  "Remember that YOU matter!": "Khumbula ukuthi UBALULEKILE!",
   "Well done for recognising a positive feeling. I am happy to hear you are feeling well today!":
-    "Usebenzile ngokuthi ubone imizwa emihle. Ngiyajabula ukuthi uzizwa kahle namuhla!",
+    "Usebenzile ngokuthi uqaphele ukuthi unemizwa emihle. Ngiyajabula ukuzwa ukuthi uzizwa kahle namuhla!",
   "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember you are not alone.":
-    "Usebenzile ngokuthi ubone imizwa enzima. Kulungile ukungazizwa kahle ngezinye izikhathi. Khumbula ukuthi awuwedwa.",
+    "Usebenzile ngokuthi uqaphele ukuthi unemizwa enzima. Kulungile ukungazizwa kahle ngezinye izikhathi. Khumbula ukuthi awuwedwa.",
   "This is just incredible. Every one of these habits is making your family stronger. Be proud.":
-    "Kuhle kakhulu lokhu. Ngayinye yale mikhuba yenza umndeni wakho uqine. Ziqhenye.",
+    "Kuhle kakhulu lokhu. Yonke le mikhuba yenza umndeni wakho uqine. Ziqhenye.",
   "Rules help teens understand what is expected from them. \n\nTeens are more likely to follow rules if you create the rules WITH your teen and praise them for it!":
-    "Imithetho yenza intsha iqonde ukuthi yini elindeleke kuyo. \n\nIntsha iyathanda ukulandela imithetho uma wenze imithetho NAYO futhi uyincome ngalokho!",
+    "Imithetho yenza abantwana bethu ukuthi yini elindeleke kubo. \n\nAbantwana bayayilandela  imithetho uma wenze imithetho NABO futhi ubancome ngalokho!",
   "Greetings, everyone. \n\nToday's topic is rules. \n\nRules promote peace within the household and promote understanding amongst family members. \n\nRules promote responsibilities for each family member; therefore, it is important to have family rules. \n\nA household with family rules lives in peace.":
-    "Sanibonani, nonke. \n\nIsihloko sanamuhla imithetho. \n\nImithetho ikhuthaza ukuthula ekhaya futhi ikhuthaza ukuqondana phakathi kwamalungu omndeni. \n\nImithetho ithuthukisa izibopho zelungu lomndeni ngalinye, ngakho-k,e kubalulekile ukuba umndeni ube nemithetho. \n\nUmuzi onemithetho yomndeni uphila ngokuthula.",
+    "Sanibonani, nonke. \n\nIsihloko sanamuhla imithetho. \n\nImithetho ikhuthaza ukuthula ekhaya futhi ikhuthaza ukuqondana phakathi kwamalungu omndeni. \n\nImithetho ithuthukisa izibopho zelungu lomndeni ngalinye, ngakho-ke kubalulekile ukuba umndeni ube nemithetho. \n\nIkhaya elinemithetho umndeni uphila ngokuthula.",
   "* Story & discussion – that didn’t work… \n* Story & discussion – that worked!\n* Tools: How to create rules\nTEAM RULES - REAL RULES - PRAISE RULES!\n* Online safety story – that worked!\n* Try it out!\n* Home practice suggestions":
-    "* Indatshana kanye nengxoxo – okungasebenzanga ... \n* Indatshana kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokubeka imithetho\nIMITHETHO YEQEMBU - IMITHETHO YANGEMPELA - NCOMA IMITHETHO!\n* Indaba yokuphepha ku-inthanethi  – okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nengxoxo – okungasebenzanga ... \n* Indaba kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokubeka imithetho\nIMITHETHO YEQEMBU - IMITHETHO YANGEMPELA - NCOMA IMITHETHO!\n* Indaba yokuphepha ku-inthanethi  – okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "* Story & reflection – that didn’t work… \n* Story & reflection – that worked!\n* Tools: How to create rules\nTEAM RULES - REAL RULES - PRAISE RULES!\n* Online safety story – that worked!\n* Try it out!\n* Home practice suggestions":
-    "* Indatshana kanye nokucabanga ujule - okungasebenzanga ... \n* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Amathuluzi: Indlela yokubeka imithetho\nIMITHETHO YEQEMBU - IMITHETHO YANGEMPELA - NCOMA IMITHETHO!\n* Indaba yokuphepha ku-inthanethi  – okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nokubuyekeza indaba - okungasebenzanga ... \n* Indaba kanye nokubuyekeza indaba - okusebenzile!\n* Amathuluzi: Indlela yokubeka imithetho\nIMITHETHO YEQEMBU - IMITHETHO YANGEMPELA - NCOMA IMITHETHO!\n* Indaba yokuphepha ku-inthanethi  – kusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "Let's read what happened with @global.w_rules_teen_boy and his @global.w_rules_female_caregiver_1:":
     "Ake sifunde ngokwenzeke ku @global.w_rules_teen_boy no @global.w_rules_female_caregiver_1 wakhe:",
   '@global.w_rules_female_caregiver_1: "You always come home late!"\n\n@global.w_rules_teen_boy: "No I don’t, I don’t even know what late means! Stop nagging me."':
-    "@global.w_rules_female_caregiver_1: “Uhlale ubuya sekwephuzile ekhaya!”\n\n@global.w_rules_teen_boy: “Cha angazi, angazi nokuthi kusuke kungubani isikhathi uma sekwephuzile! Yeka ukungicasula.”",
+    "@global.w_rules_female_caregiver_1: “Uhlale ubuya sekuhlwile ekhaya!”\n\n@global.w_rules_teen_boy: “Cha angazi, angazi nokuthi kusuke kungubani isikhathi uma sekuhlwile! Yeka ukungicasula.”",
   "Which specific rule could @global.w_rules_teen_boy and @global.w_rules_female_caregiver_1 create together?":
-    "Yimuphi umthetho oqondile u @global.w_rules_teen_boy no @global.w_rules_female_caregiver_1 abangawenza bobabili?",
+    "Yimuphi umthetho oqondile  @global.w_rules_teen_boy no @global.w_rules_female_caregiver_1 abangawenza ndawonye?",
   "Let’s see how @global.w_rules_female_caregiver_1 and @global.w_rules_teen_boy did this the next day:\n\n@global.w_rules_female_caregiver_1: “I want you to have fun, @global.w_rules_teen_boy, but I’m also worried about you staying out late. Do you know why?” \n\n@global.w_rules_teen_boy: “Because you want me to have enough time for my schoolwork?”":
-    "Ake sibone ukuthi @global.w_rules_female_caregiver_1 no @global.w_rules_teen_boy yini abayenzile kulolu suku olulandelayo:\n\n@global.w_rules_female_caregiver_1: “Ngiyafuna ukuthi uzijabulise, @global.w_rules_teen_boy, kodwa ngiyakhathazeka uma ungabuyi kuze kwephuze. Uyazi ukuthi kungani?” \n\n@global.w_rules_teen_boy: “Kungenxa yokuthi ufuna ngibe nesikhathi esanele sokwenza umsebenzi wami wesikole?”",
+    "Ake sibone ukuthi @global.w_rules_female_caregiver_1 no @global.w_rules_teen_boy yini abayenzile ngosuku olulandelayo:\n\n@global.w_rules_female_caregiver_1: “Ngiyafuna ukuthi uzijabulise, @global.w_rules_teen_boy, kodwa ngiyakhathazeka uma ungabuyi kuze kuhlwe. Uyazi ukuthi kungani?” \n\n@global.w_rules_teen_boy: “Kungenxa yokuthi ufuna ngibe nesikhathi esanele sokwenza umsebenzi wami wesikole?”",
   "@global.w_rules_female_caregiver_1: “That’s right, and it’s also not safe in this area to be outside after sunset. What do you think would be a good time for you to be home?”":
-    "@global.w_rules_female_caregiver_1: “Kunjalo, okunye futhi ukuthi akuphephile ukuba ngaphandle kule ndawo ngemva kokushona kwelanga. Ucabanga ukuthi kungaba isiphi isikhathi esifanele sokubuya ekhaya?”",
+    "@global.w_rules_female_caregiver_1: “Kunjalo, okunye futhi ukuthi akuphephile ukuba ngaphandle kule ndawo uma sekuhlwile. Ucabanga ukuthi kungaba isiphi isikhathi esifanele sokubuya ekhaya?”",
   '@global.w_rules_teen_boy: “I could come home at 10pm?"  \n\n@global.w_rules_female_caregiver_1: “That’s a bit late, what about 6pm? Or something in the middle?"':
-    "@global.w_rules_teen_boy: “Ngingabuya ekhaya ngo-10 ebusuku?  \n\n@global.w_rules_female_caregiver_1: “Kusuke sekwephuzile ngaleso sikhathi, kungaba njani ngo-6 ntambama? Noma okuthile okuphakathi?”",
+    "@global.w_rules_teen_boy: “Ngingabuya ekhaya ngo-10 ebusuku?  \n\n@global.w_rules_female_caregiver_1: “Kusuke sekusebusuku ngaleso sikhathi, kungaba njani ngo-6 ntambama? Noma esinye isikhathi esiuphakathi?”",
   "@global.w_rules_teen_boy: “I could come home at 6pm on school nights and 10pm on Friday and Saturday?” \n\n@global.w_rules_female_caregiver_1: “Yes, great. From now on, our household rule is that you need to come home at 6pm on school nights and 10pm on Friday and Saturday. But you always walk home with a friend. Okay?”":
     "@global.w_rules_teen_boy: “Ngingabuya ekhaya ngo-6 ntambama phakathi nezinsuku zesikole bese kuba u-10 ebusuku ngoLwesihlanu nangoMgqibelo?” \n\n@global.w_rules_female_caregiver_1: “Yebo, kuhle lokho. Kusukela manje ukuya phambili, umthetho wasekhaya uthi kumelwe ubuye ekhaya ngo-6 ntambama ngezinsuku oya ngazo esikoleni kanti ngoLwesihlanu nangoMgqibelo ubuye ngo-10pm. Kodwa kumelwe uhlale uphelezelwa umngane uma ubuya ekhaya. “Kulungile?”",
   "@global.w_rules_teen_boy: “Okay, @global.w_rules_female_caregiver_1” \n\n@global.w_rules_female_caregiver_1: “Thank you very much, @global.w_rules_teen_boy, for helping to come up with a good rule together. I am proud to see how responsible you are getting.”":
-    "@global.w_rules_teen_boy: “Kulungile, @global.w_rules_female_caregiver_1” \n\n@global.w_rules_female_caregiver_1: “Ngiyabonga kakhulu, @global.w_rules_teen_boy, ngokungisiza ukuba sibeke umthetho omuhle sindawonye. Kuyangijabulisa ukubona ukuthi uba nokwethenjelwa.”",
+    "@global.w_rules_teen_boy: “Kulungile, @global.w_rules_female_caregiver_1” \n\n@global.w_rules_female_caregiver_1: “Ngiyabonga kakhulu, @global.w_rules_teen_boy, ngokungisiza ukuba sibeke umthetho omuhle sindawonye. Kuyangijabulisa ukubona ukuthi uba nezibopho kangakanani.”",
   "The next day...\n\n@global.w_rules_female_caregiver_1: “Thank you, @global.w_rules_teen_boy, for coming home on time. After you finish your schoolwork we can have your favourite meal for dinner.”":
     "Ngosuku olulandelayo...\n\n@global.w_rules_female_caregiver_1: “Ngiyabonga, @global.w_rules_teen_boy, ngokufika ekhaya ngesikhathi. Uma usuqede umsebenzi wakho wesikole sizodla ukudla okuthayo esidlweni sakusihlwa.”",
   "Making the rule together went well because...":
-    "Ukubeka umthetho ndawonye kube nomphumela omuhle ngoba...",
+    "Ukubeka umthetho ndawonye kube impumelelo ngoba...",
   "* They discussed the reasons behind the rule \n* @global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions \n* The rule was clear, specific and fair \n* @global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule":
-    "* Baye baxoxa ngezizathu zokubeka umthetho \n* @global.w_rules_female_caregiver_1 uye wakulalela ukusikisela kuka-@global.w_rules_teen_boy \n* Umthetho ubucacile, uqondile futhi ubonelela \n* @global.w_rules_female_caregiver_1 uye wamncoma u-@global.w_rules_teen_boy ngokumsiza ekubekeni umthetho",
+    "* Baye baxoxa ngezizathu zokubeka umthetho \n* @global.w_rules_female_caregiver_1 uye wakulalela -@global.w_rules_teen_boy isiphakamiso\n* Umthetho ubucacile, uqondile futhi ubonelela \n* @global.w_rules_female_caregiver_1 uye wamncoma u-@global.w_rules_teen_boy ngokumsiza ekubekeni umthetho",
   "@global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him because...":
-    "@global.w_rules_teen_boy bekazi ukuthi @global.w_rules_female_caregiver_1 uyamazisa ngoba...",
+    "@global.w_rules_teen_boy bekazi ukuthi @global.w_rules_female_caregiver_1 uyancoma ngoba...",
   "* She praised him\n* She rewarded him when he followed the rule":
-    "* Uye wamncoma\n* Uye wamenzela okuthile okuhle ngenxa yokulandela umthetho",
+    "* Uye wamncoma\n* Uye wamvuza uma elandela umthetho",
   "What went well here in making a rule together?":
     "Yini ehambe kahle lapha ekubekeni umthetho ndawonye?",
   "They discussed the reasons behind the rule": "Baye baxoxa ngezizathu zokubeka umthetho",
   "@global.w_rules_female_caregiver_1 listened to @global.w_rules_teen_boy’s suggestions":
-    "@global.w_rules_female_caregiver_1 uye wakulalela ukusikisela kuka-@global.w_rules_teen_boy",
+    "@global.w_rules_female_caregiver_1 uye wakulalela  kuka-@global.w_rules_teen_boy iziphakamiso",
   "The rule was clear, specific and fair": "Umthetho ubucacile, uqondile futhi ubonelela",
   "@global.w_rules_female_caregiver_1 praised @global.w_rules_teen_boy for helping to make the rule":
     "@global.w_rules_female_caregiver_1 uye wamncoma u-@global.w_rules_teen_boy ngokumsiza ekubekeni umthetho",
   "That's right, making clear rules together in a calm and positive way works so well!":
     "Kunjalo, ukwenza imithetho ecacile ndawonye ngendlela ezolile neyakhayo kusebenza kahle!",
   "How do you think @global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him?":
-    "Ucabanga ukuthi u-@global.w_rules_teen_boy waze kanjani ukuthi u-@global.w_rules_female_caregiver_1 uyamazisa?",
+    "Ucabanga ukuthi u-@global.w_rules_teen_boy waze kanjani ukuthi u-@global.w_rules_female_caregiver_1 uyamncoma?",
   "She praised him": "Uye wamncoma",
-  "She rewarded him when he followed the rule":
-    "Uye wamenzela okuthile okuhle ngenxa yokulandela umthetho",
+  "She rewarded him when he followed the rule": "Uye wamvuza uma elandela umthetho",
   "Exactly - a positive response makes all the difference!":
-    "Kunjalo - ukusabela ngendlela ehle kwenza umehluko!",
+    "Kunjalo - ukusabela ngendlela enhle kwenza umehluko!",
   "Household rules help keep our teenagers safe, and understand what is expected from them. When you involve a teenager in making rules they are more likely to follow them.":
-    "Imithetho yasekhaya isiza ukuvikele intsha yethu, futhi yenza iqonde ukuthi yini elindeleke kuyo. Uma uhilela ingane yakho eseminyakeni yokuthomba ekubekeni imithetho aba maningi okuthi iwulandela umthetho.",
+    "Imithetho yasekhaya isiza ukugcina izingane zethu zivikelekile, futhi yenza iqonde ukuthi yini elindeleke kuzo. Uma ubandakanya ingane yakho ekubekeni imithetho kwenza bawulandele kalula umthetho.",
   "TEAM RULES": "IMITHETHO YEQEMBU",
   "Plan rules WITH your teenager. Start with one new rule first - you can add another one later. Discuss the reasons for the rule and listen to their views.":
-    "Hlela imithetho NDAWONYE nengane yakho eseminyakeni yokuthomba. Qala ngomthetho owodwa omusha - unganezela omunye ngokuhamba kwesikhathi. Xoxisanani ngezizathu zomthetho ngemva kwalokho ulalele imibono yabo.",
+    "Hlela imithetho NDAWONYE nengane yakho. Qala ngomthetho owodwa omusha - unganezela omunye ngokuhamba kwesikhathi. Xoxisanani ngezizathu zomthetho ngemva kwalokho ulalele imibono yabo.",
   "REAL RULES": "IMITHETHO YANGEMPELA",
   "Make them realistic for what your teenager can do, and be clear and specific so there’s no misunderstanding. Not ‘on time’ but ‘by 7pm’.":
-    "Yenze ibe nengqondo ukuze ingane yakho eseminyakeni yokuthomba ikwazi ukuyilandelayo, cacisa futhi ukhulume ngokuqondile ukuze kungabi khona ukungaqondani. Ungathi ‘ngesikhathi’ kodwa yithi “ngo-7 ntambama”.",
-  "PRAISE RULES!": "UMTHETHO WOKUNCOMA!",
+    "Yenza kube imithetho umntwana wakho angakwazi ukukwenza nokuyilandela, cacisa futhi ukhulume ngokuqondile ukuze kungabi khona ukungaqondani. Ungathi ‘ngesikhathi’ kodwa yithi “ngo-7 ntambama”.",
+  "PRAISE RULES!": "NCOMA UMTHETHO!",
   "Praise your teen for planning a rule with you, and praise them for keeping it!":
-    "Ncoma ingane yakho eseminyakeni yokuthomba ngokuthi ibeke uthetho nawe, uphinde uyincome ngokuthi uwugcine!",
-  "Online Safety": "Ukuphepha Ku-inhanethi",
+    "Ncoma ingane yakho ngokuthi ibeke uthetho nawe, uphinde uyincome ngokuthi iwugcine!",
+  "Online Safety": "Ukuphepha Ku-inthanethi",
   "Rules are important to keep your teens safe - also online. There’s more about this in the Weekly Workshop on safety planning, but let’s already have a first look now!":
-    "Imithetho ibalulekile ukuze intsha yethu iphephe - naku-inthanethi. Kunokwengeziwe mayelana nokuhlela okuphephile Ekuqeqeshweni Kwamasonto Onke, kodwa ake sikubone lokhu njengamanje!",
+    "Imithetho ibalulekile ukugcina abantwana bethu bephephile - naku-inthanethi. Kunokwengeziwe mayelana nokuhlela okuphephile Ekuqeqeshweni Kwamasonto Onke, kodwa ake sikubuke lokhu njengamanje!",
   '@global.w_rules_female_caregiver_2: "@global.w_rules_teen_girl, have you done your homework?"\n\n@global.w_rules_teen_girl: "Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video"':
     '@global.w_rules_female_caregiver_2: "@global.w_rules_teen_girl, usuwenzile umsebenzi wakho wesikole?"\n\n@global.w_rules_teen_girl: “Umzuzwana nje @global.w_rules_female_caregiver_2, ngisaqedela le @global.teen_social_medium vidiyo"',
   '@global.w_rules_female_caregiver_2: "You are a really great dancer! Tell me about why you like it"\n\n@global.w_rules_teen_girl: "All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers."':
-    '@global.w_rules_female_caregiver_2: “Ave udansa kahle kakhulu! Ngitshele ukuthi kungani ukuthanda"\n\n@global.w_rules_teen_girl: “Bonke abangane bami bayadansa, @global.w_rules_female_caregiver_2. Nginama-likes angu-600 nabalandeli abangu-120.”',
+    '@global.w_rules_female_caregiver_2: “Ave udansa kahle kakhulu! Ngitshele ukuthi kungani uthanda ukudansa"\n\n@global.w_rules_teen_girl: “Bonke abangane bami bayadansa, @global.w_rules_female_caregiver_2. Nginabangithandayo-abangu-600 nabalandeli abangu-120.”',
   '@global.w_rules_female_caregiver_2: "I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens."':
     "@global.w_rules_female_caregiver_2: “Ngiyaziqhenya ngawe ngendlela odansa kahle ngayo, @global.w_rules_teen_girl. Kodwa kumelwe siqiniseka ukuba uphephile. \n\nNgiyazi ukuba abangani bakho babuka @global.teen_social_medium, kodwa nge-akhawunti evulela wonke umuntu, kunabanye abantu ababuka amavidiyo abantu abasha ukuze bazanelise ngokocansi. Ngezinye izikhathi bayaxhumana nentsha. Bazenza sengathi balungile kodwa ekugcineni bayabesabisa futhi bayihlukumeze intsha.”",
   '@global.w_rules_female_caregiver_2: "Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you.\n\nSo you can accept people you know from school and our community, but not people who contact you online.\n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!”':
@@ -1877,32 +1888,32 @@ const data: { [source_text: string]: string } = {
   '@global.w_rules_female_caregiver_2: "I’m proud of you @global.w_rules_teen_girl"':
     "@global.w_rules_female_caregiver_2: “Ngiyaziqhenya ngawe @global.w_rules_teen_girl”",
   "* What is one important rule you’d each like to make with your teenager? \n* What do you think your teen will think about that rule? \n\nRemember, make rules specific and realistic!":
-    "* Yimuphi umthetho obalulekile eningafisa ukuwubeka nengane yakho eyevile eminyakeni eyishumi nambili?  \n* Ucabanga ukuthi ingane yakho eyevile eminyakeni eyishumi nambili izocabangani ngalo mthetho? \n\nKhumbula, beka umthetho oqondile kodwa onengqondo!",
+    "* Yimuphi umthetho obalulekile eningafisa ukuwubeka nengane yakho?  \n* Ucabanga ukuthi ingane yakho izocabangani ngalo mthetho? \n\nKhumbula, beka umthetho oqondile futhi ozolungela ingane!",
   "Here are some of the rules other families created:":
-    "Nayi eminye imithetho eminye imindeni eyibekile:",
+    "Nayi eminye imithetho ebekwe eminye imindeni:",
   "* Teen can play outside after finishing homework\n* All family members are eating dinner together\n* Teen 1 does dishes on Sunday and Monday, Teen 2 on Tuesday and Wednesday\n* We speak to each other politely and nicely\n* When listening to music you need to use earphones":
-    "* Ingane yakho eyevile eminyakeni eyishumi nambili ingadlala ngaphandle ngemva kokuqeda umsebenzi wasekhaya\n* Onke amalungu omndeni adla isidlo sakusihlwa ndawonye\n* Ingane yakho yokuqala igeza izitsha ngeSonto nangoMsombuluko, bese eyesibili izigeze ngoLwesibili nangoLwesithathu \n* Sikhulumisana ngenhlonipho nangomusa \n* Uma ulalela umculo kumelwe usebenzise ama-earphones",
+    "* Ingane yakho ingadlala ngaphandle ngemuva kokuqeda umsebenzi wasekhaya\n* Onke amalunga omndeni adla isidlo sakusihlwa ndawonye\n* Ingane yakho yokuqala igeza izitsha ngeSonto nangoMsombuluko, bese eyesibili izigeze ngoLwesibili nangoLwesithathu \n* Sikhulumisana ngenhlonipho nangomusa \n* Uma ulalela umculo kumelwe usebenzise ama-earphones",
   "Let's practice making rules.": "Ake sizame ukubeka imithetho.",
   "Write down one important rule you’d like to make with your teenager – you'll be doing this as your home practice this week. \n\nWhat will they think about it?":
-    "Bhala phansi umthetho owodwa obalulekile ongathanda ukuwubeka nengane yakho eseminyakeni yokuthomba - uzokwenza lokhu njengomsebenzi wasekhaya wokuprakthiza waleli viki. \n\nYini abazoyicabanga ngawo?",
+    "Bhala phansi umthetho owodwa obalulekile ongathanda ukuwubeka nengane yakho - uzokwenza lokhu njengomsebenzi wasekhaya wokuprakthiza waleli viki. \n\nBazocabangani ngawo?",
   "This week, set one rule together with your teen.\n\nRemember to praise your teen afterwards!":
-    "Kuleli viki, bekani umthetho owodwa nengane yakho eseminyakeni yokuthomba.\n\nKhumbula ukuncoma ingane yakho eseminyakeni yokuthomba ngemva kwalokho!",
+    "Kuleli viki, bekani umthetho owodwa nengane yakho.\n\nKhumbula ukuncoma ingane yakho  ngemva kwalokho!",
   "Being a great parent also means taking time to care for yourself every day.":
-    "Ukuba umzali ophumeleleyo kusho ukuzibekela eceleni isikhathi sokuzinakekela nsuku zonke.",
+    "Ukuba umzali ophumeleleyo kusho ukuzibekela  isikhathi sokuzinakekela nsuku zonke.",
   "Great. And amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.":
-    "Kuhle. Kuyamangalisa nokuthi usebenzisa le-app - kubonisa indlela ozimisela ngayo njengomzali. Qiniseka ukuthi uyazivuza futhi uzincome ngalokho okwenzayo.",
+    "Kuhle. Kuyamangalisa nokuthi usebenzisa le-app - kubonisa ukuzimisela kwakho njengomzali. Qiniseka ukuthi uyazivuza futhi uzincome ngalokho okwenzayo.",
   "Being a parent is hard. But it is amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.":
-    "Kunzima ukuba umzali. Kodwa kuyamangalisa nokuthi usebenzisa le-app - kubonisa indlela ozimisela ngayo njengomzali. Qiniseka ukuthi uyazivuza futhi uzincome ngalokho okwenzayo.",
+    "Kunzima ukuba umzali. Kodwa kuyamangalisa nokuthi usebenzisa le-app - kubonisa ukuzimisela kwakho njengomzali. Qiniseka ukuthi uyazivuza futhi uzincome ngalokho okwenzayo.",
   "Doing any of these makes you a great parent.":
-    "Ukwenza noma ngabe yini kulezi zinto kubonisa ukuthi ungumzali omuhle.",
+    "Ukwenza okunye kulezi zinto kubonisa ukuthi ungumzali ovelele.",
   "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!":
-    "Intsha ingasebenzisa isikhathi esiningi ingaphandle noma iku-inthanethi, lapho kunzima khona ngathi ukuba siyigcine iphephile. \n\nUkuxoxisana ngezindawo eziphephile nezindawo ezingaphephanga, nokuthi singazigwema kanjani izinkinga, kuyasiza ngempela!",
+    "Abantwana bethu bangachitha isikhathi esiningi ngaphandle kwasekhaya noma iku-inthanethi, lapho kunzima khona ngathi ukuba sibagcine bephephile. \n\nUkuxoxisana ngezindawo eziphephile nezindawo ezingaphephanga, nokuthi singazigwema kanjani izinkinga, kuyasiza ngempela!",
   "Greetings, everyone. \n\nToday our topic is teen safety. \n\nIt is our responsibility as parents to keep our teens safe at all times. We need to ensure that our teenagers are safe in the communities that we live in. It is our responsibility that we make them aware of the safe and unsafe areas in the communities. \n\nIt is also our responsibility to ensure that they understand the dangers that they might be exposed to when they are online. That way our teenagers will be responsible and be able to make right decisions to keep themselves safe too.":
-    "Sanibonani, nonke. \n\nIsihloko sanamuhla sikhuluma ngokuphepha kwentsha. \n\nKuwumthwalo wethu njengabazali ukuthi siqiniseka ukuthi intsha yethu iphephile ngaso sonke isikhathi. Kudingeka siqiniseka ukuthi intsha yethu iphephile emphakathini esihlala kuyo. Kuwumthwalo wethu ukuba sibenze baqaphele izindawo eziphephile nezingaphephanga emphakathini. \n\nKubuye kube umthwalo wethu wemfanelo ukuqinisekisa ukuthi iyaziqonda izingozi ezichaya kuzo uma iku-inthanethi. Ngaleyo ndlela intsha yethu izohlakanipha ikwazi ukwenza izinqumo ezinhle futhi izigcine iphephile.",
+    "Sanibonani, nonke. \n\nIsihloko sanamuhla sikhuluma ngokuphepha kwabantwana. \n\nKuwumthwalo wethu njengabazali ukuthi siqiniseka ukuthi abantwana bethu baphephile ngaso sonke isikhathi. Kudingeka siqiniseke ukuthi abantwana bethu baphephile emphakathini esihlala kuyo. Kuwumthwalo wethu ukuba sibenze baqaphele izindawo eziphephile nezingaphephanga emphakathini. \n\nKubuye kube umthwalo wethu wemfanelo ukuqinisekisa ukuthi bayabuqonda ubungozi abangazithola bekuzo ngokuba ku-inthanethi. Ngaleyo ndlela abantwana bethu bazokwazi ukwenza izinqumo ezinhle futhi bazigcine bephephile.",
   "* Story & discussion – that worked!\n* Story & discussion – that worked!\n* Mapping exercise\n* Tools: How to keep your teen safe\nMAPS - RULES - AMNESTY\n* Home practice suggestions":
-    "* Indatshana kanye nengxoxo – okusebenzile!\n* Indatshana kanye nengxoxo – okusebenzile!\n* Ukufunda ukwenza ibalazwe\n* Amathuluzi: Indlela yokugcina intsha yakho iphephile\nAMABALAZWE - IMITHETHO - USHWELE\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nengxoxo – okusebenzile!\n* Indaba kanye nengxoxo – okusebenzile!\n* Ukufunda ukwenza ibalazwe\n* Amathuluzi: Indlela yokugcina umntwana wakho ephephile\nAMABALAZWE - IMITHETHO - USHWELE\n* Amacebiso alokho ongakwenza ekhaya",
   "* Story & reflection – that worked!\n* Story & reflection – that worked!\n* Mapping exercise\n* Tools: How to keep your teen safe\nMAPS - RULES - AMNESTY\n* Home practice suggestions":
-    "* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Ukufunda ukwenza ibalazwe\n* Amathuluzi: Indlela yokugcina intsha yakho iphephile\nAMABALAZWE - IMITHETHO - USHWELE\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nokubuyekeza - okusebenzile!\n* Indaba kanye nokubuyekeza - okusebenzile!\n* Ukufunda ukwenza ibalazwe\n* Amathuluzi: Indlela yokugcina umntwana wakho ephephile\nAMABALAZWE - IMITHETHO - USHWELE\n* Amacebiso alokho ongakwenza ekhaya",
   "Communication is the most important thing!\n\nLet's see what happened with @global.w_safe_female_caregiver and @global.w_safe_teen_girl_1:":
     "Ukukhulumisana kuyinto ebaluleke kakhulu!\n\nAke sibone ukuthi yini eyenzeke ku @global.w_safe_female_caregiver no @global.w_safe_teen_girl_1 wakhe:",
   '@global.w_safe_teen_girl_1: "Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_3!"\n\n@global.w_safe_female_caregiver: "Tell me, @global.w_safe_teen_girl_1"':
@@ -1910,7 +1921,7 @@ const data: { [source_text: string]: string } = {
   "Man in car: “Hey beautiful. I have been looking at you for a while. You are very beautiful, what’s your name?  \n\n@global.w_safe_teen_girl_2: “Her name is @global.w_safe_teen_girl_1”":
     "Indoda esemotweni: “Ntokazi enhle. Sekuyisikhathi eside ngilokhu ngikubuka. Umuhle kakhulu, ungubani igama lakho?  \n\n@global.w_safe_teen_girl_2: “Igama lakhe u-@global.w_safe_teen_girl_1”",
   "Man in car: “@global.w_safe_teen_girl_1, would you like to come with me to have something to drink and chips? Come on, get in, you’ll be back in time, I promise…” \n\n@global.w_safe_teen_girl_1: “I’m not sure if that’s a good idea…”":
-    "Indoda esemotweni: @global.w_safe_teen_girl_1, ungathanda yini ukuhamba nami siyofuna okuphuzwayo namashibusi? Ngiyakucela, ngena, uzobuya ngesikhathi, ngiyakuthembisa...” \n\n@global.w_safe_teen_girl_1: “Angiqiniseki ukuthi umbono omuhle lowo...”",
+    "Indoda esemotweni: @global.w_safe_teen_girl_1, ungathanda yini ukuhamba nami siyofuna okuphuzwayo namashibusi? Ngiyakucela, ngena, uzobuya ngesikhathi, ngiyakuthembisa...” \n\n@global.w_safe_teen_girl_1: “Anginaso isiqiniseko sokuthi umbono omuhle lowo...”",
   "@global.w_safe_teen_girl_2: “You are lucky, my friend. I wish a man would ask ME out and buy me gifts. I’m telling you, if you don’t do this I’m going to tell everyone you are stupid!”":
     "@global.w_safe_teen_girl_2: “Unenhlanhla, mngane wami. Ngifisa sengathi indoda ingacela ukukhipha MINA ingithengele izipho. Ngiyakutshela, uma ungakwenzi lokhu ngizotshela wonke umuntu ukuthi uyisilima!”",
   '@global.w_safe_teen_girl_3: “@global.w_safe_teen_girl_1 don’t go! Be careful! Let’s go home. It is dangerous to go with people you don’t know. Besides, he’s too old for you and what he is doing is wrong."\n\n@global.w_safe_teen_girl_1: “I just don’t know…”':
@@ -1920,26 +1931,26 @@ const data: { [source_text: string]: string } = {
   "Let's talk about what happened to @global.w_safe_teen_girl_1":
     "Ake sikhulume ngokwenzeke ku-@global.w_safe_teen_girl_1",
   "Discuss together: \n\nWhat was risky about that situation?":
-    "Xoxani ndawonye: \n\nYini ebe yingozi ngalesi simo?",
+    "Xoxani ndawonye: \n\nYini ebiyingozi ngalesi simo?",
   "The situation was risky because...": "Lesi simo besiyingozi ngoba...",
   "* The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts \n* @global.w_safe_teen_girl_1's friend was encouraging her  \n* Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things \n* Many girls in our communities get pregnant or catch HIV from older men \n* There were no other trusted adults to advise @global.w_safe_teen_girl_1":
-    "* Indoda ebisemotweni ibingicindezela @global.w_safe_teen_girl_1 ngezipho \n* Umngane ka-@global.w_safe_teen_girl_1 ubemkhuthaza ukuthi ahambe  \n* Ukuzikhipha nendoda endala kungafaka u@global.w_safe_teen_girl_1 esimweni esiyingozi lapho engalimala khona noma aphoqwe ukuba enze izinto \n* Amantombazane amaningi emphakathini ayakhulelwa noma athole i-HIV emadodeni amadala \n* Bekangekho omunye umuntu omdala onganikeza u-@global.w_safe_teen_girl_1 iseluleko",
+    "* Indoda ebisemotweni ibiphoqa @global.w_safe_teen_girl_1 ngezipho \n* Umngane ka-@global.w_safe_teen_girl_1 ubemkhuthaza ukuthi ahambe  \n* Ukuzikhipha nendoda endala kungafaka u@global.w_safe_teen_girl_1 esimweni esiyingozi lapho engalimala khona noma aphoqwe ukuba enze izinto \n* Amantombazane amaningi emphakathini ayakhulelwa noma athole i-HIV emadodeni amadala \n* Bekangekho omunye umuntu omdala onganikeza u-@global.w_safe_teen_girl_1 iseluleko",
   "Let's think about what happened to @global.w_safe_teen_girl_1:":
     "Ake sicabange ngokwenzeke ku @global.w_safe_teen_girl_1:",
   "What was risky about that situation?": "Yini ebe yingozi ngalesi simo?",
   "The man in the car was pressuring  @global.w_safe_teen_girl_1 with gifts":
-    "Indoda ebisemotweni ibingicindezela @global.w_safe_teen_girl_1 ngezipho",
+    "Indoda ebisemotweni ibifaka ingcindezi @global.w_safe_teen_girl_1 ngezipho",
   "@global.w_safe_teen_girl_1's friend was encouraging her":
-    "Umngane ka-@global.w_safe_teen_girl_1 ubemkhuthaza ukuthi ahambe",
+    "Umngane ka-@global.w_safe_teen_girl_1 ubemkhuthaza ",
   "Going with an older man puts @global.w_safe_teen_girl_1 in a dangerous situation where she can get hurt or be forced to do things":
     "Ukuzikhipha nendoda endala kungafaka u@global.w_safe_teen_girl_1 esimweni esiyingozi lapho engalimala khona noma aphoqwe ukuba enze izinto",
   "Many girls in our communities get pregnant or catch HIV from older men":
     "Amantombazane amaningi emphakathini ayakhulelwa noma athole i-HIV emadodeni amadala",
   "There were no other trusted adults to advise @global.w_safe_teen_girl_1":
-    "Bekangekho omunye umuntu omdala onganikeza u-@global.w_safe_teen_girl_1 iseluleko",
+    "Bekungekho umuntu omdala othembekile obenganikeza u-@global.w_safe_teen_girl_1 iseluleko",
   "All those things are true!": "Zonke lezi zinto ziyiqiniso!",
   "Let's look at another example of a dangerous situation together.":
-    "Ake sibheke esinye isibonelo sesimo esiyingozi ndayonye.",
+    "Ake sibheke esinye isibonelo sesimo esiyingozi ndawonye.",
   '@global.w_safe_teen_girl_1: "My friend has been talking with a guy our age online... She’s going to send him photos of herself. Is that better because he’s our age?"':
     "@global.w_safe_teen_girl_1: “Umngane wami ubelokhu ekhuluma nomunye umfana olingana nathi ku-inthanethi... Uzomthumelela izithombe zakhe. Ingabe lokhu kungcono ngoba ulingana nathi?”",
   '@global.w_safe_female_caregiver: "You are a good friend for being worried about her. Sending sexy photos is a real risk too."':
@@ -1947,13 +1958,13 @@ const data: { [source_text: string]: string } = {
   '@global.w_safe_female_caregiver: "Sometimes people aren’t who they say they are online – he could say he is your age but be a 50 year old man. Or when they break up, he could send those photos to everyone and your friend would feel awful."':
     "@global.w_safe_female_caregiver: “Ngezinye izikhathi abantu abasho lokho abayikho ngempela ku-inthanethi - angase athi ulingana nani uthole ukuthi uyindoda eneminyaka engu- 50. Noma uma behlukana, angathumela lezo zithombe kuwo wonke umuntu lokho kungenza umngane wakho azizwe kabi.”",
   "Let's talk about our teens' online safety.":
-    "Ake sikhulume ngokuphepha kwentsha yethu ku-inthanethi.",
+    "Ake sikhulume ngokuphepha kwezingane zethu ku-inthanethi.",
   "What are some of the online risks for teens these days?":
-    "Yiziphi ezinye izingozi intsha engabhekana nazo ku-inthanethi kulezi zinsuku?",
+    "Yiziphi ezinye izingozi izingane zethu ezingabhekana nazo ku-inthanethi kulezi zinsuku?",
   "* Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things \n* People put things online to make us hurt other people – like making violence seem cool, or hating people from another race or country\n* People put things online to persuade teenagers to hurt themselves or commit suicide\n* Teenagers share sexy videos or photos or information about themselves, and people show it to others or use it to upset them\n* People can often be nasty to teenagers online – they feel like they can bully people safely":
     "* Abantu abadala basebenzisa ezokuxhumana, ezemidlalo nezinhlelo zokuthumelelana imilayezo namawebusayithi ukuze bahlangane nentsha bese beyiheha ukuthi yenze izenzo zobulili \n* Abantu bafaka izinto ku-inthanethi ukuba balimaze abanye abantu - njengokwenza udlame lubonakala lulungile, noma ukuzonda abantu bolunye uhlanga noma abavela kwelinye izwe\n* Abantu bafaka izinto ku-inthanethi ukwenza intsha ukuba izilimaze noma izibulale\n* Intsha ifaka amavidiyo noma izithombe zayo zobulili noma imininingwane ephathelene nayo, bese kuthi abanye bayakusebenzisa lokho ukuze bayilimaze noma bayithukuthelise\n* Izikhathi eziningi abantu bangaba nonya kubantu abasha ku-inthanethi - bazizwa bengahlukumeza abantu ngendlela ephephile",
   "Let's think about our teens' online safety.":
-    "Ake sicabange ngokuphepha kwentsha yethu ku-inthanethi.",
+    "Ake sicabange ngokuphepha kwezingane zethu ku-inthanethi.",
   "What is the biggest online risk for teens these days?":
     "Iyiphi ingozi enkulu yabantu abasha ku-inthanethi kulezi zinsuku?",
   "Adults use social media, gaming and messaging apps and websites to meet teenagers and persuade them to do sexual things":
@@ -1967,26 +1978,26 @@ const data: { [source_text: string]: string } = {
   "People can often be nasty to teenagers online – they feel like they can bully people safely":
     "Izikhathi eziningi abantu bangaba nonya kubantu abasha ku-inthanethi - bazizwa bengahlukumeza abantu ngendlela ephephile",
   "To keep our teens safe, we need to understand the dangerous situations they could get into!\n\nLet’s make two maps together of safe and unsafe places:\n* A map of our community\n* A map of apps/websites we use online\n\nLet’s make these maps as a group now. \n\nYou’ll do the same with your teen as home practice this week.":
-    "Ukuze sigcine intsha yethu iphephile, kumelwe siqonde izimo eziyingozi engangena kuzo!\n\nAke senze amabalazwe amabili ndawonye ezindawo eziphephile nezindawo ezingaphephanga:\n* Ibalazwe lomphakathi wethu \n* Ibalazwe lama-app/amawebusayithi esingawasebenzisa ku-inthanethi\n\nAke senze la mabalazwe siyiqembu njengamanje. \n\nUzokwenza okufanayo ngengane yakho eyevile eminyakeni eyishumi nambili njengomsebenzi wasekhaya waleli viki.",
+    "Ukuze sigcine abantwana bethu bephephile, kumele siqonde izimo eziyingozi abangangena kuzo!\n\nAke senze amabalazwe amabili ndawonye ezindawo eziphephile nezindawo ezingaphephanga:\n* Ibalazwe lomphakathi wethu \n* Ibalazwe lama-app/amawebusayithi esingawasebenzisa ku-inthanethi\n\nAke senze la mabalazwe siyiqembu njengamanje. \n\nUzokwenza okufanayo nengane yakho njengomsebenzi wasekhaya waleli viki.",
   "Discuss together:\n\n* Which areas on your map are safe for teenagers \n     – CIRCLE these \n* Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n* What makes a place safe or unsafe?  \n* What could you and your teen do to keep your teen safer?":
-    "Xoxani ndawonye:\n\n* Yiziphi izindawo ebalazweni lenu eziphephile ezinganeni zakho ezevile eminyakeni eyishumi nambili \n      - yenza INDINGILIZA kuzo \n * Iziphi izindawo ebalazweni lakho ezingaphephile entsheni yakho  \n     - faka ISIPHAMBANO kuzo  \n * Yini eyenza indawo iphephe noma ingaphephi?   \n* Yini wena nentsha yakho eningayenza ukuze nigcine intsha yakho iphephile?",
+    "Xoxani ndawonye:\n\n* Yiziphi izindawo ebalazweni lenu eziphephile ezinganeni zakho\n      - yenza INDINGILIZA kuzo \n * Iziphi izindawo ebalazweni lakho ezingaphephile ezinganeni zakho  \n     - faka ISIPHAMBANO kuzo  \n * Yini eyenza indawo iphephe noma ingaphephi?   \n* Yini wena nomntwana wakho eningayenza ukuze nigcine umntwana wakho ephephile?",
   "Sometimes, we can find ourselves in trouble. Discuss together:\n \n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.":
-    "Ngezinye izikhathi zingazithola sisenkingeni. Xoxani ndawonye:\n \n* Intsha yakho nawe ningaluthola kuphi usizo uma uzithola usenkingeni? \n     – PHAWULA lezo zindawo ngokuthile okunjengetshe noma isiqeshana sephepha.",
+    "Ngezinye izikhathi zingazithola sisenkingeni. Xoxani ndawonye:\n \n* Ningaluthola kuphi usizo nokwesekwa uma nizithola nisenkingeni? \n     – PHAWULA lezo zindawo ngokuthile okunjengetshe noma isiqeshana sephepha.",
   "* Draw pictures of the apps and websites your teenagers use \n* Praise each other for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
-    "* Dweba izithombe zama-app namawebusayithi intsha yakho ewasebenzisayo  \n* Ncomanani ngokusebenzisa kahle lawa mawebusayithi!   \n* Khulumani ngokuthi yimaphi okungenzeka akaphephile. Kungani? \n* Yini wena nentsha yakho eningayenza ukuze nenze ukusebenzisa i-inthanethi kwengane yakho eseminyakeni yokuthomba kanye nabangane bayo kuphephe?",
+    "* Dweba izithombe zama-app namawebusayithi umntwana wakho awasebenzisayo  \n* Ncomanani ngokusebenzisa kahle lawa mawebusayithi!   \n* Khulumani ngokuthi yimaphi okungenzeka ukube awaphephile. Kungani? \n* Yini wena nomntwana wakho eningayenza ukuze nenze ukusebenzisa i-inthanethi kwengane yakho kanye nabangane bayo kuphephe?",
   "Safety Plan": "Uhlelo Lokuphepha",
   "To keep our teens safe, we need to understand the dangerous situations they could get into!":
-    "Ukuze sigcine intsha yethu iphephile, kumelwe siqonde izimo eziyingozi engangena kuzo!",
+    "Ukuze sigcine abantwana bethu bephephile, kumelwe siqonde izimo eziyingozi abangangena kuzo!",
   "Every time you plan or keep a safety plan, click the @global.parent_point and celebrate your success!":
-    "Ngaso sonke isikhathi uma nihlela noma nigcina uhlelo lokuphepha, chofoza u-@global.parent_point bese niyayibungaza leyo mpumelelo yenu!",
+    "Ngaso sonke isikhathi uma nihlela noma nigcina uhlelo lokuphepha, chofoza u-@global.parent_point bese nibungaza impumelelo yenu!",
   "Let’s make two maps together of safe and unsafe places: \n* A map of our community \n* A map of apps/websites we use online \n\nYou’ll do the same with your teen as home practice this week - if your teen is here now, you can do it together now!":
-    "Ake senze amabalazwe amabili ndawonye ezindawo eziphephile nezindawo ezingaphephanga: \n* Ibalazwe lomphakathi wethu  \n* Ibalazwe lama-app/amawebusayithi esingawasebenzisa ku-inthanethi \n\nUzokwenza okufanayo nentsha yakho njengomsebenzi wasekhaya waleli viki - uma intsha yakho ikhona njengamanje lapha, ningakwenza ndawonye lokhu njengamanje!",
+    "Ake senze amabalazwe amabili ndawonye ezindawo eziphephile nezindawo ezingaphephanga: \n* Ibalazwe lomphakathi wethu  \n* Ibalazwe lama-app/amawebusayithi esiwasebenzisa ku-inthanethi \n\nUzokwenza okufanayo nomntwana wakho njengomsebenzi wasekhaya waleli viki - uma umntwana wakho ekhona njengamanje lapha, ningakwenza ndawonye lokhu njengamanje!",
   "My family can join in now!": "Umndeni wami ungahlanganyela njengamanje!",
   "Let me try it out by myself": "Ake ngizizamele ngokwami",
   "Step 1: What are important places in your community?":
     "Isinyathelo 1: Yiziphi izindawo ezibalulekile emphakathini wakho?",
   "* Get a piece of paper (or old newspaper or a cardboard box) and a pen. \n* Draw a map of your teen’s community, with pictures of all the main places like streets, your house, school, shops, places your teen visits.":
-    "* Thola isiqeshana sephepha (noma iphephandaba elidala noma ikhadibhodi) kanye nepeni. \n* Dweba ibalazwe lomphakathi wentsha yakho, libe nezithombe zazo zonke izindawo eziyinhloko njengemigwaqo, indlu yakho, isikole, izitolo, izindawo ezivakashelwa ingane yakho eseminyakeni yokuthomba.",
+    "* Thola isiqeshana sephepha (noma iphephandaba elidala noma ikhadibhodi) kanye nepeni. \n* Dweba ibalazwe lomphakathi wengane yakho, libe nezithombe zazo zonke izindawo eziyinhloko njengemigwaqo, indlu yakho, isikole, izitolo, izindawo ezivakashelwa ingane yakho.",
   "Step 2: Which places are safe and unsafe?":
     "Isinyathelo 2: Yiziphi izindawo eziphephile nezingaphephanga?",
   "Discuss together:\n* Which areas on your map are safe for teenagers \n     – CIRCLE these \n* Which areas on your map are unsafe for teenagers \n     – CROSS those off  \n* What makes a place safe or unsafe?  \n* What could you and your teen do to keep your teen safer?":
@@ -1995,65 +2006,65 @@ const data: { [source_text: string]: string } = {
     "* Yiziphi izindawo ebalazweni lenu eziphephile ezinganeni zakho ezevile eminyakeni eyishumi nambili \n      - yenza INDINGILIZA kuzo \n * Iziphi izindawo ebalazweni lakho ezingaphephile entsheni yakho  \n     - faka ISIPHAMBANO kuzo  \n * Yini eyenza indawo iphephe noma ingaphephi?   \n* Yini wena nentsha yakho eningayenza ukuze nigcine intsha yakho iphephile?",
   "Step 3: Where can you get support?": "Isinyathelo 3: Kukuphi lapho ungathola khona ukusekelwa?",
   "Sometimes, we can find ourselves in trouble. Discuss together:\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.  \n\nBelow are some places that can be helpful":
-    "Ngezinye izikhathi zingazithola sisenkingeni. Xoxani ndawonye:\n* Intsha yakho nawe ingaluthola kuphi usizo uma uzithola usenkingeni? \n      – PHAWULA lezo zindawo ngokuthile okunjengetshe noma isiqeshana sephepha.  \n\nNgezansi ezinye izindawo ezingaba usizo",
+    "Ngezinye izikhathi zingazithola sisenkingeni. Xoxani ndawonye:\n* Wena nomntwana wakho ningaluthola kuphi usizo uma nizithola nisenkingeni? \n      – PHAWULA lezo zindawo ngokuthile okunjengetshe noma isiqeshana sephepha.  \n\nNgezansi ezinye izindawo ezingaba usizo",
   "Sometimes, we can find ourselves in trouble.\n* Where can you and your teen get support when you face a crisis? \n     – MARK those areas with a little object like a stone or piece of paper.":
-    "Ngezinye izikhathi zingazithola sisenkingeni.\n* Intsha yakho nawe ningaluthola kuphi usizo uma uzithola usenkingeni? \n     – PHAWULA lezo zindawo ngokuthile okunjengetshe noma isiqeshana sephepha.",
+    "Ngezinye izikhathi zingazithola sisenkingeni.\n* Wena nomntwana wakho ningaluthola kuphi usizo uma nizithola nisenkingeni? \n     – PHAWULA lezo zindawo ngokuthile okunjengetshe noma isiqeshana sephepha.",
   "Step 4: What are risky places online and how can you make them safer?":
-    "Isinyathelo 4: Yiziphi izindawo eziyingozi ku-inthanethi futhi ungazenza kanjani ukuthi ziphephe?",
+    "Isinyathelo 4: Yiziphi izindawo eziyingozi ku-inthanethi futhi ungenza kanjani ukuthi ziphephe?",
   "* Draw pictures of the apps and websites your teenagers use \n* Praise your teens for how good they are at using the web!  \n* Talk about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
-    "* Dweba izithombe zama-app namawebusayithi intsha yakho ewasebenzisayo  \n* Ncoma ingane yakho eyevile eminyakeni eyishumi nambili  ngokusebenzisa kahle lawa mawebusayithi!   \n* Khulumani ngokuthi yimaphi okungenzeka akaphephile. Kungani? \n* Yini wena nentsha yakho eningayenza ukuze nenze ukusebenzisa i-inthanethi kwengane yakho eseminyakeni yokuthomba kanye nabangane bayo kuphephe?",
+    "* Dweba izithombe zama-app namawebusayithi umntwana wakho awasebenzisayo  \n* Ncoma ingane yakho ngokusebenzisa kahle lawa mawebusayithi!   \n* Khulumani ngokuthi yimaphi okungenzeka ukuthi awaphephile. Kungani? \n* Yini wena nomntwana wakho eningayenza ukuze nenze ukusebenzisa i-inthanethi kwengane yakho kanye nabangane bayo baphephe?",
   "* Draw pictures of the apps and websites your teenagers use \n* Recognise how good they are at using the web!  \n* Think about which ones might be unsafe. Why? \n* What could you and your teen do to make using the internet safer for your teen and their friends?":
-    "* Dweba izithombe zama-app namawebusayithi intsha yakho ewasebenzisayo  \n* Qaphela indlela intsha ekwazi ngayo ukusebenzisa kahle lawa mawebusayithi!   \n* Cabanga ngokuthi yimaphi okungenzeka awaphephile. Kungani? \n* Yini wena nentsha yakho eningayenza ukuze nenze ukusebenzisa i-inthanethi kwengane yakho eseminyakeni yokuthomba kanye nabangane bayo kuphephe?",
+    "* Dweba izithombe zama-app namawebusayithi umntwana wakho awasebenzisayo  \n* Qaphela ukuthi bawasebenzisa kahle la mawebusayithi!   \n* Cabanga ngokuthi yimaphi okungenzeka awaphephile. Kungani? \n* Yini wena nomntwana wakho eningayenza ukuze nenze ukusebenzisa i-inthanethi kwengane yakho kanye nabangane bayo baphephe?",
   MAPS: "AMABALAZWE",
   "Make MAPS with your teen of safe and unsafe areas in your community and online. Talk about how to keep their information, photos and videos private online. Talk about how once something goes online, it stays there forever. They might know an example from their friends.":
-    "Yenza AMABALAZWE nentsha yakho ezindawo eziphephile nezindawo ezingaphephanga emphakathini wakho naku-inthanethi. Xoxa nayo ngokuthi ingayigcina kanjani imininingwane, izithombe namavidiyo azo afihlekile ku-inthanethi. Xoxa nayo ngokuthi kwenzeka kanjani ukuthi uma okuthile kufakwa ku-inthanethi kuzohlala lapho unomphela. Kungenzeka iyasazi isibonelo salokho ngabangane bayo.",
+    "Yenza AMABALAZWE nomntwana wakho ngezindawo eziphephile nezindawo ezingaphephanga emphakathini wakho naku-inthanethi. Xoxa naye ngokuthi ingayigcina kanjani imininingwane, izithombe namavidiyo akhe efihlekile ku-inthanethi. Xoxa nayo ngokuthi kwenzeka kanjani ukuthi uma okuthile kufakwa ku-inthanethi kuzohlala lapho unomphela. Kungenzeka iyasazi isibonelo salokho ngabangane bayo.",
   RULES: "IMITHETHO",
   "Make RULES with your teen about safely using the apps and websites that they like. \n\nRemember the story about Online Safety? See it again here.":
-    "Beka IMITHETHO nentsha yakho mayelana nokuphepha uma isebenzisa ama-app namawebhuyasithi ewathandayo. \n\nKhumbula indaba Yokuphepha ku-Inthanethi? Lubone futhi lapha.",
+    "Beka IMITHETHO nentsha yakho mayelana nokuphepha uma isebenzisa ama-app namawebhuyasithi ewathandayo. \n\nKhumbula indaba Yokuphepha ku-Inthanethi? Sibone futhi lapha.",
   "Online Safety Story": "Indaba Yokuphepha Ku-inthanethi",
   AMNESTY: "USHWELE",
   "Make an AMNESTY agreement. If something happens that makes them upset, uncomfortable or scared, they can talk to you and you won’t get angry or punish them, even if they were doing something wrong.\n\nRemember the story about Safety Amnesty? See it again here.":
     "Yenzani isivumelwano sikaSHWELE. Uma kwenzeka okuthile okubathukuthelisayo, okubenza bazizwe bangakhululekile noma bethuke, bangakhuluma nawe ngakho futhi angeke ucasuke noma ubajezise, ngisho noma kuthiwa bebenza okuthile okungalungile.\n\nKhumbula udaba Lokuphepha Kukashwele? Lubone futhi lapha.",
   "Digital parenting is just like parenting in the real world. You have taken a BIG STEP to keeping your teen safe in the community AND online. Good for you!":
-    "Ukuba umzali kwezobuchwepheshe kuyafana nokuba umzali ekuphileni okuvamile. Uthathe ISINYATHELO esikhulu sokugcina intsha yakho iphephile emphakathini KANYE naku-inthanethi. Kuhle lokho!",
+    "Ukuba umzali kwezobuchwepheshe kuyafana nokuba umzali ekuphileni okujwayelekile. Uthathe ISINYATHELO esikhulu sokugcina umntwana wakho ephephile emphakathini KANYE naku-inthanethi. Kuhle lokho!",
   "Resources to help in the community": "Izinsiza zokusiza emphakathini",
   "Online Safety Resources": "Izinsiza Zokuphepha Ku-inthanethi",
   "Make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!":
-    "Yenza amabalazwe amabili nengane yakho eyevile eminyakeni eyishumi nambili ezindawo eziphephile nezindawo ezingaphephile:\n* Yenza ibalazwe lomphakathi wakho \n* Ishadi lama-apps namawebusayithi asetshenziswa yingane yakho eyevile eminyakeni eyishumi nambili \n\nQiniseka ukuthi nobabili niyajabula ngohlelo lokuphepha.  \n\nInto ebaluleke ngempela ukuthi nikhulume nengane yakho eseminyakeni yokuthomba njengoba nenza lokhu - ngokuvamile abantu abasha bazi okuningi ngokuthi ikuphi lapho kuphephe khona nalapho kungaphephanga khona!",
+    "Yenza amabalazwe amabili nengane yakho ezindawo eziphephile nezindawo ezingaphephile:\n* Yenza ibalazwe lomphakathi wakho \n* Ishadi lama-apps namawebusayithi asetshenziswa yingane yakho \n\nQiniseka ukuthi nobabili niyalujabulela uhlelo lokuphepha.  \n\nInto ebaluleke ngempela ukuthi nikhulume nengane yakho  njengoba nenza lokhu - imvamisa izingane zethu zazi okuningi kunathi ngokuthi ikuphi lapho kuphephe khona nalapho kungaphephanga khona!",
   "If you have not done it together yet, make two maps with your teen of safe and unsafe places:\n* Map of your community\n* Map of apps and websites your teen uses \n\nMake sure you're both happy with the safety plan.  \n\nWhat really matters is that you talk with your teen as you do this – often teens know much more than we do about where it is safe and unsafe!":
-    "Uma ningakakwenzi nobabili okwamanje lokhu, yenza amabalazwe amabili nengane yakho eseminyakeni yokuthomba yezindawo eziphephile nezindawo ezingaphephanga:\n* Yenza ibalazwe lomphakathi wakho \n* Ishadi lama-apps namawebusayithi asetshenziswa yingane yakho eyevile eminyakeni eyishumi nambili \n\nQiniseka ukuthi nobabili niyajabula ngohlelo lokuphepha.  \n\nInto ebaluleke ngempela ukuthi nikhulume nengane yakho eseminyakeni yokuthomba njengoba nenza lokhu - ngokuvamile abantu abasha bazi okuningi ngokuthi ikuphi lapho kuphephe khona nalapho kungaphephanga khona!",
+    "Uma ningakakwenzi nobabili okwamanje lokhu, yenza amabalazwe amabili nengane yakho ezindawo eziphephile nezindawo ezingaphephanga:\n* Yenza ibalazwe lomphakathi wakho \n* Ishadi lama-apps namawebusayithi asetshenziswa yingane yakho  \n\nQiniseka ukuthi nobabili niyalujabulela loluhlelo lokuphepha.  \n\nOkubaluleke ngempela ukuthi nikhulume nengane yakho njengoba nenza lokhu - Kuvamile abantwana bethu bazi okuningi kunathi ngokuthi iziphi izindawo eziphephile nezingaphephile!",
   "Safety Plan Activity": "Umsebenzi Wehlelo Lokuphepha",
   "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs":
     "Siyakwamukela! Siyajabula ukuba nawe lapha. Leli sonto limayelana NAWE. \n\nKulokhu kuqeqeshwa kokukwamukela:  \n* Uzothola amathuluzi okuzinakekela  \n* Uhlele ne-app ngokwezidingo zakho",
   "Wonderful, I am so happy things are going well.":
     "Kuhle kakhulu, ngiyajabula ukuthi izinto zikuhambela kahle.",
   "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!":
-    "Ngiyaxolisa ngokuthi isimo sinzima njengamanje. Kuvamile ukubhekana nobunzima ngezinye izikhathi. Khumbula ukuthi awuwedwa!",
+    "Uxolo ngokuthi isimo sinzima njengamanje. Kuvamile ukubhekana nobunzima ngezinye izikhathi. Khumbula ukuthi awuwedwa!",
   "Why @data.workshop.w_self_care.short_title?": "Kungani @data.workshop.w_self_care.short_title?",
   "We often don’t look after ourselves enough. But this is so important, especially as a parent! \n\nReducing our stress and treating ourselves well helps us AND our teenagers.":
-    "Ngokuvamile asizinakekeli ngokwanele. Kodwa kubalulekile, ikakhulu njengabazali! \n\nUkuphungula ukucindezeleka kwethu nokuziphatha kahle kusiza thina KANYE nentsha yethu.",
+    "Kuvamile ukuthi singazinakekeli ngokwanele. Kodwa kubalulekile ukuzinakekela, ikakhulu njengabazali! \n\nUkuhlisa ingcindezi nokuzitotosa  kusiza thina KANYE nabantwana bethu.",
   "Greetings, everyone. \n\nToday's topic is self-care. \n\nThere are times where we experience challenging times, where we face problems and do not know what to do. It is important to take care of ourselves to learn the techniques of how we can keep ourselves calm in case problems, challenges or issues come up. \n\nWhen we are calm we are in a good state to think positively and come up with positive solutions to any challenges we may be facing.":
-    "Sanibonani, nonke. \n\nIsihloko sanamuhla sikhuluma ngokuzinakekela. \n\nKunezikhathi lapho sibhekana nezikhathi ezinzima, lapho sibhekana khona nezinkinga singazi ukuthi kumelwe senzeni. Kubalulekile ukuzinakekela ukufunda izindlela zokuthi sihlale sehlise umoya uma kwenzeka kuvela inkinga, inselele noma isimo esithile. \n\nUma sehlise umoya sisuke sisesimweni esihle sokucabanga kahle nokuza nesixazululo esihle sokubhekana nanoma iyiphi inkinga.",
+    "Sanibonani, nonke. \n\nIsihloko sanamuhla sikhuluma ngokuzinakekela. \n\nKunezikhathi lapho sibhekana nezikhathi ezinzima, lapho sibhekana khona nezinkinga singazi ukuthi kumelwe senzeni. Kubalulekile ukuzinakekela ukufunda izindlela zokuthi sihlale sehlise umoya uma kwenzeka kuvela inkinga, inselelo noma isimo esithile. \n\nUma sehlise umoya sisuke sisesimweni esihle sokucabanga kahle nokuza nesixazululo esihle sokubhekana nanoma iyiphi inkinga.",
   "Today you will experience 3 activities that can help you care for yourself, and we will ask you a few\nquestions to ensure the app is exactly right for you.":
     "Namuhla sizokwenza imisebenzi engu-3 ezosisiza sizinakekele, futhi sizokubuza\nimibuzo embalwa ukuze siqiniseka ukuthi le-app ikulungele.",
   "* Relax activity\n* Recognise activity\n* Reward activity\n* Tools: How to add self-care\n* Customise the app\n* Home practice suggestions":
-    "* Umsebenzi wokuphumula\n* Umsebenzi wokubona\n* Umsebenzi wokuvuza\n* Amathuluzi: Indlela yokunezela ukuzinakekela\n* Hlela i-app ngendlela oyithandayo\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Umsebenzi wokuphumula\n* Umsebenzi wokuqaphela\n* Umsebenzi wokuvuza\n* Amathuluzi: Indlela yokunezela ukuzinakekela\n* Hlela i-app ngendlela oyithandayo\n* Amacebiso alokho ongakwenza ekhaya",
   "Let's try it out and do a short relaxation activity together!":
-    "Ake sikuzame bese senza umsebenzi omfushane wokuphumula ndawonye!",
+    "Ake sikuzame futhi senze umsebenzi omfushane wokuphumula ndawonye!",
   "As parents, we often don’t have time to look after ourselves - but this is so important to do! Reducing our stress helps us AND our teens. \n\nLet’s take a first step and do a short relaxation activity together.":
-    "Njengabazali, ngokuvamile asinaso isikhathi sokuzinakekela - kodwa lokhu kubalulekile! Ukwehlisa ukucindezeleka kwethu kusiza thina KANYE nentsha yethu. \n\nAke sithathe isinyathelo sokuqala bese senza umsebenzi omfushane wokuphumula ndawonye.",
+    "Njengabazali, ngokuvamile asinaso isikhathi sokuzinakekela - kodwa lokhu kubalulekile! Ukwehlisa ingcindezi kuthina kusiza thina KANYE nabantwana bethu. \n\nAke sithathe isinyathelo sokuqala bese senza umsebenzi omfushane wokuphumula ndawonye.",
   "Paying attention to what we do well helps us to focus on the positive. \n\nLet’s take a moment to praise ourselves. We’ll show you how.":
     "Ukunaka esikwenzayo kuzosisiza sigxile ezintweni ezakhayo. \n\nAke sithathe umzuzwana sizincome. Sizonibonisa ukuthi ningakwenza kanjani lokhu.",
   'Think of one thing YOU have done well recently.\n\nSay it aloud to each other: "Well done to me for…"\n\nHere is one thing you deserve praise for: Well done for using @global.parent_app!':
-    "Cabanga ngento eyodwa OYENZE kahle muva nje.\n\nKutshele abanye ngokuzwakalayo: “Ngiyazincoma...”\n\nNakhu okukodwa okufanelekayo ukunconywa ngakho: Wenze kahle ngokusebenzisa i @global.parent_app!",
-  Recognise: "Naka",
+    "Cabanga ngento eyodwa OYENZE kahle muva nje.\n\nTshela abanye: “Ngiyazincoma...”\n\nNakhu okukodwa ofanele ukunconywa ngakho: Wenze kahle ngokusebenzisa i @global.parent_app!",
+  Recognise: "Qaphela",
   "Take a moment to praise yourself. \n\nWe will now show you how.":
     "Thatha umzuzwana uzincome. \n\nNjengamanje sizokubonisa ukuthi ungakwenza kanjani.",
   "Think of one thing YOU have done well recently.": "Cabanga ngento eyodwa OYENZE kahle muva nje.",
-  '"Well done to me for..."': "“Ngiyazincoma...”",
+  '"Well done to me for..."': "“Ngiyazincoma ngoku...”",
   "Showing love to my children": "Ngokubonisa izingane zami uthando",
-  "Getting up even though I felt tired": "Ngokuvuka ngisho noma bengikhathele",
-  "Smiling at someone": "Ngokumomotheka kothile",
+  "Getting up even though I felt tired": "Ngokuvuka ngisho noma bengi zizwa ngikhathele",
+  "Smiling at someone": "Ngokumamatheka",
   "Making food to stay strong": "Ngokwenza ukudla ukuze sihlale sinamandla",
   "Spending time with my children": "Ngokuchitha isikhathi nezingane zami",
   "Helping my children with schoolwork": "Ngokusiza izingane zami ngomsebenzi wazo wesikole",
@@ -2062,7 +2073,7 @@ const data: { [source_text: string]: string } = {
   "Well done! Try to do this every day.": "Wenze kahle! Zama ukukwenza lokhu nsuku zonke.",
   "Things to praise yourself for:": "Izinto ongazincoma ngazo:",
   "* Showing love to your children \n* Getting up even though you felt tired \n* Smiling at someone \n* Making food to stay strong \n* Spending time with your children \n* Helping your children with schoolwork":
-    "* Ngokubonisa izingane zakho uthando \n* Ngokuvuka ngisho noma uzizwa ukhathele \n* Ngokumomotheka lapho ubheka othile \n* Ngokwenza ukudla ukuze sihlale sinamandla \n* Ngokuchitha isikhathi nezingane zakho \n* Ngokusiza izingane zakho ngomsebenzi wazo wesikole",
+    "* Ngokubonisa izingane zakho uthando \n* Ngokuvuka ngisho noma uzizwa ukhathele \n* Ngokumamatheka uma ubona umuntu \n* Ngokwenza ukudla ukuze nihlale ninamandla \n* Ngokuchitha isikhathi nezingane zakho \n* Ngokusiza izingane zakho ngomsebenzi wazo wesikole",
   "Have a hot drink": "Thola isiphuzo esishisayo",
   "Call a friend or relative": "Shayela ucingo umngane noma isihlobo",
   "Have a relaxing bath": "Thatha isikhathi sakho ugeze",
@@ -2073,7 +2084,7 @@ const data: { [source_text: string]: string } = {
   "Try to do something to reward yourself every day.\n\nYou can use these skills at home and find them anytime in your @global.parent_centre!":
     "Zama ukuzenzela okuthile kokuzivuza nsuku zonke.\n\nUngawasebenzisa ekhaya la makhono futhi uwathole noma nini ku @global.parent_centre yakho!",
   Reward: "Umvuzo",
-  "We all deserve to treat ourselves well!": "Sonke siyakufanelekela ukuzikhipha!",
+  "We all deserve to treat ourselves well!": "Sonke siyakufanelekela ukuzitotosa!",
   "What small thing makes you happy?": "Iyiphi into encane ekujabulisayo?",
   "Nice! Taking care of yourself is an important parenting skill!":
     "Kuhle! Ukuzinakekela kuyikhono elibalulekile lokuba umzali!",
@@ -2095,7 +2106,7 @@ const data: { [source_text: string]: string } = {
     "Yenza umsebenzi wokuziphumuza osheshayo imizuzwana engu-30.",
   RECOGNISE: "BONA",
   'Take a moment and think of one thing YOU have done recently that you have done well! Say it aloud if you can "Well done for …"':
-    "Thatha isikhashana ucabange ngento eyodwa OYENZE kahle muva nje! Ngezwi elizwakalayo ithi “usebenzile ...” uma kungenzeka",
+    "Thatha isikhashana ucabange ngento eyodwa OYENZE kahle muva nje! Ngezwi elizwakalayo uma kungenzeka ithi “ngenze kahle u ...” ",
   REWARD: "UMVUZO",
   "Remember you deserve your quality time too! What makes you happy?":
     "Khumbula ukuthi nawe udinga ukuba nesikhathi sakho! Yini ekwenza ujabule?",
@@ -2114,37 +2125,37 @@ const data: { [source_text: string]: string } = {
   "You've completed this week's workshop.\n\nWe’ll do some of the self-care activities again when you get together with your group for the first time - you all deserve some extra self-care!":
     "Usukuqedile ukuqeqeshwa kwaleli viki.\n\nSizokwenza eminye futhi imisebenzi yokuzinakekela uma uhlangana neqembu lakho okokuqala - nonke nifanelwe ukuzinakekela okwengeziwe!",
   "We care about you, and how life is treating you.":
-    "Sinendaba nawe, nokuthi impilo ikuphethe kanjani.",
+    "Siyakunakekela, nokuthi impilo ikuphethe kanjani.",
   "You are a star. And you are making a real difference. Be proud of yourself.":
-    "Uyiqhawe. Wenza umehluko wangempela. Ziqhenye ngawe ngokwakho.",
+    "Uyiqhawe. Wenza umehluko wangempela. Ziqhenye ngawe .",
   "Sorry that things are not easy today. All parents have these days.":
-    "Ngiyaxolisa ngokuthi isimo sinzima namuhla. Bonke abazali bayabhekana nalokhu.",
+    "Uxolo ngokuthi isimo sinzima namuhla. Bonke abazali bayabhekana nalokhu.",
   "Close your eyes, breathe in, and know that everything you have done is so important.":
-    "Vala amehlo, donsa umoya, wazi ukuthi konke okwenzile kubalulekile.",
+    "Vala amehlo, phefumula, wazi ukuthi konke okwenzile kubalulekile.",
   "Every family faces challenges, but when we work together we can deal with problems in an effective and peaceful way. \n\nWhat a great skill for your teen to learn too!":
-    "Yonke imindeni iyabhekana nezinkinga, kodwa uma sisebenza ndawonye singakwazi ukubhekana nezinkinga ngendlela ephumelelayo nenokuthula. \n\nLeli ikhono elihle ukuthi ingane yakho eseminyakeni yokuthomba ilifunde!",
+    "Yonke imindeni iyabhekana nezinkinga, kodwa uma sisebenzisana singakwazi ukubhekana nezinkinga ngendlela ephumelelayo nenokuthula. \n\nLeli ikhono elihle ukuthi ingane yakho ingalifunda!",
   "Greetings, everyone. \n\nToday's topic is problem solving. \n\nWe all know that in life there are times where we face problems, and we all know in a way that when we find ourselves in these situations, it is difficult to think of immediate positive solutions. \n\nTherefore, it is important that when we are facing problems we take a pause, we breathe, keep calm and think of problem-solving skills that we may use. \n\nRemember to include our teenagers when we are solving problems. This will help them to become responsible and learn how to solve their own problems in the future.":
-    "Sanibonani, nonke. \n\nIsihloko sanamuhla sikhuluma ngokuxazulula inkinga. \n\nSonke siyazi ukuthi ekuphileni kunezikhathi lapho sibhekana khona nezinkinga, futhi sonke siyazi ukuthi uma sizithola sikulezi zimo, kuba nzima ukucabanga ngokushesha ngezixazululo ezinhle. \n\nNgakho-ke kubalulekile ukuthi uma sibhekane nezinkinga sime kancane, sidonse umoya, sizole bese sicabanga ngamakhono okuxazulula izinkinga esingawasebenzisa. \n\nKhumbula ukuhilela intsha yethu uma sixazulula izinkinga. Lokhu kuzoyisiza izimele futhi ifunde ukuxazulula izinkinga zayo esikhathini esizayo.",
+    "Sanibonani, nonke. \n\nIsihloko sanamuhla sikhuluma ngokuxazulula inkinga. \n\nSonke siyazi ukuthi empilweni kunezikhathi lapho sibhekana khona nezinkinga, futhi sonke siyazi ukuthi uma sizithola sikulezi zimo, kuba nzima ukucabanga ngokushesha ngezixazululo ezinhle. \n\nNgakho-ke kubalulekile ukuthi uma sibhekane nezinkinga sime kancane, siphefumule, sizole bese sicabanga ngamakhono okuxazulula izinkinga esingawasebenzisa. \n\nKhumbula ukubandakanya izingane zethu uma sixazulula izinkinga. Lokhu kuzobasiza bazimele futhi bafunde ukuxazulula izinkinga zabo esikhathini esizayo.",
   "* Story & discussion – that didn’t work…\n* Tools: How to solve problems\nKNOW IT – SOLVE IT – TRY IT – TEST IT\n* Story & discussion – that worked!\n* Try it out!\n* Home practice suggestions":
-    "* Indatshana kanye nengxoxo – okungasebenzanga ...\n* Amathuluzi: Indlela yokuxazulula izinkinga\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE\n* Indatshana kanye nengxoxo – okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nengxoxo – okungasebenzanga ...\n* Amathuluzi: Indlela yokuxazulula izinkinga\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE\n* Indaba kanye nengxoxo – okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "* Story & reflection – that didn’t work…\n* Tools: How to solve problems\nKNOW IT – SOLVE IT – TRY IT – TEST IT\n* Story & reflection – that worked!\n* Try it out!\n* Home practice suggestions":
-    "* Indatshana kanye nokucabanga ujule - okungasebenzanga ...\n* Amathuluzi: Indlela yokuxazulula izinkinga\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE\n* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nokuhlaziya indaba - okungasebenzanga ...\n* Amathuluzi: Indlela yokuxazulula izinkinga\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE\n* Indaba kanye nokuhlaziya indaba - kusebenzile!\n* Kuzame!\n* Amacebiso alokho ongakwenza ekhaya",
   "Let’s look at what happened to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 when @global.w_solve_teen_girl got a phone from a boy… a phone!":
     "Ake sibheke okwenzeke ku @global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 ngesikhathi @global.w_solve_teen_girl athole ucingo okuvela kumfana.... ucingo!",
   '@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1. It takes great photos!"':
     "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, uyithole kuphi leyo nto?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 uyitholele mina. Umakhalekhukhwini omuhle, @global.w_solve_female_caregiver_1 . Ithatha izithombe ezinhle!”",
   "@global.w_solve_female_caregiver_1: “I don’t want to see that expensive thing! That boy is no good! How does he think you are going to repay him for this?!”  \n\n@global.w_solve_teen_girl: “That’s not how it works, @global.w_solve_female_caregiver_1! That’s not fair!”":
-    "@global.w_solve_female_caregiver_1: “Angifuni ukuyibona leya nto ebizayo! Lo mfana akalungile! Ucabanga ukuthi uzomkhokhela ngani ngalokhu?!”\n\n@global.w_solve_teen_girl: “Akuyona indlela okusebenza ngayo lokho, @global.w_solve_female_caregiver_1! Akubona ubulungisa lokho!”",
+    "@global.w_solve_female_caregiver_1: “Angifuni ukuyibona leyo nto ebizayo! Lo mfana akalungile! Ucabanga ukuthi uzomkhokhela ngani ngalokhu?!”\n\n@global.w_solve_teen_girl: “Akuyona indlela okusebenza ngayo lokho, @global.w_solve_female_caregiver_1! Akubona ubulungiswa lobo!”",
   "@global.w_solve_female_caregiver_1: “I don’t want to hear it!” \n\n@global.w_solve_teen_girl: “You’re not even trying to listen to me! I don’t know why I even try with you!”":
     "@global.w_solve_female_caregiver_1: “Angifuni ukukuzwa lokho!” \n\n@global.w_solve_teen_girl: “Awuzami ngisho nokungilalela! Angazi nokuthi kungani ngikuzama nawe!”",
   "With teenagers – and in life – unexpected problems come up. \n\nHere are 4 problem-solving steps to do together.":
-    "Kanye nentsha - nasempilweni - izinkinga ezingalindelekile ziyaqubuka. \n\nNazi izinyathelo ezingu-4 zokuxazulula izinkinga ndawonye.",
-  "Take a few deep breaths to calm down, and": "Donsa umoya izikhathi ezimbalwa ukuze uzole, bese",
+    "Kanye nabantwana - nasempilweni - izinkinga ezingalindelekile ziyaqubuka. \n\nNazi izinyathelo ezingu-4 zokuxazulula izinkinga ndawonye.",
+  "Take a few deep breaths to calm down, and": "Phefumula izikhathi ezimbalwa ukuze uzole, bese",
   "KNOW IT": "YAZI",
   "Identify the problem.": "Ibone inkinga.",
   "SOLVE IT": "IXAZULULE",
   "Think of possible solutions and what would happen if we used them.":
-    "Cabanga ngezixazululo ezikhona nokuthi kungenzekani uma uzisebenzisa.",
+    "Cabanga ngezixazululo ezikhona nokuthi kungenzekani uma sizisebenzisa.",
   "TRY IT": "KUZAME",
   "Choose a solution and try it out.": "Khetha isixazululo bese uyasizama.",
   "TEST IT": "SIHLOLE",
@@ -2157,17 +2168,17 @@ const data: { [source_text: string]: string } = {
   '@global.w_solve_female_caregiver_2: "@global.w_solve_teen_boy_2! What are you doing? That bread is for dinner! Now there won’t be enough for us all!"':
     '@global.w_solve_female_caregiver_2: "@global.w_solve_teen_boy_2! Wenzani? Lesi sinkwa sizodliwa kusihlwa! Manje angeke sisasenela sonke!”',
   "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”":
-    "@global.w_solve_teen_boy_2: “Ngiyaxolisa, @global.w_solve_female_caregiver_2, bengilambile. Ngingachaza, uyabona, kunalo mfana esikoleni....” \n\n@global.w_solve_female_caregiver_2 (uyacabanga): “Thatha Ikhefana... udonse umoya...”",
+    "@global.w_solve_teen_boy_2: “Ngiyaxolisa, @global.w_solve_female_caregiver_2, bengilambile. Ngingachaza, uyabona, kunalo mfana esikoleni....” \n\n@global.w_solve_female_caregiver_2 (uyacabanga): “Thatha Ikhefu... phefumula...”",
   '@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2"':
     '@global.w_solve_female_caregiver_2: “Ngiphe umzuzwana. Ngikhathele futhi manje sengikhathazekile ngokuthi ukudla kwakusihlwa angeke kusenele.” \n\n@global.w_solve_teen_boy_2: “Ngiyaxolisa, @global.w_solve_female_caregiver_2"',
   "Step 1: KNOW IT": "Isinyathelo 1: YAZI",
   '@global.w_solve_female_caregiver_2: "Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: "That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!"':
     "@global.w_solve_female_caregiver_2: “Ake ungitshele, kungani ulambe kangaka? Ingabe awuwudlanga umphako wakho esikolweni?” \n\n@global.w_solve_teen_boy_2: “Ileyo inkinga. Kukhona umfana esikoleni ongiqhwagayo. Uthi uma ngingamniki umphako wami nsuku zonke, yena nabangane bakhe bazongilimaza. Uyangicasula!”",
   '@global.w_solve_female_caregiver_2: "I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?"\n\n@global.w_solve_teen_boy_2: "Well… I want to just hit him or get him back."':
-    "@global.w_solve_female_caregiver_2: “Ngiyaxolisa ukuzwa lokho kodwa ngiyajabula ngokuthi ungitshele, @global.w_solve_teen_boy_2. Akusho ukuthi kumelwe udle ukudla kwawo wonke umuntu kwakusihlwa. Uma siqeda ukukhuluma, kumelwe uye esitolo uyothenga esinye isikwa. Kodwa okokuqala: Ucabanga ukuthi kumelwe senzeni ngale nkinga yokuqhwagwa?”\n\n@global.w_solve_teen_boy_2: “Empeleni.... Ngifuna ukumshaya nje kwaphela noma ngiziphindiselele.”",
+    "@global.w_solve_female_caregiver_2: “Ngiyaxolisa ukuzwa lokho kodwa ngiyajabula ngokuthi ungitshele, @global.w_solve_teen_boy_2. Akusho ukuthi kumelwe udle ukudla kwawo wonke umuntu kwakusihlwa. Uma siqeda ukukhuluma, kumelwe uye esitolo uyothenga esinye isinkwa. Kodwa okokuqala: Ucabanga ukuthi kumelwe senzeni ngale nkinga yobuqhwagwa?”\n\n@global.w_solve_teen_boy_2: “Empeleni.... Ngifuna ukumshaya nje kwaphela noma ngiziphindiselele.”",
   "Step 2: SOLVE IT": "Isinyathelo 2: IXAZULULE",
   '@global.w_solve_female_caregiver_2: "Hmmm… what do you think will happen to you if you do that?"\n\n@global.w_solve_teen_boy_2: "I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled."':
-    "@global.w_solve_female_caregiver_2: “Hmmm... ucabanga ukuthi kuzokwenzakani kuwe uma wenza kanjalo?”\n\n@global.w_solve_teen_boy_2: “Angazi. Mkhulu kakhulu kunami kungenzeka angilimaze kakhulu. Futhi kungenzeka ngingene enkingeni esikoleni bese ngixoshwa.”",
+    "@global.w_solve_female_caregiver_2: “Hmmm... ucabanga ukuthi kuzokwenzakalani kuwe uma wenza kanjalo?”\n\n@global.w_solve_teen_boy_2: “Angazi. Mkhulu kakhulu kunami kungenzeka angilimaze kakhulu. Futhi kungenzeka ngingene enkingeni esikoleni bese ngixoshwa.”",
   '@global.w_solve_female_caregiver_2: "Yes, that could happen. What could we do instead?"\n\n@global.w_solve_teen_boy_2: "I guess I could tell the teacher. But then the other kids will call me a tattletale. Maybe you could talk to the teacher?"':
     "@global.w_solve_female_caregiver_2: “Kunjalo, lokho kungenzeka. Yini esingayenza esikhundleni salokho?”\n\n@global.w_solve_teen_boy_2: “Ngicabanga ukuthi ngingatshela uthisha. Kodwa ezinye izingane zizongibiza ngesiyoyoyo. Mhlawumbe ungakhuluma nothisha?”",
   '@global.w_solve_female_caregiver_2: "That sounds like a better idea. I could also have a word with his parents if you want me to."\n\n@global.w_solve_teen_boy_2: "Sure. If you think that would help too. Thanks, @global.w_solve_female_caregiver_2"':
@@ -2177,7 +2188,7 @@ const data: { [source_text: string]: string } = {
   "Step 3: TRY IT": "Isinyathelo 3: KUZAME",
   'A week later… \n\n@global.w_solve_female_caregiver_2: "How are things going at school now?"\n\n@global.w_solve_teen_boy_2: "It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me."':
     "Ngemva kwesonto.... \n\n@global.w_solve_female_caregiver_2: “Zihamba kanjani izinto esikoleni njengamanje?”\n\n@global.w_solve_teen_boy_2: “Kuba ngcono, loya mfana akasangithatheli ukudla kwami. Kodwa usaqhubeka nokungiphatha ngonya.”",
-  "Step 4: TEST IT": "Isinyathelo 4: SIHLOLE",
+  "Step 4: TEST IT": "Isinyathelo 4: IHLOLE",
   '@global.w_solve_female_caregiver_2: "I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!"\n\n@global.w_solve_teen_boy_2: "Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side."':
     "@global.w_solve_female_caregiver_2: “Ngiyaxolisa ngokuzwa lokho, @global.w_solve_teen_boy_2. Ngingakhuluma yini nomalume wakho ahambe ayokhuluma nabazali bakhe? Uma kungasebenzi lokho, sizozama okunye!”\n\n@global.w_solve_teen_boy_2: “Yebo, ngiyabonga @global.w_solve_female_caregiver_2. Okungenani ngiyazi ukuthi usohlangothini lwami.”",
   "Discuss together: \n\nHow could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT":
@@ -2187,12 +2198,12 @@ const data: { [source_text: string]: string } = {
   "How could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT":
     "U @global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 bebangazisebenzisa kanjani izinyathelo ezingu-4 zokuxazulula inkinga, njengo @global.w_solve_female_caregiver_2 no @global.w_solve_teen_boy_2 abenze ngayo? \n\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE",
   "Let’s go back to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 and see what solutions they came up with.":
-    "Ake sibuyele ku@global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 wakhe bese sibona ukuthi iziphi izixazululo esingaqhamuka nazo.",
+    "Ake sibuyele ku@global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 wakhe bese sibona ukuthi iziphi izixazululo abaqhamuke nazo.",
   "@global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 came up with three solutions.":
-    "@global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 bona beze nezixazululo ezintathu.",
+    "@global.w_solve_teen_girl no @global.w_solve_female_caregiver_1 uze nezixazululo ezintathu.",
   "Parenting teens is really hard. \n\nOften there are no simple and easy solutions, but now @global.w_solve_female_caregiver_1 learned she can talk to her daughter about these things. \n\nBefore, she worried alone, now they can come up with solutions together!":
-    "Ukukhulisa intsha kunzima ngempela. \n\nNgokuvamile azikho izixazulula ezilula, kodwa manje @global.w_solve_female_caregiver_1 ufunde ukuthi angakwazi ukukhuluma nendodakazi yakhe ngalezi zinto. \n\nNgaphambili, ubekhathazeka yedwa, njengamanje beza nezixazululo bobabili!",
-  "Ground @global.w_solve_teen_girl for a month": "Ujeziswa @global.w_solve_teen_girl inyanga",
+    "Ukukhulisa abantwana kunzima ngempela. \n\nNgokuvamile azikho izixazulula ezilula, kodwa manje @global.w_solve_female_caregiver_1 ufunde ukuthi angakwazi ukukhuluma nendodakazi yakhe ngalezi zinto. \n\nNgaphambili, ubekhathazeka yedwa, njengamanje beza nezixazululo bobabili!",
+  "Ground @global.w_solve_teen_girl for a month": "Jezisa @global.w_solve_teen_girl inyanga",
   "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”":
     "@global.w_solve_female_caregiver_1: “Angeke uphume ngenyanga ezayo”",
   "That didn’t work... Let's try something else.": "Lokhu akusebenzanga... Ake sizama okunye.",
@@ -2200,37 +2211,37 @@ const data: { [source_text: string]: string } = {
   "@global.w_solve_female_caregiver_1: \"I am not trying to accuse your friend or be jealous. I am worried that when someone gives a gift it is hard to say 'no' when they ask something in return – like sex. If you want to have a phone, we’ll save up together so you can make your own decisions without owing him anything.\"":
     "@global.w_solve_female_caregiver_1: “Angizami ukusola umngane wakho noma ukuba nomona. Ngikhathazwa ukuthi uma umuntu ekupha isipho kunzima ukuthi ‘cha’ uma becela ukuthi ubenzela okuthile njengembuyiselo - njengokuya nawe ocansini. Uma ufuna ukuba nefoni, sizokonga imali sobabili ukuze uzokwazi ukwenza isinqumo sakho ngaphandle kokumkweleta okuthile.”",
   "This is great! Try the third option as well.": "Kuhle lokhu! Zama indlela yesithathu futhi.",
-  "Learn about safe sex": "Funda ngocansi",
+  "Learn about safe sex": "Funda ngocansi oluphephile",
   "@global.w_solve_female_caregiver_1: “This makes me realise we should talk about boyfriends and protecting yourself. Many teens your age get pregnant or become HIV positive. Let’s go to the clinic so you can talk with the nurse to learn how you can stay safe.”":
     "@global.w_solve_female_caregiver_1: “Lokhu kungenza ukuba ngibone ukuthi kumelwe sikhulume ngamasoka nokuzivikela. Intsha eningi elingana nawe iyakhulelwa noma ingenwe yi-HIV. Ake siye emtholampilo ukuze ukhulume nomhlengikazi akwazise ukuthi ungahlala kanjani uphephile.”",
   "This is great!": "Kuhle lokhu!",
   "Let's practice problem-solving!": "Ake sizame ukuxazulula inkinga!",
   "Practice together on a problem you have now. One of you is the parent and one the teen. \n\nPraise and encourage each other – we are proud of you! \n\nRemember the steps: \nKNOW IT - SOLVE IT - TRY IT - TEST IT":
-    "Prakthizani ndawonye ukuxazulula inkinga eninayo njengamanje. Oyedwa wenu ungumzali kuthi oyedwa ebe osemusha. \n\nNcomanani futhi nikhuthazane - siyaziqhenya ngawe! \n\nKhumbula izinyathelo: \nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE",
+    "Prakthizani ndawonye ukuxazulula inkinga eninayo njengamanje. Oyedwa wenu ungumzali kuthi oyedwa abe ngumntwana. \n\nNcomanani futhi nikhuthazane - siyaziqhenya ngawe! \n\nKhumbula izinyathelo: \nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE",
   "Teach your teenagers the four steps of problem-solving:\nKNOW IT - SOLVE IT - TRY IT - TEST IT \n\nUse these steps together when a problem comes up!\n\nWhen something bad happens, we often get upset and blame. But what our teens really need is someone to help find solutions together. Listen to them, accept how they see and feel things, and thank them for trusting you.\n\nTeaching your teen how to deal with problems will help them for the rest of their lives. What a gift!":
-    "Fundisa intsha yakho izinyathelo ezine zokuxazulula inkinga:\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE \n\nSebenzisani lezi zinyathelo ndawonye uma kuqubuka inkinga!\n\nUma kwenzeka okuthile okubi, ngokuvamile siphatheka kabi bese siyagxeka. Kodwa okudingwa intsha yethu othile ongasiza kutholakale izixazululo ndawonye. Balalele, yamukela indlela ababona nabazizwa ngayo, futhi ubabonge ngokukuthemba.\n\nUkufundisa ingane yakho eseminyakeni yokuthomba indlela yokuxazulula izinkinga kuyoyizuzisa ukuphila kwayo konke. Yeka isipho esihle kangaka!",
+    "Fundisa intsha yakho izinyathelo ezine zokuxazulula inkinga:\nZAZI - ZIXAZULULE - ZIZAME - ZIHLOLE \n\nSebenzisani lezi zinyathelo ndawonye uma kuqubuka inkinga!\n\nUma kwenzeka okuthile okubi, ngokuvamile siphatheka kabi bese siyagxeka. Kodwa okudingwa abantwana bethu umuntu ongasiza kutholakale izixazululo ndawonye. Balalele, yamukela indlela ababona nabazizwa ngayo, futhi ubabonge ngokukuthemba.\n\nUkufundisa ingane yakho indlela yokuxazulula izinkinga kuzomsiza impilo yakhe yonke. Isipho esihle kangaka!",
   "Some problems other parents solved with their teens:":
-    "Ezinye izinkinga abazali abazixazulula nentsha yabo:",
+    "Ezinye izinkinga abanye abazali abazixazulula nabantwana babo:",
   "* My teenager does not want to go to school\n* I am worried my teenager will get pregnant or will get someone pregnant\n* I am worried about what my teen does online\n* My teenager is hanging out with bad friends\n* My teenager is lazy\n* My teenager is not doing their school work\n* My teenager might be using drugs":
-    "* Ingane yami eyevile eminyakeni eyishumi nambili ayifuni ukuya esikoleni\n* Ngikhathazeke ngokuthi ingane yami eseminyakeni yokuthomba ingakhulelwa noma ikhulelise othile \n* Ngikhathazwa yilokho ingane yami eseminyakeni yokuthomba ekwenza ku-inthanethi \n* Ingane yami eseminyakeni yokuthomba ichitha isikhathi nabangane ababi \n* Ingane yami eseminyakeni yokuthomba iyavilapha \n* Ingane yami eseminyakeni yokuthomba ayiwenzi umsebenzi wesikole \n* Kungenzeka ingane yami eseminyakeni yokuthomba isebenzisa izidakamizwa",
+    "* Ingane yami ayifuni ukuya esikoleni\n* Ngikhathazeke ngokuthi ingane yami ingakhulelwa noma ikhulelise  \n* Ngikhathazwa yilokho ingane yami ekwenza ku-inthanethi \n* Ingane yami ichitha isikhathi nabangane ababi \n* Ingane yami iyavilapha \n* Ingane yami ayiwenzi umsebenzi wesikole \n* Kungenzeka ingane yami isebenzisa izidakamizwa",
   "Looking after yourself matters.": "Kubalulekile ukuzinakekela.",
   "Great! So good to hear that you are in a good space today. What a wonderful feeling!":
     "Kuhle! Kuhle uzwa ukuthi kuhamba kahle namuhla. Umuzwa umuhle lowo!",
   "Sometimes things go great. Sometimes they don't. And sometimes we don't quite know what to think... and that's totally okay! Remember that you are not alone.":
-    "Ngezinye izikhathi izinto zihamba kahle. Ngezinye izikhathi azihlambi kahle. Futhi ngezinye izikhathi asazi ukuthi sicabange ini.... kulungile lokho! Khumbula ukuthi awuwedwa.",
+    "Ngezinye izikhathi izinto zihamba kahle. Ngezinye izikhathi azihambi kahle. Futhi ngezinye izikhathi asazi ukuthi sicabangeni.... kulungile lokho! Khumbula ukuthi awuwedwa.",
   "This is fantastic, especially in such difficult times as this. You are a star.":
-    "Kuhle kakhulu lokho, ikakhulu ezikhathini ezinzima njengalezi. Uyiqhawe.",
+    "Kuhle kakhulu lokhu, ikakhulu ezikhathini ezinzima njengalezi. Uyiqhawe.",
   "We know how stressful it is to bring up teenagers in these times. Learning to manage your stress helps you - and your family.":
-    "Siyazi ukuthi kukhathaza kangakanani ukukhulisa intsha kulezi zinsuku. Ukufunda ukulawula ukucindezeleka kusiza wena - nomndeni wakho.",
+    "Siyazi ukuthi kukukhathaza kangakanani ukukhulisa izingane kulezi zinsuku. Ukufunda ukulawula ingcindezi kusiza wena - nomndeni wakho.",
   "Greetings everyone. \n\nToday's topic is managing stress. \n\nIt is important to know how to manage our stress. At times our children can behave in ways that makes us feel stressed and us as parents can make our children feel stressed too. \n\nSo, it is important to notice when we feel stressed and take a pause and breathe. That will help you manage your stress.":
-    "Sanibonani nonke. \n\nIsihloko sanamuhla sikhuluma ngokulawula ukucindezeleka. \n\nKubalulekile ukukwazi ukulawula ukucindezeleka kwethu. Ngezinye izikhathi zingane zethu zingaziphatha ngendlela eyenza sicindezeleke futhi nathi njengabazali singenza izingane zethu zicindezeleke. \n\nNgakho-ke, kubalulekile ukuqaphela lapho sizizwa sicindezelekile bese siyema kancane sidonse umoya. Lokho kuzokusiza ukuthi ulawule ukucindezeleka kwakho.",
+    "Sanibonani nonke. \n\nIsihloko sanamuhla sikhuluma ngokulawula ingcindezi. \n\nKubalulekile ukukwazi ukulawula ingcindezi yethu. Ngezinye izikhathi izingane zethu zingaziphatha ngendlela eyenza sibe nengcindezi futhi nathi njengabazali singenza izingane zethu zibe nengcindezi. \n\nNgakho-ke, kubalulekile ukuqaphela lapho sizizwa sinengcindezi bese siyema kancane siphefumule. Lokho kuzokusiza ukulawula ingcindezi kuwe.",
   "Today you will explore:": "Namuhla uzohlola:",
   "* Story & discussion – that didn’t work…\n* Story & discussion – that worked!\n* Safety Amnesty story & discussion – that worked!\n* Tools: How to manage stress\nBREATHE - SHARE - SHOW\n* Home practice suggestions":
-    "* Indatshana kanye nengxoxo – okungasebenzanga ...\n* Indatshana kanye nengxoxo – okusebenzile!\n* Indatshana yokuphepha kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokulawula ukucindezeleka\nPHEFUMULA - YABELANA - BONISA\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nengxoxo – okungasebenzanga ...\n* Indaba kanye nengxoxo – okusebenzile!\n* Indaba yokuphepha kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokulawula ingcindezi\nPHEFUMULA - YABELANA - BONISA\n* Amacebiso alokho ongakwenza ekhaya",
   "* Story & reflection – that didn’t work…\n* Story & reflection – that worked!\n* Safety Amnesty story & reflection – that worked!\n* Tools: How to manage stress\nBREATHE - SHARE - SHOW\n* Home practice suggestions":
-    "* Indatshana kanye nokucabanga ujule - okungasebenzanga ...\n* Indatshana kanye nokucabanga ujule - okusebenzile!\n* Indatshana yokuphepha kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokulawula ukucindezeleka\nPHEFUMULA - YABELANA - BONISA\n* Amacebiso alokho ongakwenza ekhaya",
+    "* Indaba kanye nokubuyekeza indaba - okungasebenzanga ...\n* Indatshana kanye nokubuyekeza indaba - okusebenzile!\n* Indaba yokuphepha kanye nengxoxo – okusebenzile!\n* Amathuluzi: Indlela yokulawula ingcindezi\nPHEFUMULA - YABELANA - BONISA\n* Amacebiso alokho ongakwenza ekhaya",
   "Let’s look at an example of how stress can sometimes just get too much, for all of us:":
-    "Ake sibheke isibonelo sendlela ukucindezeleka okungaba mandla ngayo ngezinye izikhathi, kithi sonke:",
+    "Ake sibheke isibonelo sendlela ingcindezi engaba mandla ngayo ngezinye izikhathi, kithi sonke:",
   "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver: “Leave me alone and mind your own business!”":
     "@global.w_stress_teen_boy_1: “Ngicela imali yokuthenga i-airtime.”  \n\n@global.w_stress_male_caregiver: “Ngiyeke phansi unake izindaba zakho!”",
   "@global.w_stress_teen_boy_1: “What did I do? You never listen!”  \n\n@global.w_stress_male_caregiver: “I said leave me alone or you will get a beating!”":
@@ -2245,43 +2256,43 @@ const data: { [source_text: string]: string } = {
   "Let's think about what happened in this story.": "Ake sicabange ngokuthi kwenzekeni kule ndaba.",
   "How do you think @global.w_stress_teen_boy_1 felt?":
     "Ucabanga ukuthi @global.w_stress_teen_boy_1 uzizwe kanjani?",
-  "And @global.w_stress_male_caregiver?": "Kanye @global.w_stress_male_caregiver?",
-  "And @global.w_stress_girl?": "Kanye @global.w_stress_girl?",
+  "And @global.w_stress_male_caregiver?": "Futhi @global.w_stress_male_caregiver?",
+  "And @global.w_stress_girl?": "Futhi @global.w_stress_girl?",
   Sad: "Ngidabukile",
   Scared: "Ngethukile",
   Confused: "Ngikhungathekile",
   Angry: "Ngithukuthele",
   "Each of them was feeling upset for their own reason!":
-    "Ngamunye wabo ubezizwa ephatheke kabi ngezizathu zabo!",
+    "Ngamunye wabo ubezizwa ediniwe ngezizathu zabo!",
   "What could @global.w_stress_male_caregiver have done differently?":
-    "Yini @global.w_stress_male_caregiver abengayenza ngokuhlukile?",
-  "Recognise why he feels stressed": "Thola ukuthi kungani ezizwa ecindezelekile",
-  "Take a deep breath and speak calmly": "Donsa umoya kakhulu bese ukhuluma nezwi elizolile",
-  "Show he understands his teen’s feelings": "Ibonisa ukuthi uyayiqonda imizwa yentsha yakhe",
+    "Kungaba yini @global.w_stress_male_caregiver ayenze ngokuhlukile?",
+  "Recognise why he feels stressed": "Thola ukuthi kungani ezizwa enengcindezi",
+  "Take a deep breath and speak calmly": "Phefumula bese ukhuluma ngezwi elizolile",
+  "Show he understands his teen’s feelings": "Ubonisa ukuthi uyayiqonda imizwa yengane yakhe",
   "Think about solutions together with @global.w_stress_teen_boy_1":
     "Cabangani ngezixazululo no @global.w_stress_teen_boy_1 ndawonye",
   "Do something positive together with @global.w_stress_teen_boy_1":
     "Yenzani okuthile okukhuthazayo no @global.w_stress_teen_boy_1 ndawonye",
   "@global.w_stress_male_caregiver could...": "@global.w_stress_male_caregiver anga...",
   "* Recognise why he feels stressed \n* Take a deep breath and speak calmly  \n* Show he understands his teen’s feelings \n* Think about solutions together with @global.w_stress_teen_boy_1\n* Do something positive together with @global.w_stress_teen_boy_1":
-    "* Thola ukuthi kungani ezizwa ecindezelekile \n* Donsa umoya kakhulu bese ukhuluma nezwi elizolile  \n* Ibonisa ukuthi uyayiqonda imizwa yentsha yakhe \n* Cabangani ngezixazululo no @global.w_stress_teen_boy_1 ndawonye\n* Yenzani okuthile okukhuthazayo no @global.w_stress_teen_boy_1 ndawonye",
+    "* Thola ukuthi kungani ezizwa enengcindezi\n* Phefumula bese ukhuluma ngezwi elizolile  \n* Ubonisa ukuthi uyayiqonda imizwa yengane yakhe \n* Cabangani ngezixazululo no @global.w_stress_teen_boy_1 ndawonye\n* Yenzani okuthile okukhuthazayo no @global.w_stress_teen_boy_1 ndawonye",
   "Thank you for thinking along! Let’s go back in time and see what @global.w_stress_male_caregiver does now:":
     "Siyabonga ngokuthi nicabanga kanye nathi! Ake sibuyele emuva sibone lokho @global.w_stress_male_caregiver akwenzayo njengamanje:",
   "@global.w_stress_male_caregiver lost his job. He was sitting at home feeling frustrated and stressed, when @global.w_stress_teen_boy_1 entered.":
-    "@global.w_stress_male_caregiver ulahlekelwe umsebenzi. Ubehlezi ekhaya ekhungathekile futhi ecindezelekile, ngesikhathi @global.w_stress_teen_boy_1 engena.",
+    "@global.w_stress_male_caregiver ulahlekelwe umsebenzi. Ubehlezi ekhaya ekhungathekile futhi enengcindezi, ngesikhathi @global.w_stress_teen_boy_1 engena.",
   "@global.w_stress_teen_boy_1: “Can I have money to buy some airtime?”  \n\n@global.w_stress_male_caregiver (taking a breath): “I’m sorry son. I had a difficult day today. The boss fired me.”":
-    "@global.w_stress_teen_boy_1: “Ngicela imali yokuthenga i-airtime.”  \n\n@global.w_stress_male_caregiver (udonsa umoya): “Ngiyaxolisa ndodana. Ngibe losuku okunzima namuhla. Umphathi ungixoshile emsebenzini.”",
+    "@global.w_stress_teen_boy_1: “Ngicela imali yokuthenga i-airtime.”  \n\n@global.w_stress_male_caregiver (uyaphefumula): “Ngiyaxolisa ndodana. Ngibe losuku okunzima namuhla. Umphathi ungixoshile emsebenzini.”",
   "@global.w_stress_teen_boy_1: “Oh no!  I need a new school uniform.”  \n\n@global.w_stress_male_caregiver: “I’ll try, son, And your @global.w_stress_female_caregiver’s job will help us get by while I look for another job.”":
-    "@global.w_stress_teen_boy_1: “Habe!  Ngidinga umfaniswano wesikole.”  \n\n@global.w_stress_male_caregiver: “Ngizozama ndodana, umsebenzi ka @global.w_stress_female_caregiver wakho uzosisiza uma ngisafuna omunye umsebenzi.”",
+    "@global.w_stress_teen_boy_1: “Awee!  Ngidinga umfaniswano wesikole.”  \n\n@global.w_stress_male_caregiver: “Ngizozama ndodana, futhi u @global.w_stress_female_caregiver wakho uzosisiza uma ngisafuna omunye umsebenzi.”",
   "@global.w_stress_teen_boy_1: “I can help out with looking for work, too, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: “No it’s okay, @global.w_stress_teen_boy_1. I appreciate your offer. The most important thing is that you work hard at school. Thanks for listening to me.”":
-    "@global.w_stress_teen_boy_1: “Ngingakusiza nami ukufuna umsebenzi, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: Cha, kulungile! @global.w_stress_teen_boy_1. Ngiyalubonga usiza lwakho. Into ebaluleke ukuzedlula zonke ukuthi usebenze kanzima esikoleni. Ngiyabonga ngokuthi ungilalele.”",
+    "@global.w_stress_teen_boy_1: “Ngingakusiza nami ukufuna umsebenzi, @global.w_stress_male_caregiver?”  \n\n@global.w_stress_male_caregiver: Cha, kulungile! @global.w_stress_teen_boy_1. Ngiyabonga ngokufisa ukungisiza. Into ebaluleke ukuzedlula zonke ukuthi usebenze kanzima esikoleni. Ngiyabonga ngokuthi ungilalele.”",
   "@global.w_stress_male_caregiver: “Let’s play some soccer together. It will help me get this stress off my mind for a bit.”  \n\n@global.w_stress_teen_boy_1: “Okay, @global.w_stress_male_caregiver!”":
-    "@global.w_stress_male_caregiver: “Ake sidlale ibhola lezinyawo ndawonye. Kuzongisiza ngisuse ukucindezeleka kancane engqondweni yami.”  \n\n@global.w_stress_teen_boy_1: “Kulungile, @global.w_stress_male_caregiver!”",
+    "@global.w_stress_male_caregiver: “Ake sidlale ibhola lezinyawo ndawonye. Kuzongisiza ngisuse lengcindezi kancane emqondweni wami.”  \n\n@global.w_stress_teen_boy_1: “Kulungile, @global.w_stress_male_caregiver!”",
   "That went so much better! \n\nTaking a pause helps to respond calmly when you feel angry or stressed. Try it, you will see!":
     "Lokhu kuhambe kangcono kakhulu! \n\nUkuthatha ikhefu kusiza siphendule ngokuzolile uma uzizwa ucasukile noma ukhathazekile. Kuzame, uzobona!",
   "Safety Amnesty": "Ukuphepha Kukashwele",
   "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:":
-    "Cabanga ngesikhathi usesemusha. \n\nIngabe kwake kwaba nesikhathi lapho waba sengozini kodwa ungakwazi ukutshela umndeni wakho ngoba usaba ukuthi uzokucasukela?\n\nLokho CISHE kwenzeka ku @global.w_stress_teen_boy_2 no @global.w_stress_teen_girl! Ake sibone:",
+    "Cabanga ngesikhathi usesemusha. \n\nIngabe kwake kwaba nesikhathi lapho waba sengozini kodwa ungakwazi ukutshela umndeni wakho ngoba usaba ukuthi uzothukuthela?\n\nLokho CISHE kwenzeka ku @global.w_stress_teen_boy_2 no @global.w_stress_teen_girl! Ake sibone:",
   '@global.w_stress_teen_boy_2: "Don’t tell the adults, but I’m going to bar with my friends tonight" \n\n@global.w_stress_teen_girl: "Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party"':
     "@global.w_stress_teen_boy_2: “Ungabatsheli abantu abadala, kodwa ngiya etshwaleni nabangane bami namuhla kusihlwa” \n\n@global.w_stress_teen_girl: “Ube nesikhathi esimnandi! Ngibatshele ukuthi ngiya kumngane wami wentombazane, kodwa empeleni ngiya ephathini emnandi”",
   '@global.w_stress_teen_boy_2: "I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry"':
@@ -2289,77 +2300,79 @@ const data: { [source_text: string]: string } = {
   '@global.w_stress_teen_girl: "I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party."':
     "@global.w_stress_teen_girl: “Ngethukile kakhulu. Wonke umuntu udakiwe ukuba angashayela angihambise ekhaya. Lo mfana uthi angangihambisa kodwa uthi ufuna sidlule kubo kuqala. Angakwazi ukutshela abazali bami - ngiqambe amanga ngokuthi ngiya ephathini.”",
   "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"":
-    "Lezi yizimo eziyingozi! Ngenhlanhla, @global.w_stress_teen_boy_2 u @global.w_stress_teen_girl bakhumbulile ukuthi @global.w_stress_parent ubatsheleni:  \n\n“Nginendaba nokuphepha kwakho ukudlula noma yini enye. Uma uthukuthele, noma uthukile, ungangishayela ucingo noma nini uma ufuna usizo noma ufuna ukukhuluma. \n\nMane uthi ‘USHWELE WEZOKUPHEPHA’. Ngiyathembisa ukuthi ngizozama okusemandleni ukusiza futhi angeke ngithukuthele - ngisho noma wenze okuthile ebekungakafaneli ukwenze.”",
+    "Lezi yizimo eziyingozi! Siyabonga, @global.w_stress_teen_boy_2 u @global.w_stress_teen_girl bakhumbulile ukuthi @global.w_stress_parent ubatsheleni:  \n\n“Nginendaba nokuphepha kwakho ukudlula noma yini enye. Uma uthukuthele, noma uthukile, ungangishayela ucingo noma nini uma ufuna usizo noma ufuna ukukhuluma. \n\nMane uthi ‘USHWELE WEZOKUPHEPHA’. Ngiyathembisa ukuthi ngizozama okusemandleni ukusiza futhi angeke ngithukuthele - ngisho noma wenze okuthile ebekungakafaneli ukwenze.”",
   '@global.w_stress_teen_girl: "@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home."':
     '@global.w_stress_teen_girl: "@global.w_stress_parent, ushwele wezokuphepha. Ngicela uze uzongilanda? Ngidinga ukuhanjiswa ekhaya.”',
   '@global.w_stress_teen_boy_2: "@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?"':
     '@global.w_stress_teen_boy_2: "@global.w_stress_parent, ushwele wezokuphepha. Ngicabanga ukuthi abangane bami basenkingeni. Angifuni ukuyeka ukuba umngane wabo, kodwa ngikhathazekile ngabo. Singakhuluma?”',
-  "BREATHE. Slowly. Pause.": "DONSA UMOYA. Kancane. Yima.",
+  "BREATHE. Slowly. Pause.": "PHEFUMULA. Kancane. Yima.",
   "Before you say anything, slowly breathe in and out five times. It will calm you, and give you a chance to think.":
-    "Ngaphambi kokuthi usho okuthile, kancane donsa uphinde ukhiphe umoya izikhathi ezinhlanu. Kuzokwenza wehlise umoya, kukunikele nethuba lokucabanga.",
+    "Ngaphambi kokuthi usho okuthile, phefumula kancane uphinde ukhiphe umoya izikhathi ezinhlanu. Kuzokwenza wehlise umoya, kukunikeze nethuba lokucabanga.",
   "SHARE how you feel": "KHULUMA ngendlela ozizwa ngayo",
   "This is hard. Many of us were told not to cry, or show our feelings to our children. But take a deep breath and calmly tell them how you feel. They will understand better, and also learn from you how to deal with stress.":
-    "Kunzima lokho. Iningi lethu latshelwa ukuthi lingakhali, noma libonise imizwa ezinganeni. Kodwa donsa umoya bese ngomoya ophansi ubatshele indlela ozizwa ngayo. Bazokuqonda kangcono, futhi bafundi kuwe ukubhekana nokucindezeleka.",
+    "Lokhu kunzima. Iningi lethu latshelwa ukuthi lingakhali, noma libonise imizwa ezinganeni. Kodwa phefumula bese ngomoya ozolile ubatshele indlela ozizwa ngayo. Bazokuqonda kangcono, futhi bafunde kuwe ukubhekana nengcindezi.",
   "SHOW them you care": "BABONISE ukuthi uyabakhathalela",
   "This is also hard! Stress makes us focus on ourselves. But our teens need our support. Ask them how they feel. Listen to them and comfort them. Try a hug or say ‘I understand’. It can change everything.":
-    "Nalokhu kunzima! Ukucindezeleka kusenza sicabange ngathi kuphela. Kodwa intsha yethu idinga ukuthi siyisekele. Ibuze ukuthi izizwa kanjani. Balalele futhi ubaduduze. Zama ukubanga noma ubatshele ukuthi ‘Ngiyaqonda’. Kungashintsha yonke into.",
+    "Nalokhu kunzima! Ingcindezi isenza sicabange ngathi kuphela. Kodwa izingane zethu zidinga ukuthi sizisekele. Babuze ukuthi bazizwa kanjani. Balalele futhi ubaduduze. Zama ukubanga noma ubatshele ukuthi ‘Ngiyaqonda’. Kungashintsha yonke into.",
   "SEEK the positive": "BHEKA okuhle",
   "Can you and your teen think about ideas that might help? Can you do something positive together to take your mind off the stress?":
-    "Ungakwazi yini ukuthi wena kanye nengane yakho eseyintsha nicabange ngamacebiso angakusiza? Ningakwazi yini ukwenza okuthile okuhle ndawonye okususa ingqondo yakho ekucindezelekeni?",
+    "Ungakwazi yini ukuthi wena kanye nengane yakho ukuthi nicabange ngamacebiso angasiza? Ningakwazi yini ukwenza okuthile okuhle ndawonye okususa ingqondo yakho kwingcindezi?",
   "If all else fails, breathe. You can do this.":
     "Uma konke kungaphumeleli, phefumula. Ungakwazi ukukwenza lokhu.",
-  "There are two home practices for this week.": "Kunokubili ongakuprakthiza ekhaya kuleli viki.",
+  "There are two home practices for this week.": "Kubili ongakuprakthiza ekhaya kuleli viki.",
   "Whenever you are feeling stressed or upset: take five breaths in and out before you react. \n\nAnd when you're both calm, share with your teen how you feel.":
-    "Uma uzizwa ucindezelekile noma uthukuthele: donsa umoya uphinde uwukhiphe kahlanu ngaphambi kokuba uthathe isinyathelo. \n\nUma nobabili seniwehlisile umoya, khuluma nentsha yakho ngendlela ozizwa ngayo.",
+    "Uma uzizwa unengcindezi noma uthukuthele: donsa umoya uphinde uwukhiphe kahlanu ngaphambi kokuba uthathe isinyathelo. \n\nUma nobabili seniwehlisile umoya, khuluma nomntwana wakho umtshele ngendlela ozizwa ngayo.",
   'Discuss "safety amnesty" with your teenager, and think of a situation together when you could use this.':
-    "Xoxani “ngoshwele wezokuphepha” nengane yakho eseminyakeni yokuthomba, bese nicabange ngesimo lapho ningakusebenzisa khona lokhu.",
-  "Safety Amnesty Story": "Indaba Yoshwele Wezokuphepha",
+    "Xoxani “ngoshwele wezokuphepha” nengane yakho, bese nicabange ngesimo lapho ningakusebenzisa khona lokhu.",
+  "Safety Amnesty Story": "Indaba Kashwele Wezokuphepha",
   "Every time you take a pause before responding, or whenever you do something to keep your teen safe, tap your @global.parent_points and celebrate your success!":
     "Ngaso sonke isikhathi uthatha ikhefana ngaphambi kokuphendula, nanoma inini lapho wenza okuthile kokuvikela ingane yakho, chofoza i @global.parent_points ujabulele impumelelo yakho!",
   "You've completed this week's workshop.\n\nNext week, we will talk about money - you will need:\n* a sheet of paper/cardboard\n* a pen\n* 20 small rocks/beans/kernels\n\nIt will be fun!":
-    "Usukuqedile ukuqeqeshwa kwaleli viki.\n\nNgesonto elizayo, sizokhuma ngemali - uzodinga: \n* isiqeshana sephepha/ ikhathoni \n* ipeni \n* amatshe awu-20 amancane/obhontshisi/okusanhlamvu \n\nKuzoba mnandi!",
+    "Usukuqedile ukuqeqeshwa kwaleli viki.\n\nNgesonto elizayo, sizokhuma ngemali - uzodinga: \n* isiqeshana sephepha/ukhadibhothi\n* ipeni \n* amatshe awu-20 amancane/obhontshisi/okusanhlamvu \n\nKuzoba mnandi!",
   "Your @global.parent_app Code": "Ikhodi Yakho Ye-@global.parent_app",
-  "Make me smile": "Ngenze ngimomotheke",
+  "Make me smile": "Ngenze ngimamatheke",
   "Get me going": "Ngenze ngiqhubeke",
-  "New workshop ready tomorrow!": "Ukuqeqeshwa kwakho okusha kulunga kusasa!",
+  "New workshop ready tomorrow!": "Ukuqeqeshwa kwakho okusha kuzolunga kusasa!",
   "New workshop!": "Ukuqeqeshwa okusha!",
   "Workshop Reminder": "Isikhumbuzo Sokuqeqeshwa",
-  "Nice progress!": "Intuthuko enhle!",
+  "Nice progress!": "Inqubekela phambili enhle!",
   "You are appreciated!": "Uyathandwa!",
   "Something Fun": "Okuthile Okujabulisayo",
   "Your @global.parent_points this week": "I-@global.parent_points yakho kuleli sonto",
-  "Home Practice Reminder": "Isikhumbuzo Songakuphrakthiza Ekhaya",
-  "To solve this challenge, I will try to:": "Ukuze uxazulule le nkinga, ngizozama:",
+  "Home Practice Reminder": "Isikhumbuzo Sokuphrakthiza Ekhaya",
+  "To solve this challenge, I will try to:": "Ukuxazulula le nkinga, ngizozama uku:",
   "My challenge is not listed here.": "Inkinga yami ayibaliwe lapha.",
   Mother: "Umama",
   Father: "Ubaba",
   TikTok: "TikTok",
   "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.":
-    "Ukubuka le vidiyo kudinga i-inthanethi. Ukuze wonge amadatha akho, buka noma udawunilode le vidiyo uma uku-WiFi.",
+    "Ukubuka le vidiyo kudinga i-inthanethi. Ukuze wonge amadatha akho, buka noma udawunilode le vidiyo uma usendaweni ene-WiFi.",
   "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi.":
-    "Ukuvakashela la mawebusayithi kudinga ube ne-inthanethi. Ukuze wonge amadatha akho, vakashela lamawebusayithi uma uku-WiFi.",
+    "Ukuvakashela la mawebusayithi kudinga ube ne-inthanethi. Ukuze wonge amadatha akho, vakashela lamawebusayithi uma usendaweni ene-WiFi.",
   "Sending this message requires internet access. To limit data use, send this message when on WiFi.":
-    "Ukuthumela lo mlayezo kudinga i-inthanethi. Ukuze wonge amadatha akho, kumelwe uthumele lo mlayezo uma uku-WiFi.",
+    "Ukuthumela lo mlayezo kudinga i-inthanethi. Ukuze wonge amadatha akho, kumelwe uthumele lo mlayezo uma usendaweni ene-WiFi.",
   ParentApp: "I-ParentApp",
   "Weekly Workshops": "Ukuqeqeshwa Kwamasonto Onke",
-  "Weekly Workshop": "Ukuqeqeshwa Kweviki",
-  "Weekly Workshop Options": "Ongakukhetha Kokuqeqeshwa Kweviki",
-  ParentPoints: "AmaphuzuOmzali",
-  ParentPoint: "IphuzuLomzali",
-  "Parent Library": "Umtapo Wolwazo Womzali",
+  "Weekly Workshop": "Ukuqeqeshwa Kwamasonto Onke",
+  "Weekly Workshop Options": "Ongakukhetha Kokuqeqeshwa Ngeviki",
+  ParentPoints: "Amaphuzu Omzali",
+  ParentPoint: "Iphuzu Lomzali",
+  "Parent Library": "Umtapo Wolwazi Womzali",
   "Real-world ideas": "Amacebo angempela",
   Ideas: "Amacebo",
   "Ideas from other families...": "Amacebiso avela kweminye imindeni...",
-  "Challenges & solutions": "Izinselele nezixazululo",
+  "Challenges & solutions": "Izinselelo nezixazululo",
+  Submit: "Hambisa",
   "Find out more": "Thola okwengeziwe",
   "Show me how": "Ngibonise ukuthi kanjani",
   "Tell me more!": "Ngitshele okwengeziwe!",
-  "Let's go!": "Asishone khona!",
-  "Check it out!": "Ihlole!",
+  "Let's go!": "Asambeni!",
+  "Check it out!": "Hlola!",
   Done: "Ngiqedile",
   Next: "Okulandelayo",
   Previous: "Okwedlule",
   Save: "Londoloza",
+  Skip: "Dlula",
   "Finish with a song": "Phetha ngengoma",
   "Goodbye!": "Uhambe kahle!",
   "My Favourite Relaxes": "Ukuphumula Engikuthandayo",
@@ -2376,7 +2389,7 @@ const data: { [source_text: string]: string } = {
   "Chat Together": "Xoxani Ndawonye",
   "Do Together": "Kwenzeni Ndawonye",
   "Walk to the shops": "Ukuhamba niye ezitolo",
-  "Get water together": "Tholani amanzi ndawonye",
+  "Get water together": "Ukuyokha amanzi ndawonye",
   "Do a chore together": "Yenzani umsebenzi wasendlini ndawonye",
   "Prepare dinner": "Lungisa isidlo sakusihlwa",
   "Eat breakfast/lunch/dinner": "Yidla isidlo sasekuseni/emini/kusihlwa",
@@ -2384,10 +2397,10 @@ const data: { [source_text: string]: string } = {
   "Watch a T.V. show": "Bukela umdlalo we-TV",
   "Review homework": "Buyekeza umsebenzi wasekhaya",
   "Chat before bedtime": "Xoxani ngaphambi kokulala",
-  "Play a game/sport": "Dlala umdlalo",
+  "Play a game/sport": "Dlalani umdlalo",
   "Teens completing school/university": "Intsha iqeda isikole/inyuvesi",
   "Building/expanding a house for my family": "Ukwakha/ukukhulisa indlu yomndeni wami",
-  "Starting a business": "Ukuqala ibhizimisi",
+  "Starting a business": "Ukuqala ibhizinisi",
   "Buying a car for my family": "Ukuthengela umndeni wami imoto",
   "Severe illness or death of a friend or family member":
     "Ukugula okubi noma ukufa komngane noma ilungu lomndeni",
@@ -2409,45 +2422,44 @@ const data: { [source_text: string]: string } = {
     "Avuvunyelwe ukudlala nocingo lwakho ngemva kwesidlo sakusihlwa (noma ehoreni elilandelayo)",
   "Extra time with friends on weekend (1hr)":
     "Isikhathi esengeziwe nabangane ngempelasonto (ihora eli-1)",
-  "Cooking teen’s favourite meal": "Ukupheka ukudla okuthandwa ingane yami eseminyakeni yokuthomba",
+  "Cooking teen’s favourite meal": "Ukupheka ukudla okuthandwa ingane yami ",
   "Extra time with phone after dinner (30 min)":
     "Isikhathi esengeziwe sokudlala ngocingo ngemuva kwesidlo sakusihlwa (30 imiz.)",
-  "Watching teen’s T.V. show together":
-    "Ukubuka ndawonye uhlelo lwe-TV oluthandwa ingane yami eseminyakeni yokuthomba",
+  "Watching teen’s T.V. show together": "Ukubuka ndawonye uhlelo lwe-TV oluthandwa ingane yami",
   "Extra one-on-one time on Sunday (30 min)":
     "Ukuba nesikhathi esengeziwe sokuba nodwa ngeSonto (30 imiz.)",
   "Take a deep breath and pause before responding":
     "Donsa umoya kakhulu ngaphambi kokuthi uphendule",
-  "Listen to your teen": "Lalela intsha yakho",
-  "Praise your teen for sharing": "Ncoma osemusha wakho ngokukhuluma",
+  "Listen to your teen": "Lalela ingane yakho",
+  "Praise your teen for sharing": "Ncoma ingane yakho ngokukhuluma",
   "Use problem solving skills": "Sebenzisa amakhono okuxazulula inkinga",
   "Work out where you can get help": "Thola lapho ungathola khona usizo",
   "Tap and type": "Chofoza bese uyabhala",
   "Tap and choose": "Chofoza bese uyakhetha",
-  "Type your own": "Bhala owakho",
+  "Type your own": "Bhala okwakho",
   "I've understood this. Don't show me this message again.":
     "Ngiyakuqonda lokhu. Ungasangibonisi lo myalezo.",
   "Welcome and Self-Care": "Ukwamukelwa Nokuzinakekela",
   "Self-Care": "Ukuzinakekela",
   "How to add self-care": "Indlela yokunezela ukuzinakekela",
   "One-on-One Time": "Isikhathi Sokuthi Nibe Nobabili Ndawonye",
-  "How to spend one-on-one time": "Indlela yokuchitha isikhathi ninobabili ",
+  "How to spend one-on-one time": "Indlela yokuchitha isikhathi ninobabili",
   Praise: "Ncoma",
   "How to praise": "Indlela yokuncoma",
-  "Positive Instructions": "Iziqondiso Ezinhle",
-  "How to give positive instructions": "Indlela yokunikeza iziqondiso ezinhle",
-  "Managing Stress": "Ukulawula ukucindezeleka",
-  "How to manage stress": "Indlela yokulawula ukucindezeleka",
+  "Positive Instructions": "Imiyalelo emihle",
+  "How to give positive instructions": "Indlela yokunikeza imiyalelo emihle",
+  "Managing Stress": "Ukulawula ingcindezi",
+  "How to manage stress": "Indlela yokulawula ingcindezi",
   "Family Budgets": "Isabelomali Somndeni",
   "How to budget & save": "Indlela yokwenza isabelomali kanye nokonga",
   Rules: "Imithetho",
   "How to create rules": "Indlela yokubeka imithetho",
-  "Calm Consequences": "Imiphumela Eyethulwa Ngomoya Ophansi",
-  "How to give calm consequences": "Indlela yokwethula imiphumela ngomoya ophansi",
+  "Calm Consequences": "Imiphumela Eyethulwa Ngomoya Ozolile",
+  "How to give calm consequences": "Indlela yokwethula imiphumela ngomoya ozolile",
   "Problem Solving": "Ukuxazulula Inkinga",
   "How to solve problems": "Indlela yokuxazulula izinkinga",
   "Teen Safety": "Ukuphepha Kwentsha",
-  "How to keep your teen safe": "Indlela yokugcina intsha yakho iphephile",
+  "How to keep your teen safe": "Indlela yokugcina ingane yakho iphephile",
   "Dealing with Crisis": "Ukubhekana Nezinkinga",
   "How to deal with crisis": "Indlela yokubhekana nezinkinga",
   "Celebration and Next Steps": "Ukubungaza kanye Nezinyathelo Ezilandelayo",
@@ -2455,22 +2467,22 @@ const data: { [source_text: string]: string } = {
   "Talk about @global.home_practice": "Khuluma nge @global.home_practice",
   "Home Practice Review": "Ukubuyekeza Ongakuprakthiza Ekhaya",
   "In my group": "Eqenjini lami",
-  "By myself": "Mina",
-  "awesome parent": "umzali othandekayo",
-  friends: "abangane",
+  "By myself": "Ngedwa",
+  "awesome parent": "mzali othandekayo",
+  friends: "abangani",
   "Welcome to @global.parent_app": "Siyakwamukela ku @global.parent_app",
   "<p>Welcome to @global.parent_app.</p>\n\n<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app will support you and your family in three ways:</p>":
-    "<p>Siyakwamukela ku @global.parent_app.</p>\n\n<p>Ufanelwe ukuzizwa ujabule, nokuba nobuhlobo obujabulisayo bomndeni.</p>\n\n<p>@global.parent_app izokusekela wena nomndeni wakho ngezindlela ezintathu:</p>",
+    "<p>Siyakwamukela ku @global.parent_app.</p>\n\n<p>Ufanelwe ukuzizwa ujabule, nokuba nobuhlobo obujabulisayo nomndeni.</p>\n\n<p>@global.parent_app izokusekela wena nomndeni wakho ngezindlela ezintathu:</p>",
   "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. Press it to start your first workshop!</p>":
-    "<p>Le nkinobho enkulu izokuyisa ku @global.weekly_workshops </p>\n\n<p> Kanye ngeviki ukuqeqeshwa okusha kuzokwenziwa kutholakalele wena - ngaso sonke isikhathi kuzogxila ekhonweni elihlukile lokuba umzali. Kuchofoze ukuze uqale ukuqeqeshwa kwakho kokuqala!</p>",
+    "<p>Le nkinobho enkulu izokuyisa ku @global.weekly_workshops </p>\n\n<p> Kanye ngeviki ukuqeqeshwa okusha kuzobe kukulungele- ukugxila emakhonweni ahlukahlukene okuba umzali. Chofoza ukuze uqale ukuqeqeshwa kwakho kokuqala!</p>",
   "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>":
     "<p>Inkinobho eyindilinga ivela uma @global.weekly_workshop okusha sekutholakala kuwe.</p>",
   "<p>Press this big button to get you to your @global.parent_points screen.</p>\n\n<p>Track your success in self-care and parenting. </p>\n\n<p>See your progress.</p>\n\n<p>Celebrate your daily achievements!</p>":
-    "<p>Cindezela inkinobho enkulu ukuze ubuyele @global.parent_points esikrinini sakho.</p>\n\n<p>Bona impumelelo yakho yokuzinakekela nokuba umzali. </p>\n\n<p>Bona intuthuko yakho.</p>\n\n<p>Jabulela okufinyelelayo nsuku zonke!</p>",
+    "<p>Cindezela inkinobho enkulu ukuze ikuse ku @global.parent_points esikrinini sakho.</p>\n\n<p>Bona impumelelo yakho yokuzinakekela nokuba umzali. </p>\n\n<p>Bona intuthuko yakho.</p>\n\n<p>Jabulela okufinyelelayo nsuku zonke!</p>",
   "<p>This button takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p> Instant access to help sections with @global.essential_tools for each skill.</p>\r\n\n<p> Extra information and local resources.</p>":
-    "<p>Lena nkinobho izokuyisa ku @global.parent_centre </p>\n\n<p>Thola izinsiza ozidingayo noma inini uma uzidinga. </p>\n\n<p> Ukutholakala ngokushesha kwengxenye yosizo ne @global.essential_tools ekhonweni ngalinye.</p>\r\n\n<p> Ukwaziswa okwengeziwe kanye nezinsiza ezikhona endaweni.</p>",
+    "<p>Lena nkinobho izokuyisa ku @global.parent_centre </p>\n\n<p>Thola izinsiza ozidingayo noma inini uma uzidinga. </p>\n\n<p> Ukutholakala ngokushesha kwengxenye yosizo ne @global.essential_tools kwikhono ngalinye.</p>\r\n\n<p> Ukwaziswa okwengeziwe kanye nezinsiza ezikhona endaweni.</p>",
   "<p>However you start, just the fact you are here shows you care.</p>":
-    "<p>Akunandaba ukuthi uqala kanjani, iqiniso lokuthi ulapha libonisa ukuthi uyakhathalela.</p>",
+    "<p>Ungaqala noma kanjani, iqiniso ukuthi ulapha lokho kubonisa ukuthi uyakhathalela.</p>",
   "Go to the @global.weekly_workshops": "Iya ku @global.weekly_workshops",
   "<p>Press this button on the home screen to go to the @global.weekly_workshops </p>":
     "<p>Cindezela inkinobho esekhasini lokuqala ukuze uye ku @global.weekly_workshops </p>",
@@ -2489,25 +2501,31 @@ const data: { [source_text: string]: string } = {
   "<p> Tap here to change your group name. </p>":
     "<p> Chofoza lapha uma ufuna ukushintsha igama leqembu lakho. </p>",
   Continue: "Qhubeka",
+  "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.":
+    "Sawubona mzali othandekayo, khumbula ukuzinakekela - kuzosiza wena nomndeni wakho! Thola amacebiso nokuningi kwi ParentApp.",
+  "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.":
+    "Sawubona mzali othandekayo, Khumbula, ungathola amacebiso amaningi awusizo kwi ParentApp.",
+  "Hi great parent! ParentApp is here to support you. Check it out now!":
+    "Sawubona mzali othandekayo! iParentApp ikhona ukukusekela. Ibheke manje!",
   "Welcome to ParentApp. Click here to start your journey!":
     "Siyakwamukela kuParentApp. Chofoza lapha ukuze uqale uhambo lwakho!",
   "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
-    "Sithembe ukuthi uzizwa KAHLE. Ukuba umzali kunzima, kodwa akwephuzanga ukuthi uphinde uqale futhi nosemusha wakho. Sekuyatholakala ukuqeqeshwa kwakho kokuqala kokuba umzali! Chofoza lapha ukuze uqale uhambo lwakho ParentApp!",
+    "Sithembe ukuthi uzizwa KAHLE. Ukuba umzali kunzima, kodwa usenesikhathi sokuqala kabusha nomntwana wakho. Sekuyatholakala ukuqeqeshwa kwakho kokuqala kokuba umzali! Chofoza lapha ukuze uqale uhambo lwakho lwe ParentApp!",
   "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.":
-    "Sawubona! Ingabe konke kuhamba KAHLE? Kubonakala sengathi muva nje awuyivulanga i-ParentApp. Kungani ungayizami? Izigidi zabazali zithole ewusizo la mathuluzi. Sisekhona lapha ukuba sikusekele.",
+    "Sawubona! Ingabe konke kuhamba KAHLE? Kubonakala sengathi muva nje awuyivulanga i-ParentApp. Kungani ungayizami? Izigidi zabazali zithole la mathuluzi ewusizo. Sisekhona lapha ukuba sikusekele.",
   "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.":
-    "Sawubona futhi! Akukaze kwephuza ukuthi usebenzise i-ParentApp bese uthola ukusekelwa okuqhubekayo ekubeni umzali. Kungani ungakuzami lapho usendleleni eya emsebenzini noma uma upheka? Izigidi zabazali ziwathole ewusizo amathuluzi ethu.",
+    "Sawubona futhi! Awukaphelewa isikhathi ukuthi usebenzise i-ParentApp bese uthola ukusekelwa okuqhubekayo njengo umzali. Kungani ungakuzami lapho usendleleni eya emsebenzini noma uma upheka? Izigidi zabazali ziwathola ewusizo amathuluzi ethu.",
   "ParentApp misses you! There is a lot to explore. We are still here to support you.":
     "I-ParentApp iyakukhumbula! Kuningi ongakuhlola. Sisekhona lapha ukuba sikusekele.",
   "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.":
-    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba wumzali - sebenzisa i-app yabazali ukuze uzisize ukulawula ukucindezeleka.",
+    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba wumzali - sebenzisa i-app yabazali ukuze uzisakale ukulawula ingcindezi.",
   "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.":
-    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ulungiselele intsha yakho ukuthi iphumelele empilweni.",
+    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ulungiselele ingane yakho ukuthi iphumelele empilweni.",
   "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.":
-    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ikusize ulawule indlela osemusha wakho aziphatha ngayo.",
+    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze ikusize ulawule indlela umntwana wakho aziphatha ngayo.",
   "New message from PLH": "Umlayezo omusha ovela ku-PLH",
   "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!":
-    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuze nizwane kakhulu nengane yakho eseminyakeni yokuthomba!",
+    "Sithembe ukuthi uzizwa KAHLE. Siyazi ukuthi kunzima ukuba umzali - sebenzisa i-ParentApp ukuqinisa ubudlelwane nengane yakho!",
   "Reflect on the positive": "Cabanga ngokuhle",
   "Check-in chat": "Hlola imilayezo",
   "Dream Travel": "Iphupho Lohambo",
@@ -2529,120 +2547,148 @@ const data: { [source_text: string]: string } = {
   "Name that tune": "Qamba le ngoma",
   "Pass the snap": "Dlulisa i-snap",
   "Family workout": "Ukuzivocavoca komndeni",
-  "Make housework fun": "Ukwenza umsebenzi wasekhaya ujabulise",
+  "Make housework fun": "Ukwenza umsebenzi wasekhaya ngendlela emnandi",
+  "Household chores aren’t fun… or are they? You can make them into a game!":
+    "Imisebenzi yasekhaya ayimnandi neze..... noma imnandi? ungayenza samdlalo!",
   "What are you doing?": "Wenzani?",
+  "Here is a fun game you can do with your family!":
+    "Nanku umdlalo omnandi ongawudlala nomndeni wakho!",
   "Crazy chicken": "Inkukhu ehlanyayo",
   "**Relax** @global.parent_point": "**Phumula** @global.parent_point",
+  "Doing a relaxation activity": "Ukwenza umsebenzi wokuphumula",
+  "Every time you do a relax, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isikhathi uma uphumula, chofoza ku@global.parent_point bese ujabulela impumelelo yakho!",
   "Treat yourself well": "Zenzele okuthile okuhle",
   "**Treat yourself well** @global.parent_point":
     "**Zenzele okuthile okuhle** @global.parent_point",
+  "Doing something they like for themselves": "Wenze into abayithandela bona",
+  "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isikhathi uma uzitotosa uzinakekela, chofoza@global.parent_point bese ujabulela impumelelo yakho!",
   "**Praise yourself** @global.parent_point": "**Zincome** @global.parent_point",
+  "Praising themselves": "Bayazincoma",
+  "Every time you praise yourself, tap the @global.parent_point and celebrate your success!":
+    "Ngaso snke iskhathi uma uzincoma chofoza ku@global.parent_point bese ujabulela impumelelo yakho!",
   "One-on-one time": "Isikhathi sokuthi sibe babili",
   "**One-on-one time** @global.parent_point":
     "**Isikhathi sokuthi sibe babili** @global.parent_point",
-  "Praise your teen": "Ncoma intsha yakho",
-  "**Praise your teen** @global.parent_point": "**Ncoma intsha yakho** @global.parent_point",
+  "Spending time with their teen": "Ukuchitha isikhathi nengane yakhe",
+  "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isikhathi uma uchitha isikhathi wena nomntwana wakho, chofoza ku @global.parent_point bese ujabulela impumelelo yakho!",
+  "Praise your teen": "Ncoma ingane yakho",
+  "**Praise your teen** @global.parent_point": "**Ncoma ingane yakho** @global.parent_point",
+  "Praising their teen when they did positive thing": "Ukuncoma umntwana uma enze okuhle",
+  "Every time you praise your teen, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isikhathi uma uncoma umntwana wakho, chofoza ku @global.parent_point bese ujabulela impumelelo yakho!",
   "Get positive": "Cabanga ngezinto ezakhayo",
   "**Get positive** @global.parent_point": "**Cabanga ngezinto ezakhayo** @global.parent_point",
-  "Breathe not yell": "Donsa umoya ungathethi",
-  "**Breathe not yell** @global.parent_point": "**Donsa umoya ungathethi** @global.parent_point",
-  "Good money choice": "Ukusebenzisa kahle imali",
-  "**Good money choice** @global.parent_point": "**Ukusebenzisa kahle imali** @global.parent_point",
-  "Calm consequence": "Imiphumela eyethulwa ngomoya ophansi",
+  "Giving their teen a positive instruction": "Ukunika umntwana umyalelo umuhle",
+  "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isikhathi uma unika umyalelo omuhle, chofoza ku @global.parent_point bese uthokozela impumelelo yakho!",
+  "Breathe not yell": "Phefumula ungathethi",
+  "**Breathe not yell** @global.parent_point": "**Phefumula ungathethi** @global.parent_point",
+  "Taking a pause before responding": "Thatha ikhefu uphefumule ngaphambi kokuphendula",
+  "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isiskhathi uma uthatha ikhefu uphefumule ngaphambi kokuba uphendule chofoza ku @global.parent_point bese uthokozela impumelelo yakho!",
+  "Good money choice": "Ukukhetha kahle imali",
+  "**Good money choice** @global.parent_point": "**Ukukhetha kahle imali** @global.parent_point",
+  "Keeping the budget": "Ukugcina isabelomali",
+  "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!":
+    "Ngaso sonke isikhathi uma ukhethe kahle phakathi kwezidingo, izimfuno nokulonodoloza imali chofoza ku @global.prent_pointbese ujabulela impumelelo yakho!",
+  "Calm consequence": "Imiphumela eyethulwa ngomoya ozolile",
   "**Calm consequence** @global.parent_point":
-    "**Imiphumela eyethulwa ngomoya ophansi** @global.parent_point",
+    "**Imiphumela eyethulwa ngomoya ozolile** @global.parent_point",
   Safe: "Ukuphepha",
   "**Safe** @global.parent_point": "**Ukuphepha** @global.parent_point",
   Help: "Usizo",
   "My Tips": "Amacebiso Ami",
   "Essential Tools": "Amathuluzi Abalulekile",
   COVID: "I-COVID",
-  "Customise Again": "Phinde Uhlele Ngendlela Oyithandayo",
+  "Customise Again": "Phinda Uhlele Ngendlela Oyithandayo",
   "Relax & Activities": "Ukuphumula kanye Nemisebenzi",
-  "Support Contacts": "Ezokuxhumana Nezokusekwa",
+  "Support Contacts": "Izinombolo zalapho ungathola ukwesekwa khona",
   "Evidence Base": "Isisekelo Sobufakazi",
   "Technical Support": "Usizo Lwezobuchwepheshe",
   "Message Archive": "Indawo Okugcinwa Kuyo Imiyalezo",
   "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!":
-    "Kuhle kakhulu lokho! Nisebenzile ngokuchitha isikhathi ndawonye. Kwenza isisekelo sokuba nobuhlobo obuhle n.ntsha yakho!",
+    "Kuhle kakhulu lokho! Nisebenzile ngokuchitha isikhathi ndawonye. Kwenza isisekelo sokuba nobuhlobo obuhle nomntwana wakho!",
   "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!":
-    "Kuhle lokho! Ukuchitha isikhathi nobabili kubonisa intsha yakho ukuba ibalulekile kuwe. Kwenza umehluko ngempela!",
+    "Kuhle lokho! Ukuchitha isikhathi nobabili kubonisa umntwana wakho ukuba ubalulekile kuwe. Kuyawenza umehluko ngempela!",
   "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!":
-    "Kuhle kakhulu! Ukuchitha isikhathi nentsha yakho kungenza intsha yakho izimisele ukusiza kakhudlwana. Wenza kahle kakhulu!",
+    "Kuhle kakhulu! Ukuchitha isikhathi nomntwana wakho kungenza umntwana wakho azimisele ukusiza kakhudlwana. Wenza kahle kakhulu!",
   "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!":
-    "Wenze kahle! Ukuchitha isikhathi nentsha yakho kukunika ithuba lokufunda ngezinto ezithandwa yintsha yakho namakhono ayo. Uyiqhawe!",
+    "Wenze kahle! Ukuchitha isikhathi nomntwana wakho kukunika ithuba lokufunda ngezinto ezithandwa umntwana wakho namakhono akhe. Uyiqhawe!",
   "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.":
-    "Wenze umsebenzi omuhle! Ukuchitha isikhathi ndawonye kusiza kwakhe ubuhlobo obuqinile futhi obuhle phakathi kwakho nentsha yakho.",
+    "Wenze umsebenzi omuhle! Ukuchitha isikhathi ndawonye kusiza kwakhe ubuhlobo obuqinile futhi obuhle phakathi kwakho nomntwana wakho.",
   "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!":
-    "Ngezinye isikhathi kuzokuba lula futhi kube mnandi ukuchitha isikhathi nentsha yakho, kodwa ngezinye izikhathi kuzoba yinselele. Ukuchitha isikhathi ndawonye kuzothuthukisa ubuhlobo benu; usebenzile ngokuzama!",
+    "Ngezinye isikhathi kuzokuba lula futhi kube mnandi ukuchitha isikhathi nomntwana wakho, kodwa ngezinye izikhathi kuzoba yinselelo. Ukuchitha isikhathi ndawonye kuzothuthukisa ubuhlobo benu; usebenzile ngokuzama!",
   "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!":
-    "Siyaxolisa ukuzwa ukuthi bekunzima ukuchitha isikhathi nentsha yakho. Sonke sibhekana nezinselele ngezinye izikhathi. Yiba nesineke kuwe nakosemusha wakho - izinto zizoba ngcono. Wenze kahle ngokuzama!",
+    "Siyaxolisa ukuzwa ukuthi bekunzima ukuchitha isikhathi nomntwana wakho. Sonke sibhekana nezinselelo ngezinye izikhathi. Yiba nesineke kuwe nakumntwana wakho - izinto zizoba ngcono. Wenze kahle ngokuzama!",
   "Great to hear it went well; you are a star!":
     "Siyajabula ukuzwa ukuthi kuhambe kahle; uyiqhawe!",
   "Wonderful! You deserve all the happy times!":
-    "Kuhle kakhulu! Ufanelwe yizo zonke izikhathi ezimnandi!",
+    "Kuhle kakhulu! Ufanelwe yizo zonke izikhathi zokujabula!",
   "Sorry that this was difficult for you. You are a star for trying!":
-    "Siyaxolisa ukuthi lokhu bekunzima kuwe. Uyiqhawe ngokuthi uzame!",
+    "Uxolo ukuthi lokhu bekunzima kuwe. Uyiqhawe ngokuthi uzame!",
   "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!":
-    "Siyajabula ukuzwa ukuthi kukwenze wazizwa ujabule! Qhubeka nokwenza umsebenzi omuhle. Intsha yakho ifunda okuningi kuwe!",
+    "Siyajabula ukuzwa ukuthi kukwenze wazizwa ujabule! Qhubeka nokwenza umsebenzi omuhle. Ingane yakho ifunda okuningi kuwe!",
   "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!":
-    "Ukukhuluma indlela esizizwa ngayo kungaba nzima ekuqaleni, kodwa wena nentsha yakho nizokujwayela. Qhubeka uzama, uzobona imiphumela emihle!",
+    "Ukukhuluma ngezindlela esizizwa ngayo kungaba nzima ekuqaleni, kodwa wena nengane yakho nizokujwayela. Qhubeka uzame, uzobona imiphumela emihle!",
   "Great to hear it went well. Talking about your finances together really makes your family stronger!":
     "Siyajabula ukuzwa ukuthi kuhambe kahle. Ukukhuluma ngezimali ndawonye kwenza umndeni usondelane ngempela!",
   "Sorry to hear it was difficult for you. Well done for trying!":
-    "Siyaxolisa ukuzwa ukuthi lokhu bekunzima kuwe. Wenze kahle ngokuzama!",
+    "Uxolo ukuzwa ukuthi lokhu bekunzima kuwe. Wenze kahle ngokuzama!",
   "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!":
-    "Siyajabula ukuzwa ukuthi kuhambe kahle! Imithetho engaguquguquki yenza intsha izizwe iphephile, futhi kuyigcina iphephile!",
+    "Siyajabula ukuzwa ukuthi kuhambe kahle! Imithetho engaguquguquki yenza ingane izizwe iphephile, futhi kuyigcina iphephile!",
   "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!":
-    "Siyaxolisa ngokuthi lokhu bekunzima. Ukubeka imithetho ndawonye kudinga ukuprakthize kodwa kuwufanele umzamo!",
+    "Uxolo ngokuthi lokhu bekunzima. Ukubeka imithetho ndawonye kudinga ukuprakthize kodwa kuyasiza!",
   "Great to hear it went well!": "Siyajabula ukuzwa ukuthi kuhambe kahle!",
   "Sorry that this was difficult. Setting consequences together will make your teen want to follow the rules more often!":
-    "Siyaxolisa ngokuthi lokhu bekunzima. Ukubeka imiphumela ndawonye kuzokwenza ukuba intsha ufune ukulandela imithetho ngokwengeziwe!",
+    "Siyaxolisa ngokuthi lokhu bekunzima. Ukubeka imiphumela ndawonye kuzokwenza ukuba ingane ifune ukulandela imithetho ngokwengeziwe!",
   "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!":
-    "Siyaxolisa ukuthi lokhu bekunzima. Ngezinye izikhathi kumelwe siqhubeke sizama. Thola isikhathi lapho wena nentsha yakho nizolile bese niyazama futhi ukukhuluma ngenkinga nisebenzisa izinyathelo ezine zokuxazula inkinga. Ndawonye, singenza okuningi!",
+    "Uxolo ukuthi lokhu bekunzima. Ngezinye izikhathi kumelwe siqhubeke sizame. Thola isikhathi lapho wena nengane yakho nizolile bese niyazama futhi ukukhuluma ngenkinga nisebenzisa izinyathelo ezine zokuxazula inkinga. Ndawonye, ningenza okuningi!",
   "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.":
-    "Siyajabula ukuzwa ukuthi kuhambe kahle! Ukukhuluma ngezingozi nezindlela zokwesekwa ezikhona kuvimbela izinkinga futhi kusiza ngempela ekugcineni ingane yakho eyevile eminyakeni eyishumi nambili iphephile.",
+    "Siyajabula ukuzwa ukuthi kuhambe kahle! Ukukhuluma ngezingozi nezindlela zokwesekwa ezikhona kuvimbela izinkinga futhi kusiza ngempela ekugcineni ingane yakho iphephile.",
   "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!":
-    "Siyaxolisa ukuthi lokhu bekunzima. Ukubona izingozi kanye nezindawo ongathola kuzo ukwesekwa kungaba nzima futhi kuhlukumeze ngokomzwelo. Kuyasiza ngempela ukugcina ingane yakho eyevile eminyakeni eyishumi nambili iphephile!",
+    "Uxolo ukuthi lokhu bekunzima. Ukumepha izingozi kanye nezindawo ongathola kuzo ukwesekwa kungaba nzima futhi kuhlukumeze emoyeni. Kuyasiza ngempela ukugcina ingane yakho iphephile!",
   "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?":
-    "Siyaxolisa ukuthi akuhambanga kahle. Lokhu akulula ukukwenza. Phinde uzame ukuhlala phansi nixoxisane nentsha yakho futhi. Okunye, ingabe ukhona omunye umuntu intsha yakho emethembayo ongahlanganyela nawe engxoxweni yakho nengane yakho eseyintsha?",
+    "Uxolo ukuthi akuhambanga kahle. Lokhu akulula ukukwenza. Phinda uzame ukuhlala phansi nixoxisane nengane yakho futhi. Okunye, ingabe ukhona omunye umuntu ingane yakho emethembayo ongahlanganyela nawe engxoxweni yakho nengane yakho?",
   "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.":
-    "Siyajabula ukuzwa ukuthi kuhambe kahle! Ukuthola imiphumela emihle kusiza intsha ukuthi iziphathe kahle futhi kwenza umndeni ube nokuthula.",
+    "Siyajabula ukuzwa ukuthi kuhambe kahle! Ukuthola imiphumela emihle kusiza ingane ukuthi iziphathe kahle futhi kwenza umndeni ube nokuthula.",
   "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!":
-    "Siyajabula ukuzwa ukuthi kuhambe kahle! Lapho ingane yakho eyevile eminyakeni eyishumi nambili ifunda ukuxazulula izinkinga, ingasebenzisa lelo khono ukuphila kwayo konke. Yeka isipho esihle kangaka!",
+    "Siyajabula ukuzwa ukuthi kuhambe kahle! Lapho ingane yakho ifunda ukuxazulula izinkinga, ingasebenzisa lelo khono impilo yayo yonke. Isipho esihle kangaka!",
   "Quick pause": "Ikhefu elisheshayo",
   "Power of three": "Amandla abantu abathathu",
   "One thing today": "Into eyodwa namuhla",
-  "Breathe to three": "Donsa umoya kathathu",
-  "In and out": "Udonse uphinde uwukhiphe",
-  "Think about today": "Ukucabanga ngalolu suku",
+  "Breathe to three": "Phefumula izikhathi ezintathu",
+  "In and out": "Udonse umoya uphinde uwukhiphe",
+  "Think about today": "Cabanga ngosuku lwanamuhla",
   "Pause to respond": "Thatha ikhefu ngaphambi kokuphendula",
   "Small things": "Izinto ezincane",
   "Body scan": "Ukuhlola umzimba",
-  "Feel the ground": "Yizwa inhlabathi",
+  "Feel the ground": "Yizwa izinyawo zithinte phansi",
   "Counting sounds": "Ukubala imisindo",
   "Feel your feeling": "Yizwa imizwa yakho",
   "Your song": "Ingoma yakho",
-  "Ground & gratitude": "Inhlabathi kanye nokubonga",
+  "Ground & gratitude": "Phansi kanye nokubonga",
   "Notice how you feel": "Qaphela indlela ozizwa ngayo",
   "Pause power": "Amandla ekhefu",
   "Praise yourself": "Zincome",
   "Taking care of yourself": "Zinakekele",
-  "Take a pause": "Yima kancane",
-  "Physical activity": "Umsebenzi ohilela umzimba",
+  "Take a pause": "Thatha ikhefu",
+  "Physical activity": "Ukuvocavoca umzimba",
   "List of things": "Uhlu lwezinto",
   Connect: "Xhumana",
   "Prevent anger": "Gwema ulaka",
-  "Angry? Take a break": "Uthukuthele? Thatha ikhefu.",
+  "Angry? Take a break": "Uthukuthele? Thatha ikhefu",
   "**Welcome and Self-Care** workshop": "Ukuqeqeshelwa **Ukwamukela kanye Nokuzinakekela**",
   "How to do self-care": "Indlela yokuzinakekela",
   "**One-on-One Time** workshop": "Ukuqeqeshelwa **Isikhathi Sokuthi Nibe Babili**",
   "**Praise** workshop": "Ukuqeqeshelwa **Ukuncoma**",
-  "**Positive Instructions** workshop": "Ukuqeqeshelwa **Iziqondiso Ezinhle**",
-  "**Managing Stress** workshop": "Ukuqeqeshelwa **Ukulawula Ukucindezeleka**",
+  "**Positive Instructions** workshop": "Ukuqeqeshelwa **Imiyalelo emihle**",
+  "**Managing Stress** workshop": "Ukuqeqeshelwa **Ukulawula Ingcindezi**",
   "**Family Budgets** workshop": "Ukuqeqeshelwa **Isabelomali Somndeni**",
   "**Rules** workshop": "Ukuqeqeshelwa **Imithetho**",
-  "**Calm Consequences** workshop": "Ukuqeqeshelwa **Imiphumela Eyethulwa Ngomoya ophansi**",
+  "**Calm Consequences** workshop": "Ukuqeqeshelwa **Imiphumela Eyethulwa Ngomoya ozolile**",
   "**Problem Solving** workshop": "Ukuqeqeshelwa **Ukuxazulula Inkinga**",
   "**Teen Safety** workshop": "Ukuqeqeshelwa **Ukuphepha Kwentsha**",
   "**Dealing with Crisis** workshop": "Ukuqeqeshelwa **Ukubhekana Nezinkinga**",

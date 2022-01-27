@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ModalController } from "@ionic/angular";
+import { ModalController, ToastController } from "@ionic/angular";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
@@ -30,7 +30,8 @@ export class CampaignDebugPage implements OnInit {
     private templateFieldService: TemplateFieldService,
     private router: Router,
     private route: ActivatedRoute,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController
   ) {}
 
   async ngOnInit() {
@@ -66,20 +67,23 @@ export class CampaignDebugPage implements OnInit {
     this.campaignService.init();
   }
 
-  public scheduleNotification(row: FlowTypes.Campaign_listRow) {
-    return this.campaignService.scheduleCampaignNotification(row, this.debugCampaignId);
-  }
-
   /**
-   *
-   * @param row
-   * TODO - find better way to link with template actions
-   * TODO - find way to identify any named action list (not just click_action_list)
-   */
-  public async triggerRowActions(row: FlowTypes.Campaign_listRow) {
-    await this.campaignService.triggerRowActions(row);
-    this.processCampaign();
-    // TODO - reload cache after trigger
+   * TODO - duplicate code from notifications-debug.page should be merged */
+  public async sendNotification(row: FlowTypes.Campaign_listRow) {
+    const notification = await this.campaignService.scheduleCampaignNotification(
+      row,
+      this.debugCampaignId
+    );
+    const delaySeconds = 3;
+    await this.localNotificationService.scheduleImmediateNotification(
+      notification,
+      delaySeconds + 1
+    );
+    const toast = await this.toastCtrl.create({
+      message: `Sending notification in ${delaySeconds}s`,
+      duration: delaySeconds * 1000,
+    });
+    await toast.present();
   }
 
   private async processCampaign() {
