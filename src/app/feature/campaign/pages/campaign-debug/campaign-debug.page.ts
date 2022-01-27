@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController, ToastController } from "@ionic/angular";
-import { timer } from "packages/api/node_modules/rxjs";
-import { map, take } from "rxjs/operators";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";

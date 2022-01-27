@@ -113,10 +113,8 @@ export class CampaignService {
       }
       // process notification actions
       const row = notification.extra as FlowTypes.Campaign_listRow;
-      if (shouldProcess && row.click_action_list) {
-        const actionsForTrigger = row.click_action_list.filter(
-          (action) => action.trigger === trigger
-        );
+      if (shouldProcess && row.action_list) {
+        const actionsForTrigger = row.action_list.filter((action) => action.trigger === trigger);
         if (actionsForTrigger.length > 0) {
           actionsTriggered = true;
           await this.triggerRowActions(actionsForTrigger);
