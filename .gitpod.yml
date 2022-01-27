@@ -5,7 +5,6 @@ tasks:
     before: echo $(FIREBASE_CONFIG_TS_B64 | base64) > src/environments/firebaseConfig.ts
     init: yarn install
     command: yarn start
-    env:
   ## Could provide additional task to run in parallel terminal
   # - name: Sync content
 
