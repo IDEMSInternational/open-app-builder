@@ -19,5 +19,5 @@ const converted = parser.run();
 
 ## Run tests locally
 ```
-npm run test
+yarn test
 ```

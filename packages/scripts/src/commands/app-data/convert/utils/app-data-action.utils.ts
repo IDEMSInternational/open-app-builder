@@ -29,6 +29,7 @@ export function parseAppDataActionString(actionString: string): FlowTypes.Templa
     completed: true,
     uncompleted: true,
     nav_resume: true,
+    sent: true,
   };
   if (!Object.keys(actionTriggers).find((t) => actionString.startsWith(t))) {
     actionString = `click | ${actionString}`;

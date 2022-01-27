@@ -12,16 +12,16 @@ In order to run most scripts require specific configuration files which are stor
 ## Running scripts from this folder
 
 Scripts may be added to the `package.json` and can also be listed in the default `index.ts` file which
-is called via `npm run start`. E.g.
+is called via `yarn start`. E.g.
 
 ```
-npm run start
+yarn start
 ```
 
 will call the interactive cli script selection
 
 ```
-npm run version
+yarn version
 ```
 
 will call the version script
@@ -31,13 +31,13 @@ will call the version script
 If calling scripts from the main parent repo, all calls should be prefixed with `scripts`, i.e.
 
 ```
-npm run scripts
+yarn scripts
 ```
 
 will call the interactive cli script selection
 
 ```
-npm run scripts version
+yarn scripts version
 ```
 
 will call the version script
@@ -48,13 +48,13 @@ To easy development, an additional `dev` script has been created that will start
 nodemon server, live-reloading the chosen script whenever an input `.ts` file changes.
 
 ```
-npm run dev
+yarn dev
 ```
 
 will run live-reload of the main start scripts
 
 ```
-npm run dev version
+yarn dev version
 ```
 
 will run live-reload of the version script
