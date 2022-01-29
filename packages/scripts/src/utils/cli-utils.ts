@@ -8,7 +8,7 @@ import * as inquirer from "inquirer";
  * @param message main text that appears above options
  */
 export async function promptOptions(
-  choices: string[] | { name: string; value: string }[] = [],
+  choices: string[] | { name: string; value: any }[] = [],
   message = "Select an option"
 ) {
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
