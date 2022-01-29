@@ -18,6 +18,7 @@
     "data-models:build": "yarn workspace data-models build",
     "data-models:serve": "yarn workspace data-models serve",
     "scripts": "yarn workspace scripts start",
+    "workflow": "yarn scripts workflow run",
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
     "test": "ng test",
