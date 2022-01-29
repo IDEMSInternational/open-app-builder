@@ -18,6 +18,7 @@ import { spawnSync } from "child_process";
 
 import { getActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
+import { compileTranslationFiles, generateTranslationFiles } from "./translate";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -25,16 +26,11 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
  * CLI
  * @example yarn
  *************************************************************************************/
-interface IProgramOptions {
-  skipAssets: boolean;
-}
+interface IProgramOptions {}
 const program = new Command("copy");
-export default program
-  .description("Copy app data")
-  .option("-s --skip-assets", "Skip copying of asset files if only processing template sheets")
-  .action(async (options: IProgramOptions) => {
-    new AppDataCopy(options).run();
-  });
+export default program.description("Copy app data").action(async (options: IProgramOptions) => {
+  new AppDataCopy(options).run();
+});
 
 /***************************************************************************************
  * Main Methods
@@ -48,24 +44,17 @@ class AppDataCopy {
     SHEETS_OUTPUT_FOLDER: "",
     ASSETS_INPUT_FOLDER: "",
     ASSETS_OUTPUT_FOLDER: "",
-    TRANSLATIONS_TRANSLATED_STRINGS: "",
-    TRANSLATIONS_SOURCE_STRINGS: "",
-    TRANSLATIONS_OUTPUT_FOLDER: "",
   };
   private activeDeployment = getActiveDeployment();
   constructor(private options: IProgramOptions) {
-    const { google_drive, app_data, translations } = this.activeDeployment;
+    const { app_data, _workspace_path } = this.activeDeployment;
     this.paths = {
       // Sheets will be copied from converter output folder
       SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "merged"),
       SHEETS_OUTPUT_FOLDER: app_data.sheets_output_path,
       // Assets will be copied directly from downloaded drive (currently no postprocessing)
-      ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
+      ASSETS_INPUT_FOLDER: path.resolve(_workspace_path, "app_data", "assets"),
       ASSETS_OUTPUT_FOLDER: app_data.assets_output_path,
-
-      TRANSLATIONS_TRANSLATED_STRINGS: translations.translated_strings_path,
-      TRANSLATIONS_SOURCE_STRINGS: translations.source_strings_path,
-      TRANSLATIONS_OUTPUT_FOLDER: translations.output_cache_path,
     };
   }
 
@@ -74,27 +63,18 @@ class AppDataCopy {
 
     // Translations Compilation
     console.log(chalk.yellow("Compiling existing translations"));
-    const {
-      SHEETS_INPUT_FOLDER,
-      TRANSLATIONS_OUTPUT_FOLDER,
-      SHEETS_OUTPUT_FOLDER,
-      ASSETS_INPUT_FOLDER,
-      ASSETS_OUTPUT_FOLDER,
-      TRANSLATIONS_SOURCE_STRINGS,
-    } = this.paths;
-
-    // Translations
-    this.compileTranslationFiles();
+    const TRANSLATIONS_OUTPUT_FOLDER = compileTranslationFiles(this.paths.SHEETS_INPUT_FOLDER);
 
     // App files
+    const { SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER } =
+      this.paths;
+
     console.log(chalk.yellow("Writing app files"));
     writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), SHEETS_OUTPUT_FOLDER);
 
-    if (!this.options.skipAssets) {
-      assetsQualityCheck(ASSETS_INPUT_FOLDER);
-      this.copyAppAssetFiles(ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER);
-      this.generateDataAssetsIndexFile();
-    }
+    assetsQualityCheck(ASSETS_INPUT_FOLDER);
+    this.copyAppAssetFiles(ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER);
+    this.generateDataAssetsIndexFile();
     this.generateAppDataIndexFiles();
     this.writeTranslationTsFiles(
       path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
@@ -107,7 +87,7 @@ class AppDataCopy {
 
     // New translations output
     console.log(chalk.yellow("Generating new translation files"));
-    generateTranslationFiles(SHEETS_INPUT_FOLDER, TRANSLATIONS_SOURCE_STRINGS);
+    generateTranslationFiles(SHEETS_INPUT_FOLDER);
     console.log(chalk.green("Copy Complete"));
   }
 
@@ -207,7 +187,7 @@ class AppDataCopy {
   private generateAppDataIndexFiles() {
     const dataDirs = fs.readdirSync(this.paths.SHEETS_OUTPUT_FOLDER);
     for (const folderName of dataDirs) {
-      const dirPath = `${this.paths.SHEETS_OUTPUT_FOLDER}/${folderName}`;
+      const dirPath = path.resolve(this.paths.SHEETS_OUTPUT_FOLDER, folderName);
       const dataFiles = fs.readdirSync(dirPath);
       const importStatements = [];
       const exportStatements = [];
@@ -260,33 +240,6 @@ class AppDataCopy {
       const dest = path.resolve(targetFolder, fileEntry.relativePath);
       fs.ensureDir(path.dirname(dest));
       fs.copySync(src, dest, { preserveTimestamps: true });
-    }
-  }
-
-  /**
-   * Call translation scripts to also process compiled translations
-   * TODO - ideally this and all above scripts should be called from within app-data workspace instead
-   **/
-  private compileTranslationFiles() {
-    const sourceFolder = this.paths.SHEETS_INPUT_FOLDER;
-    const outputFolder = this.paths.TRANSLATIONS_OUTPUT_FOLDER;
-    const translationsFolder = this.paths.TRANSLATIONS_TRANSLATED_STRINGS;
-
-    let cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
-
-    // apply language filter if exists
-    const languagesFilter = this.activeDeployment.translations?.filter_language_codes;
-    if (languagesFilter) {
-      cmd += ` -f ${languagesFilter.join(",")}`;
-    }
-
-    console.log(chalk.gray(cmd));
-    const { status, stderr } = spawnSync(cmd, {
-      stdio: ["inherit", "inherit", "inherit"],
-      shell: true,
-    });
-    if (status === 1) {
-      logError({ msg1: "Translations failed", msg2: stderr.toString() });
     }
   }
 }
@@ -359,16 +312,6 @@ function generateLocalTsOutput(json: any, flow_type: string) {
  */
 function runPrettierCodeTidy(folderPath: string) {
   const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
-
-/**
- * Call translation scripts to also add a copy of files to translations
- * TODO - ideally this and all above scripts should be called from within app-data workspace instead
- * TODO - could also install as node_module and run as bin
- * */
-function generateTranslationFiles(inputFolder: string, outputFolder: string) {
-  const cmd = `yarn workspace translations start generate -i ${inputFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
