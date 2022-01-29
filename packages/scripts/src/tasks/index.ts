@@ -2,7 +2,7 @@ import android from "./providers/android";
 import file from "./providers/file";
 import gdrive from "./providers/gdrive";
 import template from "./providers/template";
-import translation from "./providers/translation";
+import translate from "./providers/translate";
 import workflow from "./providers/workflow";
 
 /**
@@ -16,7 +16,7 @@ const ALL_TASKS = {
   file,
   gdrive,
   template,
-  translation,
+  translate,
   workflow,
 };
 
