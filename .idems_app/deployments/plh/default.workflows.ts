@@ -10,17 +10,17 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "sheets_dl",
-        function: async ({ config, tasks }) =>
+        function: async ({ tasks, config }) =>
           tasks.gdrive.download({ folderId: config.google_drive.assets_folder_id }),
       },
       {
         name: "sheets_process",
-        function: async ({ workflow, tasks }) =>
+        function: async ({ tasks, workflow }) =>
           tasks.template.process({ inputFolder: workflow.sheets_dl.output }),
       },
       {
         name: "assets_dl",
-        function: async ({ config, tasks }) =>
+        function: async ({ tasks, config }) =>
           tasks.gdrive.download({ folderId: config.google_drive.assets_folder_id }),
       },
     ],
