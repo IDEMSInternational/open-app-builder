@@ -19,3 +19,8 @@ export async function promptInput(message: string) {
   const res = await inquirer.prompt([{ type: "input", message, name }]);
   return res[name];
 }
+export function pad(str: string | number, chars: number) {
+  str = `${str}`;
+  const padChars = Math.max(chars - str.length + 1, 0);
+  return str + new Array(padChars).join(" ");
+}
