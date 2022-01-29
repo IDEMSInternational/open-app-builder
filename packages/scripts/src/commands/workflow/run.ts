@@ -5,7 +5,7 @@ import path from "path";
 import { Command } from "commander";
 import { IDeploymentWorkflows, IWorkflow } from "data-models";
 import ALL_TASKS from "../../tasks";
-import { logError, promptOptions } from "../../utils";
+import { logError, pad, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 import { IDeploymentConfigJson } from "../deployment/set";
 
@@ -29,7 +29,7 @@ export default program
  *  Main Methods
  **************************************************************************/
 
-class WorkflowRunnerCore {
+export class WorkflowRunnerClass {
   tasks = ALL_TASKS;
   workflows: IDeploymentWorkflows = {};
   config: IDeploymentConfigJson;
@@ -85,17 +85,16 @@ class WorkflowRunnerCore {
     this.activeWorkflow = {};
     for (const step of workflow.steps) {
       this.activeWorkflow[step.name] = step;
-      console.log(step.name);
+      console.log(chalk.yellow(`========== ${step.name} ==========`));
       const context = { config: this.config, workflow: this.activeWorkflow, tasks: this.tasks };
       const output = await step.function(context);
       this.activeWorkflow[step.name].output = output;
     }
-    console.log("complete", this.activeWorkflow);
   }
 
   private async promptWorkflowSelect() {
     const options = Object.entries(this.workflows).map(([id, workflow]) => ({
-      name: workflow.label,
+      name: `${chalk.blueBright(pad(id, 15))} ${workflow.label}`,
       value: id,
     }));
     const name = await promptOptions(options, "Select a workflow to run");
@@ -104,7 +103,7 @@ class WorkflowRunnerCore {
 }
 
 /** Create single instance that can be shared (for dependency injection) */
-export const WorkflowRunner = new WorkflowRunnerCore();
+export const WorkflowRunner = new WorkflowRunnerClass();
 
 /***************************************************************************
  *  Logging and Error Handling
@@ -126,7 +125,3 @@ const handleError = (e) => {
 };
 process.on("SIGINT", handleExit);
 process.on("uncaughtException", handleError);
-
-/***************************************************************************
- *  Main Methods
- **************************************************************************/
