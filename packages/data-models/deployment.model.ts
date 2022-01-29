@@ -37,6 +37,7 @@ export interface IDeploymentConfig {
     /** generated output cache. Default `./cache/translations` */
     output_cache_path?: string;
   };
+  workflows?: string[];
 }
 
 /** Minimal example of just required config */
