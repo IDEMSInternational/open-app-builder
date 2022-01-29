@@ -54,9 +54,7 @@ async function syncAppData(options: IProgramOptions) {
   spawnSync(`${scriptsExec} ${convertCmd}`, { stdio: "inherit", shell: true });
   // Copy
   let copyCmd = "app-data copy";
-  if (options.sheetname) {
-    copyCmd += ` --skip-assets`;
-  }
+
   spawnSync(`${scriptsExec} ${copyCmd}`, { stdio: "inherit", shell: true });
 }
 
