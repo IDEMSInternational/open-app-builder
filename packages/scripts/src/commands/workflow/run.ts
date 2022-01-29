@@ -35,14 +35,11 @@ class WorkflowRunnerCore {
   config: IDeploymentConfigJson;
   activeWorkflow = {};
 
-  constructor() {
-    this.config = getActiveDeployment();
-  }
-
   /**
    *
    */
   public async init() {
+    this.config = getActiveDeployment();
     const { workflows: workflowPaths, _workspace_path } = this.config;
     for (const workflowPath of workflowPaths) {
       const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
