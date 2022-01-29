@@ -5,8 +5,8 @@ import { Command } from "commander";
 import appDataCmd from "./app-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
-import generateCmd from "./generate";
 import versionCmd from "./version";
+import workflowCmd from "./workflow";
 import { logWarning, logProgramHelp } from "../utils/logging.utils";
 
 const program = new Command();
@@ -41,6 +41,7 @@ program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
 // program.addCommand(generateCmd);
 program.addCommand(versionCmd);
+program.addCommand(workflowCmd);
 
 if (!process.argv.slice(2).length) {
   logProgramHelp(program);
