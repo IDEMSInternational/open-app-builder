@@ -5,10 +5,6 @@ import { IDeploymentWorkflows } from "data-models/workflow.model";
  ************************************************************************************/
 
 const workflows: IDeploymentWorkflows = {
-  setup: {
-    label: "Setup Deployment",
-    steps: [],
-  },
   sync: {
     label: "Sync All Content",
     steps: [
@@ -19,6 +15,10 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "sync_assets",
         function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_assets" }),
+      },
+      {
+        name: "app_copy",
+        function: async ({ tasks }) => tasks.appData.copy(),
       },
     ],
   },
@@ -58,6 +58,10 @@ const workflows: IDeploymentWorkflows = {
           tasks.gdrive.download({ folderId: config.google_drive.assets_folder_id }),
       },
     ],
+  },
+  setup: {
+    label: "(TODO) - Setup Deployment",
+    steps: [],
   },
 };
 
