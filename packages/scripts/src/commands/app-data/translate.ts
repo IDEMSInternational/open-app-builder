@@ -1,16 +1,18 @@
+import path from "path";
+import fs from "fs-extra";
 import chalk from "chalk";
 import { spawnSync } from "child_process";
-import { logError } from "../../utils";
+import { logError, recursiveFindByExtension } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 
 /**
  * Call translation scripts to also process compiled translations
  **/
-export function compileTranslationFiles(sourceFolder: string) {
+export function compileTranslationFiles(sheetsInputFolder: string) {
   const { filter_language_codes, output_cache_path, translated_strings_path } =
     getActiveDeployment().translations;
 
-  let cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translated_strings_path} -o ${output_cache_path}`;
+  let cmd = `yarn workspace translations start compile -i ${sheetsInputFolder} -t ${translated_strings_path} -o ${output_cache_path}`;
 
   // apply language filter if exists
   if (filter_language_codes) {
@@ -28,11 +30,11 @@ export function compileTranslationFiles(sourceFolder: string) {
   return output_cache_path;
 }
 
-/**
- * Call translation scripts to also add a copy of files to translations
- **/
-export function generateTranslationFiles(sheetsInputFolder: string) {
+export function copyContentForTranslators(sheetsInputFolder: string) {
   const { source_strings_path } = getActiveDeployment().translations;
-  const cmd = `yarn workspace translations start generate -i ${sheetsInputFolder} -o ${source_strings_path}`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
+  const inputFiles = recursiveFindByExtension(sheetsInputFolder, "json");
+  for (const filepath of inputFiles) {
+    const filename = path.basename(filepath);
+    fs.copyFileSync(filepath, `${source_strings_path}/${filename}`);
+  }
 }
