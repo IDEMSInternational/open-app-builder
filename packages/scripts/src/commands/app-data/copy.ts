@@ -18,7 +18,6 @@ import { spawnSync } from "child_process";
 
 import { getActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
-import { compileTranslationFiles, copyContentForTranslators } from "./translate";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -29,7 +28,7 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
 interface IProgramOptions {}
 const program = new Command("copy");
 export default program.description("Copy app data").action(async (options: IProgramOptions) => {
-  new AppDataCopy(options).run();
+  new AppDataCopy().run();
 });
 
 /***************************************************************************************
@@ -44,10 +43,11 @@ class AppDataCopy {
     SHEETS_OUTPUT_FOLDER: "",
     ASSETS_INPUT_FOLDER: "",
     ASSETS_OUTPUT_FOLDER: "",
+    TRANSLATIONS_OUTPUT_FOLDER: "",
   };
   private activeDeployment = getActiveDeployment();
-  constructor(private options: IProgramOptions) {
-    const { app_data, _workspace_path } = this.activeDeployment;
+  constructor() {
+    const { app_data, translations, _workspace_path } = this.activeDeployment;
     this.paths = {
       // Sheets will be copied from converter output folder
       SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "merged"),
@@ -55,17 +55,19 @@ class AppDataCopy {
       // Assets will be copied directly from downloaded drive (currently no postprocessing)
       ASSETS_INPUT_FOLDER: path.resolve(_workspace_path, "app_data", "assets"),
       ASSETS_OUTPUT_FOLDER: app_data.assets_output_path,
+      // Translations output tracked as applied after sheet conversions
+      TRANSLATIONS_OUTPUT_FOLDER: translations.output_cache_path,
     };
   }
 
   public run() {
-    const { SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER } =
-      this.paths;
+    const {
+      SHEETS_OUTPUT_FOLDER,
+      ASSETS_INPUT_FOLDER,
+      ASSETS_OUTPUT_FOLDER,
+      TRANSLATIONS_OUTPUT_FOLDER,
+    } = this.paths;
 
-    // Translations Compilation
-    console.log(chalk.yellow("Compiling existing translations"));
-    const TRANSLATIONS_OUTPUT_FOLDER = compileTranslationFiles(SHEETS_INPUT_FOLDER);
-    copyContentForTranslators(SHEETS_INPUT_FOLDER);
     // App files
     console.log(chalk.yellow("Writing app files"));
     writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), SHEETS_OUTPUT_FOLDER);
