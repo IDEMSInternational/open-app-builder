@@ -18,7 +18,7 @@ import { spawnSync } from "child_process";
 
 import { getActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
-import { compileTranslationFiles, generateTranslationFiles } from "./translate";
+import { compileTranslationFiles, copyContentForTranslators } from "./translate";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -59,16 +59,14 @@ class AppDataCopy {
   }
 
   public run() {
-    // export const ASSETS_OUTPUT_FOLDER = path.join(APP_DATA_PACKAGE_PATH, "assets");
-
-    // Translations Compilation
-    console.log(chalk.yellow("Compiling existing translations"));
-    const TRANSLATIONS_OUTPUT_FOLDER = compileTranslationFiles(this.paths.SHEETS_INPUT_FOLDER);
-
-    // App files
     const { SHEETS_INPUT_FOLDER, SHEETS_OUTPUT_FOLDER, ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER } =
       this.paths;
 
+    // Translations Compilation
+    console.log(chalk.yellow("Compiling existing translations"));
+    const TRANSLATIONS_OUTPUT_FOLDER = compileTranslationFiles(SHEETS_INPUT_FOLDER);
+    copyContentForTranslators(SHEETS_INPUT_FOLDER);
+    // App files
     console.log(chalk.yellow("Writing app files"));
     writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), SHEETS_OUTPUT_FOLDER);
 
@@ -84,10 +82,6 @@ class AppDataCopy {
     console.log(chalk.yellow("Cleaning Output Files"));
     runPrettierCodeTidy(SHEETS_OUTPUT_FOLDER);
     runPrettierCodeTidy(ASSETS_OUTPUT_FOLDER);
-
-    // New translations output
-    console.log(chalk.yellow("Generating new translation files"));
-    generateTranslationFiles(SHEETS_INPUT_FOLDER);
     console.log(chalk.green("Copy Complete"));
   }
 
