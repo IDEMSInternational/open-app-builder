@@ -14,12 +14,11 @@ const workflows: IDeploymentWorkflows = {
     steps: [
       {
         name: "sync_sheets",
-        function: async ({ tasks, config }) =>
-          tasks.workflow.runWorkflow({ name: "sync_templates" }),
+        function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_templates" }),
       },
       {
         name: "sync_assets",
-        function: async ({ tasks, config }) => tasks.workflow.runWorkflow({ name: "sync_assets" }),
+        function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_assets" }),
       },
     ],
   },
