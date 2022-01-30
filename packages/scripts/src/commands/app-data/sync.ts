@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { execSync, spawn, spawnSync } from "child_process";
+import { spawnSync } from "child_process";
 import { Command } from "commander";
 import fs from "fs-extra";
 import { getActiveDeployment } from "../deployment/get";
@@ -52,6 +52,9 @@ async function syncAppData(options: IProgramOptions) {
   // Convert
   let convertCmd = "app-data convert";
   spawnSync(`${scriptsExec} ${convertCmd}`, { stdio: "inherit", shell: true });
+  // Translate
+  let translateCmd = "app-data translate";
+  spawnSync(`${scriptsExec} ${translateCmd}`, { stdio: "inherit", shell: true });
   // Copy
   let copyCmd = "app-data copy";
 

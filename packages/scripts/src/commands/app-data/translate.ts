@@ -4,11 +4,35 @@ import chalk from "chalk";
 import { spawnSync } from "child_process";
 import { logError, recursiveFindByExtension } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
+import { Command } from "commander";
 
+/***************************************************************************************
+ * CLI
+ * @example yarn
+ *************************************************************************************/
+const program = new Command("translate");
+
+interface IProgramOptions {
+  inputFolder: string;
+}
+export default program
+  .description("translate")
+  .option("-i --input-folder <string>", "Sheets Input Folder")
+  .action(async (options: IProgramOptions) => {
+    const { app_data } = getActiveDeployment();
+    const inputFolder =
+      options.inputFolder || path.resolve(app_data.converter_cache_path, "merged");
+    compileTranslationFiles(inputFolder);
+    copyContentForTranslators(inputFolder);
+  });
+
+/***************************************************************************************
+ * Main Methods
+ *************************************************************************************/
 /**
  * Call translation scripts to also process compiled translations
  **/
-export function compileTranslationFiles(sheetsInputFolder: string) {
+function compileTranslationFiles(sheetsInputFolder: string) {
   const { filter_language_codes, output_cache_path, translated_strings_path } =
     getActiveDeployment().translations;
 
@@ -30,7 +54,7 @@ export function compileTranslationFiles(sheetsInputFolder: string) {
   return output_cache_path;
 }
 
-export function copyContentForTranslators(sheetsInputFolder: string) {
+function copyContentForTranslators(sheetsInputFolder: string) {
   const { source_strings_path } = getActiveDeployment().translations;
   const inputFiles = recursiveFindByExtension(sheetsInputFolder, "json");
   for (const filepath of inputFiles) {
