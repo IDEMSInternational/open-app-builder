@@ -36,6 +36,18 @@ const workflows: IDeploymentWorkflows = {
         function: async ({ tasks, workflow }) =>
           tasks.template.process({ inputFolder: workflow.sheets_dl.output }),
       },
+      {
+        name: "translations_apply",
+        function: async ({ tasks, workflow }) =>
+          tasks.translate.apply({ inputFolder: workflow.sheets_process.output }),
+      },
+      {
+        name: "translations_copy",
+        function: async ({ tasks, workflow }) =>
+          tasks.translate.copyContentForTranslators({
+            inputFolder: workflow.sheets_process.output,
+          }),
+      },
     ],
   },
   sync_assets: {
