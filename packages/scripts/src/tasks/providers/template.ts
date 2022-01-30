@@ -16,6 +16,7 @@ const process = (options: { inputFolder: string }) => {
   const cmd = `${processExec} ${args}`;
 
   spawnSync(cmd, { stdio: "inherit", shell: true });
+  return outputFolder;
 };
 
 export default { process };
