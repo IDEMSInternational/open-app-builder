@@ -2,15 +2,13 @@
   "compilerOptions": {
     /* Basic Options */
     "outDir": "dist",
-    "rootDir": ".",
     "typeRoots": ["node_modules/@types"],
     "declaration": true,
     "skipLibCheck": true,
-    "composite": true,
     "lib": ["es2016", "dom"],
     "target": "es5",
     "esModuleInterop": true
   },
-  "include": ["**/*.ts", "index.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["index.ts"],
+  "exclude": ["**/*.d.ts", "dist", "node_modules"]
 }
