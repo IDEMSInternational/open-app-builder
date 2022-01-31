@@ -3,6 +3,7 @@ import { Command } from "commander";
 
 // Commands
 import appDataCmd from "./app-data";
+import compileCmd from "./compile";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import versionCmd from "./version";
@@ -37,6 +38,7 @@ if (mapping) {
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
+program.addCommand(compileCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
 // program.addCommand(generateCmd);
