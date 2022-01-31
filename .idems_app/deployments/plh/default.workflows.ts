@@ -16,10 +16,6 @@ const workflows: IDeploymentWorkflows = {
         name: "sync_assets",
         function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_assets" }),
       },
-      {
-        name: "app_copy",
-        function: async ({ tasks }) => tasks.appData.copy(),
-      },
     ],
   },
   sync_templates: {
@@ -41,11 +37,16 @@ const workflows: IDeploymentWorkflows = {
           tasks.translate.apply({ inputFolder: workflow.sheets_process.output }),
       },
       {
-        name: "translations_copy",
+        name: "translations_copy_for_export",
         function: async ({ tasks, workflow }) =>
           tasks.translate.copyContentForTranslators({
             inputFolder: workflow.sheets_process.output,
           }),
+      },
+      {
+        name: "app_copy_sheets",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.copy({ localSheetsFolder: workflow.translations_apply.output }),
       },
     ],
   },
@@ -56,6 +57,11 @@ const workflows: IDeploymentWorkflows = {
         name: "assets_dl",
         function: async ({ tasks, config }) =>
           tasks.gdrive.download({ folderId: config.google_drive.assets_folder_id }),
+      },
+      {
+        name: "app_copy_assets",
+        function: async ({ tasks, workflow }) =>
+          tasks.appData.copy({ localAssetsFolder: workflow.assets_dl.output }),
       },
     ],
   },
