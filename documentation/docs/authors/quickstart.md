@@ -69,9 +69,3 @@ Additionally, some scripts (plh conversations) use dynamically generated variabl
 
 
 However it may sometimes be good practice to make a pull request for the changed data, if wishing to identify specific things of note to developers (although this might be easier outside of github).
-
-### Changing the GDrive data source
-
-If you are using a different google drive folder (e.g. for testing), it is possible to change where the downloader syncs data from. The way the api works, is by searching for a folder across all folders you have provided authorisation from when signing in to your google account, for a name hardcoded in `scripts\src\gdrive-download\index.ts`
-
-You can change the name of the variable `GOOGLE_DRIVE_TARGET_FOLDER` in that file to specify a different named folder somewhere on your google drive. In the future we should probably expose this as a user variable in the config files.
