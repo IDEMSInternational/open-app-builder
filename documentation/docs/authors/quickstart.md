@@ -52,12 +52,6 @@ You will see a summary of the output showing and details can be found in the ref
 
 You will also see any potential issues flagged with warning messages, and two summary tables - one of data that was `skipped` (ignored) and one of `App Data` that has been passed for processing
 
-### Check for data issues
-
-When data is synced, a preview of the data as processed for the app is put in the `.idems_app/deployments` folder for the active deployment.
-
-You will see several files with a `.ts` extension, representing all flows, collated by flow type. Opening each of these files will also perform a quick check for data consistency issues with the app definitions
-
 ### Viewing changes in the app
 
 Any changes downloaded will also be available to the app when running locally.
@@ -67,7 +61,7 @@ To run the app with your latest downloaded data simply run
 yarn start
 ```
 
-### Comitting changes
+### Committing changes
 
 For content changes, it is not required to commit these to github as any developer will also have access to the same gdrive updates and will usually pull prior to release. 
 
