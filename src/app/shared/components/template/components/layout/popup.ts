@@ -52,7 +52,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
       .popup-content[data-fullscreen] {
         width: 100%;
         height: 100%;
-        max-height: 100%;
+        max-height: 100vh;
         border-radius: 0;
         margin: 0;
       }
