@@ -183,7 +183,14 @@ export class TemplateActionService extends TemplateInstanceService {
         // TODO - trigger emit in shared service to allow individual services/components to subscribe
         // themselves instead of relying on hardcoded calls here
 
-        // Handle a forced rerender
+        /* Emit actions
+            emit:force_restart    // reload app window to home page
+            emit:force_reload     // full re-render of all templates in current page
+            emit:force_reprocess   // recalculate existing rows (not set_variable/set_nested)
+        */
+        if (emit_value === "force_restart") {
+          location.href = "/";
+        }
         if (emit_value === "force_reload") {
           await this.container?.forceRerender(true);
         }
