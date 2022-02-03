@@ -45,7 +45,7 @@ You will see a warning message to connect the unverified app. Use the advanced d
 You can download the PLH folder from Google Drive on demand to view and changes. Simply run:
 
 ```
-yarn scripts app-data-sync
+yarn scripts app-data sync
 ```
 
 You will see a summary of the output showing and details can be found in the referenced log folder:
