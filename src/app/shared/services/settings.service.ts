@@ -11,7 +11,8 @@ export class SettingsService {
   resetApp() {
     this.localStorageService.clear();
     this.dbService.deleteDatabase().then(() => {
-      location.reload();
+      // redirect to home page and reload
+      location.href = "/";
     });
   }
 }
