@@ -1,6 +1,4 @@
-# Intro
-
-# Quickstart
+# Getting Setup
 
 ## Prequisites
 
