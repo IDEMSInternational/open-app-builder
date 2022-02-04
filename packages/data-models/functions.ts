@@ -103,16 +103,6 @@ export function extractDynamicEvaluators(
         return { fullExpression, matchedExpression, type, fieldName };
       }),
     ];
-    // expect the number of match statements to match the total number of @ characters (replace all non-@)
-    // provide a warning if this is not the case
-    const expectedMatchLength = fullExpression.replace(/[^@]/g, "").length;
-    if (allMatches.length !== expectedMatchLength) {
-      console.warn(
-        `Expected ${expectedMatchLength} dynamic matches but recorded ${allMatches.length}`,
-        fullExpression,
-        allMatches
-      );
-    }
   }
   if (allMatches.length > 0) {
     return allMatches;
