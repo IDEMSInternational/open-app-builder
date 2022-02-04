@@ -84,9 +84,9 @@ export class DefaultParser implements AbstractParser {
         delete row[field];
       }
       // rename legacy fields
-      if (LEGACY_FIELD_RENAME.hasOwnProperty(field)) {
-        const replacement = LEGACY_FIELD_RENAME[field];
-        const warning = `[${field}] is deprecated and should be replaced with [${replacement}]`;
+      if (DEPRECATED_FIELD_NAMES.hasOwnProperty(field)) {
+        const replacement = DEPRECATED_FIELD_NAMES[field];
+        const warning = `-- ${flow.flow_name} --\n[${field}] is deprecated and should be replaced with [${replacement}]`;
         console.warn(chalk.gray(warning));
         row[replacement] = JSON.parse(JSON.stringify(row[field]));
         delete row[field];
@@ -235,6 +235,6 @@ function throwRowParseError(error: Error, row: IRowData) {
   throw error;
 }
 
-const LEGACY_FIELD_RENAME = {
+const DEPRECATED_FIELD_NAMES = {
   click_action_list: "action_list",
 };
