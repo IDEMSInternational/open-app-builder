@@ -11,6 +11,7 @@ import {
   isPast,
   setISODay,
 } from "date-fns";
+import { extractDynamicFields } from "packages/data-models";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
@@ -55,6 +56,14 @@ export class CampaignService {
     private templateTranslateService: TemplateTranslateService,
     private injector: Injector
   ) {}
+
+  /**
+   * make a dynamic call to TemplateVariablesService as it also has handling
+   * for @campaigns which would otherwise result in cyclic dependency in constructor
+   */
+  get templateVariablesService() {
+    return this.injector.get(TemplateVariablesService);
+  }
 
   public async init() {
     await this.hackDeactivateAllNotifications();
@@ -133,15 +142,13 @@ export class CampaignService {
    * Utilise template services to process campaign actions
    */
   public async triggerRowActions(actions: FlowTypes.TemplateRowAction[] = []) {
-    // make a dynamic call to TemplateVariablesService as it also has handling
-    // for @campaigns which would otherwise result in cyclic dependency in constructor
-    const templateVariablesService = this.injector.get(TemplateVariablesService);
-
     // Process any dynamic variables that might be present in args
     const parsedActions = [];
     for (const action of actions) {
       action.args = await Promise.all(
-        action.args.map(async (arg) => await templateVariablesService.evaluateConditionString(arg))
+        action.args.map(
+          async (arg) => await this.templateVariablesService.evaluateConditionString(arg)
+        )
       );
       parsedActions.push(action);
     }
@@ -227,20 +234,37 @@ export class CampaignService {
     const notification_schedule = this.evaluateCampaignNotification(schedule);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
-    let { title, text } = row;
+    const parsedRow = await this.hackParseDynamicRow(row);
+    let { title, text } = parsedRow;
     let { _schedule_at } = notification_schedule;
 
-    title = this.templateTranslateService.translateValue(title || NOTIFICATION_DEFAULTS.title);
-    text = this.templateTranslateService.translateValue(text || NOTIFICATION_DEFAULTS.text);
+    title = title || NOTIFICATION_DEFAULTS.title;
+    text = text || NOTIFICATION_DEFAULTS.text;
+
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
       title,
-      extra: { ...row, campaign_id },
-      id: stringToIntegerHash(row.id),
+      extra: { ...parsedRow, campaign_id },
+      id: stringToIntegerHash(parsedRow.id),
     };
     await this.localNotificationService.scheduleNotification(notificationSchedule);
     return notificationSchedule;
+  }
+
+  /**
+   * Campaign rows are read from datalists which are currently not evaluated for dynamic content
+   * This workaround forces the manual check for any dynamic content,
+   */
+  private async hackParseDynamicRow(row: FlowTypes.Campaign_listRow) {
+    const translatedRow = this.templateTranslateService.translateRow(row as any);
+    // Continue processing full row
+    translatedRow._dynamicFields = extractDynamicFields(translatedRow);
+    const parsedRow = await this.templateVariablesService.evaluatePLHData(translatedRow, {
+      row: translatedRow,
+      templateRowMap: {},
+    });
+    return parsedRow as FlowTypes.Campaign_listRow;
   }
 
   /** Deactivate all notifications for a given campaign */
