@@ -257,6 +257,7 @@ export class CampaignService {
    * This workaround forces the manual check for any dynamic content,
    */
   private async hackParseDynamicRow(row: FlowTypes.Campaign_listRow) {
+    // process translations first as these are made with dynamic content in place (e.g. "hello @name")
     const translatedRow = this.templateTranslateService.translateRow(row as any);
     // Continue processing full row
     translatedRow._dynamicFields = extractDynamicFields(translatedRow);
