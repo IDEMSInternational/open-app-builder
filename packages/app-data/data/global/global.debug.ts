@@ -3,87 +3,6 @@ import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",
-    flow_name: "debug_set_global_1",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "debug_variable_1",
-        value: "Value of the first debug variable",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_small_issues.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "debug_some_globals",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "debug_item_1",
-        value: "Item 1 text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "debug_item_2",
-        value: "Item 2 text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "debug_item_3",
-        value: "Item 3 text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "debug_full_stop_golbals",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "global_full_stop",
-        value: "Global with a full stop",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_full_stop",
-        value: "Field with a full stop",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_full_stop_after_var.xlsx",
-  },
-  {
-    flow_type: "global",
     flow_name: "example_lang_global",
     status: "released",
     flow_subtype: "debug",
@@ -184,6 +103,87 @@ const global: FlowTypes.Global[] = [
       },
     ],
     _xlsxPath: "quality_assurance/example_templates/example_global_field.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "debug_set_global_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "debug_variable_1",
+        value: "Value of the first debug variable",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_small_issues.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "debug_some_globals",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "debug_item_1",
+        value: "Item 1 text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "debug_item_2",
+        value: "Item 2 text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "debug_item_3",
+        value: "Item 3 text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "debug_full_stop_golbals",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "global_full_stop",
+        value: "Global with a full stop",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_full_stop",
+        value: "Field with a full stop",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_full_stop_after_var.xlsx",
   },
 ];
 export default global;

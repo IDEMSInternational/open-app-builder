@@ -36,6 +36,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Help** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Help** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Help** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "my_tips",
@@ -66,6 +91,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**My Tips** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**My Tips** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**My Tips** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "essential_tools",
@@ -96,6 +146,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Essential Tools** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Essential Tools** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Essential Tools** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "covid",
@@ -114,6 +189,67 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Coping with @global.covid** in the @global.parent_centre",
+        _dynamicFields: {
+          title: [
+            {
+              fullExpression: "Coping with @global.covid",
+              matchedExpression: "@global.covid",
+              type: "global",
+              fieldName: "covid",
+            },
+          ],
+          _translatedFields: {
+            title: {
+              eng: [
+                {
+                  fullExpression: "Coping with @global.covid",
+                  matchedExpression: "@global.covid",
+                  type: "global",
+                  fieldName: "covid",
+                },
+              ],
+            },
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Coping with @global.covid** in the @global.parent_centre",
+                  matchedExpression: "@global.covid",
+                  type: "global",
+                  fieldName: "covid",
+                },
+                {
+                  fullExpression: "**Coping with @global.covid** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Coping with @global.covid** in the @global.parent_centre",
+              matchedExpression: "@global.covid",
+              type: "global",
+              fieldName: "covid",
+            },
+            {
+              fullExpression: "**Coping with @global.covid** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.covid": [
+            "title",
+            "_translatedFields.title.eng",
+            "_translatedFields.location_text.eng",
+            "location_text",
+          ],
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "customisation",
@@ -156,6 +292,67 @@ const data_list: FlowTypes.Data_list[] = [
         },
         title_2: "Customise Again",
         location_text: "**Customise @global.parent_app** in the @global.parent_centre",
+        _dynamicFields: {
+          title: [
+            {
+              fullExpression: "Customise @global.parent_app",
+              matchedExpression: "@global.parent_app",
+              type: "global",
+              fieldName: "parent_app",
+            },
+          ],
+          _translatedFields: {
+            title: {
+              eng: [
+                {
+                  fullExpression: "Customise @global.parent_app",
+                  matchedExpression: "@global.parent_app",
+                  type: "global",
+                  fieldName: "parent_app",
+                },
+              ],
+            },
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Customise @global.parent_app** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_app",
+                  type: "global",
+                  fieldName: "parent_app",
+                },
+                {
+                  fullExpression: "**Customise @global.parent_app** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Customise @global.parent_app** in the @global.parent_centre",
+              matchedExpression: "@global.parent_app",
+              type: "global",
+              fieldName: "parent_app",
+            },
+            {
+              fullExpression: "**Customise @global.parent_app** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_app": [
+            "title",
+            "_translatedFields.title.eng",
+            "_translatedFields.location_text.eng",
+            "location_text",
+          ],
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "relax_and_activities",
@@ -186,6 +383,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "under **Relax & Activities** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "under **Relax & Activities** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "under **Relax & Activities** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "support_contacts",
@@ -216,6 +438,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Support Contacts** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Support Contacts** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Support Contacts** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "evidence_base",
@@ -246,6 +493,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Evidence Base** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Evidence Base** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Evidence Base** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "technical_support",
@@ -276,6 +548,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Technical Support** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Technical Support** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Technical Support** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "message_archive",
@@ -306,6 +603,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Message Archive** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Message Archive** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Message Archive** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
       {
         id: "bereavement",
@@ -324,6 +646,31 @@ const data_list: FlowTypes.Data_list[] = [
           },
         },
         location_text: "**Coping with grief** in the @global.parent_centre",
+        _dynamicFields: {
+          _translatedFields: {
+            location_text: {
+              eng: [
+                {
+                  fullExpression: "**Coping with grief** in the @global.parent_centre",
+                  matchedExpression: "@global.parent_centre",
+                  type: "global",
+                  fieldName: "parent_centre",
+                },
+              ],
+            },
+          },
+          location_text: [
+            {
+              fullExpression: "**Coping with grief** in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["_translatedFields.location_text.eng", "location_text"],
+        },
       },
     ],
     _xlsxPath: "data/parent_centre_data_list.xlsx",
@@ -1164,6 +1511,19 @@ const data_list: FlowTypes.Data_list[] = [
         in_text_title: "**Welcome and Self-Care** workshop",
         short_title: "Self-Care",
         tools: "How to do self-care",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_5",
+              matchedExpression: "@data.relax.relax_5",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_5": ["relax_data"],
+        },
       },
       {
         id: "w_1on1",
@@ -1216,6 +1576,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**One-on-One Time** workshop",
         tools: "How to spend one-on-one time",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_2",
+              matchedExpression: "@data.relax.relax_2",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.co_chef",
+              matchedExpression: "@data.something_fun.co_chef",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_2": ["relax_data"],
+          "@data.something_fun.co_chef": ["something_fun_data"],
+        },
       },
       {
         id: "w_praise",
@@ -1268,6 +1650,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Praise** workshop",
         tools: "How to praise",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_3",
+              matchedExpression: "@data.relax.relax_3",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.reflect_positive",
+              matchedExpression: "@data.something_fun.reflect_positive",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_3": ["relax_data"],
+          "@data.something_fun.reflect_positive": ["something_fun_data"],
+        },
       },
       {
         id: "w_instruct",
@@ -1320,6 +1724,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Positive Instructions** workshop",
         tools: "How to give positive instructions",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_4",
+              matchedExpression: "@data.relax.relax_4",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.dance_moves",
+              matchedExpression: "@data.something_fun.dance_moves",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_4": ["relax_data"],
+          "@data.something_fun.dance_moves": ["something_fun_data"],
+        },
       },
       {
         id: "w_stress",
@@ -1372,6 +1798,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Managing Stress** workshop",
         tools: "How to manage stress",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_7",
+              matchedExpression: "@data.relax.relax_7",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.check_in_chat",
+              matchedExpression: "@data.something_fun.check_in_chat",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_7": ["relax_data"],
+          "@data.something_fun.check_in_chat": ["something_fun_data"],
+        },
       },
       {
         id: "w_money",
@@ -1424,6 +1872,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Family Budgets** workshop",
         tools: "How to budget & save",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_8",
+              matchedExpression: "@data.relax.relax_8",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.dream_travel",
+              matchedExpression: "@data.something_fun.dream_travel",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_8": ["relax_data"],
+          "@data.something_fun.dream_travel": ["something_fun_data"],
+        },
       },
       {
         id: "w_rules",
@@ -1476,6 +1946,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Rules** workshop",
         tools: "How to create rules",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_9",
+              matchedExpression: "@data.relax.relax_9",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.famous_party",
+              matchedExpression: "@data.something_fun.famous_party",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_9": ["relax_data"],
+          "@data.something_fun.famous_party": ["something_fun_data"],
+        },
       },
       {
         id: "w_consequence",
@@ -1528,6 +2020,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Calm Consequences** workshop",
         tools: "How to give calm consequences",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_10",
+              matchedExpression: "@data.relax.relax_10",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.two_truths",
+              matchedExpression: "@data.something_fun.two_truths",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_10": ["relax_data"],
+          "@data.something_fun.two_truths": ["something_fun_data"],
+        },
       },
       {
         id: "w_solve",
@@ -1580,6 +2094,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Problem Solving** workshop",
         tools: "How to solve problems",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_11",
+              matchedExpression: "@data.relax.relax_11",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.mirror",
+              matchedExpression: "@data.something_fun.mirror",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_11": ["relax_data"],
+          "@data.something_fun.mirror": ["something_fun_data"],
+        },
       },
       {
         id: "w_safe",
@@ -1632,6 +2168,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Teen Safety** workshop",
         tools: "How to keep your teen safe",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_12",
+              matchedExpression: "@data.relax.relax_12",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.time_machine",
+              matchedExpression: "@data.something_fun.time_machine",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_12": ["relax_data"],
+          "@data.something_fun.time_machine": ["something_fun_data"],
+        },
       },
       {
         id: "w_crisis",
@@ -1684,6 +2242,28 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Dealing with Crisis** workshop",
         tools: "How to deal with crisis",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_13",
+              matchedExpression: "@data.relax.relax_13",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+          something_fun_data: [
+            {
+              fullExpression: "@data.something_fun.superpowers",
+              matchedExpression: "@data.something_fun.superpowers",
+              type: "data",
+              fieldName: "something_fun",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_13": ["relax_data"],
+          "@data.something_fun.superpowers": ["something_fun_data"],
+        },
       },
       {
         id: "w_celebrate",
@@ -1735,6 +2315,19 @@ const data_list: FlowTypes.Data_list[] = [
         },
         in_text_title: "**Celebration and Next Steps** workshop",
         tools: "How to support each other",
+        _dynamicFields: {
+          relax_data: [
+            {
+              fullExpression: "@data.relax.relax_14",
+              matchedExpression: "@data.relax.relax_14",
+              type: "data",
+              fieldName: "relax",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.relax.relax_14": ["relax_data"],
+        },
       },
     ],
     _xlsxPath: "data/workshop_data_list.xlsx",
@@ -1813,6 +2406,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Relax** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Relax** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "treat_yourself",
@@ -1882,6 +2525,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Treat yourself well** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Treat yourself well** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "praise_yourself",
@@ -1951,6 +2644,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Praise yourself** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Praise yourself** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "spend_time",
@@ -2020,6 +2763,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**One-on-one time** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**One-on-one time** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "praise_teen",
@@ -2089,6 +2882,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Praise your teen** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Praise your teen** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "instruct_positively",
@@ -2158,6 +3001,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Get positive** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Get positive** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "breathe",
@@ -2227,6 +3120,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Breathe not yell** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Breathe not yell** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "money",
@@ -2296,6 +3239,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Good money choice** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Good money choice** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "consequence",
@@ -2363,6 +3356,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Calm consequence** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Calm consequence** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
       {
         id: "safe",
@@ -2430,6 +3473,56 @@ const data_list: FlowTypes.Data_list[] = [
         mark_text:
           "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
         short_mark_text: "Did it? Tap it!",
+        _dynamicFields: {
+          _translatedFields: {
+            in_text_title: {
+              eng: [
+                {
+                  fullExpression: "**Safe** @global.parent_point",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+            mark_text: {
+              eng: [
+                {
+                  fullExpression:
+                    "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
+                  matchedExpression: "@global.parent_point",
+                  type: "global",
+                  fieldName: "parent_point",
+                },
+              ],
+            },
+          },
+          in_text_title: [
+            {
+              fullExpression: "**Safe** @global.parent_point",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+          mark_text: [
+            {
+              fullExpression:
+                "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": [
+            "_translatedFields.in_text_title.eng",
+            "_translatedFields.mark_text.eng",
+            "in_text_title",
+            "mark_text",
+          ],
+        },
       },
     ],
     _xlsxPath: "data/habit_data_list.xlsx",
