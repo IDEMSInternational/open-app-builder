@@ -235,6 +235,7 @@ export class CampaignService {
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
+      largeBody: text,
       title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
