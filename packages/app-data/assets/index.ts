@@ -1303,38 +1303,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 42.9,
     md5Checksum: "f05f8934b9b7f5565c2d9a589086de96",
   },
-  "plh_images/orli_upload_folder/Changing negative to positive_image.svg": {
-    size_kb: 3.3,
-    md5Checksum: "17da7fe8b1c7e89fe276d49bb4401264",
-  },
-  "plh_images/orli_upload_folder/Coping with COVID_image.svg": {
-    size_kb: 6.1,
-    md5Checksum: "50366ba83be0d3bbdce07a43a94b4abc",
-  },
-  "plh_images/orli_upload_folder/covid and berevment-05.svg": {
-    size_kb: 7.5,
-    md5Checksum: "35ab19ee5f3a3a5342d78b27a18ee590",
-  },
-  "plh_images/orli_upload_folder/Help yourself cope.svg": {
-    size_kb: 3.9,
-    md5Checksum: "16ff8218ee6023f4e390a17219019d96",
-  },
-  "plh_images/orli_upload_folder/Help yourself cope_image.svg": {
-    size_kb: 4.5,
-    md5Checksum: "dc6214c976df912b76fe3fa1331862f0",
-  },
-  "plh_images/orli_upload_folder/How to talk to your teen_image.svg": {
-    size_kb: 6,
-    md5Checksum: "bc05d895bd500c636a2deacdc1f975b3",
-  },
-  "plh_images/orli_upload_folder/Practical steps_image.svg": {
-    size_kb: 6.8,
-    md5Checksum: "825f6d3d64262bb41abd986094828da6",
-  },
-  "plh_images/orli_upload_folder/Steps to deal with news_image.svg": {
-    size_kb: 3,
-    md5Checksum: "5d467475d3142f2a795f3fe91556e493",
-  },
   "plh_images/parent_centre/ask.svg": {
     size_kb: 1,
     md5Checksum: "5812093b7abe8ec62a0ec0b1e3f80451",
@@ -1358,10 +1326,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/parent_centre/covid/change_thoughts.svg": {
     size_kb: 3.3,
     md5Checksum: "17da7fe8b1c7e89fe276d49bb4401264",
-  },
-  "plh_images/parent_centre/covid/Copy of covid and berevment-05.svg": {
-    size_kb: 7.5,
-    md5Checksum: "35ab19ee5f3a3a5342d78b27a18ee590",
   },
   "plh_images/parent_centre/covid/deal_with_news.svg": {
     size_kb: 3,
