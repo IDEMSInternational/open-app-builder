@@ -109,7 +109,7 @@
   },
   {
     "SourceText": "Value of the first debug variable",
-    "text": "Valor de la primera variable depurativa"
+    "text": "Valor de la primera variable debug"
   },  
   {
     "SourceText": "Title: @global.debug_variable_1",
