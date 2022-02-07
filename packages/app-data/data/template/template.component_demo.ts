@@ -10,19 +10,11 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "button_default",
-        value: "Default",
-        _translations: {
-          value: {},
-        },
         _nested_name: "button_default",
       },
       {
         type: "round_button",
         name: "button_par_3_1",
-        value: "Style  parameter information",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "information",
         },
@@ -31,10 +23,6 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "button_par_3_2",
-        value: "Style parameter navigation",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "navigation",
         },
@@ -43,10 +31,6 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "button_par_3_3",
-        value: "Style parameter yellow",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "yellow",
         },
@@ -55,10 +39,6 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "button_par_3_4",
-        value: "Style parameter orange",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "orange",
         },
@@ -67,10 +47,6 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "button_par_3_5",
-        value: "Style parameter dark orange",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "dark_orange",
         },
@@ -79,14 +55,34 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "button_par_3_6",
-        value: "Style parameter home screen",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "home_screen",
         },
         _nested_name: "button_par_3_6",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_7",
+        parameter_list: {
+          style: "orange home_screen",
+        },
+        _nested_name: "button_par_3_7",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_8",
+        parameter_list: {
+          style: "dark_orange",
+        },
+        _nested_name: "button_par_3_8",
+      },
+      {
+        type: "round_button",
+        name: "button_par_3_9",
+        parameter_list: {
+          style: "blue",
+        },
+        _nested_name: "button_par_3_9",
       },
     ],
     _xlsxPath: "quality_assurance/components_demo/component_round_button .xlsx",

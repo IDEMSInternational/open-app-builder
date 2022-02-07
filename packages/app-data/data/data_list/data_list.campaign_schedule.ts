@@ -4,7 +4,82 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "campaign_schedule",
+    flow_name: "nf_schedule_in_week_messages",
+    status: "released",
+    rows: [
+      {
+        id: "nf_weekly_workshops",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        time: {
+          hour: 19,
+          minute: 0,
+        },
+        delay: {
+          days: 0,
+        },
+      },
+      {
+        id: "nf_parent_points",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+        delay: {
+          days: 0,
+        },
+      },
+      {
+        id: "nf_parent_centre",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        time: {
+          hour: 7,
+          minute: 0,
+        },
+        delay: {
+          days: 0,
+        },
+      },
+    ],
+    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_schedule",
+    flow_name: "nf_schedule_inactive",
     status: "released",
     rows: [
       {
@@ -48,7 +123,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "campaigns/notification_campaigns.xlsx",
+    _xlsxPath: "campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -383,6 +458,37 @@ const data_list: FlowTypes.Data_list[] = [
         time: {
           hour: 18,
           minute: 0,
+        },
+      },
+      {
+        id: "debug_actions_2",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:FALSE",
+          },
+        ],
+        time: {
+          hour: 18,
+          minute: 1,
         },
       },
     ],
