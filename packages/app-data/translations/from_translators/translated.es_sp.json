@@ -108,16 +108,16 @@
     "type": "template"
   },
   {
-    "SourceText": "New title: @data.language.example_lang_2.title",
-    "text": "Título nuevo: @data.language.example_lang_2.title",
-    "type": "template",
-    "note": "The string @data.language.example_lang_2.title should not be translated."
+    "SourceText": "Value of the first debug variable",
+    "text": "Valor de la primera variable depurativa"
+  },  
+  {
+    "SourceText": "Title: @global.debug_variable_1",
+    "text": "Título: @global.debug_variable_1"
   },
   {
-    "SourceText": "New text: @data.language.example_lang_2.text",
-    "text": "Texto nuevo: @data.language.example_lang_2.text",
-    "type": "template",
-    "note": "The string @data.language.example_lang_2.text should not be translated."
+    "SourceText": "Text: @global.debug_variable_1",
+    "text": "Texto: @global.debug_variable_1"
   },
   {
     "SourceText": "This is a global variable set in a global",
