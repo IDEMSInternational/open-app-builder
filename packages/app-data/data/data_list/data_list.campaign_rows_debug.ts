@@ -10,13 +10,13 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "debug_daily_1",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_1.sent", true],
-            _raw: "set_field: debug_daily_1.sent: true",
-            _cleaned: "click | set_field: debug_daily_1.sent: true",
+            _raw: "sent | set_field: debug_daily_1.sent: true",
+            _cleaned: "sent | set_field: debug_daily_1.sent: true",
           },
         ],
         priority: 4,
@@ -38,13 +38,13 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_daily_2",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_2.sent", true],
-            _raw: "set_field: debug_daily_2.sent: true",
-            _cleaned: "click | set_field: debug_daily_2.sent: true",
+            _raw: "sent | set_field: debug_daily_2.sent: true",
+            _cleaned: "sent | set_field: debug_daily_2.sent: true",
           },
         ],
         priority: 3,
@@ -66,13 +66,13 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_daily_3",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_3.sent", true],
-            _raw: "set_field: debug_daily_3.sent: true",
-            _cleaned: "click | set_field: debug_daily_3.sent: true",
+            _raw: "sent | set_field: debug_daily_3.sent: true",
+            _cleaned: "sent | set_field: debug_daily_3.sent: true",
           },
         ],
         priority: 2,
@@ -89,32 +89,32 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         campaign_list: ["debug_daily"],
-        text: "Text 3",
-        title: "Debug Notification 3",
+        text: "Text: @global.debug_variable_1",
+        title: "Title: @global.debug_variable_1",
       },
       {
         id: "debug_daily_4a",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_1.sent", false],
-            _raw: "set_field: debug_daily_1.sent: false",
-            _cleaned: "click | set_field: debug_daily_1.sent: false",
+            _raw: "sent | set_field: debug_daily_1.sent: false",
+            _cleaned: "sent | set_field: debug_daily_1.sent: false",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_2.sent", false],
-            _raw: "set_field: debug_daily_2.sent: false",
-            _cleaned: "click | set_field: debug_daily_2.sent: false",
+            _raw: "sent | set_field: debug_daily_2.sent: false",
+            _cleaned: "sent | set_field: debug_daily_2.sent: false",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_3.sent", false],
-            _raw: "set_field: debug_daily_3.sent: false",
-            _cleaned: "click | set_field: debug_daily_3.sent: false",
+            _raw: "sent | set_field: debug_daily_3.sent: false",
+            _cleaned: "sent | set_field: debug_daily_3.sent: false",
           },
         ],
         priority: 1,
@@ -124,27 +124,27 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_daily_4b",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_1.sent", false],
-            _raw: "set_field: debug_daily_1.sent: false",
-            _cleaned: "click | set_field: debug_daily_1.sent: false",
+            _raw: "sent | set_field: debug_daily_1.sent: false",
+            _cleaned: "sent | set_field: debug_daily_1.sent: false",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_2.sent", false],
-            _raw: "set_field: debug_daily_2.sent: false",
-            _cleaned: "click | set_field: debug_daily_2.sent: false",
+            _raw: "sent | set_field: debug_daily_2.sent: false",
+            _cleaned: "sent | set_field: debug_daily_2.sent: false",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_3.sent", false],
-            _raw: "set_field: debug_daily_3.sent: false",
-            _cleaned: "click | set_field: debug_daily_3.sent: false",
+            _raw: "sent | set_field: debug_daily_3.sent: false",
+            _cleaned: "sent | set_field: debug_daily_3.sent: false",
           },
         ],
         priority: 1,
@@ -154,27 +154,27 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_daily_4c",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_1.sent", false],
-            _raw: "set_field: debug_daily_1.sent: false",
-            _cleaned: "click | set_field: debug_daily_1.sent: false",
+            _raw: "sent | set_field: debug_daily_1.sent: false",
+            _cleaned: "sent | set_field: debug_daily_1.sent: false",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_2.sent", false],
-            _raw: "set_field: debug_daily_2.sent: false",
-            _cleaned: "click | set_field: debug_daily_2.sent: false",
+            _raw: "sent | set_field: debug_daily_2.sent: false",
+            _cleaned: "sent | set_field: debug_daily_2.sent: false",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_daily_3.sent", false],
-            _raw: "set_field: debug_daily_3.sent: false",
-            _cleaned: "click | set_field: debug_daily_3.sent: false",
+            _raw: "sent | set_field: debug_daily_3.sent: false",
+            _cleaned: "sent | set_field: debug_daily_3.sent: false",
           },
         ],
         priority: 1,
@@ -229,20 +229,20 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "debug_actions_1",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_field", "value_set_through_notification_action"],
-            _raw: "set_field: debug_field : value_set_through_notification_action",
-            _cleaned: "click | set_field: debug_field : value_set_through_notification_action",
+            _raw: "sent | set_field: debug_field : value_set_through_notification_action",
+            _cleaned: "sent | set_field: debug_field : value_set_through_notification_action",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_actions_1.sent", true],
-            _raw: "set_field: debug_actions_1.sent : true",
-            _cleaned: "click | set_field: debug_actions_1.sent : true",
+            _raw: "sent | set_field: debug_actions_1.sent : true",
+            _cleaned: "sent | set_field: debug_actions_1.sent : true",
           },
         ],
         priority: 1,
@@ -253,20 +253,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_actions_2",
-        click_action_list: [
+        action_list: [
           {
             trigger: "click",
             action_id: "pop_up",
             args: ["example_text"],
-            _raw: "pop_up: example_text",
+            _raw: "click | pop_up: example_text",
             _cleaned: "click | pop_up: example_text",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_actions_2.sent", true],
-            _raw: "set_field: debug_actions_2.sent : true",
-            _cleaned: "click | set_field: debug_actions_2.sent : true",
+            _raw: "sent | set_field: debug_actions_2.sent : true",
+            _cleaned: "sent | set_field: debug_actions_2.sent : true",
           },
         ],
         priority: 2,
@@ -289,7 +289,7 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_actions_3",
-        click_action_list: [
+        action_list: [
           {
             trigger: "click",
             action_id: "go_to",
@@ -298,18 +298,18 @@ const data_list: FlowTypes.Data_list[] = [
             _cleaned: "click | go_to: @data.something_fun.co_chef.text_template",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_actions_1.sent", false],
-            _raw: "set_field: debug_actions_1.sent: FALSE",
-            _cleaned: "click | set_field: debug_actions_1.sent: FALSE",
+            _raw: "sent | set_field: debug_actions_1.sent: FALSE",
+            _cleaned: "sent | set_field: debug_actions_1.sent: FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_actions_2.sent", false],
-            _raw: "set_field: debug_actions_2.sent: FALSE",
-            _cleaned: "click | set_field: debug_actions_2.sent: FALSE",
+            _raw: "sent | set_field: debug_actions_2.sent: FALSE",
+            _cleaned: "sent | set_field: debug_actions_2.sent: FALSE",
           },
         ],
         priority: 3,
@@ -341,13 +341,13 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "debug_calc_1",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_1", false],
-            _raw: "set_field: debug_calc_1 : FALSE",
-            _cleaned: "click | set_field: debug_calc_1 : FALSE",
+            _raw: "sent | set_field: debug_calc_1 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_1 : FALSE",
           },
         ],
         priority: -1,
@@ -355,20 +355,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_calc_2",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_2", false],
-            _raw: "set_field: debug_calc_2 : FALSE",
-            _cleaned: "click | set_field: debug_calc_2 : FALSE",
+            _raw: "sent | set_field: debug_calc_2 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_2 : FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_2.sent", true],
-            _raw: "set_field: debug_calc_2.sent : TRUE",
-            _cleaned: "click | set_field: debug_calc_2.sent : TRUE",
+            _raw: "sent | set_field: debug_calc_2.sent : TRUE",
+            _cleaned: "sent | set_field: debug_calc_2.sent : TRUE",
           },
         ],
         priority: 1,
@@ -408,20 +408,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_calc_3",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_3", false],
-            _raw: "set_field: debug_calc_3 : FALSE",
-            _cleaned: "click | set_field: debug_calc_3 : FALSE",
+            _raw: "sent | set_field: debug_calc_3 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_3 : FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_3.sent", true],
-            _raw: "set_field: debug_calc_3.sent : TRUE",
-            _cleaned: "click | set_field: debug_calc_3.sent : TRUE",
+            _raw: "sent | set_field: debug_calc_3.sent : TRUE",
+            _cleaned: "sent | set_field: debug_calc_3.sent : TRUE",
           },
         ],
         priority: 2,
@@ -461,20 +461,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_calc_4",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_4", false],
-            _raw: "set_field: debug_calc_4 : FALSE",
-            _cleaned: "click | set_field: debug_calc_4 : FALSE",
+            _raw: "sent | set_field: debug_calc_4 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_4 : FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_4.sent", true],
-            _raw: "set_field: debug_calc_4.sent : TRUE",
-            _cleaned: "click | set_field: debug_calc_4.sent : TRUE",
+            _raw: "sent | set_field: debug_calc_4.sent : TRUE",
+            _cleaned: "sent | set_field: debug_calc_4.sent : TRUE",
           },
         ],
         priority: 3,
@@ -514,20 +514,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_calc_5",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_5", false],
-            _raw: "set_field: debug_calc_5 : FALSE",
-            _cleaned: "click | set_field: debug_calc_5 : FALSE",
+            _raw: "sent | set_field: debug_calc_5 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_5 : FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_5.sent", true],
-            _raw: "set_field: debug_calc_5.sent : TRUE",
-            _cleaned: "click | set_field: debug_calc_5.sent : TRUE",
+            _raw: "sent | set_field: debug_calc_5.sent : TRUE",
+            _cleaned: "sent | set_field: debug_calc_5.sent : TRUE",
           },
         ],
         priority: 4,
@@ -567,20 +567,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_calc_6",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_6", false],
-            _raw: "set_field: debug_calc_6 : FALSE",
-            _cleaned: "click | set_field: debug_calc_6 : FALSE",
+            _raw: "sent | set_field: debug_calc_6 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_6 : FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_6.sent", true],
-            _raw: "set_field: debug_calc_6.sent : TRUE",
-            _cleaned: "click | set_field: debug_calc_6.sent : TRUE",
+            _raw: "sent | set_field: debug_calc_6.sent : TRUE",
+            _cleaned: "sent | set_field: debug_calc_6.sent : TRUE",
           },
         ],
         priority: 5,
@@ -621,20 +621,20 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "debug_calc_7",
-        click_action_list: [
+        action_list: [
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_7", false],
-            _raw: "set_field: debug_calc_7 : FALSE",
-            _cleaned: "click | set_field: debug_calc_7 : FALSE",
+            _raw: "sent | set_field: debug_calc_7 : FALSE",
+            _cleaned: "sent | set_field: debug_calc_7 : FALSE",
           },
           {
-            trigger: "click",
+            trigger: "sent",
             action_id: "set_field",
             args: ["debug_calc_7.sent", true],
-            _raw: "set_field: debug_calc_7.sent : TRUE",
-            _cleaned: "click | set_field: debug_calc_7.sent : TRUE",
+            _raw: "sent | set_field: debug_calc_7.sent : TRUE",
+            _cleaned: "sent | set_field: debug_calc_7.sent : TRUE",
           },
         ],
         priority: 5,
