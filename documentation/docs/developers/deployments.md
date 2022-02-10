@@ -29,12 +29,12 @@ const config: IDeploymentConfig = {
 export default config
 ```
 
-For full configuration options see the included `IDeploymentConfig` type definition 
+For full configuration options see the included `IDeploymentConfig` type definition. 
 
 ### Google Drive Folders
-The deployment configuration requires IDs for two created google drive folders, one for template sheets and one for global assets. 
+The deployment configuration requires IDs for two created Google Drive folders, one for template sheets and one for global assets. 
 
-The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive
+The folders should again be named without spaces or special characters, and once created their unique IDs can be found by looking at the end of the URL bar when navigating inside the folder on Google Drive.
 
 E.g. `1ja6lzbphZaxnVv5mpQ4YHnn2qmxMiEBW`
 
@@ -55,7 +55,7 @@ export default config
 ```
 
 !!! Tip
-    When using multiple configs it is recommended to have a default config that does not include any filters, so that complete data can be synced and populated to the cache for use by other deployments
+    When using multiple configs it is recommended to have a default config that does not include any filters, so that complete data can be synced and populated to the cache for use by other deployments.
 
 
 ## Change Deployment
