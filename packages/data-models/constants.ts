@@ -74,7 +74,7 @@ export const APP_ROUTE_DEFAULTS = {
 };
 
 export const APP_HEADER_DEFAULTS = {
-  title: "Early Family Maths",
+  title: "Early Family Math",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     location.pathname == APP_ROUTE_DEFAULTS.home_path,
@@ -84,7 +84,7 @@ export const APP_HEADER_DEFAULTS = {
 };
 
 export const APP_SIDEMENU_DEFAULTS = {
-  title: "Early Family Maths",
+  title: "Early Family Math",
   // name of template to display in sidebar
   template_name: "app_menu",
   // show the current version number in the menu
