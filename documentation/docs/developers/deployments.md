@@ -14,7 +14,7 @@ mkdir .idems_app/deployments my_deployment
 !!! tip
     The folder can have any name, but it is recommended to avoid special characters and spaces to ensure compatibility across different devices and operating systems.
 
-Create a configuration file inside the folder with either named `config.ts` or, a with name that ends `.config.ts` such as `default.config.ts`.
+Create a configuration file inside the folder either named `config.ts` or with name that ends in `.config.ts`, such as `default.config.ts`.
 
 Populate the file with configuration settings. A minimal example could be:
 
