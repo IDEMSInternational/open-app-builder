@@ -3,7 +3,7 @@
 The app system has support for multiple app deployment configurations from within the same repo. 
 
 ## Create Deployment
-All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added simply by creating new subfolders that include configuraiton files.
+All deployments are stored in the `.idems_app/deployments` folder, and new deployments can be added simply by creating new subfolders that include configuration files.
 
 For this example we will create a folder called `my_deployment`. This can be created either using a file explorer, or via script such as:
 
