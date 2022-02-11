@@ -28,6 +28,8 @@ export interface IDeploymentConfig {
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
   };
   translations?: {
+    /** List of all language codes to include. Default null (includes all) */
+    filter_language_codes?: string[];
     /** generated output of list of strings to translate. Default `./app_data/translations/source_strings` */
     source_strings_path?: string;
     /** translated string for import. Default `./app_data/translations/translated_strings */
@@ -62,6 +64,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_filter_function: (fileEntry) => true,
   },
   translations: {
+    filter_language_codes: null,
     source_strings_path: "./app_data/translations/source_strings",
     translated_strings_path: "./app_data/translations/translated_strings",
     output_cache_path: "./cache/translations",

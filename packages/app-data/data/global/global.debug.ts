@@ -115,7 +115,9 @@ const global: FlowTypes.Global[] = [
         name: "debug_variable_1",
         value: "Value of the first debug variable",
         _translations: {
-          value: {},
+          value: {
+            es_sp: true,
+          },
         },
         exclude_from_translation: true,
       },

@@ -1,26 +1,19 @@
-# Manually trigger an android build from Github Actions
+# Manually trigger an android build and deploy to Appetize.io
 
-name: Trigger Android Debug Build
+name: Test Appetize
 on:
-  workflow_dispatch:
-    inputs:
-      build_branch:
-        required: true
-        description: "Specify branch for build"
-        default: "master"
+  pull_request:
+    types: [labeled, synchronize]
+    branches:
+      - master
 jobs:
-  log_build_inputs:
-    runs-on: ubuntu-latest
-    name: "Branch: ${{github.event.inputs.build_branch}}"
-    steps:
-      - run: echo "Build branch ${{github.event.inputs.build_branch}}"
   build:
+    if: contains(github.event.pull_request.labels.*.name, 'Test - appetize')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           lfs: true
-          ref: "${{github.event.inputs.build_branch}}"
       - name: Checkout LFS objects
         run: git lfs checkout
       - name: Cache node modules
@@ -46,7 +39,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Build Angular Project
-        run: npm run build
+        run: yarn build
       - name: Sync Android Files
         run: npx cap sync
       - name: Set up JDK 1.8
@@ -55,11 +48,22 @@ jobs:
           java-version: 1.8
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - name: Assemble Debug Android APK
+      - name: Build Android Debug APK
         working-directory: android
         run: ./gradlew :app:assembleDebug
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v2
+      - name: Upload to Appetize.io
+        id: upload
+        uses: maxep/appetize-upload-action@0.1.0
         with:
-          name: outputs
-          path: android/app/build/outputs
+          api-token: ${{ secrets.APPETIZE_TOKEN }}
+          file-path: android/app/build/outputs/apk/debug/app-debug.apk
+          platform: "android"
+          timeout: 30
+          # Include to overwrite existing app instead of creating new (will only allow single build at a time)
+          public-key: ${{secrets.APPETIZE_APP_KEY}}
+      - name: "Post to PR"
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: |
+            **Android Appetize URL**
+            ${{ steps.upload.outputs.APPETIZE_APP_URL }}?device=nexus5&osVersion=10.0&scale=75

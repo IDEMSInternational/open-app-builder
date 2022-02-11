@@ -1,7 +1,12 @@
+import { Injector } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { booleanStringToBoolean } from "src/app/shared/utils";
-import { TemplateContainerComponent } from "../template-container.component";
-import { mergeTemplateRows, objectToArray } from "../utils/template-utils";
+import { TemplateContainerComponent } from "../../template-container.component";
+import { mergeTemplateRows, objectToArray } from "../../utils/template-utils";
+import { TemplateFieldService } from "../template-field.service";
+import { TemplateTranslateService } from "../template-translate.service";
+import { TemplateVariablesService } from "../template-variables.service";
+import { TemplateInstanceService } from "./template-instance.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -23,12 +28,21 @@ export type ITemplateRowMap = { [row_nested_name: string]: FlowTypes.TemplateRow
  * NOTE - the service is not injected as every template should instantiate their own copy
  * for processed row tracking *
  */
-export class TemplateRowService {
+export class TemplateRowService extends TemplateInstanceService {
   /** List of overrides set by parent templates for access during parent processing */
   /** Hashmap of all rows keyed by nested row name (e.g. contentBox1.row1.title)  */
   public templateRowMap: ITemplateRowMap = {};
   public renderedRows: FlowTypes.TemplateRow[]; // rows processed and filtered by condition
-  constructor(public container: TemplateContainerComponent) {}
+
+  private templateVariablesService: TemplateVariablesService;
+  private templateTranslateService: TemplateTranslateService;
+  private templateFieldService: TemplateFieldService;
+  constructor(injector: Injector, public container: TemplateContainerComponent) {
+    super(injector);
+    this.templateVariablesService = this.getGlobalService(TemplateVariablesService);
+    this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
+    this.templateFieldService = this.getGlobalService(TemplateFieldService);
+  }
 
   /***************************************************************************************
    *  Row Initialisation
@@ -181,7 +195,12 @@ export class TemplateRowService {
       const processed = await this.processSingleRow(preProcessedRow, isNestedTemplate);
       // only include rows that do not return undefined (e.g. set_variable)
       if (processed) {
-        processedRows.push(processed);
+        // in case of processing items one row will be mapped to multiple so include all
+        if (Array.isArray(processed)) {
+          processed.forEach((p) => processedRows.push(p));
+        } else {
+          processedRows.push(processed);
+        }
       }
     }
     this.container.template.rows = processedRows;
@@ -207,11 +226,10 @@ export class TemplateRowService {
       templateRowMap: this.templateRowMap,
       row: preProcessedRow,
     };
-    const { templateVariables } = this.container;
 
     // First process any dynamic condition. If evaluates as false can stop processing any further
     if (preProcessedRow.hasOwnProperty("condition")) {
-      const { condition } = await templateVariables.evaluatePLHData(
+      const { condition } = await this.templateVariablesService.evaluatePLHData(
         { condition: preProcessedRow.condition },
         evalContext
       );
@@ -221,10 +239,10 @@ export class TemplateRowService {
     }
     // As translations are applied in raw format (e.g. "Hello @global.some_field")
     // strings should be translated before dynamic processing
-    const translatedRow = this.container.templateTranslateService.translateRow(preProcessedRow);
+    const translatedRow = this.templateTranslateService.translateRow(preProcessedRow);
 
     // Continue processing full row
-    const parsedRow: FlowTypes.TemplateRow = await templateVariables.evaluatePLHData(
+    const parsedRow: FlowTypes.TemplateRow = await this.templateVariablesService.evaluatePLHData(
       { ...translatedRow },
       evalContext
     );
@@ -239,11 +257,12 @@ export class TemplateRowService {
 
     if (type === "template") isNestedTemplate = true;
 
-    // Prepare rows for child item-loop
+    // Instead of returning themselves items looped child rows
     if (type === "items") {
       const itemsToIterateOver = objectToArray(row.value);
-      row.type = "group";
-      row.rows = this.generateLoopItemRows(row, itemsToIterateOver);
+      const itemRows = this.generateLoopItemRows(row, itemsToIterateOver);
+      const processedItems = await this.processRows(itemRows, isNestedTemplate, row.name);
+      return processedItems;
     }
 
     // process any nested rows in same way
@@ -260,7 +279,8 @@ export class TemplateRowService {
       switch (type) {
         case "set_field":
           // console.warn("[W] Setting fields from template is not advised", row);
-          await this.container.templateService.setField(name, value);
+
+          await this.templateFieldService.setField(name, value);
           return;
         // ensure set_variables are recorded via their name (instead of default nested name)
         // if a variable is dynamic keep original for future re-evaluation (otherwise discard)
@@ -313,30 +333,32 @@ export class TemplateRowService {
    * @param items - list of items to iterate over
    */
   private generateLoopItemRows(row: FlowTypes.TemplateRow, items: any[]) {
-    let item_rows = items.map((item, index) => {
+    const loopItemRows: FlowTypes.TemplateRow[] = [];
+    for (const [index, item] of Object.entries(items)) {
       item._index = index;
       const evalContext = { itemContext: item };
-      const itemRow: FlowTypes.TemplateRow = {
-        type: "group",
-        rows: row.rows.map((r) => this.setRecursiveRowEvalContext(r, evalContext)),
-      } as any;
-      return itemRow;
-    });
-    return item_rows;
+      for (const r of row.rows) {
+        const itemRow = this.setRecursiveRowEvalContext(r, evalContext);
+        loopItemRows.push(itemRow);
+      }
+    }
+    return loopItemRows;
   }
   /** Update the evaluation context of a row and recursively any nested rows */
   private setRecursiveRowEvalContext(
     row: FlowTypes.TemplateRow,
     evalContext: FlowTypes.TemplateRow["_evalContext"]
   ) {
-    const { rows, ...rest } = row;
+    // Workaround destructure for memory allocation issues (applying click action of last item only)
+    const { rows, ...rest } = JSON.parse(JSON.stringify(row));
     const rowWithEvalContext: FlowTypes.TemplateRow = { ...rest, _evalContext: evalContext };
     // handle child rows independently to avoid accidental property leaks
     if (row.rows) {
       rowWithEvalContext.rows = [];
-      row.rows.forEach((r) =>
-        rowWithEvalContext.rows.push(this.setRecursiveRowEvalContext(r, evalContext))
-      );
+      for (const r of row.rows) {
+        const recursivelyEvaluated = this.setRecursiveRowEvalContext(r, evalContext);
+        rowWithEvalContext.rows.push(recursivelyEvaluated);
+      }
     }
     return rowWithEvalContext;
   }

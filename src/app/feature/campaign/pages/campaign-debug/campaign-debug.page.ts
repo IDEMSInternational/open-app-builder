@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ModalController } from "@ionic/angular";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
+import { ModalController, ToastController } from "@ionic/angular";
+import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { LocalNotificationService } from "src/app/shared/services/notification/local-notification.service";
@@ -27,10 +27,11 @@ export class CampaignDebugPage implements OnInit {
     public campaignService: CampaignService,
     public localNotificationService: LocalNotificationService,
     private dataEvaluationService: DataEvaluationService,
-    private templateService: TemplateService,
+    private templateFieldService: TemplateFieldService,
     private router: Router,
     private route: ActivatedRoute,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController
   ) {}
 
   async ngOnInit() {
@@ -39,7 +40,7 @@ export class CampaignDebugPage implements OnInit {
     if (campaign_id) {
       this.setDebugCampaign(campaign_id);
     }
-    this.debugCampaignsEnabled = this.templateService.getField("debug_campaigns_enabled");
+    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
   }
 
   /***************************************************************************************
@@ -61,25 +62,28 @@ export class CampaignDebugPage implements OnInit {
   }
 
   public setDebugCampaignOptIn(value: boolean) {
-    this.templateService.setField("debug_campaigns_enabled", `${value}`);
-    this.debugCampaignsEnabled = this.templateService.getField("debug_campaigns_enabled");
+    this.templateFieldService.setField("debug_campaigns_enabled", `${value}`);
+    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
     this.campaignService.init();
   }
 
-  public scheduleNotification(row: FlowTypes.Campaign_listRow) {
-    return this.campaignService.scheduleCampaignNotification(row, this.debugCampaignId);
-  }
-
   /**
-   *
-   * @param row
-   * TODO - find better way to link with template actions
-   * TODO - find way to identify any named action list (not just click_action_list)
-   */
-  public triggerRowActions(row: FlowTypes.Campaign_listRow) {
-    this.campaignService.triggerRowActions(row);
-    this.processCampaign();
-    // TODO - reload cache after trigger
+   * TODO - duplicate code from notifications-debug.page should be merged */
+  public async sendNotification(row: FlowTypes.Campaign_listRow) {
+    const notification = await this.campaignService.scheduleCampaignNotification(
+      row,
+      this.debugCampaignId
+    );
+    const delaySeconds = 3;
+    await this.localNotificationService.scheduleImmediateNotification(
+      notification,
+      delaySeconds + 1
+    );
+    const toast = await this.toastCtrl.create({
+      message: `Sending notification in ${delaySeconds}s`,
+      duration: delaySeconds * 1000,
+    });
+    await toast.present();
   }
 
   private async processCampaign() {

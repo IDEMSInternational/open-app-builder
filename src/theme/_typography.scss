@@ -1,4 +1,7 @@
 @import "./variables.scss";
+html {
+  user-select: text;
+}
 h3 {
   font-size: 1.3em;
   font-weight: bold;

@@ -187,54 +187,6 @@ const tour: FlowTypes.Tour[] = [
       },
       {
         type: "step",
-        title: "Title 4",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p> Text </p>",
-        template_component_name: "tile_parent_points",
-        route: "template/home_screen",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Title 3",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p> Text </p>",
-        template_component_name: "quick_start_parent_points",
-        route: "template/home_screen",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Title 5",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p> Text </p>",
-        template_component_name: "tile_parent_centre",
-        route: "template/home_screen",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Title 3",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p> Text </p>",
-        template_component_name: "quick_start_parent_centre",
-        route: "template/home_screen",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
         title: "Navigation example 2",
         _translations: {
           title: {},

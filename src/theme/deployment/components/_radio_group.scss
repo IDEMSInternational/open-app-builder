@@ -1,0 +1,6 @@
+// language_select
+plh-template-component[data-name="language_select"] > plh-radio-group .btn_square.dse {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 16px;
+}

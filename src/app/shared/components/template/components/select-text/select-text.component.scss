@@ -1,0 +1,37 @@
+.bordered-line {
+  border: 4px dashed rgba(220, 220, 220);
+  border-radius: 4px;
+  min-height: 40px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.bordered-line.green {
+  color: rgb(255, 255, 255);
+}
+
+.icon-image-contain {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.individual-select-text-box[data-toggled="true"] {
+  background-color: rgba(0, 128, 0, 0.2);
+  border: 4px dashed rgba(0, 128, 0, 0.9);
+}
+
+.image-based-icon {
+  width: 100%;
+  max-width: 16px;
+  height: auto;
+}
+
+.individual-select-text-box {
+  display: grid;
+  padding: 10px 15px;
+}

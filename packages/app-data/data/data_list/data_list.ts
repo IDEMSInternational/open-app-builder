@@ -13,7 +13,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_1_text",
         activity_template: "activity_relax_1",
         audio_asset: "plh_audio/relax/relax_1.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_1_favourite",
         type: "relax_passive_short",
         title: "Quick pause",
         _translations: {
@@ -39,7 +39,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_2_text",
         activity_template: "activity_relax_2",
         audio_asset: "plh_audio/relax/relax_2.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_2_favourite",
         type: "relax_passive_short",
         title: "Power of three",
         _translations: {
@@ -65,7 +65,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_3_text",
         activity_template: "activity_relax_3",
         audio_asset: "plh_audio/relax/relax_3.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_3_favourite",
         type: "relax_passive_short",
         title: "One thing today",
         _translations: {
@@ -91,7 +91,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_4_text",
         activity_template: "activity_relax_4",
         audio_asset: "plh_audio/relax/relax_4.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_4_favourite",
         type: "relax_passive_short",
         title: "Breathe to three",
         _translations: {
@@ -117,7 +117,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_5_text",
         activity_template: "activity_relax_5",
         audio_asset: "plh_audio/relax/relax_5.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_5_favourite",
         type: "relax_passive_short",
         title: "In and out",
         _translations: {
@@ -142,7 +142,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_6_text",
         activity_template: "activity_relax_6",
         audio_asset: "plh_audio/relax/relax_6.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_6_favourite",
         type: "relax_passive_short",
         title: "Think about today",
         _translations: {
@@ -168,7 +168,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_7_text",
         activity_template: "activity_relax_7",
         audio_asset: "plh_audio/relax/relax_7.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_7_favourite",
         type: "relax_passive_short",
         title: "Pause to respond",
         _translations: {
@@ -194,7 +194,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_8_text",
         activity_template: "activity_relax_8",
         audio_asset: "plh_audio/relax/relax_8.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_8_favourite",
         type: "relax_passive_short",
         title: "Small things",
         _translations: {
@@ -220,7 +220,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_9_text",
         activity_template: "activity_relax_9",
         audio_asset: "plh_audio/relax/relax_9.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_9_favourite",
         type: "relax_passive_short",
         title: "Body scan",
         _translations: {
@@ -246,7 +246,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_10_text",
         activity_template: "activity_relax_10",
         audio_asset: "plh_audio/relax/relax_10.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_10_favourite",
         type: "relax_passive_short",
         title: "Feel the ground",
         _translations: {
@@ -272,7 +272,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_11_text",
         activity_template: "activity_relax_11",
         audio_asset: "plh_audio/relax/relax_11.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_11_favourite",
         type: "relax_passive_short",
         title: "Counting sounds",
         _translations: {
@@ -298,7 +298,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_12_text",
         activity_template: "activity_relax_12",
         audio_asset: "plh_audio/relax/relax_12.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_12_favourite",
         type: "relax_passive_short",
         title: "Feel your feeling",
         _translations: {
@@ -324,7 +324,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_13_text",
         activity_template: "activity_relax_13",
         audio_asset: "plh_audio/relax/relax_13.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_13_favourite",
         type: "relax_active",
         title: "Your song",
         _translations: {
@@ -350,7 +350,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_14_text",
         activity_template: "activity_relax_14",
         audio_asset: "plh_audio/relax/relax_14.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_14_favourite",
         type: "relax_passive_short",
         title: "Ground & gratitude",
         _translations: {
@@ -375,7 +375,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_15_text",
         activity_template: "activity_relax_15",
         audio_asset: "plh_audio/relax/relax_15.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_15_favourite",
         type: "relax_passive_short",
         title: "Notice how you feel",
         _translations: {
@@ -400,7 +400,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_16_text",
         activity_template: "activity_relax_16",
         audio_asset: "plh_audio/relax/relax_16.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_16_favourite",
         type: "relax_passive_short",
         title: "Pause power",
         _translations: {
@@ -425,7 +425,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_17_text",
         activity_template: "activity_relax_17",
         audio_asset: "plh_audio/relax/relax_17.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_17_favourite",
         type: "relax_passive_short",
         title: "Praise yourself",
         _translations: {
@@ -450,7 +450,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_18_text",
         activity_template: "activity_relax_18",
         audio_asset: "plh_audio/relax/relax_18.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_18_favourite",
         type: "relax_passive_long",
         title: "Taking care of yourself",
         _translations: {
@@ -475,7 +475,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_19_text",
         activity_template: "activity_relax_19",
         audio_asset: "plh_audio/relax/relax_19.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_19_favourite",
         type: "relax_passive_long",
         title: "Take a pause",
         _translations: {
@@ -500,7 +500,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_20_text",
         activity_template: "activity_relax_20",
         audio_asset: "plh_audio/relax/relax_20.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_20_favourite",
         type: "relax_active",
         title: "Physical activity",
         _translations: {
@@ -525,7 +525,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_21_text",
         activity_template: "activity_relax_21",
         audio_asset: "plh_audio/relax/relax_21.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_21_favourite",
         type: "relax_active",
         title: "List of things",
         _translations: {
@@ -550,7 +550,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_22_text",
         activity_template: "activity_relax_22",
         audio_asset: "plh_audio/relax/relax_22.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_22_favourite",
         type: "relax_active",
         title: "Connect",
         _translations: {
@@ -575,7 +575,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_23_text",
         activity_template: "activity_relax_23",
         audio_asset: "plh_audio/relax/relax_23.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_23_favourite",
         type: "relax_active",
         title: "Prevent anger",
         _translations: {
@@ -600,7 +600,7 @@ const data_list: FlowTypes.Data_list[] = [
         text_template: "relax_24_text",
         activity_template: "activity_relax_24",
         audio_asset: "plh_audio/relax/relax_24.mp3",
-        "fields::favourite": false,
+        favourite_field: "relax_24_favourite",
         type: "relax_active",
         title: "Angry? Take a break",
         _translations: {
@@ -621,6 +621,1145 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "data/relax_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "activity_data_list",
+    data_list_name: "something_fun",
+    status: "released",
+    rows: [
+      {
+        id: "reflect_positive",
+        workshop: "praise",
+        activity_template: "activity_reflect_positive",
+        favourite_field: "activity_reflect_positive_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Reflect on the positive",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Reflect on the positive",
+          },
+        },
+      },
+      {
+        id: "check_in_chat",
+        workshop: "stress",
+        activity_template: "activity_check_in_chat",
+        favourite_field: "activity_check_in_chat_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Check-in chat",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Check-in chat",
+          },
+        },
+      },
+      {
+        id: "dream_travel",
+        workshop: "money",
+        activity_template: "activity_dream_travel",
+        favourite_field: "activity_dream_travel_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Dream Travel",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Dream Travel",
+          },
+        },
+      },
+      {
+        id: "famous_party",
+        workshop: "rules",
+        activity_template: "activity_famous_party",
+        favourite_field: "activity_famous_party_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Famous Party",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Famous Party",
+          },
+        },
+      },
+      {
+        id: "two_truths",
+        workshop: "consequence",
+        activity_template: "activity_two_truths",
+        favourite_field: "activity_two_truths_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Two truths, one lie",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Two truths, one lie",
+          },
+        },
+      },
+      {
+        id: "time_machine",
+        workshop: "safe",
+        activity_template: "activity_time_machine",
+        favourite_field: "activity_time_machine_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Time Machine",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Time Machine",
+          },
+        },
+      },
+      {
+        id: "superpowers",
+        workshop: "crisis",
+        activity_template: "activity_superpowers",
+        favourite_field: "activity_superpowers_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Superpowers",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Superpowers",
+          },
+        },
+      },
+      {
+        id: "friendly_chat",
+        activity_template: "activity_friendly_chat",
+        favourite_field: "activity_friendly_chat_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Just a friendly chat",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Just a friendly chat",
+          },
+        },
+      },
+      {
+        id: "interrupter",
+        activity_template: "activity_interrupter",
+        favourite_field: "activity_interrupter_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "The Interrupter",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "The Interrupter",
+          },
+        },
+      },
+      {
+        id: "three_options",
+        activity_template: "activity_three_options",
+        favourite_field: "activity_three_options_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Three options",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Three options",
+          },
+        },
+      },
+      {
+        id: "yes_no_maybe",
+        activity_template: "activity_yes_no_maybe",
+        favourite_field: "activity_yes_no_maybe_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Yes, No or Maybe",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Yes, No or Maybe",
+          },
+        },
+      },
+      {
+        id: "memory_game",
+        activity_template: "activity_memory_game",
+        favourite_field: "activity_memory_game_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: 'Memory game - "On Saturday..."',
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: 'Memory game - "On Saturday..."',
+          },
+        },
+      },
+      {
+        id: "invent_story",
+        activity_template: "activity_invent_story",
+        favourite_field: "activity_invent_story_favourite",
+        spend_time: true,
+        type: "chat_together",
+        title: "Make up a story",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Make up a story",
+          },
+        },
+      },
+      {
+        id: "co_chef",
+        workshop: "1on1",
+        activity_template: "activity_co_chef",
+        favourite_field: "activity_co_chef_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Co-chef",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Co-chef",
+          },
+        },
+      },
+      {
+        id: "dance_moves",
+        workshop: "instruct",
+        activity_template: "activity_dance_moves",
+        favourite_field: "activity_dance_moves_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Dance moves",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Dance moves",
+          },
+        },
+      },
+      {
+        id: "mirror",
+        workshop: "solve",
+        activity_template: "activity_mirror",
+        favourite_field: "activity_mirror_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Mirror",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Mirror",
+          },
+        },
+      },
+      {
+        id: "whats_new",
+        activity_template: "activity_whats_new",
+        favourite_field: "activity_whats_new_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "What's new?",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "What's new?",
+          },
+        },
+      },
+      {
+        id: "get_active",
+        activity_template: "activity_get_active",
+        favourite_field: "activity_get_active_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Get active!",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Get active!",
+          },
+        },
+      },
+      {
+        id: "name_that_tune",
+        activity_template: "activity_name_that_tune",
+        favourite_field: "activity_name_that_tune_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Name that tune",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Name that tune",
+          },
+        },
+      },
+      {
+        id: "pass_the_snap",
+        activity_template: "activity_pass_the_snap",
+        favourite_field: "activity_pass_the_snap_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Pass the snap",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          intro_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Pass the snap",
+          },
+          intro_text: {
+            eng: "Here is a fun game you can do with your family!",
+          },
+        },
+        intro_text: "Here is a fun game you can do with your family!",
+      },
+      {
+        id: "family_workout",
+        activity_template: "activity_family_workout",
+        favourite_field: "activity_family_workout_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Family workout",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Family workout",
+          },
+        },
+      },
+      {
+        id: "housework",
+        activity_template: "activity_housework",
+        favourite_field: "activity_housework_favourite",
+        spend_time: true,
+        has_recording: true,
+        type: "do_together",
+        title: "Make housework fun",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          intro_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Make housework fun",
+          },
+          intro_text: {
+            eng: "Household chores aren’t fun… or are they? You can make them into a game!",
+          },
+        },
+        intro_text: "Household chores aren’t fun… or are they? You can make them into a game!",
+      },
+      {
+        id: "doing_what",
+        activity_template: "activity_doing_what",
+        favourite_field: "activity_doing_what_favourite",
+        spend_time: true,
+        has_recording: true,
+        type: "do_together",
+        title: "What are you doing?",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          intro_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "What are you doing?",
+          },
+          intro_text: {
+            eng: "Here is a fun game you can do with your family!",
+          },
+        },
+        intro_text: "Here is a fun game you can do with your family!",
+      },
+      {
+        id: "crazy_chicken",
+        activity_template: "activity_crazy_chicken",
+        favourite_field: "activity_crazy_chicken_favourite",
+        spend_time: true,
+        type: "do_together",
+        title: "Crazy chicken",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Crazy chicken",
+          },
+        },
+      },
+    ],
+    _xlsxPath: "data/activity_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "parent_centre_data_list",
+    status: "released",
+    data_list_name: "parent_centre",
+    rows: [
+      {
+        id: "my_tips",
+        show: true,
+        icon_asset: "plh_images/icons/light_bulb_heart_white.svg",
+        template: "parent_centre_my_tips",
+        tile_style: "parent_centre_1",
+        click_count_field: "click_pc_my_tips_count",
+        title: "My Tips",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "My Tips",
+          },
+          location_text: {
+            eng: "**My Tips** in the @global.parent_centre",
+          },
+        },
+        location_text: "**My Tips** in the @global.parent_centre",
+      },
+      {
+        id: "essential_tools",
+        show: true,
+        icon_asset: "plh_images/icons/light_bulb_white.svg",
+        template: "parent_centre_essential_tools",
+        tile_style: "parent_centre_3",
+        click_count_field: "click_pc_essential_tools_count",
+        title: "Essential Tools",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Essential Tools",
+          },
+          location_text: {
+            eng: "**Essential Tools** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Essential Tools** in the @global.parent_centre",
+      },
+      {
+        id: "customisation",
+        show: "@fields.survey_welcome_completed",
+        icon_asset: "plh_images/icons/phone_heart_white.svg",
+        template: "setup_and_survey_stepper",
+        tile_style: "parent_centre_4",
+        click_count_field: "click_pc_customisation_count",
+        title: "Customise @global.parent_app",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Customise @global.parent_app",
+          },
+          location_text: {
+            eng: "**Customise @global.parent_app** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Customise @global.parent_app** in the @global.parent_centre",
+      },
+      {
+        id: "customise_again",
+        show: "!@fields.survey_welcome_completed",
+        icon_asset: "plh_images/icons/phone_heart_white.svg",
+        template: "parent_centre_customisation",
+        tile_style: "parent_centre_4",
+        click_count_field: "click_pc_customise_again_count",
+        title: "Customise Again",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Customise Again",
+          },
+          location_text: {
+            eng: "**Customise Again** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Customise Again** in the @global.parent_centre",
+      },
+      {
+        id: "relax_and_activities",
+        show: true,
+        icon_asset: "plh_images/icons/smile_eyes_up_white.svg",
+        template: "parent_centre_relax_and_act",
+        tile_style: "parent_centre_1",
+        click_count_field: "click_pc_relax_and_activities_count",
+        title: "Relax & Activities",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Relax & Activities",
+          },
+          location_text: {
+            eng: "under **Relax & Activities** in the @global.parent_centre",
+          },
+        },
+        location_text: "under **Relax & Activities** in the @global.parent_centre",
+      },
+      {
+        id: "help",
+        show: true,
+        icon_asset: "plh_images/icons/question_mark_white.svg",
+        template: "parent_centre_help",
+        tile_style: "parent_centre_3",
+        click_count_field: "click_pc_help_count",
+        title: "Help",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Help",
+          },
+          location_text: {
+            eng: "**Help** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Help** in the @global.parent_centre",
+      },
+      {
+        id: "technical_support",
+        show: true,
+        icon_asset: "plh_images/icons/info_phone_white.svg",
+        template: "parent_centre_technical_support",
+        tile_style: "parent_centre_4",
+        click_count_field: "click_pc_technical_support_count",
+        title: "Technical Support",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Technical Support",
+          },
+          location_text: {
+            eng: "**Technical Support** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Technical Support** in the @global.parent_centre",
+      },
+      {
+        id: "covid",
+        show: true,
+        icon_asset: "plh_images/icons/ask_question_white.svg",
+        template: "parent_centre_covid",
+        tile_style: "parent_centre_1",
+        click_count_field: "click_pc_covid_count",
+        title: "Coping with @global.covid",
+        _translations: {
+          title: {},
+          location_text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Coping with @global.covid",
+          },
+          location_text: {
+            eng: "**Coping with @global.covid** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Coping with @global.covid** in the @global.parent_centre",
+      },
+      {
+        id: "bereavement",
+        show: true,
+        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
+        template: "parent_centre_bereavement",
+        tile_style: "parent_centre_3",
+        click_count_field: "click_pc_bereavement_count",
+        title: "Coping with grief",
+        _translations: {
+          title: {},
+          location_text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Coping with grief",
+          },
+          location_text: {
+            eng: "**Coping with grief** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Coping with grief** in the @global.parent_centre",
+      },
+      {
+        id: "message_archive",
+        show: true,
+        icon_asset: "plh_images/icons/letter_white.svg",
+        template: "parent_centre_message_archive",
+        tile_style: "parent_centre_4",
+        click_count_field: "click_pc_message_archive_count",
+        title: "Message Archive",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Message Archive",
+          },
+          location_text: {
+            eng: "**Message Archive** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Message Archive** in the @global.parent_centre",
+      },
+      {
+        id: "support_contacts",
+        show: false,
+        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
+        tile_style: "parent_centre_1",
+        click_count_field: "click_pc_support_contacts_count",
+        title: "Support Contacts",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Support Contacts",
+          },
+          location_text: {
+            eng: "**Support Contacts** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Support Contacts** in the @global.parent_centre",
+      },
+      {
+        id: "evidence_base",
+        show: false,
+        icon_asset: "plh_images/icons/documents_white.svg",
+        tile_style: "parent_centre_3",
+        click_count_field: "click_pc_evidence_base_count",
+        title: "Evidence Base",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "Evidence Base",
+          },
+          location_text: {
+            eng: "**Evidence Base** in the @global.parent_centre",
+          },
+        },
+        location_text: "**Evidence Base** in the @global.parent_centre",
+      },
+    ],
+    _xlsxPath: "data/parent_centre_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "covid_data_list",
+    status: "released",
+    data_list_name: "covid",
+    rows: [
+      {
+        id: "talk_to_teen",
+        content_template: "tools_talk_to_teen",
+        library_activity: "lib_act_talk_to_teen",
+        image_asset: "plh_images/parent_centre/covid/talk_to_teen.svg",
+        title: "How to talk to my teen",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "How to talk to my teen",
+          },
+        },
+      },
+      {
+        id: "deal_with_news",
+        content_template: "tools_deal_with_news",
+        library_activity: "lib_act_deal_with_news",
+        image_asset: "plh_images/parent_centre/covid/deal_with_news.svg",
+        title: "Steps to deal with news",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Steps to deal with news",
+          },
+        },
+      },
+      {
+        id: "help_teen_choose",
+        content_template: "tools_help_teen_choose",
+        library_activity: "lib_act_help_teen_choose",
+        image_asset: "plh_images/parent_centre/covid/help_teen_choose.svg",
+        title: "How can I help my teen choose well?",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "How can I help my teen choose well?",
+          },
+        },
+      },
+      {
+        id: "teen_influences",
+        content_template: "understand_teen_influences",
+        library_activity: "lib_act_teen_influences",
+        image_asset: "plh_images/parent_centre/covid/teen_influences.svg",
+        title: "What influences teen decisions?",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "What influences teen decisions?",
+          },
+        },
+      },
+      {
+        id: "teen_feelings",
+        content_template: "understand_teen_feelings",
+        library_activity: "lib_act_teen_feelings",
+        image_asset: "plh_images/parent_centre/covid/teen_feelings.svg",
+        title: "How does my teen feel?",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "How does my teen feel?",
+          },
+        },
+      },
+      {
+        id: "change_thoughts",
+        content_template: "change_thoughts",
+        library_activity: "lib_act_change_thoughts",
+        image_asset: "plh_images/parent_centre/covid/change_thoughts.svg",
+        title: "Changing negative to positive",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Changing negative to positive",
+          },
+        },
+      },
+    ],
+    _xlsxPath: "data/parent_centre_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "bereavement_data_list",
+    status: "released",
+    data_list_name: "bereavement",
+    rows: [
+      {
+        id: "self",
+        content_template: "bereavement_self",
+        title: "Help yourself cope",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Help yourself cope",
+          },
+        },
+      },
+      {
+        id: "teen",
+        content_template: "bereavement_teen",
+        title: "Help your teen cope",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Help your teen cope",
+          },
+        },
+      },
+      {
+        id: "practical",
+        content_template: "bereavement_practical",
+        title: "Practical steps",
+        _translations: {
+          title: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Practical steps",
+          },
+        },
+      },
+    ],
+    _xlsxPath: "data/parent_centre_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -1298,16 +2437,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1362,16 +2506,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1426,16 +2575,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1490,16 +2644,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1554,16 +2713,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1618,16 +2782,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1682,16 +2851,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1746,16 +2920,21 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1810,16 +2989,19 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1874,16 +3056,19 @@ const data_list: FlowTypes.Data_list[] = [
           },
           description: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
           short_mark_text: {
             tz_sw: true,
+            za_af: true,
             za_st: true,
             za_xh: true,
           },
@@ -1913,316 +3098,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "data/habit_data_list.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_name: "parent_centre_data_list",
-    status: "released",
-    data_list_name: "parent_centre",
-    rows: [
-      {
-        id: "help",
-        icon_asset: "plh_images/icons/question_mark_white.svg",
-        title: "Help",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Help",
-          },
-          location_text: {
-            eng: "**Help** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Help** in the @global.parent_centre",
-      },
-      {
-        id: "my_tips",
-        icon_asset: "plh_images/icons/light_bulb_heart_white.svg",
-        title: "My Tips",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "My Tips",
-          },
-          location_text: {
-            eng: "**My Tips** in the @global.parent_centre",
-          },
-        },
-        location_text: "**My Tips** in the @global.parent_centre",
-      },
-      {
-        id: "essential_tools",
-        icon_asset: "plh_images/icons/light_bulb_white.svg",
-        title: "Essential Tools",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Essential Tools",
-          },
-          location_text: {
-            eng: "**Essential Tools** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Essential Tools** in the @global.parent_centre",
-      },
-      {
-        id: "covid",
-        icon_asset: "plh_images/icons/ask_question_white.svg",
-        title: "COVID",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "COVID",
-          },
-          location_text: {
-            eng: "**COVID** in the @global.parent_centre",
-          },
-        },
-        location_text: "**COVID** in the @global.parent_centre",
-      },
-      {
-        id: "customisation",
-        icon_asset: "plh_images/icons/phone_heart_white.svg",
-        title: "Customise @global.parent_app",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          title_2: {
-            tz_sw: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Customise @global.parent_app",
-          },
-          title_2: {
-            eng: "Customise Again",
-          },
-          location_text: {
-            eng: "**Customise @global.parent_app** in the @global.parent_centre",
-          },
-        },
-        title_2: "Customise Again",
-        location_text: "**Customise @global.parent_app** in the @global.parent_centre",
-      },
-      {
-        id: "relax_and_activities",
-        icon_asset: "plh_images/icons/smile_eyes_up_white.svg",
-        title: "Relax & Activities",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Relax & Activities",
-          },
-          location_text: {
-            eng: "under **Relax & Activities** in the @global.parent_centre",
-          },
-        },
-        location_text: "under **Relax & Activities** in the @global.parent_centre",
-      },
-      {
-        id: "support_contacts",
-        icon_asset: "plh_images/icons/hands_support_heart_white.svg",
-        title: "Support Contacts",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Support Contacts",
-          },
-          location_text: {
-            eng: "**Support Contacts** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Support Contacts** in the @global.parent_centre",
-      },
-      {
-        id: "evidence_base",
-        icon_asset: "plh_images/icons/documents_white.svg",
-        title: "Evidence Base",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Evidence Base",
-          },
-          location_text: {
-            eng: "**Evidence Base** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Evidence Base** in the @global.parent_centre",
-      },
-      {
-        id: "technical_support",
-        icon_asset: "plh_images/icons/info_phone_white.svg",
-        title: "Technical Support",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Technical Support",
-          },
-          location_text: {
-            eng: "**Technical Support** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Technical Support** in the @global.parent_centre",
-      },
-      {
-        id: "message_archive",
-        icon_asset: "plh_images/icons/letter_white.svg",
-        title: "Message Archive",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          location_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Message Archive",
-          },
-          location_text: {
-            eng: "**Message Archive** in the @global.parent_centre",
-          },
-        },
-        location_text: "**Message Archive** in the @global.parent_centre",
-      },
-    ],
-    _xlsxPath: "data/parent_centre_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -2757,606 +3632,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "data/praise_data_list.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_name: "activity_data_list",
-    data_list_name: "something_fun",
-    status: "released",
-    rows: [
-      {
-        id: "reflect_positive",
-        workshop: "praise",
-        text_template: "activity_reflect_positive",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Reflect on the positive",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Reflect on the positive",
-          },
-        },
-      },
-      {
-        id: "check_in_chat",
-        workshop: "stress",
-        text_template: "activity_check_in_chat",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Check-in chat",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Check-in chat",
-          },
-        },
-      },
-      {
-        id: "dream_travel",
-        workshop: "money",
-        text_template: "activity_dream_travel",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Dream Travel",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Dream Travel",
-          },
-        },
-      },
-      {
-        id: "famous_party",
-        workshop: "rules",
-        text_template: "activity_famous_party",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Famous Party",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Famous Party",
-          },
-        },
-      },
-      {
-        id: "two_truths",
-        workshop: "consequence",
-        text_template: "activity_two_truths",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Two truths, one lie",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Two truths, one lie",
-          },
-        },
-      },
-      {
-        id: "time_machine",
-        workshop: "safe",
-        text_template: "activity_time_machine",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Time Machine",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Time Machine",
-          },
-        },
-      },
-      {
-        id: "superpowers",
-        workshop: "crisis",
-        text_template: "activity_superpowers",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Superpowers",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Superpowers",
-          },
-        },
-      },
-      {
-        id: "friendly_chat",
-        text_template: "activity_friendly_chat",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Just a friendly chat",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Just a friendly chat",
-          },
-        },
-      },
-      {
-        id: "interrupter",
-        text_template: "activity_interrupter",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "The Interrupter",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "The Interrupter",
-          },
-        },
-      },
-      {
-        id: "three_options",
-        text_template: "activity_three_options",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Three options",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Three options",
-          },
-        },
-      },
-      {
-        id: "yes_no_maybe",
-        text_template: "activity_yes_no_maybe",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Yes, No or Maybe",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Yes, No or Maybe",
-          },
-        },
-      },
-      {
-        id: "memory_game",
-        text_template: "activity_memory_game",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: 'Memory game - "On Saturday..."',
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: 'Memory game - "On Saturday..."',
-          },
-        },
-      },
-      {
-        id: "invent_story",
-        text_template: "activity_invent_story",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "chat_together",
-        title: "Make up a story",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Make up a story",
-          },
-        },
-      },
-      {
-        id: "co_chef",
-        workshop: "1on1",
-        text_template: "activity_co_chef",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Co-chef",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Co-chef",
-          },
-        },
-      },
-      {
-        id: "dance_moves",
-        workshop: "instruct",
-        text_template: "activity_dance_moves",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Dance moves",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Dance moves",
-          },
-        },
-      },
-      {
-        id: "mirror",
-        workshop: "solve",
-        text_template: "activity_mirror",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Mirror",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Mirror",
-          },
-        },
-      },
-      {
-        id: "whats_new",
-        text_template: "activity_whats_new",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "What's new?",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "What's new?",
-          },
-        },
-      },
-      {
-        id: "get_active",
-        text_template: "activity_get_active",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Get active!",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Get active!",
-          },
-        },
-      },
-      {
-        id: "name_that_tune",
-        text_template: "activity_name_that_tune",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Name that tune",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Name that tune",
-          },
-        },
-      },
-      {
-        id: "pass_the_snap",
-        text_template: "activity_pass_the_snap",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Pass the snap",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          intro_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Pass the snap",
-          },
-          intro_text: {
-            eng: "Here is a fun game you can do with your family!",
-          },
-        },
-        intro_text: "Here is a fun game you can do with your family!",
-      },
-      {
-        id: "family_workout",
-        text_template: "activity_family_workout",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Family workout",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Family workout",
-          },
-        },
-      },
-      {
-        id: "housework",
-        text_template: "activity_housework",
-        "fields::favourite": false,
-        spend_time: true,
-        has_recording: true,
-        type: "do_together",
-        title: "Make housework fun",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          intro_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Make housework fun",
-          },
-          intro_text: {
-            eng: "Household chores aren’t fun… or are they? You can make them into a game!",
-          },
-        },
-        intro_text: "Household chores aren’t fun… or are they? You can make them into a game!",
-      },
-      {
-        id: "doing_what",
-        text_template: "activity_doing_what",
-        "fields::favourite": false,
-        spend_time: true,
-        has_recording: true,
-        type: "do_together",
-        title: "What are you doing?",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          intro_text: {
-            tz_sw: true,
-            za_st: true,
-            za_xh: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "What are you doing?",
-          },
-          intro_text: {
-            eng: "Here is a fun game you can do with your family!",
-          },
-        },
-        intro_text: "Here is a fun game you can do with your family!",
-      },
-      {
-        id: "crazy_chicken",
-        text_template: "activity_crazy_chicken",
-        "fields::favourite": false,
-        spend_time: true,
-        type: "do_together",
-        title: "Crazy chicken",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "Crazy chicken",
-          },
-        },
-      },
-    ],
-    _xlsxPath: "data/activity_data_list.xlsx",
   },
 ];
 export default data_list;

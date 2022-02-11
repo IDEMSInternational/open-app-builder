@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { addDays } from "date-fns";
 import {
   addHours,
@@ -11,10 +11,12 @@ import {
   isPast,
   setISODay,
 } from "date-fns";
+import { extractDynamicFields } from "packages/data-models";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
+import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
-import { TemplateService } from "src/app/shared/components/template/services/template.service";
+import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -46,13 +48,22 @@ export class CampaignService {
 
   private _handledNotifications = {};
   private _notificationUpdates$: Subscription;
+  private _notificationActions$: Subscription;
 
   constructor(
     private dataEvaluationService: DataEvaluationService,
     private localNotificationService: LocalNotificationService,
-    private translateService: TemplateTranslateService,
-    private templateService: TemplateService
+    private templateTranslateService: TemplateTranslateService,
+    private injector: Injector
   ) {}
+
+  /**
+   * make a dynamic call to TemplateVariablesService as it also has handling
+   * for @campaigns which would otherwise result in cyclic dependency in constructor
+   */
+  get templateVariablesService() {
+    return this.injector.get(TemplateVariablesService);
+  }
 
   public async init() {
     await this.hackDeactivateAllNotifications();
@@ -72,47 +83,84 @@ export class CampaignService {
     this._subscribeToNotificationUpdates();
   }
 
+  /**
+   * remove any old subscriptions, subscribe to updates from sent and interacted notifications,
+   * and handle actions lists accordingly
+   */
   private _subscribeToNotificationUpdates() {
     if (this._notificationUpdates$) {
       this._notificationUpdates$.unsubscribe();
     }
+    if (this._notificationActions$) {
+      this._notificationActions$.unsubscribe();
+    }
     this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
-      async () => {
-        await this.handledTriggeredNotifications();
+      async (notifications) => {
+        await this.handledTriggeredNotifications(notifications, "sent");
+      }
+    );
+    this._notificationActions$ = this.localNotificationService.interactedNotification$.subscribe(
+      async (action) => {
+        if (action) {
+          await this.handledTriggeredNotifications([action.notification] as any, "click");
+        }
       }
     );
   }
 
-  private async handledTriggeredNotifications() {
-    for (const notification of this.localNotificationService.sessionNotifications$.value) {
-      if (!this._handledNotifications[notification.id]) {
-        this._handledNotifications[notification.id] = true;
-        this.triggerRowActions(notification.extra);
-        // reschedule if actions handled, allow time for notifications to be loaded
-        setTimeout(async () => {
-          await this.scheduleCampaignNotifications();
-        }, 200);
+  private async handledTriggeredNotifications(
+    notifications: ILocalNotification[],
+    trigger: FlowTypes.TemplateRowActionTrigger
+  ) {
+    let actionsTriggered = false;
+    for (const notification of notifications) {
+      // avoid reprocessing sent notification
+      let shouldProcess = true;
+      if (trigger === "sent") {
+        if (this._handledNotifications[notification.id]) shouldProcess = false;
+        else this._handledNotifications[notification.id] = true;
       }
+      // process notification actions
+      const row = notification.extra as FlowTypes.Campaign_listRow;
+      if (shouldProcess && row.action_list) {
+        const actionsForTrigger = row.action_list.filter((action) => action.trigger === trigger);
+        if (actionsForTrigger.length > 0) {
+          actionsTriggered = true;
+          await this.triggerRowActions(actionsForTrigger);
+        }
+      }
+    }
+    // reschedule if actions handled, allow time for notifications to be loaded
+    if (actionsTriggered) {
+      setTimeout(async () => {
+        await this.scheduleCampaignNotifications();
+      }, 200);
     }
   }
 
   /**
-   *
-   * @param row
-   * TODO - find better way to link with template actions
-   * TODO - find way to identify any named action list (not just click_action_list)
+   * Utilise template services to process campaign actions
    */
-  public triggerRowActions(row: FlowTypes.Campaign_listRow) {
-    if (row.click_action_list) {
-      for (const action of row.click_action_list) {
-        if (action.action_id === "set_field") {
-          const [key, value] = action.args;
-          this.templateService.setField(key, value);
-        } else {
-          console.error("Only set_field actions supported by debugger");
-        }
-      }
+  public async triggerRowActions(actions: FlowTypes.TemplateRowAction[] = []) {
+    // Process any dynamic variables that might be present in args
+    const parsedActions = [];
+    for (const action of actions) {
+      action.args = await Promise.all(
+        action.args.map(
+          async (arg) => await this.templateVariablesService.evaluateConditionString(arg)
+        )
+      );
+      parsedActions.push(action);
     }
+
+    // create a standalone service that can process actions in the same way as templates
+    // provides support all action types that do not require a container
+    // e.g. nav actions, setting fields etc. supported, (do not require rendered template container)
+    // e.g. set_local, force_reprocess etc. not supported (require rendered template container)
+    const templateActionService = new TemplateActionService(this.injector);
+
+    // Process via template action service
+    return templateActionService.handleActions(parsedActions);
   }
 
   /**
@@ -186,20 +234,39 @@ export class CampaignService {
     const notification_schedule = this.evaluateCampaignNotification(schedule);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
-    let { title, text } = row;
+    const parsedRow = await this.hackParseDynamicRow(row);
+    let { title, text } = parsedRow;
     let { _schedule_at } = notification_schedule;
 
-    title = this.translateService.translateValue(title || NOTIFICATION_DEFAULTS.title);
-    text = this.translateService.translateValue(text || NOTIFICATION_DEFAULTS.text);
+    title = title || NOTIFICATION_DEFAULTS.title;
+    text = text || NOTIFICATION_DEFAULTS.text;
+
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
+      largeBody: text,
       title,
-      extra: { ...row, campaign_id },
-      id: stringToIntegerHash(row.id),
+      extra: { ...parsedRow, campaign_id },
+      id: stringToIntegerHash(parsedRow.id),
     };
     await this.localNotificationService.scheduleNotification(notificationSchedule);
     return notificationSchedule;
+  }
+
+  /**
+   * Campaign rows are read from datalists which are currently not evaluated for dynamic content
+   * This workaround forces the manual check for any dynamic content,
+   */
+  private async hackParseDynamicRow(row: FlowTypes.Campaign_listRow) {
+    // process translations first as these are made with dynamic content in place (e.g. "hello @name")
+    const translatedRow = this.templateTranslateService.translateRow(row as any);
+    // Continue processing full row
+    translatedRow._dynamicFields = extractDynamicFields(translatedRow);
+    const parsedRow = await this.templateVariablesService.evaluatePLHData(translatedRow, {
+      row: translatedRow,
+      templateRowMap: {},
+    });
+    return parsedRow as FlowTypes.Campaign_listRow;
   }
 
   /** Deactivate all notifications for a given campaign */

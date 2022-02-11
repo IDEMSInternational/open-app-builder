@@ -1,0 +1,64 @@
+/// Remove padding from plh-button component so they can fit more nicely in containers
+plh-button > ion-button {
+  padding: 0 !important;
+}
+
+/// Ensure all pages have padding
+ion-content {
+  --padding-top: 24px;
+  --padding-bottom: 24px;
+  --padding-start: 24px;
+  --padding-end: 24px;
+}
+ion-content.no-padding {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+ion-item.clear {
+  --background: none !important;
+}
+
+h1 {
+  p {
+    margin: 0;
+  }
+}
+
+p {
+  width: 100%;
+  white-space: pre-line;
+  // display: table;
+  ul,
+  ol {
+    display: table;
+    margin: 0;
+  }
+}
+
+/// Typography overrides/custom code appled across multiple components
+.margin-t-large {
+  margin-top: 0.75em;
+}
+.small {
+  font-size: var(--font-size-text-small);
+}
+.tiny {
+  font-size: var(--font-size-text-tiny);
+}
+.medium {
+  font-size: var(--font-size-text-medium);
+}
+.large {
+  font-size: var(--font-size-text-large);
+}
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}

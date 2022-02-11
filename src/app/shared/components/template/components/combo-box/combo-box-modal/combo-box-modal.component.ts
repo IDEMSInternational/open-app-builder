@@ -15,7 +15,7 @@ interface AnswerBody {
 }
 
 @Component({
-  selector: "plh-ion-modal",
+  selector: "combo-box-modal",
   templateUrl: "./combo-box-modal.component.html",
   styleUrls: ["./combo-box-modal.component.scss"],
 })

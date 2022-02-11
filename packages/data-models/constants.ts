@@ -81,6 +81,9 @@ export const APP_HEADER_DEFAULTS = {
   // default show back button on all screens except home screen
   should_show_back_button: (location: Location) =>
     location.pathname !== APP_ROUTE_DEFAULTS.home_path,
+  // on device minimize app when back button pressed from home screen
+  should_minimize_app_on_back: (location: Location) =>
+    location.pathname == APP_ROUTE_DEFAULTS.home_path,
 };
 
 export const APP_SIDEMENU_DEFAULTS = {
@@ -116,4 +119,24 @@ export const APP_INITIALISATION_DEFAULTS = {
   ] as const,
   // TODO - better if refactored to more general handler with condition to filter
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
+};
+
+export const FEEDBACK_MODULE_DEFAULTS = {
+  /** Buttons that will be made available during feedback mode when context events triggered (e.g. right-click) */
+  buttons: [
+    {
+      id: "feedback-addFeedback",
+      menuButtonText: "Add Feedback",
+      appearInMenus: ["rightClick", "longPress", "textSelect"] as any[],
+      displayedTemplate: "feature_feedback_default",
+    },
+    {
+      id: "feedback-suggestChange",
+      menuButtonText: "Suggest Change",
+      appearInMenus: ["textSelect"] as any[],
+      displayedTemplate: "feature_feedback_text_select",
+    },
+  ],
+  /** Field to populate with selected text for use in templates */
+  selected_text_field: "_feedback_selected_text",
 };

@@ -12,12 +12,12 @@ import { FlowTypes } from "src/app/shared/model";
         <!-- Info -->
         <div style="flex:1">
           <!-- Click Action List -->
-          <div *ngIf="row.click_action_list && row.click_action_list.length > 0">
+          <div *ngIf="row.action_list && row.action_list.length > 0">
             <div class="divider"></div>
             <h4>Click Action List</h4>
             <div style="display: flex" class="info-text">
               <div style="flex: 1">
-                <div *ngFor="let action of row.click_action_list">{{ action._raw }}</div>
+                <div *ngFor="let action of row.action_list">{{ action._raw }}</div>
               </div>
             </div>
           </div>
@@ -55,12 +55,11 @@ import { FlowTypes } from "src/app/shared/model";
         <!-- Actions -->
         <div style="display: flex; flex-direction: column;  justify-content: center;">
           <ion-button
-            expand="block"
             fill="clear"
-            (click)="triggerActionsClicked.next(row)"
-            class="action-button no-padding"
-            [disabled]="!row._active"
-            >Trigger Actions</ion-button
+            (click)="sendNotificationClicked.next(row)"
+            class="no-padding"
+            style="margin: 0"
+            >Send Notification</ion-button
           >
           <ion-button
             expand="block"
@@ -80,30 +79,6 @@ import { FlowTypes } from "src/app/shared/model";
             <ion-icon slot="start" name="information-circle-outline"></ion-icon>
             log info
           </ion-button>
-        </div>
-
-        <!-- Notification -->
-        <div *ngIf="row.notification_schedule">
-          <div class="divider"></div>
-          <div style="display: flex">
-            <div style="flex: 1; margin-right: 8px">
-              <h4>Notification</h4>
-              <div *ngIf="!row.notification_schedule.text">⚠️ No notification text specified</div>
-              <div>{{ row.notification_schedule.text }}</div>
-            </div>
-            <div style="text-align: right">
-              <ion-button
-                fill="clear"
-                (click)="scheduleNotificationClicked.next(row)"
-                class="no-padding"
-                style="margin: 0"
-                [disabled]="!row._active"
-                >Schedule</ion-button
-              >
-              <div>{{ row.notification_schedule._schedule_at | date: "MMM d" }}</div>
-              <div>{{ row.notification_schedule._schedule_at | date: "h:mm a" }}</div>
-            </div>
-          </div>
         </div>
       </div>
     </details>
@@ -165,8 +140,7 @@ import { FlowTypes } from "src/app/shared/model";
 export class CampaignDebugRowComponent implements OnInit {
   @Input() row: FlowTypes.Campaign_listRow;
   @Output() manageVariablesClicked = new EventEmitter<FlowTypes.Campaign_listRow>();
-  @Output() triggerActionsClicked = new EventEmitter<FlowTypes.Campaign_listRow>();
-  @Output() scheduleNotificationClicked = new EventEmitter<FlowTypes.Campaign_listRow>();
+  @Output() sendNotificationClicked = new EventEmitter<FlowTypes.Campaign_listRow>();
   constructor() {}
 
   ngOnInit() {}

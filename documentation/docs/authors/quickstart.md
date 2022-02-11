@@ -21,7 +21,7 @@ You must optain a `private.key` file from the development team which you can cop
 Once the file is copied run the following command:
 
 ```
-npm run scripts decrypt-config
+yarn scripts decrypt-config
 ```
 
 You will see additional files populate to the `scripts/config` folder such as they become decrypted
@@ -33,7 +33,7 @@ All users need to connect to their personal google drive account to access files
 To connect to your google account you must run:
 
 ```
-npm run scripts gdrive-auth
+yarn scripts gdrive-auth
 ```
 
 You will see a warning message to connect the unverified app. Use the advanced dropdown to accept.
@@ -45,18 +45,12 @@ You will see a warning message to connect the unverified app. Use the advanced d
 You can download the PLH folder from Google Drive on demand to view and changes. Simply run:
 
 ```
-npm run scripts app-data-sync
+yarn scripts app-data sync
 ```
 
 You will see a summary of the output showing and details can be found in the referenced log folder:
 
 You will also see any potential issues flagged with warning messages, and two summary tables - one of data that was `skipped` (ignored) and one of `App Data` that has been passed for processing
-
-### Check for data issues
-
-When data is synced, a preview of the data as processed for the app is put in the `.idems_app/deployments` folder for the active deployment.
-
-You will see several files with a `.ts` extension, representing all flows, collated by flow type. Opening each of these files will also perform a quick check for data consistency issues with the app definitions
 
 ### Viewing changes in the app
 
@@ -64,10 +58,10 @@ Any changes downloaded will also be available to the app when running locally.
 To run the app with your latest downloaded data simply run
 
 ```
-npm run start
+yarn start
 ```
 
-### Comitting changes
+### Committing changes
 
 For content changes, it is not required to commit these to github as any developer will also have access to the same gdrive updates and will usually pull prior to release. 
 
@@ -75,9 +69,3 @@ Additionally, some scripts (plh conversations) use dynamically generated variabl
 
 
 However it may sometimes be good practice to make a pull request for the changed data, if wishing to identify specific things of note to developers (although this might be easier outside of github).
-
-### Changing the GDrive data source
-
-If you are using a different google drive folder (e.g. for testing), it is possible to change where the downloader syncs data from. The way the api works, is by searching for a folder across all folders you have provided authorisation from when signing in to your google account, for a name hardcoded in `scripts\src\gdrive-download\index.ts`
-
-You can change the name of the variable `GOOGLE_DRIVE_TARGET_FOLDER` in that file to specify a different named folder somewhere on your google drive. In the future we should probably expose this as a user variable in the config files.

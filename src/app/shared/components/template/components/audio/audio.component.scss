@@ -1,4 +1,4 @@
-@import "../../../../../../theme/mixins.scss";
+@import "src/theme/mixins.scss";
 .container-player {
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
@@ -104,7 +104,6 @@
         img {
           position: absolute;
           width: var(--audio-play-img-width);
-          margin-left: var(--tiny-margin);
         }
       }
     }

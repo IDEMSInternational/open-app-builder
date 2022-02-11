@@ -1,16 +1,10 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Injectable, Injector } from "@angular/core";
 import { FlowTypes } from "data-models";
-import { SettingsService } from "src/app/shared/services/settings.service";
-import { AnalyticsService } from "src/app/shared/services/analytics/analytics.service";
 import { TEMPLATE } from "src/app/shared/services/data/data.service";
-import { ServerService } from "src/app/shared/services/server/server.service";
-import { TourService } from "src/app/shared/services/tour/tour.service";
-import { TemplateContainerComponent } from "../template-container.component";
-import { TemplateNavService } from "./template-nav.service";
-import { TemplateTranslateService } from "./template-translate.service";
-import { TemplateVariablesService } from "./template-variables.service";
-import { TemplateService } from "./template.service";
+import { TemplateContainerComponent } from "../../template-container.component";
+import { TemplateNavService } from "../template-nav.service";
+import { TemplateService } from "../template.service";
+import { TemplateInstanceService } from "./template-instance.service";
 
 /**
  * The template process service is a slightly hacky wrapper around the template container component so that
@@ -20,36 +14,19 @@ import { TemplateService } from "./template.service";
  * component extending it (instead of vice-versa)
  */
 @Injectable({ providedIn: "root" })
-export class TemplateProcessService {
+export class TemplateProcessService extends TemplateInstanceService {
   container: TemplateContainerComponent;
-  constructor(
-    templateService: TemplateService,
-    templateVariables: TemplateVariablesService,
-    templateTranslateService: TemplateTranslateService,
-    tourService: TourService,
-    router: Router,
-    route: ActivatedRoute,
-    // elRef: ElementRef,
-    templateNavService: TemplateNavService,
-    // cdr: ChangeDetectorRef,
-    settingsService: SettingsService,
-    serverService: ServerService,
-    analyticsService: AnalyticsService
-  ) {
+  templateService: TemplateService;
+  templateNavService: TemplateNavService;
+  constructor(injector: Injector) {
+    super(injector);
+    this.templateService = this.getGlobalService(TemplateService);
+    this.templateNavService = this.getGlobalService(TemplateNavService);
     // Create mock template container component
     this.container = new TemplateContainerComponent(
-      templateService,
-      templateVariables,
-      templateTranslateService,
-      tourService,
-      router,
-      route,
-      null as any,
-      templateNavService,
-      null as any,
-      settingsService,
-      serverService,
-      analyticsService
+      this.templateService,
+      this.templateNavService,
+      injector
     );
   }
 

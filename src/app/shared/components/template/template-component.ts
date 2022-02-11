@@ -48,34 +48,20 @@ export class TmplCompHostDirective {
 @Component({
   selector: "plh-template-component",
   template: `
-    <div
-      class="plh-tmpl-comp"
-      [attr.data-hidden]="_row.hidden"
-      [attr.data-debug]="parent.debugMode"
-      [ngClass]="{ disabled: _row.disabled }"
-      [attr.data-rowname]="_row.name"
-    >
-      <!-- Template Debugger -->
-      <plh-template-debugger
-        *ngIf="parent.debugMode"
-        [row]="_row"
-        [parent]="parent"
-      ></plh-template-debugger>
-      <!-- Injected template component -->
-      <ng-template plhTemplateComponentHost></ng-template>
-    </div>
+    <!-- Template Debugger -->
+    <plh-template-debugger
+      *ngIf="parent.debugMode"
+      [row]="_row"
+      [parent]="parent"
+    ></plh-template-debugger>
+
+    <!-- Injected template component -->
+    <ng-template plhTemplateComponentHost></ng-template>
   `,
-  styleUrls: ["./components/tmpl-components-common.scss", "./template-container.component.scss"],
   encapsulation: ViewEncapsulation.None,
-  styles: [
-    `
-      :host :nth-child(1n) {
-        width: 100%;
-      }
-    `,
-  ],
+  styleUrls: ["./template-component.scss"],
 })
-export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
+export class TemplateComponent implements OnInit, ITemplateRowProps {
   /**
    * Specific data used in component rendering
    * when updated from parent changes will automatically propogate to child
@@ -96,15 +82,9 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   @Input() parent: TemplateContainerComponent;
 
   // Add bindings to track key data attributes on the component itself, e.g.
-  // <plh-template-component data-debug-hidden="false" data-display-component="TmplNumberComponent" data-name="number_selector_6" data-type="number_selector">
+  // <plh-template-component data-name="number_selector_6" data-type="number_selector">
   @HostBinding("attr.data-hidden") get getAttrHidden() {
-    return this._row && this._row.hidden;
-  }
-  @HostBinding("attr.data-debug-hidden") get getAttrDat() {
-    return this.parent && this.parent.debugMode;
-  }
-  @HostBinding("attr.data-display-component") get getComponentDisplayType() {
-    return TEMPLATE_COMPONENT_MAPPING[this._row?.type]?.name || "none";
+    return this._row && this._row.hidden ? true : false; // explictly state for all components to allow css selection
   }
   @HostBinding("attr.data-name") get getComponentName() {
     return this._row?.name || null;
@@ -130,9 +110,23 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
   ngOnInit() {
     this.renderRow(this._row);
   }
-
   ngAfterContentInit() {
-    this.setStyleList();
+    if (this._row.style_list) {
+      this.setStyleList();
+    }
+  }
+
+  /**
+   * apply any hard-coded styles from template sheet
+   * TODO - CC 2021-01-18 - to be reviewed given that often styles need to be applied to
+   * child elements and not main container (e.g. display group has custom override method)
+   * */
+  private setStyleList() {
+    const styles = this._row.style_list || [];
+    styles.forEach((style) => {
+      const [key, value] = style.split(":");
+      this.elRef.nativeElement.style.setProperty(key, value);
+    });
   }
 
   private renderRow(row: FlowTypes.TemplateRow) {
@@ -151,66 +145,6 @@ export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRow
             // console.warn(`[tmpl.component] - skipped [${row.type}:${row.name}]`, row);
           }
         }
-    }
-  }
-
-  /**
-   * CC  2021-04-18
-   * TODO - this code looks pretty long and specific, so likely best reviewed
-   * and moved into own service
-   * Also assume more could be handle with stylesheets instead of specific style
-   */
-  private setStyleList() {
-    const styles = {};
-    const row = this._row;
-    if (row.style_list) {
-      for (let i = 0; i < row.style_list.length; i++) {
-        let splited = row.style_list[i].split(":");
-        styles[splited[0]] = splited[1];
-        this.elRef.nativeElement.style.setProperty(splited[0], splited[1]);
-      }
-    }
-    if (
-      row.parameter_list &&
-      row.parameter_list["style"] === "navigation" &&
-      row.type === "display_group"
-    ) {
-      this.elRef.nativeElement.style.setProperty("display", "flex");
-      this.elRef.nativeElement.style.setProperty("height", "100%");
-      this.elRef.nativeElement.style.setProperty("min-height", "75px");
-      this.elRef.nativeElement.style.setProperty("align-items", "flex-end");
-      let el_component = this.elRef.nativeElement.parentElement.closest("plh-template-component");
-      let el_container = this.elRef.nativeElement.parentElement.closest("plh-template-container");
-      while (el_component && el_container) {
-        try {
-          if (el_component) {
-            el_component.style.setProperty("height", "100%");
-            el_component.style.setProperty("display", "flex");
-            el_component.style.setProperty("align-items", "flex-end");
-          }
-
-          if (el_container) {
-            el_container.style.setProperty("height", "100%");
-            el_container.style.setProperty("display", "flex");
-            el_container.style.setProperty("align-items", "flex-end");
-
-            el_component = el_container.parentElement.closest("plh-template-component");
-          }
-
-          if (el_component) {
-            el_container = el_component.parentElement.closest("plh-template-container");
-          }
-        } catch (ex) {
-          console.error("navigation style settings exception");
-          console.error(ex);
-        }
-      }
-    }
-    if (row.type === "button") {
-      this.elRef.nativeElement.style.setProperty("align-self", "normal");
-    }
-    if (row.type === "help_icon") {
-      this.elRef.nativeElement.style.setProperty("width", "40px");
     }
   }
 

@@ -4,7 +4,7 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "campaign_schedule",
+    flow_name: "nf_schedule_inactive",
     status: "released",
     rows: [
       {
@@ -24,7 +24,7 @@ const data_list: FlowTypes.Data_list[] = [
           minute: 30,
         },
         delay: {
-          days: 7,
+          days: 6,
         },
       },
       {
@@ -48,7 +48,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "campaigns/notification_campaigns.xlsx",
+    _xlsxPath: "campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -383,6 +383,37 @@ const data_list: FlowTypes.Data_list[] = [
         time: {
           hour: 18,
           minute: 0,
+        },
+      },
+      {
+        id: "debug_actions_2",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: false,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:FALSE",
+          },
+        ],
+        time: {
+          hour: 18,
+          minute: 1,
         },
       },
     ],
