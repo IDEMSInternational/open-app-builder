@@ -34,6 +34,18 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         campaign_list: ["debug_daily"],
         text: "Text 1",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "Text 1",
+          },
+          title: {
+            eng: "Debug Notification 1",
+          },
+        },
         title: "Debug Notification 1",
       },
       {
@@ -62,6 +74,18 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         campaign_list: ["debug_daily"],
         text: "Text 2",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "Text 2",
+          },
+          title: {
+            eng: "Debug Notification 2",
+          },
+        },
         title: "Debug Notification 2",
       },
       {
@@ -90,6 +114,22 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         campaign_list: ["debug_daily"],
         text: "Text: @global.debug_variable_1",
+        _translations: {
+          text: {
+            es_sp: true,
+          },
+          title: {
+            es_sp: true,
+          },
+        },
+        _translatedFields: {
+          text: {
+            eng: "Text: @global.debug_variable_1",
+          },
+          title: {
+            eng: "Title: @global.debug_variable_1",
+          },
+        },
         title: "Title: @global.debug_variable_1",
       },
       {
@@ -120,6 +160,18 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 1,
         campaign_list: ["debug_daily"],
         text: "Text 4",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "Text 4",
+          },
+          title: {
+            eng: "Debug Notification 4a",
+          },
+        },
         title: "Debug Notification 4a",
       },
       {
@@ -150,6 +202,18 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 1,
         campaign_list: ["debug_daily"],
         text: "Text 4",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "Text 4",
+          },
+          title: {
+            eng: "Debug Notification 4b",
+          },
+        },
         title: "Debug Notification 4b",
       },
       {
@@ -180,42 +244,126 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 1,
         campaign_list: ["debug_daily"],
         text: "Text 4",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "Text 4",
+          },
+          title: {
+            eng: "Debug Notification 4c",
+          },
+        },
         title: "Debug Notification 4c",
       },
       {
         id: "debug_fixed_saturday",
         campaign_list: ["debug_fixed_saturday"],
         text: "We hope you are having a nice weekend",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "We hope you are having a nice weekend",
+          },
+          title: {
+            eng: "Debug Fixed Saturday",
+          },
+        },
         title: "Debug Fixed Saturday",
       },
       {
         id: "debug_fixed_december_no_time",
         campaign_list: ["debug_fixed_december_no_time"],
         text: "December daily - no time specified",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "December daily - no time specified",
+          },
+          title: {
+            eng: "Debug Fixed December No Time",
+          },
+        },
         title: "Debug Fixed December No Time",
       },
       {
         id: "debug_fixed_december_early",
         campaign_list: ["debug_fixed_december_early"],
         text: "December daily - early",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "December daily - early",
+          },
+          title: {
+            eng: "Debug Fixed December Early",
+          },
+        },
         title: "Debug Fixed December Early",
       },
       {
         id: "debug_fixed_december_noon",
         campaign_list: ["debug_fixed_december_noon"],
         text: "December daily - noon",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "December daily - noon",
+          },
+          title: {
+            eng: "Debug Fixed December Noon",
+          },
+        },
         title: "Debug Fixed December Noon",
       },
       {
         id: "debug_fixed_december_late",
         campaign_list: ["debug_fixed_december_late"],
         text: "December daily - late",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "December daily - late",
+          },
+          title: {
+            eng: "Debug Fixed December Late",
+          },
+        },
         title: "Debug Fixed December Late",
       },
       {
         id: "debug_fixed_new_years_day",
         campaign_list: ["debug_fixed_new_years_day"],
         text: "Happy new year from PLH",
+        _translations: {
+          text: {},
+          title: {},
+        },
+        _translatedFields: {
+          text: {
+            eng: "Happy new year from PLH",
+          },
+          title: {
+            eng: "Debug Fixed New Years Day",
+          },
+        },
         title: "Debug Fixed New Years Day",
       },
     ],
