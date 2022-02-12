@@ -1,5 +1,5 @@
 import { Injectable, Injector } from "@angular/core";
-import { addDays } from "date-fns";
+import { addDays, addSeconds } from "date-fns";
 import {
   addHours,
   addMinutes,
@@ -27,7 +27,7 @@ import {
 import {
   arrayToHashmap,
   mergeArrayOfArrays,
-  randomElementFromArray,
+  shuffleArray,
   stringToIntegerHash,
 } from "src/app/shared/utils";
 type ICampaignHashmap = {
@@ -174,11 +174,18 @@ export class CampaignService {
       // remove any previous notification for the campaign
       await this.deactiveCampaignNotifications(campaign.id);
       if (campaign._active) {
-        const nextRow = await this.getNextCampaignRow(campaign.id);
-        if (nextRow) {
-          // add new notification
-          const schedule = await this.scheduleCampaignNotification(nextRow, campaign.id);
-          scheduled[campaign.id][nextRow.id] = schedule;
+        const nextRows = await this.getNextCampaignRows(campaign.id, campaign.schedule?.batch_size);
+        if (nextRows) {
+          let earliestStart = new Date();
+          // add new notifications
+
+          for (const nextRow of nextRows) {
+            const start = earliestStart.toISOString().slice(0, -1); // remove timezone so relative to user as in scripts
+            const schedule = await this.scheduleCampaignNotification(nextRow, campaign.id, start);
+            scheduled[campaign.id][nextRow.id] = schedule;
+            // if scheduling in batch ensure next notification at least 60s after previous
+            earliestStart = addSeconds(schedule.schedule.at, 60);
+          }
         }
       }
     }
@@ -187,10 +194,11 @@ export class CampaignService {
   }
 
   /**
-   * Select the highest priority row for a given campaign that satisfies all activation/deactivation
+   * Select the highest priority rows for a given campaign that satisfies all activation/deactivation
    * criteria. In the case of multiple equal priority rows, return at random
+   * @param batchSize - maximum number of rows to return for scheduling in batch
    */
-  public async getNextCampaignRow(campaign_id: string) {
+  public async getNextCampaignRows(campaign_id: string, batchSize = 1) {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
 
@@ -198,38 +206,36 @@ export class CampaignService {
       console.error("no data exists for campaign", campaign_id);
       return null;
     }
-    const campaignRows = this.allCampaigns[campaign_id].sort((a, b) => b.priority - a.priority);
-    const satisfiedRows: FlowTypes.Campaign_listRow[] = [];
-    // Iterate over campaign rows in order of priority. If row satisfies conditions set as new benchmark priority
-    let benchmarkRowPriority = -Infinity;
-    for (const row of campaignRows) {
-      if (!row.hasOwnProperty("priority")) row.priority = -Infinity;
-      if (row.priority >= benchmarkRowPriority) {
+    const rowsByPrioirity = this.shuffleSortCampaignRowsByPriority(this.allCampaigns[campaign_id]);
+    const returnedRows: FlowTypes.Campaign_listRow[] = [];
+    for (const row of rowsByPrioirity) {
+      if (returnedRows.length < batchSize) {
         const evaluation = await this.evaluateRowActivationConditions(row);
         if (evaluation._active) {
-          // set current row as new bar for activation processing
-          benchmarkRowPriority = row.priority;
-          satisfiedRows.push({ ...row, ...evaluation });
+          returnedRows.push({ ...row, ...evaluation });
         }
       }
     }
-    // return row at random from list of all rows that matched the final benchmark priority
-    const highestPriorityRows = satisfiedRows.filter((row) => row.priority >= benchmarkRowPriority);
-    const selectedRow = randomElementFromArray(highestPriorityRows);
-
-    // console.log("[Campaign Next]", campaign_id, { campaignRows, selectedRow, satisfiedRows });
-    return selectedRow;
+    return returnedRows;
   }
 
   /**
    * Convert PLH notification schedule data and create local notification
    * @returns list of all currently scheduled notifications
+   * @param start_date override default campaign start date if scheduling notifications in batch
    */
-  public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow, campaign_id: string) {
+  public async scheduleCampaignNotification(
+    row: FlowTypes.Campaign_listRow,
+    campaign_id: string,
+    start_date?: string
+  ) {
     const schedule = this.scheduledCampaigns[campaign_id];
     if (!schedule) {
       console.error("No notification schedule provided for campaign", campaign_id);
       return;
+    }
+    if (start_date) {
+      schedule.schedule = { ...schedule.schedule, start_date };
     }
     const notification_schedule = this.evaluateCampaignNotification(schedule);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
@@ -439,5 +445,23 @@ export class CampaignService {
       if (end_date && isBefore(new Date(end_date), new Date())) return false;
     }
     return true;
+  }
+
+  /**
+   * Sort campaign rows by priority. If multiple rows with same priority exist randomise the order
+   * so that the first priority item is not always returned
+   */
+  private shuffleSortCampaignRowsByPriority(rows: FlowTypes.Campaign_listRow[]) {
+    const groupsByPriority = {};
+    for (const row of rows) {
+      if (!row.hasOwnProperty("priority")) row.priority = -Infinity;
+      if (!groupsByPriority[row.priority]) groupsByPriority[row.priority] = [];
+      groupsByPriority[row.priority].push(row);
+    }
+    const shuffleSortedGroups = Object.entries<FlowTypes.Campaign_listRow[][]>(groupsByPriority)
+      .sort(([key_a], [key_b]) => Number(key_b) - Number(key_a))
+      .map(([_, value]) => shuffleArray(value));
+    const shuffleSortedRows = [].concat(...shuffleSortedGroups);
+    return shuffleSortedRows;
   }
 }
