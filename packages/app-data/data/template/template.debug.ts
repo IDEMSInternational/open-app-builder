@@ -3,6 +3,278 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
+    flow_subtype: "debug",
+    flow_name: "debug_campaign_tester",
+    status: "released",
+    rows: [
+      {
+        type: "text",
+        name: "text",
+        value: "Campaign to be tested",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text",
+      },
+      {
+        name: "active",
+        type: "set_variable",
+        _nested_name: "active",
+      },
+      {
+        name: "campaign",
+        value: "@campaign.",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "campaign",
+      },
+      {
+        name: "active_campaign",
+        value: "@local.campaign@local.active",
+        _translations: {
+          value: {},
+        },
+        condition: "@local.active",
+        type: "set_variable",
+        _nested_name: "active_campaign",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.campaign@local.active",
+              matchedExpression: "@local.campaign",
+              type: "local",
+              fieldName: "campaign",
+            },
+            {
+              fullExpression: "@local.campaign@local.active",
+              matchedExpression: "@local.active",
+              type: "local",
+              fieldName: "active",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.active",
+              matchedExpression: "@local.active",
+              type: "local",
+              fieldName: "active",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.campaign": ["value"],
+          "@local.active": ["value", "condition"],
+        },
+      },
+      {
+        name: "answer_list",
+        value: [
+          "name: debug_daily | text: debug_daily",
+          "name: debug_actions | text: debug_actions",
+          "name: debug_calc | text: debug_calc",
+        ],
+        type: "set_variable",
+        _nested_name: "answer_list",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group",
+        value: "radio_group",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_local",
+            args: ["active", "this.value"],
+            _raw: "changed | set_local: active: @local.radio_group",
+            _cleaned: "changed | set_local: active: @local.radio_group",
+          },
+          {
+            trigger: "changed",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "changed | emit: force_reprocess",
+            _cleaned: "changed | emit: force_reprocess",
+          },
+        ],
+        parameter_list: {
+          answer_list: "@local.answer_list",
+        },
+        _nested_name: "radio_group",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_local: active: @local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_local: active: @local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "display_group",
+        condition: "@local.active",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "campaign_id",
+            value: "Campaign id: @local.active_campaign.id",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.campaign_id",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "Campaign id: @local.active_campaign.id",
+                  matchedExpression: "@local.active_campaign.id",
+                  type: "local",
+                  fieldName: "active_campaign",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.active_campaign.id": ["value"],
+            },
+          },
+          {
+            type: "round_button",
+            name: "campaign_quickstart",
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "trigger_actions",
+                args: ["@local.active_campaign.action_list"],
+                _raw: "click | trigger_actions: @local.active_campaign.action_list",
+                _cleaned: "click | trigger_actions: @local.active_campaign.action_list",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "@local.active_campaign.icon",
+              text: "@local.active_campaign.text",
+              style: "home_screen yellow",
+            },
+            style_list: ["padding: 0"],
+            _nested_name: "display_group.campaign_quickstart",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  args: {
+                    "0": [
+                      {
+                        fullExpression: "@local.active_campaign.action_list",
+                        matchedExpression: "@local.active_campaign.action_list",
+                        type: "local",
+                        fieldName: "active_campaign",
+                      },
+                    ],
+                  },
+                  _raw: [
+                    {
+                      fullExpression: "click | trigger_actions: @local.active_campaign.action_list",
+                      matchedExpression: "@local.active_campaign.action_list",
+                      type: "local",
+                      fieldName: "active_campaign",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression: "click | trigger_actions: @local.active_campaign.action_list",
+                      matchedExpression: "@local.active_campaign.action_list",
+                      type: "local",
+                      fieldName: "active_campaign",
+                    },
+                  ],
+                },
+              },
+              parameter_list: {
+                icon_src: [
+                  {
+                    fullExpression: "@local.active_campaign.icon",
+                    matchedExpression: "@local.active_campaign.icon",
+                    type: "local",
+                    fieldName: "active_campaign",
+                  },
+                ],
+                text: [
+                  {
+                    fullExpression: "@local.active_campaign.text",
+                    matchedExpression: "@local.active_campaign.text",
+                    type: "local",
+                    fieldName: "active_campaign",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.active_campaign.action_list": [
+                "action_list.0.args.0",
+                "action_list.0._raw",
+                "action_list.0._cleaned",
+              ],
+              "@local.active_campaign.icon": ["parameter_list.icon_src"],
+              "@local.active_campaign.text": ["parameter_list.text"],
+            },
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: "@local.active",
+              matchedExpression: "@local.active",
+              type: "local",
+              fieldName: "active",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.active": ["condition"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "feature_feedback_default",
     status: "released",
     flow_subtype: "debug",
@@ -18594,278 +18866,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/example_templates/example_items.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_subtype: "debug",
-    flow_name: "debug_campaign_tester",
-    status: "released",
-    rows: [
-      {
-        type: "text",
-        name: "text",
-        value: "Campaign to be tested",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text",
-      },
-      {
-        name: "active",
-        type: "set_variable",
-        _nested_name: "active",
-      },
-      {
-        name: "campaign",
-        value: "@campaign.",
-        _translations: {
-          value: {},
-        },
-        type: "set_variable",
-        _nested_name: "campaign",
-      },
-      {
-        name: "active_campaign",
-        value: "@local.campaign@local.active",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.active",
-        type: "set_variable",
-        _nested_name: "active_campaign",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.campaign@local.active",
-              matchedExpression: "@local.campaign",
-              type: "local",
-              fieldName: "campaign",
-            },
-            {
-              fullExpression: "@local.campaign@local.active",
-              matchedExpression: "@local.active",
-              type: "local",
-              fieldName: "active",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.active",
-              matchedExpression: "@local.active",
-              type: "local",
-              fieldName: "active",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.campaign": ["value"],
-          "@local.active": ["value", "condition"],
-        },
-      },
-      {
-        name: "answer_list",
-        value: [
-          "name: debug_daily | text: debug_daily",
-          "name: debug_actions | text: debug_actions",
-          "name: debug_calc | text: debug_calc",
-        ],
-        type: "set_variable",
-        _nested_name: "answer_list",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group",
-        value: "radio_group",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_local",
-            args: ["active", "this.value"],
-            _raw: "changed | set_local: active: @local.radio_group",
-            _cleaned: "changed | set_local: active: @local.radio_group",
-          },
-          {
-            trigger: "changed",
-            action_id: "emit",
-            args: ["force_reprocess"],
-            _raw: "changed | emit: force_reprocess",
-            _cleaned: "changed | emit: force_reprocess",
-          },
-        ],
-        parameter_list: {
-          answer_list: "@local.answer_list",
-        },
-        _nested_name: "radio_group",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_local: active: @local.radio_group",
-                  matchedExpression: "@local.radio_group",
-                  type: "local",
-                  fieldName: "radio_group",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_local: active: @local.radio_group",
-                  matchedExpression: "@local.radio_group",
-                  type: "local",
-                  fieldName: "radio_group",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "display_group",
-        condition: "@local.active",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "column",
-        },
-        rows: [
-          {
-            type: "text",
-            name: "campaign_id",
-            value: "Campaign id: @local.active_campaign.id",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.campaign_id",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "Campaign id: @local.active_campaign.id",
-                  matchedExpression: "@local.active_campaign.id",
-                  type: "local",
-                  fieldName: "active_campaign",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign.id": ["value"],
-            },
-          },
-          {
-            type: "round_button",
-            name: "campaign_quickstart",
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "trigger_actions",
-                args: ["@local.active_campaign.action_list"],
-                _raw: "click | trigger_actions: @local.active_campaign.action_list",
-                _cleaned: "click | trigger_actions: @local.active_campaign.action_list",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.active_campaign.icon",
-              text: "@local.active_campaign.text",
-              style: "home_screen yellow",
-            },
-            style_list: ["padding: 0"],
-            _nested_name: "display_group.campaign_quickstart",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  args: {
-                    "0": [
-                      {
-                        fullExpression: "@local.active_campaign.action_list",
-                        matchedExpression: "@local.active_campaign.action_list",
-                        type: "local",
-                        fieldName: "active_campaign",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | trigger_actions: @local.active_campaign.action_list",
-                      matchedExpression: "@local.active_campaign.action_list",
-                      type: "local",
-                      fieldName: "active_campaign",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | trigger_actions: @local.active_campaign.action_list",
-                      matchedExpression: "@local.active_campaign.action_list",
-                      type: "local",
-                      fieldName: "active_campaign",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.active_campaign.icon",
-                    matchedExpression: "@local.active_campaign.icon",
-                    type: "local",
-                    fieldName: "active_campaign",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.active_campaign.text",
-                    matchedExpression: "@local.active_campaign.text",
-                    type: "local",
-                    fieldName: "active_campaign",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.active_campaign.action_list": [
-                "action_list.0.args.0",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@local.active_campaign.icon": ["parameter_list.icon_src"],
-              "@local.active_campaign.text": ["parameter_list.text"],
-            },
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-        _dynamicFields: {
-          condition: [
-            {
-              fullExpression: "@local.active",
-              matchedExpression: "@local.active",
-              type: "local",
-              fieldName: "active",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.active": ["condition"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
   {
     flow_type: "template",
