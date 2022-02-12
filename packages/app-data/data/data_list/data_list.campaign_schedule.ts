@@ -4,55 +4,6 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "nf_schedule_inactive",
-    status: "released",
-    rows: [
-      {
-        id: "inactive_day",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 0,
-        },
-      },
-      {
-        id: "inactive_week",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 6,
-        },
-      },
-      {
-        id: "inactive_month",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 30,
-        },
-      },
-      {
-        id: "generic",
-        schedule: {
-          day_of_week: 6,
-        },
-        time: {
-          hour: 12,
-          minute: 0,
-        },
-      },
-    ],
-    _xlsxPath: "campaigns/notifications_inactive.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_schedule",
     flow_name: "debug_campaign_schedules",
     status: "released",
     comments: "This contains schedules for notifications",
@@ -83,6 +34,9 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
+        schedule: {
+          batch_size: 5,
+        },
         time: {
           hour: 19,
           minute: 30,
@@ -418,6 +372,55 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_schedule",
+    flow_name: "nf_schedule_inactive",
+    status: "released",
+    rows: [
+      {
+        id: "inactive_day",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 0,
+        },
+      },
+      {
+        id: "inactive_week",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 6,
+        },
+      },
+      {
+        id: "inactive_month",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 30,
+        },
+      },
+      {
+        id: "generic",
+        schedule: {
+          day_of_week: 6,
+        },
+        time: {
+          hour: 12,
+          minute: 0,
+        },
+      },
+    ],
+    _xlsxPath: "campaigns/notifications_inactive.xlsx",
   },
 ];
 export default data_list;
