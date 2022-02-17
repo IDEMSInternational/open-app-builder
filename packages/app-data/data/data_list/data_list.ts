@@ -19,10 +19,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Chapter 1",
           },
           title: {
-            eng: "I can hear you",
+            eng: "I can hear you!",
           },
         },
-        title: "I can hear you",
+        title: "I can hear you!",
       },
       {
         id: "activity_2",
@@ -36,10 +36,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Chapter 2",
           },
           title: {
-            eng: "I can count to 5",
+            eng: "I can count to 5!",
           },
         },
-        title: "I can count to 5",
+        title: "I can count to 5!",
       },
       {
         id: "activity_3",
@@ -53,10 +53,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Chapter 3",
           },
           title: {
-            eng: "I can count to 10",
+            eng: "I can count to 10!",
           },
         },
-        title: "I can count to 10",
+        title: "I can count to 10!",
       },
       {
         id: "activity_4",
@@ -119,6 +119,9 @@ const data_list: FlowTypes.Data_list[] = [
         video_asset: "network.mp4",
         title: "Video 2",
         _translations: {
+          title: {},
+        },
+        _translatedFields: {
           title: {
             eng: "Video 2",
           },

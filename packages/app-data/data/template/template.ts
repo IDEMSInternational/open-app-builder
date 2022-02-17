@@ -16,6 +16,24 @@ const template: FlowTypes.Template[] = [
         _nested_name: "title",
       },
       {
+        name: "piece1",
+        value: "example",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "piece1",
+      },
+      {
+        name: "piece2",
+        value: "_videos",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "piece2",
+      },
+      {
         type: "image",
         name: "main_image",
         value: "abacus.jpg",
@@ -44,6 +62,24 @@ const template: FlowTypes.Template[] = [
       },
       {
         type: "button",
+        name: "button_activities_1",
+        value: "Activities Esmee",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["example_activities_Esmee"],
+            _raw: "click | go_to: example_activities_Esmee",
+            _cleaned: "click | go_to: example_activities_Esmee",
+          },
+        ],
+        _nested_name: "button_activities_1",
+      },
+      {
+        type: "button",
         name: "button_videos",
         value: "Videos",
         _translations: {
@@ -53,12 +89,66 @@ const template: FlowTypes.Template[] = [
           {
             trigger: "click",
             action_id: "go_to",
-            args: ["example_videos"],
-            _raw: "click | go_to: example_videos",
-            _cleaned: "click | go_to: example_videos",
+            args: ["@local.piece1@local.piece2"],
+            _raw: "click | go_to: @local.piece1@local.piece2",
+            _cleaned: "click | go_to: @local.piece1@local.piece2",
           },
         ],
         _nested_name: "button_videos",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              args: {
+                "0": [
+                  {
+                    fullExpression: "@local.piece1@local.piece2",
+                    matchedExpression: "@local.piece1",
+                    type: "local",
+                    fieldName: "piece1",
+                  },
+                  {
+                    fullExpression: "@local.piece1@local.piece2",
+                    matchedExpression: "@local.piece2",
+                    type: "local",
+                    fieldName: "piece2",
+                  },
+                ],
+              },
+              _raw: [
+                {
+                  fullExpression: "click | go_to: @local.piece1@local.piece2",
+                  matchedExpression: "@local.piece1",
+                  type: "local",
+                  fieldName: "piece1",
+                },
+                {
+                  fullExpression: "click | go_to: @local.piece1@local.piece2",
+                  matchedExpression: "@local.piece2",
+                  type: "local",
+                  fieldName: "piece2",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "click | go_to: @local.piece1@local.piece2",
+                  matchedExpression: "@local.piece1",
+                  type: "local",
+                  fieldName: "piece1",
+                },
+                {
+                  fullExpression: "click | go_to: @local.piece1@local.piece2",
+                  matchedExpression: "@local.piece2",
+                  type: "local",
+                  fieldName: "piece2",
+                },
+              ],
+            },
+          },
+        },
+        _dynamicDependencies: {
+          "@local.piece1": ["action_list.0.args.0", "action_list.0._raw", "action_list.0._cleaned"],
+          "@local.piece2": ["action_list.0.args.0", "action_list.0._raw", "action_list.0._cleaned"],
+        },
       },
       {
         type: "button",
@@ -79,11 +169,153 @@ const template: FlowTypes.Template[] = [
         _nested_name: "button_storybooks",
       },
     ],
-    _xlsxPath: "example_templates.xlsx",
+    _xlsxPath: "app_sheets.xlsx",
   },
   {
     flow_type: "template",
     flow_name: "example_activities",
+    status: "released",
+    rows: [
+      {
+        name: "activity_text_style",
+        value: "color: rgb(255,0,0)",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "activity_text_style",
+      },
+      {
+        name: "activity_image_style",
+        value: "flex: 55",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "activity_image_style",
+      },
+      {
+        type: "template",
+        name: "header1",
+        value: "efm_activity_header",
+        rows: [
+          {
+            name: "efm_activity_name",
+            value: "Math Out Loud - General",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "header1.efm_activity_name",
+          },
+          {
+            name: "efm_activity_type",
+            value: "Activity",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "header1.efm_activity_type",
+          },
+        ],
+        _nested_name: "header1",
+      },
+      {
+        type: "display_group",
+        name: "trial1",
+        rows: [
+          {
+            type: "image",
+            name: "image",
+            value: "EFM10EFMPairLookingAway.svg",
+            _translations: {
+              value: {},
+            },
+            style_list: ["@local.activity_image_style"],
+            _nested_name: "trial1.image",
+            _dynamicFields: {
+              style_list: {
+                "0": [
+                  {
+                    fullExpression: "@local.activity_image_style",
+                    matchedExpression: "@local.activity_image_style",
+                    type: "local",
+                    fieldName: "activity_image_style",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.activity_image_style": ["style_list.0"],
+            },
+          },
+          {
+            type: "text",
+            name: "text_1",
+            value:
+              "At these early ages, it is all about exposure! Your child is being exposed to a wide array of experiences and is discovering patterns. Expose your child to math and play with math together.",
+            _translations: {
+              value: {},
+            },
+            style_list: ["flex:100", "@local.activity_text_style"],
+            _nested_name: "trial1.text_1",
+            _dynamicFields: {
+              style_list: {
+                "1": [
+                  {
+                    fullExpression: "@local.activity_text_style",
+                    matchedExpression: "@local.activity_text_style",
+                    type: "local",
+                    fieldName: "activity_text_style",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.activity_text_style": ["style_list.1"],
+            },
+          },
+        ],
+        _nested_name: "trial1",
+      },
+      {
+        type: "display_group",
+        name: "trial2",
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "text_2",
+            value:
+              "Start this even before your child seems to understand what you are saying. Your child is a sponge who will eventually understand your words.",
+            _translations: {
+              value: {},
+            },
+            style_list: ["color: red", "margin-top: -15px"],
+            _nested_name: "trial2.text_2",
+          },
+          {
+            type: "text",
+            name: "text_3",
+            value:
+              "Make a habit of pointing at things your child is interacting with and describing them with words involving numbers, shapes, and colors. If you are dealing with a small set of things, count them out loud to your child.",
+            _translations: {
+              value: {},
+            },
+            style_list: ["margin-top: -15px"],
+            _nested_name: "trial2.text_3",
+          },
+        ],
+        _nested_name: "trial2",
+      },
+    ],
+    _xlsxPath: "app_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_activities_Esmee",
     status: "released",
     rows: [
       {
@@ -109,6 +341,15 @@ const template: FlowTypes.Template[] = [
         name: "items",
         value: "@data.activities",
         rows: [
+          {
+            type: "text",
+            name: "text",
+            value: "This is a new row of text.",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "items.text",
+          },
           {
             type: "button",
             name: "button",
@@ -182,6 +423,15 @@ const template: FlowTypes.Template[] = [
               ],
             },
           },
+          {
+            type: "text",
+            name: "text",
+            value: "This is another row of text.",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "items.text",
+          },
         ],
         _nested_name: "items",
         _dynamicFields: {
@@ -199,7 +449,78 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "example_templates.xlsx",
+    _xlsxPath: "app_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_activity_header",
+    status: "released",
+    rows: [
+      {
+        name: "efm_activity_name",
+        value: "No Name Given",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "efm_activity_name",
+      },
+      {
+        name: "efm_activity_type",
+        value: "No Activitty Type Given",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "efm_activity_type",
+      },
+      {
+        type: "title",
+        name: "title",
+        value: "@local.efm_activity_name",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.efm_activity_name",
+              matchedExpression: "@local.efm_activity_name",
+              type: "local",
+              fieldName: "efm_activity_name",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.efm_activity_name": ["value"],
+        },
+      },
+      {
+        type: "subtitle",
+        name: "subtitle",
+        value: "@local.efm_activity_type",
+        _translations: {
+          value: {},
+        },
+        style_list: ["margin-top: -23px"],
+        _nested_name: "subtitle",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.efm_activity_type",
+              matchedExpression: "@local.efm_activity_type",
+              type: "local",
+              fieldName: "efm_activity_type",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.efm_activity_type": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "app_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -322,19 +643,12 @@ const template: FlowTypes.Template[] = [
         },
       },
       {
-        name: "text_completed",
-        type: "set_variable",
-        _nested_name: "text_completed",
-      },
-      {
-        name: "text_not_completed",
-        type: "set_variable",
-        _nested_name: "text_not_completed",
-      },
-      {
-        type: "template",
-        name: "in_week_message",
-        value: "in_week_message",
+        type: "display_group",
+        name: "dg_video_2",
+        condition: '@local.radio_group == "video_2"',
+        parameter_list: {
+          style: "column",
+        },
         rows: [
           {
             type: "text",
@@ -367,7 +681,7 @@ const template: FlowTypes.Template[] = [
             },
             _nested_name: "dg_video_2.video_player",
             _dynamicFields: {
-              condition: [
+              value: [
                 {
                   fullExpression: "@data.videos.video_2.video_asset",
                   matchedExpression: "@data.videos.video_2.video_asset",
@@ -465,7 +779,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "example_templates.xlsx",
+    _xlsxPath: "app_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -553,7 +867,99 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "example_templates.xlsx",
+    _xlsxPath: "app_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_text",
+    status: "released",
+    rows: [
+      {
+        name: "text_to_use",
+        value: "Danger Danger you forgot the text.",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "text_to_use",
+      },
+      {
+        name: "text_ignored_1",
+        value: '""',
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "text_ignored_1",
+      },
+      {
+        name: "text_ignored_2",
+        value: '""',
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "text_ignored_2",
+      },
+      {
+        name: "style_of_text",
+        value: "style:center",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "style_of_text",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "@local.text_to_use @local.text_ignored_1 @local.text_ignored_2 END!",
+        _translations: {
+          value: {},
+        },
+        style_list: ["@local.style_of_text"],
+        _nested_name: "text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.text_to_use @local.text_ignored_1 @local.text_ignored_2 END!",
+              matchedExpression: "@local.text_to_use",
+              type: "local",
+              fieldName: "text_to_use",
+            },
+            {
+              fullExpression: "@local.text_to_use @local.text_ignored_1 @local.text_ignored_2 END!",
+              matchedExpression: "@local.text_ignored_1",
+              type: "local",
+              fieldName: "text_ignored_1",
+            },
+            {
+              fullExpression: "@local.text_to_use @local.text_ignored_1 @local.text_ignored_2 END!",
+              matchedExpression: "@local.text_ignored_2",
+              type: "local",
+              fieldName: "text_ignored_2",
+            },
+          ],
+          style_list: {
+            "0": [
+              {
+                fullExpression: "@local.style_of_text",
+                matchedExpression: "@local.style_of_text",
+                type: "local",
+                fieldName: "style_of_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.text_to_use": ["value"],
+          "@local.text_ignored_1": ["value"],
+          "@local.text_ignored_2": ["value"],
+          "@local.style_of_text": ["style_list.0"],
+        },
+      },
+    ],
+    _xlsxPath: "app_sheets.xlsx",
   },
 ];
 export default template;
