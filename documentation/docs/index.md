@@ -1,6 +1,4 @@
-# Intro
-
-# Quickstart
+# Getting Setup
 
 ## Prequisites
 
@@ -39,6 +37,8 @@ An initial deployment should be specified via the command
 ```
 yarn scripts deployment set
 ```
+
+Deployments are used to configure data sources (such as google drive) and various processing steps. See [Deployment Documentation](./developers/deployments.md) for more information
 
 ### Firebase
 To be able to run the full project a specific configuration file needs to be included to access

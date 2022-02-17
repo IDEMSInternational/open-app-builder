@@ -81,6 +81,9 @@ export const APP_HEADER_DEFAULTS = {
   // default show back button on all screens except home screen
   should_show_back_button: (location: Location) =>
     location.pathname !== APP_ROUTE_DEFAULTS.home_path,
+  // on device minimize app when back button pressed from home screen
+  should_minimize_app_on_back: (location: Location) =>
+    location.pathname == APP_ROUTE_DEFAULTS.home_path,
 };
 
 export const APP_SIDEMENU_DEFAULTS = {

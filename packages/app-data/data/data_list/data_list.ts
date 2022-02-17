@@ -119,9 +119,6 @@ const data_list: FlowTypes.Data_list[] = [
         video_asset: "network.mp4",
         title: "Video 2",
         _translations: {
-          title: {},
-        },
-        _translatedFields: {
           title: {
             eng: "Video 2",
           },

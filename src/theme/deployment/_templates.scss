@@ -16,10 +16,10 @@ plh-template-container[data-templatename="parent_centre"] {
     margin-bottom: 20px;
     display: block;
   }
-  plh-tmpl-display-group .display-group-wrapper[data-param-style="parent_point"] {
+  plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] {
     // ensure tiles are at least 200px and provide a larger gap between icons
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 32px;
+    grid-gap: 20px;
   }
 }
 
@@ -28,7 +28,7 @@ plh-template-container[data-templatename="parent_points"] {
   plh-template-component[data-type="parent_point_box"] {
     margin-top: 0;
   }
-  .display-group-wrapper[data-param-style="parent_point"] {
+  .display-group-wrapper[data-param-style~="parent_point"] {
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
 }
@@ -49,7 +49,7 @@ plh-template-container[data-templatename="weekly_workshops"] {
 /// parent_centre_essential_tools
 plh-template-container[data-templatename="parent_centre_essential_tools"] {
   // convert two-column display to regular grid
-  .display-group-wrapper[data-param-style="two_columns"] {
+  .display-group-wrapper[data-param-style~="two_columns"] {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-gap: 16px;
   }

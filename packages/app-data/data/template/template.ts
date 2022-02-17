@@ -322,12 +322,19 @@ const template: FlowTypes.Template[] = [
         },
       },
       {
-        type: "display_group",
-        name: "dg_video_2",
-        condition: '@local.radio_group == "video_2"',
-        parameter_list: {
-          style: "column",
-        },
+        name: "text_completed",
+        type: "set_variable",
+        _nested_name: "text_completed",
+      },
+      {
+        name: "text_not_completed",
+        type: "set_variable",
+        _nested_name: "text_not_completed",
+      },
+      {
+        type: "template",
+        name: "in_week_message",
+        value: "in_week_message",
         rows: [
           {
             type: "text",
@@ -360,7 +367,7 @@ const template: FlowTypes.Template[] = [
             },
             _nested_name: "dg_video_2.video_player",
             _dynamicFields: {
-              value: [
+              condition: [
                 {
                   fullExpression: "@data.videos.video_2.video_asset",
                   matchedExpression: "@data.videos.video_2.video_asset",

@@ -2,6 +2,7 @@ import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
 import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
@@ -182,9 +183,10 @@ export class TemplateNavService {
     container?: TemplateContainerComponent
   ) {
     const templatename = action.args[0];
-    // handle case when triggered outside of templating system
+    // if triggered outside templating system (e.g. via notification action) still enable
+    // popup creation and dismiss on nav changes
     if (!container) {
-      console.log("handling popup without container");
+      this.router.events.pipe(first()).subscribe(() => this.dismissPopup(templatename));
       return this.createPopupAndWaitForDismiss(templatename, null);
     }
 
@@ -298,6 +300,7 @@ export class TemplateNavService {
       name: popup_child,
       templatename: popup_child,
       parent: container,
+      showCloseButton: true,
     };
     // If trying to recreate a popup that already exists simply mark as visible
     const existingPopup = this.openPopupsByName[popup_child];
