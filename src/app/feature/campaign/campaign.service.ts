@@ -1,16 +1,6 @@
 import { Injectable, Injector } from "@angular/core";
 import { addDays, addSeconds } from "date-fns";
-import {
-  addHours,
-  addMinutes,
-  addWeeks,
-  endOfDay,
-  isAfter,
-  isBefore,
-  isFuture,
-  isPast,
-  setISODay,
-} from "date-fns";
+import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
 import { extractDynamicFields } from "packages/data-models";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
@@ -178,10 +168,8 @@ export class CampaignService {
         if (nextRows) {
           let earliestStart = new Date();
           // add new notifications
-
           for (const nextRow of nextRows) {
-            const start = earliestStart.toISOString().slice(0, -1); // remove timezone so relative to user as in scripts
-            const schedule = await this.scheduleCampaignNotification(nextRow, campaign.id, start);
+            const schedule = await this.scheduleNotification(nextRow, campaign.id, earliestStart);
             scheduled[campaign.id][nextRow.id] = schedule;
             // if scheduling in batch ensure next notification at least 60s after previous
             earliestStart = addSeconds(schedule.schedule.at, 60);
@@ -222,22 +210,19 @@ export class CampaignService {
   /**
    * Convert PLH notification schedule data and create local notification
    * @returns list of all currently scheduled notifications
-   * @param start_date override default campaign start date if scheduling notifications in batch
+   * @param earliestStart override default campaign start date if scheduling notifications in batch
    */
-  public async scheduleCampaignNotification(
+  public async scheduleNotification(
     row: FlowTypes.Campaign_listRow,
     campaign_id: string,
-    start_date?: string
+    earliestStart?: Date
   ) {
     const schedule = this.scheduledCampaigns[campaign_id];
     if (!schedule) {
       console.error("No notification schedule provided for campaign", campaign_id);
       return;
     }
-    if (start_date) {
-      schedule.schedule = { ...schedule.schedule, start_date };
-    }
-    const notification_schedule = this.evaluateCampaignNotification(schedule);
+    const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
     const parsedRow = await this.hackParseDynamicRow(row);
@@ -390,27 +375,31 @@ export class CampaignService {
     return { _activated, _deactivated, _active };
   }
 
-  private evaluateCampaignNotification(scheduleRow: FlowTypes.Campaign_Schedule) {
+  /**
+   * Take a schedule row and calculate what time to schedule next nofication at, based on any start/end dates,
+   * or hour/minute/day-of-week conditions
+   * @param earliestStart - used when evaluating notifications in batch. Compare notification schedule to future date instead of current
+   */
+  private evaluateSchedule(scheduleRow: FlowTypes.Campaign_Schedule, earliestStart?: Date) {
     // apply default settings
     scheduleRow.time = scheduleRow.time || NOTIFICATION_DEFAULTS.time;
     const { time, delay } = scheduleRow;
     const schedule: FlowTypes.Campaign_Schedule["schedule"] = scheduleRow.schedule || {};
-
-    let d = new Date();
-    // Set notification start date (if in future, otherwise keep as today)
-    if (schedule.start_date && isFuture(new Date(schedule.start_date))) {
+    let d = earliestStart ? new Date(earliestStart) : new Date();
+    // Set notification start date if after earliest start
+    if (schedule.start_date && isAfter(new Date(schedule.start_date), earliestStart)) {
       d = new Date(schedule.start_date);
     }
     // Set notification time, add 1 day if time already passed
     d.setHours(Number(time.hour));
     d.setMinutes(Number(time.minute));
-    if (isPast(d)) {
+    if (isBefore(d, earliestStart)) {
       d = addDays(d, 1);
     }
     // Schedule notification day of week, add 1 week if time already passed
     if (schedule.day_of_week) {
       d = setISODay(d, schedule.day_of_week);
-      if (isPast(d)) {
+      if (isBefore(d, earliestStart)) {
         d = addWeeks(d, 1);
       }
     }
