@@ -70,10 +70,7 @@ export class CampaignDebugPage implements OnInit {
   /**
    * TODO - duplicate code from notifications-debug.page should be merged */
   public async sendNotification(row: FlowTypes.Campaign_listRow) {
-    const notification = await this.campaignService.scheduleCampaignNotification(
-      row,
-      this.debugCampaignId
-    );
+    const notification = await this.campaignService.scheduleNotification(row, this.debugCampaignId);
     const delaySeconds = 3;
     await this.localNotificationService.scheduleImmediateNotification(
       notification,
