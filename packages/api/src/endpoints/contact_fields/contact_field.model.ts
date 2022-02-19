@@ -6,6 +6,9 @@ export class ContactFieldEntry extends Model<ContactFieldEntry> {
   @Column({ allowNull: false, unique: true })
   app_user_id: string;
 
+  @Column({ allowNull: false })
+  app_deployment_name: string;
+
   @Column({ type: DataType.JSONB })
   raw: any;
 }
