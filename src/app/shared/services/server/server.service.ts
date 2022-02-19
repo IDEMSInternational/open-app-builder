@@ -58,6 +58,7 @@ export class ServerService {
       contact_fields,
       app_version: environment.version,
       device_info: this.device_info,
+      app_deployment_name: environment.deploymentName,
     };
     return new Promise<string>((resolve, reject) => {
       this.http
