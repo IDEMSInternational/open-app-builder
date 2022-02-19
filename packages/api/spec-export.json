@@ -26,6 +26,20 @@
       "ContactFieldDto": {
         "type": "object",
         "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
           "contact_fields": {
             "description": "Contact Fields from app",
             "default": {},
@@ -34,11 +48,6 @@
                 "$ref": "#/components/schemas/JSONB"
               }
             ]
-          },
-          "app_version": {
-            "type": "string",
-            "description": "Current app version",
-            "default": "0.0.0"
           },
           "device_info": {
             "description": "Device info from app",
@@ -51,8 +60,10 @@
           }
         },
         "required": [
-          "contact_fields",
+          "app_user_id",
+          "app_deployment_name",
           "app_version",
+          "contact_fields",
           "device_info"
         ]
       },
@@ -62,6 +73,16 @@
           "app_user_id": {
             "type": "string",
             "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
           },
           "app_user_record_id": {
             "type": "number",
@@ -78,6 +99,8 @@
         },
         "required": [
           "app_user_id",
+          "app_deployment_name",
+          "app_version",
           "app_user_record_id",
           "data"
         ]
