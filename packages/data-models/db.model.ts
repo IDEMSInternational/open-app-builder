@@ -77,13 +77,15 @@ export type IDBServerMapping = {
 /**
  * For cases where user record synced to global table, record data is placed in nested folder alongside
  * app_user and app_user_record identifiers.
- * @important - Should be kept in sync with UserLocalRecordDto
+ * @important - Should be kept in sync with UserCommonDto
  */
 export interface IDBServerUserRecord {
   /** Unique ID of user */
   app_user_id: string;
   /** ID of original record in local database */
   app_user_record_id: number;
+  /** Name specified from app deployment config */
+  app_deployment_name: string;
   /** Data to sync to server */
   data: any;
 }
