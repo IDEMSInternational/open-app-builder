@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
+import { APP_FIELDS } from "data-models";
 import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
@@ -32,6 +33,7 @@ import { TemplateTranslateService } from "./shared/components/template/services/
 })
 export class AppComponent {
   APP_VERSION = environment.version;
+  DEPLOYMENT_NAME = environment.deploymentName;
   ENV_NAME = environment.envName;
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
@@ -198,9 +200,11 @@ export class AppComponent {
 
   /**
    * temporary workaround for setting unlocked content
-   * TODO CC 2021-07-23 - Review if methods still required
    */
   private async hackSetAppOpenFields(user: IUserMeta) {
+    localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
+
+    // TODO CC 2021-07-23 - Review if methods below still required
     let old_date = this.userMetaService.getUserMeta("current_date");
     await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
     let current_date = this.userMetaService.getUserMeta("current_date");
