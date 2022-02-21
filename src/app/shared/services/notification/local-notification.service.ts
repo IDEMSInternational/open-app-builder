@@ -110,8 +110,6 @@ export class LocalNotificationService {
    * Use to resolve list of upcoming notifications and any been sent but not triggered in the app.
    */
   private async loadNotifications() {
-    console.group("[Notifications] load");
-
     await this.rescheduleMissingNotifications();
 
     await this.handleUnprocessedNotifications();
@@ -124,7 +122,6 @@ export class LocalNotificationService {
 
     const pendingNotifications = await this.getAPINotifications();
     this.pendingNotifications$.next(this._sortBySchedule(pendingNotifications));
-    console.groupEnd();
   }
 
   private _sortBySchedule(notifications: ILocalNotification[]) {
