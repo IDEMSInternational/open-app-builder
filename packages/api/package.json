@@ -15,8 +15,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "docker:build": "docker build -f Dockerfile --tag idems/apps-api:1.0.1 .",
-    "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api"
+    "docker:build": "echo $npm_package_version && docker build -f Dockerfile --tag idems/apps-api:$npm_package_version .",
+    "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api:$npm_package_version &&"
   },
   "dependencies": {
     "@nestjs/common": "7.6.15",
