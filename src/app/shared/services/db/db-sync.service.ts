@@ -72,6 +72,7 @@ export class DBSyncService {
       const serverRecord: IDBServerUserRecord = {
         app_user_id: this.userMetaService.getUserMeta("uuid"),
         app_user_record_id: record[user_record_id_field],
+        app_deployment_name: environment.deploymentName,
         data: record,
       };
       return serverRecord;
