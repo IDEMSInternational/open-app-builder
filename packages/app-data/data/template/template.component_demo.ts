@@ -84,6 +84,14 @@ const template: FlowTypes.Template[] = [
         },
         _nested_name: "button_par_3_9",
       },
+      {
+        type: "round_button",
+        name: "button_par_3_10",
+        parameter_list: {
+          style: "dark_blue",
+        },
+        _nested_name: "button_par_3_10",
+      },
     ],
     _xlsxPath: "quality_assurance/components_demo/component_round_button .xlsx",
   },
