@@ -25,6 +25,7 @@ import { LocalNotificationService } from "./shared/services/notification/local-n
 import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
+import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 
 @Component({
   selector: "app-root",
@@ -57,6 +58,7 @@ export class AppComponent {
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
+    private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
@@ -111,6 +113,7 @@ export class AppComponent {
     await this.templateTranslateService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
+    await this.localNotificationInteractionService.init();
     await this.localNotificationService.init();
     await this.campaignService.init();
   }
