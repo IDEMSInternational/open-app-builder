@@ -76,6 +76,7 @@ export class DataEvaluationService {
     } = {
       db_lookup: () => this.processDBLookupCondition(condition),
       field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
+      calc: async () => Boolean(condition_args.calc), // calcs already parsed so just return value
     };
     const evaluation = await evaluators[condition_type]();
     log_group("[Data Evaluation]", condition._raw);
