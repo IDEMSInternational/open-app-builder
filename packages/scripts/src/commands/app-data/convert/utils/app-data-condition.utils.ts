@@ -70,7 +70,7 @@ function parseConditionList(conditionText: string) {
         condition.condition_args = { db_lookup: parseDBLookupParams(params) };
         break;
       case "field_evaluation":
-        console.warn(`DEPRECATED - [get_field] should be replaced with @fields syntax`);
+        console.warn(chalk.grey(`DEPRECATED - [get_field] should be replaced with @fields syntax`));
         // TODO - remove support once data migrated
         condition.condition_args = {
           field_evaluation: parseFieldEvaluationParams(params),
