@@ -1,0 +1,51 @@
+.next-notification {
+  margin-right: 10px;
+  font-size: smaller;
+  color: #03598f;
+}
+.row-header {
+  display: flex;
+  padding: 16px;
+  width: 100%;
+  background: white;
+  align-items: center;
+}
+ion-item {
+  --background: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+}
+.divider {
+  height: 1em;
+}
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.row-content {
+  padding: 0px 16px 16px 16px;
+  margin-top: -16px;
+  display: flex;
+}
+h4 {
+  margin-top: 8px;
+  font-size: 16px;
+}
+.info-text {
+  font-size: small;
+}
+.tag {
+  padding: 4px;
+  color: white;
+  border-radius: 5px;
+  font-size: smaller;
+  text-align: center;
+  font-weight: normal;
+  min-width: 40px;
+}
+.tag.action {
+  background: hsl(130 40% 55%);
+}
