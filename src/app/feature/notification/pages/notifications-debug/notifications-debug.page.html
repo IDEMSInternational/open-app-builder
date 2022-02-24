@@ -27,7 +27,10 @@
   </ion-card>
 
   <!-- Sent Notifications -->
-  <h2 style="flex: 1">Sent Notifications</h2>
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Sent Notifications</h2>
+    <ion-button (click)="syncInteractedNotifications()">Sync</ion-button>
+  </div>
   <ion-list>
     <notification-debug-interacted-row
       *ngFor="let notification of localNotificationInteractionService.interactedNotifications$ | async"

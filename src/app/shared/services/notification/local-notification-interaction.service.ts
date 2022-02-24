@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { IDBMeta } from "packages/data-models/db.model";
 import { BehaviorSubject } from "rxjs";
 import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";
@@ -16,6 +17,7 @@ export interface ILocalNotificationInteraction {
   action_meta?: any;
   _created: string;
 }
+export type ILocalNotificationInteractionDB = ILocalNotificationInteraction & IDBMeta;
 
 @Injectable({
   providedIn: "root",
@@ -26,9 +28,9 @@ export interface ILocalNotificationInteraction {
  */
 export class LocalNotificationInteractionService {
   /** Typed wrapper around database table used to store local notifications */
-  private db: Dexie.Table<ILocalNotificationInteraction, number>;
+  private db: Dexie.Table<ILocalNotificationInteractionDB, number>;
   /**  */
-  public interactedNotifications$ = new BehaviorSubject<ILocalNotificationInteraction[]>([]);
+  public interactedNotifications$ = new BehaviorSubject<ILocalNotificationInteractionDB[]>([]);
 
   constructor(
     private dbService: DbService,
@@ -40,7 +42,7 @@ export class LocalNotificationInteractionService {
     this.subscribeToNotifications();
     this.loadInteractedNotifications();
   }
-  private async loadInteractedNotifications() {
+  public async loadInteractedNotifications() {
     const interactedNotifications = await this.db.reverse().toArray();
     this.interactedNotifications$.next(interactedNotifications);
   }
@@ -86,7 +88,7 @@ export class LocalNotificationInteractionService {
     notification_id: number,
     update: Partial<ILocalNotificationInteraction>
   ) {
-    let entry: ILocalNotificationInteraction = await this.db.where({ notification_id }).first();
+    let entry: ILocalNotificationInteractionDB = await this.db.where({ notification_id }).first();
 
     if (!entry) {
       entry = {
