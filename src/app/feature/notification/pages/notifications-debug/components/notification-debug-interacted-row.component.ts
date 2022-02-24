@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { ILocalNotificationInteraction } from "src/app/shared/services/notification/local-notification-interaction.service";
+import { ILocalNotificationInteractionDB } from "src/app/shared/services/notification/local-notification-interaction.service";
 
 @Component({
   selector: "notification-debug-interacted-row",
@@ -24,6 +24,7 @@ import { ILocalNotificationInteraction } from "src/app/shared/services/notificat
                 {{ notification.action_id }}
               </span>
             </div>
+            <div class="info-text" style="color:grey">DB: {{ notification._sync_status }}</div>
           </div>
         </summary>
         <!-- Notification -->
@@ -48,9 +49,9 @@ import { ILocalNotificationInteraction } from "src/app/shared/services/notificat
 export class NotificationDebugInteractedRowComponent {
   public previewCountdown: number;
 
-  @Input() notification: ILocalNotificationInteraction;
+  @Input() notification: ILocalNotificationInteractionDB;
 
-  public logDebugInfo(notification: ILocalNotificationInteraction) {
+  public logDebugInfo(notification: ILocalNotificationInteractionDB) {
     console.group(notification.notification_meta.id);
     console.log(notification);
     console.groupEnd();
