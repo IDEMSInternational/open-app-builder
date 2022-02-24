@@ -6,7 +6,7 @@ import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
 import { LocalNotificationService } from "./local-notification.service";
 
-interface ILocalNotificationInteraction {
+export interface ILocalNotificationInteraction {
   sent_recorded_timestamp: string;
   schedule_timestamp: string;
   notification_id: number;
@@ -27,7 +27,8 @@ interface ILocalNotificationInteraction {
 export class LocalNotificationInteractionService {
   /** Typed wrapper around database table used to store local notifications */
   private db: Dexie.Table<ILocalNotificationInteraction, number>;
-  private dbLocked$ = new BehaviorSubject(false);
+  /**  */
+  public interactedNotifications$ = new BehaviorSubject<ILocalNotificationInteraction[]>([]);
 
   constructor(
     private dbService: DbService,
@@ -37,6 +38,11 @@ export class LocalNotificationInteractionService {
   }
   public async init() {
     this.subscribeToNotifications();
+    this.loadInteractedNotifications();
+  }
+  private async loadInteractedNotifications() {
+    const interactedNotifications = await this.db.reverse().toArray();
+    this.interactedNotifications$.next(interactedNotifications);
   }
 
   private subscribeToNotifications() {
@@ -55,6 +61,7 @@ export class LocalNotificationInteractionService {
           update.action_meta = { inputValue };
         }
         await this.recordNotificationInteraction(notification.id, update);
+        this.loadInteractedNotifications();
       });
     this.localNotificationService.sessionNotifications$
       .pipe(
@@ -71,6 +78,7 @@ export class LocalNotificationInteractionService {
             sent_recorded_timestamp: timestamp,
           });
         }
+        this.loadInteractedNotifications();
       });
   }
 
@@ -78,7 +86,6 @@ export class LocalNotificationInteractionService {
     notification_id: number,
     update: Partial<ILocalNotificationInteraction>
   ) {
-    this.dbLocked$.next(true);
     let entry: ILocalNotificationInteraction = await this.db.where({ notification_id }).first();
 
     if (!entry) {
@@ -88,6 +95,5 @@ export class LocalNotificationInteractionService {
       } as any;
     }
     await this.db.put({ ...entry, ...update });
-    this.dbLocked$.next(false);
   }
 }
