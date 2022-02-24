@@ -26,6 +26,7 @@ import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/dat
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
 import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
+import { DBSyncService } from "./shared/services/db/db-sync.service";
 
 @Component({
   selector: "app-root",
@@ -46,6 +47,7 @@ export class AppComponent {
     private router: Router,
     private pushNotificationService: PushNotificationService,
     private dbService: DbService,
+    private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
     private surveyService: SurveyService,
@@ -116,6 +118,7 @@ export class AppComponent {
     await this.localNotificationInteractionService.init();
     await this.localNotificationService.init();
     await this.campaignService.init();
+    await this.dbSyncService.init();
   }
 
   /**

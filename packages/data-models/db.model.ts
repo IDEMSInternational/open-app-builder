@@ -59,7 +59,7 @@ export const DB_SERVER_MAPPING: { [key in IDBTable]?: IDBServerMapping } = {
     user_record_id_field: "id",
   },
   local_notifications_interaction: {
-    api_endpoint: () => "/app_notifications_interaction",
+    api_endpoint: () => "/app_notification_interaction",
     is_user_record: true,
     user_record_id_field: "id",
   },

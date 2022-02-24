@@ -27,7 +27,8 @@ export class DBSyncService {
     private dbService: DbService,
     private http: HttpClient,
     private userMetaService: UserMetaService
-  ) {
+  ) {}
+  public async init() {
     // Automatically sync data periodically
     if (environment.production) {
       this.syncToServer();

@@ -4,13 +4,13 @@ import { interval } from "rxjs";
 import { debounce, filter } from "rxjs/operators";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
-import { ILocalNotification, LocalNotificationService } from "./local-notification.service";
+import { LocalNotificationService } from "./local-notification.service";
 
 interface ILocalNotificationInteraction {
   sent_recorded_timestamp: string;
   schedule_timestamp: string;
   notification_id: number;
-  notification_meta: Partial<ILocalNotification>;
+  notification_meta: any;
   action_recorded_timestamp?: string;
   action_id?: string;
   action_meta?: any;
@@ -64,8 +64,9 @@ export class LocalNotificationInteractionService {
       .subscribe(async (notifications) => {
         const timestamp = generateTimestamp();
         for (const notification of notifications) {
+          const { id, text, title, campaign_id } = notification.extra;
           await this.recordNotificationInteraction(notification.id, {
-            notification_meta: notification.extra,
+            notification_meta: { id, text, title, campaign_id },
             schedule_timestamp: generateTimestamp(notification.schedule.at),
             sent_recorded_timestamp: timestamp,
           });
