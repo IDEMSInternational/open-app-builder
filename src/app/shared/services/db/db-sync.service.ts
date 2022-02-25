@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { interval } from "packages/api/node_modules/rxjs";
-import { SERVER_SYNC_FREQUENCY_MS } from "packages/data-models";
 import {
   DB_SERVER_MAPPING,
   IDBMeta,
@@ -9,9 +8,12 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
+import { APP_CONSTANTS } from "src/app/data";
 import { environment } from "src/environments/environment";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
+
+const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 @Injectable({ providedIn: "root" })
 /**

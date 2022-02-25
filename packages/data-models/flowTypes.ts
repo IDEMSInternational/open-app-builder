@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { DYNAMIC_PREFIXES } from "./constants";
+import APP_CONSTANTS from "./constants";
 import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
+
+const { DYNAMIC_PREFIXES } = APP_CONSTANTS;
 
 /*********************************************************************************************
  *  Base flow types
