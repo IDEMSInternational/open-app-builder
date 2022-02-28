@@ -37,7 +37,7 @@ export const APP_FIELDS = {
 
 export const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
-  default: "en",
+  default: "gb_en",
 };
 
 /**
