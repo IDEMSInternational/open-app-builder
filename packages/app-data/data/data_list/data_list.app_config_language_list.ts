@@ -9,15 +9,15 @@ const data_list: FlowTypes.Data_list[] = [
     flow_subtype: "app_config_language_list",
     rows: [
       {
-        id: "za_en",
-        country_code: "za",
-        country_label: "South Africa",
-        country_icon: "i18n/flags/za.svg",
+        id: "gb_en",
+        country_code: "gb",
+        country_label: "United Kingdom",
+        country_icon: "i18n/flags/gb.svg",
         language_code: "en",
         language_label: "English",
-        name: "za_en",
+        name: "gb_en",
         text: "English",
-        image: "i18n/flags/za.svg",
+        image: "i18n/flags/gb.svg",
       },
       {
         id: "za_zu",
@@ -86,7 +86,7 @@ const data_list: FlowTypes.Data_list[] = [
         image: "i18n/flags/tz.svg",
       },
     ],
-    _xlsxPath: "app_config/language_data_list.xlsx",
+    _xlsxPath: "global/app_config/language_data_list.xlsx",
   },
 ];
 export default data_list;
