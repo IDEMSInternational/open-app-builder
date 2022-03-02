@@ -4,299 +4,6 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows",
-    flow_name: "nf_w_self_care",
-    status: "released",
-    rows: [
-      {
-        id: "relax_w_self_care",
-        workshop: "w_self_care",
-        message_type: "relax",
-        template_pop_up: "w_self_care_m_relax",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_self_care_m_relax"],
-            _raw: "click | pop_up: w_self_care_m_relax",
-            _cleaned: "click | pop_up: w_self_care_m_relax",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_m_relax.sent", true],
-            _raw: "click | set_field: w_self_care_m_relax.sent : true",
-            _cleaned: "click | set_field: w_self_care_m_relax.sent : true",
-          },
-        ],
-        priority: 12.9,
-        activation_condition_list: [],
-        campaign_list: ["nf_relax"],
-        hs_quick_start: "parent_points",
-        title: "@global.m_relax",
-        _translations: {
-          title: {},
-          text: {},
-        },
-        _translatedFields: {
-          title: {
-            eng: "@global.m_relax",
-          },
-          text: {
-            eng: "@global.text_relax",
-          },
-        },
-        text: "@global.text_relax",
-      },
-      {
-        id: "hp_reminder_w_self_care",
-        workshop: "w_self_care",
-        message_type: "hp_reminder",
-        template_pop_up: "w_self_care_m_hp_reminder",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["w_self_care_m_hp_reminder"],
-            _raw: "click | pop_up: w_self_care_m_hp_reminder",
-            _cleaned: "click | pop_up: w_self_care_m_hp_reminder",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_m_hp_reminder.sent", true],
-            _raw: "click | set_field: w_self_care_m_hp_reminder.sent : true",
-            _cleaned: "click | set_field: w_self_care_m_hp_reminder.sent : true",
-          },
-        ],
-        priority: 12.4,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_self_care_completion_level :100",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_m_hp_reminder.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field |  w_self_care_m_hp_reminder.sent : true",
-          },
-        ],
-        campaign_list: ["nf_hp_reminder"],
-        hs_quick_start: "parent_points",
-        completion_level_field: "w_self_care_completion_level",
-        title: "@global.m_hp_reminder",
-        _translations: {
-          title: {},
-          text: {},
-        },
-        _translatedFields: {
-          title: {
-            eng: "@global.m_hp_reminder",
-          },
-          text: {
-            eng: "This week is about YOU! Treat yourself well. You deserve it!",
-          },
-        },
-        text: "This week is about YOU! Treat yourself well. You deserve it!",
-      },
-      {
-        id: "parent_points_overview_w_self_care",
-        workshop: "w_self_care",
-        message_type: "parent_points_overview",
-        template_pop_up: "m_parent_points_overview",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["m_parent_points_overview"],
-            _raw: "click | pop_up: m_parent_points_overview",
-            _cleaned: "click | pop_up: m_parent_points_overview",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["m_parent_points_overview.sent", true],
-            _raw: "click | set_field: m_parent_points_overview.sent : true",
-            _cleaned: "click | set_field: m_parent_points_overview.sent : true",
-          },
-        ],
-        priority: 12.3,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | m_parent_points_overview.sent : true",
-          },
-        ],
-        campaign_list: ["nf_parent_points_overview"],
-        hs_quick_start: "parent_points",
-        title: "@global.m_parent_points_overview",
-        _translations: {
-          title: {},
-          text: {},
-        },
-        _translatedFields: {
-          title: {
-            eng: "@global.m_parent_points_overview",
-          },
-          text: {
-            eng: "@global.text_parent_points_overview",
-          },
-        },
-        text: "@global.text_parent_points_overview",
-      },
-      {
-        id: "w_tomorrow_w_self_care_ind",
-        workshop: "w_self_care",
-        message_type: "w_tomorrow",
-        template_pop_up: "w_self_care_m_w_tomorrow",
-        message_condition: "_ind",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_self_care_m_w_tomorrow"],
-            _raw: "click | go_to: w_self_care_m_w_tomorrow",
-            _cleaned: "click | go_to: w_self_care_m_w_tomorrow",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_m_w_tomorrow.sent", true],
-            _raw: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-            _cleaned: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          },
-        ],
-        priority: 12.1,
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_self_care_completion_level :100",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_m_w_tomorrow.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field |  w_self_care_m_w_tomorrow.sent : true",
-          },
-        ],
-        campaign_list: ["nf_w_tomorrow"],
-        hs_quick_start: "weekly_workshops",
-        completion_level_field: "w_self_care_completion_level",
-        title: "@global.m_w_tomorrow",
-        _translations: {
-          title: {},
-          text: {},
-        },
-        _translatedFields: {
-          title: {
-            eng: "@global.m_w_tomorrow",
-          },
-          text: {
-            eng: "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!",
-          },
-        },
-        text: "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!",
-      },
-      {
-        id: "w_tomorrow_w_self_care_tog",
-        workshop: "w_self_care",
-        message_type: "w_tomorrow",
-        template_pop_up: "w_self_care_m_w_tomorrow",
-        message_condition: "_tog",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["w_self_care_m_w_tomorrow"],
-            _raw: "click | go_to: w_self_care_m_w_tomorrow",
-            _cleaned: "click | go_to: w_self_care_m_w_tomorrow",
-          },
-          {
-            trigger: "click",
-            action_id: "set_field",
-            args: ["w_self_care_m_w_tomorrow.sent", true],
-            _raw: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-            _cleaned: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
-          },
-        ],
-        priority: 12.1,
-        activation_condition_list: [],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_m_w_tomorrow.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field |  w_self_care_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_self_care_completion_level :100",
-          },
-        ],
-        campaign_list: ["nf_w_tomorrow"],
-        hs_quick_start: "weekly_workshops",
-        completion_level_field: "w_self_care_completion_level",
-        title: "@global.m_w_tomorrow",
-        _translations: {
-          title: {},
-          text: {},
-        },
-        _translatedFields: {
-          title: {
-            eng: "@global.m_w_tomorrow",
-          },
-          text: {
-            eng: "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!",
-          },
-        },
-        text: "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!",
-      },
-    ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
     flow_name: "nf_w_1on1",
     status: "released",
     rows: [
@@ -485,10 +192,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_1on1",
@@ -536,10 +243,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_1on1",
@@ -846,10 +553,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_1on1",
@@ -909,10 +616,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_1on1_compl",
@@ -923,10 +630,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_1on1_m_w_tomorrow"],
-            _raw: "click | go_to: w_1on1_m_w_tomorrow",
-            _cleaned: "click | go_to: w_1on1_m_w_tomorrow",
+            _raw: "click | pop_up: w_1on1_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_1on1_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -988,10 +695,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_1on1_m_w_tomorrow"],
-            _raw: "click | go_to: w_1on1_m_w_tomorrow",
-            _cleaned: "click | go_to: w_1on1_m_w_tomorrow",
+            _raw: "click | pop_up: w_1on1_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_1on1_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -1044,7 +751,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Remember to finish the @data.workshop.w_1on1.in_text_title. You will get valuable information within minutes! \n\nWell done for trying to be a better parent.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -1237,10 +944,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_praise",
@@ -1288,10 +995,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_praise",
@@ -1591,10 +1298,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_praise",
@@ -1654,10 +1361,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_praise_compl",
@@ -1668,10 +1375,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_praise_m_w_tomorrow"],
-            _raw: "click | go_to: w_praise_m_w_tomorrow",
-            _cleaned: "click | go_to: w_praise_m_w_tomorrow",
+            _raw: "click | pop_up: w_praise_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_praise_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -1733,10 +1440,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_praise_m_w_tomorrow"],
-            _raw: "click | go_to: w_praise_m_w_tomorrow",
-            _cleaned: "click | go_to: w_praise_m_w_tomorrow",
+            _raw: "click | pop_up: w_praise_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_praise_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -1789,7 +1496,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -1982,10 +1689,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_instruct",
@@ -2033,10 +1740,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_instruct",
@@ -2431,10 +2138,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_instruct",
@@ -2494,10 +2201,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_instruct_compl",
@@ -2508,10 +2215,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_instruct_m_w_tomorrow"],
-            _raw: "click | go_to: w_instruct_m_w_tomorrow",
-            _cleaned: "click | go_to: w_instruct_m_w_tomorrow",
+            _raw: "click | pop_up: w_instruct_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_instruct_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -2573,10 +2280,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_instruct_m_w_tomorrow"],
-            _raw: "click | go_to: w_instruct_m_w_tomorrow",
-            _cleaned: "click | go_to: w_instruct_m_w_tomorrow",
+            _raw: "click | pop_up: w_instruct_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_instruct_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -2629,7 +2336,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Some parents use the app after their evening meal. Why not complete the @data.workshop.w_instruct.in_text_title when you have a few minutes?",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -2822,10 +2529,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_stress",
@@ -2873,10 +2580,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_stress",
@@ -3262,10 +2969,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_stress",
@@ -3325,10 +3032,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_stress_compl",
@@ -3339,10 +3046,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_stress_m_w_tomorrow"],
-            _raw: "click | go_to: w_stress_m_w_tomorrow",
-            _cleaned: "click | go_to: w_stress_m_w_tomorrow",
+            _raw: "click | pop_up: w_stress_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_stress_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -3404,10 +3111,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_stress_m_w_tomorrow"],
-            _raw: "click | go_to: w_stress_m_w_tomorrow",
-            _cleaned: "click | go_to: w_stress_m_w_tomorrow",
+            _raw: "click | pop_up: w_stress_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_stress_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -3460,7 +3167,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Get ready for a new workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -3653,10 +3360,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_money",
@@ -3704,10 +3411,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_money",
@@ -4014,10 +3721,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_money",
@@ -4077,10 +3784,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_money_compl",
@@ -4091,10 +3798,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_money_m_w_tomorrow"],
-            _raw: "click | go_to: w_money_m_w_tomorrow",
-            _cleaned: "click | go_to: w_money_m_w_tomorrow",
+            _raw: "click | pop_up: w_money_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_money_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -4156,10 +3863,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_money_m_w_tomorrow"],
-            _raw: "click | go_to: w_money_m_w_tomorrow",
-            _cleaned: "click | go_to: w_money_m_w_tomorrow",
+            _raw: "click | pop_up: w_money_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_money_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -4212,7 +3919,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Many parents say budgeting brings peace. If you haven't finished the @data.workshop.w_money.in_text_title, give it a go!\n\nThank you for your committed parenting.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -4405,10 +4112,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_rules",
@@ -4456,10 +4163,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_rules",
@@ -4759,10 +4466,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_rules",
@@ -4822,10 +4529,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_rules_compl",
@@ -4836,10 +4543,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_rules_m_w_tomorrow"],
-            _raw: "click | go_to: w_rules_m_w_tomorrow",
-            _cleaned: "click | go_to: w_rules_m_w_tomorrow",
+            _raw: "click | pop_up: w_rules_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_rules_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -4901,10 +4608,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_rules_m_w_tomorrow"],
-            _raw: "click | go_to: w_rules_m_w_tomorrow",
-            _cleaned: "click | go_to: w_rules_m_w_tomorrow",
+            _raw: "click | pop_up: w_rules_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_rules_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -4957,7 +4664,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "A brand-new workshop unlocks tomorrow!\n \nComplete the @local.workshop_data.in_text_title before moving on. Just a few more minutes to help your teen follow your rules!",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -5150,10 +4857,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_consequence",
@@ -5201,10 +4908,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_consequence",
@@ -5504,10 +5211,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_consequence",
@@ -5567,10 +5274,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_consequence_compl",
@@ -5581,10 +5288,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_consequence_m_w_tomorrow"],
-            _raw: "click | go_to: w_consequence_m_w_tomorrow",
-            _cleaned: "click | go_to: w_consequence_m_w_tomorrow",
+            _raw: "click | pop_up: w_consequence_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_consequence_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -5646,10 +5353,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_consequence_m_w_tomorrow"],
-            _raw: "click | go_to: w_consequence_m_w_tomorrow",
-            _cleaned: "click | go_to: w_consequence_m_w_tomorrow",
+            _raw: "click | pop_up: w_consequence_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_consequence_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -5702,7 +5409,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Calm consequences help your teen follow rules. If you haven't finished  the @data.workshop.w_consequence.in_text_title, give it a go!\n\nWell done for showing so much commitment.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -5895,10 +5602,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_solve",
@@ -5946,10 +5653,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_solve",
@@ -6249,10 +5956,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_solve",
@@ -6312,10 +6019,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_solve_compl",
@@ -6326,10 +6033,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_solve_m_w_tomorrow"],
-            _raw: "click | go_to: w_solve_m_w_tomorrow",
-            _cleaned: "click | go_to: w_solve_m_w_tomorrow",
+            _raw: "click | pop_up: w_solve_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_solve_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -6391,10 +6098,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_solve_m_w_tomorrow"],
-            _raw: "click | go_to: w_solve_m_w_tomorrow",
-            _cleaned: "click | go_to: w_solve_m_w_tomorrow",
+            _raw: "click | pop_up: w_solve_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_solve_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -6447,7 +6154,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Access a new workshop tomorrow! \n \n By completing the @data.workshop.w_solve.in_text_title first, you'll know how to solve problems together.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -6640,10 +6347,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_safe",
@@ -6691,10 +6398,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_safe",
@@ -7001,10 +6708,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_safe",
@@ -7064,10 +6771,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_safe_compl",
@@ -7078,10 +6785,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_safe_m_w_tomorrow"],
-            _raw: "click | go_to: w_safe_m_w_tomorrow",
-            _cleaned: "click | go_to: w_safe_m_w_tomorrow",
+            _raw: "click | pop_up: w_safe_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_safe_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -7143,10 +6850,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_safe_m_w_tomorrow"],
-            _raw: "click | go_to: w_safe_m_w_tomorrow",
-            _cleaned: "click | go_to: w_safe_m_w_tomorrow",
+            _raw: "click | pop_up: w_safe_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_safe_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -7199,7 +6906,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Finish the @data.workshop.w_safe.in_text_title before moving on. This can prevent many problems. \n\nWell done for using @global.parent_app to support your family.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -7392,10 +7099,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_relax",
           },
           text: {
-            eng: "@global.text_relax",
+            eng: "@global.text_m_relax",
           },
         },
-        text: "@global.text_relax",
+        text: "@global.text_m_relax",
       },
       {
         id: "something_fun_w_crisis",
@@ -7443,10 +7150,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_something_fun",
           },
           text: {
-            eng: "@global.text_something_fun",
+            eng: "@global.text_m_something_fun",
           },
         },
-        text: "@global.text_something_fun",
+        text: "@global.text_m_something_fun",
       },
       {
         id: "praise_w_crisis",
@@ -7746,10 +7453,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.m_parent_points_overview",
           },
           text: {
-            eng: "@global.text_parent_points_overview",
+            eng: "@global.text_m_parent_points_overview",
           },
         },
-        text: "@global.text_parent_points_overview",
+        text: "@global.text_m_parent_points_overview",
       },
       {
         id: "hp_review_w_crisis",
@@ -7809,10 +7516,10 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "@global.hp_review",
           },
           text: {
-            eng: "@global.text_hp_review",
+            eng: "@global.text_m_hp_review",
           },
         },
-        text: "@global.text_hp_review",
+        text: "@global.text_m_hp_review",
       },
       {
         id: "w_tomorrow_w_crisis_compl",
@@ -7823,10 +7530,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_crisis_m_w_tomorrow"],
-            _raw: "click | go_to: w_crisis_m_w_tomorrow",
-            _cleaned: "click | go_to: w_crisis_m_w_tomorrow",
+            _raw: "click | pop_up: w_crisis_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_crisis_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -7888,10 +7595,10 @@ const data_list: FlowTypes.Data_list[] = [
         action_list: [
           {
             trigger: "click",
-            action_id: "go_to",
+            action_id: "pop_up",
             args: ["w_crisis_m_w_tomorrow"],
-            _raw: "click | go_to: w_crisis_m_w_tomorrow",
-            _cleaned: "click | go_to: w_crisis_m_w_tomorrow",
+            _raw: "click | pop_up: w_crisis_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_crisis_m_w_tomorrow",
           },
           {
             trigger: "click",
@@ -7944,7 +7651,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_in_week_messages.xlsx",
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
   {
     flow_type: "data_list",
@@ -8007,7 +7714,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Welcome to ParentApp. Click here to start your journey!",
       },
     ],
-    _xlsxPath: "campaigns/notifications_inactive.xlsx",
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -8184,7 +7891,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
       },
     ],
-    _xlsxPath: "campaigns/notifications_inactive.xlsx",
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -8361,7 +8068,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
       },
     ],
-    _xlsxPath: "campaigns/notifications_inactive.xlsx",
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -8529,7 +8236,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Hi great parent! ParentApp is here to support you. Check it out now!",
       },
     ],
-    _xlsxPath: "campaigns/notifications_inactive.xlsx",
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -8937,7 +8644,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/smile_eyes_down_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_parent_centre.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_parent_centre.xlsx",
   },
   {
     flow_type: "data_list",
@@ -9301,7 +9008,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/smile_eyes_up_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_parent_centre.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_parent_centre.xlsx",
   },
   {
     flow_type: "data_list",
@@ -9827,7 +9534,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -10666,7 +10373,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -11505,7 +11212,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -12294,7 +12001,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -13133,7 +12840,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -13972,7 +13679,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -14811,7 +14518,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -15650,7 +15357,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -16489,7 +16196,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -17328,7 +17035,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -18167,7 +17874,7 @@ const data_list: FlowTypes.Data_list[] = [
         icon: "plh_images/icons/bell_white.svg",
       },
     ],
-    _xlsxPath: "campaigns/quick_start_home_screen.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_home_screen.xlsx",
   },
   {
     flow_type: "data_list",
@@ -19655,7 +19362,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "campaigns/quick_start_weekly_workshops.xlsx",
+    _xlsxPath: "global/campaigns/quick_start_weekly_workshops.xlsx",
   },
 ];
 export default data_list;
