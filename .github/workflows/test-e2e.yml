@@ -51,3 +51,5 @@ jobs:
           spec: "packages/test-e2e/projects/plh/integration/**/*"
           start: yarn start
           wait-on: "http://localhost:4200"
+          # Wait four minutes.
+          wait-on-timeout: 480
