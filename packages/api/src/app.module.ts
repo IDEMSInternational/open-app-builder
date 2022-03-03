@@ -25,7 +25,8 @@ import { DefaultModule } from "./endpoints/default";
     DefaultModule,
     Endpoints.AppUsersModule,
     Endpoints.ContactFieldsModule,
-    Endpoints.AppFeedbackModel,
+    Endpoints.AppFeedbackModule,
+    Endpoints.AppNotificationInteractionModule,
     Endpoints.TablesModule,
   ],
 })
