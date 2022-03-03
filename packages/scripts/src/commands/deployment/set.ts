@@ -40,7 +40,7 @@ async function setActiveDeployment(deploymentName?: string) {
   const matchingDeployment = allDeployments[deploymentName];
   if (!matchingDeployment) {
     logError({
-      msg1: `No deployment found with name: "${deploymentName.split("").join(" ")}"`,
+      msg1: `No deployment found with name: "${deploymentName}"`,
       msg2: `Available: ${Object.keys(allDeployments).join(", ")}`,
     });
   }
