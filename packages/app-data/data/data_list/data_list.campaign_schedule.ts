@@ -4,6 +4,55 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
+    flow_name: "nf_schedule_inactive",
+    status: "released",
+    rows: [
+      {
+        id: "nf_inactive_day",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 0,
+        },
+      },
+      {
+        id: "nf_inactive_week",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 6,
+        },
+      },
+      {
+        id: "nf_inactive_month",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 30,
+        },
+      },
+      {
+        id: "nf_generic",
+        schedule: {
+          day_of_week: 6,
+        },
+        time: {
+          hour: 12,
+          minute: 0,
+        },
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_schedule",
     flow_name: "debug_campaign_schedules",
     status: "released",
     comments: "This contains schedules for notifications",
@@ -20,18 +69,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         schedule: {
@@ -56,18 +93,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           day_of_week: 6,
         },
@@ -90,18 +115,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "1990-11-01T00:00:00.000",
           end_date: "1990-11-30T00:00:00.000",
@@ -121,18 +134,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "2021-12-01T00:00:00.000",
           end_date: "2021-12-31T00:00:00.000",
@@ -150,18 +151,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         schedule: {
@@ -187,18 +176,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "2021-12-01T00:00:00.000",
           end_date: "2021-12-31T00:00:00.000",
@@ -220,18 +197,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         schedule: {
@@ -257,18 +222,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "2022-01-01T00:00:00.000",
           end_date: "2022-01-01T00:00:00.000",
@@ -292,18 +245,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           batch_size: 5,
         },
@@ -320,18 +261,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         time: {
@@ -353,74 +282,35 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         time: {
           hour: 18,
           minute: 1,
         },
       },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_schedule",
-    flow_name: "nf_schedule_inactive",
-    status: "released",
-    rows: [
       {
-        id: "inactive_day",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 0,
-        },
-      },
-      {
-        id: "inactive_week",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 6,
-        },
-      },
-      {
-        id: "inactive_month",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 30,
-        },
-      },
-      {
-        id: "generic",
+        id: "debug_condition",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
         schedule: {
-          day_of_week: 6,
+          day_of_week: 1,
         },
         time: {
-          hour: 12,
+          hour: 17,
           minute: 0,
         },
       },
     ],
-    _xlsxPath: "campaigns/notifications_inactive.xlsx",
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
 ];
 export default data_list;

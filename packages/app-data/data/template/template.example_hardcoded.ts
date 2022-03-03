@@ -6,6 +6,7 @@ const template: FlowTypes.Template[] = [
     flow_subtype: "example_hardcoded",
     flow_name: "example_hardcoded_fields",
     status: "released",
+    comments: "List of fields automatically populated by app",
     rows: [
       {
         type: "title",
