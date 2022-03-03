@@ -14,96 +14,29 @@
   </div>
 
   <!-- Pending Notifications -->
-  <ion-card *ngFor="let notification of (localNotificationService.pendingNotifications$ | async)">
-    <ion-card-header class="row-header">
-      <span>{{notification.extra.id}}</span>
-    </ion-card-header>
-    <ion-card-content>
-      <!-- Notification -->
-      <div>
-        <div style="display: flex">
-          <div style="flex: 1; margin-right: 8px">
-            <h2>{{notification.title}}</h2>
-            <div>{{notification.body}}</div>
-          </div>
-          <div style="text-align: right">
-            <div>
-              <ion-button
-                (click)="showCustomNotificationSchedule(notification)"
-                fill="clear"
-                class="no-padding"
-                style="margin: 0"
-                [disabled]="!localNotificationService.permissionGranted"
-                ><div>
-                  <div>{{notification.schedule.at | date:'MMM d YYYY'}}</div>
-                  <div>{{notification.schedule.at | date: 'h:mm a'}}</div>
-                </div>
-              </ion-button>
-            </div>
-            <div class="divider"></div>
-            <ion-button
-              fill="clear"
-              (click)="triggerSend(notification)"
-              class="no-padding"
-              style="margin: 0"
-              [disabled]="(!localNotificationService.permissionGranted || previewCountdown[notification.id]) ? true : false"
-            >
-              <span *ngIf="previewCountdown[notification.id]"
-                >Send in {{previewCountdown[notification.id]}}</span
-              >
-              <span *ngIf="!previewCountdown[notification.id]">Send Now</span>
-            </ion-button>
-            <div class="divider"></div>
-            <ion-button
-              fill="clear"
-              (click)="removeNotification(notification)"
-              class="no-padding"
-              style="margin: 0"
-              >Remove</ion-button
-            >
-          </div>
-        </div>
-      </div>
+  <ion-list>
+    <notification-debug-row
+      *ngFor="let notification of localNotificationService.pendingNotifications$ | async"
+      [notification]="notification"
+      (showNotificationScheduleClicked)="showCustomNotificationSchedule($event)"
+    ></notification-debug-row>
+  </ion-list>
 
-      <ion-button fill="clear" (click)="logDebugInfo(notification)">(log full details)</ion-button>
-    </ion-card-content>
-  </ion-card>
   <ion-card *ngIf="(localNotificationService.pendingNotifications$ | async).length===0">
     <ion-card-header>No Scheduled Notifications</ion-card-header>
   </ion-card>
 
-  <!-- Triggered Notifications -->
-  <h2 style="flex: 1" *ngIf="(localNotificationService.sessionNotifications$ | async).length>0">
-    Recently Sent
-  </h2>
-  <ion-card *ngFor="let notification of (localNotificationService.sessionNotifications$ | async)">
-    <ion-card-header class="row-header">
-      <span>{{notification.extra.id}}</span>
-    </ion-card-header>
-    <ion-card-content>
-      <div>
-        <div style="display: flex">
-          <div style="flex: 1; margin-right: 8px">
-            <h2>{{notification.title}}</h2>
-            <div>{{notification.body}}</div>
-          </div>
-          <div style="text-align: right">
-            <div>
-              <ion-button fill="clear" class="no-padding" style="margin: 0" [disabled]="true"
-                ><div>
-                  <div>{{notification.schedule.at | date:'MMM d YYYY'}}</div>
-                  <div>{{notification.schedule.at | date: 'h:mm a'}}</div>
-                </div>
-              </ion-button>
-            </div>
-            <div class="divider"></div>
-          </div>
-        </div>
-      </div>
-
-      <ion-button fill="clear" (click)="logDebugInfo(notification)">(log full details)</ion-button>
-    </ion-card-content>
-  </ion-card>
+  <!-- Sent Notifications -->
+  <div style="display: flex; align-items: center">
+    <h2 style="flex: 1">Sent Notifications</h2>
+    <ion-button (click)="syncInteractedNotifications()">Sync</ion-button>
+  </div>
+  <ion-list>
+    <notification-debug-interacted-row
+      *ngFor="let notification of localNotificationInteractionService.interactedNotifications$ | async"
+      [notification]="notification"
+    ></notification-debug-interacted-row>
+  </ion-list>
 
   <!-- Hidden picker used when creating custom datetime -->
   <ion-modal #datetimePickerModal [breakpoints]="[0.1, 0.5, 1]" [initialBreakpoint]="0.75">
