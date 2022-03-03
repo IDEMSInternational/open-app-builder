@@ -35,6 +35,11 @@ export const APP_FIELDS = {
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
 };
 
+export const APP_LANGUAGES = {
+  /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
+  default: "gb_en",
+};
+
 /**
  * Some specific strings are currently hardcoded into the app
  * TODO - not all strings included, should add to when required
