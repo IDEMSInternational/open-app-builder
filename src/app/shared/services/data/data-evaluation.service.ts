@@ -3,7 +3,7 @@ import { differenceInHours } from "date-fns";
 import { IDBTable } from "packages/data-models/db.model";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
-import { arrayToHashmapArray } from "../../utils";
+import { arrayToHashmapArray, parseBoolean } from "../../utils";
 import { AppEventService } from "../app-events/app-events.service";
 import { DbService } from "../db/db.service";
 
@@ -76,7 +76,9 @@ export class DataEvaluationService {
     } = {
       db_lookup: () => this.processDBLookupCondition(condition),
       field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
-      calc: async () => Boolean(condition_args.calc), // calcs already parsed so just return value
+      calc: async () => {
+        return parseBoolean(condition_args.calc); // calcs already parsed so just return value
+      },
     };
     const evaluation = await evaluators[condition_type]();
     log_group("[Data Evaluation]", condition._raw);
