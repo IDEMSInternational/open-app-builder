@@ -19,7 +19,7 @@ plh-template-container[data-templatename="parent_centre"] {
   plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] {
     // ensure tiles are at least 200px and provide a larger gap between icons
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 32px;
+    grid-gap: 20px;
   }
 }
 

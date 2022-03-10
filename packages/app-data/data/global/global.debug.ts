@@ -3,24 +3,6 @@ import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",
-    flow_name: "debug_set_global_1",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "debug_variable_1",
-        value: "Value of the first debug variable",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_small_issues.xlsx",
-  },
-  {
-    flow_type: "global",
     flow_name: "debug_some_globals",
     status: "released",
     flow_subtype: "debug",
@@ -52,8 +34,46 @@ const global: FlowTypes.Global[] = [
         },
         exclude_from_translation: true,
       },
+      {
+        type: "declare_field_default",
+        name: "debug_boolean",
+        value: false,
+      },
+      {
+        type: "declare_field_default",
+        name: "debug_number",
+        value: 5,
+      },
+      {
+        type: "declare_field_default",
+        name: "debug_string",
+        value: "some_text",
+        _translations: {
+          value: {},
+        },
+      },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "debug_set_global_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "debug_variable_1",
+        value: "Value of the first debug variable",
+        _translations: {
+          value: {
+            es_sp: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_small_issues.xlsx",
   },
   {
     flow_type: "global",

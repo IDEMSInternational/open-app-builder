@@ -1,10 +1,14 @@
 # Commands to start on workspace startup
 tasks:
   - name: Start App Server
-    # stored as project environment variable in gitpod
-    before: echo $FIREBASE_CONFIG_TS_B64 | base64 -d > src/environments/firebaseConfig.ts
+    # env vars stored as project environment variable in gitpod
+    before: |
+      sudo apt-get install git-lfs
+      git lfs pull
+      echo $FIREBASE_CONFIG_TS_B64 | base64 -d > src/environments/firebaseConfig.ts
     init: yarn install
-    command: yarn start
+    # https://www.gitpod.io/blog/gitpodify/#unreachable-localhost-urls
+    command: yarn ng serve --host 0.0.0.0 --disable-host-check
   ## Could provide additional task to run in parallel terminal
   # - name: Sync content
 
