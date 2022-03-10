@@ -86,7 +86,9 @@ export class CampaignService {
     }
     this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
       async (notifications) => {
-        await this.handledTriggeredNotifications(notifications, "sent");
+        if (notifications?.length > 0) {
+          await this.handledTriggeredNotifications(notifications, "sent");
+        }
       }
     );
     this._notificationActions$ = this.localNotificationService.interactedNotification$.subscribe(
@@ -99,7 +101,7 @@ export class CampaignService {
   }
 
   private async handledTriggeredNotifications(
-    notifications: ILocalNotification[],
+    notifications: ILocalNotification[] = [],
     trigger: FlowTypes.TemplateRowActionTrigger
   ) {
     let actionsTriggered = false;
@@ -450,7 +452,7 @@ export class CampaignService {
     const shuffleSortedGroups = Object.entries<FlowTypes.Campaign_listRow[][]>(groupsByPriority)
       .sort(([key_a], [key_b]) => Number(key_b) - Number(key_a))
       .map(([_, value]) => shuffleArray(value));
-    const shuffleSortedRows = [].concat(...shuffleSortedGroups);
+    const shuffleSortedRows: FlowTypes.Campaign_listRow[] = [].concat(...shuffleSortedGroups);
     return shuffleSortedRows;
   }
 }
