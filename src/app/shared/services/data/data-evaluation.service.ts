@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Injector } from "@angular/core";
 import { differenceInHours } from "date-fns";
 import { IDBTable } from "packages/data-models/db.model";
 import { FlowTypes } from "src/app/shared/model";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { TemplateVariablesService } from "../../components/template/services/template-variables.service";
 import { arrayToHashmapArray, parseBoolean } from "../../utils";
 import { AppEventService } from "../app-events/app-events.service";
 import { DbService } from "../db/db.service";
@@ -19,8 +20,14 @@ export class DataEvaluationService {
   constructor(
     private dbService: DbService,
     private appEventService: AppEventService,
-    private templateFieldService: TemplateFieldService
+    private templateFieldService: TemplateFieldService,
+    private injector: Injector
   ) {}
+
+  /** Provide access to templateVariablesService within cyclic dependency */
+  get templateVariablesService(): TemplateVariablesService {
+    return this.injector.get(TemplateVariablesService);
+  }
 
   /**
    * load all the data that will be required for processing conditions
@@ -68,7 +75,7 @@ export class DataEvaluationService {
       // TODO - determine if using a cache-first approach is better or just to make the queries live
       await this.refreshDBCache();
     }
-    const { condition_type, condition_args } = condition;
+    const { condition_type, condition_args, _raw } = condition;
     const evaluators: {
       [key in FlowTypes.DataEvaluationCondition["condition_type"]]: () => Promise<
         boolean | undefined
@@ -77,7 +84,8 @@ export class DataEvaluationService {
       db_lookup: () => this.processDBLookupCondition(condition),
       field_evaluation: () => this.processFieldEvaluationCondition(condition_args.field_evaluation),
       calc: async () => {
-        return parseBoolean(condition_args.calc); // calcs already parsed so just return value
+        const parsed = await this.templateVariablesService.evaluateConditionString(_raw);
+        return parseBoolean(parsed);
       },
     };
     const evaluation = await evaluators[condition_type]();
