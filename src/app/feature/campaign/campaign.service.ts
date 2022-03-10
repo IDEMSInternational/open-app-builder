@@ -200,9 +200,10 @@ export class CampaignService {
     const returnedRows: FlowTypes.Campaign_listRow[] = [];
     for (const row of rowsByPrioirity) {
       if (returnedRows.length < batchSize) {
-        const parsedRow = await this.hackParseDynamicRow(row);
-        const evaluation = await this.evaluateRowActivationConditions(parsedRow);
+        // evaluate before parsing so dynamic expression can be used
+        const evaluation = await this.evaluateRowActivationConditions(row);
         if (evaluation._active) {
+          const parsedRow = await this.hackParseDynamicRow(row);
           returnedRows.push({ ...parsedRow, ...evaluation });
         }
       }
