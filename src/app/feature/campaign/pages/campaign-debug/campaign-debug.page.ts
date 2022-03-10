@@ -35,12 +35,11 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    // this.debugData = await this.dataEvaluationService.refreshDBCache();
+    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
-      this.setDebugCampaign(campaign_id);
+      await this.setDebugCampaign(campaign_id);
     }
-    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
   }
 
   /***************************************************************************************
@@ -81,6 +80,11 @@ export class CampaignDebugPage implements OnInit {
       duration: delaySeconds * 1000,
     });
     await toast.present();
+  }
+
+  public async refreshDebugCampaign() {
+    this.debugCampaignRows = undefined;
+    await this.processCampaign();
   }
 
   private async processCampaign() {
