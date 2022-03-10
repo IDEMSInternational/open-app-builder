@@ -32,6 +32,12 @@ export const FIELD_PREFIX = "rp-contact-field";
 export const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
+  DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+};
+
+export const APP_LANGUAGES = {
+  /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
+  default: "gb_en",
 };
 
 /**
@@ -52,7 +58,7 @@ export const NOTIFICATION_DEFAULTS = {
 /** How often to attempt to re-evaluate scheduled notifications - currently every minutes */
 export const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
 
-/** How often to attempt sync - currently every 15mins */
+/** How often to attempt sync - currently every 5mins */
 export const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
 
 export const APP_ROUTE_DEFAULTS = {

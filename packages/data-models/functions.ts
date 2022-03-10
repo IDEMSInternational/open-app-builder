@@ -19,7 +19,7 @@ const DYNAMIC_STRING_REGEX = /[`!]?@([a-z]+)\.([0-9a-z_]+)([0-9a-z_.]*)/gi;
  * Store these references in a separate object so they can be evaluated at runtime
  */
 export function extractDynamicFields(data: any) {
-  let dynamicFields = {};
+  let dynamicFields: any = {};
   switch (typeof data) {
     case "object":
       // simply convert array to object to handle in next case
@@ -103,16 +103,6 @@ export function extractDynamicEvaluators(
         return { fullExpression, matchedExpression, type, fieldName };
       }),
     ];
-    // expect the number of match statements to match the total number of @ characters (replace all non-@)
-    // provide a warning if this is not the case
-    const expectedMatchLength = fullExpression.replace(/[^@]/g, "").length;
-    if (allMatches.length !== expectedMatchLength) {
-      console.warn(
-        `Expected ${expectedMatchLength} dynamic matches but recorded ${allMatches.length}`,
-        fullExpression,
-        allMatches
-      );
-    }
   }
   if (allMatches.length > 0) {
     return allMatches;

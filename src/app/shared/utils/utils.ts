@@ -92,6 +92,14 @@ export function randomElementFromArray<T>(arr: T[] = null) {
   }
 }
 
+/** https://stackoverflow.com/a/46545530 */
+export function shuffleArray(arr: any[]) {
+  return arr
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+
 /**
  * Retrieve a nested property from a json object
  * using a single path string accessor

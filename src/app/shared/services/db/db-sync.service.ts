@@ -27,7 +27,8 @@ export class DBSyncService {
     private dbService: DbService,
     private http: HttpClient,
     private userMetaService: UserMetaService
-  ) {
+  ) {}
+  public async init() {
     // Automatically sync data periodically
     if (environment.production) {
       this.syncToServer();
@@ -66,12 +67,14 @@ export class DBSyncService {
     }
   }
 
+  /** Populate common app_meta to local record */
   private generateServerRecord(record: any, mapping: IDBServerMapping) {
     const { is_user_record, user_record_id_field } = mapping;
     if (is_user_record && user_record_id_field) {
       const serverRecord: IDBServerUserRecord = {
         app_user_id: this.userMetaService.getUserMeta("uuid"),
         app_user_record_id: record[user_record_id_field],
+        app_deployment_name: environment.deploymentName,
         data: record,
       };
       return serverRecord;
