@@ -6,6 +6,7 @@ import { ENV_NAME } from "./env_name";
 export const environment = {
   version: packageJson.version,
   deploymentName: deploymentJson.name,
+  deploymentConfig: deploymentJson,
   production: true,
   rapidPro: {
     receiveUrl:
