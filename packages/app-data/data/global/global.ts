@@ -3,6 +3,339 @@ import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",
+    flow_name: "localised_names_za",
+    status: "released",
+    override_target: "localised_names",
+    override_condition: '@fields._deployment_name == "plh_za"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_1",
+        value: "Thandie",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Lindiwe",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Nontlantla",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Zanele",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Khwezi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Thuli",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Asive",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Zama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Nombuso",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Karabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Gogo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mother",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mother",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mother",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
+        value: "Thabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Sabelo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "Rudzani",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "Lonwabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_5",
+        value: "Pule",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Father",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Father",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Mkhulu",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "za/data/localisation_globals_za.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localisation_options_za",
+    status: "released",
+    override_target: "localisation_options",
+    override_condition: '@fields._deployment_name == "plh_za"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "teen_social_medium",
+        value: "TikTok",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "whatsapp",
+        value: "WhatsApp",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "currency",
+        value: "R",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_estimate",
+        value: 3000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_precise",
+        value: 3400,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "number_of_beans",
+        value: 20,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "teen_age_bracket",
+        value: "10-17",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "adult_age_bracket",
+        value: "18+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "covid",
+        value: "COVID",
+        _translations: {
+          value: {
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "za/data/localisation_globals_za.xlsx",
+  },
+  {
+    flow_type: "global",
     flow_name: "in_week_message_titles",
     status: "released",
     rows: [
@@ -12,7 +345,6 @@ const global: FlowTypes.Global[] = [
         value: "New workshop ready tomorrow!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -27,7 +359,6 @@ const global: FlowTypes.Global[] = [
         value: "New workshop!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -42,7 +373,6 @@ const global: FlowTypes.Global[] = [
         value: "Workshop Reminder",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -57,7 +387,6 @@ const global: FlowTypes.Global[] = [
         value: "Nice progress!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -81,7 +410,6 @@ const global: FlowTypes.Global[] = [
           "Remember to sit down and relax today - taking care of yourself is an important parenting skill.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -96,7 +424,6 @@ const global: FlowTypes.Global[] = [
         value: "You are appreciated!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -111,7 +438,6 @@ const global: FlowTypes.Global[] = [
         value: "Something Fun",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -126,7 +452,6 @@ const global: FlowTypes.Global[] = [
         value: "Here is a fun activity to do with your teen!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -141,7 +466,6 @@ const global: FlowTypes.Global[] = [
         value: "Your @global.parent_points this week",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -157,7 +481,6 @@ const global: FlowTypes.Global[] = [
           "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -172,7 +495,6 @@ const global: FlowTypes.Global[] = [
         value: "Home Practice Reminder",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -187,7 +509,6 @@ const global: FlowTypes.Global[] = [
         value: "Let's talk about how your home practice went this week.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -223,7 +544,6 @@ const global: FlowTypes.Global[] = [
         value: "To solve this challenge, I will try to:",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -238,7 +558,6 @@ const global: FlowTypes.Global[] = [
         value: "Do you want to try one of the following things?",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -253,7 +572,6 @@ const global: FlowTypes.Global[] = [
         value: "My challenge is not listed here.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -276,7 +594,6 @@ const global: FlowTypes.Global[] = [
         value: "Welcome and Self-Care",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -291,7 +608,6 @@ const global: FlowTypes.Global[] = [
         value: "Self-Care",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -306,7 +622,6 @@ const global: FlowTypes.Global[] = [
         value: "How to add self-care",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -321,7 +636,6 @@ const global: FlowTypes.Global[] = [
         value: "One-on-One Time",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -336,7 +650,6 @@ const global: FlowTypes.Global[] = [
         value: "How to spend one-on-one time",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -351,7 +664,6 @@ const global: FlowTypes.Global[] = [
         value: "Praise",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -366,7 +678,6 @@ const global: FlowTypes.Global[] = [
         value: "How to praise",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -381,7 +692,6 @@ const global: FlowTypes.Global[] = [
         value: "Positive Instructions",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -396,7 +706,6 @@ const global: FlowTypes.Global[] = [
         value: "How to give positive instructions",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -411,7 +720,6 @@ const global: FlowTypes.Global[] = [
         value: "Managing Stress",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -426,7 +734,6 @@ const global: FlowTypes.Global[] = [
         value: "How to manage stress",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -441,7 +748,6 @@ const global: FlowTypes.Global[] = [
         value: "Family Budgets",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -456,7 +762,6 @@ const global: FlowTypes.Global[] = [
         value: "How to budget & save",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -471,7 +776,6 @@ const global: FlowTypes.Global[] = [
         value: "Rules",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -486,7 +790,6 @@ const global: FlowTypes.Global[] = [
         value: "How to create rules",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -501,7 +804,6 @@ const global: FlowTypes.Global[] = [
         value: "Calm Consequences",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -516,7 +818,6 @@ const global: FlowTypes.Global[] = [
         value: "How to give calm consequences",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -531,7 +832,6 @@ const global: FlowTypes.Global[] = [
         value: "Problem Solving",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -546,7 +846,6 @@ const global: FlowTypes.Global[] = [
         value: "How to solve problems",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -561,7 +860,6 @@ const global: FlowTypes.Global[] = [
         value: "Teen Safety",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -576,7 +874,6 @@ const global: FlowTypes.Global[] = [
         value: "How to keep your teen safe",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -591,7 +888,6 @@ const global: FlowTypes.Global[] = [
         value: "Dealing with Crisis",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -606,7 +902,6 @@ const global: FlowTypes.Global[] = [
         value: "How to deal with crisis",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -621,7 +916,6 @@ const global: FlowTypes.Global[] = [
         value: "Celebration and Next Steps",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -636,7 +930,6 @@ const global: FlowTypes.Global[] = [
         value: "How to support each other",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -659,7 +952,6 @@ const global: FlowTypes.Global[] = [
         value: "Home Practice",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -674,7 +966,6 @@ const global: FlowTypes.Global[] = [
         value: "Talk about @global.home_practice",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -689,7 +980,6 @@ const global: FlowTypes.Global[] = [
         value: "Home Practice Review",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -704,7 +994,6 @@ const global: FlowTypes.Global[] = [
         value: "Let's talk about how your home practice went this week.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1182,7 +1471,6 @@ const global: FlowTypes.Global[] = [
         value: "In my group",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1206,7 +1494,6 @@ const global: FlowTypes.Global[] = [
         value: "By myself",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1239,8 +1526,6 @@ const global: FlowTypes.Global[] = [
         value: "awesome parent",
         _translations: {
           value: {
-            es_sp: true,
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1264,7 +1549,6 @@ const global: FlowTypes.Global[] = [
         value: "friends",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1825,7 +2109,6 @@ const global: FlowTypes.Global[] = [
         value: "Mother",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1910,7 +2193,6 @@ const global: FlowTypes.Global[] = [
         value: "Father",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1949,7 +2231,6 @@ const global: FlowTypes.Global[] = [
         value: "TikTok",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2017,7 +2298,6 @@ const global: FlowTypes.Global[] = [
         value: "COVID",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2064,7 +2344,6 @@ const global: FlowTypes.Global[] = [
         value: "Your @global.parent_app Code",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2087,7 +2366,6 @@ const global: FlowTypes.Global[] = [
         value: "Privacy Policy",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2111,7 +2389,6 @@ const global: FlowTypes.Global[] = [
           "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2127,7 +2404,6 @@ const global: FlowTypes.Global[] = [
           "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2143,7 +2419,6 @@ const global: FlowTypes.Global[] = [
           "Sending this message requires internet access. To limit data use, send this message when on WiFi.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2166,7 +2441,6 @@ const global: FlowTypes.Global[] = [
         value: "ParentApp",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2181,7 +2455,6 @@ const global: FlowTypes.Global[] = [
         value: "Weekly Workshops",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2196,7 +2469,6 @@ const global: FlowTypes.Global[] = [
         value: "Weekly Workshop",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2211,7 +2483,6 @@ const global: FlowTypes.Global[] = [
         value: "Weekly Workshop Options",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2226,7 +2497,6 @@ const global: FlowTypes.Global[] = [
         value: "ParentPoints",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2241,7 +2511,6 @@ const global: FlowTypes.Global[] = [
         value: "ParentPoint",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2256,7 +2525,6 @@ const global: FlowTypes.Global[] = [
         value: "Parent Library",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2289,7 +2557,6 @@ const global: FlowTypes.Global[] = [
         value: "In-Week Messages",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2312,7 +2579,6 @@ const global: FlowTypes.Global[] = [
         value: "Real-world ideas",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2327,7 +2593,6 @@ const global: FlowTypes.Global[] = [
         value: "Ideas",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2342,7 +2607,6 @@ const global: FlowTypes.Global[] = [
         value: "Ideas from other families...",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2357,7 +2621,6 @@ const global: FlowTypes.Global[] = [
         value: "Challenges & solutions",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2372,7 +2635,6 @@ const global: FlowTypes.Global[] = [
         value: "Submit",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2386,7 +2648,6 @@ const global: FlowTypes.Global[] = [
         value: "Find out more",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2401,7 +2662,6 @@ const global: FlowTypes.Global[] = [
         value: "Show me how",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2416,7 +2676,6 @@ const global: FlowTypes.Global[] = [
         value: "Tell me more!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2431,7 +2690,6 @@ const global: FlowTypes.Global[] = [
         value: "Let's go!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2446,7 +2704,6 @@ const global: FlowTypes.Global[] = [
         value: "Check it out!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2461,7 +2718,6 @@ const global: FlowTypes.Global[] = [
         value: "Done",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2476,7 +2732,6 @@ const global: FlowTypes.Global[] = [
         value: "Next",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2491,7 +2746,6 @@ const global: FlowTypes.Global[] = [
         value: "Previous",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2506,7 +2760,6 @@ const global: FlowTypes.Global[] = [
         value: "Save",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2521,7 +2774,6 @@ const global: FlowTypes.Global[] = [
         value: "Start",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2536,7 +2788,6 @@ const global: FlowTypes.Global[] = [
         value: "Skip",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2550,7 +2801,6 @@ const global: FlowTypes.Global[] = [
         value: "Continue",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2565,7 +2815,6 @@ const global: FlowTypes.Global[] = [
         value: "Finish with a song",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2580,7 +2829,6 @@ const global: FlowTypes.Global[] = [
         value: "Goodbye!",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3205,7 +3453,6 @@ const global: FlowTypes.Global[] = [
         value: "Make me smile",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3220,7 +3467,6 @@ const global: FlowTypes.Global[] = [
         value: "Get me going",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3303,7 +3549,6 @@ const global: FlowTypes.Global[] = [
         value: "My Favourite Relaxes",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3318,7 +3563,6 @@ const global: FlowTypes.Global[] = [
         value: "All Relaxes",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3333,7 +3577,6 @@ const global: FlowTypes.Global[] = [
         value: "Random Relax",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3348,7 +3591,6 @@ const global: FlowTypes.Global[] = [
         value: "This Week's Relax",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3363,7 +3605,6 @@ const global: FlowTypes.Global[] = [
         value: "Listen & Relax (1-2 minutes)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3378,7 +3619,6 @@ const global: FlowTypes.Global[] = [
         value: "Listen & Relax (3-5 minutes)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3393,7 +3633,6 @@ const global: FlowTypes.Global[] = [
         value: "Do & Relax (5-10 minutes)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3560,7 +3799,6 @@ const global: FlowTypes.Global[] = [
         value: "My Favourite Activities",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3575,7 +3813,6 @@ const global: FlowTypes.Global[] = [
         value: "All Activities",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3590,7 +3827,6 @@ const global: FlowTypes.Global[] = [
         value: "Random Activity",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3605,7 +3841,6 @@ const global: FlowTypes.Global[] = [
         value: "This Week's Activity",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3620,7 +3855,6 @@ const global: FlowTypes.Global[] = [
         value: "Chat Together",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3635,7 +3869,6 @@ const global: FlowTypes.Global[] = [
         value: "Do Together",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3902,7 +4135,6 @@ const global: FlowTypes.Global[] = [
         value: "Tap and type",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3917,7 +4149,6 @@ const global: FlowTypes.Global[] = [
         value: "Tap and choose",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3932,7 +4163,6 @@ const global: FlowTypes.Global[] = [
         value: "Type your own",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3947,7 +4177,6 @@ const global: FlowTypes.Global[] = [
         value: "I've understood this. Don't show me this message again.",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4087,7 +4316,6 @@ const global: FlowTypes.Global[] = [
         value: "Walk to the shops",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4102,7 +4330,6 @@ const global: FlowTypes.Global[] = [
         value: "Get water together",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4117,7 +4344,6 @@ const global: FlowTypes.Global[] = [
         value: "Do a chore together",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4132,7 +4358,6 @@ const global: FlowTypes.Global[] = [
         value: "Prepare dinner",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4147,7 +4372,6 @@ const global: FlowTypes.Global[] = [
         value: "Eat breakfast/lunch/dinner",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4162,7 +4386,6 @@ const global: FlowTypes.Global[] = [
         value: "Have tea after school",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4177,7 +4400,6 @@ const global: FlowTypes.Global[] = [
         value: "Watch a T.V. show",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4192,7 +4414,6 @@ const global: FlowTypes.Global[] = [
         value: "Review homework",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4207,7 +4428,6 @@ const global: FlowTypes.Global[] = [
         value: "Chat before bedtime",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4222,7 +4442,6 @@ const global: FlowTypes.Global[] = [
         value: "Play a game/sport",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4246,7 +4465,6 @@ const global: FlowTypes.Global[] = [
         value: "Teens completing school/university",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4261,7 +4479,6 @@ const global: FlowTypes.Global[] = [
         value: "Building/expanding a house for my family",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4276,7 +4493,6 @@ const global: FlowTypes.Global[] = [
         value: "Starting a business",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4291,7 +4507,6 @@ const global: FlowTypes.Global[] = [
         value: "Buying a car for my family",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4315,7 +4530,6 @@ const global: FlowTypes.Global[] = [
         value: "Severe illness or death of a friend or family member",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4330,7 +4544,6 @@ const global: FlowTypes.Global[] = [
         value: "Robbery",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4345,7 +4558,6 @@ const global: FlowTypes.Global[] = [
         value: "Flooding",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4360,7 +4572,6 @@ const global: FlowTypes.Global[] = [
         value: "Political violence",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4375,7 +4586,6 @@ const global: FlowTypes.Global[] = [
         value: "Losing my job",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4390,7 +4600,6 @@ const global: FlowTypes.Global[] = [
         value: "Pandemic (COVID-19)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4414,7 +4623,6 @@ const global: FlowTypes.Global[] = [
         value: "At home",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4429,7 +4637,6 @@ const global: FlowTypes.Global[] = [
         value: "Buy things we can sell",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4444,7 +4651,6 @@ const global: FlowTypes.Global[] = [
         value: "At a bank",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4459,7 +4665,6 @@ const global: FlowTypes.Global[] = [
         value: "In a savings group",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4483,7 +4688,6 @@ const global: FlowTypes.Global[] = [
         value: "No gadget use the next day",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4498,7 +4702,6 @@ const global: FlowTypes.Global[] = [
         value: "Take 5 minutes pause in separate part of the room",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4513,7 +4716,6 @@ const global: FlowTypes.Global[] = [
         value: "Write a letter of apology",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4528,7 +4730,6 @@ const global: FlowTypes.Global[] = [
         value: "Cannot see friends the next day",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4543,7 +4744,6 @@ const global: FlowTypes.Global[] = [
         value: "Cannot play with phone after dinner (or next hour)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4558,7 +4758,6 @@ const global: FlowTypes.Global[] = [
         value: "Extra time with friends on weekend (1hr)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4573,7 +4772,6 @@ const global: FlowTypes.Global[] = [
         value: "Cooking teen’s favourite meal",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4588,7 +4786,6 @@ const global: FlowTypes.Global[] = [
         value: "Extra time with phone after dinner (30 min)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4603,7 +4800,6 @@ const global: FlowTypes.Global[] = [
         value: "Watching teen’s T.V. show together",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4618,7 +4814,6 @@ const global: FlowTypes.Global[] = [
         value: "Extra one-on-one time on Sunday (30 min)",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4642,7 +4837,6 @@ const global: FlowTypes.Global[] = [
         value: "Take a deep breath and pause before responding",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4657,7 +4851,6 @@ const global: FlowTypes.Global[] = [
         value: "Listen to your teen",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4672,7 +4865,6 @@ const global: FlowTypes.Global[] = [
         value: "Praise your teen for sharing",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4687,7 +4879,6 @@ const global: FlowTypes.Global[] = [
         value: "Use problem solving skills",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4702,7 +4893,6 @@ const global: FlowTypes.Global[] = [
         value: "Work out where you can get help",
         _translations: {
           value: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -4713,346 +4903,6 @@ const global: FlowTypes.Global[] = [
       },
     ],
     _xlsxPath: "global/data/suggestion_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "localised_names_za",
-    status: "released",
-    override_target: "localised_names",
-    override_condition: '@fields._deployment_name == "plh_za"',
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_1",
-        value: "Thandie",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_2",
-        value: "Lindiwe",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_3",
-        value: "Nontlantla",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_4",
-        value: "Zanele",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_1",
-        value: "Khwezi",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_2",
-        value: "Thuli",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_3",
-        value: "Asive",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_4",
-        value: "Zama",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_5",
-        value: "Nombuso",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_6",
-        value: "Karabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_1",
-        value: "Gogo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_2",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_3",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_4",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_adult_name_1",
-        value: "Thabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_1",
-        value: "Alex",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_2",
-        value: "Sabelo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_3",
-        value: "Rudzani",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_4",
-        value: "Lonwabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_5",
-        value: "Pule",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_1",
-        value: "Father",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_2",
-        value: "Father",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_3",
-        value: "Mkhulu",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "za/data/localisation_globals_za.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "localisation_options_za",
-    status: "released",
-    override_target: "localisation_options",
-    override_condition: '@fields._deployment_name == "plh_za"',
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "teen_social_medium",
-        value: "TikTok",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "whatsapp",
-        value: "WhatsApp",
-        _translations: {
-          value: {},
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "currency",
-        value: "R",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "monthly_income_estimate",
-        value: 3000,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "monthly_income_precise",
-        value: 3400,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "number_of_beans",
-        value: 20,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "teen_age_bracket",
-        value: "10-17",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "adult_age_bracket",
-        value: "18+",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "covid",
-        value: "COVID",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-    ],
-    _xlsxPath: "za/data/localisation_globals_za.xlsx",
   },
 ];
 export default global;

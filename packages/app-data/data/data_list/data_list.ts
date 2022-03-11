@@ -20,7 +20,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Welcome and Self-Care",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -28,7 +27,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -36,7 +34,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           short_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -44,7 +41,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -84,7 +80,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "One-on-One Time",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -92,7 +87,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -100,7 +94,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -136,7 +129,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Praise",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -144,7 +136,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -152,7 +143,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -188,7 +178,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Positive Instructions",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -196,7 +185,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -204,7 +192,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -240,7 +227,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Managing Stress",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -248,7 +234,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -256,7 +241,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -292,7 +276,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Family Budgets",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -300,7 +283,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -308,7 +290,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -344,7 +325,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Rules",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -352,7 +332,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -360,7 +339,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -396,7 +374,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Calm Consequences",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -404,7 +381,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -412,7 +388,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -448,7 +423,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Problem Solving",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -456,7 +430,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -464,7 +437,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -500,7 +472,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Teen Safety",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -508,7 +479,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -516,7 +486,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -552,7 +521,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Dealing with Crisis",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -560,7 +528,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -568,7 +535,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -603,7 +569,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Celebration and Next Steps",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -611,7 +576,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -619,7 +583,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           tools: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -661,7 +624,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Quick pause",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -687,7 +649,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Power of three",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -713,7 +674,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "One thing today",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -739,7 +699,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Breathe to three",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -765,7 +724,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "In and out",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -790,7 +748,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Think about today",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -816,7 +773,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Pause to respond",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -842,7 +798,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Small things",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -868,7 +823,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Body scan",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -894,7 +848,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Feel the ground",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -920,7 +873,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Counting sounds",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -946,7 +898,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Feel your feeling",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -972,7 +923,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Your song",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -998,7 +948,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Ground & gratitude",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1023,7 +972,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Notice how you feel",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1048,7 +996,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Pause power",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1073,7 +1020,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Praise yourself",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1098,7 +1044,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Taking care of yourself",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1123,7 +1068,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Take a pause",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1148,7 +1092,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Physical activity",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1173,7 +1116,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "List of things",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1198,7 +1140,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Connect",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1223,7 +1164,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Prevent anger",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1248,7 +1188,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Angry? Take a break",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1281,7 +1220,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Reflect on the positive",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1305,7 +1243,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Check-in chat",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1329,7 +1266,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Dream Travel",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1353,7 +1289,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Famous Party",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1377,7 +1312,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Two truths, one lie",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1401,7 +1335,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Time Machine",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1425,7 +1358,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Superpowers",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1448,7 +1380,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Just a friendly chat",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1471,7 +1402,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "The Interrupter",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1494,7 +1424,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Three options",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1517,7 +1446,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Yes, No or Maybe",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1540,7 +1468,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: 'Memory game - "On Saturday..."',
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1563,7 +1490,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Make up a story",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1587,7 +1513,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Co-chef",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1611,7 +1536,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Dance moves",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1635,7 +1559,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Mirror",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1658,7 +1581,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "What's new?",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1681,7 +1603,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Get active!",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1704,7 +1625,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Name that tune",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1727,7 +1647,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Pass the snap",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1735,7 +1654,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           intro_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -1761,7 +1679,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Family workout",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1785,7 +1702,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Make housework fun",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1793,7 +1709,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           intro_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -1820,7 +1735,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "What are you doing?",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1828,7 +1742,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           intro_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -1854,7 +1767,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Crazy chicken",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1887,7 +1799,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "My Tips",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1895,7 +1806,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -1921,7 +1831,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Essential Tools",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1929,7 +1838,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -1955,7 +1863,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Customise @global.parent_app",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -1963,7 +1870,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -1989,7 +1895,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Customise Again",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2018,7 +1923,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Relax & Activities",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2026,7 +1930,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2052,7 +1955,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Help",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2060,7 +1962,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2086,7 +1987,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Technical Support",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2094,7 +1994,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2164,7 +2063,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Message Archive",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2172,7 +2070,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2197,7 +2094,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Support Contacts",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2205,7 +2101,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2230,7 +2125,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Evidence Base",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2238,7 +2132,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2420,7 +2313,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Relax",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2428,7 +2320,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2436,21 +2327,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2489,7 +2377,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Treat yourself well",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2497,7 +2384,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2505,21 +2391,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2558,7 +2441,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Praise yourself",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2566,7 +2448,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2574,21 +2455,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2627,7 +2505,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "One-on-one time",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2635,7 +2512,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2643,21 +2519,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2696,7 +2569,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Praise your teen",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2704,7 +2576,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2712,21 +2583,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2765,7 +2633,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Get positive",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2773,7 +2640,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2781,21 +2647,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2834,7 +2697,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Breathe not yell",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2842,7 +2704,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2850,21 +2711,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2903,7 +2761,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Good money choice",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2911,7 +2768,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2919,21 +2775,18 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2972,7 +2825,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Calm consequence",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2980,7 +2832,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2988,19 +2839,16 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -3039,7 +2887,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Safe",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3047,7 +2894,6 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           in_text_title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3055,19 +2901,16 @@ const data_list: FlowTypes.Data_list[] = [
             za_zu: true,
           },
           description: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
           },
           mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
           },
           short_mark_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -3112,7 +2955,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "That’s wonderful! Well done for spending time together. It lays the foundation for a great relationship with your teen!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3133,7 +2975,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Good for you! One-on-one time shows your teens they are important to you. It really makes a difference!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3154,7 +2995,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Wonderful! Spending time with your teen may make your teen more willing to help out more often. You are doing great!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3175,7 +3015,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Well done! One-on-one time with your teen gives you a chance to learn more about your teen’s interests and abilities. You are a star!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3196,7 +3035,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Excellent job! Spending time together helps to build a strong and positive relationship between you and your teen.",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3217,7 +3055,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sometimes it will be easy and fun to spend time with your teens, and sometimes it will be more challenging. Spending time together will greatly improve your relationship; well done for trying!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3238,7 +3075,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry to hear that it was difficult for you to spend time with your teen. We all have challenges sometimes. Just be patient with yourself and your teen - things will get better. Well done for trying!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3259,7 +3095,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well; you are a star!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3280,7 +3115,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry to hear it was difficult for you. Well done for trying!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3301,7 +3135,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Wonderful! You deserve all the happy times!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3322,7 +3155,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry that this was difficult for you. You are a star for trying!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3343,7 +3175,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Amazing to hear it made you feel good! Keep up the great work. Your teen is learning so much from you!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3364,7 +3195,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Talking about how we feel can be difficult at first, but you and your teen will get used to it. Keep trying, and you will see the positive results!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3385,7 +3215,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well. Talking about your finances together really makes your family stronger!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3406,7 +3235,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry to hear it was difficult for you. Well done for trying!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3427,7 +3255,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well! Consistent rules help make our teens feel secure, and keep them safe!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3448,7 +3275,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry that this has been difficult. Creating rules together requires some practice but it's worth it!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3469,7 +3295,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3490,7 +3315,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry that this was difficult. Setting consequences together will make your teen want to follow the rules more often!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3511,7 +3335,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry that this was hard. Sometimes we just have to keep trying. Find a time when you and your teen are calm and try again to talk through a problem using the four steps of problem-solving. Together, you can do so much!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3532,7 +3355,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well! Talking about risks and support options prevents problems and really helps to keep your teen safe.",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3553,7 +3375,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry that this was hard. Mapping risks and places to get support can be challenging and emotional. It really does help to keep your teen safe!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3574,7 +3395,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Sorry that it didn’t go so well. This is not easy to do. Try to sit down and discuss it with your teen again. Also, is there someone your teen trusts who could join you in the discussion with your teen?",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3595,7 +3415,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well! Getting consequences right helps teens behave better and makes family life calmer.",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -3616,7 +3435,6 @@ const data_list: FlowTypes.Data_list[] = [
         text: "Great to hear it went well! When your teen learns how to solve problems, they can use that skill their whole life. What a gift!",
         _translations: {
           text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
