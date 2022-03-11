@@ -234,7 +234,7 @@ export namespace FlowTypes {
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
-    condition_type: "field_evaluation" | "db_lookup";
+    condition_type: "field_evaluation" | "db_lookup" | "calc";
     /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
     condition_args: {
       db_lookup?: {
@@ -255,6 +255,7 @@ export namespace FlowTypes {
         field: string;
         value: string;
       };
+      calc?: string;
     };
     /** calculated after criteria has been evaluated */
     _satisfied?: boolean;

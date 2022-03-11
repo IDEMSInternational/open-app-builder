@@ -249,6 +249,24 @@ export function booleanStringToBoolean(val: any) {
   return val;
 }
 
+/** convert values to best-guess boolean. Converts falsy strings */
+export function parseBoolean(val: any): boolean {
+  // check for falsy values in strings
+  val = booleanStringToBoolean(val);
+  if (!val) return false;
+  switch (typeof val) {
+    case "string":
+      if (val === "undefined") return false;
+      if (val === "null") return false;
+      return Boolean(val);
+    case "boolean":
+      return val;
+    default:
+      console.warn("parse bool not supported for type", typeof val, val);
+      return Boolean(val);
+  }
+}
+
 /**
  * Convert a string to an integer hashcode (note, may be positive or negative)
  * https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
