@@ -1,9 +1,11 @@
 import { firebaseConfig } from "./firebaseConfig";
 import packageJson from "../../package.json";
+import deploymentJson from "../../.idems_app/deployments/default.json";
 import { ENV_NAME } from "./env_name";
 
 export const environment = {
   version: packageJson.version,
+  deploymentName: deploymentJson.name,
   production: true,
   rapidPro: {
     receiveUrl:

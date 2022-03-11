@@ -104,7 +104,6 @@ export class DbService {
   public generateDBMeta(syncable = false) {
     const meta: IDBMeta = {
       _created: generateTimestamp(),
-      _synced: false, // legacy
       _sync_status: syncable ? "ignored" : "pending",
     };
     return meta;

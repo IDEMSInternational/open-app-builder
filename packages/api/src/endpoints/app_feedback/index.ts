@@ -9,4 +9,4 @@ import { AppFeedbackController } from "./app_feedback.controller";
   providers: [AppFeedbackService],
   controllers: [AppFeedbackController],
 })
-export class AppFeedbackModel {}
+export class AppFeedbackModule {}

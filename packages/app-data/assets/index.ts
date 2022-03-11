@@ -17,6 +17,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 492.2,
     md5Checksum: "0d23366a438bc1a5faf3d445e389a39a",
     translations: {
+      tz_sw: {
+        size_kb: 596.3,
+        md5Checksum: "4917b991b1da9d8dfb62b4cbea086b9a",
+      },
+      za_af: {
+        size_kb: 425.5,
+        md5Checksum: "f67195b5b8b16e13c27bea30e3daa3bf",
+      },
+      za_st: {
+        size_kb: 570,
+        md5Checksum: "661d966ecd4c3ac069007d4bf29d0a40",
+      },
       za_tn: {
         size_kb: 521.3,
         md5Checksum: "e50dbc959585eb83480887c083816412",
@@ -35,6 +47,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 749,
     md5Checksum: "f763a01ba394cb5b8d7ecc03e421d8e0",
     translations: {
+      tz_sw: {
+        size_kb: 849.4,
+        md5Checksum: "193cd2d42fab0d4ae887ff38cc2bb0a2",
+      },
+      za_af: {
+        size_kb: 804.3,
+        md5Checksum: "cb18fd93fb545ea1d800f554d21e47fd",
+      },
+      za_st: {
+        size_kb: 942,
+        md5Checksum: "690673d3804c5e2f5a96fc698910f854",
+      },
       za_tn: {
         size_kb: 813.8,
         md5Checksum: "b5dbea4ae785d3be159e155753815d39",
@@ -53,6 +77,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 806.5,
     md5Checksum: "b68baf7ff115191d18e42c0c6ad575b2",
     translations: {
+      tz_sw: {
+        size_kb: 613.2,
+        md5Checksum: "d717d9a3698d6bd50133b32042ada9e2",
+      },
+      za_af: {
+        size_kb: 712.9,
+        md5Checksum: "d13d03fbf1cafa04bda723afc4dfaa7c",
+      },
+      za_st: {
+        size_kb: 867,
+        md5Checksum: "e0c4ac6bde25cd8b7c1a10410905b1dc",
+      },
       za_tn: {
         size_kb: 701.3,
         md5Checksum: "a2159af546cd63070cb48050aeeb46af",
@@ -71,6 +107,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 999.6,
     md5Checksum: "c752bb8fb7caeb3b13ed009c11e043c1",
     translations: {
+      tz_sw: {
+        size_kb: 906.4,
+        md5Checksum: "f66b6cca6464032961e27798b622f1fe",
+      },
+      za_af: {
+        size_kb: 1152.9,
+        md5Checksum: "38d7b22471d79595b0a00756e4cf5f9c",
+      },
+      za_st: {
+        size_kb: 1002,
+        md5Checksum: "90cd0e96caf4f8981c463f0f05e89447",
+      },
       za_tn: {
         size_kb: 537,
         md5Checksum: "5fa21dee0c45a913b505e63b200ab528",
@@ -89,6 +137,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 721.6,
     md5Checksum: "93a3a74b2251968d06888ddab297e6ac",
     translations: {
+      tz_sw: {
+        size_kb: 853.9,
+        md5Checksum: "93094bc353df67e1d0fb2325ecb173bd",
+      },
+      za_af: {
+        size_kb: 728.4,
+        md5Checksum: "88aecc28aeb0f09d5986557c30f0d902",
+      },
+      za_st: {
+        size_kb: 805.2,
+        md5Checksum: "b72428408ed5603d5f29c9beb80c2cc2",
+      },
       za_tn: {
         size_kb: 727.5,
         md5Checksum: "c18869efccd20b619546d194e63a8ac7",
@@ -107,6 +167,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 493.1,
     md5Checksum: "317c1409d3fd711862f044fde774fab4",
     translations: {
+      tz_sw: {
+        size_kb: 375,
+        md5Checksum: "5d1bec8ce69159b55aa40e8f29565296",
+      },
+      za_af: {
+        size_kb: 550,
+        md5Checksum: "8de339d77e769aa27c3dc44073ee95f0",
+      },
+      za_st: {
+        size_kb: 459.4,
+        md5Checksum: "280835b8bca8e1537e33949ccb0c6b55",
+      },
       za_tn: {
         size_kb: 338.3,
         md5Checksum: "f3702f201ab1b56c014462b33a0b9e0d",
@@ -125,6 +197,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 516.7,
     md5Checksum: "a954491b926d1690d8975207f27b5b3a",
     translations: {
+      tz_sw: {
+        size_kb: 578.3,
+        md5Checksum: "c53c3327bc791a666dd2122d7e9b09b9",
+      },
+      za_af: {
+        size_kb: 626,
+        md5Checksum: "226c3ceaa03d9531483ad2aeef04ea8d",
+      },
+      za_st: {
+        size_kb: 648.8,
+        md5Checksum: "cffb2b0b3e141b3b3f44af3642e516a9",
+      },
       za_tn: {
         size_kb: 490.2,
         md5Checksum: "93fbc698201eef2b010899d77286efe3",
@@ -143,6 +227,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 564.5,
     md5Checksum: "e05b7c0dec49d45225cf5311bd931233",
     translations: {
+      tz_sw: {
+        size_kb: 613.2,
+        md5Checksum: "f6890d3d324b7675e20feb4ac5cc6410",
+      },
+      za_af: {
+        size_kb: 483.1,
+        md5Checksum: "e2c9b173f2299a19300dda3297f0f49d",
+      },
+      za_st: {
+        size_kb: 647.7,
+        md5Checksum: "fa9f97cad1a7ecd52e41a3862a42386d",
+      },
       za_tn: {
         size_kb: 428.3,
         md5Checksum: "53c8f5f83ba4e4f756626dcbf35f54c6",
@@ -161,6 +257,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 544.1,
     md5Checksum: "7fa394d9131dd7a36ab842223644f82e",
     translations: {
+      tz_sw: {
+        size_kb: 563.3,
+        md5Checksum: "c6e2994ac5324b110c6006d4236eacf6",
+      },
+      za_af: {
+        size_kb: 586.4,
+        md5Checksum: "c3d9a77031fdea831f4d43069abf71c3",
+      },
+      za_st: {
+        size_kb: 825.8,
+        md5Checksum: "f5827ce4ba50660584b8c78b3f1f1f17",
+      },
       za_tn: {
         size_kb: 585.8,
         md5Checksum: "a29c36d1737e88714957a1ba7a56d7df",
@@ -179,6 +287,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1228.6,
     md5Checksum: "f1ced15e623ce6d21ea250317e602360",
     translations: {
+      tz_sw: {
+        size_kb: 1241.3,
+        md5Checksum: "d703ab3f87d24d51345c1f4a82197c08",
+      },
+      za_af: {
+        size_kb: 1384.3,
+        md5Checksum: "1d14318decf022374f050d4087e0b4b1",
+      },
+      za_st: {
+        size_kb: 1096.9,
+        md5Checksum: "304e682f2240cd8f2dd525a0367a2e1c",
+      },
       za_tn: {
         size_kb: 840,
         md5Checksum: "7c4834c346ced3d97fbe20fac7a697ea",
@@ -197,6 +317,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1746.5,
     md5Checksum: "91b71aa328f31c46b56bf7949448ae55",
     translations: {
+      tz_sw: {
+        size_kb: 1708.9,
+        md5Checksum: "042bb2801502595e7098cce2781ed0c1",
+      },
+      za_af: {
+        size_kb: 2019.8,
+        md5Checksum: "6788460a6f2759c8832f4ea4b144d16b",
+      },
+      za_st: {
+        size_kb: 2070,
+        md5Checksum: "108d12711b2f9e1fd57a281c7f7934de",
+      },
       za_tn: {
         size_kb: 1796.3,
         md5Checksum: "e1d123c1eb56892fcd7ed298a13b3879",
@@ -215,6 +347,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 712.7,
     md5Checksum: "b3b6bf1fdc26305e89da438bb1a3657c",
     translations: {
+      tz_sw: {
+        size_kb: 829.5,
+        md5Checksum: "96ff16bcf5744f87e1a355093750d4a0",
+      },
+      za_af: {
+        size_kb: 688.8,
+        md5Checksum: "0afb1376968ba8140816e7ddc69b9850",
+      },
+      za_st: {
+        size_kb: 710.7,
+        md5Checksum: "d3ca3563a325e1a327f3c96aab1923bc",
+      },
       za_tn: {
         size_kb: 742.5,
         md5Checksum: "f02eddda65275a9c0047faeb4e7948ba",
@@ -233,6 +377,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1901.6,
     md5Checksum: "9131a3fecff580470e11d6735593260e",
     translations: {
+      tz_sw: {
+        size_kb: 1527,
+        md5Checksum: "6aab73a8d8fe40e01fcc3223f0899f0e",
+      },
+      za_af: {
+        size_kb: 1847.3,
+        md5Checksum: "f56c7a4ce615ca6d13d8cec8f8961315",
+      },
+      za_st: {
+        size_kb: 2477.7,
+        md5Checksum: "981654ab1fe076d0e903ca3287d18d2b",
+      },
       za_tn: {
         size_kb: 1816.9,
         md5Checksum: "dcd84b8b857ea1c3b3f0503d77db1a95",
@@ -241,12 +397,28 @@ export const ASSETS_CONTENTS_LIST = {
         size_kb: 2392.5,
         md5Checksum: "ddd18b67f338742c74e607992f4de6a9",
       },
+      za_zu: {
+        size_kb: 2212.5,
+        md5Checksum: "fa697400aacab25ca617003bfeb6591d",
+      },
     },
   },
   "plh_audio/relax/relax_21.mp3": {
     size_kb: 759.6,
     md5Checksum: "9c12b2510304df021b5194d2b02a9899",
     translations: {
+      tz_sw: {
+        size_kb: 537,
+        md5Checksum: "880420297e583d3efb575a1cd8d6b927",
+      },
+      za_af: {
+        size_kb: 611,
+        md5Checksum: "753bd581f48c1b6af40f5fa13e03922b",
+      },
+      za_st: {
+        size_kb: 878.3,
+        md5Checksum: "d73af6510293a35dddc6efb4e9d4e214",
+      },
       za_tn: {
         size_kb: 607.5,
         md5Checksum: "edb41d0680a5a555eab7137cb470e7a3",
@@ -265,6 +437,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 429.8,
     md5Checksum: "aa62a24a6c519beb75c88e613acd2c71",
     translations: {
+      tz_sw: {
+        size_kb: 341.3,
+        md5Checksum: "f1d49bcf33ef8fe6f181f09ab3e44d35",
+      },
+      za_af: {
+        size_kb: 377.8,
+        md5Checksum: "e4fad5a480de91bbf860007ebf3fa24d",
+      },
+      za_st: {
+        size_kb: 547.5,
+        md5Checksum: "645385ea855acd711ade67bbdd67a8d6",
+      },
       za_tn: {
         size_kb: 328.2,
         md5Checksum: "6f1ab9b6bd86483ddf26b0537e55b200",
@@ -283,6 +467,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 500.4,
     md5Checksum: "9550d5bac87fd1a97544dd886660d25e",
     translations: {
+      tz_sw: {
+        size_kb: 397.5,
+        md5Checksum: "961bf53b510dfa1df727c5e684e6b3e9",
+      },
+      za_af: {
+        size_kb: 360.6,
+        md5Checksum: "0236b01f2f4b43d1f31bdcdfbf9a697b",
+      },
+      za_st: {
+        size_kb: 459.4,
+        md5Checksum: "62a89f08e6dad8b3906f1aba7bd410b8",
+      },
       za_tn: {
         size_kb: 358.2,
         md5Checksum: "6d51ee3f24248f30384b8b5c3ca0aaea",
@@ -301,6 +497,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 453.9,
     md5Checksum: "c3db4db42e097fcc942e15f6f067737a",
     translations: {
+      tz_sw: {
+        size_kb: 351.4,
+        md5Checksum: "974a4c38faeb1390184d22890c9656d9",
+      },
+      za_af: {
+        size_kb: 404.3,
+        md5Checksum: "0403dd9016c3147205a1f62a0bccfa2a",
+      },
+      za_st: {
+        size_kb: 521.3,
+        md5Checksum: "6c8cc306f42e53b311554d10e7f2f47f",
+      },
       za_tn: {
         size_kb: 371.3,
         md5Checksum: "3912c232fce1a5e531673ccc32acffc0",
@@ -319,6 +527,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 453.9,
     md5Checksum: "54a8f411e01f5ef440d4275e3c111c3c",
     translations: {
+      tz_sw: {
+        size_kb: 301.9,
+        md5Checksum: "973eb0d71cdfa5028f27f7d8865abb56",
+      },
+      za_af: {
+        size_kb: 264.7,
+        md5Checksum: "66efb06717ae2e4fedc5b8cd0a3663f6",
+      },
+      za_st: {
+        size_kb: 425.7,
+        md5Checksum: "95988499b97fa9fc84f2caa41fee57b1",
+      },
       za_tn: {
         size_kb: 296.3,
         md5Checksum: "bc4af987d0a159c48d0df284b412dc92",
@@ -337,6 +557,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 998,
     md5Checksum: "f14b76a30bb3267a07968e7945bea98c",
     translations: {
+      tz_sw: {
+        size_kb: 676.9,
+        md5Checksum: "6b23dc2a2b3390f0f12ab6f758eb6123",
+      },
+      za_af: {
+        size_kb: 862.4,
+        md5Checksum: "3cbc4995eb3cbcee1df0aa870588519c",
+      },
+      za_st: {
+        size_kb: 996.4,
+        md5Checksum: "709a455fe792883a25085e205e04dbc3",
+      },
       za_tn: {
         size_kb: 600.8,
         md5Checksum: "841f5fd8836bc8b24b65c19f4291e175",
@@ -355,6 +587,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 359.2,
     md5Checksum: "5cc39211a871f85a80d2d914ce2f9008",
     translations: {
+      tz_sw: {
+        size_kb: 358.9,
+        md5Checksum: "141b2e52096a5e1d9190781e05b929df",
+      },
+      za_af: {
+        size_kb: 590,
+        md5Checksum: "c7c181194e648ddb9b2c4b7dc28465d3",
+      },
+      za_st: {
+        size_kb: 450.8,
+        md5Checksum: "1878a8b2fbb03cb9803099230a02cd6d",
+      },
       za_tn: {
         size_kb: 291.4,
         md5Checksum: "ad5435c21ec653ff99976a45d1df5e0f",
@@ -373,6 +617,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 526.5,
     md5Checksum: "cda7524dc0cf04d7567d8aba5cecb1ed",
     translations: {
+      tz_sw: {
+        size_kb: 439.5,
+        md5Checksum: "0a8a22e454c127feddf6931edeb9b568",
+      },
+      za_af: {
+        size_kb: 499,
+        md5Checksum: "07ef8abe6d925b00d18e9ccb6a92fe15",
+      },
+      za_st: {
+        size_kb: 606.4,
+        md5Checksum: "77bdf5152bb13e4608228f87a994a2ae",
+      },
       za_tn: {
         size_kb: 393.8,
         md5Checksum: "f14f7e11292d3c00d67023d40c5b19a7",
@@ -391,6 +647,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 504.9,
     md5Checksum: "51ad97b7ea1e2344074ef130c4362682",
     translations: {
+      tz_sw: {
+        size_kb: 424.5,
+        md5Checksum: "034ebacb13487a1a52936dbce0b500ed",
+      },
+      za_af: {
+        size_kb: 412.1,
+        md5Checksum: "64f40e3f980f0e827c0c37aea29f9051",
+      },
+      za_st: {
+        size_kb: 536.3,
+        md5Checksum: "eaf8ee0a20e047e137564430b0646fc5",
+      },
       za_tn: {
         size_kb: 388.2,
         md5Checksum: "0daf6960bbd80a6b43b5193b77abcb97",
@@ -409,6 +677,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 549,
     md5Checksum: "43e967ed477d23a2ac60b2786997e752",
     translations: {
+      tz_sw: {
+        size_kb: 499.5,
+        md5Checksum: "f4099a1de4e09f42a2cb1d802b8fadf5",
+      },
+      za_af: {
+        size_kb: 574.9,
+        md5Checksum: "7d6358c593e39b4dfda57c9c47e19d22",
+      },
+      za_st: {
+        size_kb: 708.8,
+        md5Checksum: "c76c825f6c9cc8048cfd2826a966800f",
+      },
       za_tn: {
         size_kb: 493.2,
         md5Checksum: "de634a9ac19d4ba72622b969a2c7ca4c",
@@ -427,6 +707,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1057.1,
     md5Checksum: "4c28141c3416cf2df70d2a5464c3d34a",
     translations: {
+      tz_sw: {
+        size_kb: 1137,
+        md5Checksum: "5e32d64ac15fcb6a21279576631facd3",
+      },
+      za_af: {
+        size_kb: 1040.2,
+        md5Checksum: "956e35d8c688220448011c98f03eab8f",
+      },
+      za_st: {
+        size_kb: 1290,
+        md5Checksum: "ef63484981f74f4a776705fe1aed576c",
+      },
       za_tn: {
         size_kb: 990.8,
         md5Checksum: "8a5b0e6e6df556fb596471e748a98a13",
@@ -469,9 +761,29 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1019.2,
     md5Checksum: "4ca8a8f7fda21ecdbbfcbd7f38e69433",
     translations: {
+      tz_sw: {
+        size_kb: 1245,
+        md5Checksum: "7bfa7ab8fd751da76319b879127beec5",
+      },
+      za_af: {
+        size_kb: 1158.2,
+        md5Checksum: "49d34276a5a04b73a330d5b972b0dee1",
+      },
+      za_st: {
+        size_kb: 1175.7,
+        md5Checksum: "10a1b7763d64c7c809c0db38baa37205",
+      },
       za_tn: {
         size_kb: 1003.9,
         md5Checksum: "e051706763b9593134cc68a319939bcc",
+      },
+      za_xh: {
+        size_kb: 1536.4,
+        md5Checksum: "ee9d2fb65fe9b7fbdf6730cc9919a9c1",
+      },
+      za_zu: {
+        size_kb: 1396.9,
+        md5Checksum: "8165057b52ea7a49fb9bc2df61becf3b",
       },
     },
   },
@@ -479,6 +791,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 377.6,
     md5Checksum: "e9138d16ef537979a4eeb81656e0bdaf",
     translations: {
+      tz_sw: {
+        size_kb: 343.9,
+        md5Checksum: "e4c71e1a9779b795b555a1dfd4d1cfaf",
+      },
+      za_af: {
+        size_kb: 406,
+        md5Checksum: "811cfc764585c5ab79c1340886891419",
+      },
+      za_st: {
+        size_kb: 460.2,
+        md5Checksum: "6e2634ee14900dae30ae2f1669450868",
+      },
       za_tn: {
         size_kb: 331.9,
         md5Checksum: "2eb1661c3f3fc1a878282c4dbf88b820",
@@ -497,6 +821,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1292.7,
     md5Checksum: "472d6351714078d4c1977a7cb5880fdb",
     translations: {
+      tz_sw: {
+        size_kb: 380.7,
+        md5Checksum: "fddd25202ea375063f7034ff532bad4e",
+      },
+      za_af: {
+        size_kb: 399.8,
+        md5Checksum: "923ceea57639cb2b2e696246ab015a11",
+      },
+      za_st: {
+        size_kb: 466.9,
+        md5Checksum: "9eb739df0b814a4cde2d8172a30d13dc",
+      },
       za_tn: {
         size_kb: 432,
         md5Checksum: "1159eb2c500d833c6cb0616be545d458",
@@ -515,6 +851,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 627.8,
     md5Checksum: "3ac9ad359f08f0da75f614e321c10aae",
     translations: {
+      tz_sw: {
+        size_kb: 501.4,
+        md5Checksum: "c3d140c0f60861809665bfc0784fd081",
+      },
+      za_af: {
+        size_kb: 615.3,
+        md5Checksum: "095b73ace2faa99ccc1dc253b61b4c58",
+      },
+      za_st: {
+        size_kb: 651.4,
+        md5Checksum: "dad77e92a12f98471f5b5085220bd63b",
+      },
       za_tn: {
         size_kb: 620.7,
         md5Checksum: "ed915fcd8f82d7b1cdb3d20f8cff4952",
@@ -533,6 +881,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 768.6,
     md5Checksum: "d1e8e52bd33407987894934de0bbf909",
     translations: {
+      tz_sw: {
+        size_kb: 748.9,
+        md5Checksum: "9b751a9456997ff55c1e97a2b313f328",
+      },
+      za_af: {
+        size_kb: 748.5,
+        md5Checksum: "823d431ece7fcd6882e9c07bdb5267d0",
+      },
+      za_st: {
+        size_kb: 807,
+        md5Checksum: "08e1d61b052e3981eddc970f391d3569",
+      },
       za_tn: {
         size_kb: 766.9,
         md5Checksum: "27b3edaba4bb792f8181baebe18544aa",
@@ -551,6 +911,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 447.3,
     md5Checksum: "6f8021f84c5a941cc5a6d36faba92f29",
     translations: {
+      tz_sw: {
+        size_kb: 371.3,
+        md5Checksum: "8ae1a4ebaa2886edd1a8790d814c76eb",
+      },
+      za_af: {
+        size_kb: 434.5,
+        md5Checksum: "ea9b68aeb6f2fc03548589783f53473a",
+      },
+      za_st: {
+        size_kb: 472.5,
+        md5Checksum: "7d1e2f4bb8b8f775319bb82d4561a972",
+      },
       za_tn: {
         size_kb: 443.3,
         md5Checksum: "63f4abdac9002f7716be0fb941f22d25",
@@ -569,6 +941,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 582,
     md5Checksum: "adb875428eebfb8874e44b4526c2e62b",
     translations: {
+      tz_sw: {
+        size_kb: 516.4,
+        md5Checksum: "7e86548bd22ab5ce97955f596c6cdd37",
+      },
+      za_af: {
+        size_kb: 519,
+        md5Checksum: "275a64674025711675c8a8123952b7cc",
+      },
+      za_st: {
+        size_kb: 643.2,
+        md5Checksum: "5d1a7d71c0cbb527f1648dcfbfefb94c",
+      },
       za_tn: {
         size_kb: 571.9,
         md5Checksum: "0a06cd3165613b3ae00f5414e64f0f57",
@@ -587,6 +971,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 355.9,
     md5Checksum: "584fe9154663243393a3512aae2c2cfc",
     translations: {
+      tz_sw: {
+        size_kb: 341.3,
+        md5Checksum: "130555d0bc02cc219005190ccabba218",
+      },
+      za_af: {
+        size_kb: 386,
+        md5Checksum: "871c092067d1ff6c8f46880f8947eb5e",
+      },
+      za_st: {
+        size_kb: 423.8,
+        md5Checksum: "5ae1f0b5e553300cb63a5a9e949acbdd",
+      },
       za_tn: {
         size_kb: 313.2,
         md5Checksum: "85c3ac0e46e8db5432d3fb34a716bec6",
@@ -605,6 +1001,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 510.2,
     md5Checksum: "ab3df47339f5aaddab8293b014e788b2",
     translations: {
+      tz_sw: {
+        size_kb: 390.8,
+        md5Checksum: "a93189816550e5ef31896105daba8f98",
+      },
+      za_af: {
+        size_kb: 441.1,
+        md5Checksum: "6788de1f7c6de9c59b7f1048db2b3455",
+      },
+      za_st: {
+        size_kb: 493.9,
+        md5Checksum: "c0f2db025179b3d886542931ab88b3ac",
+      },
       za_tn: {
         size_kb: 511.9,
         md5Checksum: "aa011ca8d7561151ce0a54ccb64aa159",
@@ -623,6 +1031,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 955.5,
     md5Checksum: "bc984f7cc77a1e8945eaa7036dc0b6ab",
     translations: {
+      tz_sw: {
+        size_kb: 665.7,
+        md5Checksum: "979e2ac924073029250d80be46f79f7e",
+      },
+      za_af: {
+        size_kb: 812.5,
+        md5Checksum: "61fa78463d22adadfd3d589a6949f49a",
+      },
+      za_st: {
+        size_kb: 806.3,
+        md5Checksum: "29bd2544fc0dd1a56a483e54d4857d01",
+      },
       za_tn: {
         size_kb: 793.9,
         md5Checksum: "8df3db10e43cfcc23164ccb627de2d00",
@@ -641,6 +1061,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 716.7,
     md5Checksum: "9ae6c9fd0275d6dda0b5f4e0bdddeba7",
     translations: {
+      tz_sw: {
+        size_kb: 555.8,
+        md5Checksum: "4b7d74b30f8a0c6f2599ea21daeae3cb",
+      },
+      za_af: {
+        size_kb: 620.8,
+        md5Checksum: "f04da451ee1d6509b72d3f777ba0785e",
+      },
+      za_st: {
+        size_kb: 637.5,
+        md5Checksum: "576de9754b768f09c6f2941dfca5e91e",
+      },
       za_tn: {
         size_kb: 589.5,
         md5Checksum: "977f095f8358295dfab2182785456aa3",
@@ -659,6 +1091,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 931,
     md5Checksum: "2fe96fc09d75da24b11a5521159af31a",
     translations: {
+      tz_sw: {
+        size_kb: 782.7,
+        md5Checksum: "ec78f5b1c067c9f4087db4fb05ee5f2e",
+      },
+      za_af: {
+        size_kb: 941.5,
+        md5Checksum: "0d79fdb3c445a883c4a3ce1beec1c9a5",
+      },
+      za_st: {
+        size_kb: 868.9,
+        md5Checksum: "672779e0fc71e00ac9bc98b49ffc0ea6",
+      },
       za_tn: {
         size_kb: 874.5,
         md5Checksum: "d03247d4b9a6cb33910e58ffefa8749a",
@@ -677,6 +1121,18 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 659.6,
     md5Checksum: "aea123ef6dc786c86e38325e1ad04e17",
     translations: {
+      tz_sw: {
+        size_kb: 609.4,
+        md5Checksum: "feec35b3113d6b9e8e04f9bd9d8ee8b4",
+      },
+      za_af: {
+        size_kb: 598.6,
+        md5Checksum: "2b0927863333c42ed1d4164c55bd53ca",
+      },
+      za_st: {
+        size_kb: 744.4,
+        md5Checksum: "374ebfa0bc1748f3cc5645ee1d00190c",
+      },
       za_tn: {
         size_kb: 628.9,
         md5Checksum: "949c4032e5b3b288cf291734e67159a8",
@@ -1303,38 +1759,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 42.9,
     md5Checksum: "f05f8934b9b7f5565c2d9a589086de96",
   },
-  "plh_images/orli_upload_folder/Changing negative to positive_image.svg": {
-    size_kb: 3.3,
-    md5Checksum: "17da7fe8b1c7e89fe276d49bb4401264",
-  },
-  "plh_images/orli_upload_folder/Coping with COVID_image.svg": {
-    size_kb: 6.1,
-    md5Checksum: "50366ba83be0d3bbdce07a43a94b4abc",
-  },
-  "plh_images/orli_upload_folder/covid and berevment-05.svg": {
-    size_kb: 7.5,
-    md5Checksum: "35ab19ee5f3a3a5342d78b27a18ee590",
-  },
-  "plh_images/orli_upload_folder/Help yourself cope.svg": {
-    size_kb: 3.9,
-    md5Checksum: "16ff8218ee6023f4e390a17219019d96",
-  },
-  "plh_images/orli_upload_folder/Help yourself cope_image.svg": {
-    size_kb: 4.5,
-    md5Checksum: "dc6214c976df912b76fe3fa1331862f0",
-  },
-  "plh_images/orli_upload_folder/How to talk to your teen_image.svg": {
-    size_kb: 6,
-    md5Checksum: "bc05d895bd500c636a2deacdc1f975b3",
-  },
-  "plh_images/orli_upload_folder/Practical steps_image.svg": {
-    size_kb: 6.8,
-    md5Checksum: "825f6d3d64262bb41abd986094828da6",
-  },
-  "plh_images/orli_upload_folder/Steps to deal with news_image.svg": {
-    size_kb: 3,
-    md5Checksum: "5d467475d3142f2a795f3fe91556e493",
-  },
   "plh_images/parent_centre/ask.svg": {
     size_kb: 1,
     md5Checksum: "5812093b7abe8ec62a0ec0b1e3f80451",
@@ -1358,10 +1782,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/parent_centre/covid/change_thoughts.svg": {
     size_kb: 3.3,
     md5Checksum: "17da7fe8b1c7e89fe276d49bb4401264",
-  },
-  "plh_images/parent_centre/covid/Copy of covid and berevment-05.svg": {
-    size_kb: 7.5,
-    md5Checksum: "35ab19ee5f3a3a5342d78b27a18ee590",
   },
   "plh_images/parent_centre/covid/deal_with_news.svg": {
     size_kb: 3,
