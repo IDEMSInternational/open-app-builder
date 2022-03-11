@@ -4,11 +4,11 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "campaign_schedule",
+    flow_name: "nf_schedule_inactive",
     status: "released",
     rows: [
       {
-        id: "inactive_day",
+        id: "nf_inactive_day",
         time: {
           hour: 19,
           minute: 30,
@@ -18,7 +18,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
       {
-        id: "inactive_week",
+        id: "nf_inactive_week",
         time: {
           hour: 19,
           minute: 30,
@@ -28,7 +28,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
       {
-        id: "inactive_month",
+        id: "nf_inactive_month",
         time: {
           hour: 19,
           minute: 30,
@@ -38,7 +38,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
       {
-        id: "generic",
+        id: "nf_generic",
         schedule: {
           day_of_week: 6,
         },
@@ -48,7 +48,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "campaigns/notification_campaigns.xlsx",
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
@@ -71,18 +71,9 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
+        schedule: {
+          batch_size: 5,
+        },
         time: {
           hour: 19,
           minute: 30,
@@ -100,18 +91,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         schedule: {
@@ -136,18 +115,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "1990-11-01T00:00:00.000",
           end_date: "1990-11-30T00:00:00.000",
@@ -167,18 +134,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "2021-12-01T00:00:00.000",
           end_date: "2021-12-31T00:00:00.000",
@@ -196,18 +151,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         schedule: {
@@ -233,18 +176,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "2021-12-01T00:00:00.000",
           end_date: "2021-12-31T00:00:00.000",
@@ -266,18 +197,6 @@ const data_list: FlowTypes.Data_list[] = [
               },
             },
             _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
           },
         ],
         schedule: {
@@ -303,18 +222,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           start_date: "2022-01-01T00:00:00.000",
           end_date: "2022-01-01T00:00:00.000",
@@ -338,18 +245,6 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: false,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
-          },
-        ],
         schedule: {
           batch_size: 5,
         },
@@ -368,20 +263,49 @@ const data_list: FlowTypes.Data_list[] = [
             _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
-        deactivation_condition_list: [
+        time: {
+          hour: 18,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_actions_2",
+        activation_condition_list: [
           {
             condition_type: "field_evaluation",
             condition_args: {
               field_evaluation: {
                 field: "debug_campaigns_enabled",
-                value: false,
+                value: true,
               },
             },
-            _raw: "get_field | debug_campaigns_enabled:FALSE",
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
           },
         ],
         time: {
           hour: 18,
+          minute: 1,
+        },
+      },
+      {
+        id: "debug_condition",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          day_of_week: 1,
+        },
+        time: {
+          hour: 17,
           minute: 0,
         },
       },

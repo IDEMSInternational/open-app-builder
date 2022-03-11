@@ -15,12 +15,14 @@ export class AppFeedbackService {
   }
 
   async createOrUpdate(body: UserFeedbackDto) {
-    const { app_user_id, app_user_record_id, data } = body;
-    const foundItem = await this.model.findOne({ where: { app_user_id, app_user_record_id } });
+    const { app_user_id, app_user_record_id, app_deployment_name, data } = body;
+    const foundItem = await this.model.findOne({
+      where: { app_user_id, app_user_record_id },
+    });
     if (!foundItem) {
       // Item not found, create a new one
       const feedback = new AppFeedback();
-      return feedback.update({ data, app_user_id, app_user_record_id });
+      return feedback.update({ data, app_user_id, app_user_record_id, app_deployment_name });
     }
     return foundItem.update({ data });
   }

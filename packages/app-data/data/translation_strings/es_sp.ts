@@ -35,9 +35,9 @@ const data: { [source_text: string]: string } = {
   "Dogs (modified text in answer list)": "Perros (texto modificado en la lista de respuestas)",
   "Chinchillas (modified text in answer list)":
     "Chinchillas (texto modificado en la lista de respuestas)",
-  "New title: @data.language.example_lang_2.title":
-    "Título nuevo: @data.language.example_lang_2.title",
-  "New text: @data.language.example_lang_2.text": "Texto nuevo: @data.language.example_lang_2.text",
+  "Value of the first debug variable": "Valor de la primera variable debug",
+  "Title: @global.debug_variable_1": "Título: @global.debug_variable_1",
+  "Text: @global.debug_variable_1": "Texto: @global.debug_variable_1",
   "This is a global variable set in a global":
     "Esta es una variable global determinada en una planilla global",
   "This is a field set by default": "Este es un campo con valor predeterminado",

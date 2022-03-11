@@ -1,16 +1,7 @@
 import { Injectable, Injector } from "@angular/core";
-import { addDays } from "date-fns";
-import {
-  addHours,
-  addMinutes,
-  addWeeks,
-  endOfDay,
-  isAfter,
-  isBefore,
-  isFuture,
-  isPast,
-  setISODay,
-} from "date-fns";
+import { addDays, addSeconds } from "date-fns";
+import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
+import { extractDynamicFields } from "packages/data-models";
 import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
@@ -26,7 +17,7 @@ import {
 import {
   arrayToHashmap,
   mergeArrayOfArrays,
-  randomElementFromArray,
+  shuffleArray,
   stringToIntegerHash,
 } from "src/app/shared/utils";
 type ICampaignHashmap = {
@@ -55,6 +46,14 @@ export class CampaignService {
     private templateTranslateService: TemplateTranslateService,
     private injector: Injector
   ) {}
+
+  /**
+   * make a dynamic call to TemplateVariablesService as it also has handling
+   * for @campaigns which would otherwise result in cyclic dependency in constructor
+   */
+  get templateVariablesService() {
+    return this.injector.get(TemplateVariablesService);
+  }
 
   public async init() {
     await this.hackDeactivateAllNotifications();
@@ -133,15 +132,13 @@ export class CampaignService {
    * Utilise template services to process campaign actions
    */
   public async triggerRowActions(actions: FlowTypes.TemplateRowAction[] = []) {
-    // make a dynamic call to TemplateVariablesService as it also has handling
-    // for @campaigns which would otherwise result in cyclic dependency in constructor
-    const templateVariablesService = this.injector.get(TemplateVariablesService);
-
     // Process any dynamic variables that might be present in args
     const parsedActions = [];
     for (const action of actions) {
       action.args = await Promise.all(
-        action.args.map(async (arg) => await templateVariablesService.evaluateConditionString(arg))
+        action.args.map(
+          async (arg) => await this.templateVariablesService.evaluateConditionString(arg)
+        )
       );
       parsedActions.push(action);
     }
@@ -167,11 +164,16 @@ export class CampaignService {
       // remove any previous notification for the campaign
       await this.deactiveCampaignNotifications(campaign.id);
       if (campaign._active) {
-        const nextRow = await this.getNextCampaignRow(campaign.id);
-        if (nextRow) {
-          // add new notification
-          const schedule = await this.scheduleCampaignNotification(nextRow, campaign.id);
-          scheduled[campaign.id][nextRow.id] = schedule;
+        const nextRows = await this.getNextCampaignRows(campaign.id, campaign.schedule?.batch_size);
+        if (nextRows) {
+          let earliestStart = new Date();
+          // add new notifications
+          for (const nextRow of nextRows) {
+            const schedule = await this.scheduleNotification(nextRow, campaign.id, earliestStart);
+            scheduled[campaign.id][nextRow.id] = schedule;
+            // if scheduling in batch ensure next notification at least 60s after previous
+            earliestStart = addSeconds(schedule.schedule.at, 60);
+          }
         }
       }
     }
@@ -180,10 +182,11 @@ export class CampaignService {
   }
 
   /**
-   * Select the highest priority row for a given campaign that satisfies all activation/deactivation
+   * Select the highest priority rows for a given campaign that satisfies all activation/deactivation
    * criteria. In the case of multiple equal priority rows, return at random
+   * @param batchSize - maximum number of rows to return for scheduling in batch
    */
-  public async getNextCampaignRow(campaign_id: string) {
+  public async getNextCampaignRows(campaign_id: string, batchSize = 1) {
     // TODO - decide best way to handle keeping data fresh
     await this.dataEvaluationService.refreshDBCache();
 
@@ -191,56 +194,70 @@ export class CampaignService {
       console.error("no data exists for campaign", campaign_id);
       return null;
     }
-    const campaignRows = this.allCampaigns[campaign_id].sort((a, b) => b.priority - a.priority);
-    const satisfiedRows: FlowTypes.Campaign_listRow[] = [];
-    // Iterate over campaign rows in order of priority. If row satisfies conditions set as new benchmark priority
-    let benchmarkRowPriority = -Infinity;
-    for (const row of campaignRows) {
-      if (!row.hasOwnProperty("priority")) row.priority = -Infinity;
-      if (row.priority >= benchmarkRowPriority) {
+    const rowsByPrioirity = this.shuffleSortCampaignRowsByPriority(this.allCampaigns[campaign_id]);
+    const returnedRows: FlowTypes.Campaign_listRow[] = [];
+    for (const row of rowsByPrioirity) {
+      if (returnedRows.length < batchSize) {
         const evaluation = await this.evaluateRowActivationConditions(row);
         if (evaluation._active) {
-          // set current row as new bar for activation processing
-          benchmarkRowPriority = row.priority;
-          satisfiedRows.push({ ...row, ...evaluation });
+          returnedRows.push({ ...row, ...evaluation });
         }
       }
     }
-    // return row at random from list of all rows that matched the final benchmark priority
-    const highestPriorityRows = satisfiedRows.filter((row) => row.priority >= benchmarkRowPriority);
-    const selectedRow = randomElementFromArray(highestPriorityRows);
-
-    // console.log("[Campaign Next]", campaign_id, { campaignRows, selectedRow, satisfiedRows });
-    return selectedRow;
+    return returnedRows;
   }
 
   /**
    * Convert PLH notification schedule data and create local notification
    * @returns list of all currently scheduled notifications
+   * @param earliestStart override default campaign start date if scheduling notifications in batch
    */
-  public async scheduleCampaignNotification(row: FlowTypes.Campaign_listRow, campaign_id: string) {
+  public async scheduleNotification(
+    row: FlowTypes.Campaign_listRow,
+    campaign_id: string,
+    earliestStart?: Date
+  ) {
     const schedule = this.scheduledCampaigns[campaign_id];
     if (!schedule) {
       console.error("No notification schedule provided for campaign", campaign_id);
       return;
     }
-    const notification_schedule = this.evaluateCampaignNotification(schedule);
+    const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
-    let { title, text } = row;
+    const parsedRow = await this.hackParseDynamicRow(row);
+    let { title, text } = parsedRow;
     let { _schedule_at } = notification_schedule;
 
-    title = this.templateTranslateService.translateValue(title || NOTIFICATION_DEFAULTS.title);
-    text = this.templateTranslateService.translateValue(text || NOTIFICATION_DEFAULTS.text);
+    title = title || NOTIFICATION_DEFAULTS.title;
+    text = text || NOTIFICATION_DEFAULTS.text;
+
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
+      largeBody: text,
       title,
-      extra: { ...row, campaign_id },
-      id: stringToIntegerHash(row.id),
+      extra: { ...parsedRow, campaign_id },
+      id: stringToIntegerHash(parsedRow.id),
     };
     await this.localNotificationService.scheduleNotification(notificationSchedule);
     return notificationSchedule;
+  }
+
+  /**
+   * Campaign rows are read from datalists which are currently not evaluated for dynamic content
+   * This workaround forces the manual check for any dynamic content,
+   */
+  private async hackParseDynamicRow(row: FlowTypes.Campaign_listRow) {
+    // process translations first as these are made with dynamic content in place (e.g. "hello @name")
+    const translatedRow = this.templateTranslateService.translateRow(row as any);
+    // Continue processing full row
+    translatedRow._dynamicFields = extractDynamicFields(translatedRow);
+    const parsedRow = await this.templateVariablesService.evaluatePLHData(translatedRow, {
+      row: translatedRow,
+      templateRowMap: {},
+    });
+    return parsedRow as FlowTypes.Campaign_listRow;
   }
 
   /** Deactivate all notifications for a given campaign */
@@ -358,27 +375,31 @@ export class CampaignService {
     return { _activated, _deactivated, _active };
   }
 
-  private evaluateCampaignNotification(scheduleRow: FlowTypes.Campaign_Schedule) {
+  /**
+   * Take a schedule row and calculate what time to schedule next nofication at, based on any start/end dates,
+   * or hour/minute/day-of-week conditions
+   * @param earliestStart - used when evaluating notifications in batch. Compare notification schedule to future date instead of current
+   */
+  private evaluateSchedule(scheduleRow: FlowTypes.Campaign_Schedule, earliestStart?: Date) {
     // apply default settings
     scheduleRow.time = scheduleRow.time || NOTIFICATION_DEFAULTS.time;
     const { time, delay } = scheduleRow;
     const schedule: FlowTypes.Campaign_Schedule["schedule"] = scheduleRow.schedule || {};
-
-    let d = new Date();
-    // Set notification start date (if in future, otherwise keep as today)
-    if (schedule.start_date && isFuture(new Date(schedule.start_date))) {
+    let d = earliestStart ? new Date(earliestStart) : new Date();
+    // Set notification start date if after earliest start
+    if (schedule.start_date && isAfter(new Date(schedule.start_date), earliestStart)) {
       d = new Date(schedule.start_date);
     }
     // Set notification time, add 1 day if time already passed
     d.setHours(Number(time.hour));
     d.setMinutes(Number(time.minute));
-    if (isPast(d)) {
+    if (isBefore(d, earliestStart)) {
       d = addDays(d, 1);
     }
     // Schedule notification day of week, add 1 week if time already passed
     if (schedule.day_of_week) {
       d = setISODay(d, schedule.day_of_week);
-      if (isPast(d)) {
+      if (isBefore(d, earliestStart)) {
         d = addWeeks(d, 1);
       }
     }
@@ -413,5 +434,23 @@ export class CampaignService {
       if (end_date && isBefore(new Date(end_date), new Date())) return false;
     }
     return true;
+  }
+
+  /**
+   * Sort campaign rows by priority. If multiple rows with same priority exist randomise the order
+   * so that the first priority item is not always returned
+   */
+  private shuffleSortCampaignRowsByPriority(rows: FlowTypes.Campaign_listRow[]) {
+    const groupsByPriority = {};
+    for (const row of rows) {
+      if (!row.hasOwnProperty("priority")) row.priority = -Infinity;
+      if (!groupsByPriority[row.priority]) groupsByPriority[row.priority] = [];
+      groupsByPriority[row.priority].push(row);
+    }
+    const shuffleSortedGroups = Object.entries<FlowTypes.Campaign_listRow[][]>(groupsByPriority)
+      .sort(([key_a], [key_b]) => Number(key_b) - Number(key_a))
+      .map(([_, value]) => shuffleArray(value));
+    const shuffleSortedRows = [].concat(...shuffleSortedGroups);
+    return shuffleSortedRows;
   }
 }
