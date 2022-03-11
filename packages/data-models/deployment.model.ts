@@ -1,3 +1,5 @@
+import type APP_CONSTANTS from "./constants";
+
 export interface IDeploymentConfig {
   /** Friendly name used to identify the deployment name */
   name: string;
@@ -15,6 +17,8 @@ export interface IDeploymentConfig {
     /** filter function applied to assets download that receives basic file info such as folder and id. Default `(gdriveEntry)=>true` */
     assets_filter_function?: (gdriveEntry: IGdriveEntry) => boolean;
   };
+  /** Optional override of any provided constants from data-models/constants */
+  app_constants?: Partial<typeof APP_CONSTANTS>;
   app_data?: {
     /** processed sheets for use in app. Default `./app_data/sheets` */
     sheets_output_path?: string;
@@ -56,6 +60,7 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
+  app_constants: {},
   app_data: {
     sheets_output_path: "./app_data/sheets",
     converter_cache_path: "./cache/converter",
