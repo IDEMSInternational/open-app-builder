@@ -490,11 +490,6 @@ const data_list: FlowTypes.Data_list[] = [
           title: {},
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -3658,11 +3653,6 @@ const data_list: FlowTypes.Data_list[] = [
           title: {},
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -6645,11 +6635,6 @@ const data_list: FlowTypes.Data_list[] = [
           title: {},
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7688,19 +7673,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7739,19 +7714,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7781,19 +7746,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7823,19 +7778,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7865,19 +7810,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7916,19 +7851,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -7958,19 +7883,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -8000,19 +7915,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -8042,19 +7947,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -8105,18 +8000,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -8158,18 +8044,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -8211,18 +8088,9 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           title: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -17940,11 +17808,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18006,11 +17869,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18062,11 +17920,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18128,11 +17981,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18184,11 +18032,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18250,11 +18093,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18306,11 +18144,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18372,11 +18205,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18428,11 +18256,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18494,11 +18317,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18550,11 +18368,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18616,11 +18429,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18672,11 +18480,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18738,11 +18541,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18794,11 +18592,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18860,11 +18653,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18916,11 +18704,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -18982,11 +18765,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -19038,11 +18816,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -19104,11 +18877,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -19160,11 +18928,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -19226,11 +18989,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -19282,11 +19040,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
@@ -19348,11 +19101,6 @@ const data_list: FlowTypes.Data_list[] = [
         _translations: {
           text: {
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
         },
         _translatedFields: {
