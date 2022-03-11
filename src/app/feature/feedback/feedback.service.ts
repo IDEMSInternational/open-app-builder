@@ -10,7 +10,6 @@ import {
 } from "src/app/shared/modules/context-menu/context-menu.types";
 import { UserMetaService } from "src/app/shared/services/userMeta/userMeta.service";
 import { TemplateService } from "src/app/shared/components/template/services/template.service";
-import { FEEDBACK_MODULE_DEFAULTS } from "data-models/constants";
 import { generateTimestamp } from "src/app/shared/utils";
 import { environment } from "src/environments/environment";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
@@ -23,6 +22,9 @@ import {
   IFeedbackMetadata,
   ITemplateTargetEntry,
 } from "./feedback.types";
+import { APP_CONSTANTS } from "src/app/data";
+
+const { FEEDBACK_MODULE_DEFAULTS } = APP_CONSTANTS;
 
 const FEEDBACK_BUTTONS: IFeedbackContextMenuButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
 

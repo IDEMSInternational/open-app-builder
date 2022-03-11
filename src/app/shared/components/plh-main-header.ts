@@ -3,8 +3,10 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { App } from "@capacitor/app";
 import { Capacitor, PluginListenerHandle } from "@capacitor/core";
-import { APP_HEADER_DEFAULTS } from "data-models/constants";
 import { Subscription } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
+
+const { APP_HEADER_DEFAULTS } = APP_CONSTANTS;
 
 @Component({
   selector: "plh-main-header",
