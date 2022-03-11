@@ -2,8 +2,8 @@ import { Injectable, Injector } from "@angular/core";
 import { addDays, addSeconds } from "date-fns";
 import { addHours, addMinutes, addWeeks, endOfDay, isAfter, isBefore, setISODay } from "date-fns";
 import { extractDynamicFields } from "packages/data-models";
-import { NOTIFICATION_DEFAULTS } from "packages/data-models/constants";
 import { Subscription } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
@@ -20,6 +20,9 @@ import {
   shuffleArray,
   stringToIntegerHash,
 } from "src/app/shared/utils";
+
+const { NOTIFICATION_DEFAULTS } = APP_CONSTANTS;
+
 type ICampaignHashmap = {
   [campaign_id: string]: FlowTypes.Campaign_listRow[];
 };

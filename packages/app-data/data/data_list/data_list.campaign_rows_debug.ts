@@ -73,14 +73,22 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         campaign_list: ["debug_daily"],
-        text: "Text 2",
+        text: "How are you feeling today?",
         _translations: {
-          text: {},
+          text: {
+            es_sp: true,
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
           title: {},
         },
         _translatedFields: {
           text: {
-            eng: "Text 2",
+            eng: "How are you feeling today?",
           },
           title: {
             eng: "Debug Notification 2",
@@ -118,19 +126,17 @@ const data_list: FlowTypes.Data_list[] = [
           text: {
             es_sp: true,
           },
-          title: {
-            es_sp: true,
-          },
+          title: {},
         },
         _translatedFields: {
           text: {
             eng: "Text: @global.debug_variable_1",
           },
           title: {
-            eng: "Title: @global.debug_variable_1",
+            eng: "Debug Notification 3",
           },
         },
-        title: "Title: @global.debug_variable_1",
+        title: "Debug Notification 3",
       },
       {
         id: "debug_daily_4a",
@@ -947,6 +953,43 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         campaign_list: ["debug_calc"],
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows_debug",
+    flow_name: "debug_campaign_rows_html",
+    status: "released",
+    rows: [
+      {
+        id: "debug_html_1",
+        priority: 1,
+        campaign_list: ["debug_html"],
+        text: "<b>Bold Text</b>",
+        title: "Bold",
+      },
+      {
+        id: "debug_html_2",
+        priority: 2,
+        campaign_list: ["debug_html"],
+        text: "**Bold Markdown**",
+        title: "Bold Markdown",
+      },
+      {
+        id: "debug_html_3",
+        priority: 3,
+        campaign_list: ["debug_html"],
+        text: '<p><span style="color: #99cc00;">M</span>u<span style="color: #008080;">lti</span>Colo<span style="color: #ff6600;">r</span> <span style="color: #000080;">P</span><span style="color: #00ccff;">u</span><span style="color: #ff0000;">s</span><span style="color: #808080;">h</span></p>',
+        title: "Mixed HTML",
+      },
+      {
+        id: "debug_html_4",
+        priority: 4,
+        campaign_list: ["debug_html"],
+        text: '<string name="welcome">Welcome to <b>Android</b>!</string>',
+        title: "Android HTML",
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",

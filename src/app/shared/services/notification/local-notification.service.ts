@@ -7,14 +7,13 @@ import {
   ActionPerformed,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import {
-  NOTIFICATION_DEFAULTS,
-  NOTIFICATIONS_SYNC_FREQUENCY_MS,
-} from "packages/data-models/constants";
 import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
+
+const { NOTIFICATION_DEFAULTS, NOTIFICATIONS_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {

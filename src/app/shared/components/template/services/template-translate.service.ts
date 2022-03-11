@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { TRANSLATION_STRINGS } from "app-data";
-import { APP_FIELDS } from "packages/data-models";
-import { APP_LANGUAGES } from "packages/data-models/constants";
 import { BehaviorSubject } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
+
+const { APP_FIELDS, APP_LANGUAGES } = APP_CONSTANTS;
 
 @Injectable({ providedIn: "root" })
 /**

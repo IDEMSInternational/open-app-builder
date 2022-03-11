@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { DYNAMIC_PREFIXES } from "./constants";
+import APP_CONSTANTS from "./constants";
 import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
 
@@ -411,7 +411,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
+  type IDynamicPrefix = typeof APP_CONSTANTS.DYNAMIC_PREFIXES[number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
