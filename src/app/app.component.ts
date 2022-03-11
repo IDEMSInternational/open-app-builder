@@ -23,6 +23,9 @@ import { AnalyticsService } from "./shared/services/analytics/analytics.service"
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
+import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
+import { DBSyncService } from "./shared/services/db/db-sync.service";
+
 import { APP_CONSTANTS } from "./data";
 
 const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
@@ -46,6 +49,7 @@ export class AppComponent {
     private router: Router,
     private pushNotificationService: PushNotificationService,
     private dbService: DbService,
+    private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
     private surveyService: SurveyService,
@@ -58,6 +62,7 @@ export class AppComponent {
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
+    private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
@@ -112,8 +117,10 @@ export class AppComponent {
     await this.templateTranslateService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
+    await this.localNotificationInteractionService.init();
     await this.localNotificationService.init();
     await this.campaignService.init();
+    await this.dbSyncService.init();
   }
 
   /**

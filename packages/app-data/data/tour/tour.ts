@@ -79,7 +79,7 @@ const tour: FlowTypes.Tour[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "demo_templates/demo_navigation.xlsx",
+    _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
   },
   {
     flow_type: "tour",
@@ -195,7 +195,7 @@ const tour: FlowTypes.Tour[] = [
         route: "template/home_screen",
       },
     ],
-    _xlsxPath: "tutorials/home_screen_tour.xlsx",
+    _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
   },
   {
     flow_type: "tour",
@@ -354,7 +354,7 @@ const tour: FlowTypes.Tour[] = [
         route: "template/workshop_options_page",
       },
     ],
-    _xlsxPath: "tutorials/weekly_workshops_tour.xlsx",
+    _xlsxPath: "global/tutorials/weekly_workshops_tour.xlsx",
   },
 ];
 export default tour;
