@@ -642,7 +642,7 @@ const data_list: FlowTypes.Data_list[] = [
         tools: "How to support each other",
       },
     ],
-    _xlsxPath: "data/workshop_data_list.xlsx",
+    _xlsxPath: "global/data/workshop_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -1263,7 +1263,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "data/relax_data_list.xlsx",
+    _xlsxPath: "global/data/relax_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -1869,7 +1869,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "data/activity_data_list.xlsx",
+    _xlsxPath: "global/data/activity_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -2255,7 +2255,7 @@ const data_list: FlowTypes.Data_list[] = [
         location_text: "**Evidence Base** in the @global.parent_centre",
       },
     ],
-    _xlsxPath: "data/parent_centre_data_list.xlsx",
+    _xlsxPath: "global/data/parent_centre_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -2354,7 +2354,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "data/parent_centre_data_list.xlsx",
+    _xlsxPath: "global/data/parent_centre_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -2402,7 +2402,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "data/parent_centre_data_list.xlsx",
+    _xlsxPath: "global/data/parent_centre_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -3097,7 +3097,7 @@ const data_list: FlowTypes.Data_list[] = [
         short_mark_text: "Did it? Tap it!",
       },
     ],
-    _xlsxPath: "data/habit_data_list.xlsx",
+    _xlsxPath: "global/data/habit_data_list.xlsx",
   },
   {
     flow_type: "data_list",
@@ -3631,7 +3631,7 @@ const data_list: FlowTypes.Data_list[] = [
         },
       },
     ],
-    _xlsxPath: "data/praise_data_list.xlsx",
+    _xlsxPath: "global/data/praise_data_list.xlsx",
   },
 ];
 export default data_list;
