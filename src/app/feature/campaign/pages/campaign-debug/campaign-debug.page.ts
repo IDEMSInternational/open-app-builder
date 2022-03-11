@@ -91,10 +91,12 @@ export class CampaignDebugPage implements OnInit {
     const debugCampaignRows: IDebugCampaignRows = { activated: [], deactivated: [], pending: [] };
     const campaign_id = this.debugCampaignId;
     const campaignRows = this.campaignService.allCampaigns[campaign_id];
+    // Duplicate methods from getNextCampaignRows
     const evaluated = await Promise.all(
       campaignRows.map(async (row) => {
         const evaluation = await this.campaignService.evaluateRowActivationConditions(row);
-        return { ...row, ...evaluation };
+        const parsedRow = await this.campaignService.hackParseDynamicRow(row);
+        return { ...parsedRow, ...evaluation };
       })
     );
     evaluated.forEach((row) => {
