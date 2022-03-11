@@ -8,10 +8,10 @@ const { APP_ROUTE_DEFAULTS } = APP_CONSTANTS;
 
 /** Routes specified from data-models */
 const DataRoutes: Routes = [
-  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_path, pathMatch: "full" },
+  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
   ...APP_ROUTE_DEFAULTS.redirects,
 ];
-const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_path };
+const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_route };
 
 /** Routes required for main app features */
 const FeatureRoutes: Routes = [

@@ -5,6 +5,9 @@
  *
  * NOTE - this file should not be edited directly. All constants can be overridden
  * via the `app_constants` field in deployment configs
+ *
+ * NOTE - as these are merged when setting deployment, avoid `_path` suffix as that has
+ * special use case for relative paths
  ********************************************************************************************/
 
 const DYNAMIC_PREFIXES = [
@@ -35,7 +38,7 @@ const APP_FIELDS = {
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
 };
 
-export const APP_LANGUAGES = {
+const APP_LANGUAGES = {
   /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
   default: "gb_en",
 };
@@ -59,13 +62,13 @@ const NOTIFICATION_DEFAULTS = {
 const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
 
 /** How often to attempt sync - currently every 5mins */
-export const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
+const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
 
 const APP_ROUTE_DEFAULTS = {
   /** Default redirect form landing '/' route */
-  home_path: "/template/home_screen",
+  home_route: "/template/home_screen",
   /** Redirect path if no other routes found */
-  fallback_path: "/template/home_screen",
+  fallback_route: "/template/home_screen",
   /** Specific list of url redirects from within the app */
   redirects: [
     {
@@ -83,13 +86,13 @@ const APP_HEADER_DEFAULTS = {
   title: "ParentApp",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_path,
+    location.pathname == APP_ROUTE_DEFAULTS.home_route,
   // default show back button on all screens except home screen
   should_show_back_button: (location: Location) =>
-    location.pathname !== APP_ROUTE_DEFAULTS.home_path,
+    location.pathname !== APP_ROUTE_DEFAULTS.home_route,
   // on device minimize app when back button pressed from home screen
   should_minimize_app_on_back: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_path,
+    location.pathname == APP_ROUTE_DEFAULTS.home_route,
 };
 
 const APP_SIDEMENU_DEFAULTS = {
