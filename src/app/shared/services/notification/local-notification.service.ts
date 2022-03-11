@@ -7,14 +7,13 @@ import {
   ActionPerformed,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import {
-  NOTIFICATION_DEFAULTS,
-  NOTIFICATIONS_SYNC_FREQUENCY_MS,
-} from "packages/data-models/constants";
 import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
+
+const { NOTIFICATION_DEFAULTS, NOTIFICATIONS_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
@@ -110,8 +109,6 @@ export class LocalNotificationService {
    * Use to resolve list of upcoming notifications and any been sent but not triggered in the app.
    */
   private async loadNotifications() {
-    console.group("[Notifications] load");
-
     await this.rescheduleMissingNotifications();
 
     await this.handleUnprocessedNotifications();
@@ -124,7 +121,6 @@ export class LocalNotificationService {
 
     const pendingNotifications = await this.getAPINotifications();
     this.pendingNotifications$.next(this._sortBySchedule(pendingNotifications));
-    console.groupEnd();
   }
 
   private _sortBySchedule(notifications: ILocalNotification[]) {

@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { interval } from "packages/api/node_modules/rxjs";
-import { SERVER_SYNC_FREQUENCY_MS } from "packages/data-models";
 import {
   DB_SERVER_MAPPING,
   IDBMeta,
@@ -9,9 +8,12 @@ import {
   IDBServerUserRecord,
   IDBTable,
 } from "packages/data-models/db.model";
+import { APP_CONSTANTS } from "src/app/data";
 import { environment } from "src/environments/environment";
 import { UserMetaService } from "../userMeta/userMeta.service";
 import { DbService } from "./db.service";
+
+const { SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 @Injectable({ providedIn: "root" })
 /**
@@ -27,7 +29,8 @@ export class DBSyncService {
     private dbService: DbService,
     private http: HttpClient,
     private userMetaService: UserMetaService
-  ) {
+  ) {}
+  public async init() {
     // Automatically sync data periodically
     if (environment.production) {
       this.syncToServer();
@@ -66,12 +69,14 @@ export class DBSyncService {
     }
   }
 
+  /** Populate common app_meta to local record */
   private generateServerRecord(record: any, mapping: IDBServerMapping) {
     const { is_user_record, user_record_id_field } = mapping;
     if (is_user_record && user_record_id_field) {
       const serverRecord: IDBServerUserRecord = {
         app_user_id: this.userMetaService.getUserMeta("uuid"),
         app_user_record_id: record[user_record_id_field],
+        app_deployment_name: environment.deploymentName,
         data: record,
       };
       return serverRecord;

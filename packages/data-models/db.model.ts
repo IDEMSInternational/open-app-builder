@@ -4,13 +4,7 @@ import { FlowTypes } from "./flowTypes";
 const SYNC_INDEX = "_sync_status"; // tracked as boolean;
 
 /** List of fields to include in index for flow events */
-const FLOW_EVENT_INDEX_LIST: (keyof IFlowEvent)[] = [
-  "type",
-  "name",
-  "event",
-  "_created",
-  "_synced", // legacy
-];
+const FLOW_EVENT_INDEX_LIST: (keyof IFlowEvent)[] = ["type", "name", "event", "_created"];
 /** Concatenated list of indexes used in flow_event system for import into DB schema */
 const FLOW_EVENT_INDEXES = FLOW_EVENT_INDEX_LIST.join(",");
 
@@ -28,6 +22,8 @@ export const DB_TABLES = {
   data_events: "++id," + FLOW_EVENT_INDEXES,
   /** Scheduled and sent local notifications, including whether the app has had chance to process callbacks */
   local_notifications: "id,_created,_callbacks_processed",
+  /** Subset of notifications shared with server (for ease of processings) */
+  local_notifications_interaction: `++id,&notification_id,${SYNC_INDEX}`,
 
   /**********************************************************************************************************
    * 2021-04-06
@@ -62,6 +58,11 @@ export const DB_SERVER_MAPPING: { [key in IDBTable]?: IDBServerMapping } = {
     is_user_record: true,
     user_record_id_field: "id",
   },
+  local_notifications_interaction: {
+    api_endpoint: () => "/app_notification_interaction",
+    is_user_record: true,
+    user_record_id_field: "id",
+  },
 };
 
 /** Metadata required to sync between local records and the server */
@@ -77,13 +78,15 @@ export type IDBServerMapping = {
 /**
  * For cases where user record synced to global table, record data is placed in nested folder alongside
  * app_user and app_user_record identifiers.
- * @important - Should be kept in sync with UserLocalRecordDto
+ * @important - Should be kept in sync with UserCommonDto
  */
 export interface IDBServerUserRecord {
   /** Unique ID of user */
   app_user_id: string;
   /** ID of original record in local database */
   app_user_record_id: number;
+  /** Name specified from app deployment config */
+  app_deployment_name: string;
   /** Data to sync to server */
   data: any;
 }
@@ -104,7 +107,7 @@ export interface IDBDoc {
  * e.g. v0.1.0 => 000001000
  * e.g. v0.10.4 => 000010004
  */
-export const DB_VERSION = 14001;
+export const DB_VERSION = 14003;
 
 export interface IDBEvent {
   topic: "DB";
@@ -124,7 +127,6 @@ export interface IDBEvent {
  * @param event name given to the event for indexing/query/lookup, e.g. 'emit'
  * @param value (not indexed) - specific value corresponding to the event
  * @param _created timestamp in isostring format generated on write
- * @param _synced whether the data has been succesfully synced to the database
  */
 export interface IFlowEvent extends IDBMeta {
   type: FlowTypes.FlowType;
@@ -135,7 +137,6 @@ export interface IFlowEvent extends IDBMeta {
 
 export interface IDBMeta {
   _created: string;
-  _synced: boolean; // legacy
   _sync_status: ISyncStatus;
 }
 export type ISyncStatus = "ignored" | "pending" | "synced";

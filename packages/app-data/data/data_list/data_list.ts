@@ -113,7 +113,18 @@ const data_list: FlowTypes.Data_list[] = [
             eng: "Video 1",
           },
         },
+        in_text_title: "**Celebration and Next Steps** workshop",
+        tools: "How to support each other",
       },
+    ],
+    _xlsxPath: "global/data/workshop_data_list.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "relax_list",
+    data_list_name: "relax",
+    status: "released",
+    rows: [
       {
         id: "video_2",
         video_asset: "network.mp4",

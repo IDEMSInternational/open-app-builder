@@ -5,6 +5,7 @@ const template: FlowTypes.Template[] = [
     flow_type: "template",
     flow_name: "home_screen",
     status: "released",
+    process_on_start: 1,
     rows: [
       {
         type: "title",
@@ -155,7 +156,14 @@ const template: FlowTypes.Template[] = [
         name: "button_storybooks",
         value: "Storybooks",
         _translations: {
-          value: {},
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         action_list: [
           {
@@ -296,6 +304,27 @@ const template: FlowTypes.Template[] = [
             style_list: ["color: red", "margin-top: -15px"],
             _nested_name: "trial2.text_2",
           },
+        ],
+        _nested_name: "weekly_count_not_yet_defined",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: "!(@fields.@local.weekly_app_launch_field)",
+              matchedExpression: "@local.weekly_app_launch_field",
+              type: "local",
+              fieldName: "weekly_app_launch_field",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.weekly_app_launch_field": ["condition"],
+        },
+      },
+      {
+        type: "display_group",
+        name: "weekly_count_already_defined",
+        condition: "@fields.@local.weekly_app_launch_field",
+        rows: [
           {
             type: "text",
             name: "text_3",
@@ -317,6 +346,7 @@ const template: FlowTypes.Template[] = [
     flow_type: "template",
     flow_name: "example_activities_Esmee",
     status: "released",
+    process_on_start: 3,
     rows: [
       {
         type: "title",
