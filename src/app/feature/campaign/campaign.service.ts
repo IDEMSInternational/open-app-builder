@@ -7,6 +7,7 @@ import { Subscription } from "rxjs";
 import { TemplateActionService } from "src/app/shared/components/template/services/instance/template-action.service";
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
+import { parseMarkdown } from "src/app/shared/components/template/utils";
 import { FlowTypes } from "src/app/shared/model";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
 import { DATA_LIST } from "src/app/shared/services/data/data.service";
@@ -234,6 +235,8 @@ export class CampaignService {
 
     title = title || NOTIFICATION_DEFAULTS.title;
     text = text || NOTIFICATION_DEFAULTS.text;
+    // parse markdown
+    // text = parseMarkdown(text);
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
