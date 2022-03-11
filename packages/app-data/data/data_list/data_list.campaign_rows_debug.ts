@@ -76,13 +76,7 @@ const data_list: FlowTypes.Data_list[] = [
         text: "How are you feeling today?",
         _translations: {
           text: {
-            es_sp: true,
             tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
           },
           title: {},
         },
@@ -123,9 +117,7 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["debug_daily"],
         text: "Text: @global.debug_variable_1",
         _translations: {
-          text: {
-            es_sp: true,
-          },
+          text: {},
           title: {},
         },
         _translatedFields: {
