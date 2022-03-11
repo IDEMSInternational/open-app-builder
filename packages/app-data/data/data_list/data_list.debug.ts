@@ -68,6 +68,33 @@ const data_list: FlowTypes.Data_list[] = [
   },
   {
     flow_type: "data_list",
+    flow_name: "feature_items_data",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        id: "item_1",
+        title: "Item 1",
+        button_text: "Button 1",
+        link: "link_1",
+      },
+      {
+        id: "item_2",
+        title: "Item 2",
+        button_text: "Button 2",
+        link: "link_2",
+      },
+      {
+        id: "item_3",
+        title: "Item 3",
+        button_text: "Button 3",
+        link: "link_3",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_items.xlsx",
+  },
+  {
+    flow_type: "data_list",
     flow_name: "example_lang_data_list",
     status: "released",
     data_list_name: "example_lang",
@@ -232,33 +259,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "quality_assurance/example_templates/example_items.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_name: "feature_items_data",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        id: "item_1",
-        title: "Item 1",
-        button_text: "Button 1",
-        link: "link_1",
-      },
-      {
-        id: "item_2",
-        title: "Item 2",
-        button_text: "Button 2",
-        link: "link_2",
-      },
-      {
-        id: "item_3",
-        title: "Item 3",
-        button_text: "Button 3",
-        link: "link_3",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_items.xlsx",
   },
 ];
 export default data_list;

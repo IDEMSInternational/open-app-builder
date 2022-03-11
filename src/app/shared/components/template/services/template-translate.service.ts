@@ -1,13 +1,10 @@
 import { Injectable } from "@angular/core";
 import { TRANSLATION_STRINGS } from "app-data";
+import { APP_FIELDS } from "packages/data-models";
+import { APP_LANGUAGES } from "packages/data-models/constants";
 import { BehaviorSubject } from "rxjs";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
-
-// assign a local storage field that also matches lookup for use in @fields._app_language
-// (might be changed in future to better indicate read-only field)
-const APP_LANGUAGE_FIELD = "rp-contact-field._app_language";
-const DEFAULT_LANGUAGE = "za_en";
 
 @Injectable({ providedIn: "root" })
 /**
@@ -25,11 +22,11 @@ export class TemplateTranslateService {
   translation_strings = {};
 
   constructor(private localStorageService: LocalStorageService) {
-    const currentLanguage = localStorageService.getString(APP_LANGUAGE_FIELD);
+    const currentLanguage = localStorageService.getString(APP_FIELDS.APP_LANGUAGE);
     if (currentLanguage) {
       this.setLanguage(currentLanguage, false);
     } else {
-      this.setLanguage(DEFAULT_LANGUAGE, true);
+      this.setLanguage(APP_LANGUAGES.default, true);
     }
   }
   // Init handled in constructor, but kept here as reminder to import/call from main app component
@@ -43,7 +40,7 @@ export class TemplateTranslateService {
   setLanguage(code: string, updateDB = true) {
     if (code) {
       if (updateDB) {
-        this.localStorageService.setString(APP_LANGUAGE_FIELD, code);
+        this.localStorageService.setString(APP_FIELDS.APP_LANGUAGE, code);
       }
       this.translation_strings = TRANSLATION_STRINGS[code] || {};
       // update observable for subscribers
