@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
-import { APP_FIELDS } from "data-models";
 import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
@@ -22,11 +21,14 @@ import { TemplateProcessService } from "./shared/components/template/services/in
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
-import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
 import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
 import { DBSyncService } from "./shared/services/db/db-sync.service";
+
+import { APP_CONSTANTS } from "./data";
+
+const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
