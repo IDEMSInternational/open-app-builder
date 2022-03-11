@@ -1,11 +1,13 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DeviceInfo, Device } from "@capacitor/device";
-import { APP_FIELDS, SERVER_SYNC_FREQUENCY_MS } from "data-models";
 import { interval } from "rxjs";
 import { throwError } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
 import { environment } from "src/environments/environment";
 import { generateTimestamp } from "../../utils";
+
+const { APP_FIELDS, SERVER_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 /**
  * Backend API
