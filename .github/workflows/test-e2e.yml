@@ -44,12 +44,12 @@ jobs:
         timeout-minutes: 10
         with:
           browser: chrome
-          command: yarn workspace test-e2e start
+          build: npm run precompile
           install: false
           # These may be useful when not running custom command.
           project: "packages/test-e2e"
           spec: "packages/test-e2e/projects/plh/integration/**/*"
-          # start: yarn start
-          # wait-on: "http://localhost:4200"
+          start: npx ng serve
+          wait-on: "http://localhost:4200"
           # Wait four minutes.
-          # wait-on-timeout: 480
+          wait-on-timeout: 480
