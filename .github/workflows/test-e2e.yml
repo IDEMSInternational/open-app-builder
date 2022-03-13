@@ -45,6 +45,7 @@ jobs:
         with:
           browser: chrome
           build: npm run precompile
+          command: yarn workspace test-e2e run:plh
           # These may be useful when not running custom command.
           project: "packages/test-e2e"
           spec: "packages/test-e2e/projects/plh/integration/**/*"
