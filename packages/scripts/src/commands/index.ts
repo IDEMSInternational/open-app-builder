@@ -3,6 +3,7 @@ import { Command } from "commander";
 
 // Commands
 import appDataCmd from "./app-data";
+import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
 import generateCmd from "./generate";
@@ -37,6 +38,7 @@ if (mapping) {
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
+program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
 // program.addCommand(generateCmd);
