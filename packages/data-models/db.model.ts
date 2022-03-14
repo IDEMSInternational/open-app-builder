@@ -87,6 +87,8 @@ export interface IDBServerUserRecord {
   app_user_record_id: number;
   /** Name specified from app deployment config */
   app_deployment_name: string;
+  /** Current version number of app */
+  app_version: string;
   /** Data to sync to server */
   data: any;
 }
