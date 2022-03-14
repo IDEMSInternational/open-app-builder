@@ -39,7 +39,7 @@ jobs:
           FIREBASE_CONFIG_TS: ${{ secrets.FIREBASE_CONFIG_TS }}
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - run: yarn install
-      - run: npm run --silent scripts e2e-data parse "../../PLH\ E2E\ Example.xlsx" > "../../packages/test-e2e/projects/plh/integration/common/home.spec.clone.js"
+      - run: npm run --silent scripts e2e-data parse "./../../PLH E2E Example.xlsx" > "./packages/test-e2e/projects/plh/integration/common/home.spec.clone.js"
       - name: Cypress on Chrome
         uses: cypress-io/github-action@v2
         timeout-minutes: 10
