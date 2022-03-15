@@ -19,7 +19,7 @@
 |disabled	            |false (default)        | To be removed|
 |disabled	            |true                   | To be removed|
 |icon_src               |empty string (default) | no icon|
-|icon_src               |string                 | path for icon|
+|icon_src               | string  | Button with an icon. The `icon_src` can be a file path within the global subfolder of the assets folder or an icon in the [ionicons](https://ionic.io/ionicons) library |
 |style                  |information (default)  | Primary background colour|
 |style                  |navigation             | Secondary background colour with twice the width|
 
