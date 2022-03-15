@@ -17,6 +17,11 @@ services:
       - 443:443
     networks:
       - webserver_network
+    # Limit log sizes and create as a default to be used in other services also
+    logging: &logging_default
+      driver: "json-file"
+      options:
+        max-size: "1m"
     volumes:
       # - nginx_secrets:/etc/letsencrypt
       - ./config/nginx/conf.d:/etc/nginx/conf.d
@@ -45,6 +50,7 @@ services:
     networks:
       - db_network
       - webserver_network
+    logging: *logging_default
     depends_on:
       - db
     # ports:
@@ -68,6 +74,7 @@ services:
       # - "${DB_PORT}:5432"  - requires additional env file to set (https://github.com/docker/compose/pull/1765)
     networks:
       - db_network
+    logging: *logging_default
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -87,6 +94,7 @@ services:
     ports:
       # expose on port 5050 to allow easier connect on docker for windows
       - 5050:80
+    logging: *logging_default
     networks:
       - db_network
       - webserver_network
@@ -98,6 +106,7 @@ services:
     image: adminer:4.8.1
     container_name: plh_db_admin
     restart: unless-stopped
+    logging: *logging_default
     networks:
       - db_network
       - webserver_network
@@ -123,6 +132,7 @@ services:
       - ../.env
     # ports:
     #   - 3000:3000
+    logging: *logging_default
     networks:
       - db_network
       - webserver_network
@@ -145,6 +155,7 @@ services:
       - ../.env
     ports:
       - 5678:5678
+    logging: *logging_default
     networks:
       - db_network
       - webserver_network
@@ -162,6 +173,7 @@ services:
     volumes:
       - analytics_db:/var/lib/mysql
       - ./config/analytics_db:/docker-entrypoint-initdb.d
+    logging: *logging_default
     networks:
       - analytics_network
       - db_network
@@ -190,6 +202,7 @@ services:
       - MATOMO_DATABASE_ADAPTER=mysql
     env_file:
       - ../.env
+    logging: *logging_default
     networks:
       - analytics_network
   analytics_webserver:
@@ -198,6 +211,7 @@ services:
     restart: unless-stopped
     env_file:
       - ../.env
+    logging: *logging_default
     networks:
       - analytics_network
       - webserver_network
