@@ -16,7 +16,7 @@
 
 | Parameter             | Value                 | Description |
 | ---------             | -----------           | --------- |
-|disabled	            |false (default)        | Enables the button|
+|disabled	            |false (default)        | To be removed|
 |disabled	            |true                   | To be removed|
 |icon_src               |empty string (default) | no icon|
 |icon_src               |string                 | path for icon|
