@@ -1,4 +1,4 @@
-# Square_button
+# Square button
 
 ## Example
 
