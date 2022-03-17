@@ -15,15 +15,15 @@ export class AppNotificationInteractionService {
   }
 
   async createOrUpdate(body: UserNotificationInteractionDto) {
-    const { app_user_id, app_user_record_id, app_deployment_name, data } = body;
+    const { app_user_id, app_user_record_id } = body;
     const foundItem = await this.model.findOne({
       where: { app_user_id, app_user_record_id },
     });
     if (!foundItem) {
       // Item not found, create a new one
       const entry = new AppNotificationInteraction();
-      return entry.update({ ...data, app_user_id, app_user_record_id, app_deployment_name });
+      return entry.update(body);
     }
-    return foundItem.update({ ...data });
+    return foundItem.update(body);
   }
 }
