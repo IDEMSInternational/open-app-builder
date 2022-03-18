@@ -7,7 +7,7 @@
 # $docker run -p 80:80 --name apps-api --rm idems/apps-api
 
 ### STAGE 1: Build ###
-FROM node:12.22-alpine AS build-env
+FROM node:16.14-alpine AS build-env
 # Set working directory
 WORKDIR /usr/src/app
 # Add node_modules to path
@@ -18,18 +18,24 @@ COPY ./package.json ./
 # NOTE - not currently supported in as docker can't access top-level yarn lock for monorepo 
 # https://github.com/yarnpkg/yarn/issues/5428 and https://stackoverflow.com/questions/24537340/docker-adding-a-file-from-a-parent-directory
 # COPY ./yarn.lock ./
-RUN yarn install --frozen-lockfile
-# Copy rest of app files required for build
-COPY ["nest-cli.json", "package.json", "tsconfig.build.json", "tsconfig.json", "."]
-COPY src/ src/
 
+# Upgrade to yarn berry, set nodeLinker config and add production-install plugin
+RUN corepack enable && \
+    yarn set version stable && \
+    echo "nodeLinker: node-modules" > .yarnrc.yml && \
+    yarn install
+# Copy rest of app files required for build
+COPY ["nest-cli.json", "package.json", "tsconfig.build.json", "tsconfig.json", "./"]
+COPY src/ src/
 # Build
 RUN yarn build
-# TODO - reduce image size removing dev deps, e.g. `npm prune --production` (seems to be causing error)
-
+# Add secondary set of production-only node_modules to dist (not sure why yarn berry needs re-init but seems to be the case)
+RUN yarn set version stable && \
+    yarn plugin import https://gitlab.com/Larry1123/yarn-contrib/-/raw/master/packages/plugin-production-install/bundles/@yarnpkg/plugin-production-install.js && \
+    yarn prod-install /usr/src/app/dist
 
 ### STAGE 2: Serve Dashboard ###
-FROM node:12.22-alpine as prod-env
+FROM node:16.14-alpine as prod-env
 # Set working directory
 WORKDIR /usr/src/app
 # Set default production environment variable
@@ -37,7 +43,6 @@ ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 # Copy build dist files and runtime node_modules
 COPY --from=build-env /usr/src/app/dist ./dist
-COPY --from=build-env /usr/src/app/node_modules ./node_modules
 # Run the server
 EXPOSE 3000
 # Add custom healthcheck
