@@ -4981,7 +4981,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.14.31, @types/node@npm:^14.14.36":
+"@types/node@npm:^14.14.31":
   version: 14.17.34
   resolution: "@types/node@npm:14.17.34"
   checksum: 803a7532b6998aca6aa1b3e6239f280e82612d4f641d38fbf08962c905ea9d1b278b2f09d396beac5120a4e68f33d7467298b197f2f00150ec1dcd546de02a89
@@ -4999,6 +4999,13 @@ __metadata:
   version: 16.11.10
   resolution: "@types/node@npm:16.11.10"
   checksum: 9c79419c5c3d92d5825bffa30f3668533f598d8b63a73ea7fc24e47f162bdbed92b0f8e4f4261cc3314b39cee050e303366d2aa154abc95c63a572a110b8c160
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.26":
+  version: 16.11.26
+  resolution: "@types/node@npm:16.11.26"
+  checksum: 57757caaba3f0d95de82198cb276a1002c49b710108c932a1d02d7c91ff2fa57cfe2dd19fde60853b6dd90b0964b3cf35557981d2628e20aed6a909057aedfe6
   languageName: node
   linkType: hard
 
@@ -6344,7 +6351,7 @@ __metadata:
     "@nestjs/testing": 7.6.15
     "@types/express": ^4.17.11
     "@types/jest": ^26.0.22
-    "@types/node": ^14.14.36
+    "@types/node": ^16.11.26
     "@types/sequelize": 4.28.9
     "@types/supertest": ^2.0.10
     "@types/ws": ^7.4.6
