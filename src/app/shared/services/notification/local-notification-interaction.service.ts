@@ -96,6 +96,6 @@ export class LocalNotificationInteractionService {
         notification_id,
       } as any;
     }
-    await this.db.put({ ...entry, ...update });
+    await this.db.put({ ...entry, ...update, _sync_status: "pending" });
   }
 }
