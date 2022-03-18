@@ -16,16 +16,17 @@ export class AppNotificationInteractionService {
 
   async createOrUpdate(body: UserNotificationInteractionDto) {
     const { app_user_id, app_user_record_id, data } = body;
+    // populate rest of data with exception of id field (do not want to override generated)
+    const { id, ...rest } = data;
+    const update = { ...body, ...rest };
     const foundItem = await this.model.findOne({
       where: { app_user_id, app_user_record_id },
     });
     if (!foundItem) {
       // Item not found, create a new one
       const entry = new AppNotificationInteraction();
-      return entry.update({});
+      return entry.update(update);
     }
-    // populate rest of data with exception of id field (do not want to override generated)
-    const { id, ...rest } = data;
-    return foundItem.update({ ...body, ...rest });
+    return foundItem.update(update);
   }
 }
