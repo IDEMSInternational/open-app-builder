@@ -12,17 +12,19 @@ FROM node:12.22-alpine AS build-env
 WORKDIR /usr/src/app
 # Add node_modules to path
 ENV PATH="./node_modules/.bin:$PATH"
-# Copy dependency files to allow caching
+# Copy dependency files to allow caching (TODO - will be broken by package.json version update so better to define and share)
 COPY ./package.json ./
 # Include lock file
 # NOTE - not currently supported in as docker can't access top-level yarn lock for monorepo 
 # https://github.com/yarnpkg/yarn/issues/5428 and https://stackoverflow.com/questions/24537340/docker-adding-a-file-from-a-parent-directory
 # COPY ./yarn.lock ./
 RUN yarn install --frozen-lockfile
-# Copy rest of app files
-COPY . .
+# Copy rest of app files required for build
+COPY ["nest-cli.json", "package.json", "tsconfig.build.json", "tsconfig.json", "."]
+COPY src/ src/
+
 # Build
-RUN npm run build
+RUN yarn build
 # TODO - reduce image size removing dev deps, e.g. `npm prune --production` (seems to be causing error)
 
 
