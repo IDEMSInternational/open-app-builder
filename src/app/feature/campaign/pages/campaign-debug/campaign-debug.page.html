@@ -43,7 +43,14 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
-  <h4 *ngIf="debugCampaignId">Rows</h4>
+  <div style="display: flex; align-items: center">
+    <h4 *ngIf="debugCampaignId" style="flex: 1">Rows</h4>
+    <ion-button fill="outline" (click)="refreshDebugCampaign()"
+      >Refresh
+      <ion-icon slot="end" name="reload-outline"></ion-icon>
+    </ion-button>
+  </div>
+
   <ion-list *ngIf="debugCampaignRows">
     <ion-list-header class="list-header activated">Activated</ion-list-header>
     <campaign-debug-row

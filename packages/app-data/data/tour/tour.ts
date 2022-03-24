@@ -3,86 +3,6 @@ import { FlowTypes } from "data-models";
 const tour: FlowTypes.Tour[] = [
   {
     flow_type: "tour",
-    flow_name: "demo_essential_tools_tour",
-    status: "released",
-    rows: [
-      {
-        type: "step",
-        title: "Essential Tools Overview",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text:
-          "<p>You can find all the  Essential Tools in the @global.parent_centre. This tutorial will show you how to do so.</p>",
-        route: "template/demo_navigation",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Going to the Home Screen",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text:
-          "<p>You can get to the home screen by selecting ParentApp on the top bar.</p>",
-        element: "body > app-root > ion-app > div > plh-main-header",
-        route: "template/demo_navigation",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Accessing the @global.parent_centre",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p>Select the @global.parent_centre tile.</p>",
-        template_component_name: "tile_parent_centre",
-        route: "home",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Accessing the Essential Tools",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p>Select the Essential Tools tile to get to the full list of tools.</p>",
-        template_component_name: "tile_essential_tools",
-        route: "template/parent_centre",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        title: "Essential Tools List",
-        _translations: {
-          title: {},
-          message_text: {},
-        },
-        message_text: "<p>You can find all the Essential Tools here.</p>",
-        template_component_name: "parent_centre_essential_tools",
-        route: "template/parent_centre_essential_tools",
-        exclude_from_translation: true,
-      },
-      {
-        type: "step",
-        message_text:
-          "<p>You can access the Essential tools in this way from anywhere in the app.</p>",
-        _translations: {
-          message_text: {},
-        },
-        template_component_name: "demo_navigation",
-        route: "template/demo_navigation",
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
-  },
-  {
-    flow_type: "tour",
     flow_name: "intro_tour",
     status: "released",
     rows: [
@@ -147,7 +67,9 @@ const tour: FlowTypes.Tour[] = [
         title: "@global.parent_centre",
         _translations: {
           title: {},
-          message_text: {},
+          message_text: {
+            tz_sw: true,
+          },
         },
         message_text:
           "<p>This button takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p> Instant access to help sections with @data.parent_centre.essential_tools for each skill.</p>\n\n<p> Extra information and local resources.</p>",
@@ -275,6 +197,86 @@ const tour: FlowTypes.Tour[] = [
       },
     ],
     _xlsxPath: "global/tutorials/weekly_workshops_tour.xlsx",
+  },
+  {
+    flow_type: "tour",
+    flow_name: "demo_essential_tools_tour",
+    status: "released",
+    rows: [
+      {
+        type: "step",
+        title: "Essential Tools Overview",
+        _translations: {
+          title: {},
+          message_text: {},
+        },
+        message_text:
+          "<p>You can find all the  Essential Tools in the @global.parent_centre. This tutorial will show you how to do so.</p>",
+        route: "template/demo_navigation",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Going to the Home Screen",
+        _translations: {
+          title: {},
+          message_text: {},
+        },
+        message_text:
+          "<p>You can get to the home screen by selecting ParentApp on the top bar.</p>",
+        element: "body > app-root > ion-app > div > plh-main-header",
+        route: "template/demo_navigation",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Accessing the @global.parent_centre",
+        _translations: {
+          title: {},
+          message_text: {},
+        },
+        message_text: "<p>Select the @global.parent_centre tile.</p>",
+        template_component_name: "tile_parent_centre",
+        route: "home",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Accessing the Essential Tools",
+        _translations: {
+          title: {},
+          message_text: {},
+        },
+        message_text: "<p>Select the Essential Tools tile to get to the full list of tools.</p>",
+        template_component_name: "tile_essential_tools",
+        route: "template/parent_centre",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        title: "Essential Tools List",
+        _translations: {
+          title: {},
+          message_text: {},
+        },
+        message_text: "<p>You can find all the Essential Tools here.</p>",
+        template_component_name: "parent_centre_essential_tools",
+        route: "template/parent_centre_essential_tools",
+        exclude_from_translation: true,
+      },
+      {
+        type: "step",
+        message_text:
+          "<p>You can access the Essential tools in this way from anywhere in the app.</p>",
+        _translations: {
+          message_text: {},
+        },
+        template_component_name: "demo_navigation",
+        route: "template/demo_navigation",
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
   },
 ];
 export default tour;

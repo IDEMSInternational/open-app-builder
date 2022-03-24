@@ -74,6 +74,8 @@ export class AppComponent {
   async initializeApp() {
     this.themeService.init();
     this.platform.ready().then(async () => {
+      // ensure deployment field set correctly for use in any startup services or templates
+      localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
@@ -210,8 +212,6 @@ export class AppComponent {
    * temporary workaround for setting unlocked content
    */
   private async hackSetAppOpenFields(user: IUserMeta) {
-    localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-
     // TODO CC 2021-07-23 - Review if methods below still required
     let old_date = this.userMetaService.getUserMeta("current_date");
     await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
