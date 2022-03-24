@@ -27,8 +27,8 @@ jobs:
       # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Environment Deployment
         run: |
-          echo $("${{github.event.inputs.build_branch}}"##*/)
-          echo "DEPLOYMENT_NAME=$("${{github.event.inputs.build_branch}}"##*/)" >> $GITHUB_ENV;
+          echo ${{github.event.inputs.build_branch}} | sed 's/.*\///'
+          echo "DEPLOYMENT_NAME=$(${{github.event.inputs.build_branch}} | sed 's/.*\///')" >> $GITHUB_ENV;
         shell: bash
       - name: Cache node modules
         uses: actions/cache@v2
