@@ -89,7 +89,9 @@ export class CampaignService {
     }
     this._notificationUpdates$ = this.localNotificationService.sessionNotifications$.subscribe(
       async (notifications) => {
-        await this.handledTriggeredNotifications(notifications, "sent");
+        if (notifications?.length > 0) {
+          await this.handledTriggeredNotifications(notifications, "sent");
+        }
       }
     );
     this._notificationActions$ = this.localNotificationService.interactedNotification$.subscribe(
@@ -102,7 +104,7 @@ export class CampaignService {
   }
 
   private async handledTriggeredNotifications(
-    notifications: ILocalNotification[],
+    notifications: ILocalNotification[] = [],
     trigger: FlowTypes.TemplateRowActionTrigger
   ) {
     let actionsTriggered = false;
@@ -201,9 +203,11 @@ export class CampaignService {
     const returnedRows: FlowTypes.Campaign_listRow[] = [];
     for (const row of rowsByPrioirity) {
       if (returnedRows.length < batchSize) {
+        // evaluate before parsing so dynamic expression can be used
         const evaluation = await this.evaluateRowActivationConditions(row);
         if (evaluation._active) {
-          returnedRows.push({ ...row, ...evaluation });
+          const parsedRow = await this.hackParseDynamicRow(row);
+          returnedRows.push({ ...parsedRow, ...evaluation });
         }
       }
     }
@@ -228,20 +232,18 @@ export class CampaignService {
     const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
-    const parsedRow = await this.hackParseDynamicRow(row);
-    let { title, text } = parsedRow;
+    let { title, text } = row;
     let { _schedule_at } = notification_schedule;
 
     title = title || NOTIFICATION_DEFAULTS.title;
     text = text || NOTIFICATION_DEFAULTS.text;
-
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: text,
       largeBody: text,
       title,
-      extra: { ...parsedRow, campaign_id },
-      id: stringToIntegerHash(parsedRow.id),
+      extra: { ...row, campaign_id },
+      id: stringToIntegerHash(row.id),
     };
     await this.localNotificationService.scheduleNotification(notificationSchedule);
     return notificationSchedule;
@@ -251,7 +253,7 @@ export class CampaignService {
    * Campaign rows are read from datalists which are currently not evaluated for dynamic content
    * This workaround forces the manual check for any dynamic content,
    */
-  private async hackParseDynamicRow(row: FlowTypes.Campaign_listRow) {
+  public async hackParseDynamicRow(row: FlowTypes.Campaign_listRow | FlowTypes.Campaign_Schedule) {
     // process translations first as these are made with dynamic content in place (e.g. "hello @name")
     const translatedRow = this.templateTranslateService.translateRow(row as any);
     // Continue processing full row
@@ -298,8 +300,9 @@ export class CampaignService {
     const allCampaignSchedules: FlowTypes.Campaign_Schedule[] = mergeArrayOfArrays(scheduleRows);
     const evaluatedCampaignSchedules = await Promise.all(
       allCampaignSchedules.map(async (scheduleRow) => {
-        const activationEvaluation = await this.evaluateRowActivationConditions(scheduleRow);
-        const scheduleEvaluation = this.evaluateRowSchedule(scheduleRow);
+        const parsedRow = await this.hackParseDynamicRow(scheduleRow);
+        const activationEvaluation = await this.evaluateRowActivationConditions(parsedRow);
+        const scheduleEvaluation = this.evaluateRowSchedule(parsedRow);
         scheduleRow._active = activationEvaluation._active && scheduleEvaluation;
         scheduleRow._campaign_rows = [];
         return scheduleRow;
@@ -421,7 +424,7 @@ export class CampaignService {
     return scheduleRow;
   }
 
-  private evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
+  private async evaluateCondition(condition: FlowTypes.DataEvaluationCondition) {
     return this.dataEvaluationService.evaluateReminderCondition(condition);
   }
 
@@ -453,7 +456,7 @@ export class CampaignService {
     const shuffleSortedGroups = Object.entries<FlowTypes.Campaign_listRow[][]>(groupsByPriority)
       .sort(([key_a], [key_b]) => Number(key_b) - Number(key_a))
       .map(([_, value]) => shuffleArray(value));
-    const shuffleSortedRows = [].concat(...shuffleSortedGroups);
+    const shuffleSortedRows: FlowTypes.Campaign_listRow[] = [].concat(...shuffleSortedGroups);
     return shuffleSortedRows;
   }
 }

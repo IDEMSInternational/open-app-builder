@@ -3,7 +3,7 @@
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.1",
+    "version": "1.2.7",
     "contact": {}
   },
   "tags": [
@@ -180,9 +180,7 @@
             }
           }
         },
-        "required": [
-          "columns"
-        ]
+        "required": ["columns"]
       }
     }
   },
@@ -209,9 +207,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Users"
-        ]
+        "tags": ["Users"]
       }
     },
     "/app_users/{app_user_id}": {
@@ -233,9 +229,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Users"
-        ]
+        "tags": ["Users"]
       },
       "post": {
         "operationId": "AppUsersController_setUserData",
@@ -272,9 +266,7 @@
             }
           }
         },
-        "tags": [
-          "Users"
-        ]
+        "tags": ["Users"]
       }
     },
     "/contact_fields": {
@@ -287,9 +279,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Contact Fields"
-        ]
+        "tags": ["Contact Fields"]
       }
     },
     "/contact_fields/{app_user_id}": {
@@ -319,9 +309,7 @@
             }
           }
         },
-        "tags": [
-          "Contact Fields"
-        ]
+        "tags": ["Contact Fields"]
       }
     },
     "/app_feedback": {
@@ -334,9 +322,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Feedback"
-        ]
+        "tags": ["Feedback"]
       },
       "post": {
         "operationId": "AppFeedbackController_addUserFeedback",
@@ -364,9 +350,7 @@
             }
           }
         },
-        "tags": [
-          "Feedback"
-        ]
+        "tags": ["Feedback"]
       }
     },
     "/app_notification_interaction": {
@@ -379,9 +363,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Notification Interaction"
-        ]
+        "tags": ["Notification Interaction"]
       },
       "post": {
         "operationId": "AppNotificationInteractionController_addUserNotificationInteraction",
@@ -409,9 +391,7 @@
             }
           }
         },
-        "tags": [
-          "Notification Interaction"
-        ]
+        "tags": ["Notification Interaction"]
       }
     },
     "/tables": {
@@ -434,9 +414,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       }
     },
     "/tables/{table_name}": {
@@ -449,9 +427,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       }
     },
     "/tables/{table_name}/columns": {
@@ -481,9 +457,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       },
       "post": {
         "operationId": "TablesController_addMappedTableColumns",
@@ -511,9 +485,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       },
       "delete": {
         "operationId": "TablesController_removeMappedTableColumns",
@@ -541,9 +513,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       }
     }
   }
