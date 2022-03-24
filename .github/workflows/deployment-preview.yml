@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           lfs: true
-      # Extract deployment name as the slug of target PR branch, e.g. /deployment/plh_tz -> plh_tz
-      - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v4
+      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
+      # https://www.linuxjournal.com/article/8919
       - run: |
-          echo "target deployment: ${{ env.GITHUB_HEAD_REF_SLUG }}"
+          echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          echo "Deployment: ${{env.DEPLOYMENT_NAME}}"
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
