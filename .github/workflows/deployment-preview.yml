@@ -16,6 +16,7 @@ jobs:
       # https://www.linuxjournal.com/article/8919
       - name: Set Deployment
         run: |
+          echo "GITHUB_REF=${GITHUB_REF} | ${{env.GITHUB_REF}}"
           echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "Deployment: ${{env.DEPLOYMENT_NAME}}"
         shell: bash
