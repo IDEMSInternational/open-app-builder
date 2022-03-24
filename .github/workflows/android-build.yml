@@ -1,8 +1,22 @@
 # Manually trigger an android build from Github Actions
 
+# Secrets:
+# FIREBASE_CONFIG_TS
+# GOOGLE_SERVICES_JSON
+# SIGNING_KEY
+# ALIAS
+# KEY_STORE_PASSWORD
+# KEY_PASSWORD
+
 name: Trigger Android Debug/Signed Build
 on:
   workflow_dispatch:
+    inputs:
+      build_branch:
+        required: true
+        description: "Specify branch for deployment"
+        default: "deployment/plh_za"
+  workflow_call:
     inputs:
       build_branch:
         required: true
@@ -82,7 +96,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: release_abb
+          name: release_bundle
           path: android/app/build/outputs/bundle/release/app-release.aab
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
