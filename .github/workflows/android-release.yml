@@ -11,10 +11,10 @@ on:
         required: true
         description: "Specify branch for deployment"
         default: "deployment/plh_za"
-    app_id:
-      required: true
-      description: "App ID"
-      default: "international.idems.plh_teens"
+      app_id:
+        required: true
+        description: "App ID"
+        default: "international.idems.plh_teens"
 jobs:
   log_build_inputs:
     runs-on: ubuntu-latest
