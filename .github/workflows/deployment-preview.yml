@@ -4,6 +4,7 @@ on:
     types: [labeled, synchronize]
     branches:
       - deployment/*
+      - master
   push:
     branches:
       - feat/deployment-preview
