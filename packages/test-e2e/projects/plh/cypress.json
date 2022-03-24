@@ -6,5 +6,6 @@
   "pluginsFile": "projects/plh/plugins/index.js",
   "screenshotsFolder": "projects/plh/screenshots",
   "supportFile": "projects/plh/support/index.ts",
-  "videosFolder": "projects/plh/videos"
+  "videosFolder": "projects/plh/videos",
+  "projectId": "85qavq"
 }
