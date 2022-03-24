@@ -1,6 +1,6 @@
 # When creating a release in GitHub, create android release AAB and debug APK
 # files and upload to release files
-name: Release to Google Play
+name: Android - Release to Google Play
 # on:
 #   release:
 #     types: [published]

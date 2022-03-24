@@ -8,15 +8,9 @@
 # KEY_STORE_PASSWORD
 # KEY_PASSWORD
 
-name: Trigger Android Debug/Signed Build
+name: Android - Trigger Build
 on:
   workflow_dispatch:
-    inputs:
-      build_branch:
-        required: true
-        description: "Specify branch for deployment"
-        default: "deployment/plh_za"
-  workflow_call:
     inputs:
       build_branch:
         required: true
