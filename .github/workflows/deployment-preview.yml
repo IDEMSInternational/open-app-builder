@@ -12,11 +12,16 @@ jobs:
       - uses: actions/checkout@v2
         with:
           lfs: true
-      # Extract deployment name as the slug of target PR branch, e.g. /deployment/plh_tz -> plh_tz
-      - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v4
-      - run: |
-          echo "target deployment: ${{ env.GITHUB_HEAD_REF_SLUG }}"
+      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
+      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
+      - name: Set Deployment
+        run: |
+          echo $GITHUB_BASE_REF ${GITHUB_BASE_REF##*/}
+          echo "DEPLOYMENT=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
+      - name: Check Deployment
+        run: |
+          echo $DEPLOYMENT ${{env.DEPLOYMENT}}
+        shell: bash
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
