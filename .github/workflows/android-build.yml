@@ -6,8 +6,8 @@ on:
     inputs:
       build_branch:
         required: true
-        description: "Specify branch for build"
-        default: "master"
+        description: "Specify branch for deployment"
+        default: "deployment/plh_za"
 jobs:
   log_build_inputs:
     runs-on: ubuntu-latest
@@ -23,6 +23,13 @@ jobs:
           ref: "${{github.event.inputs.build_branch}}"
       - name: Checkout LFS objects
         run: git lfs checkout
+      # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
+      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
+      - name: Set Environment Deployment
+        run: |
+          echo ${GITHUB_BASE_REF##*/}
+          echo "DEPLOYMENT=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
+        shell: bash
       - name: Cache node modules
         uses: actions/cache@v2
         with:
@@ -46,9 +53,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Set Deployment
-        run: yarn scripts deployment set "$APP_DEPLOYMENT_NAME"
-        env:
-          APP_DEPLOYMENT_NAME: ${{ secrets.APP_DEPLOYMENT_NAME }}
+        run: yarn scripts deployment set $DEPLOYMENT
       - name: Build Angular Project
         run: yarn build
       - name: Sync Android Files
