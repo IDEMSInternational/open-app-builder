@@ -2717,9 +2717,9 @@ const data: { [source_text: string]: string } = {
   "Many parents say budgeting brings peace. If you haven't finished the @data.workshop.w_money.in_text_title, give it a go!\n\nThank you for your committed parenting.":
     "Wazazi wengi wanasema kupanga bajeti huleta amani. Kama hujamaliza warsha @data.workshop.w_money.in_text_title, anza sasa.",
   "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows.":
-    "Habari @fielda.user_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
+    "Habari @fields.user_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
   "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows.":
-    "Habari @fielda.group_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
+    "Habari @fields.group_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
   "Tried your best but your teen is still grumpy? Remember, you are doing a great job - there will be good times with them too!":
     "Umejaribu kadri uwezavyo lakini kijana wako bado ana huzuni?\nKumbuka, unafanya kazi nzuri - kutakuwa na muda mzuri pamoja nao pia!",
   "Thank you for investing in your parenting. \n\nDo the @data.workshop.w_rules.in_text_title to help your teen understand and follow household rules.":
