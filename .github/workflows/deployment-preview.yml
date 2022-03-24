@@ -18,7 +18,7 @@ jobs:
         run: |
           echo $GITHUB_BASE_REF
           echo "DEPLOYMENT=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
-          echo ${{github.env.DEPLOYMENT}}                                \
+          echo Deployment: $DEPLOYMENT                                \
         shell: bash
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
