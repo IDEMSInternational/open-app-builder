@@ -5,7 +5,8 @@ on:
     branches:
       - deployment/*
   push:
-    branches: feat/deployment-preview
+    branches:
+      - feat/deployment-preview
 jobs:
   build_and_preview:
     if: contains(github.event.pull_request.labels.*.name, 'Test - preview')
