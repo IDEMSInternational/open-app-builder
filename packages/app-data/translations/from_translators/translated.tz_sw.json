@@ -9847,13 +9847,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! New week, new workshop! Learn to set household rules that your teen understands and follows.",
-    "text": "Habari @fielda.user_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
+    "text": "Habari @fields.user_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
     "type": "data_list",
     "note": "The string @fields.user_name! should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name! New week, new workshop! Learn to set household rules that your teen understands and follows.",
-    "text": "Habari @fielda.group_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
+    "text": "Habari @fields.group_name! Wiki mpya, warsha mpya! \nJifunze kuweka sheria za nyumbani ambazo kijana wako anazielewa na kuzifuata.",
     "type": "data_list",
     "note": "The string @fields.group_name! should not be translated."
   },
