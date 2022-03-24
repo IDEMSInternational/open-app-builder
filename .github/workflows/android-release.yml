@@ -86,24 +86,29 @@ jobs:
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
-      - name: Upload Release Asset - Signed App Bundle
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./android/app/build/outputs/bundle/release/app-release.aab
-          asset_name: app-release.aab
-          asset_content_type: application/zip
-      - name: Upload Release Asset - Debug APK
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./android/app/build/outputs/apk/debug/app-debug.apk
-          asset_name: app-debug.apk
-          asset_content_type: application/zip
+
+      # TODO - release assets no longer published as triggered by manual workflow
+      # Will need to create additional release workflow to publish any assets
+
+      # - name: Upload Release Asset - Signed App Bundle
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ github.event.release.upload_url }}
+      #     asset_path: ./android/app/build/outputs/bundle/release/app-release.aab
+      #     asset_name: app-release.aab
+      #     asset_content_type: application/zip
+      # - name: Upload Release Asset - Debug APK
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ github.event.release.upload_url }}
+      #     asset_path: ./android/app/build/outputs/apk/debug/app-debug.apk
+      #     asset_name: app-debug.apk
+      #     asset_content_type: application/zip
+
       - name: Upload to Google play
         uses: r0adkll/upload-google-play@v1.0.15
         with:
