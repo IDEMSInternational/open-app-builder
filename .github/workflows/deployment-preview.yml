@@ -16,7 +16,7 @@ jobs:
       # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Deployment
         run: |
-          echo $GITHUB_BASE_REF
+          echo $GITHUB_BASE_REF ${GITHUB_BASE_REF##*/}
           echo "DEPLOYMENT=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
       - name: Check Deployment
         run: |
