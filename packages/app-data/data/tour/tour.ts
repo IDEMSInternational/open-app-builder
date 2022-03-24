@@ -147,7 +147,9 @@ const tour: FlowTypes.Tour[] = [
         title: "@global.parent_centre",
         _translations: {
           title: {},
-          message_text: {},
+          message_text: {
+            tz_sw: true,
+          },
         },
         message_text:
           "<p>This button takes you to the @global.parent_centre </p>\n\n<p>Stacked with the resources you need whenever you want. </p>\n\n<p> Instant access to help sections with @data.parent_centre.essential_tools for each skill.</p>\n\n<p> Extra information and local resources.</p>",
