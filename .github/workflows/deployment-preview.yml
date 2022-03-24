@@ -13,11 +13,13 @@ jobs:
         with:
           lfs: true
       # Extract deployment name as the slug of target PR branch via string operators, e.g. /deployment/plh_tz -> plh_tz
-      # https://www.linuxjournal.com/article/8919
+      # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Deployment
         run: |
-          echo "DEPLOYMENT_NAME=$(echo $GITHUB_BASE_REF | sed 's/.*\///')" >> $GITHUB_ENV
-          echo "Deployment: ${{env.DEPLOYMENT_NAME}}"
+          echo $GITHUB_BASE_REF
+          then echo "DEPLOYMENT=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
+          echo ${{github.env.DEPLOYMENT}}                                \
+          fi;                                                            \
         shell: bash
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
