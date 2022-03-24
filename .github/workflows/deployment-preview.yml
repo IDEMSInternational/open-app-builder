@@ -16,7 +16,7 @@ jobs:
       # https://www.linuxjournal.com/article/8919
       - name: Set Deployment
         run: |
-          echo "DEPLOYMENT_NAME=$(echo ${GITHUB_BASE_REF} | sed 's/.*\///')" >> $GITHUB_ENV
+          echo "DEPLOYMENT_NAME=$(echo $GITHUB_BASE_REF | sed 's/.*\///')" >> $GITHUB_ENV
           echo "Deployment: ${{env.DEPLOYMENT_NAME}}"
         shell: bash
       - name: Node ${{ matrix.node-version }}
