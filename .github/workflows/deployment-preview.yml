@@ -18,7 +18,8 @@ jobs:
           lfs: true
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v4
-      - run:  echo "target deployment: ${{ env.GITHUB_HEAD_REF_SLUG }}"
+      - run: |
+          echo target deployment: ${{ env.GITHUB_HEAD_REF_SLUG }}
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
