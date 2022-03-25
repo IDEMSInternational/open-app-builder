@@ -4909,7 +4909,7 @@
   },
   {
     "SourceText": "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you.",
-    "text": "Sasa kwa kuwa tumejifunza kwa kiasi fulani ujuzi wa kujithamini, hebu tuhakikishe @work.weekly_workshops ziko sahihi kabisa kwa ajili yako.",
+    "text": "Sasa kwa kuwa tumejifunza kwa kiasi fulani ujuzi wa kujithamini, hebu tuhakikishe @global.weekly_workshops ziko sahihi kabisa kwa ajili yako.",
     "type": "template",
     "note": "The string @global.weekly_workshops should not be translated."
   },
