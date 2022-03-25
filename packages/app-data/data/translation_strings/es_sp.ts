@@ -61,11 +61,15 @@ const data: { [source_text: string]: string } = {
   "This text is loaded through the second data row.":
     "Este texto esta cargado por medio de la segunda fila de datos.",
   "This text should define a default value for a field":
-    "Este texto debería definir el valor predeterminado de un campo.",
+    "Este texto debería definir el valor predeterminado de un campo",
   happy: "contento",
   ok: "bien",
   sad: "triste",
   "awesome parent": "Padre asombroso",
   "Audio message": "Mensaje de audio",
+  '@global.language_global_1: "text"': '@global.language_global_1: "texto"',
+  '@global.language_global_2: "text"': '@global.language_global_2: "texto"',
+  "@global.language_global_1: text": "@global.language_global_1: texto",
+  "@global.language_global_2: text": "@global.language_global_2: texto",
 };
 export default data;

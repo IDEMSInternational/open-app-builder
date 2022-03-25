@@ -4,6 +4,309 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows",
+    flow_name: "nf_w_self_care",
+    status: "released",
+    rows: [
+      {
+        id: "relax_w_self_care",
+        workshop: "w_self_care",
+        message_type: "relax",
+        template_pop_up: "w_self_care_m_relax",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_self_care_m_relax"],
+            _raw: "click | pop_up: w_self_care_m_relax",
+            _cleaned: "click | pop_up: w_self_care_m_relax",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_m_relax.sent", true],
+            _raw: "click | set_field: w_self_care_m_relax.sent : true",
+            _cleaned: "click | set_field: w_self_care_m_relax.sent : true",
+          },
+        ],
+        priority: 12.9,
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 1",
+            },
+            _raw: "@fields.workshop_number > 1",
+          },
+        ],
+        campaign_list: ["nf_relax"],
+        hs_quick_start: "parent_points",
+        started_field: "w_self_care_started",
+        completion_level_field: "w_self_care_completion_level",
+        title: "@global.m_relax",
+        _translations: {
+          title: {},
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "@global.m_relax",
+          },
+          text: {
+            eng: "@global.text_m_relax",
+          },
+        },
+        text: "@global.text_m_relax",
+      },
+      {
+        id: "hp_reminder_w_self_care",
+        workshop: "w_self_care",
+        message_type: "hp_reminder",
+        template_pop_up: "w_self_care_m_hp_reminder",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_self_care_m_hp_reminder"],
+            _raw: "click | pop_up: w_self_care_m_hp_reminder",
+            _cleaned: "click | pop_up: w_self_care_m_hp_reminder",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_m_hp_reminder.sent", true],
+            _raw: "click | set_field: w_self_care_m_hp_reminder.sent : true",
+            _cleaned: "click | set_field: w_self_care_m_hp_reminder.sent : true",
+          },
+        ],
+        priority: 12.4,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_self_care_completion_level == 100",
+            },
+            _raw: "@fields.w_self_care_completion_level == 100",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 1",
+            },
+            _raw: "@fields.workshop_number > 1",
+          },
+        ],
+        campaign_list: ["nf_hp_reminder"],
+        hs_quick_start: "parent_points",
+        started_field: "w_self_care_started",
+        completion_level_field: "w_self_care_completion_level",
+        title: "@global.m_hp_reminder",
+        _translations: {
+          title: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "@global.m_hp_reminder",
+          },
+          text: {
+            eng: "This week is about YOU! Treat yourself well. You deserve it!",
+          },
+        },
+        text: "This week is about YOU! Treat yourself well. You deserve it!",
+      },
+      {
+        id: "parent_points_overview_w_self_care",
+        workshop: "w_self_care",
+        message_type: "parent_points_overview",
+        template_pop_up: "m_parent_points_overview",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["m_parent_points_overview"],
+            _raw: "click | pop_up: m_parent_points_overview",
+            _cleaned: "click | pop_up: m_parent_points_overview",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["m_parent_points_overview.sent", true],
+            _raw: "click | set_field: m_parent_points_overview.sent : true",
+            _cleaned: "click | set_field: m_parent_points_overview.sent : true",
+          },
+        ],
+        priority: 12.3,
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 1",
+            },
+            _raw: "@fields.workshop_number > 1",
+          },
+        ],
+        campaign_list: ["nf_parent_points_overview"],
+        hs_quick_start: "parent_points",
+        started_field: "w_self_care_started",
+        completion_level_field: "w_self_care_completion_level",
+        title: "@global.m_parent_points_overview",
+        _translations: {
+          title: {},
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "@global.m_parent_points_overview",
+          },
+          text: {
+            eng: "@global.text_m_parent_points_overview",
+          },
+        },
+        text: "@global.text_m_parent_points_overview",
+      },
+      {
+        id: "w_tomorrow_w_self_care_ind",
+        workshop: "w_self_care",
+        message_type: "w_tomorrow",
+        template_pop_up: "w_self_care_m_w_tomorrow",
+        message_condition: "_ind",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_self_care_m_w_tomorrow"],
+            _raw: "click | pop_up: w_self_care_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_self_care_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_m_w_tomorrow.sent", true],
+            _raw: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 12.1,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "!@fields.do_workshops_together",
+            },
+            _raw: "!@fields.do_workshops_together",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 1",
+            },
+            _raw: "@fields.workshop_number > 1",
+          },
+        ],
+        campaign_list: ["nf_w_tomorrow"],
+        hs_quick_start: "weekly_workshops",
+        started_field: "w_self_care_started",
+        completion_level_field: "w_self_care_completion_level",
+        title: "@global.m_w_tomorrow",
+        _translations: {
+          title: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "@global.m_w_tomorrow",
+          },
+          text: {
+            eng: "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!",
+          },
+        },
+        text: "Start a brand new @global.parent_app workshop tomorrow. You'll see great results!",
+      },
+      {
+        id: "w_tomorrow_w_self_care_tog",
+        workshop: "w_self_care",
+        message_type: "w_tomorrow",
+        template_pop_up: "w_self_care_m_w_tomorrow",
+        message_condition: "_tog",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["w_self_care_m_w_tomorrow"],
+            _raw: "click | pop_up: w_self_care_m_w_tomorrow",
+            _cleaned: "click | pop_up: w_self_care_m_w_tomorrow",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["w_self_care_m_w_tomorrow.sent", true],
+            _raw: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
+            _cleaned: "click | set_field: w_self_care_m_w_tomorrow.sent : true",
+          },
+        ],
+        priority: 12.1,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 1",
+            },
+            _raw: "@fields.workshop_number > 1",
+          },
+        ],
+        campaign_list: ["nf_w_tomorrow"],
+        hs_quick_start: "weekly_workshops",
+        started_field: "w_self_care_started",
+        completion_level_field: "w_self_care_completion_level",
+        title: "@global.m_w_tomorrow",
+        _translations: {
+          title: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+        _translatedFields: {
+          title: {
+            eng: "@global.m_w_tomorrow",
+          },
+          text: {
+            eng: "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!",
+          },
+        },
+        text: "Remember to tell your @global.parent_app partners about the app. Tomorrow, you can start doing @global.parent_app workshops together!",
+      },
+      {
+        activation_condition_list: [],
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
     flow_name: "nf_w_1on1",
     status: "released",
     rows: [
@@ -32,36 +335,27 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_started",
-                value: false,
-              },
+              calc: "!@fields.w_1on1_started",
             },
-            _raw: "get_field | w_1on1_started : false",
+            _raw: "!@fields.w_1on1_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_w_released"],
@@ -70,7 +364,11 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -107,36 +405,27 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_started",
-                value: false,
-              },
+              calc: "!@fields.w_1on1_started",
             },
-            _raw: "get_field | w_1on1_started : false",
+            _raw: "!@fields.w_1on1_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_w_released"],
@@ -145,7 +434,11 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -180,6 +473,15 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 11.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 2",
+            },
+            _raw: "@fields.workshop_number > 2",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
         title: "@global.m_relax",
@@ -221,14 +523,11 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_something_fun"],
@@ -272,14 +571,11 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_praise"],
@@ -287,7 +583,11 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -323,35 +623,34 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_started",
-                value: false,
-              },
+              calc: "!@fields.w_1on1_started",
             },
-            _raw: "get_field | w_1on1_started : false",
+            _raw: "!@fields.w_1on1_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_1on1_started",
+        completion_level_field: "w_1on1_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -385,36 +684,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 11.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_1on1_started",
+            },
+            _raw: "@fields.w_1on1_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_1on1_completion_level != 100",
+            },
+            _raw: "@fields.w_1on1_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_1on1_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_1on1_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_1on1_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_1on1_completion_level :100",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -424,7 +716,11 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -460,30 +756,25 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_1on1_completion_level == 100",
             },
-            _raw: "get_field | w_1on1_completion_level :100",
+            _raw: "@fields.w_1on1_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_1on1_started",
         completion_level_field: "w_1on1_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
@@ -531,18 +822,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_1on1_started",
+        completion_level_field: "w_1on1_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -580,31 +870,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 11.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_1on1_completion_level == 100",
+            },
+            _raw: "@fields.w_1on1_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_1on1_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_1on1_completion_level :100",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_1on1_started",
         completion_level_field: "w_1on1_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -646,35 +932,33 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 11.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_1on1_completion_level == 100",
             },
-            _raw: "get_field | w_1on1_completion_level :100",
+            _raw: "@fields.w_1on1_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_1on1_started",
         completion_level_field: "w_1on1_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -709,36 +993,35 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 11.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_1on1_completion_level != 100",
+            },
+            _raw: "@fields.w_1on1_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_1on1_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 2",
             },
-            _raw: "get_field |  w_1on1_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_1on1_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_1on1_completion_level :100",
+            _raw: "@fields.workshop_number > 2",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_1on1_started",
         completion_level_field: "w_1on1_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -784,45 +1067,40 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_started",
-                value: false,
-              },
+              calc: "!@fields.w_praise_started",
             },
-            _raw: "get_field | w_praise_started : false",
+            _raw: "!@fields.w_praise_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -859,45 +1137,40 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_started",
-                value: false,
-              },
+              calc: "!@fields.w_praise_started",
             },
-            _raw: "get_field | w_praise_started : false",
+            _raw: "!@fields.w_praise_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+            za_st: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -932,8 +1205,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 10.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 3",
+            },
+            _raw: "@fields.workshop_number > 3",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -973,18 +1257,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -1024,22 +1307,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1075,35 +1359,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_started",
-                value: false,
-              },
+              calc: "!@fields.w_praise_started",
             },
-            _raw: "get_field | w_praise_started : false",
+            _raw: "!@fields.w_praise_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1137,36 +1418,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 10.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_praise_started",
+            },
+            _raw: "@fields.w_praise_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_praise_completion_level != 100",
+            },
+            _raw: "@fields.w_praise_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_praise_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_praise_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_praise_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_praise_completion_level :100",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -1176,7 +1450,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1212,35 +1488,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_praise_completion_level == 100",
             },
-            _raw: "get_field | w_praise_completion_level :100",
+            _raw: "@fields.w_praise_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_praise_started",
         completion_level_field: "w_praise_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1276,18 +1549,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_praise_started",
+        completion_level_field: "w_praise_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -1325,31 +1597,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 10.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_praise_completion_level == 100",
+            },
+            _raw: "@fields.w_praise_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_praise_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_praise_completion_level :100",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_praise_started",
         completion_level_field: "w_praise_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -1391,35 +1659,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 10.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_praise_completion_level == 100",
             },
-            _raw: "get_field | w_praise_completion_level :100",
+            _raw: "@fields.w_praise_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_praise_started",
         completion_level_field: "w_praise_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1454,36 +1719,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 10.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_praise_completion_level != 100",
+            },
+            _raw: "@fields.w_praise_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_praise_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 3",
             },
-            _raw: "get_field |  w_praise_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_praise_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_praise_completion_level :100",
+            _raw: "@fields.workshop_number > 3",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_praise_started",
         completion_level_field: "w_praise_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1529,45 +1792,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_started",
-                value: false,
-              },
+              calc: "!@fields.w_instruct_started",
             },
-            _raw: "get_field | w_instruct_started : false",
+            _raw: "!@fields.w_instruct_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1604,45 +1861,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_started",
-                value: false,
-              },
+              calc: "!@fields.w_instruct_started",
             },
-            _raw: "get_field | w_instruct_started : false",
+            _raw: "!@fields.w_instruct_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1677,8 +1928,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 9.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 4",
+            },
+            _raw: "@fields.workshop_number > 4",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -1718,18 +1980,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -1769,22 +2030,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1820,35 +2082,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_started",
-                value: false,
-              },
+              calc: "!@fields.w_instruct_started",
             },
-            _raw: "get_field | w_instruct_started : false",
+            _raw: "!@fields.w_instruct_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1882,36 +2141,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 9.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_instruct_started",
+            },
+            _raw: "@fields.w_instruct_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_instruct_completion_level != 100",
+            },
+            _raw: "@fields.w_instruct_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_instruct_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_instruct_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_instruct_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_instruct_completion_level :100",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -1921,7 +2173,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -1958,45 +2212,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_instruct_completion_level == 100",
             },
-            _raw: "get_field | w_instruct_completion_level :100",
+            _raw: "@fields.w_instruct_completion_level == 100",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "parent_point_count_instruct_positively",
-                value: "1",
-              },
+              calc: "@fields.parent_point_count_instruct_positively == 1",
             },
-            _raw: "get_field | parent_point_count_instruct_positively : 1",
+            _raw: "@fields.parent_point_count_instruct_positively == 1",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_instruct_started",
         completion_level_field: "w_instruct_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2033,54 +2281,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined",
-                value: "100",
-              },
+              calc: "@fields.w_instruct_completion_level == 100",
             },
-            _raw: "get_field | undefined :100",
+            _raw: "@fields.w_instruct_completion_level == 100",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.parent_point_count_instruct_positively > 1",
+            },
+            _raw: "@fields.parent_point_count_instruct_positively > 1",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_hp_reminder.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "parent_point_count_instruct_positively",
-                value: "0",
-              },
-            },
-            _raw: "get_field | parent_point_count_instruct_positively : 0",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "parent_point_count_instruct_positively",
-                value: "1",
-              },
-            },
-            _raw: "get_field | parent_point_count_instruct_positively : 1",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2116,18 +2349,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_instruct_started",
+        completion_level_field: "w_instruct_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -2165,31 +2397,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 9.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_instruct_completion_level == 100",
+            },
+            _raw: "@fields.w_instruct_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_instruct_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_instruct_completion_level :100",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_instruct_started",
         completion_level_field: "w_instruct_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -2231,35 +2459,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 9.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_instruct_completion_level == 100",
             },
-            _raw: "get_field | w_instruct_completion_level :100",
+            _raw: "@fields.w_instruct_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_instruct_started",
         completion_level_field: "w_instruct_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2294,36 +2519,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 9.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_instruct_completion_level != 100",
+            },
+            _raw: "@fields.w_instruct_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_instruct_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 4",
             },
-            _raw: "get_field |  w_instruct_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_instruct_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_instruct_completion_level :100",
+            _raw: "@fields.workshop_number > 4",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_instruct_started",
         completion_level_field: "w_instruct_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2369,45 +2592,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_started",
-                value: false,
-              },
+              calc: "!@fields.w_stress_started",
             },
-            _raw: "get_field | w_stress_started : false",
+            _raw: "!@fields.w_stress_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2444,45 +2661,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_started",
-                value: false,
-              },
+              calc: "!@fields.w_stress_started",
             },
-            _raw: "get_field | w_stress_started : false",
+            _raw: "!@fields.w_stress_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2517,8 +2728,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 8.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 5",
+            },
+            _raw: "@fields.workshop_number > 5",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -2558,18 +2780,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -2609,22 +2830,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2660,35 +2882,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_started",
-                value: false,
-              },
+              calc: "!@fields.w_stress_started",
             },
-            _raw: "get_field | w_stress_started : false",
+            _raw: "!@fields.w_stress_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2722,36 +2941,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 8.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_stress_started",
+            },
+            _raw: "@fields.w_stress_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_stress_completion_level != 100",
+            },
+            _raw: "@fields.w_stress_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_stress_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_stress_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_stress_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_stress_completion_level :100",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -2761,7 +2973,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2798,45 +3012,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_stress_completion_level == 100",
             },
-            _raw: "get_field | w_stress_completion_level :100",
+            _raw: "@fields.w_stress_completion_level == 100",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "parent_point_count_breathe",
-                value: "0",
-              },
+              calc: "@fields.parent_point_count_breathe == 0",
             },
-            _raw: "get_field | parent_point_count_breathe : 0",
+            _raw: "@fields.parent_point_count_breathe == 0",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_stress_started",
         completion_level_field: "w_stress_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2873,45 +3081,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_stress_completion_level == 100",
             },
-            _raw: "get_field | w_stress_completion_level :100",
+            _raw: "@fields.w_stress_completion_level == 100",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.parent_point_count_breathe > 0",
+            },
+            _raw: "@fields.parent_point_count_breathe > 0",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_hp_reminder.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "parent_point_count_breathe",
-                value: "0",
-              },
-            },
-            _raw: "get_field | parent_point_count_breathe : 0",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_stress_started",
         completion_level_field: "w_stress_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2947,18 +3149,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_stress_started",
+        completion_level_field: "w_stress_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -2996,31 +3197,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 8.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_stress_completion_level == 100",
+            },
+            _raw: "@fields.w_stress_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_stress_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_stress_completion_level :100",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_stress_started",
         completion_level_field: "w_stress_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -3062,35 +3259,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 8.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_stress_completion_level == 100",
             },
-            _raw: "get_field | w_stress_completion_level :100",
+            _raw: "@fields.w_stress_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_stress_started",
         completion_level_field: "w_stress_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3125,36 +3319,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 8.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_stress_completion_level != 100",
+            },
+            _raw: "@fields.w_stress_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_stress_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 5",
             },
-            _raw: "get_field |  w_stress_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_stress_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_stress_completion_level :100",
+            _raw: "@fields.workshop_number > 5",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_stress_started",
         completion_level_field: "w_stress_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3200,45 +3392,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_started",
-                value: false,
-              },
+              calc: "!@fields.w_money_started",
             },
-            _raw: "get_field | w_money_started : false",
+            _raw: "!@fields.w_money_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3275,45 +3461,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_started",
-                value: false,
-              },
+              calc: "!@fields.w_money_started",
             },
-            _raw: "get_field | w_money_started : false",
+            _raw: "!@fields.w_money_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3348,8 +3528,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 7.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 6",
+            },
+            _raw: "@fields.workshop_number > 6",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -3389,18 +3580,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -3440,22 +3630,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3491,35 +3682,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_started",
-                value: false,
-              },
+              calc: "!@fields.w_money_started",
             },
-            _raw: "get_field | w_money_started : false",
+            _raw: "!@fields.w_money_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3553,36 +3741,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 7.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_money_started",
+            },
+            _raw: "@fields.w_money_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_money_completion_level != 100",
+            },
+            _raw: "@fields.w_money_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_money_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_money_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_money_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_money_completion_level :100",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -3592,7 +3773,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3628,30 +3811,25 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_money_completion_level == 100",
             },
-            _raw: "get_field | w_money_completion_level :100",
+            _raw: "@fields.w_money_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_money_started",
         completion_level_field: "w_money_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
@@ -3699,18 +3877,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_money_started",
+        completion_level_field: "w_money_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -3748,31 +3925,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 7.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_money_completion_level == 100",
+            },
+            _raw: "@fields.w_money_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_money_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_money_completion_level :100",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_money_started",
         completion_level_field: "w_money_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -3814,35 +3987,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 7.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_money_completion_level == 100",
             },
-            _raw: "get_field | w_money_completion_level :100",
+            _raw: "@fields.w_money_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_money_started",
         completion_level_field: "w_money_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3877,36 +4047,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 7.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_money_completion_level != 100",
+            },
+            _raw: "@fields.w_money_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_money_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 6",
             },
-            _raw: "get_field |  w_money_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_money_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_money_completion_level :100",
+            _raw: "@fields.workshop_number > 6",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_money_started",
         completion_level_field: "w_money_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -3952,45 +4120,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_started",
-                value: false,
-              },
+              calc: "!@fields.w_rules_started",
             },
-            _raw: "get_field | w_rules_started : false",
+            _raw: "!@fields.w_rules_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4027,45 +4189,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_started",
-                value: false,
-              },
+              calc: "!@fields.w_rules_started",
             },
-            _raw: "get_field | w_rules_started : false",
+            _raw: "!@fields.w_rules_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4100,8 +4256,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 6.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 7",
+            },
+            _raw: "@fields.workshop_number > 7",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -4141,18 +4308,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -4192,22 +4358,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4243,35 +4410,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_started",
-                value: false,
-              },
+              calc: "!@fields.w_rules_started",
             },
-            _raw: "get_field | w_rules_started : false",
+            _raw: "!@fields.w_rules_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4305,36 +4469,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 6.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_rules_started",
+            },
+            _raw: "@fields.w_rules_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_rules_completion_level != 100",
+            },
+            _raw: "@fields.w_rules_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_rules_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_rules_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_rules_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_rules_completion_level :100",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -4344,7 +4501,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4380,35 +4539,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_rules_completion_level == 100",
             },
-            _raw: "get_field | w_rules_completion_level :100",
+            _raw: "@fields.w_rules_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_rules_started",
         completion_level_field: "w_rules_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4444,18 +4600,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_rules_started",
+        completion_level_field: "w_rules_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -4493,31 +4648,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 6.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_rules_completion_level == 100",
+            },
+            _raw: "@fields.w_rules_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_rules_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_rules_completion_level :100",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_rules_started",
         completion_level_field: "w_rules_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -4559,35 +4710,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 6.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_rules_completion_level == 100",
             },
-            _raw: "get_field | w_rules_completion_level :100",
+            _raw: "@fields.w_rules_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_rules_started",
         completion_level_field: "w_rules_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4622,36 +4770,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 6.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_rules_completion_level != 100",
+            },
+            _raw: "@fields.w_rules_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_rules_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 7",
             },
-            _raw: "get_field |  w_rules_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_rules_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_rules_completion_level :100",
+            _raw: "@fields.workshop_number > 7",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_rules_started",
         completion_level_field: "w_rules_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4697,45 +4843,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_started",
-                value: false,
-              },
+              calc: "!@fields.w_consequence_started",
             },
-            _raw: "get_field | w_consequence_started : false",
+            _raw: "!@fields.w_consequence_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4772,45 +4912,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_started",
-                value: false,
-              },
+              calc: "!@fields.w_consequence_started",
             },
-            _raw: "get_field | w_consequence_started : false",
+            _raw: "!@fields.w_consequence_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4845,8 +4979,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 5.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 8",
+            },
+            _raw: "@fields.workshop_number > 8",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -4886,18 +5031,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -4937,22 +5081,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -4988,35 +5133,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_started",
-                value: false,
-              },
+              calc: "!@fields.w_consequence_started",
             },
-            _raw: "get_field | w_consequence_started : false",
+            _raw: "!@fields.w_consequence_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5050,36 +5192,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 5.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_consequence_started",
+            },
+            _raw: "@fields.w_consequence_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_consequence_completion_level != 100",
+            },
+            _raw: "@fields.w_consequence_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_consequence_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_consequence_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_consequence_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_consequence_completion_level :100",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -5089,7 +5224,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5125,35 +5262,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_consequence_completion_level == 100",
             },
-            _raw: "get_field | w_consequence_completion_level :100",
+            _raw: "@fields.w_consequence_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_consequence_started",
         completion_level_field: "w_consequence_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5189,18 +5323,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_consequence_started",
+        completion_level_field: "w_consequence_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -5238,31 +5371,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 5.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_consequence_completion_level == 100",
+            },
+            _raw: "@fields.w_consequence_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_consequence_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_consequence_completion_level :100",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_consequence_started",
         completion_level_field: "w_consequence_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -5304,35 +5433,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 5.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_consequence_completion_level == 100",
             },
-            _raw: "get_field | w_consequence_completion_level :100",
+            _raw: "@fields.w_consequence_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_consequence_started",
         completion_level_field: "w_consequence_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5367,36 +5493,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 5.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_consequence_completion_level != 100",
+            },
+            _raw: "@fields.w_consequence_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_consequence_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 8",
             },
-            _raw: "get_field |  w_consequence_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_consequence_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_consequence_completion_level :100",
+            _raw: "@fields.workshop_number > 8",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_consequence_started",
         completion_level_field: "w_consequence_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5442,45 +5566,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_started",
-                value: false,
-              },
+              calc: "!@fields.w_solve_started",
             },
-            _raw: "get_field | w_solve_started : false",
+            _raw: "!@fields.w_solve_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5517,45 +5635,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_started",
-                value: false,
-              },
+              calc: "!@fields.w_solve_started",
             },
-            _raw: "get_field | w_solve_started : false",
+            _raw: "!@fields.w_solve_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5590,8 +5702,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 4.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 9",
+            },
+            _raw: "@fields.workshop_number > 9",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -5631,18 +5754,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -5682,22 +5804,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5733,35 +5856,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_started",
-                value: false,
-              },
+              calc: "!@fields.w_solve_started",
             },
-            _raw: "get_field | w_solve_started : false",
+            _raw: "!@fields.w_solve_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5795,36 +5915,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 4.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_solve_started",
+            },
+            _raw: "@fields.w_solve_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_solve_completion_level != 100",
+            },
+            _raw: "@fields.w_solve_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_solve_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_solve_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_solve_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_solve_completion_level :100",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -5834,7 +5947,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5870,35 +5985,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_solve_completion_level == 100",
             },
-            _raw: "get_field | w_solve_completion_level :100",
+            _raw: "@fields.w_solve_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_solve_started",
         completion_level_field: "w_solve_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -5934,18 +6046,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_solve_started",
+        completion_level_field: "w_solve_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -5983,31 +6094,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 4.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_solve_completion_level == 100",
+            },
+            _raw: "@fields.w_solve_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_solve_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_solve_completion_level :100",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_solve_started",
         completion_level_field: "w_solve_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -6049,35 +6156,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 4.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_solve_completion_level == 100",
             },
-            _raw: "get_field | w_solve_completion_level :100",
+            _raw: "@fields.w_solve_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_solve_started",
         completion_level_field: "w_solve_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6112,36 +6216,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 4.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_solve_completion_level != 100",
+            },
+            _raw: "@fields.w_solve_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_solve_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 9",
             },
-            _raw: "get_field |  w_solve_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_solve_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_solve_completion_level :100",
+            _raw: "@fields.workshop_number > 9",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_solve_started",
         completion_level_field: "w_solve_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6187,45 +6289,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_started",
-                value: false,
-              },
+              calc: "!@fields.w_safe_started",
             },
-            _raw: "get_field | w_safe_started : false",
+            _raw: "!@fields.w_safe_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6262,45 +6358,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_started",
-                value: false,
-              },
+              calc: "!@fields.w_safe_started",
             },
-            _raw: "get_field | w_safe_started : false",
+            _raw: "!@fields.w_safe_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6335,8 +6425,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 3.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 10",
+            },
+            _raw: "@fields.workshop_number > 10",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -6376,18 +6477,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -6427,22 +6527,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6478,35 +6579,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_started",
-                value: false,
-              },
+              calc: "!@fields.w_safe_started",
             },
-            _raw: "get_field | w_safe_started : false",
+            _raw: "!@fields.w_safe_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6540,36 +6638,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 3.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_safe_started",
+            },
+            _raw: "@fields.w_safe_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_safe_completion_level != 100",
+            },
+            _raw: "@fields.w_safe_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_safe_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_safe_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_safe_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_safe_completion_level :100",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -6579,7 +6670,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6615,30 +6708,25 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_safe_completion_level == 100",
             },
-            _raw: "get_field | w_safe_completion_level :100",
+            _raw: "@fields.w_safe_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_safe_started",
         completion_level_field: "w_safe_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
@@ -6686,18 +6774,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_safe_started",
+        completion_level_field: "w_safe_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -6735,31 +6822,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 3.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_safe_completion_level == 100",
+            },
+            _raw: "@fields.w_safe_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_safe_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_safe_completion_level :100",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_safe_started",
         completion_level_field: "w_safe_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -6801,35 +6884,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 3.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_safe_completion_level == 100",
             },
-            _raw: "get_field | w_safe_completion_level :100",
+            _raw: "@fields.w_safe_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_safe_started",
         completion_level_field: "w_safe_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6864,36 +6944,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 3.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_safe_completion_level != 100",
+            },
+            _raw: "@fields.w_safe_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_safe_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 10",
             },
-            _raw: "get_field |  w_safe_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_safe_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_safe_completion_level :100",
+            _raw: "@fields.workshop_number > 10",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_safe_started",
         completion_level_field: "w_safe_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -6939,45 +7017,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_started",
-                value: false,
-              },
+              calc: "!@fields.w_crisis_started",
             },
-            _raw: "get_field | w_crisis_started : false",
+            _raw: "!@fields.w_crisis_started",
           },
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
+              calc: "!@fields.do_workshops_together",
             },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "!@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_w_released.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7014,45 +7086,39 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.99,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_started",
-                value: false,
-              },
+              calc: "!@fields.w_crisis_started",
             },
-            _raw: "get_field | w_crisis_started : false",
+            _raw: "!@fields.w_crisis_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.do_workshops_together",
+            },
+            _raw: "@fields.do_workshops_together",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_w_released.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_w_released.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "do_workshops_together",
-                value: false,
-              },
-            },
-            _raw: "get_field | do_workshops_together : false",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_w_released"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_w_released",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7087,8 +7153,19 @@ const data_list: FlowTypes.Data_list[] = [
         ],
         priority: 2.9,
         activation_condition_list: [],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number > 11",
+            },
+            _raw: "@fields.workshop_number > 11",
+          },
+        ],
         campaign_list: ["nf_relax"],
         hs_quick_start: "parent_points",
+        started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_relax",
         _translations: {
           title: {},
@@ -7128,18 +7205,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.8,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_something_fun.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_something_fun.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_something_fun"],
         hs_quick_start: "parent_centre",
+        started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_something_fun",
         _translations: {
           title: {},
@@ -7179,22 +7255,23 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.7,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_praise.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_praise.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_praise"],
         hs_quick_start: "parent_centre",
+        started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_praise",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7230,35 +7307,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.6,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_started",
-                value: false,
-              },
+              calc: "!@fields.w_crisis_started",
             },
-            _raw: "get_field | w_crisis_started : false",
+            _raw: "!@fields.w_crisis_started",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_w_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_w_reminder.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_w_reminder"],
         hs_quick_start: "weekly_workshops",
         started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_w_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7292,36 +7366,29 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 2.5,
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_crisis_started",
+            },
+            _raw: "@fields.w_crisis_started",
+          },
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_crisis_completion_level != 100",
+            },
+            _raw: "@fields.w_crisis_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_w_in_progress.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_w_in_progress.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_crisis_started",
-                value: false,
-              },
-            },
-            _raw: "get_field | w_crisis_started : false",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_crisis_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_crisis_completion_level :100",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_w_reminder"],
@@ -7331,7 +7398,9 @@ const data_list: FlowTypes.Data_list[] = [
         title: "@global.m_w_in_progress",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7367,35 +7436,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.4,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_crisis_completion_level == 100",
             },
-            _raw: "get_field | w_crisis_completion_level :100",
+            _raw: "@fields.w_crisis_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_hp_reminder.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_hp_reminder.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_hp_reminder"],
         hs_quick_start: "parent_points",
+        started_field: "w_crisis_started",
         completion_level_field: "w_crisis_completion_level",
         title: "@global.m_hp_reminder",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7431,18 +7497,17 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.3,
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "m_parent_points_overview.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field | m_parent_points_overview.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_parent_points_overview"],
         hs_quick_start: "parent_points",
+        started_field: "w_crisis_started",
+        completion_level_field: "w_crisis_completion_level",
         title: "@global.m_parent_points_overview",
         _translations: {
           title: {},
@@ -7480,31 +7545,27 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 2.2,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_crisis_completion_level == 100",
+            },
+            _raw: "@fields.w_crisis_completion_level == 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "undefined.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  undefined.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_crisis_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_crisis_completion_level :100",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_hp_review"],
         hs_quick_start: "parent_centre",
+        started_field: "w_crisis_started",
         completion_level_field: "w_crisis_completion_level",
         title: "@global.hp_review",
         _translations: {
@@ -7546,35 +7607,32 @@ const data_list: FlowTypes.Data_list[] = [
         priority: 2.1,
         activation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_completion_level",
-                value: "100",
-              },
+              calc: "@fields.w_crisis_completion_level == 100",
             },
-            _raw: "get_field | w_crisis_completion_level :100",
+            _raw: "@fields.w_crisis_completion_level == 100",
           },
         ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_w_tomorrow.sent : true",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_crisis_started",
         completion_level_field: "w_crisis_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -7609,36 +7667,34 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         priority: 2.1,
-        activation_condition_list: [],
+        activation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.w_crisis_completion_level != 100",
+            },
+            _raw: "@fields.w_crisis_completion_level != 100",
+          },
+        ],
         deactivation_condition_list: [
           {
-            condition_type: "field_evaluation",
+            condition_type: "calc",
             condition_args: {
-              field_evaluation: {
-                field: "w_crisis_m_w_tomorrow.sent",
-                value: true,
-              },
+              calc: "@fields.workshop_number > 11",
             },
-            _raw: "get_field |  w_crisis_m_w_tomorrow.sent : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_crisis_completion_level",
-                value: "100",
-              },
-            },
-            _raw: "get_field | w_crisis_completion_level :100",
+            _raw: "@fields.workshop_number > 11",
           },
         ],
         campaign_list: ["nf_w_tomorrow"],
         hs_quick_start: "weekly_workshops",
+        started_field: "w_crisis_started",
         completion_level_field: "w_crisis_completion_level",
         title: "@global.m_w_tomorrow",
         _translations: {
           title: {},
-          text: {},
+          text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -8115,6 +8171,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -8168,6 +8225,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -8221,6 +8279,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
