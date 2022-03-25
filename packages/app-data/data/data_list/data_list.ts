@@ -1738,6 +1738,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -1796,6 +1797,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -1831,6 +1833,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -1898,7 +1901,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -1932,7 +1937,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -1966,7 +1973,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -1996,7 +2005,9 @@ const data_list: FlowTypes.Data_list[] = [
             za_xh: true,
             za_zu: true,
           },
-          location_text: {},
+          location_text: {
+            tz_sw: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2029,7 +2040,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2063,7 +2076,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2097,7 +2112,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2119,8 +2136,20 @@ const data_list: FlowTypes.Data_list[] = [
         click_count_field: "click_pc_covid_count",
         title: "Coping with @global.covid",
         _translations: {
-          title: {},
-          location_text: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2141,8 +2170,21 @@ const data_list: FlowTypes.Data_list[] = [
         click_count_field: "click_pc_bereavement_count",
         title: "Coping with grief",
         _translations: {
-          title: {},
-          location_text: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          location_text: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2175,7 +2217,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2208,7 +2252,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2241,7 +2287,9 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2270,7 +2318,14 @@ const data_list: FlowTypes.Data_list[] = [
         image_asset: "plh_images/parent_centre/covid/talk_to_teen.svg",
         title: "How to talk to my teen",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2285,7 +2340,14 @@ const data_list: FlowTypes.Data_list[] = [
         image_asset: "plh_images/parent_centre/covid/deal_with_news.svg",
         title: "Steps to deal with news",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2300,7 +2362,14 @@ const data_list: FlowTypes.Data_list[] = [
         image_asset: "plh_images/parent_centre/covid/help_teen_choose.svg",
         title: "How can I help my teen choose well?",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2315,7 +2384,14 @@ const data_list: FlowTypes.Data_list[] = [
         image_asset: "plh_images/parent_centre/covid/teen_influences.svg",
         title: "What influences teen decisions?",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2330,7 +2406,14 @@ const data_list: FlowTypes.Data_list[] = [
         image_asset: "plh_images/parent_centre/covid/teen_feelings.svg",
         title: "How does my teen feel?",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2345,7 +2428,14 @@ const data_list: FlowTypes.Data_list[] = [
         image_asset: "plh_images/parent_centre/covid/change_thoughts.svg",
         title: "Changing negative to positive",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2367,7 +2457,14 @@ const data_list: FlowTypes.Data_list[] = [
         content_template: "bereavement_self",
         title: "Help yourself cope",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2380,7 +2477,14 @@ const data_list: FlowTypes.Data_list[] = [
         content_template: "bereavement_teen",
         title: "Help your teen cope",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2393,7 +2497,14 @@ const data_list: FlowTypes.Data_list[] = [
         content_template: "bereavement_practical",
         title: "Practical steps",
         _translations: {
-          title: {},
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
         _translatedFields: {
           title: {
@@ -2439,6 +2550,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2446,6 +2558,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2454,6 +2567,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2508,6 +2622,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2515,6 +2630,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2523,6 +2639,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2592,6 +2709,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2646,6 +2764,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2653,6 +2772,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2661,6 +2781,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2715,6 +2836,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2722,6 +2844,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2730,6 +2853,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2784,6 +2908,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2791,6 +2916,7 @@ const data_list: FlowTypes.Data_list[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2799,6 +2925,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2868,6 +2995,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2937,6 +3065,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -2992,18 +3121,21 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {
@@ -3059,18 +3191,21 @@ const data_list: FlowTypes.Data_list[] = [
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           mark_text: {
             tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
           short_mark_text: {
             tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
+            za_zu: true,
           },
         },
         _translatedFields: {

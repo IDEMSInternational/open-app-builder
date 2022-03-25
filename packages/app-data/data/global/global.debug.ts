@@ -3,6 +3,117 @@ import { FlowTypes } from "data-models";
 const global: FlowTypes.Global[] = [
   {
     flow_type: "global",
+    flow_name: "example_lang_global",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "language_global_1",
+        value: "This is a global variable set in a global",
+        _translations: {
+          value: {
+            es_sp: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "language_global_2",
+        value: "@global.language_global_1",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_field_default",
+        name: "language_field_1",
+        value: "This is a field set by default",
+        _translations: {
+          value: {
+            es_sp: true,
+          },
+        },
+      },
+      {
+        type: "declare_field_default",
+        name: "language_field_2",
+        value: "@data.example_lang.example_lang_3.text",
+        _translations: {
+          value: {},
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/example_templates/example_languages.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "example_initialise_global",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "example_global_constant_text",
+        value: "Example Global Constant Text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "example_global_constant_title",
+        value: "Example Global Constant Title",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "example_global_constant_image",
+        value: "plh_images/habits/habit_relax_image.svg",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_1",
+        value: "Value of Field 1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_0",
+        value: "Value of field 0",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_4",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_field_default",
+        name: "field_5",
+        value: 5,
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "quality_assurance/example_templates/example_global_field.xlsx",
+  },
+  {
+    flow_type: "global",
     flow_name: "debug_some_globals",
     status: "released",
     flow_subtype: "debug",
@@ -101,109 +212,6 @@ const global: FlowTypes.Global[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_full_stop_after_var.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "example_lang_global",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "languge_global",
-        value: "This is a global variable set in a global",
-        _translations: {
-          value: {
-            es_sp: true,
-          },
-        },
-      },
-      {
-        type: "declare_field_default",
-        name: "language_field_1",
-        value: "This is a field set by default",
-        _translations: {
-          value: {
-            es_sp: true,
-          },
-        },
-      },
-      {
-        type: "declare_field_default",
-        name: "language_field_2",
-        value: "@data.example_lang.example_lang_3.text",
-        _translations: {
-          value: {},
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/example_templates/example_languages.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "example_initialise_global",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "example_global_constant_text",
-        value: "Example Global Constant Text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "example_global_constant_title",
-        value: "Example Global Constant Title",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "example_global_constant_image",
-        value: "plh_images/habits/habit_relax_image.svg",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_1",
-        value: "Value of Field 1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_0",
-        value: "Value of field 0",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_4",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_field_default",
-        name: "field_5",
-        value: 5,
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "quality_assurance/example_templates/example_global_field.xlsx",
   },
 ];
 export default global;
