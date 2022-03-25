@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { generateRandomId } from "../../utils";
+import { Device } from "@capacitor/device";
 import { MODULE_LIST } from "../data/data.service";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService {
   /** keep an in-memory copy of user to provide synchronously */
-  private userMeta: IUserMeta;
+  public userMeta: IUserMeta;
   constructor(private dbService: DbService) {}
 
   /** When first initialising ensure a default profile created and any newer defaults are merged with older user profiles */
@@ -16,11 +16,8 @@ export class UserMetaService {
     userMetaValues.forEach((v) => {
       userMeta[v.key] = v.value;
     });
-    if (!userMeta.uuid) {
-      console.log("initialising new user");
-      await this.setUserMeta({ ...userMeta, uuid: `temp_${generateRandomId()}` });
-    }
-    console.log("user initialised", userMeta);
+    const { uuid } = await Device.getId();
+    userMeta.uuid = uuid;
     this.userMeta = userMeta;
     return userMeta;
   }
