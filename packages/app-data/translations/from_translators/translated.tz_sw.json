@@ -3481,7 +3481,7 @@
   },
   {
     "SourceText": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
-    "text": "@global.w_instruct_female_caregiver alikuwa akisafisha nyumba huku @global.w_instruct_teen_girl akiwa na marafiki zake wakifanya mazoezi ya kucheza.\n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, inapendeza kukuona ukifanya mazoezi ya kucheza na rafiki yako. Tafadhali, fanyieni nje ili nimalize kusafisha nyumba. Baadaye, mtanionesha mnavyocheza.\"\n\n@global.w_instruct_teen_girl: “Sawa, @global.w_instruct_female_caregiver!”",
+    "text": "@global.w_instruct_female_caregiver alikuwa akisafisha nyumba huku @global.w_instruct_teen_girl akiwa na marafiki zake wakifanya mazoezi ya kucheza.\n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, inapendeza kukuona ukifanya mazoezi ya kucheza na rafiki yako. Tafadhali, fanyieni nje ili nimalize kusafisha nyumba. Baadaye, mtanionyesha mnavyocheza.\"\n\n@global.w_instruct_teen_girl: “Sawa, @global.w_instruct_female_caregiver!”",
     "type": "template",
     "note": "The following strings should not be translated:\n@global.w_instruct_female_caregiver\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver\n@global.w_instruct_teen_girl\n@global.w_instruct_teen_girl\n@global.w_instruct_female_caregiver"
   },
@@ -9619,7 +9619,7 @@
   },
   {
     "SourceText": "Thank you for committing to your parenting. \n\nYour @data.workshop.w_1on1.in_text_title is ready for you!",
-    "text": "Asante kwa kujitolea kwa dhati katika malezi yako.\n\n@local.workshop_data.in_text_title yako iko tayari kwa ajili yako!",
+    "text": "Asante kwa kujitolea kwa dhati katika malezi yako.\n\n@data.workshop.w_1on1.in_text_title yako iko tayari kwa ajili yako!",
     "type": "data_list",
     "note": "The string @data.workshop.w_1on1.in_text_title should not be translated."
   },
@@ -9667,7 +9667,7 @@
   },
   {
     "SourceText": "Thank you for investing in yourself and your family.Try the @data.workshop.w_praise.in_text_title to build a great parenting skill!",
-    "text": "Asante kwa kuwekeza kwa ajili yako na familia yako. Jaribu @local.workshop_data.in_text_title ujipatie ujuzi mzuri sana wa malezi!",
+    "text": "Asante kwa kuwekeza kwa ajili yako na familia yako. Jaribu @data.workshop.w_praise.in_text_title ujipatie ujuzi mzuri sana wa malezi!",
     "type": "data_list",
     "note": "The string @data.workshop.w_praise.in_text_title should not be translated."
   },
@@ -9691,19 +9691,19 @@
   },
   {
     "SourceText": "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes.",
-    "text": "Habari @global.user_jina, warsha mpya inakusubiri kesho!\n\nInaonekana kama hujamaliza warsha ya @data.workshop.w_praise.in_text_title, ni fupi(nakuhakikishia!) - ifanye muda ukipata muda wa dakika chache.",
+    "text": "Habari @global.user_name, warsha mpya inakusubiri kesho!\n\nInaonekana kama hujamaliza warsha ya @data.workshop.w_praise.in_text_title, ni fupi(nakuhakikishia!) - ifanye muda ukipata muda wa dakika chache.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@global.user_name,\n@data.workshop.w_praise.in_text_title."
   },
   {
     "SourceText": "Hi @fields.user_name, well done for starting week 4! \n\nThis week helps increase your chances of getting your teen to do what you ask them.",
-    "text": "Habari @fields.user_jina, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
+    "text": "Habari @fields.user_name, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
     "type": "data_list",
     "note": "The string @fields.user_name, should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name, well done for starting week 4!\n\nThis week helps increase your chances of getting your teen to do what you ask them.",
-    "text": "Habari @fields.user_jina, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
+    "text": "Habari @fields.group_name, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
     "type": "data_list",
     "note": "The string @fields.group_name, should not be translated."
   },
@@ -9739,7 +9739,7 @@
   },
   {
     "SourceText": "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!",
-    "text": "Hongera, umemaliza @local.workshop_data.in_text_title.\n\nKesho, warsha mpya itakuwa tayari kwa ajili yako: utaona tofauti kubwa kwa kufanya mabadiliko madogo!",
+    "text": "Hongera, umemaliza @data.workshop.w_instruct.in_text_title.\n\nKesho, warsha mpya itakuwa tayari kwa ajili yako: utaona tofauti kubwa kwa kufanya mabadiliko madogo!",
     "type": "data_list",
     "note": "The string @data.workshop.w_instruct.in_text_title. should not be translated."
   },
@@ -9751,13 +9751,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.",
-    "text": "Habari @fileds.user_jina! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusubiri ikiwa na dondoo za jinsi ya kuwa mtulivu na mstahimilivu wakati vijana wetu wakituchanganya.",
+    "text": "Habari @fields.user_name! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusubiri ikiwa na dondoo za jinsi ya kuwa mtulivu na mstahimilivu wakati vijana wetu wakituchanganya.",
     "type": "data_list",
     "note": "The string @fields.user_name! should not be translated."
   },
   {
     "SourceText": "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.",
-    "text": "Habari @fields.group_jina! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusbiri ikiwa na dondoo za jinsi ya kubaki mtulivu na mstahimilivu wakati vijana wetu wakitufanya tuchanganya.",
+    "text": "Habari @fields.group_name! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusbiri ikiwa na dondoo za jinsi ya kubaki mtulivu na mstahimilivu wakati vijana wetu wakitufanya tuchanganya.",
     "type": "data_list",
     "note": "The string @fields.group_name! should not be translated."
   },
@@ -9799,13 +9799,13 @@
   },
   {
     "SourceText": "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.",
-    "text": "Habari @field.user_name! Unaanza mwezi wako wa pili wa kutumia @global.parent_app. Inastaajabisha!\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
+    "text": "Habari @fields.user_name! Unaanza mwezi wako wa pili wa kutumia @global.parent_app. Inastaajabisha!\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.user_name!\n@global.parent_app."
   },
   {
     "SourceText": "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.",
-    "text": "Habari @field.group_name! Inastaajabisha Unaanza mwezi wako wa pili wa kutumia @global.parent_app.\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
+    "text": "Habari @fields.group_name! Inastaajabisha Unaanza mwezi wako wa pili wa kutumia @global.parent_app.\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
     "type": "data_list",
     "note": "The following strings should not be translated:\n@fields.group_name!\n@global.parent_app."
   },
@@ -10081,7 +10081,7 @@
   },
   {
     "SourceText": "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next.",
-    "text": "Warsha ya mwisho inafunguliwa kesho!\n\nKwanza jaribu kukamilisha warsha @data.workshop.w_crisis_text_title.Kwa njia hiyo, unaweza kukamilisha sehemu yako ya ujuzi wa malezi na kuamua nini cha kufanya kwa siku baadaye.",
+    "text": "Warsha ya mwisho inafunguliwa kesho!\n\nKwanza jaribu kukamilisha warsha @data.workshop.w_crisis.in_text_title. Kwa njia hiyo, unaweza kukamilisha sehemu yako ya ujuzi wa malezi na kuamua nini cha kufanya kwa siku baadaye.",
     "type": "data_list",
     "note": "The string @data.workshop.w_crisis.in_text_title. should not be translated."
   },
