@@ -112,16 +112,17 @@ export class ThemeService {
   }
 
   private applyCSSVariablesForTheme(theme: AppTheme) {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     let colorId = Object.keys(theme.colors) as (keyof ThemeColors)[];
     let unchangedCount = 0;
     for (let colorName of colorId) {
       const colorObj: ThemeColor = theme.colors[colorName];
       let value = colorObj.lightValue;
       let cssVarName = colorIdToCSSVarName(colorName);
-      if (prefersDark) {
-        value = colorObj.darkValue;
-      }
+      // TODO CC 2022-03-26 Dark theme requires redesign
+      // if (prefersDark) {
+      //   value = colorObj.darkValue;
+      // }
       if (document.body.style.getPropertyValue(cssVarName) !== value) {
         document.body.style.setProperty(cssVarName, value);
       } else {
