@@ -7,14 +7,18 @@ import { AppTheme, colorIdToCSSVarName, ThemeColor, ThemeColors } from "../theme
 @Injectable({
   providedIn: "root",
 })
+/**
+ * TODO CC 2022-03-26 - Possibly deprecated, requires re-evaluation
+ * (particularly themeing for prefers-color-scheme: dark)
+ */
 export class ThemeService {
   static THEME_UPDATE_CHANNEL = "THEME_UPDATE_CHANNEL";
 
   currentTheme: AppTheme;
 
-  constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {
-    this.init();
+  constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {}
 
+  init() {
     // Listens on IPC for updates to current theme
     this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
       let themeMap = this.getThemeMap();
@@ -25,9 +29,7 @@ export class ThemeService {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
       this.applyCSSVariablesForTheme(this.currentTheme);
     });
-  }
 
-  init() {
     this.currentTheme = this.getCurrentTheme();
     this.applyCSSVariablesForTheme(this.currentTheme);
   }

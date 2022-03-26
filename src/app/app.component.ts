@@ -51,7 +51,6 @@ export class AppComponent {
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
-    private themeService: ThemeService,
     private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
@@ -72,7 +71,6 @@ export class AppComponent {
   }
 
   async initializeApp() {
-    this.themeService.init();
     this.platform.ready().then(async () => {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
