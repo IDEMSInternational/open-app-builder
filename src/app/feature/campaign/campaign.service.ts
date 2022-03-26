@@ -239,7 +239,7 @@ export class CampaignService {
     text = text || NOTIFICATION_DEFAULTS.text;
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
-      body: text,
+      body: null, // Force use of largeBody
       largeBody: text,
       title,
       extra: { ...row, campaign_id },
