@@ -7,10 +7,6 @@ import { AppTheme, colorIdToCSSVarName, ThemeColor, ThemeColors } from "../theme
 @Injectable({
   providedIn: "root",
 })
-/**
- * TODO CC 2022-03-26 - Possibly deprecated, requires re-evaluation
- * (particularly themeing for prefers-color-scheme: dark)
- */
 export class ThemeService {
   static THEME_UPDATE_CHANNEL = "THEME_UPDATE_CHANNEL";
 
