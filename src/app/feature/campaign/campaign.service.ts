@@ -239,8 +239,10 @@ export class CampaignService {
     text = text || NOTIFICATION_DEFAULTS.text;
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
-      body: null, // Force use of largeBody
+      body: text,
+      // Expandable notification shown when largeBody and summaryText present
       largeBody: text,
+      summaryText: text,
       title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
