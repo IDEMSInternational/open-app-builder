@@ -183,6 +183,8 @@ export class LocalNotificationService {
         notification[key] = value;
       }
     });
+    // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
+    notification.largeBody = notification.largeBody || notification.body;
     await LocalNotifications.schedule({ notifications: [notification] });
     await this.addDBNotification(notification as ILocalNotification);
     if (reloadNotifications) {

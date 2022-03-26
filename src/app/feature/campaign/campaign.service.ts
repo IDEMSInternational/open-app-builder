@@ -234,14 +234,12 @@ export class CampaignService {
     if (!notification_schedule) return;
     let { _schedule_at } = notification_schedule;
 
-    const title = row.title || NOTIFICATION_DEFAULTS.title;
-    const body = row.text || NOTIFICATION_DEFAULTS.text;
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
-      body,
-      largeBody: `${body}`,
+      body: row.text || NOTIFICATION_DEFAULTS.text,
+      largeBody: row.text || NOTIFICATION_DEFAULTS.text,
       summaryText: "",
-      title,
+      title: row.title || NOTIFICATION_DEFAULTS.title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
     };
