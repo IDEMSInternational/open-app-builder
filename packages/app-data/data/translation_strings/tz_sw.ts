@@ -941,7 +941,7 @@ const data: { [source_text: string]: string } = {
   "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:":
     "Asanteni kwa kufikiria pamoja!\n\nHebu turudi nyuma tuone kinachoweza kutokea kama @global.w_instruct_female_caregiver atatoa maelekezo chanya:",
   '@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance."\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”':
-    '@global.w_instruct_female_caregiver alikuwa akisafisha nyumba huku @global.w_instruct_teen_girl akiwa na marafiki zake wakifanya mazoezi ya kucheza.\n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, inapendeza kukuona ukifanya mazoezi ya kucheza na rafiki yako. Tafadhali, fanyieni nje ili nimalize kusafisha nyumba. Baadaye, mtanionesha mnavyocheza."\n\n@global.w_instruct_teen_girl: “Sawa, @global.w_instruct_female_caregiver!”',
+    '@global.w_instruct_female_caregiver alikuwa akisafisha nyumba huku @global.w_instruct_teen_girl akiwa na marafiki zake wakifanya mazoezi ya kucheza.\n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, inapendeza kukuona ukifanya mazoezi ya kucheza na rafiki yako. Tafadhali, fanyieni nje ili nimalize kusafisha nyumba. Baadaye, mtanionyesha mnavyocheza."\n\n@global.w_instruct_teen_girl: “Sawa, @global.w_instruct_female_caregiver!”',
   '@global.w_instruct_female_caregiver: "Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance."':
     '@global.w_instruct_female_caregiver: "Asante kwa kufanyia mazoezi nje nilipokuwa namalizia kufanya usafi, @global.w_instruct_teen_girl. Sasa nina muda wa kuangalia unavyocheza."',
   '@global.w_instruct_female_caregiver: "Wow, @global.w_instruct_teen_girl! You have such good dance moves!"':
@@ -1348,7 +1348,7 @@ const data: { [source_text: string]: string } = {
   "Remember you deserve your quality time too! What makes you happy?":
     "Kumbuka unastahili pia kuwa na wakati bora! Ni nini kinachokufurahisha?",
   "Now that we have built some self-care skills, let’s make sure your @global.weekly_workshops are exactly right for you.":
-    "Sasa kwa kuwa tumejifunza kwa kiasi fulani ujuzi wa kujithamini, hebu tuhakikishe @work.weekly_workshops ziko sahihi kabisa kwa ajili yako.",
+    "Sasa kwa kuwa tumejifunza kwa kiasi fulani ujuzi wa kujithamini, hebu tuhakikishe @global.weekly_workshops ziko sahihi kabisa kwa ajili yako.",
   "You seem to have completed the customisation process already. You can now skip this activity.":
     "Inaonekana tayari umemaliza kufanya marekebisho. Sasa unaweza kuruka shughuli hii.",
   "Whenever you can, relax, recognise and reward yourself. \n\nCare for yourself every day. You matter!":
@@ -2645,7 +2645,7 @@ const data: { [source_text: string]: string } = {
   "You've put so much effort into being a better parent. You are loved and appreciated!":
     "Umeweka jitihada kubwa sana ya kuwa mzazi bora. Unapendwa na kuthaminiwa!",
   "Thank you for committing to your parenting. \n\nYour @data.workshop.w_1on1.in_text_title is ready for you!":
-    "Asante kwa kujitolea kwa dhati katika malezi yako.\n\n@local.workshop_data.in_text_title yako iko tayari kwa ajili yako!",
+    "Asante kwa kujitolea kwa dhati katika malezi yako.\n\n@data.workshop.w_1on1.in_text_title yako iko tayari kwa ajili yako!",
   "Spending time with your teen helps build trust. \n\nContinue your @global.parent_app journey for great results.":
     "Kutumia muda pamoja na kijana wako hujenga kuaminiana.\n\nEndelea na safari yako ya @global.parent_app sasa –kwa matokeo mazuri sana.",
   "Well done for completing the @data.workshop.w_1on1.in_text_title. Tomorrow, you can access a new workshop to help you relax, enjoy and learn new skills!":
@@ -2659,7 +2659,7 @@ const data: { [source_text: string]: string } = {
   "Well done for using @global.parent_app! Remember, small things make a big difference.":
     "Hongera kwa kutumia @global.parent_app!\nKumbuka kwamba mambo madogomadogo ndiyo huleta mabadiliko makubwa.",
   "Thank you for investing in yourself and your family.Try the @data.workshop.w_praise.in_text_title to build a great parenting skill!":
-    "Asante kwa kuwekeza kwa ajili yako na familia yako. Jaribu @local.workshop_data.in_text_title ujipatie ujuzi mzuri sana wa malezi!",
+    "Asante kwa kuwekeza kwa ajili yako na familia yako. Jaribu @data.workshop.w_praise.in_text_title ujipatie ujuzi mzuri sana wa malezi!",
   "Praise makes all the difference. \n\nFinish the @data.workshop.w_praise.in_text_title to see how to use it in YOUR family.":
     "Kusifia huleta mabadiliko makubwa.\n\nMaliza @data.workshop.w_praise.in_text_title uone jinsi ya kuitumia skwenye familia YAKO.",
   "Praise your teen for one thing they did well. \n\nAnd when last did you praise yourself or another adult? Try it!":
@@ -2667,11 +2667,11 @@ const data: { [source_text: string]: string } = {
   "Amazing, you completed the @data.workshop.w_praise.in_text_title. A new workshop is ready tomorrow. Try it - you will see a change in your teen’s behaviour.":
     "Safi sana, umemaliza warsha ya @data.workshop.w_praise.in_text_title. Warsha mpya ipo tayari kesho. Ijaribu - Utaona mabadiliko katika tabia za kijana wako.",
   "Hi @global.user_name, a new workshop awaits you tomorrow!\n\nIt seems like you haven’t finished the @data.workshop.w_praise.in_text_title. It’s short (promise!) – give it a go when you have a few minutes.":
-    "Habari @global.user_jina, warsha mpya inakusubiri kesho!\n\nInaonekana kama hujamaliza warsha ya @data.workshop.w_praise.in_text_title, ni fupi(nakuhakikishia!) - ifanye muda ukipata muda wa dakika chache.",
+    "Habari @global.user_name, warsha mpya inakusubiri kesho!\n\nInaonekana kama hujamaliza warsha ya @data.workshop.w_praise.in_text_title, ni fupi(nakuhakikishia!) - ifanye muda ukipata muda wa dakika chache.",
   "Hi @fields.user_name, well done for starting week 4! \n\nThis week helps increase your chances of getting your teen to do what you ask them.":
-    "Habari @fields.user_jina, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
+    "Habari @fields.user_name, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
   "Hi @fields.group_name, well done for starting week 4!\n\nThis week helps increase your chances of getting your teen to do what you ask them.":
-    "Habari @fields.user_jina, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
+    "Habari @fields.group_name, umefanya vizuri kwa kuanza wiki ya 4!\n\nWiki hii husaidia kuongeza nafasi zako za kumfanya kijana wako afanye kile unachomwambia.",
   "Be kind to yourself. No parent is perfect. Using @global.parent_app shows you care!":
     "Kuwa mpole kwako mwenyewe. Hakuna mzazi aliyekamilika. Tumia @global.parent_app huoenesha unajari!",
   "Teens don’t always listen. Look at this week's workshop to learn how positive instructions can help.":
@@ -2683,13 +2683,13 @@ const data: { [source_text: string]: string } = {
   "You’ve already marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times – you’re making great progress.":
     "Tayari umeweka alama kwenye @global.parent_point @data.habit.instruct_positively.title mara @fields.parent_point_count_instruct_positively – kwa hiyo, unapiga hatua nzuri za maendeleo.",
   "Congratulations, you completed the @data.workshop.w_instruct.in_text_title.\n\nTomorrow, a new workshop is ready for you. See a big difference by making small changes!":
-    "Hongera, umemaliza @local.workshop_data.in_text_title.\n\nKesho, warsha mpya itakuwa tayari kwa ajili yako: utaona tofauti kubwa kwa kufanya mabadiliko madogo!",
+    "Hongera, umemaliza @data.workshop.w_instruct.in_text_title.\n\nKesho, warsha mpya itakuwa tayari kwa ajili yako: utaona tofauti kubwa kwa kufanya mabadiliko madogo!",
   "Some parents use the app after their evening meal. Why not complete the @data.workshop.w_instruct.in_text_title when you have a few minutes?":
     "Wazazi baadhi hutumia program (app) baada ya chakula cha jioni. Kwa nini usimalize warsha ya @data.workshop.w_instruct.in_text_title ukiwa na muda wa dakika chache?",
   "Hi @fields.user_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.":
-    "Habari @fileds.user_jina! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusubiri ikiwa na dondoo za jinsi ya kuwa mtulivu na mstahimilivu wakati vijana wetu wakituchanganya.",
+    "Habari @fields.user_name! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusubiri ikiwa na dondoo za jinsi ya kuwa mtulivu na mstahimilivu wakati vijana wetu wakituchanganya.",
   "Hi @fields.group_name! Congratulations for starting week 5.\n\nA new workshop awaits with tips on staying calm and in control when our teens drive us crazy.":
-    "Habari @fields.group_jina! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusbiri ikiwa na dondoo za jinsi ya kubaki mtulivu na mstahimilivu wakati vijana wetu wakitufanya tuchanganya.",
+    "Habari @fields.group_name! Hongera kwa kuanza wiki ya 5.\n\nWarsha mpya inakusbiri ikiwa na dondoo za jinsi ya kubaki mtulivu na mstahimilivu wakati vijana wetu wakitufanya tuchanganya.",
   "Manage anger and stress with this new workshop. It helps you take better care of yourself.":
     "Dhibiti hasira na msongo wa mawazo kwa hiki kipindi kipya. Hukusaidia wewe kujithamini vizuri zaidi.",
   "Feeling overwhelmed? Deep breaths help. \n\nComplete the @data.workshop.w_stress.in_text_title to help you deal with stress.":
@@ -2703,9 +2703,9 @@ const data: { [source_text: string]: string } = {
   "Get ready for a new workshop tomorrow. \n \n By completing the @data.workshop.w_stress.in_text_title first, you lay a key foundation: If you feel good, your family will too!":
     "Kuwa tayari kwa warsha mpya kesho.\n\nKwa kukamilishawarsha kwanza @data.workshop.w_stress.in_text_title. Unaweka msingi muhimu. Kama unajisikia vizuri, familia yako itajisikia vizuri pia!",
   "Hi @fields.user_name! Amazing, this is your second month with @global.parent_app.\n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.":
-    "Habari @field.user_name! Unaanza mwezi wako wa pili wa kutumia @global.parent_app. Inastaajabisha!\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
+    "Habari @fields.user_name! Unaanza mwezi wako wa pili wa kutumia @global.parent_app. Inastaajabisha!\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
   "Hi @fields.group_name! Amazing, this is your second month with @global.parent_app. \n\nMost families struggle with money. This workshop will give you tools to plan your expenses to help you through the month.":
-    "Habari @field.group_name! Inastaajabisha Unaanza mwezi wako wa pili wa kutumia @global.parent_app.\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
+    "Habari @fields.group_name! Inastaajabisha Unaanza mwezi wako wa pili wa kutumia @global.parent_app.\n\nKaribu kila familia inahangaishwa na masuala ya pesa, kwa hiyo, warsha ya wiki hii itakupa nyenzo itakayokusaidia kupanga matumizi yako ili uweze kuwa na pesa za kutosha kumaliza mwezi.",
   "You are not alone. Parents around the world are going through the same struggles. \n\nYou are doing your best and we are proud of you!":
     "Hauko peke yako. Wazazi duniani kote wanapitia hali kama hii.\n\nUnajutaidi sana na tunajivunia wewe!",
   "Stressed about money? Does your teen ask for things you can’t afford? \n\nThis week deals with money and budgeting.":
@@ -2793,7 +2793,7 @@ const data: { [source_text: string]: string } = {
   "Well done for finishing the @data.workshop.w_crisis. Tomorrow, you can access the final workshop to reflect on your journey and plan what to do next!":
     "Vizuri sana kwa kumaliza warsha @data.workshop.w_crisis. Kesho, unaweza kupata warsha ya mwisho kuvuta kumbukumbu ya safari na kupanga cha kufanya wakati ujao!",
   "The final workshop unlocks tomorrow!\n\nFirst try to finish the @data.workshop.w_crisis.in_text_title. That way, you can complete your set of parenting skills and decide what to do next.":
-    "Warsha ya mwisho inafunguliwa kesho!\n\nKwanza jaribu kukamilisha warsha @data.workshop.w_crisis_text_title.Kwa njia hiyo, unaweza kukamilisha sehemu yako ya ujuzi wa malezi na kuamua nini cha kufanya kwa siku baadaye.",
+    "Warsha ya mwisho inafunguliwa kesho!\n\nKwanza jaribu kukamilisha warsha @data.workshop.w_crisis.in_text_title. Kwa njia hiyo, unaweza kukamilisha sehemu yako ya ujuzi wa malezi na kuamua nini cha kufanya kwa siku baadaye.",
   "Welcome to ParentApp. Click here to start your journey!":
     "Karibu kwenye ParentApp. Bonyeza hapa kuanza safari yako!",
   "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!":
