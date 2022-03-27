@@ -10,6 +10,7 @@ import { TemplateTranslateService } from "./template-translate.service";
 import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
+import { arrayToHashmap } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",
@@ -30,10 +31,10 @@ export class TemplateService {
   async init() {
     // Re-initialise default field and globals on init in case sheets have been updated
     // TODO - ideally this should just be triggered on first launch of new app update
-    this.initialiseDefaultFieldAndGlobals();
+    await this.initialiseDefaultFieldAndGlobals();
     // Update default values when language changed to allow for global translations
-    this.translateService.app_language$.subscribe((lang) => {
-      this.initialiseDefaultFieldAndGlobals();
+    this.translateService.app_language$.subscribe(async (lang) => {
+      await this.initialiseDefaultFieldAndGlobals();
     });
   }
 
@@ -72,8 +73,23 @@ export class TemplateService {
    * NOTE - globals will always show the latest value as defined in app sheets (with any translations processed)
    * NOTE - fields will not update if already set
    */
-  private initialiseDefaultFieldAndGlobals() {
-    GLOBAL.forEach((flow) => {
+  private async initialiseDefaultFieldAndGlobals() {
+    // Evaluate overrides
+    // TODO - should be generalised with other template and datalist retrieval methods
+    const baseGlobals = GLOBAL.filter((flow) => !flow.hasOwnProperty("override_target"));
+    const baseGlobalsHashmap = arrayToHashmap(baseGlobals, "flow_name");
+    const globalOverrides = GLOBAL.filter((flow) => flow.hasOwnProperty("override_target"));
+    for (const flow of globalOverrides) {
+      const satisfied = await this.templateVariablesService.evaluateConditionString(
+        `${flow.override_condition}`
+      );
+      if (satisfied) {
+        console.log(`[GLOBAL] override ${flow.override_target} -> ${flow.flow_name}`);
+        baseGlobalsHashmap[flow.override_target] = flow;
+      }
+    }
+    // Apply field default and global constants
+    Object.values(baseGlobalsHashmap).forEach((flow) => {
       flow.rows?.forEach((row) => {
         switch (row.type) {
           case "declare_field_default":
