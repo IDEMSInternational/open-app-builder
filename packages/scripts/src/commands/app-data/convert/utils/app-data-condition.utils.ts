@@ -70,9 +70,14 @@ function parseConditionList(conditionText: string) {
         condition.condition_args = { db_lookup: parseDBLookupParams(params) };
         break;
       case "field_evaluation":
+        console.warn(chalk.grey(`DEPRECATED - [get_field] should be replaced with @fields syntax`));
+        // TODO - remove support once data migrated
         condition.condition_args = {
           field_evaluation: parseFieldEvaluationParams(params),
         };
+        break;
+      case "calc":
+        condition.condition_args = { calc: parseCalcEvaluationParams(params) };
         break;
       default:
         console.error("Could not extract condition type", params);
@@ -138,6 +143,11 @@ function parseDBLookupParams(params: {
   return args;
 }
 
+/** Calc conditions simply parse the initial params back as a single string */
+function parseCalcEvaluationParams(params: { [key: string]: string[] }) {
+  return params.calc?.[0] || "";
+}
+
 /**
  * some common authoring scenarios have been reduced to single keywords for ease-of-authoring
  * replace these with full specifications
@@ -171,6 +181,11 @@ function _handleTextExceptions(text: string) {
     // (e.g. prevent app_launch match running after first_launch match)
     return regex.test(text);
   });
+  // HACK - default to calc statement used to allow processing of @fields.somefield===some_value
+  // TODO - this should be phased out as all move to @ statements
+  if (!text.includes("|")) {
+    text = `condition_type: calc | calc: ${text}`;
+  }
   return text;
 }
 

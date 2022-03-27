@@ -14,6 +14,7 @@ import { TourService } from "src/app/shared/services/tour/tour.service";
 import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
+import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -38,6 +39,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private templateTranslateService: TemplateTranslateService;
   private templateFieldService: TemplateFieldService;
   private eventService: EventService;
+  private dbSyncService: DBSyncService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -50,6 +52,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.templateFieldService = this.getGlobalService(TemplateFieldService);
     this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
     this.eventService = this.getGlobalService(EventService);
+    this.dbSyncService = this.getGlobalService(DBSyncService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -202,6 +205,7 @@ export class TemplateActionService extends TemplateInstanceService {
         }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();
+          await this.dbSyncService.syncToServer();
         }
         if (parent) {
           const msg = ` from ${row?.name || "(no row)"} to parent ${parent?.name || "(no parent)"}`;

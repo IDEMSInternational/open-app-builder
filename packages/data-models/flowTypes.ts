@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { DYNAMIC_PREFIXES } from "./constants";
+import APP_CONSTANTS from "./constants";
 import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
 
@@ -224,6 +224,8 @@ export namespace FlowTypes {
       end_date?: string;
       /** weekday number to schedule from (1-Monday, 7-Sunday etc.) */
       day_of_week?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+      /** maximum of notifications to schedule at a given time for the campaign*/
+      batch_size?: number;
     };
     /** computed list of campaign rows merged into campaign */
     _campaign_rows?: Campaign_listRow[];
@@ -232,7 +234,7 @@ export namespace FlowTypes {
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
-    condition_type: "field_evaluation" | "db_lookup";
+    condition_type: "field_evaluation" | "db_lookup" | "calc";
     /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
     condition_args: {
       db_lookup?: {
@@ -253,6 +255,7 @@ export namespace FlowTypes {
         field: string;
         value: string;
       };
+      calc?: string;
     };
     /** calculated after criteria has been evaluated */
     _satisfied?: boolean;
@@ -409,7 +412,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
+  type IDynamicPrefix = typeof APP_CONSTANTS.DYNAMIC_PREFIXES[number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {

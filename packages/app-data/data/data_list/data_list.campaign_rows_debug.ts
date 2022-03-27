@@ -73,14 +73,16 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         campaign_list: ["debug_daily"],
-        text: "Text 2",
+        text: "How are you feeling today?",
         _translations: {
-          text: {},
+          text: {
+            tz_sw: true,
+          },
           title: {},
         },
         _translatedFields: {
           text: {
-            eng: "Text 2",
+            eng: "How are you feeling today?",
           },
           title: {
             eng: "Debug Notification 2",
@@ -115,22 +117,18 @@ const data_list: FlowTypes.Data_list[] = [
         campaign_list: ["debug_daily"],
         text: "Text: @global.debug_variable_1",
         _translations: {
-          text: {
-            es_sp: true,
-          },
-          title: {
-            es_sp: true,
-          },
+          text: {},
+          title: {},
         },
         _translatedFields: {
           text: {
             eng: "Text: @global.debug_variable_1",
           },
           title: {
-            eng: "Title: @global.debug_variable_1",
+            eng: "Debug Notification 3",
           },
         },
-        title: "Title: @global.debug_variable_1",
+        title: "Debug Notification 3",
       },
       {
         id: "debug_daily_4a",
@@ -484,6 +482,265 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows_debug",
+    flow_name: "debug_campaign_rows_actions_2",
+    status: "released",
+    comments: "Can be merged into main actions once PR merged to support dismissed/sent actions",
+    rows: [
+      {
+        id: "debug_actions_2a",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["debug_actions_2a.clicked", true],
+            _raw: "click | set_field: debug_actions_2a.clicked: TRUE",
+            _cleaned: "click | set_field: debug_actions_2a.clicked: TRUE",
+          },
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["debug_actions_2a.sent", true],
+            _raw: "sent | set_field: debug_actions_2a.sent: TRUE",
+            _cleaned: "sent | set_field: debug_actions_2a.sent: TRUE",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["debug_actions_2"],
+      },
+      {
+        id: "debug_actions_2b",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["debug_actions_2b.clicked", true],
+            _raw: "click | set_field: debug_actions_2b.clicked: TRUE",
+            _cleaned: "click | set_field: debug_actions_2b.clicked: TRUE",
+          },
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["debug_actions_2b.sent", true],
+            _raw: "sent | set_field: debug_actions_2b.sent: TRUE",
+            _cleaned: "sent | set_field: debug_actions_2b.sent: TRUE",
+          },
+        ],
+        priority: 2,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_actions_2a.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_actions_2a.sent: TRUE",
+          },
+        ],
+        campaign_list: ["debug_actions_2"],
+      },
+      {
+        id: "debug_actions_2c",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["debug_actions_2c.clicked", true],
+            _raw: "click | set_field: debug_actions_2c.clicked: TRUE",
+            _cleaned: "click | set_field: debug_actions_2c.clicked: TRUE",
+          },
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["debug_actions_2c.sent", true],
+            _raw: "sent | set_field: debug_actions_2c.sent: TRUE",
+            _cleaned: "sent | set_field: debug_actions_2c.sent: TRUE",
+          },
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["debug_actions_4.sent", false],
+            _raw: "sent | set_field: debug_actions_4.sent: FALSE",
+            _cleaned: "sent | set_field: debug_actions_4.sent: FALSE",
+          },
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["debug_actions_5.sent", false],
+            _raw: "sent | set_field: debug_actions_5.sent: FALSE",
+            _cleaned: "sent | set_field: debug_actions_5.sent: FALSE",
+          },
+        ],
+        priority: 3,
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_actions_2b.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_actions_2b.sent: TRUE",
+          },
+        ],
+        campaign_list: ["debug_actions_2"],
+      },
+      {
+        id: "debug_actions_2d",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["w_1on1_stepper"],
+            _raw: "click | go_to: w_1on1_stepper",
+            _cleaned: "click | go_to: w_1on1_stepper",
+          },
+        ],
+        priority: 4,
+        campaign_list: ["debug_actions_2"],
+        text: "Go to the workshop stepper",
+        title: "Debug 1on1 stepper",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows_debug",
+    flow_name: "debug_campaign_rows_cond",
+    status: "released",
+    rows: [
+      {
+        id: "debug_cond_bool",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_text"],
+            _raw: "click | pop_up: example_text",
+            _cleaned: "click | pop_up: example_text",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["debug_boolean", true],
+            _raw: "click | set_field : debug_boolean : true",
+            _cleaned: "click | set_field : debug_boolean : true",
+          },
+        ],
+        priority: 4,
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.debug_boolean",
+            },
+            _raw: "@fields.debug_boolean",
+          },
+        ],
+        campaign_list: ["debug_condition"],
+      },
+      {
+        id: "debug_cond_numb",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_text"],
+            _raw: "click | pop_up: example_text",
+            _cleaned: "click | pop_up: example_text",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["debug_number", "100"],
+            _raw: "click | set_field : debug_number : 100",
+            _cleaned: "click | set_field : debug_number : 100",
+          },
+        ],
+        priority: 3,
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.debug_number == 100",
+            },
+            _raw: "@fields.debug_number == 100",
+          },
+        ],
+        campaign_list: ["debug_condition"],
+      },
+      {
+        id: "debug_cond_row_bool",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_text"],
+            _raw: "click | pop_up: example_text",
+            _cleaned: "click | pop_up: example_text",
+          },
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["debug_cond_row_bool.sent", true],
+            _raw: "sent | set_field : debug_cond_row_bool.sent : true",
+            _cleaned: "sent | set_field : debug_cond_row_bool.sent : true",
+          },
+        ],
+        priority: 2,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_cond_row_bool.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_cond_row_bool.sent : true",
+          },
+        ],
+        campaign_list: ["debug_condition"],
+      },
+      {
+        id: "debug_cond_string",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_text"],
+            _raw: "click | pop_up: example_text",
+            _cleaned: "click | pop_up: example_text",
+          },
+          {
+            trigger: "click",
+            action_id: "set_field",
+            args: ["debug_string", "my_phrase"],
+            _raw: "click | set_field : debug_string : my_phrase",
+            _cleaned: "click | set_field : debug_string : my_phrase",
+          },
+        ],
+        priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: '@fields.debug_string == "my_phrase"',
+            },
+            _raw: '@fields.debug_string == "my_phrase"',
+          },
+        ],
+        campaign_list: ["debug_condition"],
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows_debug",
     flow_name: "debug_campaign_rows_calc",
     status: "released",
     rows: [
@@ -820,6 +1077,43 @@ const data_list: FlowTypes.Data_list[] = [
           },
         ],
         campaign_list: ["debug_calc"],
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows_debug",
+    flow_name: "debug_campaign_rows_html",
+    status: "released",
+    rows: [
+      {
+        id: "debug_html_1",
+        priority: 1,
+        campaign_list: ["debug_html"],
+        text: "<b>Bold Text</b>",
+        title: "Bold",
+      },
+      {
+        id: "debug_html_2",
+        priority: 2,
+        campaign_list: ["debug_html"],
+        text: "**Bold Markdown**",
+        title: "Bold Markdown",
+      },
+      {
+        id: "debug_html_3",
+        priority: 3,
+        campaign_list: ["debug_html"],
+        text: '<p><span style="color: #99cc00;">M</span>u<span style="color: #008080;">lti</span>Colo<span style="color: #ff6600;">r</span> <span style="color: #000080;">P</span><span style="color: #00ccff;">u</span><span style="color: #ff0000;">s</span><span style="color: #808080;">h</span></p>',
+        title: "Mixed HTML",
+      },
+      {
+        id: "debug_html_4",
+        priority: 4,
+        campaign_list: ["debug_html"],
+        text: '<string name="welcome">Welcome to <b>Android</b>!</string>',
+        title: "Android HTML",
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",

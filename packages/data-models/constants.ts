@@ -1,13 +1,16 @@
 /// <reference lib="dom" />
 
 /*********************************************************************************************
- *  Constants used to generate types
+ *  Constants used throughout the app
  *
- * These are usually best-kept independent of types files to allow direct import
- * (typings can get confused depending on compiler if exported multiple times)
+ * NOTE - this file should not be edited directly. All constants can be overridden
+ * via the `app_constants` field in deployment configs
+ *
+ * NOTE - as these are merged when setting deployment, avoid `_path` suffix as that has
+ * special use case for relative paths
  ********************************************************************************************/
 
-export const DYNAMIC_PREFIXES = [
+const DYNAMIC_PREFIXES = [
   "local",
   "field",
   "fields",
@@ -23,24 +26,30 @@ export const DYNAMIC_PREFIXES = [
  * All localstorage fields will be prefixed with this
  * TODO - this has not been consistently applied so refactoring required
  * */
-export const FIELD_PREFIX = "rp-contact-field";
+const FIELD_PREFIX = "rp-contact-field";
 
 /**
  * Fieldnames hardcoded into the app
  * TODO - these have not been consistently applied so refactoring required
  * */
-export const APP_FIELDS = {
+const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
+  DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+};
+
+const APP_LANGUAGES = {
+  /** Language used during first load. If translations do not exist will default to source strings (gb_en) */
+  default: "gb_en",
 };
 
 /**
  * Some specific strings are currently hardcoded into the app
  * TODO - not all strings included, should add to when required
  */
-export const APP_STRINGS = {};
+const APP_STRINGS = {};
 
-export const NOTIFICATION_DEFAULTS = {
+const NOTIFICATION_DEFAULTS = {
   title: "Notification",
   text: "You have a new message from PLH",
   time: {
@@ -50,16 +59,16 @@ export const NOTIFICATION_DEFAULTS = {
 };
 
 /** How often to attempt to re-evaluate scheduled notifications - currently every minutes */
-export const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
+const NOTIFICATIONS_SYNC_FREQUENCY_MS = 1000 * 60 * 3;
 
-/** How often to attempt sync - currently every 15mins */
-export const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
+/** How often to attempt sync - currently every 5mins */
+const SERVER_SYNC_FREQUENCY_MS = 1000 * 60 * 5;
 
-export const APP_ROUTE_DEFAULTS = {
+const APP_ROUTE_DEFAULTS = {
   /** Default redirect form landing '/' route */
-  home_path: "/template/home_screen",
+  home_route: "/template/home_screen",
   /** Redirect path if no other routes found */
-  fallback_path: "/template/home_screen",
+  fallback_route: "/template/home_screen",
   /** Specific list of url redirects from within the app */
   redirects: [
     {
@@ -73,20 +82,20 @@ export const APP_ROUTE_DEFAULTS = {
   ],
 };
 
-export const APP_HEADER_DEFAULTS = {
+const APP_HEADER_DEFAULTS = {
   title: "ParentApp",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_path,
+    location.pathname == APP_ROUTE_DEFAULTS.home_route,
   // default show back button on all screens except home screen
   should_show_back_button: (location: Location) =>
-    location.pathname !== APP_ROUTE_DEFAULTS.home_path,
+    location.pathname !== APP_ROUTE_DEFAULTS.home_route,
   // on device minimize app when back button pressed from home screen
   should_minimize_app_on_back: (location: Location) =>
-    location.pathname == APP_ROUTE_DEFAULTS.home_path,
+    location.pathname == APP_ROUTE_DEFAULTS.home_route,
 };
 
-export const APP_SIDEMENU_DEFAULTS = {
+const APP_SIDEMENU_DEFAULTS = {
   title: "ParentApp",
   // name of template to display in sidebar
   template_name: "app_menu",
@@ -97,7 +106,7 @@ export const APP_SIDEMENU_DEFAULTS = {
 };
 
 /** Define app-specific startup tasks and logic */
-export const APP_INITIALISATION_DEFAULTS = {
+const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
   app_first_launch_actions: [
     {
@@ -121,7 +130,7 @@ export const APP_INITIALISATION_DEFAULTS = {
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
 };
 
-export const FEEDBACK_MODULE_DEFAULTS = {
+const FEEDBACK_MODULE_DEFAULTS = {
   /** Buttons that will be made available during feedback mode when context events triggered (e.g. right-click) */
   buttons: [
     {
@@ -139,4 +148,20 @@ export const FEEDBACK_MODULE_DEFAULTS = {
   ],
   /** Field to populate with selected text for use in templates */
   selected_text_field: "_feedback_selected_text",
+};
+
+export default {
+  APP_FIELDS,
+  APP_HEADER_DEFAULTS,
+  APP_INITIALISATION_DEFAULTS,
+  APP_LANGUAGES,
+  APP_ROUTE_DEFAULTS,
+  APP_SIDEMENU_DEFAULTS,
+  APP_STRINGS,
+  DYNAMIC_PREFIXES,
+  FEEDBACK_MODULE_DEFAULTS,
+  FIELD_PREFIX,
+  NOTIFICATIONS_SYNC_FREQUENCY_MS,
+  NOTIFICATION_DEFAULTS,
+  SERVER_SYNC_FREQUENCY_MS,
 };

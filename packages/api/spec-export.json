@@ -3,7 +3,7 @@
   "info": {
     "title": "IDEMS Apps API",
     "description": "App-Server Communication",
-    "version": "1.1",
+    "version": "1.2.7",
     "contact": {}
   },
   "tags": [
@@ -26,6 +26,20 @@
       "ContactFieldDto": {
         "type": "object",
         "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
           "contact_fields": {
             "description": "Contact Fields from app",
             "default": {},
@@ -34,11 +48,6 @@
                 "$ref": "#/components/schemas/JSONB"
               }
             ]
-          },
-          "app_version": {
-            "type": "string",
-            "description": "Current app version",
-            "default": "0.0.0"
           },
           "device_info": {
             "description": "Device info from app",
@@ -51,8 +60,10 @@
           }
         },
         "required": [
-          "contact_fields",
+          "app_user_id",
+          "app_deployment_name",
           "app_version",
+          "contact_fields",
           "device_info"
         ]
       },
@@ -62,6 +73,16 @@
           "app_user_id": {
             "type": "string",
             "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
           },
           "app_user_record_id": {
             "type": "number",
@@ -78,6 +99,46 @@
         },
         "required": [
           "app_user_id",
+          "app_deployment_name",
+          "app_version",
+          "app_user_record_id",
+          "data"
+        ]
+      },
+      "UserNotificationInteractionDto": {
+        "type": "object",
+        "properties": {
+          "app_user_id": {
+            "type": "string",
+            "description": "App user ID"
+          },
+          "app_deployment_name": {
+            "type": "string",
+            "description": "Name of app deployment",
+            "default": ""
+          },
+          "app_version": {
+            "type": "string",
+            "description": "Current app version",
+            "default": "0.0.0"
+          },
+          "app_user_record_id": {
+            "type": "number",
+            "description": "Local ID for local db record"
+          },
+          "data": {
+            "description": "Notification interaction entry",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/JSONB"
+              }
+            ]
+          }
+        },
+        "required": [
+          "app_user_id",
+          "app_deployment_name",
+          "app_version",
           "app_user_record_id",
           "data"
         ]
@@ -119,9 +180,7 @@
             }
           }
         },
-        "required": [
-          "columns"
-        ]
+        "required": ["columns"]
       }
     }
   },
@@ -148,9 +207,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Users"
-        ]
+        "tags": ["Users"]
       }
     },
     "/app_users/{app_user_id}": {
@@ -172,9 +229,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Users"
-        ]
+        "tags": ["Users"]
       },
       "post": {
         "operationId": "AppUsersController_setUserData",
@@ -211,9 +266,7 @@
             }
           }
         },
-        "tags": [
-          "Users"
-        ]
+        "tags": ["Users"]
       }
     },
     "/contact_fields": {
@@ -226,9 +279,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Contact Fields"
-        ]
+        "tags": ["Contact Fields"]
       }
     },
     "/contact_fields/{app_user_id}": {
@@ -258,9 +309,7 @@
             }
           }
         },
-        "tags": [
-          "Contact Fields"
-        ]
+        "tags": ["Contact Fields"]
       }
     },
     "/app_feedback": {
@@ -273,9 +322,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "Feedback"
-        ]
+        "tags": ["Feedback"]
       },
       "post": {
         "operationId": "AppFeedbackController_addUserFeedback",
@@ -303,9 +350,48 @@
             }
           }
         },
-        "tags": [
-          "Feedback"
-        ]
+        "tags": ["Feedback"]
+      }
+    },
+    "/app_notification_interaction": {
+      "get": {
+        "operationId": "AppNotificationInteractionController_findAll",
+        "summary": "List all notification interactions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notification Interaction"]
+      },
+      "post": {
+        "operationId": "AppNotificationInteractionController_addUserNotificationInteraction",
+        "summary": "Add notification interaction entry",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserNotificationInteractionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Notification Interaction Added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotificationInteractionDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["Notification Interaction"]
       }
     },
     "/tables": {
@@ -328,9 +414,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       }
     },
     "/tables/{table_name}": {
@@ -343,9 +427,7 @@
             "description": ""
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       }
     },
     "/tables/{table_name}/columns": {
@@ -375,9 +457,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       },
       "post": {
         "operationId": "TablesController_addMappedTableColumns",
@@ -405,9 +485,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       },
       "delete": {
         "operationId": "TablesController_removeMappedTableColumns",
@@ -435,9 +513,7 @@
             }
           }
         },
-        "tags": [
-          "DB Tables"
-        ]
+        "tags": ["DB Tables"]
       }
     }
   }

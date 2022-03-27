@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "docker-compose --file ./docker/docker-compose.yml --project-name plh_docker up",
-    "clear": "docker-compose --file ./docker/docker-compose.yml -p plh_docker rm --volumes --force && docker volume prune"
+    "dangerously_wipe": "docker-compose --file ./docker/docker-compose.yml -p plh_docker rm --volumes --force && docker volume prune"
   },
   "license": "ISC"
 }

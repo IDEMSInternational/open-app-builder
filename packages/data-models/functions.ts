@@ -1,6 +1,6 @@
 // import const from app-data directly as typings can sometimes break otherwise
-import { DYNAMIC_PREFIXES } from "./constants";
 import { FlowTypes } from "./flowTypes";
+import APP_CONSTANTS from "./constants";
 
 /**
  * Regex used to match dynamic strings. Specific keypoints:
@@ -87,7 +87,7 @@ export function extractDynamicEvaluators(
           type = "raw";
         }
         // cross-check to ensure lookup matches one of the pre-defined dynamic field types (e.g. not email@domain.com)
-        if (!DYNAMIC_PREFIXES.includes(type)) {
+        if (!APP_CONSTANTS.DYNAMIC_PREFIXES.includes(type)) {
           return undefined;
         }
         return { fullExpression, matchedExpression, type, fieldName };

@@ -1,13 +1,21 @@
 # Manually trigger an android build from Github Actions
 
-name: Trigger Android Debug/Signed Build
+# Secrets:
+# FIREBASE_CONFIG_TS
+# GOOGLE_SERVICES_JSON
+# SIGNING_KEY
+# ALIAS
+# KEY_STORE_PASSWORD
+# KEY_PASSWORD
+
+name: Android - Trigger Build
 on:
   workflow_dispatch:
     inputs:
       build_branch:
         required: true
-        description: "Specify branch for build"
-        default: "master"
+        description: "Specify branch for deployment"
+        default: "deployment/plh_za"
 jobs:
   log_build_inputs:
     runs-on: ubuntu-latest
@@ -23,6 +31,13 @@ jobs:
           ref: "${{github.event.inputs.build_branch}}"
       - name: Checkout LFS objects
         run: git lfs checkout
+      # Extract deployment name as the slug of input build branch, e.g. /deployment/plh_tz -> plh_tz
+      # https://stackoverflow.com/a/40524879/5693245
+      - name: Set Environment Deployment
+        run: |
+          echo ${{github.event.inputs.build_branch}} | sed 's/.*\///'
+          echo "DEPLOYMENT_NAME=$(echo ${{github.event.inputs.build_branch}} | sed 's/.*\///')" >> $GITHUB_ENV;
+        shell: bash
       - name: Cache node modules
         uses: actions/cache@v2
         with:
@@ -45,6 +60,8 @@ jobs:
         run: echo $GOOGLE_SERVICES_JSON > android/app/google-services.json
       - name: Install Dependencies
         run: yarn install
+      - name: Set Deployment
+        run: yarn scripts deployment set $DEPLOYMENT_NAME
       - name: Build Angular Project
         run: yarn build
       - name: Sync Android Files
@@ -73,7 +90,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: release_abb
+          name: release_bundle
           path: android/app/build/outputs/bundle/release/app-release.aab
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
