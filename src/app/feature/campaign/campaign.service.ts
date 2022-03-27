@@ -232,16 +232,14 @@ export class CampaignService {
     const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
-    let { title, text } = row;
     let { _schedule_at } = notification_schedule;
 
-    title = title || NOTIFICATION_DEFAULTS.title;
-    text = text || NOTIFICATION_DEFAULTS.text;
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
-      body: text,
-      largeBody: text,
-      title,
+      body: row.text || NOTIFICATION_DEFAULTS.text,
+      largeBody: row.text || NOTIFICATION_DEFAULTS.text,
+      summaryText: "",
+      title: row.title || NOTIFICATION_DEFAULTS.title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
     };
