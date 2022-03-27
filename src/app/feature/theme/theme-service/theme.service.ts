@@ -12,9 +12,9 @@ export class ThemeService {
 
   currentTheme: AppTheme;
 
-  constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {
-    this.init();
+  constructor(private ipcService: IpcService, private localStorageService: LocalStorageService) {}
 
+  init() {
     // Listens on IPC for updates to current theme
     this.ipcService.listen(ThemeService.THEME_UPDATE_CHANNEL).subscribe((themeName: string) => {
       let themeMap = this.getThemeMap();
@@ -25,9 +25,7 @@ export class ThemeService {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
       this.applyCSSVariablesForTheme(this.currentTheme);
     });
-  }
 
-  init() {
     this.currentTheme = this.getCurrentTheme();
     this.applyCSSVariablesForTheme(this.currentTheme);
   }
@@ -114,16 +112,17 @@ export class ThemeService {
   }
 
   private applyCSSVariablesForTheme(theme: AppTheme) {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     let colorId = Object.keys(theme.colors) as (keyof ThemeColors)[];
     let unchangedCount = 0;
     for (let colorName of colorId) {
       const colorObj: ThemeColor = theme.colors[colorName];
       let value = colorObj.lightValue;
       let cssVarName = colorIdToCSSVarName(colorName);
-      if (prefersDark) {
-        value = colorObj.darkValue;
-      }
+      // TODO CC 2022-03-26 Dark theme requires redesign
+      // if (prefersDark) {
+      //   value = colorObj.darkValue;
+      // }
       if (document.body.style.getPropertyValue(cssVarName) !== value) {
         document.body.style.setProperty(cssVarName, value);
       } else {
