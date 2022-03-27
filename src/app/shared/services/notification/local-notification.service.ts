@@ -175,14 +175,18 @@ export class LocalNotificationService {
    * see full scheduling options in type interface
    * see named actions below for configurations
    */
-  public async scheduleNotification(options: ILocalNotification, reloadNotifications = true) {
+  public async scheduleNotification(notification: ILocalNotification, reloadNotifications = true) {
     if (!this.permissionGranted) return;
-    options.extra = { ...options.extra };
-    const notifications = [{ ...LOCAL_NOTIFICATION_DEFAULTS, ...options }];
-    await LocalNotifications.schedule({ notifications });
-    // ensure extra field populated (TODO - could make stronger requirement elsewhere)
-    options.extra = { ...options.extra };
-    await this.addDBNotification(options as ILocalNotification);
+    // add default values
+    Object.entries(LOCAL_NOTIFICATION_DEFAULTS).forEach(([key, value]) => {
+      if (!notification.hasOwnProperty(key)) {
+        notification[key] = value;
+      }
+    });
+    // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
+    notification.largeBody = notification.largeBody || notification.body;
+    await LocalNotifications.schedule({ notifications: [notification] });
+    await this.addDBNotification(notification as ILocalNotification);
     if (reloadNotifications) {
       await this.loadNotifications();
     }
