@@ -1910,9 +1910,7 @@ const data_list: FlowTypes.Data_list[] = [
             za_xh: true,
             za_zu: true,
           },
-          location_text: {
-            tz_sw: true,
-          },
+          location_text: {},
         },
         _translatedFields: {
           title: {
@@ -2036,14 +2034,12 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Coping with @global.covid",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
@@ -2070,14 +2066,12 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Coping with grief",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_xh: true,
             za_zu: true,
           },
           location_text: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2212,7 +2206,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "How to talk to my teen",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2234,7 +2227,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Steps to deal with news",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2256,7 +2248,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "How can I help my teen choose well?",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2278,7 +2269,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "What influences teen decisions?",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2300,7 +2290,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "How does my teen feel?",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2322,7 +2311,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Changing negative to positive",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2351,7 +2339,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Help yourself cope",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2371,7 +2358,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Help your teen cope",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
@@ -2391,7 +2377,6 @@ const data_list: FlowTypes.Data_list[] = [
         title: "Practical steps",
         _translations: {
           title: {
-            tz_sw: true,
             za_af: true,
             za_st: true,
             za_tn: true,
