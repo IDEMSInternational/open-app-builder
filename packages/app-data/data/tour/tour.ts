@@ -168,7 +168,6 @@ const tour: FlowTypes.Tour[] = [
         _translations: {
           title: {},
           message_text: {
-            tz_sw: true,
             za_st: true,
             za_zu: true,
           },
