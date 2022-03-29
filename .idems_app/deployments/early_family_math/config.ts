@@ -1,4 +1,5 @@
 import { IDeploymentConfig } from "data-models";
+import { DEFAULT_CONSTANTS } from "data-models";
 
 /**
  * The default config should ideally be a superset of any extended configs
@@ -20,5 +21,11 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations/from_translators",
     source_strings_path: "packages/app-data/translations/to_translate",
   },
+  app_constants: DEFAULT_CONSTANTS,
 };
+// Override constants
+config.app_constants.APP_LANGUAGES.default = "us_en";
+config.app_constants.APP_HEADER_DEFAULTS.title = "Early Family Math";
+config.app_constants.APP_SIDEMENU_DEFAULTS.title = "EFM";
+
 export default config;

@@ -65,6 +65,32 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "app_menu",
+    status: "released",
+    rows: [
+      {
+        type: "button",
+        name: "button_reset",
+        value: "Reset app",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "reset_app",
+            args: [],
+            _raw: "click | reset_app",
+            _cleaned: "click | reset_app",
+          },
+        ],
+        _nested_name: "button_reset",
+      },
+    ],
+    _xlsxPath: "EFM_high_level_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "efm_activities",
     status: "released",
     rows: [
