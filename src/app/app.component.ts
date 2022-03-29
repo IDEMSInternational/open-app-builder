@@ -74,10 +74,12 @@ export class AppComponent {
   async initializeApp() {
     this.themeService.init();
     this.platform.ready().then(async () => {
+      // ensure deployment field set correctly for use in any startup services or templates
+      localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
-      const user = await this.userMetaService.init();
+      const user = this.userMetaService.userMeta;
       if (!user.first_app_open) {
         await this.surveyService.runSurvey("introSplash");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
@@ -108,6 +110,7 @@ export class AppComponent {
    **/
   async initialiseCoreServices() {
     await this.dbService.init();
+    await this.userMetaService.init();
     // CC 2021-05-14 - disabling reminders service until decide on full implementation
     // (ideally not requiring evaluation of all reminders on init)
     // this.remindersService.init();
@@ -210,8 +213,6 @@ export class AppComponent {
    * temporary workaround for setting unlocked content
    */
   private async hackSetAppOpenFields(user: IUserMeta) {
-    localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
-
     // TODO CC 2021-07-23 - Review if methods below still required
     let old_date = this.userMetaService.getUserMeta("current_date");
     await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });

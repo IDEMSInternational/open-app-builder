@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { generateRandomId } from "../../utils";
+import { Device } from "@capacitor/device";
 import { MODULE_LIST } from "../data/data.service";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
 export class UserMetaService {
   /** keep an in-memory copy of user to provide synchronously */
-  private userMeta: IUserMeta;
+  public userMeta: IUserMeta;
   constructor(private dbService: DbService) {}
 
   /** When first initialising ensure a default profile created and any newer defaults are merged with older user profiles */
@@ -16,13 +16,13 @@ export class UserMetaService {
     userMetaValues.forEach((v) => {
       userMeta[v.key] = v.value;
     });
-    if (!userMeta.uuid) {
-      console.log("initialising new user");
-      await this.setUserMeta({ ...userMeta, uuid: `temp_${generateRandomId()}` });
+    const { uuid } = await Device.getId();
+    // fix legacy user IDs - note this can likely be removed after v0.16
+    if (userMeta.uuid && userMeta.uuid !== uuid) {
+      await this.setUserMeta({ uuid, uuid_temp: userMeta.uuid });
     }
-    console.log("user initialised", userMeta);
+    userMeta.uuid = uuid;
     this.userMeta = userMeta;
-    return userMeta;
   }
 
   getUserMeta(key: keyof IUserMeta) {
@@ -43,6 +43,7 @@ interface IUserMetaEntry {
 
 export interface IUserMeta {
   uuid: string;
+  uuid_temp?: string; // legacy id that previously may have been set
   first_app_open: isostring;
   current_date: isostring;
   app_skin: "MODULE_FOCUS_SKIN" | "BLOBS" | "BUTTONS";

@@ -1,11 +1,12 @@
 {
   "name": "frontend",
-  "version": "0.14.3",
+  "version": "0.15.2",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
-    "packages/**/*"
+    "packages/*",
+    "packages/@idemsInternational/*"
   ],
   "scripts": {
     "ng": "ng",
