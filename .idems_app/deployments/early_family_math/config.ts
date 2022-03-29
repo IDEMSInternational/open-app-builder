@@ -6,7 +6,7 @@ import { DEFAULT_CONSTANTS } from "data-models";
  * to allow for easier post-processing
  */
 const config: IDeploymentConfig = {
-  name: "Early Family Math",
+  name: "early_family_math",
   google_drive: {
     sheets_folder_id: "1hiIYr8nnLcP1kd2xTFAQx3MvVp7IlPQL",
     assets_folder_id: "1VkoezEbbeCIeV5IksorFt5lFp6AURYur",
