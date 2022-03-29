@@ -27,5 +27,6 @@ const config: IDeploymentConfig = {
 config.app_constants.APP_LANGUAGES.default = "us_en";
 config.app_constants.APP_HEADER_DEFAULTS.title = "Early Family Math";
 config.app_constants.APP_SIDEMENU_DEFAULTS.title = "EFM";
+config.app_constants.NOTIFICATION_DEFAULTS.text = "You have a new message from Early Family Math";
 
 export default config;
