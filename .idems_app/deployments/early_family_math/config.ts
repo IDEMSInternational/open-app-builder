@@ -16,6 +16,7 @@ const config: IDeploymentConfig = {
     assets_output_path: "packages/app-data/assets",
   },
   translations: {
+    filter_language_codes: [],
     translated_strings_path: "packages/app-data/translations/from_translators",
     source_strings_path: "packages/app-data/translations/to_translate",
   },

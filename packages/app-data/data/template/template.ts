@@ -385,14 +385,7 @@ const template: FlowTypes.Template[] = [
             name: "prev_button",
             value: "Previous",
             _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
+              value: {},
             },
             action_list: [
               {
@@ -471,14 +464,7 @@ const template: FlowTypes.Template[] = [
             name: "next_button",
             value: "Next",
             _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
+              value: {},
             },
             action_list: [
               {
