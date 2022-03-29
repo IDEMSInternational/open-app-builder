@@ -69,6 +69,11 @@ const template: FlowTypes.Template[] = [
     status: "released",
     rows: [
       {
+        type: "debug_toggle",
+        name: "debug_toggle_bar",
+        _nested_name: "debug_toggle_bar",
+      },
+      {
         type: "button",
         name: "button_reset",
         value: "Reset app",
