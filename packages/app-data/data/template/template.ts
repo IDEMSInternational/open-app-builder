@@ -3,6 +3,467 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
+    flow_name: "template_story",
+    status: "released",
+    rows: [
+      {
+        name: "page_divider",
+        value: "EFMStorybooks/EFM-SB-0-PageDivider.svg",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "page_divider",
+      },
+      {
+        type: "template",
+        name: "cover",
+        value: "efm_sb_cover",
+        rows: [],
+        _nested_name: "cover",
+      },
+      {
+        type: "template",
+        name: "intro",
+        value: "efm_sb_intro",
+        rows: [],
+        _nested_name: "intro",
+      },
+      {
+        name: "description_1",
+        value: "First reading",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "description_1",
+      },
+      {
+        name: "description_2",
+        value: "Second reading",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "description_2",
+      },
+      {
+        name: "description_3",
+        value: "Third reading",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "description_3",
+      },
+      {
+        name: "answer_list",
+        value: [
+          "name:annotation_1 | text: @local.description_1",
+          "name:annotation_2 | text: @local.description_2",
+          "name:annotation_3 | text: @local.description_3",
+        ],
+        type: "set_variable",
+        _nested_name: "answer_list",
+        _dynamicFields: {
+          value: {
+            "0": [
+              {
+                fullExpression: "name:annotation_1 | text: @local.description_1",
+                matchedExpression: "@local.description_1",
+                type: "local",
+                fieldName: "description_1",
+              },
+            ],
+            "1": [
+              {
+                fullExpression: "name:annotation_2 | text: @local.description_2",
+                matchedExpression: "@local.description_2",
+                type: "local",
+                fieldName: "description_2",
+              },
+            ],
+            "2": [
+              {
+                fullExpression: "name:annotation_3 | text: @local.description_3",
+                matchedExpression: "@local.description_3",
+                type: "local",
+                fieldName: "description_3",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.description_1": ["value.0"],
+          "@local.description_2": ["value.1"],
+          "@local.description_3": ["value.2"],
+        },
+      },
+      {
+        name: "annotation",
+        value: "annotation_1",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "annotation",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_local",
+            args: ["annotation", "this.value"],
+            _raw: "changed | set_local: annotation: @local.radio_group",
+            _cleaned: "changed | set_local: annotation: @local.radio_group",
+          },
+        ],
+        parameter_list: {
+          answer_list: "@local.answer_list",
+        },
+        _nested_name: "radio_group",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_local: annotation: @local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_local: annotation: @local.radio_group",
+                  matchedExpression: "@local.radio_group",
+                  type: "local",
+                  fieldName: "radio_group",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "items",
+        name: "story_page",
+        rows: [
+          {
+            type: "image",
+            name: "image_@item.page_no",
+            value: "@item.illustration",
+            _translations: {
+              value: {},
+            },
+            condition: "@item.illustration",
+            _nested_name: "story_page.image_@item.page_no",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "image_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.illustration",
+                  matchedExpression: "@item.illustration",
+                  type: "item",
+                  fieldName: "illustration",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@item.illustration",
+                  matchedExpression: "@item.illustration",
+                  type: "item",
+                  fieldName: "illustration",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "story_page.image_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.page_no": ["name", "_nested_name"],
+              "@item.illustration": ["value", "condition"],
+            },
+          },
+          {
+            type: "text",
+            name: "story_@item.page_no",
+            value: "@item.story_text",
+            _translations: {
+              value: {},
+            },
+            condition: "@item.story_text",
+            parameter_list: {
+              style: "large emphasised",
+            },
+            _nested_name: "story_page.story_@item.page_no",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "story_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.story_text",
+                  matchedExpression: "@item.story_text",
+                  type: "item",
+                  fieldName: "story_text",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@item.story_text",
+                  matchedExpression: "@item.story_text",
+                  type: "item",
+                  fieldName: "story_text",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "story_page.story_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.page_no": ["name", "_nested_name"],
+              "@item.story_text": ["value", "condition"],
+            },
+          },
+          {
+            type: "text",
+            name: "anno_@item.page_no",
+            value: "@item.@local.annotation",
+            _translations: {
+              value: {},
+            },
+            style_list: ["margin-top: -20px"],
+            _nested_name: "story_page.anno_@item.page_no",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "anno_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.@local.annotation",
+                  matchedExpression: "@local.annotation",
+                  type: "local",
+                  fieldName: "annotation",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "story_page.anno_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.page_no": ["name", "_nested_name"],
+              "@local.annotation": ["value"],
+            },
+          },
+          {
+            type: "image",
+            name: "page_end_@item.page_no",
+            value: "@local.page_divider",
+            _translations: {
+              value: {},
+            },
+            style_list: ["margin-top: -7px"],
+            _nested_name: "story_page.page_end_@item.page_no",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "page_end_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@local.page_divider",
+                  matchedExpression: "@local.page_divider",
+                  type: "local",
+                  fieldName: "page_divider",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "story_page.page_end_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.page_no": ["name", "_nested_name"],
+              "@local.page_divider": ["value"],
+            },
+          },
+        ],
+        _nested_name: "story_page",
+      },
+      {
+        type: "image",
+        name: "last_page_image",
+        _nested_name: "last_page_image",
+      },
+    ],
+    _xlsxPath: "storybook_esmee.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "template_story_avtm",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "template_story",
+        value: "template_story",
+        rows: [
+          {
+            type: "nested_properties",
+            name: "cover",
+            rows: [
+              {
+                name: "book_cover",
+                value: "EFMStorybooks/EFM-SB-AVTM-1.png",
+                _translations: {
+                  value: {},
+                },
+                type: "set_variable",
+                _nested_name: "template_story.cover.book_cover",
+              },
+              {
+                name: "book_title",
+                value: "A Very Tall Man",
+                _translations: {
+                  value: {},
+                },
+                type: "set_variable",
+                _nested_name: "template_story.cover.book_title",
+              },
+              {
+                name: "book_author",
+                value: "Cornelius Wambi Gulere",
+                _translations: {
+                  value: {},
+                },
+                type: "set_variable",
+                _nested_name: "template_story.cover.book_author",
+              },
+              {
+                name: "book_illustrator",
+                value: "Catherine Groenewald",
+                _translations: {
+                  value: {},
+                },
+                type: "set_variable",
+                _nested_name: "template_story.cover.book_illustrator",
+              },
+            ],
+            _nested_name: "template_story.cover",
+          },
+          {
+            type: "nested_properties",
+            name: "intro",
+            rows: [
+              {
+                name: "intro_math",
+                value:
+                  "**Math Themes and Words** This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller",
+                _translations: {
+                  value: {},
+                },
+                type: "set_variable",
+                _nested_name: "template_story.intro.intro_math",
+              },
+            ],
+            _nested_name: "template_story.intro",
+          },
+          {
+            name: "story_page",
+            value: "@data.storybook_avtm",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "template_story.story_page",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.storybook_avtm",
+                  matchedExpression: "@data.storybook_avtm",
+                  type: "data",
+                  fieldName: "storybook_avtm",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.storybook_avtm": ["value"],
+            },
+          },
+          {
+            name: "last_page_image",
+            value: "EFMStorybooks/EFM-SB-AVTM-Back.png",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "template_story.last_page_image",
+          },
+        ],
+        _nested_name: "template_story",
+      },
+    ],
+    _xlsxPath: "storybook_esmee.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "home_screen",
     status: "released",
     rows: [
@@ -90,6 +551,24 @@ const template: FlowTypes.Template[] = [
           },
         ],
         _nested_name: "button_reset",
+      },
+      {
+        type: "button",
+        name: "button_template",
+        value: "Template list",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["/template"],
+            _raw: "click | go_to:/template",
+            _cleaned: "click | go_to:/template",
+          },
+        ],
+        _nested_name: "button_template",
       },
     ],
     _xlsxPath: "EFM_high_level_sheets.xlsx",
