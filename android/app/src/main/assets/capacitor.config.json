@@ -5,7 +5,7 @@
 	"webDir": "www",
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 5000,
+			"launchShowDuration": 7000,
 			"launchAutoHide": true
 		},
 		"CapacitorFirebaseAuth": {
