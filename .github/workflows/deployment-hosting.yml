@@ -23,7 +23,7 @@ jobs:
           echo ${GITHUB_REF##*/}
           if [ "$GITHUB_REF" = "master" ];                              \
           then echo "DEPLOYMENT_NAME=global" >> $GITHUB_ENV;
-          elif [ "$GITHUB_REF" = "feat/deployment-web" ];
+          elif [ "$GITHUB_REF" = "refs/heads/feat/deployment-web" ];
           then echo "DEPLOYMENT_NAME=plh_tz" >> $GITHUB_ENV;
           else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;
           fi;
