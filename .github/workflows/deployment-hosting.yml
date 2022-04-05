@@ -10,7 +10,7 @@ on:
       - master
       - feat/deployment-web
 jobs:
-  build_and_preview:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,10 +23,13 @@ jobs:
           echo ${GITHUB_REF##*/}
           if [ "$GITHUB_REF" = "master" ];                              \
           then echo "DEPLOYMENT_NAME=global" >> $GITHUB_ENV;
+          elif [ "$GITHUB_REF" = "feat/deployment-web" ];
+          then echo "DEPLOYMENT_NAME=plh_tz" >> $GITHUB_ENV;
           else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;
           fi;
         shell: bash
       - run: |
+          echo $GITHUB_REF
           echo $DEPLOYMENT_NAME
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
