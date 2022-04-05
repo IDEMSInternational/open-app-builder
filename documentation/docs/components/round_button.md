@@ -30,7 +30,7 @@
 |disabled	            |true                    |To be removed|
 |starting_seconds       |0 - (default)           |To be removed|
 |starting_seconds       |number                  |To be removed|
-|ping                   |'' - (default)          |To be removed|     
+|ping                   | empty string (default)          |To be removed|     
 |button_align           |center (default)        |To be removed|
 |button_align           |left                    |To be removed|
 |button_align           |right                   |To be removed|
