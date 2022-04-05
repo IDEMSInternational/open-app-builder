@@ -25,7 +25,7 @@
 |style                  |dark_orange             |Button colour dark orange|
 |style                  |home_screen             |Button colour primary positioned to the righthand side of the screen|
 |text                   |empty string (default)|No text on the button|
-|text                   |string                  |any string as a button text|
+|text                   |string                  |Any string as a button text|
 |disabled	            |false (default)         |To be removed|
 |disabled	            |true                    |To be removed|
 |starting_seconds       |0 - (default)           |To be removed|
