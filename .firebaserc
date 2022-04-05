@@ -2,11 +2,14 @@
   "targets": {
     "plh-teens-app1": {
       "hosting": {
-        "uat": [
-          "plh-teens-uat1"
-        ],
         "app": [
           "plh-teens-app1"
+        ],
+        "plh_tz": [
+          "plh-tz"
+        ],
+        "plh_za": [
+          "plh-za"
         ]
       }
     }
