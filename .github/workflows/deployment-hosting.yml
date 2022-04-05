@@ -8,7 +8,6 @@ on:
     branches:
       - deployment/*
       - master
-      - feat/deployment-web
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -23,8 +22,6 @@ jobs:
           echo ${GITHUB_REF##*/}
           if [ "$GITHUB_REF" = "master" ];                              \
           then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;
-          elif [ "$GITHUB_REF" = "refs/heads/feat/deployment-web" ];
-          then echo "DEPLOYMENT_NAME=plh_tz" >> $GITHUB_ENV;
           else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;
           fi;
         shell: bash
@@ -59,3 +56,6 @@ jobs:
           # NOTE - deployment target should be set in firebase.json and .firebaserc
           target: "${{env.DEPLOYMENT_NAME}}"
           channelId: live
+      # Known issue - success message does not specify correct deployment url
+      # Not used anywhere else so assume fine for now (only gh action output incorrect)
+      # https://github.com/FirebaseExtended/action-hosting-deploy/issues/126
