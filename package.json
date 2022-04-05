@@ -77,7 +77,6 @@
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "rxjs": "^6.6.7",
-    "survey-angular": "^1.8.76",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

@@ -12695,7 +12695,6 @@ __metadata:
     protractor: ~7.0.0
     rxjs: ^6.6.7
     simple-git-hooks: ^2.4.1
-    survey-angular: ^1.8.76
     typescript: 4.4.2
     zone.js: ~0.11.4
   languageName: unknown
@@ -23526,13 +23525,6 @@ __metadata:
     has-flag: ^4.0.0
     supports-color: ^7.0.0
   checksum: aef04fb41f4a67f1bc128f7c3e88a81b6cf2794c800fccf137006efe5bafde281da3e42e72bf9206c2fcf42e6438f37e3a820a389214d0a88613ca1f2d36076a
-  languageName: node
-  linkType: hard
-
-"survey-angular@npm:^1.8.76":
-  version: 1.8.78
-  resolution: "survey-angular@npm:1.8.78"
-  checksum: 3840176f10ae4c228abd1323c7665805c2599c37eda4f93b0c635fc641ba2624ed5c8dc449c16c2ef4673808582a3d5e58e9db54b117dedf6319dd89ba565bda
   languageName: node
   linkType: hard
 
