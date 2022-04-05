@@ -2,10 +2,10 @@
 
 ## Example
 
-| type        | name                | value                          |parameter_list |
-| ---------   | ------------        | ------                         |--------- |
-|round_button |round_button_par_2_1	|Icon_src parameter empty string |icon_src: |
-|round_button |round_button_par_2_2	|Icon_src parameter string	     |icon_src: plh_images/icons/play.svg|
+| type        | name                                      |parameter_list |
+| ---------   | ------------                         |--------- |
+|round_button |round_button_par_2_1	 |icon_src: |
+|round_button |round_button_par_2_2	     |icon_src: plh_images/icons/play.svg|
 
 ![](images/round_button.png)
 
