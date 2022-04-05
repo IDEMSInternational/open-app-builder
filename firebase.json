@@ -12,6 +12,17 @@
       ]
     },
     {
+      "target": "plh_global",
+      "public": "www",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
       "target": "plh_tz",
       "public": "www",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],

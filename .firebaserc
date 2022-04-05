@@ -5,6 +5,9 @@
         "app": [
           "plh-teens-app1"
         ],
+        "plh_global": [
+          "plh-global"
+        ],
         "plh_tz": [
           "plh-tz"
         ],
