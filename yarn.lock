@@ -23605,9 +23605,9 @@ __metadata:
   linkType: hard
 
 "survey-angular@npm:^1.8.76":
-  version: 1.8.78
-  resolution: "survey-angular@npm:1.8.78"
-  checksum: 3840176f10ae4c228abd1323c7665805c2599c37eda4f93b0c635fc641ba2624ed5c8dc449c16c2ef4673808582a3d5e58e9db54b117dedf6319dd89ba565bda
+  version: 1.9.23
+  resolution: "survey-angular@npm:1.9.23"
+  checksum: 0a6aa4997430cdeaf1a63e9dc420c5c9ab386b15fa054d2200aae3bed962a4ca840352448296cb4449f4afbbcb99640aa120bc083b37361906328d2cf15e1cb7
   languageName: node
   linkType: hard
 

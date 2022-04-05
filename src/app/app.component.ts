@@ -4,10 +4,9 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
-import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { SurveyService } from "./feature/survey/survey.service";
+import { _DeprecatedSurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
@@ -48,12 +47,11 @@ export class AppComponent {
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
-    private pushNotificationService: PushNotificationService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private surveyService: SurveyService,
+    private _deprecatedSurveyService: _DeprecatedSurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -74,7 +72,6 @@ export class AppComponent {
   }
 
   async initializeApp() {
-    this.themeService.init();
     this.platform.ready().then(async () => {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
@@ -83,21 +80,20 @@ export class AppComponent {
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
       if (!user.first_app_open) {
-        await this.surveyService.runSurvey("introSplash");
+        await this._deprecatedSurveyService.runSurvey("introSplash");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
         await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
-      if (Capacitor.isNative) {
+      if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
           this.removeConsoleLogs();
         }
-        SplashScreen.hide();
-        this.pushNotificationService.init();
+        await SplashScreen.hide();
       }
-      this.analyticsService.init();
+      // Show main template
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
     });
@@ -114,8 +110,8 @@ export class AppComponent {
     this.crashlyticsService.init(); // Start init but do not need to wait for complete
     await this.dbService.init();
     await this.userMetaService.init();
-    // CC 2021-05-14 - disabling reminders service until decide on full implementation
-    // (ideally not requiring evaluation of all reminders on init)
+    this.themeService.init();
+    /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
     await this.serverService.init();
@@ -123,10 +119,17 @@ export class AppComponent {
     await this.templateTranslateService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
-    await this.localNotificationInteractionService.init();
-    await this.localNotificationService.init();
     await this.campaignService.init();
-    await this.dbSyncService.init();
+
+    // Initialise additional services in a non-blocking way
+    setTimeout(async () => {
+      await this.localNotificationInteractionService.init();
+      await this.localNotificationService.init();
+      await this.dbSyncService.init();
+      await this.analyticsService.init();
+      /** CC 2022-04-01 - Disable service as not currently in use */
+      // await this.pushNotificationService.init();
+    }, 1000);
   }
 
   /**
