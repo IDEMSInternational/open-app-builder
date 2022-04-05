@@ -57,5 +57,5 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
           projectId: plh-teens-app1
           # NOTE - deployment target should be set in firebase.json and .firebaserc
-          target: "${{DEPLOYMENT_NAME}}"
+          target: "${{env.DEPLOYMENT_NAME}}"
           channelId: live
