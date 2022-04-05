@@ -155,11 +155,7 @@ export class IntroSplashSurveyComponent implements OnInit {
  * survey service
  */
 const IntroSplashSurvey: ISurvey = {
-  allowRepeats: false,
   surveyId: "intro_splash",
-  upgrade: {},
-  version: 1,
   surveyCustomComponent: IntroSplashSurveyComponent,
-  surveyCustomForm: null,
 };
 export default IntroSplashSurvey;

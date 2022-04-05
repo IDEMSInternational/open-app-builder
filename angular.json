@@ -51,10 +51,6 @@
               {
                 "input": "src/global.scss",
                 "inject": true
-              },
-              {
-                "input": "node_modules/survey-angular/modern.css",
-                "inject": true
               }
             ],
             "scripts": ["./node_modules/intro.js/intro.js"],
