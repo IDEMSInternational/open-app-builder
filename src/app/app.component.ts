@@ -26,6 +26,7 @@ import { LocalNotificationInteractionService } from "./shared/services/notificat
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 
 import { APP_CONSTANTS } from "./data";
+import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 
 const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
 
@@ -62,6 +63,7 @@ export class AppComponent {
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
+    private crashlyticsService: CrashlyticsService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -105,6 +107,7 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   async initialiseCoreServices() {
+    this.crashlyticsService.init(); // Start init but do not need to wait for complete
     await this.dbService.init();
     await this.userMetaService.init();
     this.themeService.init();
