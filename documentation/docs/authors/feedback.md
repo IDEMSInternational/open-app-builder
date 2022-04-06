@@ -87,7 +87,6 @@ Alongside user-specified data various metadata will be added. See example output
             "isVirtual": false,
             "webViewVersion": "97.0.4692.71"
         },
-        "envName": "dev",
         "pathname": "/feedback",
         "templateTarget": [
             {
