@@ -2,10 +2,10 @@
 
 ## Example
 
-| type         | name                  | value                              |parameter_list |
-| ---------    | ------------          | ------                             |--------- |
-|square_button |square_button_par_3_1  |Style parameter information         |style: information|
-|square_button |square_button_par_3_2  |Style parameter navigation          |style: navigation|
+| type         | name                  |parameter_list |
+| ---------    | ------------             |--------- |
+|square_button |square_button_par_3_1          |style: information|
+|square_button |square_button_par_3_2         |style: navigation|
 
 ![](images/square_button.png)
 
