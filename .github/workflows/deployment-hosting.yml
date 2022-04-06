@@ -19,10 +19,9 @@ jobs:
       # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Environment Deployment
         run: |
-          echo ${GITHUB_REF##*/}
-          if [ "$GITHUB_REF" = "master" ];                              \
-          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;
-          else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;
+          if [ "$GITHUB_REF" = "refs/heads/master" ];                \
+          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
+          else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
           fi;
         shell: bash
       - run: |
