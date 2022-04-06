@@ -101,8 +101,8 @@ const APP_SIDEMENU_DEFAULTS = {
   template_name: "app_menu",
   // show the current version number in the menu
   should_show_version: true,
-  // show the current env (e.g. dev/prod)
-  should_show_env: false,
+  // show the current deployment name (e.g. PLH ZA)
+  should_show_deployment_name: false,
 };
 
 /** Define app-specific startup tasks and logic */
