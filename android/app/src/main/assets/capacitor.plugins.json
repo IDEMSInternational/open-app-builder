@@ -1,5 +1,13 @@
 [
 	{
+		"pkg": "@capacitor-community/firebase-crashlytics",
+		"classpath": "com.getcapacitor.community.firebasecrashlytics.FirebaseCrashlyticsPlugin"
+	},
+	{
+		"pkg": "@capacitor-firebase/performance",
+		"classpath": "dev.robingenz.capacitorjs.plugins.firebase.performance.FirebasePerformancePlugin"
+	},
+	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
 	},
