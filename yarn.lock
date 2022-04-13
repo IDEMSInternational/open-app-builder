@@ -8543,7 +8543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^8.1.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
+"commander@npm:^8.0.0, commander@npm:^8.1.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
   version: 8.3.0
   resolution: "commander@npm:8.3.0"
   checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
@@ -11992,6 +11992,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"extract-math@npm:1.0.5":
+  version: 1.0.5
+  resolution: "extract-math@npm:1.0.5"
+  checksum: 1a62237e4389e72063fc68d7f5458faca588635ac5609952909a8e88b06c4e5d19f336cbc01071ce5c89f21b3fa78e2aa75a17ef1a3b6bceeadbeb7f191530fb
+  languageName: node
+  linkType: hard
+
+"extract-math@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "extract-math@npm:1.2.3"
+  dependencies:
+    escape-string-regexp: ^4.0.0
+  checksum: 019a2a8806568587177cd06ffc7ccb0b5bcbc56b22e6e8d5111bbd209379e4b4916d7ffac532e01d69f3b72f28e0f6b9206f8c2577e56bf3cd8ef13b1943d236
+  languageName: node
+  linkType: hard
+
 "extract-zip@npm:2.0.1, extract-zip@npm:^2.0.1":
   version: 2.0.1
   resolution: "extract-zip@npm:2.0.1"
@@ -12670,6 +12686,7 @@ __metadata:
     eslint-plugin-import: 2.23.4
     eslint-plugin-jsdoc: 35.4.0
     eslint-plugin-prefer-arrow: 1.2.3
+    extract-math: ^1.2.3
     firebase: ^8.6.8
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
@@ -12684,9 +12701,11 @@ __metadata:
     karma-jasmine: ~4.0.1
     karma-jasmine-html-reporter: ^1.6.0
     karma-typescript: ^5.5.1
+    katex: ^0.15.3
     lint-staged: ^11.0.0
     lottie-web: ^5.7.14
     marked: ^2.0.1
+    ng-katex: ^2.0.3
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^7.0.4
@@ -16273,6 +16292,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"katex@npm:0.11.1":
+  version: 0.11.1
+  resolution: "katex@npm:0.11.1"
+  dependencies:
+    commander: ^2.19.0
+  bin:
+    katex: cli.js
+  checksum: b26017d12bc06b085ee0b3d62825b473bc74987c2309008a13cca80b9922ed8b88f1f02b264d75f53dd604c318416bdb74a3035e761265417152f11c440e623d
+  languageName: node
+  linkType: hard
+
+"katex@npm:^0.15.3":
+  version: 0.15.3
+  resolution: "katex@npm:0.15.3"
+  dependencies:
+    commander: ^8.0.0
+  bin:
+    katex: cli.js
+  checksum: 12bec82d9ae9f122b9aeafaf2de476e702d12ae19bb9bdd9c8c24126fd81e752047bb856254af98ca54fc51f3bb7f149b3902d65dcdafb5e3deeb691ec4d3db2
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^3.0.0":
   version: 3.1.0
   resolution: "keyv@npm:3.1.0"
@@ -18016,6 +18057,21 @@ __metadata:
   version: 1.0.0
   resolution: "next-tick@npm:1.0.0"
   checksum: 83fcb3d4f8d9380210b1c2b8a610463602d80283f0c0c8571c1688e1ad6cbf3a16b345f5bb7212617d4898bedcfa10dff327dc09ec20a112a5bf43a0271375fb
+  languageName: node
+  linkType: hard
+
+"ng-katex@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "ng-katex@npm:2.0.3"
+  dependencies:
+    extract-math: 1.0.5
+    katex: 0.11.1
+    tslib: ^1.9.0
+  peerDependencies:
+    "@angular/common": ">=4.0.0"
+    "@angular/core": ">=4.0.0"
+    "@angular/platform-browser": ">=4.0.0"
+  checksum: 00a37f79346c2fe7120da2c7216f47af8a57a3314f0131c9fd9c8c2c638245cad0aaa5c4912af1ca80ef418e423b9bdc19623e6a141a3b0fa442369973e3f0d5
   languageName: node
   linkType: hard
 

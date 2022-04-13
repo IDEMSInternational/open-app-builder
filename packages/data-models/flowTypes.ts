@@ -382,7 +382,8 @@ export namespace FlowTypes {
     | "debug_toggle"
     | "items"
     | "select_text"
-    | "html";
+    | "html"
+    | "latex";
 
   export interface TemplateRow extends Row_with_translations {
     type: TemplateRowType;

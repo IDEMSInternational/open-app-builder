@@ -3,6 +3,316 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
+    flow_name: "comp_latex",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "latex",
+        value:
+          "You can write text that contains expressions inline like this: $x ^ 2 + 5$, by using the format \\$expression\\$.\nYou also can write expressions in display mode as follows: $$\\sum_{i=1}^n(x_i^2 - \\overline{x}^2)$$\nThis is achieved by using a double \\$ symbol, like \\$\\$expression\\$\\$.\nYou can escape the \\$ by using \\\\$ in the text input.",
+        _translations: {
+          value: {},
+        },
+        name: "latex",
+        _nested_name: "latex",
+      },
+    ],
+    _xlsxPath: "quality_assurance/components_demo/component_latex.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "comp_checkbox_button_1",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "simple_checkbox",
+        name: "default",
+        _nested_name: "default",
+      },
+      {
+        type: "simple_checkbox",
+        name: "par_1_1",
+        parameter_list: {
+          align: "center",
+        },
+        _nested_name: "par_1_1",
+      },
+      {
+        type: "simple_checkbox",
+        name: "par_1_2",
+        parameter_list: {
+          align: "left",
+        },
+        _nested_name: "par_1_2",
+      },
+      {
+        type: "simple_checkbox",
+        name: "par_1_3",
+        parameter_list: {
+          align: "right",
+        },
+        _nested_name: "par_1_3",
+      },
+    ],
+    _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "comp_checkbox_button_2",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "simple_checkbox",
+        name: "default",
+        _nested_name: "default",
+      },
+      {
+        type: "simple_checkbox",
+        name: "par_2_1",
+        parameter_list: {
+          label_text: "",
+        },
+        _nested_name: "par_2_1",
+      },
+      {
+        type: "simple_checkbox",
+        name: "par_2_2",
+        parameter_list: {
+          label_text: "label text",
+        },
+        _nested_name: "par_2_2",
+      },
+    ],
+    _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "comp_checkbox_button_3",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "simple_checkbox",
+        name: "default",
+        _nested_name: "default",
+      },
+      {
+        type: "simple_checkbox",
+        name: "par_3_1",
+        parameter_list: {
+          style: "''",
+        },
+        _nested_name: "par_3_1",
+      },
+    ],
+    _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "comp_text",
+    status: "released",
+    flow_subtype: "component_demo",
+    rows: [
+      {
+        type: "text",
+        name: "text_default",
+        value: "Default",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text_default",
+      },
+      {
+        type: "title",
+        name: "title_1",
+        value: "Text alignment",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_1",
+      },
+      {
+        type: "text",
+        name: "text_align_1",
+        value: "Left aligned text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          text_align: "left",
+        },
+        _nested_name: "text_align_1",
+      },
+      {
+        type: "text",
+        name: "text_align_2",
+        value: "Centered text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          text_align: "center",
+        },
+        _nested_name: "text_align_2",
+      },
+      {
+        type: "text",
+        name: "text_align_3",
+        value: "Right aligned text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          text_align: "right",
+        },
+        _nested_name: "text_align_3",
+      },
+      {
+        type: "title",
+        name: "title_2",
+        value: "Formatting",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_2",
+      },
+      {
+        type: "text",
+        name: "text_formatting_1",
+        value: "Standard text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "standard",
+        },
+        _nested_name: "text_formatting_1",
+      },
+      {
+        type: "text",
+        name: "text_formatting_2",
+        value: "Contextual text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "contextual",
+        },
+        _nested_name: "text_formatting_2",
+      },
+      {
+        type: "text",
+        name: "text_formatting_3",
+        value: "Emphasised text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_formatting_3",
+      },
+      {
+        type: "text",
+        name: "text_formatting_4",
+        value: "Alternative text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "alternative",
+        },
+        _nested_name: "text_formatting_4",
+      },
+      {
+        type: "title",
+        name: "title_3",
+        value: "To be removed",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_3",
+      },
+      {
+        type: "text",
+        name: "text_size_1",
+        value: "Small text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "small",
+        },
+        _nested_name: "text_size_1",
+      },
+      {
+        type: "text",
+        name: "text_size_2",
+        value: "Medium text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "medium",
+        },
+        _nested_name: "text_size_2",
+      },
+      {
+        type: "text",
+        name: "text_size_3",
+        value: "Large text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "large",
+        },
+        _nested_name: "text_size_3",
+      },
+      {
+        type: "text",
+        name: "text_position_1",
+        value: "Left aligned text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "left",
+        },
+        _nested_name: "text_position_1",
+      },
+      {
+        type: "text",
+        name: "text_position_2",
+        value: "Centered text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "center",
+        },
+        _nested_name: "text_position_2",
+      },
+      {
+        type: "text",
+        name: "text_position_3",
+        value: "Right aligned text",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "right",
+        },
+        _nested_name: "text_position_3",
+      },
+    ],
+    _xlsxPath: "quality_assurance/components_demo/component_text.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "comp_round_button",
     status: "released",
     flow_subtype: "component_demo",
@@ -45,6 +355,14 @@ const template: FlowTypes.Template[] = [
           icon_src: "plh_images/icons/play.svg",
         },
         _nested_name: "round_button_par_2_2",
+      },
+      {
+        type: "round_button",
+        name: "round_button_par_2_3",
+        parameter_list: {
+          icon_src: "body-outline",
+        },
+        _nested_name: "round_button_par_2_3",
       },
       {
         type: "title",
@@ -107,10 +425,6 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "round_button_par_4_1",
-        value: "Style parameter home screen",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
           style: "home_screen",
         },
@@ -119,7 +433,7 @@ const template: FlowTypes.Template[] = [
       {
         type: "title",
         name: "title_5",
-        value: "To be removed",
+        value: "Button text",
         _translations: {
           value: {},
         },
@@ -128,46 +442,23 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "round_button_par_5_1",
-        value: "Button align parameter centre",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
-          button_align: "centre",
-          style: "flexible",
+          text: "",
         },
         _nested_name: "round_button_par_5_1",
       },
       {
         type: "round_button",
         name: "round_button_par_5_2",
-        value: "Button align parameter left",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
-          button_align: "left",
-          style: "flexible",
+          text: "any string as a button text",
         },
         _nested_name: "round_button_par_5_2",
       },
       {
-        type: "round_button",
-        name: "round_button_par_5_3",
-        value: "Button align parameter right",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          button_align: "right",
-          style: "flexible",
-        },
-        _nested_name: "round_button_par_5_3",
-      },
-      {
         type: "title",
         name: "title_6",
-        value: "Button text",
+        value: "To be removed",
         _translations: {
           value: {},
         },
@@ -176,80 +467,26 @@ const template: FlowTypes.Template[] = [
       {
         type: "round_button",
         name: "round_button_par_6_1",
-        value: "Text parameter empty string",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
-          text: "",
+          starting_seconds: "0",
         },
         _nested_name: "round_button_par_6_1",
       },
       {
         type: "round_button",
         name: "round_button_par_6_2",
-        value: "Text parameter string",
-        _translations: {
-          value: {},
-        },
         parameter_list: {
-          text: "any string as a button text",
+          starting_seconds: "5",
         },
         _nested_name: "round_button_par_6_2",
       },
       {
-        type: "title",
-        name: "title_7",
-        value: "To be removed",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_7",
-      },
-      {
         type: "round_button",
-        name: "round_button_par_7_1",
-        value: "Starting seconds parameter 0",
-        _translations: {
-          value: {},
-        },
+        name: "round_button_par_6_3",
         parameter_list: {
-          "starting seconds": "",
+          ping: "plh_audio/timer/bell_1.mp3",
         },
-        _nested_name: "round_button_par_7_1",
-      },
-      {
-        type: "round_button",
-        name: "round_button_par_7_2",
-        value: "Starting seconds parameter 5",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          "starting seconds": "5",
-        },
-        _nested_name: "round_button_par_7_2",
-      },
-      {
-        type: "title",
-        name: "title_8",
-        value: "To be removed",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_8",
-      },
-      {
-        type: "round_button",
-        name: "round_button_par_8_1",
-        value: 'Ping parameter "',
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          Ping: "''",
-        },
-        _nested_name: "round_button_par_8_1",
+        _nested_name: "round_button_par_6_3",
       },
     ],
     _xlsxPath: "quality_assurance/components_demo/component_round_button .xlsx",
@@ -725,207 +962,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/components_demo/component_button.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "comp_text",
-    status: "released",
-    flow_subtype: "component_demo",
-    rows: [
-      {
-        type: "text",
-        name: "text_default",
-        value: "Default",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text_default",
-      },
-      {
-        type: "title",
-        name: "title_1",
-        value: "Text alignment",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_1",
-      },
-      {
-        type: "text",
-        name: "text_align_1",
-        value: "Left aligned text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          text_align: "left",
-        },
-        _nested_name: "text_align_1",
-      },
-      {
-        type: "text",
-        name: "text_align_2",
-        value: "Centered text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          text_align: "center",
-        },
-        _nested_name: "text_align_2",
-      },
-      {
-        type: "text",
-        name: "text_align_3",
-        value: "Right aligned text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          text_align: "right",
-        },
-        _nested_name: "text_align_3",
-      },
-      {
-        type: "title",
-        name: "title_2",
-        value: "Formatting",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_2",
-      },
-      {
-        type: "text",
-        name: "text_formatting_1",
-        value: "Standard text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "standard",
-        },
-        _nested_name: "text_formatting_1",
-      },
-      {
-        type: "text",
-        name: "text_formatting_2",
-        value: "Contextual text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "contextual",
-        },
-        _nested_name: "text_formatting_2",
-      },
-      {
-        type: "text",
-        name: "text_formatting_3",
-        value: "Emphasised text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_formatting_3",
-      },
-      {
-        type: "text",
-        name: "text_formatting_4",
-        value: "Alternative text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "alternative",
-        },
-        _nested_name: "text_formatting_4",
-      },
-      {
-        type: "title",
-        name: "title_3",
-        value: "To be removed",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_3",
-      },
-      {
-        type: "text",
-        name: "text_size_1",
-        value: "Small text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "small",
-        },
-        _nested_name: "text_size_1",
-      },
-      {
-        type: "text",
-        name: "text_size_2",
-        value: "Medium text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "medium",
-        },
-        _nested_name: "text_size_2",
-      },
-      {
-        type: "text",
-        name: "text_size_3",
-        value: "Large text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "large",
-        },
-        _nested_name: "text_size_3",
-      },
-      {
-        type: "text",
-        name: "text_position_1",
-        value: "Left aligned text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "left",
-        },
-        _nested_name: "text_position_1",
-      },
-      {
-        type: "text",
-        name: "text_position_2",
-        value: "Centered text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "center",
-        },
-        _nested_name: "text_position_2",
-      },
-      {
-        type: "text",
-        name: "text_position_3",
-        value: "Right aligned text",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "right",
-        },
-        _nested_name: "text_position_3",
-      },
-    ],
-    _xlsxPath: "quality_assurance/components_demo/component_text.xlsx",
   },
 ];
 export default template;

@@ -86,6 +86,42 @@ const tour: FlowTypes.Tour[] = [
   },
   {
     flow_type: "tour",
+    flow_name: "debug_tour_var_hyphen",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "step",
+        title: "@global.parent_app-based learning",
+        _translations: {
+          title: {},
+          message_text: {},
+        },
+        message_text: "<p>Does not work in gb_en</p>",
+        route: "template/debug_var_hyphen",
+      },
+      {
+        type: "step",
+        title: "Your @global.parent_app Code",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          message_text: {},
+        },
+        message_text: "<p>Works in gb_en, not in za_af</p>",
+        route: "template/debug_var_hyphen",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "tour",
     flow_name: "debug_tour",
     status: "released",
     flow_subtype: "debug",
@@ -196,60 +232,6 @@ const tour: FlowTypes.Tour[] = [
           "This will navigate to same page as start\n(TODO - provide 'back' nav function)",
         route: "template/example_tour_template_1",
         exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_tour.xlsx",
-  },
-  {
-    flow_type: "tour",
-    flow_name: "debug_tour_translation",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "step",
-        title: "Welcome to @global.parent_app",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          message_text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        message_text:
-          "<p>Welcome to @global.parent_app.</p>\n\n<p>You deserve to feel good, and have happier family relationships.</p>\n\n<p>@global.parent_app will support you and your family in three ways:</p>",
-        template_component_name: "home_screen",
-        route: "template/home_screen",
-      },
-      {
-        type: "step",
-        title: "@global.weekly_workshops quick start",
-        _translations: {
-          title: {},
-          message_text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        message_text:
-          "<p>The round button appears when a new @global.weekly_workshop is ready for you to do.</p>",
-        template_component_name: "tile_weekly_workshops",
-        route: "template/home_screen",
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_tour.xlsx",
