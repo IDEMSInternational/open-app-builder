@@ -7717,6 +7717,8 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "nf_inactive_day_1",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -7780,6 +7782,8 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "nf_inactive_week_1",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -7822,6 +7826,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_inactive_week_2",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -7864,6 +7870,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_inactive_week_3",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -7906,6 +7914,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_inactive_week_4",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -7957,6 +7967,8 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "nf_inactive_month_1",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -7999,6 +8011,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_inactive_month_2",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -8041,6 +8055,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_inactive_month_3",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -8083,6 +8099,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_inactive_month_4",
+        workshop: "independent",
+        message_type: "inactive",
         action_list: [
           {
             trigger: "sent",
@@ -8134,6 +8152,8 @@ const data_list: FlowTypes.Data_list[] = [
     rows: [
       {
         id: "nf_generic_1",
+        workshop: "independent",
+        message_type: "generic",
         action_list: [
           {
             trigger: "sent",
@@ -8188,6 +8208,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_generic_2",
+        workshop: "independent",
+        message_type: "generic",
         action_list: [
           {
             trigger: "sent",
@@ -8242,6 +8264,8 @@ const data_list: FlowTypes.Data_list[] = [
       },
       {
         id: "nf_generic_3",
+        workshop: "independent",
+        message_type: "generic",
         action_list: [
           {
             trigger: "sent",

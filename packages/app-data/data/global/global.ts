@@ -8,6 +8,15 @@ const global: FlowTypes.Global[] = [
     rows: [
       {
         type: "declare_global_constant",
+        name: "topic_intro_name",
+        value: "Sbo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
         name: "guide_1_name",
         value: "@global.male_adult_name_1",
         _translations: {
@@ -730,6 +739,660 @@ const global: FlowTypes.Global[] = [
       },
     ],
     _xlsxPath: "global/data/localisation_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localised_names_za",
+    status: "released",
+    override_target: "localised_names",
+    override_condition: '@fields._deployment_name == "plh_za"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_1",
+        value: "Thandie",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Lindiwe",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Nontlantla",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Zanele",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Khwezi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Thuli",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Asive",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Zama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Nombuso",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Karabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Gogo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
+        value: "Thabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Sabelo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "Rudzani",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "Lonwabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_5",
+        value: "Pule",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Father",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Father",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Mkhulu",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "za/data/localisation_globals_za.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localisation_options_za",
+    status: "released",
+    override_target: "localisation_options",
+    override_condition: '@fields._deployment_name == "plh_za"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "teen_social_medium",
+        value: "TikTok",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "whatsapp",
+        value: "WhatsApp",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "currency",
+        value: "R",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_estimate",
+        value: 3000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_precise",
+        value: 3400,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "number_of_beans",
+        value: 20,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "teen_age_bracket",
+        value: "10-17",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "adult_age_bracket",
+        value: "18+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "covid",
+        value: "COVID",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "za/data/localisation_globals_za.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localised_names_tz",
+    status: "released",
+    override_target: "localised_names",
+    override_condition: '@fields._deployment_name == "plh_tz"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_1",
+        value: "Amina",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Naomi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Rebeka",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Esta",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Faraja",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Shukuru",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Neema",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Upendo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Malaika",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Debora",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Bibi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
+        value: "Baraka",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Joshua",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "Solomoni",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "John",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_5",
+        value: "Benjamini",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Baba",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Baba",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Babu",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "tz/data/localisation_globals_tz.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localisation_options_tz",
+    status: "released",
+    override_target: "localisation_options",
+    override_condition: '@fields._deployment_name == "plh_tz"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "teen_social_medium",
+        value: "Facebook",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "whatsapp",
+        value: "WhatsApp",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "currency",
+        value: "TSh",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_estimate",
+        value: 50000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_precise",
+        value: 52000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "number_of_beans",
+        value: 20,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "teen_age_bracket",
+        value: "10-17",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "adult_age_bracket",
+        value: "18+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "covid",
+        value: "COVID",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "tz/data/localisation_globals_tz.xlsx",
   },
   {
     flow_type: "global",
@@ -4725,660 +5388,6 @@ const global: FlowTypes.Global[] = [
       },
     ],
     _xlsxPath: "global/data/suggestion_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "localised_names_tz",
-    status: "released",
-    override_target: "localised_names",
-    override_condition: '@fields._deployment_name == "plh_tz"',
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_1",
-        value: "Amina",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_2",
-        value: "Naomi",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_3",
-        value: "Rebeka",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_4",
-        value: "Esta",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_1",
-        value: "Faraja",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_2",
-        value: "Shukuru",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_3",
-        value: "Neema",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_4",
-        value: "Upendo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_5",
-        value: "Malaika",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_6",
-        value: "Debora",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_1",
-        value: "Bibi",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_2",
-        value: "Mama",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_3",
-        value: "Mama",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_4",
-        value: "Mama",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_adult_name_1",
-        value: "Baraka",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_1",
-        value: "Alex",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_2",
-        value: "Joshua",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_3",
-        value: "Solomoni",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_4",
-        value: "John",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_5",
-        value: "Benjamini",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_1",
-        value: "Baba",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_2",
-        value: "Baba",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_3",
-        value: "Babu",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "tz/data/localisation_globals_tz.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "localisation_options_tz",
-    status: "released",
-    override_target: "localisation_options",
-    override_condition: '@fields._deployment_name == "plh_tz"',
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "teen_social_medium",
-        value: "Facebook",
-        _translations: {
-          value: {},
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "whatsapp",
-        value: "WhatsApp",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_st: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "currency",
-        value: "TSh",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "monthly_income_estimate",
-        value: 50000,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "monthly_income_precise",
-        value: 52000,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "number_of_beans",
-        value: 20,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "teen_age_bracket",
-        value: "10-17",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "adult_age_bracket",
-        value: "18+",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "covid",
-        value: "COVID",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-    ],
-    _xlsxPath: "tz/data/localisation_globals_tz.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "localised_names_za",
-    status: "released",
-    override_target: "localised_names",
-    override_condition: '@fields._deployment_name == "plh_za"',
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_1",
-        value: "Thandie",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_2",
-        value: "Lindiwe",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_3",
-        value: "Nontlantla",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_4",
-        value: "Zanele",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_1",
-        value: "Khwezi",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_2",
-        value: "Thuli",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_3",
-        value: "Asive",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_4",
-        value: "Zama",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_5",
-        value: "Nombuso",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_6",
-        value: "Karabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_1",
-        value: "Gogo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_2",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_3",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_4",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_adult_name_1",
-        value: "Thabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_1",
-        value: "Alex",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_2",
-        value: "Sabelo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_3",
-        value: "Rudzani",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_4",
-        value: "Lonwabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_5",
-        value: "Pule",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_1",
-        value: "Father",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_2",
-        value: "Father",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_3",
-        value: "Mkhulu",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-    ],
-    _xlsxPath: "za/data/localisation_globals_za.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "localisation_options_za",
-    status: "released",
-    override_target: "localisation_options",
-    override_condition: '@fields._deployment_name == "plh_za"',
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "teen_social_medium",
-        value: "TikTok",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "whatsapp",
-        value: "WhatsApp",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_st: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "currency",
-        value: "R",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "monthly_income_estimate",
-        value: 3000,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "monthly_income_precise",
-        value: 3400,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "number_of_beans",
-        value: 20,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "teen_age_bracket",
-        value: "10-17",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "adult_age_bracket",
-        value: "18+",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "covid",
-        value: "COVID",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-    ],
-    _xlsxPath: "za/data/localisation_globals_za.xlsx",
   },
 ];
 export default global;

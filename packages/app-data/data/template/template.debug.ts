@@ -3,6 +3,8254 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
+    flow_name: "feature_tile",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "tile_component",
+        name: "tile_example_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/star.svg",
+          first_line_text: "First item text",
+          second_line_text: "Second item text",
+          style: "quick_start_passive",
+        },
+        _nested_name: "tile_example_1",
+      },
+      {
+        name: "icon_src",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "icon_src",
+      },
+      {
+        name: "first_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "first_line_text",
+      },
+      {
+        name: "second_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "second_line_text",
+      },
+      {
+        name: "style",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "style",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "Second item text",
+          second_line_text: "Second item text",
+          style: "quick_start",
+        },
+        _nested_name: "tile_example_2",
+      },
+      {
+        name: "first_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "first_line_text",
+      },
+      {
+        name: "second_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "second_line_text",
+      },
+      {
+        name: "style",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "style",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "Third item text",
+          second_line_text: "Third item text",
+          style: "quick_start_blue",
+        },
+        _nested_name: "tile_example_3",
+      },
+      {
+        name: "first_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "first_line_text",
+      },
+      {
+        name: "second_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "second_line_text",
+      },
+      {
+        name: "style",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "style",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "Fourth item text",
+          second_line_text: "Fourth item text",
+          style: "quick_start_red",
+        },
+        _nested_name: "tile_example_3",
+      },
+      {
+        name: "first_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "first_line_text",
+      },
+      {
+        name: "second_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "second_line_text",
+      },
+      {
+        name: "style",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "style",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "With Others",
+          style: "workshop_page",
+          icon_src: "plh_images/home_page/home_page_workshops.svg",
+        },
+        _nested_name: "tile_example_3",
+      },
+      {
+        name: "first_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "first_line_text",
+      },
+      {
+        name: "second_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "second_line_text",
+      },
+      {
+        name: "style",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "style",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "Alone",
+          style: "workshop_page",
+          icon_src: "plh_images/home_page/home_page_parent_points.svg",
+        },
+        _nested_name: "tile_example_3",
+      },
+      {
+        name: "first_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "first_line_text",
+      },
+      {
+        name: "second_line_text",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "second_line_text",
+      },
+      {
+        name: "style",
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "style",
+      },
+      {
+        type: "display_group",
+        name: "dg",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "parent_point",
+        },
+        rows: [
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First itemt",
+              second_line_text: "Second",
+              style: "parent_centre_2",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First item",
+              second_line_text: "Second",
+              style: "parent_centre_3",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First itemt",
+              second_line_text: "Second",
+              style: "parent_centre_4",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First",
+              second_line_text: "Second",
+              style: "parent_centre_1",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First itemt",
+              second_line_text: "Second",
+              style: "parent_centre_1",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First item",
+              second_line_text: "Second",
+              style: "parent_centre_2",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "plh_images/icons/star.svg",
+              first_line_text: "First itemt",
+              second_line_text: "Second",
+              style: "parent_centre_3",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "First",
+              icon_src: "plh_images/icons/star.svg",
+              second_line_text: "Second",
+              style: "parent_centre_4",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+          {
+            type: "tile_component",
+            name: "tile_example_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "First",
+              icon_src: "plh_images/icons/star.svg",
+              second_line_text: "Second",
+              style: "parent_centre_4",
+            },
+            _nested_name: "dg.tile_example_1",
+          },
+        ],
+        _nested_name: "dg",
+      },
+      {
+        type: "tile_component",
+        name: "tile_example_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "First",
+          icon_src: "plh_images/icons/star.svg",
+          second_line_text: "Second",
+          style: "parent_centre_4",
+        },
+        _nested_name: "tile_example_1",
+      },
+      {
+        type: "tile_component",
+        exclude_from_translation: true,
+        parameter_list: {
+          first_line_text: "How to add self-care",
+          style: "image_text",
+          icon_src: "plh_images/workshops/w_self_care/tools.svg",
+        },
+        name: "tile_component",
+        _nested_name: "tile_component",
+      },
+      {
+        type: "display_group",
+        parameter_list: {
+          style: "two_columns",
+        },
+        rows: [
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to add self-care",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_self_care/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to spend one-on-one time",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_1on1/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to Praise",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_praise/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to give positive instructions",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_instruct/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to manage stress",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_stress/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to budget and save",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_money/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to create rules",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_rules/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "How to give calm consequences",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_consequence/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "Teen safety",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_safe/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "Dealing with crisis",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_crisis/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+          {
+            type: "tile_component",
+            exclude_from_translation: true,
+            parameter_list: {
+              first_line_text: "Celebration",
+              style: "image_text",
+              icon_src: "plh_images/workshops/w_celebrate/tools.svg",
+            },
+            name: "tile_component",
+            _nested_name: "display_group.tile_component",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_timer",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "help_text",
+        value:
+          'Click <img src="plh_images/icons/play_outline.svg" width="30" height="30"> to start the timer',
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "help_text",
+      },
+      {
+        type: "timer",
+        name: "timer_with_help",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          title: "with help",
+        },
+        _nested_name: "timer_with_help",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "timer",
+        name: "timer_is_editable_on_playing",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          title: "is editable on playing",
+          is_editable_on_playing: "true",
+        },
+        _nested_name: "timer_is_editable_on_playing",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "timer",
+        name: "timer_with_starting_minutes_5",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          title: "with starting minutes 5",
+          starting_minutes: "5",
+        },
+        _nested_name: "timer_with_starting_minutes_5",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "timer",
+        name: "timer_with_starting_seconds_20",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          title: "with starting seconds 20",
+          starting_seconds: "20",
+        },
+        _nested_name: "timer_with_starting_seconds_20",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "timer",
+        name: "timer_with_duration_extension_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          title: "with duration_extension 2",
+          duration_extension: "2",
+        },
+        _nested_name: "timer_with_duration_extension_2",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "timer",
+        name: "timer_with_value",
+        value: 5,
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          title: "with value 5",
+        },
+        _nested_name: "timer_with_value",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_timer_ping",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "timer",
+        name: "ping_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          title: "Example 1",
+          ping: "plh_audio/timer/ping_1.wav",
+          starting_minutes: "0",
+          starting_seconds: "5",
+        },
+        _nested_name: "ping_1",
+      },
+      {
+        type: "timer",
+        name: "ping_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          title: "Example 2",
+          ping: "plh_audio/timer/ping_2.wav",
+          starting_minutes: "0",
+          starting_seconds: "5",
+        },
+        _nested_name: "ping_2",
+      },
+      {
+        type: "timer",
+        name: "ping_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          title: "Example 3",
+          ping: "plh_audio/timer/bell_1.mp3",
+          starting_minutes: "0",
+          starting_seconds: "5",
+        },
+        _nested_name: "ping_3",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_slider",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "help_text",
+        value: "some help",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "help_text",
+      },
+      {
+        type: "slider",
+        name: "slider_with_help",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          min: "0",
+          max: "7",
+          title: "test title",
+          min_value_label: "0",
+          max_value_label: "7",
+          labels_count: "8",
+          no_value: "false",
+        },
+        _nested_name: "slider_with_help",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "slider",
+        name: "slider_without_help",
+        exclude_from_translation: true,
+        parameter_list: {
+          min: "0",
+          max: "7",
+          title: "without help",
+          min_value_label: "0",
+          max_value_label: "7",
+          labels_count: "8",
+          no_value: "false",
+        },
+        _nested_name: "slider_without_help",
+      },
+      {
+        type: "slider",
+        name: "slider_with_value_2",
+        value: 2,
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          min: "0",
+          max: "7",
+          title: "with value 2",
+          min_value_label: "0",
+          max_value_label: "7",
+          labels_count: "8",
+          no_value: "false",
+        },
+        _nested_name: "slider_with_value_2",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "slider",
+        name: "slider_with_step_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          min: "0",
+          max: "8",
+          title: "step = 2",
+          step: "2",
+          min_value_label: "0",
+          max_value_label: "8",
+          labels_count: "8",
+          no_value: "false",
+        },
+        _nested_name: "slider_with_step_2",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "slider",
+        name: "slider_without_value",
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "@local.help_text",
+          min: "0",
+          max: "7",
+          title: "no value",
+          min_value_label: "0",
+          max_value_label: "7",
+          labels_count: "8",
+          no_value: "true",
+        },
+        _nested_name: "slider_without_value",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "slider",
+        name: "slider_without_max_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          min: "0",
+          help: "@local.help_text",
+          max: "3",
+          title: "with max = 3",
+          min_value_label: "0",
+          max_value_label: "3",
+          labels_count: "8",
+          no_value: "false",
+        },
+        _nested_name: "slider_without_max_3",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "slider",
+        name: "slider_without_value_labels_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          min: "0",
+          help: "@local.help_text",
+          max: "3",
+          title: "without value labels",
+          no_value: "false",
+        },
+        _nested_name: "slider_without_value_labels_1",
+        _dynamicFields: {
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "Value of last slider: @local.slider_without_value_labels_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Value of last slider: @local.slider_without_value_labels_1",
+              matchedExpression: "@local.slider_without_value_labels_1",
+              type: "local",
+              fieldName: "slider_without_value_labels_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.slider_without_value_labels_1": ["value"],
+        },
+      },
+      {
+        type: "slider",
+        name: "slider_without_value_labels_2",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["temp_slider_field", "this.value"],
+            _raw: "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
+            _cleaned: "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          min: "0",
+          help: "@local.help_text",
+          max: "3",
+          title: "without value labels",
+          no_value: "false",
+        },
+        _nested_name: "slider_without_value_labels_2",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression:
+                    "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
+                  matchedExpression: "@local.slider_without_value_labels_2",
+                  type: "local",
+                  fieldName: "slider_without_value_labels_2",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression:
+                    "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
+                  matchedExpression: "@local.slider_without_value_labels_2",
+                  type: "local",
+                  fieldName: "slider_without_value_labels_2",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            help: [
+              {
+                fullExpression: "@local.help_text",
+                matchedExpression: "@local.help_text",
+                type: "local",
+                fieldName: "help_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.slider_without_value_labels_2": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.help_text": ["parameter_list.help"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "Value of last slider: @local.slider_without_value_labels_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Value of last slider: @local.slider_without_value_labels_2",
+              matchedExpression: "@local.slider_without_value_labels_2",
+              type: "local",
+              fieldName: "slider_without_value_labels_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.slider_without_value_labels_2": ["value"],
+        },
+      },
+      {
+        type: "template",
+        name: "example_text",
+        value: "example_text",
+        rows: [],
+        _nested_name: "example_text",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_number_selector",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "category_list",
+        value: ["0-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "80+"],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "category_list",
+      },
+      {
+        type: "number_selector",
+        name: "number_selector",
+        exclude_from_translation: true,
+        parameter_list: {
+          category_list: "@local.category_list",
+          first_display_term: "4",
+        },
+        _nested_name: "number_selector",
+        _dynamicFields: {
+          parameter_list: {
+            category_list: [
+              {
+                fullExpression: "@local.category_list",
+                matchedExpression: "@local.category_list",
+                type: "local",
+                fieldName: "category_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.category_list": ["parameter_list.category_list"],
+        },
+      },
+      {
+        name: "ten",
+        value: 10,
+        type: "set_variable",
+        _nested_name: "ten",
+      },
+      {
+        type: "set_field",
+        name: "debug_field_fifteen",
+        value: 15,
+        _nested_name: "debug_field_fifteen",
+      },
+      {
+        name: "fifteen",
+        value: "+@fields.debug_field_fifteen",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "fifteen",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "+@fields.debug_field_fifteen",
+              matchedExpression: "@fields.debug_field_fifteen",
+              type: "fields",
+              fieldName: "debug_field_fifteen",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.debug_field_fifteen": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_1",
+        value: "Default initial value",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_1",
+      },
+      {
+        type: "number_selector",
+        name: "number_selector_1",
+        parameter_list: {
+          min_value: "0",
+          max_value: "20",
+        },
+        _nested_name: "number_selector_1",
+      },
+      {
+        type: "title",
+        name: "title_2",
+        value: "Initial value set directly",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_2",
+      },
+      {
+        type: "number_selector",
+        name: "number_selector_2",
+        value: 5,
+        parameter_list: {
+          min_value: "0",
+          max_value: "20",
+        },
+        _nested_name: "number_selector_2",
+      },
+      {
+        type: "title",
+        name: "title_3",
+        value: "Initial value set through local variable",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_3",
+      },
+      {
+        type: "number_selector",
+        name: "number_selector_3",
+        value: "@local.ten",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          min_value: "0",
+          max_value: "20",
+        },
+        _nested_name: "number_selector_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.ten",
+              matchedExpression: "@local.ten",
+              type: "local",
+              fieldName: "ten",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.ten": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_4",
+        value: "Initial value set through field preceded by '+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_4",
+      },
+      {
+        type: "number_selector",
+        name: "number_selector_4",
+        value: "+@fields.debug_field_fifteen",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          min_value: "0",
+          max_value: "20",
+        },
+        _nested_name: "number_selector_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "+@fields.debug_field_fifteen",
+              matchedExpression: "@fields.debug_field_fifteen",
+              type: "fields",
+              fieldName: "debug_field_fifteen",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.debug_field_fifteen": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_5",
+        value: "Initial value set through local with field preceded by '+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_5",
+      },
+      {
+        type: "number_selector",
+        name: "number_selector_5",
+        value: "@local.fifteen",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          min_value: "0",
+          max_value: "20",
+        },
+        _nested_name: "number_selector_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.fifteen",
+              matchedExpression: "@local.fifteen",
+              type: "local",
+              fieldName: "fifteen",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.fifteen": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_text_box",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "blank_display_text",
+        value: "Click here to answer",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "blank_display_text",
+      },
+      {
+        type: "set_default",
+        name: "_value",
+        value: "@local.default_value",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "_value",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.default_value",
+              matchedExpression: "@local.default_value",
+              type: "local",
+              fieldName: "default_value",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.default_value": ["value"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box",
+        exclude_from_translation: true,
+        parameter_list: {
+          blank_display_text: "@local.blank_display_text",
+          help: "some help text",
+          placeholder: "example placeholder",
+        },
+        _nested_name: "text_box",
+        _dynamicFields: {
+          parameter_list: {
+            blank_display_text: [
+              {
+                fullExpression: "@local.blank_display_text",
+                matchedExpression: "@local.blank_display_text",
+                type: "local",
+                fieldName: "blank_display_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.blank_display_text": ["parameter_list.blank_display_text"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box_1",
+        value: "Answer 1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "some help text",
+          text_align: "right",
+          placeholder: "Add your answer",
+        },
+        _nested_name: "text_box_1",
+      },
+      {
+        type: "text_box",
+        name: "text_box_2",
+        value: "Answer 2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          help: "some help text",
+          text_align: "left",
+          placeholder: "Add your answer 2",
+        },
+        _nested_name: "text_box_2",
+      },
+      {
+        type: "text_box",
+        name: "text_box_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          text_align: "center",
+          placeholder: "Add your answer 3",
+        },
+        _nested_name: "text_box_3",
+      },
+      {
+        type: "text_box",
+        name: "text_box_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          text_align: "center",
+          placeholder: "Add your answer 3",
+          number_input: "true",
+        },
+        _nested_name: "text_box_3",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_dashed_box",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "dashed_box",
+        name: "dashed_box_passive",
+        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "alert",
+          icon_src: "plh_images/icons/star.svg",
+          icon_position: "top-right",
+        },
+        _nested_name: "dashed_box_passive",
+      },
+      {
+        type: "dashed_box",
+        name: "dashed_box_active",
+        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "default",
+          icon_src: "plh_images/icons/star.svg",
+          icon_position: "top-left",
+        },
+        _nested_name: "dashed_box_active",
+      },
+      {
+        type: "dashed_box",
+        name: "dashed_box_passive",
+        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "alert",
+          icon_src: "plh_images/icons/star.svg",
+          icon_position: "bottom-left",
+        },
+        _nested_name: "dashed_box_passive",
+      },
+      {
+        type: "dashed_box",
+        name: "dashed_box_active",
+        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "default",
+          icon_src: "plh_images/icons/star.svg",
+          icon_position: "bottom-right",
+        },
+        _nested_name: "dashed_box_active",
+      },
+      {
+        type: "dashed_box",
+        name: "dashed_box_active",
+        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "alert",
+          icon_src: "plh_images/icons/star.svg",
+          icon_position: "bottom-right",
+        },
+        _nested_name: "dashed_box_active",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "bug_dashed_box",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "dashed_box",
+        name: "dashed_box_passive",
+        value: "Every time you do a relax, mark your star.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "dashed_box_passive",
+      },
+      {
+        type: "dashed_box",
+        name: "dashed_box_active",
+        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "alert",
+          icon_src: "plh_images/icons/star.svg",
+          icon_position: "top-right",
+        },
+        _nested_name: "dashed_box_active",
+      },
+      {
+        type: "dashed_box",
+        name: "habit_text",
+        value:
+          "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/star_circle.svg",
+          icon_position: "top-left",
+        },
+        _nested_name: "habit_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": ["value"],
+        },
+      },
+      {
+        type: "dashed_box",
+        name: "habit_text_2",
+        value:
+          "Every time you do a relax, click the @global.parent_point and celebrate your success",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          icon_src: "plh_images/icons/star_circle.svg",
+          icon_position: "top-left",
+        },
+        _nested_name: "habit_text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Every time you do a relax, click the @global.parent_point and celebrate your success",
+              matchedExpression: "@global.parent_point",
+              type: "global",
+              fieldName: "parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_point": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_toggle_bar",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "toggle_bar",
+        name: "toggle_1",
+        value: false,
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["changed_field_toggle", "this.value"],
+            _raw: "changed | set_field:changed_field_toggle:@local.toggle_1",
+            _cleaned: "changed | set_field:changed_field_toggle:@local.toggle_1",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          position: "right",
+          true_text: "some text for true value",
+          false_text: "text for false",
+          show_tick_and_cross: "false",
+        },
+        _nested_name: "toggle_1",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  matchedExpression: "@local.toggle_1",
+                  type: "local",
+                  fieldName: "toggle_1",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field:changed_field_toggle:@local.toggle_1",
+                  matchedExpression: "@local.toggle_1",
+                  type: "local",
+                  fieldName: "toggle_1",
+                },
+              ],
+            },
+          },
+        },
+        _dynamicDependencies: {
+          "@local.toggle_1": ["action_list.0._raw", "action_list.0._cleaned"],
+        },
+      },
+      {
+        type: "toggle_bar",
+        name: "toggle_2",
+        value: false,
+        exclude_from_translation: true,
+        parameter_list: {
+          position: "center",
+          true_text: "some text for true value",
+        },
+        _nested_name: "toggle_2",
+      },
+      {
+        type: "toggle_bar",
+        name: "toggle_3",
+        value: false,
+        exclude_from_translation: true,
+        parameter_list: {
+          false_text: "false text",
+        },
+        _nested_name: "toggle_3",
+      },
+      {
+        type: "toggle_bar",
+        name: "toggle_4",
+        value: true,
+        exclude_from_translation: true,
+        parameter_list: {
+          false_text: "false text",
+        },
+        _nested_name: "toggle_4",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_checkbox",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "label_text",
+        value: "Label text in local variable",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "label_text",
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_1",
+        value: false,
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["demo_changed_field_checkbox", "this.value"],
+            _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+            _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          label_text: "Reverse true",
+          reverse: "true",
+        },
+        _nested_name: "checkbox_1",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression:
+                    "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                  matchedExpression: "@local.checkbox_1",
+                  type: "local",
+                  fieldName: "checkbox_1",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression:
+                    "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                  matchedExpression: "@local.checkbox_1",
+                  type: "local",
+                  fieldName: "checkbox_1",
+                },
+              ],
+            },
+          },
+        },
+        _dynamicDependencies: {
+          "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "checkbox field: @field.demo_changed_field_checkbox",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "checkbox field: @field.demo_changed_field_checkbox",
+              matchedExpression: "@field.demo_changed_field_checkbox",
+              type: "field",
+              fieldName: "demo_changed_field_checkbox",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@field.demo_changed_field_checkbox": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "checkbox local: @local.checkbox_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "checkbox local: @local.checkbox_1",
+              matchedExpression: "@local.checkbox_1",
+              type: "local",
+              fieldName: "checkbox_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.checkbox_1": ["value"],
+        },
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_2",
+        value: true,
+        exclude_from_translation: true,
+        parameter_list: {
+          label_text: "Example answer?",
+          align: "left",
+        },
+        _nested_name: "checkbox_2",
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "checkbox local: @local.checkbox_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "checkbox local: @local.checkbox_2",
+              matchedExpression: "@local.checkbox_2",
+              type: "local",
+              fieldName: "checkbox_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.checkbox_2": ["value"],
+        },
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_3",
+        value: "@field.demo_changed_field_checkbox",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          label_text: "Example answer?",
+          align: "center",
+        },
+        _nested_name: "checkbox_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@field.demo_changed_field_checkbox",
+              matchedExpression: "@field.demo_changed_field_checkbox",
+              type: "field",
+              fieldName: "demo_changed_field_checkbox",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@field.demo_changed_field_checkbox": ["value"],
+        },
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_4",
+        value: false,
+        exclude_from_translation: true,
+        _nested_name: "checkbox_4",
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_5",
+        value: true,
+        exclude_from_translation: true,
+        _nested_name: "checkbox_5",
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_6",
+        value: "@local.checkbox_4",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "checkbox_6",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.checkbox_4",
+              matchedExpression: "@local.checkbox_4",
+              type: "local",
+              fieldName: "checkbox_4",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.checkbox_4": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value: "Checkbox with label_text set through local variable",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_4",
+      },
+      {
+        type: "simple_checkbox",
+        name: "checkbox_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          label_text: "@local.label_text",
+          align: "right",
+        },
+        _nested_name: "checkbox_7",
+        _dynamicFields: {
+          parameter_list: {
+            label_text: [
+              {
+                fullExpression: "@local.label_text",
+                matchedExpression: "@local.label_text",
+                type: "local",
+                fieldName: "label_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.label_text": ["parameter_list.label_text"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_text_area",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text_area",
+        name: "text_area",
+        exclude_from_translation: true,
+        parameter_list: {
+          placeholder: "example placeholder",
+        },
+        _nested_name: "text_area",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "the text entered is:\n\n@local.text_area",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "the text entered is:\n\n@local.text_area",
+              matchedExpression: "@local.text_area",
+              type: "local",
+              fieldName: "text_area",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.text_area": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_home",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["weekly_workshops"],
+            _raw: "click | go_to:weekly_workshops",
+            _cleaned: "click | go_to:weekly_workshops",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "home_screen light",
+        },
+        style_list: ["margin: 40px 10px 0px 10px"],
+        rows: [
+          {
+            type: "lottie_animation",
+            name: "lottie_src",
+            value: "plh_lottie/weekly_workshops.json",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.lottie_src",
+          },
+          {
+            type: "display_group",
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "column",
+            },
+            style_list: ["padding: 0"],
+            rows: [
+              {
+                type: "title",
+                name: "title_ex_s",
+                value: "@global.weekly_workshops",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                parameter_list: {
+                  style: "alternative",
+                },
+                style_list: [
+                  "align-self: flex-start",
+                  "margin-left: 20px",
+                  "margin-bottom: 8px",
+                  "margin-top: 15px",
+                ],
+                _nested_name: "dg_example_7.display_group.title_ex_s",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.weekly_workshops",
+                      matchedExpression: "@global.weekly_workshops",
+                      type: "global",
+                      fieldName: "weekly_workshops",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.weekly_workshops": ["value"],
+                },
+              },
+              {
+                type: "round_button",
+                name: "round_button_1",
+                value: "Value",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                parameter_list: {
+                  icon_src: "plh_images/icons/letter_outline.svg",
+                  text: "Message",
+                  style: "home_screen yellow",
+                },
+                style_list: ["padding: 0"],
+                _nested_name: "dg_example_7.display_group.round_button_1",
+              },
+            ],
+            name: "display_group",
+            _nested_name: "dg_example_7.display_group",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["parent_points"],
+            _raw: "click | go_to:parent_points",
+            _cleaned: "click | go_to:parent_points",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "home_screen shade",
+        },
+        style_list: ["margin: 40px 10px 0px 10px"],
+        rows: [
+          {
+            type: "lottie_animation",
+            name: "lottie_src",
+            value: "plh_lottie/parent_points.json",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.lottie_src",
+          },
+          {
+            exclude_from_translation: true,
+            type: "set_variable",
+            name: "set_variable",
+            _nested_name: "dg_example_7.set_variable",
+          },
+          {
+            type: "display_group",
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "column",
+            },
+            style_list: ["padding: 0"],
+            rows: [
+              {
+                type: "title",
+                name: "title_ex_s",
+                value: "@global.parent_points",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                parameter_list: {
+                  style: "alternative",
+                },
+                style_list: ["align-self: flex-start", "white-space: nowrap", "margin-top: 15px"],
+                _nested_name: "dg_example_7.display_group.title_ex_s",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.parent_points",
+                      matchedExpression: "@global.parent_points",
+                      type: "global",
+                      fieldName: "parent_points",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.parent_points": ["value"],
+                },
+              },
+              {
+                type: "round_button",
+                name: "round_button_1",
+                value: "Value",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                parameter_list: {
+                  icon_src: "plh_images/icons/play_outline_white.svg",
+                  text: "Start",
+                  style: "home_screen orange",
+                },
+                style_list: ["padding: 0"],
+                _nested_name: "dg_example_7.display_group.round_button_1",
+              },
+            ],
+            name: "display_group",
+            _nested_name: "dg_example_7.display_group",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["parent_centre"],
+            _raw: "click | go_to:parent_centre",
+            _cleaned: "click | go_to:parent_centre",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "home_screen dark",
+        },
+        style_list: ["margin: 40px 10px 0px 10px"],
+        rows: [
+          {
+            type: "lottie_animation",
+            name: "lottie_src",
+            value: "plh_lottie/parent_centre.json",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.lottie_src",
+          },
+          {
+            type: "display_group",
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "column",
+            },
+            style_list: ["padding: 0"],
+            rows: [
+              {
+                type: "title",
+                name: "title_ex_s",
+                value: "@global.parent_centre",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                parameter_list: {
+                  style: "alternative",
+                },
+                style_list: ["align-self: flex-start", "white-space: nowrap", "margin-top:15px"],
+                _nested_name: "dg_example_7.display_group.title_ex_s",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.parent_centre",
+                      matchedExpression: "@global.parent_centre",
+                      type: "global",
+                      fieldName: "parent_centre",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.parent_centre": ["value"],
+                },
+              },
+              {
+                type: "round_button",
+                name: "round_button_1",
+                value: "Value",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                parameter_list: {
+                  icon_src: "plh_images/icons/play_outline_white.svg",
+                  style: "home_screen dark_orange",
+                },
+                style_list: ["padding: 0"],
+                _nested_name: "dg_example_7.display_group.round_button_1",
+              },
+            ],
+            name: "display_group",
+            _nested_name: "dg_example_7.display_group",
+          },
+          {
+            exclude_from_translation: true,
+            type: "set_variable",
+            name: "set_variable",
+            _nested_name: "dg_example_7.set_variable",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_lottie",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "lottie_animation",
+        name: "relax_anim",
+        value: "plh_lottie/relax1.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "relax_anim",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_formatting",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title1",
+        value: "<span>This is a title where part of it is </span><span><i>italics</i></span>",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title1",
+      },
+      {
+        type: "text",
+        name: "text1",
+        value:
+          "<span>This is text where part is </span><span><b>bold </b></span><span>part is in </span><span><i>italics</i></span><span><b><i> </b></i></span><span>and part is </span><span><b><i>both bold and italics (emphasised) </b></i></span>",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text1",
+      },
+      {
+        type: "dashed_box",
+        name: "box1",
+        value:
+          "<span>This is a dashed box where some of the text is </span><span><b>bold</b></span><span> and </span><span><i>italics</i></span>",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "box1",
+      },
+      {
+        type: "button",
+        name: "button1",
+        value:
+          "<span>Some of this button is </span><span><b>bold. </b></span><span><i>WOAH!</i></span>",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "button1",
+      },
+      {
+        type: "text",
+        name: "list1",
+        value:
+          "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n* List item 1\n* List item 2\n* List item 3",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "list1",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_display_group",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "display_group",
+        name: "example_dp_gr",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_1",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title light_orange",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "example_dp_gr.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display light_orange",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "center",
+            },
+            _nested_name: "example_dp_gr.text_ex_text",
+          },
+        ],
+        _nested_name: "example_dp_gr",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_2",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title orange",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_2.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display orange",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "right",
+            },
+            _nested_name: "dg_example_2.text_ex_text",
+          },
+        ],
+        _nested_name: "dg_example_2",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_3",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title light_blue",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_3.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display light_blue",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+            },
+            _nested_name: "dg_example_3.text_ex_text",
+          },
+        ],
+        _nested_name: "dg_example_3",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_4",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_4",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title blue",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_4.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display blue",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "center",
+            },
+            _nested_name: "dg_example_4.text_ex_text",
+          },
+        ],
+        _nested_name: "dg_example_4",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_6",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_5",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title dark_blue",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "alternative",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_6.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display dark_blue",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "right",
+            },
+            _nested_name: "dg_example_6.text_ex_text",
+          },
+        ],
+        _nested_name: "dg_example_6",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_active",
+          offset: "30",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title with offset",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_7.title_ex_s",
+          },
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/characters/group/talk_together.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            style_list: ["max-width: 250px"],
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_8",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "white_box",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title white box",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_8.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display white box",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+            },
+            _nested_name: "dg_example_8.text_ex_text",
+          },
+        ],
+        _nested_name: "dg_example_8",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_8",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "white_box",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title white box",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            style_list: ["margin: 10px 10px"],
+            _nested_name: "dg_example_8.title_ex_s",
+          },
+          {
+            type: "text",
+            name: "text_ex_text",
+            value: "Text for display white box",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+            },
+            _nested_name: "dg_example_8.text_ex_text",
+          },
+        ],
+        _nested_name: "dg_example_8",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_8",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "navigation",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "button",
+            name: "btn_example",
+            value: "Continue",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "blue",
+            },
+            _nested_name: "dg_example_8.btn_example",
+          },
+        ],
+        _nested_name: "dg_example_8",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_8",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_welcome",
+        },
+        style_list: [],
+        rows: [
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/workshop_modes/guide_2/wave.svg",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_8.image",
+          },
+        ],
+        _nested_name: "dg_example_8",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_short",
+        },
+        style_list: [],
+        rows: [
+          {
+            type: "subtitle",
+            name: "title_ex_s",
+            value: "Example short banner",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "small emphasised",
+            },
+            _nested_name: "dg_example_7.title_ex_s",
+          },
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/workshop_modes/guide_2/wave.svg",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_short",
+        },
+        rows: [
+          {
+            type: "subtitle",
+            name: "title_ex_s",
+            value: "Example short banner with more text",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "small emphasised",
+            },
+            _nested_name: "dg_example_7.title_ex_s",
+          },
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/workshop_modes/guide_2/wave.svg",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_welcome",
+        },
+        rows: [
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/workshop_modes/guide_2/relax.svg",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_dashed_box",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "dashed_box",
+          icon_src: "plh_images/icons/star.svg",
+        },
+        rows: [
+          {
+            type: "subtitle",
+            value:
+              "survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "right",
+            },
+            name: "subtitle",
+            _nested_name: "dg_example_dashed_box.subtitle",
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example_1",
+            value: 3,
+            exclude_from_translation: true,
+            parameter_list: {
+              lottie_src: "plh_lottie/parent_centre.json",
+              text: "text two",
+            },
+            _nested_name: "dg_example_dashed_box.points_example_1",
+          },
+          {
+            type: "button",
+            name: "btn_example",
+            value: "Continue",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_dashed_box.btn_example",
+          },
+        ],
+        _nested_name: "dg_example_dashed_box",
+      },
+      {
+        type: "title",
+        value: "form with 'go to'",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_form",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "form",
+          get_device_info: "true",
+          button_text: "Send",
+          button_go_to: "feature_audio",
+        },
+        rows: [
+          {
+            type: "text_box",
+            name: "user_name",
+            exclude_from_translation: true,
+            parameter_list: {
+              help: "some help text",
+              placeholder: "Add your name",
+            },
+            _nested_name: "dg_example_form.user_name",
+          },
+          {
+            type: "text_box",
+            name: "user_phone",
+            exclude_from_translation: true,
+            parameter_list: {
+              help: "some help text",
+              placeholder: "Add your phone number",
+            },
+            _nested_name: "dg_example_form.user_phone",
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_1",
+            value: false,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_checkbox", "this.value"],
+                _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "Example answer?",
+            },
+            _nested_name: "dg_example_form.checkbox_1",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
+            },
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_2",
+            value: true,
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "Example answer?",
+            },
+            _nested_name: "dg_example_form.checkbox_2",
+          },
+          {
+            type: "title",
+            value: "Some text here",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            name: "title",
+            _nested_name: "dg_example_form.title",
+          },
+          {
+            type: "text_area",
+            name: "text_area",
+            exclude_from_translation: true,
+            parameter_list: {
+              placeholder: "example placeholder",
+            },
+            _nested_name: "dg_example_form.text_area",
+          },
+        ],
+        _nested_name: "dg_example_form",
+      },
+      {
+        type: "title",
+        value: "pop up form",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_form",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "form",
+          get_device_info: "true",
+          button_text: "Send",
+          button_pop_up: "feature_audio",
+        },
+        rows: [
+          {
+            type: "text_box",
+            name: "user_name",
+            exclude_from_translation: true,
+            parameter_list: {
+              help: "some help text",
+              placeholder: "Add your name",
+            },
+            _nested_name: "dg_example_form.user_name",
+          },
+          {
+            type: "text_box",
+            name: "user_phone",
+            exclude_from_translation: true,
+            parameter_list: {
+              help: "some help text",
+              placeholder: "Add your phone number",
+            },
+            _nested_name: "dg_example_form.user_phone",
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_1",
+            value: false,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_checkbox", "this.value"],
+                _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "Example answer?",
+            },
+            _nested_name: "dg_example_form.checkbox_1",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
+            },
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_2",
+            value: true,
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "Example answer?",
+            },
+            _nested_name: "dg_example_form.checkbox_2",
+          },
+          {
+            type: "title",
+            value: "Some text here",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            name: "title",
+            _nested_name: "dg_example_form.title",
+          },
+          {
+            type: "text_area",
+            name: "text_area",
+            exclude_from_translation: true,
+            parameter_list: {
+              placeholder: "example placeholder",
+            },
+            _nested_name: "dg_example_form.text_area",
+          },
+        ],
+        _nested_name: "dg_example_form",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_audio",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "audio",
+        name: "audio_1",
+        value: "quality_assurance/test_audio.mp3",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          range_bar_disabled: "true",
+          time_to_rewind: "5",
+          title: "Audio player #1",
+        },
+        style_list: ["margin-top: 15px"],
+        _nested_name: "audio_1",
+      },
+      {
+        type: "audio",
+        name: "audio_2",
+        value: "quality_assurance/test_audio.mp3",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          range_bar_disabled: "false",
+          time_to_rewind: "3",
+          title: "Audio player #2",
+          help: "Example",
+        },
+        style_list: ["margin-top: 15px"],
+        _nested_name: "audio_2",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_essential_tools",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_1",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top:20px"],
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 15px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "button",
+            name: "bt_1",
+            value: "Button",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "nested_color full-width",
+            },
+            _nested_name: "display_group.bt_1",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_2",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top:20px"],
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "subtitle",
+            name: "ss",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top: 15px"],
+            _nested_name: "display_group.ss",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 15px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "button",
+            name: "bt_2",
+            value: "Button",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "nested_color full-width",
+            },
+            _nested_name: "display_group.bt_2",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_3",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top:20px"],
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "subtitle",
+            name: "ss",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top: 15px"],
+            _nested_name: "display_group.ss",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 15px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "button",
+            name: "bt_3",
+            value: "Button",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "nested_color  full-width",
+            },
+            _nested_name: "display_group.bt_3",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        exclude_from_translation: true,
+        type: "set_variable",
+        name: "set_variable",
+        _nested_name: "set_variable",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_4",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top:20px"],
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "subtitle",
+            name: "ss",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top: 15px"],
+            _nested_name: "display_group.ss",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 15px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "button",
+            name: "bt_3",
+            value: "Button",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "nested_color full-width",
+            },
+            _nested_name: "display_group.bt_3",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_5",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top:20px"],
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "subtitle",
+            name: "ss",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top: 15px"],
+            _nested_name: "display_group.ss",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 15px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "button",
+            name: "bt_3",
+            value: "Button",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "nested_color full-width",
+            },
+            _nested_name: "display_group.bt_3",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        exclude_from_translation: true,
+        type: "set_variable",
+        name: "set_variable",
+        _nested_name: "set_variable",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_5",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top:20px"],
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "subtitle",
+            name: "ss",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            style_list: ["margin-top: 15px"],
+            _nested_name: "display_group.ss",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 15px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/workshop_modes/group/relax.svg",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "corner",
+            },
+            _nested_name: "display_group.image",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_2",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 10px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "display_group",
+            name: "bgg_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "tool_1",
+            },
+            style_list: ["maggin-top:15px"],
+            rows: [
+              {
+                type: "image",
+                name: "image",
+                value: "plh_images/workshop_modes/group/relax.svg",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                _nested_name: "display_group.bgg_1.image",
+              },
+            ],
+            _nested_name: "display_group.bgg_1",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "tool_3",
+        },
+        style_list: ["padding: 10px 15px"],
+        rows: [
+          {
+            type: "title",
+            name: "ft",
+            value: "GET REAL",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "white",
+            },
+            _nested_name: "display_group.ft",
+          },
+          {
+            type: "text",
+            name: "ftt",
+            value:
+              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              text_align: "left",
+              style: "whiteText",
+            },
+            style_list: ["margin-top: 10px", "max-width: 320px"],
+            _nested_name: "display_group.ftt",
+          },
+          {
+            type: "display_group",
+            name: "bgg_1",
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "tool_2",
+            },
+            style_list: ["maggin-top:15px"],
+            rows: [
+              {
+                type: "image",
+                name: "image",
+                value: "plh_images/workshop_modes/group/relax.svg",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                _nested_name: "display_group.bgg_1.image",
+              },
+            ],
+            _nested_name: "display_group.bgg_1",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_parent_point_box",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "value 1 is @fields.demo_changed_field_parent_point",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "value 1 is @fields.demo_changed_field_parent_point",
+              matchedExpression: "@fields.demo_changed_field_parent_point",
+              type: "fields",
+              fieldName: "demo_changed_field_parent_point",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.demo_changed_field_parent_point": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "value 2 is @fields.demo_changed_field_parent_point_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "value 2 is @fields.demo_changed_field_parent_point_1",
+              matchedExpression: "@fields.demo_changed_field_parent_point_1",
+              type: "fields",
+              fieldName: "demo_changed_field_parent_point_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.demo_changed_field_parent_point_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "value 3 is @fields.demo_changed_field_parent_point_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "value 3 is @fields.demo_changed_field_parent_point_2",
+              matchedExpression: "@fields.demo_changed_field_parent_point_2",
+              type: "fields",
+              fieldName: "demo_changed_field_parent_point_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.demo_changed_field_parent_point_2": ["value"],
+        },
+      },
+      {
+        type: "display_group",
+        name: "dg",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "parent_point",
+        },
+        style_list: ["flex-wrap: wrap"],
+        rows: [
+          {
+            name: "init_value_1",
+            value: 2,
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.init_value_1",
+          },
+          {
+            name: "icon_src1",
+            value: "plh_images/habits/habit_money.svg",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.icon_src1",
+          },
+          {
+            name: "text1",
+            value: "Good money choice 1",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.text1",
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example",
+            value: "@local.init_value_1",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_parent_point", "this.value"],
+                _raw: "changed | set_field: demo_changed_field_parent_point: @local.points_example",
+                _cleaned:
+                  "changed | set_field: demo_changed_field_parent_point: @local.points_example",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "@local.icon_src1",
+              text: "@local.text1",
+            },
+            _nested_name: "dg.points_example",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.init_value_1",
+                  matchedExpression: "@local.init_value_1",
+                  type: "local",
+                  fieldName: "init_value_1",
+                },
+              ],
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field: demo_changed_field_parent_point: @local.points_example",
+                      matchedExpression: "@local.points_example",
+                      type: "local",
+                      fieldName: "points_example",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field: demo_changed_field_parent_point: @local.points_example",
+                      matchedExpression: "@local.points_example",
+                      type: "local",
+                      fieldName: "points_example",
+                    },
+                  ],
+                },
+              },
+              parameter_list: {
+                icon_src: [
+                  {
+                    fullExpression: "@local.icon_src1",
+                    matchedExpression: "@local.icon_src1",
+                    type: "local",
+                    fieldName: "icon_src1",
+                  },
+                ],
+                text: [
+                  {
+                    fullExpression: "@local.text1",
+                    matchedExpression: "@local.text1",
+                    type: "local",
+                    fieldName: "text1",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.init_value_1": ["value"],
+              "@local.points_example": ["action_list.0._raw", "action_list.0._cleaned"],
+              "@local.icon_src1": ["parameter_list.icon_src"],
+              "@local.text1": ["parameter_list.text"],
+            },
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example_1",
+            value: 3,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_parent_point_1", "this.value"],
+                _raw: "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
+                _cleaned:
+                  "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "@local.icon_src1",
+              text: "@local.text1",
+            },
+            _nested_name: "dg.points_example_1",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
+                      matchedExpression: "@local.points_example_1",
+                      type: "local",
+                      fieldName: "points_example_1",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
+                      matchedExpression: "@local.points_example_1",
+                      type: "local",
+                      fieldName: "points_example_1",
+                    },
+                  ],
+                },
+              },
+              parameter_list: {
+                icon_src: [
+                  {
+                    fullExpression: "@local.icon_src1",
+                    matchedExpression: "@local.icon_src1",
+                    type: "local",
+                    fieldName: "icon_src1",
+                  },
+                ],
+                text: [
+                  {
+                    fullExpression: "@local.text1",
+                    matchedExpression: "@local.text1",
+                    type: "local",
+                    fieldName: "text1",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.points_example_1": ["action_list.0._raw", "action_list.0._cleaned"],
+              "@local.icon_src1": ["parameter_list.icon_src"],
+              "@local.text1": ["parameter_list.text"],
+            },
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example_2",
+            value: 3,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_parent_point_2", "this.value"],
+                _raw: "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
+                _cleaned:
+                  "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              icon_src: "@local.icon_src1",
+              text: "@local.text1",
+            },
+            _nested_name: "dg.points_example_2",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
+                      matchedExpression: "@local.points_example_2",
+                      type: "local",
+                      fieldName: "points_example_2",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
+                      matchedExpression: "@local.points_example_2",
+                      type: "local",
+                      fieldName: "points_example_2",
+                    },
+                  ],
+                },
+              },
+              parameter_list: {
+                icon_src: [
+                  {
+                    fullExpression: "@local.icon_src1",
+                    matchedExpression: "@local.icon_src1",
+                    type: "local",
+                    fieldName: "icon_src1",
+                  },
+                ],
+                text: [
+                  {
+                    fullExpression: "@local.text1",
+                    matchedExpression: "@local.text1",
+                    type: "local",
+                    fieldName: "text1",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.points_example_2": ["action_list.0._raw", "action_list.0._cleaned"],
+              "@local.icon_src1": ["parameter_list.icon_src"],
+              "@local.text1": ["parameter_list.text"],
+            },
+          },
+        ],
+        _nested_name: "dg",
+      },
+      {
+        type: "title",
+        value: "lottie",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "display_group",
+        name: "dg",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "parent_point",
+        },
+        style_list: ["flex-wrap: wrap"],
+        rows: [
+          {
+            name: "init_value_1",
+            value: 2,
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.init_value_1",
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example",
+            value: "@local.init_value_1",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              lottie_src: "plh_lottie/parent_points.json",
+              text: "no celebration",
+              play_celebration: "false",
+            },
+            _nested_name: "dg.points_example",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.init_value_1",
+                  matchedExpression: "@local.init_value_1",
+                  type: "local",
+                  fieldName: "init_value_1",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.init_value_1": ["value"],
+            },
+          },
+          {
+            name: "text4",
+            value: "text one",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.text4",
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example_1",
+            value: 3,
+            exclude_from_translation: true,
+            parameter_list: {
+              lottie_src: "plh_lottie/parent_centre.json",
+              text: "text two",
+            },
+            _nested_name: "dg.points_example_1",
+          },
+          {
+            name: "text5",
+            value: "text two",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.text5",
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example_2",
+            value: 3,
+            exclude_from_translation: true,
+            parameter_list: {
+              lottie_src: "plh_lottie/parent_points.json",
+              text: "text three",
+            },
+            _nested_name: "dg.points_example_2",
+          },
+          {
+            name: "text6",
+            value: "text three",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "dg.text6",
+          },
+        ],
+        _nested_name: "dg",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_radio_group",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "answer0_list",
+        value: ["name:name_var_1 | text:Single", "name:name_var_2 | text:Pair"],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer0_list",
+      },
+      {
+        name: "options_per_row",
+        value: 2,
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "options_per_row",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_1",
+        value: "Pair",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer0_list",
+        },
+        _nested_name: "radio_group_square_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer0_list",
+                matchedExpression: "@local.answer0_list",
+                type: "local",
+                fieldName: "answer0_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer0_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_2",
+        value: "Pair",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer0_list",
+          options_per_row: "@local.options_per_row",
+        },
+        _nested_name: "radio_group_square_2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer0_list",
+                matchedExpression: "@local.answer0_list",
+                type: "local",
+                fieldName: "answer0_list",
+              },
+            ],
+            options_per_row: [
+              {
+                fullExpression: "@local.options_per_row",
+                matchedExpression: "@local.options_per_row",
+                type: "local",
+                fieldName: "options_per_row",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer0_list": ["parameter_list.answer_list"],
+          "@local.options_per_row": ["parameter_list.options_per_row"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_3",
+        value: "Pair",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer0_list",
+          options_per_row: "2",
+        },
+        _nested_name: "radio_group_square_3",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer0_list",
+                matchedExpression: "@local.answer0_list",
+                type: "local",
+                fieldName: "answer0_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer0_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        name: "answer2_list",
+        value: [
+          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
+          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer2_list",
+      },
+      {
+        name: "answer3_list",
+        value: [
+          "name:name_var_1 | image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg",
+          "name:name_var_3| image:/plh_images/icons/heart.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer3_list",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_4",
+        value: "Black",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer2_list",
+          options_per_row: "3",
+        },
+        _nested_name: "radio_group_square_4",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer2_list",
+                matchedExpression: "@local.answer2_list",
+                type: "local",
+                fieldName: "answer2_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer2_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_5",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer3_list",
+          options_per_row: "3",
+        },
+        _nested_name: "radio_group_square_5",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer3_list",
+                matchedExpression: "@local.answer3_list",
+                type: "local",
+                fieldName: "answer3_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer3_list": ["parameter_list.answer_list"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_radio_group_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "answer_list_1",
+        value: [
+          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_1",
+      },
+      {
+        name: "answer_list_2",
+        value: [
+          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg",
+          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_2",
+      },
+      {
+        name: "answer_list_3",
+        value: [
+          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_3",
+      },
+      {
+        name: "answer_list_4",
+        value: [
+          "name:name_var_1 | text:First",
+          "name:name_var_2 | text:Second",
+          "name:name_var_3 | text:Third",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_4",
+      },
+      {
+        name: "answer_list_5",
+        value: [
+          "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
+          "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+          "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_5",
+      },
+      {
+        name: "answer_list_6",
+        value: [
+          "name:happy | image:plh_images/stickers/faces_yellow/happy.svg | image_checked:plh_images/stickers/faces_yellow/happy.svg",
+          "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg",
+          "name:happiest | image:plh_images/stickers/faces_yellow/happiest.svg | image_checked:plh_images/stickers/faces_yellow/happiest.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_6",
+      },
+      {
+        name: "answer_list_7",
+        value: [
+          "name:happy | image:plh_images/stickers/faces_yellow/happy.svg | image_checked:plh_images/stickers/faces_yellow/happy.svg",
+          "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_7",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_defaults",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_1",
+        },
+        _nested_name: "radio_group_defaults",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_1",
+                matchedExpression: "@local.answer_list_1",
+                type: "local",
+                fieldName: "answer_list_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_four_per_row",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_1",
+          options_per_row: "4",
+        },
+        _nested_name: "radio_group_four_per_row",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_1",
+                matchedExpression: "@local.answer_list_1",
+                type: "local",
+                fieldName: "answer_list_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_two_per_row",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_1",
+          options_per_row: "2",
+        },
+        _nested_name: "radio_group_two_per_row",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_1",
+                matchedExpression: "@local.answer_list_1",
+                type: "local",
+                fieldName: "answer_list_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_two_options_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+        },
+        _nested_name: "radio_group_two_options_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_two_options_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+          options_per_row: "2",
+        },
+        _nested_name: "radio_group_two_options_2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_with_tick",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_3",
+        },
+        _nested_name: "radio_group_with_tick",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_3",
+                matchedExpression: "@local.answer_list_3",
+                type: "local",
+                fieldName: "answer_list_3",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_3": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_text",
+        value: "name_var_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_4",
+        },
+        _nested_name: "radio_group_text",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_4",
+                matchedExpression: "@local.answer_list_4",
+                type: "local",
+                fieldName: "answer_list_4",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_4": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        name: "name_result_1",
+        value: "@local.radio_group_text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "name_result_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.radio_group_text",
+              matchedExpression: "@local.radio_group_text",
+              type: "local",
+              fieldName: "radio_group_text",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.radio_group_text": ["value"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_image_1",
+        value: "happy",
+        _translations: {
+          value: {
+            es_sp: true,
+          },
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_5",
+        },
+        _nested_name: "radio_group_image_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_5",
+                matchedExpression: "@local.answer_list_5",
+                type: "local",
+                fieldName: "answer_list_5",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_5": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        name: "name_result_2",
+        value: "@local.radio_group_image_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "name_result_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.radio_group_image_1",
+              matchedExpression: "@local.radio_group_image_1",
+              type: "local",
+              fieldName: "radio_group_image_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.radio_group_image_1": ["value"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_image_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_6",
+        },
+        _nested_name: "radio_group_image_2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_6",
+                matchedExpression: "@local.answer_list_6",
+                type: "local",
+                fieldName: "answer_list_6",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_6": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        name: "happy",
+        value: "happy",
+        _translations: {
+          value: {
+            es_sp: true,
+          },
+        },
+        type: "set_variable",
+        _nested_name: "happy",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_image_3",
+        value: "@local.happy",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_5",
+        },
+        _nested_name: "radio_group_image_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.happy",
+              matchedExpression: "@local.happy",
+              type: "local",
+              fieldName: "happy",
+            },
+          ],
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_5",
+                matchedExpression: "@local.answer_list_5",
+                type: "local",
+                fieldName: "answer_list_5",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.happy": ["value"],
+          "@local.answer_list_5": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "title",
+        name: "test",
+        value: "test",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "test",
+      },
+      {
+        type: "text",
+        value: "without options",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "text",
+        _nested_name: "text",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_two_options_3",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+        },
+        _nested_name: "radio_group_two_options_3",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        value: "with options",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "text",
+        _nested_name: "text",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_two_options_4",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+          options_per_row: "2",
+        },
+        _nested_name: "radio_group_two_options_4",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        value: "with options",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "text",
+        _nested_name: "text",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_image_4",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_7",
+          options_per_row: "2",
+        },
+        _nested_name: "radio_group_image_4",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_7",
+                matchedExpression: "@local.answer_list_7",
+                type: "local",
+                fieldName: "answer_list_7",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_7": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        value: "without options",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "text",
+        _nested_name: "text",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_image_5",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list_7",
+        },
+        _nested_name: "radio_group_image_5",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_7",
+                matchedExpression: "@local.answer_list_7",
+                type: "local",
+                fieldName: "answer_list_7",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_7": ["parameter_list.answer_list"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_set_theme_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "answer0_list",
+        value: ["name:name_var_1 | text:Single", "name:name_var_2 | text:Pair"],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer0_list",
+      },
+      {
+        name: "options_per_row",
+        value: 2,
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "options_per_row",
+      },
+      {
+        type: "display_group",
+        exclude_from_translation: true,
+        rows: [
+          {
+            type: "button",
+            name: "active_theme_button",
+            value: "Active Theme",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "set_theme",
+                args: ["active"],
+                _raw: "click | set_theme:active",
+                _cleaned: "click | set_theme:active",
+              },
+            ],
+            exclude_from_translation: true,
+            _nested_name: "display_group.active_theme_button",
+          },
+          {
+            type: "button",
+            name: "passive_theme_button",
+            value: "Passive Theme",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "set_theme",
+                args: ["passive"],
+                _raw: "click | set_theme:passive",
+                _cleaned: "click | set_theme:passive",
+              },
+            ],
+            exclude_from_translation: true,
+            _nested_name: "display_group.passive_theme_button",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square",
+        value: "Pair",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer0_list",
+          options_per_row: "@local.options_per_row",
+        },
+        _nested_name: "radio_group_square",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer0_list",
+                matchedExpression: "@local.answer0_list",
+                type: "local",
+                fieldName: "answer0_list",
+              },
+            ],
+            options_per_row: [
+              {
+                fullExpression: "@local.options_per_row",
+                matchedExpression: "@local.options_per_row",
+                type: "local",
+                fieldName: "options_per_row",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer0_list": ["parameter_list.answer_list"],
+          "@local.options_per_row": ["parameter_list.options_per_row"],
+        },
+      },
+      {
+        name: "answer1_list",
+        value: [
+          "name:name_var_1 | text:Woman | image:/plh_images/icons/heart.svg",
+          "name:name_var_2 | text:Man | image:/plh_images/icons/heart.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer1_list",
+      },
+      {
+        exclude_from_translation: true,
+        type: "set_variable",
+        name: "set_variable",
+        _nested_name: "set_variable",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_ex1",
+        value: "Black",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer2_list",
+          options_per_row: "3",
+        },
+        _nested_name: "radio_group_square_ex1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer2_list",
+                matchedExpression: "@local.answer2_list",
+                type: "local",
+                fieldName: "answer2_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer2_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        name: "answer2_list",
+        value: [
+          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
+          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer2_list",
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_ex2",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer3_list",
+          options_per_row: "3",
+        },
+        _nested_name: "radio_group_square_ex2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer3_list",
+                matchedExpression: "@local.answer3_list",
+                type: "local",
+                fieldName: "answer3_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer3_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        name: "answer3_list",
+        value: [
+          "name:name_var_1 | image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg",
+          "name:name_var_3| image:/plh_images/icons/heart.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer3_list",
+      },
+      {
+        name: "combo_answer_list",
+        value: ["First", "Second", "Third"],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "combo_answer_list",
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_defaults",
+        value: "nothing",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.combo_answer_list",
+        },
+        _nested_name: "combo_box_defaults",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.combo_answer_list",
+                matchedExpression: "@local.combo_answer_list",
+                type: "local",
+                fieldName: "combo_answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.combo_answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_square_ex3",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer4_list",
+          options_per_row: "3",
+          style: "transparent",
+        },
+        _nested_name: "radio_group_square_ex3",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer4_list",
+                matchedExpression: "@local.answer4_list",
+                type: "local",
+                fieldName: "answer4_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer4_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        name: "answer4_list",
+        value: [
+          "name:name_var_1 | image:/plh_images/icons/heart.svg",
+          "name:name_var_2| image:/plh_images/icons/heart.svg",
+          "name:name_var_3| image:/plh_images/icons/heart.svg",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer4_list",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_welcome",
+        },
+        style_list: ["margin: 10px 15px", "min_height: 40px"],
+        rows: [
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/characters/group/talk_together.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            style_list: ["max-width: 250px"],
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner_short",
+        },
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title banner title",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            _nested_name: "dg_example_7.title_ex_s",
+          },
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/characters/group/talk_together.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+      {
+        type: "display_group",
+        name: "dg_example_7",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "banner",
+        },
+        rows: [
+          {
+            type: "title",
+            name: "title_ex_s",
+            value: "Example title banner title",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            parameter_list: {
+              style: "primary",
+            },
+            _nested_name: "dg_example_7.title_ex_s",
+          },
+          {
+            type: "image",
+            name: "image",
+            value: "plh_images/characters/group/talk_together.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_7.image",
+          },
+        ],
+        _nested_name: "dg_example_7",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_combo_box",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "answer_list",
+        value: [
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list",
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_defaults",
+        value: "nothing",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          style: "active",
+        },
+        _nested_name: "combo_box_defaults",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_result",
+        value: "You selected @local.combo_box_defaults",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_result",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "You selected @local.combo_box_defaults",
+              matchedExpression: "@local.combo_box_defaults",
+              type: "local",
+              fieldName: "combo_box_defaults",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.combo_box_defaults": ["value"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_text_in_pop_up",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          text: "Text above the answers",
+          placeholder: "Click here to answer",
+          style: "active",
+        },
+        _nested_name: "combo_box_text_in_pop_up",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_with_placeholder_1",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "Click here to answer",
+        },
+        _nested_name: "combo_box_with_placeholder_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_with_placeholder_2",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "Click here to answer",
+        },
+        _nested_name: "combo_box_with_placeholder_2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_result",
+        value: "You selected @local.combo_box_with_placeholder_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_result",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "You selected @local.combo_box_with_placeholder_2",
+              matchedExpression: "@local.combo_box_with_placeholder_2",
+              type: "local",
+              fieldName: "combo_box_with_placeholder_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.combo_box_with_placeholder_2": ["value"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_allow_input",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "Click here to answer",
+          input_allowed: "true",
+          answer_placeholder: "Type your own",
+          style: "active",
+        },
+        _nested_name: "combo_box_allow_input",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        name: "input_allowed",
+        value: true,
+        type: "set_variable",
+        _nested_name: "input_allowed",
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_allow_input_through_var",
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "Click here to answer",
+          input_allowed: "@local.input_allowed",
+          answer_placeholder: "Type your own",
+          style: "active",
+        },
+        _nested_name: "combo_box_allow_input_through_var",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+            input_allowed: [
+              {
+                fullExpression: "@local.input_allowed",
+                matchedExpression: "@local.input_allowed",
+                type: "local",
+                fieldName: "input_allowed",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list": ["parameter_list.answer_list"],
+          "@local.input_allowed": ["parameter_list.input_allowed"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_pop_ups",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "button",
+        name: "button_pop_up_1",
+        value: "Button 1",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["feature_tile"],
+            _raw: "click | pop_up:feature_tile",
+            _cleaned: "click | pop_up:feature_tile",
+          },
+        ],
+        exclude_from_translation: true,
+        _nested_name: "button_pop_up_1",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_two_columns_images",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        value: "Powered by Parenting for Lifelong Health and partners",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "center",
+          text_align: "center",
+        },
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "display_group",
+        parameter_list: {
+          style: "two_columns_images",
+        },
+        rows: [
+          {
+            type: "image",
+            name: "partner_1",
+            value: "plh_images/logos/partners/plh.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.partner_1",
+          },
+          {
+            type: "image",
+            name: "partner_2",
+            value: "plh_images/logos/partners/unicef.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.partner_2",
+          },
+          {
+            type: "image",
+            name: "partner_3",
+            value: "plh_images/logos/partners/who.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.partner_3",
+          },
+          {
+            type: "image",
+            name: "partner_4",
+            value: "plh_images/logos/partners/cwb.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.partner_4",
+          },
+          {
+            type: "image",
+            name: "partner_5",
+            value: "plh_images/logos/partners/idems.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.partner_5",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_two_columns_images_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        value: "ParentApp funded by",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "center",
+          text_align: "center",
+        },
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "display_group",
+        parameter_list: {
+          style: "two_columns_images",
+        },
+        rows: [
+          {
+            type: "image",
+            name: "funder_1",
+            value: "plh_images/logos/funders/ukri.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_1",
+          },
+          {
+            type: "image",
+            name: "funder_2",
+            value: "plh_images/logos/funders/gcrf.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_2",
+          },
+          {
+            type: "image",
+            name: "funder_3",
+            value: "plh_images/logos/funders/newton_fund.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_3",
+          },
+          {
+            type: "image",
+            name: "funder_4",
+            value: "plh_images/logos/funders/lego_foundation.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_4",
+          },
+          {
+            type: "image",
+            name: "funder_5",
+            value: "plh_images/logos/funders/university_of_oxford.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_5",
+          },
+          {
+            type: "image",
+            name: "funder_6",
+            value: "plh_images/logos/funders/oak_foundation.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_6",
+          },
+          {
+            type: "image",
+            name: "funder_7",
+            value: "plh_images/logos/funders/unicef.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_7",
+          },
+          {
+            type: "image",
+            name: "funder_8",
+            value: "plh_images/logos/funders/end_violence_against_children.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_8",
+          },
+          {
+            type: "image",
+            name: "funder_9",
+            value: "plh_images/logos/funders/erc.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_9",
+          },
+          {
+            type: "image",
+            name: "funder_10",
+            value: "plh_images/logos/funders/generali_human_safety_net.png",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            _nested_name: "display_group.funder_10",
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_feedback_default",
+    status: "released",
+    flow_subtype: "debug",
+    comments: "Default general feedback form",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "Feedback",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_1",
+      },
+      {
+        type: "text_area",
+        name: "feedback",
+        exclude_from_translation: true,
+        parameter_list: {
+          placeholder: "Write feedback here",
+        },
+        _nested_name: "feedback",
+      },
+      {
+        type: "display_group",
+        name: "dg_buttons",
+        exclude_from_translation: true,
+        rows: [
+          {
+            type: "button",
+            name: "button_cancel",
+            value: "Cancel",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "emit",
+                args: ["uncompleted"],
+                _raw: "click | emit:uncompleted",
+                _cleaned: "click | emit:uncompleted",
+              },
+            ],
+            exclude_from_translation: true,
+            _nested_name: "dg_buttons.button_cancel",
+          },
+          {
+            type: "button",
+            name: "button_submit",
+            value: "Submit",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "emit",
+                args: ["completed", "@local.feedback"],
+                _raw: "click | emit:completed:@local.feedback",
+                _cleaned: "click | emit:completed:@local.feedback",
+              },
+            ],
+            exclude_from_translation: true,
+            _nested_name: "dg_buttons.button_submit",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  args: {
+                    "1": [
+                      {
+                        fullExpression: "@local.feedback",
+                        matchedExpression: "@local.feedback",
+                        type: "local",
+                        fieldName: "feedback",
+                      },
+                    ],
+                  },
+                  _raw: [
+                    {
+                      fullExpression: "click | emit:completed:@local.feedback",
+                      matchedExpression: "@local.feedback",
+                      type: "local",
+                      fieldName: "feedback",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression: "click | emit:completed:@local.feedback",
+                      matchedExpression: "@local.feedback",
+                      type: "local",
+                      fieldName: "feedback",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.feedback": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned",
+              ],
+            },
+          },
+        ],
+        _nested_name: "dg_buttons",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_feedback.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_feedback_text_select",
+    status: "released",
+    flow_subtype: "debug",
+    comments: "Default text-select feedback form",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "Suggest Change",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_1",
+      },
+      {
+        type: "text",
+        name: "selected_text",
+        value: "@fields._feedback_selected_text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "selected_text",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields._feedback_selected_text",
+              matchedExpression: "@fields._feedback_selected_text",
+              type: "fields",
+              fieldName: "_feedback_selected_text",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields._feedback_selected_text": ["value"],
+        },
+      },
+      {
+        type: "text_area",
+        name: "feedback",
+        exclude_from_translation: true,
+        _nested_name: "feedback",
+      },
+      {
+        type: "display_group",
+        name: "dg_buttons",
+        exclude_from_translation: true,
+        rows: [
+          {
+            type: "button",
+            name: "button_cancel",
+            value: "Cancel",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "emit",
+                args: ["uncompleted"],
+                _raw: "click | emit:uncompleted",
+                _cleaned: "click | emit:uncompleted",
+              },
+            ],
+            exclude_from_translation: true,
+            _nested_name: "dg_buttons.button_cancel",
+          },
+          {
+            type: "button",
+            name: "button_submit",
+            value: "Submit",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "emit",
+                args: ["completed", "@local.feedback"],
+                _raw: "click | emit:completed:@local.feedback",
+                _cleaned: "click | emit:completed:@local.feedback",
+              },
+            ],
+            exclude_from_translation: true,
+            _nested_name: "dg_buttons.button_submit",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  args: {
+                    "1": [
+                      {
+                        fullExpression: "@local.feedback",
+                        matchedExpression: "@local.feedback",
+                        type: "local",
+                        fieldName: "feedback",
+                      },
+                    ],
+                  },
+                  _raw: [
+                    {
+                      fullExpression: "click | emit:completed:@local.feedback",
+                      matchedExpression: "@local.feedback",
+                      type: "local",
+                      fieldName: "feedback",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression: "click | emit:completed:@local.feedback",
+                      matchedExpression: "@local.feedback",
+                      type: "local",
+                      fieldName: "feedback",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.feedback": [
+                "action_list.0.args.1",
+                "action_list.0._raw",
+                "action_list.0._cleaned",
+              ],
+            },
+          },
+        ],
+        _nested_name: "dg_buttons",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_feedback.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_feedback_debug",
+    status: "released",
+    flow_subtype: "debug",
+    comments: "Used in /feedback debug page",
+    rows: [
+      {
+        type: "title",
+        value: "Fields",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "text",
+        value: "_feedback_selected_text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "text",
+        _nested_name: "text",
+      },
+      {
+        type: "title",
+        value: "Actions",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        name: "title",
+        _nested_name: "title",
+      },
+      {
+        type: "button",
+        value: "Enable Feedback Mode",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "feedback",
+            args: ["enable"],
+            _raw: "click | feedback:enable",
+            _cleaned: "click | feedback:enable",
+          },
+        ],
+        exclude_from_translation: true,
+        name: "button",
+        _nested_name: "button",
+      },
+      {
+        type: "button",
+        value: "Disable Feedback Mode",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "feedback",
+            args: ["disable"],
+            _raw: "click | feedback:disable",
+            _cleaned: "click | feedback:disable",
+          },
+        ],
+        exclude_from_translation: true,
+        name: "button",
+        _nested_name: "button",
+      },
+      {
+        type: "button",
+        value: "Open Feedback Template",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "feedback",
+            args: ["open", "feature_feedback_default"],
+            _raw: "click | feedback:open:feature_feedback_default",
+            _cleaned: "click | feedback:open:feature_feedback_default",
+          },
+        ],
+        exclude_from_translation: true,
+        name: "button",
+        _nested_name: "button",
+      },
+      {
+        type: "button",
+        value: "Send Test Feedback",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "feedback",
+            args: ["send", "test feedback"],
+            _raw: "click | feedback:send:test feedback",
+            _cleaned: "click | feedback:send:test feedback",
+          },
+        ],
+        exclude_from_translation: true,
+        name: "button",
+        _nested_name: "button",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_feedback.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_select_text",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "user_id",
+        value: "@calc(this.app_user_id)",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "user_id",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@calc(this.app_user_id)",
+              matchedExpression: "@calc(this.app_user_id)",
+              type: "calc",
+              fieldName: "this.app_user_id",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@calc(this.app_user_id)": ["value"],
+        },
+      },
+      {
+        name: "copy_text",
+        value: "Copy this",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copy_text",
+      },
+      {
+        name: "copy_icon_1",
+        value: "clipboard-outline",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copy_icon_1",
+      },
+      {
+        name: "copy_icon_2",
+        value: "copy-outline",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copy_icon_2",
+      },
+      {
+        name: "copied_text",
+        value: "Copied!",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copied_text",
+      },
+      {
+        name: "copied_icon_1",
+        value: "checkmark-outline",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copied_icon_1",
+      },
+      {
+        name: "copied_icon_2",
+        value: "plh_images/icons/tick.svg",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "copied_icon_2",
+      },
+      {
+        type: "select_text",
+        name: "select_text_1",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_text: "@local.copy_text",
+          copied_text: "@local.copied_text",
+        },
+        _nested_name: "select_text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_text: [
+              {
+                fullExpression: "@local.copy_text",
+                matchedExpression: "@local.copy_text",
+                type: "local",
+                fieldName: "copy_text",
+              },
+            ],
+            copied_text: [
+              {
+                fullExpression: "@local.copied_text",
+                matchedExpression: "@local.copied_text",
+                type: "local",
+                fieldName: "copied_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_text": ["parameter_list.copy_text"],
+          "@local.copied_text": ["parameter_list.copied_text"],
+        },
+      },
+      {
+        type: "select_text",
+        name: "select_text_2",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_icon: "@local.copy_icon_1",
+          copied_text: "@local.copied_text",
+        },
+        _nested_name: "select_text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_icon: [
+              {
+                fullExpression: "@local.copy_icon_1",
+                matchedExpression: "@local.copy_icon_1",
+                type: "local",
+                fieldName: "copy_icon_1",
+              },
+            ],
+            copied_text: [
+              {
+                fullExpression: "@local.copied_text",
+                matchedExpression: "@local.copied_text",
+                type: "local",
+                fieldName: "copied_text",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_icon_1": ["parameter_list.copy_icon"],
+          "@local.copied_text": ["parameter_list.copied_text"],
+        },
+      },
+      {
+        type: "select_text",
+        name: "select_text_3",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_text: "@local.copy_text",
+          copied_icon: "@local.copied_icon_1",
+        },
+        _nested_name: "select_text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_text: [
+              {
+                fullExpression: "@local.copy_text",
+                matchedExpression: "@local.copy_text",
+                type: "local",
+                fieldName: "copy_text",
+              },
+            ],
+            copied_icon: [
+              {
+                fullExpression: "@local.copied_icon_1",
+                matchedExpression: "@local.copied_icon_1",
+                type: "local",
+                fieldName: "copied_icon_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_text": ["parameter_list.copy_text"],
+          "@local.copied_icon_1": ["parameter_list.copied_icon"],
+        },
+      },
+      {
+        type: "select_text",
+        name: "select_text_4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        value: "@local.user_id",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          copy_icon: "@local.copy_icon_2",
+          copied_icon: "@local.copied_icon_2",
+        },
+        _nested_name:
+          "select_text_4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.user_id",
+              matchedExpression: "@local.user_id",
+              type: "local",
+              fieldName: "user_id",
+            },
+          ],
+          parameter_list: {
+            copy_icon: [
+              {
+                fullExpression: "@local.copy_icon_2",
+                matchedExpression: "@local.copy_icon_2",
+                type: "local",
+                fieldName: "copy_icon_2",
+              },
+            ],
+            copied_icon: [
+              {
+                fullExpression: "@local.copied_icon_2",
+                matchedExpression: "@local.copied_icon_2",
+                type: "local",
+                fieldName: "copied_icon_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.user_id": ["value"],
+          "@local.copy_icon_2": ["parameter_list.copy_icon"],
+          "@local.copied_icon_2": ["parameter_list.copied_icon"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_select_text.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_items",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_default",
+        value: "Items - default",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_default",
+      },
+      {
+        type: "items",
+        name: "items_default",
+        value: "@data.feature_items_data",
+        rows: [
+          {
+            type: "text",
+            name: "text_@item.id",
+            value: "@item.title",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "items_default.text_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "text_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.title",
+                  matchedExpression: "@item.title",
+                  type: "item",
+                  fieldName: "title",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "items_default.text_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@item.title": ["value"],
+            },
+          },
+          {
+            type: "button",
+            name: "button_@item.id",
+            value: "@item.button_text",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "go_to",
+                args: ["@item.link"],
+                _raw: "click | go_to: @item.link",
+                _cleaned: "click | go_to: @item.link",
+              },
+            ],
+            _nested_name: "items_default.button_@item.id",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "button_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "@item.button_text",
+                  matchedExpression: "@item.button_text",
+                  type: "item",
+                  fieldName: "button_text",
+                },
+              ],
+              action_list: {
+                "0": {
+                  args: {
+                    "0": [
+                      {
+                        fullExpression: "@item.link",
+                        matchedExpression: "@item.link",
+                        type: "item",
+                        fieldName: "link",
+                      },
+                    ],
+                  },
+                  _raw: [
+                    {
+                      fullExpression: "click | go_to: @item.link",
+                      matchedExpression: "@item.link",
+                      type: "item",
+                      fieldName: "link",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression: "click | go_to: @item.link",
+                      matchedExpression: "@item.link",
+                      type: "item",
+                      fieldName: "link",
+                    },
+                  ],
+                },
+              },
+              _nested_name: [
+                {
+                  fullExpression: "items_default.button_@item.id",
+                  matchedExpression: "@item.id",
+                  type: "item",
+                  fieldName: "id",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.id": ["name", "_nested_name"],
+              "@item.button_text": ["value"],
+              "@item.link": [
+                "action_list.0.args.0",
+                "action_list.0._raw",
+                "action_list.0._cleaned",
+              ],
+            },
+          },
+        ],
+        _nested_name: "items_default",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@data.feature_items_data",
+              matchedExpression: "@data.feature_items_data",
+              type: "data",
+              fieldName: "feature_items_data",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.feature_items_data": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_dg",
+        value: "Items - display group",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_dg",
+      },
+      {
+        type: "display_group",
+        name: "dg",
+        rows: [
+          {
+            type: "items",
+            name: "items_dg",
+            value: "@data.feature_items_data",
+            rows: [
+              {
+                type: "text",
+                name: "text_@item.id",
+                value: "@item.title",
+                _translations: {
+                  value: {},
+                },
+                _nested_name: "dg.items_dg.text_@item.id",
+                _dynamicFields: {
+                  name: [
+                    {
+                      fullExpression: "text_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                  value: [
+                    {
+                      fullExpression: "@item.title",
+                      matchedExpression: "@item.title",
+                      type: "item",
+                      fieldName: "title",
+                    },
+                  ],
+                  _nested_name: [
+                    {
+                      fullExpression: "dg.items_dg.text_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.id": ["name", "_nested_name"],
+                  "@item.title": ["value"],
+                },
+              },
+              {
+                type: "button",
+                name: "button_@item.id",
+                value: "@item.button_text",
+                _translations: {
+                  value: {},
+                },
+                action_list: [
+                  {
+                    trigger: "click",
+                    action_id: "go_to",
+                    args: ["@item.link"],
+                    _raw: "click | go_to: @item.link",
+                    _cleaned: "click | go_to: @item.link",
+                  },
+                ],
+                _nested_name: "dg.items_dg.button_@item.id",
+                _dynamicFields: {
+                  name: [
+                    {
+                      fullExpression: "button_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                  value: [
+                    {
+                      fullExpression: "@item.button_text",
+                      matchedExpression: "@item.button_text",
+                      type: "item",
+                      fieldName: "button_text",
+                    },
+                  ],
+                  action_list: {
+                    "0": {
+                      args: {
+                        "0": [
+                          {
+                            fullExpression: "@item.link",
+                            matchedExpression: "@item.link",
+                            type: "item",
+                            fieldName: "link",
+                          },
+                        ],
+                      },
+                      _raw: [
+                        {
+                          fullExpression: "click | go_to: @item.link",
+                          matchedExpression: "@item.link",
+                          type: "item",
+                          fieldName: "link",
+                        },
+                      ],
+                      _cleaned: [
+                        {
+                          fullExpression: "click | go_to: @item.link",
+                          matchedExpression: "@item.link",
+                          type: "item",
+                          fieldName: "link",
+                        },
+                      ],
+                    },
+                  },
+                  _nested_name: [
+                    {
+                      fullExpression: "dg.items_dg.button_@item.id",
+                      matchedExpression: "@item.id",
+                      type: "item",
+                      fieldName: "id",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.id": ["name", "_nested_name"],
+                  "@item.button_text": ["value"],
+                  "@item.link": [
+                    "action_list.0.args.0",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned",
+                  ],
+                },
+              },
+            ],
+            _nested_name: "dg.items_dg",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.feature_items_data",
+                  matchedExpression: "@data.feature_items_data",
+                  type: "data",
+                  fieldName: "feature_items_data",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.feature_items_data": ["value"],
+            },
+          },
+        ],
+        _nested_name: "dg",
+      },
+      {
+        type: "title",
+        name: "title_dg2",
+        value: "Items - group within group",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_dg2",
+      },
+      {
+        type: "display_group",
+        name: "dg2a",
+        rows: [
+          {
+            type: "items",
+            name: "items_dg",
+            value: "@data.feature_items_data",
+            rows: [
+              {
+                type: "display_group",
+                name: "dg2b",
+                parameter_list: {
+                  style: "column",
+                },
+                rows: [
+                  {
+                    type: "text",
+                    name: "text_@item.id",
+                    value: "@item.title",
+                    _translations: {
+                      value: {},
+                    },
+                    _nested_name: "dg2a.items_dg.dg2b.text_@item.id",
+                    _dynamicFields: {
+                      name: [
+                        {
+                          fullExpression: "text_@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                      value: [
+                        {
+                          fullExpression: "@item.title",
+                          matchedExpression: "@item.title",
+                          type: "item",
+                          fieldName: "title",
+                        },
+                      ],
+                      _nested_name: [
+                        {
+                          fullExpression: "dg2a.items_dg.dg2b.text_@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                    },
+                    _dynamicDependencies: {
+                      "@item.id": ["name", "_nested_name"],
+                      "@item.title": ["value"],
+                    },
+                  },
+                  {
+                    type: "button",
+                    name: "button_@item.id",
+                    value: "@item.button_text",
+                    _translations: {
+                      value: {},
+                    },
+                    action_list: [
+                      {
+                        trigger: "click",
+                        action_id: "go_to",
+                        args: ["@item.link"],
+                        _raw: "click | go_to: @item.link",
+                        _cleaned: "click | go_to: @item.link",
+                      },
+                    ],
+                    _nested_name: "dg2a.items_dg.dg2b.button_@item.id",
+                    _dynamicFields: {
+                      name: [
+                        {
+                          fullExpression: "button_@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                      value: [
+                        {
+                          fullExpression: "@item.button_text",
+                          matchedExpression: "@item.button_text",
+                          type: "item",
+                          fieldName: "button_text",
+                        },
+                      ],
+                      action_list: {
+                        "0": {
+                          args: {
+                            "0": [
+                              {
+                                fullExpression: "@item.link",
+                                matchedExpression: "@item.link",
+                                type: "item",
+                                fieldName: "link",
+                              },
+                            ],
+                          },
+                          _raw: [
+                            {
+                              fullExpression: "click | go_to: @item.link",
+                              matchedExpression: "@item.link",
+                              type: "item",
+                              fieldName: "link",
+                            },
+                          ],
+                          _cleaned: [
+                            {
+                              fullExpression: "click | go_to: @item.link",
+                              matchedExpression: "@item.link",
+                              type: "item",
+                              fieldName: "link",
+                            },
+                          ],
+                        },
+                      },
+                      _nested_name: [
+                        {
+                          fullExpression: "dg2a.items_dg.dg2b.button_@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                    },
+                    _dynamicDependencies: {
+                      "@item.id": ["name", "_nested_name"],
+                      "@item.button_text": ["value"],
+                      "@item.link": [
+                        "action_list.0.args.0",
+                        "action_list.0._raw",
+                        "action_list.0._cleaned",
+                      ],
+                    },
+                  },
+                ],
+                _nested_name: "dg2a.items_dg.dg2b",
+              },
+            ],
+            _nested_name: "dg2a.items_dg",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.feature_items_data",
+                  matchedExpression: "@data.feature_items_data",
+                  type: "data",
+                  fieldName: "feature_items_data",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.feature_items_data": ["value"],
+            },
+          },
+        ],
+        _nested_name: "dg2a",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_items.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_dg_dashed_box",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "display_group",
+        name: "dg_example_dashed_box",
+        value: "dg_example_dashed_box",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "dashed_box",
+        },
+        rows: [
+          {
+            type: "subtitle",
+            value: "Subtitle",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            name: "subtitle",
+            _nested_name: "dg_example_dashed_box.subtitle",
+          },
+          {
+            type: "parent_point_box",
+            name: "points_example_1",
+            value: 3,
+            exclude_from_translation: true,
+            parameter_list: {
+              lottie_src: "plh_lottie/parent_centre.json",
+              text: "text two",
+            },
+            _nested_name: "dg_example_dashed_box.points_example_1",
+          },
+          {
+            type: "button",
+            name: "btn_example",
+            value: "Continue",
+            _translations: {
+              value: {
+                tz_sw: true,
+                za_af: true,
+                za_st: true,
+                za_tn: true,
+                za_xh: true,
+                za_zu: true,
+              },
+            },
+            exclude_from_translation: true,
+            _nested_name: "dg_example_dashed_box.btn_example",
+          },
+        ],
+        _nested_name: "dg_example_dashed_box",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_dg_styles.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_dg_form",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "display_group",
+        name: "dg_example_form",
+        value: "dg_example_form",
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "form",
+          get_device_info: "true",
+          button_text: "Send",
+        },
+        rows: [
+          {
+            type: "text_box",
+            name: "user_name",
+            exclude_from_translation: true,
+            parameter_list: {
+              help: "some help text",
+              placeholder: "Add your name",
+            },
+            _nested_name: "dg_example_form.user_name",
+          },
+          {
+            type: "text_box",
+            name: "user_phone",
+            exclude_from_translation: true,
+            parameter_list: {
+              help: "some help text",
+              placeholder: "Add your phone number",
+            },
+            _nested_name: "dg_example_form.user_phone",
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_1",
+            value: false,
+            action_list: [
+              {
+                trigger: "changed",
+                action_id: "set_field",
+                args: ["demo_changed_field_checkbox", "this.value"],
+                _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+              },
+            ],
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "Example answer?",
+            },
+            _nested_name: "dg_example_form.checkbox_1",
+            _dynamicFields: {
+              action_list: {
+                "0": {
+                  _raw: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                  _cleaned: [
+                    {
+                      fullExpression:
+                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                      matchedExpression: "@local.checkbox_1",
+                      type: "local",
+                      fieldName: "checkbox_1",
+                    },
+                  ],
+                },
+              },
+            },
+            _dynamicDependencies: {
+              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
+            },
+          },
+          {
+            type: "simple_checkbox",
+            name: "checkbox_2",
+            value: true,
+            exclude_from_translation: true,
+            parameter_list: {
+              label_text: "Example answer?",
+            },
+            _nested_name: "dg_example_form.checkbox_2",
+          },
+          {
+            type: "title",
+            value: "Some text here",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            name: "title",
+            _nested_name: "dg_example_form.title",
+          },
+          {
+            type: "text_area",
+            name: "text_area",
+            exclude_from_translation: true,
+            parameter_list: {
+              placeholder: "example placeholder",
+            },
+            _nested_name: "dg_example_form.text_area",
+          },
+        ],
+        _nested_name: "dg_example_form",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_dg_styles.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_text_box_placeholder",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "placeholder",
+        value: "placeholder",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "placeholder",
+      },
+      {
+        type: "set_field",
+        name: "feature_default_input",
+        value: "default input",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "feature_default_input",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value:
+          "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
+              matchedExpression: "@local.placeholder",
+              type: "local",
+              fieldName: "placeholder",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.placeholder": ["value"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box_1",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_input_tracker_1", "this.value"],
+            _raw: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+            _cleaned: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          placeholder: "@local.placeholder",
+        },
+        _nested_name: "text_box_1",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+                  matchedExpression: "@local.text_box_1",
+                  type: "local",
+                  fieldName: "text_box_1",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+                  matchedExpression: "@local.text_box_1",
+                  type: "local",
+                  fieldName: "text_box_1",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.text_box_1": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value:
+          "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
+              matchedExpression: "@fields.feature_default_input",
+              type: "fields",
+              fieldName: "feature_default_input",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_input": ["value"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box_2",
+        value: "@fields.feature_default_input",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_input_tracker_2", "this.value"],
+            _raw: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+            _cleaned: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+          },
+        ],
+        exclude_from_translation: true,
+        _nested_name: "text_box_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_input",
+              matchedExpression: "@fields.feature_default_input",
+              type: "fields",
+              fieldName: "feature_default_input",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+                  matchedExpression: "@local.text_box_2",
+                  type: "local",
+                  fieldName: "text_box_2",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+                  matchedExpression: "@local.text_box_2",
+                  type: "local",
+                  fieldName: "text_box_2",
+                },
+              ],
+            },
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_input": ["value"],
+          "@local.text_box_2": ["action_list.0._raw", "action_list.0._cleaned"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value:
+          "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+              matchedExpression: "@fields.feature_default_input",
+              type: "fields",
+              fieldName: "feature_default_input",
+            },
+            {
+              fullExpression:
+                "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+              matchedExpression: "@local.placeholder",
+              type: "local",
+              fieldName: "placeholder",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_input": ["value"],
+          "@local.placeholder": ["value"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box_3",
+        value: "@fields.feature_default_input",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_input_tracker_3", "this.value"],
+            _raw: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+            _cleaned: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          placeholder: "@local.placeholder",
+        },
+        _nested_name: "text_box_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_input",
+              matchedExpression: "@fields.feature_default_input",
+              type: "fields",
+              fieldName: "feature_default_input",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+                  matchedExpression: "@local.text_box_3",
+                  type: "local",
+                  fieldName: "text_box_3",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+                  matchedExpression: "@local.text_box_3",
+                  type: "local",
+                  fieldName: "text_box_3",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_input": ["value"],
+          "@local.text_box_3": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box_4",
+        value: "@fields.feature_default_input",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_input_tracker_4", "this.value"],
+            _raw: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+            _cleaned: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          placeholder: "@local.placeholder",
+          prioritise_placeholder: "false",
+        },
+        _nested_name: "text_box_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_input",
+              matchedExpression: "@fields.feature_default_input",
+              type: "fields",
+              fieldName: "feature_default_input",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+                  matchedExpression: "@local.text_box_4",
+                  type: "local",
+                  fieldName: "text_box_4",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+                  matchedExpression: "@local.text_box_4",
+                  type: "local",
+                  fieldName: "text_box_4",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_input": ["value"],
+          "@local.text_box_4": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value:
+          "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
+              matchedExpression: "@local.placeholder",
+              type: "local",
+              fieldName: "placeholder",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.placeholder": ["value"],
+        },
+      },
+      {
+        type: "text_box",
+        name: "text_box_5",
+        value: "@fields.feature_default_input",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_input_tracker_5", "this.value"],
+            _raw: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+            _cleaned: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          placeholder: "@local.placeholder",
+          prioritise_placeholder: "true",
+        },
+        _nested_name: "text_box_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_input",
+              matchedExpression: "@fields.feature_default_input",
+              type: "fields",
+              fieldName: "feature_default_input",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+                  matchedExpression: "@local.text_box_5",
+                  type: "local",
+                  fieldName: "text_box_5",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+                  matchedExpression: "@local.text_box_5",
+                  type: "local",
+                  fieldName: "text_box_5",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_input": ["value"],
+          "@local.text_box_5": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_prioritise_placeholder.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_combo_box_placeholder",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "answer_list",
+        value: [
+          "name: name_1 | text: This is text 1",
+          "name: name_2 | text: This is text 2",
+          "name: name_3 | text: This is text 3",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list",
+      },
+      {
+        name: "placeholder",
+        value: "placeholder",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "placeholder",
+      },
+      {
+        type: "set_field",
+        name: "feature_default_choice",
+        value: "name_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "feature_default_choice",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value:
+          "Combo box 1: \nShows @local.placeholder when no user input is given and when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Combo box 1: \nShows @local.placeholder when no user input is given and when user input is deleted.",
+              matchedExpression: "@local.placeholder",
+              type: "local",
+              fieldName: "placeholder",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.placeholder": ["value"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_1",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_choice_tracker_1", "this.value"],
+            _raw: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
+            _cleaned: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "@local.placeholder",
+        },
+        _nested_name: "combo_box_1",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
+                  matchedExpression: "@local.combo_box_1",
+                  type: "local",
+                  fieldName: "combo_box_1",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
+                  matchedExpression: "@local.combo_box_1",
+                  type: "local",
+                  fieldName: "combo_box_1",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.combo_box_1": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value:
+          "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given. Is blank when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given. Is blank when user input is deleted.",
+              matchedExpression: "@fields.feature_default_choice",
+              type: "fields",
+              fieldName: "feature_default_choice",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_choice": ["value"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_2",
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_choice_tracker_2", "this.value"],
+            _raw: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
+            _cleaned: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+        },
+        _nested_name: "combo_box_2",
+        _dynamicFields: {
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
+                  matchedExpression: "@local.combo_box_2",
+                  type: "local",
+                  fieldName: "combo_box_2",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
+                  matchedExpression: "@local.combo_box_2",
+                  type: "local",
+                  fieldName: "combo_box_2",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.combo_box_2": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value:
+          "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
+              matchedExpression: "@fields.feature_default_choice",
+              type: "fields",
+              fieldName: "feature_default_choice",
+            },
+            {
+              fullExpression:
+                "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
+              matchedExpression: "@local.placeholder",
+              type: "local",
+              fieldName: "placeholder",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_choice": ["value"],
+          "@local.placeholder": ["value"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_3",
+        value: "@fields.feature_default_choice",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_choice_tracker_3", "this.value"],
+            _raw: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
+            _cleaned: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "@local.placeholder",
+        },
+        _nested_name: "combo_box_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_choice",
+              matchedExpression: "@fields.feature_default_choice",
+              type: "fields",
+              fieldName: "feature_default_choice",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
+                  matchedExpression: "@local.combo_box_3",
+                  type: "local",
+                  fieldName: "combo_box_3",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
+                  matchedExpression: "@local.combo_box_3",
+                  type: "local",
+                  fieldName: "combo_box_3",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_choice": ["value"],
+          "@local.combo_box_3": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_4",
+        value: "@fields.feature_default_choice",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_choice_tracker_4", "this.value"],
+            _raw: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
+            _cleaned: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "@local.placeholder",
+          prioritise_placeholder: "false",
+        },
+        _nested_name: "combo_box_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_choice",
+              matchedExpression: "@fields.feature_default_choice",
+              type: "fields",
+              fieldName: "feature_default_choice",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
+                  matchedExpression: "@local.combo_box_4",
+                  type: "local",
+                  fieldName: "combo_box_4",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
+                  matchedExpression: "@local.combo_box_4",
+                  type: "local",
+                  fieldName: "combo_box_4",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_choice": ["value"],
+          "@local.combo_box_4": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value:
+          "Combo box 5: \nShows @local.placeholder when no user input is given and when user input is deleted.",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "Combo box 5: \nShows @local.placeholder when no user input is given and when user input is deleted.",
+              matchedExpression: "@local.placeholder",
+              type: "local",
+              fieldName: "placeholder",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.placeholder": ["value"],
+        },
+      },
+      {
+        type: "combo_box",
+        name: "combo_box_5",
+        value: "@fields.feature_default_choice",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "changed",
+            action_id: "set_field",
+            args: ["feature_choice_tracker_5", "this.value"],
+            _raw: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
+            _cleaned: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
+          },
+        ],
+        exclude_from_translation: true,
+        parameter_list: {
+          answer_list: "@local.answer_list",
+          placeholder: "@local.placeholder",
+          prioritise_placeholder: "true",
+        },
+        _nested_name: "combo_box_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@fields.feature_default_choice",
+              matchedExpression: "@fields.feature_default_choice",
+              type: "fields",
+              fieldName: "feature_default_choice",
+            },
+          ],
+          action_list: {
+            "0": {
+              _raw: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
+                  matchedExpression: "@local.combo_box_5",
+                  type: "local",
+                  fieldName: "combo_box_5",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
+                  matchedExpression: "@local.combo_box_5",
+                  type: "local",
+                  fieldName: "combo_box_5",
+                },
+              ],
+            },
+          },
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list",
+                matchedExpression: "@local.answer_list",
+                type: "local",
+                fieldName: "answer_list",
+              },
+            ],
+            placeholder: [
+              {
+                fullExpression: "@local.placeholder",
+                matchedExpression: "@local.placeholder",
+                type: "local",
+                fieldName: "placeholder",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@fields.feature_default_choice": ["value"],
+          "@local.combo_box_5": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list": ["parameter_list.answer_list"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_prioritise_placeholder.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "feature_lottie_habits",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_breathe",
+        value: "Breathe not yell",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_breathe",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_breathe",
+        value: "plh_lottie/habits/habit_breathe.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_breathe",
+      },
+      {
+        type: "title",
+        name: "title_consequence",
+        value: "Calm consequence",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_consequence",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_consequence",
+        value: "plh_lottie/habits/habit_consequence.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_consequence",
+      },
+      {
+        type: "title",
+        name: "title_breathe",
+        value: "Good money choice",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_breathe",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_money",
+        value: "plh_lottie/habits/habit_money.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_money",
+      },
+      {
+        type: "title",
+        name: "title_praise_teen",
+        value: "Praise your teen",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_praise_teen",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_praise_teen",
+        value: "plh_lottie/habits/habit_praise_teen.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_praise_teen",
+      },
+      {
+        type: "title",
+        name: "title_praise_yourself",
+        value: "Praise Yourself",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_praise_yourself",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_praise_yourself",
+        value: "plh_lottie/habits/habit_praise_yourself.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_praise_yourself",
+      },
+      {
+        type: "title",
+        name: "title_relax",
+        value: "Relax",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_relax",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_relax",
+        value: "plh_lottie/habits/habit_relax.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_relax",
+      },
+      {
+        type: "title",
+        name: "title_safe",
+        value: "Safe",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_safe",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_safe",
+        value: "plh_lottie/habits/habit_safe.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_safe",
+      },
+      {
+        type: "title",
+        name: "title_spend_time",
+        value: "One-on-one time",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_spend_time",
+      },
+      {
+        type: "lottie_animation",
+        name: "animation_spend_time",
+        value: "plh_lottie/habits/habit_spend_time.json",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "animation_spend_time",
+      },
+    ],
+    _xlsxPath: "quality_assurance/feature_templates/feature_lottie_habits.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "example_lang_select",
     status: "released",
     flow_subtype: "debug",
@@ -10485,6 +18733,1957 @@ const template: FlowTypes.Template[] = [
   },
   {
     flow_type: "template",
+    flow_name: "debug_var_in_bulleted_list",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "List with last item global",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_1",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "- First item\n- @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "- First item\n- @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_2",
+        value: "List with first item global",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_2",
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "- @global.savings_option_1\n- Second item",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "- @global.savings_option_1\n- Second item",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_3",
+        value: "List with only global",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_3",
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_4",
+        value: "List with only global and a bit of text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_4",
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value:
+          "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression:
+                "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_5",
+        value: "List with only global using *",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_5",
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value: "* @global.savings_option_1\n* @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_6",
+        value: "Ordered lists (hardcoded)",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_6",
+      },
+      {
+        type: "text",
+        name: "text_6",
+        value:
+          "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_6",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression:
+                "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_7",
+        value: "Ordered lists (automated)",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_7",
+      },
+      {
+        type: "text",
+        name: "text_7",
+        value: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "numbered",
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_7",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_var_in_bulleted_list.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_var_in_bulleted_list_2",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "List with last item global",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_1",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "* First item\n* @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "* First item\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_2",
+        value: "List with first item global",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_2",
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "* @global.savings_option_1\n* Second item",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "* @global.savings_option_1\n* Second item",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_4",
+        value: "List with only global and a bit of text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_4",
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value:
+          "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression:
+                "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression:
+                "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_5",
+        value: "List with only global using *",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_5",
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value: "* @global.savings_option_1\n* @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_5",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "title_6",
+        value: "Ordered lists (hardcoded)",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "title_6",
+      },
+      {
+        type: "text",
+        name: "text_6",
+        value: "1. @global.savings_option_1\n2. @global.savings_option_2",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_6",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "1. @global.savings_option_1\n2. @global.savings_option_2",
+              matchedExpression: "@global.savings_option_1",
+              type: "global",
+              fieldName: "savings_option_1",
+            },
+            {
+              fullExpression: "1. @global.savings_option_1\n2. @global.savings_option_2",
+              matchedExpression: "@global.savings_option_2",
+              type: "global",
+              fieldName: "savings_option_2",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.savings_option_1": ["value"],
+          "@global.savings_option_2": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_var_in_bulleted_list.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_global_bottom",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "@global.debug_item_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.debug_item_1",
+              matchedExpression: "@global.debug_item_1",
+              type: "global",
+              fieldName: "debug_item_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.debug_item_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "@global.debug_item_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.debug_item_1",
+              matchedExpression: "@global.debug_item_1",
+              type: "global",
+              fieldName: "debug_item_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.debug_item_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "@global.debug_item_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.debug_item_1",
+              matchedExpression: "@global.debug_item_1",
+              type: "global",
+              fieldName: "debug_item_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.debug_item_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value: "@global.debug_item_1",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_4",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.debug_item_1",
+              matchedExpression: "@global.debug_item_1",
+              type: "global",
+              fieldName: "debug_item_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.debug_item_1": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_5",
+        value: "This text is directly authored in the value",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_5",
+      },
+      {
+        type: "text",
+        name: "text_6",
+        value: "This text is directly authored in the value",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_6",
+      },
+      {
+        type: "text",
+        name: "text_7",
+        value: "This text is directly authored in the value",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_7",
+      },
+      {
+        type: "text",
+        name: "text_8",
+        value: "This text is directly authored in the value",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_8",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_global_middle",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "template",
+        name: "debug_global_bottom",
+        value: "debug_global_bottom",
+        exclude_from_translation: true,
+        rows: [
+          {
+            name: "text_2",
+            value: "@global.debug_item_2",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "debug_global_bottom.text_2",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@global.debug_item_2",
+                  matchedExpression: "@global.debug_item_2",
+                  type: "global",
+                  fieldName: "debug_item_2",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@global.debug_item_2": ["value"],
+            },
+          },
+          {
+            name: "text_3",
+            value: "@global.debug_item_2",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "debug_global_bottom.text_3",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@global.debug_item_2",
+                  matchedExpression: "@global.debug_item_2",
+                  type: "global",
+                  fieldName: "debug_item_2",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@global.debug_item_2": ["value"],
+            },
+          },
+          {
+            name: "text_4",
+            value: "This text is overridden directly in the value",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "debug_global_bottom.text_4",
+          },
+          {
+            name: "text_6",
+            value: "@global.debug_item_2",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "debug_global_bottom.text_6",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@global.debug_item_2",
+                  matchedExpression: "@global.debug_item_2",
+                  type: "global",
+                  fieldName: "debug_item_2",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@global.debug_item_2": ["value"],
+            },
+          },
+          {
+            name: "text_7",
+            value: "@global.debug_item_2",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "debug_global_bottom.text_7",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@global.debug_item_2",
+                  matchedExpression: "@global.debug_item_2",
+                  type: "global",
+                  fieldName: "debug_item_2",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@global.debug_item_2": ["value"],
+            },
+          },
+          {
+            name: "text_8",
+            value: "This text is overridden directly in the value",
+            _translations: {
+              value: {},
+            },
+            exclude_from_translation: true,
+            type: "set_variable",
+            _nested_name: "debug_global_bottom.text_8",
+          },
+        ],
+        _nested_name: "debug_global_bottom",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_global_top",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "template",
+        name: "debug_global_middle",
+        value: "debug_global_middle",
+        exclude_from_translation: true,
+        rows: [
+          {
+            type: "nested_properties",
+            name: "debug_global_bottom",
+            exclude_from_translation: true,
+            rows: [
+              {
+                name: "text_1",
+                value: "@global.debug_item_3",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_1",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.debug_item_3",
+                      matchedExpression: "@global.debug_item_3",
+                      type: "global",
+                      fieldName: "debug_item_3",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.debug_item_3": ["value"],
+                },
+              },
+              {
+                name: "text_2",
+                value: "@global.debug_item_3",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_2",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.debug_item_3",
+                      matchedExpression: "@global.debug_item_3",
+                      type: "global",
+                      fieldName: "debug_item_3",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.debug_item_3": ["value"],
+                },
+              },
+              {
+                name: "text_3",
+                value: "This text is overridden directly in the value",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_3",
+              },
+              {
+                name: "text_4",
+                value: "@global.debug_item_3",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_4",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.debug_item_3",
+                      matchedExpression: "@global.debug_item_3",
+                      type: "global",
+                      fieldName: "debug_item_3",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.debug_item_3": ["value"],
+                },
+              },
+              {
+                name: "text_5",
+                value: "@global.debug_item_3",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_5",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.debug_item_3",
+                      matchedExpression: "@global.debug_item_3",
+                      type: "global",
+                      fieldName: "debug_item_3",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.debug_item_3": ["value"],
+                },
+              },
+              {
+                name: "text_6",
+                value: "@global.debug_item_3",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_6",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.debug_item_3",
+                      matchedExpression: "@global.debug_item_3",
+                      type: "global",
+                      fieldName: "debug_item_3",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.debug_item_3": ["value"],
+                },
+              },
+              {
+                name: "text_7",
+                value: "This text is overridden directly in the value",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_7",
+              },
+              {
+                name: "text_8",
+                value: "@global.debug_item_3",
+                _translations: {
+                  value: {},
+                },
+                exclude_from_translation: true,
+                type: "set_variable",
+                _nested_name: "debug_global_middle.debug_global_bottom.text_8",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@global.debug_item_3",
+                      matchedExpression: "@global.debug_item_3",
+                      type: "global",
+                      fieldName: "debug_item_3",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@global.debug_item_3": ["value"],
+                },
+              },
+            ],
+            _nested_name: "debug_global_middle.debug_global_bottom",
+          },
+        ],
+        _nested_name: "debug_global_middle",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_global_local",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "template",
+        value: "template",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "template",
+      },
+      {
+        name: "debug_item_1",
+        value: "_debug_item_1",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "debug_item_1",
+      },
+      {
+        type: "button",
+        name: "button_pop_up",
+        value: "Simple pop-up",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "pop_up",
+            args: ["example_text"],
+            _raw: "click | pop_up:example_text",
+            _cleaned: "click | pop_up:example_text",
+          },
+        ],
+        exclude_from_translation: true,
+        _nested_name: "button_pop_up",
+      },
+      {
+        type: "button",
+        name: "button_go_to",
+        value: "@global.debug_item_1",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "go_to",
+            args: ["@local.template@local.debug_item_1"],
+            _raw: "click | go_to:@local.template@local.debug_item_1",
+            _cleaned: "click | go_to:@local.template@local.debug_item_1",
+          },
+        ],
+        exclude_from_translation: true,
+        _nested_name: "button_go_to",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.debug_item_1",
+              matchedExpression: "@global.debug_item_1",
+              type: "global",
+              fieldName: "debug_item_1",
+            },
+          ],
+          action_list: {
+            "0": {
+              args: {
+                "0": [
+                  {
+                    fullExpression: "@local.template@local.debug_item_1",
+                    matchedExpression: "@local.template",
+                    type: "local",
+                    fieldName: "template",
+                  },
+                  {
+                    fullExpression: "@local.template@local.debug_item_1",
+                    matchedExpression: "@local.debug_item_1",
+                    type: "local",
+                    fieldName: "debug_item_1",
+                  },
+                ],
+              },
+              _raw: [
+                {
+                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
+                  matchedExpression: "@local.template",
+                  type: "local",
+                  fieldName: "template",
+                },
+                {
+                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
+                  matchedExpression: "@local.debug_item_1",
+                  type: "local",
+                  fieldName: "debug_item_1",
+                },
+              ],
+              _cleaned: [
+                {
+                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
+                  matchedExpression: "@local.template",
+                  type: "local",
+                  fieldName: "template",
+                },
+                {
+                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
+                  matchedExpression: "@local.debug_item_1",
+                  type: "local",
+                  fieldName: "debug_item_1",
+                },
+              ],
+            },
+          },
+        },
+        _dynamicDependencies: {
+          "@global.debug_item_1": ["value"],
+          "@local.template": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned",
+          ],
+          "@local.debug_item_1": [
+            "action_list.0.args.0",
+            "action_list.0._raw",
+            "action_list.0._cleaned",
+          ],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_var_hyphen",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "@global.parent_app-based learning",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.parent_app-based learning",
+              matchedExpression: "@global.parent_app",
+              type: "global",
+              fieldName: "parent_app",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_app": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "Works in gb_en",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "title",
+        name: "title_2",
+        value: "Your @global.parent_app Code",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _nested_name: "title_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Your @global.parent_app Code",
+              matchedExpression: "@global.parent_app",
+              type: "global",
+              fieldName: "parent_app",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_app": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "Works in gb_en and in za_af",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text_2",
+      },
+      {
+        type: "button",
+        name: "button",
+        value: "Launch tour",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "start_tour",
+            args: ["debug_tour_var_hyphen"],
+            _raw: "click | start_tour: debug_tour_var_hyphen",
+            _cleaned: "click | start_tour: debug_tour_var_hyphen",
+          },
+        ],
+        _nested_name: "button",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_tour_template",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "Debug Tour",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_1",
+      },
+      {
+        type: "button",
+        name: "button",
+        value: "Go to debug_tour",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "start_tour",
+            args: ["debug_tour"],
+            _raw: "click | start_tour: debug_tour",
+            _cleaned: "click | start_tour: debug_tour",
+          },
+        ],
+        _nested_name: "button",
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "global: @global.parent_app",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "global: @global.parent_app",
+              matchedExpression: "@global.parent_app",
+              type: "global",
+              fieldName: "parent_app",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_app": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "data: @data.example.example1.text",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "data: @data.example.example1.text",
+              matchedExpression: "@data.example.example1.text",
+              type: "data",
+              fieldName: "example",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@data.example.example1.text": ["value"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_tour.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "example_tour_template_1",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "Example Tour Template 1",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_1",
+      },
+      {
+        type: "set_variable",
+        name: "show_button_1",
+        value: true,
+        _nested_name: "show_button_1",
+      },
+      {
+        type: "text",
+        name: "text",
+        value: "Template 1",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "text",
+      },
+      {
+        type: "button",
+        name: "button_1",
+        value: "Click Me",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "set_local",
+            args: ["show_button_1", false],
+            _raw: "click | set_local:show_button_1:false",
+            _cleaned: "click | set_local:show_button_1:false",
+          },
+        ],
+        condition: "@local.show_button_1",
+        _nested_name: "button_1",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: "@local.show_button_1",
+              matchedExpression: "@local.show_button_1",
+              type: "local",
+              fieldName: "show_button_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.show_button_1": ["condition"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "Conditional logic works!",
+        _translations: {
+          value: {},
+        },
+        condition: "!@local.show_button_1",
+        _nested_name: "text_2",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: "!@local.show_button_1",
+              matchedExpression: "!@local.show_button_1",
+              type: "local",
+              fieldName: "show_button_1",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "!@local.show_button_1": ["condition"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_tour.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_tile",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        name: "quick_start_campaign",
+        value: "@campaign.workshop_quick_start",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "quick_start_campaign",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@campaign.workshop_quick_start",
+              matchedExpression: "@campaign.workshop_quick_start",
+              type: "campaign",
+              fieldName: "workshop_quick_start",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@campaign.workshop_quick_start": ["value"],
+        },
+      },
+      {
+        name: "start_or_continue",
+        value: "@local.quick_start_campaign.text",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "start_or_continue",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.quick_start_campaign.text",
+              matchedExpression: "@local.quick_start_campaign.text",
+              type: "local",
+              fieldName: "quick_start_campaign",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.quick_start_campaign.text": ["value"],
+        },
+      },
+      {
+        name: "label_group",
+        value: "@global.together",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "label_group",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "label_individual",
+        value: "@global.individual",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "label_individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_1",
+        value: "The text on the first tile is set through locals. Translations are found.",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "tile_component",
+        name: "tile_1",
+        parameter_list: {
+          style: "quick_start_dark",
+          first_line_text: "@local.start_or_continue",
+          second_line_text: "@local.label_individual",
+        },
+        _nested_name: "tile_1",
+        _dynamicFields: {
+          parameter_list: {
+            first_line_text: [
+              {
+                fullExpression: "@local.start_or_continue",
+                matchedExpression: "@local.start_or_continue",
+                type: "local",
+                fieldName: "start_or_continue",
+              },
+            ],
+            second_line_text: [
+              {
+                fullExpression: "@local.label_individual",
+                matchedExpression: "@local.label_individual",
+                type: "local",
+                fieldName: "label_individual",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.start_or_continue": ["parameter_list.first_line_text"],
+          "@local.label_individual": ["parameter_list.second_line_text"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value:
+          "The text on the second tile is set through globals and a (local) data item in the parameter list. Translations are not found.",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_2",
+      },
+      {
+        type: "tile_component",
+        name: "tile_2",
+        parameter_list: {
+          style: "quick_start_dark",
+          first_line_text: "@local.quick_start_campaign.text",
+          second_line_text: "@global.individual",
+        },
+        _nested_name: "tile_2",
+        _dynamicFields: {
+          parameter_list: {
+            first_line_text: [
+              {
+                fullExpression: "@local.quick_start_campaign.text",
+                matchedExpression: "@local.quick_start_campaign.text",
+                type: "local",
+                fieldName: "quick_start_campaign",
+              },
+            ],
+            second_line_text: [
+              {
+                fullExpression: "@global.individual",
+                matchedExpression: "@global.individual",
+                type: "global",
+                fieldName: "individual",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.quick_start_campaign.text": ["parameter_list.first_line_text"],
+          "@global.individual": ["parameter_list.second_line_text"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_radio_group",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "@global.individual",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "@global.together",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        type: "title",
+        name: "text_3",
+        value: "Radio group with globals (doesn't work)",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_3",
+      },
+      {
+        name: "answer_list_1",
+        value: [
+          "name: individual | text: @global.individual",
+          "name: together | text: @global.together",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_1",
+        _dynamicFields: {
+          value: {
+            "0": [
+              {
+                fullExpression: "name: individual | text: @global.individual",
+                matchedExpression: "@global.individual",
+                type: "global",
+                fieldName: "individual",
+              },
+            ],
+            "1": [
+              {
+                fullExpression: "name: together | text: @global.together",
+                matchedExpression: "@global.together",
+                type: "global",
+                fieldName: "together",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value.0"],
+          "@global.together": ["value.1"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_1",
+        parameter_list: {
+          answer_list: "@local.answer_list_1",
+        },
+        _nested_name: "radio_group_1",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_1",
+                matchedExpression: "@local.answer_list_1",
+                type: "local",
+                fieldName: "answer_list_1",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+        },
+      },
+      {
+        type: "title",
+        name: "text_4",
+        value: "Radio group with locals (works)",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_4",
+      },
+      {
+        name: "individual",
+        value: "@global.individual",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "individual",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.individual",
+              matchedExpression: "@global.individual",
+              type: "global",
+              fieldName: "individual",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.individual": ["value"],
+        },
+      },
+      {
+        name: "together",
+        value: "@global.together",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "together",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@global.together",
+              matchedExpression: "@global.together",
+              type: "global",
+              fieldName: "together",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.together": ["value"],
+        },
+      },
+      {
+        name: "answer_list_2",
+        value: [
+          "name: individual | text: @local.individual",
+          "name: together | text: @local.together",
+        ],
+        exclude_from_translation: true,
+        type: "set_variable",
+        _nested_name: "answer_list_2",
+        _dynamicFields: {
+          value: {
+            "0": [
+              {
+                fullExpression: "name: individual | text: @local.individual",
+                matchedExpression: "@local.individual",
+                type: "local",
+                fieldName: "individual",
+              },
+            ],
+            "1": [
+              {
+                fullExpression: "name: together | text: @local.together",
+                matchedExpression: "@local.together",
+                type: "local",
+                fieldName: "together",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.individual": ["value.0"],
+          "@local.together": ["value.1"],
+        },
+      },
+      {
+        type: "radio_group",
+        name: "radio_group_2",
+        parameter_list: {
+          answer_list: "@local.answer_list_2",
+        },
+        _nested_name: "radio_group_2",
+        _dynamicFields: {
+          parameter_list: {
+            answer_list: [
+              {
+                fullExpression: "@local.answer_list_2",
+                matchedExpression: "@local.answer_list_2",
+                type: "local",
+                fieldName: "answer_list_2",
+              },
+            ],
+          },
+        },
+        _dynamicDependencies: {
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+        },
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_trim",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "The translation of the following string exists and works correctly:",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "Sometimes our children make us really upset.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _nested_name: "text_2",
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "The translation of the same string, **followed by a space**, is not found:",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_3",
+      },
+      {
+        type: "text",
+        name: "text_4",
+        value: "Sometimes our children make us really upset.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _nested_name: "text_4",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "debug_translation_global",
+    status: "released",
+    flow_subtype: "debug",
+    rows: [
+      {
+        type: "text",
+        name: "text_1",
+        value: "The translation of the following strings exists but is not found",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "emphasised",
+        },
+        _nested_name: "text_1",
+      },
+      {
+        type: "text",
+        name: "text_2",
+        value: "You can always find these tools in the @global.parent_centre",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _nested_name: "text_2",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "You can always find these tools in the @global.parent_centre",
+              matchedExpression: "@global.parent_centre",
+              type: "global",
+              fieldName: "parent_centre",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@global.parent_centre": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "text_3",
+        value: "Welcome @fields.user_name",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        _nested_name: "text_3",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "Welcome @fields.user_name",
+              matchedExpression: "@fields.user_name",
+              type: "fields",
+              fieldName: "user_name",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.user_name": ["value"],
+        },
+      },
+      {
+        type: "button",
+        name: "force_reprocess",
+        value: "Force Reprocess",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "emit",
+            args: ["force_reprocess"],
+            _raw: "click | emit: force_reprocess",
+            _cleaned: "click | emit: force_reprocess",
+          },
+        ],
+        _nested_name: "force_reprocess",
+      },
+      {
+        type: "button",
+        name: "force_reload",
+        value: "Force Reload",
+        _translations: {
+          value: {},
+        },
+        action_list: [
+          {
+            trigger: "click",
+            action_id: "emit",
+            args: ["force_reload"],
+            _raw: "click | emit: force_reload",
+            _cleaned: "click | emit: force_reload",
+          },
+        ],
+        _nested_name: "force_reload",
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
+  },
+  {
+    flow_type: "template",
     flow_name: "debug_lang_global_1",
     status: "released",
     flow_subtype: "debug",
@@ -12336,615 +22535,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_global_bottom",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text_1",
-        value: "@global.debug_item_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.debug_item_1",
-              matchedExpression: "@global.debug_item_1",
-              type: "global",
-              fieldName: "debug_item_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.debug_item_1": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "@global.debug_item_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.debug_item_1",
-              matchedExpression: "@global.debug_item_1",
-              type: "global",
-              fieldName: "debug_item_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.debug_item_1": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value: "@global.debug_item_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.debug_item_1",
-              matchedExpression: "@global.debug_item_1",
-              type: "global",
-              fieldName: "debug_item_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.debug_item_1": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_4",
-        value: "@global.debug_item_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.debug_item_1",
-              matchedExpression: "@global.debug_item_1",
-              type: "global",
-              fieldName: "debug_item_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.debug_item_1": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_5",
-        value: "This text is directly authored in the value",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_5",
-      },
-      {
-        type: "text",
-        name: "text_6",
-        value: "This text is directly authored in the value",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_6",
-      },
-      {
-        type: "text",
-        name: "text_7",
-        value: "This text is directly authored in the value",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_7",
-      },
-      {
-        type: "text",
-        name: "text_8",
-        value: "This text is directly authored in the value",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_8",
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_global_middle",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "template",
-        name: "debug_global_bottom",
-        value: "debug_global_bottom",
-        exclude_from_translation: true,
-        rows: [
-          {
-            name: "text_2",
-            value: "@global.debug_item_2",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "debug_global_bottom.text_2",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@global.debug_item_2",
-                  matchedExpression: "@global.debug_item_2",
-                  type: "global",
-                  fieldName: "debug_item_2",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@global.debug_item_2": ["value"],
-            },
-          },
-          {
-            name: "text_3",
-            value: "@global.debug_item_2",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "debug_global_bottom.text_3",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@global.debug_item_2",
-                  matchedExpression: "@global.debug_item_2",
-                  type: "global",
-                  fieldName: "debug_item_2",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@global.debug_item_2": ["value"],
-            },
-          },
-          {
-            name: "text_4",
-            value: "This text is overridden directly in the value",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "debug_global_bottom.text_4",
-          },
-          {
-            name: "text_6",
-            value: "@global.debug_item_2",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "debug_global_bottom.text_6",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@global.debug_item_2",
-                  matchedExpression: "@global.debug_item_2",
-                  type: "global",
-                  fieldName: "debug_item_2",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@global.debug_item_2": ["value"],
-            },
-          },
-          {
-            name: "text_7",
-            value: "@global.debug_item_2",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "debug_global_bottom.text_7",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@global.debug_item_2",
-                  matchedExpression: "@global.debug_item_2",
-                  type: "global",
-                  fieldName: "debug_item_2",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@global.debug_item_2": ["value"],
-            },
-          },
-          {
-            name: "text_8",
-            value: "This text is overridden directly in the value",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "debug_global_bottom.text_8",
-          },
-        ],
-        _nested_name: "debug_global_bottom",
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_global_top",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "template",
-        name: "debug_global_middle",
-        value: "debug_global_middle",
-        exclude_from_translation: true,
-        rows: [
-          {
-            type: "nested_properties",
-            name: "debug_global_bottom",
-            exclude_from_translation: true,
-            rows: [
-              {
-                name: "text_1",
-                value: "@global.debug_item_3",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_1",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.debug_item_3",
-                      matchedExpression: "@global.debug_item_3",
-                      type: "global",
-                      fieldName: "debug_item_3",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.debug_item_3": ["value"],
-                },
-              },
-              {
-                name: "text_2",
-                value: "@global.debug_item_3",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_2",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.debug_item_3",
-                      matchedExpression: "@global.debug_item_3",
-                      type: "global",
-                      fieldName: "debug_item_3",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.debug_item_3": ["value"],
-                },
-              },
-              {
-                name: "text_3",
-                value: "This text is overridden directly in the value",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_3",
-              },
-              {
-                name: "text_4",
-                value: "@global.debug_item_3",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_4",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.debug_item_3",
-                      matchedExpression: "@global.debug_item_3",
-                      type: "global",
-                      fieldName: "debug_item_3",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.debug_item_3": ["value"],
-                },
-              },
-              {
-                name: "text_5",
-                value: "@global.debug_item_3",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_5",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.debug_item_3",
-                      matchedExpression: "@global.debug_item_3",
-                      type: "global",
-                      fieldName: "debug_item_3",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.debug_item_3": ["value"],
-                },
-              },
-              {
-                name: "text_6",
-                value: "@global.debug_item_3",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_6",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.debug_item_3",
-                      matchedExpression: "@global.debug_item_3",
-                      type: "global",
-                      fieldName: "debug_item_3",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.debug_item_3": ["value"],
-                },
-              },
-              {
-                name: "text_7",
-                value: "This text is overridden directly in the value",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_7",
-              },
-              {
-                name: "text_8",
-                value: "@global.debug_item_3",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                type: "set_variable",
-                _nested_name: "debug_global_middle.debug_global_bottom.text_8",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.debug_item_3",
-                      matchedExpression: "@global.debug_item_3",
-                      type: "global",
-                      fieldName: "debug_item_3",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.debug_item_3": ["value"],
-                },
-              },
-            ],
-            _nested_name: "debug_global_middle.debug_global_bottom",
-          },
-        ],
-        _nested_name: "debug_global_middle",
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_global_local",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "template",
-        value: "template",
-        _translations: {
-          value: {},
-        },
-        type: "set_variable",
-        _nested_name: "template",
-      },
-      {
-        name: "debug_item_1",
-        value: "_debug_item_1",
-        _translations: {
-          value: {},
-        },
-        type: "set_variable",
-        _nested_name: "debug_item_1",
-      },
-      {
-        type: "button",
-        name: "button_pop_up",
-        value: "Simple pop-up",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["example_text"],
-            _raw: "click | pop_up:example_text",
-            _cleaned: "click | pop_up:example_text",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "button_pop_up",
-      },
-      {
-        type: "button",
-        name: "button_go_to",
-        value: "@global.debug_item_1",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["@local.template@local.debug_item_1"],
-            _raw: "click | go_to:@local.template@local.debug_item_1",
-            _cleaned: "click | go_to:@local.template@local.debug_item_1",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "button_go_to",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.debug_item_1",
-              matchedExpression: "@global.debug_item_1",
-              type: "global",
-              fieldName: "debug_item_1",
-            },
-          ],
-          action_list: {
-            "0": {
-              args: {
-                "0": [
-                  {
-                    fullExpression: "@local.template@local.debug_item_1",
-                    matchedExpression: "@local.template",
-                    type: "local",
-                    fieldName: "template",
-                  },
-                  {
-                    fullExpression: "@local.template@local.debug_item_1",
-                    matchedExpression: "@local.debug_item_1",
-                    type: "local",
-                    fieldName: "debug_item_1",
-                  },
-                ],
-              },
-              _raw: [
-                {
-                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
-                  matchedExpression: "@local.template",
-                  type: "local",
-                  fieldName: "template",
-                },
-                {
-                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
-                  matchedExpression: "@local.debug_item_1",
-                  type: "local",
-                  fieldName: "debug_item_1",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
-                  matchedExpression: "@local.template",
-                  type: "local",
-                  fieldName: "template",
-                },
-                {
-                  fullExpression: "click | go_to:@local.template@local.debug_item_1",
-                  matchedExpression: "@local.debug_item_1",
-                  type: "local",
-                  fieldName: "debug_item_1",
-                },
-              ],
-            },
-          },
-        },
-        _dynamicDependencies: {
-          "@global.debug_item_1": ["value"],
-          "@local.template": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned",
-          ],
-          "@local.debug_item_1": [
-            "action_list.0.args.0",
-            "action_list.0._raw",
-            "action_list.0._cleaned",
-          ],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "template_debug_item_1",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text",
-        value: "This is the debug_item_1 template",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text",
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_global.xlsx",
   },
   {
     flow_type: "template",
@@ -15219,174 +24809,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_render_grandchild_2.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_tour_template",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "Debug Tour",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_1",
-      },
-      {
-        type: "button",
-        name: "button",
-        value: "Go to debug_tour",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "start_tour",
-            args: ["debug_tour"],
-            _raw: "click | start_tour: debug_tour",
-            _cleaned: "click | start_tour: debug_tour",
-          },
-        ],
-        _nested_name: "button",
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value: "global: @global.parent_app",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "global: @global.parent_app",
-              matchedExpression: "@global.parent_app",
-              type: "global",
-              fieldName: "parent_app",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.parent_app": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "data: @data.example.example1.text",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "data: @data.example.example1.text",
-              matchedExpression: "@data.example.example1.text",
-              type: "data",
-              fieldName: "example",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@data.example.example1.text": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_tour.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "example_tour_template_1",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "Example Tour Template 1",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_1",
-      },
-      {
-        type: "set_variable",
-        name: "show_button_1",
-        value: true,
-        _nested_name: "show_button_1",
-      },
-      {
-        type: "text",
-        name: "text",
-        value: "Template 1",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text",
-      },
-      {
-        type: "button",
-        name: "button_1",
-        value: "Click Me",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "set_local",
-            args: ["show_button_1", false],
-            _raw: "click | set_local:show_button_1:false",
-            _cleaned: "click | set_local:show_button_1:false",
-          },
-        ],
-        condition: "@local.show_button_1",
-        _nested_name: "button_1",
-        _dynamicFields: {
-          condition: [
-            {
-              fullExpression: "@local.show_button_1",
-              matchedExpression: "@local.show_button_1",
-              type: "local",
-              fieldName: "show_button_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.show_button_1": ["condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "Conditional logic works!",
-        _translations: {
-          value: {},
-        },
-        condition: "!@local.show_button_1",
-        _nested_name: "text_2",
-        _dynamicFields: {
-          condition: [
-            {
-              fullExpression: "!@local.show_button_1",
-              matchedExpression: "!@local.show_button_1",
-              type: "local",
-              fieldName: "show_button_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "!@local.show_button_1": ["condition"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_tour.xlsx",
   },
   {
     flow_type: "template",
@@ -18485,651 +27907,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_update_sibling.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_translation_tile",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "quick_start_campaign",
-        value: "@campaign.workshop_quick_start",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "quick_start_campaign",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@campaign.workshop_quick_start",
-              matchedExpression: "@campaign.workshop_quick_start",
-              type: "campaign",
-              fieldName: "workshop_quick_start",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@campaign.workshop_quick_start": ["value"],
-        },
-      },
-      {
-        name: "start_or_continue",
-        value: "@local.quick_start_campaign.text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "start_or_continue",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.quick_start_campaign.text",
-              matchedExpression: "@local.quick_start_campaign.text",
-              type: "local",
-              fieldName: "quick_start_campaign",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.quick_start_campaign.text": ["value"],
-        },
-      },
-      {
-        name: "label_group",
-        value: "@global.together",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "label_group",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.together",
-              matchedExpression: "@global.together",
-              type: "global",
-              fieldName: "together",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.together": ["value"],
-        },
-      },
-      {
-        name: "label_individual",
-        value: "@global.individual",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "label_individual",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.individual",
-              matchedExpression: "@global.individual",
-              type: "global",
-              fieldName: "individual",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.individual": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value: "The text on the first tile is set through locals. Translations are found.",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_1",
-      },
-      {
-        type: "tile_component",
-        name: "tile_1",
-        parameter_list: {
-          style: "quick_start_dark",
-          first_line_text: "@local.start_or_continue",
-          second_line_text: "@local.label_individual",
-        },
-        _nested_name: "tile_1",
-        _dynamicFields: {
-          parameter_list: {
-            first_line_text: [
-              {
-                fullExpression: "@local.start_or_continue",
-                matchedExpression: "@local.start_or_continue",
-                type: "local",
-                fieldName: "start_or_continue",
-              },
-            ],
-            second_line_text: [
-              {
-                fullExpression: "@local.label_individual",
-                matchedExpression: "@local.label_individual",
-                type: "local",
-                fieldName: "label_individual",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.start_or_continue": ["parameter_list.first_line_text"],
-          "@local.label_individual": ["parameter_list.second_line_text"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value:
-          "The text on the second tile is set through globals and a (local) data item in the parameter list. Translations are not found.",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_2",
-      },
-      {
-        type: "tile_component",
-        name: "tile_2",
-        parameter_list: {
-          style: "quick_start_dark",
-          first_line_text: "@local.quick_start_campaign.text",
-          second_line_text: "@global.individual",
-        },
-        _nested_name: "tile_2",
-        _dynamicFields: {
-          parameter_list: {
-            first_line_text: [
-              {
-                fullExpression: "@local.quick_start_campaign.text",
-                matchedExpression: "@local.quick_start_campaign.text",
-                type: "local",
-                fieldName: "quick_start_campaign",
-              },
-            ],
-            second_line_text: [
-              {
-                fullExpression: "@global.individual",
-                matchedExpression: "@global.individual",
-                type: "global",
-                fieldName: "individual",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.quick_start_campaign.text": ["parameter_list.first_line_text"],
-          "@global.individual": ["parameter_list.second_line_text"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_translation_radio_group",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text_1",
-        value: "@global.individual",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.individual",
-              matchedExpression: "@global.individual",
-              type: "global",
-              fieldName: "individual",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.individual": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "@global.together",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.together",
-              matchedExpression: "@global.together",
-              type: "global",
-              fieldName: "together",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.together": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "text_3",
-        value: "Radio group with globals (doesn't work)",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_3",
-      },
-      {
-        name: "answer_list_1",
-        value: [
-          "name: individual | text: @global.individual",
-          "name: together | text: @global.together",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_1",
-        _dynamicFields: {
-          value: {
-            "0": [
-              {
-                fullExpression: "name: individual | text: @global.individual",
-                matchedExpression: "@global.individual",
-                type: "global",
-                fieldName: "individual",
-              },
-            ],
-            "1": [
-              {
-                fullExpression: "name: together | text: @global.together",
-                matchedExpression: "@global.together",
-                type: "global",
-                fieldName: "together",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@global.individual": ["value.0"],
-          "@global.together": ["value.1"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_1",
-        parameter_list: {
-          answer_list: "@local.answer_list_1",
-        },
-        _nested_name: "radio_group_1",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_1",
-                matchedExpression: "@local.answer_list_1",
-                type: "local",
-                fieldName: "answer_list_1",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_1": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "title",
-        name: "text_4",
-        value: "Radio group with locals (works)",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_4",
-      },
-      {
-        name: "individual",
-        value: "@global.individual",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "individual",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.individual",
-              matchedExpression: "@global.individual",
-              type: "global",
-              fieldName: "individual",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.individual": ["value"],
-        },
-      },
-      {
-        name: "together",
-        value: "@global.together",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "together",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.together",
-              matchedExpression: "@global.together",
-              type: "global",
-              fieldName: "together",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.together": ["value"],
-        },
-      },
-      {
-        name: "answer_list_2",
-        value: [
-          "name: individual | text: @local.individual",
-          "name: together | text: @local.together",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_2",
-        _dynamicFields: {
-          value: {
-            "0": [
-              {
-                fullExpression: "name: individual | text: @local.individual",
-                matchedExpression: "@local.individual",
-                type: "local",
-                fieldName: "individual",
-              },
-            ],
-            "1": [
-              {
-                fullExpression: "name: together | text: @local.together",
-                matchedExpression: "@local.together",
-                type: "local",
-                fieldName: "together",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.individual": ["value.0"],
-          "@local.together": ["value.1"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_2",
-        parameter_list: {
-          answer_list: "@local.answer_list_2",
-        },
-        _nested_name: "radio_group_2",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_2",
-                matchedExpression: "@local.answer_list_2",
-                type: "local",
-                fieldName: "answer_list_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_2": ["parameter_list.answer_list"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_translation_trim",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text_1",
-        value: "The translation of the following string exists and works correctly:",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_1",
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "Sometimes our children make us really upset.",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _nested_name: "text_2",
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value: "The translation of the same string, **followed by a space**, is not found:",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_3",
-      },
-      {
-        type: "text",
-        name: "text_4",
-        value: "Sometimes our children make us really upset.",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _nested_name: "text_4",
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_translation_global",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text_1",
-        value: "The translation of the following strings exists but is not found",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "emphasised",
-        },
-        _nested_name: "text_1",
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "You can always find these tools in the @global.parent_centre",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "You can always find these tools in the @global.parent_centre",
-              matchedExpression: "@global.parent_centre",
-              type: "global",
-              fieldName: "parent_centre",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.parent_centre": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value: "Welcome @fields.user_name",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "Welcome @fields.user_name",
-              matchedExpression: "@fields.user_name",
-              type: "fields",
-              fieldName: "user_name",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.user_name": ["value"],
-        },
-      },
-      {
-        type: "button",
-        name: "force_reprocess",
-        value: "Force Reprocess",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "emit",
-            args: ["force_reprocess"],
-            _raw: "click | emit: force_reprocess",
-            _cleaned: "click | emit: force_reprocess",
-          },
-        ],
-        _nested_name: "force_reprocess",
-      },
-      {
-        type: "button",
-        name: "force_reload",
-        value: "Force Reload",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "emit",
-            args: ["force_reload"],
-            _raw: "click | emit: force_reload",
-            _cleaned: "click | emit: force_reload",
-          },
-        ],
-        _nested_name: "force_reload",
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_translation_hyphen",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text_1",
-        value: "@global.weekly_workshops quick start",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@global.weekly_workshops quick start",
-              matchedExpression: "@global.weekly_workshops",
-              type: "global",
-              fieldName: "weekly_workshops",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.weekly_workshops": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_translation.xlsx",
   },
   {
     flow_type: "template",
@@ -24600,488 +33377,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_changed_radio_group.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_var_in_bulleted_list",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "List with last item global",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_1",
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value: "- First item\n- @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "- First item\n- @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_2",
-        value: "List with first item global",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_2",
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "- @global.savings_option_1\n- Second item",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "- @global.savings_option_1\n- Second item",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_3",
-        value: "List with only global",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_3",
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_4",
-        value: "List with only global and a bit of text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_4",
-      },
-      {
-        type: "text",
-        name: "text_4",
-        value:
-          "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression:
-                "This is a bit of text before the list\n- @global.savings_option_1\n- @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_5",
-        value: "List with only global using *",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_5",
-      },
-      {
-        type: "text",
-        name: "text_5",
-        value: "* @global.savings_option_1\n* @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_6",
-        value: "Ordered lists (hardcoded)",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_6",
-      },
-      {
-        type: "text",
-        name: "text_6",
-        value:
-          "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_6",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression:
-                "1. @global.savings_option_1\nsome text as a second line\n2. @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_7",
-        value: "Ordered lists (automated)",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_7",
-      },
-      {
-        type: "text",
-        name: "text_7",
-        value: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "numbered",
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_7",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression: '"- "+@global.savings_option_1\n"- "+@global.savings_option_2',
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_var_in_bulleted_list.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "debug_var_in_bulleted_list_2",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "List with last item global",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_1",
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value: "* First item\n* @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "* First item\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_2",
-        value: "List with first item global",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_2",
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "* @global.savings_option_1\n* Second item",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "* @global.savings_option_1\n* Second item",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_4",
-        value: "List with only global and a bit of text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_4",
-      },
-      {
-        type: "text",
-        name: "text_4",
-        value:
-          "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression:
-                "This is a bit of text before the list\n* @global.savings_option_1\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_5",
-        value: "List with only global using *",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_5",
-      },
-      {
-        type: "text",
-        name: "text_5",
-        value: "* @global.savings_option_1\n* @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression: "* @global.savings_option_1\n* @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_6",
-        value: "Ordered lists (hardcoded)",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_6",
-      },
-      {
-        type: "text",
-        name: "text_6",
-        value: "1. @global.savings_option_1\n2. @global.savings_option_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_6",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "1. @global.savings_option_1\n2. @global.savings_option_2",
-              matchedExpression: "@global.savings_option_1",
-              type: "global",
-              fieldName: "savings_option_1",
-            },
-            {
-              fullExpression: "1. @global.savings_option_1\n2. @global.savings_option_2",
-              matchedExpression: "@global.savings_option_2",
-              type: "global",
-              fieldName: "savings_option_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.savings_option_1": ["value"],
-          "@global.savings_option_2": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_var_in_bulleted_list.xlsx",
   },
   {
     flow_type: "template",
@@ -31523,8254 +39818,6 @@ const template: FlowTypes.Template[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_full_stop_after_var.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_tile",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "tile_component",
-        name: "tile_example_1",
-        exclude_from_translation: true,
-        parameter_list: {
-          icon_src: "plh_images/icons/star.svg",
-          first_line_text: "First item text",
-          second_line_text: "Second item text",
-          style: "quick_start_passive",
-        },
-        _nested_name: "tile_example_1",
-      },
-      {
-        name: "icon_src",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "icon_src",
-      },
-      {
-        name: "first_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "first_line_text",
-      },
-      {
-        name: "second_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "second_line_text",
-      },
-      {
-        name: "style",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "style",
-      },
-      {
-        type: "tile_component",
-        name: "tile_example_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "Second item text",
-          second_line_text: "Second item text",
-          style: "quick_start",
-        },
-        _nested_name: "tile_example_2",
-      },
-      {
-        name: "first_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "first_line_text",
-      },
-      {
-        name: "second_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "second_line_text",
-      },
-      {
-        name: "style",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "style",
-      },
-      {
-        type: "tile_component",
-        name: "tile_example_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "Third item text",
-          second_line_text: "Third item text",
-          style: "quick_start_blue",
-        },
-        _nested_name: "tile_example_3",
-      },
-      {
-        name: "first_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "first_line_text",
-      },
-      {
-        name: "second_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "second_line_text",
-      },
-      {
-        name: "style",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "style",
-      },
-      {
-        type: "tile_component",
-        name: "tile_example_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "Fourth item text",
-          second_line_text: "Fourth item text",
-          style: "quick_start_red",
-        },
-        _nested_name: "tile_example_3",
-      },
-      {
-        name: "first_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "first_line_text",
-      },
-      {
-        name: "second_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "second_line_text",
-      },
-      {
-        name: "style",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "style",
-      },
-      {
-        type: "tile_component",
-        name: "tile_example_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "With Others",
-          style: "workshop_page",
-          icon_src: "plh_images/home_page/home_page_workshops.svg",
-        },
-        _nested_name: "tile_example_3",
-      },
-      {
-        name: "first_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "first_line_text",
-      },
-      {
-        name: "second_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "second_line_text",
-      },
-      {
-        name: "style",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "style",
-      },
-      {
-        type: "tile_component",
-        name: "tile_example_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "Alone",
-          style: "workshop_page",
-          icon_src: "plh_images/home_page/home_page_parent_points.svg",
-        },
-        _nested_name: "tile_example_3",
-      },
-      {
-        name: "first_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "first_line_text",
-      },
-      {
-        name: "second_line_text",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "second_line_text",
-      },
-      {
-        name: "style",
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "style",
-      },
-      {
-        type: "display_group",
-        name: "dg",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "parent_point",
-        },
-        rows: [
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First itemt",
-              second_line_text: "Second",
-              style: "parent_centre_2",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First item",
-              second_line_text: "Second",
-              style: "parent_centre_3",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First itemt",
-              second_line_text: "Second",
-              style: "parent_centre_4",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First",
-              second_line_text: "Second",
-              style: "parent_centre_1",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First itemt",
-              second_line_text: "Second",
-              style: "parent_centre_1",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First item",
-              second_line_text: "Second",
-              style: "parent_centre_2",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "plh_images/icons/star.svg",
-              first_line_text: "First itemt",
-              second_line_text: "Second",
-              style: "parent_centre_3",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "First",
-              icon_src: "plh_images/icons/star.svg",
-              second_line_text: "Second",
-              style: "parent_centre_4",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-          {
-            type: "tile_component",
-            name: "tile_example_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "First",
-              icon_src: "plh_images/icons/star.svg",
-              second_line_text: "Second",
-              style: "parent_centre_4",
-            },
-            _nested_name: "dg.tile_example_1",
-          },
-        ],
-        _nested_name: "dg",
-      },
-      {
-        type: "tile_component",
-        name: "tile_example_1",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "First",
-          icon_src: "plh_images/icons/star.svg",
-          second_line_text: "Second",
-          style: "parent_centre_4",
-        },
-        _nested_name: "tile_example_1",
-      },
-      {
-        type: "tile_component",
-        exclude_from_translation: true,
-        parameter_list: {
-          first_line_text: "How to add self-care",
-          style: "image_text",
-          icon_src: "plh_images/workshops/w_self_care/tools.svg",
-        },
-        name: "tile_component",
-        _nested_name: "tile_component",
-      },
-      {
-        type: "display_group",
-        parameter_list: {
-          style: "two_columns",
-        },
-        rows: [
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to add self-care",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_self_care/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to spend one-on-one time",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_1on1/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to Praise",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_praise/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to give positive instructions",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_instruct/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to manage stress",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_stress/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to budget and save",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_money/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to create rules",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_rules/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "How to give calm consequences",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_consequence/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "Teen safety",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_safe/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "Dealing with crisis",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_crisis/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-          {
-            type: "tile_component",
-            exclude_from_translation: true,
-            parameter_list: {
-              first_line_text: "Celebration",
-              style: "image_text",
-              icon_src: "plh_images/workshops/w_celebrate/tools.svg",
-            },
-            name: "tile_component",
-            _nested_name: "display_group.tile_component",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_timer",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "help_text",
-        value:
-          'Click <img src="plh_images/icons/play_outline.svg" width="30" height="30"> to start the timer',
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "help_text",
-      },
-      {
-        type: "timer",
-        name: "timer_with_help",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          title: "with help",
-        },
-        _nested_name: "timer_with_help",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "timer",
-        name: "timer_is_editable_on_playing",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          title: "is editable on playing",
-          is_editable_on_playing: "true",
-        },
-        _nested_name: "timer_is_editable_on_playing",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "timer",
-        name: "timer_with_starting_minutes_5",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          title: "with starting minutes 5",
-          starting_minutes: "5",
-        },
-        _nested_name: "timer_with_starting_minutes_5",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "timer",
-        name: "timer_with_starting_seconds_20",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          title: "with starting seconds 20",
-          starting_seconds: "20",
-        },
-        _nested_name: "timer_with_starting_seconds_20",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "timer",
-        name: "timer_with_duration_extension_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          title: "with duration_extension 2",
-          duration_extension: "2",
-        },
-        _nested_name: "timer_with_duration_extension_2",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "timer",
-        name: "timer_with_value",
-        value: 5,
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          title: "with value 5",
-        },
-        _nested_name: "timer_with_value",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_timer_ping",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "timer",
-        name: "ping_1",
-        exclude_from_translation: true,
-        parameter_list: {
-          title: "Example 1",
-          ping: "plh_audio/timer/ping_1.wav",
-          starting_minutes: "0",
-          starting_seconds: "5",
-        },
-        _nested_name: "ping_1",
-      },
-      {
-        type: "timer",
-        name: "ping_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          title: "Example 2",
-          ping: "plh_audio/timer/ping_2.wav",
-          starting_minutes: "0",
-          starting_seconds: "5",
-        },
-        _nested_name: "ping_2",
-      },
-      {
-        type: "timer",
-        name: "ping_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          title: "Example 3",
-          ping: "plh_audio/timer/bell_1.mp3",
-          starting_minutes: "0",
-          starting_seconds: "5",
-        },
-        _nested_name: "ping_3",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_slider",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "help_text",
-        value: "some help",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "help_text",
-      },
-      {
-        type: "slider",
-        name: "slider_with_help",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          min: "0",
-          max: "7",
-          title: "test title",
-          min_value_label: "0",
-          max_value_label: "7",
-          labels_count: "8",
-          no_value: "false",
-        },
-        _nested_name: "slider_with_help",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "slider",
-        name: "slider_without_help",
-        exclude_from_translation: true,
-        parameter_list: {
-          min: "0",
-          max: "7",
-          title: "without help",
-          min_value_label: "0",
-          max_value_label: "7",
-          labels_count: "8",
-          no_value: "false",
-        },
-        _nested_name: "slider_without_help",
-      },
-      {
-        type: "slider",
-        name: "slider_with_value_2",
-        value: 2,
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          min: "0",
-          max: "7",
-          title: "with value 2",
-          min_value_label: "0",
-          max_value_label: "7",
-          labels_count: "8",
-          no_value: "false",
-        },
-        _nested_name: "slider_with_value_2",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "slider",
-        name: "slider_with_step_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          min: "0",
-          max: "8",
-          title: "step = 2",
-          step: "2",
-          min_value_label: "0",
-          max_value_label: "8",
-          labels_count: "8",
-          no_value: "false",
-        },
-        _nested_name: "slider_with_step_2",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "slider",
-        name: "slider_without_value",
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "@local.help_text",
-          min: "0",
-          max: "7",
-          title: "no value",
-          min_value_label: "0",
-          max_value_label: "7",
-          labels_count: "8",
-          no_value: "true",
-        },
-        _nested_name: "slider_without_value",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "slider",
-        name: "slider_without_max_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          min: "0",
-          help: "@local.help_text",
-          max: "3",
-          title: "with max = 3",
-          min_value_label: "0",
-          max_value_label: "3",
-          labels_count: "8",
-          no_value: "false",
-        },
-        _nested_name: "slider_without_max_3",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "slider",
-        name: "slider_without_value_labels_1",
-        exclude_from_translation: true,
-        parameter_list: {
-          min: "0",
-          help: "@local.help_text",
-          max: "3",
-          title: "without value labels",
-          no_value: "false",
-        },
-        _nested_name: "slider_without_value_labels_1",
-        _dynamicFields: {
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value: "Value of last slider: @local.slider_without_value_labels_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "Value of last slider: @local.slider_without_value_labels_1",
-              matchedExpression: "@local.slider_without_value_labels_1",
-              type: "local",
-              fieldName: "slider_without_value_labels_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.slider_without_value_labels_1": ["value"],
-        },
-      },
-      {
-        type: "slider",
-        name: "slider_without_value_labels_2",
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["temp_slider_field", "this.value"],
-            _raw: "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
-            _cleaned: "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          min: "0",
-          help: "@local.help_text",
-          max: "3",
-          title: "without value labels",
-          no_value: "false",
-        },
-        _nested_name: "slider_without_value_labels_2",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression:
-                    "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
-                  matchedExpression: "@local.slider_without_value_labels_2",
-                  type: "local",
-                  fieldName: "slider_without_value_labels_2",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression:
-                    "changed | set_field:temp_slider_field:@local.slider_without_value_labels_2",
-                  matchedExpression: "@local.slider_without_value_labels_2",
-                  type: "local",
-                  fieldName: "slider_without_value_labels_2",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            help: [
-              {
-                fullExpression: "@local.help_text",
-                matchedExpression: "@local.help_text",
-                type: "local",
-                fieldName: "help_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.slider_without_value_labels_2": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.help_text": ["parameter_list.help"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "Value of last slider: @local.slider_without_value_labels_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "Value of last slider: @local.slider_without_value_labels_2",
-              matchedExpression: "@local.slider_without_value_labels_2",
-              type: "local",
-              fieldName: "slider_without_value_labels_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.slider_without_value_labels_2": ["value"],
-        },
-      },
-      {
-        type: "template",
-        name: "example_text",
-        value: "example_text",
-        rows: [],
-        _nested_name: "example_text",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_number_selector",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "category_list",
-        value: ["0-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "80+"],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "category_list",
-      },
-      {
-        type: "number_selector",
-        name: "number_selector",
-        exclude_from_translation: true,
-        parameter_list: {
-          category_list: "@local.category_list",
-          first_display_term: "4",
-        },
-        _nested_name: "number_selector",
-        _dynamicFields: {
-          parameter_list: {
-            category_list: [
-              {
-                fullExpression: "@local.category_list",
-                matchedExpression: "@local.category_list",
-                type: "local",
-                fieldName: "category_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.category_list": ["parameter_list.category_list"],
-        },
-      },
-      {
-        name: "ten",
-        value: 10,
-        type: "set_variable",
-        _nested_name: "ten",
-      },
-      {
-        type: "set_field",
-        name: "debug_field_fifteen",
-        value: 15,
-        _nested_name: "debug_field_fifteen",
-      },
-      {
-        name: "fifteen",
-        value: "+@fields.debug_field_fifteen",
-        _translations: {
-          value: {},
-        },
-        type: "set_variable",
-        _nested_name: "fifteen",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "+@fields.debug_field_fifteen",
-              matchedExpression: "@fields.debug_field_fifteen",
-              type: "fields",
-              fieldName: "debug_field_fifteen",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.debug_field_fifteen": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_1",
-        value: "Default initial value",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_1",
-      },
-      {
-        type: "number_selector",
-        name: "number_selector_1",
-        parameter_list: {
-          min_value: "0",
-          max_value: "20",
-        },
-        _nested_name: "number_selector_1",
-      },
-      {
-        type: "title",
-        name: "title_2",
-        value: "Initial value set directly",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_2",
-      },
-      {
-        type: "number_selector",
-        name: "number_selector_2",
-        value: 5,
-        parameter_list: {
-          min_value: "0",
-          max_value: "20",
-        },
-        _nested_name: "number_selector_2",
-      },
-      {
-        type: "title",
-        name: "title_3",
-        value: "Initial value set through local variable",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_3",
-      },
-      {
-        type: "number_selector",
-        name: "number_selector_3",
-        value: "@local.ten",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          min_value: "0",
-          max_value: "20",
-        },
-        _nested_name: "number_selector_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.ten",
-              matchedExpression: "@local.ten",
-              type: "local",
-              fieldName: "ten",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.ten": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_4",
-        value: "Initial value set through field preceded by '+",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_4",
-      },
-      {
-        type: "number_selector",
-        name: "number_selector_4",
-        value: "+@fields.debug_field_fifteen",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          min_value: "0",
-          max_value: "20",
-        },
-        _nested_name: "number_selector_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "+@fields.debug_field_fifteen",
-              matchedExpression: "@fields.debug_field_fifteen",
-              type: "fields",
-              fieldName: "debug_field_fifteen",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.debug_field_fifteen": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_5",
-        value: "Initial value set through local with field preceded by '+",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_5",
-      },
-      {
-        type: "number_selector",
-        name: "number_selector_5",
-        value: "@local.fifteen",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          min_value: "0",
-          max_value: "20",
-        },
-        _nested_name: "number_selector_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.fifteen",
-              matchedExpression: "@local.fifteen",
-              type: "local",
-              fieldName: "fifteen",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.fifteen": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_text_box",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "blank_display_text",
-        value: "Click here to answer",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "blank_display_text",
-      },
-      {
-        type: "set_default",
-        name: "_value",
-        value: "@local.default_value",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "_value",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.default_value",
-              matchedExpression: "@local.default_value",
-              type: "local",
-              fieldName: "default_value",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.default_value": ["value"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box",
-        exclude_from_translation: true,
-        parameter_list: {
-          blank_display_text: "@local.blank_display_text",
-          help: "some help text",
-          placeholder: "example placeholder",
-        },
-        _nested_name: "text_box",
-        _dynamicFields: {
-          parameter_list: {
-            blank_display_text: [
-              {
-                fullExpression: "@local.blank_display_text",
-                matchedExpression: "@local.blank_display_text",
-                type: "local",
-                fieldName: "blank_display_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.blank_display_text": ["parameter_list.blank_display_text"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box_1",
-        value: "Answer 1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "some help text",
-          text_align: "right",
-          placeholder: "Add your answer",
-        },
-        _nested_name: "text_box_1",
-      },
-      {
-        type: "text_box",
-        name: "text_box_2",
-        value: "Answer 2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          help: "some help text",
-          text_align: "left",
-          placeholder: "Add your answer 2",
-        },
-        _nested_name: "text_box_2",
-      },
-      {
-        type: "text_box",
-        name: "text_box_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          text_align: "center",
-          placeholder: "Add your answer 3",
-        },
-        _nested_name: "text_box_3",
-      },
-      {
-        type: "text_box",
-        name: "text_box_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          text_align: "center",
-          placeholder: "Add your answer 3",
-          number_input: "true",
-        },
-        _nested_name: "text_box_3",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_dashed_box",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "dashed_box",
-        name: "dashed_box_passive",
-        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "alert",
-          icon_src: "plh_images/icons/star.svg",
-          icon_position: "top-right",
-        },
-        _nested_name: "dashed_box_passive",
-      },
-      {
-        type: "dashed_box",
-        name: "dashed_box_active",
-        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "default",
-          icon_src: "plh_images/icons/star.svg",
-          icon_position: "top-left",
-        },
-        _nested_name: "dashed_box_active",
-      },
-      {
-        type: "dashed_box",
-        name: "dashed_box_passive",
-        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "alert",
-          icon_src: "plh_images/icons/star.svg",
-          icon_position: "bottom-left",
-        },
-        _nested_name: "dashed_box_passive",
-      },
-      {
-        type: "dashed_box",
-        name: "dashed_box_active",
-        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "default",
-          icon_src: "plh_images/icons/star.svg",
-          icon_position: "bottom-right",
-        },
-        _nested_name: "dashed_box_active",
-      },
-      {
-        type: "dashed_box",
-        name: "dashed_box_active",
-        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "alert",
-          icon_src: "plh_images/icons/star.svg",
-          icon_position: "bottom-right",
-        },
-        _nested_name: "dashed_box_active",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "bug_dashed_box",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "dashed_box",
-        name: "dashed_box_passive",
-        value: "Every time you do a relax, mark your star.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "dashed_box_passive",
-      },
-      {
-        type: "dashed_box",
-        name: "dashed_box_active",
-        value: "Every time you do a relax, mark your star in ParentPoints to track your success.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "alert",
-          icon_src: "plh_images/icons/star.svg",
-          icon_position: "top-right",
-        },
-        _nested_name: "dashed_box_active",
-      },
-      {
-        type: "dashed_box",
-        name: "habit_text",
-        value:
-          "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          icon_src: "plh_images/icons/star_circle.svg",
-          icon_position: "top-left",
-        },
-        _nested_name: "habit_text",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
-              matchedExpression: "@global.parent_point",
-              type: "global",
-              fieldName: "parent_point",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.parent_point": ["value"],
-        },
-      },
-      {
-        type: "dashed_box",
-        name: "habit_text_2",
-        value:
-          "Every time you do a relax, click the @global.parent_point and celebrate your success",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          icon_src: "plh_images/icons/star_circle.svg",
-          icon_position: "top-left",
-        },
-        _nested_name: "habit_text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Every time you do a relax, click the @global.parent_point and celebrate your success",
-              matchedExpression: "@global.parent_point",
-              type: "global",
-              fieldName: "parent_point",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@global.parent_point": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_toggle_bar",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "toggle_bar",
-        name: "toggle_1",
-        value: false,
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["changed_field_toggle", "this.value"],
-            _raw: "changed | set_field:changed_field_toggle:@local.toggle_1",
-            _cleaned: "changed | set_field:changed_field_toggle:@local.toggle_1",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          position: "right",
-          true_text: "some text for true value",
-          false_text: "text for false",
-          show_tick_and_cross: "false",
-        },
-        _nested_name: "toggle_1",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field:changed_field_toggle:@local.toggle_1",
-                  matchedExpression: "@local.toggle_1",
-                  type: "local",
-                  fieldName: "toggle_1",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field:changed_field_toggle:@local.toggle_1",
-                  matchedExpression: "@local.toggle_1",
-                  type: "local",
-                  fieldName: "toggle_1",
-                },
-              ],
-            },
-          },
-        },
-        _dynamicDependencies: {
-          "@local.toggle_1": ["action_list.0._raw", "action_list.0._cleaned"],
-        },
-      },
-      {
-        type: "toggle_bar",
-        name: "toggle_2",
-        value: false,
-        exclude_from_translation: true,
-        parameter_list: {
-          position: "center",
-          true_text: "some text for true value",
-        },
-        _nested_name: "toggle_2",
-      },
-      {
-        type: "toggle_bar",
-        name: "toggle_3",
-        value: false,
-        exclude_from_translation: true,
-        parameter_list: {
-          false_text: "false text",
-        },
-        _nested_name: "toggle_3",
-      },
-      {
-        type: "toggle_bar",
-        name: "toggle_4",
-        value: true,
-        exclude_from_translation: true,
-        parameter_list: {
-          false_text: "false text",
-        },
-        _nested_name: "toggle_4",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_checkbox",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "label_text",
-        value: "Label text in local variable",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "label_text",
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_1",
-        value: false,
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["demo_changed_field_checkbox", "this.value"],
-            _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-            _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          label_text: "Reverse true",
-          reverse: "true",
-        },
-        _nested_name: "checkbox_1",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression:
-                    "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                  matchedExpression: "@local.checkbox_1",
-                  type: "local",
-                  fieldName: "checkbox_1",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression:
-                    "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                  matchedExpression: "@local.checkbox_1",
-                  type: "local",
-                  fieldName: "checkbox_1",
-                },
-              ],
-            },
-          },
-        },
-        _dynamicDependencies: {
-          "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value: "checkbox field: @field.demo_changed_field_checkbox",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "checkbox field: @field.demo_changed_field_checkbox",
-              matchedExpression: "@field.demo_changed_field_checkbox",
-              type: "field",
-              fieldName: "demo_changed_field_checkbox",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@field.demo_changed_field_checkbox": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "checkbox local: @local.checkbox_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "checkbox local: @local.checkbox_1",
-              matchedExpression: "@local.checkbox_1",
-              type: "local",
-              fieldName: "checkbox_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.checkbox_1": ["value"],
-        },
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_2",
-        value: true,
-        exclude_from_translation: true,
-        parameter_list: {
-          label_text: "Example answer?",
-          align: "left",
-        },
-        _nested_name: "checkbox_2",
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value: "checkbox local: @local.checkbox_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "checkbox local: @local.checkbox_2",
-              matchedExpression: "@local.checkbox_2",
-              type: "local",
-              fieldName: "checkbox_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.checkbox_2": ["value"],
-        },
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_3",
-        value: "@field.demo_changed_field_checkbox",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          label_text: "Example answer?",
-          align: "center",
-        },
-        _nested_name: "checkbox_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@field.demo_changed_field_checkbox",
-              matchedExpression: "@field.demo_changed_field_checkbox",
-              type: "field",
-              fieldName: "demo_changed_field_checkbox",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@field.demo_changed_field_checkbox": ["value"],
-        },
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_4",
-        value: false,
-        exclude_from_translation: true,
-        _nested_name: "checkbox_4",
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_5",
-        value: true,
-        exclude_from_translation: true,
-        _nested_name: "checkbox_5",
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_6",
-        value: "@local.checkbox_4",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "checkbox_6",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.checkbox_4",
-              matchedExpression: "@local.checkbox_4",
-              type: "local",
-              fieldName: "checkbox_4",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.checkbox_4": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_4",
-        value: "Checkbox with label_text set through local variable",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_4",
-      },
-      {
-        type: "simple_checkbox",
-        name: "checkbox_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          label_text: "@local.label_text",
-          align: "right",
-        },
-        _nested_name: "checkbox_7",
-        _dynamicFields: {
-          parameter_list: {
-            label_text: [
-              {
-                fullExpression: "@local.label_text",
-                matchedExpression: "@local.label_text",
-                type: "local",
-                fieldName: "label_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.label_text": ["parameter_list.label_text"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_text_area",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text_area",
-        name: "text_area",
-        exclude_from_translation: true,
-        parameter_list: {
-          placeholder: "example placeholder",
-        },
-        _nested_name: "text_area",
-      },
-      {
-        type: "text",
-        name: "text",
-        value: "the text entered is:\n\n@local.text_area",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "the text entered is:\n\n@local.text_area",
-              matchedExpression: "@local.text_area",
-              type: "local",
-              fieldName: "text_area",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.text_area": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_home",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["weekly_workshops"],
-            _raw: "click | go_to:weekly_workshops",
-            _cleaned: "click | go_to:weekly_workshops",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "home_screen light",
-        },
-        style_list: ["margin: 40px 10px 0px 10px"],
-        rows: [
-          {
-            type: "lottie_animation",
-            name: "lottie_src",
-            value: "plh_lottie/weekly_workshops.json",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.lottie_src",
-          },
-          {
-            type: "display_group",
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "column",
-            },
-            style_list: ["padding: 0"],
-            rows: [
-              {
-                type: "title",
-                name: "title_ex_s",
-                value: "@global.weekly_workshops",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                parameter_list: {
-                  style: "alternative",
-                },
-                style_list: [
-                  "align-self: flex-start",
-                  "margin-left: 20px",
-                  "margin-bottom: 8px",
-                  "margin-top: 15px",
-                ],
-                _nested_name: "dg_example_7.display_group.title_ex_s",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.weekly_workshops",
-                      matchedExpression: "@global.weekly_workshops",
-                      type: "global",
-                      fieldName: "weekly_workshops",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.weekly_workshops": ["value"],
-                },
-              },
-              {
-                type: "round_button",
-                name: "round_button_1",
-                value: "Value",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                parameter_list: {
-                  icon_src: "plh_images/icons/letter_outline.svg",
-                  text: "Message",
-                  style: "home_screen yellow",
-                },
-                style_list: ["padding: 0"],
-                _nested_name: "dg_example_7.display_group.round_button_1",
-              },
-            ],
-            name: "display_group",
-            _nested_name: "dg_example_7.display_group",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["parent_points"],
-            _raw: "click | go_to:parent_points",
-            _cleaned: "click | go_to:parent_points",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "home_screen shade",
-        },
-        style_list: ["margin: 40px 10px 0px 10px"],
-        rows: [
-          {
-            type: "lottie_animation",
-            name: "lottie_src",
-            value: "plh_lottie/parent_points.json",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.lottie_src",
-          },
-          {
-            exclude_from_translation: true,
-            type: "set_variable",
-            name: "set_variable",
-            _nested_name: "dg_example_7.set_variable",
-          },
-          {
-            type: "display_group",
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "column",
-            },
-            style_list: ["padding: 0"],
-            rows: [
-              {
-                type: "title",
-                name: "title_ex_s",
-                value: "@global.parent_points",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                parameter_list: {
-                  style: "alternative",
-                },
-                style_list: ["align-self: flex-start", "white-space: nowrap", "margin-top: 15px"],
-                _nested_name: "dg_example_7.display_group.title_ex_s",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.parent_points",
-                      matchedExpression: "@global.parent_points",
-                      type: "global",
-                      fieldName: "parent_points",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.parent_points": ["value"],
-                },
-              },
-              {
-                type: "round_button",
-                name: "round_button_1",
-                value: "Value",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                parameter_list: {
-                  icon_src: "plh_images/icons/play_outline_white.svg",
-                  text: "Start",
-                  style: "home_screen orange",
-                },
-                style_list: ["padding: 0"],
-                _nested_name: "dg_example_7.display_group.round_button_1",
-              },
-            ],
-            name: "display_group",
-            _nested_name: "dg_example_7.display_group",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["parent_centre"],
-            _raw: "click | go_to:parent_centre",
-            _cleaned: "click | go_to:parent_centre",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "home_screen dark",
-        },
-        style_list: ["margin: 40px 10px 0px 10px"],
-        rows: [
-          {
-            type: "lottie_animation",
-            name: "lottie_src",
-            value: "plh_lottie/parent_centre.json",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.lottie_src",
-          },
-          {
-            type: "display_group",
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "column",
-            },
-            style_list: ["padding: 0"],
-            rows: [
-              {
-                type: "title",
-                name: "title_ex_s",
-                value: "@global.parent_centre",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                parameter_list: {
-                  style: "alternative",
-                },
-                style_list: ["align-self: flex-start", "white-space: nowrap", "margin-top:15px"],
-                _nested_name: "dg_example_7.display_group.title_ex_s",
-                _dynamicFields: {
-                  value: [
-                    {
-                      fullExpression: "@global.parent_centre",
-                      matchedExpression: "@global.parent_centre",
-                      type: "global",
-                      fieldName: "parent_centre",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@global.parent_centre": ["value"],
-                },
-              },
-              {
-                type: "round_button",
-                name: "round_button_1",
-                value: "Value",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                parameter_list: {
-                  icon_src: "plh_images/icons/play_outline_white.svg",
-                  style: "home_screen dark_orange",
-                },
-                style_list: ["padding: 0"],
-                _nested_name: "dg_example_7.display_group.round_button_1",
-              },
-            ],
-            name: "display_group",
-            _nested_name: "dg_example_7.display_group",
-          },
-          {
-            exclude_from_translation: true,
-            type: "set_variable",
-            name: "set_variable",
-            _nested_name: "dg_example_7.set_variable",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_lottie",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "lottie_animation",
-        name: "relax_anim",
-        value: "plh_lottie/relax1.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "relax_anim",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_formatting",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title1",
-        value: "<span>This is a title where part of it is </span><span><i>italics</i></span>",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title1",
-      },
-      {
-        type: "text",
-        name: "text1",
-        value:
-          "<span>This is text where part is </span><span><b>bold </b></span><span>part is in </span><span><i>italics</i></span><span><b><i> </b></i></span><span>and part is </span><span><b><i>both bold and italics (emphasised) </b></i></span>",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text1",
-      },
-      {
-        type: "dashed_box",
-        name: "box1",
-        value:
-          "<span>This is a dashed box where some of the text is </span><span><b>bold</b></span><span> and </span><span><i>italics</i></span>",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "box1",
-      },
-      {
-        type: "button",
-        name: "button1",
-        value:
-          "<span>Some of this button is </span><span><b>bold. </b></span><span><i>WOAH!</i></span>",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "button1",
-      },
-      {
-        type: "text",
-        name: "list1",
-        value:
-          "There is a - dash - betwen these words but it's not a list\nThis is text with a list in it\n* List item 1\n* List item 2\n* List item 3",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "list1",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_display_group",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "display_group",
-        name: "example_dp_gr",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_1",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title light_orange",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "example_dp_gr.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display light_orange",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "center",
-            },
-            _nested_name: "example_dp_gr.text_ex_text",
-          },
-        ],
-        _nested_name: "example_dp_gr",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_2",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title orange",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_2.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display orange",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "right",
-            },
-            _nested_name: "dg_example_2.text_ex_text",
-          },
-        ],
-        _nested_name: "dg_example_2",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_3",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title light_blue",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_3.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display light_blue",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-            },
-            _nested_name: "dg_example_3.text_ex_text",
-          },
-        ],
-        _nested_name: "dg_example_3",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_4",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_4",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title blue",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_4.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display blue",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "center",
-            },
-            _nested_name: "dg_example_4.text_ex_text",
-          },
-        ],
-        _nested_name: "dg_example_4",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_6",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_5",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title dark_blue",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "alternative",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_6.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display dark_blue",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "right",
-            },
-            _nested_name: "dg_example_6.text_ex_text",
-          },
-        ],
-        _nested_name: "dg_example_6",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_active",
-          offset: "30",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title with offset",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_7.title_ex_s",
-          },
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/characters/group/talk_together.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            style_list: ["max-width: 250px"],
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_8",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "white_box",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title white box",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_8.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display white box",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-            },
-            _nested_name: "dg_example_8.text_ex_text",
-          },
-        ],
-        _nested_name: "dg_example_8",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_8",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "white_box",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title white box",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            style_list: ["margin: 10px 10px"],
-            _nested_name: "dg_example_8.title_ex_s",
-          },
-          {
-            type: "text",
-            name: "text_ex_text",
-            value: "Text for display white box",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-            },
-            _nested_name: "dg_example_8.text_ex_text",
-          },
-        ],
-        _nested_name: "dg_example_8",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_8",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "navigation",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "button",
-            name: "btn_example",
-            value: "Continue",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "blue",
-            },
-            _nested_name: "dg_example_8.btn_example",
-          },
-        ],
-        _nested_name: "dg_example_8",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_8",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_welcome",
-        },
-        style_list: [],
-        rows: [
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/workshop_modes/guide_2/wave.svg",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_8.image",
-          },
-        ],
-        _nested_name: "dg_example_8",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_short",
-        },
-        style_list: [],
-        rows: [
-          {
-            type: "subtitle",
-            name: "title_ex_s",
-            value: "Example short banner",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "small emphasised",
-            },
-            _nested_name: "dg_example_7.title_ex_s",
-          },
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/workshop_modes/guide_2/wave.svg",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_short",
-        },
-        rows: [
-          {
-            type: "subtitle",
-            name: "title_ex_s",
-            value: "Example short banner with more text",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "small emphasised",
-            },
-            _nested_name: "dg_example_7.title_ex_s",
-          },
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/workshop_modes/guide_2/wave.svg",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_welcome",
-        },
-        rows: [
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/workshop_modes/guide_2/relax.svg",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_dashed_box",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "dashed_box",
-          icon_src: "plh_images/icons/star.svg",
-        },
-        rows: [
-          {
-            type: "subtitle",
-            value:
-              "survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "right",
-            },
-            name: "subtitle",
-            _nested_name: "dg_example_dashed_box.subtitle",
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example_1",
-            value: 3,
-            exclude_from_translation: true,
-            parameter_list: {
-              lottie_src: "plh_lottie/parent_centre.json",
-              text: "text two",
-            },
-            _nested_name: "dg_example_dashed_box.points_example_1",
-          },
-          {
-            type: "button",
-            name: "btn_example",
-            value: "Continue",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_dashed_box.btn_example",
-          },
-        ],
-        _nested_name: "dg_example_dashed_box",
-      },
-      {
-        type: "title",
-        value: "form with 'go to'",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_form",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "form",
-          get_device_info: "true",
-          button_text: "Send",
-          button_go_to: "feature_audio",
-        },
-        rows: [
-          {
-            type: "text_box",
-            name: "user_name",
-            exclude_from_translation: true,
-            parameter_list: {
-              help: "some help text",
-              placeholder: "Add your name",
-            },
-            _nested_name: "dg_example_form.user_name",
-          },
-          {
-            type: "text_box",
-            name: "user_phone",
-            exclude_from_translation: true,
-            parameter_list: {
-              help: "some help text",
-              placeholder: "Add your phone number",
-            },
-            _nested_name: "dg_example_form.user_phone",
-          },
-          {
-            type: "simple_checkbox",
-            name: "checkbox_1",
-            value: false,
-            action_list: [
-              {
-                trigger: "changed",
-                action_id: "set_field",
-                args: ["demo_changed_field_checkbox", "this.value"],
-                _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              label_text: "Example answer?",
-            },
-            _nested_name: "dg_example_form.checkbox_1",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  _raw: [
-                    {
-                      fullExpression:
-                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      matchedExpression: "@local.checkbox_1",
-                      type: "local",
-                      fieldName: "checkbox_1",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      matchedExpression: "@local.checkbox_1",
-                      type: "local",
-                      fieldName: "checkbox_1",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
-            },
-          },
-          {
-            type: "simple_checkbox",
-            name: "checkbox_2",
-            value: true,
-            exclude_from_translation: true,
-            parameter_list: {
-              label_text: "Example answer?",
-            },
-            _nested_name: "dg_example_form.checkbox_2",
-          },
-          {
-            type: "title",
-            value: "Some text here",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            name: "title",
-            _nested_name: "dg_example_form.title",
-          },
-          {
-            type: "text_area",
-            name: "text_area",
-            exclude_from_translation: true,
-            parameter_list: {
-              placeholder: "example placeholder",
-            },
-            _nested_name: "dg_example_form.text_area",
-          },
-        ],
-        _nested_name: "dg_example_form",
-      },
-      {
-        type: "title",
-        value: "pop up form",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_form",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "form",
-          get_device_info: "true",
-          button_text: "Send",
-          button_pop_up: "feature_audio",
-        },
-        rows: [
-          {
-            type: "text_box",
-            name: "user_name",
-            exclude_from_translation: true,
-            parameter_list: {
-              help: "some help text",
-              placeholder: "Add your name",
-            },
-            _nested_name: "dg_example_form.user_name",
-          },
-          {
-            type: "text_box",
-            name: "user_phone",
-            exclude_from_translation: true,
-            parameter_list: {
-              help: "some help text",
-              placeholder: "Add your phone number",
-            },
-            _nested_name: "dg_example_form.user_phone",
-          },
-          {
-            type: "simple_checkbox",
-            name: "checkbox_1",
-            value: false,
-            action_list: [
-              {
-                trigger: "changed",
-                action_id: "set_field",
-                args: ["demo_changed_field_checkbox", "this.value"],
-                _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              label_text: "Example answer?",
-            },
-            _nested_name: "dg_example_form.checkbox_1",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  _raw: [
-                    {
-                      fullExpression:
-                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      matchedExpression: "@local.checkbox_1",
-                      type: "local",
-                      fieldName: "checkbox_1",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      matchedExpression: "@local.checkbox_1",
-                      type: "local",
-                      fieldName: "checkbox_1",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
-            },
-          },
-          {
-            type: "simple_checkbox",
-            name: "checkbox_2",
-            value: true,
-            exclude_from_translation: true,
-            parameter_list: {
-              label_text: "Example answer?",
-            },
-            _nested_name: "dg_example_form.checkbox_2",
-          },
-          {
-            type: "title",
-            value: "Some text here",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            name: "title",
-            _nested_name: "dg_example_form.title",
-          },
-          {
-            type: "text_area",
-            name: "text_area",
-            exclude_from_translation: true,
-            parameter_list: {
-              placeholder: "example placeholder",
-            },
-            _nested_name: "dg_example_form.text_area",
-          },
-        ],
-        _nested_name: "dg_example_form",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_audio",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "audio",
-        name: "audio_1",
-        value: "quality_assurance/test_audio.mp3",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          range_bar_disabled: "true",
-          time_to_rewind: "5",
-          title: "Audio player #1",
-        },
-        style_list: ["margin-top: 15px"],
-        _nested_name: "audio_1",
-      },
-      {
-        type: "audio",
-        name: "audio_2",
-        value: "quality_assurance/test_audio.mp3",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          range_bar_disabled: "false",
-          time_to_rewind: "3",
-          title: "Audio player #2",
-          help: "Example",
-        },
-        style_list: ["margin-top: 15px"],
-        _nested_name: "audio_2",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_essential_tools",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_1",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top:20px"],
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 15px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "button",
-            name: "bt_1",
-            value: "Button",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "nested_color full-width",
-            },
-            _nested_name: "display_group.bt_1",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_2",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top:20px"],
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "subtitle",
-            name: "ss",
-            value: "Subtitle",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top: 15px"],
-            _nested_name: "display_group.ss",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 15px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "button",
-            name: "bt_2",
-            value: "Button",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "nested_color full-width",
-            },
-            _nested_name: "display_group.bt_2",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_3",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top:20px"],
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "subtitle",
-            name: "ss",
-            value: "Subtitle",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top: 15px"],
-            _nested_name: "display_group.ss",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 15px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "button",
-            name: "bt_3",
-            value: "Button",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "nested_color  full-width",
-            },
-            _nested_name: "display_group.bt_3",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        exclude_from_translation: true,
-        type: "set_variable",
-        name: "set_variable",
-        _nested_name: "set_variable",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_4",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top:20px"],
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "subtitle",
-            name: "ss",
-            value: "Subtitle",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top: 15px"],
-            _nested_name: "display_group.ss",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 15px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "button",
-            name: "bt_3",
-            value: "Button",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "nested_color full-width",
-            },
-            _nested_name: "display_group.bt_3",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_5",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top:20px"],
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "subtitle",
-            name: "ss",
-            value: "Subtitle",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top: 15px"],
-            _nested_name: "display_group.ss",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 15px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "button",
-            name: "bt_3",
-            value: "Button",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "nested_color full-width",
-            },
-            _nested_name: "display_group.bt_3",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        exclude_from_translation: true,
-        type: "set_variable",
-        name: "set_variable",
-        _nested_name: "set_variable",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_5",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top:20px"],
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "subtitle",
-            name: "ss",
-            value: "Subtitle",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            style_list: ["margin-top: 15px"],
-            _nested_name: "display_group.ss",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 15px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/workshop_modes/group/relax.svg",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "corner",
-            },
-            _nested_name: "display_group.image",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_2",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 10px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "display_group",
-            name: "bgg_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "tool_1",
-            },
-            style_list: ["maggin-top:15px"],
-            rows: [
-              {
-                type: "image",
-                name: "image",
-                value: "plh_images/workshop_modes/group/relax.svg",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                _nested_name: "display_group.bgg_1.image",
-              },
-            ],
-            _nested_name: "display_group.bgg_1",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "tool_3",
-        },
-        style_list: ["padding: 10px 15px"],
-        rows: [
-          {
-            type: "title",
-            name: "ft",
-            value: "GET REAL",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "white",
-            },
-            _nested_name: "display_group.ft",
-          },
-          {
-            type: "text",
-            name: "ftt",
-            value:
-              "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              text_align: "left",
-              style: "whiteText",
-            },
-            style_list: ["margin-top: 10px", "max-width: 320px"],
-            _nested_name: "display_group.ftt",
-          },
-          {
-            type: "display_group",
-            name: "bgg_1",
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "tool_2",
-            },
-            style_list: ["maggin-top:15px"],
-            rows: [
-              {
-                type: "image",
-                name: "image",
-                value: "plh_images/workshop_modes/group/relax.svg",
-                _translations: {
-                  value: {},
-                },
-                exclude_from_translation: true,
-                _nested_name: "display_group.bgg_1.image",
-              },
-            ],
-            _nested_name: "display_group.bgg_1",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_parent_point_box",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "text",
-        name: "text_1",
-        value: "value 1 is @fields.demo_changed_field_parent_point",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "value 1 is @fields.demo_changed_field_parent_point",
-              matchedExpression: "@fields.demo_changed_field_parent_point",
-              type: "fields",
-              fieldName: "demo_changed_field_parent_point",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.demo_changed_field_parent_point": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value: "value 2 is @fields.demo_changed_field_parent_point_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "value 2 is @fields.demo_changed_field_parent_point_1",
-              matchedExpression: "@fields.demo_changed_field_parent_point_1",
-              type: "fields",
-              fieldName: "demo_changed_field_parent_point_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.demo_changed_field_parent_point_1": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value: "value 3 is @fields.demo_changed_field_parent_point_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "value 3 is @fields.demo_changed_field_parent_point_2",
-              matchedExpression: "@fields.demo_changed_field_parent_point_2",
-              type: "fields",
-              fieldName: "demo_changed_field_parent_point_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.demo_changed_field_parent_point_2": ["value"],
-        },
-      },
-      {
-        type: "display_group",
-        name: "dg",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "parent_point",
-        },
-        style_list: ["flex-wrap: wrap"],
-        rows: [
-          {
-            name: "init_value_1",
-            value: 2,
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.init_value_1",
-          },
-          {
-            name: "icon_src1",
-            value: "plh_images/habits/habit_money.svg",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.icon_src1",
-          },
-          {
-            name: "text1",
-            value: "Good money choice 1",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.text1",
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example",
-            value: "@local.init_value_1",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "changed",
-                action_id: "set_field",
-                args: ["demo_changed_field_parent_point", "this.value"],
-                _raw: "changed | set_field: demo_changed_field_parent_point: @local.points_example",
-                _cleaned:
-                  "changed | set_field: demo_changed_field_parent_point: @local.points_example",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.icon_src1",
-              text: "@local.text1",
-            },
-            _nested_name: "dg.points_example",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@local.init_value_1",
-                  matchedExpression: "@local.init_value_1",
-                  type: "local",
-                  fieldName: "init_value_1",
-                },
-              ],
-              action_list: {
-                "0": {
-                  _raw: [
-                    {
-                      fullExpression:
-                        "changed | set_field: demo_changed_field_parent_point: @local.points_example",
-                      matchedExpression: "@local.points_example",
-                      type: "local",
-                      fieldName: "points_example",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "changed | set_field: demo_changed_field_parent_point: @local.points_example",
-                      matchedExpression: "@local.points_example",
-                      type: "local",
-                      fieldName: "points_example",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.icon_src1",
-                    matchedExpression: "@local.icon_src1",
-                    type: "local",
-                    fieldName: "icon_src1",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.text1",
-                    matchedExpression: "@local.text1",
-                    type: "local",
-                    fieldName: "text1",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.init_value_1": ["value"],
-              "@local.points_example": ["action_list.0._raw", "action_list.0._cleaned"],
-              "@local.icon_src1": ["parameter_list.icon_src"],
-              "@local.text1": ["parameter_list.text"],
-            },
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example_1",
-            value: 3,
-            action_list: [
-              {
-                trigger: "changed",
-                action_id: "set_field",
-                args: ["demo_changed_field_parent_point_1", "this.value"],
-                _raw: "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
-                _cleaned:
-                  "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.icon_src1",
-              text: "@local.text1",
-            },
-            _nested_name: "dg.points_example_1",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  _raw: [
-                    {
-                      fullExpression:
-                        "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
-                      matchedExpression: "@local.points_example_1",
-                      type: "local",
-                      fieldName: "points_example_1",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "changed | set_field: demo_changed_field_parent_point_1: @local.points_example_1",
-                      matchedExpression: "@local.points_example_1",
-                      type: "local",
-                      fieldName: "points_example_1",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.icon_src1",
-                    matchedExpression: "@local.icon_src1",
-                    type: "local",
-                    fieldName: "icon_src1",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.text1",
-                    matchedExpression: "@local.text1",
-                    type: "local",
-                    fieldName: "text1",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.points_example_1": ["action_list.0._raw", "action_list.0._cleaned"],
-              "@local.icon_src1": ["parameter_list.icon_src"],
-              "@local.text1": ["parameter_list.text"],
-            },
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example_2",
-            value: 3,
-            action_list: [
-              {
-                trigger: "changed",
-                action_id: "set_field",
-                args: ["demo_changed_field_parent_point_2", "this.value"],
-                _raw: "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
-                _cleaned:
-                  "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              icon_src: "@local.icon_src1",
-              text: "@local.text1",
-            },
-            _nested_name: "dg.points_example_2",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  _raw: [
-                    {
-                      fullExpression:
-                        "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
-                      matchedExpression: "@local.points_example_2",
-                      type: "local",
-                      fieldName: "points_example_2",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "changed | set_field: demo_changed_field_parent_point_2: @local.points_example_2",
-                      matchedExpression: "@local.points_example_2",
-                      type: "local",
-                      fieldName: "points_example_2",
-                    },
-                  ],
-                },
-              },
-              parameter_list: {
-                icon_src: [
-                  {
-                    fullExpression: "@local.icon_src1",
-                    matchedExpression: "@local.icon_src1",
-                    type: "local",
-                    fieldName: "icon_src1",
-                  },
-                ],
-                text: [
-                  {
-                    fullExpression: "@local.text1",
-                    matchedExpression: "@local.text1",
-                    type: "local",
-                    fieldName: "text1",
-                  },
-                ],
-              },
-            },
-            _dynamicDependencies: {
-              "@local.points_example_2": ["action_list.0._raw", "action_list.0._cleaned"],
-              "@local.icon_src1": ["parameter_list.icon_src"],
-              "@local.text1": ["parameter_list.text"],
-            },
-          },
-        ],
-        _nested_name: "dg",
-      },
-      {
-        type: "title",
-        value: "lottie",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "display_group",
-        name: "dg",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "parent_point",
-        },
-        style_list: ["flex-wrap: wrap"],
-        rows: [
-          {
-            name: "init_value_1",
-            value: 2,
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.init_value_1",
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example",
-            value: "@local.init_value_1",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              lottie_src: "plh_lottie/parent_points.json",
-              text: "no celebration",
-              play_celebration: "false",
-            },
-            _nested_name: "dg.points_example",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@local.init_value_1",
-                  matchedExpression: "@local.init_value_1",
-                  type: "local",
-                  fieldName: "init_value_1",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@local.init_value_1": ["value"],
-            },
-          },
-          {
-            name: "text4",
-            value: "text one",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.text4",
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example_1",
-            value: 3,
-            exclude_from_translation: true,
-            parameter_list: {
-              lottie_src: "plh_lottie/parent_centre.json",
-              text: "text two",
-            },
-            _nested_name: "dg.points_example_1",
-          },
-          {
-            name: "text5",
-            value: "text two",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.text5",
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example_2",
-            value: 3,
-            exclude_from_translation: true,
-            parameter_list: {
-              lottie_src: "plh_lottie/parent_points.json",
-              text: "text three",
-            },
-            _nested_name: "dg.points_example_2",
-          },
-          {
-            name: "text6",
-            value: "text three",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            type: "set_variable",
-            _nested_name: "dg.text6",
-          },
-        ],
-        _nested_name: "dg",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_radio_group",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "answer0_list",
-        value: ["name:name_var_1 | text:Single", "name:name_var_2 | text:Pair"],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer0_list",
-      },
-      {
-        name: "options_per_row",
-        value: 2,
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "options_per_row",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_1",
-        value: "Pair",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer0_list",
-        },
-        _nested_name: "radio_group_square_1",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer0_list",
-                matchedExpression: "@local.answer0_list",
-                type: "local",
-                fieldName: "answer0_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer0_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_2",
-        value: "Pair",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer0_list",
-          options_per_row: "@local.options_per_row",
-        },
-        _nested_name: "radio_group_square_2",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer0_list",
-                matchedExpression: "@local.answer0_list",
-                type: "local",
-                fieldName: "answer0_list",
-              },
-            ],
-            options_per_row: [
-              {
-                fullExpression: "@local.options_per_row",
-                matchedExpression: "@local.options_per_row",
-                type: "local",
-                fieldName: "options_per_row",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer0_list": ["parameter_list.answer_list"],
-          "@local.options_per_row": ["parameter_list.options_per_row"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_3",
-        value: "Pair",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer0_list",
-          options_per_row: "2",
-        },
-        _nested_name: "radio_group_square_3",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer0_list",
-                matchedExpression: "@local.answer0_list",
-                type: "local",
-                fieldName: "answer0_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer0_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        name: "answer2_list",
-        value: [
-          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
-          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer2_list",
-      },
-      {
-        name: "answer3_list",
-        value: [
-          "name:name_var_1 | image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg",
-          "name:name_var_3| image:/plh_images/icons/heart.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer3_list",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_4",
-        value: "Black",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer2_list",
-          options_per_row: "3",
-        },
-        _nested_name: "radio_group_square_4",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer2_list",
-                matchedExpression: "@local.answer2_list",
-                type: "local",
-                fieldName: "answer2_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer2_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_5",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer3_list",
-          options_per_row: "3",
-        },
-        _nested_name: "radio_group_square_5",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer3_list",
-                matchedExpression: "@local.answer3_list",
-                type: "local",
-                fieldName: "answer3_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer3_list": ["parameter_list.answer_list"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_radio_group_2",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "answer_list_1",
-        value: [
-          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_1",
-      },
-      {
-        name: "answer_list_2",
-        value: [
-          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg",
-          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_2",
-      },
-      {
-        name: "answer_list_3",
-        value: [
-          "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-          "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_3",
-      },
-      {
-        name: "answer_list_4",
-        value: [
-          "name:name_var_1 | text:First",
-          "name:name_var_2 | text:Second",
-          "name:name_var_3 | text:Third",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_4",
-      },
-      {
-        name: "answer_list_5",
-        value: [
-          "name:happy | image:plh_images/stickers/faces/happy.svg | image_checked:plh_images/stickers/faces/happy.svg",
-          "name:happier | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
-          "name:happiest | image:plh_images/stickers/faces/happiest.svg | image_checked:plh_images/stickers/faces/happiest.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_5",
-      },
-      {
-        name: "answer_list_6",
-        value: [
-          "name:happy | image:plh_images/stickers/faces_yellow/happy.svg | image_checked:plh_images/stickers/faces_yellow/happy.svg",
-          "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg",
-          "name:happiest | image:plh_images/stickers/faces_yellow/happiest.svg | image_checked:plh_images/stickers/faces_yellow/happiest.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_6",
-      },
-      {
-        name: "answer_list_7",
-        value: [
-          "name:happy | image:plh_images/stickers/faces_yellow/happy.svg | image_checked:plh_images/stickers/faces_yellow/happy.svg",
-          "name:happier | image:plh_images/stickers/faces_yellow/happier.svg | image_checked:plh_images/stickers/faces_yellow/happier.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list_7",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_defaults",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_1",
-        },
-        _nested_name: "radio_group_defaults",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_1",
-                matchedExpression: "@local.answer_list_1",
-                type: "local",
-                fieldName: "answer_list_1",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_1": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_four_per_row",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_1",
-          options_per_row: "4",
-        },
-        _nested_name: "radio_group_four_per_row",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_1",
-                matchedExpression: "@local.answer_list_1",
-                type: "local",
-                fieldName: "answer_list_1",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_1": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_two_per_row",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_1",
-          options_per_row: "2",
-        },
-        _nested_name: "radio_group_two_per_row",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_1",
-                matchedExpression: "@local.answer_list_1",
-                type: "local",
-                fieldName: "answer_list_1",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_1": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_two_options_1",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_2",
-        },
-        _nested_name: "radio_group_two_options_1",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_2",
-                matchedExpression: "@local.answer_list_2",
-                type: "local",
-                fieldName: "answer_list_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_2": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_two_options_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_2",
-          options_per_row: "2",
-        },
-        _nested_name: "radio_group_two_options_2",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_2",
-                matchedExpression: "@local.answer_list_2",
-                type: "local",
-                fieldName: "answer_list_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_2": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_with_tick",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_3",
-        },
-        _nested_name: "radio_group_with_tick",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_3",
-                matchedExpression: "@local.answer_list_3",
-                type: "local",
-                fieldName: "answer_list_3",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_3": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_text",
-        value: "name_var_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_4",
-        },
-        _nested_name: "radio_group_text",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_4",
-                matchedExpression: "@local.answer_list_4",
-                type: "local",
-                fieldName: "answer_list_4",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_4": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        name: "name_result_1",
-        value: "@local.radio_group_text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "name_result_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.radio_group_text",
-              matchedExpression: "@local.radio_group_text",
-              type: "local",
-              fieldName: "radio_group_text",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.radio_group_text": ["value"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_image_1",
-        value: "happy",
-        _translations: {
-          value: {
-            es_sp: true,
-          },
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_5",
-        },
-        _nested_name: "radio_group_image_1",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_5",
-                matchedExpression: "@local.answer_list_5",
-                type: "local",
-                fieldName: "answer_list_5",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_5": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        name: "name_result_2",
-        value: "@local.radio_group_image_1",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "name_result_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.radio_group_image_1",
-              matchedExpression: "@local.radio_group_image_1",
-              type: "local",
-              fieldName: "radio_group_image_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.radio_group_image_1": ["value"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_image_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_6",
-        },
-        _nested_name: "radio_group_image_2",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_6",
-                matchedExpression: "@local.answer_list_6",
-                type: "local",
-                fieldName: "answer_list_6",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_6": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        name: "happy",
-        value: "happy",
-        _translations: {
-          value: {
-            es_sp: true,
-          },
-        },
-        type: "set_variable",
-        _nested_name: "happy",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_image_3",
-        value: "@local.happy",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_5",
-        },
-        _nested_name: "radio_group_image_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.happy",
-              matchedExpression: "@local.happy",
-              type: "local",
-              fieldName: "happy",
-            },
-          ],
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_5",
-                matchedExpression: "@local.answer_list_5",
-                type: "local",
-                fieldName: "answer_list_5",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.happy": ["value"],
-          "@local.answer_list_5": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "title",
-        name: "test",
-        value: "test",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "test",
-      },
-      {
-        type: "text",
-        value: "without options",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "text",
-        _nested_name: "text",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_two_options_3",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_2",
-        },
-        _nested_name: "radio_group_two_options_3",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_2",
-                matchedExpression: "@local.answer_list_2",
-                type: "local",
-                fieldName: "answer_list_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_2": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        value: "with options",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "text",
-        _nested_name: "text",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_two_options_4",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_2",
-          options_per_row: "2",
-        },
-        _nested_name: "radio_group_two_options_4",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_2",
-                matchedExpression: "@local.answer_list_2",
-                type: "local",
-                fieldName: "answer_list_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_2": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        value: "with options",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "text",
-        _nested_name: "text",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_image_4",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_7",
-          options_per_row: "2",
-        },
-        _nested_name: "radio_group_image_4",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_7",
-                matchedExpression: "@local.answer_list_7",
-                type: "local",
-                fieldName: "answer_list_7",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_7": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        value: "without options",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "text",
-        _nested_name: "text",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_image_5",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list_7",
-        },
-        _nested_name: "radio_group_image_5",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list_7",
-                matchedExpression: "@local.answer_list_7",
-                type: "local",
-                fieldName: "answer_list_7",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list_7": ["parameter_list.answer_list"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_set_theme_2",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "answer0_list",
-        value: ["name:name_var_1 | text:Single", "name:name_var_2 | text:Pair"],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer0_list",
-      },
-      {
-        name: "options_per_row",
-        value: 2,
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "options_per_row",
-      },
-      {
-        type: "display_group",
-        exclude_from_translation: true,
-        rows: [
-          {
-            type: "button",
-            name: "active_theme_button",
-            value: "Active Theme",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_theme",
-                args: ["active"],
-                _raw: "click | set_theme:active",
-                _cleaned: "click | set_theme:active",
-              },
-            ],
-            exclude_from_translation: true,
-            _nested_name: "display_group.active_theme_button",
-          },
-          {
-            type: "button",
-            name: "passive_theme_button",
-            value: "Passive Theme",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_theme",
-                args: ["passive"],
-                _raw: "click | set_theme:passive",
-                _cleaned: "click | set_theme:passive",
-              },
-            ],
-            exclude_from_translation: true,
-            _nested_name: "display_group.passive_theme_button",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square",
-        value: "Pair",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer0_list",
-          options_per_row: "@local.options_per_row",
-        },
-        _nested_name: "radio_group_square",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer0_list",
-                matchedExpression: "@local.answer0_list",
-                type: "local",
-                fieldName: "answer0_list",
-              },
-            ],
-            options_per_row: [
-              {
-                fullExpression: "@local.options_per_row",
-                matchedExpression: "@local.options_per_row",
-                type: "local",
-                fieldName: "options_per_row",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer0_list": ["parameter_list.answer_list"],
-          "@local.options_per_row": ["parameter_list.options_per_row"],
-        },
-      },
-      {
-        name: "answer1_list",
-        value: [
-          "name:name_var_1 | text:Woman | image:/plh_images/icons/heart.svg",
-          "name:name_var_2 | text:Man | image:/plh_images/icons/heart.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer1_list",
-      },
-      {
-        exclude_from_translation: true,
-        type: "set_variable",
-        name: "set_variable",
-        _nested_name: "set_variable",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_ex1",
-        value: "Black",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer2_list",
-          options_per_row: "3",
-        },
-        _nested_name: "radio_group_square_ex1",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer2_list",
-                matchedExpression: "@local.answer2_list",
-                type: "local",
-                fieldName: "answer2_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer2_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        name: "answer2_list",
-        value: [
-          "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
-          "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer2_list",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_ex2",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer3_list",
-          options_per_row: "3",
-        },
-        _nested_name: "radio_group_square_ex2",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer3_list",
-                matchedExpression: "@local.answer3_list",
-                type: "local",
-                fieldName: "answer3_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer3_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        name: "answer3_list",
-        value: [
-          "name:name_var_1 | image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg",
-          "name:name_var_3| image:/plh_images/icons/heart.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer3_list",
-      },
-      {
-        name: "combo_answer_list",
-        value: ["First", "Second", "Third"],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "combo_answer_list",
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_defaults",
-        value: "nothing",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.combo_answer_list",
-        },
-        _nested_name: "combo_box_defaults",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.combo_answer_list",
-                matchedExpression: "@local.combo_answer_list",
-                type: "local",
-                fieldName: "combo_answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.combo_answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "radio_group",
-        name: "radio_group_square_ex3",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer4_list",
-          options_per_row: "3",
-          style: "transparent",
-        },
-        _nested_name: "radio_group_square_ex3",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer4_list",
-                matchedExpression: "@local.answer4_list",
-                type: "local",
-                fieldName: "answer4_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer4_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        name: "answer4_list",
-        value: [
-          "name:name_var_1 | image:/plh_images/icons/heart.svg",
-          "name:name_var_2| image:/plh_images/icons/heart.svg",
-          "name:name_var_3| image:/plh_images/icons/heart.svg",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer4_list",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_welcome",
-        },
-        style_list: ["margin: 10px 15px", "min_height: 40px"],
-        rows: [
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/characters/group/talk_together.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            style_list: ["max-width: 250px"],
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner_short",
-        },
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title banner title",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            _nested_name: "dg_example_7.title_ex_s",
-          },
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/characters/group/talk_together.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-      {
-        type: "display_group",
-        name: "dg_example_7",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "banner",
-        },
-        rows: [
-          {
-            type: "title",
-            name: "title_ex_s",
-            value: "Example title banner title",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            parameter_list: {
-              style: "primary",
-            },
-            _nested_name: "dg_example_7.title_ex_s",
-          },
-          {
-            type: "image",
-            name: "image",
-            value: "plh_images/characters/group/talk_together.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_7.image",
-          },
-        ],
-        _nested_name: "dg_example_7",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_combo_box",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "answer_list",
-        value: [
-          "name: name_1 | text: This is text 1",
-          "name: name_2 | text: This is text 2",
-          "name: name_3 | text: This is text 3",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list",
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_defaults",
-        value: "nothing",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          style: "active",
-        },
-        _nested_name: "combo_box_defaults",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_result",
-        value: "You selected @local.combo_box_defaults",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_result",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "You selected @local.combo_box_defaults",
-              matchedExpression: "@local.combo_box_defaults",
-              type: "local",
-              fieldName: "combo_box_defaults",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.combo_box_defaults": ["value"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_text_in_pop_up",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          text: "Text above the answers",
-          placeholder: "Click here to answer",
-          style: "active",
-        },
-        _nested_name: "combo_box_text_in_pop_up",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_with_placeholder_1",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "Click here to answer",
-        },
-        _nested_name: "combo_box_with_placeholder_1",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_with_placeholder_2",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "Click here to answer",
-        },
-        _nested_name: "combo_box_with_placeholder_2",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_result",
-        value: "You selected @local.combo_box_with_placeholder_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_result",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "You selected @local.combo_box_with_placeholder_2",
-              matchedExpression: "@local.combo_box_with_placeholder_2",
-              type: "local",
-              fieldName: "combo_box_with_placeholder_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.combo_box_with_placeholder_2": ["value"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_allow_input",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "Click here to answer",
-          input_allowed: "true",
-          answer_placeholder: "Type your own",
-          style: "active",
-        },
-        _nested_name: "combo_box_allow_input",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        name: "input_allowed",
-        value: true,
-        type: "set_variable",
-        _nested_name: "input_allowed",
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_allow_input_through_var",
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "Click here to answer",
-          input_allowed: "@local.input_allowed",
-          answer_placeholder: "Type your own",
-          style: "active",
-        },
-        _nested_name: "combo_box_allow_input_through_var",
-        _dynamicFields: {
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-            input_allowed: [
-              {
-                fullExpression: "@local.input_allowed",
-                matchedExpression: "@local.input_allowed",
-                type: "local",
-                fieldName: "input_allowed",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.answer_list": ["parameter_list.answer_list"],
-          "@local.input_allowed": ["parameter_list.input_allowed"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_pop_ups",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "button",
-        name: "button_pop_up_1",
-        value: "Button 1",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "pop_up",
-            args: ["feature_tile"],
-            _raw: "click | pop_up:feature_tile",
-            _cleaned: "click | pop_up:feature_tile",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "button_pop_up_1",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_two_columns_images",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        value: "Powered by Parenting for Lifelong Health and partners",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "center",
-          text_align: "center",
-        },
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "display_group",
-        parameter_list: {
-          style: "two_columns_images",
-        },
-        rows: [
-          {
-            type: "image",
-            name: "partner_1",
-            value: "plh_images/logos/partners/plh.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.partner_1",
-          },
-          {
-            type: "image",
-            name: "partner_2",
-            value: "plh_images/logos/partners/unicef.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.partner_2",
-          },
-          {
-            type: "image",
-            name: "partner_3",
-            value: "plh_images/logos/partners/who.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.partner_3",
-          },
-          {
-            type: "image",
-            name: "partner_4",
-            value: "plh_images/logos/partners/cwb.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.partner_4",
-          },
-          {
-            type: "image",
-            name: "partner_5",
-            value: "plh_images/logos/partners/idems.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.partner_5",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_two_columns_images_2",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        value: "ParentApp funded by",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "center",
-          text_align: "center",
-        },
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "display_group",
-        parameter_list: {
-          style: "two_columns_images",
-        },
-        rows: [
-          {
-            type: "image",
-            name: "funder_1",
-            value: "plh_images/logos/funders/ukri.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_1",
-          },
-          {
-            type: "image",
-            name: "funder_2",
-            value: "plh_images/logos/funders/gcrf.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_2",
-          },
-          {
-            type: "image",
-            name: "funder_3",
-            value: "plh_images/logos/funders/newton_fund.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_3",
-          },
-          {
-            type: "image",
-            name: "funder_4",
-            value: "plh_images/logos/funders/lego_foundation.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_4",
-          },
-          {
-            type: "image",
-            name: "funder_5",
-            value: "plh_images/logos/funders/university_of_oxford.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_5",
-          },
-          {
-            type: "image",
-            name: "funder_6",
-            value: "plh_images/logos/funders/oak_foundation.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_6",
-          },
-          {
-            type: "image",
-            name: "funder_7",
-            value: "plh_images/logos/funders/unicef.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_7",
-          },
-          {
-            type: "image",
-            name: "funder_8",
-            value: "plh_images/logos/funders/end_violence_against_children.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_8",
-          },
-          {
-            type: "image",
-            name: "funder_9",
-            value: "plh_images/logos/funders/erc.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_9",
-          },
-          {
-            type: "image",
-            name: "funder_10",
-            value: "plh_images/logos/funders/generali_human_safety_net.png",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            _nested_name: "display_group.funder_10",
-          },
-        ],
-        name: "display_group",
-        _nested_name: "display_group",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_template_components.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_feedback_default",
-    status: "released",
-    flow_subtype: "debug",
-    comments: "Default general feedback form",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "Feedback",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_1",
-      },
-      {
-        type: "text_area",
-        name: "feedback",
-        exclude_from_translation: true,
-        parameter_list: {
-          placeholder: "Write feedback here",
-        },
-        _nested_name: "feedback",
-      },
-      {
-        type: "display_group",
-        name: "dg_buttons",
-        exclude_from_translation: true,
-        rows: [
-          {
-            type: "button",
-            name: "button_cancel",
-            value: "Cancel",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "emit",
-                args: ["uncompleted"],
-                _raw: "click | emit:uncompleted",
-                _cleaned: "click | emit:uncompleted",
-              },
-            ],
-            exclude_from_translation: true,
-            _nested_name: "dg_buttons.button_cancel",
-          },
-          {
-            type: "button",
-            name: "button_submit",
-            value: "Submit",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "emit",
-                args: ["completed", "@local.feedback"],
-                _raw: "click | emit:completed:@local.feedback",
-                _cleaned: "click | emit:completed:@local.feedback",
-              },
-            ],
-            exclude_from_translation: true,
-            _nested_name: "dg_buttons.button_submit",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "@local.feedback",
-                        matchedExpression: "@local.feedback",
-                        type: "local",
-                        fieldName: "feedback",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | emit:completed:@local.feedback",
-                      matchedExpression: "@local.feedback",
-                      type: "local",
-                      fieldName: "feedback",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | emit:completed:@local.feedback",
-                      matchedExpression: "@local.feedback",
-                      type: "local",
-                      fieldName: "feedback",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@local.feedback": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-            },
-          },
-        ],
-        _nested_name: "dg_buttons",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_feedback.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_feedback_text_select",
-    status: "released",
-    flow_subtype: "debug",
-    comments: "Default text-select feedback form",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "Suggest Change",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_1",
-      },
-      {
-        type: "text",
-        name: "selected_text",
-        value: "@fields._feedback_selected_text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "selected_text",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields._feedback_selected_text",
-              matchedExpression: "@fields._feedback_selected_text",
-              type: "fields",
-              fieldName: "_feedback_selected_text",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields._feedback_selected_text": ["value"],
-        },
-      },
-      {
-        type: "text_area",
-        name: "feedback",
-        exclude_from_translation: true,
-        _nested_name: "feedback",
-      },
-      {
-        type: "display_group",
-        name: "dg_buttons",
-        exclude_from_translation: true,
-        rows: [
-          {
-            type: "button",
-            name: "button_cancel",
-            value: "Cancel",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "emit",
-                args: ["uncompleted"],
-                _raw: "click | emit:uncompleted",
-                _cleaned: "click | emit:uncompleted",
-              },
-            ],
-            exclude_from_translation: true,
-            _nested_name: "dg_buttons.button_cancel",
-          },
-          {
-            type: "button",
-            name: "button_submit",
-            value: "Submit",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "emit",
-                args: ["completed", "@local.feedback"],
-                _raw: "click | emit:completed:@local.feedback",
-                _cleaned: "click | emit:completed:@local.feedback",
-              },
-            ],
-            exclude_from_translation: true,
-            _nested_name: "dg_buttons.button_submit",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "@local.feedback",
-                        matchedExpression: "@local.feedback",
-                        type: "local",
-                        fieldName: "feedback",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | emit:completed:@local.feedback",
-                      matchedExpression: "@local.feedback",
-                      type: "local",
-                      fieldName: "feedback",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | emit:completed:@local.feedback",
-                      matchedExpression: "@local.feedback",
-                      type: "local",
-                      fieldName: "feedback",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@local.feedback": [
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-            },
-          },
-        ],
-        _nested_name: "dg_buttons",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_feedback.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_feedback_debug",
-    status: "released",
-    flow_subtype: "debug",
-    comments: "Used in /feedback debug page",
-    rows: [
-      {
-        type: "title",
-        value: "Fields",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "text",
-        value: "_feedback_selected_text",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "text",
-        _nested_name: "text",
-      },
-      {
-        type: "title",
-        value: "Actions",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        name: "title",
-        _nested_name: "title",
-      },
-      {
-        type: "button",
-        value: "Enable Feedback Mode",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "feedback",
-            args: ["enable"],
-            _raw: "click | feedback:enable",
-            _cleaned: "click | feedback:enable",
-          },
-        ],
-        exclude_from_translation: true,
-        name: "button",
-        _nested_name: "button",
-      },
-      {
-        type: "button",
-        value: "Disable Feedback Mode",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "feedback",
-            args: ["disable"],
-            _raw: "click | feedback:disable",
-            _cleaned: "click | feedback:disable",
-          },
-        ],
-        exclude_from_translation: true,
-        name: "button",
-        _nested_name: "button",
-      },
-      {
-        type: "button",
-        value: "Open Feedback Template",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "feedback",
-            args: ["open", "feature_feedback_default"],
-            _raw: "click | feedback:open:feature_feedback_default",
-            _cleaned: "click | feedback:open:feature_feedback_default",
-          },
-        ],
-        exclude_from_translation: true,
-        name: "button",
-        _nested_name: "button",
-      },
-      {
-        type: "button",
-        value: "Send Test Feedback",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "feedback",
-            args: ["send", "test feedback"],
-            _raw: "click | feedback:send:test feedback",
-            _cleaned: "click | feedback:send:test feedback",
-          },
-        ],
-        exclude_from_translation: true,
-        name: "button",
-        _nested_name: "button",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_feedback.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_select_text",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "user_id",
-        value: "@calc(this.app_user_id)",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "user_id",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@calc(this.app_user_id)",
-              matchedExpression: "@calc(this.app_user_id)",
-              type: "calc",
-              fieldName: "this.app_user_id",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@calc(this.app_user_id)": ["value"],
-        },
-      },
-      {
-        name: "copy_text",
-        value: "Copy this",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copy_text",
-      },
-      {
-        name: "copy_icon_1",
-        value: "clipboard-outline",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copy_icon_1",
-      },
-      {
-        name: "copy_icon_2",
-        value: "copy-outline",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copy_icon_2",
-      },
-      {
-        name: "copied_text",
-        value: "Copied!",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copied_text",
-      },
-      {
-        name: "copied_icon_1",
-        value: "checkmark-outline",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copied_icon_1",
-      },
-      {
-        name: "copied_icon_2",
-        value: "plh_images/icons/tick.svg",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "copied_icon_2",
-      },
-      {
-        type: "select_text",
-        name: "select_text_1",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_text: "@local.copy_text",
-          copied_text: "@local.copied_text",
-        },
-        _nested_name: "select_text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_text: [
-              {
-                fullExpression: "@local.copy_text",
-                matchedExpression: "@local.copy_text",
-                type: "local",
-                fieldName: "copy_text",
-              },
-            ],
-            copied_text: [
-              {
-                fullExpression: "@local.copied_text",
-                matchedExpression: "@local.copied_text",
-                type: "local",
-                fieldName: "copied_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_text": ["parameter_list.copy_text"],
-          "@local.copied_text": ["parameter_list.copied_text"],
-        },
-      },
-      {
-        type: "select_text",
-        name: "select_text_2",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_icon: "@local.copy_icon_1",
-          copied_text: "@local.copied_text",
-        },
-        _nested_name: "select_text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_icon: [
-              {
-                fullExpression: "@local.copy_icon_1",
-                matchedExpression: "@local.copy_icon_1",
-                type: "local",
-                fieldName: "copy_icon_1",
-              },
-            ],
-            copied_text: [
-              {
-                fullExpression: "@local.copied_text",
-                matchedExpression: "@local.copied_text",
-                type: "local",
-                fieldName: "copied_text",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_icon_1": ["parameter_list.copy_icon"],
-          "@local.copied_text": ["parameter_list.copied_text"],
-        },
-      },
-      {
-        type: "select_text",
-        name: "select_text_3",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_text: "@local.copy_text",
-          copied_icon: "@local.copied_icon_1",
-        },
-        _nested_name: "select_text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_text: [
-              {
-                fullExpression: "@local.copy_text",
-                matchedExpression: "@local.copy_text",
-                type: "local",
-                fieldName: "copy_text",
-              },
-            ],
-            copied_icon: [
-              {
-                fullExpression: "@local.copied_icon_1",
-                matchedExpression: "@local.copied_icon_1",
-                type: "local",
-                fieldName: "copied_icon_1",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_text": ["parameter_list.copy_text"],
-          "@local.copied_icon_1": ["parameter_list.copied_icon"],
-        },
-      },
-      {
-        type: "select_text",
-        name: "select_text_4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        value: "@local.user_id",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          copy_icon: "@local.copy_icon_2",
-          copied_icon: "@local.copied_icon_2",
-        },
-        _nested_name:
-          "select_text_4_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.user_id",
-              matchedExpression: "@local.user_id",
-              type: "local",
-              fieldName: "user_id",
-            },
-          ],
-          parameter_list: {
-            copy_icon: [
-              {
-                fullExpression: "@local.copy_icon_2",
-                matchedExpression: "@local.copy_icon_2",
-                type: "local",
-                fieldName: "copy_icon_2",
-              },
-            ],
-            copied_icon: [
-              {
-                fullExpression: "@local.copied_icon_2",
-                matchedExpression: "@local.copied_icon_2",
-                type: "local",
-                fieldName: "copied_icon_2",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.user_id": ["value"],
-          "@local.copy_icon_2": ["parameter_list.copy_icon"],
-          "@local.copied_icon_2": ["parameter_list.copied_icon"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_select_text.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_items",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title_default",
-        value: "Items - default",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_default",
-      },
-      {
-        type: "items",
-        name: "items_default",
-        value: "@data.feature_items_data",
-        rows: [
-          {
-            type: "text",
-            name: "text_@item.id",
-            value: "@item.title",
-            _translations: {
-              value: {},
-            },
-            _nested_name: "items_default.text_@item.id",
-            _dynamicFields: {
-              name: [
-                {
-                  fullExpression: "text_@item.id",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-              ],
-              value: [
-                {
-                  fullExpression: "@item.title",
-                  matchedExpression: "@item.title",
-                  type: "item",
-                  fieldName: "title",
-                },
-              ],
-              _nested_name: [
-                {
-                  fullExpression: "items_default.text_@item.id",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@item.id": ["name", "_nested_name"],
-              "@item.title": ["value"],
-            },
-          },
-          {
-            type: "button",
-            name: "button_@item.id",
-            value: "@item.button_text",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "go_to",
-                args: ["@item.link"],
-                _raw: "click | go_to: @item.link",
-                _cleaned: "click | go_to: @item.link",
-              },
-            ],
-            _nested_name: "items_default.button_@item.id",
-            _dynamicFields: {
-              name: [
-                {
-                  fullExpression: "button_@item.id",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-              ],
-              value: [
-                {
-                  fullExpression: "@item.button_text",
-                  matchedExpression: "@item.button_text",
-                  type: "item",
-                  fieldName: "button_text",
-                },
-              ],
-              action_list: {
-                "0": {
-                  args: {
-                    "0": [
-                      {
-                        fullExpression: "@item.link",
-                        matchedExpression: "@item.link",
-                        type: "item",
-                        fieldName: "link",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | go_to: @item.link",
-                      matchedExpression: "@item.link",
-                      type: "item",
-                      fieldName: "link",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | go_to: @item.link",
-                      matchedExpression: "@item.link",
-                      type: "item",
-                      fieldName: "link",
-                    },
-                  ],
-                },
-              },
-              _nested_name: [
-                {
-                  fullExpression: "items_default.button_@item.id",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@item.id": ["name", "_nested_name"],
-              "@item.button_text": ["value"],
-              "@item.link": [
-                "action_list.0.args.0",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-            },
-          },
-        ],
-        _nested_name: "items_default",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@data.feature_items_data",
-              matchedExpression: "@data.feature_items_data",
-              type: "data",
-              fieldName: "feature_items_data",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@data.feature_items_data": ["value"],
-        },
-      },
-      {
-        type: "title",
-        name: "title_dg",
-        value: "Items - display group",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_dg",
-      },
-      {
-        type: "display_group",
-        name: "dg",
-        rows: [
-          {
-            type: "items",
-            name: "items_dg",
-            value: "@data.feature_items_data",
-            rows: [
-              {
-                type: "text",
-                name: "text_@item.id",
-                value: "@item.title",
-                _translations: {
-                  value: {},
-                },
-                _nested_name: "dg.items_dg.text_@item.id",
-                _dynamicFields: {
-                  name: [
-                    {
-                      fullExpression: "text_@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  value: [
-                    {
-                      fullExpression: "@item.title",
-                      matchedExpression: "@item.title",
-                      type: "item",
-                      fieldName: "title",
-                    },
-                  ],
-                  _nested_name: [
-                    {
-                      fullExpression: "dg.items_dg.text_@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@item.id": ["name", "_nested_name"],
-                  "@item.title": ["value"],
-                },
-              },
-              {
-                type: "button",
-                name: "button_@item.id",
-                value: "@item.button_text",
-                _translations: {
-                  value: {},
-                },
-                action_list: [
-                  {
-                    trigger: "click",
-                    action_id: "go_to",
-                    args: ["@item.link"],
-                    _raw: "click | go_to: @item.link",
-                    _cleaned: "click | go_to: @item.link",
-                  },
-                ],
-                _nested_name: "dg.items_dg.button_@item.id",
-                _dynamicFields: {
-                  name: [
-                    {
-                      fullExpression: "button_@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  value: [
-                    {
-                      fullExpression: "@item.button_text",
-                      matchedExpression: "@item.button_text",
-                      type: "item",
-                      fieldName: "button_text",
-                    },
-                  ],
-                  action_list: {
-                    "0": {
-                      args: {
-                        "0": [
-                          {
-                            fullExpression: "@item.link",
-                            matchedExpression: "@item.link",
-                            type: "item",
-                            fieldName: "link",
-                          },
-                        ],
-                      },
-                      _raw: [
-                        {
-                          fullExpression: "click | go_to: @item.link",
-                          matchedExpression: "@item.link",
-                          type: "item",
-                          fieldName: "link",
-                        },
-                      ],
-                      _cleaned: [
-                        {
-                          fullExpression: "click | go_to: @item.link",
-                          matchedExpression: "@item.link",
-                          type: "item",
-                          fieldName: "link",
-                        },
-                      ],
-                    },
-                  },
-                  _nested_name: [
-                    {
-                      fullExpression: "dg.items_dg.button_@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-                _dynamicDependencies: {
-                  "@item.id": ["name", "_nested_name"],
-                  "@item.button_text": ["value"],
-                  "@item.link": [
-                    "action_list.0.args.0",
-                    "action_list.0._raw",
-                    "action_list.0._cleaned",
-                  ],
-                },
-              },
-            ],
-            _nested_name: "dg.items_dg",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@data.feature_items_data",
-                  matchedExpression: "@data.feature_items_data",
-                  type: "data",
-                  fieldName: "feature_items_data",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@data.feature_items_data": ["value"],
-            },
-          },
-        ],
-        _nested_name: "dg",
-      },
-      {
-        type: "title",
-        name: "title_dg2",
-        value: "Items - group within group",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_dg2",
-      },
-      {
-        type: "display_group",
-        name: "dg2a",
-        rows: [
-          {
-            type: "items",
-            name: "items_dg",
-            value: "@data.feature_items_data",
-            rows: [
-              {
-                type: "display_group",
-                name: "dg2b",
-                parameter_list: {
-                  style: "column",
-                },
-                rows: [
-                  {
-                    type: "text",
-                    name: "text_@item.id",
-                    value: "@item.title",
-                    _translations: {
-                      value: {},
-                    },
-                    _nested_name: "dg2a.items_dg.dg2b.text_@item.id",
-                    _dynamicFields: {
-                      name: [
-                        {
-                          fullExpression: "text_@item.id",
-                          matchedExpression: "@item.id",
-                          type: "item",
-                          fieldName: "id",
-                        },
-                      ],
-                      value: [
-                        {
-                          fullExpression: "@item.title",
-                          matchedExpression: "@item.title",
-                          type: "item",
-                          fieldName: "title",
-                        },
-                      ],
-                      _nested_name: [
-                        {
-                          fullExpression: "dg2a.items_dg.dg2b.text_@item.id",
-                          matchedExpression: "@item.id",
-                          type: "item",
-                          fieldName: "id",
-                        },
-                      ],
-                    },
-                    _dynamicDependencies: {
-                      "@item.id": ["name", "_nested_name"],
-                      "@item.title": ["value"],
-                    },
-                  },
-                  {
-                    type: "button",
-                    name: "button_@item.id",
-                    value: "@item.button_text",
-                    _translations: {
-                      value: {},
-                    },
-                    action_list: [
-                      {
-                        trigger: "click",
-                        action_id: "go_to",
-                        args: ["@item.link"],
-                        _raw: "click | go_to: @item.link",
-                        _cleaned: "click | go_to: @item.link",
-                      },
-                    ],
-                    _nested_name: "dg2a.items_dg.dg2b.button_@item.id",
-                    _dynamicFields: {
-                      name: [
-                        {
-                          fullExpression: "button_@item.id",
-                          matchedExpression: "@item.id",
-                          type: "item",
-                          fieldName: "id",
-                        },
-                      ],
-                      value: [
-                        {
-                          fullExpression: "@item.button_text",
-                          matchedExpression: "@item.button_text",
-                          type: "item",
-                          fieldName: "button_text",
-                        },
-                      ],
-                      action_list: {
-                        "0": {
-                          args: {
-                            "0": [
-                              {
-                                fullExpression: "@item.link",
-                                matchedExpression: "@item.link",
-                                type: "item",
-                                fieldName: "link",
-                              },
-                            ],
-                          },
-                          _raw: [
-                            {
-                              fullExpression: "click | go_to: @item.link",
-                              matchedExpression: "@item.link",
-                              type: "item",
-                              fieldName: "link",
-                            },
-                          ],
-                          _cleaned: [
-                            {
-                              fullExpression: "click | go_to: @item.link",
-                              matchedExpression: "@item.link",
-                              type: "item",
-                              fieldName: "link",
-                            },
-                          ],
-                        },
-                      },
-                      _nested_name: [
-                        {
-                          fullExpression: "dg2a.items_dg.dg2b.button_@item.id",
-                          matchedExpression: "@item.id",
-                          type: "item",
-                          fieldName: "id",
-                        },
-                      ],
-                    },
-                    _dynamicDependencies: {
-                      "@item.id": ["name", "_nested_name"],
-                      "@item.button_text": ["value"],
-                      "@item.link": [
-                        "action_list.0.args.0",
-                        "action_list.0._raw",
-                        "action_list.0._cleaned",
-                      ],
-                    },
-                  },
-                ],
-                _nested_name: "dg2a.items_dg.dg2b",
-              },
-            ],
-            _nested_name: "dg2a.items_dg",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@data.feature_items_data",
-                  matchedExpression: "@data.feature_items_data",
-                  type: "data",
-                  fieldName: "feature_items_data",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@data.feature_items_data": ["value"],
-            },
-          },
-        ],
-        _nested_name: "dg2a",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_items.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_dg_dashed_box",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "display_group",
-        name: "dg_example_dashed_box",
-        value: "dg_example_dashed_box",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "dashed_box",
-        },
-        rows: [
-          {
-            type: "subtitle",
-            value: "Subtitle",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            name: "subtitle",
-            _nested_name: "dg_example_dashed_box.subtitle",
-          },
-          {
-            type: "parent_point_box",
-            name: "points_example_1",
-            value: 3,
-            exclude_from_translation: true,
-            parameter_list: {
-              lottie_src: "plh_lottie/parent_centre.json",
-              text: "text two",
-            },
-            _nested_name: "dg_example_dashed_box.points_example_1",
-          },
-          {
-            type: "button",
-            name: "btn_example",
-            value: "Continue",
-            _translations: {
-              value: {
-                tz_sw: true,
-                za_af: true,
-                za_st: true,
-                za_tn: true,
-                za_xh: true,
-                za_zu: true,
-              },
-            },
-            exclude_from_translation: true,
-            _nested_name: "dg_example_dashed_box.btn_example",
-          },
-        ],
-        _nested_name: "dg_example_dashed_box",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_dg_styles.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_dg_form",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "display_group",
-        name: "dg_example_form",
-        value: "dg_example_form",
-        exclude_from_translation: true,
-        parameter_list: {
-          style: "form",
-          get_device_info: "true",
-          button_text: "Send",
-        },
-        rows: [
-          {
-            type: "text_box",
-            name: "user_name",
-            exclude_from_translation: true,
-            parameter_list: {
-              help: "some help text",
-              placeholder: "Add your name",
-            },
-            _nested_name: "dg_example_form.user_name",
-          },
-          {
-            type: "text_box",
-            name: "user_phone",
-            exclude_from_translation: true,
-            parameter_list: {
-              help: "some help text",
-              placeholder: "Add your phone number",
-            },
-            _nested_name: "dg_example_form.user_phone",
-          },
-          {
-            type: "simple_checkbox",
-            name: "checkbox_1",
-            value: false,
-            action_list: [
-              {
-                trigger: "changed",
-                action_id: "set_field",
-                args: ["demo_changed_field_checkbox", "this.value"],
-                _raw: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                _cleaned: "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-              },
-            ],
-            exclude_from_translation: true,
-            parameter_list: {
-              label_text: "Example answer?",
-            },
-            _nested_name: "dg_example_form.checkbox_1",
-            _dynamicFields: {
-              action_list: {
-                "0": {
-                  _raw: [
-                    {
-                      fullExpression:
-                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      matchedExpression: "@local.checkbox_1",
-                      type: "local",
-                      fieldName: "checkbox_1",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression:
-                        "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
-                      matchedExpression: "@local.checkbox_1",
-                      type: "local",
-                      fieldName: "checkbox_1",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@local.checkbox_1": ["action_list.0._raw", "action_list.0._cleaned"],
-            },
-          },
-          {
-            type: "simple_checkbox",
-            name: "checkbox_2",
-            value: true,
-            exclude_from_translation: true,
-            parameter_list: {
-              label_text: "Example answer?",
-            },
-            _nested_name: "dg_example_form.checkbox_2",
-          },
-          {
-            type: "title",
-            value: "Some text here",
-            _translations: {
-              value: {},
-            },
-            exclude_from_translation: true,
-            name: "title",
-            _nested_name: "dg_example_form.title",
-          },
-          {
-            type: "text_area",
-            name: "text_area",
-            exclude_from_translation: true,
-            parameter_list: {
-              placeholder: "example placeholder",
-            },
-            _nested_name: "dg_example_form.text_area",
-          },
-        ],
-        _nested_name: "dg_example_form",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_dg_styles.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_text_box_placeholder",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "placeholder",
-        value: "placeholder",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "placeholder",
-      },
-      {
-        type: "set_field",
-        name: "feature_default_input",
-        value: "default input",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "feature_default_input",
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value:
-          "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
-              matchedExpression: "@local.placeholder",
-              type: "local",
-              fieldName: "placeholder",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.placeholder": ["value"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box_1",
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_input_tracker_1", "this.value"],
-            _raw: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
-            _cleaned: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          placeholder: "@local.placeholder",
-        },
-        _nested_name: "text_box_1",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
-                  matchedExpression: "@local.text_box_1",
-                  type: "local",
-                  fieldName: "text_box_1",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_1:@local.text_box_1",
-                  matchedExpression: "@local.text_box_1",
-                  type: "local",
-                  fieldName: "text_box_1",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.text_box_1": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value:
-          "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
-              matchedExpression: "@fields.feature_default_input",
-              type: "fields",
-              fieldName: "feature_default_input",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_input": ["value"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box_2",
-        value: "@fields.feature_default_input",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_input_tracker_2", "this.value"],
-            _raw: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
-            _cleaned: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
-          },
-        ],
-        exclude_from_translation: true,
-        _nested_name: "text_box_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_input",
-              matchedExpression: "@fields.feature_default_input",
-              type: "fields",
-              fieldName: "feature_default_input",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
-                  matchedExpression: "@local.text_box_2",
-                  type: "local",
-                  fieldName: "text_box_2",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_2:@local.text_box_2",
-                  matchedExpression: "@local.text_box_2",
-                  type: "local",
-                  fieldName: "text_box_2",
-                },
-              ],
-            },
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_input": ["value"],
-          "@local.text_box_2": ["action_list.0._raw", "action_list.0._cleaned"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value:
-          "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
-              matchedExpression: "@fields.feature_default_input",
-              type: "fields",
-              fieldName: "feature_default_input",
-            },
-            {
-              fullExpression:
-                "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
-              matchedExpression: "@local.placeholder",
-              type: "local",
-              fieldName: "placeholder",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_input": ["value"],
-          "@local.placeholder": ["value"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box_3",
-        value: "@fields.feature_default_input",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_input_tracker_3", "this.value"],
-            _raw: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
-            _cleaned: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          placeholder: "@local.placeholder",
-        },
-        _nested_name: "text_box_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_input",
-              matchedExpression: "@fields.feature_default_input",
-              type: "fields",
-              fieldName: "feature_default_input",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
-                  matchedExpression: "@local.text_box_3",
-                  type: "local",
-                  fieldName: "text_box_3",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_3:@local.text_box_3",
-                  matchedExpression: "@local.text_box_3",
-                  type: "local",
-                  fieldName: "text_box_3",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_input": ["value"],
-          "@local.text_box_3": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box_4",
-        value: "@fields.feature_default_input",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_input_tracker_4", "this.value"],
-            _raw: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
-            _cleaned: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          placeholder: "@local.placeholder",
-          prioritise_placeholder: "false",
-        },
-        _nested_name: "text_box_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_input",
-              matchedExpression: "@fields.feature_default_input",
-              type: "fields",
-              fieldName: "feature_default_input",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
-                  matchedExpression: "@local.text_box_4",
-                  type: "local",
-                  fieldName: "text_box_4",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_4:@local.text_box_4",
-                  matchedExpression: "@local.text_box_4",
-                  type: "local",
-                  fieldName: "text_box_4",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_input": ["value"],
-          "@local.text_box_4": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_5",
-        value:
-          "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
-              matchedExpression: "@local.placeholder",
-              type: "local",
-              fieldName: "placeholder",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.placeholder": ["value"],
-        },
-      },
-      {
-        type: "text_box",
-        name: "text_box_5",
-        value: "@fields.feature_default_input",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_input_tracker_5", "this.value"],
-            _raw: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
-            _cleaned: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          placeholder: "@local.placeholder",
-          prioritise_placeholder: "true",
-        },
-        _nested_name: "text_box_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_input",
-              matchedExpression: "@fields.feature_default_input",
-              type: "fields",
-              fieldName: "feature_default_input",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
-                  matchedExpression: "@local.text_box_5",
-                  type: "local",
-                  fieldName: "text_box_5",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field: feature_input_tracker_5:@local.text_box_5",
-                  matchedExpression: "@local.text_box_5",
-                  type: "local",
-                  fieldName: "text_box_5",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_input": ["value"],
-          "@local.text_box_5": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_prioritise_placeholder.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_combo_box_placeholder",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        name: "answer_list",
-        value: [
-          "name: name_1 | text: This is text 1",
-          "name: name_2 | text: This is text 2",
-          "name: name_3 | text: This is text 3",
-        ],
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "answer_list",
-      },
-      {
-        name: "placeholder",
-        value: "placeholder",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        type: "set_variable",
-        _nested_name: "placeholder",
-      },
-      {
-        type: "set_field",
-        name: "feature_default_choice",
-        value: "name_2",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "feature_default_choice",
-      },
-      {
-        type: "text",
-        name: "text_1",
-        value:
-          "Combo box 1: \nShows @local.placeholder when no user input is given and when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Combo box 1: \nShows @local.placeholder when no user input is given and when user input is deleted.",
-              matchedExpression: "@local.placeholder",
-              type: "local",
-              fieldName: "placeholder",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.placeholder": ["value"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_1",
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_choice_tracker_1", "this.value"],
-            _raw: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
-            _cleaned: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "@local.placeholder",
-        },
-        _nested_name: "combo_box_1",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
-                  matchedExpression: "@local.combo_box_1",
-                  type: "local",
-                  fieldName: "combo_box_1",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_1:@local.combo_box_1",
-                  matchedExpression: "@local.combo_box_1",
-                  type: "local",
-                  fieldName: "combo_box_1",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.combo_box_1": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_2",
-        value:
-          "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given. Is blank when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Combo box 2: \nShows the text associated to @fields.feature_default_choice before user input is given. Is blank when user input is deleted.",
-              matchedExpression: "@fields.feature_default_choice",
-              type: "fields",
-              fieldName: "feature_default_choice",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_choice": ["value"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_2",
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_choice_tracker_2", "this.value"],
-            _raw: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
-            _cleaned: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-        },
-        _nested_name: "combo_box_2",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
-                  matchedExpression: "@local.combo_box_2",
-                  type: "local",
-                  fieldName: "combo_box_2",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_2:@local.combo_box_2",
-                  matchedExpression: "@local.combo_box_2",
-                  type: "local",
-                  fieldName: "combo_box_2",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.combo_box_2": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_3",
-        value:
-          "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
-              matchedExpression: "@fields.feature_default_choice",
-              type: "fields",
-              fieldName: "feature_default_choice",
-            },
-            {
-              fullExpression:
-                "Combo boxes 3 and 4: \nShows the text associated to @fields.feature_default_choice before user input is given. Shows @local.placeholder when user input is deleted.",
-              matchedExpression: "@local.placeholder",
-              type: "local",
-              fieldName: "placeholder",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_choice": ["value"],
-          "@local.placeholder": ["value"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_3",
-        value: "@fields.feature_default_choice",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_choice_tracker_3", "this.value"],
-            _raw: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
-            _cleaned: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "@local.placeholder",
-        },
-        _nested_name: "combo_box_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_choice",
-              matchedExpression: "@fields.feature_default_choice",
-              type: "fields",
-              fieldName: "feature_default_choice",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
-                  matchedExpression: "@local.combo_box_3",
-                  type: "local",
-                  fieldName: "combo_box_3",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_3:@local.combo_box_3",
-                  matchedExpression: "@local.combo_box_3",
-                  type: "local",
-                  fieldName: "combo_box_3",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_choice": ["value"],
-          "@local.combo_box_3": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_4",
-        value: "@fields.feature_default_choice",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_choice_tracker_4", "this.value"],
-            _raw: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
-            _cleaned: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "@local.placeholder",
-          prioritise_placeholder: "false",
-        },
-        _nested_name: "combo_box_4",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_choice",
-              matchedExpression: "@fields.feature_default_choice",
-              type: "fields",
-              fieldName: "feature_default_choice",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
-                  matchedExpression: "@local.combo_box_4",
-                  type: "local",
-                  fieldName: "combo_box_4",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_4:@local.combo_box_4",
-                  matchedExpression: "@local.combo_box_4",
-                  type: "local",
-                  fieldName: "combo_box_4",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_choice": ["value"],
-          "@local.combo_box_4": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-      {
-        type: "text",
-        name: "text_5",
-        value:
-          "Combo box 5: \nShows @local.placeholder when no user input is given and when user input is deleted.",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "text_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression:
-                "Combo box 5: \nShows @local.placeholder when no user input is given and when user input is deleted.",
-              matchedExpression: "@local.placeholder",
-              type: "local",
-              fieldName: "placeholder",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.placeholder": ["value"],
-        },
-      },
-      {
-        type: "combo_box",
-        name: "combo_box_5",
-        value: "@fields.feature_default_choice",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "changed",
-            action_id: "set_field",
-            args: ["feature_choice_tracker_5", "this.value"],
-            _raw: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
-            _cleaned: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
-          },
-        ],
-        exclude_from_translation: true,
-        parameter_list: {
-          answer_list: "@local.answer_list",
-          placeholder: "@local.placeholder",
-          prioritise_placeholder: "true",
-        },
-        _nested_name: "combo_box_5",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@fields.feature_default_choice",
-              matchedExpression: "@fields.feature_default_choice",
-              type: "fields",
-              fieldName: "feature_default_choice",
-            },
-          ],
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
-                  matchedExpression: "@local.combo_box_5",
-                  type: "local",
-                  fieldName: "combo_box_5",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_field:feature_choice_tracker_5:@local.combo_box_5",
-                  matchedExpression: "@local.combo_box_5",
-                  type: "local",
-                  fieldName: "combo_box_5",
-                },
-              ],
-            },
-          },
-          parameter_list: {
-            answer_list: [
-              {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
-              },
-            ],
-            placeholder: [
-              {
-                fullExpression: "@local.placeholder",
-                matchedExpression: "@local.placeholder",
-                type: "local",
-                fieldName: "placeholder",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@fields.feature_default_choice": ["value"],
-          "@local.combo_box_5": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-          "@local.placeholder": ["parameter_list.placeholder"],
-        },
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_prioritise_placeholder.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "feature_lottie_habits",
-    status: "released",
-    flow_subtype: "debug",
-    rows: [
-      {
-        type: "title",
-        name: "title_breathe",
-        value: "Breathe not yell",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_breathe",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_breathe",
-        value: "plh_lottie/habits/habit_breathe.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_breathe",
-      },
-      {
-        type: "title",
-        name: "title_consequence",
-        value: "Calm consequence",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_consequence",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_consequence",
-        value: "plh_lottie/habits/habit_consequence.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_consequence",
-      },
-      {
-        type: "title",
-        name: "title_breathe",
-        value: "Good money choice",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_breathe",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_money",
-        value: "plh_lottie/habits/habit_money.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_money",
-      },
-      {
-        type: "title",
-        name: "title_praise_teen",
-        value: "Praise your teen",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_praise_teen",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_praise_teen",
-        value: "plh_lottie/habits/habit_praise_teen.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_praise_teen",
-      },
-      {
-        type: "title",
-        name: "title_praise_yourself",
-        value: "Praise Yourself",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_praise_yourself",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_praise_yourself",
-        value: "plh_lottie/habits/habit_praise_yourself.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_praise_yourself",
-      },
-      {
-        type: "title",
-        name: "title_relax",
-        value: "Relax",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_relax",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_relax",
-        value: "plh_lottie/habits/habit_relax.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_relax",
-      },
-      {
-        type: "title",
-        name: "title_safe",
-        value: "Safe",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_safe",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_safe",
-        value: "plh_lottie/habits/habit_safe.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_safe",
-      },
-      {
-        type: "title",
-        name: "title_spend_time",
-        value: "One-on-one time",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        exclude_from_translation: true,
-        _nested_name: "title_spend_time",
-      },
-      {
-        type: "lottie_animation",
-        name: "animation_spend_time",
-        value: "plh_lottie/habits/habit_spend_time.json",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-        _nested_name: "animation_spend_time",
-      },
-    ],
-    _xlsxPath: "quality_assurance/feature_templates/feature_lottie_habits.xlsx",
   },
 ];
 export default template;

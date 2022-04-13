@@ -14,6 +14,7 @@ import { TmplCompHostDirective, TemplateComponent } from "./template-component";
 
 import { appendStyleSvgDirective } from "./directives/shadowStyleSvg.directive";
 import { createCustomElement } from "@angular/elements";
+import { KatexModule } from "ng-katex";
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { createCustomElement } from "@angular/elements";
     SharedPipesModule,
     NouisliderModule,
     LottieModule,
+    KatexModule,
   ],
   exports: [...TEMPLATE_COMPONENTS, ...TEMPLATE_PIPES, TemplateContainerComponent],
   declarations: [
