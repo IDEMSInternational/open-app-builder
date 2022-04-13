@@ -1,17 +1,15 @@
-# Deploy preview url for labelled PRs
-# Specifies deployment target based on pr target branch
+# Deploy to firebase hosting on PR merge
+# Specifies deployment target based on branch
 # Master -> plh_global
 # Deployment/{deployment_name} -> {deployment_name}
-name: Deployment Preview
+name: Deployment Hosting
 on:
-  pull_request:
-    types: [labeled, synchronize]
+  push:
     branches:
       - deployment/*
       - master
 jobs:
-  build_and_preview:
-    if: contains(github.event.pull_request.labels.*.name, 'Test - preview')
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,13 +19,13 @@ jobs:
       # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Environment Deployment
         run: |
-          if [ "$GITHUB_BASE_REF" = "master" ];                    \
-          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;              \
-          else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
+          if [ "$GITHUB_REF" = "refs/heads/master" ];                \
+          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;          \
+          else echo "DEPLOYMENT_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV;   \
           fi;
         shell: bash
       - run: |
-          echo $GITHUB_BASE_REF
+          echo $GITHUB_REF
           echo $DEPLOYMENT_NAME
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -54,6 +52,9 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
           projectId: plh-teens-app1
-          target: $DEPLOYMENT_NAME
-        env:
-          FIREBASE_CLI_PREVIEWS: hostingchannels
+          # NOTE - deployment target should be set in firebase.json and .firebaserc
+          target: "${{env.DEPLOYMENT_NAME}}"
+          channelId: live
+      # Known issue - success message does not specify correct deployment url
+      # Not used anywhere else so assume fine for now (only gh action output incorrect)
+      # https://github.com/FirebaseExtended/action-hosting-deploy/issues/126
