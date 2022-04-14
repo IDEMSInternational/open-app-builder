@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import katex from "katex";
 import { extractMath, Segment } from "extract-math";
+import DOMPurify from "dompurify";
 
 @Pipe({
   name: "latex",
@@ -13,20 +14,20 @@ export class LatexPipe implements PipeTransform {
 
   transform(latexInput: string): SafeHtml {
     if (latexInput && typeof latexInput === "string" && latexInput.length >= 0) {
-      const bracketDelimitedSegments = extractMath(latexInput, {
+      const dollarSignDelimitedSegments = extractMath(latexInput, {
         delimiters: {
-          inline: ["\\(", "\\)"],
-          display: ["\\[", "\\]"],
+          inline: ["$", "$"],
+          display: ["$$", "$$"],
         },
       });
 
       this.segments =
-        bracketDelimitedSegments.length > 1
-          ? bracketDelimitedSegments
+        dollarSignDelimitedSegments.length > 1
+          ? dollarSignDelimitedSegments
           : extractMath(latexInput, {
               delimiters: {
-                inline: ["$", "$"],
-                display: ["$$", "$$"],
+                inline: ["\\(", "\\)"],
+                display: ["\\[", "\\]"],
               },
             });
 
@@ -50,7 +51,8 @@ export class LatexPipe implements PipeTransform {
       }
       htmlString += `</p>`;
 
-      return this.domSanitizer.bypassSecurityTrustHtml(htmlString);
+      const sanitizedHtml = DOMPurify.sanitize(htmlString);
+      return this.domSanitizer.bypassSecurityTrustHtml(sanitizedHtml);
     }
     return latexInput;
   }
