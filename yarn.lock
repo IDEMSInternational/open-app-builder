@@ -10220,6 +10220,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dompurify@npm:^2.3.6":
+  version: 2.3.6
+  resolution: "dompurify@npm:2.3.6"
+  checksum: 4b2bbf6bc68ebd776aec4a533cef74a5ae30391eed528f3df748af71da318afdc298b6f40449bef093b7454ffd2ae82656636560474de5a3b34316b762c85b12
+  languageName: node
+  linkType: hard
+
 "domutils@npm:^2.5.2, domutils@npm:^2.6.0, domutils@npm:^2.7.0":
   version: 2.8.0
   resolution: "domutils@npm:2.8.0"
@@ -12020,13 +12027,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"extract-math@npm:1.0.5":
-  version: 1.0.5
-  resolution: "extract-math@npm:1.0.5"
-  checksum: 1a62237e4389e72063fc68d7f5458faca588635ac5609952909a8e88b06c4e5d19f336cbc01071ce5c89f21b3fa78e2aa75a17ef1a3b6bceeadbeb7f191530fb
-  languageName: node
-  linkType: hard
-
 "extract-math@npm:^1.2.3":
   version: 1.2.3
   resolution: "extract-math@npm:1.2.3"
@@ -12711,6 +12711,7 @@ __metadata:
     dexie-observable: 3.0.0-beta.11
     dexie-syncable: ^3.0.0-beta.10
     document-register-element: ^1.14.10
+    dompurify: ^2.3.6
     eslint: ^7.29.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: 2.23.4
@@ -12735,7 +12736,6 @@ __metadata:
     lint-staged: ^11.0.0
     lottie-web: ^5.7.14
     marked: ^2.0.1
-    ng-katex: ^2.0.3
     ng2-nouislider: ^1.8.3
     ngx-color: ^6.1.0
     ngx-lottie: ^7.0.4
@@ -16323,17 +16323,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"katex@npm:0.11.1":
-  version: 0.11.1
-  resolution: "katex@npm:0.11.1"
-  dependencies:
-    commander: ^2.19.0
-  bin:
-    katex: cli.js
-  checksum: b26017d12bc06b085ee0b3d62825b473bc74987c2309008a13cca80b9922ed8b88f1f02b264d75f53dd604c318416bdb74a3035e761265417152f11c440e623d
-  languageName: node
-  linkType: hard
-
 "katex@npm:^0.15.3":
   version: 0.15.3
   resolution: "katex@npm:0.15.3"
@@ -18088,21 +18077,6 @@ __metadata:
   version: 1.0.0
   resolution: "next-tick@npm:1.0.0"
   checksum: 83fcb3d4f8d9380210b1c2b8a610463602d80283f0c0c8571c1688e1ad6cbf3a16b345f5bb7212617d4898bedcfa10dff327dc09ec20a112a5bf43a0271375fb
-  languageName: node
-  linkType: hard
-
-"ng-katex@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "ng-katex@npm:2.0.3"
-  dependencies:
-    extract-math: 1.0.5
-    katex: 0.11.1
-    tslib: ^1.9.0
-  peerDependencies:
-    "@angular/common": ">=4.0.0"
-    "@angular/core": ">=4.0.0"
-    "@angular/platform-browser": ">=4.0.0"
-  checksum: 00a37f79346c2fe7120da2c7216f47af8a57a3314f0131c9fd9c8c2c638245cad0aaa5c4912af1ca80ef418e423b9bdc19623e6a141a3b0fa442369973e3f0d5
   languageName: node
   linkType: hard
 
