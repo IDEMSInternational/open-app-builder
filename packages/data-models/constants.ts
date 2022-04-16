@@ -110,6 +110,10 @@ const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
   app_first_launch_actions: [
     {
+      type: "run_survey",
+      value: "plhIntroSplash",
+    },
+    {
       type: "template_popup",
       value: "accept_terms",
     },

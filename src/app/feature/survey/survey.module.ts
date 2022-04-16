@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { IntroSplashSurveyComponent } from "./surveys/intro-splash.survey";
+import { IntroSplashSurveyComponent } from "./surveys/plh-intro-splash.survey";
 
 const SurveyComponents = [IntroSplashSurveyComponent];
 
