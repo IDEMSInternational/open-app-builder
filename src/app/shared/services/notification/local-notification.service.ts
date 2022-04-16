@@ -4,16 +4,16 @@ import {
   LocalNotifications,
   LocalNotificationSchema,
   ActionType,
+  ActionPerformed,
 } from "@capacitor/local-notifications";
 import { addSeconds } from "date-fns";
-import {
-  NOTIFICATION_DEFAULTS,
-  NOTIFICATIONS_SYNC_FREQUENCY_MS,
-} from "packages/data-models/constants";
 import { interval } from "rxjs";
 import { BehaviorSubject } from "rxjs";
+import { APP_CONSTANTS } from "src/app/data";
 import { generateTimestamp } from "../../utils";
 import { DbService } from "../db/db.service";
+
+const { NOTIFICATION_DEFAULTS, NOTIFICATIONS_SYNC_FREQUENCY_MS } = APP_CONSTANTS;
 
 /** Utility type to assert local notification has extra and schedule defined */
 export interface ILocalNotification extends LocalNotificationSchema {
@@ -51,6 +51,8 @@ export class LocalNotificationService {
   /** Observable list of all scheduled notifications */
   public pendingNotifications$ = new BehaviorSubject<ILocalNotification[]>([]);
   public permissionGranted = false;
+  /** Observable list of notificaitons interacted with */
+  public interactedNotification$ = new BehaviorSubject<ActionPerformed>(null);
 
   /** Typed wrapper around database table used to store local notifications */
   private db: Dexie.Table<ILocalNotification, number>;
@@ -107,8 +109,6 @@ export class LocalNotificationService {
    * Use to resolve list of upcoming notifications and any been sent but not triggered in the app.
    */
   private async loadNotifications() {
-    console.group("[Notifications] load");
-
     await this.rescheduleMissingNotifications();
 
     await this.handleUnprocessedNotifications();
@@ -121,7 +121,6 @@ export class LocalNotificationService {
 
     const pendingNotifications = await this.getAPINotifications();
     this.pendingNotifications$.next(this._sortBySchedule(pendingNotifications));
-    console.groupEnd();
   }
 
   private _sortBySchedule(notifications: ILocalNotification[]) {
@@ -176,14 +175,18 @@ export class LocalNotificationService {
    * see full scheduling options in type interface
    * see named actions below for configurations
    */
-  public async scheduleNotification(options: ILocalNotification, reloadNotifications = true) {
+  public async scheduleNotification(notification: ILocalNotification, reloadNotifications = true) {
     if (!this.permissionGranted) return;
-    options.extra = { ...options.extra };
-    const notifications = [{ ...LOCAL_NOTIFICATION_DEFAULTS, ...options }];
-    await LocalNotifications.schedule({ notifications });
-    // ensure extra field populated (TODO - could make stronger requirement elsewhere)
-    options.extra = { ...options.extra };
-    await this.addDBNotification(options as ILocalNotification);
+    // add default values
+    Object.entries(LOCAL_NOTIFICATION_DEFAULTS).forEach(([key, value]) => {
+      if (!notification.hasOwnProperty(key)) {
+        notification[key] = value;
+      }
+    });
+    // HACK - for some reason largebody not always passed (possibly from schedule immediate) so reassign
+    notification.largeBody = notification.largeBody || notification.body;
+    await LocalNotifications.schedule({ notifications: [notification] });
+    await this.addDBNotification(notification as ILocalNotification);
     if (reloadNotifications) {
       await this.loadNotifications();
     }
@@ -275,6 +278,7 @@ export class LocalNotificationService {
         await this.updateDBNotification(action.notification.id, {
           _action_performed: action.actionId,
         });
+        this.interactedNotification$.next(action);
         await this.loadNotifications();
       }
       // TODO emit event for action to other listeners?

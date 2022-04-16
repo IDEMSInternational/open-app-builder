@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { DYNAMIC_PREFIXES } from "./constants";
+import APP_CONSTANTS from "./constants";
 import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
 import { TipRow } from "./tips.model";
 
@@ -47,6 +47,14 @@ export namespace FlowTypes {
     /** if specified, row data will be made accessible via the `@data` accessor within the provided namespace */
     data_list_name?: string;
     comments?: string;
+    /** if specified, template will override target template (e.g. A/B testing) */
+    override_target?: string;
+    /** condition to evaluate for applying override */
+    override_condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
+    /** computed list of all other templates with override conditions that targetthis template */
+    _overrides?: {
+      [templatename: string]: any; // override condition
+    };
     _xlsxPath?: string; // debug info
     process_on_start?: number; // priority order to process template variable setters on startup
   }
@@ -197,7 +205,7 @@ export namespace FlowTypes {
     campaign_list: string[]; // ids of campaigns where to run
     priority?: number; // higher numbers will be given more priority
     // additional fields for current data_list but not required
-    click_action_list?: TemplateRowAction[];
+    action_list?: TemplateRowAction[];
     icon?: string;
     text?: string;
     // placeholder for any extra fields to be added
@@ -216,6 +224,8 @@ export namespace FlowTypes {
       end_date?: string;
       /** weekday number to schedule from (1-Monday, 7-Sunday etc.) */
       day_of_week?: 1 | 2 | 3 | 4 | 5 | 6 | 7;
+      /** maximum of notifications to schedule at a given time for the campaign*/
+      batch_size?: number;
     };
     /** computed list of campaign rows merged into campaign */
     _campaign_rows?: Campaign_listRow[];
@@ -224,7 +234,7 @@ export namespace FlowTypes {
   }
   export interface DataEvaluationCondition {
     /** specific defined actions that have individual methods to determine completion */
-    condition_type: "field_evaluation" | "db_lookup";
+    condition_type: "field_evaluation" | "db_lookup" | "calc";
     /** Condition args change depending on type, hard to enforce typing switch so just include type mapping */
     condition_args: {
       db_lookup?: {
@@ -245,6 +255,7 @@ export namespace FlowTypes {
         field: string;
         value: string;
       };
+      calc?: string;
     };
     /** calculated after criteria has been evaluated */
     _satisfied?: boolean;
@@ -321,6 +332,7 @@ export namespace FlowTypes {
   }
 
   export type TemplateRowType =
+    | "accordion"
     | "image"
     | "title"
     | "subtitle"
@@ -337,7 +349,6 @@ export namespace FlowTypes {
     | "display_group"
     | "set_variable"
     | "set_theme"
-    | "icon"
     // TODO - requires global implementation (and possibly rename to set_field_default as value does not override)
     | "set_field"
     | "set_local"
@@ -370,7 +381,7 @@ export namespace FlowTypes {
     | "parent_point_box"
     | "debug_toggle"
     | "items"
-    | "group"
+    | "select_text"
     | "html";
 
   export interface TemplateRow extends Row_with_translations {
@@ -384,7 +395,7 @@ export namespace FlowTypes {
     rows?: TemplateRow[];
     disabled?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
     condition?: string | boolean; // dynamic references will be strings, but converted to boolean during evaluation
-
+    is_override_target?: boolean; // prevent template being overridden when calling self via override_target (prevent infinite loops)
     _debug_name?: string; // some components may optionally provide a different name for debugging purposes
     _nested_name: string; // track full path to row when nested in a template (e.g. contentBox1.row2.title)
 
@@ -401,7 +412,7 @@ export namespace FlowTypes {
   }
   export type IDynamicField = { [key: string]: TemplateRowDynamicEvaluator[] | IDynamicField };
 
-  type IDynamicPrefix = typeof DYNAMIC_PREFIXES[number];
+  type IDynamicPrefix = typeof APP_CONSTANTS.DYNAMIC_PREFIXES[number];
 
   /** Data passed back from regex match, e.g. expression @local.someField => type:local, fieldName: someField */
   export interface TemplateRowDynamicEvaluator {
@@ -425,7 +436,8 @@ export namespace FlowTypes {
     | "audio_pause"
     | "audio_end"
     | "audio_first_start"
-    | "nav_resume"; // return to template after navigation or popup close;
+    | "nav_resume" // return to template after navigation or popup close;
+    | "sent"; // notification sent
 
   export interface TemplateRowAction {
     /** actions have an associated trigger */
@@ -437,6 +449,7 @@ export namespace FlowTypes {
       | "set_field"
       | "set_local"
       | "emit"
+      | "feedback"
       | "changed"
       // note - to keep target nav within component stack go_to is actually just a special case of pop_up
       | "go_to"

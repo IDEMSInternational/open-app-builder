@@ -35,9 +35,9 @@ const data: { [source_text: string]: string } = {
   "Dogs (modified text in answer list)": "Perros (texto modificado en la lista de respuestas)",
   "Chinchillas (modified text in answer list)":
     "Chinchillas (texto modificado en la lista de respuestas)",
-  "New title: @data.language.example_lang_2.title":
-    "Título nuevo: @data.language.example_lang_2.title",
-  "New text: @data.language.example_lang_2.text": "Texto nuevo: @data.language.example_lang_2.text",
+  "Value of the first debug variable": "Valor de la primera variable debug",
+  "Title: @global.debug_variable_1": "Título: @global.debug_variable_1",
+  "Text: @global.debug_variable_1": "Texto: @global.debug_variable_1",
   "This is a global variable set in a global":
     "Esta es una variable global determinada en una planilla global",
   "This is a field set by default": "Este es un campo con valor predeterminado",
@@ -61,11 +61,15 @@ const data: { [source_text: string]: string } = {
   "This text is loaded through the second data row.":
     "Este texto esta cargado por medio de la segunda fila de datos.",
   "This text should define a default value for a field":
-    "Este texto debería definir el valor predeterminado de un campo.",
+    "Este texto debería definir el valor predeterminado de un campo",
   happy: "contento",
   ok: "bien",
   sad: "triste",
   "awesome parent": "Padre asombroso",
   "Audio message": "Mensaje de audio",
+  '@global.language_global_1: "text"': '@global.language_global_1: "texto"',
+  '@global.language_global_2: "text"': '@global.language_global_2: "texto"',
+  "@global.language_global_1: text": "@global.language_global_1: texto",
+  "@global.language_global_2: text": "@global.language_global_2: texto",
 };
 export default data;

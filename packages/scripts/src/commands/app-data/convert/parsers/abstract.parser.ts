@@ -8,4 +8,7 @@ export abstract class AbstractParser {
   public run(flow: FlowTypes.FlowTypeWithData): any {
     return flow;
   }
+  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
+    return flows;
+  }
 }

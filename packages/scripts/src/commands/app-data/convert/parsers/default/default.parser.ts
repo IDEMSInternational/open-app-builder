@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import path from "path";
-import * as fs from "fs-extra";
 import { FlowTypes } from "data-models";
 import { AbstractParser } from "../abstract.parser";
 import {
@@ -22,11 +20,6 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
  */
 export class DefaultParser implements AbstractParser {
   activeDeployment = getActiveDeployment();
-  ASSETS_CACHE_PATH = path.resolve(
-    this.activeDeployment.google_drive.cache_path,
-    "app_assets",
-    "global"
-  );
 
   public groupSuffix = "_group";
 
@@ -67,6 +60,10 @@ export class DefaultParser implements AbstractParser {
     return row;
   }
 
+  public postProcessFlows(flows: FlowTypes.FlowTypeWithData[]) {
+    return flows;
+  }
+
   /** Handle a single row */
   private processRow(row: IRowData, flow: FlowTypes.FlowTypeWithData) {
     // Handle specific data manipulations for fields
@@ -78,6 +75,15 @@ export class DefaultParser implements AbstractParser {
       // delete any comments, e.g. 'comment', 'comments', 'comment_1' etc.
       if (field.startsWith("comment")) {
         delete row[field];
+      }
+      // rename legacy fields
+      if (DEPRECATED_FIELD_NAMES.hasOwnProperty(field)) {
+        const replacement = DEPRECATED_FIELD_NAMES[field];
+        const warning = `-- ${flow.flow_name} --\n[${field}] is deprecated and should be replaced with [${replacement}]`;
+        console.warn(chalk.gray(warning));
+        row[replacement] = JSON.parse(JSON.stringify(row[field]));
+        delete row[field];
+        field = replacement;
       }
       // replace any self references, i.e "hello @row.id" => "hello some_id", @row.text::eng
       // TODO - should find better long term option that can update based on dynamic value and translations
@@ -109,10 +115,6 @@ export class DefaultParser implements AbstractParser {
         }
         field = baseField;
       }
-      // handle other data structures
-      if (field.endsWith("_asset")) {
-        row[field] = this.handleAssetLinks(row[field], flow.flow_name);
-      }
       if (field.endsWith("_list")) {
         row[field] = parseAppDataListString(row[field]);
       }
@@ -131,6 +133,7 @@ export class DefaultParser implements AbstractParser {
           row[field] = parseAppDateValue(row[field]);
         }
       }
+
       // assign default translation and track as metadata
       if (isTranslateField) {
         row["_translatedFields"] = {
@@ -176,15 +179,6 @@ export class DefaultParser implements AbstractParser {
     return row;
   }
 
-  /** Rewrite urls for local assets and check if currently exists in assets cache */
-  private handleAssetLinks(assetPath: string, flow_name: string) {
-    // log missing asset
-    if (!fs.existsSync(`${this.ASSETS_CACHE_PATH}/${assetPath}`)) {
-      this.summary.missingAssets.push({ flow_name, assetPath });
-    }
-    return assetPath;
-  }
-
   /**
    * Look through current queue for first instance of a group defined by `begin_` and `end_`
    * row types. Keeps an internal tally of any additional `begin_` types to handle case
@@ -220,3 +214,7 @@ function throwRowParseError(error: Error, row: IRowData) {
   // add more context to error
   throw error;
 }
+
+const DEPRECATED_FIELD_NAMES = {
+  click_action_list: "action_list",
+};

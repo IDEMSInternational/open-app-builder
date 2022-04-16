@@ -3,7 +3,6 @@ import { Command } from "commander";
 import chalk from "chalk";
 
 import compileCmd from "./commands/compile";
-import generateCmd from "./commands/generate";
 import interactiveCmd from "./commands/interactive";
 
 const program = new Command();
@@ -12,7 +11,6 @@ program.version("1.0.0").description("IDEMS Translations CLI");
 
 /** add sub-commands from child folders */
 program.addCommand(compileCmd);
-program.addCommand(generateCmd);
 program.addCommand(interactiveCmd);
 
 // NOTE - executableFile format doesn't seem to work on linux

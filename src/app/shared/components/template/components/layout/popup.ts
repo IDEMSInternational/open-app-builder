@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { FlowTypes, ITemplateContainerProps } from "../../models";
 import { TemplateContainerComponent } from "../../template-container.component";
@@ -8,20 +8,22 @@ import { TemplateContainerComponent } from "../../template-container.component";
     <div
       class="popup-backdrop"
       (click)="dismissOnBackdrop($event)"
-      [attr.data-standalone]="standalone"
+      [attr.data-fullscreen]="props.fullscreen ? true : null"
     >
-      <div class="popup-content" [attr.data-standalone]="standalone">
-        <ion-button (click)="dismiss()" class="close-button" fill="clear" *ngIf="!standalone">
+      <div style="position:relative">
+        <div (click)="dismiss()" class="close-button" fill="clear" *ngIf="props.showCloseButton">
           <ion-icon slot="icon-only" name="close"></ion-icon>
-        </ion-button>
-        <plh-template-container
-          class="template-container"
-          [name]="name"
-          [templatename]="templatename"
-          [parent]="parent"
-          [row]="row"
-          (emittedValue)="handleEmittedValue($event)"
-        ></plh-template-container>
+        </div>
+        <div class="popup-content" [attr.data-fullscreen]="props.fullscreen ? true : null">
+          <plh-template-container
+            class="template-container"
+            [name]="props.name"
+            [templatename]="props.templatename"
+            [parent]="props.parent"
+            [row]="props.row"
+            (emittedValue)="handleEmittedValue($event)"
+          ></plh-template-container>
+        </div>
       </div>
     </div>
   `,
@@ -35,7 +37,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
         flex-direction: column;
         justify-content: center;
       }
-      .popup-backdrop[data-standalone] {
+      .popup-backdrop[data-fullscreen] {
         background: white;
       }
 
@@ -47,10 +49,10 @@ import { TemplateContainerComponent } from "../../template-container.component";
         padding: 20px;
         overflow: auto;
       }
-      .popup-content[data-standalone] {
+      .popup-content[data-fullscreen] {
         width: 100%;
-        height: 100%;
-        max-height: 100%;
+        height: 100vh;
+        max-height: 100vh;
         border-radius: 0;
         margin: 0;
       }
@@ -58,23 +60,22 @@ import { TemplateContainerComponent } from "../../template-container.component";
         display: none;
       }
       .close-button {
-        position: sticky;
-        height: 40px;
-        width: calc(100% + 20px);
-        margin-left: -10px;
-        top: -20px;
-        margin-top: -30px;
-        right: 0;
-        z-index: 3;
-        background: white;
-      }
-      ion-button::part(native) {
-        font-size: 16px;
-        width: 70px;
-        height: 20px;
         position: absolute;
-        right: -20px;
-        top: 10px;
+        top: 16px;
+        right: 22px;
+        background: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--ion-color-primary);
+        font-size: 24px;
+        z-index: 1;
+        box-shadow: var(--ion-default-box-shadow);
+        color: var(--ion-color-primary);
       }
     `,
   ],
@@ -83,25 +84,19 @@ import { TemplateContainerComponent } from "../../template-container.component";
  * When opening a template as a popup, provide a minimal interface and load
  * the template directly as a regular template-container element
  */
-export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
-  @Input() name: string;
-  @Input() templatename: string;
-  @Input() parent?: TemplateContainerComponent;
-  @Input() row?: FlowTypes.TemplateRow;
-  /** Standalone mode shows in fullscreen and dismisses on completed/uncompleted emit events */
-  @Input() standalone?: boolean;
+export class TemplatePopupComponent {
+  @Input() props: ITemplatePopupComponentProps;
 
   constructor(private modalCtrl: ModalController) {}
-
-  ngOnInit() {}
 
   /**
    * When templates emit completed/uncompleted value from standalone popup close the popup
    * NOTE - we do not want to respond to non-standalone templates as this is done through template nav-actions
    * */
-  handleEmittedValue(value: string) {
-    if (this.standalone) {
-      if (["completed", "uncompleted"].includes(value)) {
+  handleEmittedValue(value: { emit_value: string; emit_data: any }) {
+    const { emit_value } = value;
+    if (this.props.dismissOnEmit) {
+      if (["completed", "uncompleted"].includes(emit_value)) {
         this.dismiss(value);
       }
     }
@@ -114,7 +109,19 @@ export class TemplatePopupComponent implements ITemplateContainerProps, OnInit {
     }
   }
 
-  dismiss(emit?: string) {
-    this.modalCtrl.dismiss(emit);
+  dismiss(value?: { emit_value: string; emit_data: any }) {
+    this.modalCtrl.dismiss(value);
   }
+}
+
+export interface ITemplatePopupComponentProps extends ITemplateContainerProps {
+  name: string;
+  templatename: string;
+  parent?: TemplateContainerComponent;
+  row?: FlowTypes.TemplateRow;
+  showCloseButton?: boolean;
+  /** Dismiss popup when completed or uncompleted is emitted from child template */
+  dismissOnEmit?: boolean;
+  /** Display fullscreen overlayed on top of all other app content */
+  fullscreen?: boolean;
 }

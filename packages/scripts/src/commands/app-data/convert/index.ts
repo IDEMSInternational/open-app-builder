@@ -11,7 +11,6 @@ import {
   groupJsonByKey,
   readContentsFileAsHashmap,
   generateFolderFlatMap,
-  logWarning,
   IContentsEntry,
 } from "./utils";
 import { FlowTypes } from "data-models";
@@ -25,10 +24,16 @@ import { getActiveDeployment } from "../../deployment/get";
 const program = new Command("convert");
 interface IProgramOptions {
   skipCache?: boolean;
+  cacheFolder?: string;
+  inputFolder?: string;
+  outputFolder?: string;
 }
 export default program
   .description("Convert app data")
+  .option("-i --input-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
+  .option("-c --cache-folder <string>", "")
+  .option("-o --output-folder <string>", "")
   .action(async (options: IProgramOptions) => {
     await new AppDataConverter(options).run();
   });
@@ -39,12 +44,11 @@ export default program
 
 class AppDataConverter {
   /** Change version to invalidate any cached conversions */
-  public converterVersion = 1;
+  public converterVersion = 1.2;
 
   private activeDeployment = getActiveDeployment();
   private paths = {
     SHEETS_INPUT_FOLDER: "",
-    ASSETS_INPUT_FOLDER: "",
     SHEETS_INDIVIDUAL_CACHE: "",
     SHEETS_BY_FLOWTYPE_CACHE: "",
   };
@@ -56,13 +60,13 @@ class AppDataConverter {
     console.log(chalk.yellow("App Data Convert"));
     console.table(options);
     // Setup Folders
-    const { app_data, google_drive } = this.activeDeployment;
+    const { inputFolder, cacheFolder } = options;
+    const { app_data, _workspace_path } = this.activeDeployment;
     const SHEETS_CACHE_FOLDER = app_data.converter_cache_path;
     this.paths = {
-      SHEETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_sheets"),
-      ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
-      SHEETS_INDIVIDUAL_CACHE: path.resolve(SHEETS_CACHE_FOLDER, "individual"),
       SHEETS_BY_FLOWTYPE_CACHE: path.resolve(SHEETS_CACHE_FOLDER, "byFlowtype"),
+      SHEETS_INPUT_FOLDER: inputFolder || path.resolve(_workspace_path, "app_data", "sheets"),
+      SHEETS_INDIVIDUAL_CACHE: cacheFolder || path.resolve(SHEETS_CACHE_FOLDER, "individual"),
     };
     Object.values(this.paths).forEach((p) => fs.ensureDir(p));
     if (this.options.skipCache) {
@@ -92,6 +96,10 @@ class AppDataConverter {
     );
 
     this.writeCollatedOutputJsons(allConvertedData);
+
+    // TODO
+    console.log(chalk.red("TODO - logSheetsSummary"));
+    // this.logSheetsSummary(allConvertedData);
 
     console.log(chalk.yellow("Conversion Complete"));
 
@@ -197,6 +205,21 @@ class AppDataConverter {
     return data;
   }
 
+  private mergeDataByFlowtype(convertedData: IParsedWorkbookData[]) {
+    const merged: IParsedWorkbookData = {};
+    for (const entry of convertedData) {
+      Object.values(entry).forEach((values) => {
+        values.forEach((v) => {
+          if (!merged[v.flow_type]) {
+            merged[v.flow_type] = [];
+          }
+          merged[v.flow_type].push(v);
+        });
+      });
+    }
+    return merged;
+  }
+
   /**
    *
    */
@@ -216,6 +239,13 @@ class AppDataConverter {
         });
       });
     });
+  }
+  private logSheetsSummary(data: IParsedWorkbookData) {
+    const logOutput = Object.keys(data)
+      .sort()
+      .map((subtype) => ({ subtype, total: data[subtype].length }));
+    console.log("\nSheet Summary");
+    console.table(logOutput);
   }
 
   private writeCacheContentsJson() {
@@ -274,6 +304,12 @@ class AppDataConverter {
     return false;
   }
 
+  private postProcessSheets(sheets: IParsedWorkbookData) {
+    // console.log("post process sheets", sheets);
+    const postProcessed = applyDataParsers(sheets, "postProcess");
+    return postProcessed;
+  }
+
   /**
    * App data sheets contain contents page with metadata that can be merged into regular data
    * Merge and collate with other existing data, warning in case of overwrites
@@ -316,7 +352,10 @@ class AppDataConverter {
 }
 type IParsedWorkbookData = { [type in FlowTypes.FlowType]?: FlowTypes.FlowTypeWithData[] };
 
-function applyDataParsers(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
+function applyDataParsers(
+  dataByFlowType: IParsedWorkbookData,
+  processType: "run" | "postProcess" = "run"
+): IParsedWorkbookData {
   // All flow types will be processed by the default parser unless otherwise specified here
 
   // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
@@ -332,18 +371,26 @@ function applyDataParsers(dataByFlowType: IParsedWorkbookData): IParsedWorkbookD
   };
   const parsedData: IParsedWorkbookData = {};
   Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
-    const parser = customParsers[flow_type]
+    const parser: Parsers.AbstractParser = customParsers[flow_type]
       ? customParsers[flow_type]
       : new Parsers.DefaultParser();
-    // parse all flows through the parser
-    parsedData[flow_type] = contentFlows.map((flow) => {
-      try {
-        const parsed = parser.run(flow);
-        return parsed;
-      } catch (error) {
-        throwTemplateParseError(error, flow);
-      }
-    });
+    // apply parser for current process type
+    switch (processType) {
+      case "run":
+        // process individual rows via parser.run method
+        parsedData[flow_type] = contentFlows.map((flow) => {
+          try {
+            const parsed = parser.run(flow);
+            return parsed;
+          } catch (error) {
+            throwTemplateParseError(error, flow);
+          }
+        });
+        break;
+      case "postProcess":
+        parsedData[flow_type] = parser.postProcessFlows(contentFlows);
+        break;
+    }
   });
   return parsedData;
 }

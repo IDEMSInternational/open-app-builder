@@ -43,10 +43,10 @@ import { TmplIconBannerComponent } from "./icon-banner/icon-banner.component";
 import { TmplDashedBoxComponent } from "./dashed-box/dashed-box.component";
 import { TmplParentPointBoxComponent } from "./points-item/points-item.component";
 import { TmplLottieAnimation } from "./lottie-animation";
-import { TmplIconComponent } from "./icon";
 import { PLHDebugToggleComponent } from "../../debug-toggle";
-import { TmplGroupComponent } from "./layout/group";
+import { SelectTextComponent } from "./select-text/select-text.component";
 import { TemplateHTMLComponent } from "./html/html.component";
+import { TmplAccordionComponent } from "./accordion/accordion.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -78,7 +78,6 @@ export const TEMPLATE_COMPONENTS = [
   RoundIconButtonComponent,
   SquareIconButtonComponent,
   TmplRadioGroupComponent,
-  TmplIconComponent,
   TmplTileComponent,
   TmplSimpleCheckboxComponent,
   TmplTextBoxComponent,
@@ -89,8 +88,9 @@ export const TEMPLATE_COMPONENTS = [
   TmplDashedBoxComponent,
   TmplParentPointBoxComponent,
   TmplLottieAnimation,
-  TmplGroupComponent,
+  SelectTextComponent,
   TemplateHTMLComponent,
+  TmplAccordionComponent,
 ];
 
 /***************************************************************************************
@@ -101,6 +101,7 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   FlowTypes.TemplateRowType,
   Type<ITemplateRowProps>
 > = {
+  accordion: TmplAccordionComponent,
   text: TmplTextComponent,
   title: TmplTitleComponent,
   subtitle: TmplSubtitleComponent,
@@ -116,7 +117,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   button: TmplButtonComponent,
   image: TmplImageComponent,
   help_icon: TmplHelpIconComponent,
-  icon: TmplIconComponent,
   parent_point_counter: TmplParentPointCounterComponent,
   // set variable and nested properties are handled by parent
   set_variable: null as any,
@@ -149,6 +149,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   lottie_animation: TmplLottieAnimation,
   debug_toggle: PLHDebugToggleComponent as any,
   items: null,
-  group: TmplGroupComponent,
+  select_text: SelectTextComponent,
   html: TemplateHTMLComponent,
 };

@@ -3,10 +3,9 @@ import { Router } from "@angular/router";
 
 import introJs from "intro.js";
 import { TOUR } from "../data/data.service";
-import { TemplateService } from "../../components/template/services/template.service";
 import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
-import { FlowTypes } from "packages/data-models/dist";
-import { TemplateAssetService } from "../../components/template/services/template-asset.service";
+import { FlowTypes } from "data-models";
+import { TemplateFieldService } from "../../components/template/services/template-field.service";
 
 @Injectable({
   providedIn: "root",
@@ -18,9 +17,8 @@ export class TourService {
 
   constructor(
     private router: Router,
-    private templateService: TemplateService,
-    private translateService: TemplateTranslateService,
-    private templateAssetService: TemplateAssetService
+    private templateFieldService: TemplateFieldService,
+    private translateService: TemplateTranslateService
   ) {}
 
   listTourNames(): string[] {
@@ -129,7 +127,7 @@ export class TourService {
     if (globalVariables) {
       for (let i of globalVariables) {
         const name = i.split(".");
-        field = field.replace(i, this.templateService.getGlobal(name[1]));
+        field = field.replace(i, this.templateFieldService.getGlobal(name[1]));
       }
     }
     if (imageTags) {

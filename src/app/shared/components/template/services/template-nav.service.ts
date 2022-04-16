@@ -1,9 +1,11 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ModalController } from "@ionic/angular";
+import { first } from "rxjs/operators";
 import { FlowTypes } from "src/app/shared/model";
 import { arrayToHashmapArray } from "src/app/shared/utils";
-import { TemplatePopupComponent } from "../components/layout/popup";
+import { ITemplatePopupComponentProps, TemplatePopupComponent } from "../components/layout/popup";
 import { ITemplateContainerProps } from "../models";
 import { TemplateContainerComponent } from "../template-container.component";
 
@@ -19,7 +21,21 @@ const log = SHOW_DEBUG_LOGS ? console.log : () => null;
  * ...
  */
 export class TemplateNavService {
-  constructor(private modalCtrl: ModalController, private location: Location) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private location: Location,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  /**
+   * Track list of modals created. As we can navigate repeatedly to the same page we want to avoid recreating same modals
+   * We also want to retain modal open state following circular navigate (a->b->c->a), so by default we leave modals opened
+   * unless specifically closed (e.g. nav triggered from modal)
+   */
+  private openPopupsByName: {
+    [templatename: string]: { modal: HTMLIonModalElement; props: ITemplateContainerProps };
+  } = {};
 
   public async handleQueryParamChange(
     params: INavQueryParams,
@@ -39,9 +55,7 @@ export class TemplateNavService {
     if (popup_child && !parent && popup_parent !== name) {
       await this.handlePopupActionsFromOther(params, container);
     }
-    if (popup_child && popup_child === name) {
-      await this.handlePopupActionsFromChild(params, container);
-    }
+
     // HACK - handle rerender on return
     // TODO - merge with hacks folder on merge
     if (!popup_child && !popup_parent && container.template) {
@@ -59,18 +73,15 @@ export class TemplateNavService {
   /*****************************************************************************************************
    *  Nav Actions
    ****************************************************************************************************/
-  public handleNavAction(
-    action: FlowTypes.TemplateRowAction,
-    container: TemplateContainerComponent
-  ) {
+  public handleNavAction(action: FlowTypes.TemplateRowAction) {
     // TODO: Find more elegant way to get current root level template name
     const parentName = location.pathname.replace("/template/", "");
     const [templatename] = action.args;
-    const nav_parent_triggered_by = action._triggeredBy.name;
+    const nav_parent_triggered_by = action._triggeredBy?.name;
     const queryParams: INavQueryParams = { nav_parent: parentName, nav_parent_triggered_by };
     // handle direct page or template navigation
     const navTarget = templatename.startsWith("/") ? [templatename] : ["template", templatename];
-    return container.router.navigate(navTarget, {
+    return this.router.navigate(navTarget, {
       queryParams,
       queryParamsHandling: "merge",
     });
@@ -86,8 +97,8 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    const { nav_child_emit, nav_parent_triggered_by, nav_child } = params;
-    const { router, template } = container;
+    const { nav_child_emit, nav_parent_triggered_by } = params;
+    const { template } = container;
     log("[Nav] - Parent", { params, container });
     // remove query param
     const queryParams: INavQueryParams = {
@@ -96,7 +107,7 @@ export class TemplateNavService {
       nav_parent: null,
       nav_parent_triggered_by: null,
     };
-    router.navigate([], {
+    this.router.navigate([], {
       queryParams,
       replaceUrl: true,
       queryParamsHandling: "merge",
@@ -126,8 +137,7 @@ export class TemplateNavService {
     actions: FlowTypes.TemplateRowAction[],
     container: TemplateContainerComponent
   ) {
-    const { route, router } = container;
-    const params = route.snapshot.queryParams as INavQueryParams;
+    const params = this.route.snapshot.queryParams as INavQueryParams;
     const { nav_parent, popup_parent } = params;
     log("[Nav] - Child", { params, container });
     // only process nav events for child if a nav_parent has been set
@@ -170,32 +180,25 @@ export class TemplateNavService {
    ****************************************************************************************************/
   public async handlePopupAction(
     action: FlowTypes.TemplateRowAction,
-    container: TemplateContainerComponent
+    container?: TemplateContainerComponent
   ) {
-    const { router, name } = container;
     const templatename = action.args[0];
+    // if triggered outside templating system (e.g. via notification action) still enable
+    // popup creation and dismiss on nav changes
+    if (!container) {
+      this.router.events.pipe(first()).subscribe(() => this.dismissPopup(templatename));
+      return this.createPopupAndWaitForDismiss(templatename, null);
+    }
+
+    const { name } = container;
     // simply set the query params which will be handled in method below so that
     // opening can also be handled following navigation or on refresh
     const queryParams: INavQueryParams = {
       popup_child: templatename,
       popup_parent: name,
-      popup_parent_triggered_by: action._triggeredBy.name,
+      popup_parent_triggered_by: action._triggeredBy?.name || null,
     };
-    router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
-  }
-
-  public handleClosePopupAction(
-    action: FlowTypes.TemplateRowAction,
-    container: TemplateContainerComponent
-  ) {
-    return this.modalCtrl.dismiss();
-  }
-
-  private async handlePopupActionsFromChild(
-    params: INavQueryParams,
-    container: TemplateContainerComponent
-  ) {
-    log("[Popup] - other", { params, container });
+    this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
   }
 
   private async handlePopupActionsFromParent(
@@ -204,7 +207,7 @@ export class TemplateNavService {
   ) {
     const { popup_child, nav_child_emit, popup_parent_triggered_by } = params;
     const { template } = container;
-    const existingPopup = await this.modalCtrl.getTop();
+    const existingPopup = this.openPopupsByName[popup_child];
     log("[Popup] - parent", { params, parent: container.name });
 
     // process any actions triggered by nav from the popup
@@ -218,17 +221,17 @@ export class TemplateNavService {
         const emittedActions = actionsByTrigger[nav_child_emit];
         if (emittedActions) {
           await container.templateActionService.handleActions(emittedActions, triggerRow);
-          await this.modalCtrl.dismiss(nav_child_emit);
+          await this.dismissPopup(popup_child, nav_child_emit);
         }
         // if the popup does not have any actions triggered by the nav_emit, leave open if there
         // is a trigger for the alternate completed/uncompleted event (otherwise dismiss)
         // - confusing logic I know!
         else {
           if (!actionsByTrigger["completed"] && !actionsByTrigger["uncompleted"]) {
-            await this.modalCtrl.dismiss(nav_child_emit);
+            await this.dismissPopup(popup_child, nav_child_emit);
           } else {
             // ensure popup visible if previously put behind on navigated template
-            existingPopup.classList.remove("hide-popup-on-template");
+            existingPopup.modal.classList.remove("hide-popup-on-template");
           }
         }
       }
@@ -251,21 +254,29 @@ export class TemplateNavService {
     container: TemplateContainerComponent
   ) {
     const childTemplateModal = await this.createChildPopupModal(popup_child, container);
-    await childTemplateModal.present();
-    const { data } = await childTemplateModal.onDidDismiss();
-    log("dismissed", data);
-    // clear both popup and query params
-    const queryParams: INavQueryParams = {
-      popup_child: null,
-      popup_parent: null,
-      popup_parent_triggered_by: null,
-      nav_child_emit: null,
-      nav_child: null,
-      nav_parent: null,
-      nav_parent_triggered_by: null,
-    };
-    const { router } = container;
-    router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    if (childTemplateModal) {
+      await childTemplateModal.present();
+      const { data } = await childTemplateModal.onDidDismiss();
+      // remove reference to popup (will be auto removed if dismissed programatically, but not by background dismiss)
+      if (this.openPopupsByName[popup_child]) {
+        delete this.openPopupsByName[popup_child];
+      }
+      log("dismissed", data);
+      // clear any existing popup query params on dismiss
+      const queryParams: INavQueryParams = {
+        popup_child: null,
+        popup_parent: null,
+        popup_parent_triggered_by: null,
+      };
+      this.router.navigate([], { queryParams, replaceUrl: true, queryParamsHandling: "merge" });
+    }
+  }
+  private async dismissPopup(name: string, data: any = undefined) {
+    const existingPopup = this.openPopupsByName[name];
+    if (existingPopup) {
+      await existingPopup.modal.dismiss(data);
+      delete this.openPopupsByName[name];
+    }
   }
 
   /** Popups persist nav operations, so also need to handle from top-level templates that are not the parent */
@@ -273,29 +284,41 @@ export class TemplateNavService {
     params: INavQueryParams,
     container: TemplateContainerComponent
   ) {
-    // Hide any open popup that was trigggered on a previous page prior to navigation
-    const existingPopup = await this.modalCtrl.getTop();
+    // Hide any open popup that was trigggered on a previous page prior to navigation (unless new popup)
+    const { popup_child } = params;
+    const existingPopup = this.openPopupsByName[popup_child];
     if (existingPopup) {
-      existingPopup.classList.add("hide-popup-on-template");
+      existingPopup.modal.classList.add("hide-popup-on-template");
     } else {
       this.createPopupAndWaitForDismiss(params.popup_child, container);
     }
   }
 
   private async createChildPopupModal(popup_child: string, container: TemplateContainerComponent) {
-    const childContainerProps: ITemplateContainerProps = {
+    const childContainerProps: ITemplatePopupComponentProps = {
       // make the popup share the same name as the container so that nav events return to parent container page
       name: popup_child,
       templatename: popup_child,
       parent: container,
+      showCloseButton: true,
     };
-    return this.modalCtrl.create({
+    // If trying to recreate a popup that already exists simply mark as visible
+    const existingPopup = this.openPopupsByName[popup_child];
+    if (existingPopup) {
+      existingPopup.modal.classList.remove("hide-popup-on-template");
+      return;
+    }
+
+    const modal = await this.modalCtrl.create({
       component: TemplatePopupComponent,
-      componentProps: childContainerProps,
+      componentProps: { props: childContainerProps },
+      id: `popup-${popup_child}`,
       // update to this styling must be done in global theme scss as the modal is injected dynamically into the dom
       cssClass: "template-popup-modal",
       showBackdrop: false,
     });
+    this.openPopupsByName[popup_child] = { modal, props: childContainerProps };
+    return modal;
   }
 }
 

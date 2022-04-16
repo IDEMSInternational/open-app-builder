@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "concurrently -k -n \"FRONTEND,SERVER,API\" -c \"blue,magenta,green\" \"npm run start:frontend\" \"npm run start:server\" \"npm run start:api\"",
+    "start": "concurrently -k -n \"FRONTEND,SERVER,API\" -c \"blue,magenta,green\" \"yarn start:frontend\" \"yarn start:server\" \"yarn start:api\"",
     "start:frontend": "yarn workspace frontend start",
     "start:server": "yarn workspace server start",
     "start:api": "wait-on tcp:5432 && yarn workspace api start"

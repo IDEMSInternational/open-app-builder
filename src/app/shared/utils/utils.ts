@@ -14,7 +14,7 @@ export function generateRandomId() {
  * generate a string representation of the current datetime in local (unspecified) timezone
  * @returns 2020-12-22T18:15:20
  */
-export function generateTimestamp(value?: string | number | Date) {
+export function generateTimestamp(value?: string | number | Date): string {
   const date = value ? new Date(value) : new Date();
   return format(date, "yyyy-MM-dd'T'HH:mm:ss");
 }
@@ -90,6 +90,14 @@ export function randomElementFromArray<T>(arr: T[] = null) {
   } catch (error) {
     return null;
   }
+}
+
+/** https://stackoverflow.com/a/46545530 */
+export function shuffleArray(arr: any[]) {
+  return arr
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
 }
 
 /**
@@ -241,6 +249,24 @@ export function booleanStringToBoolean(val: any) {
   return val;
 }
 
+/** convert values to best-guess boolean. Converts falsy strings */
+export function parseBoolean(val: any): boolean {
+  // check for falsy values in strings
+  val = booleanStringToBoolean(val);
+  if (!val) return false;
+  switch (typeof val) {
+    case "string":
+      if (val === "undefined") return false;
+      if (val === "null") return false;
+      return Boolean(val);
+    case "boolean":
+      return val;
+    default:
+      console.warn("parse bool not supported for type", typeof val, val);
+      return Boolean(val);
+  }
+}
+
 /**
  * Convert a string to an integer hashcode (note, may be positive or negative)
  * https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
@@ -255,4 +281,33 @@ export function stringToIntegerHash(str: string) {
     hash = ((hash << 5) - hash + str.charCodeAt(i++)) << 0;
   }
   return hash;
+}
+
+/**
+ * TODO - copied from scripts/src/utils
+ * Deep merge two objects.
+ * Copied from https://stackoverflow.com/a/34749873/5693245
+ * @param target
+ * @param ...sources
+ */
+export function deepMergeObjects(target: any, ...sources: any) {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        deepMergeObjects(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return deepMergeObjects(target, ...sources);
+}
+
+function isObject(item: any) {
+  return item && typeof item === "object" && !Array.isArray(item);
 }
