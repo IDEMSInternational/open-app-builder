@@ -9550,7 +9550,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
-    "@idemsInternational/rapidpro-excel": "workspace:*"
     "@types/node": ^15.12.4
     scripts: "workspace:*"
     typescript: ~4.2.4
