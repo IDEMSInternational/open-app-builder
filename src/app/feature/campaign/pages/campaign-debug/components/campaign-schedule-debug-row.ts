@@ -15,10 +15,10 @@ import { CampaignService } from "../../../campaign.service";
             campaignService.scheduledNotifications[row.id] | objectValues as scheduledNotifications
           "
         >
-          <span class="next-notification" *ngIf="scheduledNotifications[0] as nextNotification">
-            {{ nextNotification.schedule.at | date: "MMM d h:mm a" }}
+          <div class="next-notification" *ngFor="let notification of scheduledNotifications">
+            {{ notification.schedule.at | date: "MMM d h:mm a" }}
             <ion-icon name="notifications"></ion-icon>
-          </span>
+          </div>
         </div>
 
         <span class="tag activated" *ngIf="row._active">Active</span>

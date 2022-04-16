@@ -77,6 +77,7 @@ async function runMigrations() {
   console.log("[Migrations] pending", pending);
   try {
     await migrator.up();
+    // await migrator.down({ to: "005-add-app_deployment-columns.js" });
     const executed = await migrator.executed();
     console.log("[Migrations] executed", executed);
     console.log("[Migration] complete");

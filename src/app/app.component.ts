@@ -4,10 +4,9 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
-import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { SurveyService } from "./feature/survey/survey.service";
+import { _DeprecatedSurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
@@ -21,9 +20,15 @@ import { TemplateProcessService } from "./shared/components/template/services/in
 import { isSameDay } from "date-fns";
 import { AnalyticsService } from "./shared/services/analytics/analytics.service";
 import { LocalNotificationService } from "./shared/services/notification/local-notification.service";
-import { APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } from "packages/data-models/constants";
 import { TemplateFieldService } from "./shared/components/template/services/template-field.service";
 import { TemplateTranslateService } from "./shared/components/template/services/template-translate.service";
+import { LocalNotificationInteractionService } from "./shared/services/notification/local-notification-interaction.service";
+import { DBSyncService } from "./shared/services/db/db-sync.service";
+
+import { APP_CONSTANTS } from "./data";
+import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
+
+const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -32,7 +37,7 @@ import { TemplateTranslateService } from "./shared/components/template/services/
 })
 export class AppComponent {
   APP_VERSION = environment.version;
-  ENV_NAME = environment.envName;
+  DEPLOYMENT_NAME = environment.deploymentName;
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
@@ -41,11 +46,11 @@ export class AppComponent {
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
-    private pushNotificationService: PushNotificationService,
     private dbService: DbService,
+    private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private surveyService: SurveyService,
+    private _deprecatedSurveyService: _DeprecatedSurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -55,7 +60,9 @@ export class AppComponent {
     private dataEvaluationService: DataEvaluationService,
     private analyticsService: AnalyticsService,
     private localNotificationService: LocalNotificationService,
+    private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
+    private crashlyticsService: CrashlyticsService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -64,28 +71,28 @@ export class AppComponent {
   }
 
   async initializeApp() {
-    this.themeService.init();
     this.platform.ready().then(async () => {
+      // ensure deployment field set correctly for use in any startup services or templates
+      localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
       await this.initialiseCoreServices();
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
-      const user = await this.userMetaService.init();
+      const user = this.userMetaService.userMeta;
       if (!user.first_app_open) {
-        await this.surveyService.runSurvey("introSplash");
+        await this._deprecatedSurveyService.runSurvey("introSplash");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
         await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
       await this.hackSetAppOpenFields(user);
-      if (Capacitor.isNative) {
+      if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
           this.removeConsoleLogs();
         }
-        SplashScreen.hide();
-        this.pushNotificationService.init();
+        await SplashScreen.hide();
       }
-      this.analyticsService.init();
+      // Show main template
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
     });
@@ -99,9 +106,11 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   async initialiseCoreServices() {
+    this.crashlyticsService.init(); // Start init but do not need to wait for complete
     await this.dbService.init();
-    // CC 2021-05-14 - disabling reminders service until decide on full implementation
-    // (ideally not requiring evaluation of all reminders on init)
+    await this.userMetaService.init();
+    this.themeService.init();
+    /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
     await this.serverService.init();
@@ -109,8 +118,17 @@ export class AppComponent {
     await this.templateTranslateService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
-    await this.localNotificationService.init();
     await this.campaignService.init();
+
+    // Initialise additional services in a non-blocking way
+    setTimeout(async () => {
+      await this.localNotificationInteractionService.init();
+      await this.localNotificationService.init();
+      await this.dbSyncService.init();
+      await this.analyticsService.init();
+      /** CC 2022-04-01 - Disable service as not currently in use */
+      // await this.pushNotificationService.init();
+    }, 1000);
   }
 
   /**
@@ -198,9 +216,9 @@ export class AppComponent {
 
   /**
    * temporary workaround for setting unlocked content
-   * TODO CC 2021-07-23 - Review if methods still required
    */
   private async hackSetAppOpenFields(user: IUserMeta) {
+    // TODO CC 2021-07-23 - Review if methods below still required
     let old_date = this.userMetaService.getUserMeta("current_date");
     await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
     let current_date = this.userMetaService.getUserMeta("current_date");

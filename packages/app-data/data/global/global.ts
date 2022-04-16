@@ -8,243 +8,6 @@ const global: FlowTypes.Global[] = [
     rows: [
       {
         type: "declare_global_constant",
-        name: "female_adult_name_1",
-        value: "Thandie",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_2",
-        value: "Lindiwe",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_3",
-        value: "Nontlantla",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_adult_name_4",
-        value: "Zanele",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_1",
-        value: "Khwezi",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_2",
-        value: "Thuli",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_3",
-        value: "Asive",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_4",
-        value: "Zama",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_5",
-        value: "Nombuso",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_child_name_6",
-        value: "Karabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_1",
-        value: "Gogo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_2",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_3",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "female_caregiver_4",
-        value: "Mother",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_adult_name_1",
-        value: "Thabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_1",
-        value: "Alex",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_2",
-        value: "Sabelo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_3",
-        value: "Rudzani",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_4",
-        value: "Lonwabo",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_child_name_5",
-        value: "Pule",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_1",
-        value: "Father",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_2",
-        value: "Father",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "male_caregiver_3",
-        value: "Mkhulu",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
         name: "guide_1_name",
         value: "@global.male_adult_name_1",
         _translations: {
@@ -649,7 +412,229 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/localisation_globals.xlsx",
+    _xlsxPath: "global/data/localisation_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localised_names",
+    status: "released",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_1",
+        value: "Grace",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Anna",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Sara",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Sandy",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Faraja",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Shukuru",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Amina",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Maria",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Emma",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Shalini",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Grandma",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mom",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
+        value: "Giles",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Amani",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "James",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "Baraka",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_5",
+        value: "Mapesa",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Father",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Dad",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Grandpa",
+        _translations: {
+          value: {},
+        },
+      },
+    ],
+    _xlsxPath: "global/data/localisation_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -673,48 +658,12 @@ const global: FlowTypes.Global[] = [
       },
       {
         type: "declare_global_constant",
-        name: "data_warning_video",
-        value:
-          "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.",
+        name: "whatsapp",
+        value: "WhatsApp",
         _translations: {
           value: {
             tz_sw: true,
-            za_af: true,
             za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "data_warning_websites",
-        value:
-          "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi.",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "data_warning_send_message",
-        value:
-          "Sending this message requires internet access. To limit data use, send this message when on WiFi.",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
             za_zu: true,
           },
         },
@@ -780,69 +729,271 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/localisation_globals.xlsx",
+    _xlsxPath: "global/data/localisation_globals.xlsx",
   },
   {
     flow_type: "global",
-    flow_name: "organisation_list",
+    flow_name: "in_week_message_titles",
     status: "released",
     rows: [
       {
         type: "declare_global_constant",
-        name: "amathuba",
-        value: "Amathuba Collective",
+        name: "m_w_tomorrow",
+        value: "New workshop ready tomorrow!",
         _translations: {
-          value: {},
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
-        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
-        name: "dlalanathi",
-        value: "Dlalanathi",
+        name: "m_w_released",
+        value: "New workshop!",
         _translations: {
-          value: {},
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
-        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
-        name: "hillcrest",
-        value: "Hillcrest AIDS Centre Trust",
+        name: "m_w_reminder",
+        value: "Workshop Reminder",
         _translations: {
-          value: {},
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
-        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
-        name: "hpccc",
-        value: "HPCCC",
+        name: "m_w_in_progress",
+        value: "Nice progress!",
         _translations: {
-          value: {},
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
-        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
-        name: "seven_passes",
-        value: "Seven Passes Initiative",
+        name: "m_relax",
+        value: "@global.current_relax",
         _translations: {
           value: {},
         },
-        exclude_from_translation: true,
       },
       {
         type: "declare_global_constant",
-        name: "zlto",
-        value: "Zlto",
+        name: "text_m_relax",
+        value:
+          "Remember to sit down and relax today - taking care of yourself is an important parenting skill.",
         _translations: {
-          value: {},
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
         },
-        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "m_praise",
+        value: "You are appreciated!",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "m_something_fun",
+        value: "Something Fun",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "text_m_something_fun",
+        value: "Here is a fun activity to do with your teen!",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "m_parent_points_overview",
+        value: "Your @global.parent_points this week",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "text_m_parent_points_overview",
+        value:
+          "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "m_hp_reminder",
+        value: "Home Practice Reminder",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "text_m_hp_review",
+        value: "Let's talk about how your home practice went this week.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
       },
     ],
-    _xlsxPath: "data/localisation_globals.xlsx",
+    _xlsxPath: "global/data/in_week_message_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "in_week_message_options",
+    status: "released",
+    rows: [
+      {
+        type: "declare_field_default",
+        name: "iwm_as_notifications",
+        value: true,
+      },
+    ],
+    _xlsxPath: "global/data/in_week_message_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "hp_review_phrases",
+    status: "released",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "to_solve_hp_challenge",
+        value: "To solve this challenge, I will try to:",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "try_this_hp_challenge",
+        value: "Do you want to try one of the following things?",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "challenge_not_here",
+        value: "My challenge is not listed here.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "global/data/in_week_message_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -1225,7 +1376,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/workshop_globals.xlsx",
+    _xlsxPath: "global/data/workshop_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -1277,8 +1428,23 @@ const global: FlowTypes.Global[] = [
           },
         },
       },
+      {
+        type: "declare_global_constant",
+        name: "text_hp_review",
+        value: "Let's talk about how your home practice went this week.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
     ],
-    _xlsxPath: "data/workshop_globals.xlsx",
+    _xlsxPath: "global/data/workshop_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -1718,7 +1884,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/workshop_globals.xlsx",
+    _xlsxPath: "global/data/workshop_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -1865,7 +2031,140 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/workshop_globals.xlsx",
+    _xlsxPath: "global/data/workshop_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "app_menu_globals",
+    status: "released",
+    rows: [
+      {
+        type: "declare_field_default",
+        name: "user_mode",
+        value: true,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "dev_mode_code",
+        value: "ParentApp_dev",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "uuid_example",
+        value: "fef8eebc2ac1817a",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "uuid_title",
+        value: "Your @global.parent_app Code",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "terms_and_conditions",
+        value: "Terms & Conditions",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "privacy_policy",
+        value: "Privacy Policy",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "global/data/app_menu_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "data_warnings",
+    status: "released",
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "data_warning_video",
+        value:
+          "Watching this video requires internet access. To limit data use, watch or download this video when on WiFi.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "data_warning_websites",
+        value:
+          "Visiting these websites requires internet access. To limit data use, visit these websites when on WiFi.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "data_warning_send_message",
+        value:
+          "Sending this message requires internet access. To limit data use, send this message when on WiFi.",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "global/data/app_menu_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -2011,7 +2310,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/navigation_globals.xlsx",
+    _xlsxPath: "global/data/navigation_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -2251,6 +2550,7 @@ const global: FlowTypes.Global[] = [
             tz_sw: true,
             za_af: true,
             za_st: true,
+            za_tn: true,
             za_xh: true,
             za_zu: true,
           },
@@ -2428,7 +2728,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/navigation_globals.xlsx",
+    _xlsxPath: "global/data/navigation_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -2904,77 +3204,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/navigation_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "app_menu_globals",
-    status: "released",
-    rows: [
-      {
-        type: "declare_field_default",
-        name: "user_mode",
-        value: true,
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "dev_mode_code",
-        value: "ParentApp_dev",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "uuid_example",
-        value: "fef8eebc2ac1817a",
-        _translations: {
-          value: {},
-        },
-        exclude_from_translation: true,
-      },
-      {
-        type: "declare_global_constant",
-        name: "uuid_title",
-        value: "Your @global.parent_app Code",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "terms_and_conditions",
-        value: "Terms & Conditions",
-        _translations: {
-          value: {},
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "privacy_policy",
-        value: "Privacy Policy",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-    ],
-    _xlsxPath: "data/app_menu_globals.xlsx",
+    _xlsxPath: "global/data/navigation_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -3072,7 +3302,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/habit_globals.xlsx",
+    _xlsxPath: "global/data/habit_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -3329,7 +3559,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/parent_centre_globals.xlsx",
+    _xlsxPath: "global/data/parent_centre_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -3577,7 +3807,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/parent_centre_globals.xlsx",
+    _xlsxPath: "global/data/parent_centre_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -3645,7 +3875,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/parent_centre_globals.xlsx",
+    _xlsxPath: "global/data/parent_centre_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -3739,7 +3969,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/survey_globals.xlsx",
+    _xlsxPath: "global/data/survey_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -3855,188 +4085,7 @@ const global: FlowTypes.Global[] = [
         exclude_from_translation: true,
       },
     ],
-    _xlsxPath: "data/survey_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "in_week_message_titles",
-    status: "released",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "m_w_tomorrow",
-        value: "New workshop ready tomorrow!",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_w_released",
-        value: "New workshop!",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_w_reminder",
-        value: "Workshop Reminder",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_w_in_progress",
-        value: "Nice progress!",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_praise",
-        value: "You are appreciated!",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_something_fun",
-        value: "Something Fun",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_parent_points_overview",
-        value: "Your @global.parent_points this week",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "m_hp_reminder",
-        value: "Home Practice Reminder",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-    ],
-    _xlsxPath: "data/in_week_message_globals.xlsx",
-  },
-  {
-    flow_type: "global",
-    flow_name: "hp_review_phrases",
-    status: "released",
-    rows: [
-      {
-        type: "declare_global_constant",
-        name: "to_solve_hp_challenge",
-        value: "To solve this challenge, I will try to:",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "try_this_hp_challenge",
-        value: "Do you want to try one of the following things?",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-      {
-        type: "declare_global_constant",
-        name: "challenge_not_here",
-        value: "My challenge is not listed here.",
-        _translations: {
-          value: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-      },
-    ],
-    _xlsxPath: "data/in_week_message_globals.xlsx",
+    _xlsxPath: "global/data/survey_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -4195,7 +4244,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/suggestion_globals.xlsx",
+    _xlsxPath: "global/data/suggestion_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -4264,7 +4313,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/suggestion_globals.xlsx",
+    _xlsxPath: "global/data/suggestion_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -4363,7 +4412,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/suggestion_globals.xlsx",
+    _xlsxPath: "global/data/suggestion_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -4432,7 +4481,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/suggestion_globals.xlsx",
+    _xlsxPath: "global/data/suggestion_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -4591,7 +4640,7 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/suggestion_globals.xlsx",
+    _xlsxPath: "global/data/suggestion_globals.xlsx",
   },
   {
     flow_type: "global",
@@ -4675,7 +4724,661 @@ const global: FlowTypes.Global[] = [
         },
       },
     ],
-    _xlsxPath: "data/suggestion_globals.xlsx",
+    _xlsxPath: "global/data/suggestion_globals.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localised_names_tz",
+    status: "released",
+    override_target: "localised_names",
+    override_condition: '@fields._deployment_name == "plh_tz"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_1",
+        value: "Amina",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Naomi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Rebeka",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Esta",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Faraja",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Shukuru",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Neema",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Upendo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Malaika",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Debora",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Bibi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
+        value: "Baraka",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Joshua",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "Solomoni",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "John",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_5",
+        value: "Benjamini",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Baba",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Baba",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Babu",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "tz/data/localisation_globals_tz.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localisation_options_tz",
+    status: "released",
+    override_target: "localisation_options",
+    override_condition: '@fields._deployment_name == "plh_tz"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "teen_social_medium",
+        value: "Facebook",
+        _translations: {
+          value: {},
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "whatsapp",
+        value: "WhatsApp",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "currency",
+        value: "TSh",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_estimate",
+        value: 50000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_precise",
+        value: 52000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "number_of_beans",
+        value: 20,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "teen_age_bracket",
+        value: "10-17",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "adult_age_bracket",
+        value: "18+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "covid",
+        value: "COVID",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "tz/data/localisation_globals_tz.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localised_names_za",
+    status: "released",
+    override_target: "localised_names",
+    override_condition: '@fields._deployment_name == "plh_za"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_1",
+        value: "Thandie",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_2",
+        value: "Lindiwe",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_3",
+        value: "Nontlantla",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_adult_name_4",
+        value: "Zanele",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_1",
+        value: "Khwezi",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_2",
+        value: "Thuli",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_3",
+        value: "Asive",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_4",
+        value: "Zama",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_5",
+        value: "Nombuso",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_child_name_6",
+        value: "Karabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_1",
+        value: "Gogo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_2",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_3",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "female_caregiver_4",
+        value: "Mother",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_adult_name_1",
+        value: "Thabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_1",
+        value: "Alex",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_2",
+        value: "Sabelo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_3",
+        value: "Rudzani",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_4",
+        value: "Lonwabo",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_child_name_5",
+        value: "Pule",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_1",
+        value: "Father",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_2",
+        value: "Father",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "male_caregiver_3",
+        value: "Mkhulu",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+    ],
+    _xlsxPath: "za/data/localisation_globals_za.xlsx",
+  },
+  {
+    flow_type: "global",
+    flow_name: "localisation_options_za",
+    status: "released",
+    override_target: "localisation_options",
+    override_condition: '@fields._deployment_name == "plh_za"',
+    rows: [
+      {
+        type: "declare_global_constant",
+        name: "teen_social_medium",
+        value: "TikTok",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "whatsapp",
+        value: "WhatsApp",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_st: true,
+            za_zu: true,
+          },
+        },
+      },
+      {
+        type: "declare_global_constant",
+        name: "currency",
+        value: "R",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_estimate",
+        value: 3000,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "monthly_income_precise",
+        value: 3400,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "number_of_beans",
+        value: 20,
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "teen_age_bracket",
+        value: "10-17",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "adult_age_bracket",
+        value: "18+",
+        _translations: {
+          value: {},
+        },
+        exclude_from_translation: true,
+      },
+      {
+        type: "declare_global_constant",
+        name: "covid",
+        value: "COVID",
+        _translations: {
+          value: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+        },
+      },
+    ],
+    _xlsxPath: "za/data/localisation_globals_za.xlsx",
   },
 ];
 export default global;
