@@ -4,39 +4,15 @@ import { FlowTypes } from "data-models";
 import * as data from "app-data";
 import { getNestedProperty } from "../../utils";
 
-export const COMPLETION_LIST = data.completion_list;
-export const CONVERSATION = data.conversation;
-export const GOAL_LIST = data.goal_list;
-export const HABIT_LIST = data.habit_list;
-export const MODULE_LIST = data.module_list;
-export const MODULE_PAGE = data.module_page;
-export const TASK_LIST = data.task_list;
-export const TIPS = data.tips;
-export const CARE_PACKAGE_LIST = data.care_package_list;
-export const HABIT_IDEAS = data.habit_ideas;
 export const TOUR = data.tour;
-export const HOME_PAGE = data.home_page;
 export const TEMPLATE = data.template;
-export const COMPONENT_DEFAULTS = data.component_defaults;
 export const GLOBAL = data.global;
 export const DATA_LIST = data.data_list;
 
 /** A simple variable just to type-check/ensure all data types have been exported in this file */
 const mapping: { [key in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
-  completion_list: COMPLETION_LIST,
-  conversation: CONVERSATION as any,
-  goal_list: GOAL_LIST,
-  habit_list: HABIT_LIST,
-  module_list: MODULE_LIST,
-  module_page: MODULE_PAGE,
-  task_list: TASK_LIST,
-  tips: TIPS,
-  care_package_list: CARE_PACKAGE_LIST,
-  habit_ideas: HABIT_IDEAS,
   tour: TOUR,
-  home_page: HOME_PAGE,
   template: TEMPLATE,
-  component_defaults: COMPONENT_DEFAULTS,
   global: GLOBAL,
   // TODO - once we have data_list types they should be imported here
   data_list: DATA_LIST,
@@ -104,25 +80,7 @@ export class PLHDataService {
         }
       });
     });
-    // Handle conversation flows
-    CONVERSATION.forEach((c) => {
-      c.flows.forEach((flow) => {
-        const flow_name = flow.name;
-        flowsByName[flow_name] = flow;
-      });
-    });
 
     return flowsByName;
-  }
-
-  getComponentDefaultParamMap(componentType: FlowTypes.TemplateRowType): Record<string, any> {
-    const defaultParamsList = COMPONENT_DEFAULTS.find((cd) => cd.flow_name === componentType);
-    const paramMap = {};
-    if (defaultParamsList) {
-      for (let row of defaultParamsList.rows) {
-        paramMap[row.parameter] = row.default_value;
-      }
-    }
-    return paramMap;
   }
 }
