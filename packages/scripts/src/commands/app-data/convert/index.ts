@@ -97,9 +97,7 @@ class AppDataConverter {
 
     this.writeCollatedOutputJsons(allConvertedData);
 
-    // TODO
-    console.log(chalk.red("TODO - logSheetsSummary"));
-    // this.logSheetsSummary(allConvertedData);
+    this.logSheetsSummary(allConvertedData);
 
     console.log(chalk.yellow("Conversion Complete"));
 
@@ -205,24 +203,7 @@ class AppDataConverter {
     return data;
   }
 
-  private mergeDataByFlowtype(convertedData: IParsedWorkbookData[]) {
-    const merged: IParsedWorkbookData = {};
-    for (const entry of convertedData) {
-      Object.values(entry).forEach((values) => {
-        values.forEach((v) => {
-          if (!merged[v.flow_type]) {
-            merged[v.flow_type] = [];
-          }
-          merged[v.flow_type].push(v);
-        });
-      });
-    }
-    return merged;
-  }
-
-  /**
-   *
-   */
+  /** Write individual converted jsons to flow_type folders */
   private writeCollatedOutputJsons(convertedData: IParsedWorkbookData[]) {
     const outputBase = this.paths.SHEETS_BY_FLOWTYPE_CACHE;
     fs.ensureDirSync(outputBase);
@@ -240,10 +221,26 @@ class AppDataConverter {
       });
     });
   }
-  private logSheetsSummary(data: IParsedWorkbookData) {
-    const logOutput = Object.keys(data)
+
+  /** Collate totals of flows by subtype and log */
+  private logSheetsSummary(data: IParsedWorkbookData[]) {
+    const countBySubtype = {};
+    data.forEach((workbookData) =>
+      Object.values(workbookData).forEach((flows) => {
+        flows.forEach((flow) => {
+          let type = flow.flow_type;
+          if (flow.flow_subtype) type += `.${flow.flow_subtype}`;
+          if (!countBySubtype[type]) countBySubtype[type] = 0;
+          countBySubtype[type]++;
+        });
+      })
+    );
+    const logOutput = Object.keys(countBySubtype)
       .sort()
-      .map((subtype) => ({ subtype, total: data[subtype].length }));
+      .map((key) => {
+        const [type, subtype] = key.split(".");
+        return { type, subtype: subtype || null, total: countBySubtype[key] };
+      });
     console.log("\nSheet Summary");
     console.table(logOutput);
   }
@@ -302,12 +299,6 @@ class AppDataConverter {
       );
     }
     return false;
-  }
-
-  private postProcessSheets(sheets: IParsedWorkbookData) {
-    // console.log("post process sheets", sheets);
-    const postProcessed = applyDataParsers(sheets, "postProcess");
-    return postProcessed;
   }
 
   /**
@@ -471,84 +462,4 @@ interface IConverterActions {
   convert: IGDriveContentsEntry[];
   delete: IGDriveContentsEntry[];
   skip: IGDriveContentsEntry[];
-}
-
-/************************************************************************
- * Deprecations 2021-12-26
- ************************************************************************/
-
-// const mergedData = this.mergeConvertedData(allConvertedData);
-// const mergedWithLegacy = hackEnsureLegacyDataTypesExist(mergedData);
-// this.writeMergedOutputJsons(mergedWithLegacy);
-
-/** Take final merged list of data keyed by [type].[subtype?] and write output jsons */
-function _deprecatedWriteMergedOutputJsons(mergedData: IParsedWorkbookData) {
-  Object.entries(mergedData).forEach(([fulltype, data]) => {
-    const [type] = fulltype.split(".");
-    const outputPath = path.resolve(this.paths.SHEETS_MERGED_CACHE, type, `${fulltype}.json`);
-    fs.ensureDirSync(path.dirname(outputPath));
-    fs.writeFile(outputPath, JSON.stringify(data, null, 2));
-  });
-}
-
-/**
- * Each converted sheet may contain a mixture of different flow types (e.g. template, data_list),
- * and subtypes within. Collate all sheets by flow type and subtype
- */
-function _deprecatedMergeConvertedData(convertedData: IParsedWorkbookData[]) {
-  const merged: IParsedWorkbookData = {};
-  for (const entry of convertedData) {
-    Object.entries(entry).forEach(([key, value]) => {
-      const convertedDataBySubtype = groupJsonByKey(value as any, "flow_subtype", "_default");
-      // split by subtype
-      Object.entries(convertedDataBySubtype).forEach(([subkey, subValues]) => {
-        let outputName = key;
-        if (subkey !== "_default") {
-          outputName = `${key}.${subkey}`;
-        }
-        if (!merged[outputName]) {
-          merged[outputName] = [];
-        }
-        // merge all sheets of given subtype into main
-        subValues.forEach((subValue) => merged[outputName].push(subValue));
-      });
-    });
-  }
-  const logOutput = Object.keys(merged)
-    .sort()
-    .map((subtype) => ({ subtype, total: merged[subtype].length }));
-  console.log("\nSheet Summary");
-  console.table(logOutput);
-  return merged;
-}
-
-/**
- * Data imported are currently hardcoded in `packages\app-data\index.ts`
- * Ensure data exists for every type so that all expected files are populated
- */
-function _deprecatedHackEnsureLegacyDataTypesExist(
-  merged: IParsedWorkbookData
-): IParsedWorkbookData {
-  const data: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
-    care_package_list: [],
-    completion_list: [],
-    component_defaults: [],
-    conversation: [],
-    data_list: [],
-    global: [],
-    goal_list: [],
-    habit_ideas: [],
-    habit_list: [],
-    home_page: [],
-    module_list: [],
-    module_page: [],
-    task_list: [],
-    template: [],
-    tips: [],
-    tour: [],
-  };
-  Object.keys(data).forEach((flowtype) => {
-    if (!merged.hasOwnProperty(flowtype)) merged[flowtype] = [];
-  });
-  return merged;
 }

@@ -65,16 +65,6 @@ class AppDataCopy {
     const { appAssets, appSheets, localAssets, localSheets } = options;
     const { app_data, translations, _workspace_path } = this.activeDeployment;
     this.paths = {
-      // // Sheets will be copied from converter output folder
-      // SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "byFlowtype"),
-      // SHEETS_OUTPUT_FOLDER: app_data.sheets_output_path,
-      // // Assets will be copied directly from downloaded drive (currently no postprocessing)
-      // ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
-      // ASSETS_OUTPUT_FOLDER: app_data.assets_output_path,
-      // TRANSLATIONS_TRANSLATED_STRINGS: translations.translated_strings_path,
-      // TRANSLATIONS_SOURCE_STRINGS: translations.source_strings_path,
-      // TRANSLATIONS_OUTPUT_FOLDER: translations.output_cache_path,
-
       LOCAL_SHEETS_FOLDER: localSheets || translations.output_cache_path,
       LOCAL_ASSETS_FOLDER: localAssets || path.resolve(_workspace_path, "app_data", "assets"),
       APP_SHEETS_FOLDER: appSheets || app_data.sheets_output_path,
