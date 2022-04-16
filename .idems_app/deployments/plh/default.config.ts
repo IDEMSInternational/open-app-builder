@@ -21,5 +21,6 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations/from_translators",
     source_strings_path: "packages/app-data/translations/to_translate",
   },
+  workflows: ["default.workflows.ts"],
 };
 export default config;

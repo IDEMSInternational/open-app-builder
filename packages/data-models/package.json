@@ -11,6 +11,7 @@
   "devDependencies": {
     "@idemsInternational/rapidpro-excel": "workspace:*",
     "@types/node": "^15.12.4",
+    "scripts": "workspace:*",
     "typescript": "~4.2.4"
   }
 }
