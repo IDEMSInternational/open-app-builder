@@ -26,13 +26,24 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
  * @example yarn
  *************************************************************************************/
 interface IProgramOptions {
-  skipAssets: boolean;
+  localSheets: string;
+  localAssets: string;
+  appSheets: string;
+  appAssets: string;
+  skipSheets?: boolean;
+  skipAssets?: boolean;
 }
 const program = new Command("copy");
 export default program
   .description("Copy app data")
-  .option("-s --skip-assets", "Skip copying of asset files if only processing template sheets")
+  .option("--local-sheets <string>", "path to local sheets folder")
+  .option("--local-assets <string>", "path to local assets folder")
+  .option("--app-sheets <string>", "path to app sheets folder")
+  .option("--app-assets <string>", "path to app sheets folder")
+  .option("--skip-sheets")
+  .option("--skip-assets")
   .action(async (options: IProgramOptions) => {
+    console.table(options);
     new AppDataCopy(options).run();
   });
 
@@ -44,70 +55,48 @@ export default program
  **/
 class AppDataCopy {
   private paths = {
-    SHEETS_INPUT_FOLDER: "",
-    SHEETS_OUTPUT_FOLDER: "",
-    ASSETS_INPUT_FOLDER: "",
-    ASSETS_OUTPUT_FOLDER: "",
-    TRANSLATIONS_TRANSLATED_STRINGS: "",
-    TRANSLATIONS_SOURCE_STRINGS: "",
-    TRANSLATIONS_OUTPUT_FOLDER: "",
+    LOCAL_SHEETS_FOLDER: "",
+    LOCAL_ASSETS_FOLDER: "",
+    APP_SHEETS_FOLDER: "",
+    APP_ASSETS_FOLDER: "",
   };
   private activeDeployment = getActiveDeployment();
   constructor(private options: IProgramOptions) {
-    const { google_drive, app_data, translations } = this.activeDeployment;
+    const { appAssets, appSheets, localAssets, localSheets } = options;
+    const { app_data, translations, _workspace_path } = this.activeDeployment;
     this.paths = {
-      // Sheets will be copied from converter output folder
-      SHEETS_INPUT_FOLDER: path.resolve(app_data.converter_cache_path, "merged"),
-      SHEETS_OUTPUT_FOLDER: app_data.sheets_output_path,
-      // Assets will be copied directly from downloaded drive (currently no postprocessing)
-      ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
-      ASSETS_OUTPUT_FOLDER: app_data.assets_output_path,
-
-      TRANSLATIONS_TRANSLATED_STRINGS: translations.translated_strings_path,
-      TRANSLATIONS_SOURCE_STRINGS: translations.source_strings_path,
-      TRANSLATIONS_OUTPUT_FOLDER: translations.output_cache_path,
+      LOCAL_SHEETS_FOLDER: localSheets || translations.output_cache_path,
+      LOCAL_ASSETS_FOLDER: localAssets || path.resolve(_workspace_path, "app_data", "assets"),
+      APP_SHEETS_FOLDER: appSheets || app_data.sheets_output_path,
+      APP_ASSETS_FOLDER: appAssets || app_data.assets_output_path,
     };
   }
 
   public run() {
-    // export const ASSETS_OUTPUT_FOLDER = path.join(APP_DATA_PACKAGE_PATH, "assets");
+    const { APP_SHEETS_FOLDER, LOCAL_ASSETS_FOLDER, APP_ASSETS_FOLDER, LOCAL_SHEETS_FOLDER } =
+      this.paths;
 
-    // Translations Compilation
-    console.log(chalk.yellow("Compiling existing translations"));
-    const {
-      SHEETS_INPUT_FOLDER,
-      TRANSLATIONS_OUTPUT_FOLDER,
-      SHEETS_OUTPUT_FOLDER,
-      ASSETS_INPUT_FOLDER,
-      ASSETS_OUTPUT_FOLDER,
-      TRANSLATIONS_SOURCE_STRINGS,
-    } = this.paths;
-
-    // Translations
-    this.compileTranslationFiles();
-
-    // App files
-    console.log(chalk.yellow("Writing app files"));
-    writeAppTsFiles(path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "jsons"), SHEETS_OUTPUT_FOLDER);
-
-    if (!this.options.skipAssets) {
-      assetsQualityCheck(ASSETS_INPUT_FOLDER);
-      this.copyAppAssetFiles(ASSETS_INPUT_FOLDER, ASSETS_OUTPUT_FOLDER);
-      this.generateDataAssetsIndexFile();
+    // Sheets
+    if (!this.options.skipSheets) {
+      console.log(chalk.yellow("Copy Sheets"));
+      writeAppTsFiles(path.resolve(LOCAL_SHEETS_FOLDER, "jsons"), APP_SHEETS_FOLDER);
+      this.generateAppDataIndexFiles();
+      this.writeTranslationTsFiles(
+        path.resolve(LOCAL_SHEETS_FOLDER, "strings"),
+        path.resolve(APP_SHEETS_FOLDER, "translation_strings")
+      );
+      runPrettierCodeTidy(APP_SHEETS_FOLDER);
     }
-    this.generateAppDataIndexFiles();
-    this.writeTranslationTsFiles(
-      path.resolve(TRANSLATIONS_OUTPUT_FOLDER, "strings"),
-      path.resolve(SHEETS_OUTPUT_FOLDER, "translation_strings")
-    );
 
-    console.log(chalk.yellow("Cleaning Output Files"));
-    runPrettierCodeTidy(SHEETS_OUTPUT_FOLDER);
-    runPrettierCodeTidy(ASSETS_OUTPUT_FOLDER);
+    // Assets
+    if (!this.options.skipAssets) {
+      console.log(chalk.yellow("Copy Assets"));
+      assetsQualityCheck(LOCAL_ASSETS_FOLDER);
+      this.copyAppAssetFiles(LOCAL_ASSETS_FOLDER, APP_ASSETS_FOLDER);
+      this.generateDataAssetsIndexFile();
+      runPrettierCodeTidy(APP_ASSETS_FOLDER);
+    }
 
-    // New translations output
-    console.log(chalk.yellow("Generating new translation files"));
-    generateTranslationFiles(SHEETS_INPUT_FOLDER, TRANSLATIONS_SOURCE_STRINGS);
     console.log(chalk.green("Copy Complete"));
   }
 
@@ -115,7 +104,7 @@ class AppDataCopy {
     fs.ensureDirSync(targetFolder);
     fs.emptyDirSync(targetFolder);
     fs.removeSync(
-      path.resolve(this.paths.SHEETS_OUTPUT_FOLDER, "translation_strings", "_combined.json")
+      path.resolve(this.paths.APP_SHEETS_FOLDER, "translation_strings", "_combined.json")
     );
     // convert all individual strings to ts, but ignore combined
     const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
@@ -135,7 +124,7 @@ class AppDataCopy {
    * Distinguishies between 'global' and 'translated' assets via folder naming, and tracks which global files have
    * corresponding translation files
    * */
-  private generateDataAssetsIndexFile(assetsBase = this.paths.ASSETS_OUTPUT_FOLDER) {
+  private generateDataAssetsIndexFile(assetsBase = this.paths.APP_ASSETS_FOLDER) {
     const topLevelFolders = listFolderNames(assetsBase);
     const languageFolders = topLevelFolders.filter((name) => isCountryLanguageCode(name));
 
@@ -181,7 +170,7 @@ class AppDataCopy {
     // write output index file for tracked and untracked assets
     const outputTS = `export const UNTRACKED_ASSETS = ${JSON.stringify(untrackedAssets, null, 2)}
   \r\nexport const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}`;
-    const APP_DATA_ASSETS_INDEX_PATH = path.resolve(this.paths.ASSETS_OUTPUT_FOLDER, "index.ts");
+    const APP_DATA_ASSETS_INDEX_PATH = path.resolve(this.paths.APP_ASSETS_FOLDER, "index.ts");
     fs.writeFileSync(APP_DATA_ASSETS_INDEX_PATH, outputTS);
 
     // Log total size of all exports
@@ -205,9 +194,9 @@ class AppDataCopy {
    * data files (and produce a singular import)
    */
   private generateAppDataIndexFiles() {
-    const dataDirs = fs.readdirSync(this.paths.SHEETS_OUTPUT_FOLDER);
+    const dataDirs = fs.readdirSync(this.paths.APP_SHEETS_FOLDER);
     for (const folderName of dataDirs) {
-      const dirPath = `${this.paths.SHEETS_OUTPUT_FOLDER}/${folderName}`;
+      const dirPath = path.resolve(this.paths.APP_SHEETS_FOLDER, folderName);
       const dataFiles = fs.readdirSync(dirPath);
       const importStatements = [];
       const exportStatements = [];
@@ -262,33 +251,6 @@ class AppDataCopy {
       fs.copySync(src, dest, { preserveTimestamps: true });
     }
   }
-
-  /**
-   * Call translation scripts to also process compiled translations
-   * TODO - ideally this and all above scripts should be called from within app-data workspace instead
-   **/
-  private compileTranslationFiles() {
-    const sourceFolder = this.paths.SHEETS_INPUT_FOLDER;
-    const outputFolder = this.paths.TRANSLATIONS_OUTPUT_FOLDER;
-    const translationsFolder = this.paths.TRANSLATIONS_TRANSLATED_STRINGS;
-
-    let cmd = `yarn workspace translations start compile -i ${sourceFolder} -t ${translationsFolder} -o ${outputFolder}`;
-
-    // apply language filter if exists
-    const languagesFilter = this.activeDeployment.translations?.filter_language_codes;
-    if (languagesFilter) {
-      cmd += ` -f ${languagesFilter.join(",")}`;
-    }
-
-    console.log(chalk.gray(cmd));
-    const { status, stderr } = spawnSync(cmd, {
-      stdio: ["inherit", "inherit", "inherit"],
-      shell: true,
-    });
-    if (status === 1) {
-      logError({ msg1: "Translations failed", msg2: stderr.toString() });
-    }
-  }
 }
 
 /** Ensure asset folders are named correctly */
@@ -320,7 +282,6 @@ function writeAppTsFiles(sourceFolder: string, targetFolder: string) {
   fs.ensureDirSync(sourceFolder);
   fs.ensureDirSync(targetFolder);
   fs.emptyDirSync(targetFolder);
-  console.log(chalk.yellow("Copying Data To App"));
   const localTsFiles = recursiveFindByExtension(sourceFolder, "json");
   for (const filepath of localTsFiles) {
     const fileJson = fs.readJSONSync(filepath);
@@ -359,16 +320,6 @@ function generateLocalTsOutput(json: any, flow_type: string) {
  */
 function runPrettierCodeTidy(folderPath: string) {
   const cmd = `npx prettier --config ${ROOT_DIR}/.prettierrc --write ${folderPath}/**/*.ts --loglevel error`;
-  return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
-}
-
-/**
- * Call translation scripts to also add a copy of files to translations
- * TODO - ideally this and all above scripts should be called from within app-data workspace instead
- * TODO - could also install as node_module and run as bin
- * */
-function generateTranslationFiles(inputFolder: string, outputFolder: string) {
-  const cmd = `yarn workspace translations start generate -i ${inputFolder} -o ${outputFolder}`;
   return spawnSync(cmd, { stdio: ["inherit", "inherit", "inherit"], shell: true });
 }
 
