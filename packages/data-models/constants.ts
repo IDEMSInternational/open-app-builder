@@ -105,31 +105,15 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
+type IAppLaunchAction = {
+  type: "run_survey" | "template_popup" | "tour_start";
+  value: string;
+};
 /** Define app-specific startup tasks and logic */
 const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
-  app_first_launch_actions: [
-    {
-      type: "run_survey",
-      value: "plhIntroSplash",
-    },
-    {
-      type: "template_popup",
-      value: "accept_terms",
-    },
-    {
-      type: "template_popup",
-      value: "language_select",
-    },
-    {
-      type: "template_popup",
-      value: "organisation_registration",
-    },
-    {
-      type: "tour_start",
-      value: "intro_tour",
-    },
-  ] as const,
+  app_first_launch_actions: [] as IAppLaunchAction[],
+
   // TODO - better if refactored to more general handler with condition to filter
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
 };
@@ -154,7 +138,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-export default {
+const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
@@ -169,3 +153,5 @@ export default {
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
 };
+
+export default APP_CONSTANTS;
