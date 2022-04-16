@@ -137,7 +137,7 @@ export class AppComponent {
     for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
       switch (initAction.type) {
         case "run_survey":
-          await this._deprecatedSurveyService.runSurvey(initAction.value);
+          await this._deprecatedSurveyService.runSurvey(initAction.value as any);
           break;
         case "template_popup":
           await this.templateService.runStandaloneTemplate(initAction.value, {
