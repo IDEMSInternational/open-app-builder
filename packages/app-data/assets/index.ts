@@ -565,6 +565,28 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 829.6,
     md5Checksum: "a9cad2b710e4c0efc104be4eed375d80",
   },
+  "plh_audio/topic_intros/workshops_reflection.mp3": {
+    size_kb: 1019.2,
+    md5Checksum: "4ca8a8f7fda21ecdbbfcbd7f38e69433",
+    translations: {
+      tz_sw: {
+        size_kb: 1245,
+        md5Checksum: "7bfa7ab8fd751da76319b879127beec5",
+      },
+      za_af: {
+        size_kb: 1158.2,
+        md5Checksum: "49d34276a5a04b73a330d5b972b0dee1",
+      },
+      za_xh: {
+        size_kb: 1536.4,
+        md5Checksum: "ee9d2fb65fe9b7fbdf6730cc9919a9c1",
+      },
+      za_zu: {
+        size_kb: 1396.9,
+        md5Checksum: "8165057b52ea7a49fb9bc2df61becf3b",
+      },
+    },
+  },
   "plh_audio/topic_intros/w_1on1_intro.mp3": {
     size_kb: 377.6,
     md5Checksum: "e9138d16ef537979a4eeb81656e0bdaf",
@@ -826,28 +848,6 @@ export const ASSETS_CONTENTS_LIST = {
       za_zu: {
         size_kb: 732,
         md5Checksum: "afe1262013bbfb96ab05f32c5de77c01",
-      },
-    },
-  },
-  "plh_audio/topic_intros/workshops_reflection.mp3": {
-    size_kb: 1019.2,
-    md5Checksum: "4ca8a8f7fda21ecdbbfcbd7f38e69433",
-    translations: {
-      tz_sw: {
-        size_kb: 1245,
-        md5Checksum: "7bfa7ab8fd751da76319b879127beec5",
-      },
-      za_af: {
-        size_kb: 1158.2,
-        md5Checksum: "49d34276a5a04b73a330d5b972b0dee1",
-      },
-      za_xh: {
-        size_kb: 1536.4,
-        md5Checksum: "ee9d2fb65fe9b7fbdf6730cc9919a9c1",
-      },
-      za_zu: {
-        size_kb: 1396.9,
-        md5Checksum: "8165057b52ea7a49fb9bc2df61becf3b",
       },
     },
   },
@@ -1207,14 +1207,6 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 2.1,
     md5Checksum: "123870a84e30fc7fc1e328e6daf09cf4",
   },
-  "plh_images/icons/in_progress.svg": {
-    size_kb: 1.1,
-    md5Checksum: "6105962bc0edd981675d874dc8a51035",
-  },
-  "plh_images/icons/in_progress_white.svg": {
-    size_kb: 1.1,
-    md5Checksum: "f7bdd991a067c30d0cb140d5b77745bb",
-  },
   "plh_images/icons/info.svg": {
     size_kb: 0.7,
     md5Checksum: "7b986b40add926369cceb28cec562094",
@@ -1230,6 +1222,14 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/icons/info_white.svg": {
     size_kb: 0.7,
     md5Checksum: "2bf484237672df94a3bd10dcf208386a",
+  },
+  "plh_images/icons/in_progress.svg": {
+    size_kb: 1.1,
+    md5Checksum: "6105962bc0edd981675d874dc8a51035",
+  },
+  "plh_images/icons/in_progress_white.svg": {
+    size_kb: 1.1,
+    md5Checksum: "f7bdd991a067c30d0cb140d5b77745bb",
   },
   "plh_images/icons/letter.svg": {
     size_kb: 0.7,
@@ -1718,202 +1718,6 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/survey/workshop_setup/teens.svg": {
     size_kb: 7.1,
     md5Checksum: "d31a8c5417063c62eed128e98c530367",
-  },
-  "plh_images/workshop_modes/group/cup.svg": {
-    size_kb: 149.5,
-    md5Checksum: "08eed96abcb06128573e5ccbf01c3616",
-  },
-  "plh_images/workshop_modes/group/final/cup.svg": {
-    size_kb: 145.7,
-    md5Checksum: "317e835859b4faa82591e38e7f2cd4ad",
-  },
-  "plh_images/workshop_modes/group/final/light_bulb.svg": {
-    size_kb: 147.3,
-    md5Checksum: "1083d38169935a6fc6dd69b0d2fbbfee",
-  },
-  "plh_images/workshop_modes/group/final/notes.svg": {
-    size_kb: 145.9,
-    md5Checksum: "a53bbb2dcf12a5fef6beb7f13faf297b",
-  },
-  "plh_images/workshop_modes/group/final/read.svg": {
-    size_kb: 146.8,
-    md5Checksum: "89850820e3571977535839c954820df3",
-  },
-  "plh_images/workshop_modes/group/final/relax.svg": {
-    size_kb: 144.4,
-    md5Checksum: "fdc0856e935e7d246401af6169a06e61",
-  },
-  "plh_images/workshop_modes/group/final/talk.svg": {
-    size_kb: 144.3,
-    md5Checksum: "1bc7bf19c6f052cdb64a3d5e505b4df3",
-  },
-  "plh_images/workshop_modes/group/light_bulb.svg": {
-    size_kb: 143.6,
-    md5Checksum: "d0174c8ca586c73cf5c05c52138854bf",
-  },
-  "plh_images/workshop_modes/group/notes.svg": {
-    size_kb: 142.2,
-    md5Checksum: "657c4a42011d747d0e3c1939edebfd54",
-  },
-  "plh_images/workshop_modes/group/read.svg": {
-    size_kb: 143.2,
-    md5Checksum: "d518d1d0a2325d11d813ba71c5a128aa",
-  },
-  "plh_images/workshop_modes/group/relax.svg": {
-    size_kb: 140.7,
-    md5Checksum: "da1e1ee4e68ef744eb917c128ce426ff",
-  },
-  "plh_images/workshop_modes/group/talk.svg": {
-    size_kb: 140.7,
-    md5Checksum: "c31e79168837723e0becf5210fd673b3",
-  },
-  "plh_images/workshop_modes/group/with_teen.svg": {
-    size_kb: 5.4,
-    md5Checksum: "d0f425c460bff0adf11be5bed24d483e",
-  },
-  "plh_images/workshop_modes/guide_1/cup.svg": {
-    size_kb: 5.5,
-    md5Checksum: "0f0029204ac24f52194b4ce85d4e7e45",
-  },
-  "plh_images/workshop_modes/guide_1/final/cup.svg": {
-    size_kb: 11.6,
-    md5Checksum: "69d70e4001f78de9b0659412d199d9b8",
-  },
-  "plh_images/workshop_modes/guide_1/final/light_bulb.svg": {
-    size_kb: 5.4,
-    md5Checksum: "bdd9a34056adfcf293479d8ee4f0654b",
-  },
-  "plh_images/workshop_modes/guide_1/final/notes.svg": {
-    size_kb: 55,
-    md5Checksum: "9db02c2ba6c1d809424cedf9b66c223d",
-  },
-  "plh_images/workshop_modes/guide_1/final/relax.svg": {
-    size_kb: 4.2,
-    md5Checksum: "76496e853f49382bb46ab7ae77d622bd",
-  },
-  "plh_images/workshop_modes/guide_1/final/star.svg": {
-    size_kb: 4.6,
-    md5Checksum: "9b798f3f503826ffef4f73f461937666",
-  },
-  "plh_images/workshop_modes/guide_1/final/thumbs_up.svg": {
-    size_kb: 4.2,
-    md5Checksum: "003b54f7152a451d81fe1396e17ef487",
-  },
-  "plh_images/workshop_modes/guide_1/final/wave.svg": {
-    size_kb: 3.8,
-    md5Checksum: "dd1b3f1665c9679cb8af0d9c2f46bc03",
-  },
-  "plh_images/workshop_modes/guide_1/light_bulb.svg": {
-    size_kb: 4.4,
-    md5Checksum: "3bb834d2dd6aa8e61f2a3e92d2526d5e",
-  },
-  "plh_images/workshop_modes/guide_1/notes.svg": {
-    size_kb: 54.1,
-    md5Checksum: "b0c8fa7dfc16eba6a06b6b6579c1a309",
-  },
-  "plh_images/workshop_modes/guide_1/notes_left.svg": {
-    size_kb: 55.9,
-    md5Checksum: "d1682bd9fcb4840d095a2c26545c5d40",
-  },
-  "plh_images/workshop_modes/guide_1/read.svg": {
-    size_kb: 3.8,
-    md5Checksum: "eb4e8e608bee7c91033fccc7bf1c4191",
-  },
-  "plh_images/workshop_modes/guide_1/relax.svg": {
-    size_kb: 3.2,
-    md5Checksum: "35a5e7bb71624377e802535964d00f4d",
-  },
-  "plh_images/workshop_modes/guide_1/star.svg": {
-    size_kb: 3.6,
-    md5Checksum: "57df406149db93283faa59bf8e855f16",
-  },
-  "plh_images/workshop_modes/guide_1/thumbs_up.svg": {
-    size_kb: 3.2,
-    md5Checksum: "76287b6693b8d83a5455e04d58c3bfaa",
-  },
-  "plh_images/workshop_modes/guide_1/wave.svg": {
-    size_kb: 2.8,
-    md5Checksum: "da48a5a5b56099a7beee88bf8c4320bf",
-  },
-  "plh_images/workshop_modes/guide_1/with_teen.svg": {
-    size_kb: 5.9,
-    md5Checksum: "3e880125f35030b4af11a25d17f6129f",
-  },
-  "plh_images/workshop_modes/guide_1/write.svg": {
-    size_kb: 3.8,
-    md5Checksum: "d7859ca5ef124a376a5cf6a638ee3623",
-  },
-  "plh_images/workshop_modes/guide_2/cup.svg": {
-    size_kb: 5.8,
-    md5Checksum: "6549a769cb31d831ef27234f91756041",
-  },
-  "plh_images/workshop_modes/guide_2/final/cup.svg": {
-    size_kb: 10.3,
-    md5Checksum: "54b84af382b03708d44ad0846572fe13",
-  },
-  "plh_images/workshop_modes/guide_2/final/light_bulb.svg": {
-    size_kb: 5.6,
-    md5Checksum: "698fdc0e47cc97fc378ddaafbbe9c698",
-  },
-  "plh_images/workshop_modes/guide_2/final/notes.svg": {
-    size_kb: 57.5,
-    md5Checksum: "a105ae26a2e7de1efc421f1e832acb65",
-  },
-  "plh_images/workshop_modes/guide_2/final/relax.svg": {
-    size_kb: 3.8,
-    md5Checksum: "af45d95d4d9d7b5be6055cd90b0d6c33",
-  },
-  "plh_images/workshop_modes/guide_2/final/star.svg": {
-    size_kb: 4.7,
-    md5Checksum: "627c2d07c624f9c4194c9967705f774d",
-  },
-  "plh_images/workshop_modes/guide_2/final/thumbs_up.svg": {
-    size_kb: 4.4,
-    md5Checksum: "fed8fb95625b99aa3a612b2284869a96",
-  },
-  "plh_images/workshop_modes/guide_2/final/wave.svg": {
-    size_kb: 4,
-    md5Checksum: "fbd12bcc51d17917bc96fa76fb8567ac",
-  },
-  "plh_images/workshop_modes/guide_2/light_bulb.svg": {
-    size_kb: 4.6,
-    md5Checksum: "056e44ecd0260d2d4f09be31031d3ab4",
-  },
-  "plh_images/workshop_modes/guide_2/notes.svg": {
-    size_kb: 56.6,
-    md5Checksum: "3c7d0fa4ee0e4443428a99b7a8c79249",
-  },
-  "plh_images/workshop_modes/guide_2/notes_left.svg": {
-    size_kb: 56.4,
-    md5Checksum: "f6096aa659c28c7b9aaa6734fee277dd",
-  },
-  "plh_images/workshop_modes/guide_2/read.svg": {
-    size_kb: 3.7,
-    md5Checksum: "37004d531d300bcba599761b8fde65c3",
-  },
-  "plh_images/workshop_modes/guide_2/relax.svg": {
-    size_kb: 2.8,
-    md5Checksum: "671efe03765bebc98d71aa3ea3af095a",
-  },
-  "plh_images/workshop_modes/guide_2/star.svg": {
-    size_kb: 3.7,
-    md5Checksum: "50d12cee9cfc9ef994ca3de0d636e56b",
-  },
-  "plh_images/workshop_modes/guide_2/thumbs_up.svg": {
-    size_kb: 3.4,
-    md5Checksum: "563c9632f379e12af0159f39256dcd81",
-  },
-  "plh_images/workshop_modes/guide_2/wave.svg": {
-    size_kb: 3,
-    md5Checksum: "be9901f233124ed4a8ad189b219cc957",
-  },
-  "plh_images/workshop_modes/guide_2/with_teen.svg": {
-    size_kb: 6.1,
-    md5Checksum: "f4808b91a9a6b24c0a8ee3f1c826fc94",
-  },
-  "plh_images/workshop_modes/guide_2/write.svg": {
-    size_kb: 3.8,
-    md5Checksum: "d85011b09a2953d05a49e784995492d3",
   },
   "plh_images/workshops/options/individual.svg": {
     size_kb: 3.6,
@@ -2550,6 +2354,202 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_images/workshops/w_stress/tools.svg": {
     size_kb: 6.3,
     md5Checksum: "fc0219dbf6b39c6fe7eeaa36cc40c4cc",
+  },
+  "plh_images/workshop_modes/group/cup.svg": {
+    size_kb: 149.5,
+    md5Checksum: "08eed96abcb06128573e5ccbf01c3616",
+  },
+  "plh_images/workshop_modes/group/final/cup.svg": {
+    size_kb: 145.7,
+    md5Checksum: "317e835859b4faa82591e38e7f2cd4ad",
+  },
+  "plh_images/workshop_modes/group/final/light_bulb.svg": {
+    size_kb: 147.3,
+    md5Checksum: "1083d38169935a6fc6dd69b0d2fbbfee",
+  },
+  "plh_images/workshop_modes/group/final/notes.svg": {
+    size_kb: 145.9,
+    md5Checksum: "a53bbb2dcf12a5fef6beb7f13faf297b",
+  },
+  "plh_images/workshop_modes/group/final/read.svg": {
+    size_kb: 146.8,
+    md5Checksum: "89850820e3571977535839c954820df3",
+  },
+  "plh_images/workshop_modes/group/final/relax.svg": {
+    size_kb: 144.4,
+    md5Checksum: "fdc0856e935e7d246401af6169a06e61",
+  },
+  "plh_images/workshop_modes/group/final/talk.svg": {
+    size_kb: 144.3,
+    md5Checksum: "1bc7bf19c6f052cdb64a3d5e505b4df3",
+  },
+  "plh_images/workshop_modes/group/light_bulb.svg": {
+    size_kb: 143.6,
+    md5Checksum: "d0174c8ca586c73cf5c05c52138854bf",
+  },
+  "plh_images/workshop_modes/group/notes.svg": {
+    size_kb: 142.2,
+    md5Checksum: "657c4a42011d747d0e3c1939edebfd54",
+  },
+  "plh_images/workshop_modes/group/read.svg": {
+    size_kb: 143.2,
+    md5Checksum: "d518d1d0a2325d11d813ba71c5a128aa",
+  },
+  "plh_images/workshop_modes/group/relax.svg": {
+    size_kb: 140.7,
+    md5Checksum: "da1e1ee4e68ef744eb917c128ce426ff",
+  },
+  "plh_images/workshop_modes/group/talk.svg": {
+    size_kb: 140.7,
+    md5Checksum: "c31e79168837723e0becf5210fd673b3",
+  },
+  "plh_images/workshop_modes/group/with_teen.svg": {
+    size_kb: 5.4,
+    md5Checksum: "d0f425c460bff0adf11be5bed24d483e",
+  },
+  "plh_images/workshop_modes/guide_1/cup.svg": {
+    size_kb: 5.5,
+    md5Checksum: "0f0029204ac24f52194b4ce85d4e7e45",
+  },
+  "plh_images/workshop_modes/guide_1/final/cup.svg": {
+    size_kb: 11.6,
+    md5Checksum: "69d70e4001f78de9b0659412d199d9b8",
+  },
+  "plh_images/workshop_modes/guide_1/final/light_bulb.svg": {
+    size_kb: 5.4,
+    md5Checksum: "bdd9a34056adfcf293479d8ee4f0654b",
+  },
+  "plh_images/workshop_modes/guide_1/final/notes.svg": {
+    size_kb: 55,
+    md5Checksum: "9db02c2ba6c1d809424cedf9b66c223d",
+  },
+  "plh_images/workshop_modes/guide_1/final/relax.svg": {
+    size_kb: 4.2,
+    md5Checksum: "76496e853f49382bb46ab7ae77d622bd",
+  },
+  "plh_images/workshop_modes/guide_1/final/star.svg": {
+    size_kb: 4.6,
+    md5Checksum: "9b798f3f503826ffef4f73f461937666",
+  },
+  "plh_images/workshop_modes/guide_1/final/thumbs_up.svg": {
+    size_kb: 4.2,
+    md5Checksum: "003b54f7152a451d81fe1396e17ef487",
+  },
+  "plh_images/workshop_modes/guide_1/final/wave.svg": {
+    size_kb: 3.8,
+    md5Checksum: "dd1b3f1665c9679cb8af0d9c2f46bc03",
+  },
+  "plh_images/workshop_modes/guide_1/light_bulb.svg": {
+    size_kb: 4.4,
+    md5Checksum: "3bb834d2dd6aa8e61f2a3e92d2526d5e",
+  },
+  "plh_images/workshop_modes/guide_1/notes.svg": {
+    size_kb: 54.1,
+    md5Checksum: "b0c8fa7dfc16eba6a06b6b6579c1a309",
+  },
+  "plh_images/workshop_modes/guide_1/notes_left.svg": {
+    size_kb: 55.9,
+    md5Checksum: "d1682bd9fcb4840d095a2c26545c5d40",
+  },
+  "plh_images/workshop_modes/guide_1/read.svg": {
+    size_kb: 3.8,
+    md5Checksum: "eb4e8e608bee7c91033fccc7bf1c4191",
+  },
+  "plh_images/workshop_modes/guide_1/relax.svg": {
+    size_kb: 3.2,
+    md5Checksum: "35a5e7bb71624377e802535964d00f4d",
+  },
+  "plh_images/workshop_modes/guide_1/star.svg": {
+    size_kb: 3.6,
+    md5Checksum: "57df406149db93283faa59bf8e855f16",
+  },
+  "plh_images/workshop_modes/guide_1/thumbs_up.svg": {
+    size_kb: 3.2,
+    md5Checksum: "76287b6693b8d83a5455e04d58c3bfaa",
+  },
+  "plh_images/workshop_modes/guide_1/wave.svg": {
+    size_kb: 2.8,
+    md5Checksum: "da48a5a5b56099a7beee88bf8c4320bf",
+  },
+  "plh_images/workshop_modes/guide_1/with_teen.svg": {
+    size_kb: 5.9,
+    md5Checksum: "3e880125f35030b4af11a25d17f6129f",
+  },
+  "plh_images/workshop_modes/guide_1/write.svg": {
+    size_kb: 3.8,
+    md5Checksum: "d7859ca5ef124a376a5cf6a638ee3623",
+  },
+  "plh_images/workshop_modes/guide_2/cup.svg": {
+    size_kb: 5.8,
+    md5Checksum: "6549a769cb31d831ef27234f91756041",
+  },
+  "plh_images/workshop_modes/guide_2/final/cup.svg": {
+    size_kb: 10.3,
+    md5Checksum: "54b84af382b03708d44ad0846572fe13",
+  },
+  "plh_images/workshop_modes/guide_2/final/light_bulb.svg": {
+    size_kb: 5.6,
+    md5Checksum: "698fdc0e47cc97fc378ddaafbbe9c698",
+  },
+  "plh_images/workshop_modes/guide_2/final/notes.svg": {
+    size_kb: 57.5,
+    md5Checksum: "a105ae26a2e7de1efc421f1e832acb65",
+  },
+  "plh_images/workshop_modes/guide_2/final/relax.svg": {
+    size_kb: 3.8,
+    md5Checksum: "af45d95d4d9d7b5be6055cd90b0d6c33",
+  },
+  "plh_images/workshop_modes/guide_2/final/star.svg": {
+    size_kb: 4.7,
+    md5Checksum: "627c2d07c624f9c4194c9967705f774d",
+  },
+  "plh_images/workshop_modes/guide_2/final/thumbs_up.svg": {
+    size_kb: 4.4,
+    md5Checksum: "fed8fb95625b99aa3a612b2284869a96",
+  },
+  "plh_images/workshop_modes/guide_2/final/wave.svg": {
+    size_kb: 4,
+    md5Checksum: "fbd12bcc51d17917bc96fa76fb8567ac",
+  },
+  "plh_images/workshop_modes/guide_2/light_bulb.svg": {
+    size_kb: 4.6,
+    md5Checksum: "056e44ecd0260d2d4f09be31031d3ab4",
+  },
+  "plh_images/workshop_modes/guide_2/notes.svg": {
+    size_kb: 56.6,
+    md5Checksum: "3c7d0fa4ee0e4443428a99b7a8c79249",
+  },
+  "plh_images/workshop_modes/guide_2/notes_left.svg": {
+    size_kb: 56.4,
+    md5Checksum: "f6096aa659c28c7b9aaa6734fee277dd",
+  },
+  "plh_images/workshop_modes/guide_2/read.svg": {
+    size_kb: 3.7,
+    md5Checksum: "37004d531d300bcba599761b8fde65c3",
+  },
+  "plh_images/workshop_modes/guide_2/relax.svg": {
+    size_kb: 2.8,
+    md5Checksum: "671efe03765bebc98d71aa3ea3af095a",
+  },
+  "plh_images/workshop_modes/guide_2/star.svg": {
+    size_kb: 3.7,
+    md5Checksum: "50d12cee9cfc9ef994ca3de0d636e56b",
+  },
+  "plh_images/workshop_modes/guide_2/thumbs_up.svg": {
+    size_kb: 3.4,
+    md5Checksum: "563c9632f379e12af0159f39256dcd81",
+  },
+  "plh_images/workshop_modes/guide_2/wave.svg": {
+    size_kb: 3,
+    md5Checksum: "be9901f233124ed4a8ad189b219cc957",
+  },
+  "plh_images/workshop_modes/guide_2/with_teen.svg": {
+    size_kb: 6.1,
+    md5Checksum: "f4808b91a9a6b24c0a8ee3f1c826fc94",
+  },
+  "plh_images/workshop_modes/guide_2/write.svg": {
+    size_kb: 3.8,
+    md5Checksum: "d85011b09a2953d05a49e784995492d3",
   },
   "plh_lottie/habits/cascading_stars.json": {
     size_kb: 140.5,

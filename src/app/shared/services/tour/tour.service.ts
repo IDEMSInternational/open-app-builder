@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import introJs from "intro.js";
 import { TOUR } from "../data/data.service";
 import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
-import { FlowTypes } from "packages/data-models/dist";
+import { FlowTypes } from "data-models";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
 
 @Injectable({
