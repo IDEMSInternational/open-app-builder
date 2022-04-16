@@ -24,10 +24,16 @@ import { getActiveDeployment } from "../../deployment/get";
 const program = new Command("convert");
 interface IProgramOptions {
   skipCache?: boolean;
+  cacheFolder?: string;
+  inputFolder?: string;
+  outputFolder?: string;
 }
 export default program
   .description("Convert app data")
+  .option("-i --input-folder <string>", "")
   .option("-s --skip-cache", "Wipe local conversion cache and process all files")
+  .option("-c --cache-folder <string>", "")
+  .option("-o --output-folder <string>", "")
   .action(async (options: IProgramOptions) => {
     await new AppDataConverter(options).run();
   });
@@ -43,7 +49,6 @@ class AppDataConverter {
   private activeDeployment = getActiveDeployment();
   private paths = {
     SHEETS_INPUT_FOLDER: "",
-    ASSETS_INPUT_FOLDER: "",
     SHEETS_INDIVIDUAL_CACHE: "",
     SHEETS_MERGED_CACHE: "",
   };
@@ -55,13 +60,13 @@ class AppDataConverter {
     console.log(chalk.yellow("App Data Convert"));
     console.table(options);
     // Setup Folders
-    const { app_data, google_drive } = this.activeDeployment;
+    const { inputFolder, outputFolder, cacheFolder } = options;
+    const { app_data, _workspace_path } = this.activeDeployment;
     const SHEETS_CACHE_FOLDER = app_data.converter_cache_path;
     this.paths = {
-      SHEETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_sheets"),
-      ASSETS_INPUT_FOLDER: path.resolve(google_drive.cache_path, "app_assets"),
-      SHEETS_INDIVIDUAL_CACHE: path.resolve(SHEETS_CACHE_FOLDER, "individual"),
-      SHEETS_MERGED_CACHE: path.resolve(SHEETS_CACHE_FOLDER, "merged"),
+      SHEETS_INPUT_FOLDER: inputFolder || path.resolve(_workspace_path, "app_data", "sheets"),
+      SHEETS_INDIVIDUAL_CACHE: cacheFolder || path.resolve(SHEETS_CACHE_FOLDER, "individual"),
+      SHEETS_MERGED_CACHE: outputFolder || path.resolve(SHEETS_CACHE_FOLDER, "merged"),
     };
     Object.values(this.paths).forEach((p) => fs.ensureDir(p));
     fs.emptyDirSync(this.paths.SHEETS_MERGED_CACHE);

@@ -9552,6 +9552,7 @@ __metadata:
   dependencies:
     "@idemsInternational/rapidpro-excel": "workspace:*"
     "@types/node": ^15.12.4
+    scripts: "workspace:*"
     typescript: ~4.2.4
   languageName: unknown
   linkType: soft
@@ -22039,7 +22040,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scripts@workspace:packages/scripts":
+"scripts@workspace:*, scripts@workspace:packages/scripts":
   version: 0.0.0-use.local
   resolution: "scripts@workspace:packages/scripts"
   dependencies:

@@ -1,6 +1,7 @@
 export * from "./flowTypes";
 export * from "./tips.model";
 export * from "./functions";
+export * from "./workflow.model";
 export { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "./deployment.model";
 // Re-export rapidpro excel types
 export { RapidProFlowExport, RapidproExcelModel } from "@idemsInternational/rapidpro-excel";
