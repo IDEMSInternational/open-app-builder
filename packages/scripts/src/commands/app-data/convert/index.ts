@@ -7,7 +7,6 @@ import chalk from "chalk";
 import logUpdate from "log-update";
 import * as Parsers from "./parsers";
 import {
-  arrayToHashmap,
   groupJsonByKey,
   readContentsFileAsHashmap,
   generateFolderFlatMap,
@@ -380,14 +379,7 @@ function applyDataParsers(
 ): IParsedWorkbookData {
   // All flow types will be processed by the default parser unless otherwise specified here
 
-  // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
-  const allTasksById = arrayToHashmap(
-    (dataByFlowType.task_list || []).reduce((a, b) => [...a, ...b.rows], []),
-    "id"
-  );
   const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
-    conversation: new Parsers.ConversationParser(),
-    task_list: new Parsers.TaskListParser(dataByFlowType, allTasksById),
     template: new Parsers.TemplateParser(),
     data_list: new Parsers.DataListParser(),
   };
@@ -451,21 +443,9 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
  */
 function hackEnsureLegacyDataTypesExist(merged: IParsedWorkbookData): IParsedWorkbookData {
   const data: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
-    care_package_list: [],
-    completion_list: [],
-    component_defaults: [],
-    conversation: [],
     data_list: [],
     global: [],
-    goal_list: [],
-    habit_ideas: [],
-    habit_list: [],
-    home_page: [],
-    module_list: [],
-    module_page: [],
-    task_list: [],
     template: [],
-    tips: [],
     tour: [],
   };
   Object.keys(data).forEach((flowtype) => {
