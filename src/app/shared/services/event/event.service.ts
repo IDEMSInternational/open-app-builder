@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Subject, of, concat, Observable, from } from "rxjs";
+import { Subject, concat, Observable, from } from "rxjs";
 import { filter, first } from "rxjs/operators";
 import { generateRandomId } from "src/app/shared/utils";
 
@@ -18,12 +18,14 @@ export class EventService {
     DB: new Subject<IEvent>(),
     FLOW: new Subject<IEvent>(),
     LOCAL_NOTIFICATION: new Subject<IEvent>(),
+    FEEDBACK: new Subject<IEvent>(),
   };
   private responses = new Subject<IEventResponse>();
   private history: IEventHistory = {
     DB: [],
     FLOW: [],
     LOCAL_NOTIFICATION: [],
+    FEEDBACK: [],
   };
   /**
    * Return an observable to allow subscription to all future
@@ -54,10 +56,7 @@ export class EventService {
   /**
    * Subscribe to all historical updates, and once finished continue to receive new
    */
-  all(
-    topic: IEvent["topic"],
-    subtopic?: IEvent["subtopic"]
-  ): Observable<IEvent> {
+  all(topic: IEvent["topic"], subtopic?: IEvent["subtopic"]): Observable<IEvent> {
     console.log("subscribe all", topic, subtopic);
     const history = from(this.history[topic]).pipe(
       filter((e) => e.topic === topic),
@@ -106,4 +105,4 @@ interface IEventResponse {
 }
 type IEventStream = { [topic in ITopic]: Subject<IEvent> };
 type IEventHistory = { [topic in ITopic]: IEvent[] };
-type ITopic = "DB" | "FLOW" | "LOCAL_NOTIFICATION";
+type ITopic = "DB" | "FLOW" | "LOCAL_NOTIFICATION" | "FEEDBACK";

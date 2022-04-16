@@ -1,6 +1,4 @@
-# Intro
-
-# Quickstart
+# Getting Setup
 
 ## Prequisites
 
@@ -37,8 +35,10 @@ The app supports using different workspace or deployment configurations. These a
 
 An initial deployment should be specified via the command
 ```
-npm run scripts deployment set
+yarn scripts deployment set
 ```
+
+Deployments are used to configure data sources (such as google drive) and various processing steps. See [Deployment Documentation](./developers/deployments.md) for more information
 
 ### Firebase
 To be able to run the full project a specific configuration file needs to be included to access

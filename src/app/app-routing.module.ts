@@ -1,15 +1,17 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, Route, RouterModule, Routes } from "@angular/router";
-import { APP_ROUTE_DEFAULTS } from "packages/data-models/constants";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
+import { APP_CONSTANTS } from "./data";
 import { TourComponent } from "./feature/tour/tour.component";
+
+const { APP_ROUTE_DEFAULTS } = APP_CONSTANTS;
 
 /** Routes specified from data-models */
 const DataRoutes: Routes = [
-  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_path, pathMatch: "full" },
+  { path: "", redirectTo: APP_ROUTE_DEFAULTS.home_route, pathMatch: "full" },
   ...APP_ROUTE_DEFAULTS.redirects,
 ];
-const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_path };
+const fallbackRoute: Route = { path: "**", redirectTo: APP_ROUTE_DEFAULTS.fallback_route };
 
 /** Routes required for main app features */
 const FeatureRoutes: Routes = [
@@ -38,6 +40,10 @@ const FeatureRoutes: Routes = [
   {
     path: "tour/:tourName",
     component: TourComponent,
+  },
+  {
+    path: "feedback",
+    loadChildren: () => import("./feature/feedback/feedback.module").then((m) => m.FeedbackModule),
   },
 ];
 

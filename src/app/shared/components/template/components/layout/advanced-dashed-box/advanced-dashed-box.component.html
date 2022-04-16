@@ -1,5 +1,5 @@
-<div class="box-wrapper">
-  <div class="item margin-t-regular default" [class]="style">
+<div class="box-wrapper" [attr.data-hasicon]="icon_src ? true : null">
+  <div class="item default" [class]="style">
     <div class="icon" [class]="icon_position" *ngIf="icon_src">
       <img [src]="icon_src | plhAsset" alt="" />
     </div>

@@ -30,7 +30,6 @@ interface IProgramOptions {
   folderId: string;
   fileEntry64?: string;
   outputPath: string;
-  cachePath: string;
   credentialsPath: string;
   authTokenPath: string;
   logName: string;
@@ -50,11 +49,6 @@ export default program
     "-o --output-path <string>",
     "Output path for downloaded files (default ./output)",
     PATHS.DEFAULT_OUTPUT_FOLDER
-  )
-  .requiredOption(
-    "-cache --cache-path <string>",
-    "Cache path for downloaded files (default ./cache)",
-    PATHS.DEFAULT_CACHE_FOLDER
   )
   .requiredOption(
     "-c --credentials-path <string>",
@@ -96,12 +90,10 @@ class GDriveDownloader {
   private drive: drive_v3.Drive;
 
   constructor(private options: IProgramOptions) {
-    const { outputPath, cachePath } = this.options;
+    const { outputPath } = this.options;
     // prepare folders
     fs.ensureDirSync(outputPath);
-    fs.ensureDirSync(cachePath);
     fs.ensureDirSync(PATHS.LOGS_DIR);
-    fs.emptyDirSync(outputPath);
     console.log(chalk.yellow("Downloading GDrive Data"));
   }
 
@@ -144,19 +136,22 @@ class GDriveDownloader {
   }
 
   private writeCacheContentsFile(files: IGDriveFileWithFolder[]) {
-    const { cachePath } = this.options;
+    const { outputPath } = this.options;
     // also add a relativePath for full path to local file
-    const filesWithRelativePath = files.map((f) => ({
-      ...f,
-      relativePath: getRelativeLocalPath(f),
-    }));
+    const filesWithRelativePath = files
+      .map((f) => ({
+        ...f,
+        relativePath: getRelativeLocalPath(f),
+      }))
+      // only include files downloaded in contents
+      .filter((f) => fs.existsSync(path.resolve(outputPath, f.relativePath)));
     const contents = JSON.stringify(filesWithRelativePath, null, 2);
-    const contentsPath = path.resolve(cachePath, this.options.contentsFileName);
+    const contentsPath = path.resolve(outputPath, this.options.contentsFileName);
     fs.writeFileSync(contentsPath, contents);
   }
   private updateCacheContentsFile(file: IGDriveFileWithFolder) {
-    const { cachePath } = this.options;
-    const contentsPath = path.resolve(cachePath, this.options.contentsFileName);
+    const { outputPath } = this.options;
+    const contentsPath = path.resolve(outputPath, this.options.contentsFileName);
     const contents: IGDriveFileWithFolder[] = fs.readJSONSync(contentsPath);
     const updateIndex = contents.findIndex((entry) => entry.id === file.id);
     console.log("update contents", contents[updateIndex], file);
@@ -171,10 +166,10 @@ class GDriveDownloader {
    * for files that already exist, or have been modified/deleted etc.
    */
   private async processSyncActions(actions: ISyncActions) {
-    const { cachePath } = this.options;
+    const { outputPath } = this.options;
     // Handle Deleted
     for (const { folderPath } of actions.deleted) {
-      fs.removeSync(path.resolve(cachePath, folderPath));
+      fs.removeSync(path.resolve(outputPath, folderPath));
     }
     // Handle New and Updated
     const fileDownloads = [...actions.new, ...actions.updated];
@@ -193,14 +188,14 @@ class GDriveDownloader {
         if (GDRIVE_OFFICE_MAPPING[file.mimeType]) {
           targetFilename += `.${MIMETYPE_EXTENSIONS[file.mimeType]}`;
         }
-        const cacheTargetPath = path.resolve(cachePath, folderPath, targetFilename);
+        const cacheTargetPath = path.resolve(outputPath, folderPath, targetFilename);
         fs.ensureDirSync(path.dirname(cacheTargetPath));
         await this.downloadGdriveFile(cacheTargetPath, file);
       });
     }
     const total = fileDownloads.length;
     queue.on("next", () => {
-      logUpdate(chalk.blue(`${total - queue.pending + queue.size}/${total} downloaded`));
+      logUpdate(chalk.blue(`${total - queue.size - queue.pending}/${total} downloaded`));
     });
     logUpdate.done();
     queue.start();
@@ -215,11 +210,11 @@ class GDriveDownloader {
    * Compare list of server files with local cache to determine new/updated/same/deleted
    */
   private prepareSyncActionsList(serverFiles: IGDriveFileWithFolder[]) {
-    const { cachePath, filterFunction64, contentsFileName } = this.options;
+    const { outputPath, filterFunction64, contentsFileName } = this.options;
     const output: ISyncActions = { new: [], updated: [], same: [], deleted: [], ignored: [] };
 
     // generate hashmaps for easier lookup and compare of server and local files
-    const localFilesHashmap = generateFolderFlatMapStats(cachePath);
+    const localFilesHashmap = generateFolderFlatMapStats(outputPath);
     const serverFilesHashmap: { [relative_path: string]: IGDriveFileWithFolder } = {};
 
     // convert string filter function to function if included

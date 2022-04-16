@@ -2,8 +2,9 @@ import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@
 import { ContactFieldDto } from "./dto/set-user-data.dto";
 import { AppUser } from "./app_user.model";
 import { AppUsersService } from "./app_user.service";
-import { ApiBody, ApiOperation, ApiParam, ApiResponse } from "@nestjs/swagger";
+import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Users")
 @Controller("app_users")
 export class AppUsersController {
   constructor(private readonly appUsersService: AppUsersService) {}

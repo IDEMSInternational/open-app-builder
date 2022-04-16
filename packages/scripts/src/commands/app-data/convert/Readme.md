@@ -27,14 +27,14 @@ Toolbox sheets are converted into a single JSON file by the **ToolboxParser** cl
 To run the conversion script:
 
 1. Make sure you have the necessary packages installed by running `yarn install`
-2. Run `npm run process-content-spreadsheet`
+2. Run `yarn process-content-spreadsheet`
 
 ### Running the unit tests
 
 To run unit tests for the conversion scripts
 
 1. Make sure you have the necessary packages installed by running `yarn install`
-2. Run `npm run test-scripts`
+2. Run `yarn test-scripts`
 
 ### Debugging the script
 

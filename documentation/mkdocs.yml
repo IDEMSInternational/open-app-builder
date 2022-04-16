@@ -14,16 +14,23 @@ nav:
   - Authors:
       - authors/quickstart.md
       - authors/notifications.md
+      - authors/feedback.md
+      - Advanced:
+          - authors/advanced/looping-data.md
+          - authors/advanced/overrides.md
   - Contributors:
-      - contributors/adding-documentation.md
+      - contributors/documentation/running-server.md
+      - contributors/documentation/authoring.md
   - Developers:
       - developers/quickstart.md
       - developers/adding-components.md
+      - developers/deployments.md
       - developers/device-testing.md
   - Display Components:
       - components/audio.md
       - components/html.md
-
+      - components/button.md
+      - components/square_button.md
 # Enable all extension for authoring as per https://squidfunk.github.io/mkdocs-material/setup/extensions/
 
 markdown_extensions:

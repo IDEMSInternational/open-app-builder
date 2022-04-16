@@ -3,17 +3,19 @@ import { Command } from "commander";
 
 // Commands
 import appDataCmd from "./app-data";
+import compileCmd from "./compile";
+import e2eDataCmd from "./e2e-data";
 import configCmd from "./config";
 import deploymentCmd from "./deployment";
-import generateCmd from "./generate";
 import versionCmd from "./version";
+import workflowCmd from "./workflow";
 import { logWarning, logProgramHelp } from "../utils/logging.utils";
 
 const program = new Command();
 
 program.version("1.0.0").description("IDEMS App Scripts");
 
-// Handle legacy command renames so can still run `npm run scripts gdrive-download`
+// Handle legacy command renames so can still run `yarn scripts gdrive-download`
 const legacyCommandMappings = {
   "gdrive-download": ["app-data", "download"],
   "gdrive-auth": ["app-data", "download", "--authorize"],
@@ -37,10 +39,13 @@ if (mapping) {
 
 /** add sub-commands from child folders */
 program.addCommand(appDataCmd);
+program.addCommand(compileCmd);
+program.addCommand(e2eDataCmd);
 program.addCommand(configCmd);
 program.addCommand(deploymentCmd);
 // program.addCommand(generateCmd);
 program.addCommand(versionCmd);
+program.addCommand(workflowCmd);
 
 if (!process.argv.slice(2).length) {
   logProgramHelp(program);

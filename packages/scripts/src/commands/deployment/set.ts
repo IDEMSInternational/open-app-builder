@@ -35,15 +35,13 @@ export default program
 async function setActiveDeployment(deploymentName?: string) {
   const allDeployments = await listDeployments();
   if (!deploymentName) {
-    deploymentName = await promptOptions(allDeployments.map((d) => d.name));
+    deploymentName = await promptOptions(Object.keys(allDeployments));
   }
-  const matchingDeployment = allDeployments.find(
-    (deployment) => deployment.name === deploymentName
-  );
+  const matchingDeployment = allDeployments[deploymentName];
   if (!matchingDeployment) {
     logError({
       msg1: `No deployment found with name: "${deploymentName}"`,
-      msg2: `${IDEMS_APP_CONFIG.deployments}`,
+      msg2: `Available: ${Object.keys(allDeployments).join(", ")}`,
     });
   }
   const { filename, ...deployment } = matchingDeployment;
@@ -63,20 +61,24 @@ async function setActiveDeployment(deploymentName?: string) {
  * which can be passed back as an array of deployments
  */
 async function listDeployments() {
-  const allDeployments: IDeploymentConfigWithFilename[] = [];
-  const { found: allDeploymentFiles } = new GlobSync("**/config.ts", {
+  const deploymentsHashmap: { [name: string]: IDeploymentConfigWithFilename } = {};
+  const { found: allDeploymentFiles } = new GlobSync("**/*config.ts", {
     cwd: IDEMS_APP_CONFIG.deployments,
   });
   for (const filename of allDeploymentFiles) {
     try {
       const deployment: IDeploymentConfig = await loadDeploymentTS(filename);
+
       // should have default export with a name property
+      // assign via deep merge to ensure created as new object and won't conflict with future imports
       if (deployment?.name) {
-        allDeployments.push({ ...deployment, filename });
+        deploymentsHashmap[deployment.name] = deepMergeObjects({ filename }, deployment);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
-  return allDeployments;
+  return deploymentsHashmap;
 }
 
 /** Read a .ts file containing deployment information and return processed default export */

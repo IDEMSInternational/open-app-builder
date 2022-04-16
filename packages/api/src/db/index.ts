@@ -77,6 +77,7 @@ async function runMigrations() {
   console.log("[Migrations] pending", pending);
   try {
     await migrator.up();
+    // await migrator.down({ to: "005-add-app_deployment-columns.js" });
     const executed = await migrator.executed();
     console.log("[Migrations] executed", executed);
     console.log("[Migration] complete");
@@ -85,4 +86,15 @@ async function runMigrations() {
   }
 
   await sequelize.close();
+}
+
+/**
+ * Example to call migrator rollback to specific version
+ * Can be called before applying pending or calling up
+ * @param migrator
+ * @param migrationToRollback applies down methods on ALL migrations from latest to named migration inclusively
+ * @example await this.rollbackDB(migrator,"004-create-app_feedback.js")
+ */
+async function rollbackDB(migrator: Umzug, migrationToRollback: string) {
+  return migrator.down({ to: migrationToRollback });
 }

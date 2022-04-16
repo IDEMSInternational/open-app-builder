@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { LottieModule } from "ngx-lottie";
 import { NouisliderModule } from "ng2-nouislider";
-import { AngularSvgIconModule } from "angular-svg-icon";
 
 import { SharedPipesModule } from "../../pipes";
 import { TooltipDirective } from "../common/directives/tooltip.directive";
@@ -25,7 +24,6 @@ import { createCustomElement } from "@angular/elements";
     SharedPipesModule,
     NouisliderModule,
     LottieModule,
-    AngularSvgIconModule.forRoot(),
   ],
   exports: [...TEMPLATE_COMPONENTS, ...TEMPLATE_PIPES, TemplateContainerComponent],
   declarations: [

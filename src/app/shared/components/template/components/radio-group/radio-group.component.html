@@ -29,10 +29,10 @@
         [style.flex]="flexWidth"
       >
         <label class="center standard-label" [class.checked]="item.name === _row.value">
-          <svg-icon
+          <img
             [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"
-          >
-          </svg-icon>
+          />
+
           <input
             #el
             type="radio"
@@ -54,9 +54,9 @@
         [style.flex]="flexWidth"
       >
         <label class="center standard-label" [class.checked]="item.name === _row.value">
-          <plh-tmpl-icon
-            [src]="el.checked && item.image_checked ? item.image_checked : item.image"
-          ></plh-tmpl-icon>
+          <img
+            [src]="(el.checked && item.image_checked ? item.image_checked : item.image) | plhAsset"
+          />
           <input
             #el
             type="radio"
