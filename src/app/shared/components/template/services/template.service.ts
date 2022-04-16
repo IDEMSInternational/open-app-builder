@@ -10,7 +10,7 @@ import { TemplateTranslateService } from "./template-translate.service";
 import { IFlowEvent } from "data-models/db.model";
 import { TemplateVariablesService } from "./template-variables.service";
 import { TemplateFieldService } from "./template-field.service";
-import { arrayToHashmap, getNestedProperty } from "src/app/shared/utils";
+import { arrayToHashmap } from "src/app/shared/utils";
 
 @Injectable({
   providedIn: "root",

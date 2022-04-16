@@ -7,7 +7,6 @@ import chalk from "chalk";
 import logUpdate from "log-update";
 import * as Parsers from "./parsers";
 import {
-  arrayToHashmap,
   groupJsonByKey,
   readContentsFileAsHashmap,
   generateFolderFlatMap,
@@ -301,6 +300,12 @@ class AppDataConverter {
     return false;
   }
 
+  private postProcessSheets(sheets: IParsedWorkbookData) {
+    // console.log("post process sheets", sheets);
+    const postProcessed = applyDataParsers(sheets, "postProcess");
+    return postProcessed;
+  }
+
   /**
    * App data sheets contain contents page with metadata that can be merged into regular data
    * Merge and collate with other existing data, warning in case of overwrites
@@ -349,14 +354,7 @@ function applyDataParsers(
 ): IParsedWorkbookData {
   // All flow types will be processed by the default parser unless otherwise specified here
 
-  // generate a list of all tasks required by the taskListParser (merging rows from all task_list types)
-  const allTasksById = arrayToHashmap(
-    (dataByFlowType.task_list || []).reduce((a, b) => [...a, ...b.rows], []),
-    "id"
-  );
   const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
-    conversation: new Parsers.ConversationParser(),
-    task_list: new Parsers.TaskListParser(dataByFlowType, allTasksById),
     template: new Parsers.TemplateParser(),
     data_list: new Parsers.DataListParser(),
   };

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Device } from "@capacitor/device";
-import { MODULE_LIST } from "../data/data.service";
 import { DbService } from "../db/db.service";
 
 @Injectable({ providedIn: "root" })
@@ -47,7 +46,6 @@ export interface IUserMeta {
   first_app_open: isostring;
   current_date: isostring;
   app_skin: "MODULE_FOCUS_SKIN" | "BLOBS" | "BUTTONS";
-  active_module: string;
 }
 
 type isostring = string;
@@ -57,6 +55,4 @@ const USER_DEFAULTS: IUserMeta = {
   app_skin: "MODULE_FOCUS_SKIN",
   first_app_open: null,
   current_date: null,
-  // Set default module id as first defined in module list
-  active_module: MODULE_LIST?.[0]?.rows?.[0]?.id,
 };
