@@ -9,7 +9,7 @@ const workflows: IDeploymentWorkflows = {
     label: "Sync All Content",
     steps: [
       {
-        name: "sync_sheets",
+        name: "sync_templates",
         function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_templates" }),
       },
       {

@@ -3033,9 +3033,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@idemsInternational/gdrive-tools@workspace:*, @idemsInternational/gdrive-tools@workspace:packages/@idemsinternational/gdrive-tools":
+"@idemsInternational/gdrive-tools@workspace:*, @idemsInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools":
   version: 0.0.0-use.local
-  resolution: "@idemsInternational/gdrive-tools@workspace:packages/@idemsinternational/gdrive-tools"
+  resolution: "@idemsInternational/gdrive-tools@workspace:packages/@idemsInternational/gdrive-tools"
   dependencies:
     "@types/fs-extra": ^9.0.13
     "@types/node": ^16.11.10
@@ -3052,9 +3052,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@idemsInternational/rapidpro-excel@workspace:*, @idemsInternational/rapidpro-excel@workspace:packages/@idemsinternational/rapidpro-excel":
+"@idemsInternational/rapidpro-excel@workspace:*, @idemsInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel":
   version: 0.0.0-use.local
-  resolution: "@idemsInternational/rapidpro-excel@workspace:packages/@idemsinternational/rapidpro-excel"
+  resolution: "@idemsInternational/rapidpro-excel@workspace:packages/@idemsInternational/rapidpro-excel"
   dependencies:
     "@types/chai": ^4.2.22
     "@types/expect": ^24.3.0
