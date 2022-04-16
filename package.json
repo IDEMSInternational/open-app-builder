@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -r \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
+    "start": "concurrently --kill-others --raw \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
     "precompile": "yarn scripts compile types",
     "build": "yarn precompile && ng build --prod",
     "build:dev": "yarn precompile && ng build --configuration=development",
