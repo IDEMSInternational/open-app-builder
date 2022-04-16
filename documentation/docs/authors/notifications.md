@@ -22,6 +22,7 @@ Here is an example of two rows added to a `==content_list==` for creating notifi
 | schedule.start_date           | Date of earliest notification. If in past will be ignored |
 | schedule.end_date             | Date of latest notification. If in past will be ignored |
 | schedule.day_of_week          | Send notifications weekly on a given day of the week (numbered from 1 - Monday, to 7 - Sunday) |
+| schedule.batch_size           | Maximum number of notifications to schedule, e.g. if scheduling weekly specify number of weeks to preschedule |
 | time.hour                     | Hour of day to send notificaitons on, in 24h format       |
 | time.minute                   | Minute of day to send notification on |
 | delay.days                    | Offset to schedule notfication a given number of days from today |

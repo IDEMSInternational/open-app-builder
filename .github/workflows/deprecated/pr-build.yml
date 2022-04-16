@@ -36,6 +36,10 @@ jobs:
         run: echo $FIREBASE_CONFIG_TS > src/environments/firebaseConfig.ts
       - name: yarn install
         run: yarn install
+      - name: Set Deployment
+        run: yarn scripts deployment set "$APP_DEPLOYMENT_NAME"
+        env:
+          APP_DEPLOYMENT_NAME: ${{ secrets.APP_DEPLOYMENT_NAME }}
       - name: Build Angular for PR
         run: npx ng build --prod --base-href /$PR_NUMBER/ --deploy-url /$PR_NUMBER/
       - name: index.html as 404 page

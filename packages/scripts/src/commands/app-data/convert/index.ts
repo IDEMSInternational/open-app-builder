@@ -44,7 +44,7 @@ export default program
 
 class AppDataConverter {
   /** Change version to invalidate any cached conversions */
-  public converterVersion = 1.1;
+  public converterVersion = 1.2;
 
   private activeDeployment = getActiveDeployment();
   private paths = {

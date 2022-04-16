@@ -35,12 +35,11 @@ export class CampaignDebugPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    // this.debugData = await this.dataEvaluationService.refreshDBCache();
+    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
     const campaign_id = this.route.snapshot.queryParamMap.get("debug_campaign");
     if (campaign_id) {
-      this.setDebugCampaign(campaign_id);
+      await this.setDebugCampaign(campaign_id);
     }
-    this.debugCampaignsEnabled = this.templateFieldService.getField("debug_campaigns_enabled");
   }
 
   /***************************************************************************************
@@ -70,10 +69,7 @@ export class CampaignDebugPage implements OnInit {
   /**
    * TODO - duplicate code from notifications-debug.page should be merged */
   public async sendNotification(row: FlowTypes.Campaign_listRow) {
-    const notification = await this.campaignService.scheduleCampaignNotification(
-      row,
-      this.debugCampaignId
-    );
+    const notification = await this.campaignService.scheduleNotification(row, this.debugCampaignId);
     const delaySeconds = 3;
     await this.localNotificationService.scheduleImmediateNotification(
       notification,
@@ -86,14 +82,21 @@ export class CampaignDebugPage implements OnInit {
     await toast.present();
   }
 
+  public async refreshDebugCampaign() {
+    this.debugCampaignRows = undefined;
+    await this.processCampaign();
+  }
+
   private async processCampaign() {
     const debugCampaignRows: IDebugCampaignRows = { activated: [], deactivated: [], pending: [] };
     const campaign_id = this.debugCampaignId;
     const campaignRows = this.campaignService.allCampaigns[campaign_id];
+    // Duplicate methods from getNextCampaignRows
     const evaluated = await Promise.all(
       campaignRows.map(async (row) => {
         const evaluation = await this.campaignService.evaluateRowActivationConditions(row);
-        return { ...row, ...evaluation };
+        const parsedRow = await this.campaignService.hackParseDynamicRow(row);
+        return { ...parsedRow, ...evaluation };
       })
     );
     evaluated.forEach((row) => {

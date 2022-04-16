@@ -9,6 +9,9 @@ export class AppUser extends Model<AppUser> {
   @Column
   app_version: string;
 
+  @Column({ allowNull: false })
+  app_deployment_name: string;
+
   @Column({ type: DataType.JSONB })
   contact_fields: any;
 

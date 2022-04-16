@@ -32,7 +32,7 @@ export interface IFeedbackMetadata {
   uuid: string;
   timestamp: string;
   app_version: string;
-  envName: string; // provided in package.json (currently just dev/prod)
+  app_deployment_name: string; // deployment name
   templateTarget?: ITemplateTargetEntry[];
 }
 

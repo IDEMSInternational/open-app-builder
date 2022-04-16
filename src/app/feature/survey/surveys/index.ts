@@ -1,4 +1,3 @@
-import WelcomeSurvey from "./welcome.survey";
 import IntroSplashSurvey from "./intro-splash.survey";
 
 /**
@@ -7,7 +6,6 @@ import IntroSplashSurvey from "./intro-splash.survey";
  */
 const ALL_SURVEYS = {
   introSplash: IntroSplashSurvey,
-  welcome: WelcomeSurvey,
 };
 
 export default ALL_SURVEYS;

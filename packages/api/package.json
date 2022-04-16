@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.0.1",
+  "version": "1.2.7",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -15,8 +15,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "docker:build": "docker build -f Dockerfile --tag idems/apps-api:1.0.1 .",
-    "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api"
+    "docker:build": "echo $npm_package_version && DOCKER_BUILDKIT=1 docker build -f Dockerfile --tag idems/apps-api:$npm_package_version .",
+    "docker:run": "docker run -p 3000:3000 --name apps-api --rm idems/apps-api:$npm_package_version"
   },
   "dependencies": {
     "@nestjs/common": "7.6.15",
@@ -26,7 +26,7 @@
     "@nestjs/platform-express": "7.6.15",
     "@nestjs/sequelize": "0.2.0",
     "@nestjs/swagger": "^4.8.2",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.0",
     "fs-extra": "^10.0.0",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
@@ -45,7 +45,7 @@
     "@nestjs/testing": "7.6.15",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.36",
+    "@types/node": "^16.11.26",
     "@types/sequelize": "4.28.9",
     "@types/supertest": "^2.0.10",
     "@types/ws": "^7.4.6",
@@ -59,9 +59,7 @@
     "supertest": "^6.1.3",
     "ts-jest": "^26.5.4",
     "ts-loader": "^8.0.18",
-    "ts-node": "10.0.0",
-    "tsconfig-paths": "^3.9.0",
-    "typescript": "4.3.5"
+    "tsconfig-paths": "^3.9.0"
   },
   "jest": {
     "moduleFileExtensions": [
