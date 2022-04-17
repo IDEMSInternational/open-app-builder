@@ -7,7 +7,7 @@ import { TemplateTranslateService } from "./template-translate.service";
 import { ITemplateRowMap } from "./instance/template-row.service";
 import { extractDynamicEvaluators } from "data-models";
 import { TemplateFieldService } from "./template-field.service";
-import { PLHDataService } from "src/app/shared/services/data/data.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 const SHOW_DEBUG_LOGS = false;
@@ -42,7 +42,7 @@ export class TemplateVariablesService {
     private campaignService: CampaignService,
     private templateTranslateService: TemplateTranslateService,
     private templateCalcService: TemplateCalcService,
-    private dataService: PLHDataService
+    private appDataService: AppDataService
   ) {}
 
   /**
@@ -330,7 +330,7 @@ export class TemplateVariablesService {
         parsedValue = this.templateFieldService.getGlobal(fieldName);
         break;
       case "data":
-        parsedValue = this.dataService.getDataListByPath(fieldName);
+        parsedValue = await this.appDataService.getSheet("data_list", fieldName);
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.

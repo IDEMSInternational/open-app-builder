@@ -77,7 +77,7 @@ export class TemplateService {
   private async initialiseDefaultFieldAndGlobals() {
     // Evaluate overrides
     // TODO - should be generalised with other template and datalist retrieval methods
-    const allGlobals = await this.appDataService.getSheetsByType<FlowTypes.Global>("global");
+    const allGlobals = await this.appDataService.getSheetsWithData<FlowTypes.Global>("global");
     const baseGlobals = allGlobals.filter((flow) => !flow.hasOwnProperty("override_target"));
     const baseGlobalsHashmap = arrayToHashmap(baseGlobals, "flow_name");
     const globalOverrides = allGlobals.filter((flow) => flow.hasOwnProperty("override_target"));
@@ -91,7 +91,7 @@ export class TemplateService {
       }
     }
     // Apply field default and global constants
-    Object.values(baseGlobalsHashmap).forEach((flow) => {
+    Object.values<any>(baseGlobalsHashmap).forEach((flow) => {
       flow.rows?.forEach((row) => {
         switch (row.type) {
           case "declare_field_default":
@@ -122,7 +122,10 @@ export class TemplateService {
     templateName: string,
     is_override_target: boolean
   ): Promise<FlowTypes.Template> {
-    const foundTemplate = await this.appDataService.getTemplateByName(templateName);
+    const foundTemplate = await this.appDataService.getSheet<FlowTypes.Template>(
+      "template",
+      templateName
+    );
     // const foundTemplate: FlowTypes.Template = template.find((t) => t.flow_name === templateName);
     if (foundTemplate) {
       const overiddenTemplate = await this.getTemplateOverride(foundTemplate, is_override_target);
