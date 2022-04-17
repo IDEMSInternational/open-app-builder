@@ -138,22 +138,18 @@ class TranslationsCompiler {
   private populateTranslations(inDir: string, outDir: string, strings: ITranslationsByCode) {
     const inputFiles = recursiveFindByExtension(inDir, "json");
     for (const filepath of inputFiles) {
-      const inputEntries: IInputEntry[] = fs.readJSONSync(filepath);
-      const translatedEntries: IInputEntry[] = [];
-      for (let entry of inputEntries) {
-        const { flow_type, rows } = entry;
-        // Handle text replacements. For data_lists this can be any column, otherwise assume
-        // only value column to replace recursively within rows.
-        const translatedFields = getTranslatedFields(flow_type, rows);
-        if (translatedFields.length > 0) {
-          entry = applyStringTranslations(entry, translatedFields, strings);
-        }
-        translatedEntries.push(entry);
+      let entry: IInputEntry = fs.readJSONSync(filepath);
+      const { flow_type, rows } = entry;
+      // Handle text replacements. For data_lists this can be any column, otherwise assume
+      // only value column to replace recursively within rows.
+      const translatedFields = getTranslatedFields(flow_type, rows);
+      if (translatedFields.length > 0) {
+        entry = applyStringTranslations(entry, translatedFields, strings);
       }
       const relativePath = path.relative(inDir, filepath);
       const outputFilepath = path.resolve(outDir, "jsons", relativePath);
       fs.ensureDirSync(path.dirname(outputFilepath));
-      fs.writeFileSync(outputFilepath, JSON.stringify(translatedEntries, null, 2));
+      fs.writeFileSync(outputFilepath, JSON.stringify(entry, null, 2));
     }
   }
 }
