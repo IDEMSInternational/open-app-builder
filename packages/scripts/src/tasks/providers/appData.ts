@@ -11,9 +11,9 @@ const copy = (options: { localSheetsFolder?: string; localAssetsFolder?: string 
   const { localAssetsFolder, localSheetsFolder } = options;
 
   let args = ``;
-  if (localAssetsFolder) args += `--local-assets ${localAssetsFolder} `;
+  if (localAssetsFolder) args += `--local-assets-folder ${localAssetsFolder} `;
   if (!localAssetsFolder) args += `--skip-assets `;
-  if (localSheetsFolder) args += `--local-sheets ${localSheetsFolder} `;
+  if (localSheetsFolder) args += `--local-sheets-folder ${localSheetsFolder} `;
   if (!localSheetsFolder) args += `--skip-sheets `;
 
   let copyCmd = `app-data copy ${args}`;

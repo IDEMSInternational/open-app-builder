@@ -4,8 +4,6 @@ import chalk from "chalk";
 import { Command } from "commander";
 import {
   capitalizeFirstLetter,
-  recursiveFindByExtension,
-  convertJsonToTs,
   generateFolderFlatMap,
   isCountryLanguageCode,
   listFolderNames,
@@ -26,20 +24,20 @@ const ASSETS_GLOBAL_FOLDER_NAME = "global";
  * @example yarn
  *************************************************************************************/
 interface IProgramOptions {
-  localSheets: string;
-  localAssets: string;
-  appSheets: string;
-  appAssets: string;
+  localSheetsFolder: string;
+  localAssetsFolder: string;
+  appSheetsFolder: string;
+  appAssetsFolder: string;
   skipSheets?: boolean;
   skipAssets?: boolean;
 }
 const program = new Command("copy");
 export default program
   .description("Copy app data")
-  .option("--local-sheets <string>", "path to local sheets folder")
-  .option("--local-assets <string>", "path to local assets folder")
-  .option("--app-sheets <string>", "path to app sheets folder")
-  .option("--app-assets <string>", "path to app sheets folder")
+  .option("--local-sheets-folder <string>", "path to local sheets folder")
+  .option("--local-assets-folder <string>", "path to local assets folder")
+  .option("--app-sheets-folder <string>", "path to app sheets folder")
+  .option("--app-assets-folder <string>", "path to app sheets folder")
   .option("--skip-sheets")
   .option("--skip-assets")
   .action(async (options: IProgramOptions) => {
@@ -62,13 +60,13 @@ class AppDataCopy {
   };
   private activeDeployment = getActiveDeployment();
   constructor(private options: IProgramOptions) {
-    const { appAssets, appSheets, localAssets, localSheets } = options;
-    const { app_data, translations, _workspace_path } = this.activeDeployment;
+    const { appAssetsFolder, appSheetsFolder, localAssetsFolder, localSheetsFolder } = options;
+    const { app_data } = this.activeDeployment;
     this.paths = {
-      LOCAL_SHEETS_FOLDER: localSheets || translations.output_cache_path,
-      LOCAL_ASSETS_FOLDER: localAssets || path.resolve(_workspace_path, "app_data", "assets"),
-      APP_SHEETS_FOLDER: appSheets || app_data.sheets_output_path,
-      APP_ASSETS_FOLDER: appAssets || app_data.assets_output_path,
+      LOCAL_SHEETS_FOLDER: localSheetsFolder,
+      LOCAL_ASSETS_FOLDER: localAssetsFolder,
+      APP_SHEETS_FOLDER: appSheetsFolder || app_data.sheets_output_path,
+      APP_ASSETS_FOLDER: appAssetsFolder || app_data.assets_output_path,
     };
   }
 
@@ -77,18 +75,10 @@ class AppDataCopy {
       this.paths;
 
     // App files
-    console.log(chalk.yellow("Writing app files"));
-    copyAppSheetFiles(LOCAL_SHEETS_FOLDER, APP_SHEETS_FOLDER);
-
-    if (!this.options.skipAssets) {
-      assetsQualityCheck(LOCAL_ASSETS_FOLDER);
-      this.copyAppAssetFiles(LOCAL_ASSETS_FOLDER, APP_ASSETS_FOLDER);
-      this.generateDataAssetsIndexFile();
+    if (!this.options.skipSheets) {
+      console.log(chalk.yellow("Copy Sheets"));
+      copyAppSheetFiles(LOCAL_SHEETS_FOLDER, APP_SHEETS_FOLDER);
     }
-    this.writeTranslationTsFiles(
-      path.resolve(LOCAL_SHEETS_FOLDER, "strings"),
-      path.resolve(APP_SHEETS_FOLDER, "translation_strings")
-    );
 
     // Assets
     if (!this.options.skipAssets) {
@@ -100,25 +90,6 @@ class AppDataCopy {
     }
 
     console.log(chalk.green("Copy Complete"));
-  }
-
-  private writeTranslationTsFiles(sourceFolder: string, targetFolder: string) {
-    fs.ensureDirSync(targetFolder);
-    fs.emptyDirSync(targetFolder);
-    fs.removeSync(
-      path.resolve(this.paths.APP_SHEETS_FOLDER, "translation_strings", "_combined.json")
-    );
-    // convert all individual strings to ts, but ignore combined
-    const sourceFiles = recursiveFindByExtension(sourceFolder, "json").filter(
-      (filepath) => path.basename(filepath) !== "_combined.json"
-    );
-    convertJsonToTs(sourceFiles, {
-      outputDir: targetFolder,
-      defaultExportType: "{[source_text:string]:string}",
-      indexFile: {
-        namedExport: "TRANSLATION_STRINGS",
-      },
-    });
   }
 
   /**
