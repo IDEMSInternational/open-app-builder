@@ -41,7 +41,7 @@ export default program
   .option("--skip-sheets")
   .option("--skip-assets")
   .action(async (options: IProgramOptions) => {
-    console.table(options);
+    // console.table(options);
     new AppDataCopy(options).run();
   });
 

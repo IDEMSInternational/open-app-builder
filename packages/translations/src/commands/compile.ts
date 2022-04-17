@@ -147,7 +147,7 @@ class TranslationsCompiler {
         entry = applyStringTranslations(entry, translatedFields, strings);
       }
       const relativePath = path.relative(inDir, filepath);
-      const outputFilepath = path.resolve(outDir, "jsons", relativePath);
+      const outputFilepath = path.resolve(outDir, "sheets", relativePath);
       fs.ensureDirSync(path.dirname(outputFilepath));
       fs.writeFileSync(outputFilepath, JSON.stringify(entry, null, 2));
     }

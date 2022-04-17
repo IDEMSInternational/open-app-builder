@@ -1,6 +1,6 @@
 import { Injectable, Injector } from "@angular/core";
 import { FlowTypes } from "data-models";
-import { TEMPLATE } from "src/app/shared/services/data/data.service";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { TemplateContainerComponent } from "../../template-container.component";
 import { TemplateNavService } from "../template-nav.service";
 import { TemplateService } from "../template.service";
@@ -18,10 +18,12 @@ export class TemplateProcessService extends TemplateInstanceService {
   container: TemplateContainerComponent;
   templateService: TemplateService;
   templateNavService: TemplateNavService;
+  appDataService: AppDataService;
   constructor(injector: Injector) {
     super(injector);
     this.templateService = this.getGlobalService(TemplateService);
     this.templateNavService = this.getGlobalService(TemplateNavService);
+    this.appDataService = this.getGlobalService(AppDataService);
     // Create mock template container component
     this.container = new TemplateContainerComponent(
       this.templateService,
@@ -47,10 +49,14 @@ export class TemplateProcessService extends TemplateInstanceService {
   }
 
   private async initialiseStartupTemplates() {
-    const startupTemplates = TEMPLATE.filter((t) => t.process_on_start).sort(
+    const startupTemplates = await this.appDataService.getSheetsWithData<FlowTypes.Template>(
+      "template",
+      (t) => (t.process_on_start ? true : false)
+    );
+    const sortedTempaltes = startupTemplates.sort(
       (a, b) => a.process_on_start - b.process_on_start
     );
-    for (const template of startupTemplates) {
+    for (const template of sortedTempaltes) {
       // create a deep clone of the object to prevent accidental reference changes
       // assign a name (in case top-level template) and store breadcrumb path for nested
       // (NOTE - would no longer be required if reading in json objects instead of ts import)
