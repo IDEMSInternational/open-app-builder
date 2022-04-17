@@ -2,7 +2,12 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
-import { checkInputOutputDirs, outputErrorMessage, recursiveFindByExtension } from "../utils";
+import {
+  checkInputOutputDirs,
+  outputCompleteMessage,
+  outputErrorMessage,
+  recursiveFindByExtension,
+} from "../utils";
 
 const program = new Command("compile");
 
@@ -46,12 +51,13 @@ class TranslationsCompiler {
    * replace text from input files
    **/
   public run() {
+    console.table(this.options);
     const { input: inDir, output: outDir, translations: translationsDir } = this.options;
     checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
     checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
     const { translationsByCode } = this.compileTranslationStrings();
     this.populateTranslations(inDir, outDir, translationsByCode);
-    // outputCompleteMessage("Translations Compiled", outDir);
+    outputCompleteMessage("Translations Compiled", outDir);
   }
 
   /**
@@ -127,7 +133,7 @@ class TranslationsCompiler {
   }
 
   /**
-   *
+   * Iterate over all input files and apply translations
    */
   private populateTranslations(inDir: string, outDir: string, strings: ITranslationsByCode) {
     const inputFiles = recursiveFindByExtension(inDir, "json");
@@ -152,8 +158,12 @@ class TranslationsCompiler {
   }
 }
 
+/**
+ * Iterate over data checking for possible translateable data and track what data has translations
+ * Add _translations metadata to content tracking available translation languages
+ */
 function applyStringTranslations(
-  row: any,
+  row: FlowTypes.FlowTypeWithData,
   translatedFields: string[],
   translationsByCode: ITranslationsByCode
 ) {
@@ -162,7 +172,7 @@ function applyStringTranslations(
   const langCodes = Object.keys(translationsByCode);
   Object.entries(row).forEach(([field, value]) => {
     // default keep original
-    translated[field] = row[field];
+    translated[field] = value;
     // handle translations from list
     if (field === "rows" && Array.isArray(value)) {
       translated[field] = value.map((v) =>
