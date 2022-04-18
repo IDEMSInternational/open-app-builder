@@ -46,7 +46,7 @@ const workflows: IDeploymentWorkflows = {
       {
         name: "app_copy_sheets",
         function: async ({ tasks, workflow }) =>
-          tasks.appData.copy({ localSheetsFolder: workflow.translations_apply.output }),
+          tasks.appData.copy({ localSheetsFolder: workflow.translations_apply.output.sheets }),
       },
     ],
   },
