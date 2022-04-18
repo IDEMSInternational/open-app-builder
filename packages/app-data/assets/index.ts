@@ -589,252 +589,56 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 3.2,
     md5Checksum: "ea064735a285b957803db53a4b0e197f",
   },
-  "EFMStorybooks/EFM-SB-AD-1.jpg": {
-    size_kb: 31.7,
-    md5Checksum: "e8777c21cefd5c863c49eb07783739b3",
+  "EFMStorybooks/EFM-SB-AVTM-1.png": {
+    size_kb: 227.4,
+    md5Checksum: "7a1ecf8702751d9234087bff343c174e",
   },
-  "EFMStorybooks/EFM-SB-AD-10.jpg": {
-    size_kb: 17.3,
-    md5Checksum: "53b7ada36ff876bd395aa6079457ca73",
+  "EFMStorybooks/EFM-SB-AVTM-10.png": {
+    size_kb: 238.3,
+    md5Checksum: "7d07005bac8dee5736d7fffc541fced3",
   },
-  "EFMStorybooks/EFM-SB-AD-11.jpg": {
-    size_kb: 19.4,
-    md5Checksum: "04543b3295d0acd3bad4a4dbc247a97e",
+  "EFMStorybooks/EFM-SB-AVTM-11.png": {
+    size_kb: 401.2,
+    md5Checksum: "4926c8ac14565300438d05591b8bf74f",
   },
-  "EFMStorybooks/EFM-SB-AD-12.jpg": {
-    size_kb: 16.2,
-    md5Checksum: "5a682e545a7fae1bd717e511e02401a7",
+  "EFMStorybooks/EFM-SB-AVTM-2.png": {
+    size_kb: 255.7,
+    md5Checksum: "727db625179d40101095e353bd76ee0c",
   },
-  "EFMStorybooks/EFM-SB-AD-13.jpg": {
-    size_kb: 32.8,
-    md5Checksum: "9fe2adff103f5a0b0f38598d9295df7e",
+  "EFMStorybooks/EFM-SB-AVTM-3.png": {
+    size_kb: 219.1,
+    md5Checksum: "f26906d64c247810cce2252c099761d6",
   },
-  "EFMStorybooks/EFM-SB-AD-14.jpg": {
-    size_kb: 20.2,
-    md5Checksum: "ba4fd23e929493154664b1a754aeada7",
+  "EFMStorybooks/EFM-SB-AVTM-4.png": {
+    size_kb: 285.3,
+    md5Checksum: "50f2e256264adebb38757132e9e093c2",
   },
-  "EFMStorybooks/EFM-SB-AD-15.jpg": {
-    size_kb: 14.7,
-    md5Checksum: "7d229872401b16297ba81def0b47b274",
+  "EFMStorybooks/EFM-SB-AVTM-5.png": {
+    size_kb: 122.3,
+    md5Checksum: "dbd8ee226b22722830d331d657cfef04",
   },
-  "EFMStorybooks/EFM-SB-AD-16.jpg": {
-    size_kb: 28.7,
-    md5Checksum: "184584b6a5ef6b7a6d71db0431983692",
+  "EFMStorybooks/EFM-SB-AVTM-6.png": {
+    size_kb: 250.4,
+    md5Checksum: "83a40f410cc90f0e3976862891971f19",
   },
-  "EFMStorybooks/EFM-SB-AD-17.jpg": {
-    size_kb: 25.4,
-    md5Checksum: "3192f2f86ce585d0208adcff1915c0c6",
+  "EFMStorybooks/EFM-SB-AVTM-7.png": {
+    size_kb: 226.4,
+    md5Checksum: "9862e2506a78b11a4893c692385e07bb",
   },
-  "EFMStorybooks/EFM-SB-AD-18.jpg": {
-    size_kb: 30.2,
-    md5Checksum: "ea10ded2a58549cc8b853c0951bc2fd8",
+  "EFMStorybooks/EFM-SB-AVTM-8.png": {
+    size_kb: 177,
+    md5Checksum: "e26c155469f5f2c2b797b01bb456213e",
   },
-  "EFMStorybooks/EFM-SB-AD-19.jpg": {
-    size_kb: 24.6,
-    md5Checksum: "32c412a070165cc54e4e4e127da70c23",
+  "EFMStorybooks/EFM-SB-AVTM-9.png": {
+    size_kb: 269.6,
+    md5Checksum: "6edbd19f71d1c80356da9d9c724c7590",
   },
-  "EFMStorybooks/EFM-SB-AD-2.jpg": {
-    size_kb: 19.3,
-    md5Checksum: "9e8e3a9acb9ef39248e44015ab97d086",
+  "EFMStorybooks/EFM-SB-AVTM-Back.png": {
+    size_kb: 110,
+    md5Checksum: "e0eb292539ae5755187e9853b71c4649",
   },
-  "EFMStorybooks/EFM-SB-AD-20.jpg": {
-    size_kb: 10.7,
-    md5Checksum: "1652a6b513ec535478431496a54e491c",
-  },
-  "EFMStorybooks/EFM-SB-AD-21.jpg": {
-    size_kb: 133.6,
-    md5Checksum: "c8ee42e406880991adc1d1665304b1d0",
-  },
-  "EFMStorybooks/EFM-SB-AD-3.jpg": {
-    size_kb: 21.7,
-    md5Checksum: "289ae8eb474b77bb4f9d11b420319e0f",
-  },
-  "EFMStorybooks/EFM-SB-AD-4.jpg": {
-    size_kb: 17.4,
-    md5Checksum: "610cedfc0375d64fb739f28d4aa02a00",
-  },
-  "EFMStorybooks/EFM-SB-AD-5.jpg": {
-    size_kb: 17.5,
-    md5Checksum: "5e263de6e4ebb7b735b4eafd4d28e56c",
-  },
-  "EFMStorybooks/EFM-SB-AD-6.jpg": {
-    size_kb: 18.8,
-    md5Checksum: "34eb79aa42fe1b48d48722137ebf2ac2",
-  },
-  "EFMStorybooks/EFM-SB-AD-7.jpg": {
-    size_kb: 37.7,
-    md5Checksum: "2da001e82a6fa9a3dd9eb05cd2100369",
-  },
-  "EFMStorybooks/EFM-SB-AD-8.jpg": {
-    size_kb: 35.1,
-    md5Checksum: "6fb93cb8b982635d658a043b5fb99f68",
-  },
-  "EFMStorybooks/EFM-SB-AD-9.jpg": {
-    size_kb: 18.8,
-    md5Checksum: "caa2daa001ce2a04762fcaf6cf974fe4",
-  },
-  "EFMStorybooks/EFM-SB-AD-Cover.jpg": {
-    size_kb: 20.1,
-    md5Checksum: "6632c371271b9ca3e6dc00f936300117",
-  },
-  "EFMStorybooks/EFM-SB-ALD-1.jpg": {
-    size_kb: 64,
-    md5Checksum: "8a9a09e59e8bc7ced28661044967504c",
-  },
-  "EFMStorybooks/EFM-SB-ALD-10.jpg": {
-    size_kb: 83.5,
-    md5Checksum: "d51d83ca6877baf9f14bf7b64e1bc4f2",
-  },
-  "EFMStorybooks/EFM-SB-ALD-11.jpg": {
-    size_kb: 76.4,
-    md5Checksum: "c0cc8a3ebd7999c4397db9d9711d9d46",
-  },
-  "EFMStorybooks/EFM-SB-ALD-12.jpg": {
-    size_kb: 69.2,
-    md5Checksum: "8497402f81bc26068ffa1c46e2c062ed",
-  },
-  "EFMStorybooks/EFM-SB-ALD-13.jpg": {
-    size_kb: 120.2,
-    md5Checksum: "f88c1fff2ad32386c5062d4d0636eb22",
-  },
-  "EFMStorybooks/EFM-SB-ALD-2.jpg": {
-    size_kb: 76,
-    md5Checksum: "e26e24381b62cc35f85923459e93e849",
-  },
-  "EFMStorybooks/EFM-SB-ALD-3.jpg": {
-    size_kb: 83.2,
-    md5Checksum: "c2b64d0e354082292a3da3ce89ab75da",
-  },
-  "EFMStorybooks/EFM-SB-ALD-4.jpg": {
-    size_kb: 70.2,
-    md5Checksum: "db0e2936803e43ee528d8f0a07b05c7d",
-  },
-  "EFMStorybooks/EFM-SB-ALD-5.jpg": {
-    size_kb: 77,
-    md5Checksum: "cd2307d0ebf714c4c025952fffae8c40",
-  },
-  "EFMStorybooks/EFM-SB-ALD-6.jpg": {
-    size_kb: 53.9,
-    md5Checksum: "c381b8824f6242ef45740c8abe8d7ee7",
-  },
-  "EFMStorybooks/EFM-SB-ALD-7.jpg": {
-    size_kb: 48.1,
-    md5Checksum: "f2cd8fbcccf8f8b5d43056ba56a2f2f0",
-  },
-  "EFMStorybooks/EFM-SB-ALD-8.jpg": {
-    size_kb: 47.9,
-    md5Checksum: "a15bfbda325b91ccd1452d97c8931f0a",
-  },
-  "EFMStorybooks/EFM-SB-ALD-9.jpg": {
-    size_kb: 85.4,
-    md5Checksum: "7561a2b34d1ea76b70cfcdbb3047d0ca",
-  },
-  "EFMStorybooks/EFM-SB-ALD-Cover.jpg": {
-    size_kb: 76.4,
-    md5Checksum: "c0cc8a3ebd7999c4397db9d9711d9d46",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-1.jpg": {
-    size_kb: 33.7,
-    md5Checksum: "b65eea771bcf9cb7ae46686a76ca3e8f",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-10.jpg": {
-    size_kb: 32.6,
-    md5Checksum: "4b38e92ef6eff75d6afefd8180a7a250",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-11.jpg": {
-    size_kb: 53.6,
-    md5Checksum: "af510cbfe43ebf8405ebf437266249ea",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-12.jpg": {
-    size_kb: 124.7,
-    md5Checksum: "8d6907740e13731055490062cb17ad12",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-2.jpg": {
-    size_kb: 36.1,
-    md5Checksum: "296aea20ef7f67ffe132546fa28c54d4",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-3.jpg": {
-    size_kb: 29.6,
-    md5Checksum: "8d3f5e22547dff885e13dda17e2ce5aa",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-4.jpg": {
-    size_kb: 38.2,
-    md5Checksum: "a872fbe4a09de0dd6be541486675b9a0",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-5.jpg": {
-    size_kb: 19.2,
-    md5Checksum: "4506f72119245c8d6c0780a2ef9ceb7a",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-6.jpg": {
-    size_kb: 36.9,
-    md5Checksum: "75bde7861091dfd9b95533ee5aabff25",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-7.jpg": {
-    size_kb: 33.6,
-    md5Checksum: "f821cc63b2f2d601448c2878601ae7d2",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-8.jpg": {
-    size_kb: 26.8,
-    md5Checksum: "b7297327593a42d64ad347c81ce35a99",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-9.jpg": {
-    size_kb: 39.6,
-    md5Checksum: "47d6240a1fd30b2945581e2fd8d89388",
-  },
-  "EFMStorybooks/EFM-SB-AVTM-Cover.jpg": {
-    size_kb: 33.7,
-    md5Checksum: "b65eea771bcf9cb7ae46686a76ca3e8f",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-1.jpg": {
-    size_kb: 51.4,
-    md5Checksum: "478b85a2b0fdb1cb9c5f1169acc1a165",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-10.jpg": {
-    size_kb: 29.7,
-    md5Checksum: "60376254dda3557033252032d3dd6d67",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-11.jpg": {
-    size_kb: 35.1,
-    md5Checksum: "e9513c42d1236c1c22ce62e7a8e330d1",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-12.jpg": {
-    size_kb: 119.6,
-    md5Checksum: "4020185bcf7962e629f1fe11337e53f5",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-2.jpg": {
-    size_kb: 23.9,
-    md5Checksum: "0f537e8a8cca05eda3838165e7354dde",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-3.jpg": {
-    size_kb: 37.6,
-    md5Checksum: "ec7bb937f1b43fa37ce7acc4bd2dd2fc",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-4.jpg": {
-    size_kb: 51.4,
-    md5Checksum: "3e96b92c93a970e1b69f86831da90a37",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-5.jpg": {
-    size_kb: 33.8,
-    md5Checksum: "d952c1a43d513582a68c867f875b9645",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-6.jpg": {
-    size_kb: 46.9,
-    md5Checksum: "8ad349f56ecb7cdc98ce4b749d10be6f",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-7.jpg": {
-    size_kb: 42.4,
-    md5Checksum: "4db704f111b437606d1926e5257e20f7",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-8.jpg": {
-    size_kb: 30.6,
-    md5Checksum: "8dae87035ea73b427ab9cabccf5ec392",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-9.jpg": {
-    size_kb: 41,
-    md5Checksum: "aff6dbf9e1561d7a222b252ca8d2f828",
-  },
-  "EFMStorybooks/EFM-SB-CWCOC-Cover.jpg": {
-    size_kb: 41,
-    md5Checksum: "aff6dbf9e1561d7a222b252ca8d2f828",
+  "EFMStorybooks/EFM-SB-AVTM-Cover.png": {
+    size_kb: 227.4,
+    md5Checksum: "7a1ecf8702751d9234087bff343c174e",
   },
 };
