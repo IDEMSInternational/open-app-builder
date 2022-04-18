@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { SHEETS_CONTENT_LIST } from "app-data";
 import { FlowTypes } from "../../model";
 
 /**
@@ -12,12 +13,7 @@ import { FlowTypes } from "../../model";
 @Injectable({ providedIn: "root" })
 export class AppDataService {
   constructor(private http: HttpClient) {}
-  private appDataContents: IAppData = {
-    data_list: {},
-    global: {},
-    template: {},
-    tour: {},
-  };
+  private appDataContents = SHEETS_CONTENT_LIST;
   private appDataFull: IAppData = {
     data_list: {},
     global: {},
@@ -26,8 +22,7 @@ export class AppDataService {
   };
 
   public async init() {
-    // Load contents for each type
-    console.log("[AppData] - load contents");
+    // Not required - retained for tidier bootstrapping in app.component.ts
   }
 
   /**

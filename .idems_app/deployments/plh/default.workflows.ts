@@ -9,8 +9,8 @@ const workflows: IDeploymentWorkflows = {
     label: "Sync All Content",
     steps: [
       {
-        name: "sync_templates",
-        function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_templates" }),
+        name: "sync_sheets",
+        function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_sheets" }),
       },
       {
         name: "sync_assets",
@@ -18,7 +18,7 @@ const workflows: IDeploymentWorkflows = {
       },
     ],
   },
-  sync_templates: {
+  sync_sheets: {
     label: "Sync Latest Templates",
     steps: [
       {
@@ -45,8 +45,13 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "app_copy_sheets",
-        function: async ({ tasks, workflow }) =>
-          tasks.appData.copy({ localSheetsFolder: workflow.translations_apply.output.sheets }),
+        function: async ({ tasks, workflow, config }) =>
+          tasks.appData.copy({
+            localSheetsFolder: workflow.translations_apply.output.sheets,
+            localTranslationsFolder: workflow.translations_apply.output.strings,
+            appSheetsFolder: config.app_data.sheets_output_path,
+            appTranslationsFolder: config.app_data.translations_output_path,
+          }),
       },
     ],
   },
@@ -60,8 +65,11 @@ const workflows: IDeploymentWorkflows = {
       },
       {
         name: "app_copy_assets",
-        function: async ({ tasks, workflow }) =>
-          tasks.appData.copy({ localAssetsFolder: workflow.assets_dl.output }),
+        function: async ({ tasks, workflow, config }) =>
+          tasks.appData.copy({
+            localAssetsFolder: workflow.assets_dl.output,
+            appAssetsFolder: config.app_data.assets_output_path,
+          }),
       },
     ],
   },

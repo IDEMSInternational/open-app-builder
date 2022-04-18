@@ -30,15 +30,17 @@ export interface IDeploymentConfig {
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
+    /** processed translations for use in app. Default `./app_data/translations/app_strings` */
+    translations_output_path?: string;
   };
   translations?: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
-    /** generated output of list of strings to translate. Default `./app_data/translations/source_strings` */
+    /** generated output of list of strings to translate. Default `./app_data/translations_source/source_strings` */
     source_strings_path?: string;
-    /** translated string for import. Default `./app_data/translations/translated_strings */
+    /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
-    /** generated output cache. Default `./cache/translations` */
+    /** generated output cache. Default `./cache/translations_source` */
     output_cache_path?: string;
   };
   workflows?: string[];
@@ -65,13 +67,14 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     sheets_output_path: "./app_data/sheets",
     converter_cache_path: "./cache/converter",
     assets_output_path: "./app_data/assets",
+    translations_output_path: "./app_data/translations/app_strings",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
   translations: {
     filter_language_codes: null,
-    source_strings_path: "./app_data/translations/source_strings",
-    translated_strings_path: "./app_data/translations/translated_strings",
+    source_strings_path: "./app_data/translations_source/source_strings",
+    translated_strings_path: "./app_data/translations_source/translated_strings",
     output_cache_path: "./cache/translations",
   },
 };

@@ -16,10 +16,11 @@ const config: IDeploymentConfig = {
   app_data: {
     sheets_output_path: "packages/app-data/sheets",
     assets_output_path: "packages/app-data/assets",
+    translations_output_path: "packages/app-data/translations",
   },
   translations: {
-    translated_strings_path: "packages/app-data/translations/from_translators",
-    source_strings_path: "packages/app-data/translations/to_translate",
+    translated_strings_path: "packages/app-data/translations_source/from_translators",
+    source_strings_path: "packages/app-data/translations_source/to_translate",
   },
   workflows: ["default.workflows.ts"],
 };

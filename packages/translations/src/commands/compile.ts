@@ -2,12 +2,7 @@ import { Command } from "commander";
 import fs from "fs-extra";
 import path from "path";
 import { FlowTypes } from "data-models";
-import {
-  checkInputOutputDirs,
-  outputCompleteMessage,
-  outputErrorMessage,
-  recursiveFindByExtension,
-} from "../utils";
+import { outputCompleteMessage, outputErrorMessage, recursiveFindByExtension } from "../utils";
 
 const program = new Command("compile");
 
@@ -53,8 +48,10 @@ class TranslationsCompiler {
   public run() {
     console.table(this.options);
     const { input: inDir, output: outDir, translations: translationsDir } = this.options;
-    checkInputOutputDirs(inDir, path.resolve(outDir, "strings"));
-    checkInputOutputDirs(translationsDir, path.resolve(outDir, "jsons"));
+    fs.ensureDir(inDir);
+    fs.ensureDirSync(translationsDir);
+    fs.ensureDirSync(outDir);
+    fs.emptyDirSync(outDir);
     const { translationsByCode } = this.compileTranslationStrings();
     this.populateTranslations(inDir, outDir, translationsByCode);
     outputCompleteMessage("Translations Compiled", outDir);
@@ -124,11 +121,13 @@ class TranslationsCompiler {
     // Handle output files
     // const indexOutput = path.resolve(outDir, "index.ts");
     for (const [langCode, strings] of Object.entries(translationsByCode)) {
-      const stringsOutput = path.resolve(outDir, "strings", `${langCode}.json`);
+      const stringsOutput = path.resolve(outDir, "strings", langCode, "strings.json");
+      fs.ensureDirSync(path.dirname(stringsOutput));
       fs.writeFileSync(stringsOutput, JSON.stringify(strings, null, 2));
     }
-    const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
-    fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
+    // TODO - CC 2022-04-18 - combined likely no longer needed. To confirm and remove rest of related code
+    // const combinedOutput = path.resolve(outDir, "strings", `_combined.json`);
+    // fs.writeFileSync(combinedOutput, JSON.stringify(translationsCombined, null, 2));
     return { translationsCombined, translationsByCode };
   }
 
