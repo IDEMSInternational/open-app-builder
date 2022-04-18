@@ -51,6 +51,8 @@ export namespace FlowTypes {
   export interface FlowTypeWithData extends FlowTypeBase {
     /** Specific flow data rows - these are usually defined from within specific flow type row typings */
     rows: any[];
+    /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
+    rowsHashmap?: { [id: string]: any };
   }
 
   /*********************************************************************************************
