@@ -4,314 +4,6 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "nf_schedule_in_week_messages",
-    status: "released",
-    rows: [
-      {
-        id: "nf_w_released",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "calc",
-            condition_args: {
-              calc: "@fields.workshop_number == 1",
-            },
-            _raw: "@fields.workshop_number == 1",
-          },
-        ],
-        schedule: {
-          day_of_week: "+@fields.workshop_start_day",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_relax",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "w_self_care_started",
-                value: true,
-              },
-            },
-            _raw: "get_field | w_self_care_started : true",
-          },
-        ],
-        time: {
-          hour: 19,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_something_fun",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "calc",
-            condition_args: {
-              calc: "@fields.workshop_number == 1",
-            },
-            _raw: "@fields.workshop_number == 1",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +2 -1)%7 +1",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_praise",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "calc",
-            condition_args: {
-              calc: "@fields.workshop_number == 1",
-            },
-            _raw: "@fields.workshop_number == 1",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +3 -1)%7 +1",
-        },
-        time: {
-          hour: 9,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_w_reminder",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "calc",
-            condition_args: {
-              calc: "@fields.workshop_number == 1",
-            },
-            _raw: "@fields.workshop_number == 1",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +3 -1)%7 +1",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_hp_reminder",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +4 -1)%7 +1",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_parent_points_overview",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +5 -1)%7 +1",
-        },
-        time: {
-          hour: 9,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_hp_review",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        deactivation_condition_list: [
-          {
-            condition_type: "calc",
-            condition_args: {
-              calc: "@fields.workshop_number == 1",
-            },
-            _raw: "@fields.workshop_number == 1",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +5 -1)%7 +1",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-      {
-        id: "nf_w_tomorrow",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "iwm_as_notifications",
-                value: true,
-              },
-            },
-            _raw: "get_field | iwm_as_notifications : true",
-          },
-        ],
-        schedule: {
-          day_of_week: "(+@fields.workshop_start_day +6 -1)%7 +1",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-    ],
-    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_schedule",
-    flow_name: "nf_schedule_inactive",
-    status: "released",
-    rows: [
-      {
-        id: "nf_inactive_day",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 0,
-        },
-      },
-      {
-        id: "nf_inactive_week",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 6,
-        },
-      },
-      {
-        id: "nf_inactive_month",
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-        delay: {
-          days: 30,
-        },
-      },
-      {
-        id: "nf_generic",
-        schedule: {
-          day_of_week: 6,
-        },
-        time: {
-          hour: 12,
-          minute: 0,
-        },
-      },
-    ],
-    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_schedule",
     flow_name: "debug_campaign_schedules",
     status: "released",
     comments: "This contains schedules for notifications",
@@ -585,6 +277,314 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_schedule",
+    flow_name: "nf_schedule_inactive",
+    status: "released",
+    rows: [
+      {
+        id: "nf_inactive_day",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 0,
+        },
+      },
+      {
+        id: "nf_inactive_week",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 6,
+        },
+      },
+      {
+        id: "nf_inactive_month",
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+        delay: {
+          days: 30,
+        },
+      },
+      {
+        id: "nf_generic",
+        schedule: {
+          day_of_week: 6,
+        },
+        time: {
+          hour: 12,
+          minute: 0,
+        },
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_schedule",
+    flow_name: "nf_schedule_in_week_messages",
+    status: "released",
+    rows: [
+      {
+        id: "nf_w_released",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number == 1",
+            },
+            _raw: "@fields.workshop_number == 1",
+          },
+        ],
+        schedule: {
+          day_of_week: "+@fields.workshop_start_day",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_relax",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "w_self_care_started",
+                value: true,
+              },
+            },
+            _raw: "get_field | w_self_care_started : true",
+          },
+        ],
+        time: {
+          hour: 19,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_something_fun",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number == 1",
+            },
+            _raw: "@fields.workshop_number == 1",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +2 -1)%7 +1",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_praise",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number == 1",
+            },
+            _raw: "@fields.workshop_number == 1",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +3 -1)%7 +1",
+        },
+        time: {
+          hour: 9,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_w_reminder",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number == 1",
+            },
+            _raw: "@fields.workshop_number == 1",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +3 -1)%7 +1",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_hp_reminder",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +4 -1)%7 +1",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_parent_points_overview",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +5 -1)%7 +1",
+        },
+        time: {
+          hour: 9,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_hp_review",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        deactivation_condition_list: [
+          {
+            condition_type: "calc",
+            condition_args: {
+              calc: "@fields.workshop_number == 1",
+            },
+            _raw: "@fields.workshop_number == 1",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +5 -1)%7 +1",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+      {
+        id: "nf_w_tomorrow",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "iwm_as_notifications",
+                value: true,
+              },
+            },
+            _raw: "get_field | iwm_as_notifications : true",
+          },
+        ],
+        schedule: {
+          day_of_week: "(+@fields.workshop_start_day +6 -1)%7 +1",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
   },
 ];
 export default data_list;
