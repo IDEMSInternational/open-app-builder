@@ -1,0 +1,64 @@
+{
+  "flow_type": "template",
+  "module": "1on1",
+  "flow_name": "w_1on1_tools_activity",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "tools_activity",
+      "value": "tools_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "parameter_list": {
+        "style": "active"
+      },
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_1on1",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "tools_activity.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_1on1",
+                "matchedExpression": "@data.workshop.w_1on1",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "tools_activity"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_1on1.xlsx"
+}

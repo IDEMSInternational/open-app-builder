@@ -1,0 +1,59 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_new_nav_buttons",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "display_group",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "left",
+          "value": "left button",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "style_list": [
+            "flex:1"
+          ],
+          "_nested_name": "display_group.left"
+        },
+        {
+          "type": "text",
+          "name": "blank_text",
+          "value": "\"\"",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "style_list": [
+            "flex:4"
+          ],
+          "_nested_name": "display_group.blank_text"
+        },
+        {
+          "type": "text",
+          "name": "right",
+          "value": "right button",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "style_list": [
+            "flex:1"
+          ],
+          "_nested_name": "display_group.right"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_new_nav_buttons.xlsx"
+}

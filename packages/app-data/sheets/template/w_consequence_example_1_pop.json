@@ -1,0 +1,78 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_example_1_pop",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "suggestions",
+      "value": "suggestions",
+      "rows": [
+        {
+          "name": "list_text",
+          "value": "* @global.negative_consequence_1\n* @global.negative_consequence_2\n* @global.negative_consequence_3\n* @global.negative_consequence_4\n* @global.negative_consequence_5",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "suggestions.list_text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "* @global.negative_consequence_1\n* @global.negative_consequence_2\n* @global.negative_consequence_3\n* @global.negative_consequence_4\n* @global.negative_consequence_5",
+                "matchedExpression": "@global.negative_consequence_1",
+                "type": "global",
+                "fieldName": "negative_consequence_1"
+              },
+              {
+                "fullExpression": "* @global.negative_consequence_1\n* @global.negative_consequence_2\n* @global.negative_consequence_3\n* @global.negative_consequence_4\n* @global.negative_consequence_5",
+                "matchedExpression": "@global.negative_consequence_2",
+                "type": "global",
+                "fieldName": "negative_consequence_2"
+              },
+              {
+                "fullExpression": "* @global.negative_consequence_1\n* @global.negative_consequence_2\n* @global.negative_consequence_3\n* @global.negative_consequence_4\n* @global.negative_consequence_5",
+                "matchedExpression": "@global.negative_consequence_3",
+                "type": "global",
+                "fieldName": "negative_consequence_3"
+              },
+              {
+                "fullExpression": "* @global.negative_consequence_1\n* @global.negative_consequence_2\n* @global.negative_consequence_3\n* @global.negative_consequence_4\n* @global.negative_consequence_5",
+                "matchedExpression": "@global.negative_consequence_4",
+                "type": "global",
+                "fieldName": "negative_consequence_4"
+              },
+              {
+                "fullExpression": "* @global.negative_consequence_1\n* @global.negative_consequence_2\n* @global.negative_consequence_3\n* @global.negative_consequence_4\n* @global.negative_consequence_5",
+                "matchedExpression": "@global.negative_consequence_5",
+                "type": "global",
+                "fieldName": "negative_consequence_5"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.negative_consequence_1": [
+              "value"
+            ],
+            "@global.negative_consequence_2": [
+              "value"
+            ],
+            "@global.negative_consequence_3": [
+              "value"
+            ],
+            "@global.negative_consequence_4": [
+              "value"
+            ],
+            "@global.negative_consequence_5": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "suggestions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}

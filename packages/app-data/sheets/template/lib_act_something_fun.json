@@ -1,0 +1,160 @@
+{
+  "flow_type": "template",
+  "flow_name": "lib_act_something_fun",
+  "status": "released",
+  "rows": [
+    {
+      "name": "activity_data",
+      "value": "@data.something_fun.co_chef",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "activity_data",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.something_fun.co_chef",
+            "matchedExpression": "@data.something_fun.co_chef",
+            "type": "data",
+            "fieldName": "something_fun"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.something_fun.co_chef": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "activity_text",
+      "type": "set_variable",
+      "_nested_name": "activity_text"
+    },
+    {
+      "type": "template",
+      "name": "library_activity",
+      "value": "library_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "@local.activity_data.title",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "library_activity.activity_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.activity_data.title",
+                "matchedExpression": "@local.activity_data.title",
+                "type": "local",
+                "fieldName": "activity_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.activity_data.title": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_image",
+          "value": "@data.habit.spend_time.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "library_activity.activity_image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.spend_time.image_asset",
+                "matchedExpression": "@data.habit.spend_time.image_asset",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.habit.spend_time.image_asset": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "content_box",
+          "value": "something_fun",
+          "rows": [
+            {
+              "name": "activity_data",
+              "value": "@local.activity_data",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "library_activity.content_box.activity_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.activity_data",
+                    "matchedExpression": "@local.activity_data",
+                    "type": "local",
+                    "fieldName": "activity_data"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.activity_data": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "activity_text",
+              "value": "@local.activity_text",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "library_activity.content_box.activity_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.activity_text",
+                    "matchedExpression": "@local.activity_text",
+                    "type": "local",
+                    "fieldName": "activity_text"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.activity_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "library_activity.content_box"
+        }
+      ],
+      "_nested_name": "library_activity"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

@@ -1,0 +1,390 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_set_theme_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "answer0_list",
+      "value": [
+        "name:name_var_1 | text:Single",
+        "name:name_var_2 | text:Pair"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer0_list"
+    },
+    {
+      "name": "options_per_row",
+      "value": 2,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "options_per_row"
+    },
+    {
+      "type": "display_group",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "button",
+          "name": "active_theme_button",
+          "value": "Active Theme",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_theme",
+              "args": [
+                "active"
+              ],
+              "_raw": "click | set_theme:active",
+              "_cleaned": "click | set_theme:active"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.active_theme_button"
+        },
+        {
+          "type": "button",
+          "name": "passive_theme_button",
+          "value": "Passive Theme",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_theme",
+              "args": [
+                "passive"
+              ],
+              "_raw": "click | set_theme:passive",
+              "_cleaned": "click | set_theme:passive"
+            }
+          ],
+          "exclude_from_translation": true,
+          "_nested_name": "display_group.passive_theme_button"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_square",
+      "value": "Pair",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer0_list",
+        "options_per_row": "@local.options_per_row"
+      },
+      "_nested_name": "radio_group_square",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer0_list",
+              "matchedExpression": "@local.answer0_list",
+              "type": "local",
+              "fieldName": "answer0_list"
+            }
+          ],
+          "options_per_row": [
+            {
+              "fullExpression": "@local.options_per_row",
+              "matchedExpression": "@local.options_per_row",
+              "type": "local",
+              "fieldName": "options_per_row"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer0_list": [
+          "parameter_list.answer_list"
+        ],
+        "@local.options_per_row": [
+          "parameter_list.options_per_row"
+        ]
+      }
+    },
+    {
+      "name": "answer1_list",
+      "value": [
+        "name:name_var_1 | text:Woman | image:/plh_images/icons/heart.svg",
+        "name:name_var_2 | text:Man | image:/plh_images/icons/heart.svg"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer1_list"
+    },
+    {
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "name": "set_variable",
+      "_nested_name": "set_variable"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_square_ex1",
+      "value": "Black",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer2_list",
+        "options_per_row": "3"
+      },
+      "_nested_name": "radio_group_square_ex1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer2_list",
+              "matchedExpression": "@local.answer2_list",
+              "type": "local",
+              "fieldName": "answer2_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer2_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "name": "answer2_list",
+      "value": [
+        "name:name_var_1 | text:Black| image:/plh_images/icons/heart.svg",
+        "name:name_var_2| image:/plh_images/icons/heart.svg | text:White",
+        "name:name_var_3| image:/plh_images/icons/heart.svg | text:Blue"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer2_list"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_square_ex2",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer3_list",
+        "options_per_row": "3"
+      },
+      "_nested_name": "radio_group_square_ex2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer3_list",
+              "matchedExpression": "@local.answer3_list",
+              "type": "local",
+              "fieldName": "answer3_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer3_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "name": "answer3_list",
+      "value": [
+        "name:name_var_1 | image:/plh_images/icons/heart.svg",
+        "name:name_var_2| image:/plh_images/icons/heart.svg",
+        "name:name_var_3| image:/plh_images/icons/heart.svg"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer3_list"
+    },
+    {
+      "name": "combo_answer_list",
+      "value": [
+        "First",
+        "Second",
+        "Third"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "combo_answer_list"
+    },
+    {
+      "type": "combo_box",
+      "name": "combo_box_defaults",
+      "value": "nothing",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.combo_answer_list"
+      },
+      "_nested_name": "combo_box_defaults",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.combo_answer_list",
+              "matchedExpression": "@local.combo_answer_list",
+              "type": "local",
+              "fieldName": "combo_answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.combo_answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_square_ex3",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer4_list",
+        "options_per_row": "3",
+        "style": "transparent"
+      },
+      "_nested_name": "radio_group_square_ex3",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer4_list",
+              "matchedExpression": "@local.answer4_list",
+              "type": "local",
+              "fieldName": "answer4_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer4_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "name": "answer4_list",
+      "value": [
+        "name:name_var_1 | image:/plh_images/icons/heart.svg",
+        "name:name_var_2| image:/plh_images/icons/heart.svg",
+        "name:name_var_3| image:/plh_images/icons/heart.svg"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer4_list"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_welcome"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/characters/group/talk_together.png",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "style_list": [
+            "max-width: 250px"
+          ],
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_short"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title banner title",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "_nested_name": "dg_example_7.title_ex_s"
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/characters/group/talk_together.png",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title banner title",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "_nested_name": "dg_example_7.title_ex_s"
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/characters/group/talk_together.png",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_template_components.xlsx"
+}

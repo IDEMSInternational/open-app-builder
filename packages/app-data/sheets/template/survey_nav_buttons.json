@@ -1,0 +1,268 @@
+{
+  "flow_type": "template",
+  "flow_name": "survey_nav_buttons",
+  "status": "released",
+  "rows": [
+    {
+      "name": "this_question_answered",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "this_question_answered"
+    },
+    {
+      "name": "skip_warning_popped_up",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "skip_warning_popped_up"
+    },
+    {
+      "name": "na_warning_popped_up",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "na_warning_popped_up"
+    },
+    {
+      "name": "na_selected",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "na_selected"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "pop_up",
+          "args": [
+            "survey_warning_skip_question"
+          ],
+          "_raw": "completed | pop_up:survey_warning_skip_question",
+          "_cleaned": "completed | pop_up:survey_warning_skip_question"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "set_local",
+          "args": [
+            "skip_warning_popped_up",
+            true
+          ],
+          "_raw": "completed | set_local: skip_warning_popped_up:true",
+          "_cleaned": "completed | set_local: skip_warning_popped_up:true"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!(@local.this_question_answered || @local.skip_warning_popped_up)",
+      "rows": [
+        {
+          "name": "use_completed_chevron",
+          "value": true,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.use_completed_chevron"
+        }
+      ],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!(@local.this_question_answered || @local.skip_warning_popped_up)",
+            "matchedExpression": "@local.this_question_answered",
+            "type": "local",
+            "fieldName": "this_question_answered"
+          },
+          {
+            "fullExpression": "!(@local.this_question_answered || @local.skip_warning_popped_up)",
+            "matchedExpression": "@local.skip_warning_popped_up",
+            "type": "local",
+            "fieldName": "skip_warning_popped_up"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.this_question_answered": [
+          "condition"
+        ],
+        "@local.skip_warning_popped_up": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "pop_up",
+          "args": [
+            "survey_warning_na"
+          ],
+          "_raw": "completed | pop_up:survey_warning_na",
+          "_cleaned": "completed | pop_up:survey_warning_na"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "set_local",
+          "args": [
+            "na_warning_popped_up",
+            true
+          ],
+          "_raw": "completed | set_local: na_warning_popped_up:true",
+          "_cleaned": "completed | set_local: na_warning_popped_up:true"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up",
+      "rows": [
+        {
+          "name": "use_completed_chevron",
+          "value": true,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.use_completed_chevron"
+        }
+      ],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up",
+            "matchedExpression": "@local.na_selected",
+            "type": "local",
+            "fieldName": "na_selected"
+          },
+          {
+            "fullExpression": "@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up",
+            "matchedExpression": "!@fields.survey_continue_na",
+            "type": "fields",
+            "fieldName": "survey_continue_na"
+          },
+          {
+            "fullExpression": "@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up",
+            "matchedExpression": "!@local.na_warning_popped_up",
+            "type": "local",
+            "fieldName": "na_warning_popped_up"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.na_selected": [
+          "condition"
+        ],
+        "!@fields.survey_continue_na": [
+          "condition"
+        ],
+        "!@local.na_warning_popped_up": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "(@local.this_question_answered || @local.warning_popped_up) && !(@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up)",
+      "rows": [
+        {
+          "name": "use_completed_chevron",
+          "value": true,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "nav_buttons.use_completed_chevron"
+        }
+      ],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "(@local.this_question_answered || @local.warning_popped_up) && !(@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up)",
+            "matchedExpression": "@local.this_question_answered",
+            "type": "local",
+            "fieldName": "this_question_answered"
+          },
+          {
+            "fullExpression": "(@local.this_question_answered || @local.warning_popped_up) && !(@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up)",
+            "matchedExpression": "@local.warning_popped_up",
+            "type": "local",
+            "fieldName": "warning_popped_up"
+          },
+          {
+            "fullExpression": "(@local.this_question_answered || @local.warning_popped_up) && !(@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up)",
+            "matchedExpression": "@local.na_selected",
+            "type": "local",
+            "fieldName": "na_selected"
+          },
+          {
+            "fullExpression": "(@local.this_question_answered || @local.warning_popped_up) && !(@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up)",
+            "matchedExpression": "!@fields.survey_continue_na",
+            "type": "fields",
+            "fieldName": "survey_continue_na"
+          },
+          {
+            "fullExpression": "(@local.this_question_answered || @local.warning_popped_up) && !(@local.na_selected && !@fields.survey_continue_na && !@local.na_warning_popped_up)",
+            "matchedExpression": "!@local.na_warning_popped_up",
+            "type": "local",
+            "fieldName": "na_warning_popped_up"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.this_question_answered": [
+          "condition"
+        ],
+        "@local.warning_popped_up": [
+          "condition"
+        ],
+        "@local.na_selected": [
+          "condition"
+        ],
+        "!@fields.survey_continue_na": [
+          "condition"
+        ],
+        "!@local.na_warning_popped_up": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+}

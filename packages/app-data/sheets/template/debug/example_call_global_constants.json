@@ -1,0 +1,94 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_call_global_constants",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.example_global_constant_title",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.example_global_constant_title",
+            "matchedExpression": "@global.example_global_constant_title",
+            "type": "global",
+            "fieldName": "example_global_constant_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.example_global_constant_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Text that includes @global.example_global_constant_text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text that includes @global.example_global_constant_text",
+            "matchedExpression": "@global.example_global_constant_text",
+            "type": "global",
+            "fieldName": "example_global_constant_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.example_global_constant_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "name": "image_src",
+      "value": "@global.example_global_constant_image",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "image_src",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.example_global_constant_image",
+            "matchedExpression": "@global.example_global_constant_image",
+            "type": "global",
+            "fieldName": "example_global_constant_image"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.example_global_constant_image": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "There should be an image above this text, whose source is example_global_image",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_global_field.xlsx"
+}

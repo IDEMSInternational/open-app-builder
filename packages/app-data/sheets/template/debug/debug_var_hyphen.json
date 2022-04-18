@@ -1,0 +1,102 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_var_hyphen",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "@global.parent_app-based learning",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.parent_app-based learning",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Works in gb_en",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Your @global.parent_app Code",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_nested_name": "title_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your @global.parent_app Code",
+            "matchedExpression": "@global.parent_app",
+            "type": "global",
+            "fieldName": "parent_app"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_app": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Works in gb_en and in za_af",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "value": "Launch tour",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "start_tour",
+          "args": [
+            "debug_tour_var_hyphen"
+          ],
+          "_raw": "click | start_tour: debug_tour_var_hyphen",
+          "_cleaned": "click | start_tour: debug_tour_var_hyphen"
+        }
+      ],
+      "_nested_name": "button"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_global.xlsx"
+}
