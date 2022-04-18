@@ -3,7 +3,2509 @@ import { FlowTypes } from "data-models";
 const template: FlowTypes.Template[] = [
   {
     flow_type: "template",
-    flow_name: "template_story",
+    flow_name: "efm_act_5_430a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "These teaching methods provide structured strategies for learning single-digit multiplication. As your child practices these strategies they will be learning important numerical relationships, and they will also eventually memorize these facts. Your child should already be good with doubling and skip counting by any number.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_430b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "By now, your child is so familiar with addition that it’s no surprise that 2 + 3 is the same as 3 + 2. Although not as obvious, the same is true for multiplication. This illustration makes it easy to see that two rows of three is the same as three rows of two – you just change your point of view! It doesn’t matter which order you multiply two numbers – you get the same answer either way!",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM380MultiplyingCommutes.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "240px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "In addition to being cool in a nerdy way, it also means that your child needs to master only about half as many multiplication facts – once your child knows 3 x 4, they also know 4 x 3.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_430c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Skip counting is great for getting better at addition and subtraction. It also is a big help in getting started with multiplication.\n\nAlthough skip counting is not the fastest way to find a result, it is reliable and your child should use it as long as they need to. Suppose your child needs to find 7 x 3. Skip count by 3’s seven times or skip count by 7’s three times to get 21.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_430d_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "**Multiplying by 5 and 10**\n\nThese facts are quickly learned, provide a backbone for other multiplication facts, and they help with understanding two-digit place value.\n\n**Squares**\n\nJust as addition twins are favorite math facts for addition, squares are often favorites for multiplication. Learning these provides another foundation for learning other multiplication facts.\n\n**Doubling**\n\nUse this strategy for multiplying by even numbers. For example, the result of 6 x 7 is the double of 3 x 7. So, 6 x 7 is the double of 21, which is 42.\n\n**One More or One Less**\n\nThis strategy is effective for the remaining multiplication facts. For example, 9 x 7 is one 7 less than 10 x 7 = 70. So it is 70 - 7 = 63. This can be done for all the 9’s. Similarly, 3 x 7 is one more 7 than doubling 7, so it is 7 + 14 = 21. This can be done for all the 3’s.\n\n**Multiplying by 9**\n\nAlthough multiplying by 9 is covered by the last strategy, they are fun to learn in their own right. If you write out the multiples of 9 in order, you’ll see that the tens digit is always one less than the number you are multiplying by and the ones digit plus the tens digit always adds up to 9!",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_440a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Each player has a sheet of paper with 7 rows and 3 columns. The columns are marked “10’s,” “1’s,” and “Running Total.” Each player’s running total starts at 0. Roll a die or pick a random playing card from 1 to 9. Each player chooses to use this number in their 1’s or 10’s column for the current row. For example, if it is a 4, this can become 4 or 40. The chosen number is added to the running total. A player that goes over the target of 100 “goes bust” and loses. If neither player goes bust, the one closer to 100 wins. \n\nThere are many options for this game:\n\n* Use a different target number.\n* Use fewer or more rows.\n* Don’t go bust if you go over the target. The closer player on either side wins.\n* Use a fourth column of 100’s to practice 3-digit numbers.\n* Practice subtraction by starting at the target number and subtract down to 0.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_440b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Have a paper with a number line from 0 to 99 to share. On a turn, a player uses two random cards from 0 to 9, choosing the order of these two digits, to generate a number from 00 to 99, and then puts that number on their side of the number line. The first player to get four numbers in a region without any of the opponent’s numbers in between wins. The game can also be played from 000 to 999 if you like.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_440c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "There are two versions of this. The first is the same as the Sum Groups puzzle in Chapter 3, only now the target sums can be bigger.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM440BondedGroups.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "The other version uses a 4 by 4 board with a target number, say 20. As in Sum Groups, the board is filled with pairs and triples of numbers that add up to the target. However, now there will be one square not involved in any of those groups. The challenge is to find that number.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_440d_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Create these by taking a simple addition or subtraction equation and leaving out some of the digits. For example, the following two problems are turned into Missing Number puzzles by leaving out a couple digits.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM440MissingNumbers.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "360px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "After getting comfortable with these, your child may enjoy doing some Letter Substitution puzzles that are described on a later Adding and Subtracting page in this chapter.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_450a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Make a set of multiplication cards to practice these math facts while playing matching games your family played earlier: Chapter 1 - Go Fish, Memory Challenge; Chapter 2 - Bingo; Chapter 3 - Hot Potato; and Chapter 4 - Gin Rummy.\n\nHand draw four cards to go with each math fact - 1) the expression 2) groups of objects, 3) an array, and 4) the prime factorization. If you make these the size of playing cards (2½” by 3½”), use a template from the Printables file if you like. \n\nTake 3 x 4 for example. The four cards would be:",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM450MultiplicationCards1.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "360px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_top_2",
+            value:
+              "You have several options for these cards. One option is to include 3 x 4 and not include 4 x 3. While this means you make about half as many cards, it has the drawback that seeing 3 groups of 4 is different from seeing 4 groups of 3.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_2",
+          },
+          {
+            name: "text_upside_1",
+            value:
+              "For array cards, put the skip counting numbers along one or both of the sides to help your child practice skip counting.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_upside_1",
+          },
+          {
+            name: "image_upside_1_right",
+            value: "EFM450MultiplicationCards2.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_upside_1_right",
+          },
+          {
+            name: "image_upside_1_right_flex",
+            value: 80,
+            type: "set_variable",
+            _nested_name: "activity_body.image_upside_1_right_flex",
+          },
+          {
+            name: "image_upside_1_right_max_width",
+            value: "135px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_upside_1_right_max_width",
+          },
+          {
+            name: "image_side_1_left",
+            value: "EFM450MultiplicationCards3.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_side_1_left",
+          },
+          {
+            name: "image_side_1_left_flex",
+            value: 80,
+            type: "set_variable",
+            _nested_name: "activity_body.image_side_1_left_flex",
+          },
+          {
+            name: "image_side_1_left_max_width",
+            value: "135px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_side_1_left_max_width",
+          },
+          {
+            name: "text_side_1",
+            value:
+              "For expression cards, replace each number with the prime factorization symbol for the number. This makes it easier to see how the prime factorizations fit together when multiplying two numbers.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_side_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_450b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Start with a blank multiplication table that has 4 product rows and 4 product columns. There are also groups of four missing numbers at the top and left sides – these will have some of the numbers from 2 to 9, and these numbers can be duplicated.\n\nFill in the table out of sight of your child, and then flip over or cover all the numbers. Your child can ask to reveal, one at a time, up to 10 of the 16 product entries. The goal is to figure out the entries for the top and left sides before running out of turns.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM450RevealingProducts.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "240px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "Imagine that all the cards were flipped over in this example. If your child chose to flip over the card that happened to have the 63 under it, then they would know it came from a  7 and a 9. Flipping over any other card in the same row or column as the 63 would indicate where the 7 and 9 are. Suppose the second card they flipped over was where the 56 is. Not only would they know that the third column was for 7, they would also know that the second row was for 9 and the third row was for 8.\n\nLarger sizes also work. For example, a table with 5 blank rows and columns that allows for up to 12 flips will work well.\n\nPick numbers for the top and left sides that you want your child to practice with.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_460a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Have a board of numbers from 1 to 30. There are two kinds of tokens – a single token reserved for “the last move,” and a pile of other tokens. \n\nThe first player gets to pick any number and cover it with the last move token. After that, a player replaces the last move token with the other type of token and moves the last move token to any number that is a factor or multiple of the number from the last move. The losing player is the one forced to cover the number 1. \n\nAs children get better at this game, they will discover rules they need to follow governing reasonable first moves. The most basic rule is that the first move cannot be on a prime number in the upper half of the numbers.\n\nAdjust the range of numbers for the skill level of the players - you can use 1 to 24, 1 to 48, or even 1 to 60.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_460b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Start with any number, say 20. Let your child decide whether to go first or second. During their turn, a player may subtract any divisor of the current number from the number. The player forced to 0 loses.\n\nAfter your child becomes familiar with the game, encourage them to look for the remarkably simple strategy for playing it - once they discover it, see if they can explain why it works.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_460c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Children have fun putting in X’s and watching the primes fall through the sieve. This activity creates opportunities for discovering many interesting properties of divisibility and primes.\n\nStart with a number line numbered from 1 to 25 - or a larger range if space and patience allows.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM460SieveOfEratosthenes.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "420px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "Write the number 2 below itself. On the line even with this 2, put X’s below each multiple of 2.\n \nNow, pull down the lowest number with no X’s below it (3 in this case) and put it on the next line. Write the 3 and put X’s on that line for all its multiples. Keep pulling down numbers and marking their multiples. When you are finished, you will have pulled down all the primes. Remember that 1 is a unit and not a prime!\n\nHere are some good questions to discuss with your child as they play with this sieve:\n\n* Why are the numbers pulled down primes?\n* What is the last prime whose multiples you need to cross out? Why were the other primes not useful?\n* For all the primes that were useful, which of their multiples produced new restrictions and which were not useful?\n* If you had a number, say 53, which prime numbers would you need to divide it by to confirm that it’s a prime?",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_470a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Have a collection of numbered cards from 1 to 25, or whatever range your child is comfortable with. A card is selected at random and used as everyone’s target number. The card is returned to the deck. Each player is dealt five cards to be used, in any order and with any operations, to get as close as possible to the target number. The closest player wins the round.\n\nA different way to score gives a player twice as many points as the number of cards they use to reach the target; a player receives 5 points for hitting the target with help; and a player receives 6 points for helping someone hit the target.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_470b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Near the end of Chapter 4, the Sum Difference activity had one person think of two numbers and then challenge the other person to find the numbers by telling them the sum and difference of the numbers. Secret Ops uses the same idea, only now the challenger can use any two operations, such as multiplying and subtracting.\n\nFor example, the challenger might say “Which two numbers have a product of 12 and a difference of 4?” You can extend this to three numbers, if you like - “Which three numbers have a product of 12 and a sum of 8?”",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_470c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "These puzzles are very easy for an adult to create. Take any equation, such as 9 = (2 + 7) x (5 - 2 x 2) and remove the parentheses. The challenge for your child is how to take 2 + 7 x 5 - 2 x 2 and add parentheses to it so that the result is 9.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_470d_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Use the lever principle to practice multiplication and addition. The principle states that the force exerted by a mass on one side of a lever is equal to the mass times its distance from the pivot point, the fulcrum. The forces on one side from several masses add up to give the total force. The total forces on the two sides must be equal for the lever to be in balance.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM470LeverBalance.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "360px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "You have a 3-unit weight and a 5-unit weight to put on opposite sides of the fulcrum. Where should they be put to balance? The answer to this can be distances 5 and 3, but it can also be 10 and 6, or even larger answers like 15 and 9.\n\nIf you have a 3-unit and a 5-unit weight to put on one side of a lever, which weights can you put at which distances on the other side? What if the two weights are on different sides of the lever? This question continues the questions on the Make It Count page at the end of Chapter 4.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_480a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Remove the picture cards from a deck and split it evenly between two players. To give more focused practice, remove the A’s and 10’s as well.\n\nEach player turns over two cards, multiplies them, and the player with the larger product wins those four cards. If the products are equal, two more cards are turned over and the winner gets to keep all eight cards. The player with the most cards after playing for a set time is the winner.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_480b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Start by identifying a group of numbers to use for the round. It can be odd numbers, or multiples of 3 together with numbers that have a 3 in them, or any group that provides good practice. \n\nTwo or more players take turns saying the numbers starting at 1. When a player has a number in the group, they must say “beep.” If they fail to say beep, or say beep for a wrong number, they’re out. The last player in wins!",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_480c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Use a deck of cards with Q’s (as 0’s), A’s (as 1’s), and 2-9, or use four sets of Number Cards from 0 to 9. Use a 4 by 5 grid on a paper with 20 spaces randomly filled out with multiples of 5 and 10. Have a set of tokens for each player. Select a random card and put your token on that number times 5 or 10 - your choice. Once occupied, the other player cannot move there. The first player to get 3 in a row wins. \n\nThe numbers 5 and 10 can be replaced by other pairs such as 2 and 4, or 3 and 6. These pairings help with practicing doubling strategies for multiplication. For example, if the player does not know 6 x 7, they can double 3 x 7.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_480d_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Filling in a standard multiplication table is boring, and children quickly realize they can fill it out using addition rather than multiplication. To really practice multiplication, as well as practicing problem solving and factoring, create a mixed-up multiplication table for your child.\n\nMake these tables by moving the rows and columns around, and leaving out most of the headings and  entries in the middle. Here is an example using headings of 2 through 9:",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM480TurningTheTables.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "Solve this by starting with the distinctive entries. The 20 forces its row to be multiplying by 4, and then the 36 makes its column be 9. The 49 forces its column and row to be multiplying by 7. The 9 forces its column and row to be multiplying by 3. Now the 12 must be in the column for 4. Continue the detective work in this way and fill in the entries as the headings are discovered.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_490a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "The area of a rectangle is its length times its width. That dry statement can be made tangible to your child in at least two ways. The first is to show a rectangle broken into a collection of squares.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM490RectangleArea.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "220px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "The second is to use number shapes to show how a quantity, such as 12, can be placed into an array - 3 by 4, 2 by 6, or 1 by 12. Playing with rectangle areas gives us a fun arena in which to play around with multiplication and factoring!",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_490b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Start with a large collection of small objects, such as raisins. For each number, investigate which rectangles you can make with that many objects. 1 can only be made with a 1 by 1 rectangle, and 1 is called a unit. The numbers, such as 5, that only have 1 by 5 and 5 by 1 rectangles, are called primes. Numbers that are not a unit or prime are called composite - they are called that because they are composed of primes being multiplied together, such as 12 = 2 x 2 x 3.\n\nThe dimensions of each rectangle are made of values that evenly divide the number and multiply together to give the number. Making rectangles is a direct way to experience divisibility. Numbers such as 16 are called squares because one of their rectangles is a square – one rectangle for 16 is the 4 by 4 square.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_490c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Each player gets a piece of graph paper. For a player’s turn, use two playing cards from 1 to 10 to determine the dimensions of a rectangle. If a player’s paper has room, the rectangle may be placed anywhere its interior does not overlap with an existing rectangle. Once placed, its interior is lightly shaded and its area and dimensions are written on it. If there is no room, the turn is skipped. The player with the largest total wins. For a normal piece of graph paper, this can be a long game – reduce the time by using half the paper or limiting the number of turns.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_490d_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "A rectangle, 4 by 4 or larger, with numbers in some of its squares,  is to be divided into smaller rectangles. Each number must end up  in a separate rectangle whose area is that number. \n\nOut of the sight of your child, create these puzzles by first filling in the big rectangle with smaller rectangles. Next, place the area in each rectangle. Lastly, give your child the big rectangle with only the numbers.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM490DivideUpTheBox.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "180px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "To solve, look first at areas that are prime numbers. Also, sometimes an area is boxed in – in this puzzle the upper “4” must relate to the upper left 2 by 2 square. Next, the upper right corner must be used in a vertical 3 by 1 rectangle. Keep going!",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_500a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Just as 4 x 2 is a quick way to write 2 + 2 + 2 + 2, so 2<sup>4</sup> (sometimes written 2^4) is a quick way to write 2 x 2 x 2 x 2. It’s much easier to say and understand the phrase “two to the fourth,” than to say “two times two times … “ There are two special names associated with powers. The second power, 4<sup>2</sup> for example, can be said *four squared*, and the third power, 4<sup>3</sup> for example, can be said *four cubed*.\n\nWhen two powers of the same number are multiplied, a simple rule governs how to simplify the result - the powers add up. For example, if you do 4<sup>2</sup> x 4<sup>3</sup> = (4 x 4) x (4 x 4 x 4) = 4<sup>5</sup>, we have two fours multiplied by three fours, so the result is five fours being multiplied. Note that this rule of adding exponents only works when it is the same number being taken to a power.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_500b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Because powers add up when powers are being multiplied, any of our old games and puzzles involving addition can be used to practice multiplying numbers that are powers. Some examples of this are: Chapter 3 - Shape Sums and Sum Groups; Chapter 4 - Enclosed Sums, SumTriangles, and Fix It.\n\nHere are two examples used in Chapter 3 for Shape Sums.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM500SimpleShapeSums.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "Here are the same two examples for Shape Products where we use multiplication combining the circles instead of addition.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+          {
+            name: "image_bottom_1",
+            value: "EFM500SimpleShapeProducts.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1",
+          },
+          {
+            name: "image_bottom_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1_max_width",
+          },
+          {
+            name: "text_bottom_2",
+            value:
+              "With practice, this becomes routine and just as easy as the original addition problems.\n\nIf your child is enjoying these problems and wants some extra challenge, start involving more than one number being raised to a power. For example, if you multiply (4<sup>2</sup> x 3<sup>3</sup>) x (4<sup>5</sup> x 3<sup>2</sup>) you can apply our rule separately to the powers of 4 and the powers of 3 and get the result 4<sup>7</sup> x 3<sup>5</sup>.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_2",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_500c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "An excellent thing to practice when you are travelling and have time on your hands is to recite the prime factorizations for the numbers in order. This also provides practice with talking about powers. Knowing prime factorizations with ease will be helpful in many things to come, such as working with fractions. Have fun with this and don’t push your child beyond their comfort level.\n\nIt goes like this: \n1 is a unit, \n2 is a prime, \n3 is a prime, \n4 is 2 squared, \n5 is a prime, \n6 is 2 x 3, \n7 is a prime, \n8 is 2 cubed, \n9 is 3 squared, \n10 is 2 x 5, \n11 is a prime, \n12 is 2 squared x 3, \n13 is a prime, \n14 is 2 x 7, \n15 is 3 x 5,\n16 is 2 to the fourth. \n\nIf your child stumbles, help them figure it out rather than simply reminding them of the answer.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_510a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Factor trees are an extension of Shape Products from the previous Feel the Power page. The goal in creating a factor tree is to reduce a number to its prime factors. Many things can be learned about a number in the process of constructing a factor tree.\n\nStart with a number, say 54. This can be broken down several ways. One way is  9 x 6, another is 18 x 3, and yet another is 3 x 3 x 6. Each of these produces a different start to a factor tree.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM510FactorTrees.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "380px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "Each of these trees ultimately produces the same primes on its leaves. In each case we end up with 2 x 3 x 3 x 3, but look at the different ways of getting there!\n\nAfter doing some examples like these, your child may naturally start asking some questions.\n\nWhy do some trees have more levels than others? Why are some trees broader than others? Why do the leaves always stop at primes? Why do the leaves always have the same list of primes, perhaps with rearrangement?\n\nThis last question is a really big question. It is so big it is called the Fundamental Theorem of Arithmetic. It says that each number has exactly one way of being expressed as a product of primes!\n\nYou may ask: Why is that so important? It says that primes are the multiplicative building blocks of numbers, and once you have found one way to build a number, that is the only way. If you know that 54 = 2 x 3 x 3 x 3, then there is no way, using whole numbers, to write 54 = 5 x ___ . The uniqueness of prime factorizations is at the heart of a lot of beautiful number theory.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_510b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "These puzzles are the multiplicative version of the Addition Pyramids seen in Chapter 4. You are supplied with a target number and a pyramid of numbers. The challenge is to find a path of connected numbers down the pyramid so the product of the selected numbers is the target.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM510ProductPyramid.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "The target is 36 in this pyramid and the red lines indicate the path that works. Your child may notice that these puzzles are much easier if they start by doing the prime factorization of the target. Because 36 = 2 x 2 x 3 x 3, they know they must pick up those prime factors along the path and this helps guide the search. Having the adult know about prime factorizations also makes it much easier to create these puzzles.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_520a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Use a deck of cards with Q’s (as 0’s), A’s (as 1’s), and 2-9’s. Set the  target number at 100. Four random cards are chosen and used to make a pair of 2-digit numbers, a shared resource. \n\nEach player is dealt 14 random cards face up. Players alternate turns. During a turn, a player uses two cards to replace two of the four cards, and the resulting pair of numbers must add up to the target. A player passes if that is not possible. The first player to run out of cards wins. If both players become stuck, the player with fewer cards wins.\n\nSome options are to change the target number and to give players fewer or more than 14 cards. Another option is to use subtraction together with a smaller target number.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_520b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Choose a target number, say 100. Each player picks up five random cards from 0 to 9. Two 2-digit numbers are made out of these numbers, the fifth card is unused. The two numbers are added and the player closest to the target wins a point for that round. The highest number of points after a fixed number of rounds wins.\n\nOne option is to use three-digit numbers, a target number of 1000, and each player receives seven cards. Another option is to use subtraction with a smaller target number.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_520c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Once your child becomes comfortable with the Missing Number puzzles from a few pages earlier in this chapter, they can start these puzzles. In these, one or more of the digits are replaced by letters. The three rules for letters are: \n\n* A given letter is always the same digit\n* The leftmost digit of a number is never 0\n* Different letters must be different digits\n\nCreate these puzzles by taking an addition or subtraction problem and replacing one or more of the digits, as in the following examples:",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM520LetterSubstitution1.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "The puzzles can also be created to make interesting problem-solving challenges for your child. Note that the values of the letters do not carry over from puzzle to puzzle.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+          {
+            name: "image_bottom_1",
+            value: "EFM520LetterSubstitution2.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1",
+          },
+          {
+            name: "image_bottom_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1_max_width",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_530a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Imagine a billiard table that has a pocket in each of the four corners. When a ball bounces off the side of the table, it bounces away at the same angle it came in at. This investigation looks at the question: If we shoot a ball at a 45 degree angle from one corner, where will it end up? The answer depends on the size of the table. This is what happens on a 3 by 4 table.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM530BilliardBallBouncing.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "After playing with several of these, challenge your child to predict what the answer is in advance. Starting in the bottom left corner, which corner will be hit first and how many bounces will it take?",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_530b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Suppose you have an 8 by 8 chessboard and you have a collection of 1 by 2 tiles. Finding a way to exactly cover the chessboard with 32 of these 1 by 2 tiles is simple enough. \n\nLet’s start playing around with removing squares from the chessboard. If you remove one corner of the chessboard, you know immediately that you can no longer cover the chessboard with tiles because the tiles will cover an even number of squares, and there are now 63 squares. Okay, remove two corners to make an even number of remaining squares - can you cover it now? The answer depends on which two corners you remove. Why? What if you no longer restrict yourself to removing corners, what happens?\n\nOne important lesson in dealing with questions like these is to learn from playing with smaller problems. Try these questions on a 4 by 4 or 6 by 6 board first.\n\nIf your child is enjoying these questions, start branching out to using other shapes to fill the board. Play around with filling it with 1 by 3 tiles or with 3 squares in an L shape. What patterns and rules do you discover with these? What other shapes might be interesting to play with?",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_530c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "In which ways can you fill a square with other squares, where the other squares need not all be the same size? However, the side length of each square must be some whole number multiple of a fixed length. The question to investigate is: What are all the numbers of squares that are possible? If you know a number is possible, is there an easy way to describe how to do it?\n\nLet your child play with it over many days and don’t be in a hurry to get to the answer. Here is a diagram showing how 6 is possible.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM530SquaresInSquares.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "200px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "If your child enjoys exploring that question, explore variations on this theme. Suppose you only allow squares of certain sizes - such as 1 by 1, 2 by 2, and 3 by 3. Another direction to look at is  filling other figures with figures that have the same shape. For example, ask the same question for regular triangles (triangles with all their sides the same length). Some figures are interesting to investigate in this way, and some are not interesting at all - which ones?",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_540a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value: "Use a shared piece of paper filled out as follows:",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM540ProductGame.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "The first player moves a token onto any number from 1 to 9 in the 1-9 squares. The second player puts another token on one of the 1-9 squares and claims the product in the 6 by 6 grid. From then on, each player chooses to move either of the two tokens and claims the product (if they can). The first player to claim 3 squares in a row wins.\n\nMix up the product numbers to give your child better practice identifying the products. See the Chapter 5 Bonus Material for designs of larger boards with larger ranges.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_540b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "These puzzles have islands (circles and squares) connected by bridges (lines). If there are two circles on either side of a square, then the square holds the product of the two circles. The challenge is to fill in the missing numbers.\n\nMake these puzzles by filling in the circles, then filling in the squares, and finally removing some of the numbers before giving it to your child.\n\nIn addition to practicing multiplication, these puzzles can be structured to practice common factors as well. In the first puzzle, the only number, other than 1, that divides 14 and 21 is 7, so that is the number in the bottom circle.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM540IslandHoppingWithProducts.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "400px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_540c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "This game is lightly inspired by checkers. Each player has 10 counters. The counters are numbered from 1 to 10, with the “10” counter marked with 10 and 11. The counters start on the end rows of a 100-chart - one player on squares 1 to 10 and the other on squares 91 to 100.\n\nInitially, counters can only move “forward” one row onto any multiple of the number(s) on the marker they choose – for the player starting on 1 to 10, forward means larger numbers, and for the player starting on 91 to 100, forward means smaller numbers. Once a counter has made it all the way across the board, it becomes a king and can then move forward or backward one row after that. An opponent's piece is taken by landing on it. A player’s piece cannot double up with another of the same player’s pieces. You win by taking all your opponent’s pieces. \n\nFor younger players, shorten the board to use the first 6 rows – the numbers from 1 to 60. A child who does not know all the multiples yet can use skip counting to figure out the moves.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_550a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Use three dice and an 8 by 8 board of numbers from 1 to 64. A player rolls the dice and uses addition, subtraction, multiplication, and division to make any unmarked number on the board. The player marks this square and receives one point for the square plus one more point for each marked square that it touches, including diagonally. If a player cannot make a play, any other player who finds a play can claim that score. Play five or more rounds, with the largest score winning.\n\nSome game options are to use a fourth die, and to use a smaller or larger board.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_550b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "You are given some weights and a design for a mobile that has some attach points. The challenge is to put at most one weight per attach point so the mobile will balance along every arm. Assume the wires are weightless. Each arm in the mobile is a lever that needs balancing, so these puzzles are an extension of the Lever Balance puzzle given earlier in this chapter - practice those puzzles before starting these.\n\nStart with the simplest mobiles, which are just levers in the air. Here is a solution for putting the weights from 1 to 4 on this mobile to balance it.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM550Mobile1.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "This works because 2 x 4 + 1 x 2 = 4 x 1 + 3 x 2.\n\nHere is a more complicated mobile. Use the total of the weights below it to balance each side of the top wire (1 + 3) x 3 = (4 + 2) x 2.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+          {
+            name: "image_bottom_1",
+            value: "EFM550Mobile2.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1",
+          },
+          {
+            name: "image_bottom_1_max_width",
+            value: "300px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1_max_width",
+          },
+          {
+            name: "text_bottom_2",
+            value:
+              "Go to the Chapter 5 Bonus Material for more examples and a longer discussion of mobiles.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_2",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_550c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "The premise is that you have a calculator that is badly broken and you are challenged to produce some result on the calculator. This is easy to play orally whenever you have a spare moment. Here are some examples to get you started..\n\nSuppose you had a calculator with +, -, x, and /, but only one working number key, the 4. Could you get the result 21? If so, what is the fewest number of steps you would need? Suppose you could use 4 at most four times - which numbers could you produce? Suppose you had to use the 4 exactly four times. Play around with having other single keys and creating other results.\n\nSuppose your calculator could only add 4 or 7. Which numbers could you produce? Suppose it had 4 or 7, but now it can add and subtract. Which numbers could you produce? This is the same activity we’ve seen in other settings.\n\nSuppose you only had a 1 key and could only add or double. For example, 2 x (2 x 1) + 1 is 5. What other numbers can you create?",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_560a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Use a board with a 4 by 6 grid of numbers from 1 to 24. On a turn, a player chooses a number that is uncovered and has at least one factor uncovered – the player gets the selected number and the other player gets any or all of the uncovered factors (their choice as to how many). Play alternates until there are no legal numbers left. The players add up their numbers and the higher sum wins.\n\nThis can also be played as a solitaire puzzle, sometimes called Taxman. In this version, the one player selects each number and the taxman gets all the available factors. Play continues until the player no longer has a legal move - at that point, the taxman receives the remaining numbers. The goal is to have as large a sum as possible - bigger than the taxman when that’s possible.\n\nMake the range of numbers suit the ability of the players - it could be 1 to 12 or as high as 1 to 60.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_560b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Players start the game by secretly picking 5 distinct numbers larger than 20 and not bigger than 120. After they are selected, they are written where all can see them.\n\nUsing Number Cards or some other device, a random number from 1 to 20 is created. That number is repeatedly doubled until either someone’s number is hit for the first time or the number becomes bigger than 120. The first player to have all five numbers hit is the winner. \n\nAfter your child has played a few times, they will begin developing strategies for selecting their five numbers. A simple strategy is that it is a bad idea to pick a number, such as 46, that is not a power of 2 times some number between 1 and 20 - it will never get hit. Some numbers with lots of factors of 2, such as 32, are more likely to be hit because more starting numbers can get to them..\n\nThere are many other options to play with. You can triple the number each time instead of doubling it. You can double it and add one each time. For younger players, select numbers above 10 and not above 60, and select a random number from 1 to 10.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_560c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Have two sets of cards, say from 1 to 25. Play the standard game of war with these, only now the winner is the card that has more factors. For example, 12 beats 16 because 12 has 6 factors (1, 2, 3, 4, 6, and 12) while 16 has 5 factors (1, 2, 4, 8, and 16). The holder of the winning card must be able to correctly list the factors to win the cards - otherwise, the cards get shuffled back into each player’s draw pile. As with standard War, when there is a tie, then next cards are turned over and the winner receives all the cards.\n\nThere are several possible variations for you to play around with. You can play that the smaller number of factors wins. You can count the total of just the prime factors rather than all the factors. You can play that prime powers (numbers that are a power of a prime) beat other numbers.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_570a_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Each player starts with a 4 by 4 grid of numbers that are possible multiplication products - these numbers can either be randomly assigned or carefully chosen by the player.\n\nTo start, two cards are dealt and put face up on the table. If either player has the product of those two numbers, they cover it. From then on, the players take turns taking the top card from the draw pile and choosing which of the two cards to replace. All players who have a match with the product cover it. The first player to get 4 in a row wins.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_570b_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "Use a 100-chart with the 36 squares on the four edges colored gray. Use playing cards with picture cards removed or use Number Cards from 1 to 10. \n\nOn a turn, if you pick a 1 you can claim any odd number; if you pick any other number, you can claim any multiple of it. If you claim a number, your opponent cannot claim it. The aim is to make a path from one edge to the opposite edge, in either direction. You do not need to claim the squares in the order of your path. \n\nYou can either play that diagonal connections are okay or not okay. Another option is to include picture cards – if you get one of these, you can put in a blocked square that cannot be included in either person’s path.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_act_5_570c_template",
+    status: "released",
+    rows: [
+      {
+        type: "template",
+        name: "activity_body",
+        value: "efm_activity_body_template",
+        rows: [
+          {
+            name: "text_top_1",
+            value:
+              "This multiplication puzzle is either 3 by 3 involving each of the numbers 1 to 6 exactly once, or 4 by 4 involving the numbers 1 to 8 exactly once. The challenge is to fill in some of the squares, two numbers for each row and each column, so that the product of a row is the number marked to the far left and the product of the column is the number marked above the column. Some rows or columns may not be marked - if so, there is no constraint on the product of those rows or columns.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_top_1",
+          },
+          {
+            name: "image_middle_1",
+            value: "EFM570CrossProducts3By3.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1",
+          },
+          {
+            name: "image_middle_1_max_width",
+            value: "360px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_middle_1_max_width",
+          },
+          {
+            name: "text_bottom_1",
+            value:
+              "Solve this puzzle by finding columns and rows where you can identify the two numbers. The 30 column must have 5 and 6, and the 10 row must have 2 and 5. Next, the 12 column must have 3 and 4 and the 4 row must have 1 and 4. The rest follows quickly.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_1",
+          },
+          {
+            name: "image_bottom_1",
+            value: "EFM570CrossProducts4By4.svg",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1",
+          },
+          {
+            name: "image_bottom_1_max_width",
+            value: "360px",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.image_bottom_1_max_width",
+          },
+          {
+            name: "text_bottom_2",
+            value:
+              "As is often the case with these puzzles, the adult can make them by filling in the numbers on the inside of the puzzle first, writing down the products, and then removing all the interior numbers.",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "activity_body.text_bottom_2",
+          },
+        ],
+        _nested_name: "activity_body",
+      },
+    ],
+    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_storybooks",
+    status: "released",
+    rows: [
+      {
+        type: "title",
+        name: "title_1",
+        value: "Storybooks",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "title_1",
+      },
+      {
+        type: "text",
+        name: "choice_text",
+        value:
+          "Reading is a beautiful thing to do with your child ...\n\nChoose the level of the storybooks you would like to read.",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "choice_text",
+      },
+      {
+        name: "description_begin",
+        value: "Beginning",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "description_begin",
+      },
+      {
+        name: "description_intermed",
+        value: "Intermediate",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "description_intermed",
+      },
+      {
+        type: "display_group",
+        rows: [
+          {
+            type: "simple_checkbox",
+            name: "box_beginner",
+            value: true,
+            parameter_list: {
+              label_text: "@local.description_begin",
+              align: "left",
+            },
+            _nested_name: "display_group.box_beginner",
+            _dynamicFields: {
+              parameter_list: {
+                label_text: [
+                  {
+                    fullExpression: "@local.description_begin",
+                    matchedExpression: "@local.description_begin",
+                    type: "local",
+                    fieldName: "description_begin",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.description_begin": ["parameter_list.label_text"],
+            },
+          },
+          {
+            type: "simple_checkbox",
+            name: "box_intermediate",
+            value: true,
+            parameter_list: {
+              label_text: "@local.description_intermed",
+              align: "left",
+            },
+            _nested_name: "display_group.box_intermediate",
+            _dynamicFields: {
+              parameter_list: {
+                label_text: [
+                  {
+                    fullExpression: "@local.description_intermed",
+                    matchedExpression: "@local.description_intermed",
+                    type: "local",
+                    fieldName: "description_intermed",
+                  },
+                ],
+              },
+            },
+            _dynamicDependencies: {
+              "@local.description_intermed": ["parameter_list.label_text"],
+            },
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+      },
+      {
+        type: "display_group",
+        condition: "@local.box_beginner",
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "begin_sb_text",
+            value: "**Beginning Storybooks**",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "display_group.begin_sb_text",
+          },
+          {
+            type: "items",
+            name: "activity_buttons",
+            value: "@data.efm_storybooks",
+            rows: [
+              {
+                type: "button",
+                name: "button_sb",
+                value: "@item.title",
+                _translations: {
+                  value: {},
+                },
+                action_list: [
+                  {
+                    trigger: "click",
+                    action_id: "set_field",
+                    args: ["current_book", "data.efm_storybooks.@item.id"],
+                    _raw: "click | set_field:current_book: data.efm_storybooks.@item.id",
+                    _cleaned: "click | set_field:current_book: data.efm_storybooks.@item.id",
+                  },
+                  {
+                    trigger: "click",
+                    action_id: "go_to",
+                    args: ["efm_story_template"],
+                    _raw: "click | go_to: efm_story_template",
+                    _cleaned: "click | go_to: efm_story_template",
+                  },
+                ],
+                condition: '@item.book_level == "beginner"',
+                parameter_list: {
+                  style: "short",
+                  text_align: "center",
+                },
+                _nested_name: "display_group.activity_buttons.button_sb",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@item.title",
+                      matchedExpression: "@item.title",
+                      type: "item",
+                      fieldName: "title",
+                    },
+                  ],
+                  action_list: {
+                    "0": {
+                      args: {
+                        "1": [
+                          {
+                            fullExpression: "data.efm_storybooks.@item.id",
+                            matchedExpression: "@item.id",
+                            type: "item",
+                            fieldName: "id",
+                          },
+                        ],
+                      },
+                      _raw: [
+                        {
+                          fullExpression:
+                            "click | set_field:current_book: data.efm_storybooks.@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                      _cleaned: [
+                        {
+                          fullExpression:
+                            "click | set_field:current_book: data.efm_storybooks.@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                    },
+                  },
+                  condition: [
+                    {
+                      fullExpression: '@item.book_level == "beginner"',
+                      matchedExpression: "@item.book_level",
+                      type: "item",
+                      fieldName: "book_level",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.title": ["value"],
+                  "@item.id": [
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned",
+                  ],
+                  "@item.book_level": ["condition"],
+                },
+              },
+            ],
+            _nested_name: "display_group.activity_buttons",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.efm_storybooks",
+                  matchedExpression: "@data.efm_storybooks",
+                  type: "data",
+                  fieldName: "efm_storybooks",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.efm_storybooks": ["value"],
+            },
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: "@local.box_beginner",
+              matchedExpression: "@local.box_beginner",
+              type: "local",
+              fieldName: "box_beginner",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.box_beginner": ["condition"],
+        },
+      },
+      {
+        type: "display_group",
+        condition: "@local.box_intermediate",
+        parameter_list: {
+          style: "column",
+        },
+        rows: [
+          {
+            type: "text",
+            name: "intermed_sb_text",
+            value: "**Intermediate Storybooks**",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "display_group.intermed_sb_text",
+          },
+          {
+            type: "items",
+            name: "activity_buttons",
+            value: "@data.efm_storybooks",
+            rows: [
+              {
+                type: "button",
+                name: "button_sb",
+                value: "@item.title",
+                _translations: {
+                  value: {},
+                },
+                action_list: [
+                  {
+                    trigger: "click",
+                    action_id: "set_field",
+                    args: ["current_book", "data.efm_storybooks.@item.id"],
+                    _raw: "click | set_field:current_book: data.efm_storybooks.@item.id",
+                    _cleaned: "click | set_field:current_book: data.efm_storybooks.@item.id",
+                  },
+                  {
+                    trigger: "click",
+                    action_id: "go_to",
+                    args: ["efm_story_template"],
+                    _raw: "click | go_to: efm_story_template",
+                    _cleaned: "click | go_to: efm_story_template",
+                  },
+                ],
+                condition: '@item.book_level == "intermediate"',
+                parameter_list: {
+                  style: "short",
+                  text_align: "center",
+                },
+                _nested_name: "display_group.activity_buttons.button_sb",
+                _dynamicFields: {
+                  value: [
+                    {
+                      fullExpression: "@item.title",
+                      matchedExpression: "@item.title",
+                      type: "item",
+                      fieldName: "title",
+                    },
+                  ],
+                  action_list: {
+                    "0": {
+                      args: {
+                        "1": [
+                          {
+                            fullExpression: "data.efm_storybooks.@item.id",
+                            matchedExpression: "@item.id",
+                            type: "item",
+                            fieldName: "id",
+                          },
+                        ],
+                      },
+                      _raw: [
+                        {
+                          fullExpression:
+                            "click | set_field:current_book: data.efm_storybooks.@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                      _cleaned: [
+                        {
+                          fullExpression:
+                            "click | set_field:current_book: data.efm_storybooks.@item.id",
+                          matchedExpression: "@item.id",
+                          type: "item",
+                          fieldName: "id",
+                        },
+                      ],
+                    },
+                  },
+                  condition: [
+                    {
+                      fullExpression: '@item.book_level == "intermediate"',
+                      matchedExpression: "@item.book_level",
+                      type: "item",
+                      fieldName: "book_level",
+                    },
+                  ],
+                },
+                _dynamicDependencies: {
+                  "@item.title": ["value"],
+                  "@item.id": [
+                    "action_list.0.args.1",
+                    "action_list.0._raw",
+                    "action_list.0._cleaned",
+                  ],
+                  "@item.book_level": ["condition"],
+                },
+              },
+            ],
+            _nested_name: "display_group.activity_buttons",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@data.efm_storybooks",
+                  matchedExpression: "@data.efm_storybooks",
+                  type: "data",
+                  fieldName: "efm_storybooks",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@data.efm_storybooks": ["value"],
+            },
+          },
+        ],
+        name: "display_group",
+        _nested_name: "display_group",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: "@local.box_intermediate",
+              matchedExpression: "@local.box_intermediate",
+              type: "local",
+              fieldName: "box_intermediate",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.box_intermediate": ["condition"],
+        },
+      },
+    ],
+    _xlsxPath: "EFM_storybooks_high_level_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_sb_intro",
+    status: "released",
+    rows: [
+      {
+        name: "sb_level",
+        type: "set_variable",
+        _nested_name: "sb_level",
+      },
+      {
+        name: "intro_math",
+        type: "set_variable",
+        _nested_name: "intro_math",
+      },
+      {
+        type: "text",
+        name: "intro_header",
+        value: "**Adult Readers**",
+        _translations: {
+          value: {},
+        },
+        style_list: ["margin-top: -7px"],
+        _nested_name: "intro_header",
+      },
+      {
+        type: "text",
+        name: "intro_part1_basic",
+        value:
+          '**Before Talking** Talk with your child before they can talk or even understand the words. Point at, name, and describe things you see, such as shapes, colors, comparisons, and quantities. As your child begins to understand words, ask about a thing and have your child point at it. For example, "Where is the ball?" If your child can\'t find the thing, point to it for them. \n\n**Early Talking** As your child begins to understand and say words, mix in simple questions. Freely help with answers as needed. If you point and say "Is this red?" and they don\'t know, supply the answer. If you say "Count the blocks." and your child does not know how, point and count the blocks with them "one, two, three."',
+        _translations: {
+          value: {},
+        },
+        condition: '@local.sb_level=="basic"',
+        style_list: ["margin-top: -10px"],
+        _nested_name: "intro_part1_basic",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: '@local.sb_level=="basic"',
+              matchedExpression: "@local.sb_level",
+              type: "local",
+              fieldName: "sb_level",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.sb_level": ["condition"],
+        },
+      },
+      {
+        type: "text",
+        name: "intro_part1_advanced",
+        value:
+          "**3 Levels of Discussion** Pick an appropriate level for your child. Allow time for thought when asking questions or making comments. Help with the answer when your child stumbles, and follow up correct answers with questions or comments that are small expansions on the child's answer.\n\n**Level 1** Ask simple direct questions. Ask and point at what you see on the page. Where is the toy? What are they doing? What is its name? What color is it? How many balls are there?\n**Level 2** Ask general or open questions about this point in the story. What do you see happening here? What is this group of things?\n**Level 3** Ask about the story line. What has happened? What will happen next? Have you had experiences or seen things similar to this? How does she feel when this happens?",
+        _translations: {
+          value: {},
+        },
+        condition: '@local.sb_level=="advanced"',
+        style_list: ["margin-top: -20px"],
+        _nested_name: "intro_part1_advanced",
+        _dynamicFields: {
+          condition: [
+            {
+              fullExpression: '@local.sb_level=="advanced"',
+              matchedExpression: "@local.sb_level",
+              type: "local",
+              fieldName: "sb_level",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.sb_level": ["condition"],
+        },
+      },
+      {
+        name: "math_start",
+        value: "**Math Themes and Words**",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "math_start",
+      },
+      {
+        type: "text",
+        name: "intro_math_1",
+        value: "@local.math_start @local.intro_math",
+        _translations: {
+          value: {},
+        },
+        condition: "@local.intro_math",
+        style_list: ["margin-top: -20px"],
+        _nested_name: "intro_math_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.math_start @local.intro_math",
+              matchedExpression: "@local.math_start",
+              type: "local",
+              fieldName: "math_start",
+            },
+            {
+              fullExpression: "@local.math_start @local.intro_math",
+              matchedExpression: "@local.intro_math",
+              type: "local",
+              fieldName: "intro_math",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.intro_math",
+              matchedExpression: "@local.intro_math",
+              type: "local",
+              fieldName: "intro_math",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.math_start": ["value"],
+          "@local.intro_math": ["value", "condition"],
+        },
+      },
+      {
+        type: "text",
+        name: "intro_part3",
+        value:
+          "**Read, Talk, and Have Fun!** The supplied questions and comments are just the beginning. \n\n1. For the first reading, read the red questions and comments. \n2. For the second reading, read the blue questions and comments. \n3. For the third reading, read the green questions and comments. \n\nAfter that, follow your child's interests and let your discussions go in fun directions.",
+        _translations: {
+          value: {},
+        },
+        style_list: ["margin-top: -20px"],
+        _nested_name: "intro_part3",
+      },
+      {
+        type: "image",
+        name: "page_end",
+        value: "EFMStorybooks/EFM-SB-0-PageDivider.svg",
+        _translations: {
+          value: {},
+        },
+        style_list: ["margin-top: -4px"],
+        _nested_name: "page_end",
+      },
+    ],
+    _xlsxPath: "EFM_storybooks_high_level_sheets.xlsx",
+  },
+  {
+    flow_type: "template",
+    flow_name: "efm_story_template",
     status: "released",
     rows: [
       {
@@ -16,18 +2518,331 @@ const template: FlowTypes.Template[] = [
         _nested_name: "page_divider",
       },
       {
-        type: "template",
-        name: "cover",
-        value: "efm_sb_cover",
-        rows: [],
-        _nested_name: "cover",
+        name: "book_entry",
+        value: "@@fields.current_book",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "book_entry",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@@fields.current_book",
+              matchedExpression: "@fields.current_book",
+              type: "fields",
+              fieldName: "current_book",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@fields.current_book": ["value"],
+        },
+      },
+      {
+        name: "book_cover",
+        value: "@local.book_entry.cover",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "book_cover",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_entry.cover",
+              matchedExpression: "@local.book_entry.cover",
+              type: "local",
+              fieldName: "book_entry",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_entry.cover": ["value"],
+        },
+      },
+      {
+        name: "book_title",
+        value: "@local.book_entry.title",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "book_title",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_entry.title",
+              matchedExpression: "@local.book_entry.title",
+              type: "local",
+              fieldName: "book_entry",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_entry.title": ["value"],
+        },
+      },
+      {
+        name: "book_author",
+        value: "@local.book_entry.author",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "book_author",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_entry.author",
+              matchedExpression: "@local.book_entry.author",
+              type: "local",
+              fieldName: "book_entry",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_entry.author": ["value"],
+        },
+      },
+      {
+        name: "book_illustrator",
+        value: "@local.book_entry.illustrator",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "book_illustrator",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_entry.illustrator",
+              matchedExpression: "@local.book_entry.illustrator",
+              type: "local",
+              fieldName: "book_entry",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_entry.illustrator": ["value"],
+        },
+      },
+      {
+        name: "book_pages",
+        value: "@local.book_entry.pages",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "book_pages",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_entry.pages",
+              matchedExpression: "@local.book_entry.pages",
+              type: "local",
+              fieldName: "book_entry",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_entry.pages": ["value"],
+        },
+      },
+      {
+        type: "image",
+        name: "cover_1",
+        value: "@local.book_cover",
+        _translations: {
+          value: {},
+        },
+        _nested_name: "cover_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_cover",
+              matchedExpression: "@local.book_cover",
+              type: "local",
+              fieldName: "book_cover",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_cover": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "title_1",
+        value: "@local.book_title",
+        _translations: {
+          value: {},
+        },
+        parameter_list: {
+          style: "large emphasised",
+        },
+        _nested_name: "title_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_title",
+              matchedExpression: "@local.book_title",
+              type: "local",
+              fieldName: "book_title",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_title": ["value"],
+        },
+      },
+      {
+        type: "text",
+        name: "author_1",
+        value: "@local.book_author",
+        _translations: {
+          value: {},
+        },
+        condition: "@local.book_author",
+        style_list: ["margin-top: -20px"],
+        _nested_name: "author_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_author",
+              matchedExpression: "@local.book_author",
+              type: "local",
+              fieldName: "book_author",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.book_author",
+              matchedExpression: "@local.book_author",
+              type: "local",
+              fieldName: "book_author",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_author": ["value", "condition"],
+        },
+      },
+      {
+        type: "text",
+        name: "illustrator_1",
+        value: "@local.book_illustrator",
+        _translations: {
+          value: {},
+        },
+        condition: "@local.book_illustrator",
+        style_list: ["margin-top: -20px"],
+        _nested_name: "illustrator_1",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.book_illustrator",
+              matchedExpression: "@local.book_illustrator",
+              type: "local",
+              fieldName: "book_illustrator",
+            },
+          ],
+          condition: [
+            {
+              fullExpression: "@local.book_illustrator",
+              matchedExpression: "@local.book_illustrator",
+              type: "local",
+              fieldName: "book_illustrator",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_illustrator": ["value", "condition"],
+        },
+      },
+      {
+        type: "image",
+        name: "page_end",
+        value: "@local.page_divider",
+        _translations: {
+          value: {},
+        },
+        style_list: ["margin-top: -1px"],
+        _nested_name: "page_end",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@local.page_divider",
+              matchedExpression: "@local.page_divider",
+              type: "local",
+              fieldName: "page_divider",
+            },
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.page_divider": ["value"],
+        },
       },
       {
         type: "template",
         name: "intro",
         value: "efm_sb_intro",
-        rows: [],
+        rows: [
+          {
+            name: "sb_level",
+            value: "@local.book_entry.intro_level",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "intro.sb_level",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.book_entry.intro_level",
+                  matchedExpression: "@local.book_entry.intro_level",
+                  type: "local",
+                  fieldName: "book_entry",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.book_entry.intro_level": ["value"],
+            },
+          },
+          {
+            name: "intro_math",
+            value: "@local.book_entry.math_themes_words",
+            _translations: {
+              value: {},
+            },
+            type: "set_variable",
+            _nested_name: "intro.intro_math",
+            _dynamicFields: {
+              value: [
+                {
+                  fullExpression: "@local.book_entry.math_themes_words",
+                  matchedExpression: "@local.book_entry.math_themes_words",
+                  type: "local",
+                  fieldName: "book_entry",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@local.book_entry.math_themes_words": ["value"],
+            },
+          },
+        ],
         _nested_name: "intro",
+      },
+      {
+        name: "description_0",
+        value: "Story text",
+        _translations: {
+          value: {},
+        },
+        type: "set_variable",
+        _nested_name: "description_0",
       },
       {
         name: "description_1",
@@ -57,113 +2872,136 @@ const template: FlowTypes.Template[] = [
         _nested_name: "description_3",
       },
       {
-        name: "answer_list",
-        value: [
-          "name:annotation_1 | text: @local.description_1",
-          "name:annotation_2 | text: @local.description_2",
-          "name:annotation_3 | text: @local.description_3",
-        ],
-        type: "set_variable",
-        _nested_name: "answer_list",
-        _dynamicFields: {
-          value: {
-            "0": [
-              {
-                fullExpression: "name:annotation_1 | text: @local.description_1",
-                matchedExpression: "@local.description_1",
-                type: "local",
-                fieldName: "description_1",
-              },
-            ],
-            "1": [
-              {
-                fullExpression: "name:annotation_2 | text: @local.description_2",
-                matchedExpression: "@local.description_2",
-                type: "local",
-                fieldName: "description_2",
-              },
-            ],
-            "2": [
-              {
-                fullExpression: "name:annotation_3 | text: @local.description_3",
-                matchedExpression: "@local.description_3",
-                type: "local",
-                fieldName: "description_3",
-              },
-            ],
-          },
-        },
-        _dynamicDependencies: {
-          "@local.description_1": ["value.0"],
-          "@local.description_2": ["value.1"],
-          "@local.description_3": ["value.2"],
-        },
-      },
-      {
-        name: "annotation",
-        value: "annotation_1",
-        _translations: {
-          value: {},
-        },
-        type: "set_variable",
-        _nested_name: "annotation",
-      },
-      {
-        type: "radio_group",
-        name: "radio_group",
-        action_list: [
+        type: "display_group",
+        name: "checkboxes",
+        rows: [
           {
-            trigger: "changed",
-            action_id: "set_local",
-            args: ["annotation", "this.value"],
-            _raw: "changed | set_local: annotation: @local.radio_group",
-            _cleaned: "changed | set_local: annotation: @local.radio_group",
-          },
-        ],
-        parameter_list: {
-          answer_list: "@local.answer_list",
-        },
-        _nested_name: "radio_group",
-        _dynamicFields: {
-          action_list: {
-            "0": {
-              _raw: [
-                {
-                  fullExpression: "changed | set_local: annotation: @local.radio_group",
-                  matchedExpression: "@local.radio_group",
-                  type: "local",
-                  fieldName: "radio_group",
-                },
-              ],
-              _cleaned: [
-                {
-                  fullExpression: "changed | set_local: annotation: @local.radio_group",
-                  matchedExpression: "@local.radio_group",
-                  type: "local",
-                  fieldName: "radio_group",
-                },
-              ],
+            type: "display_group",
+            name: "column1",
+            parameter_list: {
+              style: "column",
             },
-          },
-          parameter_list: {
-            answer_list: [
+            rows: [
               {
-                fullExpression: "@local.answer_list",
-                matchedExpression: "@local.answer_list",
-                type: "local",
-                fieldName: "answer_list",
+                type: "simple_checkbox",
+                name: "checkbox_text",
+                value: true,
+                parameter_list: {
+                  label_text: "@local.description_0",
+                  align: "left",
+                },
+                _nested_name: "checkboxes.column1.checkbox_text",
+                _dynamicFields: {
+                  parameter_list: {
+                    label_text: [
+                      {
+                        fullExpression: "@local.description_0",
+                        matchedExpression: "@local.description_0",
+                        type: "local",
+                        fieldName: "description_0",
+                      },
+                    ],
+                  },
+                },
+                _dynamicDependencies: {
+                  "@local.description_0": ["parameter_list.label_text"],
+                },
+              },
+              {
+                type: "simple_checkbox",
+                name: "checkbox_reading1",
+                value: true,
+                parameter_list: {
+                  label_text: "@local.description_1",
+                  align: "left",
+                },
+                _nested_name: "checkboxes.column1.checkbox_reading1",
+                _dynamicFields: {
+                  parameter_list: {
+                    label_text: [
+                      {
+                        fullExpression: "@local.description_1",
+                        matchedExpression: "@local.description_1",
+                        type: "local",
+                        fieldName: "description_1",
+                      },
+                    ],
+                  },
+                },
+                _dynamicDependencies: {
+                  "@local.description_1": ["parameter_list.label_text"],
+                },
               },
             ],
+            _nested_name: "checkboxes.column1",
           },
-        },
-        _dynamicDependencies: {
-          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
-          "@local.answer_list": ["parameter_list.answer_list"],
-        },
+          {
+            type: "display_group",
+            name: "column2",
+            parameter_list: {
+              style: "column",
+            },
+            rows: [
+              {
+                type: "simple_checkbox",
+                name: "checkbox_reading2",
+                value: true,
+                parameter_list: {
+                  label_text: "@local.description_2",
+                  align: "left",
+                },
+                _nested_name: "checkboxes.column2.checkbox_reading2",
+                _dynamicFields: {
+                  parameter_list: {
+                    label_text: [
+                      {
+                        fullExpression: "@local.description_2",
+                        matchedExpression: "@local.description_2",
+                        type: "local",
+                        fieldName: "description_2",
+                      },
+                    ],
+                  },
+                },
+                _dynamicDependencies: {
+                  "@local.description_2": ["parameter_list.label_text"],
+                },
+              },
+              {
+                type: "simple_checkbox",
+                name: "checkbox_reading3",
+                value: true,
+                parameter_list: {
+                  label_text: "@local.description_3",
+                  align: "left",
+                },
+                _nested_name: "checkboxes.column2.checkbox_reading3",
+                _dynamicFields: {
+                  parameter_list: {
+                    label_text: [
+                      {
+                        fullExpression: "@local.description_3",
+                        matchedExpression: "@local.description_3",
+                        type: "local",
+                        fieldName: "description_3",
+                      },
+                    ],
+                  },
+                },
+                _dynamicDependencies: {
+                  "@local.description_3": ["parameter_list.label_text"],
+                },
+              },
+            ],
+            _nested_name: "checkboxes.column2",
+          },
+        ],
+        _nested_name: "checkboxes",
       },
       {
         type: "items",
-        name: "story_page",
+        name: "pages",
+        value: "@@local.book_pages",
         rows: [
           {
             type: "image",
@@ -173,7 +3011,7 @@ const template: FlowTypes.Template[] = [
               value: {},
             },
             condition: "@item.illustration",
-            _nested_name: "story_page.image_@item.page_no",
+            _nested_name: "pages.image_@item.page_no",
             _dynamicFields: {
               name: [
                 {
@@ -201,7 +3039,7 @@ const template: FlowTypes.Template[] = [
               ],
               _nested_name: [
                 {
-                  fullExpression: "story_page.image_@item.page_no",
+                  fullExpression: "pages.image_@item.page_no",
                   matchedExpression: "@item.page_no",
                   type: "item",
                   fieldName: "page_no",
@@ -220,11 +3058,11 @@ const template: FlowTypes.Template[] = [
             _translations: {
               value: {},
             },
-            condition: "@item.story_text",
+            condition: "@item.story_text && @local.checkbox_text",
             parameter_list: {
               style: "large emphasised",
             },
-            _nested_name: "story_page.story_@item.page_no",
+            _nested_name: "pages.story_@item.page_no",
             _dynamicFields: {
               name: [
                 {
@@ -244,15 +3082,21 @@ const template: FlowTypes.Template[] = [
               ],
               condition: [
                 {
-                  fullExpression: "@item.story_text",
+                  fullExpression: "@item.story_text && @local.checkbox_text",
                   matchedExpression: "@item.story_text",
                   type: "item",
                   fieldName: "story_text",
                 },
+                {
+                  fullExpression: "@item.story_text && @local.checkbox_text",
+                  matchedExpression: "@local.checkbox_text",
+                  type: "local",
+                  fieldName: "checkbox_text",
+                },
               ],
               _nested_name: [
                 {
-                  fullExpression: "story_page.story_@item.page_no",
+                  fullExpression: "pages.story_@item.page_no",
                   matchedExpression: "@item.page_no",
                   type: "item",
                   fieldName: "page_no",
@@ -262,21 +3106,23 @@ const template: FlowTypes.Template[] = [
             _dynamicDependencies: {
               "@item.page_no": ["name", "_nested_name"],
               "@item.story_text": ["value", "condition"],
+              "@local.checkbox_text": ["condition"],
             },
           },
           {
             type: "text",
-            name: "anno_@item.page_no",
-            value: "@item.@local.annotation",
+            name: "anno1_@item.page_no",
+            value: "1. @item.annotation_1",
             _translations: {
               value: {},
             },
+            condition: "@item.annotation_1 && @local.checkbox_reading1",
             style_list: ["margin-top: -20px"],
-            _nested_name: "story_page.anno_@item.page_no",
+            _nested_name: "pages.anno1_@item.page_no",
             _dynamicFields: {
               name: [
                 {
-                  fullExpression: "anno_@item.page_no",
+                  fullExpression: "anno1_@item.page_no",
                   matchedExpression: "@item.page_no",
                   type: "item",
                   fieldName: "page_no",
@@ -284,15 +3130,29 @@ const template: FlowTypes.Template[] = [
               ],
               value: [
                 {
-                  fullExpression: "@item.@local.annotation",
-                  matchedExpression: "@local.annotation",
+                  fullExpression: "1. @item.annotation_1",
+                  matchedExpression: "@item.annotation_1",
+                  type: "item",
+                  fieldName: "annotation_1",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@item.annotation_1 && @local.checkbox_reading1",
+                  matchedExpression: "@item.annotation_1",
+                  type: "item",
+                  fieldName: "annotation_1",
+                },
+                {
+                  fullExpression: "@item.annotation_1 && @local.checkbox_reading1",
+                  matchedExpression: "@local.checkbox_reading1",
                   type: "local",
-                  fieldName: "annotation",
+                  fieldName: "checkbox_reading1",
                 },
               ],
               _nested_name: [
                 {
-                  fullExpression: "story_page.anno_@item.page_no",
+                  fullExpression: "pages.anno1_@item.page_no",
                   matchedExpression: "@item.page_no",
                   type: "item",
                   fieldName: "page_no",
@@ -301,7 +3161,120 @@ const template: FlowTypes.Template[] = [
             },
             _dynamicDependencies: {
               "@item.page_no": ["name", "_nested_name"],
-              "@local.annotation": ["value"],
+              "@item.annotation_1": ["value", "condition"],
+              "@local.checkbox_reading1": ["condition"],
+            },
+          },
+          {
+            type: "text",
+            name: "anno2_@item.page_no",
+            value: "2. @item.annotation_2",
+            _translations: {
+              value: {},
+            },
+            condition: "@item.annotation_2 && @local.checkbox_reading2",
+            style_list: ["margin-top: -20px"],
+            _nested_name: "pages.anno2_@item.page_no",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "anno2_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "2. @item.annotation_2",
+                  matchedExpression: "@item.annotation_2",
+                  type: "item",
+                  fieldName: "annotation_2",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@item.annotation_2 && @local.checkbox_reading2",
+                  matchedExpression: "@item.annotation_2",
+                  type: "item",
+                  fieldName: "annotation_2",
+                },
+                {
+                  fullExpression: "@item.annotation_2 && @local.checkbox_reading2",
+                  matchedExpression: "@local.checkbox_reading2",
+                  type: "local",
+                  fieldName: "checkbox_reading2",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "pages.anno2_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.page_no": ["name", "_nested_name"],
+              "@item.annotation_2": ["value", "condition"],
+              "@local.checkbox_reading2": ["condition"],
+            },
+          },
+          {
+            type: "text",
+            name: "anno3_@item.page_no",
+            value: "3. @item.annotation_3",
+            _translations: {
+              value: {},
+            },
+            condition: "@item.annotation_3 && @local.checkbox_reading3",
+            style_list: ["margin-top: -20px"],
+            _nested_name: "pages.anno3_@item.page_no",
+            _dynamicFields: {
+              name: [
+                {
+                  fullExpression: "anno3_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+              value: [
+                {
+                  fullExpression: "3. @item.annotation_3",
+                  matchedExpression: "@item.annotation_3",
+                  type: "item",
+                  fieldName: "annotation_3",
+                },
+              ],
+              condition: [
+                {
+                  fullExpression: "@item.annotation_3 && @local.checkbox_reading3",
+                  matchedExpression: "@item.annotation_3",
+                  type: "item",
+                  fieldName: "annotation_3",
+                },
+                {
+                  fullExpression: "@item.annotation_3 && @local.checkbox_reading3",
+                  matchedExpression: "@local.checkbox_reading3",
+                  type: "local",
+                  fieldName: "checkbox_reading3",
+                },
+              ],
+              _nested_name: [
+                {
+                  fullExpression: "pages.anno3_@item.page_no",
+                  matchedExpression: "@item.page_no",
+                  type: "item",
+                  fieldName: "page_no",
+                },
+              ],
+            },
+            _dynamicDependencies: {
+              "@item.page_no": ["name", "_nested_name"],
+              "@item.annotation_3": ["value", "condition"],
+              "@local.checkbox_reading3": ["condition"],
             },
           },
           {
@@ -312,7 +3285,7 @@ const template: FlowTypes.Template[] = [
               value: {},
             },
             style_list: ["margin-top: -7px"],
-            _nested_name: "story_page.page_end_@item.page_no",
+            _nested_name: "pages.page_end_@item.page_no",
             _dynamicFields: {
               name: [
                 {
@@ -332,7 +3305,7 @@ const template: FlowTypes.Template[] = [
               ],
               _nested_name: [
                 {
-                  fullExpression: "story_page.page_end_@item.page_no",
+                  fullExpression: "pages.page_end_@item.page_no",
                   matchedExpression: "@item.page_no",
                   type: "item",
                   fieldName: "page_no",
@@ -345,122 +3318,23 @@ const template: FlowTypes.Template[] = [
             },
           },
         ],
-        _nested_name: "story_page",
-      },
-      {
-        type: "image",
-        name: "last_page_image",
-        _nested_name: "last_page_image",
-      },
-    ],
-    _xlsxPath: "storybook_esmee.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "template_story_avtm",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "template_story",
-        value: "template_story",
-        rows: [
-          {
-            type: "nested_properties",
-            name: "cover",
-            rows: [
-              {
-                name: "book_cover",
-                value: "EFMStorybooks/EFM-SB-AVTM-1.png",
-                _translations: {
-                  value: {},
-                },
-                type: "set_variable",
-                _nested_name: "template_story.cover.book_cover",
-              },
-              {
-                name: "book_title",
-                value: "A Very Tall Man",
-                _translations: {
-                  value: {},
-                },
-                type: "set_variable",
-                _nested_name: "template_story.cover.book_title",
-              },
-              {
-                name: "book_author",
-                value: "Cornelius Wambi Gulere",
-                _translations: {
-                  value: {},
-                },
-                type: "set_variable",
-                _nested_name: "template_story.cover.book_author",
-              },
-              {
-                name: "book_illustrator",
-                value: "Catherine Groenewald",
-                _translations: {
-                  value: {},
-                },
-                type: "set_variable",
-                _nested_name: "template_story.cover.book_illustrator",
-              },
-            ],
-            _nested_name: "template_story.cover",
-          },
-          {
-            type: "nested_properties",
-            name: "intro",
-            rows: [
-              {
-                name: "intro_math",
-                value:
-                  "**Math Themes and Words** This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller",
-                _translations: {
-                  value: {},
-                },
-                type: "set_variable",
-                _nested_name: "template_story.intro.intro_math",
-              },
-            ],
-            _nested_name: "template_story.intro",
-          },
-          {
-            name: "story_page",
-            value: "@data.storybook_avtm",
-            _translations: {
-              value: {},
+        _nested_name: "pages",
+        _dynamicFields: {
+          value: [
+            {
+              fullExpression: "@@local.book_pages",
+              matchedExpression: "@local.book_pages",
+              type: "local",
+              fieldName: "book_pages",
             },
-            type: "set_variable",
-            _nested_name: "template_story.story_page",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@data.storybook_avtm",
-                  matchedExpression: "@data.storybook_avtm",
-                  type: "data",
-                  fieldName: "storybook_avtm",
-                },
-              ],
-            },
-            _dynamicDependencies: {
-              "@data.storybook_avtm": ["value"],
-            },
-          },
-          {
-            name: "last_page_image",
-            value: "EFMStorybooks/EFM-SB-AVTM-Back.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "template_story.last_page_image",
-          },
-        ],
-        _nested_name: "template_story",
+          ],
+        },
+        _dynamicDependencies: {
+          "@local.book_pages": ["value"],
+        },
       },
     ],
-    _xlsxPath: "storybook_esmee.xlsx",
+    _xlsxPath: "EFM_storybooks_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -486,40 +3360,78 @@ const template: FlowTypes.Template[] = [
         _nested_name: "main_image",
       },
       {
-        type: "button",
-        name: "button_activities",
-        value: "Activities",
-        _translations: {
-          value: {},
+        type: "display_group",
+        name: "intro_group",
+        parameter_list: {
+          style: "column",
         },
-        action_list: [
+        rows: [
           {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["efm_activities"],
-            _raw: "click | go_to: efm_activities",
-            _cleaned: "click | go_to: efm_activities",
+            type: "text",
+            name: "intro_text",
+            value:
+              "Enjoy playing with math and talking about math together as a family.\n\nWe have two kinds of materials for you to enjoy together.\n1. Storybooks\n2. Math games, puzzles, activities, and investigations.",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "intro_group.intro_text",
+          },
+          {
+            type: "text",
+            name: "sb_text",
+            value: "Storybooks",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "intro_group.sb_text",
+          },
+          {
+            type: "button",
+            name: "button_storybooks",
+            value: "Storybooks",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "go_to",
+                args: ["efm_storybooks"],
+                _raw: "click | go_to: efm_storybooks",
+                _cleaned: "click | go_to: efm_storybooks",
+              },
+            ],
+            _nested_name: "intro_group.button_storybooks",
+          },
+          {
+            type: "text",
+            name: "act_text",
+            value: "Activities",
+            _translations: {
+              value: {},
+            },
+            _nested_name: "intro_group.act_text",
+          },
+          {
+            type: "button",
+            name: "button_activities",
+            value: "Activities",
+            _translations: {
+              value: {},
+            },
+            action_list: [
+              {
+                trigger: "click",
+                action_id: "go_to",
+                args: ["efm_activities"],
+                _raw: "click | go_to: efm_activities",
+                _cleaned: "click | go_to: efm_activities",
+              },
+            ],
+            _nested_name: "intro_group.button_activities",
           },
         ],
-        _nested_name: "button_activities",
-      },
-      {
-        type: "button",
-        name: "button_storybooks",
-        value: "Storybooks",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["efm_storybooks"],
-            _raw: "click | go_to: efm_storybooks",
-            _cleaned: "click | go_to: efm_storybooks",
-          },
-        ],
-        _nested_name: "button_storybooks",
+        _nested_name: "intro_group",
       },
     ],
     _xlsxPath: "EFM_high_level_sheets.xlsx",
@@ -678,7 +3590,7 @@ const template: FlowTypes.Template[] = [
         _nested_name: "button_chapter5",
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -1062,7 +3974,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -2196,7 +5108,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -2217,91 +5129,6 @@ const template: FlowTypes.Template[] = [
         name: "activity_buttons",
         value: "@data.efm_act",
         rows: [
-          {
-            type: "button",
-            name: "button_activities",
-            value: "@item.id   @item.title",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_field",
-                args: ["current_activity", "data.efm_act.@item.id"],
-                _raw: "click | set_field:current_activity: data.efm_act.@item.id",
-                _cleaned: "click | set_field:current_activity: data.efm_act.@item.id",
-              },
-              {
-                trigger: "click",
-                action_id: "go_to",
-                args: ["efm_activity_template"],
-                _raw: "click | go_to: efm_activity_template",
-                _cleaned: "click | go_to: efm_activity_template",
-              },
-            ],
-            condition: false,
-            parameter_list: {
-              style: "short",
-              text_align: "center",
-            },
-            _nested_name: "activity_buttons.button_activities",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.title",
-                  type: "item",
-                  fieldName: "title",
-                },
-              ],
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "data.efm_act.@item.id",
-                        matchedExpression: "@item.id",
-                        type: "item",
-                        fieldName: "id",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@item.id": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@item.title": ["value"],
-            },
-          },
           {
             type: "button",
             name: "button_activities",
@@ -2402,7 +5229,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -2423,91 +5250,6 @@ const template: FlowTypes.Template[] = [
         name: "activity_buttons",
         value: "@data.efm_act",
         rows: [
-          {
-            type: "button",
-            name: "button_activities",
-            value: "@item.id   @item.title",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_field",
-                args: ["current_activity", "data.efm_act.@item.id"],
-                _raw: "click | set_field:current_activity: data.efm_act.@item.id",
-                _cleaned: "click | set_field:current_activity: data.efm_act.@item.id",
-              },
-              {
-                trigger: "click",
-                action_id: "go_to",
-                args: ["efm_activity_template"],
-                _raw: "click | go_to: efm_activity_template",
-                _cleaned: "click | go_to: efm_activity_template",
-              },
-            ],
-            condition: false,
-            parameter_list: {
-              style: "short",
-              text_align: "center",
-            },
-            _nested_name: "activity_buttons.button_activities",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.title",
-                  type: "item",
-                  fieldName: "title",
-                },
-              ],
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "data.efm_act.@item.id",
-                        matchedExpression: "@item.id",
-                        type: "item",
-                        fieldName: "id",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@item.id": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@item.title": ["value"],
-            },
-          },
           {
             type: "button",
             name: "button_activities",
@@ -2608,7 +5350,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -2629,91 +5371,6 @@ const template: FlowTypes.Template[] = [
         name: "activity_buttons",
         value: "@data.efm_act",
         rows: [
-          {
-            type: "button",
-            name: "button_activities",
-            value: "@item.id   @item.title",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_field",
-                args: ["current_activity", "data.efm_act.@item.id"],
-                _raw: "click | set_field:current_activity: data.efm_act.@item.id",
-                _cleaned: "click | set_field:current_activity: data.efm_act.@item.id",
-              },
-              {
-                trigger: "click",
-                action_id: "go_to",
-                args: ["efm_activity_template"],
-                _raw: "click | go_to: efm_activity_template",
-                _cleaned: "click | go_to: efm_activity_template",
-              },
-            ],
-            condition: false,
-            parameter_list: {
-              style: "short",
-              text_align: "center",
-            },
-            _nested_name: "activity_buttons.button_activities",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.title",
-                  type: "item",
-                  fieldName: "title",
-                },
-              ],
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "data.efm_act.@item.id",
-                        matchedExpression: "@item.id",
-                        type: "item",
-                        fieldName: "id",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@item.id": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@item.title": ["value"],
-            },
-          },
           {
             type: "button",
             name: "button_activities",
@@ -2814,7 +5471,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -2835,91 +5492,6 @@ const template: FlowTypes.Template[] = [
         name: "activity_buttons",
         value: "@data.efm_act",
         rows: [
-          {
-            type: "button",
-            name: "button_activities",
-            value: "@item.id   @item.title",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_field",
-                args: ["current_activity", "data.efm_act.@item.id"],
-                _raw: "click | set_field:current_activity: data.efm_act.@item.id",
-                _cleaned: "click | set_field:current_activity: data.efm_act.@item.id",
-              },
-              {
-                trigger: "click",
-                action_id: "go_to",
-                args: ["efm_activity_template"],
-                _raw: "click | go_to: efm_activity_template",
-                _cleaned: "click | go_to: efm_activity_template",
-              },
-            ],
-            condition: false,
-            parameter_list: {
-              style: "short",
-              text_align: "center",
-            },
-            _nested_name: "activity_buttons.button_activities",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.title",
-                  type: "item",
-                  fieldName: "title",
-                },
-              ],
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "data.efm_act.@item.id",
-                        matchedExpression: "@item.id",
-                        type: "item",
-                        fieldName: "id",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@item.id": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@item.title": ["value"],
-            },
-          },
           {
             type: "button",
             name: "button_activities",
@@ -3020,7 +5592,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
@@ -3041,91 +5613,6 @@ const template: FlowTypes.Template[] = [
         name: "activity_buttons",
         value: "@data.efm_act",
         rows: [
-          {
-            type: "button",
-            name: "button_activities",
-            value: "@item.id   @item.title",
-            _translations: {
-              value: {},
-            },
-            action_list: [
-              {
-                trigger: "click",
-                action_id: "set_field",
-                args: ["current_activity", "data.efm_act.@item.id"],
-                _raw: "click | set_field:current_activity: data.efm_act.@item.id",
-                _cleaned: "click | set_field:current_activity: data.efm_act.@item.id",
-              },
-              {
-                trigger: "click",
-                action_id: "go_to",
-                args: ["efm_activity_template"],
-                _raw: "click | go_to: efm_activity_template",
-                _cleaned: "click | go_to: efm_activity_template",
-              },
-            ],
-            condition: false,
-            parameter_list: {
-              style: "short",
-              text_align: "center",
-            },
-            _nested_name: "activity_buttons.button_activities",
-            _dynamicFields: {
-              value: [
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.id",
-                  type: "item",
-                  fieldName: "id",
-                },
-                {
-                  fullExpression: "@item.id   @item.title",
-                  matchedExpression: "@item.title",
-                  type: "item",
-                  fieldName: "title",
-                },
-              ],
-              action_list: {
-                "0": {
-                  args: {
-                    "1": [
-                      {
-                        fullExpression: "data.efm_act.@item.id",
-                        matchedExpression: "@item.id",
-                        type: "item",
-                        fieldName: "id",
-                      },
-                    ],
-                  },
-                  _raw: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                  _cleaned: [
-                    {
-                      fullExpression: "click | set_field:current_activity: data.efm_act.@item.id",
-                      matchedExpression: "@item.id",
-                      type: "item",
-                      fieldName: "id",
-                    },
-                  ],
-                },
-              },
-            },
-            _dynamicDependencies: {
-              "@item.id": [
-                "value",
-                "action_list.0.args.1",
-                "action_list.0._raw",
-                "action_list.0._cleaned",
-              ],
-              "@item.title": ["value"],
-            },
-          },
           {
             type: "button",
             name: "button_activities",
@@ -3226,3284 +5713,7 @@ const template: FlowTypes.Template[] = [
         },
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_storybooks",
-    status: "released",
-    rows: [
-      {
-        type: "title",
-        name: "title_1",
-        value: "Storybooks",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "title_1",
-      },
-      {
-        type: "button",
-        name: "book1",
-        value: "A Very Tall Man",
-        _translations: {
-          value: {},
-        },
-        action_list: [
-          {
-            trigger: "click",
-            action_id: "go_to",
-            args: ["efm_sb_book_A_Very_Tall_Man"],
-            _raw: "click | go_to: efm_sb_book_A_Very_Tall_Man",
-            _cleaned: "click | go_to: efm_sb_book_A_Very_Tall_Man",
-          },
-        ],
-        _nested_name: "book1",
-      },
-    ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_sb_cover",
-    status: "released",
-    rows: [
-      {
-        name: "book_cover",
-        type: "set_variable",
-        _nested_name: "book_cover",
-      },
-      {
-        name: "book_title",
-        type: "set_variable",
-        _nested_name: "book_title",
-      },
-      {
-        name: "book_author",
-        type: "set_variable",
-        _nested_name: "book_author",
-      },
-      {
-        name: "book_illustrator",
-        type: "set_variable",
-        _nested_name: "book_illustrator",
-      },
-      {
-        type: "image",
-        name: "cover_1",
-        value: "@local.book_cover",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "cover_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.book_cover",
-              matchedExpression: "@local.book_cover",
-              type: "local",
-              fieldName: "book_cover",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.book_cover": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "title_1",
-        value: "@local.book_title",
-        _translations: {
-          value: {},
-        },
-        parameter_list: {
-          style: "large emphasised",
-        },
-        _nested_name: "title_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.book_title",
-              matchedExpression: "@local.book_title",
-              type: "local",
-              fieldName: "book_title",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.book_title": ["value"],
-        },
-      },
-      {
-        type: "text",
-        name: "author_1",
-        value: "Written: @local.book_author",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.book_author",
-        style_list: ["margin-top: -20px"],
-        _nested_name: "author_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "Written: @local.book_author",
-              matchedExpression: "@local.book_author",
-              type: "local",
-              fieldName: "book_author",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.book_author",
-              matchedExpression: "@local.book_author",
-              type: "local",
-              fieldName: "book_author",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.book_author": ["value", "condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "illustrator_1",
-        value: "Illustrated: @local.book_illustrator",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.book_illustrator",
-        style_list: ["margin-top: -20px"],
-        _nested_name: "illustrator_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "Illustrated: @local.book_illustrator",
-              matchedExpression: "@local.book_illustrator",
-              type: "local",
-              fieldName: "book_illustrator",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.book_illustrator",
-              matchedExpression: "@local.book_illustrator",
-              type: "local",
-              fieldName: "book_illustrator",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.book_illustrator": ["value", "condition"],
-        },
-      },
-      {
-        type: "image",
-        name: "page_end",
-        value: "EFMStorybooks/EFM-SB-0-PageDivider.svg",
-        _translations: {
-          value: {},
-        },
-        style_list: ["margin-top: -1px"],
-        _nested_name: "page_end",
-      },
-    ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_sb_intro",
-    status: "released",
-    rows: [
-      {
-        name: "sb_level",
-        type: "set_variable",
-        _nested_name: "sb_level",
-      },
-      {
-        name: "intro_math",
-        type: "set_variable",
-        _nested_name: "intro_math",
-      },
-      {
-        type: "text",
-        name: "intro_header",
-        value: "**Adult Readers**",
-        _translations: {
-          value: {},
-        },
-        style_list: ["margin-top: -7px"],
-        _nested_name: "intro_header",
-      },
-      {
-        type: "text",
-        name: "intro_part1_basic",
-        value:
-          '**Before Talking** Talk with your child before they can talk or even understand the words. Point at, name, and describe things you see, such as shapes, colors, comparisons, and quantities. As your child begins to understand words, ask about a thing and have your child point at it. For example, "Where is the ball?" If your child can\'t find the thing, point to it for them. \n\n**Early Talking** As your child begins to understand and say words, mix in simple questions. Freely help with answers as needed. If you point and say "Is this red?" and they don\'t know, supply the answer. If you say "Count the blocks." and your child does not know how, point and count the blocks with them "one, two, three."',
-        _translations: {
-          value: {},
-        },
-        condition: '@local.sb_level=="basic"',
-        style_list: ["margin-top: -10px"],
-        _nested_name: "intro_part1_basic",
-        _dynamicFields: {
-          condition: [
-            {
-              fullExpression: '@local.sb_level=="basic"',
-              matchedExpression: "@local.sb_level",
-              type: "local",
-              fieldName: "sb_level",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.sb_level": ["condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "intro_part1_advanced",
-        value:
-          "**3 Levels of Discussion** Pick an appropriate level for your child. Allow time for thought when asking questions or making comments. Help with the answer when your child stumbles, and follow up correct answers with questions or comments that are small expansions on the child's answer.\n\n**Level 1** Ask simple direct questions. Ask and point at what you see on the page. Where is the toy? What are they doing? What is its name? What color is it? How many balls are there?\n**Level 2** Ask general or open questions about this point in the story. What do you see happening here? What is this group of things?\n**Level 3** Ask about the story line. What has happened? What will happen next? Have you had experiences or seen things similar to this? How does she feel when this happens?",
-        _translations: {
-          value: {},
-        },
-        condition: '@local.sb_level=="advanced"',
-        style_list: ["margin-top: -20px"],
-        _nested_name: "intro_part1_advanced",
-        _dynamicFields: {
-          condition: [
-            {
-              fullExpression: '@local.sb_level=="advanced"',
-              matchedExpression: "@local.sb_level",
-              type: "local",
-              fieldName: "sb_level",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.sb_level": ["condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "intro_math",
-        value: "@local.intro_math",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.intro_math",
-        style_list: ["margin-top: -20px"],
-        _nested_name: "intro_math",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.intro_math",
-              matchedExpression: "@local.intro_math",
-              type: "local",
-              fieldName: "intro_math",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.intro_math",
-              matchedExpression: "@local.intro_math",
-              type: "local",
-              fieldName: "intro_math",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.intro_math": ["value", "condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "intro_part3",
-        value:
-          "**Read, Talk, and Have Fun!** The supplied questions and comments are just the beginning. \n\n1. For the first reading, read the red questions and comments. \n2. For the second reading, read the blue questions and comments. \n3. For the third reading, read the green questions and comments. \n\nAfter that, follow your child's interests and let your discussions go in fun directions.",
-        _translations: {
-          value: {},
-        },
-        style_list: ["margin-top: -20px"],
-        _nested_name: "intro_part3",
-      },
-      {
-        type: "image",
-        name: "page_end",
-        value: "EFMStorybooks/EFM-SB-0-PageDivider.svg",
-        _translations: {
-          value: {},
-        },
-        style_list: ["margin-top: -4px"],
-        _nested_name: "page_end",
-      },
-    ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_sb_page",
-    status: "released",
-    rows: [
-      {
-        name: "page_no",
-        type: "set_variable",
-        _nested_name: "page_no",
-      },
-      {
-        name: "illustration",
-        type: "set_variable",
-        _nested_name: "illustration",
-      },
-      {
-        name: "story_text",
-        type: "set_variable",
-        _nested_name: "story_text",
-      },
-      {
-        name: "annotation_1",
-        type: "set_variable",
-        _nested_name: "annotation_1",
-      },
-      {
-        name: "annotation_2",
-        type: "set_variable",
-        _nested_name: "annotation_2",
-      },
-      {
-        name: "annotation_3",
-        type: "set_variable",
-        _nested_name: "annotation_3",
-      },
-      {
-        type: "image",
-        name: "page 1",
-        value: "@local.illustration",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.illustration",
-        _nested_name: "page 1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.illustration",
-              matchedExpression: "@local.illustration",
-              type: "local",
-              fieldName: "illustration",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.illustration",
-              matchedExpression: "@local.illustration",
-              type: "local",
-              fieldName: "illustration",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.illustration": ["value", "condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "story_1",
-        value: "@local.story_text",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.story_text",
-        parameter_list: {
-          style: "large emphasised",
-        },
-        _nested_name: "story_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.story_text",
-              matchedExpression: "@local.story_text",
-              type: "local",
-              fieldName: "story_text",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.story_text",
-              matchedExpression: "@local.story_text",
-              type: "local",
-              fieldName: "story_text",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.story_text": ["value", "condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "anno_1",
-        value: "1. @local.annotation_1",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.annotation_1",
-        style_list: ["margin-top: -20px"],
-        _nested_name: "anno_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "1. @local.annotation_1",
-              matchedExpression: "@local.annotation_1",
-              type: "local",
-              fieldName: "annotation_1",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.annotation_1",
-              matchedExpression: "@local.annotation_1",
-              type: "local",
-              fieldName: "annotation_1",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.annotation_1": ["value", "condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "anno_2",
-        value: "2. @local.annotation_2",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.annotation_2",
-        style_list: ["margin-top: -30px"],
-        _nested_name: "anno_2",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "2. @local.annotation_2",
-              matchedExpression: "@local.annotation_2",
-              type: "local",
-              fieldName: "annotation_2",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.annotation_2",
-              matchedExpression: "@local.annotation_2",
-              type: "local",
-              fieldName: "annotation_2",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.annotation_2": ["value", "condition"],
-        },
-      },
-      {
-        type: "text",
-        name: "anno_3",
-        value: "3. @local.annotation_3",
-        _translations: {
-          value: {},
-        },
-        condition: "@local.annotation_3",
-        style_list: ["margin-top: -30px"],
-        _nested_name: "anno_3",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "3. @local.annotation_3",
-              matchedExpression: "@local.annotation_3",
-              type: "local",
-              fieldName: "annotation_3",
-            },
-          ],
-          condition: [
-            {
-              fullExpression: "@local.annotation_3",
-              matchedExpression: "@local.annotation_3",
-              type: "local",
-              fieldName: "annotation_3",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.annotation_3": ["value", "condition"],
-        },
-      },
-      {
-        type: "image",
-        name: "page_end",
-        value: "EFMStorybooks/EFM-SB-0-PageDivider.svg",
-        _translations: {
-          value: {},
-        },
-        style_list: ["margin-top: -7px"],
-        _nested_name: "page_end",
-      },
-    ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_sb_last_page",
-    status: "released",
-    rows: [
-      {
-        name: "page_image",
-        type: "set_variable",
-        _nested_name: "page_image",
-      },
-      {
-        type: "image",
-        name: "page_1",
-        value: "@local.page_image",
-        _translations: {
-          value: {},
-        },
-        _nested_name: "page_1",
-        _dynamicFields: {
-          value: [
-            {
-              fullExpression: "@local.page_image",
-              matchedExpression: "@local.page_image",
-              type: "local",
-              fieldName: "page_image",
-            },
-          ],
-        },
-        _dynamicDependencies: {
-          "@local.page_image": ["value"],
-        },
-      },
-    ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_sb_book_A_Very_Tall_Man",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "cover_1",
-        value: "efm_sb_cover",
-        rows: [
-          {
-            name: "book_cover",
-            value: "EFMStorybooks/EFM-SB-AVTM-1.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "cover_1.book_cover",
-          },
-          {
-            name: "book_title",
-            value: "A Very Tall Man",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "cover_1.book_title",
-          },
-          {
-            name: "book_author",
-            value: "Cornelius Wambi Gulere",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "cover_1.book_author",
-          },
-          {
-            name: "book_illustrator",
-            value: "Catherine Groenewald",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "cover_1.book_illustrator",
-          },
-        ],
-        _nested_name: "cover_1",
-      },
-      {
-        type: "template",
-        name: "book_intro",
-        value: "efm_sb_intro",
-        rows: [
-          {
-            name: "sb_level",
-            value: "basic",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "book_intro.sb_level",
-          },
-          {
-            name: "intro_math",
-            value:
-              "**Math Themes and Words** This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "book_intro.intro_math",
-          },
-        ],
-        _nested_name: "book_intro",
-      },
-      {
-        type: "template",
-        name: "page_1",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 1,
-            type: "set_variable",
-            _nested_name: "page_1.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-1.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_1.illustration",
-          },
-          {
-            name: "story_text",
-            value: "His hoe was too short.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_1.story_text",
-          },
-          {
-            name: "annotation_1",
-            value:
-              "Point out the vivid colors -- the yellow sun, the blue sky, the green bushes, and the red shoes.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_1.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Count the two bushes and the two red shoes with your child.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_1.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Point out how uncomfortable the man looks bending over so far to hoe.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_1.annotation_3",
-          },
-        ],
-        _nested_name: "page_1",
-      },
-      {
-        type: "template",
-        name: "page_2",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 2,
-            type: "set_variable",
-            _nested_name: "page_2.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-2.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_2.illustration",
-          },
-          {
-            name: "story_text",
-            value: "His doorway was too low.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_2.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "Comment that the doorway is too low -- the man is taller than the door.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_2.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value:
-              "Look how much the man stoops down to talk to the boy -- he is much taller than the boy, and the boy is much shorter than the man!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_2.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Count the bushes together.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_2.annotation_3",
-          },
-        ],
-        _nested_name: "page_2",
-      },
-      {
-        type: "template",
-        name: "page_3",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 3,
-            type: "set_variable",
-            _nested_name: "page_3.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-3.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_3.illustration",
-          },
-          {
-            name: "story_text",
-            value: "His bed was too short.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_3.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "The man's legs stick far out of the bed. He is much longer than his bed.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_3.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Point to the bird and the boy and how puzzled they look by the short bed.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_3.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Count together the toes on each of the man's feet.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_3.annotation_3",
-          },
-        ],
-        _nested_name: "page_3",
-      },
-      {
-        type: "template",
-        name: "page_4",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 4,
-            type: "set_variable",
-            _nested_name: "page_4.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-4.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_4.illustration",
-          },
-          {
-            name: "story_text",
-            value: "His bicycle was too short.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_4.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "The tall man is much too big for his bicycle. Look how far his leg sticks out!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_4.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Point out that the bird has changed color from yellow to orange!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_4.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Where is the boy in this picture?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_4.annotation_3",
-          },
-        ],
-        _nested_name: "page_4",
-      },
-      {
-        type: "template",
-        name: "page_5",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 5,
-            type: "set_variable",
-            _nested_name: "page_5.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-5.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_5.illustration",
-          },
-          {
-            name: "story_text",
-            value:
-              "This man was too tall!\n\nWhat can he do to solve his problem and fit into his world?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_5.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "Maybe the man is not too tall -- maybe he just needs to solve his problems!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_5.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "The man has a problem and he is feeling sad about it.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_5.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Notice that this man is much taller than the other people.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_5.annotation_3",
-          },
-        ],
-        _nested_name: "page_5",
-      },
-      {
-        type: "template",
-        name: "page_6",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 6,
-            type: "set_variable",
-            _nested_name: "page_6.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-6.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_6.illustration",
-          },
-          {
-            name: "story_text",
-            value: "He made a very long handle.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_6.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "He solved his problem with the hoe! He made his hoe bigger!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_6.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Which one is bigger, the hoe or the man?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_6.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Do you see the man's red shoes? They disappeared!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_6.annotation_3",
-          },
-        ],
-        _nested_name: "page_6",
-      },
-      {
-        type: "template",
-        name: "page_7",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 7,
-            type: "set_variable",
-            _nested_name: "page_7.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-7.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_7.illustration",
-          },
-          {
-            name: "story_text",
-            value: "He made very high door frames.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_7.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "Which is higher -- the door or the man?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_7.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "The sun in the sky is round. Point to round things where you are.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_7.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Which is longer and which is shorter -- the man's legs or his upper body?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_7.annotation_3",
-          },
-        ],
-        _nested_name: "page_7",
-      },
-      {
-        type: "template",
-        name: "page_8",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 8,
-            type: "set_variable",
-            _nested_name: "page_8.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-8.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_8.illustration",
-          },
-          {
-            name: "story_text",
-            value: "He made a very long bed.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_8.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "We can't see the man's feet now. His bed is longer than he is.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_8.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "The man looks very comfortable and happy in his big bed.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_8.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Look at how small the boy looks next to the bed!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_8.annotation_3",
-          },
-        ],
-        _nested_name: "page_8",
-      },
-      {
-        type: "template",
-        name: "page_9",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 9,
-            type: "set_variable",
-            _nested_name: "page_9.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-9.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_9.illustration",
-          },
-          {
-            name: "story_text",
-            value: "He bought a very high bicycle.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_9.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "Notice that the boy and the bird are inside the basket now.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_9.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Everyone looks very happy now that the man's things are the right size.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_9.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Point to and name the many different colors on this page.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_9.annotation_3",
-          },
-        ],
-        _nested_name: "page_9",
-      },
-      {
-        type: "template",
-        name: "page_10",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 10,
-            type: "set_variable",
-            _nested_name: "page_10.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-10.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_10.illustration",
-          },
-          {
-            name: "story_text",
-            value: "He sat on a very high chair. He ate with a very long fork.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_10.story_text",
-          },
-          {
-            name: "annotation_1",
-            value:
-              "Count out with your child many of the things in the picture -- such as fingers, legs, steps, and tines.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_10.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Look at how high the boy's chair is! Would you be scared sitting so high?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_10.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value:
-              "Now that all his things are the right size for him, the man is not too tall at all!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_10.annotation_3",
-          },
-        ],
-        _nested_name: "page_10",
-      },
-      {
-        type: "template",
-        name: "page_11",
-        value: "efm_sb_page",
-        rows: [
-          {
-            name: "page_no",
-            value: 11,
-            type: "set_variable",
-            _nested_name: "page_11.page_no",
-          },
-          {
-            name: "illustration",
-            value: "EFMStorybooks/EFM-SB-AVTM-11.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_11.illustration",
-          },
-          {
-            name: "story_text",
-            value:
-              "He left his house and moved to a big house in the forest, where lived for many years.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_11.story_text",
-          },
-          {
-            name: "annotation_1",
-            value: "Count the pineapples, bags, and trees with your child.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_11.annotation_1",
-          },
-          {
-            name: "annotation_2",
-            value: "Count the rungs on the ladder with your child.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_11.annotation_2",
-          },
-          {
-            name: "annotation_3",
-            value: "Notice that the bird is yellow again!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "page_11.annotation_3",
-          },
-        ],
-        _nested_name: "page_11",
-      },
-      {
-        type: "template",
-        name: "back_1",
-        value: "efm_sb_last_page",
-        rows: [
-          {
-            name: "page_image",
-            value: "EFMStorybooks/EFM-SB-AVTM-Back.png",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "back_1.page_image",
-          },
-        ],
-        _nested_name: "back_1",
-      },
-    ],
-    _xlsxPath: "EFM_storybooks_beginning.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_430a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "These teaching methods provide structured strategies for learning single-digit multiplication. As your child practices these strategies they will be learning important numerical relationships, and they will also eventually memorize these facts. Your child should already be good with doubling and skip counting by any number.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_430b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "By now, your child is so familiar with addition that it’s no surprise that 2 + 3 is the same as 3 + 2. Although not as obvious, the same is true for multiplication. This illustration makes it easy to see that two rows of three is the same as three rows of two – you just change your point of view! It doesn’t matter which order you multiply two numbers – you get the same answer either way!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM380MultiplyingCommutes.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "240px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "In addition to being cool in a nerdy way, it also means that your child needs to master only about half as many multiplication facts – once your child knows 3 x 4, they also know 4 x 3.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_430c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Skip counting is great for getting better at addition and subtraction. It also is a big help in getting started with multiplication.\n\nAlthough skip counting is not the fastest way to find a result, it is reliable and your child should use it as long as they need to. Suppose your child needs to find 7 x 3. Skip count by 3’s seven times or skip count by 7’s three times to get 21.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_430d_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "**Multiplying by 5 and 10**\n\nThese facts are quickly learned, provide a backbone for other multiplication facts, and they help with understanding two-digit place value.\n\n**Squares**\n\nJust as addition twins are favorite math facts for addition, squares are often favorites for multiplication. Learning these provides another foundation for learning other multiplication facts.\n\n**Doubling**\n\nUse this strategy for multiplying by even numbers. For example, the result of 6 x 7 is the double of 3 x 7. So, 6 x 7 is the double of 21, which is 42.\n\n**One More or One Less**\n\nThis strategy is effective for the remaining multiplication facts. For example, 9 x 7 is one 7 less than 10 x 7 = 70. So it is 70 - 7 = 63. This can be done for all the 9’s. Similarly, 3 x 7 is one more 7 than doubling 7, so it is 7 + 14 = 21. This can be done for all the 3’s.\n\n**Multiplying by 9**\n\nAlthough multiplying by 9 is covered by the last strategy, they are fun to learn in their own right. If you write out the multiples of 9 in order, you’ll see that the tens digit is always one less than the number you are multiplying by and the ones digit plus the tens digit always adds up to 9!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_440a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Each player has a sheet of paper with 7 rows and 3 columns. The columns are marked “10’s,” “1’s,” and “Running Total.” Each player’s running total starts at 0. Roll a die or pick a random playing card from 1 to 9. Each player chooses to use this number in their 1’s or 10’s column for the current row. For example, if it is a 4, this can become 4 or 40. The chosen number is added to the running total. A player that goes over the target of 100 “goes bust” and loses. If neither player goes bust, the one closer to 100 wins. \n\nThere are many options for this game:\n\n* Use a different target number.\n* Use fewer or more rows.\n* Don’t go bust if you go over the target. The closer player on either side wins.\n* Use a fourth column of 100’s to practice 3-digit numbers.\n* Practice subtraction by starting at the target number and subtract down to 0.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_440b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Have a paper with a number line from 0 to 99 to share. On a turn, a player uses two random cards from 0 to 9, choosing the order of these two digits, to generate a number from 00 to 99, and then puts that number on their side of the number line. The first player to get four numbers in a region without any of the opponent’s numbers in between wins. The game can also be played from 000 to 999 if you like.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_440c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "There are two versions of this. The first is the same as the Sum Groups puzzle in Chapter 3, only now the target sums can be bigger.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM440BondedGroups.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "The other version uses a 4 by 4 board with a target number, say 20. As in Sum Groups, the board is filled with pairs and triples of numbers that add up to the target. However, now there will be one square not involved in any of those groups. The challenge is to find that number.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_440d_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Create these by taking a simple addition or subtraction equation and leaving out some of the digits. For example, the following two problems are turned into Missing Number puzzles by leaving out a couple digits.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM440MissingNumbers.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "360px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "After getting comfortable with these, your child may enjoy doing some Letter Substitution puzzles that are described on a later Adding and Subtracting page in this chapter.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_450a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Make a set of multiplication cards to practice these math facts while playing matching games your family played earlier: Chapter 1 - Go Fish, Memory Challenge; Chapter 2 - Bingo; Chapter 3 - Hot Potato; and Chapter 4 - Gin Rummy.\n\nHand draw four cards to go with each math fact - 1) the expression 2) groups of objects, 3) an array, and 4) the prime factorization. If you make these the size of playing cards (2½” by 3½”), use a template from the Printables file if you like. \n\nTake 3 x 4 for example. The four cards would be:",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM450MultiplicationCards1.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "360px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_top_2",
-            value:
-              "You have several options for these cards. One option is to include 3 x 4 and not include 4 x 3. While this means you make about half as many cards, it has the drawback that seeing 3 groups of 4 is different from seeing 4 groups of 3.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_2",
-          },
-          {
-            name: "text_upside_1",
-            value:
-              "For array cards, put the skip counting numbers along one or both of the sides to help your child practice skip counting.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_upside_1",
-          },
-          {
-            name: "image_upside_1_right",
-            value: "EFM450MultiplicationCards2.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_upside_1_right",
-          },
-          {
-            name: "image_upside_1_right_flex",
-            value: 80,
-            type: "set_variable",
-            _nested_name: "activity_body.image_upside_1_right_flex",
-          },
-          {
-            name: "image_upside_1_right_max_width",
-            value: "135px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_upside_1_right_max_width",
-          },
-          {
-            name: "image_side_1_left",
-            value: "EFM450MultiplicationCards3.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_side_1_left",
-          },
-          {
-            name: "image_side_1_left_flex",
-            value: 80,
-            type: "set_variable",
-            _nested_name: "activity_body.image_side_1_left_flex",
-          },
-          {
-            name: "image_side_1_left_max_width",
-            value: "135px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_side_1_left_max_width",
-          },
-          {
-            name: "text_side_1",
-            value:
-              "For expression cards, replace each number with the prime factorization symbol for the number. This makes it easier to see how the prime factorizations fit together when multiplying two numbers.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_side_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_450b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Start with a blank multiplication table that has 4 product rows and 4 product columns. There are also groups of four missing numbers at the top and left sides – these will have some of the numbers from 2 to 9, and these numbers can be duplicated.\n\nFill in the table out of sight of your child, and then flip over or cover all the numbers. Your child can ask to reveal, one at a time, up to 10 of the 16 product entries. The goal is to figure out the entries for the top and left sides before running out of turns.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM450RevealingProducts.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "240px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "Imagine that all the cards were flipped over in this example. If your child chose to flip over the card that happened to have the 63 under it, then they would know it came from a  7 and a 9. Flipping over any other card in the same row or column as the 63 would indicate where the 7 and 9 are. Suppose the second card they flipped over was where the 56 is. Not only would they know that the third column was for 7, they would also know that the second row was for 9 and the third row was for 8.\n\nLarger sizes also work. For example, a table with 5 blank rows and columns that allows for up to 12 flips will work well.\n\nPick numbers for the top and left sides that you want your child to practice with.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_460a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Have a board of numbers from 1 to 30. There are two kinds of tokens – a single token reserved for “the last move,” and a pile of other tokens. \n\nThe first player gets to pick any number and cover it with the last move token. After that, a player replaces the last move token with the other type of token and moves the last move token to any number that is a factor or multiple of the number from the last move. The losing player is the one forced to cover the number 1. \n\nAs children get better at this game, they will discover rules they need to follow governing reasonable first moves. The most basic rule is that the first move cannot be on a prime number in the upper half of the numbers.\n\nAdjust the range of numbers for the skill level of the players - you can use 1 to 24, 1 to 48, or even 1 to 60.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_460b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Start with any number, say 20. Let your child decide whether to go first or second. During their turn, a player may subtract any divisor of the current number from the number. The player forced to 0 loses.\n\nAfter your child becomes familiar with the game, encourage them to look for the remarkably simple strategy for playing it - once they discover it, see if they can explain why it works.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_460c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Children have fun putting in X’s and watching the primes fall through the sieve. This activity creates opportunities for discovering many interesting properties of divisibility and primes.\n\nStart with a number line numbered from 1 to 25 - or a larger range if space and patience allows.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM460SieveOfEratosthenes.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "420px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "Write the number 2 below itself. On the line even with this 2, put X’s below each multiple of 2.\n \nNow, pull down the lowest number with no X’s below it (3 in this case) and put it on the next line. Write the 3 and put X’s on that line for all its multiples. Keep pulling down numbers and marking their multiples. When you are finished, you will have pulled down all the primes. Remember that 1 is a unit and not a prime!\n\nHere are some good questions to discuss with your child as they play with this sieve:\n\n* Why are the numbers pulled down primes?\n* What is the last prime whose multiples you need to cross out? Why were the other primes not useful?\n* For all the primes that were useful, which of their multiples produced new restrictions and which were not useful?\n* If you had a number, say 53, which prime numbers would you need to divide it by to confirm that it’s a prime?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_470a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Have a collection of numbered cards from 1 to 25, or whatever range your child is comfortable with. A card is selected at random and used as everyone’s target number. The card is returned to the deck. Each player is dealt five cards to be used, in any order and with any operations, to get as close as possible to the target number. The closest player wins the round.\n\nA different way to score gives a player twice as many points as the number of cards they use to reach the target; a player receives 5 points for hitting the target with help; and a player receives 6 points for helping someone hit the target.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_470b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Near the end of Chapter 4, the Sum Difference activity had one person think of two numbers and then challenge the other person to find the numbers by telling them the sum and difference of the numbers. Secret Ops uses the same idea, only now the challenger can use any two operations, such as multiplying and subtracting.\n\nFor example, the challenger might say “Which two numbers have a product of 12 and a difference of 4?” You can extend this to three numbers, if you like - “Which three numbers have a product of 12 and a sum of 8?”",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_470c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "These puzzles are very easy for an adult to create. Take any equation, such as 9 = (2 + 7) x (5 - 2 x 2) and remove the parentheses. The challenge for your child is how to take 2 + 7 x 5 - 2 x 2 and add parentheses to it so that the result is 9.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_470d_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Use the lever principle to practice multiplication and addition. The principle states that the force exerted by a mass on one side of a lever is equal to the mass times its distance from the pivot point, the fulcrum. The forces on one side from several masses add up to give the total force. The total forces on the two sides must be equal for the lever to be in balance.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM470LeverBalance.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "360px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "You have a 3-unit weight and a 5-unit weight to put on opposite sides of the fulcrum. Where should they be put to balance? The answer to this can be distances 5 and 3, but it can also be 10 and 6, or even larger answers like 15 and 9.\n\nIf you have a 3-unit and a 5-unit weight to put on one side of a lever, which weights can you put at which distances on the other side? What if the two weights are on different sides of the lever? This question continues the questions on the Make It Count page at the end of Chapter 4.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_480a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Remove the picture cards from a deck and split it evenly between two players. To give more focused practice, remove the A’s and 10’s as well.\n\nEach player turns over two cards, multiplies them, and the player with the larger product wins those four cards. If the products are equal, two more cards are turned over and the winner gets to keep all eight cards. The player with the most cards after playing for a set time is the winner.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_480b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Start by identifying a group of numbers to use for the round. It can be odd numbers, or multiples of 3 together with numbers that have a 3 in them, or any group that provides good practice. \n\nTwo or more players take turns saying the numbers starting at 1. When a player has a number in the group, they must say “beep.” If they fail to say beep, or say beep for a wrong number, they’re out. The last player in wins!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_480c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Use a deck of cards with Q’s (as 0’s), A’s (as 1’s), and 2-9, or use four sets of Number Cards from 0 to 9. Use a 4 by 5 grid on a paper with 20 spaces randomly filled out with multiples of 5 and 10. Have a set of tokens for each player. Select a random card and put your token on that number times 5 or 10 - your choice. Once occupied, the other player cannot move there. The first player to get 3 in a row wins. \n\nThe numbers 5 and 10 can be replaced by other pairs such as 2 and 4, or 3 and 6. These pairings help with practicing doubling strategies for multiplication. For example, if the player does not know 6 x 7, they can double 3 x 7.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_480d_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Filling in a standard multiplication table is boring, and children quickly realize they can fill it out using addition rather than multiplication. To really practice multiplication, as well as practicing problem solving and factoring, create a mixed-up multiplication table for your child.\n\nMake these tables by moving the rows and columns around, and leaving out most of the headings and  entries in the middle. Here is an example using headings of 2 through 9:",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM480TurningTheTables.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "Solve this by starting with the distinctive entries. The 20 forces its row to be multiplying by 4, and then the 36 makes its column be 9. The 49 forces its column and row to be multiplying by 7. The 9 forces its column and row to be multiplying by 3. Now the 12 must be in the column for 4. Continue the detective work in this way and fill in the entries as the headings are discovered.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_490a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "The area of a rectangle is its length times its width. That dry statement can be made tangible to your child in at least two ways. The first is to show a rectangle broken into a collection of squares.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM490RectangleArea.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "220px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "The second is to use number shapes to show how a quantity, such as 12, can be placed into an array - 3 by 4, 2 by 6, or 1 by 12. Playing with rectangle areas gives us a fun arena in which to play around with multiplication and factoring!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_490b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Start with a large collection of small objects, such as raisins. For each number, investigate which rectangles you can make with that many objects. 1 can only be made with a 1 by 1 rectangle, and 1 is called a unit. The numbers, such as 5, that only have 1 by 5 and 5 by 1 rectangles, are called primes. Numbers that are not a unit or prime are called composite - they are called that because they are composed of primes being multiplied together, such as 12 = 2 x 2 x 3.\n\nThe dimensions of each rectangle are made of values that evenly divide the number and multiply together to give the number. Making rectangles is a direct way to experience divisibility. Numbers such as 16 are called squares because one of their rectangles is a square – one rectangle for 16 is the 4 by 4 square.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_490c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Each player gets a piece of graph paper. For a player’s turn, use two playing cards from 1 to 10 to determine the dimensions of a rectangle. If a player’s paper has room, the rectangle may be placed anywhere its interior does not overlap with an existing rectangle. Once placed, its interior is lightly shaded and its area and dimensions are written on it. If there is no room, the turn is skipped. The player with the largest total wins. For a normal piece of graph paper, this can be a long game – reduce the time by using half the paper or limiting the number of turns.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_490d_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "A rectangle, 4 by 4 or larger, with numbers in some of its squares,  is to be divided into smaller rectangles. Each number must end up  in a separate rectangle whose area is that number. \n\nOut of the sight of your child, create these puzzles by first filling in the big rectangle with smaller rectangles. Next, place the area in each rectangle. Lastly, give your child the big rectangle with only the numbers.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM490DivideUpTheBox.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "180px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "To solve, look first at areas that are prime numbers. Also, sometimes an area is boxed in – in this puzzle the upper “4” must relate to the upper left 2 by 2 square. Next, the upper right corner must be used in a vertical 3 by 1 rectangle. Keep going!",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_500a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Just as 4 x 2 is a quick way to write 2 + 2 + 2 + 2, so 2^4 is a quick way to write 2 x 2 x 2 x 2. It’s much easier to say and understand the phrase “two to the fourth,” than to say “two times two times … “ There are two special names associated with powers. The second power, 4^2 for example, can be said *four squared*, and the third power, 4^3 for example, can be said *four cubed*.\n\nWhen two powers of the same number are multiplied, a simple rule governs how to simplify the result - the powers add up. For example, if you do 4^2 x 4^3= (4 x 4) x (4 x 4 x 4) = 4^5, we have two fours multiplied by three fours, so the result is five fours being multiplied. Note that this rule of adding exponents only works when it is the same number being taken to a power.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_500b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Because powers add up when powers are being multiplied, any of our old games and puzzles involving addition can be used to practice multiplying numbers that are powers. Some examples of this are: Chapter 3 - Shape Sums and Sum Groups; Chapter 4 - Enclosed Sums, SumTriangles, and Fix It.\n\nHere are two examples used in Chapter 3 for Shape Sums.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM500SimpleShapeSums.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "Here are the same two examples for Shape Products where we use multiplication combining the circles instead of addition.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-          {
-            name: "image_bottom_1",
-            value: "EFM500SimpleShapeProducts.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1",
-          },
-          {
-            name: "image_bottom_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1_max_width",
-          },
-          {
-            name: "text_bottom_2",
-            value:
-              "With practice, this becomes routine and just as easy as the original addition problems.\n\nIf your child is enjoying these problems and wants some extra challenge, start involving more than one number being raised to a power. For example, if you multiply (4^2x 3^3) x (4^5x3^2) you can apply our rule separately to the powers of 4 and the powers of 3 and get the result 4^7x3^5.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_2",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_500c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "An excellent thing to practice when you are travelling and have time on your hands is to recite the prime factorizations for the numbers in order. This also provides practice with talking about powers. Knowing prime factorizations with ease will be helpful in many things to come, such as working with fractions. Have fun with this and don’t push your child beyond their comfort level.\n\nIt goes like this: 1 is a unit, 2 is a prime, 3 is a prime, 4 is 2 squared, 5 is a prime, 6 is 2 x 3, 7 is a prime, 8 is 2 cubed, 9 is 3 squared, 10 is 2 x 5, 11 is a prime, 12 is 2 squared x 3, 13 is a prime, 14 is 2 x 7, 15 is 3 x 5, and 16 is 2 to the fourth. If your child stumbles, help them figure it out rather than simply reminding them of the answer.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_510a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Factor trees are an extension of Shape Products from the previous Feel the Power page. The goal in creating a factor tree is to reduce a number to its prime factors. Many things can be learned about a number in the process of constructing a factor tree.\n\nStart with a number, say 54. This can be broken down several ways. One way is  9 x 6, another is 18 x 3, and yet another is 3 x 3 x 6. Each of these produces a different start to a factor tree.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM510FactorTrees.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "380px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "Each of these trees ultimately produces the same primes on its leaves. In each case we end up with 2 x 3 x 3 x 3, but look at the different ways of getting there!\n\nAfter doing some examples like these, your child may naturally start asking some questions.\n\nWhy do some trees have more levels than others? Why are some trees broader than others? Why do the leaves always stop at primes? Why do the leaves always have the same list of primes, perhaps with rearrangement?\n\nThis last question is a really big question. It is so big it is called the Fundamental Theorem of Arithmetic. It says that each number has exactly one way of being expressed as a product of primes!\n\nYou may ask: Why is that so important? It says that primes are the multiplicative building blocks of numbers, and once you have found one way to build a number, that is the only way. If you know that 54 = 2 x 3 x 3 x 3, then there is no way, using whole numbers, to write 54 = 5 x ___ . The uniqueness of prime factorizations is at the heart of a lot of beautiful number theory.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_510b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "These puzzles are the multiplicative version of the Addition Pyramids seen in Chapter 4. You are supplied with a target number and a pyramid of numbers. The challenge is to find a path of connected numbers down the pyramid so the product of the selected numbers is the target.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM510ProductPyramid.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "The target is 36 in this pyramid and the red lines indicate the path that works. Your child may notice that these puzzles are much easier if they start by doing the prime factorization of the target. Because 36 = 2 x 2 x 3 x 3, they know they must pick up those prime factors along the path and this helps guide the search. Having the adult know about prime factorizations also makes it much easier to create these puzzles.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_520a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Use a deck of cards with Q’s (as 0’s), A’s (as 1’s), and 2-9’s. Set the  target number at 100. Four random cards are chosen and used to make a pair of 2-digit numbers, a shared resource. \n\nEach player is dealt 14 random cards face up. Players alternate turns. During a turn, a player uses two cards to replace two of the four cards, and the resulting pair of numbers must add up to the target. A player passes if that is not possible. The first player to run out of cards wins. If both players become stuck, the player with fewer cards wins.\n\nSome options are to change the target number and to give players fewer or more than 14 cards. Another option is to use subtraction together with a smaller target number.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_520b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Choose a target number, say 100. Each player picks up five random cards from 0 to 9. Two 2-digit numbers are made out of these numbers, the fifth card is unused. The two numbers are added and the player closest to the target wins a point for that round. The highest number of points after a fixed number of rounds wins.\n\nOne option is to use three-digit numbers, a target number of 1000, and each player receives seven cards. Another option is to use subtraction with a smaller target number.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_520c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Once your child becomes comfortable with the Missing Number puzzles from a few pages earlier in this chapter, they can start these puzzles. In these, one or more of the digits are replaced by letters. The three rules for letters are: \n\n* A given letter is always the same digit\n* The leftmost digit of a number is never 0\n* Different letters must be different digits\n\nCreate these puzzles by taking an addition or subtraction problem and replacing one or more of the digits, as in the following examples:",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM520LetterSubstitution1.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "The puzzles can also be created to make interesting problem-solving challenges for your child. Note that the values of the letters do not carry over from puzzle to puzzle.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-          {
-            name: "image_bottom_1",
-            value: "EFM520LetterSubstitution2.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1",
-          },
-          {
-            name: "image_bottom_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1_max_width",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_530a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Imagine a billiard table that has a pocket in each of the four corners. When a ball bounces off the side of the table, it bounces away at the same angle it came in at. This investigation looks at the question: If we shoot a ball at a 45 degree angle from one corner, where will it end up? The answer depends on the size of the table. This is what happens on a 3 by 4 table.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM530BilliardBallBouncing.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "After playing with several of these, challenge your child to predict what the answer is in advance. Starting in the bottom left corner, which corner will be hit first and how many bounces will it take?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_530b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Suppose you have an 8 by 8 chessboard and you have a collection of 1 by 2 tiles. Finding a way to exactly cover the chessboard with 32 of these 1 by 2 tiles is simple enough. \n\nLet’s start playing around with removing squares from the chessboard. If you remove one corner of the chessboard, you know immediately that you can no longer cover the chessboard with tiles because the tiles will cover an even number of squares, and there are now 63 squares. Okay, remove two corners to make an even number of remaining squares - can you cover it now? The answer depends on which two corners you remove. Why? What if you no longer restrict yourself to removing corners, what happens?\n\nOne important lesson in dealing with questions like these is to learn from playing with smaller problems. Try these questions on a 4 by 4 or 6 by 6 board first.\n\nIf your child is enjoying these questions, start branching out to using other shapes to fill the board. Play around with filling it with 1 by 3 tiles or with 3 squares in an L shape. What patterns and rules do you discover with these? What other shapes might be interesting to play with?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_530c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "In which ways can you fill a square with other squares, where the other squares need not all be the same size? However, the side length of each square must be some whole number multiple of a fixed length. The question to investigate is: What are all the numbers of squares that are possible? If you know a number is possible, is there an easy way to describe how to do it?\n\nLet your child play with it over many days and don’t be in a hurry to get to the answer. Here is a diagram showing how 6 is possible.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM530SquaresInSquares.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "200px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "If your child enjoys exploring that question, explore variations on this theme. Suppose you only allow squares of certain sizes - such as 1 by 1, 2 by 2, and 3 by 3. Another direction to look at is  filling other figures with figures that have the same shape. For example, ask the same question for regular triangles (triangles with all their sides the same length). Some figures are interesting to investigate in this way, and some are not interesting at all - which ones?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_540a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value: "Use a shared piece of paper filled out as follows:",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM540ProductGame.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "The first player moves a token onto any number from 1 to 9 in the 1-9 squares. The second player puts another token on one of the 1-9 squares and claims the product in the 6 by 6 grid. From then on, each player chooses to move either of the two tokens and claims the product (if they can). The first player to claim 3 squares in a row wins.\n\nMix up the product numbers to give your child better practice identifying the products. See the Chapter 5 Bonus Material for designs of larger boards with larger ranges.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_540b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "These puzzles have islands (circles and squares) connected by bridges (lines). If there are two circles on either side of a square, then the square holds the product of the two circles. The challenge is to fill in the missing numbers.\n\nMake these puzzles by filling in the circles, then filling in the squares, and finally removing some of the numbers before giving it to your child.\n\nIn addition to practicing multiplication, these puzzles can be structured to practice common factors as well. In the first puzzle, the only number, other than 1, that divides 14 and 21 is 7, so that is the number in the bottom circle.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM540IslandHoppingWithProducts.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "400px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_540c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "This game is lightly inspired by checkers. Each player has 10 counters. The counters are numbered from 1 to 10, with the “10” counter marked with 10 and 11. The counters start on the end rows of a 100-chart - one player on squares 1 to 10 and the other on squares 91 to 100.\n\nInitially, counters can only move “forward” one row onto any multiple of the number(s) on the marker they choose – for the player starting on 1 to 10, forward means larger numbers, and for the player starting on 91 to 100, forward means smaller numbers. Once a counter has made it all the way across the board, it becomes a king and can then move forward or backward one row after that. An opponent's piece is taken by landing on it. A player’s piece cannot double up with another of the same player’s pieces. You win by taking all your opponent’s pieces. \n\nFor younger players, shorten the board to use the first 6 rows – the numbers from 1 to 60. A child who does not know all the multiples yet can use skip counting to figure out the moves.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_550a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Use three dice and an 8 by 8 board of numbers from 1 to 64. A player rolls the dice and uses addition, subtraction, multiplication, and division to make any unmarked number on the board. The player marks this square and receives one point for the square plus one more point for each marked square that it touches, including diagonally. If a player cannot make a play, any other player who finds a play can claim that score. Play five or more rounds, with the largest score winning.\n\nSome game options are to use a fourth die, and to use a smaller or larger board.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_550b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "You are given some weights and a design for a mobile that has some attach points. The challenge is to put at most one weight per attach point so the mobile will balance along every arm. Assume the wires are weightless. Each arm in the mobile is a lever that needs balancing, so these puzzles are an extension of the Lever Balance puzzle given earlier in this chapter - practice those puzzles before starting these.\n\nStart with the simplest mobiles, which are just levers in the air. Here is a solution for putting the weights from 1 to 4 on this mobile to balance it.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM550Mobile1.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "This works because 2 x 4 + 1 x 2 = 4 x 1 + 3 x 2.\n\nHere is a more complicated mobile. Use the total of the weights below it to balance each side of the top wire (1 + 3) x 3 = (4 + 2) x 2.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-          {
-            name: "image_bottom_1",
-            value: "EFM550Mobile2.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1",
-          },
-          {
-            name: "image_bottom_1_max_width",
-            value: "300px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1_max_width",
-          },
-          {
-            name: "text_bottom_2",
-            value:
-              "Go to the Chapter 5 Bonus Material for more examples and a longer discussion of mobiles.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_2",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_550c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "The premise is that you have a calculator that is badly broken and you are challenged to produce some result on the calculator. This is easy to play orally whenever you have a spare moment. Here are some examples to get you started..\n\nSuppose you had a calculator with +, -, x, and /, but only one working number key, the 4. Could you get the result 21? If so, what is the fewest number of steps you would need? Suppose you could use 4 at most four times - which numbers could you produce? Suppose you had to use the 4 exactly four times. Play around with having other single keys and creating other results.\n\nSuppose your calculator could only add 4 or 7. Which numbers could you produce? Suppose it had 4 or 7, but now it can add and subtract. Which numbers could you produce? This is the same activity we’ve seen in other settings.\n\nSuppose you only had a 1 key and could only add or double. For example, 2 x (2 x 1) + 1 is 5. What other numbers can you create?",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_560a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Use a board with a 4 by 6 grid of numbers from 1 to 24. On a turn, a player chooses a number that is uncovered and has at least one factor uncovered – the player gets the selected number and the other player gets any or all of the uncovered factors (their choice as to how many). Play alternates until there are no legal numbers left. The players add up their numbers and the higher sum wins.\n\nThis can also be played as a solitaire puzzle, sometimes called Taxman. In this version, the one player selects each number and the taxman gets all the available factors. Play continues until the player no longer has a legal move - at that point, the taxman receives the remaining numbers. The goal is to have as large a sum as possible - bigger than the taxman when that’s possible.\n\nMake the range of numbers suit the ability of the players - it could be 1 to 12 or as high as 1 to 60.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_560b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Players start the game by secretly picking 5 distinct numbers larger than 20 and not bigger than 120. After they are selected, they are written where all can see them.\n\nUsing Number Cards or some other device, a random number from 1 to 20 is created. That number is repeatedly doubled until either someone’s number is hit for the first time or the number becomes bigger than 120. The first player to have all five numbers hit is the winner. \n\nAfter your child has played a few times, they will begin developing strategies for selecting their five numbers. A simple strategy is that it is a bad idea to pick a number, such as 46, that is not a power of 2 times some number between 1 and 20 - it will never get hit. Some numbers with lots of factors of 2, such as 32, are more likely to be hit because more starting numbers can get to them..\n\nThere are many other options to play with. You can triple the number each time instead of doubling it. You can double it and add one each time. For younger players, select numbers above 10 and not above 60, and select a random number from 1 to 10.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_560c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Have two sets of cards, say from 1 to 25. Play the standard game of war with these, only now the winner is the card that has more factors. For example, 12 beats 16 because 12 has 6 factors (1, 2, 3, 4, 6, and 12) while 16 has 5 factors (1, 2, 4, 8, and 16). The holder of the winning card must be able to correctly list the factors to win the cards - otherwise, the cards get shuffled back into each player’s draw pile. As with standard War, when there is a tie, then next cards are turned over and the winner receives all the cards.\n\nThere are several possible variations for you to play around with. You can play that the smaller number of factors wins. You can count the total of just the prime factors rather than all the factors. You can play that prime powers (numbers that are a power of a prime) beat other numbers.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_570a_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Each player starts with a 4 by 4 grid of numbers that are possible multiplication products - these numbers can either be randomly assigned or carefully chosen by the player.\n\nTo start, two cards are dealt and put face up on the table. If either player has the product of those two numbers, they cover it. From then on, the players take turns taking the top card from the draw pile and choosing which of the two cards to replace. All players who have a match with the product cover it. The first player to get 4 in a row wins.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_570b_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "Use a 100-chart with the 36 squares on the four edges colored gray. Use playing cards with picture cards removed or use Number Cards from 1 to 10. \n\nOn a turn, if you pick a 1 you can claim any odd number; if you pick any other number, you can claim any multiple of it. If you claim a number, your opponent cannot claim it. The aim is to make a path from one edge to the opposite edge, in either direction. You do not need to claim the squares in the order of your path. \n\nYou can either play that diagonal connections are okay or not okay. Another option is to include picture cards – if you get one of these, you can put in a blocked square that cannot be included in either person’s path.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
-  },
-  {
-    flow_type: "template",
-    flow_name: "efm_act_5_570c_template",
-    status: "released",
-    rows: [
-      {
-        type: "template",
-        name: "activity_body",
-        value: "efm_activity_body_template",
-        rows: [
-          {
-            name: "text_top_1",
-            value:
-              "This multiplication puzzle is either 3 by 3 involving each of the numbers 1 to 6 exactly once, or 4 by 4 involving the numbers 1 to 8 exactly once. The challenge is to fill in some of the squares, two numbers for each row and each column, so that the product of a row is the number marked to the far left and the product of the column is the number marked above the column. Some rows or columns may not be marked - if so, there is no constraint on the product of those rows or columns.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_top_1",
-          },
-          {
-            name: "image_middle_1",
-            value: "EFM570CrossProducts3By3.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1",
-          },
-          {
-            name: "image_middle_1_max_width",
-            value: "360px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_middle_1_max_width",
-          },
-          {
-            name: "text_bottom_1",
-            value:
-              "Solve this puzzle by finding columns and rows where you can identify the two numbers. The 30 column must have 5 and 6, and the 10 row must have 2 and 5. Next, the 12 column must have 3 and 4 and the 4 row must have 1 and 4. The rest follows quickly.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_1",
-          },
-          {
-            name: "image_bottom_1",
-            value: "EFM570CrossProducts4By4.svg",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1",
-          },
-          {
-            name: "image_bottom_1_max_width",
-            value: "360px",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.image_bottom_1_max_width",
-          },
-          {
-            name: "text_bottom_2",
-            value:
-              "As is often the case with these puzzles, the adult can make them by filling in the numbers on the inside of the puzzle first, writing down the products, and then removing all the interior numbers.",
-            _translations: {
-              value: {},
-            },
-            type: "set_variable",
-            _nested_name: "activity_body.text_bottom_2",
-          },
-        ],
-        _nested_name: "activity_body",
-      },
-    ],
-    _xlsxPath: "EFM_activity_chapter5_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
   {
     flow_type: "template",
