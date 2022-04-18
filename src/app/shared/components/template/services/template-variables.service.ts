@@ -330,7 +330,12 @@ export class TemplateVariablesService {
         parsedValue = this.templateFieldService.getGlobal(fieldName);
         break;
       case "data":
-        parsedValue = await this.appDataService.getSheet("data_list", fieldName);
+        const [flow_name, nested_path] = fieldName.split(".");
+        const sheet = await this.appDataService.getSheet("data_list", flow_name);
+        parsedValue = sheet.rowsHashmap;
+        if (nested_path) {
+          parsedValue = getNestedProperty(sheet.rowsHashmap, nested_path);
+        }
         break;
       // TODO - ideally campaign lookup should be merged into data list lookup with additional query/params
       // e.g. evaluate conditions, take first etc.
