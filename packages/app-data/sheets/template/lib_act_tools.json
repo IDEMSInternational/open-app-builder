@@ -1,0 +1,172 @@
+{
+  "flow_type": "template",
+  "flow_name": "lib_act_tools",
+  "status": "released",
+  "rows": [
+    {
+      "name": "workshop_data",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_data"
+    },
+    {
+      "name": "workshop_id",
+      "value": "@local.workshop_data.id",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_id",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_data.id",
+            "matchedExpression": "@local.workshop_data.id",
+            "type": "local",
+            "fieldName": "workshop_data"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_data.id": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "tools",
+      "value": "_tools",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "tools"
+    },
+    {
+      "name": "workshop_tools",
+      "value": "@local.workshop_id@local.tools",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_tools",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop_id@local.tools",
+            "matchedExpression": "@local.workshop_id",
+            "type": "local",
+            "fieldName": "workshop_id"
+          },
+          {
+            "fullExpression": "@local.workshop_id@local.tools",
+            "matchedExpression": "@local.tools",
+            "type": "local",
+            "fieldName": "tools"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_id": [
+          "value"
+        ],
+        "@local.tools": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "library_activity",
+      "value": "library_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "activity_image",
+          "value": "@local.workshop_data.image_asset",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "library_activity.activity_image",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data.image_asset",
+                "matchedExpression": "@local.workshop_data.image_asset",
+                "type": "local",
+                "fieldName": "workshop_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data.image_asset": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "activity_title",
+          "value": "@local.workshop_data.tools",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "library_activity.activity_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_data.tools",
+                "matchedExpression": "@local.workshop_data.tools",
+                "type": "local",
+                "fieldName": "workshop_data"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_data.tools": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "content_box",
+          "value": "@local.workshop_tools",
+          "rows": [],
+          "_nested_name": "library_activity.content_box",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@local.workshop_tools",
+                "matchedExpression": "@local.workshop_tools",
+                "type": "local",
+                "fieldName": "workshop_tools"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_tools": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "library_activity"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_essential_tools.xlsx"
+}

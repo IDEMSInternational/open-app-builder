@@ -1,5 +1,4 @@
 export const UNTRACKED_ASSETS = ["es_sp/quality_assurance/test_image_untracked.png"];
-
 export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/gb.svg": {
     size_kb: 0.5,

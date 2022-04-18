@@ -1,0 +1,30 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_checkbox_button_2",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "simple_checkbox",
+      "name": "default",
+      "_nested_name": "default"
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "par_2_1",
+      "parameter_list": {
+        "label_text": ""
+      },
+      "_nested_name": "par_2_1"
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "par_2_2",
+      "parameter_list": {
+        "label_text": "label text"
+      },
+      "_nested_name": "par_2_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/components_demo/component_simple_check_box .xlsx"
+}

@@ -1,0 +1,108 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_two_texts",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "child_local_variable",
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "child_local_variable"
+    },
+    {
+      "type": "text",
+      "name": "child_text_1",
+      "value": "Failed: \"text_1\" has not been overwritten",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "child_text_1"
+    },
+    {
+      "type": "text",
+      "name": "child_text_from_local_variable",
+      "value": "@local.child_local_variable",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "@local.child_local_variable"
+          ],
+          "_raw": "click | emit:@local.child_local_variable",
+          "_cleaned": "click | emit:@local.child_local_variable"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "key_1": "@local.child_local_variable"
+      },
+      "_nested_name": "child_text_from_local_variable",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.child_local_variable",
+            "matchedExpression": "@local.child_local_variable",
+            "type": "local",
+            "fieldName": "child_local_variable"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.child_local_variable",
+                  "matchedExpression": "@local.child_local_variable",
+                  "type": "local",
+                  "fieldName": "child_local_variable"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "click | emit:@local.child_local_variable",
+                "matchedExpression": "@local.child_local_variable",
+                "type": "local",
+                "fieldName": "child_local_variable"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "click | emit:@local.child_local_variable",
+                "matchedExpression": "@local.child_local_variable",
+                "type": "local",
+                "fieldName": "child_local_variable"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "key_1": [
+            {
+              "fullExpression": "@local.child_local_variable",
+              "matchedExpression": "@local.child_local_variable",
+              "type": "local",
+              "fieldName": "child_local_variable"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.child_local_variable": [
+          "value",
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "parameter_list.key_1"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+}
