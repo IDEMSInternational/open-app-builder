@@ -15,6 +15,7 @@ import {
 import { FlowTypes } from "data-models";
 
 import { getActiveDeployment } from "../../deployment/get";
+import { DefaultParser } from "./parsers";
 
 /***************************************************************************************
  * CLI
@@ -43,7 +44,7 @@ export default program
 
 class AppDataConverter {
   /** Change version to invalidate any cached conversions */
-  public converterVersion = 1.2;
+  public converterVersion = 1.6;
 
   private activeDeployment = getActiveDeployment();
   private paths = {
@@ -79,25 +80,17 @@ class AppDataConverter {
    */
   public async run() {
     const actions = this.prepareConversionActions();
-
     this.processCacheDeletions(actions.delete);
-
     const converted = this.processSheetConversions(actions.convert);
-
     const cached: IParsedWorkbookData[] = actions.skip.map((entry) =>
       this.loadCachedConversion(entry)
     );
-
     this.writeCacheContentsJson();
-
     const allConvertedData = [...converted, ...cached].filter((data) =>
       this.applySheetFilters(data)
     );
-
     this.writeOutputJsons(allConvertedData);
-
     this.logSheetsSummary(allConvertedData);
-
     console.log(chalk.yellow("Conversion Complete"));
 
     if (this.conversionWarnings.length > 0) {
@@ -175,9 +168,10 @@ class AppDataConverter {
       const merged = this.mergeAppData(SHEETS_INPUT_FOLDER, [{ json, xlsxPath }]);
       const dataByFlowType = groupJsonByKey(merged, "flow_type");
       try {
-        const convertedData = applyDataParsers(dataByFlowType as any);
-        processed.push(convertedData);
-        this.saveCachedConversion(entry, convertedData);
+        const convertedData = processData(dataByFlowType);
+        const postProcessed = postProcessData(convertedData);
+        processed.push(postProcessed);
+        this.saveCachedConversion(entry, postProcessed);
       } catch (error) {
         this.conversionErrors.push(error);
       }
@@ -196,7 +190,9 @@ class AppDataConverter {
     if (sheets_filter_function) {
       Object.entries(data).forEach(([flow_type, flows]) => {
         // ensure flows exist and apply and deployment filters
-        data[flow_type] = flows.filter((flow) => flow).filter(sheets_filter_function);
+        data[flow_type] = flows
+          .filter((flow) => flow)
+          .filter((flow) => sheets_filter_function(flow as any));
       });
     }
     return data;
@@ -305,12 +301,6 @@ class AppDataConverter {
     return false;
   }
 
-  private postProcessSheets(sheets: IParsedWorkbookData) {
-    // console.log("post process sheets", sheets);
-    const postProcessed = applyDataParsers(sheets, "postProcess");
-    return postProcessed;
-  }
-
   /**
    * App data sheets contain contents page with metadata that can be merged into regular data
    * Merge and collate with other existing data, warning in case of overwrites
@@ -353,40 +343,40 @@ class AppDataConverter {
 }
 type IParsedWorkbookData = { [type in FlowTypes.FlowType]?: FlowTypes.FlowTypeWithData[] };
 
-function applyDataParsers(
-  dataByFlowType: IParsedWorkbookData,
-  processType: "run" | "postProcess" = "run"
-): IParsedWorkbookData {
-  // All flow types will be processed by the default parser unless otherwise specified here
+function processData(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
+  const parsedData: IParsedWorkbookData = {};
+  const parsers = getDataParsers();
+  Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
+    const parser: Parsers.AbstractParser = parsers[flow_type] || new DefaultParser();
+    // process individual rows via parser.run method
+    parsedData[flow_type] = contentFlows.map((flow) => {
+      try {
+        const parsed = parser.run(flow);
+        return parsed;
+      } catch (error) {
+        throwTemplateParseError(error, flow);
+      }
+    });
+  });
+  return parsedData;
+}
+function postProcessData(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
+  const parsedData: IParsedWorkbookData = {};
+  const parsers = getDataParsers();
+  Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
+    const parser: Parsers.AbstractParser = parsers[flow_type] || new DefaultParser();
+    parsedData[flow_type] = parser.postProcessFlows(contentFlows);
+  });
+  return parsedData;
+}
 
+function getDataParsers() {
+  // All flow types will be processed by the default parser unless otherwise specified here
   const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
     template: new Parsers.TemplateParser(),
     data_list: new Parsers.DataListParser(),
   };
-  const parsedData: IParsedWorkbookData = {};
-  Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
-    const parser: Parsers.AbstractParser = customParsers[flow_type]
-      ? customParsers[flow_type]
-      : new Parsers.DefaultParser();
-    // apply parser for current process type
-    switch (processType) {
-      case "run":
-        // process individual rows via parser.run method
-        parsedData[flow_type] = contentFlows.map((flow) => {
-          try {
-            const parsed = parser.run(flow);
-            return parsed;
-          } catch (error) {
-            throwTemplateParseError(error, flow);
-          }
-        });
-        break;
-      case "postProcess":
-        parsedData[flow_type] = parser.postProcessFlows(contentFlows);
-        break;
-    }
-  });
-  return parsedData;
+  return customParsers;
 }
 
 /**
