@@ -4,283 +4,6 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_schedule",
-    flow_name: "debug_campaign_schedules",
-    status: "released",
-    comments: "This contains schedules for notifications",
-    rows: [
-      {
-        id: "debug_daily",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          batch_size: 5,
-        },
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-      },
-      {
-        id: "debug_fixed_saturday",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          day_of_week: 6,
-        },
-        time: {
-          hour: 19,
-          minute: 30,
-        },
-      },
-      {
-        id: "debug_fixed_past",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          start_date: "1990-11-01T00:00:00.000",
-          end_date: "1990-11-30T00:00:00.000",
-        },
-      },
-      {
-        id: "debug_fixed_december_no_time",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          start_date: "2021-12-01T00:00:00.000",
-          end_date: "2021-12-31T00:00:00.000",
-        },
-      },
-      {
-        id: "debug_fixed_december_early",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          start_date: "2021-12-01T00:00:00.000",
-          end_date: "2021-12-31T00:00:00.000",
-        },
-        time: {
-          hour: 6,
-          minute: 0,
-        },
-      },
-      {
-        id: "debug_fixed_december_noon",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          start_date: "2021-12-01T00:00:00.000",
-          end_date: "2021-12-31T00:00:00.000",
-        },
-        time: {
-          hour: 12,
-          minute: 0,
-        },
-      },
-      {
-        id: "debug_fixed_december_late",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          start_date: "2021-12-01T00:00:00.000",
-          end_date: "2021-12-31T00:00:00.000",
-        },
-        time: {
-          hour: 22,
-          minute: 0,
-        },
-      },
-      {
-        id: "debug_fixed_new_years_day",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          start_date: "2022-01-01T00:00:00.000",
-          end_date: "2022-01-01T00:00:00.000",
-        },
-        time: {
-          hour: 13,
-          minute: 0,
-        },
-      },
-      {
-        id: "debug_consecutive_days",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          batch_size: 5,
-        },
-      },
-      {
-        id: "debug_actions",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        time: {
-          hour: 18,
-          minute: 0,
-        },
-      },
-      {
-        id: "debug_actions_2",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        time: {
-          hour: 18,
-          minute: 1,
-        },
-      },
-      {
-        id: "debug_condition",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-        schedule: {
-          day_of_week: 1,
-        },
-        time: {
-          hour: 17,
-          minute: 0,
-        },
-      },
-      {
-        id: "debug_html",
-        activation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "debug_campaigns_enabled",
-                value: true,
-              },
-            },
-            _raw: "get_field | debug_campaigns_enabled:TRUE",
-          },
-        ],
-      },
-    ],
-    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_schedule",
     flow_name: "nf_schedule_in_week_messages",
     status: "released",
     rows: [
@@ -585,6 +308,283 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_schedule",
+    flow_name: "debug_campaign_schedules",
+    status: "released",
+    comments: "This contains schedules for notifications",
+    rows: [
+      {
+        id: "debug_daily",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          batch_size: 5,
+        },
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+      },
+      {
+        id: "debug_fixed_saturday",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          day_of_week: 6,
+        },
+        time: {
+          hour: 19,
+          minute: 30,
+        },
+      },
+      {
+        id: "debug_fixed_past",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          start_date: "1990-11-01T00:00:00.000",
+          end_date: "1990-11-30T00:00:00.000",
+        },
+      },
+      {
+        id: "debug_fixed_december_no_time",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+      },
+      {
+        id: "debug_fixed_december_early",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+        time: {
+          hour: 6,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_fixed_december_noon",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+        time: {
+          hour: 12,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_fixed_december_late",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          start_date: "2021-12-01T00:00:00.000",
+          end_date: "2021-12-31T00:00:00.000",
+        },
+        time: {
+          hour: 22,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_fixed_new_years_day",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          start_date: "2022-01-01T00:00:00.000",
+          end_date: "2022-01-01T00:00:00.000",
+        },
+        time: {
+          hour: 13,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_consecutive_days",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          batch_size: 5,
+        },
+      },
+      {
+        id: "debug_actions",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        time: {
+          hour: 18,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_actions_2",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        time: {
+          hour: 18,
+          minute: 1,
+        },
+      },
+      {
+        id: "debug_condition",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+        schedule: {
+          day_of_week: 1,
+        },
+        time: {
+          hour: 17,
+          minute: 0,
+        },
+      },
+      {
+        id: "debug_html",
+        activation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "debug_campaigns_enabled",
+                value: true,
+              },
+            },
+            _raw: "get_field | debug_campaigns_enabled:TRUE",
+          },
+        ],
+      },
+    ],
+    _xlsxPath: "quality_assurance/debug_templates/debug_campaigns.xlsx",
   },
 ];
 export default data_list;
