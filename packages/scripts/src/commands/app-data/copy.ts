@@ -3,7 +3,6 @@ import * as fs from "fs-extra";
 import chalk from "chalk";
 import { Command } from "commander";
 import {
-  capitalizeFirstLetter,
   generateFolderFlatMap,
   isCountryLanguageCode,
   listFolderNames,
@@ -11,11 +10,13 @@ import {
   readContentsFile,
   IContentsEntry,
   logOutput,
+  recursiveFindByExtension,
 } from "../../utils";
 import { spawnSync } from "child_process";
 
 import { getActiveDeployment } from "../deployment/get";
 import { ROOT_DIR } from "../../paths";
+import { FlowTypes } from "data-models";
 
 const ASSETS_GLOBAL_FOLDER_NAME = "global";
 
@@ -77,7 +78,10 @@ class AppDataCopy {
     // App files
     if (!this.options.skipSheets) {
       console.log(chalk.yellow("Copy Sheets"));
-      copyAppSheetFiles(LOCAL_SHEETS_FOLDER, APP_SHEETS_FOLDER);
+      this.copyAppSheetFiles(LOCAL_SHEETS_FOLDER, APP_SHEETS_FOLDER);
+      const contents = this.generateDataSheetsContents();
+      this.writeDataSheetsContentsIndex(contents);
+      runPrettierCodeTidy(APP_SHEETS_FOLDER);
     }
 
     // Assets
@@ -162,39 +166,6 @@ class AppDataCopy {
     });
   }
 
-  /**
-   * Create a default index.ts file in each data folder to export all other local
-   * data files (and produce a singular import)
-   */
-  private generateAppSheetsIndexFiles() {
-    const dataDirs = fs.readdirSync(this.paths.APP_SHEETS_FOLDER);
-    for (const folderName of dataDirs) {
-      const dirPath = path.resolve(this.paths.APP_SHEETS_FOLDER, folderName);
-      const dataFiles = fs.readdirSync(dirPath);
-      const importStatements = [];
-      const exportStatements = [];
-      dataFiles.forEach((filePath, i) => {
-        const importPath = path.basename(filePath, ".ts");
-        let importName = importPath.replace(".", "_");
-        if (importName === folderName) {
-          importName += `_${i}`;
-        }
-        importStatements.push(`import ${importName} from "./${importPath}"`);
-        exportStatements.push(importName);
-      });
-      const indexFilePath = `${dirPath}/index.ts`;
-      fs.createFileSync(indexFilePath);
-      fs.appendFileSync(indexFilePath, `import { FlowTypes } from "data-models";\r\n`);
-      fs.appendFileSync(indexFilePath, `${importStatements.join("\r\n")};\r\n`);
-      fs.appendFileSync(
-        indexFilePath,
-        `export const ${folderName}:FlowTypes.${capitalizeFirstLetter(
-          folderName
-        )}[] = [].concat(${exportStatements.join(",")})`
-      );
-    }
-  }
-
   private copyAppAssetFiles(sourceFolder: string, targetFolder: string) {
     // setup folders
     fs.ensureDirSync(targetFolder);
@@ -224,7 +195,73 @@ class AppDataCopy {
       fs.copySync(src, dest, { preserveTimestamps: true });
     }
   }
+
+  private copyAppSheetFiles(sourceFolder: string, targetFolder: string) {
+    fs.ensureDirSync(sourceFolder);
+    fs.ensureDirSync(targetFolder);
+    fs.emptyDirSync(targetFolder);
+    fs.copySync(sourceFolder, targetFolder);
+  }
+
+  /** Extract a list of all sheets by type including flow contents */
+  private generateDataSheetsContents() {
+    const { APP_SHEETS_FOLDER } = this.paths;
+    // Generate contents
+    const contents: ISheetContents = { data_list: {}, global: {}, template: {}, tour: {} };
+    const sheetPaths = recursiveFindByExtension(APP_SHEETS_FOLDER, "json").sort();
+    for (const sheetPath of sheetPaths) {
+      const filePath = path.resolve(APP_SHEETS_FOLDER, sheetPath);
+      const sheetContents: FlowTypes.FlowTypeWithData = fs.readJsonSync(filePath);
+      const { flow_type, flow_name } = sheetContents;
+      this.qualityCheckSheets(contents, sheetContents);
+      contents[flow_type][flow_name] = this.extractContentsData(sheetContents);
+    }
+    return contents;
+  }
+
+  private extractContentsData(flow: FlowTypes.FlowTypeWithData): FlowTypes.FlowTypeBase {
+    // remove rows property (if exists)
+    const { rows, status, ...keptFields } = flow;
+    return keptFields as FlowTypes.FlowTypeBase;
+  }
+  private writeDataSheetsContentsIndex(contents: ISheetContents) {
+    const { APP_SHEETS_FOLDER } = this.paths;
+    // Write ts
+    const contentsString = JSON.stringify(contents, null, 2);
+    const outputTS = `
+import { FlowTypes } from "data-models";
+type ISheetContents = { [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase } };
+export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
+    `.trim();
+    const APP_DATA_SHEETS_INDEX_PATH = path.resolve(APP_SHEETS_FOLDER, "index.ts");
+    fs.writeFileSync(APP_DATA_SHEETS_INDEX_PATH, outputTS);
+  }
+  /**
+   * Check for unsupported flow types or flows with duplicate names (can happen across subtypes)
+   */
+  private qualityCheckSheets(
+    existingContents: ISheetContents,
+    sheetContents: FlowTypes.FlowTypeWithData
+  ) {
+    const { flow_name, flow_type, _xlsxPath } = sheetContents;
+    if (!existingContents.hasOwnProperty(flow_type)) {
+      logError({
+        msg1: `Unsupported flow_type: [${flow_type}]`,
+        msg2: `${_xlsxPath}`,
+      });
+    }
+    if (existingContents[flow_type].hasOwnProperty(flow_name)) {
+      const duplicateFlowContents = existingContents[flow_type][flow_name];
+      logError({
+        msg1: `Duplicate flow_name found: [${flow_type}]`,
+        msg2: `${_xlsxPath}\n${duplicateFlowContents._xlsxPath}`,
+      });
+    }
+  }
 }
+type ISheetContents = {
+  [flow_type in FlowTypes.FlowType]: { [flow_name: string]: FlowTypes.FlowTypeBase };
+};
 
 /** Ensure asset folders are named correctly */
 function assetsQualityCheck(sourceFolder: string) {
@@ -249,13 +286,6 @@ function assetsQualityCheck(sourceFolder: string) {
       msg2: `Invalid language codes: [${output.invalidFolders.join(", ")}]`,
     });
   }
-}
-
-function copyAppSheetFiles(sourceFolder: string, targetFolder: string) {
-  fs.ensureDirSync(sourceFolder);
-  fs.ensureDirSync(targetFolder);
-  fs.emptyDirSync(targetFolder);
-  fs.copySync(sourceFolder, targetFolder);
 }
 
 /**
