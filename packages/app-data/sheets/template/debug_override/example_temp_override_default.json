@@ -105,5 +105,8 @@
       "_nested_name": "example_lang_select"
     }
   ],
-  "_xlsxPath": "quality_assurance/example_templates/example_overrides.xlsx"
+  "_xlsxPath": "quality_assurance/example_templates/example_overrides.xlsx",
+  "_overrides": {
+    "example_temp_override_es_sp": "@fields._app_language.startsWith(\"es\")"
+  }
 }

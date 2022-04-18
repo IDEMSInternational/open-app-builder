@@ -2537,6 +2537,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "example_temp_override_default",
       flow_subtype: "debug_override",
       _xlsxPath: "quality_assurance/example_templates/example_overrides.xlsx",
+      _overrides: {
+        example_temp_override_es_sp: '@fields._app_language.startsWith("es")',
+      },
     },
     example_temp_override_es_sp: {
       flow_type: "template",
