@@ -27,6 +27,7 @@ import { DBSyncService } from "./shared/services/db/db-sync.service";
 
 import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
+import { AppDataService } from "./shared/services/data/app-data.service";
 
 const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
 
@@ -63,6 +64,7 @@ export class AppComponent {
     private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
+    private appDataService: AppDataService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -79,7 +81,6 @@ export class AppComponent {
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
       if (!user.first_app_open) {
-        await this._deprecatedSurveyService.runSurvey("introSplash");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
         await this.handleFirstLaunchDataActions();
@@ -116,9 +117,11 @@ export class AppComponent {
     await this.serverService.init();
     await this.dataEvaluationService.refreshDBCache();
     await this.templateTranslateService.init();
+    await this.appDataService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
     await this.campaignService.init();
+    await this.tourService.init();
 
     // Initialise additional services in a non-blocking way
     setTimeout(async () => {
@@ -137,6 +140,9 @@ export class AppComponent {
   private async handleFirstLaunchDataActions() {
     for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
       switch (initAction.type) {
+        case "run_survey":
+          await this._deprecatedSurveyService.runSurvey(initAction.value as any);
+          break;
         case "template_popup":
           await this.templateService.runStandaloneTemplate(initAction.value, {
             showCloseButton: false,

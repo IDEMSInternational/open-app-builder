@@ -1,0 +1,124 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_overriding_value",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Nested template",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Hiding and conditions work correctly",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "template",
+      "name": "debug_radio_group_replies_1",
+      "value": "debug_radio_group_replies",
+      "rows": [],
+      "_nested_name": "debug_radio_group_replies_1"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Nested template with overridden text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Hiding no longer works when specified on the same row as the text. When specified on the display group, hiding does work. Condition works fine.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "template",
+      "name": "debug_radio_group_replies_2",
+      "value": "debug_radio_group_replies",
+      "rows": [
+        {
+          "name": "text_1_hidden",
+          "value": "New text first - hidden",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_replies_2.text_1_hidden"
+        },
+        {
+          "name": "text_1_condition",
+          "value": "New text first - condition",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_replies_2.text_1_condition"
+        },
+        {
+          "name": "text_1_display_group",
+          "value": "New text first - hidden on display group",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_replies_2.text_1_display_group"
+        },
+        {
+          "name": "text_2_hidden",
+          "value": "New text second - hidden",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_replies_2.text_2_hidden"
+        },
+        {
+          "name": "text_2_condition",
+          "value": "New text second - condition",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_replies_2.text_2_condition"
+        },
+        {
+          "name": "text_2_display_group",
+          "value": "New text second - hidden on display group",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_replies_2.text_2_display_group"
+        }
+      ],
+      "_nested_name": "debug_radio_group_replies_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_overriding_value.xlsx"
+}

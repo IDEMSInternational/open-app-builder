@@ -1,0 +1,108 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_nesting_variables_global",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "var_text_2",
+      "value": "This is text_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_text_2"
+    },
+    {
+      "name": "var_text_4",
+      "value": "This is text_4",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_text_4"
+    },
+    {
+      "type": "template",
+      "name": "debug_two_texts",
+      "value": "debug_two_texts",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "child_text_1",
+          "value": "This is text_1 overridden directly in the value",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_two_texts.child_text_1"
+        },
+        {
+          "name": "child_text_2",
+          "value": "@global.teen_girl_1 overridden by calling a variable",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_two_texts.child_text_2",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@global.teen_girl_1 overridden by calling a variable",
+                "matchedExpression": "@global.teen_girl_1",
+                "type": "global",
+                "fieldName": "teen_girl_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@global.teen_girl_1": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "debug_two_texts"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "This is text_3 written directly in the value",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "@local.var_text_4 calling a variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.var_text_4 calling a variable",
+            "matchedExpression": "@local.var_text_4",
+            "type": "local",
+            "fieldName": "var_text_4"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.var_text_4": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_nesting_variables.xlsx"
+}

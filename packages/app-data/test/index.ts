@@ -1,5 +1,6 @@
 import { DB_TABLES, DB_VERSION } from "data-models/db.model";
-import { template } from "../data/template";
+import { SHEETS_CONTENT_LIST } from "../sheets";
+const template = Object.values(SHEETS_CONTENT_LIST.template);
 
 /** List of template flow subtypes to test */
 const TEST_FLOW_SUBTYPES = ["debug"];

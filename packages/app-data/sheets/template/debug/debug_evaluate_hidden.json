@@ -1,0 +1,179 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_evaluate_hidden",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "var_true",
+      "value": true,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_true"
+    },
+    {
+      "name": "var_number_1",
+      "value": 1,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "var_number_1"
+    },
+    {
+      "type": "text",
+      "name": "true_true",
+      "value": "This text is hidden if var_true is true.",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "@local.var_true",
+      "exclude_from_translation": true,
+      "_nested_name": "true_true",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.var_true",
+            "matchedExpression": "@local.var_true",
+            "type": "local",
+            "fieldName": "var_true"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.var_true": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "true_false",
+      "value": "This text is hidden if var_true is false.",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "!@local.var_true",
+      "exclude_from_translation": true,
+      "_nested_name": "true_false",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "!@local.var_true",
+            "matchedExpression": "!@local.var_true",
+            "type": "local",
+            "fieldName": "var_true"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "!@local.var_true": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "number_1",
+      "value": "This text is hidden if var_number_1 is 1.",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "@local.var_number_1 == 1",
+      "exclude_from_translation": true,
+      "_nested_name": "number_1",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.var_number_1 == 1",
+            "matchedExpression": "@local.var_number_1",
+            "type": "local",
+            "fieldName": "var_number_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.var_number_1": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "number_not_1",
+      "value": "This text is hidden if var_number_1 not 1.",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "@local.var_number_1 != 1",
+      "exclude_from_translation": true,
+      "_nested_name": "number_not_1",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.var_number_1 != 1",
+            "matchedExpression": "@local.var_number_1",
+            "type": "local",
+            "fieldName": "var_number_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.var_number_1": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "number_greater_1",
+      "value": "This text is hidden if var_number_1 is greater than 1.",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "@local.var_number_1 > 1",
+      "exclude_from_translation": true,
+      "_nested_name": "number_greater_1",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.var_number_1 > 1",
+            "matchedExpression": "@local.var_number_1",
+            "type": "local",
+            "fieldName": "var_number_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.var_number_1": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "number_not_1",
+      "value": "This text is hidden if var_number_1 is not greater than 1.",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": "!(@local.var_number_1 > 1)",
+      "exclude_from_translation": true,
+      "_nested_name": "number_not_1",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "!(@local.var_number_1 > 1)",
+            "matchedExpression": "@local.var_number_1",
+            "type": "local",
+            "fieldName": "var_number_1"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.var_number_1": [
+          "hidden"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_small_issues.xlsx"
+}

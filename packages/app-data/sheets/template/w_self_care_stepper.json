@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "w_self_care_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "workshop_stepper_actions",
+      "value": "workshop_stepper_actions",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_id",
+          "value": "w_self_care",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper_actions.workshop_id"
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_stepper",
+          "rows": [
+            {
+              "name": "nav_template_list",
+              "value": [
+                "w_self_care_welcome_individual",
+                "w_self_care_intro",
+                "w_self_care_relax",
+                "w_self_care_recognise",
+                "w_self_care_reward",
+                "w_self_care_tools_activity",
+                "w_self_care_survey_activity",
+                "w_self_care_home_practice",
+                "w_self_care_ending"
+              ],
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "workshop_stepper_actions.workshop_stepper.nav_template_list"
+            }
+          ],
+          "_nested_name": "workshop_stepper_actions.workshop_stepper"
+        }
+      ],
+      "_nested_name": "workshop_stepper_actions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+}

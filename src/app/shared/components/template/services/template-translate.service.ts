@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { TRANSLATION_STRINGS } from "app-data";
 import { BehaviorSubject } from "rxjs";
 import { APP_CONSTANTS } from "src/app/data";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { LocalStorageService } from "src/app/shared/services/local-storage/local-storage.service";
 import { FlowTypes } from "../models";
 
@@ -22,28 +22,32 @@ export class TemplateTranslateService {
 
   translation_strings = {};
 
-  constructor(private localStorageService: LocalStorageService) {
-    const currentLanguage = localStorageService.getString(APP_FIELDS.APP_LANGUAGE);
+  constructor(
+    private localStorageService: LocalStorageService,
+    private appDataService: AppDataService
+  ) {}
+
+  public async init() {
+    const currentLanguage = this.localStorageService.getString(APP_FIELDS.APP_LANGUAGE);
     if (currentLanguage) {
-      this.setLanguage(currentLanguage, false);
+      await this.setLanguage(currentLanguage, false);
     } else {
-      this.setLanguage(APP_LANGUAGES.default, true);
+      await this.setLanguage(APP_LANGUAGES.default, true);
     }
   }
-  // Init handled in constructor, but kept here as reminder to import/call from main app component
-  public async init() {}
 
   get app_language() {
     return this.app_language$.value;
   }
 
   /** Set the local storage variable that tracks the app language */
-  setLanguage(code: string, updateDB = true) {
+  async setLanguage(code: string, updateDB = true) {
     if (code) {
       if (updateDB) {
         this.localStorageService.setString(APP_FIELDS.APP_LANGUAGE, code);
       }
-      this.translation_strings = TRANSLATION_STRINGS[code] || {};
+      const translationStrings = await this.appDataService.getTranslationStrings(code);
+      this.translation_strings = translationStrings || {};
       // update observable for subscribers
       this.app_language$.next(code);
       console.log("[Language Set]", code);

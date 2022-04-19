@@ -1,0 +1,75 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_ordered_list",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_unordered",
+      "value": "This is a bulleted list",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_unordered"
+    },
+    {
+      "type": "text",
+      "name": "text_unordered",
+      "value": "These are some ideas you can try:\n\n* first idea\n* second idea\n* third idea",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_unordered"
+    },
+    {
+      "type": "title",
+      "name": "title_ordered",
+      "value": "This should be a numbered list",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_ordered"
+    },
+    {
+      "type": "text",
+      "name": "text_ordered",
+      "value": "These are some ideas you can try:\n\n* first idea\n* second idea\n* third idea",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "numbered"
+      },
+      "_nested_name": "text_ordered"
+    },
+    {
+      "type": "title",
+      "name": "title_ordered",
+      "value": "This should be a numbered list",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_ordered"
+    },
+    {
+      "type": "text",
+      "name": "text_ordered2",
+      "value": "* first idea\n* second idea\n* third idea",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "numbered"
+      },
+      "_nested_name": "text_ordered2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_ordered_list.xlsx"
+}

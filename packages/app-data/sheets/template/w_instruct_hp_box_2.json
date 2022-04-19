@@ -1,0 +1,113 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_hp_box_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "w_instruct_hp_highlights",
+      "value": "w_instruct_hp_highlights",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "!(@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood)",
+      "rows": [],
+      "_nested_name": "w_instruct_hp_highlights",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!(@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood)",
+            "matchedExpression": "@fields.w_instruct_hp_review_mood",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_review_mood"
+          },
+          {
+            "fullExpression": "!(@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood)",
+            "matchedExpression": "!@fields.w_instruct_hp_review_mood",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_review_mood"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.w_instruct_hp_review_mood": [
+          "condition"
+        ],
+        "!@fields.w_instruct_hp_review_mood": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "w_instruct_hp_challenges",
+      "value": "w_instruct_hp_challenges",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "condition": "@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood",
+      "rows": [],
+      "_nested_name": "w_instruct_hp_challenges",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood",
+            "matchedExpression": "@fields.w_instruct_hp_review_mood",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_review_mood"
+          },
+          {
+            "fullExpression": "@fields.w_instruct_hp_review_mood == \"happy\" ||  !@fields.w_instruct_hp_review_mood",
+            "matchedExpression": "!@fields.w_instruct_hp_review_mood",
+            "type": "fields",
+            "fieldName": "w_instruct_hp_review_mood"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.w_instruct_hp_review_mood": [
+          "condition"
+        ],
+        "!@fields.w_instruct_hp_review_mood": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+}

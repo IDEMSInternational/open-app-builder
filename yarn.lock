@@ -6405,6 +6405,7 @@ __metadata:
   resolution: "app-data@workspace:packages/app-data"
   dependencies:
     "@types/node": ^15.12.4
+    data-models: "workspace:*"
     typescript: ~4.2.4
   languageName: unknown
   linkType: soft
@@ -9550,7 +9551,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "data-models@workspace:packages/data-models"
   dependencies:
-    "@idemsInternational/rapidpro-excel": "workspace:*"
     "@types/node": ^15.12.4
     scripts: "workspace:*"
     typescript: ~4.2.4
@@ -12746,7 +12746,6 @@ __metadata:
     rxjs: ^6.6.7
     simple-git-hooks: ^2.4.1
     stacktrace-js: ^2.0.2
-    survey-angular: ^1.8.76
     typescript: 4.4.2
     zone.js: ~0.11.4
   languageName: unknown
@@ -23632,13 +23631,6 @@ __metadata:
     has-flag: ^4.0.0
     supports-color: ^7.0.0
   checksum: aef04fb41f4a67f1bc128f7c3e88a81b6cf2794c800fccf137006efe5bafde281da3e42e72bf9206c2fcf42e6438f37e3a820a389214d0a88613ca1f2d36076a
-  languageName: node
-  linkType: hard
-
-"survey-angular@npm:^1.8.76":
-  version: 1.9.23
-  resolution: "survey-angular@npm:1.9.23"
-  checksum: 0a6aa4997430cdeaf1a63e9dc420c5c9ab386b15fa054d2200aae3bed962a4ca840352448296cb4449f4afbbcb99640aa120bc083b37361906328d2cf15e1cb7
   languageName: node
   linkType: hard
 
