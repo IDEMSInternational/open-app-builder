@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-import { execSync, spawn, spawnSync } from "child_process";
+import { spawnSync } from "child_process";
 import { Command } from "commander";
 import fs from "fs-extra";
+import { logWarning } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
 
 const program = new Command("sync");
@@ -22,7 +23,11 @@ export default program
   )
   .option("-c --clean", "clear all cached data for a clean sync")
   .action(async (options: IProgramOptions) => {
-    await syncAppData(options);
+    // await syncAppData(options);
+    logWarning({
+      msg1: "NOTE - Script has been renamed and will be deprecated",
+      msg2: `"yarn scripts app-data sync" -> "yarn workflow sync"`,
+    });
   });
 
 /***************************************************************************************
@@ -52,11 +57,12 @@ async function syncAppData(options: IProgramOptions) {
   // Convert
   let convertCmd = "app-data convert";
   spawnSync(`${scriptsExec} ${convertCmd}`, { stdio: "inherit", shell: true });
+  // Translate
+  let translateCmd = "app-data translate";
+  spawnSync(`${scriptsExec} ${translateCmd}`, { stdio: "inherit", shell: true });
   // Copy
   let copyCmd = "app-data copy";
-  if (options.sheetname) {
-    copyCmd += ` --skip-assets`;
-  }
+
   spawnSync(`${scriptsExec} ${copyCmd}`, { stdio: "inherit", shell: true });
 }
 

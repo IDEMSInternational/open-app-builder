@@ -41,6 +41,7 @@ export interface IDeploymentConfig {
     /** generated output cache. Default `./cache/translations` */
     output_cache_path?: string;
   };
+  workflows?: string[];
 }
 
 /** Minimal example of just required config */
@@ -56,7 +57,6 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_folder_id: "",
     sheets_folder_id: "",
     auth_token_path: "packages/scripts/config/token.json",
-    cache_path: "./cache/gdrive",
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },

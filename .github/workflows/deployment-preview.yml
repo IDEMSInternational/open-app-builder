@@ -1,9 +1,14 @@
+# Deploy preview url for labelled PRs
+# Specifies deployment target based on pr target branch
+# Master -> plh_global
+# Deployment/{deployment_name} -> {deployment_name}
 name: Deployment Preview
 on:
   pull_request:
     types: [labeled, synchronize]
     branches:
       - deployment/*
+      - master
 jobs:
   build_and_preview:
     if: contains(github.event.pull_request.labels.*.name, 'Test - preview')
@@ -16,9 +21,14 @@ jobs:
       # https://www.linuxjournal.com/article/8919, https://github.com/greenbone/gsa/actions/runs/1277581365/workflow
       - name: Set Environment Deployment
         run: |
-          echo ${GITHUB_BASE_REF##*/}
-          echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;
+          if [ "$GITHUB_BASE_REF" = "master" ];                    \
+          then echo "DEPLOYMENT_NAME=plh_global" >> $GITHUB_ENV;              \
+          else echo "DEPLOYMENT_NAME=${GITHUB_BASE_REF##*/}" >> $GITHUB_ENV;  \
+          fi;
         shell: bash
+      - run: |
+          echo $GITHUB_BASE_REF
+          echo $DEPLOYMENT_NAME
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -44,5 +54,6 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_PLH_TEENS_APP1 }}"
           projectId: plh-teens-app1
+          target: $DEPLOYMENT_NAME
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

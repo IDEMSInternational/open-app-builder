@@ -3,56 +3,20 @@ import { FlowTypes } from "data-models";
 const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
-    flow_name: "data_story_avtm",
+    flow_name: "A_Very_Tall_Man_pages",
     status: "released",
-    data_list_name: "storybook_avtm",
+    data_list_name: "A_Very_Tall_Man_storybook",
     rows: [
       {
-        id: "w_self_care",
-        number: 1,
-        image_asset: "plh_images/workshops/w_self_care/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: false,
-        relax_data: "@data.relax.relax_5",
-        intro_audio_asset: "plh_audio/topic_intros/w_self_care_intro.mp3",
-        title: "Welcome and Self-Care",
+        id: "page_1",
+        page_no: 1,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-1.jpg",
+        story_text: "His hoe was too short.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          short_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -67,60 +31,22 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Point out how uncomfortable the man looks bending over so far to hoe.",
           },
-          caregiver_testimonial_script: {
-            eng: "For me as a parent, it was almost impossible to find time for myself. I was always busy taking care of everyone else. Through @global.parent_app, I realised how important it is to take care of myself. It helps me AND my family! \n\nHaving a moment for myself helps me to breathe and notice how I feel. Even 5 minutes to have a cup of tea makes a big difference. Now I can deal with my stress better.",
-          },
-          teen_testimonial_script: {
-            eng: "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now.",
-          },
         },
-        in_text_title: "**Welcome and Self-Care** workshop",
-        short_title: "Self-Care",
-        tools: "How to do self-care",
-        caregiver_testimonial_script:
-          "For me as a parent, it was almost impossible to find time for myself. I was always busy taking care of everyone else. Through @global.parent_app, I realised how important it is to take care of myself. It helps me AND my family! \n\nHaving a moment for myself helps me to breathe and notice how I feel. Even 5 minutes to have a cup of tea makes a big difference. Now I can deal with my stress better.",
-        teen_testimonial_script:
-          "My dad was always busy. He would come home from work and snap at us when we started asking him questions. \n\n@global.parent_app helped us a lot. We no longer fight. Now, when my dad comes home, he first sits down by himself for 5 minutes and then we do a relaxing activity from @global.parent_app together, so we can all take a deep breath and relax. Then we can chat about our day, about anything good or bad that happened. Everyone is so much happier now.",
+        annotation_1:
+          "Point out the vivid colors -- the yellow sun, the blue sky, the green bushes, and the red shoes.",
+        annotation_2: "Count the two bushes and the two red shoes with your child.",
+        annotation_3: "Point out how uncomfortable the man looks bending over so far to hoe.",
       },
       {
-        id: "w_1on1",
-        number: 2,
-        image_asset: "plh_images/workshops/w_1on1/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_2",
-        something_fun_data: "@data.something_fun.co_chef",
-        intro_audio_asset: "plh_audio/topic_intros/w_1on1_intro.mp3",
-        title: "One-on-One Time",
+        id: "page_2",
+        page_no: 2,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-2.jpg",
+        story_text: "His doorway was too low.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -135,59 +61,22 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Count the bushes together.",
           },
-          caregiver_testimonial_script: {
-            eng: "When I first heard I had to spend One-on-One Time with my teen, it was hard for me. I did not know when to do it or what to say. I did not want to spoil my teen so that he thinks we have to do everything together. \n\nBut I really wanted to build my relationship with my teen and I wanted him to open up about what was troubling him. So we tried the One-on-One Time. \n\nFirst, it felt weird, but it turned out to be fun! Now we watch his TV programme together and we chat about it. And we can even talk about how my son is changing into adolescence, and even about girlfriends and those things!",
-          },
-          teen_testimonial_script: {
-            eng: "When my mother asked to spend time with me, I thought “Maybe something is wrong, maybe she is sick”. But she said “No, I just want to spend time.” I was sceptical, but I accepted. \n\nShe asked me what I like doing. It was strange and I was not comfortable, because she never ever spent time with me on my own. \n\nThe more she kept on trying and we spent this time together, it felt really nice. She got to share her own childhood with me, things I never heard before. That helped me to also share what is going on in my life. We even talk about boyfriends and about problems I have. I know I can talk to my mother now.",
-          },
         },
-        in_text_title: "**One-on-One Time** workshop",
-        tools: "How to spend one-on-one time",
-        caregiver_testimonial_script:
-          "When I first heard I had to spend One-on-One Time with my teen, it was hard for me. I did not know when to do it or what to say. I did not want to spoil my teen so that he thinks we have to do everything together. \n\nBut I really wanted to build my relationship with my teen and I wanted him to open up about what was troubling him. So we tried the One-on-One Time. \n\nFirst, it felt weird, but it turned out to be fun! Now we watch his TV programme together and we chat about it. And we can even talk about how my son is changing into adolescence, and even about girlfriends and those things!",
-        teen_testimonial_script:
-          "When my mother asked to spend time with me, I thought “Maybe something is wrong, maybe she is sick”. But she said “No, I just want to spend time.” I was sceptical, but I accepted. \n\nShe asked me what I like doing. It was strange and I was not comfortable, because she never ever spent time with me on my own. \n\nThe more she kept on trying and we spent this time together, it felt really nice. She got to share her own childhood with me, things I never heard before. That helped me to also share what is going on in my life. We even talk about boyfriends and about problems I have. I know I can talk to my mother now.",
+        annotation_1: "Comment that the doorway is too low -- the man is taller than the door.",
+        annotation_2:
+          "Look how much the man stoops down to talk to the boy -- he is much taller than the boy, and the boy is much shorter than the man!",
+        annotation_3: "Count the bushes together.",
       },
       {
-        id: "w_praise",
-        number: 3,
-        image_asset: "plh_images/workshops/w_praise/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_3",
-        something_fun_data: "@data.something_fun.reflect_positive",
-        intro_audio_asset: "plh_audio/topic_intros/w_praise_intro.mp3",
-        title: "Praise",
+        id: "page_3",
+        page_no: 3,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-3.jpg",
+        story_text: "His bed was too short.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -202,59 +91,21 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Count together the toes on each of the man's feet.",
           },
-          caregiver_testimonial_script: {
-            eng: "When we learned about this praising thing, I thought “We were never praised for things as teenagers, so why should we start now?”. But I got interested when I learned what the benefits of praising could be. \n\nRight after the weekly workshop, I noticed my teen doing what they do every day: Washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does. \n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
-          },
-          teen_testimonial_script: {
-            eng: "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy.",
-          },
         },
-        in_text_title: "**Praise** workshop",
-        tools: "How to praise",
-        caregiver_testimonial_script:
-          "When we learned about this praising thing, I thought “We were never praised for things as teenagers, so why should we start now?”. But I got interested when I learned what the benefits of praising could be. \n\nRight after the weekly workshop, I noticed my teen doing what they do every day: Washing the dishes. And I said “Thank you for washing the dishes, my girl, it really makes me happy that you are helping out.” My teen was smiling and she even came to give me a hug, which she never does. \n\nThis praising business is hard. I still forget sometimes or give praise at the same time as criticism. But praising really makes a difference. I never thought that a simple praise could make such a change in a person!",
-        teen_testimonial_script:
-          "I was grateful that my mother learned about praise. \n\nMy mother always noticed when I was doing something wrong. She would shout at me and hit me. \n\nBut when my mother did the workshop, she would praise me for little things. First I thought “What is going on?” but then it continued. I liked it so I did more good things I thought she would like. \n\nIt feels great that my mother sees the good things I do, and not just the bad things.\n\nI even said it to her once. During @data.workshop.w_1on1.title, I said “Thank you, mom, for saying something nice when I do things well, not only when I do things wrong.” This made us both very happy.",
+        annotation_1: "The man's legs stick far out of the bed. He is much longer than his bed.",
+        annotation_2: "Point to the bird and the boy and how puzzled they look by the short bed.",
+        annotation_3: "Count together the toes on each of the man's feet.",
       },
       {
-        id: "w_instruct",
-        number: 4,
-        image_asset: "plh_images/workshops/w_instruct/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_4",
-        something_fun_data: "@data.something_fun.dance_moves",
-        intro_audio_asset: "plh_audio/topic_intros/w_instruct_intro.mp3",
-        title: "Positive Instructions",
+        id: "page_4",
+        page_no: 4,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-4.jpg",
+        story_text: "His bicycle was too short.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -269,59 +120,23 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Where is the boy in this picture?",
           },
-          caregiver_testimonial_script: {
-            eng: "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learned about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot.",
-          },
-          teen_testimonial_script: {
-            eng: "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted - she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house.",
-          },
         },
-        in_text_title: "**Positive Instructions** workshop",
-        tools: "How to give positive instructions",
-        caregiver_testimonial_script:
-          "Before, I used to raise my teens the way I was raised: I would tell them “don’t do this, don’t do that.” We used to fight a lot, but things have really changed when I learned about giving positive instructions.\n\nNow I focus on the behaviour I want to see, and give clear and simple instructions to my teens. It took time to learn to say “please do this” instead of “don’t do this.” \n\nMy teens and even my husband tell me that they love this way of doing things, because now they know what needs to be done. My teen said one day “I really love this new mom,” and my own stress levels have come down a lot.",
-        teen_testimonial_script:
-          "At first, I did not care much that my mother was doing @global.parent_app. But then I started to see my mother change how she communicated with us.\n\nOne day, when I was going out with my friends, she said I must be home by 6pm. I was like “Hmmm okay,” because she normally did not give clear instructions on what she wanted - she would just say nothing and then shout at me for being late when I got home. \n\nWhen I got home around 5pm, my mother gave me a hug and said “Thank you for being on time.” It was strange, but I liked it. \n\nSince then, we have much clearer communication in the house.",
+        annotation_1:
+          "The tall man is much too big for his bicycle. Look how far his leg sticks out!",
+        annotation_2: "Point out that the bird has changed color from yellow to orange!",
+        annotation_3: "Where is the boy in this picture?",
       },
       {
-        id: "w_stress",
-        number: 5,
-        image_asset: "plh_images/workshops/w_stress/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_7",
-        something_fun_data: "@data.something_fun.check_in_chat",
-        intro_audio_asset: "plh_audio/topic_intros/w_stress_intro.mp3",
-        title: "Managing Stress",
+        id: "page_5",
+        page_no: 5,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-5.jpg",
+        story_text:
+          "This man was too tall!\n\nWhat can he do to solve his problem and fit into his world?",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -336,59 +151,21 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Notice that this man is much taller than the other people.",
           },
-          caregiver_testimonial_script: {
-            eng: "Life is tough sometimes. Before I joined @global.parent_app, I used to be grumpy at all times. I would take out my anger on everyone at home, not only my teens but even my husband as well. They would run away when I came home, because they knew I would start yelling at them. \n\nLearning to take a pause and breathe was difficult at first, but every time I tried it, it helped me to calm down. Now my teens are no longer running away when I come home, and they actually listen better than when I used to shout at them!",
-          },
-          teen_testimonial_script: {
-            eng: "Whenever I would do something wrong, my father would get so angry at me and beat me. He would not even listen to me, and I would get so angry as well at him and everyone else. \n\nNow, when he gets angry, he first takes a few deep breaths before he responds. It makes everyone calm down instead of causing a big fight.\n\nIt really helped me at home and at school, because even me I am no longer slashing everyone and I am no longer this moody person. When I feel really angry or stressed, I also take deep breaths like my father does. I am a different person.",
-          },
         },
-        in_text_title: "**Managing Stress** workshop",
-        tools: "How to manage stress",
-        caregiver_testimonial_script:
-          "Life is tough sometimes. Before I joined @global.parent_app, I used to be grumpy at all times. I would take out my anger on everyone at home, not only my teens but even my husband as well. They would run away when I came home, because they knew I would start yelling at them. \n\nLearning to take a pause and breathe was difficult at first, but every time I tried it, it helped me to calm down. Now my teens are no longer running away when I come home, and they actually listen better than when I used to shout at them!",
-        teen_testimonial_script:
-          "Whenever I would do something wrong, my father would get so angry at me and beat me. He would not even listen to me, and I would get so angry as well at him and everyone else. \n\nNow, when he gets angry, he first takes a few deep breaths before he responds. It makes everyone calm down instead of causing a big fight.\n\nIt really helped me at home and at school, because even me I am no longer slashing everyone and I am no longer this moody person. When I feel really angry or stressed, I also take deep breaths like my father does. I am a different person.",
+        annotation_1: "Maybe the man is not too tall -- maybe he just needs to solve his problems!",
+        annotation_2: "The man has a problem and he is feeling sad about it.",
+        annotation_3: "Notice that this man is much taller than the other people.",
       },
       {
-        id: "w_money",
-        number: 6,
-        image_asset: "plh_images/workshops/w_money/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_8",
-        something_fun_data: "@data.something_fun.dream_travel",
-        intro_audio_asset: "plh_audio/topic_intros/w_money_intro.mp3",
-        title: "Family Budgets",
+        id: "page_6",
+        page_no: 6,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-6.jpg",
+        story_text: "He made a very long handle.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -403,59 +180,21 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Do you see the man's red shoes? They disappeared!",
           },
-          caregiver_testimonial_script: {
-            eng: "Saving and budgeting helps me as a parent, and it helps my teens as well to understand where the money goes.\n\nMy teens always asked for a lot of things and they did not understand when I said “I do not have money.” They would say “but you have a job!” \n\nI sat down with them and showed them all the things we pay for and how much is left. They understand now and even give ideas on how we can save to work towards our goals like new shoes or a birthday and bigger goals like their school fees. For the older one, I even opened a savings account.",
-          },
-          teen_testimonial_script: {
-            eng: "I used to ask my mom to buy me nice clothes all the time. Each time, she would say “I do not have money,” but I knew that she was getting money from my uncle. I did not understand why she refused to buy me clothes. I thought at some point “she does not love me.”\n\nBut one day, she called me to sit down with her and asked “what are the needs and wants in our house.” I started to list all my needs and wants. Then my mother helped me to also think about the family needs. Now I understand where our money is going, towards the things we need as a family. \n\nFrom that day, I understand I cannot come in and ask any time. Now, when I want something, I wait till the month-end when we all discuss the budget together to see if it fits. We understand each other better now.",
-          },
         },
-        in_text_title: "**Family Budgets** workshop",
-        tools: "How to budget & save",
-        caregiver_testimonial_script:
-          "Saving and budgeting helps me as a parent, and it helps my teens as well to understand where the money goes.\n\nMy teens always asked for a lot of things and they did not understand when I said “I do not have money.” They would say “but you have a job!” \n\nI sat down with them and showed them all the things we pay for and how much is left. They understand now and even give ideas on how we can save to work towards our goals like new shoes or a birthday and bigger goals like their school fees. For the older one, I even opened a savings account.",
-        teen_testimonial_script:
-          "I used to ask my mom to buy me nice clothes all the time. Each time, she would say “I do not have money,” but I knew that she was getting money from my uncle. I did not understand why she refused to buy me clothes. I thought at some point “she does not love me.”\n\nBut one day, she called me to sit down with her and asked “what are the needs and wants in our house.” I started to list all my needs and wants. Then my mother helped me to also think about the family needs. Now I understand where our money is going, towards the things we need as a family. \n\nFrom that day, I understand I cannot come in and ask any time. Now, when I want something, I wait till the month-end when we all discuss the budget together to see if it fits. We understand each other better now.",
+        annotation_1: "He solved his problem with the hoe! He made his hoe bigger!",
+        annotation_2: "Which one is bigger, the hoe or the man?",
+        annotation_3: "Do you see the man's red shoes? They disappeared!",
       },
       {
-        id: "w_rules",
-        number: 7,
-        image_asset: "plh_images/workshops/w_rules/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_9",
-        something_fun_data: "@data.something_fun.famous_party",
-        intro_audio_asset: "plh_audio/topic_intros/w_rules_intro.mp3",
-        title: "Rules",
+        id: "page_7",
+        page_no: 7,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-7.jpg",
+        story_text: "He made very high door frames.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -470,59 +209,21 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Which is longer and which is shorter -- the man's legs or his upper body?",
           },
-          caregiver_testimonial_script: {
-            eng: "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learned in @global.parent_app about rules, I learned that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules.",
-          },
-          teen_testimonial_script: {
-            eng: "I never liked rules and I used to forget rules a lot. \n\nOne day, I was playing with my friends. The rule at home was that we should be in the yard by 6pm, but I forgot again. By 6.30 it was getting dark and I was still outside and playing with my phone. Then a boy came, grabbed my phone and ran away. \n\nI understood that rules can really help to keep us safe, so I changed my behaviour and I was in the yard by 5pm from then.",
-          },
         },
-        in_text_title: "**Rules** workshop",
-        tools: "How to create rules",
-        caregiver_testimonial_script:
-          "My teenagers always just disappeared. I did not know where they were, and I would get so worried and angry with them. I used to say “this is my house, and these are my rules, if you do not want to follow them you can leave and stay in your own place.” \n\nWhen we learned in @global.parent_app about rules, I learned that there are rules for teens and for adults and for everyone. If we follow the rules as parents, our teens will follow our example.\n\nI explained my worry and we all agreed: We all follow the rule and say where we are going when we leave the house. Coming up with rules together helped us a lot, as my teens do not see me anymore as that annoying parent that just makes up unnecessary rules.",
-        teen_testimonial_script:
-          "I never liked rules and I used to forget rules a lot. \n\nOne day, I was playing with my friends. The rule at home was that we should be in the yard by 6pm, but I forgot again. By 6.30 it was getting dark and I was still outside and playing with my phone. Then a boy came, grabbed my phone and ran away. \n\nI understood that rules can really help to keep us safe, so I changed my behaviour and I was in the yard by 5pm from then.",
+        annotation_1: "Which is higher -- the door or the man?",
+        annotation_2: "The sun in the sky is round. Point to round things where you are.",
+        annotation_3: "Which is longer and which is shorter -- the man's legs or his upper body?",
       },
       {
-        id: "w_consequence",
-        number: 8,
-        image_asset: "plh_images/workshops/w_consequence/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_10",
-        something_fun_data: "@data.something_fun.two_truths",
-        intro_audio_asset: "plh_audio/topic_intros/w_consequence_intro.mp3",
-        title: "Calm Consequences",
+        id: "page_8",
+        page_no: 8,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-8.jpg",
+        story_text: "He made a very long bed.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -537,59 +238,21 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Look at how small the boy looks next to the bed!",
           },
-          caregiver_testimonial_script: {
-            eng: "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders - I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!",
-          },
-          teen_testimonial_script: {
-            eng: "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule.",
-          },
         },
-        in_text_title: "**Calm Consequences** workshop",
-        tools: "How to give calm consequences",
-        caregiver_testimonial_script:
-          "When my teenagers did something to make me angry, I would shout at them and punish them right away. But the next time they did it again! I could not understand why they did not hear me even when I shouted. \n\n@global.parent_app helped me understand that my teenagers will listen to me more when I am calm. So, when something happens, I take a deep breath and say “we will talk about this later when we are both calm.”\n\nWe even agree on the consequences together now before something goes wrong. This has worked wonders - I have seen a huge change in my teen’s behaviour now that they are more involved, and I have less stress. \n\nI wish I knew this long ago, but it is never too late to start!",
-        teen_testimonial_script:
-          "My mom and dad would always punish me when they were angry with me. They would shout at me and I would also get angry. I often did not follow the rules, because they were too harsh, I did not understand what they were saying, or I would not even bother listening to them, because we were all angry.\n\nOne day, they asked me: Let's think together what the consequence should be for not coming home in time. It was great to give my view – before something happens that makes us all angry. We are all calm and agree first. It is easier for me to follow the rules now because I know I agreed on the rule and on the consequence if I do not follow the rule.",
+        annotation_1: "We can't see the man's feet now. His bed is longer than he is.",
+        annotation_2: "The man looks very comfortable and happy in his big bed.",
+        annotation_3: "Look at how small the boy looks next to the bed!",
       },
       {
-        id: "w_solve",
-        number: 9,
-        image_asset: "plh_images/workshops/w_solve/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_11",
-        something_fun_data: "@data.something_fun.mirror",
-        intro_audio_asset: "plh_audio/topic_intros/w_solve_intro.mp3",
-        title: "Problem Solving",
+        id: "page_9",
+        page_no: 9,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-9.jpg",
+        story_text: "He bought a very high bicycle.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -604,59 +267,21 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Point to and name the many different colors on this page.",
           },
-          caregiver_testimonial_script: {
-            eng: "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
-          },
-          teen_testimonial_script: {
-            eng: "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
-          },
         },
-        in_text_title: "**Problem Solving** workshop",
-        tools: "How to solve problems",
-        caregiver_testimonial_script:
-          "I did not have a good relationship with my daughter. I was always shouting at her, and she was refusing to go to school. \n\nOnly when I started spending One-on-One time with her, I realised that she did not want to go to school because she was being bullied at school. We sat down and used the 6 steps of problem solving. We identified the problem, and figured out solutions together: “What can I do as a parent so you can attend school and feel safe?”\n\nWe agreed I would go talk to the teacher to find a way forward. We really found the solutions together, and we are closer now.",
-        teen_testimonial_script:
-          "When my father introduced the problem-solving steps to me, it helped me with my family, but it also helped me with my friends. \n\nI told my friends about the steps, and now when we are arguing we sit down and everyone comes up with solutions. We then look for the negatives and positives of each solution, and we agree “okay let’s try this one.” \n\nMy friends even took it to their own homes, and it is helping with their families as well! \n\nIt is great when others listen to you and accept your ideas even though you are young. We can all bring that harmony with our friends and family.",
+        annotation_1: "Notice that the boy and the bird are inside the basket now.",
+        annotation_2: "Everyone looks very happy now that the man's things are the right size.",
+        annotation_3: "Point to and name the many different colors on this page.",
       },
       {
-        id: "w_safe",
-        number: 10,
-        image_asset: "plh_images/workshops/w_safe/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_12",
-        something_fun_data: "@data.something_fun.time_machine",
-        intro_audio_asset: "plh_audio/topic_intros/w_safe_intro.mp3",
-        title: "Teen Safety",
+        id: "page_10",
+        page_no: 10,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-10.jpg",
+        story_text: "He sat on a very high chair. He ate with a very long fork.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -671,59 +296,24 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Now that all his things are the right size for him, the man is not too tall at all!",
           },
-          caregiver_testimonial_script: {
-            eng: "I was so grateful to make the safety plan with my teen. I thought I knew which areas are safe for my teen and which are not. But when we made the safety plan together, I realised that my girl knew more areas that I was not aware of. \n\nI also thought she was safe at school, but through this activity I realised she was being bullied and the teachers did not do anything about it.\n\nThe more we talked, the more I understood and got information from my teen. That really helped me to protect my teen and keep her safe.",
-          },
-          teen_testimonial_script: {
-            eng: "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learned a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!",
-          },
         },
-        in_text_title: "**Teen Safety** workshop",
-        tools: "How to keep your teen safe",
-        caregiver_testimonial_script:
-          "I was so grateful to make the safety plan with my teen. I thought I knew which areas are safe for my teen and which are not. But when we made the safety plan together, I realised that my girl knew more areas that I was not aware of. \n\nI also thought she was safe at school, but through this activity I realised she was being bullied and the teachers did not do anything about it.\n\nThe more we talked, the more I understood and got information from my teen. That really helped me to protect my teen and keep her safe.",
-        teen_testimonial_script:
-          "When my friends or I got into trouble, I would always try to hide it from my mother because she would get so angry and shout at me. \n\nWhen we made the map of safe and unsafe places, I learned a lot – also why it is dangerous to share every picture online. My mother told me I can always ask her if there is a problem and she promised she would not get mad. \n\nShe kept her promise, so now if I have a problem or I do not feel safe I know we can always come up with a solution together. I can even talk to my mother about the things I do online now!",
+        annotation_1:
+          "Count out with your child many of the things in the picture -- such as fingers, legs, steps, and tines.",
+        annotation_2: "Look at how high the boy's chair is! Would you be scared sitting so high?",
+        annotation_3:
+          "Now that all his things are the right size for him, the man is not too tall at all!",
       },
       {
-        id: "w_crisis",
-        number: 11,
-        image_asset: "plh_images/workshops/w_crisis/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_13",
-        something_fun_data: "@data.something_fun.superpowers",
-        intro_audio_asset: "plh_audio/topic_intros/w_crisis_intro.mp3",
-        title: "Dealing with Crisis",
+        id: "page_11",
+        page_no: 11,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-11.jpg",
+        story_text:
+          "He left his house and moved to a big house in the forest, where lived for many years.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          caregiver_testimonial_script: {},
-          teen_testimonial_script: {},
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
         },
         _translatedFields: {
           story_text: {
@@ -738,73 +328,1489 @@ const data_list: FlowTypes.Data_list[] = [
           annotation_3: {
             eng: "Notice that the bird is yellow again!",
           },
-          caregiver_testimonial_script: {
-            eng: "My teen used to be so angry all the time. He would never listen and we would get into big arguments every day. Through @global.parent_app, I started spending more time with my teen and strengthening our relationship. One day he shared with me that he was part of a gang but he wanted to get out. \n\nWe made short-term and long-term plans together on how we could do that. Our life looks so different now!",
-          },
-          teen_testimonial_script: {
-            eng: "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore.",
-          },
         },
-        in_text_title: "**Dealing with Crisis** workshop",
-        tools: "How to deal with crisis",
-        caregiver_testimonial_script:
-          "My teen used to be so angry all the time. He would never listen and we would get into big arguments every day. Through @global.parent_app, I started spending more time with my teen and strengthening our relationship. One day he shared with me that he was part of a gang but he wanted to get out. \n\nWe made short-term and long-term plans together on how we could do that. Our life looks so different now!",
-        teen_testimonial_script:
-          "Two years ago, I was raped by my uncle who stayed in our yard. I did not tell my mother, because I was afraid she would hit me, shout at me, or even throw me out of the house. I did not have anywhere else to go. \n\nWhen my mother started with @global.parent_app, she started spending more time together. I was still afraid, but in the end I shared it with my mother. My mom did not shout, but she listened and told me it is not my fault. We went to the police and the clinic together. I am so grateful I do not have to carry this secret anymore.",
+        annotation_1: "Count the pineapples, bags, and trees with your child.",
+        annotation_2: "Count the rungs on the ladder with your child.",
+        annotation_3: "Notice that the bird is yellow again!",
       },
       {
-        id: "w_celebrate",
-        number: 12,
-        image_asset: "plh_images/workshops/w_celebrate/tools.svg",
-        "completion_level::default": 0,
-        started: false,
-        completed: false,
-        disabled: true,
-        relax_data: "@data.relax.relax_14",
-        intro_audio_asset: "plh_audio/topic_intros/w_celebrate_intro.mp3",
-        title: "Celebration and Next Steps",
+        id: "page_12",
+        page_no: 12,
+        illustration: "EFMStorybooks/EFM-SB-AVTM-12.jpg",
+      },
+    ],
+    _xlsxPath: "EFM_storybooks_beginning.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "Akadelis_Lucky_Day_pages",
+    status: "released",
+    data_list_name: "Akadelis_Lucky_Day_storybook",
+    rows: [
+      {
+        id: "page_1",
+        page_no: 1,
+        illustration: "EFMStorybooks/EFM-SB-ALD-1.jpg",
+        story_text:
+          "One day Akadeli, Lucy, Acharait, and Mary went to pick wild fruit.\n\nThey held hands to cross the big river.",
         _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "One day Akadeli, Lucy, Acharait, and Mary went to pick wild fruit.\n\nThey held hands to cross the big river.",
           },
-          in_text_title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
+          annotation_1: {
+            eng: "Count the girls together.",
           },
-          tools: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
+          annotation_2: {
+            eng: "Describe the patterns you see in their clothing. Do you like to wear solids, patterns, or both?",
           },
+          annotation_3: {
+            eng: "Friends sometimes hold hands to keep each other company or show they are friends. Why are these girls holding hands?",
+          },
+        },
+        annotation_1: "Count the girls together.",
+        annotation_2:
+          "Describe the patterns you see in their clothing. Do you like to wear solids, patterns, or both?",
+        annotation_3:
+          "Friends sometimes hold hands to keep each other company or show they are friends. Why are these girls holding hands?",
+      },
+      {
+        id: "page_2",
+        page_no: 2,
+        illustration: "EFMStorybooks/EFM-SB-ALD-2.jpg",
+        story_text:
+          "The girls found a tree full of ripe fruit.\n\nThey agreed to pick the fruit with their eyes closed.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "The girls found a tree full of ripe fruit.\n\nThey agreed to pick the fruit with their eyes closed.",
+          },
+          annotation_1: {
+            eng: "Name all the colors in the colorful clothes they are wearing.",
+          },
+          annotation_2: {
+            eng: "Each girl has her arms in a different position. Can you copy their arm positions with your arms?",
+          },
+          annotation_3: {
+            eng: "Count together the branches coming off the main trunk of this tree. You will have to decide which ones are big enough to count.",
+          },
+        },
+        annotation_1: "Name all the colors in the colorful clothes they are wearing.",
+        annotation_2:
+          "Each girl has her arms in a different position. Can you copy their arm positions with your arms?",
+        annotation_3:
+          "Count together the branches coming off the main trunk of this tree. You will have to decide which ones are big enough to count.",
+      },
+      {
+        id: "page_3",
+        page_no: 3,
+        illustration: "EFMStorybooks/EFM-SB-ALD-3.jpg",
+        story_text:
+          "Lucy, Acharait and Mary did not close their eyes.\n\nOnly Akadeli closed hers.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Lucy, Acharait and Mary did not close their eyes.\n\nOnly Akadeli closed hers.",
+          },
+          annotation_1: {
+            eng: "Why do you think the other girls did not close their eyes?",
+          },
+          annotation_2: {
+            eng: "This is a good climbing tree. Count together the branches that look the strongest.",
+          },
+          annotation_3: {
+            eng: "Do you ever do things with your eyes closed, just for fun?",
+          },
+        },
+        annotation_1: "Why do you think the other girls did not close their eyes?",
+        annotation_2:
+          "This is a good climbing tree. Count together the branches that look the strongest.",
+        annotation_3: "Do you ever do things with your eyes closed, just for fun?",
+      },
+      {
+        id: "page_4",
+        page_no: 4,
+        illustration: "EFMStorybooks/EFM-SB-ALD-4.jpg",
+        story_text: "When they opened their eyes, only Akadeli had picked unripe fruit.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "When they opened their eyes, only Akadeli had picked unripe fruit.",
+          },
+          annotation_1: {
+            eng: "Estimate how many pieces of fruit there are in one basket. Estimating means making an informed guess. Is your estimate bigger than the biggest number you know?",
+          },
+          annotation_2: {
+            eng: "What shapes are there on the two blue dresses?",
+          },
+          annotation_3: {
+            eng: "Did you ever play a game where some of the people didn't follow the rules? How did it make you feel?",
+          },
+        },
+        annotation_1:
+          "Estimate how many pieces of fruit there are in one basket. Estimating means making an informed guess. Is your estimate bigger than the biggest number you know?",
+        annotation_2: "What shapes are there on the two blue dresses?",
+        annotation_3:
+          "Did you ever play a game where some of the people didn't follow the rules? How did it make you feel?",
+      },
+      {
+        id: "page_5",
+        page_no: 5,
+        illustration: "EFMStorybooks/EFM-SB-ALD-5.jpg",
+        story_text:
+          "Lucy, Acharait, and Mary laughed at Akadeli. They left for home.\n\nAkadeli threw away the unripe fruit. She began picking ripe ones.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Lucy, Acharait, and Mary laughed at Akadeli. They left for home.\n\nAkadeli threw away the unripe fruit. She began picking ripe ones.",
+          },
+          annotation_1: {
+            eng: "If you have four girls and you take three away, how many are left?",
+          },
+          annotation_2: {
+            eng: "When people laugh at you, does that make you feel angry or ashamed? Were you able to ignore them knowing they were just being mean",
+          },
+          annotation_3: {
+            eng: "Why did Akadeli stay behind to pick fruit?",
+          },
+        },
+        annotation_1: "If you have four girls and you take three away, how many are left?",
+        annotation_2:
+          "When people laugh at you, does that make you feel angry or ashamed? Were you able to ignore them knowing they were just being mean",
+        annotation_3: "Why did Akadeli stay behind to pick fruit?",
+      },
+      {
+        id: "page_6",
+        page_no: 6,
+        illustration: "EFMStorybooks/EFM-SB-ALD-6.jpg",
+        story_text:
+          "Soon, Akadeli filled her basket with ripe fruit.\n\nShe set off alone, crossing the big river.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Soon, Akadeli filled her basket with ripe fruit.\n\nShe set off alone, crossing the big river.",
+          },
+          annotation_1: {
+            eng: "How many splashes can you count when her fruit hits the water?",
+          },
+          annotation_2: {
+            eng: "Count the larger trees together.",
+          },
+          annotation_3: {
+            eng: "Why do you think Akadeli slipped in the river when no one slipped before? Is there another reason for holding hands?",
+          },
+        },
+        annotation_1: "How many splashes can you count when her fruit hits the water?",
+        annotation_2: "Count the larger trees together.",
+        annotation_3:
+          "Why do you think Akadeli slipped in the river when no one slipped before? Is there another reason for holding hands?",
+      },
+      {
+        id: "page_7",
+        page_no: 7,
+        illustration: "EFMStorybooks/EFM-SB-ALD-7.jpg",
+        story_text:
+          "Half way across the river, Akadeli's fruit fell into the water.\n\nShe was angry and began to cry.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Half way across the river, Akadeli's fruit fell into the water.\n\nShe was angry and began to cry.",
+          },
+          annotation_1: {
+            eng: "Akadeli is standing in the middle of some circles in the water. How many?",
+          },
+          annotation_2: {
+            eng: "People cry sometimes when they are sad or angry. Have you been sad or angry when you spilled something?",
+          },
+          annotation_3: {
+            eng: "Count together the dark squares in the checkerboard pattern on her shirt.",
+          },
+        },
+        annotation_1: "Akadeli is standing in the middle of some circles in the water. How many?",
+        annotation_2:
+          "People cry sometimes when they are sad or angry. Have you been sad or angry when you spilled something?",
+        annotation_3: "Count together the dark squares in the checkerboard pattern on her shirt.",
+      },
+      {
+        id: "page_8",
+        page_no: 8,
+        illustration: "EFMStorybooks/EFM-SB-ALD-8.jpg",
+        story_text: "Akadeli saw a big fish and grabbed it.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Akadeli saw a big fish and grabbed it.",
+          },
+          annotation_1: {
+            eng: "Is it okay that Akadeli lost her basket? Do you think her parents will be mad?",
+          },
+          annotation_2: {
+            eng: "The title says this is Akadeli's lucky day. How is Akadeli's day going so far?",
+          },
+          annotation_3: {
+            eng: "Is this fish bigger or smaller than Akadeli?",
+          },
+        },
+        annotation_1:
+          "Is it okay that Akadeli lost her basket? Do you think her parents will be mad?",
+        annotation_2:
+          "The title says this is Akadeli's lucky day. How is Akadeli's day going so far?",
+        annotation_3: "Is this fish bigger or smaller than Akadeli?",
+      },
+      {
+        id: "page_9",
+        page_no: 9,
+        illustration: "EFMStorybooks/EFM-SB-ALD-9.jpg",
+        story_text: "As Akadeli walked home, a hawk snatched the fish.\n\nHe flew away with it.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "As Akadeli walked home, a hawk snatched the fish.\n\nHe flew away with it.",
+          },
+          annotation_1: {
+            eng: "The hawk snatched the fish with the talons on its feet. How many talons do you see?",
+          },
+          annotation_2: {
+            eng: "The hawk's wings and Akadeli's shirt look a bit alike -- describe how they are similar and how they are different.",
+          },
+          annotation_3: {
+            eng: "What is Akadeli feeling as she watches the hawk fly away with her fish?",
+          },
+        },
+        annotation_1:
+          "The hawk snatched the fish with the talons on its feet. How many talons do you see?",
+        annotation_2:
+          "The hawk's wings and Akadeli's shirt look a bit alike -- describe how they are similar and how they are different.",
+        annotation_3: "What is Akadeli feeling as she watches the hawk fly away with her fish?",
+      },
+      {
+        id: "page_10",
+        page_no: 10,
+        illustration: "EFMStorybooks/EFM-SB-ALD-10.jpg",
+        story_text:
+          "The hawk left behind a feather from its tail.\n\nAkadeli picked up the feather and continued walking home.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "The hawk left behind a feather from its tail.\n\nAkadeli picked up the feather and continued walking home.",
+          },
+          annotation_1: {
+            eng: "How many spots are on this feather?",
+          },
+          annotation_2: {
+            eng: "Have you ever found a feather? Was it very colorful?",
+          },
+          annotation_3: {
+            eng: "There are three kinds of plants in this picture. Point at the tallest and shortest ones.",
+          },
+        },
+        annotation_1: "How many spots are on this feather?",
+        annotation_2: "Have you ever found a feather? Was it very colorful?",
+        annotation_3:
+          "There are three kinds of plants in this picture. Point at the tallest and shortest ones.",
+      },
+      {
+        id: "page_11",
+        page_no: 11,
+        illustration: "EFMStorybooks/EFM-SB-ALD-11.jpg",
+        story_text:
+          "She came across a traditional wedding. Dancers were wearing grass on their heads instead of feathers as was the tradition.\n\nThey took her feather and gave her a big bull!",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "She came across a traditional wedding. Dancers were wearing grass on their heads instead of feathers as was the tradition.\n\nThey took her feather and gave her a big bull!",
+          },
+          annotation_1: {
+            eng: "Count how many people are wearing yellow grass on their heads.",
+          },
+          annotation_2: {
+            eng: "Estimate how many people it would take to weigh as much as that bull.",
+          },
+          annotation_3: {
+            eng: "Surprisingly, Akadeli traded a feather for a bull. Why did the people do that?",
+          },
+        },
+        annotation_1: "Count how many people are wearing yellow grass on their heads.",
+        annotation_2: "Estimate how many people it would take to weigh as much as that bull.",
+        annotation_3:
+          "Surprisingly, Akadeli traded a feather for a bull. Why did the people do that?",
+      },
+      {
+        id: "page_12",
+        page_no: 12,
+        illustration: "EFMStorybooks/EFM-SB-ALD-12.jpg",
+        story_text:
+          "Akadeli reached home with her bull. Her parents and relatives were so happy. Lucy, Acharait, and Mary wished they had not lied to Akadeli.\n\nIt was a lucky day for Akadeli!",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Akadeli reached home with her bull. Her parents and relatives were so happy. Lucy, Acharait, and Mary wished they had not lied to Akadeli.\n\nIt was a lucky day for Akadeli!",
+          },
+          annotation_1: {
+            eng: "How do you think the other girls feel.",
+          },
+          annotation_2: {
+            eng: "Have you ever lied to someone? If so, did it make you feel sorry or ashamed?",
+          },
+          annotation_3: {
+            eng: "Count the number of difficult moments in Akadeli's day. All turned out wll in the end. Life can be full of surprises!",
+          },
+        },
+        annotation_1: "How do you think the other girls feel.",
+        annotation_2:
+          "Have you ever lied to someone? If so, did it make you feel sorry or ashamed?",
+        annotation_3:
+          "Count the number of difficult moments in Akadeli's day. All turned out wll in the end. Life can be full of surprises!",
+      },
+      {
+        id: "page_13",
+        page_no: 13,
+        illustration: "EFMStorybooks/EFM-SB-ALD-13.jpg",
+      },
+    ],
+    _xlsxPath: "EFM_storybooks_beginning.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "Can_We_Count_Our_Cats_pages",
+    status: "released",
+    data_list_name: "Can_We_Count_Our_Cats_storybook",
+    rows: [
+      {
+        id: "page_1",
+        page_no: 1,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-1.jpg",
+        story_text: "How many cats? \n\n 0 Zero cats.\n\nNo cats here!",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n 0 Zero cats.\n\nNo cats here!",
+          },
+          annotation_1: {
+            eng: "0 is an important number! It's where all counting starts, even when we don't say it.",
+          },
+          annotation_2: {
+            eng: "How many cats do you see?",
+          },
+          annotation_3: {
+            eng: "Count together the butterflies – they are tricky to find in this picture.",
+          },
+        },
+        annotation_1:
+          "0 is an important number! It's where all counting starts, even when we don't say it.",
+        annotation_2: "How many cats do you see?",
+        annotation_3: "Count together the butterflies – they are tricky to find in this picture.",
+      },
+      {
+        id: "page_2",
+        page_no: 2,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-2.jpg",
+        story_text: "How many cats? \n\n 1 One cat.\n\n A black cat is eating red meat.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n 1 One cat.\n\n A black cat is eating red meat.",
+          },
+          annotation_1: {
+            eng: "Point to and name the green and orange squares, blue shirt, and black cat.",
+          },
+          annotation_2: {
+            eng: "Notice how Paul is looking at the cat. Pual sure likes cats!",
+          },
+          annotation_3: {
+            eng: "Each time a cat is added: a) say that one more than the last number of cats is the new number, and b) one less than the current number is the last number.",
+          },
+        },
+        annotation_1: "Point to and name the green and orange squares, blue shirt, and black cat.",
+        annotation_2: "Notice how Paul is looking at the cat. Pual sure likes cats!",
+        annotation_3:
+          "Each time a cat is added: a) say that one more than the last number of cats is the new number, and b) one less than the current number is the last number.",
+      },
+      {
+        id: "page_3",
+        page_no: 3,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-3.jpg",
+        story_text: "How many cats? \n\n 2 Two cats. \n\n A white cat and a grey cat are sleeping.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n 2 Two cats. \n\n A white cat and a grey cat are sleeping.",
+          },
+          annotation_1: {
+            eng: "Count together the cats, plants, and people.",
+          },
+          annotation_2: {
+            eng: "Of cats, plants, and people, which number is the biggest? Which one is the smallest?",
+          },
+          annotation_3: {
+            eng: "Notice that the square tiles are now all the same gray color.",
+          },
+        },
+        annotation_1: "Count together the cats, plants, and people.",
+        annotation_2:
+          "Of cats, plants, and people, which number is the biggest? Which one is the smallest?",
+        annotation_3: "Notice that the square tiles are now all the same gray color.",
+      },
+      {
+        id: "page_4",
+        page_no: 4,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-4.jpg",
+        story_text: "How many cats? \n\n3 Three cats. \n\nThree cats are playing in the kitchen.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n3 Three cats. \n\nThree cats are playing in the kitchen.",
+          },
+          annotation_1: {
+            eng: "What a mess! There must be zero people here!",
+          },
+          annotation_2: {
+            eng: "Count together each group – the cats, cabinet doors, food containers, and spoons.",
+          },
+          annotation_3: {
+            eng: "Which thing is there the most of in this picture?",
+          },
+        },
+        annotation_1: "What a mess! There must be zero people here!",
+        annotation_2:
+          "Count together each group – the cats, cabinet doors, food containers, and spoons.",
+        annotation_3: "Which thing is there the most of in this picture?",
+      },
+      {
+        id: "page_5",
+        page_no: 5,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-5.jpg",
+        story_text: "How many cats? \n\n4 Four cats. \n\nFour cats are Paul's friends.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n4 Four cats. \n\nFour cats are Paul's friends.",
+          },
+          annotation_1: {
+            eng: "Count all the cats.",
+          },
+          annotation_2: {
+            eng: "Which of these cats have you seen before, and which are new? Which ones are missing?",
+          },
+          annotation_3: {
+            eng: "Point at and name all the different colors in the room.",
+          },
+        },
+        annotation_1: "Count all the cats.",
+        annotation_2:
+          "Which of these cats have you seen before, and which are new? Which ones are missing?",
+        annotation_3: "Point at and name all the different colors in the room.",
+      },
+      {
+        id: "page_6",
+        page_no: 6,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-6.jpg",
+        story_text: "How many cats? \n\n5 Five cats. \n\nFive cats chase the dog.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n5 Five cats. \n\nFive cats chase the dog.",
+          },
+          annotation_1: {
+            eng: "Looking at their faces and bodies, do the cats and the dog like each other?",
+          },
+          annotation_2: {
+            eng: "Count the number of cats and the number of dogs. Which group is bigger? Poor dog!",
+          },
+          annotation_3: {
+            eng: "These cats all have different coloring. Describe the color and pattern of each cat.",
+          },
+        },
+        annotation_1: "Looking at their faces and bodies, do the cats and the dog like each other?",
+        annotation_2:
+          "Count the number of cats and the number of dogs. Which group is bigger? Poor dog!",
+        annotation_3:
+          "These cats all have different coloring. Describe the color and pattern of each cat.",
+      },
+      {
+        id: "page_7",
+        page_no: 7,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-7.jpg",
+        story_text: "How many cats?\n\n6 Six cats.\n\nSix cats waiting for the dog.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats?\n\n6 Six cats.\n\nSix cats waiting for the dog.",
+          },
+          annotation_1: {
+            eng: "Count the cats on the floor and in the picture. Is it the same number?",
+          },
+          annotation_2: {
+            eng: "Find a cat or two in the picture on the wall that is not on the floor.",
+          },
+          annotation_3: {
+            eng: "The dog doesn't want to come back. Why not?",
+          },
+        },
+        annotation_1: "Count the cats on the floor and in the picture. Is it the same number?",
+        annotation_2: "Find a cat or two in the picture on the wall that is not on the floor.",
+        annotation_3: "The dog doesn't want to come back. Why not?",
+      },
+      {
+        id: "page_8",
+        page_no: 8,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-8.jpg",
+        story_text: "How many cats? \n\n7 Seven cats. \n\nSeven cats playing in the compound.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n7 Seven cats. \n\nSeven cats playing in the compound.",
+          },
+          annotation_1: {
+            eng: "Point at each of the seven cats.",
+          },
+          annotation_2: {
+            eng: "What is Paul looking for?",
+          },
+          annotation_3: {
+            eng: "The cat on the roof is the highest cat. How did that cat get up so high?",
+          },
+        },
+        annotation_1: "Point at each of the seven cats.",
+        annotation_2: "What is Paul looking for?",
+        annotation_3: "The cat on the roof is the highest cat. How did that cat get up so high?",
+      },
+      {
+        id: "page_9",
+        page_no: 9,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-9.jpg",
+        story_text: "How many cats? \n\n8 Eight cats. \n\nEight cats and one dog!",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "How many cats? \n\n8 Eight cats. \n\nEight cats and one dog!",
+          },
+          annotation_1: {
+            eng: "The cats have many different colors and patterns. Have you seen cats like these?",
+          },
+          annotation_2: {
+            eng: "Seven cats plus one dog makes how many animals?",
+          },
+          annotation_3: {
+            eng: "Do you think the dog looks happy or worried?",
+          },
+        },
+        annotation_1:
+          "The cats have many different colors and patterns. Have you seen cats like these?",
+        annotation_2: "Seven cats plus one dog makes how many animals?",
+        annotation_3: "Do you think the dog looks happy or worried?",
+      },
+      {
+        id: "page_10",
+        page_no: 10,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-10.jpg",
+        story_text: 'A kitten is stuck in a tree! \n\n"I will rescue you!" says Paul.',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'A kitten is stuck in a tree! \n\n"I will rescue you!" says Paul.',
+          },
+          annotation_1: {
+            eng: "How many cats are stuck in the tree?",
+          },
+          annotation_2: {
+            eng: "How did the cat get up there?",
+          },
+          annotation_3: {
+            eng: "The cat is higher than Paul. How will Paul help the cat?",
+          },
+        },
+        annotation_1: "How many cats are stuck in the tree?",
+        annotation_2: "How did the cat get up there?",
+        annotation_3: "The cat is higher than Paul. How will Paul help the cat?",
+      },
+      {
+        id: "page_11",
+        page_no: 11,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-11.jpg",
+        story_text:
+          'Mama, can we keep him?" \n\nHow many cats? \n\n9 Nine cats. \n\n"That is too many cats!" says Mama.\u0001',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'Mama, can we keep him?" \n\nHow many cats? \n\n9 Nine cats. \n\n"That is too many cats!" says Mama.\u0001',
+          },
+          annotation_1: {
+            eng: "One more than eight cats is nine cats. A dog and nine cats is how many animals?\u0001\u0001",
+          },
+          annotation_2: {
+            eng: "Do you know anyone with cats? How many cats do they have?",
+          },
+          annotation_3: {
+            eng: "Do you think nine cats is too many?",
+          },
+        },
+        annotation_1:
+          "One more than eight cats is nine cats. A dog and nine cats is how many animals?\u0001\u0001",
+        annotation_2: "Do you know anyone with cats? How many cats do they have?",
+        annotation_3: "Do you think nine cats is too many?",
+      },
+      {
+        id: "page_12",
+        page_no: 12,
+        illustration: "EFMStorybooks/EFM-SB-CWCOC-12.jpg",
+      },
+    ],
+    _xlsxPath: "EFM_storybooks_beginning.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "efm_sb_list",
+    data_list_name: "efm_storybooks",
+    status: "released",
+    rows: [
+      {
+        id: "efm_sb_Akadelis_Lucky_Day",
+        pages: "data.Akadelis_Lucky_Day_storybook",
+        cover: "EFMStorybooks/EFM-SB-ALD-Cover.jpg",
+        author: "Ursula Nafula",
+        illustrator: "Rob Owen",
+        intro_level: "basic",
+        book_level: "beginner",
+        title: "Akadeli's Lucky Day",
+        _translations: {
+          title: {},
+          math_themes_words: {},
         },
         _translatedFields: {
           title: {
-            eng: "Celebration and Next Steps",
+            eng: "Akadeli's Lucky Day",
           },
-          in_text_title: {
-            eng: "**Celebration and Next Steps** workshop",
-          },
-          tools: {
-            eng: "How to support each other",
+          math_themes_words: {
+            eng: "This story has  counting to 12, colors, and shapes. Practice words: one, two, to twelve, estimate, take away, color names, shortest, tallest, similar, and different.",
           },
         },
-        in_text_title: "**Celebration and Next Steps** workshop",
-        tools: "How to support each other",
+        math_themes_words:
+          "This story has  counting to 12, colors, and shapes. Practice words: one, two, to twelve, estimate, take away, color names, shortest, tallest, similar, and different.",
+      },
+      {
+        id: "efm_sb_A_Very_Tall_Man",
+        pages: "data.A_Very_Tall_Man_storybook",
+        cover: "EFMStorybooks/EFM-SB-AVTM-Cover.jpg",
+        author: "Cornelius Wambi Gulere",
+        illustrator: "Catherine Groenewald",
+        intro_level: "basic",
+        book_level: "beginner",
+        title: "A Very Tall Man",
+        _translations: {
+          title: {},
+          math_themes_words: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "A Very Tall Man",
+          },
+          math_themes_words: {
+            eng: "This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller",
+          },
+        },
+        math_themes_words:
+          "This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller",
+      },
+      {
+        id: "efm_sb_Can_We_Count_Our_Cats",
+        pages: "data.Can_We_Count_Our_Cats_storybook",
+        cover: "EFMStorybooks/EFM-SB-CWCOC-Cover.jpg",
+        author: "Bubaali Primary School",
+        illustrator: "Jesse Breytenbach",
+        intro_level: "basic",
+        book_level: "beginner",
+        title: "Can We Count Our Cats",
+        _translations: {
+          title: {},
+          math_themes_words: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Can We Count Our Cats",
+          },
+          math_themes_words: {
+            eng: "This story looks at counting from 0 to 9, colors, and color patterns. Practice counting words, color words, words like: too many, biggest number, smallest number, one more, and one less.",
+          },
+        },
+        math_themes_words:
+          "This story looks at counting from 0 to 9, colors, and color patterns. Practice counting words, color words, words like: too many, biggest number, smallest number, one more, and one less.",
+      },
+      {
+        id: "efm_sb_Amazing_Daisy",
+        pages: "data.Amazing_Daisy_storybook",
+        cover: "EFMStorybooks/EFM-SB-AD-Cover.jpg",
+        author: "Nozizwe Herero",
+        illustrator: "Slya Masuku",
+        intro_level: "advanced",
+        book_level: "intermediate",
+        title: "Amazing Daisy",
+        _translations: {
+          title: {},
+          math_themes_words: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "Amazing Daisy",
+          },
+          math_themes_words: {
+            eng: "This story has geometry and shape ideas. Practice words: circle, rectangle, sides, corner, vertical line, horizontal line, big, small, low, and high",
+          },
+        },
+        math_themes_words:
+          "This story has geometry and shape ideas. Practice words: circle, rectangle, sides, corner, vertical line, horizontal line, big, small, low, and high",
       },
     ],
-    _xlsxPath: "storybook_esmee.xlsx",
+    _xlsxPath: "EFM_storybooks_high_level_sheets.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_name: "Amazing_Daisy_story_data",
+    status: "released",
+    data_list_name: "Amazing_Daisy_storybook",
+    rows: [
+      {
+        id: "page_1",
+        page_no: 1,
+        illustration: "EFMStorybooks/EFM-SB-AD-1.jpg",
+        story_text: "Once upon a time on a little farm near a little village.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Once upon a time on a little farm near a little village.",
+          },
+          annotation_1: {
+            eng: "Farms can grow crops and raise animals, such as chickens. What are some things on a farm that you are curious about?",
+          },
+          annotation_2: {
+            eng: "There are some groups of three things here. What do you see?",
+          },
+          annotation_3: {
+            eng: "What are the different things these chickens are doing?",
+          },
+        },
+        annotation_1:
+          "Farms can grow crops and raise animals, such as chickens. What are some things on a farm that you are curious about?",
+        annotation_2: "There are some groups of three things here. What do you see?",
+        annotation_3: "What are the different things these chickens are doing?",
+      },
+      {
+        id: "page_2",
+        page_no: 2,
+        illustration: "EFMStorybooks/EFM-SB-AD-2.jpg",
+        story_text: "There lived a little chicken called Daisy.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "There lived a little chicken called Daisy.",
+          },
+          annotation_1: {
+            eng: "Count together the claws that Daisy has on each leg and all together.",
+          },
+          annotation_2: {
+            eng: "Daisy's claws spread out to help her balance. How long can you balance on one leg?",
+          },
+          annotation_3: {
+            eng: "Can you balance on one leg long enough to count to five? To ten?",
+          },
+        },
+        annotation_1: "Count together the claws that Daisy has on each leg and all together.",
+        annotation_2:
+          "Daisy's claws spread out to help her balance. How long can you balance on one leg?",
+        annotation_3: "Can you balance on one leg long enough to count to five? To ten?",
+      },
+      {
+        id: "page_3",
+        page_no: 3,
+        illustration: "EFMStorybooks/EFM-SB-AD-3.jpg",
+        story_text: '"When I grow up, I want to fly high, high into the sky," Daisy said.',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: '"When I grow up, I want to fly high, high into the sky," Daisy said.',
+          },
+          annotation_1: {
+            eng: "Count together all the circles on their faces. Don't forget to count the pupils in the middle of the eyes.",
+          },
+          annotation_2: {
+            eng: "How can you tell that the other chickens are not as happy as Daisy?",
+          },
+          annotation_3: {
+            eng: "What are these other chicken's thinking?",
+          },
+        },
+        annotation_1:
+          "Count together all the circles on their faces. Don't forget to count the pupils in the middle of the eyes.",
+        annotation_2: "How can you tell that the other chickens are not as happy as Daisy?",
+        annotation_3: "What are these other chicken's thinking?",
+      },
+      {
+        id: "page_4",
+        page_no: 4,
+        illustration: "EFMStorybooks/EFM-SB-AD-4.jpg",
+        story_text: "But all the other chickens laughed at her.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "But all the other chickens laughed at her.",
+          },
+          annotation_1: {
+            eng: "Their eyes are now closed. We close our eyes when we are asleep and at other times. Why are these chicken's eyes closed?",
+          },
+          annotation_2: {
+            eng: "Sometimes people laugh AT other people, and sometimes they laugh WITH other people. What is the difference?",
+          },
+          annotation_3: {
+            eng: "Do you think the shape of the big cloud looks like their mouths?",
+          },
+        },
+        annotation_1:
+          "Their eyes are now closed. We close our eyes when we are asleep and at other times. Why are these chicken's eyes closed?",
+        annotation_2:
+          "Sometimes people laugh AT other people, and sometimes they laugh WITH other people. What is the difference?",
+        annotation_3: "Do you think the shape of the big cloud looks like their mouths?",
+      },
+      {
+        id: "page_5",
+        page_no: 5,
+        illustration: "EFMStorybooks/EFM-SB-AD-5.jpg",
+        story_text: '"You are so weird," they said. "We won\'t play with you anymore."',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: '"You are so weird," they said. "We won\'t play with you anymore."',
+          },
+          annotation_1: {
+            eng: "Now that their mouths have changed, do you think the cloud changed shape too?",
+          },
+          annotation_2: {
+            eng: "Can you use your mouth to copy the shape of each chicken's mouth? Can you guess and copy the sound each chicken is making?",
+          },
+          annotation_3: {
+            eng: "Why are they calling Daisy a mean name?",
+          },
+        },
+        annotation_1:
+          "Now that their mouths have changed, do you think the cloud changed shape too?",
+        annotation_2:
+          "Can you use your mouth to copy the shape of each chicken's mouth? Can you guess and copy the sound each chicken is making?",
+        annotation_3: "Why are they calling Daisy a mean name?",
+      },
+      {
+        id: "page_6",
+        page_no: 6,
+        illustration: "EFMStorybooks/EFM-SB-AD-6.jpg",
+        story_text:
+          '"Daisy, we can all flap our wings, but it\'s very difficult for chickens to fly," Mama told her.',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: '"Daisy, we can all flap our wings, but it\'s very difficult for chickens to fly," Mama told her.',
+          },
+          annotation_1: {
+            eng: "Discuss what is similar about Daisy and her mother, and how they look different from the other chickens.",
+          },
+          annotation_2: {
+            eng: "What is Daisy's mother doing to help Daisy feel better?",
+          },
+          annotation_3: {
+            eng: "Sometimes we fell better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?",
+          },
+        },
+        annotation_1:
+          "Discuss what is similar about Daisy and her mother, and how they look different from the other chickens.",
+        annotation_2: "What is Daisy's mother doing to help Daisy feel better?",
+        annotation_3:
+          "Sometimes we fell better when someone pats us or holds our hand. Have you ever tried to help a friend feel better with a friendly touch?",
+      },
+      {
+        id: "page_7",
+        page_no: 7,
+        illustration: "EFMStorybooks/EFM-SB-AD-7.jpg",
+        story_text:
+          "Daisy wouldn't give up. Every day she practiced by herself, flapping her wings. Flap, flap, flap, she would flap her wings but she couldn't lift off the ground.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "Daisy wouldn't give up. Every day she practiced by herself, flapping her wings. Flap, flap, flap, she would flap her wings but she couldn't lift off the ground.",
+          },
+          annotation_1: {
+            eng: "So far, this is a sad story for Daisy. Make up your own ending. Is it a happy or sad ending?",
+          },
+          annotation_2: {
+            eng: "Is Daisy too heavy to fly? Think of something that is as heavy as Daisy looks. Do you think that thing is too heavy to fly?",
+          },
+          annotation_3: {
+            eng: "A rectangle is a shape with four straight sides and corners like the corners of this page. Although they are slanted, find and point to the many rectangles on this page.",
+          },
+        },
+        annotation_1:
+          "So far, this is a sad story for Daisy. Make up your own ending. Is it a happy or sad ending?",
+        annotation_2:
+          "Is Daisy too heavy to fly? Think of something that is as heavy as Daisy looks. Do you think that thing is too heavy to fly?",
+        annotation_3:
+          "A rectangle is a shape with four straight sides and corners like the corners of this page. Although they are slanted, find and point to the many rectangles on this page.",
+      },
+      {
+        id: "page_8",
+        page_no: 8,
+        illustration: "EFMStorybooks/EFM-SB-AD-8.jpg",
+        story_text:
+          'While she practiced, she imagined herself flying high into the sky and looking at the chickens below. She imagined herself flying past the sparrows and past the swallows. "Wow!" The birds would say, "A chicken that can fly!"',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'While she practiced, she imagined herself flying high into the sky and looking at the chickens below. She imagined herself flying past the sparrows and past the swallows. "Wow!" The birds would say, "A chicken that can fly!"',
+          },
+          annotation_1: {
+            eng: "Count together the birds in this picture. Don't forget the ones on the ground.",
+          },
+          annotation_2: {
+            eng: "What effect is caused by having some of the birds drawn so small?",
+          },
+          annotation_3: {
+            eng: "Describe a memory of looking at something big that was far away and looked tiny.",
+          },
+        },
+        annotation_1:
+          "Count together the birds in this picture. Don't forget the ones on the ground.",
+        annotation_2: "What effect is caused by having some of the birds drawn so small?",
+        annotation_3:
+          "Describe a memory of looking at something big that was far away and looked tiny.",
+      },
+      {
+        id: "page_9",
+        page_no: 9,
+        illustration: "EFMStorybooks/EFM-SB-AD-9.jpg",
+        story_text: "So Flap, flap, flap, every day Daisy would flap her wings.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "So Flap, flap, flap, every day Daisy would flap her wings.",
+          },
+          annotation_1: {
+            eng: "Count together the little lines coming from Daisy showing her squawking.",
+          },
+          annotation_2: {
+            eng: "Daisy has too many red speckles to count, but you can count together the groups of speckles all over her body.",
+          },
+          annotation_3: {
+            eng: "Daisy looks surprised. What do you think will happen next?",
+          },
+        },
+        annotation_1: "Count together the little lines coming from Daisy showing her squawking.",
+        annotation_2:
+          "Daisy has too many red speckles to count, but you can count together the groups of speckles all over her body.",
+        annotation_3: "Daisy looks surprised. What do you think will happen next?",
+      },
+      {
+        id: "page_10",
+        page_no: 10,
+        illustration: "EFMStorybooks/EFM-SB-AD-10.jpg",
+        story_text: "She would lift off the ground but fall down again.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "She would lift off the ground but fall down again.",
+          },
+          annotation_1: {
+            eng: "How high do you think she got? A grownup is often 5 to 6 feet tall -- do you think she got that high?",
+          },
+          annotation_2: {
+            eng: "How many lines are there above her and below her? When you combine them, how many are there in all?",
+          },
+          annotation_3: {
+            eng: "What do the lines below her show?",
+          },
+        },
+        annotation_1:
+          "How high do you think she got? A grownup is often 5 to 6 feet tall -- do you think she got that high?",
+        annotation_2:
+          "How many lines are there above her and below her? When you combine them, how many are there in all?",
+        annotation_3: "What do the lines below her show?",
+      },
+      {
+        id: "page_11",
+        page_no: 11,
+        illustration: "EFMStorybooks/EFM-SB-AD-11.jpg",
+        story_text: 'I\'m never going to fly!" Daisy cried to Mama. "The others are right."',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'I\'m never going to fly!" Daisy cried to Mama. "The others are right."',
+          },
+          annotation_1: {
+            eng: "Describe some times when you got discouraged like Daisy.",
+          },
+          annotation_2: {
+            eng: "Daisy is trying the same thing over and over. Is she showing strong will or is she being stubbornly foolish?",
+          },
+          annotation_3: {
+            eng: "What new ideas might Daisy try to figure out how to fly?",
+          },
+        },
+        annotation_1: "Describe some times when you got discouraged like Daisy.",
+        annotation_2:
+          "Daisy is trying the same thing over and over. Is she showing strong will or is she being stubbornly foolish?",
+        annotation_3: "What new ideas might Daisy try to figure out how to fly?",
+      },
+      {
+        id: "page_12",
+        page_no: 12,
+        illustration: "EFMStorybooks/EFM-SB-AD-12.jpg",
+        story_text:
+          '"Daisy, you are different from the other chickens. They don\'t want to fly but you do! You can do it." Mama said.',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: '"Daisy, you are different from the other chickens. They don\'t want to fly but you do! You can do it." Mama said.',
+          },
+          annotation_1: {
+            eng: "How can you tell from Daisy's face that she is getting a new idea?",
+          },
+          annotation_2: {
+            eng: "Think of a problem you solved by coming up with a new way to do it after the old way kept failing.",
+          },
+          annotation_3: {
+            eng: "Daisy's body is made up of pairs of things, such as her eyes, and single things, such as her tail. Name all the pairs you can and then all the singles you can.",
+          },
+        },
+        annotation_1: "How can you tell from Daisy's face that she is getting a new idea?",
+        annotation_2:
+          "Think of a problem you solved by coming up with a new way to do it after the old way kept failing.",
+        annotation_3:
+          "Daisy's body is made up of pairs of things, such as her eyes, and single things, such as her tail. Name all the pairs you can and then all the singles you can.",
+      },
+      {
+        id: "page_13",
+        page_no: 13,
+        illustration: "EFMStorybooks/EFM-SB-AD-13.jpg",
+        story_text:
+          "The following day Daisy climbed to the top of the chicken coop and flap, flap, flap, she flapped her wings. She flew into the air and flapped her wings and flapped her wings and flapped her wings and ...",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "The following day Daisy climbed to the top of the chicken coop and flap, flap, flap, she flapped her wings. She flew into the air and flapped her wings and flapped her wings and flapped her wings and ...",
+          },
+          annotation_1: {
+            eng: "There are lots of stright lines here. Some are vertical -- they go up and down. Some are horizontal -- they go side to side. Find some vertical and horizontal lines where you are.",
+          },
+          annotation_2: {
+            eng: "What do the curved lines next to Daisy's body indicate?",
+          },
+          annotation_3: {
+            eng: "Daisy's face is very expressive. What does her face show this time?",
+          },
+        },
+        annotation_1:
+          "There are lots of stright lines here. Some are vertical -- they go up and down. Some are horizontal -- they go side to side. Find some vertical and horizontal lines where you are.",
+        annotation_2: "What do the curved lines next to Daisy's body indicate?",
+        annotation_3: "Daisy's face is very expressive. What does her face show this time?",
+      },
+      {
+        id: "page_14",
+        page_no: 14,
+        illustration: "EFMStorybooks/EFM-SB-AD-14.jpg",
+        story_text: "BAM!",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "BAM!",
+          },
+          annotation_1: {
+            eng: "How is Daisy feeling right now?",
+          },
+          annotation_2: {
+            eng: "What is the other chicken doing?",
+          },
+          annotation_3: {
+            eng: "A kind and thoughtful chicken might go over and console and cheer Daisy up. Why isn't this chicken doing that?",
+          },
+        },
+        annotation_1: "How is Daisy feeling right now?",
+        annotation_2: "What is the other chicken doing?",
+        annotation_3:
+          "A kind and thoughtful chicken might go over and console and cheer Daisy up. Why isn't this chicken doing that?",
+      },
+      {
+        id: "page_15",
+        page_no: 15,
+        illustration: "EFMStorybooks/EFM-SB-AD-15.jpg",
+        story_text:
+          'The other chickens laughed out loud. "Ha ha ha! We told you! Chickens can\'t fly!"',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'The other chickens laughed out loud. "Ha ha ha! We told you! Chickens can\'t fly!"',
+          },
+          annotation_1: {
+            eng: "There is one thick vertical line in this picture. Do you see any other vertical or horizontal lines?",
+          },
+          annotation_2: {
+            eng: "Is the laughing chicken walking or running? How can you tell?",
+          },
+          annotation_3: {
+            eng: "Do you think Daisy will give up after this bad fall? When you have a failure, is it hard for you to keep trying?",
+          },
+        },
+        annotation_1:
+          "There is one thick vertical line in this picture. Do you see any other vertical or horizontal lines?",
+        annotation_2: "Is the laughing chicken walking or running? How can you tell?",
+        annotation_3:
+          "Do you think Daisy will give up after this bad fall? When you have a failure, is it hard for you to keep trying?",
+      },
+      {
+        id: "page_16",
+        page_no: 16,
+        illustration: "EFMStorybooks/EFM-SB-AD-16.jpg",
+        story_text:
+          "But the next day Daisy climbed even higher, right up to the top of the hut. Flap, flap, flap, Daisy flapped her wings.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "But the next day Daisy climbed even higher, right up to the top of the hut. Flap, flap, flap, Daisy flapped her wings.",
+          },
+          annotation_1: {
+            eng: "Daisy is determined. Can you think of a time when you kept trying even after several failures?",
+          },
+          annotation_2: {
+            eng: "Daisy is trying to solve her problem. What have been some of her new ideas for this problem?",
+          },
+          annotation_3: {
+            eng: "Why did they show Daisy twice in this picture? Why does Daisy look big and the other chickens look so small?",
+          },
+        },
+        annotation_1:
+          "Daisy is determined. Can you think of a time when you kept trying even after several failures?",
+        annotation_2:
+          "Daisy is trying to solve her problem. What have been some of her new ideas for this problem?",
+        annotation_3:
+          "Why did they show Daisy twice in this picture? Why does Daisy look big and the other chickens look so small?",
+      },
+      {
+        id: "page_17",
+        page_no: 17,
+        illustration: "EFMStorybooks/EFM-SB-AD-17.jpg",
+        story_text:
+          "She flew into the air and flapped her wings and flapped her wings and flapped her wings and ...",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "She flew into the air and flapped her wings and flapped her wings and flapped her wings and ...",
+          },
+          annotation_1: {
+            eng: "At last, Daisy is successful! How does that make you feel? It feels good to share the successes of others.",
+          },
+          annotation_2: {
+            eng: "How can you tell from the drawing that she is flying upward?",
+          },
+          annotation_3: {
+            eng: "Look at the movement lines drawn around her body. How are the movement lines in this picture different from the ones on the last page?",
+          },
+        },
+        annotation_1:
+          "At last, Daisy is successful! How does that make you feel? It feels good to share the successes of others.",
+        annotation_2: "How can you tell from the drawing that she is flying upward?",
+        annotation_3:
+          "Look at the movement lines drawn around her body. How are the movement lines in this picture different from the ones on the last page?",
+      },
+      {
+        id: "page_18",
+        page_no: 18,
+        illustration: "EFMStorybooks/EFM-SB-AD-18.jpg",
+        story_text:
+          'She kept flying! The wind beneath her wings grew stronger and she flew higher and higher! The sparrows and the swallows said, "Amazing! A flying chicken!"',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'She kept flying! The wind beneath her wings grew stronger and she flew higher and higher! The sparrows and the swallows said, "Amazing! A flying chicken!"',
+          },
+          annotation_1: {
+            eng: "How does Daisy's flying body look different from the other birds in the sky?",
+          },
+          annotation_2: {
+            eng: "How is Daisy feeling now that all of her hard work has paid off?",
+          },
+          annotation_3: {
+            eng: "What are the other chickens thinking now?",
+          },
+        },
+        annotation_1:
+          "How does Daisy's flying body look different from the other birds in the sky?",
+        annotation_2: "How is Daisy feeling now that all of her hard work has paid off?",
+        annotation_3: "What are the other chickens thinking now?",
+      },
+      {
+        id: "page_19",
+        page_no: 19,
+        illustration: "EFMStorybooks/EFM-SB-AD-19.jpg",
+        story_text: "And the other chickens wanted to be just like her.",
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: "And the other chickens wanted to be just like her.",
+          },
+          annotation_1: {
+            eng: "Use your arms to copy the positions of the wings of these chickens.",
+          },
+          annotation_2: {
+            eng: "What are these chickens feeling now that Daisy is successful?",
+          },
+          annotation_3: {
+            eng: "Do you think the other chickens will learn to fly someday?",
+          },
+        },
+        annotation_1: "Use your arms to copy the positions of the wings of these chickens.",
+        annotation_2: "What are these chickens feeling now that Daisy is successful?",
+        annotation_3: "Do you think the other chickens will learn to fly someday?",
+      },
+      {
+        id: "page_20",
+        page_no: 20,
+        illustration: "EFMStorybooks/EFM-SB-AD-20.jpg",
+        story_text: 'They said, "Oh Daisy, you\'re amazing!"',
+        _translations: {
+          story_text: {},
+          annotation_1: {},
+          annotation_2: {},
+          annotation_3: {},
+        },
+        _translatedFields: {
+          story_text: {
+            eng: 'They said, "Oh Daisy, you\'re amazing!"',
+          },
+          annotation_1: {
+            eng: "What happens next in Daisy's story after this book?",
+          },
+          annotation_2: {
+            eng: "Have you ever wished that you could fly?",
+          },
+          annotation_3: {
+            eng: "Where would you go if you could fly? What would you like to look at if you could get way up in the sky above it?",
+          },
+        },
+        annotation_1: "What happens next in Daisy's story after this book?",
+        annotation_2: "Have you ever wished that you could fly?",
+        annotation_3:
+          "Where would you go if you could fly? What would you like to look at if you could get way up in the sky above it?",
+      },
+      {
+        id: "page_21",
+        page_no: 21,
+        illustration: "EFMStorybooks/EFM-SB-AD-21.jpg",
+      },
+    ],
+    _xlsxPath: "EFM_storybooks_intermediate.xlsx",
   },
   {
     flow_type: "data_list",
@@ -5097,7 +6103,7 @@ const data_list: FlowTypes.Data_list[] = [
         type_name: "Puzzle",
       },
     ],
-    _xlsxPath: "EFM_high_level_sheets.xlsx",
+    _xlsxPath: "EFM_activity_high_level_sheets.xlsx",
   },
 ];
 export default data_list;

@@ -82,8 +82,8 @@ const APP_ROUTE_DEFAULTS = {
   ],
 };
 
-export const APP_HEADER_DEFAULTS = {
-  title: "Early Family Math",
+const APP_HEADER_DEFAULTS = {
+  title: "ParentApp",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
@@ -95,37 +95,25 @@ export const APP_HEADER_DEFAULTS = {
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
 };
 
-export const APP_SIDEMENU_DEFAULTS = {
-  title: "Early Family Math",
+const APP_SIDEMENU_DEFAULTS = {
+  title: "ParentApp",
   // name of template to display in sidebar
   template_name: "app_menu",
   // show the current version number in the menu
   should_show_version: true,
-  // show the current env (e.g. dev/prod)
-  should_show_env: false,
+  // show the current deployment name (e.g. PLH ZA)
+  should_show_deployment_name: false,
 };
 
+type IAppLaunchAction = {
+  type: "run_survey" | "template_popup" | "tour_start";
+  value: string;
+};
 /** Define app-specific startup tasks and logic */
 const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
-  app_first_launch_actions: [
-    {
-      type: "template_popup",
-      value: "accept_terms",
-    },
-    {
-      type: "template_popup",
-      value: "language_select",
-    },
-    {
-      type: "template_popup",
-      value: "organisation_registration",
-    },
-    {
-      type: "tour_start",
-      value: "intro_tour",
-    },
-  ] as const,
+  app_first_launch_actions: [] as IAppLaunchAction[],
+
   // TODO - better if refactored to more general handler with condition to filter
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
 };
@@ -150,7 +138,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-export default {
+const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
@@ -165,3 +153,5 @@ export default {
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
 };
+
+export default APP_CONSTANTS;
