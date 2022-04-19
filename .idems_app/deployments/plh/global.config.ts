@@ -44,4 +44,9 @@ const config: IDeploymentConfig = {
   },
   workflows: ["default.workflows.ts"],
 };
+
+config.app_constants.APP_LANGUAGES.default = "gb_en";
+config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
+config.app_constants.APP_HEADER_DEFAULTS.title = "ParentApp";
+
 export default config;
