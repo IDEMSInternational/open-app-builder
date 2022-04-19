@@ -1,0 +1,510 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_radio_buttons_emo_temp",
+  "status": "released",
+  "rows": [
+    {
+      "name": "radio_group_tracker",
+      "value": "radio_group_tracker",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "radio_group_tracker"
+    },
+    {
+      "name": "radio_group_final",
+      "value": "radio_group_final",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "radio_group_final"
+    },
+    {
+      "name": "answer_list",
+      "value": [
+        "name:happy | image:plh_images/stickers/faces/happier.svg | image_checked:plh_images/stickers/faces/happier.svg",
+        "name:ok | image:plh_images/stickers/faces/neutral.svg | image_checked:plh_images/stickers/faces/neutral.svg",
+        "name:sad | image:plh_images/stickers/faces/sadder.svg |  image_checked:plh_images/stickers/faces/sadder.svg"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
+      "name": "options_per_row",
+      "value": 3,
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "options_per_row"
+    },
+    {
+      "type": "image",
+      "name": "image_src",
+      "hidden": true,
+      "_nested_name": "image_src"
+    },
+    {
+      "name": "text",
+      "type": "set_variable",
+      "_nested_name": "text"
+    },
+    {
+      "type": "text",
+      "name": "text_display",
+      "value": "@local.text",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.text",
+      "_nested_name": "text_display",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.text",
+            "matchedExpression": "@local.text",
+            "type": "local",
+            "fieldName": "text"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.text",
+            "matchedExpression": "@local.text",
+            "type": "local",
+            "fieldName": "text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.text": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "question_text",
+      "type": "set_variable",
+      "_nested_name": "question_text"
+    },
+    {
+      "type": "text",
+      "name": "question_text_display",
+      "value": "@local.question_text",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.question_text",
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "question_text_display",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.question_text",
+            "matchedExpression": "@local.question_text",
+            "type": "local",
+            "fieldName": "question_text"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.question_text",
+            "matchedExpression": "@local.question_text",
+            "type": "local",
+            "fieldName": "question_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.question_text": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "radio_group_answered",
+      "type": "set_variable",
+      "_nested_name": "radio_group_answered"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.radio_group_tracker",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+          "_cleaned": "changed | set_field:@local.radio_group_tracker:@local.radio_group"
+        }
+      ],
+      "parameter_list": {
+        "answer_list": "@local.answer_list",
+        "options_per_row": "@local.options_per_row"
+      },
+      "_nested_name": "radio_group",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.radio_group_tracker",
+                  "matchedExpression": "@local.radio_group_tracker",
+                  "type": "local",
+                  "fieldName": "radio_group_tracker"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group_tracker",
+                "type": "local",
+                "fieldName": "radio_group_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group_tracker",
+                "type": "local",
+                "fieldName": "radio_group_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ],
+          "options_per_row": [
+            {
+              "fullExpression": "@local.options_per_row",
+              "matchedExpression": "@local.options_per_row",
+              "type": "local",
+              "fieldName": "options_per_row"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_tracker": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.radio_group": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ],
+        "@local.options_per_row": [
+          "parameter_list.options_per_row"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "reply_happy_dg",
+      "hidden": "@local.radio_group!=\"happy\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_happy",
+          "value": "Reply happy",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "reply_happy_dg.reply_happy"
+        }
+      ],
+      "_nested_name": "reply_happy_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_group!=\"happy\"",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "reply_ok_dg",
+      "hidden": "@local.radio_group!=\"ok\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_ok",
+          "value": "Reply ok",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "reply_ok_dg.reply_ok"
+        }
+      ],
+      "_nested_name": "reply_ok_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_group!=\"ok\"",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "reply_sad_dg",
+      "hidden": "@local.radio_group!=\"sad\"",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "reply_sad",
+          "value": "Reply sad",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "reply_sad_dg.reply_sad"
+        }
+      ],
+      "_nested_name": "reply_sad_dg",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.radio_group!=\"sad\"",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "@local.radio_group_final",
+            "@local.radio_group"
+          ],
+          "_raw": "completed | set_field:@local.radio_group_final:@local.radio_group",
+          "_cleaned": "completed | set_field:@local.radio_group_final:@local.radio_group"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "set_field",
+          "args": [
+            "@local.radio_group_final",
+            "@local.radio_group"
+          ],
+          "_raw": "uncompleted | set_field:@local.radio_group_final:@local.radio_group",
+          "_cleaned": "uncompleted | set_field:@local.radio_group_final:@local.radio_group"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.radio_group_final",
+                  "matchedExpression": "@local.radio_group_final",
+                  "type": "local",
+                  "fieldName": "radio_group_final"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.radio_group",
+                  "matchedExpression": "@local.radio_group",
+                  "type": "local",
+                  "fieldName": "radio_group"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "completed | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group_final",
+                "type": "local",
+                "fieldName": "radio_group_final"
+              },
+              {
+                "fullExpression": "completed | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "completed | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group_final",
+                "type": "local",
+                "fieldName": "radio_group_final"
+              },
+              {
+                "fullExpression": "completed | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          },
+          "1": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.radio_group_final",
+                  "matchedExpression": "@local.radio_group_final",
+                  "type": "local",
+                  "fieldName": "radio_group_final"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.radio_group",
+                  "matchedExpression": "@local.radio_group",
+                  "type": "local",
+                  "fieldName": "radio_group"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "uncompleted | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group_final",
+                "type": "local",
+                "fieldName": "radio_group_final"
+              },
+              {
+                "fullExpression": "uncompleted | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "uncompleted | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group_final",
+                "type": "local",
+                "fieldName": "radio_group_final"
+              },
+              {
+                "fullExpression": "uncompleted | set_field:@local.radio_group_final:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_final": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.1.args.0",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ],
+        "@local.radio_group": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned",
+          "action_list.1.args.1",
+          "action_list.1._raw",
+          "action_list.1._cleaned"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+}

@@ -1,0 +1,51 @@
+{
+  "flow_type": "template",
+  "flow_name": "lib_act_w_1on1",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "lib_act_tools",
+      "value": "lib_act_tools",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_1on1",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "lib_act_tools.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_1on1",
+                "matchedExpression": "@data.workshop.w_1on1",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "lib_act_tools"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/parent_centre_templates/databank_essential_tools.xlsx"
+}

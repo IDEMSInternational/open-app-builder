@@ -1,0 +1,128 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "example_radio_group_fb_con",
+  "status": "released",
+  "rows": [
+    {
+      "name": "answer_list_1",
+      "value": [
+        "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list_1"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_defaults",
+      "value": "na",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "answer_list": "@local.answer_list_1"
+      },
+      "_nested_name": "radio_group_defaults",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_1",
+              "matchedExpression": "@local.answer_list_1",
+              "type": "local",
+              "fieldName": "answer_list_1"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list_1": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_reply_1",
+      "value": "This is the feedback for option 1",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.radio_group_defaults == \"name_var_1\"",
+      "exclude_from_translation": true,
+      "_nested_name": "text_reply_1",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.radio_group_defaults == \"name_var_1\"",
+            "matchedExpression": "@local.radio_group_defaults",
+            "type": "local",
+            "fieldName": "radio_group_defaults"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_defaults": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_reply_2",
+      "value": "This is the feedback for option 2",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.radio_group_defaults == \"name_var_2\"",
+      "exclude_from_translation": true,
+      "_nested_name": "text_reply_2",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.radio_group_defaults == \"name_var_2\"",
+            "matchedExpression": "@local.radio_group_defaults",
+            "type": "local",
+            "fieldName": "radio_group_defaults"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_defaults": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_reply_3",
+      "value": "This is the feedback for option 3",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.radio_group_defaults == \"name_var_3\"",
+      "exclude_from_translation": true,
+      "_nested_name": "text_reply_3",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.radio_group_defaults == \"name_var_3\"",
+            "matchedExpression": "@local.radio_group_defaults",
+            "type": "local",
+            "fieldName": "radio_group_defaults"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_defaults": [
+          "condition"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_options_feedback.xlsx"
+}

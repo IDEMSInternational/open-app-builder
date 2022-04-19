@@ -1,0 +1,48 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "example_widget_radio_button_box",
+  "status": "released",
+  "rows": [
+    {
+      "name": "answer_list",
+      "value": [
+        "name:name_var_1 | text:happy",
+        "name:name_var_2 | text: ok",
+        "name:name_var_3 | text: sad"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group_square_ex_1",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "radio_button_type": "btn_triangle",
+        "answer_list": "@local.answer_list",
+        "style": "passive"
+      },
+      "_nested_name": "radio_group_square_ex_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list",
+              "matchedExpression": "@local.answer_list",
+              "type": "local",
+              "fieldName": "answer_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list": [
+          "parameter_list.answer_list"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_widgets.xlsx"
+}

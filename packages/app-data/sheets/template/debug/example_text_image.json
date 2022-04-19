@@ -1,0 +1,30 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_text_image",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "image",
+      "name": "image",
+      "value": "plh_images/workshop_modes/guide_2/wave.svg",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "height: 100px"
+      ],
+      "_nested_name": "image"
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Example text and image template",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_pop_ups.xlsx"
+}

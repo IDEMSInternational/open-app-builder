@@ -1,0 +1,161 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_update_sibling_2_b",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "example_text_button",
+      "value": "example_text_button",
+      "action_list": [
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "local_var",
+          "value": "@fields.radio_group_final_temp",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "example_text_button.local_var",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@fields.radio_group_final_temp",
+                "matchedExpression": "@fields.radio_group_final_temp",
+                "type": "fields",
+                "fieldName": "radio_group_final_temp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.radio_group_final_temp": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@fields.radio_group_final_temp == \"option_1\"",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_button.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+                "matchedExpression": "@fields.radio_group_final_temp",
+                "type": "fields",
+                "fieldName": "radio_group_final_temp"
+              },
+              {
+                "fullExpression": "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+                "matchedExpression": "@local.local_var",
+                "type": "local",
+                "fieldName": "local_var"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@fields.radio_group_final_temp == \"option_1\"",
+                "matchedExpression": "@fields.radio_group_final_temp",
+                "type": "fields",
+                "fieldName": "radio_group_final_temp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.radio_group_final_temp": [
+              "value",
+              "condition"
+            ],
+            "@local.local_var": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "text",
+          "value": "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@fields.radio_group_final_temp == \"option_2\"",
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_button.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+                "matchedExpression": "@fields.radio_group_final_temp",
+                "type": "fields",
+                "fieldName": "radio_group_final_temp"
+              },
+              {
+                "fullExpression": "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp \nValue of local that follows field: @local.local_var",
+                "matchedExpression": "@local.local_var",
+                "type": "local",
+                "fieldName": "local_var"
+              }
+            ],
+            "condition": [
+              {
+                "fullExpression": "@fields.radio_group_final_temp == \"option_2\"",
+                "matchedExpression": "@fields.radio_group_final_temp",
+                "type": "fields",
+                "fieldName": "radio_group_final_temp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@fields.radio_group_final_temp": [
+              "value",
+              "condition"
+            ],
+            "@local.local_var": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "button",
+          "value": "Emit uncompleted",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "uncompleted"
+              ],
+              "_raw": "click | emit:uncompleted",
+              "_cleaned": "click | emit:uncompleted"
+            }
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "example_text_button.button"
+        }
+      ],
+      "_nested_name": "example_text_button"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_update_sibling.xlsx"
+}

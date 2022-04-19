@@ -1,0 +1,133 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_buttons_padding",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "tile_component",
+      "name": "tile_1",
+      "parameter_list": {
+        "style": "parent_centre_1",
+        "first_line_text": "Tile 1"
+      },
+      "_nested_name": "tile_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_1",
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_2",
+          "parameter_list": {
+            "style": "parent_centre_1",
+            "first_line_text": "Tile 2"
+          },
+          "_nested_name": "dg_1.tile_2"
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_3",
+          "parameter_list": {
+            "style": "parent_centre_1",
+            "first_line_text": "Tile 3"
+          },
+          "_nested_name": "dg_1.tile_3"
+        }
+      ],
+      "_nested_name": "dg_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_1",
+      "parameter_list": {
+        "style": "parent_point"
+      },
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_2",
+          "parameter_list": {
+            "style": "parent_centre_1",
+            "first_line_text": "Tile 2"
+          },
+          "_nested_name": "dg_1.tile_2"
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_3",
+          "parameter_list": {
+            "style": "parent_centre_1",
+            "first_line_text": "Tile 3"
+          },
+          "_nested_name": "dg_1.tile_3"
+        }
+      ],
+      "_nested_name": "dg_1"
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "Button 1",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_2",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_2",
+          "value": "Button 2",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_2.button_2"
+        },
+        {
+          "type": "button",
+          "name": "button_3",
+          "value": "Button 3",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_2.button_3"
+        }
+      ],
+      "_nested_name": "dg_2"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_2",
+      "parameter_list": {
+        "style": "parent_point"
+      },
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_2",
+          "value": "Button 2",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_2.button_2"
+        },
+        {
+          "type": "button",
+          "name": "button_3",
+          "value": "Button 3",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "dg_2.button_3"
+        }
+      ],
+      "_nested_name": "dg_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_buttons.xlsx"
+}

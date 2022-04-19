@@ -1,0 +1,56 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_hidden_text",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Placeholder Text to create separation",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "exclude_from_translation": true,
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "Placeholder Text to create separation",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "This is text_4 which should be hidden as we set hidden to true",
+      "_translations": {
+        "value": {}
+      },
+      "hidden": true,
+      "exclude_from_translation": true,
+      "_nested_name": "text_4"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "Placeholder Text to create separation",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_small_issues.xlsx"
+}

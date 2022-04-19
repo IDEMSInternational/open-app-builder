@@ -1,0 +1,65 @@
+{
+  "flow_type": "template",
+  "flow_name": "workshop_setup_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "survey_stepper_actions",
+      "value": "survey_stepper_actions",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "survey_name",
+          "value": "setup",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "survey_stepper_actions.survey_name"
+        },
+        {
+          "type": "nested_properties",
+          "name": "survey_stepper",
+          "rows": [
+            {
+              "name": "nav_template_list",
+              "value": [
+                "workshop_setup_intro",
+                "workshop_setup_q_1",
+                "workshop_setup_q_2",
+                "workshop_setup_q_3"
+              ],
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "survey_stepper_actions.survey_stepper.nav_template_list"
+            }
+          ],
+          "_nested_name": "survey_stepper_actions.survey_stepper"
+        }
+      ],
+      "_nested_name": "survey_stepper_actions"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/survey_templates/workshop_setup.xlsx"
+}

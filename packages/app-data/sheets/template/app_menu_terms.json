@@ -1,0 +1,358 @@
+{
+  "flow_type": "template",
+  "flow_name": "app_menu_terms",
+  "status": "released",
+  "rows": [
+    {
+      "name": "link_1_text",
+      "value": "Google Play Services",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_1_text"
+    },
+    {
+      "name": "link_2_text",
+      "value": "Google Analytics for Firebase",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_2_text"
+    },
+    {
+      "name": "link_3_text",
+      "value": "Sentry",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "link_3_text"
+    },
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "@global.terms_and_conditions",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.terms_and_conditions",
+            "matchedExpression": "@global.terms_and_conditions",
+            "type": "global",
+            "fieldName": "terms_and_conditions"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.terms_and_conditions": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "By downloading or using the app, these terms will automatically apply to you – you should make sure therefore that you read them carefully before using the app. You’re not allowed to copy, or modify the app, any part of the app, or our trademarks in any way. You’re not allowed to attempt to extract the source code of the app, and you also shouldn’t try to translate the app into other languages, or make derivative versions. The app itself, and all the trade marks, copyright, database rights and other intellectual property rights related to it, still belong to IDEMS International.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "IDEMS International is committed to ensuring that the app is as useful and efficient as possible. For that reason, we reserve the right to make changes to the app or to charge for its services, at any time and for any reason. We will never charge you for the app or its services without making it very clear to you exactly what you’re paying for.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "The international.idems.plh_teens app stores and processes personal data that you have provided to us, in order to provide our Service. It’s your responsibility to keep your phone and access to the app secure. We therefore recommend that you do not jailbreak or root your phone, which is the process of removing software restrictions and limitations imposed by the official operating system of your device. It could make your phone vulnerable to malware/viruses/malicious programs, compromise your phone’s security features and it could mean that the international.idems.plh_teens app won’t work properly or at all.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "The app does use third party services that declare their own Terms and Conditions.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_4"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "Link to Terms and Conditions of third party service providers used by the app:",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5"
+    },
+    {
+      "type": "tile_component",
+      "name": "link_1",
+      "value": "tile_1",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//policies.google.com/terms"
+          ],
+          "_raw": "click | go_to_url:https://policies.google.com/terms",
+          "_cleaned": "click | go_to_url:https://policies.google.com/terms"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_1_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_1_text",
+              "matchedExpression": "@local.link_1_text",
+              "type": "local",
+              "fieldName": "link_1_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_1_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "link_2",
+      "value": "tile_2",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//firebase.google.com/terms/analytics"
+          ],
+          "_raw": "click | go_to_url:https://firebase.google.com/terms/analytics",
+          "_cleaned": "click | go_to_url:https://firebase.google.com/terms/analytics"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_2_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_2",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_2_text",
+              "matchedExpression": "@local.link_2_text",
+              "type": "local",
+              "fieldName": "link_2_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_2_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "tile_component",
+      "name": "link_3",
+      "value": "tile_3",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to_url",
+          "args": [
+            "https",
+            "//sentry.io/terms/"
+          ],
+          "_raw": "click | go_to_url:https://sentry.io/terms/",
+          "_cleaned": "click | go_to_url:https://sentry.io/terms/"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "first_line_text": "@local.link_3_text",
+        "left_icon_src": "globe-outline",
+        "style": "button_tile",
+        "icon_src": "chevron-forward-outline"
+      },
+      "_nested_name": "link_3",
+      "_dynamicFields": {
+        "parameter_list": {
+          "first_line_text": [
+            {
+              "fullExpression": "@local.link_3_text",
+              "matchedExpression": "@local.link_3_text",
+              "type": "local",
+              "fieldName": "link_3_text"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.link_3_text": [
+          "parameter_list.first_line_text"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_6",
+      "value": "You should be aware that there are certain things that IDEMS International will not take responsibility for. Certain functions of the app will require the app to have an active internet connection. The connection can be Wi-Fi, or provided by your mobile network provider, but IDEMS International cannot take responsibility for the app not working at full functionality if you don’t have access to Wi-Fi, and you don’t have any of your data allowance left.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_6"
+    },
+    {
+      "type": "text",
+      "name": "text_7",
+      "value": "If you’re using the app outside of an area with Wi-Fi, you should remember that your terms of the agreement with your mobile network provider will still apply. As a result, you may be charged by your mobile provider for the cost of data for the duration of the connection while accessing the app, or other third party charges. In using the app, you’re accepting responsibility for any such charges, including roaming data charges if you use the app outside of your home territory (i.e. region or country) without turning off data roaming. If you are not the bill payer for the device on which you’re using the app, please be aware that we assume that you have received permission from the bill payer for using the app.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_7"
+    },
+    {
+      "type": "text",
+      "name": "text_8",
+      "value": "Along the same lines, IDEMS International cannot always take responsibility for the way you use the app i.e. You need to make sure that your device stays charged – if it runs out of battery and you can’t turn it on to avail the Service, IDEMS International cannot accept responsibility.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_8"
+    },
+    {
+      "type": "text",
+      "name": "text_9",
+      "value": "With respect to IDEMS International’s responsibility for your use of the app, when you’re using the app, it’s important to bear in mind that although we endeavour to ensure that it is updated and correct at all times, we do rely on third parties to provide information to us so that we can make it available to you. IDEMS International accepts no liability for any loss, direct or indirect, you experience as a result of relying wholly on this functionality of the app.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_9"
+    },
+    {
+      "type": "text",
+      "name": "text_10",
+      "value": "At some point, we may wish to update the app. The app is currently available on Android & iOS – the requirements for both systems (and for any additional systems we decide to extend the availability of the app to) may change, and you’ll need to download the updates if you want to keep using the app. IDEMS International does not promise that it will always update the app so that it is relevant to you and/or works with the Android & iOS version that you have installed on your device. However, you promise to always accept updates to the application when offered to you. We may also wish to stop providing the app, and may terminate use of it at any time without giving notice of termination to you. Unless we tell you otherwise, upon any termination, (a) the rights and licenses granted to you in these terms will end; (b) you must stop using the app, and (if needed) delete it from your device.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_10"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Changes to This Terms and Conditions",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "text",
+      "name": "text_11",
+      "value": "We may update our Terms and Conditions from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Terms and Conditions on this page.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_11"
+    },
+    {
+      "type": "text",
+      "name": "text_12",
+      "value": "These terms and conditions are effective as of 2020-09-16",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_12"
+    },
+    {
+      "type": "title",
+      "name": "title_3",
+      "value": "Contact Us",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "text",
+      "name": "text_13",
+      "value": "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us at apps@idems.international.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_13"
+    },
+    {
+      "type": "text",
+      "name": "text_14",
+      "value": "This Terms and Conditions page was generated by App Privacy Policy Generator.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_14"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_menu.xlsx"
+}
