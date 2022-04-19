@@ -83,7 +83,7 @@ const APP_ROUTE_DEFAULTS = {
 };
 
 const APP_HEADER_DEFAULTS = {
-  title: "Title",
+  title: "App",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
@@ -96,7 +96,7 @@ const APP_HEADER_DEFAULTS = {
 };
 
 const APP_SIDEMENU_DEFAULTS = {
-  title: "Title",
+  title: "App",
   // name of template to display in sidebar
   template_name: "app_menu",
   // show the current version number in the menu
