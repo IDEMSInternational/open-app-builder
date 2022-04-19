@@ -3,7 +3,7 @@ import { ASSETS_CONTENTS_LIST } from "app-data";
 import { TemplateTranslateService } from "./template-translate.service";
 
 /** Synced assets are automatically copied during build to asset subfolder */
-const ASSETS_BASE = `assets/app_data_assets`;
+const ASSETS_BASE = `assets/app_data/assets`;
 
 /** Expected folder containing global assets (TODO - merge with scripts) */
 const ASSETS_GLOBAL_FOLDER_NAME = "global";

@@ -15,6 +15,7 @@ import {
 import { FlowTypes } from "data-models";
 
 import { getActiveDeployment } from "../../deployment/get";
+import { DefaultParser } from "./parsers";
 
 /***************************************************************************************
  * CLI
@@ -43,13 +44,13 @@ export default program
 
 class AppDataConverter {
   /** Change version to invalidate any cached conversions */
-  public converterVersion = 1.2;
+  public converterVersion = 1.6;
 
   private activeDeployment = getActiveDeployment();
   private paths = {
     SHEETS_INPUT_FOLDER: "",
-    SHEETS_INDIVIDUAL_CACHE: "",
-    SHEETS_MERGED_CACHE: "",
+    SHEETS_CACHE_FOLDER: "",
+    SHEETS_OUTPUT_FOLDER: "",
   };
 
   private conversionErrors = [];
@@ -64,11 +65,10 @@ class AppDataConverter {
     const SHEETS_CACHE_FOLDER = app_data.converter_cache_path;
     this.paths = {
       SHEETS_INPUT_FOLDER: inputFolder || path.resolve(_workspace_path, "app_data", "sheets"),
-      SHEETS_INDIVIDUAL_CACHE: cacheFolder || path.resolve(SHEETS_CACHE_FOLDER, "individual"),
-      SHEETS_MERGED_CACHE: outputFolder || path.resolve(SHEETS_CACHE_FOLDER, "merged"),
+      SHEETS_CACHE_FOLDER: cacheFolder || path.resolve(SHEETS_CACHE_FOLDER, "individual"),
+      SHEETS_OUTPUT_FOLDER: outputFolder || path.resolve(SHEETS_CACHE_FOLDER, "converted"),
     };
     Object.values(this.paths).forEach((p) => fs.ensureDir(p));
-    fs.emptyDirSync(this.paths.SHEETS_MERGED_CACHE);
     if (this.options.skipCache) {
       fs.emptyDirSync(SHEETS_CACHE_FOLDER);
     }
@@ -80,33 +80,17 @@ class AppDataConverter {
    */
   public async run() {
     const actions = this.prepareConversionActions();
-
     this.processCacheDeletions(actions.delete);
-
     const converted = this.processSheetConversions(actions.convert);
-
     const cached: IParsedWorkbookData[] = actions.skip.map((entry) =>
       this.loadCachedConversion(entry)
     );
-
     this.writeCacheContentsJson();
-
     const allConvertedData = [...converted, ...cached].filter((data) =>
       this.applySheetFilters(data)
     );
-
-    const dataByFlowType = this.mergeDataByFlowtype(allConvertedData);
-
-    const postProcessedByType = this.postProcessSheets(dataByFlowType);
-
-    const dataBySubType = this.mergeDataByFlowSubtype(postProcessedByType);
-
-    const mergedWithLegacy = hackEnsureLegacyDataTypesExist(dataBySubType);
-
-    this.writeMergedOutputJsons(mergedWithLegacy);
-
-    this.logSheetsSummary(mergedWithLegacy);
-
+    this.writeOutputJsons(allConvertedData);
+    this.logSheetsSummary(allConvertedData);
     console.log(chalk.yellow("Conversion Complete"));
 
     if (this.conversionWarnings.length > 0) {
@@ -128,12 +112,12 @@ class AppDataConverter {
    * Generate a list of sheets requiring conversion and cached files requiring deletion
    */
   private prepareConversionActions() {
-    const { SHEETS_INPUT_FOLDER, SHEETS_INDIVIDUAL_CACHE } = this.paths;
+    const { SHEETS_INPUT_FOLDER, SHEETS_CACHE_FOLDER } = this.paths;
     const actions: IConverterActions = { convert: [], delete: [], skip: [] };
     // generate hashmap of input and cache contents
     const hashKey = "relativePath";
     const inputContents = readContentsFileAsHashmap(SHEETS_INPUT_FOLDER, { hashKey });
-    const cacheContents = readContentsFileAsHashmap(SHEETS_INDIVIDUAL_CACHE, { hashKey });
+    const cacheContents = readContentsFileAsHashmap(SHEETS_CACHE_FOLDER, { hashKey });
     // run comparisons
     Object.entries<IGDriveContentsEntry>(inputContents).forEach(([key, sourceFile]) => {
       // track the filename of the downloaded file (avoid duplicate .xlsx.xlsx depending if gsheet or xlsx original)
@@ -151,7 +135,7 @@ class AppDataConverter {
     // handle deleting cache files no longer existing
     Object.entries<IGDriveContentsEntry>(cacheContents).forEach(([key, cacheFile]) => {
       const xlsxFilename = `${key.replace(".xlsx", "")}.xlsx`;
-      cacheFile.xlsxPath = path.resolve(SHEETS_INDIVIDUAL_CACHE, xlsxFilename);
+      cacheFile.xlsxPath = path.resolve(SHEETS_CACHE_FOLDER, xlsxFilename);
       if (!inputContents.hasOwnProperty(key)) {
         actions.delete.push(cacheFile);
       }
@@ -164,7 +148,7 @@ class AppDataConverter {
   }
 
   private processCacheDeletions(entries: IGDriveContentsEntry[]) {
-    const cacheBase = this.paths.SHEETS_INDIVIDUAL_CACHE;
+    const cacheBase = this.paths.SHEETS_CACHE_FOLDER;
     for (const entry of entries) {
       const targetFile = path.resolve(cacheBase, `${entry.relativePath}.json`);
       if (fs.existsSync(targetFile)) {
@@ -184,9 +168,10 @@ class AppDataConverter {
       const merged = this.mergeAppData(SHEETS_INPUT_FOLDER, [{ json, xlsxPath }]);
       const dataByFlowType = groupJsonByKey(merged, "flow_type");
       try {
-        const convertedData = applyDataParsers(dataByFlowType as any);
-        processed.push(convertedData);
-        this.saveCachedConversion(entry, convertedData);
+        const convertedData = processData(dataByFlowType);
+        const postProcessed = postProcessData(convertedData);
+        processed.push(postProcessed);
+        this.saveCachedConversion(entry, postProcessed);
       } catch (error) {
         this.conversionErrors.push(error);
       }
@@ -205,74 +190,65 @@ class AppDataConverter {
     if (sheets_filter_function) {
       Object.entries(data).forEach(([flow_type, flows]) => {
         // ensure flows exist and apply and deployment filters
-        data[flow_type] = flows.filter((flow) => flow).filter(sheets_filter_function);
+        data[flow_type] = flows
+          .filter((flow) => flow)
+          .filter((flow) => sheets_filter_function(flow as any));
       });
     }
     return data;
   }
 
-  private mergeDataByFlowtype(convertedData: IParsedWorkbookData[]) {
-    const merged: IParsedWorkbookData = {};
-    for (const entry of convertedData) {
-      Object.values(entry).forEach((values) => {
-        values.forEach((v) => {
-          if (!merged[v.flow_type]) {
-            merged[v.flow_type] = [];
-          }
-          merged[v.flow_type].push(v);
+  /** Write individual converted jsons to flow_type folders */
+  private writeOutputJsons(convertedData: IParsedWorkbookData[]) {
+    const outputBase = this.paths.SHEETS_OUTPUT_FOLDER;
+    fs.ensureDirSync(outputBase);
+    fs.emptyDirSync(outputBase);
+    Object.values(convertedData).forEach((workbookDataEntry) => {
+      Object.values(workbookDataEntry).forEach((flowArray) => {
+        Object.values(flowArray).forEach((flow) => {
+          const { flow_type, flow_name, flow_subtype } = flow;
+          const flowOutputPath = path.resolve(
+            outputBase,
+            flow_type,
+            flow_subtype || "",
+            `${flow_name}.json`
+          );
+          // TODO - track error if output path already exists (duplicate name)
+          fs.ensureDirSync(path.dirname(flowOutputPath));
+          fs.writeFileSync(flowOutputPath, JSON.stringify(flow, null, 2));
+          // TODO - statsync
         });
       });
-    }
-    return merged;
-  }
-
-  /**
-   * Each converted sheet may contain a mixture of different flow types (e.g. template, data_list),
-   * and subtypes within. Collate all sheets by flow type and subtype
-   */
-  private mergeDataByFlowSubtype(convertedData: IParsedWorkbookData) {
-    const merged: IParsedWorkbookData = {};
-    Object.entries(convertedData).forEach(([flow_type, values]) => {
-      const convertedDataBySubtype = groupJsonByKey(values, "flow_subtype", "_default");
-
-      // split by subtype
-      Object.entries(convertedDataBySubtype).forEach(([subkey, subValues]) => {
-        let outputName = flow_type;
-        if (subkey !== "_default") {
-          outputName = `${flow_type}.${subkey}`;
-        }
-        if (!merged[outputName]) {
-          merged[outputName] = [];
-        }
-        // merge all sheets of given subtype into main
-        subValues.forEach((subValue) => merged[outputName].push(subValue));
-      });
     });
-    return merged;
   }
 
-  private logSheetsSummary(data: IParsedWorkbookData) {
-    const logOutput = Object.keys(data)
+  /** Collate totals of flows by subtype and log */
+  private logSheetsSummary(data: IParsedWorkbookData[]) {
+    const countBySubtype = {};
+    data.forEach((workbookData) =>
+      Object.values(workbookData).forEach((flows) => {
+        flows.forEach((flow) => {
+          let type = flow.flow_type;
+          if (flow.flow_subtype) type += `.${flow.flow_subtype}`;
+          if (!countBySubtype[type]) countBySubtype[type] = 0;
+          countBySubtype[type]++;
+        });
+      })
+    );
+    const logOutput = Object.keys(countBySubtype)
       .sort()
-      .map((subtype) => ({ subtype, total: data[subtype].length }));
+      .map((key) => {
+        const [type, subtype] = key.split(".");
+        return { type, subtype: subtype || null, total: countBySubtype[key] };
+      });
     console.log("\nSheet Summary");
     console.table(logOutput);
-  }
-
-  /** Take final merged list of data keyed by [type].[subtype?] and write output jsons */
-  private writeMergedOutputJsons(mergedData: IParsedWorkbookData) {
-    Object.entries(mergedData).forEach(([fulltype, data]) => {
-      const [type] = fulltype.split(".");
-      const outputPath = path.resolve(this.paths.SHEETS_MERGED_CACHE, type, `${fulltype}.json`);
-      fs.ensureDirSync(path.dirname(outputPath));
-      fs.writeFile(outputPath, JSON.stringify(data, null, 2));
-    });
   }
 
   private writeCacheContentsJson() {
     const contentsFilename = "_contents.json";
     const cacheHashmap = generateFolderFlatMap(
-      this.paths.SHEETS_INDIVIDUAL_CACHE,
+      this.paths.SHEETS_CACHE_FOLDER,
       true,
       (p) => p !== contentsFilename
     ) as { [relativePath: string]: IContentsEntry };
@@ -287,14 +263,14 @@ class AppDataConverter {
       return contentsEntry;
     });
 
-    const contentsOutput = path.resolve(this.paths.SHEETS_INDIVIDUAL_CACHE, contentsFilename);
+    const contentsOutput = path.resolve(this.paths.SHEETS_CACHE_FOLDER, contentsFilename);
     fs.writeFileSync(contentsOutput, JSON.stringify(contentsData, null, 2));
   }
 
   private saveCachedConversion(entry: IGDriveContentsEntry, convertedData: any) {
     const { xlsxPath } = entry;
     const relativePath = path.relative(this.paths.SHEETS_INPUT_FOLDER, xlsxPath);
-    const cacheTarget = path.resolve(this.paths.SHEETS_INDIVIDUAL_CACHE, `${relativePath}.json`);
+    const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
     fs.ensureDirSync(path.dirname(cacheTarget));
     fs.writeFileSync(cacheTarget, JSON.stringify(convertedData, null, 2));
     const modifiedTime = new Date(entry.modifiedTime);
@@ -305,7 +281,7 @@ class AppDataConverter {
   private loadCachedConversion(entry: IGDriveContentsEntry) {
     const { xlsxPath } = entry;
     const relativePath = path.relative(this.paths.SHEETS_INPUT_FOLDER, xlsxPath);
-    const cacheTarget = path.resolve(this.paths.SHEETS_INDIVIDUAL_CACHE, `${relativePath}.json`);
+    const cacheTarget = path.resolve(this.paths.SHEETS_CACHE_FOLDER, `${relativePath}.json`);
     const cachedConversion = fs.readJSONSync(cacheTarget);
     return cachedConversion;
   }
@@ -323,12 +299,6 @@ class AppDataConverter {
       );
     }
     return false;
-  }
-
-  private postProcessSheets(sheets: IParsedWorkbookData) {
-    // console.log("post process sheets", sheets);
-    const postProcessed = applyDataParsers(sheets, "postProcess");
-    return postProcessed;
   }
 
   /**
@@ -373,40 +343,40 @@ class AppDataConverter {
 }
 type IParsedWorkbookData = { [type in FlowTypes.FlowType]?: FlowTypes.FlowTypeWithData[] };
 
-function applyDataParsers(
-  dataByFlowType: IParsedWorkbookData,
-  processType: "run" | "postProcess" = "run"
-): IParsedWorkbookData {
-  // All flow types will be processed by the default parser unless otherwise specified here
+function processData(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
+  const parsedData: IParsedWorkbookData = {};
+  const parsers = getDataParsers();
+  Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
+    const parser: Parsers.AbstractParser = parsers[flow_type] || new DefaultParser();
+    // process individual rows via parser.run method
+    parsedData[flow_type] = contentFlows.map((flow) => {
+      try {
+        const parsed = parser.run(flow);
+        return parsed;
+      } catch (error) {
+        throwTemplateParseError(error, flow);
+      }
+    });
+  });
+  return parsedData;
+}
+function postProcessData(dataByFlowType: IParsedWorkbookData): IParsedWorkbookData {
+  const parsedData: IParsedWorkbookData = {};
+  const parsers = getDataParsers();
+  Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
+    const parser: Parsers.AbstractParser = parsers[flow_type] || new DefaultParser();
+    parsedData[flow_type] = parser.postProcessFlows(contentFlows);
+  });
+  return parsedData;
+}
 
+function getDataParsers() {
+  // All flow types will be processed by the default parser unless otherwise specified here
   const customParsers: { [flowType in FlowTypes.FlowType]?: Parsers.AbstractParser } = {
     template: new Parsers.TemplateParser(),
     data_list: new Parsers.DataListParser(),
   };
-  const parsedData: IParsedWorkbookData = {};
-  Object.entries(dataByFlowType).forEach(([flow_type, contentFlows]) => {
-    const parser: Parsers.AbstractParser = customParsers[flow_type]
-      ? customParsers[flow_type]
-      : new Parsers.DefaultParser();
-    // apply parser for current process type
-    switch (processType) {
-      case "run":
-        // process individual rows via parser.run method
-        parsedData[flow_type] = contentFlows.map((flow) => {
-          try {
-            const parsed = parser.run(flow);
-            return parsed;
-          } catch (error) {
-            throwTemplateParseError(error, flow);
-          }
-        });
-        break;
-      case "postProcess":
-        parsedData[flow_type] = parser.postProcessFlows(contentFlows);
-        break;
-    }
-  });
-  return parsedData;
+  return customParsers;
 }
 
 /**
@@ -435,23 +405,6 @@ function convertXLSXSheetsToJson(xlsxFilePath: string) {
     json[sheet_name] = xlsx.utils.sheet_to_json(worksheet);
   });
   return json;
-}
-
-/**
- * Data imported are currently hardcoded in `packages\app-data\index.ts`
- * Ensure data exists for every type so that all expected files are populated
- */
-function hackEnsureLegacyDataTypesExist(merged: IParsedWorkbookData): IParsedWorkbookData {
-  const data: { [type in FlowTypes.FlowType]: FlowTypes.FlowTypeWithData[] } = {
-    data_list: [],
-    global: [],
-    template: [],
-    tour: [],
-  };
-  Object.keys(data).forEach((flowtype) => {
-    if (!merged.hasOwnProperty(flowtype)) merged[flowtype] = [];
-  });
-  return merged;
 }
 
 /**
@@ -503,4 +456,3 @@ interface IConverterActions {
   delete: IGDriveContentsEntry[];
   skip: IGDriveContentsEntry[];
 }
-const ACTIONS_DEFAULT: IConverterActions = { convert: [], delete: [], skip: [] };
