@@ -81,7 +81,6 @@ export class AppComponent {
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
       if (!user.first_app_open) {
-        await this._deprecatedSurveyService.runSurvey("introSplash");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         this.hackSetFirstOpenFields();
         await this.handleFirstLaunchDataActions();
@@ -141,6 +140,9 @@ export class AppComponent {
   private async handleFirstLaunchDataActions() {
     for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
       switch (initAction.type) {
+        case "run_survey":
+          await this._deprecatedSurveyService.runSurvey(initAction.value as any);
+          break;
         case "template_popup":
           await this.templateService.runStandaloneTemplate(initAction.value, {
             showCloseButton: false,

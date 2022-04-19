@@ -4,6 +4,534 @@ const data_list: FlowTypes.Data_list[] = [
   {
     flow_type: "data_list",
     flow_subtype: "campaign_rows",
+    flow_name: "nf_inactive_day",
+    status: "released",
+    rows: [
+      {
+        id: "nf_inactive_day_1",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_day_1.sent", true],
+            _raw: "sent | set_field: nf_inactive_day_1.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_day_1.sent : true",
+          },
+        ],
+        priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "nf_inactive_day_1.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | nf_inactive_day_1.sent : true",
+          },
+        ],
+        campaign_list: ["nf_inactive_day"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Welcome to @global.parent_app. Click here to start your journey!",
+          },
+        },
+        text: "Welcome to @global.parent_app. Click here to start your journey!",
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "nf_inactive_week",
+    status: "released",
+    rows: [
+      {
+        id: "nf_inactive_week_1",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_week_1.sent", true],
+            _raw: "sent | set_field: nf_inactive_week_1.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_week_1.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_week"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your @global.parent_app journey!",
+          },
+        },
+        text: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your @global.parent_app journey!",
+      },
+      {
+        id: "nf_inactive_week_2",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_week_2.sent", true],
+            _raw: "sent | set_field: nf_inactive_week_2.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_week_2.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_week"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage parenting stress.",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage parenting stress.",
+      },
+      {
+        id: "nf_inactive_week_3",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_week_3.sent", true],
+            _raw: "sent | set_field: nf_inactive_week_3.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_week_3.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_week"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hello again! It’s never too late to use @global.parent_app and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+          },
+        },
+        text: "Hello again! It’s never too late to use @global.parent_app and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
+      },
+      {
+        id: "nf_inactive_week_4",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_week_4.sent", true],
+            _raw: "sent | set_field: nf_inactive_week_4.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_week_4.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_week"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage your teen's behaviour.",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to help you manage your teen's behaviour.",
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "nf_inactive_month",
+    status: "released",
+    rows: [
+      {
+        id: "nf_inactive_month_1",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_month_1.sent", true],
+            _raw: "sent | set_field: nf_inactive_month_1.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_month_1.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_month"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi! Is everything OK? It seems you haven’t opened @global.parent_app lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+          },
+        },
+        text: "Hi! Is everything OK? It seems you haven’t opened @global.parent_app lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
+      },
+      {
+        id: "nf_inactive_month_2",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_month_2.sent", true],
+            _raw: "sent | set_field: nf_inactive_month_2.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_month_2.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_month"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "@global.parent_app misses you! There is a lot to explore. We are still here to support you.",
+          },
+        },
+        text: "@global.parent_app misses you! There is a lot to explore. We are still here to support you.",
+      },
+      {
+        id: "nf_inactive_month_3",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_month_3.sent", true],
+            _raw: "sent | set_field: nf_inactive_month_3.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_month_3.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_month"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to prepare your teen for success in life.",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to prepare your teen for success in life.",
+      },
+      {
+        id: "nf_inactive_month_4",
+        workshop: "independent",
+        message_type: "inactive",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_inactive_month_4.sent", true],
+            _raw: "sent | set_field: nf_inactive_month_4.sent : true",
+            _cleaned: "sent | set_field: nf_inactive_month_4.sent : true",
+          },
+        ],
+        priority: 1,
+        campaign_list: ["nf_inactive_month"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to bond with your teen again!",
+          },
+        },
+        text: "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to bond with your teen again!",
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
+    flow_name: "nf_generic",
+    status: "released",
+    rows: [
+      {
+        id: "nf_generic_1",
+        workshop: "independent",
+        message_type: "generic",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_generic_1.sent", true],
+            _raw: "sent | set_field: nf_generic_1.sent : true",
+            _cleaned: "sent | set_field: nf_generic_1.sent : true",
+          },
+        ],
+        priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "nf_generic_1.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | nf_generic_1.sent : true",
+          },
+        ],
+        campaign_list: ["nf_generic"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
+          },
+        },
+        text: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
+      },
+      {
+        id: "nf_generic_2",
+        workshop: "independent",
+        message_type: "generic",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_generic_2.sent", true],
+            _raw: "sent | set_field: nf_generic_2.sent : true",
+            _cleaned: "sent | set_field: nf_generic_2.sent : true",
+          },
+        ],
+        priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "nf_generic_2.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | nf_generic_2.sent : true",
+          },
+        ],
+        campaign_list: ["nf_generic"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi great parent! Remember, you can find lots of helpful tips in @global.parent_app.",
+          },
+        },
+        text: "Hi great parent! Remember, you can find lots of helpful tips in @global.parent_app.",
+      },
+      {
+        id: "nf_generic_3",
+        workshop: "independent",
+        message_type: "generic",
+        action_list: [
+          {
+            trigger: "sent",
+            action_id: "set_field",
+            args: ["nf_generic_3.sent", true],
+            _raw: "sent | set_field: nf_generic_3.sent : true",
+            _cleaned: "sent | set_field: nf_generic_3.sent : true",
+          },
+        ],
+        priority: 1,
+        deactivation_condition_list: [
+          {
+            condition_type: "field_evaluation",
+            condition_args: {
+              field_evaluation: {
+                field: "nf_generic_3.sent",
+                value: true,
+              },
+            },
+            _raw: "get_field | nf_generic_3.sent : true",
+          },
+        ],
+        campaign_list: ["nf_generic"],
+        title: "New message from PLH",
+        _translations: {
+          title: {
+            tz_sw: true,
+            za_af: true,
+            za_st: true,
+            za_tn: true,
+            za_xh: true,
+            za_zu: true,
+          },
+          text: {},
+        },
+        _translatedFields: {
+          title: {
+            eng: "New message from PLH",
+          },
+          text: {
+            eng: "Hi great parent! @global.parent_app is here to support you. Check it out now!",
+          },
+        },
+        text: "Hi great parent! @global.parent_app is here to support you. Check it out now!",
+      },
+    ],
+    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
+  },
+  {
+    flow_type: "data_list",
+    flow_subtype: "campaign_rows",
     flow_name: "nf_w_self_care",
     status: "released",
     rows: [
@@ -7708,618 +8236,6 @@ const data_list: FlowTypes.Data_list[] = [
       },
     ],
     _xlsxPath: "global/campaigns/notifications_in_week_messages.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "nf_inactive_day",
-    status: "released",
-    rows: [
-      {
-        id: "nf_inactive_day_1",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_day_1.sent", true],
-            _raw: "sent | set_field: nf_inactive_day_1.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_day_1.sent : true",
-          },
-        ],
-        priority: 1,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "nf_inactive_day_1.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | nf_inactive_day_1.sent : true",
-          },
-        ],
-        campaign_list: ["nf_inactive_day"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Welcome to ParentApp. Click here to start your journey!",
-          },
-        },
-        text: "Welcome to ParentApp. Click here to start your journey!",
-      },
-    ],
-    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "nf_inactive_week",
-    status: "released",
-    rows: [
-      {
-        id: "nf_inactive_week_1",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_week_1.sent", true],
-            _raw: "sent | set_field: nf_inactive_week_1.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_week_1.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_week"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
-          },
-        },
-        text: "Hope you are feeling OK. Parenting is hard, but it’s never too late to start again with your teenager. Your first parenting workshop is ready for you! Click here to start your ParentApp journey!",
-      },
-      {
-        id: "nf_inactive_week_2",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_week_2.sent", true],
-            _raw: "sent | set_field: nf_inactive_week_2.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_week_2.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_week"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
-          },
-        },
-        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage parenting stress.",
-      },
-      {
-        id: "nf_inactive_week_3",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_week_3.sent", true],
-            _raw: "sent | set_field: nf_inactive_week_3.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_week_3.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_week"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-          },
-        },
-        text: "Hello again! It’s never too late to use ParentApp and get tailored parenting support. Why don’t you give it a try when you are commuting to work or when the food is cooking? Millions of parents found our materials helpful.",
-      },
-      {
-        id: "nf_inactive_week_4",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_week_4.sent", true],
-            _raw: "sent | set_field: nf_inactive_week_4.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_week_4.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_week"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
-          },
-        },
-        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to help you manage your teen's behaviour.",
-      },
-    ],
-    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "nf_inactive_month",
-    status: "released",
-    rows: [
-      {
-        id: "nf_inactive_month_1",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_month_1.sent", true],
-            _raw: "sent | set_field: nf_inactive_month_1.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_month_1.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_month"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-          },
-        },
-        text: "Hi! Is everything OK? It seems you haven’t opened ParentApp lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
-      },
-      {
-        id: "nf_inactive_month_2",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_month_2.sent", true],
-            _raw: "sent | set_field: nf_inactive_month_2.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_month_2.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_month"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
-          },
-        },
-        text: "ParentApp misses you! There is a lot to explore. We are still here to support you.",
-      },
-      {
-        id: "nf_inactive_month_3",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_month_3.sent", true],
-            _raw: "sent | set_field: nf_inactive_month_3.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_month_3.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_month"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
-          },
-        },
-        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to prepare your teen for success in life.",
-      },
-      {
-        id: "nf_inactive_month_4",
-        workshop: "independent",
-        message_type: "inactive",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_inactive_month_4.sent", true],
-            _raw: "sent | set_field: nf_inactive_month_4.sent : true",
-            _cleaned: "sent | set_field: nf_inactive_month_4.sent : true",
-          },
-        ],
-        priority: 1,
-        campaign_list: ["nf_inactive_month"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
-          },
-        },
-        text: "Hope you are feeling OK. We know parenting is hard - use ParentApp to bond with your teen again!",
-      },
-    ],
-    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
-  },
-  {
-    flow_type: "data_list",
-    flow_subtype: "campaign_rows",
-    flow_name: "nf_generic",
-    status: "released",
-    rows: [
-      {
-        id: "nf_generic_1",
-        workshop: "independent",
-        message_type: "generic",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_generic_1.sent", true],
-            _raw: "sent | set_field: nf_generic_1.sent : true",
-            _cleaned: "sent | set_field: nf_generic_1.sent : true",
-          },
-        ],
-        priority: 1,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "nf_generic_1.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | nf_generic_1.sent : true",
-          },
-        ],
-        campaign_list: ["nf_generic"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
-          },
-        },
-        text: "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in ParentApp.",
-      },
-      {
-        id: "nf_generic_2",
-        workshop: "independent",
-        message_type: "generic",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_generic_2.sent", true],
-            _raw: "sent | set_field: nf_generic_2.sent : true",
-            _cleaned: "sent | set_field: nf_generic_2.sent : true",
-          },
-        ],
-        priority: 1,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "nf_generic_2.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | nf_generic_2.sent : true",
-          },
-        ],
-        campaign_list: ["nf_generic"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
-          },
-        },
-        text: "Hi great parent! Remember, you can find lots of helpful tips in ParentApp.",
-      },
-      {
-        id: "nf_generic_3",
-        workshop: "independent",
-        message_type: "generic",
-        action_list: [
-          {
-            trigger: "sent",
-            action_id: "set_field",
-            args: ["nf_generic_3.sent", true],
-            _raw: "sent | set_field: nf_generic_3.sent : true",
-            _cleaned: "sent | set_field: nf_generic_3.sent : true",
-          },
-        ],
-        priority: 1,
-        deactivation_condition_list: [
-          {
-            condition_type: "field_evaluation",
-            condition_args: {
-              field_evaluation: {
-                field: "nf_generic_3.sent",
-                value: true,
-              },
-            },
-            _raw: "get_field | nf_generic_3.sent : true",
-          },
-        ],
-        campaign_list: ["nf_generic"],
-        title: "New message from PLH",
-        _translations: {
-          title: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-          text: {
-            tz_sw: true,
-            za_af: true,
-            za_st: true,
-            za_tn: true,
-            za_xh: true,
-            za_zu: true,
-          },
-        },
-        _translatedFields: {
-          title: {
-            eng: "New message from PLH",
-          },
-          text: {
-            eng: "Hi great parent! ParentApp is here to support you. Check it out now!",
-          },
-        },
-        text: "Hi great parent! ParentApp is here to support you. Check it out now!",
-      },
-    ],
-    _xlsxPath: "global/campaigns/notifications_inactive.xlsx",
   },
   {
     flow_type: "data_list",
