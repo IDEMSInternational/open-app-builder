@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import boxen from "boxen";
 import chalk from "chalk";
 import path from "path";
 import { Command } from "commander";
@@ -19,10 +20,11 @@ export default program
   .description("Run a workflow")
   // options for compare
   .argument("[name]", "Name of workflow to run")
-  .action(async (name) => {
+  .option("-p --parent <string>", "Name of parent workflow triggered by")
+  .action(async (name, { parent }) => {
     const runner = WorkflowRunner;
     await runner.init();
-    return runner.run(name);
+    return runner.run(name, parent);
   });
 
 /***************************************************************************
@@ -61,7 +63,11 @@ export class WorkflowRunnerClass {
    *
    * @param name
    */
-  public async run(name?: string) {
+  public async run(name?: string, parent?: string) {
+    if (!parent) {
+      const heading = chalk.yellow(`${this.config.name}`);
+      console.log(boxen(heading, { padding: 1, borderColor: "yellow" }));
+    }
     if (!name) {
       name = await this.promptWorkflowSelect();
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
