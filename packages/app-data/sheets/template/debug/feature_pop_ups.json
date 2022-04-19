@@ -1,0 +1,30 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_pop_ups",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "button",
+      "name": "button_pop_up_1",
+      "value": "Button 1",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "feature_tile"
+          ],
+          "_raw": "click | pop_up:feature_tile",
+          "_cleaned": "click | pop_up:feature_tile"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "button_pop_up_1"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_template_components.xlsx"
+}

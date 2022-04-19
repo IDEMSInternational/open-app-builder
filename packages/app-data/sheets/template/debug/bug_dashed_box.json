@@ -1,0 +1,92 @@
+{
+  "flow_type": "template",
+  "flow_name": "bug_dashed_box",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "dashed_box",
+      "name": "dashed_box_passive",
+      "value": "Every time you do a relax, mark your star.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "dashed_box_passive"
+    },
+    {
+      "type": "dashed_box",
+      "name": "dashed_box_active",
+      "value": "Every time you do a relax, mark your star in ParentPoints to track your success.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "alert",
+        "icon_src": "plh_images/icons/star.svg",
+        "icon_position": "top-right"
+      },
+      "_nested_name": "dashed_box_active"
+    },
+    {
+      "type": "dashed_box",
+      "name": "habit_text",
+      "value": "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "icon_src": "plh_images/icons/star_circle.svg",
+        "icon_position": "top-left"
+      },
+      "_nested_name": "habit_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Every time you do a relax, \nclick the @global.parent_point \nand celebrate your success",
+            "matchedExpression": "@global.parent_point",
+            "type": "global",
+            "fieldName": "parent_point"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_point": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "dashed_box",
+      "name": "habit_text_2",
+      "value": "Every time you do a relax, click the @global.parent_point and celebrate your success",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "icon_src": "plh_images/icons/star_circle.svg",
+        "icon_position": "top-left"
+      },
+      "_nested_name": "habit_text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Every time you do a relax, click the @global.parent_point and celebrate your success",
+            "matchedExpression": "@global.parent_point",
+            "type": "global",
+            "fieldName": "parent_point"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.parent_point": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_template_components.xlsx"
+}

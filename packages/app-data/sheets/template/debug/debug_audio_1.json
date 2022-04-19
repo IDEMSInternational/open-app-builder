@@ -1,0 +1,22 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_audio_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "audio",
+      "name": "audio_src",
+      "value": "quality_assurance/test_audio.mp3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "title": "Test title"
+      },
+      "_nested_name": "audio_src"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_small_issues.xlsx"
+}

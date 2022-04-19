@@ -1,0 +1,103 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_audio_player",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "last_played_field",
+      "value": "debug_test_audio_last_played",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "last_played_field"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "The field @local.last_played_field is the timestamp of the last time the play button on the audio player was clicked.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "The field @local.last_played_field is the timestamp of the last time the play button on the audio player was clicked.",
+            "matchedExpression": "@local.last_played_field",
+            "type": "local",
+            "fieldName": "last_played_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_played_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "audio",
+      "name": "audio_1",
+      "value": "quality_assurance/test_audio.mp3",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "last_played_field": "@local.last_played_field",
+        "title": "Audio player"
+      },
+      "_nested_name": "audio_1",
+      "_dynamicFields": {
+        "parameter_list": {
+          "last_played_field": [
+            {
+              "fullExpression": "@local.last_played_field",
+              "matchedExpression": "@local.last_played_field",
+              "type": "local",
+              "fieldName": "last_played_field"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.last_played_field": [
+          "parameter_list.last_played_field"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Value of @local.last_played_field: @fields.@local.last_played_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Value of @local.last_played_field: @fields.@local.last_played_field",
+            "matchedExpression": "@local.last_played_field",
+            "type": "local",
+            "fieldName": "last_played_field"
+          },
+          {
+            "fullExpression": "Value of @local.last_played_field: @fields.@local.last_played_field",
+            "matchedExpression": "@local.last_played_field",
+            "type": "local",
+            "fieldName": "last_played_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.last_played_field": [
+          "value",
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_audio_player.xlsx"
+}

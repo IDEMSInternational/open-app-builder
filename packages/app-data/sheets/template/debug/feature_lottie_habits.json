@@ -1,0 +1,218 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_lottie_habits",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_breathe",
+      "value": "Breathe not yell",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_breathe"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_breathe",
+      "value": "plh_lottie/habits/habit_breathe.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_breathe"
+    },
+    {
+      "type": "title",
+      "name": "title_consequence",
+      "value": "Calm consequence",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_consequence"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_consequence",
+      "value": "plh_lottie/habits/habit_consequence.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_consequence"
+    },
+    {
+      "type": "title",
+      "name": "title_breathe",
+      "value": "Good money choice",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_breathe"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_money",
+      "value": "plh_lottie/habits/habit_money.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_money"
+    },
+    {
+      "type": "title",
+      "name": "title_praise_teen",
+      "value": "Praise your teen",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_praise_teen"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_praise_teen",
+      "value": "plh_lottie/habits/habit_praise_teen.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_praise_teen"
+    },
+    {
+      "type": "title",
+      "name": "title_praise_yourself",
+      "value": "Praise Yourself",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_praise_yourself"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_praise_yourself",
+      "value": "plh_lottie/habits/habit_praise_yourself.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_praise_yourself"
+    },
+    {
+      "type": "title",
+      "name": "title_relax",
+      "value": "Relax",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_relax"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_relax",
+      "value": "plh_lottie/habits/habit_relax.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_relax"
+    },
+    {
+      "type": "title",
+      "name": "title_safe",
+      "value": "Safe",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_safe"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_safe",
+      "value": "plh_lottie/habits/habit_safe.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_safe"
+    },
+    {
+      "type": "title",
+      "name": "title_spend_time",
+      "value": "One-on-one time",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_spend_time"
+    },
+    {
+      "type": "lottie_animation",
+      "name": "animation_spend_time",
+      "value": "plh_lottie/habits/habit_spend_time.json",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "animation_spend_time"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_lottie_habits.xlsx"
+}
