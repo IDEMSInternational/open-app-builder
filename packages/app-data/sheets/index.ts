@@ -1041,21 +1041,9 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_button.xlsx",
     },
-    comp_checkbox_button_1: {
+    comp_checkbox_button: {
       flow_type: "template",
-      flow_name: "comp_checkbox_button_1",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
-    },
-    comp_checkbox_button_2: {
-      flow_type: "template",
-      flow_name: "comp_checkbox_button_2",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
-    },
-    comp_checkbox_button_3: {
-      flow_type: "template",
-      flow_name: "comp_checkbox_button_3",
+      flow_name: "comp_checkbox_button",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
     },
