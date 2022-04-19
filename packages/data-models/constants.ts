@@ -51,7 +51,7 @@ const APP_STRINGS = {};
 
 const NOTIFICATION_DEFAULTS = {
   title: "Notification",
-  text: "You have a new message from PLH",
+  text: "You have a new message",
   time: {
     hour: 12,
     minute: 0,
@@ -83,7 +83,7 @@ const APP_ROUTE_DEFAULTS = {
 };
 
 const APP_HEADER_DEFAULTS = {
-  title: "ParentApp",
+  title: "Title",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
@@ -96,12 +96,12 @@ const APP_HEADER_DEFAULTS = {
 };
 
 const APP_SIDEMENU_DEFAULTS = {
-  title: "ParentApp",
+  title: "Title",
   // name of template to display in sidebar
   template_name: "app_menu",
   // show the current version number in the menu
   should_show_version: true,
-  // show the current deployment name (e.g. PLH ZA)
+  // show the current deployment name (e.g. Default)
   should_show_deployment_name: false,
 };
 
