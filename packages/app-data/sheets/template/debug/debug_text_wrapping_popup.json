@@ -1,0 +1,21 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_text_wrapping_popup",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "thisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimesthisisaverylongstringwithoutobviousbreakpointstowraprepeatedmultipletimes",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "overflow-wrap: anywhere"
+      ],
+      "_nested_name": "text"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_text_wrapping.xlsx"
+}

@@ -1,0 +1,54 @@
+{
+  "flow_type": "template",
+  "flow_name": "language_select_tz",
+  "status": "released",
+  "override_target": "language_select",
+  "override_condition": "@fields._deployment_name == \"plh_tz\"",
+  "rows": [
+    {
+      "type": "template",
+      "name": "language_select",
+      "value": "language_select",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "is_override_target": true,
+      "rows": [
+        {
+          "name": "language_select_options",
+          "value": "@data.language_tz",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "language_select.language_select_options",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.language_tz",
+                "matchedExpression": "@data.language_tz",
+                "type": "data",
+                "fieldName": "language_tz"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.language_tz": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "language_select"
+    }
+  ],
+  "_xlsxPath": "tz/core_templates/core_templates_settings_tz.xlsx"
+}

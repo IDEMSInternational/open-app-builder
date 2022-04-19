@@ -1,0 +1,123 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_update_sibling_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "pair",
+      "value": "pair",
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "box_1",
+          "value": "debug_radio_group_2",
+          "rows": [],
+          "_nested_name": "pair.box_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "box_2",
+          "value": "example_text_button",
+          "rows": [
+            {
+              "name": "text",
+              "value": "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@fields.radio_group_final_temp == \"option_1\"",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "pair.box_2.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Condition evaluates as option 1.\n\nValue of field: @fields.radio_group_final_temp",
+                    "matchedExpression": "@fields.radio_group_final_temp",
+                    "type": "fields",
+                    "fieldName": "radio_group_final_temp"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@fields.radio_group_final_temp == \"option_1\"",
+                    "matchedExpression": "@fields.radio_group_final_temp",
+                    "type": "fields",
+                    "fieldName": "radio_group_final_temp"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.radio_group_final_temp": [
+                  "value",
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "text",
+              "value": "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@fields.radio_group_final_temp == \"option_2\"",
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "pair.box_2.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Condition evaluates as option 2.\n\nValue of field: @fields.radio_group_final_temp",
+                    "matchedExpression": "@fields.radio_group_final_temp",
+                    "type": "fields",
+                    "fieldName": "radio_group_final_temp"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@fields.radio_group_final_temp == \"option_2\"",
+                    "matchedExpression": "@fields.radio_group_final_temp",
+                    "type": "fields",
+                    "fieldName": "radio_group_final_temp"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@fields.radio_group_final_temp": [
+                  "value",
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "button",
+              "value": "Emit uncompleted",
+              "_translations": {
+                "value": {}
+              },
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "emit",
+                  "args": [
+                    "uncompleted"
+                  ],
+                  "_raw": "click | emit:uncompleted",
+                  "_cleaned": "click | emit:uncompleted"
+                }
+              ],
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "pair.box_2.button"
+            }
+          ],
+          "_nested_name": "pair.box_2"
+        }
+      ],
+      "_nested_name": "pair"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_update_sibling.xlsx"
+}
