@@ -1,0 +1,295 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_actions_top",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title_0",
+      "value": "Example 0",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_0"
+    },
+    {
+      "type": "template",
+      "name": "debug_actions_middle_0",
+      "value": "debug_actions_middle",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text_1",
+          "value": "Do not override the action list",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_0.text_1"
+        },
+        {
+          "name": "text_2",
+          "value": "Do not override the action list",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_0.text_2"
+        }
+      ],
+      "_nested_name": "debug_actions_middle_0"
+    },
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Example 1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "template",
+      "name": "debug_actions_middle_1",
+      "value": "debug_actions_middle",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text_1",
+          "value": "Set the field debug_actions_top_1",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_1.text_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "debug_actions_bottom_1",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "set_field",
+              "args": [
+                "debug_actions_top_1",
+                "Value 1"
+              ],
+              "_raw": "completed | set_field: debug_actions_top_1 : Value 1",
+              "_cleaned": "completed | set_field: debug_actions_top_1 : Value 1"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "debug_actions_middle_1.debug_actions_bottom_1"
+        },
+        {
+          "name": "text_2",
+          "value": "Set the field debug_actions_top_2",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_1.text_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "debug_actions_bottom_2",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "set_field",
+              "args": [
+                "debug_actions_top_2",
+                "Value 2"
+              ],
+              "_raw": "completed | set_field: debug_actions_top_2 : Value 2",
+              "_cleaned": "completed | set_field: debug_actions_top_2 : Value 2"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "debug_actions_middle_1.debug_actions_bottom_2"
+        }
+      ],
+      "_nested_name": "debug_actions_middle_1"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Example 2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "template",
+      "name": "debug_actions_middle_2",
+      "value": "debug_actions_middle",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text_1",
+          "value": "Set the field debug_actions_top_3 and emit completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_2.text_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "debug_actions_bottom_1",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "set_field",
+              "args": [
+                "debug_actions_top_3",
+                "Value 3"
+              ],
+              "_raw": "completed | set_field: debug_actions_top_3: Value 3",
+              "_cleaned": "completed | set_field: debug_actions_top_3: Value 3"
+            },
+            {
+              "trigger": "completed",
+              "action_id": "emit",
+              "args": [
+                "completed"
+              ],
+              "_raw": "completed | emit: completed",
+              "_cleaned": "completed | emit: completed"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "debug_actions_middle_2.debug_actions_bottom_1"
+        },
+        {
+          "name": "text_2",
+          "value": "Set the field debug_actions_top_4 and emit completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_2.text_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "debug_actions_bottom_2",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "set_field",
+              "args": [
+                "debug_actions_top_4",
+                "Value 4"
+              ],
+              "_raw": "completed | set_field: debug_actions_top_4: Value 4",
+              "_cleaned": "completed | set_field: debug_actions_top_4: Value 4"
+            },
+            {
+              "trigger": "completed",
+              "action_id": "emit",
+              "args": [
+                "completed"
+              ],
+              "_raw": "completed | emit: completed",
+              "_cleaned": "completed | emit: completed"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "debug_actions_middle_2.debug_actions_bottom_2"
+        }
+      ],
+      "_nested_name": "debug_actions_middle_2"
+    },
+    {
+      "type": "title",
+      "name": "title_3",
+      "value": "Example 3",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "template",
+      "name": "debug_actions_middle_3",
+      "value": "debug_actions_middle",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text_1",
+          "value": "Emit completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_3.text_1"
+        },
+        {
+          "type": "nested_properties",
+          "name": "debug_actions_bottom_1",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "emit",
+              "args": [
+                "completed"
+              ],
+              "_raw": "completed | emit: completed",
+              "_cleaned": "completed | emit: completed"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "debug_actions_middle_3.debug_actions_bottom_1"
+        },
+        {
+          "name": "text_2",
+          "value": "Emit completed",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_actions_middle_3.text_2"
+        },
+        {
+          "type": "nested_properties",
+          "name": "debug_actions_bottom_2",
+          "action_list": [
+            {
+              "trigger": "completed",
+              "action_id": "emit",
+              "args": [
+                "completed"
+              ],
+              "_raw": "completed | emit: completed",
+              "_cleaned": "completed | emit: completed"
+            }
+          ],
+          "exclude_from_translation": true,
+          "rows": [],
+          "_nested_name": "debug_actions_middle_3.debug_actions_bottom_2"
+        }
+      ],
+      "_nested_name": "debug_actions_middle_3"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_overriding_action_list.xlsx"
+}

@@ -1,0 +1,134 @@
+{
+  "flow_type": "template",
+  "module": "solve",
+  "flow_name": "w_solve_m_w_released",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "m_workshop_released",
+      "value": "m_workshop_released",
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_solve",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "m_workshop_released.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_solve",
+                "matchedExpression": "@data.workshop.w_solve",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_solve": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "in_week_message",
+          "rows": [
+            {
+              "name": "text",
+              "value": "Hi @field.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "condition": "!@field.do_workshops_together",
+              "type": "set_variable",
+              "_nested_name": "m_workshop_released.in_week_message.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Hi @field.user_name! You are making such good progress on your parenting journey! \n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you how to deal with them.",
+                    "matchedExpression": "@field.user_name",
+                    "type": "field",
+                    "fieldName": "user_name"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "!@field.do_workshops_together",
+                    "matchedExpression": "!@field.do_workshops_together",
+                    "type": "field",
+                    "fieldName": "do_workshops_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.user_name": [
+                  "value"
+                ],
+                "!@field.do_workshops_together": [
+                  "condition"
+                ]
+              }
+            },
+            {
+              "name": "text",
+              "value": "Hi @field.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "condition": "@field.do_workshops_together",
+              "type": "set_variable",
+              "_nested_name": "m_workshop_released.in_week_message.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Hi @field.group_name! You are making such good progress on your parenting journey!\n\nHaving a teen means having a lot of unexpected problems to deal with. This workshop will show you all how to deal with them.",
+                    "matchedExpression": "@field.group_name",
+                    "type": "field",
+                    "fieldName": "group_name"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@field.do_workshops_together",
+                    "matchedExpression": "@field.do_workshops_together",
+                    "type": "field",
+                    "fieldName": "do_workshops_together"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@field.group_name": [
+                  "value"
+                ],
+                "@field.do_workshops_together": [
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "m_workshop_released.in_week_message"
+        }
+      ],
+      "_nested_name": "m_workshop_released"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/in_week_message_texts/w_solve_messages.xlsx"
+}

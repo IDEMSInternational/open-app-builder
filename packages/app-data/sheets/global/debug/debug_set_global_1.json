@@ -1,0 +1,20 @@
+{
+  "flow_type": "global",
+  "flow_name": "debug_set_global_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "debug_variable_1",
+      "value": "Value of the first debug variable",
+      "_translations": {
+        "value": {
+          "es_sp": true
+        }
+      },
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_small_issues.xlsx"
+}

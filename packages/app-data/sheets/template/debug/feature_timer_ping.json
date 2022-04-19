@@ -1,0 +1,45 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_timer_ping",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "timer",
+      "name": "ping_1",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "title": "Example 1",
+        "ping": "plh_audio/timer/ping_1.wav",
+        "starting_minutes": "0",
+        "starting_seconds": "5"
+      },
+      "_nested_name": "ping_1"
+    },
+    {
+      "type": "timer",
+      "name": "ping_2",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "title": "Example 2",
+        "ping": "plh_audio/timer/ping_2.wav",
+        "starting_minutes": "0",
+        "starting_seconds": "5"
+      },
+      "_nested_name": "ping_2"
+    },
+    {
+      "type": "timer",
+      "name": "ping_3",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "title": "Example 3",
+        "ping": "plh_audio/timer/bell_1.mp3",
+        "starting_minutes": "0",
+        "starting_seconds": "5"
+      },
+      "_nested_name": "ping_3"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_template_components.xlsx"
+}

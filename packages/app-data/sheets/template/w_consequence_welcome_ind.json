@@ -1,0 +1,156 @@
+{
+  "flow_type": "template",
+  "module": "consequence",
+  "flow_name": "w_consequence_welcome_ind",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_consequence",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "welcome_individual.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_consequence",
+                "matchedExpression": "@data.workshop.w_consequence",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_consequence": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Self-care is a key parenting tool.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "question_text",
+                  "value": "How are you feeling today?",
+                  "_translations": {
+                    "value": {
+                      "es_sp": true,
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.question_text"
+                },
+                {
+                  "name": "reply_happy",
+                  "value": "So good to hear you are feeling well today. You are incredible!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                },
+                {
+                  "name": "reply_ok",
+                  "value": "Sorry that things are difficult right now. Take a deep breath and know that you are valued.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                },
+                {
+                  "name": "reply_sad",
+                  "value": "Sorry that things are difficult right now. Take a deep breath and know that you are valued.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                }
+              ],
+              "_nested_name": "welcome_individual.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "welcome_individual.workshop_activity"
+        }
+      ],
+      "_nested_name": "welcome_individual"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_consequence.xlsx"
+}
