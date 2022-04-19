@@ -41,8 +41,13 @@ export const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
       },
       {
         name: "app_copy_sheets",
-        function: async ({ tasks, workflow }) =>
-          tasks.appData.copy({ localSheetsFolder: workflow.translations_apply.output }),
+        function: async ({ tasks, workflow, config }) =>
+          tasks.appData.copy({
+            localSheetsFolder: workflow.translations_apply.output.sheets,
+            localTranslationsFolder: workflow.translations_apply.output.strings,
+            appSheetsFolder: config.app_data.sheets_output_path,
+            appTranslationsFolder: config.app_data.translations_output_path,
+          }),
       },
     ],
   },
@@ -56,8 +61,11 @@ export const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
       },
       {
         name: "app_copy_assets",
-        function: async ({ tasks, workflow }) =>
-          tasks.appData.copy({ localAssetsFolder: workflow.assets_dl.output }),
+        function: async ({ tasks, workflow, config }) =>
+          tasks.appData.copy({
+            localAssetsFolder: workflow.assets_dl.output,
+            appAssetsFolder: config.app_data.assets_output_path,
+          }),
       },
     ],
   },
