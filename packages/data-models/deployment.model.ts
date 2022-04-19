@@ -20,17 +20,17 @@ export interface IDeploymentConfig {
   /** Optional override of any provided constants from data-models/constants */
   app_constants?: Partial<typeof APP_CONSTANTS>;
   app_data?: {
-    /** processed sheets for use in app. Default `./app_data/sheets` */
+    /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;
     /** partially compiled sheets for use in repopulation. Default `./cache/converter` */
     converter_cache_path?: string;
-    /** processed assets for use in app. Defaults `./app_data/assets` */
+    /** processed assets for use in app. Defaults `packages/app_data/assets` */
     assets_output_path?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
-    /** processed translations for use in app. Default `./app_data/translations/app_strings` */
+    /** processed translations for use in app. Default `packages/app_data/translations` */
     translations_output_path?: string;
   };
   translations?: {
@@ -64,10 +64,10 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
   },
   app_constants: {},
   app_data: {
-    sheets_output_path: "./app_data/sheets",
+    sheets_output_path: "packages/app-data/sheets",
     converter_cache_path: "./cache/converter",
-    assets_output_path: "./app_data/assets",
-    translations_output_path: "./app_data/translations/app_strings",
+    assets_output_path: "packages/app-data/assets",
+    translations_output_path: "packages/app-data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
