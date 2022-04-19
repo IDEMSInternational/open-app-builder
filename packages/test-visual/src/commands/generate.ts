@@ -94,7 +94,7 @@ export class ScreenshotGenerate {
     });
 
     this.options = { ...DEFAULT_OPTIONS, ...opts } as IProgramOptions;
-    console.table(this.options);
+    // console.table(this.options);
   }
 
   public async run() {
