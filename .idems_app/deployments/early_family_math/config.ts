@@ -11,15 +11,10 @@ const config: IDeploymentConfig = {
     sheets_folder_id: "1hiIYr8nnLcP1kd2xTFAQx3MvVp7IlPQL",
     assets_folder_id: "1VkoezEbbeCIeV5IksorFt5lFp6AURYur",
   },
-  // Legacy mapping to output to existing workspace
-  app_data: {
-    sheets_output_path: "packages/app-data/data",
-    assets_output_path: "packages/app-data/assets",
-  },
   translations: {
     filter_language_codes: ["us_en"],
-    translated_strings_path: "packages/app-data/translations/from_translators",
-    source_strings_path: "packages/app-data/translations/to_translate",
+    translated_strings_path: "packages/app-data/translations_source/from_translators",
+    source_strings_path: "packages/app-data/translations_source/to_translate",
   },
   app_constants: DEFAULT_CONSTANTS,
 };

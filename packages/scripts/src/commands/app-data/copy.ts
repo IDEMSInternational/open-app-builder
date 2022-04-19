@@ -297,6 +297,7 @@ export const SHEETS_CONTENT_LIST:ISheetContents = ${contentsString}
   private translationsWriteIndex(baseFolder: string) {
     type ITranslationContents = { [language_code: string]: { filename: string } };
     const contents: ITranslationContents = {};
+    fs.ensureDirSync(baseFolder);
     fs.readdirSync(baseFolder).forEach((language_code) => {
       contents[language_code] = { filename: `${language_code}/strings.json` };
     });
