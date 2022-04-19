@@ -1,0 +1,15 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_nesting_override_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "template_wrapper",
+      "rows": [],
+      "_nested_name": "template_wrapper"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_nesting.xlsx"
+}

@@ -1,0 +1,48 @@
+{
+  "flow_type": "template",
+  "flow_name": "demo_self_care_stepper",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "workshop_stepper",
+      "value": "workshop_stepper",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "nav_template_list",
+          "value": [
+            "w_self_care_relax",
+            "w_self_care_recognise",
+            "w_self_care_reward"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "workshop_stepper.nav_template_list"
+        }
+      ],
+      "_nested_name": "workshop_stepper"
+    }
+  ],
+  "_xlsxPath": "global/demo_templates/demo_navigation.xlsx"
+}

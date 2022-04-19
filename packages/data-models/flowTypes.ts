@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import APP_CONSTANTS from "./constants";
-import { RapidProFlowExport } from "@idemsInternational/rapidpro-excel";
-import { TipRow } from "./tips.model";
 
 /*********************************************************************************************
  *  Base flow types
@@ -9,22 +6,10 @@ import { TipRow } from "./tips.model";
 
 export namespace FlowTypes {
   export type FlowType =
-    | "conversation"
-    | "tips"
-    | "completion_list"
-    | "goal_list"
-    | "habit_list"
-    | "task_list"
-    | "module_list"
-    | "module_page"
-    | "care_package_list"
     | "tour"
-    | "habit_ideas"
     | "template"
-    | "component_defaults"
     // global data provides data to other modules, without namespacing (all top-level)
     | "global"
-    | "home_page"
     // data_lists are a general catch for any data that will be used throughout the app, but
     // without defined typings (such as habit_list).
     | "data_list";
@@ -38,7 +23,7 @@ export namespace FlowTypes {
     /** allows further level of grouping within flows */
     flow_subtype?: string;
     /** Used to hide unfinished content from the app */
-    status: "draft" | "released";
+    status?: "draft" | "released";
     /** Events triggered from the flow that would ordinarily write to the db (e.g. emit completed) will be ignored */
     db_ignore_events?: boolean;
     /** By default data will be removed following server-sync. Specify if instead should be retained locally also */
@@ -66,46 +51,17 @@ export namespace FlowTypes {
   export interface FlowTypeWithData extends FlowTypeBase {
     /** Specific flow data rows - these are usually defined from within specific flow type row typings */
     rows: any[];
+    /** Datalists populate rows as a hashmap instead to allow easier access to nested structures */
+    rowsHashmap?: { [id: string]: any };
   }
 
   /*********************************************************************************************
    *  Specific flow types
    ********************************************************************************************/
-  // 2021-04-07 - TODO - implementing common data lists but need to review what is now deprecated
-  // and what other list types also want to be refactored
-  export interface Completion_list extends FlowTypeWithData {}
-  export interface Goal_list extends FlowTypeWithData {}
-  export interface Habit_list extends FlowTypeWithData {
-    flow_type: "habit_list";
-    rows: Habit_listRow[];
-  }
-  export interface Task_list extends FlowTypeWithData {
-    flow_type: "task_list";
-    rows: Task_listRow[];
-  }
-  export interface Tips extends FlowTypeWithData {
-    flow_type: "tips";
-    title: string;
-    rows: TipRow[];
-  }
-  export interface Module_list extends FlowTypeWithData {
-    flow_type: "module_list";
-    rows: Module_listRow[];
-  }
-  export interface Module_page extends FlowTypeWithData {
-    flow_type: "module_page";
-    rows: Module_pageRow[];
-  }
-  export interface Care_package_list extends FlowTypeWithData {
-    flow_type: "care_package_list";
-    rows: CarePackage[];
-  }
   export interface Data_list extends FlowTypeWithData {
     flow_type: "data_list";
     rows: Data_listRow[];
   }
-
-  export interface Conversation extends RapidProFlowExport.RootObject {}
   export interface Translation_strings {
     [sourceText: string]: string;
   }
@@ -155,50 +111,8 @@ export namespace FlowTypes {
   }
   /** all data_list type must provide a unique id for each row to allow */
   export type Data_listRow<T = any> = { id: string } & T;
-  export interface Habit_listRow extends Data_listRow {
-    title: string;
-    description: string;
-    task_id: string;
-    icon_asset: string;
-    main_image_asset: string;
-    aim_button_text: string;
-    aim_action: string;
-    set_aim_button_text?: string;
-    suggestion_button_text?: string;
-    launch_flow_type?: string;
-    launch_flow_name?: string;
-    suggestion_flow_type?: string;
-    suggestion_flow_name?: string;
-
-    _complete?: boolean;
-    _count?: number;
-    _animating_on_add?: boolean;
-    _animate_timeout_ref?: any;
-  }
-  export interface Task_listRow {
-    id: string;
-    start_action?: Start_action;
-    /** when tasks launch flows specify the type and name of flow. Only specific types are currently handled, as listed here */
-    flow_type?: "template" | "conversation" | "tips";
-    /** when tasks launch flows specify the type and name of flow */
-    flow_name?: string;
-    /** when tasks require additional paremeters, such as the name of a reward, provide here */
-    start_action_args?: string;
-    groups_list?: string[];
-    label?: string;
-    requires_list?: string[];
-  }
   /** As not all tasks will launch flows, use actions to specify different ways to handle a task  */
   export type Start_action = "start_new_flow" | "give_award" | "open_app";
-
-  export interface CarePackage {
-    id: string;
-    label: string;
-    description?: string;
-    icon_asset?: string;
-    main_image_asset?: string;
-    habit_list: string[];
-  }
 
   export interface Campaign_listRow extends RowWithActivationConditions {
     id: string;
@@ -277,24 +191,6 @@ export namespace FlowTypes {
     _active?: boolean;
   }
 
-  export interface Habit_ideas extends FlowTypeWithData {
-    flow_type: "habit_ideas";
-    flow_name: string;
-    title: string;
-    suggestion_list_title: string;
-    personal_list_title: string;
-    personal_list_title_short: string;
-    add_button: string;
-    publish_button: string;
-    edit_button: string;
-    rows: Habit_ideasRow[];
-  }
-
-  export interface Habit_ideasRow {
-    type: "list_item";
-    message_text: string;
-  }
-
   export interface Tour extends FlowTypeBase {
     flow_type: "tour";
     rows: TourStep[];
@@ -308,21 +204,6 @@ export namespace FlowTypes {
     template_component_name?: string;
     element?: string;
     route?: string;
-  }
-
-  export interface Home_page extends FlowTypeBase {
-    flow_type: "home_page";
-    rows: Home_pageRow[];
-  }
-
-  export interface Home_pageRow {
-    type: "button";
-    id?: "workshops" | "parent_points" | "parent_center";
-    text: string;
-    visible?: boolean;
-    enabled?: boolean;
-    route?: string;
-    left_image?: string;
   }
 
   export interface Template extends FlowTypeBase {
@@ -487,17 +368,5 @@ export namespace FlowTypes {
     value: any;
     comments?: string;
     __EMPTY?: string;
-  }
-
-  /* Used for setting default parameters for template components */
-  export interface Component_defaults extends FlowTypeBase {
-    flow_type: "component_defaults";
-    rows: Component_defaultsRow[];
-  }
-
-  export interface Component_defaultsRow {
-    parameter: string;
-    default_value?: string | number | boolean;
-    comments?: string /* Used for authoring comments. Not used in code */;
   }
 }

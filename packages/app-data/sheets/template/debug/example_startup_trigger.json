@@ -1,0 +1,100 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "example_startup_trigger",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "example_1",
+      "value": "Example Startup Trigger",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "example_1"
+    },
+    {
+      "type": "text",
+      "name": "example_startup_text",
+      "value": "example_startup_field: @fields.example_startup_field",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "example_startup_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "example_startup_field: @fields.example_startup_field",
+            "matchedExpression": "@fields.example_startup_field",
+            "type": "fields",
+            "fieldName": "example_startup_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.example_startup_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "trigger_1",
+      "value": "Trigger example_startup_1",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "process_template",
+          "args": [
+            "example_startup_1"
+          ],
+          "_raw": "click | process_template: example_startup_1",
+          "_cleaned": "click | process_template: example_startup_1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "force_reprocess"
+          ],
+          "_raw": "click | emit: force_reprocess",
+          "_cleaned": "click | emit: force_reprocess"
+        }
+      ],
+      "_nested_name": "trigger_1"
+    },
+    {
+      "type": "button",
+      "name": "trigger_2",
+      "value": "Trigger example_startup_2",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "process_template",
+          "args": [
+            "example_startup_2"
+          ],
+          "_raw": "click | process_template: example_startup_2",
+          "_cleaned": "click | process_template: example_startup_2"
+        },
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "force_reprocess"
+          ],
+          "_raw": "click | emit: force_reprocess",
+          "_cleaned": "click | emit: force_reprocess"
+        }
+      ],
+      "_nested_name": "trigger_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_startup.xlsx"
+}
