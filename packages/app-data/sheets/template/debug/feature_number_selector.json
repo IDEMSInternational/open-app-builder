@@ -1,0 +1,242 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_number_selector",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "category_list",
+      "value": [
+        "0-10",
+        "11-20",
+        "21-30",
+        "31-40",
+        "41-50",
+        "51-60",
+        "61-70",
+        "71-80",
+        "80+"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "category_list"
+    },
+    {
+      "type": "number_selector",
+      "name": "number_selector",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "category_list": "@local.category_list",
+        "first_display_term": "4"
+      },
+      "_nested_name": "number_selector",
+      "_dynamicFields": {
+        "parameter_list": {
+          "category_list": [
+            {
+              "fullExpression": "@local.category_list",
+              "matchedExpression": "@local.category_list",
+              "type": "local",
+              "fieldName": "category_list"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.category_list": [
+          "parameter_list.category_list"
+        ]
+      }
+    },
+    {
+      "name": "ten",
+      "value": 10,
+      "type": "set_variable",
+      "_nested_name": "ten"
+    },
+    {
+      "type": "set_field",
+      "name": "debug_field_fifteen",
+      "value": 15,
+      "_nested_name": "debug_field_fifteen"
+    },
+    {
+      "name": "fifteen",
+      "value": "+@fields.debug_field_fifteen",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "fifteen",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "+@fields.debug_field_fifteen",
+            "matchedExpression": "@fields.debug_field_fifteen",
+            "type": "fields",
+            "fieldName": "debug_field_fifteen"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.debug_field_fifteen": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_1",
+      "value": "Default initial value",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_1"
+    },
+    {
+      "type": "number_selector",
+      "name": "number_selector_1",
+      "parameter_list": {
+        "min_value": "0",
+        "max_value": "20"
+      },
+      "_nested_name": "number_selector_1"
+    },
+    {
+      "type": "title",
+      "name": "title_2",
+      "value": "Initial value set directly",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_2"
+    },
+    {
+      "type": "number_selector",
+      "name": "number_selector_2",
+      "value": 5,
+      "parameter_list": {
+        "min_value": "0",
+        "max_value": "20"
+      },
+      "_nested_name": "number_selector_2"
+    },
+    {
+      "type": "title",
+      "name": "title_3",
+      "value": "Initial value set through local variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_3"
+    },
+    {
+      "type": "number_selector",
+      "name": "number_selector_3",
+      "value": "@local.ten",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "min_value": "0",
+        "max_value": "20"
+      },
+      "_nested_name": "number_selector_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.ten",
+            "matchedExpression": "@local.ten",
+            "type": "local",
+            "fieldName": "ten"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.ten": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "Initial value set through field preceded by '+",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "number_selector",
+      "name": "number_selector_4",
+      "value": "+@fields.debug_field_fifteen",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "min_value": "0",
+        "max_value": "20"
+      },
+      "_nested_name": "number_selector_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "+@fields.debug_field_fifteen",
+            "matchedExpression": "@fields.debug_field_fifteen",
+            "type": "fields",
+            "fieldName": "debug_field_fifteen"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.debug_field_fifteen": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "title_5",
+      "value": "Initial value set through local with field preceded by '+",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title_5"
+    },
+    {
+      "type": "number_selector",
+      "name": "number_selector_5",
+      "value": "@local.fifteen",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "min_value": "0",
+        "max_value": "20"
+      },
+      "_nested_name": "number_selector_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.fifteen",
+            "matchedExpression": "@local.fifteen",
+            "type": "local",
+            "fieldName": "fifteen"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.fifteen": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_template_components.xlsx"
+}

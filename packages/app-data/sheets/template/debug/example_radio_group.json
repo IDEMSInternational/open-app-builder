@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_radio_group",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "answer_list_1",
+      "value": [
+        "name:name_var_1 | text:First | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_2 | text:Second | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_3 | text: Third | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg",
+        "name:name_var_4 | text:Fourth | image:/plh_images/icons/heart.svg | image_checked: /plh_images/icons/tick.svg"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list_1"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group",
+      "parameter_list": {
+        "answer_list": "@local.answer_list_1",
+        "select_multiple": "true"
+      },
+      "_nested_name": "radio_group",
+      "_dynamicFields": {
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_1",
+              "matchedExpression": "@local.answer_list_1",
+              "type": "local",
+              "fieldName": "answer_list_1"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.answer_list_1": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Value of radio_group: @local.radio_group",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Value of radio_group: @local.radio_group",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_radio_group.xlsx"
+}

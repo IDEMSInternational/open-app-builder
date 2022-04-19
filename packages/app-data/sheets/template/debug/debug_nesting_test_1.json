@@ -1,0 +1,47 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_nesting_test_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "name_1",
+      "value": "debug_nesting_sheet_1",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "title",
+          "value": "This title was overwritten",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "name_1.title"
+        }
+      ],
+      "_nested_name": "name_1"
+    },
+    {
+      "type": "template",
+      "name": "name_2",
+      "value": "debug_nesting_sheet_1",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "title",
+          "value": "This title was overwritten as well",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "name_2.title"
+        }
+      ],
+      "_nested_name": "name_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_nesting.xlsx"
+}

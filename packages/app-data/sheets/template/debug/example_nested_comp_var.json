@@ -1,0 +1,48 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_nested_comp_var",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "nested_options_template",
+      "value": "example_double_ref_comp_var",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "first_template",
+          "value": "example_component_variables",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "name": "answer_list",
+              "value": [
+                "name:name_var_1 | text:Option a",
+                "name:name_var_2 | text: Option b",
+                "name:name_var_3 | text: Option c"
+              ],
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "nested_options_template.first_template.answer_list"
+            }
+          ],
+          "_nested_name": "nested_options_template.first_template"
+        }
+      ],
+      "_nested_name": "nested_options_template"
+    },
+    {
+      "type": "text",
+      "name": "text_with_nested_options",
+      "value": "text should be what is in the comment",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_with_nested_options"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_component_variables.xlsx"
+}

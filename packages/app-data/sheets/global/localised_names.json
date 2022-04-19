@@ -1,0 +1,229 @@
+{
+  "flow_type": "global",
+  "flow_name": "localised_names",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_1",
+      "value": "Grace",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_2",
+      "value": "Anna",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_3",
+      "value": "Sara",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_adult_name_4",
+      "value": "Sandy",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_child_name_1",
+      "value": "Faraja",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_child_name_2",
+      "value": "Shukuru",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_child_name_3",
+      "value": "Amina",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_child_name_4",
+      "value": "Maria",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_child_name_5",
+      "value": "Emma",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_child_name_6",
+      "value": "Shalini",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_caregiver_1",
+      "value": "Grandma",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_caregiver_2",
+      "value": "Mother",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_caregiver_3",
+      "value": "Mom",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "female_caregiver_4",
+      "value": "Mama",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_adult_name_1",
+      "value": "Giles",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_child_name_1",
+      "value": "Alex",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_child_name_2",
+      "value": "Amani",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_child_name_3",
+      "value": "James",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_child_name_4",
+      "value": "Baraka",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_child_name_5",
+      "value": "Mapesa",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_caregiver_1",
+      "value": "Father",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_caregiver_2",
+      "value": "Dad",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "male_caregiver_3",
+      "value": "Grandpa",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    }
+  ],
+  "_xlsxPath": "global/data/localisation_globals.xlsx"
+}
