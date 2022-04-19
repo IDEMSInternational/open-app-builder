@@ -11,6 +11,7 @@ const config: IDeploymentConfig = {
     sheets_folder_id: "1hiIYr8nnLcP1kd2xTFAQx3MvVp7IlPQL",
     assets_folder_id: "1VkoezEbbeCIeV5IksorFt5lFp6AURYur",
   },
+  app_data: {},
   translations: {
     filter_language_codes: ["us_en"],
     translated_strings_path: "packages/app-data/translations_source/from_translators",
