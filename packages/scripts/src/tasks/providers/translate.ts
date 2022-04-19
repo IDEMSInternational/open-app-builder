@@ -28,7 +28,11 @@ const apply = (options: { inputFolder: string }) => {
   if (status === 1) {
     logError({ msg1: "Translations failed", msg2: stderr.toString() });
   }
-  return outputFolder;
+  // Returns path to both compiled strings and translated sheets
+  return {
+    strings: path.join(outputFolder, "strings"),
+    sheets: path.join(outputFolder, "sheets"),
+  };
 };
 
 /**

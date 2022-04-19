@@ -34,7 +34,17 @@
               {
                 "glob": "**/*",
                 "input": "node_modules/app-data/assets",
-                "output": "assets/app_data_assets"
+                "output": "assets/app_data/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/app-data/sheets",
+                "output": "assets/app_data/sheets"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/app-data/translations",
+                "output": "assets/app_data/translations"
               },
               {
                 "glob": "**/*.svg",
@@ -90,12 +100,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "6mb",
-                  "maximumError": "16mb"
+                  "maximumWarning": "850kb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "16kb"
                 }
               ]
             },
