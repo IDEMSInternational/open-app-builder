@@ -23,7 +23,6 @@ import { Device } from "@capacitor/device";
     `
       ion-button {
         font-size: 25px;
-        font-family: Roboto, sans-serif;
         font-weight: 500;
         color: var(--ion-color-primary-contrast);
         text-transform: none;

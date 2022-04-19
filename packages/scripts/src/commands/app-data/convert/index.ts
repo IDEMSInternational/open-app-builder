@@ -58,7 +58,7 @@ class AppDataConverter {
 
   constructor(private options: IProgramOptions) {
     console.log(chalk.yellow("App Data Convert"));
-    console.table(options);
+    // console.table(options);
     // Setup Folders
     const { inputFolder, outputFolder, cacheFolder } = options;
     const { app_data, _workspace_path } = this.activeDeployment;
