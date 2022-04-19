@@ -6,11 +6,13 @@ export const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
     steps: [
       {
         name: "sync_sheets",
-        function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_sheets" }),
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
       },
       {
         name: "sync_assets",
-        function: async ({ tasks }) => tasks.workflow.runWorkflow({ name: "sync_assets" }),
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
       },
     ],
   },

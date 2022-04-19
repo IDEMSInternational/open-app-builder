@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import fs from "fs";
-import path from "path";
 import cp from "child_process";
 
 import { Command } from "commander";
