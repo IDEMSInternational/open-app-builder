@@ -53,6 +53,11 @@ async function setActiveDeployment(deploymentName?: string) {
     msg1: `Deployment set`,
     msg2: JSON.stringify(deployment, null, 2),
   });
+  // delete .angular cache as it may not detect changes to json files otherwise
+  const angularCacheDir = path.join(ROOT_DIR, ".angular");
+  if (fs.existsSync(angularCacheDir)) {
+    fs.removeSync(angularCacheDir);
+  }
 }
 
 /**
