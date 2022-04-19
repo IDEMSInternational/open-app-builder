@@ -1,0 +1,58 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_60c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_side_1_left",
+          "value": "EFM60Hopscotchto10.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 30,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "100px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "1. Draw a diagram similar to this. Use chalk if outside, or masking or painter's tape if inside.\n2. Throw a marker into the first square. If it lands on a line, or outside the square, you lose your turn and you pass the marker to the next player.\n3. Hop on one foot into the first empty square, and then every subsequent empty square. Skip the one your marker is on.\n4. At the pairs (4-5 and 7-8), jump with both feet.\n5. At 10, hop with both feet, turn around, and head back toward the start.\n6. When you reach the marked square again, pick up the marker—on one foot!—and keep going.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "7. If you finished without any mistakes, pass the marker to the next player. On your next turn, throw the marker to the next number.\n8. If you fall, jump outside the lines, or miss a square or the marker, you lose your turn and must repeat the same number on your next turn. Whoever reaches 10 first, wins.\n\nFor younger children, relax many of the rules and replace hopping with stepping.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

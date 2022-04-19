@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_440b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Have a paper with a number line from 0 to 99 to share. On a turn, a player uses two random cards from 0 to 9, choosing the order of these two digits, to generate a number from 00 to 99, and then puts that number on their side of the number line. The first player to get four numbers in a region without any of the opponent’s numbers in between wins. The game can also be played from 000 to 999 if you like.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

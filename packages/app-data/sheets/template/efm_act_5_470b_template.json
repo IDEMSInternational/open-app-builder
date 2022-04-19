@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_470b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Near the end of Chapter 4, the Sum Difference activity had one person think of two numbers and then challenge the other person to find the numbers by telling them the sum and difference of the numbers. Secret Ops uses the same idea, only now the challenger can use any two operations, such as multiplying and subtracting.\n\nFor example, the challenger might say “Which two numbers have a product of 12 and a difference of 4?” You can extend this to three numbers, if you like - “Which three numbers have a product of 12 and a sum of 8?”",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_550a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use three dice and an 8 by 8 board of numbers from 1 to 64. A player rolls the dice and uses addition, subtraction, multiplication, and division to make any unmarked number on the board. The player marks this square and receives one point for the square plus one more point for each marked square that it touches, including diagonally. If a player cannot make a play, any other player who finds a play can claim that score. Play five or more rounds, with the largest score winning.\n\nSome game options are to use a fourth die, and to use a smaller or larger board.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

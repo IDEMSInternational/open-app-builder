@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_260a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Counting the number of ways of doing something involving choices can lead to some interesting investigations. Here are a few possibilities - have fun thinking of many more with your child.\n\nInvestigation 1: Drawing with only red and blue, how many ways can you draw a monster with a hat, eyes, and cape? How does this change if you only colored the hat and the cape? How would it change if you used three colors, or if you could only use each color once?\n\nInvestigation 2: You have a row of 5 identical candies. How many ways can you color them so that there are 2 red ones and 3 blue ones?\n\nInvestigation 3: Find all the ways to get a sum using a small set of numbers. Do this with and without considering order. For example, if you use 1 and 2, there are 1+1+1+1 = 2+1+1 = 2+2 ways of getting 4 without considering order, and 1+1+1+1 = 2+1+1 = 1+2+1 = 1+1+2 = 2+2 ways of getting 4 considering order.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

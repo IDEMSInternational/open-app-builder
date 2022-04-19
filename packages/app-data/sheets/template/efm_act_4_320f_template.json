@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_320f_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Compensation for subtraction means adding or subtracting the same amount for both numbers to maintain their distance. Use compensation on 13 - 8 by adding 2 to both numbers to turn the problem into 15 - 10. Single-digit problems can also be done this way. For example, 3 can be added to both numbers in 7 - 3 to make it 10 - 6.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

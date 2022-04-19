@@ -1,0 +1,49 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_20c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_side_1_left",
+          "value": "EFM20Balloons.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 50,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "Make a puzzle for your child to play with. Have your child paint or draw on a piece of cardboard or stiff paper.\n\nCut the paper into large pieces. Jigsaw puzzle!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

@@ -1,0 +1,165 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_sb_intro",
+  "status": "released",
+  "rows": [
+    {
+      "name": "sb_level",
+      "type": "set_variable",
+      "_nested_name": "sb_level"
+    },
+    {
+      "name": "intro_math",
+      "type": "set_variable",
+      "_nested_name": "intro_math"
+    },
+    {
+      "type": "text",
+      "name": "intro_header",
+      "value": "**Adult Readers**",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "margin-top: -7px"
+      ],
+      "_nested_name": "intro_header"
+    },
+    {
+      "type": "text",
+      "name": "intro_part1_basic",
+      "value": "**Before Talking** Talk with your child before they can talk or even understand the words. Point at, name, and describe things you see, such as shapes, colors, comparisons, and quantities. As your child begins to understand words, ask about a thing and have your child point at it. For example, \"Where is the ball?\" If your child can't find the thing, point to it for them. \n\n**Early Talking** As your child begins to understand and say words, mix in simple questions. Freely help with answers as needed. If you point and say \"Is this red?\" and they don't know, supply the answer. If you say \"Count the blocks.\" and your child does not know how, point and count the blocks with them \"one, two, three.\"",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.sb_level==\"basic\"",
+      "style_list": [
+        "margin-top: -10px"
+      ],
+      "_nested_name": "intro_part1_basic",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.sb_level==\"basic\"",
+            "matchedExpression": "@local.sb_level",
+            "type": "local",
+            "fieldName": "sb_level"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.sb_level": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "intro_part1_advanced",
+      "value": "**3 Levels of Discussion** Pick an appropriate level for your child. Allow time for thought when asking questions or making comments. Help with the answer when your child stumbles, and follow up correct answers with questions or comments that are small expansions on the child's answer.\n\n**Level 1** Ask simple direct questions. Ask and point at what you see on the page. Where is the toy? What are they doing? What is its name? What color is it? How many balls are there?\n**Level 2** Ask general or open questions about this point in the story. What do you see happening here? What is this group of things?\n**Level 3** Ask about the story line. What has happened? What will happen next? Have you had experiences or seen things similar to this? How does she feel when this happens?",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.sb_level==\"advanced\"",
+      "style_list": [
+        "margin-top: -20px"
+      ],
+      "_nested_name": "intro_part1_advanced",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "@local.sb_level==\"advanced\"",
+            "matchedExpression": "@local.sb_level",
+            "type": "local",
+            "fieldName": "sb_level"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.sb_level": [
+          "condition"
+        ]
+      }
+    },
+    {
+      "name": "math_start",
+      "value": "**Math Themes and Words**",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "math_start"
+    },
+    {
+      "type": "text",
+      "name": "intro_math_1",
+      "value": "@local.math_start @local.intro_math",
+      "_translations": {
+        "value": {}
+      },
+      "condition": "@local.intro_math",
+      "style_list": [
+        "margin-top: -20px"
+      ],
+      "_nested_name": "intro_math_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.math_start @local.intro_math",
+            "matchedExpression": "@local.math_start",
+            "type": "local",
+            "fieldName": "math_start"
+          },
+          {
+            "fullExpression": "@local.math_start @local.intro_math",
+            "matchedExpression": "@local.intro_math",
+            "type": "local",
+            "fieldName": "intro_math"
+          }
+        ],
+        "condition": [
+          {
+            "fullExpression": "@local.intro_math",
+            "matchedExpression": "@local.intro_math",
+            "type": "local",
+            "fieldName": "intro_math"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.math_start": [
+          "value"
+        ],
+        "@local.intro_math": [
+          "value",
+          "condition"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "intro_part3",
+      "value": "**Read, Talk, and Have Fun!** The supplied questions and comments are just the beginning. \n\n1. For the first reading, read the red questions and comments. \n2. For the second reading, read the blue questions and comments. \n3. For the third reading, read the green questions and comments. \n\nAfter that, follow your child's interests and let your discussions go in fun directions.",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "margin-top: -20px"
+      ],
+      "_nested_name": "intro_part3"
+    },
+    {
+      "type": "image",
+      "name": "page_end",
+      "value": "EFMStorybooks/EFM-SB-0-PageDivider.svg",
+      "_translations": {
+        "value": {}
+      },
+      "style_list": [
+        "margin-top: -4px"
+      ],
+      "_nested_name": "page_end"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_high_level_sheets.xlsx"
+}

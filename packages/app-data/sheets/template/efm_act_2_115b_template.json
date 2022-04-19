@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_115b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Choose one of the Shape Cards - this is your starting card. Create a sequence of 4 to 8 cards that can legally be played in sequence on that starting card – each card must have two properties in common with the previous card.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM115MatchingPuzzle.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "When you’re done, separate the starting card and shuffle the other cards. The challenge is to take the shuffled cards and place them in a series of legal moves on the starting card.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

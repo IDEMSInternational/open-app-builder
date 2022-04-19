@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_490a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "The area of a rectangle is its length times its width. That dry statement can be made tangible to your child in at least two ways. The first is to show a rectangle broken into a collection of squares.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM490RectangleArea.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "220px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "The second is to use number shapes to show how a quantity, such as 12, can be placed into an array - 3 by 4, 2 by 6, or 1 by 12. Playing with rectangle areas gives us a fun arena in which to play around with multiplication and factoring!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

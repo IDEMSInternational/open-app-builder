@@ -1,0 +1,422 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_activity_template",
+  "status": "released",
+  "rows": [
+    {
+      "name": "efm_activity",
+      "value": "@@fields.current_activity",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_activity",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@@fields.current_activity",
+            "matchedExpression": "@fields.current_activity",
+            "type": "fields",
+            "fieldName": "current_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_activity": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "efm_activity_name",
+      "value": "@local.efm_activity.title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_activity_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity.title",
+            "matchedExpression": "@local.efm_activity.title",
+            "type": "local",
+            "fieldName": "efm_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "efm_activity_type_name",
+      "value": "@local.efm_activity.type_name",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_activity_type_name",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity.type_name",
+            "matchedExpression": "@local.efm_activity.type_name",
+            "type": "local",
+            "fieldName": "efm_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity.type_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "template_text",
+      "value": "_template",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "template_text"
+    },
+    {
+      "name": "efm_activity_body_template",
+      "value": "@local.efm_activity.id@local.template_text",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_activity_body_template",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity.id@local.template_text",
+            "matchedExpression": "@local.efm_activity.id",
+            "type": "local",
+            "fieldName": "efm_activity"
+          },
+          {
+            "fullExpression": "@local.efm_activity.id@local.template_text",
+            "matchedExpression": "@local.template_text",
+            "type": "local",
+            "fieldName": "template_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity.id": [
+          "value"
+        ],
+        "@local.template_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "next_activity",
+      "value": "@local.efm_activity.next_act",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "next_activity",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity.next_act",
+            "matchedExpression": "@local.efm_activity.next_act",
+            "type": "local",
+            "fieldName": "efm_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity.next_act": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "prev_activity",
+      "value": "@local.efm_activity.prev_act",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "prev_activity",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity.prev_act",
+            "matchedExpression": "@local.efm_activity.prev_act",
+            "type": "local",
+            "fieldName": "efm_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity.prev_act": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "title",
+      "value": "– @local.efm_activity_name –",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "text_align": "center",
+        "style": "large emphasised"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "– @local.efm_activity_name –",
+            "matchedExpression": "@local.efm_activity_name",
+            "type": "local",
+            "fieldName": "efm_activity_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "subtitle",
+      "value": "@local.efm_activity_type_name",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "text_align": "center",
+        "style": "small"
+      },
+      "style_list": [
+        "margin-top: -25px"
+      ],
+      "_nested_name": "subtitle",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity_type_name",
+            "matchedExpression": "@local.efm_activity_type_name",
+            "type": "local",
+            "fieldName": "efm_activity_type_name"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity_type_name": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "buttons",
+      "rows": [
+        {
+          "type": "button",
+          "name": "prev_button",
+          "value": "Previous",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_activity",
+                "@local.prev_activity"
+              ],
+              "_raw": "click | set_field:current_activity:@local.prev_activity",
+              "_cleaned": "click | set_field:current_activity:@local.prev_activity"
+            },
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "force_reload"
+              ],
+              "_raw": "click | emit:force_reload",
+              "_cleaned": "click | emit:force_reload"
+            }
+          ],
+          "parameter_list": {
+            "style": "short",
+            "text_align": "center"
+          },
+          "style_list": [
+            "flex:100"
+          ],
+          "_nested_name": "buttons.prev_button",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@local.prev_activity",
+                      "matchedExpression": "@local.prev_activity",
+                      "type": "local",
+                      "fieldName": "prev_activity"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field:current_activity:@local.prev_activity",
+                    "matchedExpression": "@local.prev_activity",
+                    "type": "local",
+                    "fieldName": "prev_activity"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field:current_activity:@local.prev_activity",
+                    "matchedExpression": "@local.prev_activity",
+                    "type": "local",
+                    "fieldName": "prev_activity"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.prev_activity": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "spacer",
+          "parameter_list": {
+            "text_align": "center",
+            "style": "small"
+          },
+          "style_list": [
+            "flex: 250"
+          ],
+          "_nested_name": "buttons.spacer"
+        },
+        {
+          "type": "button",
+          "name": "next_button",
+          "value": "Next",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_activity",
+                "@local.next_activity"
+              ],
+              "_raw": "click | set_field:current_activity:@local.next_activity",
+              "_cleaned": "click | set_field:current_activity:@local.next_activity"
+            },
+            {
+              "trigger": "click",
+              "action_id": "emit",
+              "args": [
+                "force_reload"
+              ],
+              "_raw": "click | emit:force_reload",
+              "_cleaned": "click | emit:force_reload"
+            }
+          ],
+          "parameter_list": {
+            "style": "short",
+            "text_align": "center"
+          },
+          "style_list": [
+            "flex: 100"
+          ],
+          "_nested_name": "buttons.next_button",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "@local.next_activity",
+                      "matchedExpression": "@local.next_activity",
+                      "type": "local",
+                      "fieldName": "next_activity"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field:current_activity:@local.next_activity",
+                    "matchedExpression": "@local.next_activity",
+                    "type": "local",
+                    "fieldName": "next_activity"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field:current_activity:@local.next_activity",
+                    "matchedExpression": "@local.next_activity",
+                    "type": "local",
+                    "fieldName": "next_activity"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.next_activity": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "buttons"
+    },
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "@local.efm_activity_body_template",
+      "rows": [],
+      "_nested_name": "activity_body",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity_body_template",
+            "matchedExpression": "@local.efm_activity_body_template",
+            "type": "local",
+            "fieldName": "efm_activity_body_template"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity_body_template": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"
+}

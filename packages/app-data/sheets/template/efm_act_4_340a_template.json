@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_340a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a Tic-Tac-Toe board and tokens with the numbers from 1 to 9 on them. One player has the odd numbers and the other the even ones. Players take turns placing a token, with the Odd player going first. The first player to complete 3 in a row whose sum is 15 wins. One variation is to keep going, fill all the squares, and see which player made the most 15’s. \n\nA related game is to have an attacker and a defender. The attacker goes first (the first move cannot be a 5 in the center) and tries to get 15, and the defender tries to stop the attacker.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

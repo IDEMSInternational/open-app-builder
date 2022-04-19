@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_365c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a deck with the  picture cards removed – you can leave in the Queens and use them as 0’s if you like. Before play starts, agree on a set of “poison” numbers for the round. The poison numbers can be any set of numbers you want your child to practice with. Some examples are: \n\n* even numbers\n* odd numbers\n* square numbers (1, 4, 9, 16)\n* prime numbers (2, 3, 5, 7, 11, 13, 17, 19)\n* multiples of a number, such as 3\n\nEach player starts with three cards. The first player discards a number that is not a poison number and replaces it from the draw pile. The next player discards a number so that the sum of the first two numbers is not a poison number and replaces the discard from the draw pile. The next player plays so that the sum of the three cards is not a poison number, and so on. The first player unable to discard a legal card loses. This game works equally well with more than two players.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

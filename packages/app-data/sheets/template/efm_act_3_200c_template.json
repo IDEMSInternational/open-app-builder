@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_200c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Using something small, such as pieces of food, challenge your child to make shapes with a given number of pieces. These shapes can be rectangles, triangles, squares, or anything fun.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM200NumberShapes.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Investigate which numbers are even and odd by using number shapes. For any number, ask your child to put the pieces into two rows that have the same number in them. This is something you would do if you were splitting the food evenly between the two of you. For which numbers does it work out evenly?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        },
+        {
+          "name": "image_bottom_1",
+          "value": "EFM200SquareOfOddNumbers.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1"
+        },
+        {
+          "name": "image_bottom_1_max_width",
+          "value": "220px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1_max_width"
+        },
+        {
+          "name": "text_bottom_2",
+          "value": "Once your child knows what an odd number is, investigate adding up the first few odd numbers as shown in this diagram. Amazingly, the sum of the first odd numbers is always a square number.\n\nYour child may notice that for some numbers, such as 12, there are different shapes of rectangles that can be made, and that for other numbers, such as 7, only flat rectangles can be made. If you want to, you can tell your child that numbers such as 5 and 7 are called prime numbers because there is no  way to break them into normal rectangles.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

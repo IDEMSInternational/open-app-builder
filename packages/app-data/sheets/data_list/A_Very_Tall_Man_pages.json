@@ -1,0 +1,333 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "A_Very_Tall_Man_pages",
+  "status": "released",
+  "data_list_name": "A_Very_Tall_Man_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-1.jpg",
+      "story_text": "His hoe was too short.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "His hoe was too short."
+        },
+        "annotation_1": {
+          "eng": "Point out the vivid colors -- the yellow sun, the blue sky, the green bushes, and the red shoes."
+        },
+        "annotation_2": {
+          "eng": "Count the two bushes and the two red shoes with your child."
+        },
+        "annotation_3": {
+          "eng": "Point out how uncomfortable the man looks bending over so far to hoe."
+        }
+      },
+      "annotation_1": "Point out the vivid colors -- the yellow sun, the blue sky, the green bushes, and the red shoes.",
+      "annotation_2": "Count the two bushes and the two red shoes with your child.",
+      "annotation_3": "Point out how uncomfortable the man looks bending over so far to hoe."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-2.jpg",
+      "story_text": "His doorway was too low.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "His doorway was too low."
+        },
+        "annotation_1": {
+          "eng": "Comment that the doorway is too low -- the man is taller than the door."
+        },
+        "annotation_2": {
+          "eng": "Look how much the man stoops down to talk to the boy -- he is much taller than the boy, and the boy is much shorter than the man!"
+        },
+        "annotation_3": {
+          "eng": "Count the bushes together."
+        }
+      },
+      "annotation_1": "Comment that the doorway is too low -- the man is taller than the door.",
+      "annotation_2": "Look how much the man stoops down to talk to the boy -- he is much taller than the boy, and the boy is much shorter than the man!",
+      "annotation_3": "Count the bushes together."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-3.jpg",
+      "story_text": "His bed was too short.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "His bed was too short."
+        },
+        "annotation_1": {
+          "eng": "The man's legs stick far out of the bed. He is much longer than his bed."
+        },
+        "annotation_2": {
+          "eng": "Point to the bird and the boy and how puzzled they look by the short bed."
+        },
+        "annotation_3": {
+          "eng": "Count together the toes on each of the man's feet."
+        }
+      },
+      "annotation_1": "The man's legs stick far out of the bed. He is much longer than his bed.",
+      "annotation_2": "Point to the bird and the boy and how puzzled they look by the short bed.",
+      "annotation_3": "Count together the toes on each of the man's feet."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-4.jpg",
+      "story_text": "His bicycle was too short.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "His bicycle was too short."
+        },
+        "annotation_1": {
+          "eng": "The tall man is much too big for his bicycle. Look how far his leg sticks out!"
+        },
+        "annotation_2": {
+          "eng": "Point out that the bird has changed color from yellow to orange!"
+        },
+        "annotation_3": {
+          "eng": "Where is the boy in this picture?"
+        }
+      },
+      "annotation_1": "The tall man is much too big for his bicycle. Look how far his leg sticks out!",
+      "annotation_2": "Point out that the bird has changed color from yellow to orange!",
+      "annotation_3": "Where is the boy in this picture?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-5.jpg",
+      "story_text": "This man was too tall!\n\nWhat can he do to solve his problem and fit into his world?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This man was too tall!\n\nWhat can he do to solve his problem and fit into his world?"
+        },
+        "annotation_1": {
+          "eng": "Maybe the man is not too tall -- maybe he just needs to solve his problems!"
+        },
+        "annotation_2": {
+          "eng": "The man has a problem and he is feeling sad about it."
+        },
+        "annotation_3": {
+          "eng": "Notice that this man is much taller than the other people."
+        }
+      },
+      "annotation_1": "Maybe the man is not too tall -- maybe he just needs to solve his problems!",
+      "annotation_2": "The man has a problem and he is feeling sad about it.",
+      "annotation_3": "Notice that this man is much taller than the other people."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-6.jpg",
+      "story_text": "He made a very long handle.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He made a very long handle."
+        },
+        "annotation_1": {
+          "eng": "He solved his problem with the hoe! He made his hoe bigger!"
+        },
+        "annotation_2": {
+          "eng": "Which one is bigger, the hoe or the man?"
+        },
+        "annotation_3": {
+          "eng": "Do you see the man's red shoes? They disappeared!"
+        }
+      },
+      "annotation_1": "He solved his problem with the hoe! He made his hoe bigger!",
+      "annotation_2": "Which one is bigger, the hoe or the man?",
+      "annotation_3": "Do you see the man's red shoes? They disappeared!"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-7.jpg",
+      "story_text": "He made very high door frames.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He made very high door frames."
+        },
+        "annotation_1": {
+          "eng": "Which is higher -- the door or the man?"
+        },
+        "annotation_2": {
+          "eng": "The sun in the sky is round. Point to round things where you are."
+        },
+        "annotation_3": {
+          "eng": "Which is longer and which is shorter -- the man's legs or his upper body?"
+        }
+      },
+      "annotation_1": "Which is higher -- the door or the man?",
+      "annotation_2": "The sun in the sky is round. Point to round things where you are.",
+      "annotation_3": "Which is longer and which is shorter -- the man's legs or his upper body?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-8.jpg",
+      "story_text": "He made a very long bed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He made a very long bed."
+        },
+        "annotation_1": {
+          "eng": "We can't see the man's feet now. His bed is longer than he is."
+        },
+        "annotation_2": {
+          "eng": "The man looks very comfortable and happy in his big bed."
+        },
+        "annotation_3": {
+          "eng": "Look at how small the boy looks next to the bed!"
+        }
+      },
+      "annotation_1": "We can't see the man's feet now. His bed is longer than he is.",
+      "annotation_2": "The man looks very comfortable and happy in his big bed.",
+      "annotation_3": "Look at how small the boy looks next to the bed!"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-9.jpg",
+      "story_text": "He bought a very high bicycle.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He bought a very high bicycle."
+        },
+        "annotation_1": {
+          "eng": "Notice that the boy and the bird are inside the basket now."
+        },
+        "annotation_2": {
+          "eng": "Everyone looks very happy now that the man's things are the right size."
+        },
+        "annotation_3": {
+          "eng": "Point to and name the many different colors on this page."
+        }
+      },
+      "annotation_1": "Notice that the boy and the bird are inside the basket now.",
+      "annotation_2": "Everyone looks very happy now that the man's things are the right size.",
+      "annotation_3": "Point to and name the many different colors on this page."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-10.jpg",
+      "story_text": "He sat on a very high chair. He ate with a very long fork.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He sat on a very high chair. He ate with a very long fork."
+        },
+        "annotation_1": {
+          "eng": "Count out with your child many of the things in the picture -- such as fingers, legs, steps, and tines."
+        },
+        "annotation_2": {
+          "eng": "Look at how high the boy's chair is! Would you be scared sitting so high?"
+        },
+        "annotation_3": {
+          "eng": "Now that all his things are the right size for him, the man is not too tall at all!"
+        }
+      },
+      "annotation_1": "Count out with your child many of the things in the picture -- such as fingers, legs, steps, and tines.",
+      "annotation_2": "Look at how high the boy's chair is! Would you be scared sitting so high?",
+      "annotation_3": "Now that all his things are the right size for him, the man is not too tall at all!"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-11.jpg",
+      "story_text": "He left his house and moved to a big house in the forest, where lived for many years.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "He left his house and moved to a big house in the forest, where lived for many years."
+        },
+        "annotation_1": {
+          "eng": "Count the pineapples, bags, and trees with your child."
+        },
+        "annotation_2": {
+          "eng": "Count the rungs on the ladder with your child."
+        },
+        "annotation_3": {
+          "eng": "Notice that the bird is yellow again!"
+        }
+      },
+      "annotation_1": "Count the pineapples, bags, and trees with your child.",
+      "annotation_2": "Count the rungs on the ladder with your child.",
+      "annotation_3": "Notice that the bird is yellow again!"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-AVTM-12.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

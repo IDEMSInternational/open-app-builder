@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_95b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Cut out large shapes from big pieces of paper (use color paper if you have it) and place the shapes on the floor. At first, use simple shapes such as a triangle, a rectangle, a square, a pentagon, a hexagon, and an octagon. You can find patterns for these online or in the EFM Printables file. To create more running around, include more than one of each shape. \n\nAs your child gets better at this, include variations of these shapes - include a right triangle, an obtuse triangle, an acute triangle, a kite, a parallelogram (diamond), and some more unusual shapes.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM95ColoredShapesonFloor.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "320px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Give  your child some shape information and challenge them to run to the shape, or shapes, that satisfy that information. For a very young child, show them a drawing and challenge them to find the matching shape on the floor, and maybe name it when they do. For a slightly older child, you could name the shape and challenge them to find it.\n\nAdd aspects to this by asking for shapes all of whose sides are the same length, or all of whose angles are the same (or all different), or whose opposite sides (or angles) are the same size. \n\nAs your child gets experienced, playfully mix in some impossible requests such as a triangle with two right angles or a quadrilateral with exactly three right angles.\n\nOne useful variation in a lot of activities is to reverse your roles — have your child make up questions and you find the shapes. Make a \"mistake\" sometimes and have your child explain to you what you did wrong.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

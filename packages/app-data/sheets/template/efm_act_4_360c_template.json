@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_360c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Traditionally, the target number is 21, but for a young child use a smaller number such as 12. Adjust the contents of the playing cards for your child. For example, for a very young child this might be the cards 1 to 4 in the four suits. \n\nTwo cards are dealt to each player - one is face up and one is face down (the receiving player is the only one to look at the face down card). During a turn, the player has the option of asking for one more card until the player decides to stop. After every player has had a turn, the players compare the sum of their cards. The player with the sum closest to the target without going over wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

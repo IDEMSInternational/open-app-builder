@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_380c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "All that skip counting practice your child did paid off in getting much better at addition and subtraction. It also will be a big help in getting started with multiplication.\n\nAlthough skip counting is not the fastest way to find a result, it is reliable. Suppose your child needs to find 7 x 3. Do this by skip counting by 3’s seven times or skip counting by 7’s three times.\n\nYour child will eventually memorize these facts, but skip counting is a handy method for now.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

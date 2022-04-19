@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_230b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Each player draws a staircase with anywhere from 4 to 10 steps (more steps for older players).",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM230OrderedSteps.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Create a number using Number Cards numbered from 0 to 9. The first selection will be from the cards 0 to 1, and this is the tens digit. Then select a ones digit from all the cards. The two digits together form the number. If possible, the player must place this number on their steps. The first player to fill their steps in increasing order from bottom to top wins. Make it easier by allowing neighboring steps to have the same value.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

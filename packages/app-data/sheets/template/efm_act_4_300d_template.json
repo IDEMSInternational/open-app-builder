@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_300d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "These puzzles show how compensation creates easier problems. The challenge is to find a path that connects all the islands with the same answer. Two islands can only connect if their problem’s numbers differ by 1. Only some of the islands will be on the path.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM300IslandHoppingCompensation.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Make these puzzles by starting with about ten empty circles with some connections. Identify a path from one edge of the islands to the other. Along that path, put in problems whose numbers differ from each other by one. In the nearby islands, put problems with small changes that have different answers.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_340b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "There are many versions of this game. The idea is always the same: deal a grid of cards face down, say 4 by 4, and the players take turns turning over two cards. If the cards match, the player keeps the cards, two more cards are dealt into the empty spaces, and the player gets another turn. If the cards don’t match, the cards are turned back over and the player’s turn ends. The player with the most cards wins.\n\nHere are other ideas for how cards can match:\n\n* Use a target sum - two cards match if their sum is the target.\n* Use a target difference - two cards match if their difference is the target.\n* Use cards with addition or subtraction problems together with cards that have the answers - cards match if the problem matches the answer.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_90c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "In addition to putting a number line on a piece of paper on a wall, create a number line using a string. Tie or clip a section of string between two objects. Use paper clips to attach sliding Number Cards from 0 to 10 along the string in order.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM90StringNumberLine.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Here are some things you can do with this. You and your child will probably discover many more.\n* Switch two numbers and have your child find the mistake.\n* Leave out a number and have your child find which one is missing.\n* Practice adding. For example, to do 4 + 2, slide over the first 4 numbers and then slide over the next 2.\n* Practice subtracting. To do 6 - 2, slide over to the left the first 6 cards and then slide 2 of those back to the right.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

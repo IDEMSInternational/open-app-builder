@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_235b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use two dice or two sets of number cards going from 1 to 6. Each player has 6 tokens – animal tokens are perfect for this game if you have them. Each player also has a piece of paper with boxes numbered from 0 to 5. Each player decides where to put their 6 tokens – it is okay to put more than one token in a box.\n \nDuring a player’s turn, two numbers are created by rolling the dice or picking two cards, and the difference of those numbers is used. A player can free one of their tokens if they have one in that box. The first player to rescue all their tokens wins.\n\nAlternatively, use cards numbered from 1 to 10 and have 10 boxes numbered from 0 to 9. \n\nAn important part of this game is choosing good boxes to place tokens in to start with. With practice, your child will realize that some boxes are more likely to occur than others.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

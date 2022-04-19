@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_130a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "This is a magic trick for practicing addition and subtraction. Do this slowly enough so that your child will get a chance to see what is going on. \n\nFor addition, count the number of raised fingers on your left hand, say 3. Count the number of raised fingers on your right hand, say 1. Make sure you pick two numbers that add up to 5 or less. Now, bring the two hands together and poof - the fingers on your right hand are transferred to the left hand, where there are now 4 fingers raised. Magic! Summarize by saying “3 fingers plus 1 more finger creates 4 fingers. Tada!”",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM130Fingers3plus1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "For subtraction, raise some fingers on your left hand, say 4 of them. Have your right hand reach over and grab some of the fingers, say 1 of them. Presto, there will be 3 fingers left raised on the left hand and 1 raised on the right hand. Verbally summarize this saying that 4 take away 1 gives three, or you can say that you have broken 4 into two pieces which are 3 and 1. The latter wording emphasizes the concept of number bonds, which are pairs of numbers that add up to a given total.\n\nOccasionally, throw in the following special cases. For addition, let one or both of the hands have 0 fingers raised and show nothing changes when adding 0. For subtraction, subtract all the fingers so none are left over, and sometimes subtract none of the fingers to show that nothing changes.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

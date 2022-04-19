@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_460b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Start with any number, say 20. Let your child decide whether to go first or second. During their turn, a player may subtract any divisor of the current number from the number. The player forced to 0 loses.\n\nAfter your child becomes familiar with the game, encourage them to look for the remarkably simple strategy for playing it - once they discover it, see if they can explain why it works.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

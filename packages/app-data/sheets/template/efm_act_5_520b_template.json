@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_520b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Choose a target number, say 100. Each player picks up five random cards from 0 to 9. Two 2-digit numbers are made out of these numbers, the fifth card is unused. The two numbers are added and the player closest to the target wins a point for that round. The highest number of points after a fixed number of rounds wins.\n\nOne option is to use three-digit numbers, a target number of 1000, and each player receives seven cards. Another option is to use subtraction with a smaller target number.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

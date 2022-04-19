@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_480d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Filling in a standard multiplication table is boring, and children quickly realize they can fill it out using addition rather than multiplication. To really practice multiplication, as well as practicing problem solving and factoring, create a mixed-up multiplication table for your child.\n\nMake these tables by moving the rows and columns around, and leaving out most of the headings and  entries in the middle. Here is an example using headings of 2 through 9:",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM480TurningTheTables.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Solve this by starting with the distinctive entries. The 20 forces its row to be multiplying by 4, and then the 36 makes its column be 9. The 49 forces its column and row to be multiplying by 7. The 9 forces its column and row to be multiplying by 3. Now the 12 must be in the column for 4. Continue the detective work in this way and fill in the entries as the headings are discovered.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

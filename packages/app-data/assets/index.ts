@@ -1,5 +1,4 @@
 export const UNTRACKED_ASSETS = [];
-
 export const ASSETS_CONTENTS_LIST = {
   "abacus.jpg": {
     size_kb: 188.3,

@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_30c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Patterns are everywhere! See how many you can make with your child. Play with:\n\n1. Movement patterns: stepping, jumping, waving, nodding\n2. Sound patterns: clapping, knee slapping, tongue clicking, stamping\n3. Loudness patterns: soft, medium, loud\n4. Visual patterns: color, shape, size\n\nPlayer one: makes a pattern and challenges the other person to repeat it. (Step, clap, jump)\n\nPlayer two: can repeat and eventually add to the pattern, challenging player one to repeat it. (Step, clap, jump, touch their nose)",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM30ShapePattern.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "As you get better, challenge each other to repeat longer and longer patterns from memory. \n\nYou can use a pattern as a secret code for getting through a passageway. You can also make necklaces with your child by taking string and threading on beads or bits of food to create repeating patterns. Walking hand in hand, you can use squeeze patterns (short short long, etc.).\n\nFor older children, create puzzles by drawing a pattern of shapes on paper. One person establishes a pattern and then leaves gaps in the sequence for the other to fill in.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

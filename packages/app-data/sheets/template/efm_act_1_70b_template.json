@@ -1,0 +1,82 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_70b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Choose two items that are somewhat similar. How are they similar? How are they different?\n\nAllow your child lots of freedom to come up with unusual reasons. Sometimes let your child pick the two items to challenge you to come up with the similarities and differences.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_side_1_left",
+          "value": "EFM70ForkGold.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 30,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "90px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "For example, pick a spoon and a fork. They are similar because you eat with them and they are both kept in the kitchen. They are different because one is pointy and one is round.\n\nOne variation is to choose an item and ask which things in the room are similar to it and which things are very different from it.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "image_side_1_right",
+          "value": "EFM70SpoonGold.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right"
+        },
+        {
+          "name": "image_side_1_right_flex",
+          "value": 36,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_flex"
+        },
+        {
+          "name": "image_side_1_right_max_width",
+          "value": "110px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_210c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a small collection of Number Cards involving some small quantities. Start with combinations of three cards and work your way up to more cards. \n\nSuppose the numbers are 1, 2, and 3. The question is: If you randomly pick two cards and add them, are you more likely to get an even or odd number? Count how many ways there are of getting an odd number versus an even number. For example, in the case of using 1, 2, and 3, there is one way to get an even number (1 + 3) and two ways to get an odd number (1 + 2, 2 + 3). So the odd number sums are more likely.\n\nTo make a game of it, let one player be Even and the other player be Odd. See who has the most successes after a dozen trial runs.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

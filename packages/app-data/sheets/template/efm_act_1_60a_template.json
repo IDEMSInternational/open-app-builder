@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_60a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_middle_1",
+          "value": "EFM60HomeStoreItems.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "320px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Kids love to play store! Create tags with silly prices that are small numbers. Put these price tags on things in your home (toys, food, books, etc.) Give your child pretend money to spend on things in the store. After each “purchase,” have your child calculate how much money is left.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

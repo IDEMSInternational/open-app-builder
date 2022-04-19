@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_230a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use one deck (two if there are several players) of cards that go from 0 to 20. Each player is dealt four cards face up in the order they are dealt, and the remaining cards form a draw pile.\n\nYou can either play that a player must select one of their existing cards in advance or, the friendlier version, that the card can be selected after seeing the new card. Either way, one of their cards is replaced by the top card of the pile and the replaced card is put on the draw pile bottom.\n\nThe first player to get their cards in order wins. Make this easier by allowing duplicate cards. Make this harder by using more cards in a hand.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

@@ -1,0 +1,58 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_140b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_side_1_left",
+          "value": "EFM140BagGame.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 60,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "You and your child each pretend to have a bag with some number of things. One person creates a story such as: “Your bag has 3 raisins and mine has one more. How many do I have?” After your child gets comfortable with this, let your child come up with the question some of the time - this is often great fun for them, especially if you make the occasional “mistake.”",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "These stories can get more elaborate with experience. For example, the story could be “I have two fewer cookies than you do, and together we have six cookies. How many cookies do you have?” Another example, “You have twice as many candies as I do, and together we have nine pieces. How many pieces do you have?”\n\nThe use of bags and pieces of food can be replaced by the idea of a fish bowl with two (or more) kinds of fish, or with any other imagery that appeals to your child. For a fish bowl, you could create a story such as “There are seven fish in the bowl, and there is one more goldfish than there are tetras. How many goldfish are there?”",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

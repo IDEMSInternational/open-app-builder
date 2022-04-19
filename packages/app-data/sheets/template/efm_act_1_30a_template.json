@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_30a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_top_1",
+          "value": "EFM30Socks.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_top_1"
+        },
+        {
+          "name": "image_top_1_max_width",
+          "value": "240px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_top_1_max_width"
+        },
+        {
+          "name": "text_top_1",
+          "value": "Let’s sort laundry! \n\nWhat a great way to find properties that make things the same or different. \n1. Sort by colors to be washed together.\n2. Sort by type (and size) when clean.\n3. Talk about why socks make a pair.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

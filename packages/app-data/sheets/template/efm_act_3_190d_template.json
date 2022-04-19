@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_190d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "This version of the Memory Challenge game uses a Number Card deck from 0 to 20 with the rule that two numbers match if they are 10 apart. If you also have cards from 0 to 20 that use expanded form or ten frames, you should use those too. Deal a 3 by 4 grid of cards out on the table, all face-down.\n\nPlayers take turns flipping two cards face-up. If the two cards are ten apart, the player gets to keep the cards, replaces the two cards from the draw pile, and continues their turn. If the cards do not match, the player flips the cards back over and ends their turn.\n\nThe game ends when the last pair of cards is taken. The player with the most cards wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

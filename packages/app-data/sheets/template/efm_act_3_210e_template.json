@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_210e_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Two players agree on a target number, say 20, set their running total to 0, and choose who will go first. A turn starts by generating a number using one die or the sum of two dice. If the number is odd, the player must double it. If the number is even, the player may take half of it as many times as is desired as long as the numbers being halved are even. The player then adds that final result to the running total as long as that does not put the total over the target - if the final result cannot be used, the turn is skipped. The player who brings the total exactly to the target number wins. \n\nThere are a few variations. You can allow the player not to change the initial number. You can allow halving at most once. Finally, you can practice subtracting by starting at the target number and subtracting your way down to 0.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

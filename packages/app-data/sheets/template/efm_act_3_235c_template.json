@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_235c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Make a sheet of paper with 12 rows. In each row, put 8 squares. The leftmost column of squares has the numbers from 1 to 12 written in the squares. Put 1 token on each of the 12 numbers. Start rolling a pair of dice. After each roll, move the token for the sum of the dice one square to the right. The goal for each token is to be the first to get all the way to the right across the page.\n\nLet your child come up with some questions to investigate. Some natural questions are:\n\n*Which token will win and why? \n*Which tokens do well and which ones do poorly? \n*Which token is the worst?\n*How will the winners change if the rows are changed to have fewer squares or more squares?\n\nHave your child explain their ideas about the answers to these questions, and then investigate their ideas by running experiments.\n\nAdd a competitive element to this by guessing which token will win before the round starts.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

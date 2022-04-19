@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_470d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use the lever principle to practice multiplication and addition. The principle states that the force exerted by a mass on one side of a lever is equal to the mass times its distance from the pivot point, the fulcrum. The forces on one side from several masses add up to give the total force. The total forces on the two sides must be equal for the lever to be in balance.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM470LeverBalance.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "You have a 3-unit weight and a 5-unit weight to put on opposite sides of the fulcrum. Where should they be put to balance? The answer to this can be distances 5 and 3, but it can also be 10 and 6, or even larger answers like 15 and 9.\n\nIf you have a 3-unit and a 5-unit weight to put on one side of a lever, which weights can you put at which distances on the other side? What if the two weights are on different sides of the lever? This question continues the questions on the Make It Count page at the end of Chapter 4.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_260b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "The players agree on a target. A useful target is 10, but other numbers are fine. Each player is dealt five cards from a deck without face cards. Players then find as many ways as they can to get the target total using addition and/or subtraction with any of their cards to reach the target. \n\nDo this as a group activity where the whole group is given five cards to use to cooperatively come up with ways to achieve the total.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

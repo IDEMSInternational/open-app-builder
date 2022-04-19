@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_460a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Have a board of numbers from 1 to 30. There are two kinds of tokens – a single token reserved for “the last move,” and a pile of other tokens. \n\nThe first player gets to pick any number and cover it with the last move token. After that, a player replaces the last move token with the other type of token and moves the last move token to any number that is a factor or multiple of the number from the last move. The losing player is the one forced to cover the number 1. \n\nAs children get better at this game, they will discover rules they need to follow governing reasonable first moves. The most basic rule is that the first move cannot be on a prime number in the upper half of the numbers.\n\nAdjust the range of numbers for the skill level of the players - you can use 1 to 24, 1 to 48, or even 1 to 60.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

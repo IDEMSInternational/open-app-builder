@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_470a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Have a collection of numbered cards from 1 to 25, or whatever range your child is comfortable with. A card is selected at random and used as everyone’s target number. The card is returned to the deck. Each player is dealt five cards to be used, in any order and with any operations, to get as close as possible to the target number. The closest player wins the round.\n\nA different way to score gives a player twice as many points as the number of cards they use to reach the target; a player receives 5 points for hitting the target with help; and a player receives 6 points for helping someone hit the target.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

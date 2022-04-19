@@ -1,0 +1,58 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_130b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "It is useful for your child to easily recognize numbers of objects. Practice this in two ways. One way is to use Number Cards with ten frames. Pick a card at random and playfully see if your child can recognize the quantity. For variety, have your child quiz you sometimes.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_side_1_left",
+          "value": "EFM130FingerTenFrame.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 75,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "150px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "The other way is to use fingers. Show some fingers on one or both hands and have your child recognize the total count. When two hands are used for numbers over five, one of the hands should have 5 fingers raised - that way it looks like a ten frame.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

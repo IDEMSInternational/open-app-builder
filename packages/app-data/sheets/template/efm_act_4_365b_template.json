@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_365b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use three dice and a board with three rows of five squares numbered from 1 to 15 . A player rolls the dice and uses addition and subtraction to combine the three numbers to match one of the numbers on the board. The matched number is crossed out and claimed. If a player can’t find a match, the other player gets a chance to use the numbers and claim the result - in any event, the other player gets the next turn. The winner is the one with the most claimed numbers after a fixed number of turns.\n\nA smaller version would use two dice with the numbers from 1 to 10, and a larger version would use 4 dice and the numbers from 1 to 20.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

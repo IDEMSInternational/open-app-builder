@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_350c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Select 20 numbers from 0 to 99. Write those numbers on pieces of paper (cards). For each of those numbers, write an expanded form of that number on a card. For example, create 50 + 3 for 53, 30 + 0 for 30, and 0 + 7 for 7. Take those two decks of 20 cards and shuffle them together. Now play the Memory Challenge game as usual, where matches occur when a regular number is paired with its expanded form.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_100b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "The game of dominoes has a long and rich history with many versions. If you play with others, make sure you all use the same rules before you start!\n\nThe game starts by placing all the tiles (bones) face down and mixed up - this is called the boneyard. Take seven tiles apiece for two players, and five tiles apiece for three or four players. \n\nPlay starts with the player with the highest double putting it on the table. If no one has a double, the game is started over. After this first play, play passes to the player to the right. \n\nA turn consists of placing a tile that matches one of the two available ends of the string of dominoes. If the placed domino is a double, place it crosswise to the previous domino. \n\nIf the player has no matching tile, the player is “blocked,” and there are two possible rules to use. One option is that the player’s turn is over. The other option is that the player must keep drawing tiles from the boneyard until there is a match (one version restricts this to a single draw whether or not there is a match). If the boneyard is emptied before there is a move, then play passes on to the next player.\n\nThe game is over when a player runs out of bones, or when all players are blocked. At this point, the winner is the player with the lowest total of dots on their remaining bones (which will be 0 if they have used up all their bones).",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM100DominoesGame.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "The winner’s score can be calculated in two ways. The traditional way is to use the sum of the dots on all the other players’ tiles. With this scoring, rounds are played until a player reaches a target of 50 or 100. For little ones just learning to count, a better scoring system is to let the winner have the score which is  the count of all the other players’ tiles. Alternatively, you can just have a winner and not bother with doing any scoring.\n\nOne variation, useful later when your child starts adding, is to change the rule for matching. In this variation, two tiles match if their numbers add up to six - if you are using dominoes up to a larger number, such as nine, matching numbers would add up to nine.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

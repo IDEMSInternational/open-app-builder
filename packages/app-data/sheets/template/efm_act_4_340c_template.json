@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_340c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Start with a number line that goes from 1 to some number, say 20. During a turn, choose two numbers and a result, none of which have been crossed out, and write down an addition or subtraction equation that involves those numbers. The two numbers in the equation are crossed off, and the result is circled. \n\nThe next player must use the result as one of the two numbers. If it is played competitively, the winner is the last player with a legal move. It can also be played cooperatively to see how few numbers are left untouched.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM340PairingDown.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_530c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "In which ways can you fill a square with other squares, where the other squares need not all be the same size? However, the side length of each square must be some whole number multiple of a fixed length. The question to investigate is: What are all the numbers of squares that are possible? If you know a number is possible, is there an easy way to describe how to do it?\n\nLet your child play with it over many days and don’t be in a hurry to get to the answer. Here is a diagram showing how 6 is possible.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM530SquaresInSquares.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "200px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "If your child enjoys exploring that question, explore variations on this theme. Suppose you only allow squares of certain sizes - such as 1 by 1, 2 by 2, and 3 by 3. Another direction to look at is  filling other figures with figures that have the same shape. For example, ask the same question for regular triangles (triangles with all their sides the same length). Some figures are interesting to investigate in this way, and some are not interesting at all - which ones?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

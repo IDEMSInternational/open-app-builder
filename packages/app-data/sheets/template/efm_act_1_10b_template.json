@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_10b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Story time is a wonderful chance to do a bit of math with your child during a cozy time. This builds up happy associations with math that encourage your child to see math as something pleasant to do together.\n\nAs you read a story with your child, talk about things in the pictures and in the story. If there are birds in the picture, point to the birds and count the birds to your child: “Look, there are 1, 2, 3 birds in the tree.” If there is a big yellow sun, point to the sun and say: “The sun is round and it is yellow. The wall of this room is also yellow. Point to something round in this room.”",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM10PairReadingOnBench.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "As your child gets older and understands more things, you can count together or you can ask your child to point to things you describe.\n\nWe have provided free story picture books as PDFs that you can download and read with your child. Each book has suggested comments or questions you can say to your child as you read the story. Use these same math interactions in your day-to-day activities with your child. For example, as you take a walk you can point to birds on a wire and count them together.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

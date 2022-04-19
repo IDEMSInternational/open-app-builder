@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_380a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Here’s a fun way to make a long addition problem into a much simpler problem. Use an adding problem that has several number bonds for 10. Instead of adding 3 + 8 + 9 + 4 + 7 + 6 + 2 the usual way from left to right, rearrange the terms to put the number bonds together. This example would become (3 + 7) + (8 + 2) + (4 + 6) + 9, which is just 10 + 10 + 10 + 9 = 39.\n\nOnce this is easy, include trickier problems such as 4 + 8 + 9 + 5 + 3, which can be rearranged as  (8 + 9 + 3) + 4 + 5 = 20 + 9 = 29. Have your child make a habit of looking for ways to simplify long expressions to make these calculations easier.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_400d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "A balance scale is a simple device for telling when two things have the same weight. The scale is usually supplied with a set of weights that are used to measure the weight of objects. There are some interesting investigations you can do if you restrict the weights you are allowed to use.\n\nFor example, if you only have weights that are 4 units and 7 units, then the things you can weigh exactly are the same as you found in the flower petal investigation.\n\nWhat happens if you have one weight each for each of the weights in a doubling progression of 1, 2, 4, 8, and 16? How many ways can you weigh something that weighs 13? What is the largest weight you can measure? This situation is related to the binary number system.\n\nWhat happens if the weights are the Fibonacci Numbers? Is there more than one way to weigh some weights? Find a restriction that would cause there to be only one way for each weight.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

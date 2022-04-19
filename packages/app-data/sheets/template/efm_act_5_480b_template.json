@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_480b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Start by identifying a group of numbers to use for the round. It can be odd numbers, or multiples of 3 together with numbers that have a 3 in them, or any group that provides good practice. \n\nTwo or more players take turns saying the numbers starting at 1. When a player has a number in the group, they must say “beep.” If they fail to say beep, or say beep for a wrong number, they’re out. The last player in wins!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

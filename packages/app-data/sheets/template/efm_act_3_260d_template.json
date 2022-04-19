@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_260d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Roll five dice to create numbers to work with. Roll two more dice to create a two-digit target number - the first die will be the tens place digit and the second die will be the ones digit. The challenge is to use addition, subtraction, and forming two-digit numbers to get as close as possible to the target number - the score is how close they come. You can either have a winner for each round, or you can add up the scores over several rounds and have an overall winner with the lowest score. Allow multiplication once your child knows how to double or triple numbers.\n\nSuppose the roll is: 4, 4, 3, 1, 3 and 22. One player might add and get 4 + 4 + 3 + 1 + 3 = 15. Another player might use 14 + 4 + 3 + 3 = 24. Someone else might have 34 - 14 + 3 = 23.\n\nSuppose the roll is: 1, 2, 5, 6, 4 and 63. A player gets close with 65 - 4 + 2 + 1 = 64. Another one gets it exactly with 56 + 4 + 2 + 1 = 63. A third says 52 + 6 + 4 + 1 = 63 also works. Have a chat about why some problems have lots of solutions.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

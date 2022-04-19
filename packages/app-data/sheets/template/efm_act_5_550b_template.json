@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_550b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "You are given some weights and a design for a mobile that has some attach points. The challenge is to put at most one weight per attach point so the mobile will balance along every arm. Assume the wires are weightless. Each arm in the mobile is a lever that needs balancing, so these puzzles are an extension of the Lever Balance puzzle given earlier in this chapter - practice those puzzles before starting these.\n\nStart with the simplest mobiles, which are just levers in the air. Here is a solution for putting the weights from 1 to 4 on this mobile to balance it.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM550Mobile1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "This works because 2 x 4 + 1 x 2 = 4 x 1 + 3 x 2.\n\nHere is a more complicated mobile. Use the total of the weights below it to balance each side of the top wire (1 + 3) x 3 = (4 + 2) x 2.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        },
+        {
+          "name": "image_bottom_1",
+          "value": "EFM550Mobile2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1"
+        },
+        {
+          "name": "image_bottom_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1_max_width"
+        },
+        {
+          "name": "text_bottom_2",
+          "value": "Go to the Chapter 5 Bonus Material for more examples and a longer discussion of mobiles.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

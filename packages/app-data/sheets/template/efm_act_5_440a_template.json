@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_440a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Each player has a sheet of paper with 7 rows and 3 columns. The columns are marked “10’s,” “1’s,” and “Running Total.” Each player’s running total starts at 0. Roll a die or pick a random playing card from 1 to 9. Each player chooses to use this number in their 1’s or 10’s column for the current row. For example, if it is a 4, this can become 4 or 40. The chosen number is added to the running total. A player that goes over the target of 100 “goes bust” and loses. If neither player goes bust, the one closer to 100 wins. \n\nThere are many options for this game:\n\n* Use a different target number.\n* Use fewer or more rows.\n* Don’t go bust if you go over the target. The closer player on either side wins.\n* Use a fourth column of 100’s to practice 3-digit numbers.\n* Practice subtraction by starting at the target number and subtract down to 0.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

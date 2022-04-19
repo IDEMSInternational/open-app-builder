@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_180c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Numbered circles are connected in an upward fashion, and every circle is the sum of all the circles directly below and connected to it. \n\nThe easiest puzzles have most of the circles filled in. For older children, there are variations that involve larger numbers and cleverer solutions.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM180SimpleShapeSums.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "One option is to use non-circular shapes. While the value in a circle may duplicate the value in some other circle or shape, the value in a non-circular shape must match the value in all other places with the same shape. For example, all squares have the same value. Use matching to practice adding twins, near twins, and halving.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        },
+        {
+          "name": "image_bottom_1",
+          "value": "EFM180ComplexShapeSums.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1"
+        },
+        {
+          "name": "image_bottom_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1_max_width"
+        },
+        {
+          "name": "text_bottom_2",
+          "value": "Make these puzzles by starting with a diagram that is completely filled in and then removing some numbers. If the puzzle has some repeated numbers, use a square or other shape instead of a circle for that repeated number.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

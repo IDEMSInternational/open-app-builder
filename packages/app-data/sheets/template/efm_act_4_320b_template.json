@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_320b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "To do the activities on this page your child should know how to mentally do the following:\n\n* add and subtract 0, 1, 2 (and perhaps 3)\n* do adding twins and near twins\n* know the number bonds for 10\n* add 10 to single-digit numbers. \n\nIf your child is weak with any of these skills, this is the time to practice those skills some more.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

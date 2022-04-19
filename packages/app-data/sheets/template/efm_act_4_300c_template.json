@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_300c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use 5 dice and 4 rolls. On the first roll, choose to save from 0 to 5 of the dice. Once a die is saved it cannot be changed. Similarly with the remaining dice on rolls two and three. On the final roll, all dice are saved. Any score less than or equal to 20 counts, any score over 20 gives the player 0.\n \nThe target score of 20, the number of dice, and the number of rolls, can all be changed to suit younger or older players. For example, you could play this with a target of 12 and 3 dice.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

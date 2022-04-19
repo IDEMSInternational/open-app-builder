@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_250b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "From a deck of playing cards, remove the face cards and any numbers that are larger than what the children are comfortable with. Shuffle the cards and turn over five cards to use and a sixth card that is the target. Leave the remaining cards as a draw pile to fill in cards as they get removed. \n\nDuring a turn, if a player can use the sum or difference of two of the five cards to equal the sixth, the player gets all three cards and they are replaced  from the draw pile. If the player fails, then a new sixth card is turned over and the turn moves to the next player. The player with the most cards at the end of the game wins.\n\nThere are several variations you can use. You can allow a player to use three cards, instead of just two,  to add up to the sixth. You can even allow any number of cards to be used to add up to the sixth. Another variation is to allow a mixture of addition and subtraction with any number of cards.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

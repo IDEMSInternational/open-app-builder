@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_490d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "A rectangle, 4 by 4 or larger, with numbers in some of its squares,  is to be divided into smaller rectangles. Each number must end up  in a separate rectangle whose area is that number. \n\nOut of the sight of your child, create these puzzles by first filling in the big rectangle with smaller rectangles. Next, place the area in each rectangle. Lastly, give your child the big rectangle with only the numbers.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM490DivideUpTheBox.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "180px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "To solve, look first at areas that are prime numbers. Also, sometimes an area is boxed in – in this puzzle the upper “4” must relate to the upper left 2 by 2 square. Next, the upper right corner must be used in a vertical 3 by 1 rectangle. Keep going!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

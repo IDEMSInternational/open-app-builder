@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_180a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "All players start with one finger raised on each hand. During a turn, a player has the choice of either “attacking” or “splitting.” \n\nTo attack, a player takes a live hand and attacks a live hand of an opponent. The result is that the opponent's hand has the sum of the two hands and the attacking player’s hand is unchanged. If a hand ends up with exactly five fingers, it is dead. If the hand has over five fingers, its count is either reduced by five (in one set of rules) or is dead (an alternate set of rules). \n\nTo split, a player bangs their hands together and redistributes the fingers between the two hands. A split may not reverse the two finger counts.\n\nA player wins when both hands of everyone else are dead. In one variation, the first player to have two dead hands wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

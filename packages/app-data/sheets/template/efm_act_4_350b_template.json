@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_350b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "One player thinks of a number between 0 and 99. The other player figures out the number by asking questions about the tens and ones digits.\n\nSuppose the number is 23. The player could ask if the tens digit is bigger than or equal to the ones digit - it isn’t for 23. The player could ask if the sum of the two digits is less than 8 - it is for 23. The player could then ask if twice the tens digit is bigger than the ones digit - it is. At this point, the number must be 23 or 34. Asking if the sum of the digits is less than 6 finishes things off.\n\nThe types of questions can be anything the players agree to, but it is best if the questions involve the ones and tens digits.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_240c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "In addition to the usual Sudoku rules, these puzzles are broken into subregions that have a target number assigned to them. Unlike standard Sudoku, it is allowed for a number to be repeated in a subregion as long as that does not break the rule about no repeats in a row or column. If a subregion has just one square in it, then the target number will be the value of that square.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM240SumdokuDiffdoku.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "In Sumdoku, the sum of all the numbers in a subregion is the target number. In Diffdoku, all subregions have one or two squares. If a subregion has two squares, then the difference of the two numbers is the target number.\n\nIn a Sumdiffdoku puzzle, both addition and subtraction are used. The subregions are marked with a “+” or a “-” to indicate whether to take a sum or difference.\n\nTo vary the math calculations, use different groups of numbers instead of the usual 1 to 4 for a 4 by 4. For example, use the numbers 1, 3, 5, and 7. If you do this, list the numbers above the puzzle so your child will know what to use.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

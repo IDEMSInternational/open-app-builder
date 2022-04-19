@@ -1,0 +1,91 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_170b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "There are two mental models for subtraction. It can be thought of as “take away” or “difference,” and your child should be comfortable with both models. Here is 8 - 5 calculated both ways:",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "text_upside_1",
+          "value": "Take Away: Think of  8 - 5 as what is left after you start with 8 things and take 5 of them away. Start with 8 fingers raised. Next, count aloud from 0 to 5, and for each number after 0 put one finger down. When 5 is reached in the count, there will be three fingers left up.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_upside_1"
+        },
+        {
+          "name": "image_upside_1_right",
+          "value": "EFM170Fingers8takeaway5Fixed.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right"
+        },
+        {
+          "name": "image_upside_1_right_flex",
+          "value": 90,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right_flex"
+        },
+        {
+          "name": "image_upside_1_right_max_width",
+          "value": "140px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "Difference: This model views 8 - 5 as finding the difference or distance between the two numbers. Start with 5 fingers raised. Then count the new fingers being raised, and when there are 8 fingers raised the difference of 3 will have been counted.\n\nThis method uses the “counting on” addition method to find the number to add to 5 to get 8.\n\nMix in problems where a number is subtracted from itself to get 0.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "image_side_1_right",
+          "value": "EFM170Fingers4Plus2CountingOn.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right"
+        },
+        {
+          "name": "image_side_1_right_flex",
+          "value": 90,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_flex"
+        },
+        {
+          "name": "image_side_1_right_max_width",
+          "value": "140px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

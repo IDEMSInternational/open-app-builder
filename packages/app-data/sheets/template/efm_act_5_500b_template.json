@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_500b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Because powers add up when powers are being multiplied, any of our old games and puzzles involving addition can be used to practice multiplying numbers that are powers. Some examples of this are: Chapter 3 - Shape Sums and Sum Groups; Chapter 4 - Enclosed Sums, SumTriangles, and Fix It.\n\nHere are two examples used in Chapter 3 for Shape Sums.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM500SimpleShapeSums.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Here are the same two examples for Shape Products where we use multiplication combining the circles instead of addition.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        },
+        {
+          "name": "image_bottom_1",
+          "value": "EFM500SimpleShapeProducts.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1"
+        },
+        {
+          "name": "image_bottom_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1_max_width"
+        },
+        {
+          "name": "text_bottom_2",
+          "value": "With practice, this becomes routine and just as easy as the original addition problems.\n\nIf your child is enjoying these problems and wants some extra challenge, start involving more than one number being raised to a power. For example, if you multiply (4<sup>2</sup> x 3<sup>3</sup>) x (4<sup>5</sup> x 3<sup>2</sup>) you can apply our rule separately to the powers of 4 and the powers of 3 and get the result 4<sup>7</sup> x 3<sup>5</sup>.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

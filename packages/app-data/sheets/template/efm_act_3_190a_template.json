@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_190a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Welcome to the world beyond 10 fingers! There are wonderful things to discover here. The next group of numbers from 10 to 20 is 10 more than the numbers your child already knows. But, before this can become easy, your child needs to conquer the crazy names we use for eleven, twelve, and thirteen.\n\nThe next games are designed to emphasize the role that 10 plays in connecting pairs of numbers such as 6 and 16. These games also emphasize the idea that 16 should be thought of as 10 plus 6. This view of decomposing numbers using place value will be much more important as your child counts to 100 in the next chapter.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

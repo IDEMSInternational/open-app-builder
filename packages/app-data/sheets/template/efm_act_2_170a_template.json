@@ -1,0 +1,91 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_170a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "There are two methods for this:",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_upside_1_left",
+          "value": "EFM170Fingers4Plus2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_left"
+        },
+        {
+          "name": "image_upside_1_left_flex",
+          "value": 80,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_left_flex"
+        },
+        {
+          "name": "image_upside_1_left_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_left_max_width"
+        },
+        {
+          "name": "text_upside_1",
+          "value": "Method 1: Use this method if both numbers are 5 or less. For the example of adding 4 and 2, put up 4 fingers on one hand and 2 fingers on the other. Then, bring the two hands together - Tada! Your child will see 4 and 2 brought together becomes 6.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_upside_1"
+        },
+        {
+          "name": "text_side_1",
+          "value": "Method 2:  Use “counting on” from one of the numbers to reach any sum of up to 10. \n\nTo add 4 and 2, put up 4 fingers on one hand, and count aloud from 0 to 2. For each spoken number after 0, put up one more finger. When 2 is reached, there should be 6 fingers raised. \n\nThis method allows addition of numbers bigger than 5. Your child will come to realize that it’s easier to start with the larger number of fingers raised and count on using the smaller number.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "image_side_1_right",
+          "value": "EFM170Fingers4Plus2CountingOn.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right"
+        },
+        {
+          "name": "image_side_1_right_flex",
+          "value": 90,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_flex"
+        },
+        {
+          "name": "image_side_1_right_max_width",
+          "value": "140px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

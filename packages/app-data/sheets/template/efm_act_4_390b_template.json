@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_390b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "One person gives two numbers, one a sum and the other a difference, and the other person is challenged to find the two numbers that have that sum and difference. For example, if one person says the sum is 12 and the difference is 6, the other person says the numbers are 3 and 9.\n\nBecause of how easy it is to create these questions, this is a good activity to let your child be the questioner. Not all combinations of numbers for the sum and difference will produce reasonable answers. If you start with two numbers and then say their sum and difference, that will guarantee that there is an answer.\n\nChallenge an older child with the question of why some sums and differences have reasonable answers and others do not.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,91 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_290c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Subtraction can be thought of as “take away” or “difference,” and both models are essential to a complete understanding. Have your child practice both ways of thinking of subtraction using these finger subtraction methods. We’ll look at 11 - 3.\n\nWe’ll look at 11 - 3.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_side_1_left",
+          "value": "EFM290FingersFor8-3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 70,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "100px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "Take Away: Start with a closed fist and say “11.” Then, lifting one more finger each time, count “10, 9, 8.” When your child sees 3 fingers raised, the counting should stop. At that point you have that taking 3 away from 11 leaves 8.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "text_downside_1",
+          "value": "Difference: This uses counting on, much as we did for Easy Way Finger Addition. What we are doing is finding out which number we need to add to 3 to get 11. Have your child make a closed fist and say “3.” Then, lifting one more finger each time, count “4, 5, 6, 7, 8, 9, 10, 11.” When your child says 11, there are 8 fingers raised - the difference between 3 and 11 is 8!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_downside_1"
+        },
+        {
+          "name": "image_downside_1_right",
+          "value": "EFM290Fingers11-3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_right"
+        },
+        {
+          "name": "image_downside_1_right_flex",
+          "value": 70,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_right_flex"
+        },
+        {
+          "name": "image_downside_1_right_max_width",
+          "value": "140px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_right_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

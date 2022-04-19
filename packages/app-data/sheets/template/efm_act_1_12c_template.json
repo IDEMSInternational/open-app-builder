@@ -1,0 +1,115 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_12c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_upside_1_left",
+          "value": "EFM12TrafficSignal.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_left"
+        },
+        {
+          "name": "image_upside_1_left_flex",
+          "value": 40,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_left_flex"
+        },
+        {
+          "name": "image_upside_1_left_max_width",
+          "value": "60px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_left_max_width"
+        },
+        {
+          "name": "text_upside_1",
+          "value": "While you are traveling, there are many opportunities to talk mathematically with your child.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_upside_1"
+        },
+        {
+          "name": "text_side_1",
+          "value": "For example, if you see a somewhat unusual red car, you can point that out and count together other red cars that are like it. Similarly, you might see a big truck and start counting those. You might see a circle in a design in a building and ask your child to point out other circles they see.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "image_side_1_right",
+          "value": "EFM12StopSign.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right"
+        },
+        {
+          "name": "image_side_1_right_flex",
+          "value": 55,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_flex"
+        },
+        {
+          "name": "image_side_1_right_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_max_width"
+        },
+        {
+          "name": "image_downside_1_left",
+          "value": "EFM12TriangleSign.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_left"
+        },
+        {
+          "name": "image_downside_1_left_flex",
+          "value": 55,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_left_flex"
+        },
+        {
+          "name": "image_downside_1_left_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_left_max_width"
+        },
+        {
+          "name": "text_downside_1",
+          "value": "There is no end to the shapes, colors, and counting that you can find and talk about once you get used to looking for them.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_downside_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

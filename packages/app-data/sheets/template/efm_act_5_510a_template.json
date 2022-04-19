@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_510a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Factor trees are an extension of Shape Products from the previous Feel the Power page. The goal in creating a factor tree is to reduce a number to its prime factors. Many things can be learned about a number in the process of constructing a factor tree.\n\nStart with a number, say 54. This can be broken down several ways. One way is  9 x 6, another is 18 x 3, and yet another is 3 x 3 x 6. Each of these produces a different start to a factor tree.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM510FactorTrees.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "380px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Each of these trees ultimately produces the same primes on its leaves. In each case we end up with 2 x 3 x 3 x 3, but look at the different ways of getting there!\n\nAfter doing some examples like these, your child may naturally start asking some questions.\n\nWhy do some trees have more levels than others? Why are some trees broader than others? Why do the leaves always stop at primes? Why do the leaves always have the same list of primes, perhaps with rearrangement?\n\nThis last question is a really big question. It is so big it is called the Fundamental Theorem of Arithmetic. It says that each number has exactly one way of being expressed as a product of primes!\n\nYou may ask: Why is that so important? It says that primes are the multiplicative building blocks of numbers, and once you have found one way to build a number, that is the only way. If you know that 54 = 2 x 3 x 3 x 3, then there is no way, using whole numbers, to write 54 = 5 x ___ . The uniqueness of prime factorizations is at the heart of a lot of beautiful number theory.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

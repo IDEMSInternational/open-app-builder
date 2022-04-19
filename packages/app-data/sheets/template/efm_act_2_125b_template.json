@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_125b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "This is an introductory, warmup version of a fun game we will revisit again soon.\n\nThere are two people involved. The Puzzler thinks of a number and the Questioner discovers the number. The Puzzler declares, “I am thinking of a number from 0 to 8” (or whatever upper limit they like). The Questioner then asks questions of the form “How does your number compare to 3?” The Puzzler answers that the number is smaller, equal to, or larger than that number. \n\nHere is an example of a game with a target of 5:\n\nPuzzler: I’m thinking of a number from 0 to 8. Question: How does your number compare to 3?\nPuzzler: My number is larger than 3.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM125ImThinkingofaNumber1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Question: How does your number compare to 6?\nPuzzler: My number is smaller than 6.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        },
+        {
+          "name": "image_bottom_1",
+          "value": "EFM125ImThinkingofaNumber2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1"
+        },
+        {
+          "name": "image_bottom_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_bottom_1_max_width"
+        },
+        {
+          "name": "text_bottom_2",
+          "value": "Question: How does your number compare to 5?\nPuzzler: Well done! My number is equal to 5.\n\nWith younger children, you can play this game with counting cards from 0 to 8 (or whatever the limits are) placed face up in order on the table. Under one of the cards you hide a star or whatever is fun. After each guess, the child (Questioner) turns over all the cards that have been eliminated until the star is discovered.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_320d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Before starting these subtraction activities, practice any of the following skills that happen to be weak for your child:\n\n* add and subtract 0, 1, 2 (and perhaps 3)\n* subtract numbers 1 or 2 apart\n* know  the number bonds for 10 and how they make subtracting from 10 easy\n* subtract 10 from numbers from 11 to 19.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

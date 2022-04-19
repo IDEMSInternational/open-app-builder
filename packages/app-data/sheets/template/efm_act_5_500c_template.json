@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_500c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "An excellent thing to practice when you are travelling and have time on your hands is to recite the prime factorizations for the numbers in order. This also provides practice with talking about powers. Knowing prime factorizations with ease will be helpful in many things to come, such as working with fractions. Have fun with this and don’t push your child beyond their comfort level.\n\nIt goes like this: \n1 is a unit, \n2 is a prime, \n3 is a prime, \n4 is 2 squared, \n5 is a prime, \n6 is 2 x 3, \n7 is a prime, \n8 is 2 cubed, \n9 is 3 squared, \n10 is 2 x 5, \n11 is a prime, \n12 is 2 squared x 3, \n13 is a prime, \n14 is 2 x 7, \n15 is 3 x 5,\n16 is 2 to the fourth. \n\nIf your child stumbles, help them figure it out rather than simply reminding them of the answer.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

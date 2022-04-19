@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_360b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Shuffle a deck of playing cards with the face cards and tens removed, and split it evenly between two players. Each player turns over two cards and puts them side by side to form a two-digit number. The player with the larger number keeps all four cards. If there is a tie, each player turns over two more cards with the winner getting all eight cards. After one or more passes through the cards, the player with the most cards wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

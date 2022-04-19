@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_530b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Suppose you have an 8 by 8 chessboard and you have a collection of 1 by 2 tiles. Finding a way to exactly cover the chessboard with 32 of these 1 by 2 tiles is simple enough. \n\nLet’s start playing around with removing squares from the chessboard. If you remove one corner of the chessboard, you know immediately that you can no longer cover the chessboard with tiles because the tiles will cover an even number of squares, and there are now 63 squares. Okay, remove two corners to make an even number of remaining squares - can you cover it now? The answer depends on which two corners you remove. Why? What if you no longer restrict yourself to removing corners, what happens?\n\nOne important lesson in dealing with questions like these is to learn from playing with smaller problems. Try these questions on a 4 by 4 or 6 by 6 board first.\n\nIf your child is enjoying these questions, start branching out to using other shapes to fill the board. Play around with filling it with 1 by 3 tiles or with 3 squares in an L shape. What patterns and rules do you discover with these? What other shapes might be interesting to play with?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

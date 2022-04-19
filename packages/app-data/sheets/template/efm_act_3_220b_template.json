@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_220b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Using a target sum that your child is comfortable with, remove cards at or above that target from the Number Card deck. If there are more than two players and you have restricted the numbers significantly, you may need to use several decks. \n\nPlay starts by dealing 5 cards to each player. Put the remaining cards in a common draw pile. Players take turns “fishing” for cards whose number will sum to the target sum with cards they already have. \n\nFor example, a player might ask a player, “Do you have any 4’s?” If that player has some 4’s, they are handed over and the original player gets another turn. However, if that player does not have any 4’s, then the player says “Go Fish!” and a card is drawn from the draw pile. If the drawn card matches with a card they have, the player may have another turn; otherwise, the turn is over and play continues to the left. \n\nWhen a player has a pair of cards that sum to the total, the player puts that pair on the table in front of them. The game is over when all cards are in pairs. The player with the most pairs wins.\n\nTo create some variety, allow players to use more than two cards to create a group of cards that sum to the target sum. Another possibility is to say that two cards match when their difference is a specified target difference.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

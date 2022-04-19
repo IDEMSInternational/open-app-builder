@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_430d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "**Multiplying by 5 and 10**\n\nThese facts are quickly learned, provide a backbone for other multiplication facts, and they help with understanding two-digit place value.\n\n**Squares**\n\nJust as addition twins are favorite math facts for addition, squares are often favorites for multiplication. Learning these provides another foundation for learning other multiplication facts.\n\n**Doubling**\n\nUse this strategy for multiplying by even numbers. For example, the result of 6 x 7 is the double of 3 x 7. So, 6 x 7 is the double of 21, which is 42.\n\n**One More or One Less**\n\nThis strategy is effective for the remaining multiplication facts. For example, 9 x 7 is one 7 less than 10 x 7 = 70. So it is 70 - 7 = 63. This can be done for all the 9’s. Similarly, 3 x 7 is one more 7 than doubling 7, so it is 7 + 14 = 21. This can be done for all the 3’s.\n\n**Multiplying by 9**\n\nAlthough multiplying by 9 is covered by the last strategy, they are fun to learn in their own right. If you write out the multiples of 9 in order, you’ll see that the tens digit is always one less than the number you are multiplying by and the ones digit plus the tens digit always adds up to 9!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

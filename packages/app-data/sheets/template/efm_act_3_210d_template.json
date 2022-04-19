@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_210d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "In addition to being good practice, skip counting is a faster way to count a collection of things, such as toes, than counting them one at a time. \n\nCount by 2’s while pushing your child on the swings. Start by alternating with your child - you say 1, your child says 2, you say 3, your child says 4, and so on. After establishing the pattern, one of you can say their part without the other person saying anything.\n\nWhile traveling, find something fun to skip count like yellow cars. Skip count up or down by 2’s ending by 20. Initially, do this starting at 0 or 20, but eventually, start at any number.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

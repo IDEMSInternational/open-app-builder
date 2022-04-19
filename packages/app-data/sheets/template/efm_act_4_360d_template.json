@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_360d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Shuffle a deck of playing cards with the numbers 1 to 9. Deal two cards to each player face down. Then, each player turns over one card and decides whether that card will be the tens or ones card. After deciding, each player’s remaining card is turned over and is used to fill the remaining place. The player with the larger number wins. You can also play that the smaller number wins. You can decide whether it is more dramatic to show the cards as they are turned over, or wait until all the decisions are made and the final numbers are formed.\n\nTo practice a bit of addition, as well as making the decisions trickier, draw three cards to turn over one at a time to form a two-digit number and a single-digit number. The goal is to create the largest sum of the two numbers.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

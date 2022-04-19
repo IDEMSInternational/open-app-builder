@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_260c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "One person gives the other person a target number and challenges them to come up with different ways of adding and/or subtracting to get that number. If the target is 3, it might start with 1 + 2, but then become 1 + 5 - 3 and so on. As your child learns more mathematics, additional skills can be added, such as doubling and halving. For example, 5 is 2 doubled plus 1 or two 10’s minus three 5’s.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

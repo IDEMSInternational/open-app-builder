@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_560b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Players start the game by secretly picking 5 distinct numbers larger than 20 and not bigger than 120. After they are selected, they are written where all can see them.\n\nUsing Number Cards or some other device, a random number from 1 to 20 is created. That number is repeatedly doubled until either someone’s number is hit for the first time or the number becomes bigger than 120. The first player to have all five numbers hit is the winner. \n\nAfter your child has played a few times, they will begin developing strategies for selecting their five numbers. A simple strategy is that it is a bad idea to pick a number, such as 46, that is not a power of 2 times some number between 1 and 20 - it will never get hit. Some numbers with lots of factors of 2, such as 32, are more likely to be hit because more starting numbers can get to them..\n\nThere are many other options to play with. You can triple the number each time instead of doubling it. You can double it and add one each time. For younger players, select numbers above 10 and not above 60, and select a random number from 1 to 10.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

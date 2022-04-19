@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_240a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "All puzzles on this page start with the basic Sudoku rule that a square grid is filled with numbers so that each number appears exactly once in each row and column. \n\nMake these puzzles by starting with a completely filled puzzle, removing many or all the numbers, and creating subregions and the appropriate extra information for that type of puzzle.\n\nTo save space, the examples here are all 4 by 4. You can make larger puzzles yourself, or you can find larger versions of these on the internet.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

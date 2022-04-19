@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_520a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a deck of cards with Q’s (as 0’s), A’s (as 1’s), and 2-9’s. Set the  target number at 100. Four random cards are chosen and used to make a pair of 2-digit numbers, a shared resource. \n\nEach player is dealt 14 random cards face up. Players alternate turns. During a turn, a player uses two cards to replace two of the four cards, and the resulting pair of numbers must add up to the target. A player passes if that is not possible. The first player to run out of cards wins. If both players become stuck, the player with fewer cards wins.\n\nSome options are to change the target number and to give players fewer or more than 14 cards. Another option is to use subtraction together with a smaller target number.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

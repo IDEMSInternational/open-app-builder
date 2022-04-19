@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_190c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Place a random collection of 16 Number Cards from 0 to 20 with expanded form on a 4 by 4 bingo board for each child. Then, mix up a collection of counting cards from 0 to 20. Select one card at a time from this pile until the first child gets four in a row and yells Bingo!\n\nOne important variation of this game is to do a “Tens-Reversed” version using cards with numerals. When a card is chosen, if it is 1 to 10, then 10 is added to find the matching value, and if it is 11 to 20, then 10 is subtracted for the matching value.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

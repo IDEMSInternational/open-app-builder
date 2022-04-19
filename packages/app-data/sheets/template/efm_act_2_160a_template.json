@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_160a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Someone makes a statement and the other players attempt to show that the person is lying. \n\nOne type of statement is to say something is always true. Examples of this are: all trucks have four wheels, all rectangles are squares, all birds can fly, and the moon comes out at night.\n\nAnother type of statement is of the form “if __, then ___ .” Examples of this are: if today is Monday, then it is a school day; if I don’t eat for three hours, then I am hungry; and if a person is taller than someone, then they are older.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

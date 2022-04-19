@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_325b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a set of dominoes that either go from 1 to 6 or 1 to 9. Each player starts with 5 random dominoes without letting the other player see them. The aim of the game is to be the first player to get rid of all their dominoes. \n\nTo start, a random domino is placed face up in the middle. After that, a player must match the top domino in the middle. Matching means that the two numbers on the top domino can be combined with any operation – add, subtract, or even multiply if you want – to make the same result as some, possibly different, operation acting on the two numbers of one of your dominoes. For example, if [1,5] is on top, then it matches [2,4] because 1+5 = 2+4, and it also matches [2,2] because 5-1 = 2x2. The matching domino is placed on top of the previous top. If you can’t make a match, you must pick up a new domino from the pile.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

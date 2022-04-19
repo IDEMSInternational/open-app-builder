@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_250a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Each player writes the numbers from 1 to 9 on a piece of paper. To start a turn, a player finds the sum of the roll of two dice. Using only numbers that have yet to be crossed out, the player crosses out a group of one or more numbers that add up to that sum. If this can’t be done, nothing changes. A player may decide in advance to use just one die. The first player to get all numbers crossed out wins.\n\nOne way to vary this game is to use a larger range of numbers, such as going to 10 or even 12. Another way is to give each player a single turn - the turn continues with new rolls until the first time the player is stuck. At the end, the player’s score is the sum of the numbers not crossed out. The player with the lowest score wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

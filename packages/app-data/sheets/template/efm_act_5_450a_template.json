@@ -1,0 +1,118 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_450a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Make a set of multiplication cards to practice these math facts while playing matching games your family played earlier: Chapter 1 - Go Fish, Memory Challenge; Chapter 2 - Bingo; Chapter 3 - Hot Potato; and Chapter 4 - Gin Rummy.\n\nHand draw four cards to go with each math fact - 1) the expression 2) groups of objects, 3) an array, and 4) the prime factorization. If you make these the size of playing cards (2½” by 3½”), use a template from the Printables file if you like. \n\nTake 3 x 4 for example. The four cards would be:",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM450MultiplicationCards1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_top_2",
+          "value": "You have several options for these cards. One option is to include 3 x 4 and not include 4 x 3. While this means you make about half as many cards, it has the drawback that seeing 3 groups of 4 is different from seeing 4 groups of 3.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_2"
+        },
+        {
+          "name": "text_upside_1",
+          "value": "For array cards, put the skip counting numbers along one or both of the sides to help your child practice skip counting.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_upside_1"
+        },
+        {
+          "name": "image_upside_1_right",
+          "value": "EFM450MultiplicationCards2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right"
+        },
+        {
+          "name": "image_upside_1_right_flex",
+          "value": 80,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right_flex"
+        },
+        {
+          "name": "image_upside_1_right_max_width",
+          "value": "135px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right_max_width"
+        },
+        {
+          "name": "image_side_1_left",
+          "value": "EFM450MultiplicationCards3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 80,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "135px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "For expression cards, replace each number with the prime factorization symbol for the number. This makes it easier to see how the prime factorizations fit together when multiplying two numbers.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

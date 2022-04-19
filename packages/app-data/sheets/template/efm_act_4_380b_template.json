@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_380b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Your child already knows how to multiply by 2 by simply doubling. This is an exciting time when your child learns a lot more about multiplication.\n\nBy now, your child is so familiar with addition that it’s no surprise that 2 + 3 is the same as 3 + 2.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM380MultiplyingCommutes.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "240px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Although not as obvious, the same is true for multiplication. This illustration should make it easy to see that two rows of three is the same as three rows of two – you’re just changing your point of view!\n\nIt doesn’t matter which order you multiply two numbers – you get the same answer either way!\n\nIn addition to being cool in a nerdy way, it also means that your child needs to master only about half as many multiplication facts – once your child knows 3 x 4, they also know 4 x 3.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_500a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Just as 4 x 2 is a quick way to write 2 + 2 + 2 + 2, so 2<sup>4</sup> (sometimes written 2^4) is a quick way to write 2 x 2 x 2 x 2. It’s much easier to say and understand the phrase “two to the fourth,” than to say “two times two times … “ There are two special names associated with powers. The second power, 4<sup>2</sup> for example, can be said *four squared*, and the third power, 4<sup>3</sup> for example, can be said *four cubed*.\n\nWhen two powers of the same number are multiplied, a simple rule governs how to simplify the result - the powers add up. For example, if you do 4<sup>2</sup> x 4<sup>3</sup> = (4 x 4) x (4 x 4 x 4) = 4<sup>5</sup>, we have two fours multiplied by three fours, so the result is five fours being multiplied. Note that this rule of adding exponents only works when it is the same number being taken to a power.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

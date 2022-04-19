@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_540b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "These puzzles have islands (circles and squares) connected by bridges (lines). If there are two circles on either side of a square, then the square holds the product of the two circles. The challenge is to fill in the missing numbers.\n\nMake these puzzles by filling in the circles, then filling in the squares, and finally removing some of the numbers before giving it to your child.\n\nIn addition to practicing multiplication, these puzzles can be structured to practice common factors as well. In the first puzzle, the only number, other than 1, that divides 14 and 21 is 7, so that is the number in the bottom circle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM540IslandHoppingWithProducts.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

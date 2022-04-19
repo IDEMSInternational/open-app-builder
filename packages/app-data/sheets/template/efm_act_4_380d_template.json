@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_380d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "For someone good at adding, multiplying by 3 and 4 can be quick and easy.\n\nMultiplying a number by 3 is adding the number to double the number. So, 3 x 6 is 6 more than double 6, which is 6 + 12.\n\nMultiplying a number by 4 is doubling a number and doubling it again. So, 4 x 7 is 2 x (2 x 7), which is 14 + 14.\n\nAt this point, your child should be comfortable quickly doing all the multiplying up to 5 times 5, which is a huge leap forward!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

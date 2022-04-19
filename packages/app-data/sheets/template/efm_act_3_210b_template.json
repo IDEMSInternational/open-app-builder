@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_210b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Set a starting total, say 20. Let your child choose whether to go first or second. During the first turn, a player chooses to subtract 1 or 2 from the current total. After the first turn, a player may subtract any number from 1 up to twice the number used on the last turn. The first person to reach 0 wins (an alternative rule is they lose). Once children learn to play this without writing anything down, it is a fun travel game.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

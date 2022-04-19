@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_270a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Remove all cards above a target number, say 10. Make a 21-card pyramid with 6 rows. Place the cards in the pyramid face up with each lower row half-overlapping the smaller row above it. The remaining cards create a draw pile.\n\nA group of one or more cards summing to the target may be used if each card is not covered at all. This group can include the top card of the draw pile or the discard pile. These cards are then moved aside. If there are no matches, move the top draw pile card to the discard pile.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM270PyramidSolitaire.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "The game is over when the draw pile is empty. Your goal is to use as many cards as possible from the pyramid. \n\nIf you use a target less than 10, reduce the pyramid size by a row or two so that you have a big enough draw pile. For example, for a goal of 8 use 15 cards in 5 rows.\n\nInstead of using addition, use subtraction. If you use the cards up to ten, a good target number is 5. For this, remove pairs of cards whose difference is 5. When you have a card with a 5, you can either remove it or pair it with a 10.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

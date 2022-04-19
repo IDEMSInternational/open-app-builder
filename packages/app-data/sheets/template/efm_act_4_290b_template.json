@@ -1,0 +1,49 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_290b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "image_side_1_left",
+          "value": "EFM290FingersFor8Plus3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left"
+        },
+        {
+          "name": "image_side_1_left_flex",
+          "value": 70,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_flex"
+        },
+        {
+          "name": "image_side_1_left_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_left_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "Use “counting on” to make addition easy. Suppose you’re adding 8 + 3. For ease, pick the larger number being added to start the counting on. Have your child make a closed fist and say “8.” Then, lift one more finger each time as your child counts out loud “9, 10, 11.” When 3 fingers are raised, the counting stops. At that point, you  have that 8 plus 3 is 11.\n\nWith practice and further ideas, your child will memorize these math facts. However, there is no hurry for memorization and it can wait until more experience with the quantities and relationships between the numbers has been gained.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_365a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a deck with the picture cards removed. Fill a tic-tac-toe board with randomly generated numbers from 1 to 20. Use a larger range if you want to include multiplication.\n\nDeal 6 cards to each player and then flip them all over at the same time. For the first play, it is a race among the two players – the first player to combine two or more of their cards to match one of the squares gets to put an X there and replaces the cards they used. After that, the players take turns putting an X or an O in a chosen square whose value they can match – the cards used for the match are replaced by drawing new ones. If no match can be made, they lose their turn and can choose two of their cards to replace with new ones. The first player to get 3 in a row wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

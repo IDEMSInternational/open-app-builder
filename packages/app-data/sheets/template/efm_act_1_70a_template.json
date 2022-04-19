@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_70a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Create large circles on the ground using Hula Hoops, string, or draw them with sidewalk chalk. Use a collection of objects and have each circle represent a property of some of the objects. Possible properties are: has four legs, is bigger than a doll, has some red coloring. The challenge for your child is to put everything that has the property in the circle and everything without the property outside the circle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM70GoingInCircles.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Start by using one circle to get your child used to the idea. When you change to two circles, make them partially overlap, and choose the properties so that some objects have both properties. For example, if you have a box of blocks, the two properties might be having a round shape and being wooden. Your child should tell you how they are deciding to place each object.\n\nReverse this activity by placing objects in the circles and challenging your child to identify what property goes with each circle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

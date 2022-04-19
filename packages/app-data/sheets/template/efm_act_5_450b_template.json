@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_450b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Start with a blank multiplication table that has 4 product rows and 4 product columns. There are also groups of four missing numbers at the top and left sides – these will have some of the numbers from 2 to 9, and these numbers can be duplicated.\n\nFill in the table out of sight of your child, and then flip over or cover all the numbers. Your child can ask to reveal, one at a time, up to 10 of the 16 product entries. The goal is to figure out the entries for the top and left sides before running out of turns.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM450RevealingProducts.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "240px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Imagine that all the cards were flipped over in this example. If your child chose to flip over the card that happened to have the 63 under it, then they would know it came from a  7 and a 9. Flipping over any other card in the same row or column as the 63 would indicate where the 7 and 9 are. Suppose the second card they flipped over was where the 56 is. Not only would they know that the third column was for 7, they would also know that the second row was for 9 and the third row was for 8.\n\nLarger sizes also work. For example, a table with 5 blank rows and columns that allows for up to 12 flips will work well.\n\nPick numbers for the top and left sides that you want your child to practice with.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

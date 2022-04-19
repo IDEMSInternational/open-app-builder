@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_400b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "In a peculiar garden there are two kinds of flowers. One has 4 petals and the other kind has 7 petals. A child was asked to pick some flowers so that the total number of petals was 13. Could it be done? How about 15 petals? For which numbers of petals is it possible? For numbers that are possible, can it be done in more than one way? For example, 32 petals is four 7’s and one 4, and it is also eight 4’s.\n\nBy varying the numbers, there are lots of examples to play with. For some pairs of numbers there comes a point where all numbers of petals are possible, and for other pairs of numbers there is no such point. For 4 and 7, every number from 18 on is possible. For 3 and 6, there is no point after which all numbers occur.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

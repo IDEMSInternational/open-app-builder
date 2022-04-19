@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_490b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Start with a large collection of small objects, such as raisins. For each number, investigate which rectangles you can make with that many objects. 1 can only be made with a 1 by 1 rectangle, and 1 is called a unit. The numbers, such as 5, that only have 1 by 5 and 5 by 1 rectangles, are called primes. Numbers that are not a unit or prime are called composite - they are called that because they are composed of primes being multiplied together, such as 12 = 2 x 2 x 3.\n\nThe dimensions of each rectangle are made of values that evenly divide the number and multiply together to give the number. Making rectangles is a direct way to experience divisibility. Numbers such as 16 are called squares because one of their rectangles is a square – one rectangle for 16 is the 4 by 4 square.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

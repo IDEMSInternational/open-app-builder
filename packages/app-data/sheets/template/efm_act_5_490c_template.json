@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_490c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Each player gets a piece of graph paper. For a player’s turn, use two playing cards from 1 to 10 to determine the dimensions of a rectangle. If a player’s paper has room, the rectangle may be placed anywhere its interior does not overlap with an existing rectangle. Once placed, its interior is lightly shaded and its area and dimensions are written on it. If there is no room, the turn is skipped. The player with the largest total wins. For a normal piece of graph paper, this can be a long game – reduce the time by using half the paper or limiting the number of turns.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

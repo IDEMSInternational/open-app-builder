@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_250c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a regular deck of playing cards, have a target number of 5, and remove all cards above the target, except for one card - the hot potato, which can be anything else, such as a Joker or face card. Deal the entire remaining deck to all players - it’s okay if some players get one more card than others. \n\nAll players start by placing on the table from their hands 5’s and any pairs that add up to 5. On your turn, you can pick a random card from any other player’s hand (a simpler rule is that it is always the player on your right). If this new card gives you a pair of cards that add up to the target sum, place the pair on the table; otherwise, keep the card in your hand. Play then moves to the next player on your right. \n\nWhen play ends, the player holding the hot potato loses. Alternatively, you can play that the first player to run out of cards wins.\n\nAs your child’s adding skills improve, use larger target numbers up to 10. Varying the target number will provide practice with the various number bonds.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Akadelis_Lucky_Day_pages",
+  "status": "released",
+  "data_list_name": "Akadelis_Lucky_Day_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-1.jpg",
+      "story_text": "One day Akadeli, Lucy, Acharait, and Mary went to pick wild fruit.\n\nThey held hands to cross the big river.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day Akadeli, Lucy, Acharait, and Mary went to pick wild fruit.\n\nThey held hands to cross the big river."
+        },
+        "annotation_1": {
+          "eng": "Count the girls together."
+        },
+        "annotation_2": {
+          "eng": "Describe the patterns you see in their clothing. Do you like to wear solids, patterns, or both?"
+        },
+        "annotation_3": {
+          "eng": "Friends sometimes hold hands to keep each other company or show they are friends. Why are these girls holding hands?"
+        }
+      },
+      "annotation_1": "Count the girls together.",
+      "annotation_2": "Describe the patterns you see in their clothing. Do you like to wear solids, patterns, or both?",
+      "annotation_3": "Friends sometimes hold hands to keep each other company or show they are friends. Why are these girls holding hands?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-2.jpg",
+      "story_text": "The girls found a tree full of ripe fruit.\n\nThey agreed to pick the fruit with their eyes closed.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The girls found a tree full of ripe fruit.\n\nThey agreed to pick the fruit with their eyes closed."
+        },
+        "annotation_1": {
+          "eng": "Name all the colors in the colorful clothes they are wearing."
+        },
+        "annotation_2": {
+          "eng": "Each girl has her arms in a different position. Can you copy their arm positions with your arms?"
+        },
+        "annotation_3": {
+          "eng": "Count together the branches coming off the main trunk of this tree. You will have to decide which ones are big enough to count."
+        }
+      },
+      "annotation_1": "Name all the colors in the colorful clothes they are wearing.",
+      "annotation_2": "Each girl has her arms in a different position. Can you copy their arm positions with your arms?",
+      "annotation_3": "Count together the branches coming off the main trunk of this tree. You will have to decide which ones are big enough to count."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-3.jpg",
+      "story_text": "Lucy, Acharait and Mary did not close their eyes.\n\nOnly Akadeli closed hers.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lucy, Acharait and Mary did not close their eyes.\n\nOnly Akadeli closed hers."
+        },
+        "annotation_1": {
+          "eng": "Why do you think the other girls did not close their eyes?"
+        },
+        "annotation_2": {
+          "eng": "This is a good climbing tree. Count together the branches that look the strongest."
+        },
+        "annotation_3": {
+          "eng": "Do you ever do things with your eyes closed, just for fun?"
+        }
+      },
+      "annotation_1": "Why do you think the other girls did not close their eyes?",
+      "annotation_2": "This is a good climbing tree. Count together the branches that look the strongest.",
+      "annotation_3": "Do you ever do things with your eyes closed, just for fun?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-4.jpg",
+      "story_text": "When they opened their eyes, only Akadeli had picked unripe fruit.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "When they opened their eyes, only Akadeli had picked unripe fruit."
+        },
+        "annotation_1": {
+          "eng": "Estimate how many pieces of fruit there are in one basket. Estimating means making an informed guess. Is your estimate bigger than the biggest number you know?"
+        },
+        "annotation_2": {
+          "eng": "What shapes are there on the two blue dresses?"
+        },
+        "annotation_3": {
+          "eng": "Did you ever play a game where some of the people didn't follow the rules? How did it make you feel?"
+        }
+      },
+      "annotation_1": "Estimate how many pieces of fruit there are in one basket. Estimating means making an informed guess. Is your estimate bigger than the biggest number you know?",
+      "annotation_2": "What shapes are there on the two blue dresses?",
+      "annotation_3": "Did you ever play a game where some of the people didn't follow the rules? How did it make you feel?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-5.jpg",
+      "story_text": "Lucy, Acharait, and Mary laughed at Akadeli. They left for home.\n\nAkadeli threw away the unripe fruit. She began picking ripe ones.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Lucy, Acharait, and Mary laughed at Akadeli. They left for home.\n\nAkadeli threw away the unripe fruit. She began picking ripe ones."
+        },
+        "annotation_1": {
+          "eng": "If you have four girls and you take three away, how many are left?"
+        },
+        "annotation_2": {
+          "eng": "When people laugh at you, does that make you feel angry or ashamed? Were you able to ignore them knowing they were just being mean"
+        },
+        "annotation_3": {
+          "eng": "Why did Akadeli stay behind to pick fruit?"
+        }
+      },
+      "annotation_1": "If you have four girls and you take three away, how many are left?",
+      "annotation_2": "When people laugh at you, does that make you feel angry or ashamed? Were you able to ignore them knowing they were just being mean",
+      "annotation_3": "Why did Akadeli stay behind to pick fruit?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-6.jpg",
+      "story_text": "Soon, Akadeli filled her basket with ripe fruit.\n\nShe set off alone, crossing the big river.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Soon, Akadeli filled her basket with ripe fruit.\n\nShe set off alone, crossing the big river."
+        },
+        "annotation_1": {
+          "eng": "How many splashes can you count when her fruit hits the water?"
+        },
+        "annotation_2": {
+          "eng": "Count the larger trees together."
+        },
+        "annotation_3": {
+          "eng": "Why do you think Akadeli slipped in the river when no one slipped before? Is there another reason for holding hands?"
+        }
+      },
+      "annotation_1": "How many splashes can you count when her fruit hits the water?",
+      "annotation_2": "Count the larger trees together.",
+      "annotation_3": "Why do you think Akadeli slipped in the river when no one slipped before? Is there another reason for holding hands?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-7.jpg",
+      "story_text": "Half way across the river, Akadeli's fruit fell into the water.\n\nShe was angry and began to cry.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Half way across the river, Akadeli's fruit fell into the water.\n\nShe was angry and began to cry."
+        },
+        "annotation_1": {
+          "eng": "Akadeli is standing in the middle of some circles in the water. How many?"
+        },
+        "annotation_2": {
+          "eng": "People cry sometimes when they are sad or angry. Have you been sad or angry when you spilled something?"
+        },
+        "annotation_3": {
+          "eng": "Count together the dark squares in the checkerboard pattern on her shirt."
+        }
+      },
+      "annotation_1": "Akadeli is standing in the middle of some circles in the water. How many?",
+      "annotation_2": "People cry sometimes when they are sad or angry. Have you been sad or angry when you spilled something?",
+      "annotation_3": "Count together the dark squares in the checkerboard pattern on her shirt."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-8.jpg",
+      "story_text": "Akadeli saw a big fish and grabbed it.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Akadeli saw a big fish and grabbed it."
+        },
+        "annotation_1": {
+          "eng": "Is it okay that Akadeli lost her basket? Do you think her parents will be mad?"
+        },
+        "annotation_2": {
+          "eng": "The title says this is Akadeli's lucky day. How is Akadeli's day going so far?"
+        },
+        "annotation_3": {
+          "eng": "Is this fish bigger or smaller than Akadeli?"
+        }
+      },
+      "annotation_1": "Is it okay that Akadeli lost her basket? Do you think her parents will be mad?",
+      "annotation_2": "The title says this is Akadeli's lucky day. How is Akadeli's day going so far?",
+      "annotation_3": "Is this fish bigger or smaller than Akadeli?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-9.jpg",
+      "story_text": "As Akadeli walked home, a hawk snatched the fish.\n\nHe flew away with it.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "As Akadeli walked home, a hawk snatched the fish.\n\nHe flew away with it."
+        },
+        "annotation_1": {
+          "eng": "The hawk snatched the fish with the talons on its feet. How many talons do you see?"
+        },
+        "annotation_2": {
+          "eng": "The hawk's wings and Akadeli's shirt look a bit alike -- describe how they are similar and how they are different."
+        },
+        "annotation_3": {
+          "eng": "What is Akadeli feeling as she watches the hawk fly away with her fish?"
+        }
+      },
+      "annotation_1": "The hawk snatched the fish with the talons on its feet. How many talons do you see?",
+      "annotation_2": "The hawk's wings and Akadeli's shirt look a bit alike -- describe how they are similar and how they are different.",
+      "annotation_3": "What is Akadeli feeling as she watches the hawk fly away with her fish?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-10.jpg",
+      "story_text": "The hawk left behind a feather from its tail.\n\nAkadeli picked up the feather and continued walking home.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The hawk left behind a feather from its tail.\n\nAkadeli picked up the feather and continued walking home."
+        },
+        "annotation_1": {
+          "eng": "How many spots are on this feather?"
+        },
+        "annotation_2": {
+          "eng": "Have you ever found a feather? Was it very colorful?"
+        },
+        "annotation_3": {
+          "eng": "There are three kinds of plants in this picture. Point at the tallest and shortest ones."
+        }
+      },
+      "annotation_1": "How many spots are on this feather?",
+      "annotation_2": "Have you ever found a feather? Was it very colorful?",
+      "annotation_3": "There are three kinds of plants in this picture. Point at the tallest and shortest ones."
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-11.jpg",
+      "story_text": "She came across a traditional wedding. Dancers were wearing grass on their heads instead of feathers as was the tradition.\n\nThey took her feather and gave her a big bull!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "She came across a traditional wedding. Dancers were wearing grass on their heads instead of feathers as was the tradition.\n\nThey took her feather and gave her a big bull!"
+        },
+        "annotation_1": {
+          "eng": "Count how many people are wearing yellow grass on their heads."
+        },
+        "annotation_2": {
+          "eng": "Estimate how many people it would take to weigh as much as that bull."
+        },
+        "annotation_3": {
+          "eng": "Surprisingly, Akadeli traded a feather for a bull. Why did the people do that?"
+        }
+      },
+      "annotation_1": "Count how many people are wearing yellow grass on their heads.",
+      "annotation_2": "Estimate how many people it would take to weigh as much as that bull.",
+      "annotation_3": "Surprisingly, Akadeli traded a feather for a bull. Why did the people do that?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-12.jpg",
+      "story_text": "Akadeli reached home with her bull. Her parents and relatives were so happy. Lucy, Acharait, and Mary wished they had not lied to Akadeli.\n\nIt was a lucky day for Akadeli!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Akadeli reached home with her bull. Her parents and relatives were so happy. Lucy, Acharait, and Mary wished they had not lied to Akadeli.\n\nIt was a lucky day for Akadeli!"
+        },
+        "annotation_1": {
+          "eng": "How do you think the other girls feel."
+        },
+        "annotation_2": {
+          "eng": "Have you ever lied to someone? If so, did it make you feel sorry or ashamed?"
+        },
+        "annotation_3": {
+          "eng": "Count the number of difficult moments in Akadeli's day. All turned out wll in the end. Life can be full of surprises!"
+        }
+      },
+      "annotation_1": "How do you think the other girls feel.",
+      "annotation_2": "Have you ever lied to someone? If so, did it make you feel sorry or ashamed?",
+      "annotation_3": "Count the number of difficult moments in Akadeli's day. All turned out wll in the end. Life can be full of surprises!"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-ALD-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

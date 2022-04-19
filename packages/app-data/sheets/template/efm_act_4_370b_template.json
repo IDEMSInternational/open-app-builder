@@ -1,0 +1,124 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_370b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "These are similar to the Magic Triangles puzzles. They have circles connected in a geometric pattern and an associated collection of numbers. The goal is to put the numbers in the circles so every straight line of connected circles has the same sum. The answers are in the Resources file.\n\n1. The numbers 1 to 4 are in a plus sign shape with no circles in common.\n2. The numbers 1 to 5 are in a plus sign with one circle in common in the middle.\n3. The numbers 1 to 7, lines of 3 circles, with one common circle in the middle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "text_upside_1",
+          "value": "4. The numbers 1 to 9, lines of 3 circles, with one common circle in the middle.\n5. The numbers 1 to 5 in an L shape with one common circle in the corner.\n6. The numbers 1 to 8 are in a plus sign with no circles in common.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_upside_1"
+        },
+        {
+          "name": "image_upside_1_right",
+          "value": "EFM370CircleGraphs1To9Star.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right"
+        },
+        {
+          "name": "image_upside_1_right_flex",
+          "value": 80,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right_flex"
+        },
+        {
+          "name": "image_upside_1_right_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_upside_1_right_max_width"
+        },
+        {
+          "name": "text_side_1",
+          "value": "7. The numbers 1 to 9 are in a plus sign with one circle in common in the middle.\n8. The numbers 1 to 12 are in a star shape. This has 6 directions of lines of 4 circles. Hint: The sum is 26.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_side_1"
+        },
+        {
+          "name": "image_side_1_right",
+          "value": "EFM370CircleGraphs1To12StarOfDavid.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right"
+        },
+        {
+          "name": "image_side_1_right_flex",
+          "value": 80,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_flex"
+        },
+        {
+          "name": "image_side_1_right_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_side_1_right_max_width"
+        },
+        {
+          "name": "text_downside_1",
+          "value": "9. The numbers 1 to 7 are in an H shape - 3 vertically on the left, 1 in the center, 3 vertically on the right. The five possible lines of 3 are connected. Hint: The sum is 12.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_downside_1"
+        },
+        {
+          "name": "image_downside_1_right",
+          "value": "EFM370CircleGraphs1To7H.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_right"
+        },
+        {
+          "name": "image_downside_1_right_flex",
+          "value": 80,
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_right_flex"
+        },
+        {
+          "name": "image_downside_1_right_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_downside_1_right_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

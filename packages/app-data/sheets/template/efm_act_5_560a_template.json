@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_560a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a board with a 4 by 6 grid of numbers from 1 to 24. On a turn, a player chooses a number that is uncovered and has at least one factor uncovered – the player gets the selected number and the other player gets any or all of the uncovered factors (their choice as to how many). Play alternates until there are no legal numbers left. The players add up their numbers and the higher sum wins.\n\nThis can also be played as a solitaire puzzle, sometimes called Taxman. In this version, the one player selects each number and the taxman gets all the available factors. Play continues until the player no longer has a legal move - at that point, the taxman receives the remaining numbers. The goal is to have as large a sum as possible - bigger than the taxman when that’s possible.\n\nMake the range of numbers suit the ability of the players - it could be 1 to 12 or as high as 1 to 60.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_480a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Remove the picture cards from a deck and split it evenly between two players. To give more focused practice, remove the A’s and 10’s as well.\n\nEach player turns over two cards, multiplies them, and the player with the larger product wins those four cards. If the products are equal, two more cards are turned over and the winner gets to keep all eight cards. The player with the most cards after playing for a set time is the winner.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

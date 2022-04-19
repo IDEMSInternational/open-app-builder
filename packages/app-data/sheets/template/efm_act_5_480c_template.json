@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_480c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a deck of cards with Q’s (as 0’s), A’s (as 1’s), and 2-9, or use four sets of Number Cards from 0 to 9. Use a 4 by 5 grid on a paper with 20 spaces randomly filled out with multiples of 5 and 10. Have a set of tokens for each player. Select a random card and put your token on that number times 5 or 10 - your choice. Once occupied, the other player cannot move there. The first player to get 3 in a row wins. \n\nThe numbers 5 and 10 can be replaced by other pairs such as 2 and 4, or 3 and 6. These pairings help with practicing doubling strategies for multiplication. For example, if the player does not know 6 x 7, they can double 3 x 7.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

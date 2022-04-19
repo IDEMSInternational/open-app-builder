@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_325d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a deck of cards with numbers from 1 (Ace) to 10. On a shared piece of paper, draw 20 boxes or simple houses numbered from 0 to 19. Each player has 7 tokens distinct from the other player’s 7 tokens. \n\nDuring a turn, a player selects two random cards, and can choose to add, subtract, or multiply them to put their token in a house with fewer than three of the opponent’s tokens. If the house contains one or two of the opponent’s tokens, those tokens are given back to the opponent and the player says “Get out of my house.” The first player to put all their tokens in houses wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

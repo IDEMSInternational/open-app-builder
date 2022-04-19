@@ -1,0 +1,101 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "efm_sb_list",
+  "data_list_name": "efm_storybooks",
+  "status": "released",
+  "rows": [
+    {
+      "id": "efm_sb_Akadelis_Lucky_Day",
+      "pages": "data.Akadelis_Lucky_Day_storybook",
+      "cover": "EFMStorybooks/EFM-SB-ALD-Cover.jpg",
+      "author": "Ursula Nafula",
+      "illustrator": "Rob Owen",
+      "intro_level": "basic",
+      "book_level": "beginner",
+      "title": "Akadeli's Lucky Day",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Akadeli's Lucky Day"
+        },
+        "math_themes_words": {
+          "eng": "This story has  counting to 12, colors, and shapes. Practice words: one, two, to twelve, estimate, take away, color names, shortest, tallest, similar, and different."
+        }
+      },
+      "math_themes_words": "This story has  counting to 12, colors, and shapes. Practice words: one, two, to twelve, estimate, take away, color names, shortest, tallest, similar, and different."
+    },
+    {
+      "id": "efm_sb_A_Very_Tall_Man",
+      "pages": "data.A_Very_Tall_Man_storybook",
+      "cover": "EFMStorybooks/EFM-SB-AVTM-Cover.jpg",
+      "author": "Cornelius Wambi Gulere",
+      "illustrator": "Catherine Groenewald",
+      "intro_level": "basic",
+      "book_level": "beginner",
+      "title": "A Very Tall Man",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "A Very Tall Man"
+        },
+        "math_themes_words": {
+          "eng": "This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller"
+        }
+      },
+      "math_themes_words": "This story looks at counting to 5, descriptions, and comparisons. Practice describing words: too, very, short, tall, long, low, high, big, small; color names; and comparison words: shorter, taller, longer, lower, higher, bigger, smaller"
+    },
+    {
+      "id": "efm_sb_Can_We_Count_Our_Cats",
+      "pages": "data.Can_We_Count_Our_Cats_storybook",
+      "cover": "EFMStorybooks/EFM-SB-CWCOC-Cover.jpg",
+      "author": "Bubaali Primary School",
+      "illustrator": "Jesse Breytenbach",
+      "intro_level": "basic",
+      "book_level": "beginner",
+      "title": "Can We Count Our Cats",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Can We Count Our Cats"
+        },
+        "math_themes_words": {
+          "eng": "This story looks at counting from 0 to 9, colors, and color patterns. Practice counting words, color words, words like: too many, biggest number, smallest number, one more, and one less."
+        }
+      },
+      "math_themes_words": "This story looks at counting from 0 to 9, colors, and color patterns. Practice counting words, color words, words like: too many, biggest number, smallest number, one more, and one less."
+    },
+    {
+      "id": "efm_sb_Amazing_Daisy",
+      "pages": "data.Amazing_Daisy_storybook",
+      "cover": "EFMStorybooks/EFM-SB-AD-Cover.jpg",
+      "author": "Nozizwe Herero",
+      "illustrator": "Slya Masuku",
+      "intro_level": "advanced",
+      "book_level": "intermediate",
+      "title": "Amazing Daisy",
+      "_translations": {
+        "title": {},
+        "math_themes_words": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Amazing Daisy"
+        },
+        "math_themes_words": {
+          "eng": "This story has geometry and shape ideas. Practice words: circle, rectangle, sides, corner, vertical line, horizontal line, big, small, low, and high"
+        }
+      },
+      "math_themes_words": "This story has geometry and shape ideas. Practice words: circle, rectangle, sides, corner, vertical line, horizontal line, big, small, low, and high"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_high_level_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_235a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use a deck of cards from 1 to 10. Choose a target sum, say 10. Each round starts by dealing five cards face down on the table. One player chooses three of those cards and turns them over. Two cards are chosen from those three to add up as close to the target as possible. The unused three cards are given to the other player to choose two cards to get close to the target. The player closest to the target from either side wins a point. \n\nHave a number line handy to use for discussions about which player is closer to the target sum.\n\nOne variation is to use subtraction instead, in which case you would use a lower target.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

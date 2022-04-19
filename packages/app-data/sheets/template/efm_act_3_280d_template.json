@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_280d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "There are a cluster of games played with similar rules. Rather than use any of the detailed official rules, a simpler version should work just fine for young players. Although the official games are played on a 19 by 19 rectangular grid of points, a 13 by 13 grid produced by 13 horizontal and vertical lines should work well.\n\nPlayers take turns placing their tokens on grid points - you can use raisins and cheerios, or any other tokens you have lots of. The first player to get five of their tokens in a row wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

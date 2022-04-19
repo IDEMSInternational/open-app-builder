@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_325a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Start by laying out all the playing cards from 1 to 5 in a 4 by 5 grid. Start the running total at 0 and choose a target number, say 25. Players take turns choosing and turning over one of the numbers and adding that number to the running total. The last player to pick a number that does not run over the target number wins. \n\nReplace using 1 to 5 with any set of five numbers you want practice adding. To practice subtraction, start at the target number, subtract the selected numbers, and don’t allow going below 0.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

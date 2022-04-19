@@ -1,0 +1,52 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_460c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Children have fun putting in X’s and watching the primes fall through the sieve. This activity creates opportunities for discovering many interesting properties of divisibility and primes.\n\nStart with a number line numbered from 1 to 25 - or a larger range if space and patience allows.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "image_middle_1",
+          "value": "EFM460SieveOfEratosthenes.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1"
+        },
+        {
+          "name": "image_middle_1_max_width",
+          "value": "420px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image_middle_1_max_width"
+        },
+        {
+          "name": "text_bottom_1",
+          "value": "Write the number 2 below itself. On the line even with this 2, put X’s below each multiple of 2.\n \nNow, pull down the lowest number with no X’s below it (3 in this case) and put it on the next line. Write the 3 and put X’s on that line for all its multiples. Keep pulling down numbers and marking their multiples. When you are finished, you will have pulled down all the primes. Remember that 1 is a unit and not a prime!\n\nHere are some good questions to discuss with your child as they play with this sieve:\n\n* Why are the numbers pulled down primes?\n* What is the last prime whose multiples you need to cross out? Why were the other primes not useful?\n* For all the primes that were useful, which of their multiples produced new restrictions and which were not useful?\n* If you had a number, say 53, which prime numbers would you need to divide it by to confirm that it’s a prime?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_bottom_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

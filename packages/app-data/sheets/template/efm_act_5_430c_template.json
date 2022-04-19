@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_430c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Skip counting is great for getting better at addition and subtraction. It also is a big help in getting started with multiplication.\n\nAlthough skip counting is not the fastest way to find a result, it is reliable and your child should use it as long as they need to. Suppose your child needs to find 7 x 3. Skip count by 3’s seven times or skip count by 7’s three times to get 21.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

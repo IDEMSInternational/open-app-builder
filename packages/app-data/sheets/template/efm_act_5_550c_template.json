@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_550c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "The premise is that you have a calculator that is badly broken and you are challenged to produce some result on the calculator. This is easy to play orally whenever you have a spare moment. Here are some examples to get you started..\n\nSuppose you had a calculator with +, -, x, and /, but only one working number key, the 4. Could you get the result 21? If so, what is the fewest number of steps you would need? Suppose you could use 4 at most four times - which numbers could you produce? Suppose you had to use the 4 exactly four times. Play around with having other single keys and creating other results.\n\nSuppose your calculator could only add 4 or 7. Which numbers could you produce? Suppose it had 4 or 7, but now it can add and subtract. Which numbers could you produce? This is the same activity we’ve seen in other settings.\n\nSuppose you only had a 1 key and could only add or double. For example, 2 x (2 x 1) + 1 is 5. What other numbers can you create?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

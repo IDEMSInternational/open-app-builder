@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_270c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "The challenge is to place the numbers from 1 to 6 in a pyramid with one card in the top row, two cards in the second row and three cards in the third row, where each number is the difference of the two numbers below it. \n\nLet your child take time and play around with this. Most likely, just by playing with it, your child will happen upon a solution. However, if your child gets anxious, here are two tips that help. The 6 must be in the bottom row because it cannot be the difference of any pair of numbers. Similarly, the 5 must either be in the bottom row or in the middle row above the 6 and the 1.\n\nIf your child finds this easy to do, challenge them to find how many ways it can be done. Discuss what it means for two solutions to be different - if one solution is the mirror image of another, should it be considered different? Another challenge is to solve the harder puzzle of putting the numbers from 1 to 10 in a pyramid.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

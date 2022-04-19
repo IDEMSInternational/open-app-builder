@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_325c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Use number cards 1 to 13. To start, each player is dealt 6 cards face up. There is a draw pile with one card turned over to start a discard pile. \n\nDuring a turn, a player takes the top discard card or the unknown card at the top of the draw pile. The chosen card must replace a card they already have, and the replaced card is discarded. The goal for each player is to create a 6-card pyramid where each card is the sum of the two below it. The first player to achieve this wins. \n\nExperiment with smaller or larger ranges of cards to accommodate the skills of younger or older players.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

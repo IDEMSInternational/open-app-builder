@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_330a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Your child has already practiced skip counting, probably by 2’s, 5’s, and 10’s between 0 and 20. Now is the time to start practicing general skip counting by any number from any number.\n\nSkip counting up and down by single-digit numbers helps with adding and subtracting, as well as multiplication and division. This is a lot to learn, so please expect it to take time. The tricky part in skip counting is when the tens digit changes, so be sure to focus on that. This is a handy activity to do when you are traveling or waiting around with some extra time.\n\nSkip counting by 10’s is tied to understanding that two-digit numbers are made up of a tens place and a ones place. Skip counting by 10’s will be easier if your child can look at a 100-chart.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

@@ -1,0 +1,25 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_360a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Write the numbers 5, 10, 25, and 50 vertically on a piece of paper. Put a single blank space on each side of the 5, and two blank spaces on each side of the other numbers. One player fills in the blanks on the left side and the other fills the other side. Each player also has one extra blank to use once with a number to ignore.\n\nPlay with a deck of Number Cards from 0 to 9. Randomly pick a card from the deck, and put it back in after it is used. Both players must use that number somewhere in the spaces that haven’t been filled in yet. Once all the spaces are filled, the player’s values are compared to each of the target numbers. Whichever player gets closest to each target number gets a point, with both players getting a point if they are equally close. Whoever has the most points wins.\n\nVary this game by having a different set of target numbers. You can also choose to score the game by summing up all the errors for each player. For this, the player with the smaller score wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}
