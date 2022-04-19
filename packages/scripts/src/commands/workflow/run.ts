@@ -3,7 +3,7 @@
 import chalk from "chalk";
 import path from "path";
 import { Command } from "commander";
-import { IDeploymentWorkflows, IWorkflow } from "data-models";
+import { IDeploymentWorkflows, IWorkflow, WORKFLOW_DEFAULTS } from "data-models";
 import ALL_TASKS from "../../tasks";
 import { logError, pad, promptOptions } from "../../utils";
 import { getActiveDeployment } from "../deployment/get";
@@ -39,16 +39,20 @@ export class WorkflowRunnerClass {
    *
    */
   public async init() {
+    // load default workflows
+    this.workflows = WORKFLOW_DEFAULTS;
+    // load custom workflows
     this.config = getActiveDeployment();
     const { workflows: workflowPaths, _workspace_path } = this.config;
-    for (const workflowPath of workflowPaths) {
-      const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
-      const workflows: IDeploymentWorkflows = ts?.default as any;
-
-      if (workflows) {
-        Object.entries(workflows).forEach(([name, workflow]) => {
-          this.workflows[name] = workflow;
-        });
+    if (workflowPaths) {
+      for (const workflowPath of workflowPaths) {
+        const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
+        const workflows: IDeploymentWorkflows = ts?.default as any;
+        if (workflows) {
+          Object.entries(workflows).forEach(([name, workflow]) => {
+            this.workflows[name] = workflow;
+          });
+        }
       }
     }
   }
