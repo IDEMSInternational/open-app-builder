@@ -8,8 +8,8 @@ import { TemplateActionService } from "src/app/shared/components/template/servic
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
-import { DATA_LIST } from "src/app/shared/services/data/data.service";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -47,6 +47,7 @@ export class CampaignService {
     private dataEvaluationService: DataEvaluationService,
     private localNotificationService: LocalNotificationService,
     private templateTranslateService: TemplateTranslateService,
+    private appDataService: AppDataService,
     private injector: Injector
   ) {}
 
@@ -63,7 +64,7 @@ export class CampaignService {
 
     const schedules = await this.loadCampaignSchedules();
 
-    const { allCampaigns, scheduledCampaigns } = this.loadCampaignRows(schedules);
+    const { allCampaigns, scheduledCampaigns } = await this.loadCampaignRows(schedules);
 
     this.scheduledCampaigns = scheduledCampaigns;
     this.allCampaigns = allCampaigns;
@@ -232,16 +233,14 @@ export class CampaignService {
     const notification_schedule = this.evaluateSchedule(schedule, earliestStart);
     // may return null if schedule would be outside permitted timeframe, in which case do not schedule
     if (!notification_schedule) return;
-    let { title, text } = row;
     let { _schedule_at } = notification_schedule;
 
-    title = title || NOTIFICATION_DEFAULTS.title;
-    text = text || NOTIFICATION_DEFAULTS.text;
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
-      body: text,
-      largeBody: text,
-      title,
+      body: row.text || NOTIFICATION_DEFAULTS.text,
+      largeBody: row.text || NOTIFICATION_DEFAULTS.text,
+      summaryText: "",
+      title: row.title || NOTIFICATION_DEFAULTS.title,
       extra: { ...row, campaign_id },
       id: stringToIntegerHash(row.id),
     };
@@ -294,9 +293,11 @@ export class CampaignService {
    * and schedule start/end
    */
   private async loadCampaignSchedules() {
-    const scheduleRows = DATA_LIST.filter((list) => list.flow_subtype === "campaign_schedule").map(
-      (list) => list.rows
+    const dataLists = await this.appDataService.getSheetsWithData(
+      "data_list",
+      (list) => list.flow_subtype === "campaign_schedule"
     );
+    const scheduleRows = dataLists.map((d) => d.rows);
     const allCampaignSchedules: FlowTypes.Campaign_Schedule[] = mergeArrayOfArrays(scheduleRows);
     const evaluatedCampaignSchedules = await Promise.all(
       allCampaignSchedules.map(async (scheduleRow) => {
@@ -316,11 +317,12 @@ export class CampaignService {
    * Get a list of all campaign rows collated by campaign_id, and merge with campaign schedules
    * TODO - most of this logic could be handled in parser instead
    */
-  private loadCampaignRows(scheduledCampaigns: IScheduledCampaignsHashmap) {
+  private async loadCampaignRows(scheduledCampaigns: IScheduledCampaignsHashmap) {
     // Retrieve and merge list of all campaign rows
-    const campaignListRows = DATA_LIST.filter((list) =>
+    const dataLists = await this.appDataService.getSheetsWithData("data_list", (list) =>
       ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
-    ).map((list) => list.rows);
+    );
+    const campaignListRows = dataLists.map((list) => list.rows);
 
     const allCampaignRows: FlowTypes.Campaign_listRow[] = mergeArrayOfArrays(campaignListRows);
     const allCampaignRowsByPriority = allCampaignRows.sort(

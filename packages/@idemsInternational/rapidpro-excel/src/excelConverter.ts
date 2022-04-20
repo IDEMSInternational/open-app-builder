@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import * as chalk from "chalk";
+import chalk from "chalk";
 import { RapidProFlowExport } from "../types/rapidpro.model";
 import { RapidproExcelModel } from "../types/excel.model";
 
