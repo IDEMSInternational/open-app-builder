@@ -3,21 +3,7 @@ import { TemplateBaseComponent } from "src/app/shared/components/template/compon
 
 @Component({
   selector: "template-latex-component",
-  template: ` <span [innerHTML]="latexInput | latex"> </span> `,
+  template: ` <span [innerHTML]="this._row.value | latex"> </span> `,
 })
-/** Render raw LaTeX **/
-export class TmplLatexComponent extends TemplateBaseComponent implements OnInit {
-  latexInput: string;
-
-  constructor() {
-    super();
-  }
-
-  ngOnInit() {
-    this.getParams();
-  }
-
-  getParams() {
-    this.latexInput = this._row.value;
-  }
-}
+/** Render text that includes LaTeX equations **/
+export class TmplLatexComponent extends TemplateBaseComponent {}
