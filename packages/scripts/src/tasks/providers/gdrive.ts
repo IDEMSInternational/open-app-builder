@@ -22,7 +22,7 @@ const download = (options: { folderId: string }) => {
 
   const commonArgs = `--credentials-path "${CREDENTIALS_PATH}" --auth-token-path "${authTokenPath}"`;
 
-  const dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name ${folderId}.log"`;
+  const dlArgs = `--folder-id ${folderId} --output-path "${outputPath}" --log-name "${folderId}.log"`;
 
   const gdriveToolsExec = `yarn workspace @idemsInternational/gdrive-tools start`;
 
