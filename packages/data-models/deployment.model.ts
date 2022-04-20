@@ -43,7 +43,14 @@ export interface IDeploymentConfig {
     /** generated output cache. Default `./cache/translations_source` */
     output_cache_path?: string;
   };
-  workflows?: string[];
+  workflows?: {
+    /** path to custom workflow files to include */
+    custom_ts_files?: string[];
+    /** path for task working directory. Default `./tasks` */
+    task_cache_path?: string;
+  };
+  /** optional version number to force recompile */
+  _version?: number;
 }
 
 /** Minimal example of just required config */
@@ -77,6 +84,11 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     translated_strings_path: "./app_data/translations_source/translated_strings",
     output_cache_path: "./cache/translations",
   },
+  workflows: {
+    custom_ts_files: [],
+    task_cache_path: "./tasks",
+  },
+  _version: 1.0,
 };
 
 /** Duplicate type defintion from scripts (TODO - find better way to share) */
