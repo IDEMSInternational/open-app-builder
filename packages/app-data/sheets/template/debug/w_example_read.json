@@ -1,0 +1,96 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "w_example_read",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "number_of_slides",
+          "value": 3,
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.number_of_slides"
+        },
+        {
+          "name": "slide_image_src_1",
+          "value": "plh_images/modules/mod_instruct/thought_experiment/te_1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.slide_image_src_1"
+        },
+        {
+          "name": "slide_text_1",
+          "value": "This is the text on the first slide.",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.slide_text_1"
+        },
+        {
+          "name": "slide_image_src_2",
+          "value": "plh_images/modules/mod_instruct/thought_experiment/te_2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.slide_image_src_2"
+        },
+        {
+          "name": "slide_text_2",
+          "value": "This is the text on the second slide.",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.slide_text_2"
+        },
+        {
+          "name": "slide_image_src_3",
+          "value": "plh_images/modules/mod_instruct/thought_experiment/te_3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.slide_image_src_3"
+        },
+        {
+          "name": "slide_text_3",
+          "value": "This is the text on the third slide.",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "read.slide_text_3"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_workshop.xlsx"
+}

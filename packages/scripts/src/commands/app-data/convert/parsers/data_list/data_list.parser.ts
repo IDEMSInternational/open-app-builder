@@ -3,9 +3,6 @@ import { extractConditionList, parseAppDataCollectionString, setNestedProperty }
 import { DefaultParser } from "../default/default.parser";
 
 export class DataListParser extends DefaultParser {
-  constructor() {
-    super();
-  }
   postProcess(row: FlowTypes.Data_listRow) {
     Object.keys(row).forEach((field) => {
       // handle other data structures

@@ -2,10 +2,10 @@
 
 ## Example
 
-| type        | name                | value                          |parameter_list |
-| ---------   | ------------        | ------                         |--------- |
-|round_button |round_button_par_2_1	|Icon_src parameter empty string |icon_src: |
-|round_button |round_button_par_2_2	|Icon_src parameter string	     |icon_src: plh_images/icons/play.svg|
+| type        | name                                      |parameter_list |
+| ---------   | ------------                         |--------- |
+|round_button |round_button_par_2_1	 |icon_src: |
+|round_button |round_button_par_2_2	     |icon_src: plh_images/icons/play.svg|
 
 ![](images/round_button.png)
 
@@ -24,13 +24,13 @@
 |style                  |orange                  |Button colour orange|
 |style                  |dark_orange             |Button colour dark orange|
 |style                  |home_screen             |Button colour primary positioned to the righthand side of the screen|
-|text                   |empty string - (default)|No text on the button|
-|text                   |string                  |any string as a button text|
+|text                   |empty string (default)|No text on the button|
+|text                   |string                  |Any string as a button text|
 |disabled	            |false (default)         |To be removed|
 |disabled	            |true                    |To be removed|
 |starting_seconds       |0 - (default)           |To be removed|
 |starting_seconds       |number                  |To be removed|
-|ping                   |'' - (default)          |To be removed|     
+|ping                   | empty string (default)          |To be removed|     
 |button_align           |center (default)        |To be removed|
 |button_align           |left                    |To be removed|
 |button_align           |right                   |To be removed|

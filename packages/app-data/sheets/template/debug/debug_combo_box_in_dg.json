@@ -1,0 +1,301 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_combo_box_in_dg",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "display_group_1",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_1",
+          "value": "Using the condition column",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_1.title_1"
+        },
+        {
+          "name": "answer_list_challenge_1",
+          "value": [
+            "name:choice_1_a | text: choice_1_a",
+            "name:choice_1_b | text: choice_1_b",
+            "name:choice_1_c | text: choice_1_c"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "display_group_1.answer_list_challenge_1"
+        },
+        {
+          "type": "combo_box",
+          "name": "combo_box_challenge_1",
+          "parameter_list": {
+            "answer_list": "@local.answer_list_challenge_1",
+            "placeholder": "@global.tap_and_choose"
+          },
+          "_nested_name": "display_group_1.combo_box_challenge_1",
+          "_dynamicFields": {
+            "parameter_list": {
+              "answer_list": [
+                {
+                  "fullExpression": "@local.answer_list_challenge_1",
+                  "matchedExpression": "@local.answer_list_challenge_1",
+                  "type": "local",
+                  "fieldName": "answer_list_challenge_1"
+                }
+              ],
+              "placeholder": [
+                {
+                  "fullExpression": "@global.tap_and_choose",
+                  "matchedExpression": "@global.tap_and_choose",
+                  "type": "global",
+                  "fieldName": "tap_and_choose"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.answer_list_challenge_1": [
+              "parameter_list.answer_list"
+            ],
+            "@global.tap_and_choose": [
+              "parameter_list.placeholder"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_choice_1_a",
+          "value": "reply_choice_1_a",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.combo_box_challenge_1==\"choice_1_a\"",
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_1.reply_choice_1_a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.combo_box_challenge_1==\"choice_1_a\"",
+                "matchedExpression": "@local.combo_box_challenge_1",
+                "type": "local",
+                "fieldName": "combo_box_challenge_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_challenge_1": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_choice_1_b",
+          "value": "reply_choice_1_b",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.combo_box_challenge_1==\"choice_1_b\"",
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_1.reply_choice_1_b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.combo_box_challenge_1==\"choice_1_b\"",
+                "matchedExpression": "@local.combo_box_challenge_1",
+                "type": "local",
+                "fieldName": "combo_box_challenge_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_challenge_1": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_choice_1_c",
+          "value": "reply_choice_1_c",
+          "_translations": {
+            "value": {}
+          },
+          "condition": "@local.combo_box_challenge_1==\"choice_1_c\"",
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_1.reply_choice_1_c",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.combo_box_challenge_1==\"choice_1_c\"",
+                "matchedExpression": "@local.combo_box_challenge_1",
+                "type": "local",
+                "fieldName": "combo_box_challenge_1"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_challenge_1": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "display_group_1"
+    },
+    {
+      "type": "display_group",
+      "name": "display_group_2",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_2",
+          "value": "Using the hidden column",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_2.title_2"
+        },
+        {
+          "name": "answer_list_challenge_2",
+          "value": [
+            "name:choice_2_a | text: choice_2_a",
+            "name:choice_2_b | text: choice_2_b",
+            "name:choice_2_c | text: choice_2_c"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "display_group_2.answer_list_challenge_2"
+        },
+        {
+          "type": "combo_box",
+          "name": "combo_box_challenge_2",
+          "parameter_list": {
+            "answer_list": "@local.answer_list_challenge_2",
+            "placeholder": "@global.tap_and_choose"
+          },
+          "_nested_name": "display_group_2.combo_box_challenge_2",
+          "_dynamicFields": {
+            "parameter_list": {
+              "answer_list": [
+                {
+                  "fullExpression": "@local.answer_list_challenge_2",
+                  "matchedExpression": "@local.answer_list_challenge_2",
+                  "type": "local",
+                  "fieldName": "answer_list_challenge_2"
+                }
+              ],
+              "placeholder": [
+                {
+                  "fullExpression": "@global.tap_and_choose",
+                  "matchedExpression": "@global.tap_and_choose",
+                  "type": "global",
+                  "fieldName": "tap_and_choose"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.answer_list_challenge_2": [
+              "parameter_list.answer_list"
+            ],
+            "@global.tap_and_choose": [
+              "parameter_list.placeholder"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_choice_2_a",
+          "value": "reply_choice_2_a",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@local.combo_box_challenge_2!=\"choice_2_a\"",
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_2.reply_choice_2_a",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "@local.combo_box_challenge_2!=\"choice_2_a\"",
+                "matchedExpression": "@local.combo_box_challenge_2",
+                "type": "local",
+                "fieldName": "combo_box_challenge_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_challenge_2": [
+              "hidden"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_choice_2_b",
+          "value": "reply_choice_2_b",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@local.combo_box_challenge_2!=\"choice_2_b\"",
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_2.reply_choice_2_b",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "@local.combo_box_challenge_2!=\"choice_2_b\"",
+                "matchedExpression": "@local.combo_box_challenge_2",
+                "type": "local",
+                "fieldName": "combo_box_challenge_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_challenge_2": [
+              "hidden"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_choice_2_c",
+          "value": "reply_choice_2_c",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@local.combo_box_challenge_2!=\"choice_2_c\"",
+          "exclude_from_translation": true,
+          "_nested_name": "display_group_2.reply_choice_2_c",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "@local.combo_box_challenge_2!=\"choice_2_c\"",
+                "matchedExpression": "@local.combo_box_challenge_2",
+                "type": "local",
+                "fieldName": "combo_box_challenge_2"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_challenge_2": [
+              "hidden"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "display_group_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_combo_box_in_dg.xlsx"
+}

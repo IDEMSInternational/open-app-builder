@@ -176,7 +176,6 @@ export class FeedbackService {
       timestamp: generateTimestamp(),
       app_version: environment.version,
       app_deployment_name: environment.deploymentName,
-      envName: environment.envName,
     };
     return metadata;
   }

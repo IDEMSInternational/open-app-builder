@@ -1,0 +1,291 @@
+{
+  "flow_type": "template",
+  "module": "instruct",
+  "flow_name": "w_instruct_hp_review",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "home_practice_review",
+      "value": "home_practice_review",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_instruct",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "home_practice_review.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_instruct",
+                "matchedExpression": "@data.workshop.w_instruct",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_instruct": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.instruct_positively",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "home_practice_review.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.instruct_positively",
+                    "matchedExpression": "@data.habit.instruct_positively",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.instruct_positively": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "rows": [
+                    {
+                      "name": "text",
+                      "value": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.  We noticed you tapped the @data.habit.instruct_positively.in_text_title - great job for remembering!",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
+                      },
+                      "condition": "@fields.weekly_parent_point_instruct_positively > 0",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.  We noticed you tapped the @data.habit.instruct_positively.in_text_title - great job for remembering!",
+                            "matchedExpression": "@data.habit.instruct_positively.in_text_title",
+                            "type": "data",
+                            "fieldName": "habit"
+                          }
+                        ],
+                        "condition": [
+                          {
+                            "fullExpression": "@fields.weekly_parent_point_instruct_positively > 0",
+                            "matchedExpression": "@fields.weekly_parent_point_instruct_positively",
+                            "type": "fields",
+                            "fieldName": "weekly_parent_point_instruct_positively"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.habit.instruct_positively.in_text_title": [
+                          "value"
+                        ],
+                        "@fields.weekly_parent_point_instruct_positively": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "text",
+                      "value": "Your home practice was to try out REAL, POSITIVE and EXACT instructions with your teen.",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
+                      },
+                      "condition": "@fields.weekly_parent_point_instruct_positively == 0",
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "condition": [
+                          {
+                            "fullExpression": "@fields.weekly_parent_point_instruct_positively == 0",
+                            "matchedExpression": "@fields.weekly_parent_point_instruct_positively",
+                            "type": "fields",
+                            "fieldName": "weekly_parent_point_instruct_positively"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@fields.weekly_parent_point_instruct_positively": [
+                          "condition"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_happy",
+                      "value": "@data.praise.hp_praise_message_8.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_happy",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_8.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_8.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_8.text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_ok",
+                      "value": "@data.praise.hp_praise_message_9.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_ok",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_9.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_9.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_9.text": [
+                          "value"
+                        ]
+                      }
+                    },
+                    {
+                      "name": "reply_sad",
+                      "value": "@data.praise.hp_praise_message_9.text",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_1.reply_sad",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@data.praise.hp_praise_message_9.text",
+                            "matchedExpression": "@data.praise.hp_praise_message_9.text",
+                            "type": "data",
+                            "fieldName": "praise"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@data.praise.hp_praise_message_9.text": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "w_instruct_hp_box_1",
+                      "rows": [],
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "w_instruct_hp_box_2",
+                      "rows": [],
+                      "_nested_name": "home_practice_review.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "home_practice_review.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "home_practice_review.workshop_activity.content_box"
+            },
+            {
+              "name": "outro_text",
+              "value": "Thank you for sharing! Well done for trying to give your teen positive instructions and for building a positive relationship with your teen. \n\nYour teen deserves praise and YOU as well!",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "home_practice_review.workshop_activity.outro_text"
+            }
+          ],
+          "_nested_name": "home_practice_review.workshop_activity"
+        }
+      ],
+      "_nested_name": "home_practice_review"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_instruct_hp_review.xlsx"
+}

@@ -1,0 +1,426 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_essential_tools",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@data.parent_centre.essential_tools.title",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.parent_centre.essential_tools.title",
+            "matchedExpression": "@data.parent_centre.essential_tools.title",
+            "type": "data",
+            "fieldName": "parent_centre"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.parent_centre.essential_tools.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "tool_tiles",
+      "parameter_list": {
+        "style": "two_columns"
+      },
+      "rows": [
+        {
+          "type": "template",
+          "name": "workshop_1",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_self_care",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_1.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_self_care",
+                    "matchedExpression": "@data.workshop.w_self_care",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_self_care": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_1"
+        },
+        {
+          "type": "template",
+          "name": "workshop_2",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_1on1",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_2.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_1on1",
+                    "matchedExpression": "@data.workshop.w_1on1",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_1on1": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_2"
+        },
+        {
+          "type": "template",
+          "name": "workshop_3",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_praise",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_3.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_praise",
+                    "matchedExpression": "@data.workshop.w_praise",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_praise": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_3"
+        },
+        {
+          "type": "template",
+          "name": "workshop_4",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_instruct",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_4.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_instruct",
+                    "matchedExpression": "@data.workshop.w_instruct",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_instruct": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_4"
+        },
+        {
+          "type": "template",
+          "name": "workshop_5",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_stress",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_5.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_stress",
+                    "matchedExpression": "@data.workshop.w_stress",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_stress": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_5"
+        },
+        {
+          "type": "template",
+          "name": "workshop_6",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_money",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_6.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_money",
+                    "matchedExpression": "@data.workshop.w_money",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_money": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_6"
+        },
+        {
+          "type": "template",
+          "name": "workshop_7",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_rules",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_7.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_rules",
+                    "matchedExpression": "@data.workshop.w_rules",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_rules": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_7"
+        },
+        {
+          "type": "template",
+          "name": "workshop_8",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_consequence",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_8.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_consequence",
+                    "matchedExpression": "@data.workshop.w_consequence",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_consequence": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_8"
+        },
+        {
+          "type": "template",
+          "name": "workshop_9",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_solve",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_9.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_solve",
+                    "matchedExpression": "@data.workshop.w_solve",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_solve": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_9"
+        },
+        {
+          "type": "template",
+          "name": "workshop_10",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_safe",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_10.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_safe",
+                    "matchedExpression": "@data.workshop.w_safe",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_safe": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_10"
+        },
+        {
+          "type": "template",
+          "name": "workshop_11",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_crisis",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_11.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_crisis",
+                    "matchedExpression": "@data.workshop.w_crisis",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_crisis": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_11"
+        },
+        {
+          "type": "template",
+          "name": "workshop_12",
+          "value": "tool_tile",
+          "rows": [
+            {
+              "name": "workshop_data",
+              "value": "@data.workshop.w_celebrate",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "tool_tiles.workshop_12.workshop_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.workshop.w_celebrate",
+                    "matchedExpression": "@data.workshop.w_celebrate",
+                    "type": "data",
+                    "fieldName": "workshop"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.workshop.w_celebrate": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "tool_tiles.workshop_12"
+        }
+      ],
+      "_nested_name": "tool_tiles"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_parent_centre.xlsx"
+}

@@ -1,0 +1,296 @@
+{
+  "flow_type": "template",
+  "module": "money",
+  "flow_name": "w_money_read_2_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:",
+                    "matchedExpression": "@global.w_money_grandma",
+                    "type": "global",
+                    "fieldName": "w_money_grandma"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_money_grandma": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_story",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_money/read_3/slide_2.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "\"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.text"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_story",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_money/read_3/slide_3.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\"",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true,
+                              "za_af": true,
+                              "za_st": true,
+                              "za_tn": true,
+                              "za_xh": true,
+                              "za_zu": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_story",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_money/read_3/slide_4.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true,
+                                  "za_af": true,
+                                  "za_st": true,
+                                  "za_tn": true,
+                                  "za_xh": true,
+                                  "za_zu": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text"
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "pair",
+                          "rows": [
+                            {
+                              "type": "nested_properties",
+                              "name": "box_1",
+                              "value": "box_story",
+                              "rows": [
+                                {
+                                  "name": "image_src",
+                                  "value": "plh_images/workshops/w_money/read_3/slide_5.svg",
+                                  "_translations": {
+                                    "value": {}
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                },
+                                {
+                                  "name": "text",
+                                  "value": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\"",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true,
+                                      "za_af": true,
+                                      "za_st": true,
+                                      "za_tn": true,
+                                      "za_xh": true,
+                                      "za_zu": true
+                                    }
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text"
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                            },
+                            {
+                              "type": "nested_properties",
+                              "name": "box_2",
+                              "value": "box_image",
+                              "rows": [
+                                {
+                                  "name": "image_src",
+                                  "value": "plh_images/workshops/w_money/read_3/slide_6.svg",
+                                  "_translations": {
+                                    "value": {}
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.image_src"
+                                },
+                                {
+                                  "name": "text",
+                                  "value": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true,
+                                      "za_af": true,
+                                      "za_st": true,
+                                      "za_tn": true,
+                                      "za_xh": true,
+                                      "za_zu": true
+                                    }
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.text",
+                                  "_dynamicFields": {
+                                    "value": [
+                                      {
+                                        "fullExpression": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
+                                        "matchedExpression": "@global.w_money_teen_boy",
+                                        "type": "global",
+                                        "fieldName": "w_money_teen_boy"
+                                      },
+                                      {
+                                        "fullExpression": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
+                                        "matchedExpression": "@global.w_money_teen_girl",
+                                        "type": "global",
+                                        "fieldName": "w_money_teen_girl"
+                                      }
+                                    ]
+                                  },
+                                  "_dynamicDependencies": {
+                                    "@global.w_money_teen_boy": [
+                                      "value"
+                                    ],
+                                    "@global.w_money_teen_girl": [
+                                      "value"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "read.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "read.workshop_activity"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_money.xlsx"
+}

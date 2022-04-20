@@ -1,0 +1,80 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_analytics",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "Click to trigger custom analytics events",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text"
+    },
+    {
+      "type": "button",
+      "name": "button_track_event_1",
+      "value": "Trigger example event",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "track_event",
+          "args": [
+            "example_event"
+          ],
+          "_raw": "click | track_event : example_event",
+          "_cleaned": "click | track_event : example_event"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "button_track_event_1"
+    },
+    {
+      "type": "button",
+      "name": "button_track_event_2",
+      "value": "Trigger advanced event",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "track_event",
+          "args": [
+            "example_event"
+          ],
+          "_raw": "click | track_event : example_event | category:example_events, action:click",
+          "_cleaned": "click | track_event : example_event | category:example_events, action:click"
+        }
+      ],
+      "condition": false,
+      "exclude_from_translation": true,
+      "_nested_name": "button_track_event_2"
+    },
+    {
+      "type": "text",
+      "name": "info_1",
+      "value": "Documentation about the Matomo Analytics platform used can be found at:\nhttps://matomo.org/",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "info_1"
+    },
+    {
+      "type": "text",
+      "name": "info_2",
+      "value": "Documentation about the angular integration can be found at:\nhttps://github.com/EmmanuelRoux/ngx-matomo",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "info_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_analytics.xlsx"
+}

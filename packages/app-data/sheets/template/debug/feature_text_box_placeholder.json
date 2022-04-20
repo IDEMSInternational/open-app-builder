@@ -1,0 +1,494 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_text_box_placeholder",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "placeholder",
+      "value": "placeholder",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "placeholder"
+    },
+    {
+      "type": "set_field",
+      "name": "feature_default_input",
+      "value": "default input",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "feature_default_input"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text box 1: \nShows @local.placeholder before user input is given, and when user input is deleted",
+            "matchedExpression": "@local.placeholder",
+            "type": "local",
+            "fieldName": "placeholder"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.placeholder": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text_box",
+      "name": "text_box_1",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "feature_input_tracker_1",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+          "_cleaned": "changed | set_field: feature_input_tracker_1:@local.text_box_1"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "placeholder": "@local.placeholder"
+      },
+      "_nested_name": "text_box_1",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+                "matchedExpression": "@local.text_box_1",
+                "type": "local",
+                "fieldName": "text_box_1"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_1:@local.text_box_1",
+                "matchedExpression": "@local.text_box_1",
+                "type": "local",
+                "fieldName": "text_box_1"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.text_box_1": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text box 2: \nShows @fields.feature_default_input  before user input is given. Is blank when user input is deleted.",
+            "matchedExpression": "@fields.feature_default_input",
+            "type": "fields",
+            "fieldName": "feature_default_input"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.feature_default_input": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text_box",
+      "name": "text_box_2",
+      "value": "@fields.feature_default_input",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "feature_input_tracker_2",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+          "_cleaned": "changed | set_field: feature_input_tracker_2:@local.text_box_2"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "text_box_2",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.feature_default_input",
+            "matchedExpression": "@fields.feature_default_input",
+            "type": "fields",
+            "fieldName": "feature_default_input"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+                "matchedExpression": "@local.text_box_2",
+                "type": "local",
+                "fieldName": "text_box_2"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_2:@local.text_box_2",
+                "matchedExpression": "@local.text_box_2",
+                "type": "local",
+                "fieldName": "text_box_2"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.feature_default_input": [
+          "value"
+        ],
+        "@local.text_box_2": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_3",
+      "value": "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+            "matchedExpression": "@fields.feature_default_input",
+            "type": "fields",
+            "fieldName": "feature_default_input"
+          },
+          {
+            "fullExpression": "Text boxes 3 and 4: \nShows @fields.feature_default_input before user input is given. Shows @local.placeholder when user input is deleted.",
+            "matchedExpression": "@local.placeholder",
+            "type": "local",
+            "fieldName": "placeholder"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.feature_default_input": [
+          "value"
+        ],
+        "@local.placeholder": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text_box",
+      "name": "text_box_3",
+      "value": "@fields.feature_default_input",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "feature_input_tracker_3",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+          "_cleaned": "changed | set_field: feature_input_tracker_3:@local.text_box_3"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "placeholder": "@local.placeholder"
+      },
+      "_nested_name": "text_box_3",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.feature_default_input",
+            "matchedExpression": "@fields.feature_default_input",
+            "type": "fields",
+            "fieldName": "feature_default_input"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+                "matchedExpression": "@local.text_box_3",
+                "type": "local",
+                "fieldName": "text_box_3"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_3:@local.text_box_3",
+                "matchedExpression": "@local.text_box_3",
+                "type": "local",
+                "fieldName": "text_box_3"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.feature_default_input": [
+          "value"
+        ],
+        "@local.text_box_3": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "type": "text_box",
+      "name": "text_box_4",
+      "value": "@fields.feature_default_input",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "feature_input_tracker_4",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+          "_cleaned": "changed | set_field: feature_input_tracker_4:@local.text_box_4"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "placeholder": "@local.placeholder",
+        "prioritise_placeholder": "false"
+      },
+      "_nested_name": "text_box_4",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.feature_default_input",
+            "matchedExpression": "@fields.feature_default_input",
+            "type": "fields",
+            "fieldName": "feature_default_input"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+                "matchedExpression": "@local.text_box_4",
+                "type": "local",
+                "fieldName": "text_box_4"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_4:@local.text_box_4",
+                "matchedExpression": "@local.text_box_4",
+                "type": "local",
+                "fieldName": "text_box_4"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.feature_default_input": [
+          "value"
+        ],
+        "@local.text_box_4": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Text box 5: \nShows @local.placeholder before user input is given, and when user input is deleted.",
+            "matchedExpression": "@local.placeholder",
+            "type": "local",
+            "fieldName": "placeholder"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.placeholder": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "text_box",
+      "name": "text_box_5",
+      "value": "@fields.feature_default_input",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "feature_input_tracker_5",
+            "this.value"
+          ],
+          "_raw": "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+          "_cleaned": "changed | set_field: feature_input_tracker_5:@local.text_box_5"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "placeholder": "@local.placeholder",
+        "prioritise_placeholder": "true"
+      },
+      "_nested_name": "text_box_5",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.feature_default_input",
+            "matchedExpression": "@fields.feature_default_input",
+            "type": "fields",
+            "fieldName": "feature_default_input"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+                "matchedExpression": "@local.text_box_5",
+                "type": "local",
+                "fieldName": "text_box_5"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field: feature_input_tracker_5:@local.text_box_5",
+                "matchedExpression": "@local.text_box_5",
+                "type": "local",
+                "fieldName": "text_box_5"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "placeholder": [
+            {
+              "fullExpression": "@local.placeholder",
+              "matchedExpression": "@local.placeholder",
+              "type": "local",
+              "fieldName": "placeholder"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.feature_default_input": [
+          "value"
+        ],
+        "@local.text_box_5": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.placeholder": [
+          "parameter_list.placeholder"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_templates/feature_prioritise_placeholder.xlsx"
+}

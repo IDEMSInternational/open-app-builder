@@ -1,0 +1,39 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_video_1",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "video",
+      "name": "video_src",
+      "value": "plh_video/lets_slow_down.mp4",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "video_src"
+    },
+    {
+      "type": "video",
+      "name": "video_src",
+      "value": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "video_src"
+    },
+    {
+      "type": "text",
+      "name": "my_text",
+      "value": "This is My Text",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "my_text"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/debug_small_issues.xlsx"
+}

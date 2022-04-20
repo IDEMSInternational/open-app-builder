@@ -1,0 +1,709 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "habit_data_list",
+  "status": "released",
+  "data_list_name": "habit",
+  "rows": [
+    {
+      "id": "relax",
+      "task_id": "task_habit_relax",
+      "image_asset": "plh_images/habits/habit_relax.svg",
+      "lottie_asset": "plh_lottie/habits/habit_relax.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Relax",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Relax"
+        },
+        "in_text_title": {
+          "eng": "**Relax** @global.parent_point"
+        },
+        "description": {
+          "eng": "Doing a relaxation activity"
+        },
+        "mark_text": {
+          "eng": "Every time you do a relax, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Relax** @global.parent_point",
+      "description": "Doing a relaxation activity",
+      "mark_text": "Every time you do a relax, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "treat_yourself",
+      "task_id": "task_habit_treat_yourself",
+      "image_asset": "plh_images/habits/habit_treat_yourself.svg",
+      "lottie_asset": "plh_lottie/habits/habit_treat_yourself.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Treat yourself well",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Treat yourself well"
+        },
+        "in_text_title": {
+          "eng": "**Treat yourself well** @global.parent_point"
+        },
+        "description": {
+          "eng": "Doing something they like for themselves"
+        },
+        "mark_text": {
+          "eng": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Treat yourself well** @global.parent_point",
+      "description": "Doing something they like for themselves",
+      "mark_text": "Every time you treat yourself well, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "praise_yourself",
+      "task_id": "task_habit_praise_yourself",
+      "image_asset": "plh_images/habits/habit_praise_yourself.svg",
+      "lottie_asset": "plh_lottie/habits/habit_praise_yourself.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Praise yourself",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Praise yourself"
+        },
+        "in_text_title": {
+          "eng": "**Praise yourself** @global.parent_point"
+        },
+        "description": {
+          "eng": "Praising themselves"
+        },
+        "mark_text": {
+          "eng": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Praise yourself** @global.parent_point",
+      "description": "Praising themselves",
+      "mark_text": "Every time you praise yourself, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "spend_time",
+      "task_id": "task_habit_spend_time",
+      "image_asset": "plh_images/habits/habit_spend_time.svg",
+      "lottie_asset": "plh_lottie/habits/habit_spend_time.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "One-on-one time",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "One-on-one time"
+        },
+        "in_text_title": {
+          "eng": "**One-on-one time** @global.parent_point"
+        },
+        "description": {
+          "eng": "Spending time with their teen"
+        },
+        "mark_text": {
+          "eng": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**One-on-one time** @global.parent_point",
+      "description": "Spending time with their teen",
+      "mark_text": "Every time you do one-on-one time, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "praise_teen",
+      "task_id": "task_habit_praise_teen",
+      "image_asset": "plh_images/habits/habit_praise_teen.svg",
+      "lottie_asset": "plh_lottie/habits/habit_praise_teen.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Praise your teen",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Praise your teen"
+        },
+        "in_text_title": {
+          "eng": "**Praise your teen** @global.parent_point"
+        },
+        "description": {
+          "eng": "Praising their teen when they did positive thing"
+        },
+        "mark_text": {
+          "eng": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Praise your teen** @global.parent_point",
+      "description": "Praising their teen when they did positive thing",
+      "mark_text": "Every time you praise your teen, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "instruct_positively",
+      "task_id": "task_habit_instruct_positively",
+      "image_asset": "plh_images/habits/habit_instruct_positively.svg",
+      "lottie_asset": "plh_lottie/habits/habit_instruct_positively.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Get positive",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Get positive"
+        },
+        "in_text_title": {
+          "eng": "**Get positive** @global.parent_point"
+        },
+        "description": {
+          "eng": "Giving their teen a positive instruction"
+        },
+        "mark_text": {
+          "eng": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Get positive** @global.parent_point",
+      "description": "Giving their teen a positive instruction",
+      "mark_text": "Every time you give a positive instruction, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "breathe",
+      "task_id": "task_habit_breathe",
+      "image_asset": "plh_images/habits/habit_breathe.svg",
+      "lottie_asset": "plh_lottie/habits/habit_breathe.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Breathe not yell",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Breathe not yell"
+        },
+        "in_text_title": {
+          "eng": "**Breathe not yell** @global.parent_point"
+        },
+        "description": {
+          "eng": "Taking a pause before responding"
+        },
+        "mark_text": {
+          "eng": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Breathe not yell** @global.parent_point",
+      "description": "Taking a pause before responding",
+      "mark_text": "Every time you take a pause before responding, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "money",
+      "task_id": "task_habit_money",
+      "image_asset": "plh_images/habits/habit_money.svg",
+      "lottie_asset": "plh_lottie/habits/habit_money.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Good money choice",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Good money choice"
+        },
+        "in_text_title": {
+          "eng": "**Good money choice** @global.parent_point"
+        },
+        "description": {
+          "eng": "Keeping the budget"
+        },
+        "mark_text": {
+          "eng": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Good money choice** @global.parent_point",
+      "description": "Keeping the budget",
+      "mark_text": "Every time you make a good choice about needs, wants and savings, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "consequence",
+      "task_id": "task_habit_consequence",
+      "image_asset": "plh_images/habits/habit_consequence.svg",
+      "lottie_asset": "plh_lottie/habits/habit_consequence.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Calm consequence",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Calm consequence"
+        },
+        "in_text_title": {
+          "eng": "**Calm consequence** @global.parent_point"
+        },
+        "description": {
+          "eng": "Giving their teen a consequence in a calm way"
+        },
+        "mark_text": {
+          "eng": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Calm consequence** @global.parent_point",
+      "description": "Giving their teen a consequence in a calm way",
+      "mark_text": "Every time you give a calm consequence, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    },
+    {
+      "id": "safe",
+      "task_id": "task_habit_safe",
+      "image_asset": "plh_images/habits/habit_safe.svg",
+      "lottie_asset": "plh_lottie/habits/habit_safe.json",
+      "fields::weekly_count": 0,
+      "fields::total_count": 0,
+      "title": "Safe",
+      "_translations": {
+        "title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "in_text_title": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "description": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        },
+        "short_mark_text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Safe"
+        },
+        "in_text_title": {
+          "eng": "**Safe** @global.parent_point"
+        },
+        "description": {
+          "eng": "Planning or keeping a family safety plan"
+        },
+        "mark_text": {
+          "eng": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!"
+        },
+        "short_mark_text": {
+          "eng": "Did it? Tap it!"
+        }
+      },
+      "in_text_title": "**Safe** @global.parent_point",
+      "description": "Planning or keeping a family safety plan",
+      "mark_text": "Every time you do something to keep your teen safe, tap the @global.parent_point and celebrate your success!",
+      "short_mark_text": "Did it? Tap it!"
+    }
+  ],
+  "_xlsxPath": "global/data/habit_data_list.xlsx"
+}

@@ -2,15 +2,14 @@
   "name": "data-models",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc -b",
     "serve": "tsc -w"
   },
   "devDependencies": {
-    "@idemsInternational/rapidpro-excel": "workspace:*",
     "@types/node": "^15.12.4",
+    "scripts": "workspace:*",
     "typescript": "~4.2.4"
   }
 }

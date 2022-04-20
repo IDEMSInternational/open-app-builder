@@ -1,23 +1,23 @@
 {
   "name": "frontend",
-  "version": "0.14.3",
+  "version": "0.16.0",
   "author": "IDEMS International",
   "homepage": "https://idems.international/",
   "description": "",
   "workspaces": [
-    "packages/**/*"
+    "packages/*",
+    "packages/@idemsInternational/*"
   ],
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -r \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
-    "precompile": "yarn data-models:build && yarn data:build",
+    "start": "concurrently --kill-others --raw \"yarn data-models:serve\" \"yarn data:serve\" \"ng serve --open\"",
+    "precompile": "yarn scripts compile types",
     "build": "yarn precompile && ng build --prod",
     "build:dev": "yarn precompile && ng build --configuration=development",
-    "data:build": "yarn workspace app-data build",
     "data:serve": "yarn workspace app-data serve",
-    "data-models:build": "yarn workspace data-models build",
     "data-models:serve": "yarn workspace data-models serve",
     "scripts": "yarn workspace scripts start",
+    "workflow": "yarn scripts workflow run",
     "server": "yarn workspace server",
     "translations": "yarn workspace translations start",
     "test": "ng test",
@@ -37,6 +37,8 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@capacitor-community/firebase-crashlytics": "^1.3.0",
+    "@capacitor-firebase/performance": "^0.2.0",
     "@capacitor/android": "^3.4.0",
     "@capacitor/app": "^1.1.0",
     "@capacitor/cli": "^3.4.0",
@@ -76,7 +78,7 @@
     "ngx-lottie": "^7.0.4",
     "nouislider": "^14.6.3",
     "rxjs": "^6.6.7",
-    "survey-angular": "^1.8.76",
+    "stacktrace-js": "^2.0.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

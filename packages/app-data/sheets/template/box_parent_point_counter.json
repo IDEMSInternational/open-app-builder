@@ -1,0 +1,597 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_parent_point_counter",
+  "status": "released",
+  "rows": [
+    {
+      "name": "hide_nav_buttons",
+      "value": false,
+      "type": "set_variable",
+      "_nested_name": "hide_nav_buttons"
+    },
+    {
+      "type": "text",
+      "name": "top_text",
+      "_nested_name": "top_text"
+    },
+    {
+      "type": "display_group",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "parent_point_counter",
+          "name": "relax",
+          "value": "@data.habit.relax.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_relax == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_relax"
+          },
+          "_nested_name": "display_group.relax",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.relax.title",
+                "matchedExpression": "@data.habit.relax.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_relax == 0",
+                "matchedExpression": "@fields.weekly_parent_point_relax",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_relax"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_relax",
+                  "matchedExpression": "@fields.weekly_parent_point_relax",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_relax"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.relax.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_relax": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "treat_yourself",
+          "value": "@data.habit.treat_yourself.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_treat_yourself == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_treat_yourself"
+          },
+          "_nested_name": "display_group.treat_yourself",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.treat_yourself.title",
+                "matchedExpression": "@data.habit.treat_yourself.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_treat_yourself == 0",
+                "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_treat_yourself"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_treat_yourself",
+                  "matchedExpression": "@fields.weekly_parent_point_treat_yourself",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_treat_yourself"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.treat_yourself.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_treat_yourself": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "praise_yourself",
+          "value": "@data.habit.praise_yourself.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_praise_yourself == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_praise_yourself"
+          },
+          "_nested_name": "display_group.praise_yourself",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.praise_yourself.title",
+                "matchedExpression": "@data.habit.praise_yourself.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_praise_yourself == 0",
+                "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_praise_yourself"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_praise_yourself",
+                  "matchedExpression": "@fields.weekly_parent_point_praise_yourself",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_praise_yourself"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.praise_yourself.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_praise_yourself": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "spend_time",
+          "value": "@data.habit.spend_time.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_spend_time == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_spend_time"
+          },
+          "_nested_name": "display_group.spend_time",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.spend_time.title",
+                "matchedExpression": "@data.habit.spend_time.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_spend_time == 0",
+                "matchedExpression": "@fields.weekly_parent_point_spend_time",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_spend_time"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_spend_time",
+                  "matchedExpression": "@fields.weekly_parent_point_spend_time",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_spend_time"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.spend_time.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_spend_time": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "praise_teen",
+          "value": "@data.habit.praise_teen.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_praise_teen == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_praise_teen"
+          },
+          "_nested_name": "display_group.praise_teen",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.praise_teen.title",
+                "matchedExpression": "@data.habit.praise_teen.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_praise_teen == 0",
+                "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_praise_teen"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_praise_teen",
+                  "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_praise_teen"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.praise_teen.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_praise_teen": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "instruct_positively",
+          "value": "@data.habit.instruct_positively.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_instruct_positively == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_instruct_positively"
+          },
+          "_nested_name": "display_group.instruct_positively",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.instruct_positively.title",
+                "matchedExpression": "@data.habit.instruct_positively.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_instruct_positively == 0",
+                "matchedExpression": "@fields.weekly_parent_point_instruct_positively",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_instruct_positively"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_instruct_positively",
+                  "matchedExpression": "@fields.weekly_parent_point_instruct_positively",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_instruct_positively"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.instruct_positively.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_instruct_positively": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "breathe",
+          "value": "@data.habit.breathe.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_breathe == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_breathe"
+          },
+          "_nested_name": "display_group.breathe",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.breathe.title",
+                "matchedExpression": "@data.habit.breathe.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_breathe == 0",
+                "matchedExpression": "@fields.weekly_parent_point_breathe",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_breathe"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_breathe",
+                  "matchedExpression": "@fields.weekly_parent_point_breathe",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_breathe"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.breathe.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_breathe": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "money",
+          "value": "@data.habit.money.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_money == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_money"
+          },
+          "_nested_name": "display_group.money",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.money.title",
+                "matchedExpression": "@data.habit.money.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_money == 0",
+                "matchedExpression": "@fields.weekly_parent_point_money",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_money"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_money",
+                  "matchedExpression": "@fields.weekly_parent_point_money",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_money"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.money.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_money": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "consequence",
+          "value": "@data.habit.consequence.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_consequence == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_consequence"
+          },
+          "_nested_name": "display_group.consequence",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.consequence.title",
+                "matchedExpression": "@data.habit.consequence.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_consequence == 0",
+                "matchedExpression": "@fields.weekly_parent_point_consequence",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_consequence"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_consequence",
+                  "matchedExpression": "@fields.weekly_parent_point_consequence",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_consequence"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.consequence.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_consequence": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        },
+        {
+          "type": "parent_point_counter",
+          "name": "safe",
+          "value": "@data.habit.safe.title",
+          "_translations": {
+            "value": {}
+          },
+          "hidden": "@fields.weekly_parent_point_safe == 0",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "icon_src": "plh_images/icons/star.svg",
+            "count": "@fields.weekly_parent_point_safe"
+          },
+          "_nested_name": "display_group.safe",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.habit.safe.title",
+                "matchedExpression": "@data.habit.safe.title",
+                "type": "data",
+                "fieldName": "habit"
+              }
+            ],
+            "hidden": [
+              {
+                "fullExpression": "@fields.weekly_parent_point_safe == 0",
+                "matchedExpression": "@fields.weekly_parent_point_safe",
+                "type": "fields",
+                "fieldName": "weekly_parent_point_safe"
+              }
+            ],
+            "parameter_list": {
+              "count": [
+                {
+                  "fullExpression": "@fields.weekly_parent_point_safe",
+                  "matchedExpression": "@fields.weekly_parent_point_safe",
+                  "type": "fields",
+                  "fieldName": "weekly_parent_point_safe"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.habit.safe.title": [
+              "value"
+            ],
+            "@fields.weekly_parent_point_safe": [
+              "hidden",
+              "parameter_list.count"
+            ]
+          }
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "text",
+      "name": "bottom_text",
+      "_nested_name": "bottom_text"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "hidden": "@local.hide_nav_buttons",
+      "rows": [],
+      "_nested_name": "nav_buttons",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.hide_nav_buttons",
+            "matchedExpression": "@local.hide_nav_buttons",
+            "type": "local",
+            "fieldName": "hide_nav_buttons"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.hide_nav_buttons": [
+          "hidden"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_workshop_boxes.xlsx"
+}
