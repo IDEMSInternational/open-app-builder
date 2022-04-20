@@ -1047,6 +1047,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
     },
+    comp_latex: {
+      flow_type: "template",
+      flow_name: "comp_latex",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/components_demo/component_latex.xlsx",
+    },
     comp_round_button: {
       flow_type: "template",
       flow_name: "comp_round_button",
