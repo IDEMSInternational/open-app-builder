@@ -1,5 +1,3 @@
-# src data folder
-src/data/*
 src/assets/*
 # build folder
 www

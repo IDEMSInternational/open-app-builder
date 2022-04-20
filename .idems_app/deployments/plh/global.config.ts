@@ -42,6 +42,7 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
+  _version: 1.0,
 };
 
 config.app_constants.APP_LANGUAGES.default = "gb_en";
