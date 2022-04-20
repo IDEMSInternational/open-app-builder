@@ -50,14 +50,11 @@
       "priority": 1.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "2"
-            }
+            "calc": "@fields.workshop_number == 1"
           },
-          "_raw": "get_field | workshop_number : 2"
+          "_raw": "@fields.workshop_number == 1"
         }
       ],
       "campaign_list": [
@@ -91,14 +88,11 @@
       "priority": 2.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "3"
-            }
+            "calc": "@fields.workshop_number == 2"
           },
-          "_raw": "get_field | workshop_number : 3"
+          "_raw": "@fields.workshop_number == 2"
         }
       ],
       "campaign_list": [
@@ -132,14 +126,11 @@
       "priority": 3.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "4"
-            }
+            "calc": "@fields.workshop_number == 3"
           },
-          "_raw": "get_field | workshop_number : 4"
+          "_raw": "@fields.workshop_number == 3"
         }
       ],
       "campaign_list": [
@@ -173,14 +164,11 @@
       "priority": 4.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 4"
           },
-          "_raw": "get_field | workshop_number : 5"
+          "_raw": "@fields.workshop_number == 4"
         }
       ],
       "campaign_list": [
@@ -214,14 +202,11 @@
       "priority": 5.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "6"
-            }
+            "calc": "@fields.workshop_number == 5"
           },
-          "_raw": "get_field | workshop_number : 6"
+          "_raw": "@fields.workshop_number == 5"
         }
       ],
       "campaign_list": [
@@ -255,14 +240,11 @@
       "priority": 6.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "7"
-            }
+            "calc": "@fields.workshop_number == 6"
           },
-          "_raw": "get_field | workshop_number : 7"
+          "_raw": "@fields.workshop_number == 6"
         }
       ],
       "campaign_list": [
@@ -296,14 +278,11 @@
       "priority": 7.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "8"
-            }
+            "calc": "@fields.workshop_number == 7"
           },
-          "_raw": "get_field | workshop_number : 8"
+          "_raw": "@fields.workshop_number == 7"
         }
       ],
       "campaign_list": [
@@ -337,14 +316,11 @@
       "priority": 8.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "9"
-            }
+            "calc": "@fields.workshop_number == 8"
           },
-          "_raw": "get_field | workshop_number : 9"
+          "_raw": "@fields.workshop_number == 8"
         }
       ],
       "campaign_list": [
@@ -378,14 +354,11 @@
       "priority": 9.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "10"
-            }
+            "calc": "@fields.workshop_number == 9"
           },
-          "_raw": "get_field | workshop_number : 10"
+          "_raw": "@fields.workshop_number == 9"
         }
       ],
       "campaign_list": [
@@ -419,14 +392,11 @@
       "priority": 10.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "11"
-            }
+            "calc": "@fields.workshop_number == 10"
           },
-          "_raw": "get_field | workshop_number : 11"
+          "_raw": "@fields.workshop_number == 10"
         }
       ],
       "campaign_list": [
