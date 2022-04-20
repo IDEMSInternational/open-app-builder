@@ -7,6 +7,9 @@ import DOMPurify from "dompurify";
 @Pipe({
   name: "latex",
 })
+/* Checks for LaTeX equations within a text string and renders text and LaTeX as HTML.
+Accepts delimiters around LaTeX equations either of type $...$ and $$...$$, or \(...\) and \[...\].
+The equations will be formatted as 'inline' or 'display' in accordance with LaTeX's syntax */
 export class LatexPipe implements PipeTransform {
   segments: Segment[] = [];
 
@@ -32,8 +35,9 @@ export class LatexPipe implements PipeTransform {
             });
 
       let htmlString = `<p>`;
+
+      // detect whether input string contains a LaTeX 'math' segment, and is therefore in LaTeX's 'paragraph mode', else is itself in 'math mode'
       if (this.segments.some((segment) => segment.math)) {
-        // detect whether input string contains a LaTeX 'math' segment, and is therefore in LaTeX's 'paragraph mode', else is itself in 'math mode'
         for (const segment of this.segments) {
           if (segment.math) {
             htmlString += katex.renderToString(segment.raw, {
