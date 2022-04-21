@@ -30,36 +30,20 @@
       "priority": 8.99,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5"
           },
-          "_raw": "get_field | workshop_number : 5"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_started",
-              "value": false
-            }
-          },
-          "_raw": "get_field | w_stress_started : false"
+          "_raw": "@fields.workshop_number == 5"
         }
       ],
       "deactivation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_w_released.sent",
-              "value": true
-            }
+            "calc": "@fields.w_stress_started"
           },
-          "_raw": "get_field | w_stress_m_w_released.sent : true"
+          "_raw": "@fields.w_stress_started"
         }
       ],
       "campaign_list": [
@@ -93,26 +77,11 @@
       "priority": 8.9,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5"
           },
-          "_raw": "get_field | workshop_number : 5"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_relax.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | w_stress_m_relax.sent : true | before : 1 : day"
+          "_raw": "@fields.workshop_number == 5"
         }
       ],
       "campaign_list": [
@@ -146,46 +115,11 @@
       "priority": 8.8,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5  && @fields.workshop_day == 2"
           },
-          "_raw": "get_field | workshop_number : 5"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_something_fun.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | w_stress_m_something_fun.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
+          "_raw": "@fields.workshop_number == 5  && @fields.workshop_day == 2"
         }
       ],
       "campaign_list": [
@@ -219,56 +153,11 @@
       "priority": 8.7,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5  && @fields.workshop_day == 3"
           },
-          "_raw": "get_field | workshop_number : 5"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_praise.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | w_stress_m_praise.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
+          "_raw": "@fields.workshop_number == 5  && @fields.workshop_day == 3"
         }
       ],
       "campaign_list": [
@@ -302,66 +191,20 @@
       "priority": 8.6,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5  && @fields.workshop_day == 3"
           },
-          "_raw": "get_field | workshop_number : 5"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_started",
-              "value": false
-            }
-          },
-          "_raw": "get_field | w_stress_started : false"
+          "_raw": "@fields.workshop_number == 5  && @fields.workshop_day == 3"
         }
       ],
       "deactivation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_w_reminder.sent",
-              "value": true
-            }
+            "calc": "@fields.w_stress_started"
           },
-          "_raw": "get_field | w_stress_m_w_reminder.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
+          "_raw": "@fields.w_stress_started"
         }
       ],
       "campaign_list": [
@@ -395,76 +238,20 @@
       "priority": 8.5,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5 &&  @fields.w_stress_started && @fields.workshop_day == 3"
           },
-          "_raw": "get_field | workshop_number : 5"
+          "_raw": "@fields.workshop_number == 5 &&  @fields.w_stress_started && @fields.workshop_day == 3"
         }
       ],
       "deactivation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_w_in_progress.sent",
-              "value": true
-            }
+            "calc": "@fields.w_stress_completion_level == 100"
           },
-          "_raw": "get_field | w_stress_m_w_in_progress.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_started",
-              "value": false
-            }
-          },
-          "_raw": "get_field | w_stress_started : false"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_completion_level",
-              "value": "100"
-            }
-          },
-          "_raw": "get_field | w_stress_completion_level: 100"
+          "_raw": "@fields.w_stress_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -498,76 +285,11 @@
       "priority": 8.4,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5 && @fields.w_stress_completion_level == 100 && @fields.workshop_day == 4"
           },
-          "_raw": "get_field | workshop_number : 5"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_completion_level",
-              "value": "100"
-            }
-          },
-          "_raw": "get_field | w_stress_completion_level: 100"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_hp_reminder.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | w_stress_m_hp_reminder.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "3"
-            }
-          },
-          "_raw": "get_field | workshop_day : 3"
+          "_raw": "@fields.workshop_number == 5 && @fields.w_stress_completion_level == 100 && @fields.workshop_day == 4"
         }
       ],
       "campaign_list": [
@@ -601,76 +323,11 @@
       "priority": 8.3,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5 && @fields.workshop_day == 5"
           },
-          "_raw": "get_field | workshop_number : 5"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_parent_points_overview.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | w_stress_m_parent_points_overview.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "3"
-            }
-          },
-          "_raw": "get_field | workshop_day : 3"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "4"
-            }
-          },
-          "_raw": "get_field | workshop_day : 4"
+          "_raw": "@fields.workshop_number == 5 && @fields.workshop_day == 5"
         }
       ],
       "campaign_list": [
@@ -704,86 +361,20 @@
       "priority": 8.2,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5 && @fields.w_stress_completion_level == 100 && @fields.workshop_day == 5"
           },
-          "_raw": "get_field | workshop_number : 5"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_completion_level",
-              "value": "100"
-            }
-          },
-          "_raw": "get_field | w_stress_completion_level: 100"
+          "_raw": "@fields.workshop_number == 5 && @fields.w_stress_completion_level == 100 && @fields.workshop_day == 5"
         }
       ],
       "deactivation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_hp_review_completed",
-              "value": true
-            }
+            "calc": "@fields.w_stress_hp_review_completed"
           },
-          "_raw": "get_field | w_stress_hp_review_completed : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "3"
-            }
-          },
-          "_raw": "get_field | workshop_day : 3"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "4"
-            }
-          },
-          "_raw": "get_field | workshop_day : 4"
+          "_raw": "@fields.w_stress_hp_review_completed"
         }
       ],
       "campaign_list": [
@@ -817,86 +408,11 @@
       "priority": 8.1,
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_number",
-              "value": "5"
-            }
+            "calc": "@fields.workshop_number == 5 && @fields.workshop_day == 6"
           },
-          "_raw": "get_field | workshop_number : 5"
-        }
-      ],
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "w_stress_m_w_tomorrow.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | w_stress_m_w_tomorrow.sent : true"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "0"
-            }
-          },
-          "_raw": "get_field | workshop_day : 0"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "1"
-            }
-          },
-          "_raw": "get_field | workshop_day : 1"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "2"
-            }
-          },
-          "_raw": "get_field | workshop_day : 2"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "3"
-            }
-          },
-          "_raw": "get_field | workshop_day : 3"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "4"
-            }
-          },
-          "_raw": "get_field | workshop_day : 4"
-        },
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "workshop_day",
-              "value": "5"
-            }
-          },
-          "_raw": "get_field | workshop_day : 5"
+          "_raw": "@fields.workshop_number == 5 && @fields.workshop_day == 6"
         }
       ],
       "campaign_list": [
