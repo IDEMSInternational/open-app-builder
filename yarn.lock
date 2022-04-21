@@ -8563,7 +8563,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^8.1.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
+"commander@npm:^8.0.0, commander@npm:^8.1.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
   version: 8.3.0
   resolution: "commander@npm:8.3.0"
   checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
@@ -10218,6 +10218,13 @@ __metadata:
   dependencies:
     domelementtype: ^2.2.0
   checksum: ad782fef984eca5a6fdd4ce70b90c38aff335ae4d6a51223ac82bd371b6674614efdcfff2dbb1126a7395634357906781f179e4ec028c7c578bb7f2beef8a4a5
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^2.3.6":
+  version: 2.3.6
+  resolution: "dompurify@npm:2.3.6"
+  checksum: 4b2bbf6bc68ebd776aec4a533cef74a5ae30391eed528f3df748af71da318afdc298b6f40449bef093b7454ffd2ae82656636560474de5a3b34316b762c85b12
   languageName: node
   linkType: hard
 
@@ -12021,6 +12028,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"extract-math@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "extract-math@npm:1.2.3"
+  dependencies:
+    escape-string-regexp: ^4.0.0
+  checksum: 019a2a8806568587177cd06ffc7ccb0b5bcbc56b22e6e8d5111bbd209379e4b4916d7ffac532e01d69f3b72f28e0f6b9206f8c2577e56bf3cd8ef13b1943d236
+  languageName: node
+  linkType: hard
+
 "extract-zip@npm:2.0.1, extract-zip@npm:^2.0.1":
   version: 2.0.1
   resolution: "extract-zip@npm:2.0.1"
@@ -12696,11 +12712,13 @@ __metadata:
     dexie-observable: 3.0.0-beta.11
     dexie-syncable: ^3.0.0-beta.10
     document-register-element: ^1.14.10
+    dompurify: ^2.3.6
     eslint: ^7.29.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: 2.23.4
     eslint-plugin-jsdoc: 35.4.0
     eslint-plugin-prefer-arrow: 1.2.3
+    extract-math: ^1.2.3
     firebase: ^8.6.8
     firebase-tools: ^9.14.0
     globalthis: ^1.0.2
@@ -12715,6 +12733,7 @@ __metadata:
     karma-jasmine: ~4.0.1
     karma-jasmine-html-reporter: ^1.6.0
     karma-typescript: ^5.5.1
+    katex: ^0.15.3
     lint-staged: ^11.0.0
     lottie-web: ^5.7.14
     marked: ^2.0.1
@@ -16301,6 +16320,17 @@ __metadata:
   bin:
     karma: bin/karma
   checksum: 2e652c8f4d520593bedf96d21a9ab92b02e93bdb2598c7abee79ccdbd793099c634555e247559801b1226bae3a5544be61a3570f8ed560e96064447fb19206c9
+  languageName: node
+  linkType: hard
+
+"katex@npm:^0.15.3":
+  version: 0.15.3
+  resolution: "katex@npm:0.15.3"
+  dependencies:
+    commander: ^8.0.0
+  bin:
+    katex: cli.js
+  checksum: 12bec82d9ae9f122b9aeafaf2de476e702d12ae19bb9bdd9c8c24126fd81e752047bb856254af98ca54fc51f3bb7f149b3902d65dcdafb5e3deeb691ec4d3db2
   languageName: node
   linkType: hard
 
