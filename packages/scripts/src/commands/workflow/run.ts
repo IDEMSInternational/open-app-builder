@@ -45,9 +45,10 @@ export class WorkflowRunnerClass {
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
     this.config = getActiveDeployment();
-    const { workflows: workflowPaths, _workspace_path } = this.config;
-    if (workflowPaths) {
-      for (const workflowPath of workflowPaths) {
+    const { workflow, _workspace_path } = this.config as any;
+    const customWorkflowFiles = [];
+    if (workflow) {
+      for (const workflowPath of customWorkflowFiles) {
         const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
         const workflows: IDeploymentWorkflows = ts?.default as any;
         if (workflows) {
