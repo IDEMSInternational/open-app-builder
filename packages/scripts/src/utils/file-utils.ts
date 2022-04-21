@@ -370,12 +370,27 @@ export function readContentsFileAsHashmap(
 /**
  * Copy all files from src dir to target, and remove target files that no longer exist in src
  * Ignores unchanged files based on md5 hash and preserves src file stats
+ * @param filter_fn optional filter function applied to src folder files
  * */
-export function replicateDir(src: string, target: string) {
+export function replicateDir(
+  src: string,
+  target: string,
+  filter_fn?: (entry: IContentsEntry) => boolean
+) {
   fs.ensureDirSync(src);
   fs.ensureDirSync(target);
   const srcFiles = generateFolderFlatMap(src, true);
   const targetFiles = generateFolderFlatMap(target, true);
+
+  // omit src files via filter
+  if (filter_fn) {
+    Object.entries(srcFiles).forEach(([key, entry]) => {
+      if (!filter_fn(entry as IContentsEntry)) {
+        delete srcFiles[key];
+      }
+    });
+  }
+
   const ops = { copy: [], delete: [], ignore: [] };
   // remove target files that no longer exist in src
   Object.keys(targetFiles).forEach((filepath) => {
