@@ -1,8 +1,8 @@
 {
   "flow_type": "template",
-  "flow_subtype": "debug",
   "flow_name": "example_radio_group_fb_hid",
   "status": "released",
+  "flow_subtype": "debug",
   "rows": [
     {
       "name": "answer_list_1",
@@ -150,5 +150,5 @@
       }
     }
   ],
-  "_xlsxPath": "quality_assurance/example_templates/example_options_feedback.xlsx"
+  "_xlsxPath": "quality_assurance/example_templates/example_radio_group.xlsx"
 }
