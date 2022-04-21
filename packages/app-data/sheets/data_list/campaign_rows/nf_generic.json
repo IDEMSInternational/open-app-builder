@@ -26,7 +26,14 @@
       ],
       "text": "Hi great parent, remember to take care of yourself too - it will help you AND your family! Get your tips and more in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -56,7 +63,14 @@
       ],
       "text": "Hi great parent! Remember, you can find lots of helpful tips in @global.parent_app.",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "_translatedFields": {
         "text": {
@@ -86,7 +100,14 @@
       ],
       "text": "Hi great parent! @global.parent_app is here to support you. Check it out now!",
       "_translations": {
-        "text": {}
+        "text": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
       },
       "_translatedFields": {
         "text": {
