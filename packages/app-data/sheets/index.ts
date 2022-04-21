@@ -2109,6 +2109,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_templates/example_languages.xlsx",
     },
+    example_lang_translator_mode: {
+      flow_type: "template",
+      flow_name: "example_lang_translator_mode",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_templates/example_languages.xlsx",
+    },
     example_lang_user_name: {
       flow_type: "template",
       flow_name: "example_lang_user_name",
@@ -2159,15 +2165,15 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     },
     example_radio_group_fb_con: {
       flow_type: "template",
-      flow_subtype: "debug",
       flow_name: "example_radio_group_fb_con",
-      _xlsxPath: "quality_assurance/example_templates/example_options_feedback.xlsx",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_templates/example_radio_group.xlsx",
     },
     example_radio_group_fb_hid: {
       flow_type: "template",
-      flow_subtype: "debug",
       flow_name: "example_radio_group_fb_hid",
-      _xlsxPath: "quality_assurance/example_templates/example_options_feedback.xlsx",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_templates/example_radio_group.xlsx",
     },
     example_set_fields_in_action: {
       flow_type: "template",
