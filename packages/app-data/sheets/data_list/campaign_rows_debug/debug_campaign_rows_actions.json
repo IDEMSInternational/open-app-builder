@@ -60,18 +60,6 @@
         }
       ],
       "priority": 2,
-      "activation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "debug_actions_1.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | debug_actions_1.sent: TRUE"
-        }
-      ],
       "campaign_list": [
         "debug_actions"
       ],
@@ -113,18 +101,6 @@
         }
       ],
       "priority": 3,
-      "activation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "debug_actions_2.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | debug_actions_2.sent: TRUE"
-        }
-      ],
       "campaign_list": [
         "debug_actions"
       ],
