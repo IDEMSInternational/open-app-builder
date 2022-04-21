@@ -1,11 +1,12 @@
-# Basic test to ensure PRs pass build
-name: PR Build
+# Basic test to ensure PRs pass build. Default runner except when preview deployment already generated
+name: Test Build
 on:
   pull_request:
     branches:
       - master
 jobs:
   build:
+    if: "!contains(github.event.pull_request.labels.*.name, 'Test - preview')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
