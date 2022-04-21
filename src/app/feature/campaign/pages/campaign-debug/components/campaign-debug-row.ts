@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 
 @Component({
@@ -137,13 +137,11 @@ import { FlowTypes } from "src/app/shared/model";
     `,
   ],
 })
-export class CampaignDebugRowComponent implements OnInit {
+export class CampaignDebugRowComponent {
   @Input() row: FlowTypes.Campaign_listRow;
   @Output() manageVariablesClicked = new EventEmitter<FlowTypes.Campaign_listRow>();
   @Output() sendNotificationClicked = new EventEmitter<FlowTypes.Campaign_listRow>();
   constructor() {}
-
-  ngOnInit() {}
 
   public logDebugInfo(row: FlowTypes.Campaign_listRow) {
     console.group(row.id);
