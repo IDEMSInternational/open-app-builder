@@ -346,7 +346,14 @@
                       "name": "audio_title",
                       "value": "Hear @global.topic_intro_name's message",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_1.audio_title",
@@ -394,7 +401,14 @@
                       "name": "button_1",
                       "value": "Read @global.topic_intro_name's message",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
                       },
                       "action_list": [
                         {
@@ -540,7 +554,9 @@
                       "name": "audio_title",
                       "value": "Hear a caregiver's testimonial",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "type": "set_variable",
                       "_nested_name": "listen.workshop_activity.content_box.box_2.audio_title"
@@ -573,7 +589,9 @@
                       "name": "button_1",
                       "value": "Read a caregiver's testimonial",
                       "_translations": {
-                        "value": {}
+                        "value": {
+                          "tz_sw": true
+                        }
                       },
                       "action_list": [
                         {
@@ -824,7 +842,14 @@
                   "name": "audio_title",
                   "value": "Hear @global.topic_intro_name's message",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "listen.workshop_activity.content_box.audio_title",
@@ -872,7 +897,14 @@
                   "name": "button_1",
                   "value": "Read @global.topic_intro_name's message",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
                   },
                   "action_list": [
                     {
