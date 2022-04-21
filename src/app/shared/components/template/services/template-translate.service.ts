@@ -94,12 +94,14 @@ export class TemplateTranslateService {
     }
     // Note - there is a third case when row value assigned from calculation (e.g. data list child field)
     // but this is currently manually handled in the template-variables service as required
-    return translated;
-  }
 
-  private isTranslatorModeEnabled() {
-    const translatorMode = this.localStorageService.getString(APP_FIELDS.TRANSLATOR_MODE_ENABLED);
-    return translatorMode === "true";
+    // Alter translated value in translator mode (before/after just for logging)
+    if (this.shouldShowTranslatorModeText(row)) {
+      (translated as any)._translation_before = `${translated.value}`;
+      translated.value = this.getTranslatorModeText(translated.value);
+      (translated as any)._translation_after = `${translated.value}`;
+    }
+    return translated;
   }
 
   public toggleTranslatorMode() {
@@ -134,36 +136,36 @@ export class TemplateTranslateService {
   }
 
   public translateValue(value: any) {
-    // ignore non-string
-    if (typeof value !== "string") return value;
-
-    // Translation Mode
-    if (this.translatorModeEnabled) {
-      return this.getTranslatorModeText(value);
-    }
-
-    // Default Mode
-    let translated = value;
     if (typeof value === "string" && this.translation_strings.hasOwnProperty(value)) {
-      translated = this.translation_strings[value];
+      return this.translation_strings[value];
+    } else {
+      return value;
     }
-    return translated;
+  }
+
+  /***********************************************************************
+   *            Translator Mode
+   **********************************************************************/
+
+  /** Show translator mode text when enabled for select display components */
+  private shouldShowTranslatorModeText(row: FlowTypes.TemplateRow) {
+    if (!this.translatorModeEnabled) return false;
+    if (row.exclude_from_translation) return false;
+    return ["button", "text", "title", "subtitle"].includes(row.type);
+    // const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
+    // return displayComponent ? true : false;
+  }
+
+  private isTranslatorModeEnabled() {
+    const translatorMode = this.localStorageService.getString(APP_FIELDS.TRANSLATOR_MODE_ENABLED);
+    return translatorMode === "true";
   }
 
   private getTranslatorModeText(value: string) {
-    // Hack - ignore empty strings
+    // ignore empty strings
     if (!value) return value;
-    // Hack - attempt to omit dynamic text
-    if (value.includes("@")) return value;
-    // Hack - avoid duplicate translations
-    if (value.includes("(none)")) return value;
-    // Hack - avoid no translations
-    if (Object.keys(this.translation_strings).length === 0) return value;
-
-    // Hack - avoid retranslation
+    // avoid retranslation
     if (value.includes("⦁")) return value;
-    // Hack - avoid files
-    if (/\.[a-z0-9]{3,4}$/i.test(value)) return value;
     let translation = this.translation_strings[value];
     if (!translation) {
       // console.warn("[Translation missing]", value);
