@@ -2109,6 +2109,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_templates/example_languages.xlsx",
     },
+    example_lang_translator_mode: {
+      flow_type: "template",
+      flow_name: "example_lang_translator_mode",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_templates/example_languages.xlsx",
+    },
     example_lang_user_name: {
       flow_type: "template",
       flow_name: "example_lang_user_name",
