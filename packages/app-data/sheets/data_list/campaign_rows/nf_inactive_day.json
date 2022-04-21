@@ -21,42 +21,18 @@
         }
       ],
       "priority": 1,
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "nf_inactive_day_1.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | nf_inactive_day_1.sent : true"
-        }
-      ],
       "campaign_list": [
         "nf_inactive_day"
       ],
-      "title": "New message from PLH",
+      "text": "Welcome to @global.parent_app. Click here to start your journey!",
       "_translations": {
-        "title": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        },
         "text": {}
       },
       "_translatedFields": {
-        "title": {
-          "eng": "New message from PLH"
-        },
         "text": {
           "eng": "Welcome to @global.parent_app. Click here to start your journey!"
         }
-      },
-      "text": "Welcome to @global.parent_app. Click here to start your journey!"
+      }
     }
   ],
   "_xlsxPath": "global/campaigns/notifications_inactive.xlsx"

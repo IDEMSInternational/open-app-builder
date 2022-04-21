@@ -71,6 +71,16 @@ export const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
       },
     ],
   },
+  clear_workflow_cache: {
+    label: "Clear workflow caches",
+    steps: [
+      {
+        name: "Clear",
+        function: async ({ tasks, config }) =>
+          tasks.file.remove({ src: config.workflows.task_cache_path }),
+      },
+    ],
+  },
   setup: {
     label: "(TODO) - Setup Deployment",
     steps: [],

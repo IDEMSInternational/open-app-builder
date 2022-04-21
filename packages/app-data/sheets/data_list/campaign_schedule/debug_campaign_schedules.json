@@ -9,14 +9,11 @@
       "id": "debug_daily",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -31,14 +28,11 @@
       "id": "debug_fixed_saturday",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -53,14 +47,11 @@
       "id": "debug_fixed_past",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -72,14 +63,11 @@
       "id": "debug_fixed_december_no_time",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -91,14 +79,11 @@
       "id": "debug_fixed_december_early",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -114,14 +99,11 @@
       "id": "debug_fixed_december_noon",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -137,14 +119,11 @@
       "id": "debug_fixed_december_late",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -160,14 +139,11 @@
       "id": "debug_fixed_new_years_day",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -183,14 +159,11 @@
       "id": "debug_consecutive_days",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -201,14 +174,11 @@
       "id": "debug_actions",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "time": {
@@ -220,14 +190,11 @@
       "id": "debug_actions_2",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "time": {
@@ -239,14 +206,11 @@
       "id": "debug_condition",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ],
       "schedule": {
@@ -261,14 +225,11 @@
       "id": "debug_html",
       "activation_condition_list": [
         {
-          "condition_type": "field_evaluation",
+          "condition_type": "calc",
           "condition_args": {
-            "field_evaluation": {
-              "field": "debug_campaigns_enabled",
-              "value": true
-            }
+            "calc": "@fields.debug_campaigns_enabled"
           },
-          "_raw": "get_field | debug_campaigns_enabled:TRUE"
+          "_raw": "@fields.debug_campaigns_enabled"
         }
       ]
     }
