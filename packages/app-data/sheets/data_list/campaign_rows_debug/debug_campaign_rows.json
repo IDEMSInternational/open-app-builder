@@ -20,18 +20,6 @@
         }
       ],
       "priority": 4,
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "debug_daily_1.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | debug_daily_1.sent: TRUE"
-        }
-      ],
       "campaign_list": [
         "debug_daily"
       ],
@@ -65,18 +53,6 @@
         }
       ],
       "priority": 3,
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "debug_daily_2.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | debug_daily_2.sent: TRUE"
-        }
-      ],
       "campaign_list": [
         "debug_daily"
       ],
@@ -118,18 +94,6 @@
         }
       ],
       "priority": 2,
-      "deactivation_condition_list": [
-        {
-          "condition_type": "field_evaluation",
-          "condition_args": {
-            "field_evaluation": {
-              "field": "debug_daily_3.sent",
-              "value": true
-            }
-          },
-          "_raw": "get_field | debug_daily_3.sent: TRUE"
-        }
-      ],
       "campaign_list": [
         "debug_daily"
       ],
