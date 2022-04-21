@@ -76,7 +76,14 @@ export class TemplateTranslateService {
    * a `translatedFields` property that lists keys for translation
    */
   translateRow(row: FlowTypes.TemplateRow = {} as any) {
+    const shouldShowTranslatorModeText = this.shouldShowTranslatorModeText(row);
+
     const translated = { ...row };
+
+    if (shouldShowTranslatorModeText) {
+      (translated as any)._translation_before = `${row.value}`;
+    }
+
     // Case 1 - row with translate fields identified (e.g. template row)
     if (row._translations) {
       Object.keys(row._translations).forEach((field) => {
@@ -96,9 +103,8 @@ export class TemplateTranslateService {
     // but this is currently manually handled in the template-variables service as required
 
     // Alter translated value in translator mode (before/after just for logging)
-    if (this.shouldShowTranslatorModeText(row)) {
-      (translated as any)._translation_before = `${translated.value}`;
-      translated.value = this.getTranslatorModeText(translated.value);
+    if (shouldShowTranslatorModeText) {
+      translated.value = this.getTranslatorModeText(translated);
       (translated as any)._translation_after = `${translated.value}`;
     }
     return translated;
@@ -145,12 +151,15 @@ export class TemplateTranslateService {
 
   /***********************************************************************
    *            Translator Mode
+   * TODO - implementation doesn't work very well only translates display rows
+   * (not from global set, set_field etc.)
    **********************************************************************/
 
   /** Show translator mode text when enabled for select display components */
   private shouldShowTranslatorModeText(row: FlowTypes.TemplateRow) {
     if (!this.translatorModeEnabled) return false;
     if (row.exclude_from_translation) return false;
+    if (row._dynamicFields?.value) return false;
     return ["button", "text", "title", "subtitle"].includes(row.type);
     // const displayComponent = TEMPLATE_COMPONENT_MAPPING[row.type];
     // return displayComponent ? true : false;
@@ -161,7 +170,8 @@ export class TemplateTranslateService {
     return translatorMode === "true";
   }
 
-  private getTranslatorModeText(value: string) {
+  private getTranslatorModeText(row: FlowTypes.TemplateRow) {
+    const { value } = row;
     // ignore empty strings
     if (!value) return value;
     // avoid retranslation
