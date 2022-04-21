@@ -62,11 +62,27 @@ export const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
           tasks.gdrive.download({ folderId: config.google_drive.assets_folder_id }),
       },
       {
-        name: "app_copy_assets",
+        name: "app_copy_add_data",
         function: async ({ tasks, workflow, config }) =>
           tasks.appData.copy({
             localAssetsFolder: workflow.assets_dl.output,
             appAssetsFolder: config.app_data.assets_output_path,
+          }),
+      },
+    ],
+  },
+  // Copy app-data assets directly to src assets
+  // Note - this is already done as part of `tasks.appData.copy`, so just for postinstall
+  populate_src_assets: {
+    label: "Copy Assets to Src",
+    steps: [
+      {
+        name: "populate_src_assets",
+        function: async ({ tasks, workflow, config }) =>
+          tasks.appData.populateSrcAssets({
+            appAssetsFolder: config.app_data.assets_output_path,
+            appSheetsFolder: config.app_data.sheets_output_path,
+            appTranslationsFolder: config.app_data.translations_output_path,
           }),
       },
     ],
@@ -80,9 +96,5 @@ export const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
           tasks.file.remove({ src: config.workflows.task_cache_path }),
       },
     ],
-  },
-  setup: {
-    label: "(TODO) - Setup Deployment",
-    steps: [],
   },
 };

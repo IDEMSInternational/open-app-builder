@@ -37,6 +37,7 @@ resources/android
 resources/ios
 package-lock.json
 src/environments/firebaseConfig.ts
+src/assets/app_data
 **/*.jks
 .firebase
 
