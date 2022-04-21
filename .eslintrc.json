@@ -5,12 +5,11 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "prettier"
       ],
@@ -85,11 +84,10 @@
         "prefer-const": "off",
         "quote-props": ["off", "as-needed"],
         "prefer-arrow/prefer-arrow-functions": "off",
-        "jsdoc/newline-after-description": ["off"],
         "no-underscore-dangle": "off",
         "object-shorthand": "warn",
         "no-var": "warn",
-        "no-console": "warn",
+        "no-console": "off",
         "radix": "warn",
         "eqeqeq": "warn",
         "no-fallthrough": "warn",
