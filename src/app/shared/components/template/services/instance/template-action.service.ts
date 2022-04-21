@@ -203,6 +203,9 @@ export class TemplateActionService extends TemplateInstanceService {
         if (emit_value === "set_language") {
           this.templateTranslateService.setLanguage(args[1]);
         }
+        if (emit_value === "translator_mode_toggle") {
+          this.templateTranslateService.toggleTranslatorMode();
+        }
         if (emit_value === "server_sync") {
           await this.serverService.syncUserData();
           await this.dbSyncService.syncToServer();

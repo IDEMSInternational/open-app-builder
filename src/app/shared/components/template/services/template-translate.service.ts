@@ -22,10 +22,14 @@ export class TemplateTranslateService {
 
   translation_strings = {};
 
+  private translatorModeEnabled: boolean;
+
   constructor(
     private localStorageService: LocalStorageService,
     private appDataService: AppDataService
-  ) {}
+  ) {
+    this.translatorModeEnabled = this.isTranslatorModeEnabled();
+  }
 
   public async init() {
     const currentLanguage = this.localStorageService.getString(APP_FIELDS.APP_LANGUAGE);
@@ -93,6 +97,19 @@ export class TemplateTranslateService {
     return translated;
   }
 
+  private isTranslatorModeEnabled() {
+    const translatorMode = this.localStorageService.getString(APP_FIELDS.TRANSLATOR_MODE_ENABLED);
+    return translatorMode === "true";
+  }
+
+  public toggleTranslatorMode() {
+    this.localStorageService.setString(
+      APP_FIELDS.TRANSLATOR_MODE_ENABLED,
+      `${!this.translatorModeEnabled}`
+    );
+    location.reload();
+  }
+
   /**
    * As dynamic fields keep reference to initial full expressions that are used as part of evaluation,
    * also replace these references with translated ones
@@ -117,12 +134,41 @@ export class TemplateTranslateService {
   }
 
   public translateValue(value: any) {
+    // ignore non-string
+    if (typeof value !== "string") return value;
+
+    // Translation Mode
+    if (this.translatorModeEnabled) {
+      return this.getTranslatorModeText(value);
+    }
+
+    // Default Mode
     let translated = value;
     if (typeof value === "string" && this.translation_strings.hasOwnProperty(value)) {
       translated = this.translation_strings[value];
-    } else {
-      // console.warn("[Translation missing]", `[${this.app_language}] ${fieldTranslations.eng}`);
     }
     return translated;
+  }
+
+  private getTranslatorModeText(value: string) {
+    // Hack - ignore empty strings
+    if (!value) return value;
+    // Hack - attempt to omit dynamic text
+    if (value.includes("@")) return value;
+    // Hack - avoid duplicate translations
+    if (value.includes("(none)")) return value;
+    // Hack - avoid no translations
+    if (Object.keys(this.translation_strings).length === 0) return value;
+
+    // Hack - avoid retranslation
+    if (value.includes("⦁")) return value;
+    // Hack - avoid files
+    if (/\.[a-z0-9]{3,4}$/i.test(value)) return value;
+    let translation = this.translation_strings[value];
+    if (!translation) {
+      // console.warn("[Translation missing]", value);
+      translation = "(none)";
+    }
+    return `${translation} ⦁ \n${value}`;
   }
 }
