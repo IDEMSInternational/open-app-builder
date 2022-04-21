@@ -1,4 +1,5 @@
 import { FilterDisplayComponentPipe } from "./filter-display-component.pipe";
+import { LatexPipe } from "./latex.pipe";
 import { MarkdownPipe } from "./markdown.pipe";
 import { NumberingPipe } from "./numbering.pipe";
 import { PLHAssetPipe } from "./plh-asset.pipe";
@@ -12,4 +13,5 @@ export const TEMPLATE_PIPES = [
   NumberingPipe,
   StyleListPipe,
   TranslatePipe,
+  LatexPipe,
 ];
