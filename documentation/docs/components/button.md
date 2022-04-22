@@ -10,7 +10,7 @@
 ![](images/button.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1OmgZICjM5EMT1KgLOU_ovDljRF_SPlpQAgkKWPrNX0s/edit#gid=569531329)   
-[Live Preview Demo](https://plh-teens-app1.web.app/template/comp_button)
+[Live Preview Demo](https://plh-global.web.app/template/comp_button)
 
 ## Parameters
 
