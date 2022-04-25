@@ -24,7 +24,7 @@ Any valid html can be rendered in the value. This includes the full set of [Ioni
 ![](images/html.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1-M10SxkDXoLCj3nQxkRdCMjqu7FgLIP55OYgvh4Oa-M/edit#gid=569531329)   
-[Live Preview Demo](https://plh-teens-app1.web.app/template/comp_html)
+[Live Preview Demo](https://plh-global.web.app/template/comp_html)
 
 ## Parameters
 
