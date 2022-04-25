@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FlowTypes } from "src/app/shared/model";
 import { CampaignService } from "../../../campaign.service";
 
@@ -146,14 +146,12 @@ import { CampaignService } from "../../../campaign.service";
     `,
   ],
 })
-export class CampaignScheduleDebugRowComponent implements OnInit {
+export class CampaignScheduleDebugRowComponent {
   @Input() row: FlowTypes.Campaign_Schedule;
   @Output() manageVariablesClicked = new EventEmitter<FlowTypes.Campaign_Schedule>();
   @Output() triggerActionsClicked = new EventEmitter<FlowTypes.Campaign_Schedule>();
   @Output() scheduleNotificationClicked = new EventEmitter<FlowTypes.Campaign_Schedule>();
   constructor(public campaignService: CampaignService) {}
-
-  ngOnInit() {}
 
   public logDebugInfo(row: FlowTypes.Campaign_Schedule) {
     console.group(row.id);

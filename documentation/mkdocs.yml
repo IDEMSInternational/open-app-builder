@@ -29,6 +29,7 @@ nav:
   - Display Components:
       - components/audio.md
       - components/html.md
+      - components/latex.md
       - components/button.md
       - components/square_button.md
       - components/round_button.md

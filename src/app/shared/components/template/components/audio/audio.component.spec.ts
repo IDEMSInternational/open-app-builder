@@ -1,24 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { AudioComponent } from './audio.component';
+import { TmplAudioComponent } from "./audio.component";
 
-describe('AudioComponent', () => {
-  let component: AudioComponent;
-  let fixture: ComponentFixture<AudioComponent>;
+describe("TmplAudioComponent", () => {
+  let component: TmplAudioComponent;
+  let fixture: ComponentFixture<TmplAudioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AudioComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [TmplAudioComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AudioComponent);
+    fixture = TestBed.createComponent(TmplAudioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

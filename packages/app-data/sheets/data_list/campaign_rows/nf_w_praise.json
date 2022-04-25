@@ -68,7 +68,8 @@
         "title": {},
         "text": {
           "tz_sw": true,
-          "za_st": true
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -145,7 +146,8 @@
         "title": {},
         "text": {
           "tz_sw": true,
-          "za_st": true
+          "za_st": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -319,7 +321,8 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -387,7 +390,8 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -462,7 +466,8 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -530,7 +535,8 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {
@@ -722,7 +728,8 @@
       "_translations": {
         "title": {},
         "text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_tn": true
         }
       },
       "_translatedFields": {

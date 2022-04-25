@@ -366,3 +366,66 @@ export function readContentsFileAsHashmap(
   }
   return hashmap;
 }
+
+/**
+ * Copy all files from src dir to target, and remove target files that no longer exist in src
+ * Ignores unchanged files based on md5 hash and preserves src file stats
+ * @param filter_fn optional filter function applied to src folder files
+ * */
+export function replicateDir(
+  src: string,
+  target: string,
+  filter_fn?: (entry: IContentsEntry) => boolean
+) {
+  fs.ensureDirSync(src);
+  fs.ensureDirSync(target);
+  const srcFiles = generateFolderFlatMap(src, true);
+  const targetFiles = generateFolderFlatMap(target, true);
+
+  // omit src files via filter
+  if (filter_fn) {
+    Object.entries(srcFiles).forEach(([key, entry]) => {
+      if (!filter_fn(entry as IContentsEntry)) {
+        delete srcFiles[key];
+      }
+    });
+  }
+
+  const ops = { copy: [], delete: [], ignore: [] };
+  // remove target files that no longer exist in src
+  Object.keys(targetFiles).forEach((filepath) => {
+    if (!srcFiles.hasOwnProperty(filepath)) {
+      ops.delete.push(filepath);
+    }
+  });
+  // copy new and modified files from src
+  Object.entries(srcFiles).forEach(([filepath, entry]) => {
+    if (targetFiles.hasOwnProperty(filepath)) {
+      const srcFile = entry as IContentsEntry;
+      const targetFile = targetFiles[filepath] as IContentsEntry;
+      if (srcFile.md5Checksum !== targetFile.md5Checksum) {
+        ops.copy.push(entry);
+      } else {
+        ops.ignore.push(filepath);
+      }
+    } else {
+      ops.copy.push(entry);
+    }
+  });
+
+  // process operations
+  ops.delete.forEach((filepath) => {
+    const targetPath = path.resolve(target, filepath);
+    fs.removeSync(targetPath);
+  });
+  ops.copy.forEach((entry) => {
+    const { relativePath, modifiedTime } = entry as IContentsEntry;
+    const srcPath = path.resolve(src, relativePath);
+    const targetPath = path.resolve(target, relativePath);
+    const mtime = new Date(modifiedTime);
+    fs.ensureDirSync(path.dirname(targetPath));
+    fs.copyFileSync(srcPath, targetPath);
+    fs.utimesSync(targetPath, mtime, mtime);
+  });
+  return ops;
+}

@@ -61,7 +61,7 @@ export class TmplCompHostDirective {
   encapsulation: ViewEncapsulation.None,
   styleUrls: ["./template-component.scss"],
 })
-export class TemplateComponent implements OnInit, ITemplateRowProps {
+export class TemplateComponent implements OnInit, AfterContentInit, ITemplateRowProps {
   /**
    * Specific data used in component rendering
    * when updated from parent changes will automatically propogate to child

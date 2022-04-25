@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as fs from "fs-extra";
+import { tmpdir } from "os";
 import chalk from "chalk";
 import { Command } from "commander";
 import {
@@ -11,6 +12,7 @@ import {
   IContentsEntry,
   logOutput,
   recursiveFindByExtension,
+  replicateDir,
 } from "../../utils";
 import { spawnSync } from "child_process";
 
@@ -172,9 +174,6 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
   }
 
   private assetsCopyFiles(sourceFolder: string, targetFolder: string) {
-    // setup folders
-    fs.ensureDirSync(targetFolder);
-    fs.emptyDirSync(targetFolder);
     // filter and copy
     const assetFiles = readContentsFile(sourceFolder);
     const { assets_filter_function } = this.activeDeployment.app_data;
@@ -193,12 +192,20 @@ export const ASSETS_CONTENTS_LIST = ${JSON.stringify(cleanedContents, null, 2)}
       return assets_filter_function(fileEntry);
     });
 
+    // Copy
+    // Write to tmp dir to allow minimal update via replicate methods
+    // (will fail to unlink if app running)
+    const tmpFolder = path.resolve(tmpdir(), "app_assets");
+    fs.ensureDirSync(tmpFolder);
+    fs.emptyDirSync(tmpFolder);
     for (const fileEntry of filteredFiles) {
       const src = path.resolve(sourceFolder, fileEntry.relativePath);
-      const dest = path.resolve(targetFolder, fileEntry.relativePath);
-      fs.ensureDir(path.dirname(dest));
+      const dest = path.resolve(tmpFolder, fileEntry.relativePath);
+      fs.ensureDirSync(path.dirname(dest));
       fs.copySync(src, dest, { preserveTimestamps: true });
     }
+    replicateDir(tmpFolder, targetFolder);
+    fs.removeSync(tmpFolder);
   }
 
   /** Ensure asset folders are named correctly */

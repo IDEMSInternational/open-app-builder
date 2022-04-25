@@ -109,14 +109,7 @@
       "name": "female_caregiver_2",
       "value": "Mother",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true
     },
@@ -125,14 +118,7 @@
       "name": "female_caregiver_3",
       "value": "Mother",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true
     },
@@ -141,14 +127,7 @@
       "name": "female_caregiver_4",
       "value": "Mother",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true
     },
@@ -211,14 +190,7 @@
       "name": "male_caregiver_1",
       "value": "Father",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true
     },
@@ -227,14 +199,7 @@
       "name": "male_caregiver_2",
       "value": "Father",
       "_translations": {
-        "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "value": {}
       },
       "exclude_from_translation": true
     },

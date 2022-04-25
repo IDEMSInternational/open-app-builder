@@ -144,7 +144,8 @@ class GDriveDownloader {
         relativePath: getRelativeLocalPath(f),
       }))
       // only include files downloaded in contents
-      .filter((f) => fs.existsSync(path.resolve(outputPath, f.relativePath)));
+      .filter((f) => fs.existsSync(path.resolve(outputPath, f.relativePath)))
+      .sort((a, b) => (a.relativePath > b.relativePath ? 1 : -1));
     const contents = JSON.stringify(filesWithRelativePath, null, 2);
     const contentsPath = path.resolve(outputPath, this.options.contentsFileName);
     fs.writeFileSync(contentsPath, contents);

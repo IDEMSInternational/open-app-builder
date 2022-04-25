@@ -373,7 +373,9 @@
                   "name": "audio_title",
                   "value": "Hear a teen's testimonial",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "type": "set_variable",
                   "_nested_name": "workshop_activity.content_box.box_2.audio_title"
@@ -406,7 +408,9 @@
                   "name": "button_1",
                   "value": "Read a teen's testimonial",
                   "_translations": {
-                    "value": {}
+                    "value": {
+                      "tz_sw": true
+                    }
                   },
                   "action_list": [
                     {

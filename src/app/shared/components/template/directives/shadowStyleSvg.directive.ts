@@ -14,7 +14,7 @@ import { isPlatformBrowser } from "@angular/common";
 })
 export class appendStyleSvgDirective implements AfterViewInit, OnDestroy {
   private _styles?: HTMLStyleElement;
-  @Input("isCustomIcon") isCustomIcon: boolean = false;
+  @Input() isCustomIcon: boolean = false;
   private get ionIconShadowDom() {
     return (this.element.nativeElement as HTMLElement).shadowRoot;
   }
