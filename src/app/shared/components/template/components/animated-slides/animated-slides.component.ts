@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { PLHAnimations } from "src/app/shared/animations";
+import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
 
 @Component({
@@ -10,10 +11,11 @@ import { TemplateBaseComponent } from "../base";
   styleUrls: ["./animated-slides.component.scss"],
 })
 export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implements OnInit {
+  closeText = "";
   // local tracker for which sections have been shown
   fadeSection = [];
   // durations to display each faded section
-  fadeTimes = [3500, 4000, 3500, 5000];
+  fadeTimes = [];
   private _isDismissed = false;
 
   constructor(private modalCtrl: ModalController) {
@@ -21,7 +23,15 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
   }
 
   ngOnInit(): void {
+    this.getParams();
     this.runFade();
+  }
+
+  getParams() {
+    this.closeText = getStringParamFromTemplateRow(this._row, "close_text", "Skip");
+    for (let row of this._row.rows) {
+      this.fadeTimes.push(getNumberParamFromTemplateRow(row, "duration", 0) * 1000);
+    }
   }
   /**
    * Iterate over each section for display, showing for

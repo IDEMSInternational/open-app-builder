@@ -1,4 +1,4 @@
-<ion-button fill="clear" (click)="skipIntro()" class="skip-button">Skip Intro</ion-button>
+<ion-button fill="clear" (click)="skipIntro()" class="skip-button">{{ closeText }}</ion-button>
 <div class="section-container">
   <section *ngFor="let childRow of _row.rows; let idx = index" [@fadeInOut]="fadeSection[idx]">
     <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
