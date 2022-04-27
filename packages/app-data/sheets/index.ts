@@ -1035,12 +1035,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "change_thoughts_sect",
       _xlsxPath: "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx",
     },
-    comp_animated_slides: {
-      flow_type: "template",
-      flow_name: "comp_animated_slides",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/components_demo/component_animated_slides.xlsx",
-    },
     comp_button: {
       flow_type: "template",
       flow_name: "comp_button",
@@ -1052,12 +1046,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_checkbox_button",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
-    },
-    comp_html: {
-      flow_type: "template",
-      flow_name: "comp_html",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/components_demo/component_html.xlsx",
     },
     comp_latex: {
       flow_type: "template",
@@ -3173,11 +3161,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "something_fun",
       _xlsxPath: "global/core_templates/core_templates_relax_and_activities.xlsx",
-    },
-    splash_screens: {
-      flow_type: "template",
-      flow_name: "splash_screens",
-      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
     },
     suggestions: {
       flow_type: "template",
