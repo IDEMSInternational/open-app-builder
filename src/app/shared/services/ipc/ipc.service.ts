@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Observable, Subject } from "rxjs";
 
-interface IPCChannel  {
+interface IPCChannel {
   subject: Subject<any>;
   broadcastChannel?: BroadcastChannel;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class IpcService {
-
   private channels: { [channel: string]: IPCChannel } = {};
 
   private usingBroadcastChannel = false;
 
-  constructor() { }
+  constructor() {}
 
   /* Broadcast Channel Implementation not working */
 
@@ -34,8 +33,8 @@ export class IpcService {
 
   private createChannelIfNeeded(channelName: string) {
     if (!this.channels[channelName]) {
-      this.channels[channelName] = { 
-        subject: new Subject()
+      this.channels[channelName] = {
+        subject: new Subject(),
       };
       if (window.BroadcastChannel) {
         this.channels[channelName].broadcastChannel = new BroadcastChannel(channelName);
@@ -45,5 +44,4 @@ export class IpcService {
       }
     }
   }
-
 }
