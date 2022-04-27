@@ -9,7 +9,8 @@ import { TemplateBaseComponent } from "../base";
 })
 export class TmplParentPointCounterComponent
   extends TemplateBaseComponent
-  implements OnInit, OnChanges {
+  implements OnInit, OnChanges
+{
   public icon_src: string | null;
   public count: number | null;
 
