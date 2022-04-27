@@ -3,3 +3,15 @@ src/assets/*
 www
 # markdown files
 *.md
+.angular
+node_modules
+.github
+.idems_app
+.vscode
+.yarn
+android
+documentation
+.venv
+packages/app-data/**
+.d.ts
+dist
