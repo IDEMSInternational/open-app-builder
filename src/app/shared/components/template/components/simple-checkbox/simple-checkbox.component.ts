@@ -11,7 +11,8 @@ import { getBooleanParamFromTemplateRow, getStringParamFromTemplateRow } from ".
 })
 export class TmplSimpleCheckboxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   @Input() parent: TemplateContainerComponent;
   position: string;
   reverse: boolean;
