@@ -9,7 +9,7 @@
    This will be used to download any required binary assets, such as images or pdfs
 
 3. Download and install [Node](https://nodejs.org/en/download/)  
-   This is the programming lanugage required to run the project
+   This is the programming language required to run the project
 
 4. Download and Install [Yarn](https://classic.yarnpkg.com/en/docs/install)  
    This manages all 3rd-party code dependencies
