@@ -1,0 +1,133 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_2_150a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Number Sudoku With Jigsaws",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "This is similar to the Shape Sudoku puzzles, only now it uses numbers. If your child is not ready to recognize numerals yet, you can use quantities of dots instead. To avoid erasing, use numbered (or dotted) slips of paper to solve the puzzles.\n\nFor a 4 by 4 puzzle, each row and column has the numbers from 1 to 4 once. Also, each marked subregion has the numbers from 1 to 4 once.\n\nCreate these puzzles for your child by starting with a completed puzzle with moveable pieces of numbered paper and then removing some of the pieces of paper.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "4 by 4 Puzzles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "The 4 by 4 puzzles with subregions that are the 2 by 2 corners are exactly the same as the Shape Sudoku puzzles given before. You can go back to that page in these Resources to see solved versions of those puzzles. To create a numbered version of them, replace each colored shape by a number. For example, red circles could be 1, orange triangles 2, purple diamonds 3, and blue squares 4.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM150aJigsawSudoku4by4ExamplesSolved.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "title3",
+          "value": "5 by 5 Puzzles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "There are too many of these puzzles to come anywhere close to showing all the possible jigsaw geometries. These are here just to suggest what is possible. Your child may enjoy finding different ways of carving up a 5 by 5 square into pieces that have 5 small squares. \n\nPieces that consist of 5 little squares are called “pentominoes.” Making shapes with pentominoes can be lots of fun. Maybe cut out some pentomino shapes out of stiff thick colored paper and see what designs you can make!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM150aJigsawSudoku5by5ExamplesSolved.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "title4",
+          "value": "6 by 6 Puzzles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title4"
+        },
+        {
+          "name": "text4",
+          "value": "Okay, you are getting the idea. There are a lot of these! Here are just a few 6 by 6 puzzles to give you some ideas for what is possible. As always, play around with your child with these puzzle pieces and numbers. Perhaps design a few of these together.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        },
+        {
+          "name": "image4",
+          "value": "EFMBM150aJigsawSudoku6by6ExamplesSolved.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

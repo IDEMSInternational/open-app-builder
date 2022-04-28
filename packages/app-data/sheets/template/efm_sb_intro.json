@@ -9,6 +9,42 @@
       "_nested_name": "sb_level"
     },
     {
+      "name": "basic_text_before",
+      "value": "Talk with your child before they can talk or even understand the words. Point at, name, and describe things you see, such as shapes, colors, comparisons, and quantities. As your child begins to understand words, ask about a thing and have your child point at it. For example, \"Where is the ball?\" If your child can't find the thing, point to it for them.",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "basic_text_before"
+    },
+    {
+      "name": "basic_text_early",
+      "value": "As your child begins to understand and say words, mix in simple questions. Freely help with answers as needed. If you point and say \"Is this red?\" and they don't know, supply the answer. If you say \"Count the blocks.\" and your child does not know how, point and count the blocks with them \"one, two, three.\"",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "basic_text_early"
+    },
+    {
+      "name": "advanced_text",
+      "value": "Pick an appropriate level for your child. Allow time for thought when asking questions or making comments. Help with the answer when your child stumbles, and follow up correct answers with questions or comments that are small expansions on the child's answer. \n\n**Level 1** Ask simple direct questions. Ask and point at what you see on the page. Where is the toy? What are they doing? What is its name? What color is it? How many balls are there? \n**Level 2** Ask general or open questions about this point in the story. What do you see happening here? What is this group of things? \n**Level 3** Ask about the story line. What has happened? What will happen next? Have you had experiences or seen things similar to this? How does she feel when this happens?",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "advanced_text"
+    },
+    {
+      "name": "intro_part_3",
+      "value": "The supplied questions and comments are just the beginning. \n\n1. For the first reading, read the red questions and comments. \n2. For the second reading, read the blue questions and comments. \n3. For the third reading, read the green questions and comments. \n\nAfter that, follow your child's interests and let your discussions go in fun directions.",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "intro_part_3"
+    },
+    {
       "name": "intro_math",
       "type": "set_variable",
       "_nested_name": "intro_math"
@@ -26,127 +62,235 @@
       "_nested_name": "intro_header"
     },
     {
-      "type": "text",
-      "name": "intro_part1_basic",
-      "value": "**Before Talking** Talk with your child before they can talk or even understand the words. Point at, name, and describe things you see, such as shapes, colors, comparisons, and quantities. As your child begins to understand words, ask about a thing and have your child point at it. For example, \"Where is the ball?\" If your child can't find the thing, point to it for them. \n\n**Early Talking** As your child begins to understand and say words, mix in simple questions. Freely help with answers as needed. If you point and say \"Is this red?\" and they don't know, supply the answer. If you say \"Count the blocks.\" and your child does not know how, point and count the blocks with them \"one, two, three.\"",
-      "_translations": {
-        "value": {}
+      "type": "accordion",
+      "name": "accordian",
+      "parameter_list": {
+        "open_multiple": "TRUE"
       },
-      "condition": "@local.sb_level==\"basic\"",
-      "style_list": [
-        "margin-top: -10px"
-      ],
-      "_nested_name": "intro_part1_basic",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.sb_level==\"basic\"",
-            "matchedExpression": "@local.sb_level",
-            "type": "local",
-            "fieldName": "sb_level"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.sb_level": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "intro_part1_advanced",
-      "value": "**3 Levels of Discussion** Pick an appropriate level for your child. Allow time for thought when asking questions or making comments. Help with the answer when your child stumbles, and follow up correct answers with questions or comments that are small expansions on the child's answer.\n\n**Level 1** Ask simple direct questions. Ask and point at what you see on the page. Where is the toy? What are they doing? What is its name? What color is it? How many balls are there?\n**Level 2** Ask general or open questions about this point in the story. What do you see happening here? What is this group of things?\n**Level 3** Ask about the story line. What has happened? What will happen next? Have you had experiences or seen things similar to this? How does she feel when this happens?",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@local.sb_level==\"advanced\"",
-      "style_list": [
-        "margin-top: -20px"
-      ],
-      "_nested_name": "intro_part1_advanced",
-      "_dynamicFields": {
-        "condition": [
-          {
-            "fullExpression": "@local.sb_level==\"advanced\"",
-            "matchedExpression": "@local.sb_level",
-            "type": "local",
-            "fieldName": "sb_level"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.sb_level": [
-          "condition"
-        ]
-      }
-    },
-    {
-      "name": "math_start",
-      "value": "**Math Themes and Words**",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "math_start"
-    },
-    {
-      "type": "text",
-      "name": "intro_math_1",
-      "value": "@local.math_start @local.intro_math",
-      "_translations": {
-        "value": {}
-      },
-      "condition": "@local.intro_math",
-      "style_list": [
-        "margin-top: -20px"
-      ],
-      "_nested_name": "intro_math_1",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "@local.math_start @local.intro_math",
-            "matchedExpression": "@local.math_start",
-            "type": "local",
-            "fieldName": "math_start"
+      "rows": [
+        {
+          "type": "accordion_section",
+          "name": "bloxk_1",
+          "value": "Before Talking",
+          "condition": "@local.sb_level==\"basic\"",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_1",
+              "value": "@local.basic_text_before",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "accordian.bloxk_1.text_1",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.basic_text_before",
+                    "matchedExpression": "@local.basic_text_before",
+                    "type": "local",
+                    "fieldName": "basic_text_before"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.basic_text_before": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "accordian.bloxk_1",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.sb_level==\"basic\"",
+                "matchedExpression": "@local.sb_level",
+                "type": "local",
+                "fieldName": "sb_level"
+              }
+            ]
           },
-          {
-            "fullExpression": "@local.math_start @local.intro_math",
-            "matchedExpression": "@local.intro_math",
-            "type": "local",
-            "fieldName": "intro_math"
+          "_dynamicDependencies": {
+            "@local.sb_level": [
+              "condition"
+            ]
           }
-        ],
-        "condition": [
-          {
-            "fullExpression": "@local.intro_math",
-            "matchedExpression": "@local.intro_math",
-            "type": "local",
-            "fieldName": "intro_math"
+        },
+        {
+          "type": "accordion_section",
+          "name": "bloxk_1a",
+          "value": "Early Talking",
+          "condition": "@local.sb_level==\"basic\"",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_1a",
+              "value": "@local.basic_text_early",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "accordian.bloxk_1a.text_1a",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.basic_text_early",
+                    "matchedExpression": "@local.basic_text_early",
+                    "type": "local",
+                    "fieldName": "basic_text_early"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.basic_text_early": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "accordian.bloxk_1a",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.sb_level==\"basic\"",
+                "matchedExpression": "@local.sb_level",
+                "type": "local",
+                "fieldName": "sb_level"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.sb_level": [
+              "condition"
+            ]
           }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.math_start": [
-          "value"
-        ],
-        "@local.intro_math": [
-          "value",
-          "condition"
-        ]
-      }
-    },
-    {
-      "type": "text",
-      "name": "intro_part3",
-      "value": "**Read, Talk, and Have Fun!** The supplied questions and comments are just the beginning. \n\n1. For the first reading, read the red questions and comments. \n2. For the second reading, read the blue questions and comments. \n3. For the third reading, read the green questions and comments. \n\nAfter that, follow your child's interests and let your discussions go in fun directions.",
-      "_translations": {
-        "value": {}
-      },
-      "style_list": [
-        "margin-top: -20px"
+        },
+        {
+          "type": "accordion_section",
+          "name": "block_1b",
+          "value": "3 Levels of Discussion",
+          "condition": "@local.sb_level==\"advanced\"",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_1b",
+              "value": "@local.advanced_text",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "accordian.block_1b.text_1b",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.advanced_text",
+                    "matchedExpression": "@local.advanced_text",
+                    "type": "local",
+                    "fieldName": "advanced_text"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.advanced_text": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "accordian.block_1b",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.sb_level==\"advanced\"",
+                "matchedExpression": "@local.sb_level",
+                "type": "local",
+                "fieldName": "sb_level"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.sb_level": [
+              "condition"
+            ]
+          }
+        },
+        {
+          "type": "accordion_section",
+          "name": "block_2",
+          "value": "Math Themes and Words",
+          "parameter_list": {
+            "state": "open"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_2",
+              "value": "@local.intro_math",
+              "_translations": {
+                "value": {}
+              },
+              "condition": "@local.intro_math",
+              "_nested_name": "accordian.block_2.text_2",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.intro_math",
+                    "matchedExpression": "@local.intro_math",
+                    "type": "local",
+                    "fieldName": "intro_math"
+                  }
+                ],
+                "condition": [
+                  {
+                    "fullExpression": "@local.intro_math",
+                    "matchedExpression": "@local.intro_math",
+                    "type": "local",
+                    "fieldName": "intro_math"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.intro_math": [
+                  "value",
+                  "condition"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "accordian.block_2"
+        },
+        {
+          "type": "accordion_section",
+          "name": "block_3",
+          "value": "Read, Talk, and Have Fun!",
+          "rows": [
+            {
+              "type": "text",
+              "name": "text_3",
+              "value": "@local.intro_part_3",
+              "_translations": {
+                "value": {}
+              },
+              "_nested_name": "accordian.block_3.text_3",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@local.intro_part_3",
+                    "matchedExpression": "@local.intro_part_3",
+                    "type": "local",
+                    "fieldName": "intro_part_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@local.intro_part_3": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "accordian.block_3"
+        }
       ],
-      "_nested_name": "intro_part3"
+      "_nested_name": "accordian"
     },
     {
       "type": "image",
@@ -155,9 +299,6 @@
       "_translations": {
         "value": {}
       },
-      "style_list": [
-        "margin-top: -4px"
-      ],
       "_nested_name": "page_end"
     }
   ],

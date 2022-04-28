@@ -1,0 +1,205 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_2_135b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Connect The Dots",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Activity",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Making Everyday Scenes With Dots",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Complete fun drawings by connecting numbered dots. One way is to take a simple drawing, say of a house, remove some straight lines and replace them with numbered dots, that when connected in order recreate the original drawing.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM135HouseConnecttheDotswithDashes.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "240px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM135ConnecttheDotsUmbrella.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "image2_max_width",
+          "value": "240px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2_max_width"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM135ConnecttheDotsBanana.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "image3_max_width",
+          "value": "170px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3_max_width"
+        },
+        {
+          "name": "title4",
+          "value": "Making Geometric Patterns With Angles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title4"
+        },
+        {
+          "name": "text4",
+          "value": "Make abstract drawings by connecting points with the same number along opposite sides of an angle. The numbers may not be needed - if so, feel free to omit them - this will make the finished designs a little less cluttered. You can add variety to these by having your child draw with colors. There are lots of amazing examples of this to be found under the category of String Art on the Internet. This circle drawing was made by moving ahead by one dot on one side of the line segment and ahead by two dots on the other side.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        },
+        {
+          "name": "image4",
+          "value": "EFMBM135StringArtPatternsOneAngle.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4"
+        },
+        {
+          "name": "image4_max_width",
+          "value": "180px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4_max_width"
+        },
+        {
+          "name": "image5",
+          "value": "EFMBM135StringArtPattern.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image5"
+        },
+        {
+          "name": "image5_max_width",
+          "value": "220px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image5_max_width"
+        },
+        {
+          "name": "image6",
+          "value": "EFMBM135ConnecttheDotsStringsAroundaCircle.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image6"
+        },
+        {
+          "name": "image6_max_width",
+          "value": "200px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image6_max_width"
+        },
+        {
+          "name": "title7",
+          "value": "Making Patterns With Circles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title7"
+        },
+        {
+          "name": "text7",
+          "value": "This is a special case of the last idea. Put some dots, say 8 or 9, evenly spaced on a circle. Your child can play with creating different patterns by connecting the dots in order, or connecting every second dot, or every third dot. To make it easier to do different experiments, use push pins in a piece of cardboard or wood and then use string between the push pins.\n\nIf your child is intrigued by the patterns that are produced, you can look at questions such as: For a circle with 8 dots, why is only one string needed to skip by 1, 3, 5, or 7, but 2 or 4 strings are needed for skipping 2, 4, or 6. Similarly, for a circle with 9 dots, why is only one string needed to skip by 1, 2, 4, 5, 7, or 8, but 3 strings are needed for 3 and 6? It’s too young to understand the idea that 2, 4, and 6 have a factor in common with 8, and 3 and 6 have a factor in common in 9 - however, seeing the patterns may plant the seeds for later ideas.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text7"
+        },
+        {
+          "name": "image7",
+          "value": "EFMBM135CirclesofDots.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image7"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

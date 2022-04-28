@@ -1,0 +1,97 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_2_90b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Island Hopping – Counting",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "text1",
+          "value": "These puzzles have numbered islands (circles) connected by bridges (lines) drawn on paper. The challenge is to find a path that connects the islands in order.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM90IslandHoppingConsecutiveEasy.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "text2",
+          "value": "The easiest versions have all the numbers filled in and the numbers go from 1 to the number of islands. You can vary this activity by starting at some number other than 1 and by leaving out some of the numbers.\n\nPuzzles with all the numbers are straightforward once your child is confident with counting. Those beginning puzzles are good counting practice and are also good for building up confidence in puzzle solving. The more challenging puzzles are the ones with numbers left out.\n\nEase your child into these harder puzzles by leaving out just a few numbers and slowly move to leaving out more.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM90IslandHoppingConsecutiveHarder.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "text3",
+          "value": "The first of these two puzzles has every other number left out. This makes it relatively easy to fill in the missing numbers. 1 must attach to 0 and 2, and there is only one place for that. 3 must attach to 2 and 4, and with 1 filled in there is only one remaining place for the 3. 5 must go in the remaining place between 4 and 6.\n\nThe second puzzle is a little bit harder. 3 must attach to 2 and 4, so there is only one place for it. 5 must attach to 4, so there is only one place for it now. 6 must attach to the 5. Finally, 0 must go in the remaining spot.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM90IslandHoppingConsecutiveEven Harder.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "text4",
+          "value": "To make the puzzle harder still, we can remove the 1 and play with removing some of the bridges. Have fun with variations and let your child design some of them, too.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

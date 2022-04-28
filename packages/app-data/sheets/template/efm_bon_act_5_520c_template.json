@@ -1,0 +1,106 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_520c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Letter Substitution Puzzles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Once your child becomes comfortable with the Missing Number puzzles from a few pages earlier in this chapter, they can start playing with these puzzles. In these, one or more of the digits are replaced by letters. The three rules for letters are: \n\n* A given letter is always the same digit\n* The leftmost digit of a number is never 0\n* Different letters must be different digits\n\nCreate these puzzles by taking an addition or subtraction problem and replacing one or more of the digits. The puzzles can also be created to make interesting problem-solving challenges for your child. Note that the values of the letters do not carry over from puzzle to puzzle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Examples",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "This first example illustrates how you can take a standard addition or subtraction problem and make a letter substitution puzzle out of it. The first version replaced all the 6’s with A’s, and the second version went on to replace the 2’s with B’s.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM520LetterSubstitution1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "image2_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2_max_width"
+        },
+        {
+          "name": "text3",
+          "value": "The rest of these examples are carefully constructed to allow solving using properties of the particular situation. One property to note is that when you add two numbers, the carry into the next column is always either 0 or 1. So, for example, in the problem A + A = C4, C must be 1 because it is not allowed to be 0.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM520LetterSubstitution3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

@@ -1,0 +1,88 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_2_160a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Make Me a Liar",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Activity",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Someone makes an absolute statement and the other players attempt to show that the person is lying. This is done by finding an example that breaks the statement.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Simple Statements That Are Almost Always True",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "One type of statement to use is saying that something is always true. Here are some examples with quick discussions of why they are lies.\n\n* All trucks have four wheels. - Large trucks often have 6, 10 or more wheels.\n* All rectangles are squares. - Rectangles need not have all their sides the same length.\n* All birds can fly. - Ostriches, emus, and kiwis are birds that cannot fly.\n* The moon is only visible at night. - The moon is often visible during the day.\n* All shapes have straight sides. - A circle does not have a straight side.\n* All playgrounds have swing sets. - Some playgrounds don’t have swing sets.\n* All rooms have chairs. Bedrooms and bathrooms often don’t have a chair.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "If-Then Statements That Are Almost Always True",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "Another type of statement is of the form “if __, then ___ .” Here are some examples with quick discussions of why they are lies.\n\n* If today is Monday, then it is a school day. - Some Mondays are holidays and some Mondays occur during the summer.\n* If I don’t eat for three hours, then I am hungry. - Most people can sleep for more than three hours and not wake up hungry.\n* If a person is taller than someone, then they are older. - Children often grow up to be taller than their parents.\n* If the sun is shining, it is a warm day. - Winter days can be sunny and cold.\n* If someone is late, something bad must have happened to them. - Sometimes people are late through carelessness or reasons beyond their control (traffic, bad weather, car trouble).",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

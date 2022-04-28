@@ -1,0 +1,425 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Cat_And_Dog_And_The_Egg_pages",
+  "status": "released",
+  "data_list_name": "Cat_And_Dog_And_The_Egg_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-1.jpg",
+      "story_text": "This is Cat.\n\nThis is Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is Cat.\n\nThis is Dog."
+        },
+        "annotation_1": {
+          "eng": "They each have two ears. Whose ears are bigger?"
+        },
+        "annotation_2": {
+          "eng": "They each have one tail. Whose tail is longer?"
+        },
+        "annotation_3": {
+          "eng": "They each have markings on their belly. Whose markings are bigger?"
+        }
+      },
+      "annotation_1": "They each have two ears. Whose ears are bigger?",
+      "annotation_2": "They each have one tail. Whose tail is longer?",
+      "annotation_3": "They each have markings on their belly. Whose markings are bigger?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-2.jpg",
+      "story_text": "Cat and Dog walk.\n\nThey walk in their village.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog walk.\n\nThey walk in their village."
+        },
+        "annotation_1": {
+          "eng": "Count together the homes in the village."
+        },
+        "annotation_2": {
+          "eng": "There are many things to count together -- one bird, one cat, one dog, three animals, three buildings, and one tree."
+        },
+        "annotation_3": {
+          "eng": "Two of the building are round around the base. The third one has a base shaped like this page."
+        }
+      },
+      "annotation_1": "Count together the homes in the village.",
+      "annotation_2": "There are many things to count together -- one bird, one cat, one dog, three animals, three buildings, and one tree.",
+      "annotation_3": "Two of the building are round around the base. The third one has a base shaped like this page."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-3.jpg",
+      "story_text": "Then they see an egg.\n\nThe egg is in the grass.\n\nThe egg is alone in the grass.\n\nThe egg is all alone.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then they see an egg.\n\nThe egg is in the grass.\n\nThe egg is alone in the grass.\n\nThe egg is all alone."
+        },
+        "annotation_1": {
+          "eng": "Count together the animals, trees, houses, and eggs."
+        },
+        "annotation_2": {
+          "eng": "Name an animal that lays eggs."
+        },
+        "annotation_3": {
+          "eng": "Cat and Dog pick up the egg. It is usually better to leave eggs where you find them."
+        }
+      },
+      "annotation_1": "Count together the animals, trees, houses, and eggs.",
+      "annotation_2": "Name an animal that lays eggs.",
+      "annotation_3": "Cat and Dog pick up the egg. It is usually better to leave eggs where you find them."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-4.jpg",
+      "story_text": "Cat and Dog walk to a bird.\n\nThey ask the bird, \"Is this your egg?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog walk to a bird.\n\nThey ask the bird, \"Is this your egg?\""
+        },
+        "annotation_1": {
+          "eng": "The egg is round. Point to other things with round sides."
+        },
+        "annotation_2": {
+          "eng": "Point to round things where you are."
+        },
+        "annotation_3": {
+          "eng": "Describe where the bird is -- Cat and Dog are below the roof and below the bird, and the bird is above them."
+        }
+      },
+      "annotation_1": "The egg is round. Point to other things with round sides.",
+      "annotation_2": "Point to round things where you are.",
+      "annotation_3": "Describe where the bird is -- Cat and Dog are below the roof and below the bird, and the bird is above them."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-5.jpg",
+      "story_text": "But the bird says, \"No, that is not my egg. Ask the owl. Maybe it is his egg.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But the bird says, \"No, that is not my egg. Ask the owl. Maybe it is his egg.\""
+        },
+        "annotation_1": {
+          "eng": "Have you seen blue birds where you live?"
+        },
+        "annotation_2": {
+          "eng": "What color is the tie the owl is wearing? Have you seen a bird wearing a tie?"
+        },
+        "annotation_3": {
+          "eng": "The blue bird is sitting on the roof. What is the owl sitting on?"
+        }
+      },
+      "annotation_1": "Have you seen blue birds where you live?",
+      "annotation_2": "What color is the tie the owl is wearing? Have you seen a bird wearing a tie?",
+      "annotation_3": "The blue bird is sitting on the roof. What is the owl sitting on?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-6.jpg",
+      "story_text": "Cat and Dog walk to the owl.\n\nThey ask the owl, \"Is this your egg?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog walk to the owl.\n\nThey ask the owl, \"Is this your egg?\""
+        },
+        "annotation_1": {
+          "eng": "Owls are said to be wise. Does this owl look wise to you?"
+        },
+        "annotation_2": {
+          "eng": "Count the birds, cats, and dogs. Which type of animal is there the most of?"
+        },
+        "annotation_3": {
+          "eng": "Notice owl's unusual kite-shaped tie!"
+        }
+      },
+      "annotation_1": "Owls are said to be wise. Does this owl look wise to you?",
+      "annotation_2": "Count the birds, cats, and dogs. Which type of animal is there the most of?",
+      "annotation_3": "Notice owl's unusual kite-shaped tie!"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-7.jpg",
+      "story_text": "But the owl says, \"No, that is not my egg. Ask the goose. Maybe it is her egg.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But the owl says, \"No, that is not my egg. Ask the goose. Maybe it is her egg.\""
+        },
+        "annotation_1": {
+          "eng": "If you get something wrong two times, do you get discouraged?"
+        },
+        "annotation_2": {
+          "eng": "Cat and Dog are great at persisting -- trying over and over until they succeed. Are you good at persisting?"
+        },
+        "annotation_3": {
+          "eng": "Count the houses and how many animals there are now."
+        }
+      },
+      "annotation_1": "If you get something wrong two times, do you get discouraged?",
+      "annotation_2": "Cat and Dog are great at persisting -- trying over and over until they succeed. Are you good at persisting?",
+      "annotation_3": "Count the houses and how many animals there are now."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-8.jpg",
+      "story_text": "Cat and Dog walk to the goose.\n\nThey ask the goose, \"is this your egg?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog walk to the goose.\n\nThey ask the goose, \"is this your egg?\""
+        },
+        "annotation_1": {
+          "eng": "How many animals are there?"
+        },
+        "annotation_2": {
+          "eng": "Are any of the animals the same color? How many different colors are there for all the animals?"
+        },
+        "annotation_3": {
+          "eng": "There are three birds. How are these three similar and how are they different?"
+        }
+      },
+      "annotation_1": "How many animals are there?",
+      "annotation_2": "Are any of the animals the same color? How many different colors are there for all the animals?",
+      "annotation_3": "There are three birds. How are these three similar and how are they different?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-9.jpg",
+      "story_text": "But the goose says, \"No, that is not my egg. Ask the two ducks. Maybe it is their egg.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But the goose says, \"No, that is not my egg. Ask the two ducks. Maybe it is their egg.\""
+        },
+        "annotation_1": {
+          "eng": "Do you think Cat and Dog will give up? Would you give up at this point?"
+        },
+        "annotation_2": {
+          "eng": "How many birds have they talked to?"
+        },
+        "annotation_3": {
+          "eng": "If they can't find the home for the egg, what should they do with it?"
+        }
+      },
+      "annotation_1": "Do you think Cat and Dog will give up? Would you give up at this point?",
+      "annotation_2": "How many birds have they talked to?",
+      "annotation_3": "If they can't find the home for the egg, what should they do with it?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-10.jpg",
+      "story_text": "Cat and Dog walk to the two ducks.\n\nThey ask the two ducks, \"Is this your egg?\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog walk to the two ducks.\n\nThey ask the two ducks, \"Is this your egg?\""
+        },
+        "annotation_1": {
+          "eng": "What are the ducks going to say?"
+        },
+        "annotation_2": {
+          "eng": "The two ducks are different colors and patterns. Describe how they are the same and how they are different."
+        },
+        "annotation_3": {
+          "eng": "Do you have ducks around where you live?"
+        }
+      },
+      "annotation_1": "What are the ducks going to say?",
+      "annotation_2": "The two ducks are different colors and patterns. Describe how they are the same and how they are different.",
+      "annotation_3": "Do you have ducks around where you live?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-11.jpg",
+      "story_text": "But the two ducks say, \"No, that is not our egg.\"\n\nThen the egg breaks.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But the two ducks say, \"No, that is not our egg.\"\n\nThen the egg breaks."
+        },
+        "annotation_1": {
+          "eng": "How can you tell that the egg is breaking?"
+        },
+        "annotation_2": {
+          "eng": "Did Cat drop the egg? Have you ever dropped an egg?"
+        },
+        "annotation_3": {
+          "eng": "What do you think will come out of the egg?"
+        }
+      },
+      "annotation_1": "How can you tell that the egg is breaking?",
+      "annotation_2": "Did Cat drop the egg? Have you ever dropped an egg?",
+      "annotation_3": "What do you think will come out of the egg?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-12.jpg",
+      "story_text": "There is a lizard in the egg.\n\nA baby lizard.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "There is a lizard in the egg.\n\nA baby lizard."
+        },
+        "annotation_1": {
+          "eng": "Why is it surprising to see a baby lizard come out of the egg? Were you expecting a baby bird?"
+        },
+        "annotation_2": {
+          "eng": "Can you think of other animals that lay eggs and that are not birds? Hint: Fish, insects, and turtles are examples."
+        },
+        "annotation_3": {
+          "eng": "What color is the lizard? Have you seen lizards like this before?"
+        }
+      },
+      "annotation_1": "Why is it surprising to see a baby lizard come out of the egg? Were you expecting a baby bird?",
+      "annotation_2": "Can you think of other animals that lay eggs and that are not birds? Hint: Fish, insects, and turtles are examples.",
+      "annotation_3": "What color is the lizard? Have you seen lizards like this before?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-13.jpg",
+      "story_text": "The baby lizard says, \"Where is my mother? Where is my father? Where are my mother and father?\n\nCat and Dog bring the baby lizard to his mother and father.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The baby lizard says, \"Where is my mother? Where is my father? Where are my mother and father?\n\nCat and Dog bring the baby lizard to his mother and father."
+        },
+        "annotation_1": {
+          "eng": "How many lizards are on top of the rocks?"
+        },
+        "annotation_2": {
+          "eng": "Why do lizards like to be on rocks on sunny days?"
+        },
+        "annotation_3": {
+          "eng": "Are most rocks round like these, or do some have sharp edges and points?"
+        }
+      },
+      "annotation_1": "How many lizards are on top of the rocks?",
+      "annotation_2": "Why do lizards like to be on rocks on sunny days?",
+      "annotation_3": "Are most rocks round like these, or do some have sharp edges and points?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-14.jpg",
+      "story_text": "Bye bye Cat.\n\nBye bye Dog.\n\nBye bye baby lizard.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Bye bye Cat.\n\nBye bye Dog.\n\nBye bye baby lizard."
+        },
+        "annotation_1": {
+          "eng": "The baby lizard is still in the egg. Is it stuck in there?"
+        },
+        "annotation_2": {
+          "eng": "There are three animals here. If you take away the baby lizard, how many animals does that leave?"
+        },
+        "annotation_3": {
+          "eng": "What are some round shapes you see in this picture?"
+        }
+      },
+      "annotation_1": "The baby lizard is still in the egg. Is it stuck in there?",
+      "annotation_2": "There are three animals here. If you take away the baby lizard, how many animals does that leave?",
+      "annotation_3": "What are some round shapes you see in this picture?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-15.jpg"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-CADATE-16.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

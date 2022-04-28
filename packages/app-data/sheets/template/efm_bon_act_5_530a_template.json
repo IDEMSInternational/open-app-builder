@@ -1,0 +1,133 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_530a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Bouncing Billiard Ball",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Investigation",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Imagine a billiard table that has a pocket in each corner. When a ball bounces off the side of the table, it bounces away at the same angle it came in at. If we shoot a ball at a 45 degree angle from the lower left corner, where will it end up? The answer depends on the size of the table. Pictured at right is what happens on a 3 by 4 table.\n\nGive your child a drawing of a table and challenge your child to predict which corner will be hit first and how many bounces it will take before getting to that corner.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM530BilliardBallBouncing.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "180px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "title2",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Start by letting your child just play around with this and don’t be in a hurry discovering results. As you will see, this problem involves some sophisticated ideas for a young person. As needed, ask a question or two to give their thinking a little more structure. You know what’s coming – look at simpler tables first to look for patterns - when this idea becomes automatic for your child, this will serve them well for the rest of their lives!\n\nThe simplest tables are 1 by n, and they are easy to understand. Playing with a few values of n, the pattern emerges quickly. It is easy to undervalue a simple result like this; however, any completely understood result is to be celebrated, and this result will lead to others.\n\n**Result** 1 by n table: The ball will take n-1 bounces. The ball will end up in the bottom right corner if n is even and in the upper right corner if n is odd.\n\nThe next simplest tables are 2 by n. The patterns here are a little more involved. Good record keeping can make a big difference in something like this. An observant experimenter will notice that a 2 by 4 table behaves just like a 1 by 2 table, and a 2 by 6 table just like a 1 by 3. This quickly generalizes to the next result.\n\n**Result** A 2 by 2xn table behaves just like a 1 by n table.\n\nWhy is this? What is going on? This is a mathematical process to instill in your child – look for patterns and then seek to understand them, and with that new understanding extend your earlier results.\n\nWhat is going on is that the bounces on a table do not change if you enlarge both dimensions by the same factor. When that is done, the table is bigger but the geometry is the same. In geometry terms, the two tables are said to be “similar.” \n\n**Result** A kxm by kxn table behaves exactly like an m by n table.\n\nWe have gotten here in little steps, but this is a BIG result. It means we can start our analysis on any table by first removing any common factor.\n\nResuming where we left off for 2 by n tables. We understand what happens when n is even, but what happens when n is odd? What happens for 2 by n for n = 1, 3, 5, 7, and so on? The pattern quickly becomes easy to see.\n\n**Result** When n is odd, a 2 by n table has n bounces and ends up in the upper left hand corner.\n\nLots of progress is being made. Playing with more examples leads to some more patterns.\n\n**Result** If n is not a multiple of 3, a 3 by n table has n+1 bounces and ends in the upper right corner if n has a remainder of 1 when divided by 3, and in the lower right corner if n has a remainder of 2 when divided by 3. If n is odd, a 4 by n table has n + 2 bounces and ends in the upper left corner. If n is not a multiple of 5, a 5 by n table has n+3 bounces and ends up in the upper right corner when n is odd and lower right corner when n is even.\n\nAt this point we are tempted to look over the data, see some patterns, and make some conjectures.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Conjecture",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "Assume k and n have no factors in common. Then a k by n table will have k + n - 2 bounces. It will end in the upper left corner if k is even. It will end in the upper right corner if k is odd and n is odd, and in the lower right corner if k is odd and n is even.\n\nWow - if this conjecture is true, we have completely solved this problem! You know what’s coming… Let’s see if we can explain why this conjecture should be true (or find out that it is false). \n\nAlthough there are other ways to understand this situation, as sometimes happens, what makes this problem much easier to understand is a new idea. It might not occur to you, but once you see it you will probably be amazed. The idea is to unfold the table so that the ball can go in a straight line! Here is what happens if we unfold the original 3 by 4 table and make the path of the ball into a straight line.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM530BilliardBallBouncingUnfolded.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "image3_max_width",
+          "value": "200px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3_max_width"
+        },
+        {
+          "name": "text4",
+          "value": "Seeing that the conjecture is true is a lot easier now. The bounces correspond to crossing lines - there are (k - 1) of them to cross in one direction and (n - 1) of them to cross in the other direction, so together that makes a total of (k - 1) + (n - 1) = k + n - 2 lines to cross. Seeing which corner it ends up in is a matter of keeping track of how things unfold. We’re all done now with quite an interesting journey.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

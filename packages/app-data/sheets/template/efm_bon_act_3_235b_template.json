@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_235b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Zoo Rescue",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Game Description",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "In this game, use two dice or two sets of number cards going from 1 to 6. Each player has 6 tokens – animal tokens are perfect for this game if you have them. Each player also has a piece of paper with boxes numbered from 0 to 5. Each player decides where to put their 6 tokens – it is okay to put more than one token in a box. \n\nDuring a player’s turn, two numbers are created by rolling the dice or picking two cards, and the difference of those numbers is used. A player can free one of their tokens if they have one in that box. The first player to rescue all their tokens wins.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Strategy For Placing Tokens",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "How should a player place the 6 tokens? As is often a good idea, let’s start with a simpler question: Where would the best place be to put 1 token. This would clearly be in the box most likely to occur. Rather than doing any tricky analysis, we can simply list out the possibilities, count out how many times each difference occurs, and see which differences happen the most.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "text3",
+          "value": "Counting up the totals for the differences, we have 0 - 6, 1 - 10, 2 -  8, 3 - 6, 4 - 4, 5 - 2. So, 1 is clearly the best choice and it will happen 10 / 36 of the time. We can rank them in order of frequency as 1, 2, 3, 0, 4, and 5.\n\nThe much harder question is what to do with more than one token. Once you’ve seen these numbers, a good question for an older child is: why wouldn’t you just put all your tokens on 1? To see the answer to this, imagine the simpler situation where you had only two tokens and you ignored all results that weren’t 1 or 2. Then 1 would happen 10 / 18 of the time and 2 would happen 8 / 18 of the time. If you put both tokens on 1, you would need to get a 1 and then a 1 to win after two rolls. However, if you put a token on 1 and a token on 2, you would be successful after two rolls with a 1 and then a 2, or a 2 and then a 1 - something that is about 60% more likely to happen!\n\nRather than go into a long, detailed analysis, let’s just leave it at something fairly simple that appeals to our intuition - put most of your tokens on 1, the second most on 2, and maybe one on 0 or 3. There’s no guarantee you’ll win, but you should do pretty well in the long run!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

@@ -1,0 +1,133 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_180c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Shape Sums",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "These puzzles use numbered circles connected in an upward fashion, and every circle is the sum of all the circles directly below and connected to it. \n\nThe easiest puzzles have most of the circles filled in. Here are two examples that are straightforward to solve.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM180SimpleShapeSums.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "text2",
+          "value": "These puzzles can be made more difficult by having one circle used in more than one direction. All of the next seven puzzles are direct calculations except the rightmost one of the first row. It is trickier because the one circle in the middle is shared by two unknown circles above it. That puzzle involves small enough numbers that it can be solved easily with a little trial and error.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM180SimpleShapeSums7Examples.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "text3",
+          "value": "Another option for adding complexity to these puzzles is to use non-circular shapes. While the value in a circle may or may not duplicate the value in some other circle or shape, the value in a non-circular shape must match the value in all other places with the same shape. For example, all squares have the same value. Use matching shapes to practice adding twins, near twins, and halving. \n\nIf you like, you can add the rule that two non-circular shapes that have different shapes must have different values - for example, a square and a hexagon would have to have different values.\n\nMake any of these puzzles by starting with a diagram that is completely filled in and then removing some numbers. If the puzzle has some repeated numbers, use a square or other shape instead of a circle for that repeated number.\n\nThe next two puzzles illustrate the psychological difference between using a circle from two directions and replacing the circle with two squares. These two puzzles are essentially the same, but a young child will find the first one much easier to understand and work with. Please give your child plenty of practice with circle-only puzzles before venturing into more sophisticated puzzles with non-circular shapes.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM180ComplexShapeSums1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "text4",
+          "value": "Puzzles similar to the next three are useful for practicing adding twins, near twins, and triples.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        },
+        {
+          "name": "image4",
+          "value": "EFMBM180ComplexShapeSums2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4"
+        },
+        {
+          "name": "text5",
+          "value": "Here are some examples of using non-circular shapes to make trickier puzzles. If your child enjoys these, there are a great many more variations to explore. Happy puzzling!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text5"
+        },
+        {
+          "name": "image5",
+          "value": "EFMBM180ComplexShapeSums3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image5"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

@@ -1,0 +1,420 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Is_There_Anyone_Like_Me_data",
+  "status": "released",
+  "data_list_name": "Is_There_Anyone_Like_Me_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-1.jpg",
+      "story_text": "I wonder if there's another me somewhere in the world.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I wonder if there's another me somewhere in the world."
+        },
+        "annotation_1": {
+          "eng": "What do you think -- is there another animal just like this one somewhere in the world?"
+        },
+        "annotation_2": {
+          "eng": "Do you think there's another person just like you?"
+        },
+        "annotation_3": {
+          "eng": "There are five trees in this picture. If you take away the one by itself on one side, how many trees are there on the other side? What is one less than five?"
+        }
+      },
+      "annotation_1": "What do you think -- is there another animal just like this one somewhere in the world?",
+      "annotation_2": "Do you think there's another person just like you?",
+      "annotation_3": "There are five trees in this picture. If you take away the one by itself on one side, how many trees are there on the other side? What is one less than five?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-2.jpg",
+      "story_text": "Who looks the same.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Who looks the same."
+        },
+        "annotation_1": {
+          "eng": "When you look in a mirror or in water, the image is almost the same as how you look. How is it different and how is it the same?"
+        },
+        "annotation_2": {
+          "eng": "Something that has one side that is the mirror image of the other side is called symmetric, or even mirror symmetric. Do you see some things around you that are symmetric?"
+        },
+        "annotation_3": {
+          "eng": "People's faces are very close to being symmetric. Do you notice anything on one side of your face that is a little different than the other side? Perhaps your hair?"
+        }
+      },
+      "annotation_1": "When you look in a mirror or in water, the image is almost the same as how you look. How is it different and how is it the same?",
+      "annotation_2": "Something that has one side that is the mirror image of the other side is called symmetric, or even mirror symmetric. Do you see some things around you that are symmetric?",
+      "annotation_3": "People's faces are very close to being symmetric. Do you notice anything on one side of your face that is a little different than the other side? Perhaps your hair?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-3.jpg",
+      "story_text": "And talks the same.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And talks the same."
+        },
+        "annotation_1": {
+          "eng": "This animal is listening to its echo across a canyon. Have you heard an echo of your voice?"
+        },
+        "annotation_2": {
+          "eng": "An echo for your voice is like looking in a mirror for your image. Does an echo sound exactly like you, or can you tell the difference?"
+        },
+        "annotation_3": {
+          "eng": "Hearing an echo is similar to hearing a recording of your voice. Do you think recordings of your voice sound like what you hear in your head when you talk?"
+        }
+      },
+      "annotation_1": "This animal is listening to its echo across a canyon. Have you heard an echo of your voice?",
+      "annotation_2": "An echo for your voice is like looking in a mirror for your image. Does an echo sound exactly like you, or can you tell the difference?",
+      "annotation_3": "Hearing an echo is similar to hearing a recording of your voice. Do you think recordings of your voice sound like what you hear in your head when you talk?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-4.jpg",
+      "story_text": "And even has my curls.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And even has my curls."
+        },
+        "annotation_1": {
+          "eng": "Hippos and mice may have curly tails, but that does not make them the same as our friend. How many things need to be the same for two animals to be the same?"
+        },
+        "annotation_2": {
+          "eng": "Describe some ways that the hippo and the mouse are different than our friend."
+        },
+        "annotation_3": {
+          "eng": "Pick someone you know and describe some ways you are similar to them and some ways you are different."
+        }
+      },
+      "annotation_1": "Hippos and mice may have curly tails, but that does not make them the same as our friend. How many things need to be the same for two animals to be the same?",
+      "annotation_2": "Describe some ways that the hippo and the mouse are different than our friend.",
+      "annotation_3": "Pick someone you know and describe some ways you are similar to them and some ways you are different."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-5.jpg",
+      "story_text": "Someone with my eyes my ears.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Someone with my eyes my ears."
+        },
+        "annotation_1": {
+          "eng": "Can you think of other animals that have big ears similar to these?"
+        },
+        "annotation_2": {
+          "eng": "Can you think of other animals that have eyelashes like these?"
+        },
+        "annotation_3": {
+          "eng": "This animal has three eyelashes on each side. How many eyelashes is that all together?"
+        }
+      },
+      "annotation_1": "Can you think of other animals that have big ears similar to these?",
+      "annotation_2": "Can you think of other animals that have eyelashes like these?",
+      "annotation_3": "This animal has three eyelashes on each side. How many eyelashes is that all together?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-6.jpg",
+      "story_text": "Who even has my laugh.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Who even has my laugh."
+        },
+        "annotation_1": {
+          "eng": "Can you make some animals sounds? Which animals?"
+        },
+        "annotation_2": {
+          "eng": "Can you neigh like a horse, oink like a pig, meow like a cat, or bray like a horse?"
+        },
+        "annotation_3": {
+          "eng": "This animal has exceptionally big teeth. Think of other animals with teeth like these."
+        }
+      },
+      "annotation_1": "Can you make some animals sounds? Which animals?",
+      "annotation_2": "Can you neigh like a horse, oink like a pig, meow like a cat, or bray like a horse?",
+      "annotation_3": "This animal has exceptionally big teeth. Think of other animals with teeth like these."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-7.jpg",
+      "story_text": "Who can do what I can do.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Who can do what I can do."
+        },
+        "annotation_1": {
+          "eng": "Do you feel happy running in a big open space like that?"
+        },
+        "annotation_2": {
+          "eng": "Do you prefer to run with someone or by yourself?"
+        },
+        "annotation_3": {
+          "eng": "Count all the rocks near them. If you take away the two biggest rocks, how many rocks are left?"
+        }
+      },
+      "annotation_1": "Do you feel happy running in a big open space like that?",
+      "annotation_2": "Do you prefer to run with someone or by yourself?",
+      "annotation_3": "Count all the rocks near them. If you take away the two biggest rocks, how many rocks are left?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-8.jpg",
+      "story_text": "And can't do what I can't.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And can't do what I can't."
+        },
+        "annotation_1": {
+          "eng": "Why are the animals having trouble peeling the banana?"
+        },
+        "annotation_2": {
+          "eng": "Can you peel a banana easily?"
+        },
+        "annotation_3": {
+          "eng": "Are there things, such as fruit or packages, that you have trouble opening?"
+        }
+      },
+      "annotation_1": "Why are the animals having trouble peeling the banana?",
+      "annotation_2": "Can you peel a banana easily?",
+      "annotation_3": "Are there things, such as fruit or packages, that you have trouble opening?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-9.jpg",
+      "story_text": "I've looked and looked everywhere to find another me. I went down to the park and looked behind the trees.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I've looked and looked everywhere to find another me. I went down to the park and looked behind the trees."
+        },
+        "annotation_1": {
+          "eng": "What animal did he see when he looked behind a tree?"
+        },
+        "annotation_2": {
+          "eng": "Did he see an animal just like him when he looked behind the tree?"
+        },
+        "annotation_3": {
+          "eng": "Did he see what he was looking for behind the tree?"
+        }
+      },
+      "annotation_1": "What animal did he see when he looked behind a tree?",
+      "annotation_2": "Did he see an animal just like him when he looked behind the tree?",
+      "annotation_3": "Did he see what he was looking for behind the tree?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-10.jpg",
+      "story_text": "I looked around, up, and down.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I looked around, up, and down."
+        },
+        "annotation_1": {
+          "eng": "Do you think our friend could ever climb to the top of a tree?"
+        },
+        "annotation_2": {
+          "eng": "Do you think the bird is surprised to see him there?"
+        },
+        "annotation_3": {
+          "eng": "Has the animal looked everywhere? What are some places that may have been missed?"
+        }
+      },
+      "annotation_1": "Do you think our friend could ever climb to the top of a tree?",
+      "annotation_2": "Do you think the bird is surprised to see him there?",
+      "annotation_3": "Has the animal looked everywhere? What are some places that may have been missed?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-11.jpg",
+      "story_text": "At every single face.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "At every single face."
+        },
+        "annotation_1": {
+          "eng": "There are three animals on one side of the pond, and one more on the other side. If you put them all together, how many animals are there? What is one more than 3?"
+        },
+        "annotation_2": {
+          "eng": "If you remove one animal on one side of the pond from the four animals at the pond, how many are left? What is one less than 4?"
+        },
+        "annotation_3": {
+          "eng": "Describe how the two facts: \\\\ 3 + 1 = 4 and 4 - 1 = 3 \\\\ are tied together. \\\\ These two related math facts are called a math fact family. Can you think of another math fact family?"
+        }
+      },
+      "annotation_1": "There are three animals on one side of the pond, and one more on the other side. If you put them all together, how many animals are there? What is one more than 3?",
+      "annotation_2": "If you remove one animal on one side of the pond from the four animals at the pond, how many are left? What is one less than 4?",
+      "annotation_3": "Describe how the two facts: \\\\ 3 + 1 = 4 and 4 - 1 = 3 \\\\ are tied together. \\\\ These two related math facts are called a math fact family. Can you think of another math fact family?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-12.jpg",
+      "story_text": "I couldn't find another me in any single place.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I couldn't find another me in any single place."
+        },
+        "annotation_1": {
+          "eng": "Do you think his shadow temporarily fooled him into thinking that there was another animal just like him?"
+        },
+        "annotation_2": {
+          "eng": "How much does your shadow look like you?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever seen a shadow that you thought was a person?"
+        }
+      },
+      "annotation_1": "Do you think his shadow temporarily fooled him into thinking that there was another animal just like him?",
+      "annotation_2": "How much does your shadow look like you?",
+      "annotation_3": "Have you ever seen a shadow that you thought was a person?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-13.jpg",
+      "story_text": "There's only one me in the world! \\\\ I'm special, oh it's true!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "There's only one me in the world! \\\\ I'm special, oh it's true!"
+        },
+        "annotation_1": {
+          "eng": "How many animals can you count in this picture?"
+        },
+        "annotation_2": {
+          "eng": "Describe some of the ways each animal in this picture is different than our friend."
+        },
+        "annotation_3": {
+          "eng": "Describe some of the ways each animal is similar to our friend."
+        }
+      },
+      "annotation_1": "How many animals can you count in this picture?",
+      "annotation_2": "Describe some of the ways each animal in this picture is different than our friend.",
+      "annotation_3": "Describe some of the ways each animal is similar to our friend."
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-14.jpg",
+      "story_text": "But not just me, don't you see? \\\\ There's only one of you!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "But not just me, don't you see? \\\\ There's only one of you!"
+        },
+        "annotation_1": {
+          "eng": "Do you know someone who is very similar to you? How are they similar?"
+        },
+        "annotation_2": {
+          "eng": "Despite the similarities, describe some ways they are different from you."
+        },
+        "annotation_3": {
+          "eng": "Do you like being the only you that there is?"
+        }
+      },
+      "annotation_1": "Do you know someone who is very similar to you? How are they similar?",
+      "annotation_2": "Despite the similarities, describe some ways they are different from you.",
+      "annotation_3": "Do you like being the only you that there is?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-ITALM-15.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

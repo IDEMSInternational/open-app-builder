@@ -1,0 +1,124 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_540a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Product Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Use a shared piece of paper filled out as follows:",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM540ProductGame9.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "220px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "text2",
+          "value": "The first player moves a token onto any number from 1 to 9 in the 1-9 squares on the bottom row. The second player puts another token on one of the 1-9 squares on the bottom row and claims the product in the 6 by 6 grid. From then on, each player chooses to move one of the two tokens and claim the product (if they can). The first player to claim 3 squares in a row wins. Mix up the product numbers in the 6 by 6 grid to give your child better practice identifying the products.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Bigger Boards",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "These playing boards can be made as large as you like, though they do get to be quite large pretty quickly. Here are a few larger boards with the corresponding larger number ranges beneath them.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM540ProductGame10-12.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "image3_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3_max_width"
+        },
+        {
+          "name": "text4",
+          "value": "The squares with red stars are “free” squares and may be used by either side as needed.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_460b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Nim With Factors",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Start with any number, say 20. Let the child decide whether to go first or second. During their turn, a player may subtract any divisor of the current number from the number. The player forced to 0 loses.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "As usual, a good strategy for learning about this game is to look at a simpler version of the game, which in this case means starting with very small numbers. If it is your turn and you are faced with each of these numbers, here is what will happen: 1 - lose, 2 - win, 3 - lose, 4 - win, 5 - lose, 6 - win, 7 lose, and 8 win. By now the pattern is clear - if it is your move and you have an odd number, then you will lose; if you have an even number, then you will win.\n\nFinding the winning strategy is a big step, but let’s go deeper. Why does this work? What are the properties of odd and even numbers that create this situation? Set this question before your child and give them a lot of time to think about it and experiment with it - there is no hurry, and this process of wrestling with a question is invaluable and should not be short circuited.\n\nSome experimentation with small numbers quickly reveals what is going on. If you have an odd number, all of the divisors are odd, so when you subtract any divisor the result is an even number. Consequently, odd numbers on one turn always lead to an even number on the next turn. Even numbers always have both odd and even numbers for divisors. So, the situation is not quite the same. However, if you have an even number, your goal is to give your opponent an odd number, and there is an easy way to do that - select the divisor 1 and subtract it!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_2_85a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Wow! Your child is now able to count to 5! These numbers are not just being repeated in order like a parrot – they represent quantities that your child is gaining a feel for. You are ready to assign properties to objects that you describe and talk about. Think how far your child has come in understanding the world!\n\nYour child is becoming more verbal and better able to reason and explain. You can discuss mathematical things and this allows you to start playing games and doing puzzles together.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "accordian_1_title",
+          "value": "Chapter Topics",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_title"
+        },
+        {
+          "name": "accordian_1_text",
+          "value": "* Counting forward and backward to 10. Don’t ignore backward counting – it is important for understanding number relationships as well as being an aid for subtraction.\n* Include 0 in your counting sometimes. Including 0 now makes it a familiar number and keeps it from feeling exotic.\n* Reasoning with properties and numbers. Understanding properties and reasoning with them is a key part of developing mathematical ability.\n* Deepening understanding of shapes, especially circles, triangles, and squares. Keep using descriptive shape names as your child interacts with them.\n* Comparing and ordering numbers. How quantities compare and interact with each other is central to understanding them.\n* One more, one less, two more, two less. These concepts are relatively easy to pick up, and they will form the basis for addition and subtraction.\n* Learning to use manipulatives, especially fingers, to understand adding and subtracting.\n* Adding and subtracting 0.\n* Subtracting a number from itself.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_text"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter2_sheets.xlsx"
+}

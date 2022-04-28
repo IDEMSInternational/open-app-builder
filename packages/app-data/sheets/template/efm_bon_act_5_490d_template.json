@@ -1,0 +1,124 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_490d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Divide Up the Box",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "A rectangle, 4 by 4 or larger, with numbers in some of its squares,  is to be divided into smaller rectangles. Each number must end up  in a separate rectangle whose area is that number. \n\nFor adults, constructing these puzzles is simple enough. Take a rectangle, divide its interior into rectangles, put numbers for the areas inside each interior rectangle, and then remove any sign of the interior rectangles. The only tricky part is putting numbers in places that make the puzzle reasonably easy to solve - you can always give hints as needed if your puzzle ends up being too hard.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Solving Strategies",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Here are some general strategies that can simplify solving these puzzles. Do your best to let your child discover these rules as they play with the puzzles. Make a list together of the rules they come up with.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM490DivideUptheBoxSolution1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "image2_max_width",
+          "value": "360px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2_max_width"
+        },
+        {
+          "name": "text3",
+          "value": "a) Look at numbers with only one or two options for their rectangles.\n\nBoth 4’s are highly constrained. Each 4 can only be inside a 1 by 4 or a 2 by 2 rectangle. The upper 4 is hemmed in, so it cannot be inside a 1 by 4. So, there must be a 2 by 2 rectangle in the upper left corner. That leaves the lower 4 with only the possibility that its rectangle is 1 by 4 and goes along the bottom side.\n\nb) Look at prime numbers - they must be inside a 1 by n rectangle.\n\nThe 3’s in the puzzle above must be contained in a 1 by 3 rectangle. The 3 in the upper right corner can only be part of a 1 by 3 rectangle going along the top edge or along the right side. The upper left 2 by 2 square being blocked off for the 4 makes it impossible to have a 1 by 3 along the top edge. \n\nThe 1 by 4 along the bottom forces the 1 by 3 for the lower of the two 3’s to be the higher of the two vertical possibilities.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM490DivideUptheBoxSolution2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "image3_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3_max_width"
+        },
+        {
+          "name": "text4",
+          "value": "c) Numbers close to the maximum dimension often have few options.\n\nLook at the 6’s and 5’s in this next puzzle. The uppermost 6 needs lots of room, and the only way there is enough room for it is vertically straight down, using up the entire column. The other 6 cannot be 1 x 6 because the row was cut off by the other 6’s column. So, the lower 6 must be a 2 x 3, which is not quite determined yet.\nAs another example, if there had been an 8 in this puzzle, 1 by 8 would not have fit, so it would have to be part of a 2 by 4 rectangle.\n\nd) Squares that are boxed in have few options.\n\nThe uppermost 5 is boxed in, so it’s only choice is to be in a 5-box column. The other 5, because it is also a prime, must go vertically or horizontally. It is cut off horizontally by the column for the 6, so it must go vertically up to right below the 3.\n\ne) Corners are often highly constrained.\n\nThe 2 in the upper right corner must go horizontally, so it is easy to fill in.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

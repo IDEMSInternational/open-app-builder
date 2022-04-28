@@ -1,0 +1,74 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "efm_chapter_list",
+  "data_list_name": "efm_chapt",
+  "status": "released",
+  "rows": [
+    {
+      "id": "efm_chapt_1",
+      "number": 1,
+      "title": "Chapter 1 — I Can Hear You!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chapter 1 — I Can Hear You!"
+        }
+      }
+    },
+    {
+      "id": "efm_chapt_2",
+      "number": 2,
+      "title": "Chapter 2 — I Can Count to 5!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chapter 2 — I Can Count to 5!"
+        }
+      }
+    },
+    {
+      "id": "efm_chapt_3",
+      "number": 3,
+      "title": "Chapter 3 — I Can Count to 10!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chapter 3 — I Can Count to 10!"
+        }
+      }
+    },
+    {
+      "id": "efm_chapt_4",
+      "number": 4,
+      "title": "Chapter 4 — I Can Count to 20!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chapter 4 — I Can Count to 20!"
+        }
+      }
+    },
+    {
+      "id": "efm_chapt_5",
+      "number": 5,
+      "title": "Chapter 5 — I Can Count to 100!",
+      "_translations": {
+        "title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Chapter 5 — I Can Count to 100!"
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"
+}

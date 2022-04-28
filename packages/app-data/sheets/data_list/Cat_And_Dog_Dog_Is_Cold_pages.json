@@ -1,0 +1,512 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Cat_And_Dog_Dog_Is_Cold_pages",
+  "status": "released",
+  "data_list_name": "Cat_And_Dog_Dog_Is_Cold_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-1.jpg",
+      "story_text": "This is Cat.\n\nThis is Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is Cat.\n\nThis is Dog."
+        },
+        "annotation_1": {
+          "eng": "Count the animals together and describe their colors."
+        },
+        "annotation_2": {
+          "eng": "Which one has shorter ears? Which one has longer ears?"
+        },
+        "annotation_3": {
+          "eng": "Which one has short whiskers? Which one has long whiskers?"
+        }
+      },
+      "annotation_1": "Count the animals together and describe their colors.",
+      "annotation_2": "Which one has shorter ears? Which one has longer ears?",
+      "annotation_3": "Which one has short whiskers? Which one has long whiskers?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-2.jpg",
+      "story_text": "It is night. It is dark.\n\nIt is cold. It is very cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "It is night. It is dark.\n\nIt is cold. It is very cold."
+        },
+        "annotation_1": {
+          "eng": "Their house is round. Do you live in a round building?"
+        },
+        "annotation_2": {
+          "eng": "Count the trees together."
+        },
+        "annotation_3": {
+          "eng": "A full moon forms a complete circle. A moon that is a partial circle like this is called a crescent moon."
+        }
+      },
+      "annotation_1": "Their house is round. Do you live in a round building?",
+      "annotation_2": "Count the trees together.",
+      "annotation_3": "A full moon forms a complete circle. A moon that is a partial circle like this is called a crescent moon."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-3.jpg",
+      "story_text": "For Dog it is too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "For Dog it is too cold."
+        },
+        "annotation_1": {
+          "eng": "What shows you that Dog is cold?"
+        },
+        "annotation_2": {
+          "eng": "A light blue color is often used to show something cold. Does seeing blue make you feel cold?"
+        },
+        "annotation_3": {
+          "eng": "On cold nights, even outdoor animals can use help with the cold."
+        }
+      },
+      "annotation_1": "What shows you that Dog is cold?",
+      "annotation_2": "A light blue color is often used to show something cold. Does seeing blue make you feel cold?",
+      "annotation_3": "On cold nights, even outdoor animals can use help with the cold."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-4.jpg",
+      "story_text": "Cat gives Dog underwear.\n\nOne pair of underwear is dirty. One pair of underwear is clean.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog underwear.\n\nOne pair of underwear is dirty. One pair of underwear is clean."
+        },
+        "annotation_1": {
+          "eng": "Is this choice of underwear very helpful?"
+        },
+        "annotation_2": {
+          "eng": "Is it silly that Cat offers underwear that is dirty?"
+        },
+        "annotation_3": {
+          "eng": "Why isn't Cat cold?"
+        }
+      },
+      "annotation_1": "Is this choice of underwear very helpful?",
+      "annotation_2": "Is it silly that Cat offers underwear that is dirty?",
+      "annotation_3": "Why isn't Cat cold?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-5.jpg",
+      "story_text": "Dog takes the clean underwear. But it is still too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Dog takes the clean underwear. But it is still too cold."
+        },
+        "annotation_1": {
+          "eng": "Count together how much clothing Dog has. Dog is cold and needs more."
+        },
+        "annotation_2": {
+          "eng": "Remember a time when you were cold and how hard it was to get warm."
+        },
+        "annotation_3": {
+          "eng": "Why are Dog's arms crossed in front?"
+        }
+      },
+      "annotation_1": "Count together how much clothing Dog has. Dog is cold and needs more.",
+      "annotation_2": "Remember a time when you were cold and how hard it was to get warm.",
+      "annotation_3": "Why are Dog's arms crossed in front?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-6.jpg",
+      "story_text": "Cat gives Dog shirts. One shirt is big. One shirt is small.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog shirts. One shirt is big. One shirt is small."
+        },
+        "annotation_1": {
+          "eng": "Is offering a shirt that is much too small helpful?"
+        },
+        "annotation_2": {
+          "eng": "Is Cat trying to help, or is Cat just having some fun?"
+        },
+        "annotation_3": {
+          "eng": "Which of Cat's paws has more visible claws?"
+        }
+      },
+      "annotation_1": "Is offering a shirt that is much too small helpful?",
+      "annotation_2": "Is Cat trying to help, or is Cat just having some fun?",
+      "annotation_3": "Which of Cat's paws has more visible claws?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-7.jpg",
+      "story_text": "Dog takes the big shirt. But it is still too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Dog takes the big shirt. But it is still too cold."
+        },
+        "annotation_1": {
+          "eng": "Count the pieces of clothing Dog has. Is it enough?"
+        },
+        "annotation_2": {
+          "eng": "A square is a shape like a piece of paper with four equal sides. Compare the round moon with the square window."
+        },
+        "annotation_3": {
+          "eng": "Have you ever seen a round window?"
+        }
+      },
+      "annotation_1": "Count the pieces of clothing Dog has. Is it enough?",
+      "annotation_2": "A square is a shape like a piece of paper with four equal sides. Compare the round moon with the square window.",
+      "annotation_3": "Have you ever seen a round window?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-8.jpg",
+      "story_text": "Cat gives Dog pants.\n\nOne pair of pants is long. One pair of pants is short.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog pants.\n\nOne pair of pants is long. One pair of pants is short."
+        },
+        "annotation_1": {
+          "eng": "How many pieces of clothing does Cat offer each time?"
+        },
+        "annotation_2": {
+          "eng": "When you are cold, do you want to wear shorts?"
+        },
+        "annotation_3": {
+          "eng": "What will happen with Dog's tail? Do these pants have a hole for Dog's tail?"
+        }
+      },
+      "annotation_1": "How many pieces of clothing does Cat offer each time?",
+      "annotation_2": "When you are cold, do you want to wear shorts?",
+      "annotation_3": "What will happen with Dog's tail? Do these pants have a hole for Dog's tail?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-9.jpg",
+      "story_text": "Dog takes the long pair of pants. But it is still too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Dog takes the long pair of pants. But it is still too cold."
+        },
+        "annotation_1": {
+          "eng": "Each time, Dog gets one more piece of clothing. How many pieces does Dog have on now?"
+        },
+        "annotation_2": {
+          "eng": "How many pieces will Dog need?"
+        },
+        "annotation_3": {
+          "eng": "Do you think there is any way Dog will get warm?"
+        }
+      },
+      "annotation_1": "Each time, Dog gets one more piece of clothing. How many pieces does Dog have on now?",
+      "annotation_2": "How many pieces will Dog need?",
+      "annotation_3": "Do you think there is any way Dog will get warm?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-10.jpg",
+      "story_text": "Cat gives Dog vests. One vest is wet, one vest is dry.\n\nDog takes the dry vest, but it is still too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog vests. One vest is wet, one vest is dry.\n\nDog takes the dry vest, but it is still too cold."
+        },
+        "annotation_1": {
+          "eng": "Does having something wet on make you feel warmer or colder?"
+        },
+        "annotation_2": {
+          "eng": "Dog had three pieces of clothing on. The vest is one more. How many does that make?"
+        },
+        "annotation_3": {
+          "eng": "With the vest, Dog has four pieces of clothing. Before he put the vest on, he had one less. How many was that?"
+        }
+      },
+      "annotation_1": "Does having something wet on make you feel warmer or colder?",
+      "annotation_2": "Dog had three pieces of clothing on. The vest is one more. How many does that make?",
+      "annotation_3": "With the vest, Dog has four pieces of clothing. Before he put the vest on, he had one less. How many was that?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-11.jpg",
+      "story_text": "Cat gives Dog jackets. One jacket is thick, one jacket is thin.\n\nDog takes the thick jacket, but it is still too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog jackets. One jacket is thick, one jacket is thin.\n\nDog takes the thick jacket, but it is still too cold."
+        },
+        "annotation_1": {
+          "eng": "Thicker clothing helps you keep heat in and stay warmer."
+        },
+        "annotation_2": {
+          "eng": "Does the color of the jacket look odd with Dog's other clothes?"
+        },
+        "annotation_3": {
+          "eng": "Dog now has one more than four. How many is that?"
+        }
+      },
+      "annotation_1": "Thicker clothing helps you keep heat in and stay warmer.",
+      "annotation_2": "Does the color of the jacket look odd with Dog's other clothes?",
+      "annotation_3": "Dog now has one more than four. How many is that?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-12.jpg",
+      "story_text": "Cat gives Dog hats. One hat is high, one hat is low.\n\nDog takes the high hat, but it is still too cold.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog hats. One hat is high, one hat is low.\n\nDog takes the high hat, but it is still too cold."
+        },
+        "annotation_1": {
+          "eng": "Point at the short hat and the tall hat."
+        },
+        "annotation_2": {
+          "eng": "Does it matter which hat Dog chooses? Is one hat warmer than the other?"
+        },
+        "annotation_3": {
+          "eng": "Do you have any hats? If so, do you like to wear them?"
+        }
+      },
+      "annotation_1": "Point at the short hat and the tall hat.",
+      "annotation_2": "Does it matter which hat Dog chooses? Is one hat warmer than the other?",
+      "annotation_3": "Do you have any hats? If so, do you like to wear them?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-13.jpg",
+      "story_text": "Cat gives Dog shoes.\n\nOne pair of shoes is new, one pair of shoes is old.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat gives Dog shoes.\n\nOne pair of shoes is new, one pair of shoes is old."
+        },
+        "annotation_1": {
+          "eng": "To give someone a choice, how many things do you need? Would having one thing be enough for a choice?"
+        },
+        "annotation_2": {
+          "eng": "A person can be baffled if you give them too many things to choose from."
+        },
+        "annotation_3": {
+          "eng": "Dog is still cold. Why are Dog's choices not helping?"
+        }
+      },
+      "annotation_1": "To give someone a choice, how many things do you need? Would having one thing be enough for a choice?",
+      "annotation_2": "A person can be baffled if you give them too many things to choose from.",
+      "annotation_3": "Dog is still cold. Why are Dog's choices not helping?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-14.jpg",
+      "story_text": "Dogs takes the new shoes, and then ...\n\nIt is not too cold for Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Dogs takes the new shoes, and then ...\n\nIt is not too cold for Dog."
+        },
+        "annotation_1": {
+          "eng": "What changed outside the window?"
+        },
+        "annotation_2": {
+          "eng": "Why isn't Dog cold any more? Did his clothes help make him warm?"
+        },
+        "annotation_3": {
+          "eng": "Where is the moon and what is that on the horizon in the window?"
+        }
+      },
+      "annotation_1": "What changed outside the window?",
+      "annotation_2": "Why isn't Dog cold any more? Did his clothes help make him warm?",
+      "annotation_3": "Where is the moon and what is that on the horizon in the window?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-15.jpg",
+      "story_text": "The night is over.\n\nThe moon goes. The sun comes.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The night is over.\n\nThe moon goes. The sun comes."
+        },
+        "annotation_1": {
+          "eng": "Count the palm trees together."
+        },
+        "annotation_2": {
+          "eng": "Point at the round, yellow sun. Is the moon always gone when the sun comes up?"
+        },
+        "annotation_3": {
+          "eng": "Is the moon always visible at night?"
+        }
+      },
+      "annotation_1": "Count the palm trees together.",
+      "annotation_2": "Point at the round, yellow sun. Is the moon always gone when the sun comes up?",
+      "annotation_3": "Is the moon always visible at night?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-16.jpg",
+      "story_text": "It is day. It is light. It is warm. It is very warm.\n\nFor Dog it is too warm.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "It is day. It is light. It is warm. It is very warm.\n\nFor Dog it is too warm."
+        },
+        "annotation_1": {
+          "eng": "List all the pieces of clothing Dog has on."
+        },
+        "annotation_2": {
+          "eng": "What is Dog doing with his right hand? What motion do you use to try to cool off?"
+        },
+        "annotation_3": {
+          "eng": "Are Dog's clothes finally making him warm, or too warm?"
+        }
+      },
+      "annotation_1": "List all the pieces of clothing Dog has on.",
+      "annotation_2": "What is Dog doing with his right hand? What motion do you use to try to cool off?",
+      "annotation_3": "Are Dog's clothes finally making him warm, or too warm?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-17.jpg",
+      "story_text": "Bye bye Cat.\n\nBye bye hot Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Bye bye Cat.\n\nBye bye hot Dog."
+        },
+        "annotation_1": {
+          "eng": "Count Cat's whiskers. How many whiskers does Dog have?"
+        },
+        "annotation_2": {
+          "eng": "Who has more whiskers -- Cat or Dog? They have the same number, but Dog's whiskers are small."
+        },
+        "annotation_3": {
+          "eng": "In the end, how many pieces of clothing does Dog have? Too many!"
+        }
+      },
+      "annotation_1": "Count Cat's whiskers. How many whiskers does Dog have?",
+      "annotation_2": "Who has more whiskers -- Cat or Dog? They have the same number, but Dog's whiskers are small.",
+      "annotation_3": "In the end, how many pieces of clothing does Dog have? Too many!"
+    },
+    {
+      "id": "page_18",
+      "page_no": 18,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-18.jpg"
+    },
+    {
+      "id": "page_19",
+      "page_no": 19,
+      "illustration": "EFMStorybooks/EFM-SB-CADDIC-19.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

@@ -1,0 +1,304 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_4_370a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Solitaire Shape Puzzles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Magic Triangles",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Make a triangle of six circles with three circles on a side. In the circles, use each of the numbers from 1 to 6 once so that each side of the triangle has the same sum. This involves two challenges - finding out which sums will work and then figuring out how to get those sums. It is better to let your child play with this to figure out which sums are possible, but if frustration wins out, the possible sums are 9, 10, 11, and 12.\n\nIf your child enjoys figuring this out, this can be done for larger triangles as well. For a triangle with nine circles with four circles on a side, the possible sums are 17, 19, 20, 21, and 23.\n\nAs with so many of the puzzles for this age group, the main reason to have your child play with this is to encourage having fun exploring how numbers interact with each other and to practice number facts. They do not yet have the math or reasoning skills to be systematic with their exploration. However, these puzzles can be explored more deeply, and here are some ideas to dig into if you or an older child are interested.\n\nLet SUM represent the sum of one side of the triangle. If you add up the three sides of the triangle, the total will be 3 x SUM. However, the total of the three sides will also be the sum of all the numbers plus one extra copy for each corner of the triangle. Let C-SUM be the sum of the values in the three corners. We end up with the relationship that 3 x SUM = (Total of all the numbers) + C-SUM.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "6-Circle Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Apply this to the triangle with six circles. The sum of all the numbers is the sum of the numbers from one to six, which is 21. So the equation becomes 3 x SUM = 21 + C-SUM The smallest C-SUM can be is 1 + 2 + 3 = 6, and the largest it can be is 4 + 5 + 6 = 15. So, 3 x SUM is between 21 + 6 = 27 and 21 + 15 = 36. This forces SUM to be 9, 10, 11, 12. Note also that C-SUM = 3 x SUM - 21, which is handy for finding the corners.\n\nAnother thing to notice is the symmetry of the possible values. What is causing this symmetry is that for every solution, there is another solution created by subtracting all the numbers from 7 (or from 10 for the nine circle puzzle). A little calculating will show that this symmetry takes a puzzle with sum SUM and creates a new one with sum (21 - SUM) (or 40 - SUM for the nine circle puzzle).\n\nThe last thing to notice before we dig in with actual numbers is that for any solution for the three corners, we can assume that they are in increasing order going around clockwise, with the smallest number at the top. If they are not in that configuration to begin with, you can rotate or flip the diagram until they are.\n\nAll these observations save a tremendous amount of work. We only need to look at SUM equal to 9 and 10, and we only need to have the corners in increasing order. If SUM is 9, then C-SUM = 3 x 9 - 21 = 6, so the trio is 1, 2, and 3. If SUM is 10, then a + b + c = 3 x 10 - 21 = 9. This leaves two possibilities - either corner values of 1, 2, and 6, or 1, 3, and 5. A quick trial rules out 1, 2, and 6 as a possibility.\n\nAfter much work, we have the solutions for SUM being 9 and 10 for the six circle puzzle. Remember that you can get the solutions for SUM being 11 and 12 by subtracting all the entries from 7.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM370MagicCircles1to6.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "image2_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2_max_width"
+        },
+        {
+          "name": "title3",
+          "value": "9-Circle Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "Use the same approach for the 9 circle puzzle. The sum of the numbers from 1 to 9 is 45. Hence, 3 x SUM = 45 + C-SUM. The smallest C-SUM can be is 1 + 2 + 3 = 6, and the largest it can be is 7 + 8 + 9 = 24. So 3 x SUM is between 45 + 6 = 51 and 45 + 24 = 69, which forces SUM to be between 17 and 23. Taking a solution and subtracting all the entries from 10 gives the following SUM pairings: 17 - 23, 18 - 22, 19 - 21, and 20 - 20. So, solutions are only needed for 17, 18, 19, and 20. The corresponding values for C-SUM are 6, 9, 12, and 15. \n\n* SUM = 17 and C-SUM = 6. For this, the corners must be 1, 2, 3, and it works.\n* SUM = 18 and C-SUM = 9. For this, the corners must be either 1, 2, 6 or 1, 3, 5. Neither works.\n* SUM = 19 and C-SUM = 12. There are quite a few possibilities for the corners, but the only combinations that work are 1, 4, 7 and 2, 3, 7.\n* SUM = 20 and C-SUM = 15. There are too many combinations for the corners, and many of them work. Two that work are 1, 5, 9 and 2, 5, 8.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "title4",
+          "value": "Magic Designs",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title4"
+        },
+        {
+          "name": "text4",
+          "value": "Similar to Magic Triangles, these have circles connected in a geometric pattern and an associated group of numbers. Put the numbers in the circles so every straight line of connected circles has the same sum.\n\nThe analysis of these puzzles is similar to what was done for Magic Triangles. Let SUM be the common sum that all the rows share. Let c be the value of the middle circle, for puzzles that have one. The general strategy will be to add up all the rows and investigate the relationship that is revealed. Note also that, just as for Magic Triangles, a new solution can be created by subtracting all the entries from one more than the largest number.\n\n1. The numbers from 1 to 4 are in a plus sign shape with no circles in common. The numbers 1 to 4 add up to 10, and this is split evenly between the two directions. So SUM = 5 and the answer is easy.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        },
+        {
+          "name": "image4",
+          "value": "EFMBM370MagicDesigns1.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4"
+        },
+        {
+          "name": "image4_max_width",
+          "value": "120px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4_max_width"
+        },
+        {
+          "name": "text5",
+          "value": "2. The numbers from 1 to 5 are in a plus sign with one circle in common in the middle. The numbers 1 to 5 add up to 15. Adding up the two directions gives 2 x SUM = 15 + c. Because 15 + c must be even, c can be 1, 3, and 5. Get the solution for c = 5 (SUM = 10) from the c = 1 solution by subtracting all the numbers from 6.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text5"
+        },
+        {
+          "name": "image5",
+          "value": "EFMBM370MagicDesigns2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image5"
+        },
+        {
+          "name": "image5_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image5_max_width"
+        },
+        {
+          "name": "text6",
+          "value": "3. The numbers from 1 to 7 are in lines of 3 circles with one common circle in the middle. Adding up the three directions gives 3 x SUM = 28 + 2 x c. Because 3 evenly divides 28 + 2 x c, this forces c to be 1, 4, or 7. The solutions for c = 1 and 4 are given.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text6"
+        },
+        {
+          "name": "image6",
+          "value": "EFMBM370MagicDesigns3.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image6"
+        },
+        {
+          "name": "image6_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image6_max_width"
+        },
+        {
+          "name": "text7",
+          "value": "4. The numbers from 1 to 9 are in lines of 3 circles with one common circle in the middle. Adding up the four directions gives 4 x SUM = 45 + 3 x c. Because 4 evenly divides 45 + 3 x c, this forces c = 1, 5, or 9.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text7"
+        },
+        {
+          "name": "image7",
+          "value": "EFMBM370MagicDesigns4.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image7"
+        },
+        {
+          "name": "image7_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image7_max_width"
+        },
+        {
+          "name": "text8",
+          "value": "5. The numbers from 1 to 5 are placed in an L shape with one circle in common in the corner. This is really the same as problem #2, so the solutions are essentially the same.\n\n6. The numbers from 1 to 8 are in a plus sign with no circles in common. The two directions evenly split 36, the sum of all the numbers, so SUM = 18. There are many ways to solve this by splitting the set of numbers into two groups that add up to 18. One solution is 1, 2, 7, 8 and 3, 4, 5, 6, and another is 1, 3, 6, 8 and 2, 4, 5, 7.\n\n7. The numbers from 1 to 9 are in a plus sign with one circle in common in the middle. Adding up the two directions gives 2 X SUM = 45 + c, so c = 1, 3, 5, 7, and 9. Solutions for c = 1, 3, and 5 are given.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text8"
+        },
+        {
+          "name": "image8",
+          "value": "EFMBM370MagicDesigns7.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image8"
+        },
+        {
+          "name": "image8_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image8_max_width"
+        },
+        {
+          "name": "text9",
+          "value": "8. The numbers from 1 to 12 are in a star shape. This has 6 directions of lines of 4 circles. This one is much harder than the others. If you add up all the directions, every number will be involved twice. The numbers from 1 to 12 add up to 78. Thus we have 6 x SUM = 2 x 78, which means SUM = 26 (as given in the hint). A solution is given below. As always, another solution can be obtained by subtracting all the entries from 13.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text9"
+        },
+        {
+          "name": "image9",
+          "value": "EFMBM370MagicDesigns8.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image9"
+        },
+        {
+          "name": "image9_max_width",
+          "value": "240px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image9_max_width"
+        },
+        {
+          "name": "text10",
+          "value": "9. The numbers from 1 to 7 are in an H shape - 3 vertically on the left, 1 in the center, 3 vertically on the right. There are 5 possible lines of 3 connected circles. If the 5 directions are added up, all the circles will be used twice, with the exception of the center which is used three times. Adding up the five directions gives 5 x SUM = 2 x 28 + c. Because 5 evenly divides 56 + c, this forces c = 4, and in that case SUM = 12 (as given in the hint). Note that neither 2 nor 3 can be on the same side as the 1, and this leads to the following solution.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text10"
+        },
+        {
+          "name": "image10",
+          "value": "EFMBM370MagicDesigns9.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image10"
+        },
+        {
+          "name": "image10_max_width",
+          "value": "160px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image10_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

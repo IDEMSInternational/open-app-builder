@@ -43,6 +43,15 @@
           },
           "type": "set_variable",
           "_nested_name": "activity_body.text_bottom_1"
+        },
+        {
+          "name": "bonus_button_bon_act_id",
+          "value": "efm_bon_act_4_400a",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.bonus_button_bon_act_id"
         }
       ],
       "_nested_name": "activity_body"

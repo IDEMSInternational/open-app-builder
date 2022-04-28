@@ -1,0 +1,44 @@
+{
+  "flow_type": "template",
+  "flow_name": "initializations_on_startup",
+  "status": "released",
+  "rows": [
+    {
+      "type": "set_field",
+      "name": "already_started",
+      "value": true,
+      "_nested_name": "already_started"
+    },
+    {
+      "type": "set_field",
+      "name": "see_activities_introduction",
+      "value": true,
+      "_nested_name": "see_activities_introduction"
+    },
+    {
+      "type": "set_field",
+      "name": "see_activities_game",
+      "value": true,
+      "_nested_name": "see_activities_game"
+    },
+    {
+      "type": "set_field",
+      "name": "see_activities_puzzle",
+      "value": true,
+      "_nested_name": "see_activities_puzzle"
+    },
+    {
+      "type": "set_field",
+      "name": "see_activities_activity",
+      "value": true,
+      "_nested_name": "see_activities_activity"
+    },
+    {
+      "type": "set_field",
+      "name": "see_activities_investigation",
+      "value": true,
+      "_nested_name": "see_activities_investigation"
+    }
+  ],
+  "_xlsxPath": "EFM_high_level_sheets.xlsx"
+}

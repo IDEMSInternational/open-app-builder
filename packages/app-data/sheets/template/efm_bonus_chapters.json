@@ -1,0 +1,142 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bonus_chapters",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Activities – Bonus Material",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "items",
+      "name": "chapter_buttons",
+      "value": "@data.efm_chapt",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.title",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_chapter",
+                "data.efm_chapt.@item.id"
+              ],
+              "_raw": "click | set_field:current_chapter: data.efm_chapt.@item.id",
+              "_cleaned": "click | set_field:current_chapter: data.efm_chapt.@item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "efm_chapter_bon_acts"
+              ],
+              "_raw": "click | go_to: efm_chapter_bon_acts",
+              "_cleaned": "click | go_to: efm_chapter_bon_acts"
+            }
+          ],
+          "parameter_list": {
+            "style": "short",
+            "text_align": "center"
+          },
+          "_nested_name": "chapter_buttons.button_@item.title",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "data.efm_chapt.@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field:current_chapter: data.efm_chapt.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field:current_chapter: data.efm_chapt.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "_nested_name": [
+              {
+                "fullExpression": "chapter_buttons.button_@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.title": [
+              "name",
+              "value",
+              "_nested_name"
+            ],
+            "@item.id": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "chapter_buttons",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.efm_chapt",
+            "matchedExpression": "@data.efm_chapt",
+            "type": "data",
+            "fieldName": "efm_chapt"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.efm_chapt": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"
+}

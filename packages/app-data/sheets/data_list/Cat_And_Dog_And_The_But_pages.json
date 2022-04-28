@@ -1,0 +1,391 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Cat_And_Dog_And_The_But_pages",
+  "status": "released",
+  "data_list_name": "Cat_And_Dog_And_The_But_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-1.jpg",
+      "story_text": "This is Cat.\n\nThis is Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is Cat.\n\nThis is Dog."
+        },
+        "annotation_1": {
+          "eng": "Which one has stripes and which one has spots? How many stripes and how many spots?"
+        },
+        "annotation_2": {
+          "eng": "Which one has whiskers we can see? How many whiskers?"
+        },
+        "annotation_3": {
+          "eng": "Which one is red and which one is yellow?"
+        }
+      },
+      "annotation_1": "Which one has stripes and which one has spots? How many stripes and how many spots?",
+      "annotation_2": "Which one has whiskers we can see? How many whiskers?",
+      "annotation_3": "Which one is red and which one is yellow?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-2.jpg",
+      "story_text": "Cat and Dog look through the window.\n\nThey look through the window.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog look through the window.\n\nThey look through the window."
+        },
+        "annotation_1": {
+          "eng": "How many times does it say that they are looking through the window? The writer repeats it to tell us that Cat and Dog have nothing to do."
+        },
+        "annotation_2": {
+          "eng": "Do Cat and Dog look bored?"
+        },
+        "annotation_3": {
+          "eng": "Count together the number of trees."
+        }
+      },
+      "annotation_1": "How many times does it say that they are looking through the window? The writer repeats it to tell us that Cat and Dog have nothing to do.",
+      "annotation_2": "Do Cat and Dog look bored?",
+      "annotation_3": "Count together the number of trees."
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-3.jpg",
+      "story_text": "Then Cat and Dog see a butterfly!\n\nThe butterfly is pink.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then Cat and Dog see a butterfly!\n\nThe butterfly is pink."
+        },
+        "annotation_1": {
+          "eng": "Why were Cat and Dog so excited to see a butterfly? Were they looking for one?"
+        },
+        "annotation_2": {
+          "eng": "Point at and count the wings on the butterfly."
+        },
+        "annotation_3": {
+          "eng": "Point at and count the short lines going away from the butterfly. They show the butterfly is alarmed."
+        }
+      },
+      "annotation_1": "Why were Cat and Dog so excited to see a butterfly? Were they looking for one?",
+      "annotation_2": "Point at and count the wings on the butterfly.",
+      "annotation_3": "Point at and count the short lines going away from the butterfly. They show the butterfly is alarmed."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-4.jpg",
+      "story_text": "Cat and Dog want to catch the butterfly.\n\nCat and Dog follow the butterfly.\n\nThey follow the butterfly.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog want to catch the butterfly.\n\nCat and Dog follow the butterfly.\n\nThey follow the butterfly."
+        },
+        "annotation_1": {
+          "eng": "Does the butterfly want to be caught?"
+        },
+        "annotation_2": {
+          "eng": "Is it mean of Cat and Dog to want to catch the butterfly?"
+        },
+        "annotation_3": {
+          "eng": "When is it fun to be chased and when is it frightening?"
+        }
+      },
+      "annotation_1": "Does the butterfly want to be caught?",
+      "annotation_2": "Is it mean of Cat and Dog to want to catch the butterfly?",
+      "annotation_3": "When is it fun to be chased and when is it frightening?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-5.jpg",
+      "story_text": "Cat and Dog follow the butterfly by foot. They walk after the butterfly.\n\nBut the butterfly is fast. The butterfly is too fast and Cat and Dog are slow. They are too slow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog follow the butterfly by foot. They walk after the butterfly.\n\nBut the butterfly is fast. The butterfly is too fast and Cat and Dog are slow. They are too slow."
+        },
+        "annotation_1": {
+          "eng": "Which animal is going the fastest?"
+        },
+        "annotation_2": {
+          "eng": "Can you go faster or slower than Cat and Dog?"
+        },
+        "annotation_3": {
+          "eng": "Point out that their feet are drawn going in circles to indicate they are running fast."
+        }
+      },
+      "annotation_1": "Which animal is going the fastest?",
+      "annotation_2": "Can you go faster or slower than Cat and Dog?",
+      "annotation_3": "Point out that their feet are drawn going in circles to indicate they are running fast."
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-6.jpg",
+      "story_text": "Cat and Dog follow the butterfly by bike. They ride after the butterfly.\n\nBut the butterfly is fast. The butterfly is very fast, and Cat and Dog are slow. They are very slow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog follow the butterfly by bike. They ride after the butterfly.\n\nBut the butterfly is fast. The butterfly is very fast, and Cat and Dog are slow. They are very slow."
+        },
+        "annotation_1": {
+          "eng": "Can butterflies fly faster than a bike can go?"
+        },
+        "annotation_2": {
+          "eng": "Can cats and dogs ride bikes?"
+        },
+        "annotation_3": {
+          "eng": "Do you think you could catch a butterfly while riding a bike?"
+        }
+      },
+      "annotation_1": "Can butterflies fly faster than a bike can go?",
+      "annotation_2": "Can cats and dogs ride bikes?",
+      "annotation_3": "Do you think you could catch a butterfly while riding a bike?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-7.jpg",
+      "story_text": "Cat and Dog follow the butterfly by car. They drive after the butterfly.\n\nBut the butterfly is fast. The butterfly is still too fast, and Cat and Dog are slow. They are still too slow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog follow the butterfly by car. They drive after the butterfly.\n\nBut the butterfly is fast. The butterfly is still too fast, and Cat and Dog are slow. They are still too slow."
+        },
+        "annotation_1": {
+          "eng": "Can a butterfly or a bird fly faster than a car?"
+        },
+        "annotation_2": {
+          "eng": "Can a real dog drive a car?"
+        },
+        "annotation_3": {
+          "eng": "Count together the clouds in the sky."
+        }
+      },
+      "annotation_1": "Can a butterfly or a bird fly faster than a car?",
+      "annotation_2": "Can a real dog drive a car?",
+      "annotation_3": "Count together the clouds in the sky."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-8.jpg",
+      "story_text": "Cat and Dog follow the butterfly by boat. They float after the butterfly.\n\nBut the butterfly is fast. The butterfly is super-fast, and Cat and Dog are slow. They are still super-slow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog follow the butterfly by boat. They float after the butterfly.\n\nBut the butterfly is fast. The butterfly is super-fast, and Cat and Dog are slow. They are still super-slow."
+        },
+        "annotation_1": {
+          "eng": "Count the number of fish."
+        },
+        "annotation_2": {
+          "eng": "Including Cat and Dog, count the number of animals."
+        },
+        "annotation_3": {
+          "eng": "The fish look surprised. Why are they surprised?"
+        }
+      },
+      "annotation_1": "Count the number of fish.",
+      "annotation_2": "Including Cat and Dog, count the number of animals.",
+      "annotation_3": "The fish look surprised. Why are they surprised?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-9.jpg",
+      "story_text": "Cat and Dog follow the butterfly by plane. They flow after the butterfly.\n\nBut the butterfly is fast. The butterfly is still super-super-fast, and Cat and Dog are slow. They are still super-super-slow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog follow the butterfly by plane. They flow after the butterfly.\n\nBut the butterfly is fast. The butterfly is still super-super-fast, and Cat and Dog are slow. They are still super-super-slow."
+        },
+        "annotation_1": {
+          "eng": "Do you think a dog can fly a plane?"
+        },
+        "annotation_2": {
+          "eng": "Which of cars, boats, and planes is the fastest and which is the slowest?"
+        },
+        "annotation_3": {
+          "eng": "They are up very high. Count together the clouds where they are."
+        }
+      },
+      "annotation_1": "Do you think a dog can fly a plane?",
+      "annotation_2": "Which of cars, boats, and planes is the fastest and which is the slowest?",
+      "annotation_3": "They are up very high. Count together the clouds where they are."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-10.jpg",
+      "story_text": "The Cat and Dog stop. They stop and sit down. They sit down at a tree.\n\nThe sit down at a big tree.\n\nBut then ....",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The Cat and Dog stop. They stop and sit down. They sit down at a tree.\n\nThe sit down at a big tree.\n\nBut then ...."
+        },
+        "annotation_1": {
+          "eng": "Which is longer, Cat's tongue or Cat's legs?"
+        },
+        "annotation_2": {
+          "eng": "Do you think cats have tongues that long?"
+        },
+        "annotation_3": {
+          "eng": "Are their tongues hanging out because Cat and Dog are tired?"
+        }
+      },
+      "annotation_1": "Which is longer, Cat's tongue or Cat's legs?",
+      "annotation_2": "Do you think cats have tongues that long?",
+      "annotation_3": "Are their tongues hanging out because Cat and Dog are tired?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-11.jpg",
+      "story_text": "They see one butterfly in the tree.\n\nThey see two butterflies in the tree.\n\nThey see three butterflies in the tree.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They see one butterfly in the tree.\n\nThey see two butterflies in the tree.\n\nThey see three butterflies in the tree."
+        },
+        "annotation_1": {
+          "eng": "Count together the butterflies you can see in the tree."
+        },
+        "annotation_2": {
+          "eng": "Do you think you can see all the butterflies?"
+        },
+        "annotation_3": {
+          "eng": "There are three types of living things in the picture: trees, Cat and Dog, and butterflies. Which group is the largest and which is the smallest?"
+        }
+      },
+      "annotation_1": "Count together the butterflies you can see in the tree.",
+      "annotation_2": "Do you think you can see all the butterflies?",
+      "annotation_3": "There are three types of living things in the picture: trees, Cat and Dog, and butterflies. Which group is the largest and which is the smallest?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-12.jpg",
+      "story_text": "They see a hundred butterflies!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They see a hundred butterflies!"
+        },
+        "annotation_1": {
+          "eng": "How many butterflies can you count? Are there too many for you to count?"
+        },
+        "annotation_2": {
+          "eng": "How many different colors of butterflies are there?{For which color of butterfly is there the most?}"
+        }
+      },
+      "annotation_1": "How many butterflies can you count? Are there too many for you to count?",
+      "annotation_2": "How many different colors of butterflies are there?{For which color of butterfly is there the most?}"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-13.jpg",
+      "story_text": "Bye bye Cat.\n\nBye bye Dog.\n\nBye bye butterflies.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Bye bye Cat.\n\nBye bye Dog.\n\nBye bye butterflies."
+        },
+        "annotation_1": {
+          "eng": "Are you happy or sad that Cat and Dog caught a butterfly?"
+        },
+        "annotation_2": {
+          "eng": "In the picture, who do you think is happy and who is sad?"
+        },
+        "annotation_3": {
+          "eng": "How long do you think a butterfly can live in a jar?"
+        }
+      },
+      "annotation_1": "Are you happy or sad that Cat and Dog caught a butterfly?",
+      "annotation_2": "In the picture, who do you think is happy and who is sad?",
+      "annotation_3": "How long do you think a butterfly can live in a jar?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-14.jpg"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-CADATBu-15.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

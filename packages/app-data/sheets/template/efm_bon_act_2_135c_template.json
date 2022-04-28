@@ -1,0 +1,97 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_2_135c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Shape Sudoku",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "This is your child’s first math puzzle, and that’s pretty cool! It also means you should take it very slowly so your child has lots of success and fun, and very little frustration.\n\nThe rules for these 4 by 4 Sudokus are very simple. There are four different types of tokens. There should be one of each kind of token in each row, column, and 2 by 2 corner of the puzzle. Use moveable pieces so that it is easy for your child to experiment in finding solutions.\n\nThe first puzzles you make should just have one token missing from each row. Once your child understands and figures out those puzzles, you can move to trickier ones, but do not be in a hurry.\n\nThe easiest way to create these puzzles is to start with a finished Sudoku and remove some of the tokens. To help you to do that, there are a number of finished Sudokus supplied below. After those finished examples, there is a list of methods you can use to create puzzles from a finished puzzle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Finished Sudokus",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Before giving you a collection of finished Sudokus, there is one thing to note. You can take any one of these and create 23 more of them simply by interchanging token types - for example, you can take a finished puzzle and create a “new” one by swapping the circles and triangles and swapping the diamonds and squares. \n\nThe examples below are distinctly different from each other and cannot be made from each other by doing interchanges. You can create more examples from these by doing such interchanges if you like.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM135cFinishedShapeSodukuExamples.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "title3",
+          "value": "Methods for Creating Sudokus From Solved Ones",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "Once you have a finished Sudoku, you can use any of the following strategies to create a puzzle that has a unique solution. Generally speaking, the more tokens you remove, the harder the puzzle will be.\n\n* Remove a single token from each row or from each column.\n* Remove a single token from each 2 by 2 corner.\n* Remove all of one kind of token from the entire puzzle.\n* Remove all tokens from one 2 by 2 corner.\n* Remove one entire row and one entire column.\n* Remove all of one kind of token and one each of the other kinds of tokens.\n* Remove all tokens from two 2 by 2 opposite corners.\n* Remove all tokens from two 2 by 2 opposite corners and 1 token each from the other two corners.\n\nOf course, these are not the only methods you can use. They are just supplied here as sure-fire general methods that will quickly create puzzles.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

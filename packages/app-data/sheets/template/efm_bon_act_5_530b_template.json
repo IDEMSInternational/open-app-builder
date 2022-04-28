@@ -1,0 +1,151 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_530b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Playing With Shapes",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Investigation",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Filling Regions With Shapes - Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Suppose you have an 8 by 8 chessboard and you have a collection of 1 by 2 tiles. Finding a way to exactly cover the chessboard with 32 of these 1 by 2 tiles is simple enough. \n\nLet’s start removing some squares from the chessboard and see what happens. If you remove one corner of the chessboard, you know immediately that you can no longer cover the chessboard with tiles because the tiles will always cover an even number of squares, and there are now 63 squares to cover. Okay, remove two corners to make an even number of remaining squares - can you cover it now? The answer depends on which two corners you remove. Why? What if you no longer restrict yourself to removing corners, what will happen then?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Let your child play with this before revealing the coloring idea. If they play around with small boards, they may discover the rule on their own, and that is always better.\n\nAn observation that helps a lot with this question is to use the coloring of the chessboard squares. If you take the 1 by 2 tiles and color one square white and the other black, you will see an interesting thing occur. Every tile must cover a square of each color. Not only will k tiles cover 2xk squares, but they will cover k white squares and k black squares - the same number of squares of each color. Using this idea, it becomes obvious that if you remove more squares of one color than another, it will be impossible to cover the board. \n\nIf your child is enjoying these questions, start branching out to using other shapes to fill the board. Play around with filling it with 1 by 3 tiles or with 3 squares in an L shape. What patterns and rules do you discover with these? What other shapes might be interesting to play with?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Filling Squares With Squares - Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "In which ways can you fill a square with other squares, where the other squares need not all be the same size? However, the lengths cannot be totally random numbers – the side length of each square must be some whole number multiple of a fixed length. The question to investigate is: What are all the numbers of squares that are possible? Also, if you know a number is possible, is there an easy way to describe how to do it?\n\nLet your child play with it over many days and don’t be in a hurry to get to the answer. There are many different ways to come up with ideas for this investigation, so be flexible and work with your child’s ideas. Here is a diagram showing how 6 is possible.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "image3",
+          "value": "EFMBM530SquaresinSquares.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3"
+        },
+        {
+          "name": "image3_max_width",
+          "value": "150px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image3_max_width"
+        },
+        {
+          "name": "title4",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title4"
+        },
+        {
+          "name": "text4",
+          "value": "Coming up with some quick examples is always a good idea. Breaking the big square into squares of equal size as an easy start. From that you know that the square numbers (1, 4, 9, 16, 25, …) all work. \n\nWorking off the 6 square example, we can use one large square of any size and put 1 by 1 squares on two of its sides. Doing that for ever larger squares (1 by 1, 2 by 2, 3 by 3, …) we get 1 + 3 = 4, 1 + 5 = 6 (as pictured), 1 + 7 = 8, 1 + 9 = 10, and so on. So, all even numbers starting with 4 can be done this way.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        },
+        {
+          "name": "image4",
+          "value": "EFMBM530SquaresinSquares.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4"
+        },
+        {
+          "name": "image4_max_width",
+          "value": "160px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image4_max_width"
+        },
+        {
+          "name": "text5",
+          "value": "A powerful idea that wraps this up quickly is to see that we can take a diagram that works, and replace one of its squares by another diagram that works. So for example, if you take a simple 2 by 2 filled in with 4 1 by 1 squares, and you replace one of those 1 by 1 squares with the 6-square example, you get the diagram shown at right with 9 squares.\n\nBecause one square is getting replaced by an n-square diagram, the net change in the number of squares is to add n-1 of them. That means that we can take one number that works, and add multiples of one less than it to any other number that works. In particular, we can add multiples of 4 -1 = 3 to any other number that works - the easy ones to add 3 to are all the even numbers starting with 4. \n\nPutting that all together says that the numbers 1, 4, 6, 7, 8, 9, … all work, and it is easy to see at least one simple way to construct them. It is also easy to convince yourself that 2, 3, and 5 are impossible.\n\nIf your child enjoys exploring that question, explore variations on this theme. Suppose you only allow squares of certain sizes - such as 1 by 1, 2 by 2, and 3 by 3. Or perhaps only allow 2 by 2 and 3 by 3. See which questions lead to interesting results and which ones are not so interesting.\n\nAnother direction to look at is filling other figures with figures that have the same shape. For example, ask the same question for regular triangles (triangles with all their sides the same length). Some figures are interesting to investigate in this way, and some are not interesting at all - which ones?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text5"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

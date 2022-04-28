@@ -1,0 +1,478 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Colors_Of_A_Rainbow_pages",
+  "status": "released",
+  "data_list_name": "Colors_Of_A_Rainbow_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-1.jpg",
+      "story_text": "A rainbow has seven colors.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "A rainbow has seven colors."
+        },
+        "annotation_1": {
+          "eng": "Count together the colors of the rainbow."
+        },
+        "annotation_2": {
+          "eng": "Have you ever seen a rainbow after it rains? Sometime, you can even see a double rainbow if you're lucky!"
+        },
+        "annotation_3": {
+          "eng": "Point out that her dress and the background on this page go through many of the same colors as the rainbow."
+        }
+      },
+      "annotation_1": "Count together the colors of the rainbow.",
+      "annotation_2": "Have you ever seen a rainbow after it rains? Sometime, you can even see a double rainbow if you're lucky!",
+      "annotation_3": "Point out that her dress and the background on this page go through many of the same colors as the rainbow."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-2.jpg",
+      "story_text": "The first color is red.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The first color is red."
+        },
+        "annotation_1": {
+          "eng": "How does the color red make you feel? Red is often thought of as an active, high energy color."
+        },
+        "annotation_2": {
+          "eng": "Sometimes red is an angry color. People may say they \"see red\" when they are angry."
+        },
+        "annotation_3": {
+          "eng": "People often paint things red or choose red things because of the color's high energy. Have you seen cars that are read?"
+        }
+      },
+      "annotation_1": "How does the color red make you feel? Red is often thought of as an active, high energy color.",
+      "annotation_2": "Sometimes red is an angry color. People may say they \"see red\" when they are angry.",
+      "annotation_3": "People often paint things red or choose red things because of the color's high energy. Have you seen cars that are read?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-3.jpg",
+      "story_text": "Kewyu is wearing a red shirt.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Kewyu is wearing a red shirt."
+        },
+        "annotation_1": {
+          "eng": "Do you have any red clothes?"
+        },
+        "annotation_2": {
+          "eng": "Do you have any red flowers near where you live?"
+        },
+        "annotation_3": {
+          "eng": "Count together the number of people in this picture."
+        }
+      },
+      "annotation_1": "Do you have any red clothes?",
+      "annotation_2": "Do you have any red flowers near where you live?",
+      "annotation_3": "Count together the number of people in this picture."
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-4.jpg",
+      "story_text": "The second color is orange.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The second color is orange."
+        },
+        "annotation_1": {
+          "eng": "How does orange feel compared to red? It is still high energy, but perhaps a bit less so."
+        },
+        "annotation_2": {
+          "eng": "She looks all alone in the middle of all that orange with her hands stretched out like that."
+        },
+        "annotation_3": {
+          "eng": "An orange is a fruit named after its color. Can you think of other orange things around you?"
+        }
+      },
+      "annotation_1": "How does orange feel compared to red? It is still high energy, but perhaps a bit less so.",
+      "annotation_2": "She looks all alone in the middle of all that orange with her hands stretched out like that.",
+      "annotation_3": "An orange is a fruit named after its color. Can you think of other orange things around you?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-5.jpg",
+      "story_text": "This is an orange. What else can you see that is the color orange?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is an orange. What else can you see that is the color orange?"
+        },
+        "annotation_1": {
+          "eng": "The cat and fish are orange. Have you seen an orange cat or fish before?"
+        },
+        "annotation_2": {
+          "eng": "A sphere is a ball -- round in all directions. Is an orange a sphere?"
+        },
+        "annotation_3": {
+          "eng": "How is the fish bowl different from a sphere?"
+        }
+      },
+      "annotation_1": "The cat and fish are orange. Have you seen an orange cat or fish before?",
+      "annotation_2": "A sphere is a ball -- round in all directions. Is an orange a sphere?",
+      "annotation_3": "How is the fish bowl different from a sphere?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-6.jpg",
+      "story_text": "The third color is yellow.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The third color is yellow."
+        },
+        "annotation_1": {
+          "eng": "Make up something that she is pointing at."
+        },
+        "annotation_2": {
+          "eng": "She looks excited about what is coming next. I bet it is something yellow!"
+        },
+        "annotation_3": {
+          "eng": "How has her dress changed from earlier pictures? Hint: It is now broken up into two sections."
+        }
+      },
+      "annotation_1": "Make up something that she is pointing at.",
+      "annotation_2": "She looks excited about what is coming next. I bet it is something yellow!",
+      "annotation_3": "How has her dress changed from earlier pictures? Hint: It is now broken up into two sections."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-7.jpg",
+      "story_text": "The yolk of an egg is yellow. What else can you see that is the color yellow?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The yolk of an egg is yellow. What else can you see that is the color yellow?"
+        },
+        "annotation_1": {
+          "eng": "How can you tell that she is hungry?"
+        },
+        "annotation_2": {
+          "eng": "She has a yellow sunflower on her table. Do you have flowers around you sometimes when you eat?"
+        },
+        "annotation_3": {
+          "eng": "Name something in the sky that is yellow."
+        }
+      },
+      "annotation_1": "How can you tell that she is hungry?",
+      "annotation_2": "She has a yellow sunflower on her table. Do you have flowers around you sometimes when you eat?",
+      "annotation_3": "Name something in the sky that is yellow."
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-8.jpg",
+      "story_text": "The fourth color is green.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The fourth color is green."
+        },
+        "annotation_1": {
+          "eng": "How does green feel to you? This green is a lot calmer than the red, orange, or yellow."
+        },
+        "annotation_2": {
+          "eng": "Name some things that are green -- they are all around you!"
+        },
+        "annotation_3": {
+          "eng": "Green comes in many different types. How many types of green can you name?"
+        }
+      },
+      "annotation_1": "How does green feel to you? This green is a lot calmer than the red, orange, or yellow.",
+      "annotation_2": "Name some things that are green -- they are all around you!",
+      "annotation_3": "Green comes in many different types. How many types of green can you name?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-9.jpg",
+      "story_text": "Our banana garden is green.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Our banana garden is green."
+        },
+        "annotation_1": {
+          "eng": "Point at and count the animals you see on this page -- look carefully!"
+        },
+        "annotation_2": {
+          "eng": "Point out the yellow greens, lime greens, bright greens, and dark greens on this page."
+        },
+        "annotation_3": {
+          "eng": "A lot of trees are brown and green. Brown is not one of the main colors of the rainbow. Where does it show up in the rainbow?"
+        }
+      },
+      "annotation_1": "Point at and count the animals you see on this page -- look carefully!",
+      "annotation_2": "Point out the yellow greens, lime greens, bright greens, and dark greens on this page.",
+      "annotation_3": "A lot of trees are brown and green. Brown is not one of the main colors of the rainbow. Where does it show up in the rainbow?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-10.jpg",
+      "story_text": "The fifth color is blue.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The fifth color is blue."
+        },
+        "annotation_1": {
+          "eng": "She looks so happy in the middle of all that blue. Does blue make you feel happy?"
+        },
+        "annotation_2": {
+          "eng": "Some people say they feel blue when they are sad. Does blue seem like a sad color to you?"
+        },
+        "annotation_3": {
+          "eng": "The sky and water are usually blue, but it is not common in plants. Have you seen flowers that are blue?"
+        }
+      },
+      "annotation_1": "She looks so happy in the middle of all that blue. Does blue make you feel happy?",
+      "annotation_2": "Some people say they feel blue when they are sad. Does blue seem like a sad color to you?",
+      "annotation_3": "The sky and water are usually blue, but it is not common in plants. Have you seen flowers that are blue?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-11.jpg",
+      "story_text": "The sky is blue.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The sky is blue."
+        },
+        "annotation_1": {
+          "eng": "Bodies of water, such as oceans, seas, lakes, and rivers, are often blue."
+        },
+        "annotation_2": {
+          "eng": "Point to these birds and clouds and count them together."
+        },
+        "annotation_3": {
+          "eng": "Which are there more of -- clouds or birds?"
+        }
+      },
+      "annotation_1": "Bodies of water, such as oceans, seas, lakes, and rivers, are often blue.",
+      "annotation_2": "Point to these birds and clouds and count them together.",
+      "annotation_3": "Which are there more of -- clouds or birds?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-12.jpg",
+      "story_text": "The sixth color is indigo.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The sixth color is indigo."
+        },
+        "annotation_1": {
+          "eng": "Flowers are sometimes indigo. Have you seen flowers whose color is close to being indigo?"
+        },
+        "annotation_2": {
+          "eng": "Sometimes her hands are stretched out wide. Having hands on hips often shows defiance and strength."
+        },
+        "annotation_3": {
+          "eng": "Indigo is very powerful. How do you feel if you stare at this big square of indigo?"
+        }
+      },
+      "annotation_1": "Flowers are sometimes indigo. Have you seen flowers whose color is close to being indigo?",
+      "annotation_2": "Sometimes her hands are stretched out wide. Having hands on hips often shows defiance and strength.",
+      "annotation_3": "Indigo is very powerful. How do you feel if you stare at this big square of indigo?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-13.jpg",
+      "story_text": "These berries are the color indigo.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "These berries are the color indigo."
+        },
+        "annotation_1": {
+          "eng": "Count together the buttons or snaps on her jacket."
+        },
+        "annotation_2": {
+          "eng": "Would you like to eat some of those berries? Do you think you could eat all of them?"
+        },
+        "annotation_3": {
+          "eng": "Think of the largest number you can. Does she have more berries than that number?"
+        }
+      },
+      "annotation_1": "Count together the buttons or snaps on her jacket.",
+      "annotation_2": "Would you like to eat some of those berries? Do you think you could eat all of them?",
+      "annotation_3": "Think of the largest number you can. Does she have more berries than that number?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-14.jpg",
+      "story_text": "The seventh color is violet.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The seventh color is violet."
+        },
+        "annotation_1": {
+          "eng": "Violet is a very intense color. Is it too intense for you, or do you enjoy how intense it is?"
+        },
+        "annotation_2": {
+          "eng": "Now she has her arms crossed. Crossed arms can indicate being closed off from others."
+        },
+        "annotation_3": {
+          "eng": "People tell us a lot without saying any words. Sometimes people do that with an expression on their face, and sometimes they do it with the way they hold their body."
+        }
+      },
+      "annotation_1": "Violet is a very intense color. Is it too intense for you, or do you enjoy how intense it is?",
+      "annotation_2": "Now she has her arms crossed. Crossed arms can indicate being closed off from others.",
+      "annotation_3": "People tell us a lot without saying any words. Sometimes people do that with an expression on their face, and sometimes they do it with the way they hold their body."
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-15.jpg",
+      "story_text": "My dress is violet. Violet is my favorite color! What is your favorite color?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My dress is violet. Violet is my favorite color! What is your favorite color?"
+        },
+        "annotation_1": {
+          "eng": "Notice that the flowers she is next to are violet flowers -- they are named after their color."
+        },
+        "annotation_2": {
+          "eng": "She looks very happy wearing a dress with her favorite color. Do you have clothes that are in your favorite color?"
+        },
+        "annotation_3": {
+          "eng": "Which colors make you happy? Are there colors you don't like?"
+        }
+      },
+      "annotation_1": "Notice that the flowers she is next to are violet flowers -- they are named after their color.",
+      "annotation_2": "She looks very happy wearing a dress with her favorite color. Do you have clothes that are in your favorite color?",
+      "annotation_3": "Which colors make you happy? Are there colors you don't like?"
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-16.jpg",
+      "story_text": "Do you know the seven colors of the rainbow?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Do you know the seven colors of the rainbow?"
+        },
+        "annotation_1": {
+          "eng": "Can you remember what each color is?"
+        },
+        "annotation_2": {
+          "eng": "Some people use the fake name Roy G. Biv to remind them of the order of the seven colors of the rainbow."
+        },
+        "annotation_3": {
+          "eng": "Brown is not one of the main colors of the rainbow. Are there other colors you know that are not one of the seven?"
+        }
+      },
+      "annotation_1": "Can you remember what each color is?",
+      "annotation_2": "Some people use the fake name Roy G. Biv to remind them of the order of the seven colors of the rainbow.",
+      "annotation_3": "Brown is not one of the main colors of the rainbow. Are there other colors you know that are not one of the seven?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-COAR-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_1_5a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "What a wonderful time watching your young child learn about the world! They are little sponges observing everything going on around them and they can hear you! They play and experiment constantly, making sense of the world and learning how to crawl, walk, talk, and interact with all that they are experiencing.\n\nMathematics is a natural part of this world they are learning about. No matter what your experiences and feelings about math, this is your chance to make mathematics a playful and fun activity that your family does together. \n\nFor now, the main mathematical activity to do together will be exposing your child constantly to mathematical language and ideas. This is mostly just a matter of verbalizing what is going on in your head already. Counting things out loud as you work with them and naming items that your child plays with is what gets everything rolling.\n\nHave fun! This is an amazing time for your family!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "accordian_1_title",
+          "value": "Chapter Topics",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_title"
+        },
+        {
+          "name": "accordian_1_text",
+          "value": "* Have fun with math together!\n* Verbalize math - You are doing math all the time in your head. Include your child by verbalizing it.\n* Point and describe - When you are talking about something, point to it and then talk about it.\n* Expose - Your child is learning by being exposed to things. Your child will probably not understand things initially, but by frequent exposure your child will pick up on the patterns and learn what is going on.\n* Count everything out loud.\n* Objects have properties that can be named, described, and discussed.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_text"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter1_sheets.xlsx"
+}

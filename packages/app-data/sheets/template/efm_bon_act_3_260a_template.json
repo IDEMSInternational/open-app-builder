@@ -1,0 +1,106 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_260a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "How Many Ways?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Investigation",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Counting the number of ways of making choices can lead to some interesting results. Most of these counting situations benefit from being looked at systematically. This is hard for a child to do, and that’s okay - let them play around with it and enjoy the exploration. Being systematic can wait until they are older.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Investigation 1",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Drawing with only red and blue, how many ways can you draw a monster with a hat, eyes, and cape? How does this change if you only colored the hat and the cape? How would it change if you used three colors, or if you could only use each color once?\n\nTo do this investigation in a sophisticated way involves multiplication, and it is too soon for that. However, your child can play around with these ideas and start developing a sense for how to do this kind of counting.\n\nLet’s tackle these questions one at a time. The hat can be either red or blue, the eyes can be either red or blue, and the cape can be either red or blue. Each object to color doubles the number of possibilities. Thus, 2 doubled and then doubled again gives 8 possibilities. Listing these out is a good way to see it. Let R be for red and B be for blue, and list the colors in the order for the hat, the eyes, and the cape. The possibilities are: RRR, RRB, RBR, RBB, BRR, BRB, BBR, BBB.\n\nColoring only the hat and cape gives 2 doubled, which is 4 possibilities. The list for this is: RR, RB, BR, BB.\n\nIf you had three colors for the three things to color, you would have 3 x 3 x 3 = 27 possibilities (a long list).\n\nIn general, if you have events that don’t influence each other, multiply the possibilities. If you are only allowed to use each color once, the events restrict each other and do influence each other. Let’s list them out using G (for green) for the third color: RBG, RGB, BGR, BRG, GRB, GBR.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Investigation 2",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "You have a row of 5 identical candies. How many ways can you color them to give 2 red ones and 3 blue ones?\n\nMark 2 pieces of paper with an R and 3 pieces of paper with a B. Your child can play with the ten ways there are to lay these out. The list is: RRBBB, RBRBB, RBBRB, RBBBR, BRRBB, BRBRB, BRBBR, BBRRB, BBRBR, BBBRR. One way to look at this is that once you decide the 2 spots for red, blue has no choice and must go into the other 3 spots. Interestingly, you can also look at it the other way as placing the 3 blue pieces first.\n\nIf you’re having fun, vary this investigation by changing the three numbers - just make sure the two smaller numbers add up to the total number of candies.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "title4",
+          "value": "Investigation 3",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title4"
+        },
+        {
+          "name": "text4",
+          "value": "Find all the ways to get a sum by adding the numbers 1 and 2. Do this with and without considering order. \n\n**Don’t consider order** Look at the example of adding up to 4. The possibilities are 1+1+1+1, 2+1+1, and 2+2. There are 3 ways to do this. After trying a few more examples, you realize that you are counting the number of ways of using 2’s to add up to numbers less than or equal to 4. You can have 0 to 2 of the 2’s, so there are 3 ways to do it. In general, the answer will be one more than half the number for even numbers, and one more than half of one less than the number for odd numbers.\n\n**Consider order** For the example of 4, the possibilities are 1+1+1+1, 2+1+1, 1+2+1, 1+1+2, and 2+2. So there are 5 ways to do it. Play around with lots of examples and make a table of the results. Here is what you should get (okay, you probably didn’t go up to 10):\n\n1/1 - 2/2 - 3/3 - 4/5 - 5/8 - 6/13 - 7/21 - 8/34 - 9/55 - 10/89\n\nAfter looking at these numbers, your child may notice that each pair of numbers adds up to the next number. Why does this happen? These numbers are called Fibonacci Numbers and they show up surprisingly often.\n\nTo see why these numbers occur in this investigation look at the example of 4 and look at the last number used in the sum. The last number is either 1 or 2. If it is a 1, then the previous numbers give all the ways of adding up to 3. If the last number is a 2, then the previous numbers give all the ways of adding up to 2. So, the number of ways of adding up to 4 is the total of the ways of adding up to 3 plus the ways of adding up to 2.\n\n**Bigger numbers** If you are enjoying this, you can play around with the number of ways of getting sums that involve the numbers from 1 to 3 or even 1 to 4. Looking for patterns in these cases is much harder, but playing with the numbers will be just as fun.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

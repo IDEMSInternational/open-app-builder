@@ -1,0 +1,96 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_activity_template",
+  "status": "released",
+  "rows": [
+    {
+      "name": "efm_activity",
+      "value": "@@fields.current_bonus_activity",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_activity",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@@fields.current_bonus_activity",
+            "matchedExpression": "@fields.current_bonus_activity",
+            "type": "fields",
+            "fieldName": "current_bonus_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_bonus_activity": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "template_text",
+      "value": "_template",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "template_text"
+    },
+    {
+      "name": "efm_bonus_activity_body_template",
+      "value": "@local.efm_activity.id@local.template_text",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_bonus_activity_body_template",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_activity.id@local.template_text",
+            "matchedExpression": "@local.efm_activity.id",
+            "type": "local",
+            "fieldName": "efm_activity"
+          },
+          {
+            "fullExpression": "@local.efm_activity.id@local.template_text",
+            "matchedExpression": "@local.template_text",
+            "type": "local",
+            "fieldName": "template_text"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_activity.id": [
+          "value"
+        ],
+        "@local.template_text": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "@local.efm_bonus_activity_body_template",
+      "rows": [],
+      "_nested_name": "activity_body",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_bonus_activity_body_template",
+            "matchedExpression": "@local.efm_bonus_activity_body_template",
+            "type": "local",
+            "fieldName": "efm_bonus_activity_body_template"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_bonus_activity_body_template": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"
+}

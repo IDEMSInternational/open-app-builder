@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_210b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Nim – Doubling the Limit",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "One Pile",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Set a starting total, say 20. Let your child choose whether to go first or second. During the first turn, a player chooses to subtract 1 or 2 from the current total. After the first turn, a player may subtract any number from 1 up to twice the number used on the last turn. The first person to reach 0 wins.\n\nThere are many alternative versions of this game. Some of them are:\n\n* The first person to reach the target loses.\n* Instead of using the range of 1 to 2, the initial range is from 1 to one less (or two less) than the target number.\n* Practice adding, rather than subtracting, by starting at 0 and having the first person to reach the target win (or lose).\n* The initial limit is one (or two) less than the target number, and instead of doubling the value used of the last turn, use the value of the last turn as the limit.\n* The initial limit is one (or two) less than the target number, and instead of doubling the value used of the last turn, use the triple of the value of the last turn.\n\nAs you can see, there are lots of variations. Make up your own family rules if you are enjoying the game.\n\nFor the most part, these games are much harder to analyze than the versions of Nim that use a fixed set of choices for each move.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "More Than One Pile",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Yet another way to make new versions of this game is to use more than one number. Picture this version as having several piles of tokens (pebbles, bits of food). For example, you could have two piles with 12 tokens in one pile and 8 in the other. A standard rule to use is that you can take any number of tokens, but they must all be from one pile.\n\nAlternative versions of this game are:\n\n* There are more than two piles.\n* You have the option of taking the same number of tokens from all the piles.\n* You have the option of taking the same number of tokens from the piles you choose.\n* You can only take tokens from the largest pile.\n\nAs you can imagine, there are even more versions of this game; however, perhaps this is more than enough for now!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

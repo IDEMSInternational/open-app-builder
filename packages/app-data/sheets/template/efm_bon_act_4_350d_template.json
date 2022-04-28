@@ -1,0 +1,79 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_4_350d_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Island Hopping by Ones and Tens",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "text1",
+          "value": "A rectangular grid of numbers is given with some of the numbers filled in. The challenge is to fill in the remaining numbers so that any two numbers that share a side only differ in a single place, and the difference of the digits in that place is 1 (including going between 0 and 9). No number may be used more than once in the entire grid. Referencing a 100-Chart may be helpful for beginning solvers.\n\nMake this puzzle by taking an empty grid and filling it with numbers, with no number repeated. Next, remove some of the numbers, making sure that it is not too hard for your child. In these examples, the red numbers are the missing ones.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM350IslandHoppingBy1sand10s.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "300px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "text2",
+          "value": "Using only one-digit and two-digit numbers, there is not a lot of trickiness that can be introduced. However, they are great practice for thinking about place value. One wrinkle that may surprise your child are transitions such as 95 to 5 to 15 or 11 to 10 to 0 to 9 - they may not realize there is a 0 in the tens place for single-digit numbers and they may be surprised by 0 and 9 being connected.\n\nGrids are a natural way to present these problems. However, the puzzles can also be represented in the same way as other Island Hopping puzzles using circles, and this representation allows for some additional freedom in creating puzzles.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM350IslandHoppingBy1sand10swithCircles.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

@@ -1,0 +1,483 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Cat_And_Dog_Draw_And_Color_data",
+  "status": "released",
+  "data_list_name": "Cat_And_Dog_Draw_And_Color_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-1.jpg",
+      "story_text": "This is Cat.\n\nThis is Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is Cat.\n\nThis is Dog."
+        },
+        "annotation_1": {
+          "eng": "These two are a pair of friends. Point out all the pairs and groups of three you can find in this picture."
+        },
+        "annotation_2": {
+          "eng": "Cats and dogs are mammals. Mammals have fur (or hair), they give birth to babies (not eggs), and the mother feeds her baby milk. Can you think of other animals that are mammals (don't forget yourself!)?"
+        },
+        "annotation_3": {
+          "eng": "Describe some ways that Cat and Dog are similar, and some other ways that they are different."
+        }
+      },
+      "annotation_1": "These two are a pair of friends. Point out all the pairs and groups of three you can find in this picture.",
+      "annotation_2": "Cats and dogs are mammals. Mammals have fur (or hair), they give birth to babies (not eggs), and the mother feeds her baby milk. Can you think of other animals that are mammals (don't forget yourself!)?",
+      "annotation_3": "Describe some ways that Cat and Dog are similar, and some other ways that they are different."
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-2.jpg",
+      "story_text": "Cat and Dog want to draw.\n\nCat and Dog want to color.\n\nCat and Dog want to make art.\n\nDog starts.\n\nHe takes a pencil and he takes a paper. The paper is a square.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog want to draw.\n\nCat and Dog want to color.\n\nCat and Dog want to make art.\n\nDog starts.\n\nHe takes a pencil and he takes a paper. The paper is a square."
+        },
+        "annotation_1": {
+          "eng": "A rectangle is a shape with four straight sides, like this page. A square is a rectangle with four equal sides. Point out some squares where you are now."
+        },
+        "annotation_2": {
+          "eng": "Sometimes when we draw, we know exactly what we want to draw. Other times, we have to think and think. If you drew something right now, what would you draw?"
+        },
+        "annotation_3": {
+          "eng": "Dog is holding the pencil in his right paw. When you write or draw, which hand do you use?"
+        }
+      },
+      "annotation_1": "A rectangle is a shape with four straight sides, like this page. A square is a rectangle with four equal sides. Point out some squares where you are now.",
+      "annotation_2": "Sometimes when we draw, we know exactly what we want to draw. Other times, we have to think and think. If you drew something right now, what would you draw?",
+      "annotation_3": "Dog is holding the pencil in his right paw. When you write or draw, which hand do you use?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-3.jpg",
+      "story_text": "First drog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "First drog draws an oval.\n\nThe oval is the body of Cat.\n\nWow, that is simple!"
+        },
+        "annotation_1": {
+          "eng": "An oval is like a squished or pulled circle. Ellipses are also ovals. Look for some ovals around where you are."
+        },
+        "annotation_2": {
+          "eng": "Look at the tails for Cat and Dog. Describe how they are similar and how they are different."
+        },
+        "annotation_3": {
+          "eng": "Dog draws Cat one step at a time. Which part of Cat do you think Dog will draw next?"
+        }
+      },
+      "annotation_1": "An oval is like a squished or pulled circle. Ellipses are also ovals. Look for some ovals around where you are.",
+      "annotation_2": "Look at the tails for Cat and Dog. Describe how they are similar and how they are different.",
+      "annotation_3": "Dog draws Cat one step at a time. Which part of Cat do you think Dog will draw next?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-4.jpg",
+      "story_text": "Then he draws two triangles on top of the oval.\n\nThe two triangles are the ears of Cat and he draws a black triangle in the oval.\n\nThe black triangle is the nose of Cat and he draws a line above the nose.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then he draws two triangles on top of the oval.\n\nThe two triangles are the ears of Cat and he draws a black triangle in the oval.\n\nThe black triangle is the nose of Cat and he draws a line above the nose."
+        },
+        "annotation_1": {
+          "eng": "An arc is part of a circle. Point to each part of this drawing and name the shape (oval, triangle, arc)."
+        },
+        "annotation_2": {
+          "eng": "Look around where you are and see how many of the shapes you can name."
+        },
+        "annotation_3": {
+          "eng": "Notice the line above the nose. That is a surprising line. See what happens to this line in the next two pages."
+        }
+      },
+      "annotation_1": "An arc is part of a circle. Point to each part of this drawing and name the shape (oval, triangle, arc).",
+      "annotation_2": "Look around where you are and see how many of the shapes you can name.",
+      "annotation_3": "Notice the line above the nose. That is a surprising line. See what happens to this line in the next two pages."
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-5.jpg",
+      "story_text": "Now he draws the eyes and the eyebrows of Cat.\n\nThe eyes are two dots.\n\nThe eyebrows are two lines.\n\nWow, that is easy!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Now he draws the eyes and the eyebrows of Cat.\n\nThe eyes are two dots.\n\nThe eyebrows are two lines.\n\nWow, that is easy!"
+        },
+        "annotation_1": {
+          "eng": "That unusual line from the last page is the start of Cat's muzzle. That line separates the muzzle from the rest of Cat's face."
+        },
+        "annotation_2": {
+          "eng": "The way people move their eyebrows can tell us what they are feeling. Can you move your eyebrows to show you are surprised? Angry?"
+        },
+        "annotation_3": {
+          "eng": "What do Cat's eyebrows tell us about how Cat is feeling?"
+        }
+      },
+      "annotation_1": "That unusual line from the last page is the start of Cat's muzzle. That line separates the muzzle from the rest of Cat's face.",
+      "annotation_2": "The way people move their eyebrows can tell us what they are feeling. Can you move your eyebrows to show you are surprised? Angry?",
+      "annotation_3": "What do Cat's eyebrows tell us about how Cat is feeling?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-6.jpg",
+      "story_text": "Then he draws the mouth of Cat.\n\nThe mouth is a line.\n\nIt looks like the letter 'w' and he draws the hairs of Cat.\n\nThree hairs on the left side and three hairs on the right side.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then he draws the mouth of Cat.\n\nThe mouth is a line.\n\nIt looks like the letter 'w' and he draws the hairs of Cat.\n\nThree hairs on the left side and three hairs on the right side."
+        },
+        "annotation_1": {
+          "eng": "The lines beside Cat's nose are whiskers. They are very sensitive to touch. They help a cat sense things in the dark."
+        },
+        "annotation_2": {
+          "eng": "This is the fourth step in the drawing. See if you can describe the steps in order, calling each one by its number."
+        },
+        "annotation_3": {
+          "eng": "Think of something you do step by step. Perhaps it is getting dressed or going to the store. List as many of the steps in order that you can think of."
+        }
+      },
+      "annotation_1": "The lines beside Cat's nose are whiskers. They are very sensitive to touch. They help a cat sense things in the dark.",
+      "annotation_2": "This is the fourth step in the drawing. See if you can describe the steps in order, calling each one by its number.",
+      "annotation_3": "Think of something you do step by step. Perhaps it is getting dressed or going to the store. List as many of the steps in order that you can think of."
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-7.jpg",
+      "story_text": "The drawing is almost finished.\n\nHe draws the arms and legs of Cat.\n\nThe arms and legs are lines and he draws the toe of Cat.\n\nThe toes are circles and he draws the tail of Cat.\n\nThe tail is a long line.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The drawing is almost finished.\n\nHe draws the arms and legs of Cat.\n\nThe arms and legs are lines and he draws the toe of Cat.\n\nThe toes are circles and he draws the tail of Cat.\n\nThe tail is a long line."
+        },
+        "annotation_1": {
+          "eng": "Which details still need to be added to this picture?"
+        },
+        "annotation_2": {
+          "eng": "Skip count by 3's to count how many of Cat's toes you can see (3 + 3)."
+        },
+        "annotation_3": {
+          "eng": "Cats usually have 4 toes on a back leg. How many toes would that make? How many more toes would that be than 3 + 3?"
+        }
+      },
+      "annotation_1": "Which details still need to be added to this picture?",
+      "annotation_2": "Skip count by 3's to count how many of Cat's toes you can see (3 + 3).",
+      "annotation_3": "Cats usually have 4 toes on a back leg. How many toes would that make? How many more toes would that be than 3 + 3?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-8.jpg",
+      "story_text": "At last he draws some stripes on the body of Cat and colors the body orange.\n\nThe the drawing is finished.\n\nWow, that is beautiful!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "At last he draws some stripes on the body of Cat and colors the body orange.\n\nThe the drawing is finished.\n\nWow, that is beautiful!"
+        },
+        "annotation_1": {
+          "eng": "Describe what Cat and Dog are each feeling by looking at their faces."
+        },
+        "annotation_2": {
+          "eng": "There are lots of groups of 3 in the picture now. Can you skip count by 3's to count them all?"
+        },
+        "annotation_3": {
+          "eng": "Notice that one side of Cat is the mirror image of the other side. That is called mirror symmetry. Many things in the world have that symmetry. Look around you and find a few."
+        }
+      },
+      "annotation_1": "Describe what Cat and Dog are each feeling by looking at their faces.",
+      "annotation_2": "There are lots of groups of 3 in the picture now. Can you skip count by 3's to count them all?",
+      "annotation_3": "Notice that one side of Cat is the mirror image of the other side. That is called mirror symmetry. Many things in the world have that symmetry. Look around you and find a few."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-9.jpg",
+      "story_text": "Now it is Cat's turn.\n\nHe takes a pencil and he takes a paper.\n\nThe paper is a rectangle.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Now it is Cat's turn.\n\nHe takes a pencil and he takes a paper.\n\nThe paper is a rectangle."
+        },
+        "annotation_1": {
+          "eng": "Which paw is Cat holding the pencil in?"
+        },
+        "annotation_2": {
+          "eng": "Cat's piece of paper is a rectangle which is not a square. Describe why it is not a square."
+        },
+        "annotation_3": {
+          "eng": "Keep an eye on that little tear on the bottom of the piece of paper as the story goes forward."
+        }
+      },
+      "annotation_1": "Which paw is Cat holding the pencil in?",
+      "annotation_2": "Cat's piece of paper is a rectangle which is not a square. Describe why it is not a square.",
+      "annotation_3": "Keep an eye on that little tear on the bottom of the piece of paper as the story goes forward."
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-10.jpg",
+      "story_text": "First Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "First Cat draws an oval.\n\nThe oval is the body of Dog.\n\nWow, that is good!"
+        },
+        "annotation_1": {
+          "eng": "Cat is now drawing with the other paw. Cat is probably right-handed (or is that right-pawed)."
+        },
+        "annotation_2": {
+          "eng": "Cat is starting the drawing with the same first step. Predict what the next two steps will be."
+        },
+        "annotation_3": {
+          "eng": "Look at the bottom of the rectangular sheet of paper. Something has changed!"
+        }
+      },
+      "annotation_1": "Cat is now drawing with the other paw. Cat is probably right-handed (or is that right-pawed).",
+      "annotation_2": "Cat is starting the drawing with the same first step. Predict what the next two steps will be.",
+      "annotation_3": "Look at the bottom of the rectangular sheet of paper. Something has changed!"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-11.jpg",
+      "story_text": "Then he draws two black forms on top of the oval.\n\nThe two black forms are the ears of Dog and he draws a black circle in the oval.\n\nThe black circle is the nose of Dog and he draws a line above the nose.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then he draws two black forms on top of the oval.\n\nThe two black forms are the ears of Dog and he draws a black circle in the oval.\n\nThe black circle is the nose of Dog and he draws a line above the nose."
+        },
+        "annotation_1": {
+          "eng": "Cat's nose and Dog's nose are two different shapes. What are the shapes and how are they different?"
+        },
+        "annotation_2": {
+          "eng": "The picure doesn't look like Dog yet. Use your imagination to think of what else the drawing might become. Perhaps a ladybug, or a water bottle squirting water, or a space alien?"
+        },
+        "annotation_3": {
+          "eng": "Have you noticed what came back on the rectangular piece of paper?"
+        }
+      },
+      "annotation_1": "Cat's nose and Dog's nose are two different shapes. What are the shapes and how are they different?",
+      "annotation_2": "The picure doesn't look like Dog yet. Use your imagination to think of what else the drawing might become. Perhaps a ladybug, or a water bottle squirting water, or a space alien?",
+      "annotation_3": "Have you noticed what came back on the rectangular piece of paper?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-12.jpg",
+      "story_text": "Now he draws the eyes and the eyebrows of dog.\n\nThe eyes are two dots. \\PARA The eyebrows are two lines.\n\nWow, that is perfect!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Now he draws the eyes and the eyebrows of dog.\n\nThe eyes are two dots. \\PARA The eyebrows are two lines.\n\nWow, that is perfect!"
+        },
+        "annotation_1": {
+          "eng": "Do you see any rectangles in addition to the piece of paper? There are probably many rectangles where you are. How many can you find?"
+        },
+        "annotation_2": {
+          "eng": "Cat and Dog aren't talking to each other in this story. They are communicating without words. What are they doing to communicate?"
+        },
+        "annotation_3": {
+          "eng": "Which things come in pairs and which come in 3's in this picture?"
+        }
+      },
+      "annotation_1": "Do you see any rectangles in addition to the piece of paper? There are probably many rectangles where you are. How many can you find?",
+      "annotation_2": "Cat and Dog aren't talking to each other in this story. They are communicating without words. What are they doing to communicate?",
+      "annotation_3": "Which things come in pairs and which come in 3's in this picture?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-13.jpg",
+      "story_text": "Then he draws the mouth of Dog.\n\nThe mouth is a line.\n\nThe shape is again the letter 'w' and he draws some dots around the mouth of dog.\n\nThree on the left side and three on the right side.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then he draws the mouth of Dog.\n\nThe mouth is a line.\n\nThe shape is again the letter 'w' and he draws some dots around the mouth of dog.\n\nThree on the left side and three on the right side."
+        },
+        "annotation_1": {
+          "eng": "Lines can be straight or curved. Other than their mouths, what are some other curved lines in this picture?"
+        },
+        "annotation_2": {
+          "eng": "Cat and Dog have 3 dots on each side of their face. Skip count by 3's to count the total number of dots."
+        },
+        "annotation_3": {
+          "eng": "They have very different ears. Describe the shapes. How are they similar and how are they different?"
+        }
+      },
+      "annotation_1": "Lines can be straight or curved. Other than their mouths, what are some other curved lines in this picture?",
+      "annotation_2": "Cat and Dog have 3 dots on each side of their face. Skip count by 3's to count the total number of dots.",
+      "annotation_3": "They have very different ears. Describe the shapes. How are they similar and how are they different?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-14.jpg",
+      "story_text": "The drawing is almost finished.\n\nHe draws the arms and legs of Dog.\n\nThe arms and legs are lines and he draws the toe of Dog.\n\nThe toes are circles and he draws the tail of Dog.\n\nThe tail looks like a flower.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The drawing is almost finished.\n\nHe draws the arms and legs of Dog.\n\nThe arms and legs are lines and he draws the toe of Dog.\n\nThe toes are circles and he draws the tail of Dog.\n\nThe tail looks like a flower."
+        },
+        "annotation_1": {
+          "eng": "Dogs have the same number of toenails as toes. Skip count by 3's to find the total number of toes and toenails."
+        },
+        "annotation_2": {
+          "eng": "This picture has many things that come in pairs. Count them all by skip counting by 2's."
+        },
+        "annotation_3": {
+          "eng": "Suppose you had five pairs. You could skip count them by 2's five times or skip count them by 5's two times. Why do you get the same answer both ways?"
+        }
+      },
+      "annotation_1": "Dogs have the same number of toenails as toes. Skip count by 3's to find the total number of toes and toenails.",
+      "annotation_2": "This picture has many things that come in pairs. Count them all by skip counting by 2's.",
+      "annotation_3": "Suppose you had five pairs. You could skip count them by 2's five times or skip count them by 5's two times. Why do you get the same answer both ways?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-15.jpg",
+      "story_text": "At last he draws some black circles on the body of Dog and he colors the body yellow.\n\nThen the drawing is finished.\n\nWow, that is wonderful!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "At last he draws some black circles on the body of Dog and he colors the body yellow.\n\nThen the drawing is finished.\n\nWow, that is wonderful!"
+        },
+        "annotation_1": {
+          "eng": "How many steps did this drawing take? Was it the less than, the same as, or more than the number of steps for the first drawing?"
+        },
+        "annotation_2": {
+          "eng": "In this drawing, you don't see Dog's mouth. Even still, you can tell Dog is happy in the drawing. How can you tell?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever seen cats and dogs stand on their back two feet? Some can do it for a short time, but it is unusual."
+        }
+      },
+      "annotation_1": "How many steps did this drawing take? Was it the less than, the same as, or more than the number of steps for the first drawing?",
+      "annotation_2": "In this drawing, you don't see Dog's mouth. Even still, you can tell Dog is happy in the drawing. How can you tell?",
+      "annotation_3": "Have you ever seen cats and dogs stand on their back two feet? Some can do it for a short time, but it is unusual."
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-16.jpg",
+      "story_text": "Bye bye Cat.\n\nBye bye drawing of Cat.\n\nBye bye Dog.\n\nBye bye drawing of Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Bye bye Cat.\n\nBye bye drawing of Cat.\n\nBye bye Dog.\n\nBye bye drawing of Dog."
+        },
+        "annotation_1": {
+          "eng": "In which ways does this picture have mirror symmetry and in which ways does it fail?"
+        },
+        "annotation_2": {
+          "eng": "When you draw a picture of someone it's called a portrait. Have you ever drawn a portrait of someone? How did it turn out?"
+        },
+        "annotation_3": {
+          "eng": "Drawing a picture of yourself is called a self-portrait. If you drew a self-portrait where would you start? Would you use an oval for your body, or would you start somewhere else?"
+        }
+      },
+      "annotation_1": "In which ways does this picture have mirror symmetry and in which ways does it fail?",
+      "annotation_2": "When you draw a picture of someone it's called a portrait. Have you ever drawn a portrait of someone? How did it turn out?",
+      "annotation_3": "Drawing a picture of yourself is called a self-portrait. If you drew a self-portrait where would you start? Would you use an oval for your body, or would you start somewhere else?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-17.jpg"
+    },
+    {
+      "id": "page_18",
+      "page_no": 18,
+      "illustration": "EFMStorybooks/EFM-SB-CADDAC-18.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

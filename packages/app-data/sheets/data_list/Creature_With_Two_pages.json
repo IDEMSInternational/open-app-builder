@@ -1,0 +1,362 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Creature_With_Two_pages",
+  "status": "released",
+  "data_list_name": "Creature_With_Two_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-1.jpg",
+      "story_text": "The Izinzawu family was a happy family. The children learned cooking, gardening, and hunting from their parents.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The Izinzawu family was a happy family. The children learned cooking, gardening, and hunting from their parents."
+        },
+        "annotation_1": {
+          "eng": "Why do plants need watering?"
+        },
+        "annotation_2": {
+          "eng": "Point to and name the colors in this picture."
+        },
+        "annotation_3": {
+          "eng": "How are the green colors in this picture similar and how are they different?"
+        }
+      },
+      "annotation_1": "Why do plants need watering?",
+      "annotation_2": "Point to and name the colors in this picture.",
+      "annotation_3": "How are the green colors in this picture similar and how are they different?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-2.jpg",
+      "story_text": "At dinner time every day, they talked about what they had done that day.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "At dinner time every day, they talked about what they had done that day."
+        },
+        "annotation_1": {
+          "eng": "A square is a shape like this page that has four equal sides. The tablecloth has a checkerboard design with lots of squares. Find some squares in a pattern where you are."
+        },
+        "annotation_2": {
+          "eng": "Name the shapes you see in this picture."
+        },
+        "annotation_3": {
+          "eng": "This family talks about their day at dinner. What do you talk about when you eat dinner?"
+        }
+      },
+      "annotation_1": "A square is a shape like this page that has four equal sides. The tablecloth has a checkerboard design with lots of squares. Find some squares in a pattern where you are.",
+      "annotation_2": "Name the shapes you see in this picture.",
+      "annotation_3": "This family talks about their day at dinner. What do you talk about when you eat dinner?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-3.jpg",
+      "story_text": "The father usually warned the children not to go deep into the forest. He told the family about a strange creature that lived in the forest. \"This creature is like two of us put together!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The father usually warned the children not to go deep into the forest. He told the family about a strange creature that lived in the forest. \"This creature is like two of us put together!\""
+        },
+        "annotation_1": {
+          "eng": "Describe what you think the father's \"strange creature\" might look like."
+        },
+        "annotation_2": {
+          "eng": "What are the different patterns you see in this picture?"
+        },
+        "annotation_3": {
+          "eng": "How are the bowls on this page different from the bowls on the last page?"
+        }
+      },
+      "annotation_1": "Describe what you think the father's \"strange creature\" might look like.",
+      "annotation_2": "What are the different patterns you see in this picture?",
+      "annotation_3": "How are the bowls on this page different from the bowls on the last page?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-4.jpg",
+      "story_text": "One day, the girls were playing at the river. Suddenly, from behind a tree, there was a strange creature! The creature had two eyes, two ears, two arms, and two legs.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "One day, the girls were playing at the river. Suddenly, from behind a tree, there was a strange creature! The creature had two eyes, two ears, two arms, and two legs."
+        },
+        "annotation_1": {
+          "eng": "Does the \"strange creature\" look like what you imagined?"
+        },
+        "annotation_2": {
+          "eng": "Point at and count the number of children in this picture."
+        },
+        "annotation_3": {
+          "eng": "Are there more girls or boys in this picture?"
+        }
+      },
+      "annotation_1": "Does the \"strange creature\" look like what you imagined?",
+      "annotation_2": "Point at and count the number of children in this picture.",
+      "annotation_3": "Are there more girls or boys in this picture?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-5.jpg",
+      "story_text": "Shaking with fear, they ran to tell their brothers about what they had seen. But the boys didn't believe them. \"The girls are being silly!\" they said.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Shaking with fear, they ran to tell their brothers about what they had seen. But the boys didn't believe them. \"The girls are being silly!\" they said."
+        },
+        "annotation_1": {
+          "eng": "There are four children and four heads. How many legs do you see? How many arms do you see? Is that surprising?"
+        },
+        "annotation_2": {
+          "eng": "Are there more girls or boys in this picture?"
+        },
+        "annotation_3": {
+          "eng": "Look at their mouths and eyebrows. What do their faces tell you about what these children are thinking and feeling?"
+        }
+      },
+      "annotation_1": "There are four children and four heads. How many legs do you see? How many arms do you see? Is that surprising?",
+      "annotation_2": "Are there more girls or boys in this picture?",
+      "annotation_3": "Look at their mouths and eyebrows. What do their faces tell you about what these children are thinking and feeling?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-6.jpg",
+      "story_text": "Eventually, curiosity got the better of the boys. They followed the girls to the river to see this strange creature for themselves.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Eventually, curiosity got the better of the boys. They followed the girls to the river to see this strange creature for themselves."
+        },
+        "annotation_1": {
+          "eng": "How can you tell from their size in the picture that the girls are far away and the boys are nearby?"
+        },
+        "annotation_2": {
+          "eng": "Why are the girls far away behind some bushes?"
+        },
+        "annotation_3": {
+          "eng": "The grass, bushes, and trees are different shades of green. Are there different shades of some color where you are?"
+        }
+      },
+      "annotation_1": "How can you tell from their size in the picture that the girls are far away and the boys are nearby?",
+      "annotation_2": "Why are the girls far away behind some bushes?",
+      "annotation_3": "The grass, bushes, and trees are different shades of green. Are there different shades of some color where you are?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-7.jpg",
+      "story_text": "They searched and searched, but all they could see was the tall grass and trees. \\PARA Suddenly, they heard a noise, and looked up.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "They searched and searched, but all they could see was the tall grass and trees. \\PARA Suddenly, they heard a noise, and looked up."
+        },
+        "annotation_1": {
+          "eng": "What do you think made that noise above them?"
+        },
+        "annotation_2": {
+          "eng": "What kinds of things make noises above our heads?"
+        },
+        "annotation_3": {
+          "eng": "That is really tall grass! What part of their bodies does the grass reach up to?"
+        }
+      },
+      "annotation_1": "What do you think made that noise above them?",
+      "annotation_2": "What kinds of things make noises above our heads?",
+      "annotation_3": "That is really tall grass! What part of their bodies does the grass reach up to?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-8.jpg",
+      "story_text": "Up on a tree swung the strangest creature they had ever seen. It had two arms, two hands, two legs and two feet. Instead of one each, like them.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Up on a tree swung the strangest creature they had ever seen. It had two arms, two hands, two legs and two feet. Instead of one each, like them."
+        },
+        "annotation_1": {
+          "eng": "How many arms, legs, hands, and eyes does each member of the family have?"
+        },
+        "annotation_2": {
+          "eng": "Did you assume the unseen side of each family member had another arm, leg, hand, and eye, just like the side you could see?"
+        },
+        "annotation_3": {
+          "eng": "When you see only one side of something, it is easy to assume the other side looks the same -- that it is the mirror reflection of what you can see."
+        }
+      },
+      "annotation_1": "How many arms, legs, hands, and eyes does each member of the family have?",
+      "annotation_2": "Did you assume the unseen side of each family member had another arm, leg, hand, and eye, just like the side you could see?",
+      "annotation_3": "When you see only one side of something, it is easy to assume the other side looks the same -- that it is the mirror reflection of what you can see."
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-9.jpg",
+      "story_text": "The frightened children ran home to call their parents. Soon the whole family was at the river to see the creature.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The frightened children ran home to call their parents. Soon the whole family was at the river to see the creature."
+        },
+        "annotation_1": {
+          "eng": "Count the number of arms in this picture. If each person had two arms, how many arms would there be?"
+        },
+        "annotation_2": {
+          "eng": "Arms and legs are called limbs. How many limbs does this family have?"
+        },
+        "annotation_3": {
+          "eng": "Did you notice that the grass was tall, but now it is short? Did someone cut the grass?"
+        }
+      },
+      "annotation_1": "Count the number of arms in this picture. If each person had two arms, how many arms would there be?",
+      "annotation_2": "Arms and legs are called limbs. How many limbs does this family have?",
+      "annotation_3": "Did you notice that the grass was tall, but now it is short? Did someone cut the grass?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-10.jpg",
+      "story_text": "Don't hurt me! the creature said, as it hid behind the tree. Now the family could only see the creature's one foot, one leg, one hand, one arm and one eye.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Don't hurt me! the creature said, as it hid behind the tree. Now the family could only see the creature's one foot, one leg, one hand, one arm and one eye."
+        },
+        "annotation_1": {
+          "eng": "The creature is hiding behind a tree. Where are some places you like to hide?"
+        },
+        "annotation_2": {
+          "eng": "When the creature is halfway behind the tree, it looks just like each of the family members. Why is that?"
+        },
+        "annotation_3": {
+          "eng": "The creature feels \"outnumbered.\" How many people are in the family and how many creatures are there? Which is more and which is less?"
+        }
+      },
+      "annotation_1": "The creature is hiding behind a tree. Where are some places you like to hide?",
+      "annotation_2": "When the creature is halfway behind the tree, it looks just like each of the family members. Why is that?",
+      "annotation_3": "The creature feels \"outnumbered.\" How many people are in the family and how many creatures are there? Which is more and which is less?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-11.jpg",
+      "story_text": "I am just like you, continued the creature. \"The only difference is that I was made with two of almost everything.\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I am just like you, continued the creature. \"The only difference is that I was made with two of almost everything.\""
+        },
+        "annotation_1": {
+          "eng": "What body parts do you have two of and which do you have one of?"
+        },
+        "annotation_2": {
+          "eng": "For the body parts you have one of, are they on the sides or the middle line of your body?"
+        },
+        "annotation_3": {
+          "eng": "Think of someone you know. List three ways they are similar to you and three ways that they are different."
+        }
+      },
+      "annotation_1": "What body parts do you have two of and which do you have one of?",
+      "annotation_2": "For the body parts you have one of, are they on the sides or the middle line of your body?",
+      "annotation_3": "Think of someone you know. List three ways they are similar to you and three ways that they are different."
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-12.jpg",
+      "story_text": "So this was how the Izanzawu family discovered that it was not a creature to be scared of. It was simply a different form of them.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "So this was how the Izanzawu family discovered that it was not a creature to be scared of. It was simply a different form of them."
+        },
+        "annotation_1": {
+          "eng": "The creature has a striped shirt with two colors and everyone else's shirt has just one. Why did the writer do that?"
+        },
+        "annotation_2": {
+          "eng": "There are six people in the Izanzawu family. When you add one more for the \"creature,\" how many people are there?"
+        },
+        "annotation_3": {
+          "eng": "If you arrange these seven people in order of height, putting the shortest on the left and tallest on the right, what would the order be? Describe this order using the color of their clothes."
+        }
+      },
+      "annotation_1": "The creature has a striped shirt with two colors and everyone else's shirt has just one. Why did the writer do that?",
+      "annotation_2": "There are six people in the Izanzawu family. When you add one more for the \"creature,\" how many people are there?",
+      "annotation_3": "If you arrange these seven people in order of height, putting the shortest on the left and tallest on the right, what would the order be? Describe this order using the color of their clothes."
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CWT-13.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

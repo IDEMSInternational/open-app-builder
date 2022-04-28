@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_270b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Card Deck Ordering",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle Description",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "The challenge is to stack a deck of numbered cards, say 1 to 5, so that the following is true: \n\nThe top card is 1. Set aside this top card. Move the next card to the bottom of the deck. The next card is 2 and is set aside. Move the next card to the bottom of the deck. Continue until all cards are set aside in order.\n\nOnce your child finds it easy for 1 to 5, challenge your child to do it for larger number ranges.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Be Systematic",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "The difficulty with this puzzle is being systematic. For any size deck of cards, you can play around with it and eventually come up with the answer. Let’s look for interesting patterns that make it easier.\n\nSuppose you lay out the cards in order on the table. Here are the solutions for the first few cases. The numbers listed after the arrow give the order of the remaining cards after the first pass through the cards.\n\n1\n\n1 2 -> 2\n\n1 3 2 -> 3\n\n1 3 2 4 -> 3 4\n\n1 5 2 4 3 -> 5 4\n\n1 4 2 6 3 5 -> 4 6 5\n\n1 6 2 5 3 7 4 -> 6 5 7\n\nIf there are an even number of cards (say 6), then the odd positions are filled with the first half of the cards in order (3 in this case), and the other spots are filled using the solution for half as many cards only bumped up in value. In the example for 6, the odd spots are filled with 1, 2, 3, and the even spots are filled with 4, 6, 5 - the values 1, 3, 2 (the solution for a three-card deck) each increased by 3.\n\nThe pattern for an odd number of cards is a little trickier. As before, the odd spots are filled with the first roughly half of the numbers (1 to 4 in the case of 7). If you look at the examples, the first card after the arrow is going to be moved to the end, so it should be the card you want last in that sequence. After that observation, the answer proceeds as in the even case.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

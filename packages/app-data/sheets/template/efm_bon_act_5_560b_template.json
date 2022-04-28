@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_560b_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Double or Nothing",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Players start the game by secretly picking 5 distinct numbers larger than 20 and not bigger than 120. After they are selected, they are written where all can see them. Using Number Cards or some other device, a random number from 1 to 20 is created. That number is repeatedly doubled until either someone’s number is hit for the first time or the number becomes bigger than 120. The first player to have all five numbers hit is the winner.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "The question is: Which are the best five numbers to pick? Here are some ideas to think about.\n\n**Rule** Always pick a number that is a power of 2 times a number from 1 to 20.\n\nIf you pick a number such as 23 or 46, they can never be hit and you are guaranteed to lose.\n\n**Rule** Never pick a number that is twice another number you could have picked but didn’t.\n\nIf you pick 44, why not pick 22 instead? If the other person picks 22, you will miss a round.\n\n**Further analysis** The numbers from 1 to 20 are equally likely to be picked. However, because 9 leads to 18, 18 is twice as likely as a starting point than say 11 is. If you combine the ways to get different starts, the starting points have the following probabilities:\n\n11 - 1/20 (from 11)\n12 - 3/20 (from 3, 6, and 12)\n13 - 1/20 (from 13)\n14 - 2/20 (from 7 and 14)\n15 - 1/20 (from 15)\n16 - 5/20 (from 1, 2, 4, 8, and 16)\n17 - 1/20 (from 17)\n18 - 2/20 (from 9 and 18)\n19 - 1/20 (from 19)\n20 - 3/20 (from 5, 10, and 20)\n\nClearly the best numbers to use are multiples of 16, 12, and 20. A simple strategy is to use the five numbers: 32, 64, 24, 48, and 40. These numbers will not always win, but they should do very well for you over time.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

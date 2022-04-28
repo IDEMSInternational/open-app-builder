@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_1_70c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "One of These is Not Like the Others",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Activity",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "This activity has your child looking at four things and deciding which three share a property that the fourth one does not. The following is a quick list of examples together with explanations. Children often have a fresh way of looking at things and it is well worth listening to them to see if their reasoning is novel yet sound.\n\nThere are several ways to present these four items to your child. The easiest for you is to simply say the list. If the items are easy to draw, you can draw them. If the items are hard to draw, you may be able to find photos or drawings in ads or magazines that you can cut out and select from. You may be able to use a single photo with lots of content and point out four things in the photo.\n\nFor activities like this, once your child has practiced this for a while and has a solid idea of the activity, it is good to reverse your roles - your child will learn a lot by creating examples for you to solve. As before, their reasoning may be very different from yours, so listen carefully.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Groups of Four",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Here are a few examples to help you get started.\n\n* rabbit, dog, butterfly, pillow - The first three are alive and the pillow is not.\n* banana, cheese, hammer, carrot - The hammer is the only one you cannot eat.\n* cheese, shoes, coat, shirt - The cheese is the only one you cannot wear.\n* red triangle, red square with a hole, green square, red square with no hole - Any one of the first three can be the odd one. The red triangle is the only one that is not a square. The red square with a hole is the only one that is not solid. The green square is the only one that is not red.\n* dog, cat, lion, goldfish - The lion is the only animal on the list that would make a bad pet. It is also quite a bit bigger than the other animals. Or, three of them have four legs and the fish lives in water.\n* bench, table, couch, stool - The table is the only one that you don’t sit on. Or only the couch is soft.\n* bark, honk, rainbow, click - The rainbow is the only one that is not a sound.\n* socks, pants, toothbrush, hat - The toothbrush is the only one that you wouldn’t wear.\n* chair, umbrella, sofa, stool - The umbrella is the only one you wouldn’t want to sit on.\n* ants, pig, spiders, grasshoppers - The pig is the only one that is not a little bug.\n\nYou can also do this with pictures instead of words. Make a habit of cutting pictures out of ads, magazines, and whatever else comes your way so that you can play games with the pictures.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

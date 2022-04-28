@@ -1,0 +1,97 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_4_390a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Sum Square",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Start with a 3 by 3 grid that has target sums given for each row and column. Some of the numbers from 1 to 9 are already placed in the grid. For the numbers that are not yet placed, the challenge is to place them to make the row and column sums be the target values.\n\nTo make one of these puzzles, start by placing pieces of paper with the numbers from 1 to 9 on a 3 x 3 grid. For each row and column, write the sum to the right or below. Then, remove some of the numbers from the grid. Lastly, hand the pieces of paper you removed to your child and ask “where were these?” Because these are so easy to create, they are great puzzles for your child to create for you to solve.\n\nOne variation that keeps the sums a little smaller is to use the numbers from 0 to 8 instead. A harder variation is to do the same thing with the numbers 1 to 12 in a 3 by 4 grid, or even 1 to 16 in a 4 by 4 grid.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM390SumSquare2.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "text2",
+          "value": "Making the original filled in puzzle is easy enough. As mentioned above, just put in all the numbers and write down the sums. The challenge for the puzzle maker is to remove just the right amount of information so that the puzzle is challenging but not too hard.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Strategies for Solving and Creating",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "Start by filling in squares that are the single missing numbers in a row or column. The leftmost of these three puzzles is pretty easy to solve because, after the 5 and the 7 are filled in, then the 3 and 2 are easy to solve, and then lastly the 8 will be easy- solving each singleton creates new singletons that are easy to calculate.\n\nEasy to calculate puzzles are good practice for your child, so don’t worry about making all the puzzles tricky.\n\nThe middle puzzle is a bit harder. There are no singletons. A good strategy for these is to look for rows or columns that have particularly large or small missing sums - these will have relatively few choices to choose from. The bottom row and the rightmost column are good places to start for this puzzle. The missing numbers in the bottom row add up to 16, so they must be 7 and 9. The 9 cannot go in the column with the 6 (the sum would be too big for that column), so that places the 7 and 9. The rest follows as in the previous puzzle.\n\nIn the rightmost puzzle, two of the side numbers are left out. Once your child realizes that the side numbers add up to 45, which is the sum of the numbers from 1 to 9, it is easy to fill in a single missing side number.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

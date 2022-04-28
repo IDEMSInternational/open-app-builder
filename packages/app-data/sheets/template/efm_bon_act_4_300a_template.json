@@ -1,0 +1,88 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_4_300a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Enclosed Sums",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "text1",
+          "value": "These puzzles have shapes connected by lines. Each enclosed region has a number that is the sum of the shapes  that border it. Similar to Shape Sums puzzles, circles may have any value, and the value for a non-circular shape must be the same as any other shape of the same type. For example, all squares must have the same value and all hexagons would have the same value. You can optionally add the rule that different non-circular shapes must have different values - for example, that squares and hexagons must have different values.\n\nThe puzzle for your child is to figure out the numbers in the shapes and regions that are not supplied.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM300RegionSums.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "270px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "text2",
+          "value": "Create these puzzles by making a diagram of circles and maybe some other shapes. Next, fill in all the figures with numbers and fill in the bounded regions with the sum of the figures that surround them. Finally, remove some of the numbers.\n\nAs with Shape Sums puzzles in Chapter 3, start with simple puzzles with just one or two numbers missing and slowly progress to puzzles with more numbers missing, more enclosed regions next to each other, and more use of values in non-circular regions.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM300RegionSumsMoreExamples.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "image2_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2_max_width"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

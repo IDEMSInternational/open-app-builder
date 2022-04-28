@@ -1,0 +1,106 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_270c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Difference Pyramic",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "The challenge is to place the numbers from 1 to 6 in a pyramid with one card in the top row, two cards in the second row and three cards in the third row, where each number is the difference of the two numbers below it. \n\nIf you are having trouble, here are two tips that help. The 6 must be in the bottom row because it cannot be the difference of any pair of numbers. Similarly, the 5 must either be in the bottom row or in the middle row above the 6 and the 1.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "What are the \"Different\" Solutions?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "If your child finds this puzzle easy to do, challenge them to find all the ways it can be done. Discuss what it means for two solutions to be different - if one solution is the mirror image of another, should it be considered different?\n\nAnswering the question of what makes solutions different is useful to do at the start. Because the mirror image of any solution is easy to make and is also a solution, it makes sense to ignore those. Ignoring mirror images will reduce the number of solutions to consider by half. \n\nFor example, we can assume that not only is the 6 in the bottom row, but it is either in the middle or the right side of the bottom row. Continuing that thinking with the 5, the bottom row can only have four possible layouts: 5 a 6, b 5 6, c 1 6, or d 6 1.\n\nAt this point it is a matter of working through the various possible values of a, b, c, and d. After some trial and error you will find that a is 2, b can never work, c must be 4, and d must be 4. So, ignoring mirror images, there are exactly three solutions:",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM270DifferencePyramid6Solutions.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        },
+        {
+          "name": "image2_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2_max_width"
+        },
+        {
+          "name": "title3",
+          "value": "Larger Pyramids",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "Let’s use the cards from 1 to 10 to make a pyramid with four rows. This is a lot more complicated. A few cards can be placed, but after that it requires some determination. Because 10 cannot be the difference of two cards, it must go on the bottom row. Similarly, either 9 is in the bottom row or it is in the next-to-the-bottom row above the 1 and the 10. The 8 and 7 cards are also good cards to use to get rid of possibilities.\n\nThis means the bottom row looks like one of the following (ignoring mirror images): \n\na b 9 10;   c 9 d 10;   9 e f 10;   g h 10 9;   i 9 10 j;   9 k 10 L;   m n 1 10;   o 1 10 p;  q r 10 1\n\nThat is a lot of possibilities to consider!\n\nFortunately, if you consider where 8 and 7 can go, the possibilities are reduced to the following list (assuming there are no mistakes!). It is easy to finish each one of these after you have the bottom row.\n\n8 3 10 9;   6 1 10 8;   8 1 10 6\n\nPyramids of size 15, 21, or higher are left to the truly dedicated. Good luck and enjoy!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

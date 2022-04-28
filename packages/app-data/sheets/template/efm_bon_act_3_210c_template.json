@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_210c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Counting Evens and Odds",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Game",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Basic Setup",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Use a small collection of Number Cards involving some small quantities. Start with three cards and later on use more cards if your child enjoys the investigation.\n\nSuppose the numbers are 1, 2, and 3. The question is: If you randomly pick two cards and add them, are you more likely to get an even number or an odd number? \n\nThere are two ways to look into this. One way is to do experiments. Shuffle the cards, randomly pick two cards, and see whether the sum is even or odd. After each experiment, put a tick mark in the appropriate column on a piece of paper to count the even and odd results.\n\nThe second way is to count how many ways there are of getting an odd number versus an even number. For example, in the case of using 1, 2, and 3, there is one way to get an even number (1 + 3) and two ways to get an odd number (1 + 2, 2 + 3). So, for the numbers 1, 2, and 3, the odd number sums are twice as likely.\n\nAfter you’ve played around with 1, 2, and 3 for a while, try other groups of three cards. Does 2, 3, and 4 behave any differently? The groups 1, 3, 5 and 2, 4, 6 produce only even numbers - why is that? After playing around with three cards for a while, see what happens with 4 or more cards.\nTo make a game of it, let one player be Even and the other player be Odd. See who has the most successes after a dozen trial runs.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Investigation Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "The fun thing about an investigation is that it invites a person to play with the numbers and be a mathematician. As mentioned above, play around with different groups of three numbers. After some experimentation, your child may notice that any group of three numbers that has at least one even number and one odd number behaves the same. However, if all the numbers are all odd numbers or all even numbers, then the sums are all even. Which brings up the usual question: Why does that happen?\n\nAfter some experimentation, even a young child can stumble upon the beautiful number theory rule that says:\n\n* Even plus Even is Even\n* Even plus Odd is Odd\n* Odd plus Odd is Even\n\nWhy does this rule work? Use the Number Shapes activity to represent even numbers and odd numbers with two rows of tokens - when will adding these numbers come out to two equal rows?\n\nOnce this rule is discovered, your child may realize that the particular numbers do not matter so much. Having the numbers 1, 2, 3 is really no different from having the numbers 3, 4, 5 (or 3, 12, 17 for that matter). The analysis really depends on how many numbers are even and how many are odd.\n\nWith that in mind, here is a table of the possible outcomes for groups of size three and four.\n\n3 Numbers:\n\n* 3 Evens, 0 Odds - 3 Even sums\n* 2 Evens, 1 Odd - 1 Even sum, 2 Odd sums\n* 1 Even, 2 Odds - 1 Even sum, 2 Odd sums\n* 0 Evens, 3 Odds - 3 Even sums\n\n4 Numbers:\n\n* 4 Evens, 0 Odds - 6 Even sums\n* 3 Evens, 1 Odd - 3 Even sums, 3 Odd sums\n* 2 Evens, 2 Odds - 2 Even sums, 4 Odd sums\n* 1 Even, 3 Odds - 3 Even sums, 3 Odd sums\n* 0 Evens, 4 Odds - 6 Even sums\n\nThe results are surprising and leave many things to investigate if one is interested! What happens with 5 numbers, 6 numbers, or more? Why is it that interchanging Even numbers and Odd numbers does not seem to change the results? For example, if you have 3 Evens and 1 Odd you get the same results as 1 Even and 3 odds. For circumstances like 3 Evens and 1 Odd, why do the results come out balanced when the Even and Odd counts start out unbalanced?\n\nThis is some cool mathematics and even a small child can play around with it!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}

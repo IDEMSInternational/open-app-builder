@@ -1,0 +1,88 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_4_400a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Investigations",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Investigation",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Flower Petals",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "In a magical garden there are two kinds of flowers. One has 4 petals and the other has 7 petals. A child was asked to pick some flowers so that the total number of petals was 13. Could it be done? How about 15 petals? For which numbers of petals is it possible? For numbers that are possible, can it be done in more than one way? For example, 32 petals is four 7’s and one 4, and it is also eight 4’s.\n\nBy trying many pairs of numbers, there are lots of examples to play with. For some pairs of numbers there comes a point where all numbers of petals are possible, and for other pairs of numbers there is no such point. For 4 and 7, every number from 18 on is possible. For 3 and 6, there is no point after which all numbers occur.\n\nWhat is the pattern and what creates that pattern? Those are often questions that come up, and it is where many interesting things happen. \n\nIt’s easiest to see what happens when some number evenly divides both numbers. Take 3 and 6 for example. Think of these numbers as 1 x 3 and 2 x 3. When you add these numbers together, you will always get some number of 3’s. There is no way to add 3’s and 6’s together to get 10, because 10 is not a multiple of 3.\n\nWhen 1 is the only number that evenly divides both numbers, there will always come a point where every number can be attained. For 4 and 7, that number is 18. To find that number, subtract 1 from each of the numbers in the pair and multiply those new numbers together. In this case, that gives 3 x 6 = 18. Another interesting facet of this situation is that exactly half of the numbers below 18 will be reachable. Why this works takes some math a bit too sophisticated for a young child; however, it is fun to play with these calculations and your child’s experiences with these patterns may suddenly click into place much later on.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Climbing Steps – How Many Ways?",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "Suppose your child likes to take steps two at a time sometimes, but one at a time other times. If your child wants to go up some steps, a natural question is: How many ways can this be done?\nFor example, for 0 steps there is just one way - you just stand there. For 1 step there is one way - you take a single step. For two steps, you can either take one double step or two single steps. \n\nYour child should carefully count many cases of this and make a table of the results. When there is lots of information, a table often helps organize the information and allow patterns to stand out. The table would look like this (okay, going beyond 6 may require too much patience, but here are the numbers):\n\n1 - 1 - 2 - 3 - 5 - 8 - 13 - 21 - 34 - 55\n\nAfter looking at these numbers, your child may notice that each pair of consecutive numbers adds up to the next number. Why does this happen? These numbers are called Fibonacci Numbers. The rule for creating the official Fibonacci Numbers is that each number is the sum of the previous two. This also happens for the steps. Hmmm ...\n\nLet’s look closely at one example - say 5 steps. The 8 possibilities are: 1+1+1+1+1, 1+1+2+1, 1+2+1+1, 2+1+1+1, 2+2+1, 1+1+1+2, 1+2+2, and 2+1+2. The first 5 possibilities use 1 for the last move, and the last 3 possibilities use 2 for the last move. That explains it - you can go up 5 steps by either going up 4 steps and taking 1 more step, or by going up 3 steps and going up 2 more steps. The number of ways of going up 5 steps is exactly equal to the sum of the number of ways of going up 4 steps plus the number of ways of going up 3 steps.\n\nPatterns are often understood by patiently going through examples, organizing the data, looking closely at the data, and digging for explanations of why things happen the way they do. This is a good habit to develop in your child.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Balance Scale",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "A balance scale is a simple device for telling when two things have exactly the same weight. The scale is usually supplied with a set of weights that are used to measure the weight of other objects. There are many interesting investigations you can do if you restrict the weights you are allowed to use.\n\n**One Kind of Weight** Suppose you have lots of weights, but they are all the same - say, 5 units. Then the only things you can weigh exactly are objects that are a multiple of 5 (just like skip counting by 5).\n\n**Two Kinds of Weights - One Side** Suppose you have lots of weights that are either 4 units or 7 units and you only use them on one side of the balance. The things you can weigh are the same numbers you found in the flower petal investigation. For 4 and 7, starting at 18 units you can weigh everything exactly. If the weights are 4 units and 6 units, you can only weigh even numbers starting with 4.\n\n**Two Kinds of Weights - Both Sides** After doing the investigation with two kinds of weights on one side, your child might be surprised if you ask them to weigh a 3-unit item, or even a 1-unit item, with 4’s and 7’s. The trick is to put some weights on one side and other weights on the other side. For example, verify an item weighs 3 units by putting it with a 4-unit weight and see that it balances with a 7-unit weight. Similarly, verify an item weighs 1 unit by putting it with a 7-unit weight and see that it balances with two 4-unit weights.\n\nThere is an important math theorem called Bezout’s Theorem hidden in this investigation. Your child doesn’t need to know about that theorem at this point, but isn’t it cool that a young child can be playing around with advanced mathematics!\n\n**Doubling Weights** What happens if you have one weight each for each of the weights in the doubling progression 1, 2, 4, 8, and 16? How many ways can you weigh something that weighs 13? What is the largest weight you can measure? \n\nAfter some investigation, you will find that you can weigh everything up to one less than double the highest weight - in this case that is 31. Also, each item you can weigh can only be weighed in one way - for example, 13 = 1 + 4 + 8, and there is no other way to do it. Pretty cool! This situation is related to the binary number system.\n\nFibonacci Weights: What happens if the weights are in the Fibonacci Numbers? Is there more than one way to weigh some weights? Find a restriction that would cause there to be only one way for each weight.\n\nSuppose you have one each for the weights 1, 1, 2, 3, 5, 8, and 13. With this, 10 = 2 + 3 + 5 = 2 + 8 = 1 + 1 + 3 + 5 = 1 + 1 + 8. What is causing the duplication is that the Fibonacci rule creates more than one way to write the Fibonacci numbers in terms of themselves - for example, 2 = 1 + 1 and 8 = 5 + 3. The way to fix this problem is to insist that you cannot use two Fibonacci numbers that are neighbors of each other in the sequence. When you add that restriction, the only way to get 10 is 2 + 8.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

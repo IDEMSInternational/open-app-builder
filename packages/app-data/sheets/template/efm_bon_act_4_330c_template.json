@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_4_330c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Island Hopping – Skip Counting",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "text1",
+          "value": "These puzzles have islands (circles) connected by bridges (lines). In this version of Island Hopping, the connections are made by skip counting. Some of the islands have numbers written on them and some will start off blank. Above the puzzle is the starting number, ending number, and the skip amount. The challenge is to fill in the missing numbers and find the path. You can also place the numbers and blanks on pieces of paper on the floor to make a stepping puzzle.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFMBM330IslandHoppingSkipCounting.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "text2",
+          "value": "As with the Skip Counting activity, create puzzles to practice going forward or backward starting at a variety of numbers, not just numbers that are a multiple of the skip amount. \n\nCreating these puzzles is the same as creating the Island Hopping - Counting puzzles from early in Chapter 2. Make the islands first, fill in the skip counting numbers, connect those islands in the correct order, and then add some additional connections to help make a puzzle out of it. In the version you give your child, remove some numbers leaving enough of the numbers so that it can still be figured out.\n\nYou can revisit the puzzle construction strategies described in the Bonus Material for Chapter 2 for Island Hopping - Counting. Also, if you still have any of those puzzles, it is very easy to convert one of those puzzles to one of these. Take the following puzzle from Chapter 2. It involves counting from 0 to 6. The red numbers are the ones that would normally be left out when the puzzle is given to your child. To convert it to a puzzle that starts at 3 and skip counts by 2, simply multiply all the numbers by 2 and then add 3 to them (leaving out the red ones, of course).",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "image2",
+          "value": "EFMBM330IslandHoppingConsecutivetoSkipping.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

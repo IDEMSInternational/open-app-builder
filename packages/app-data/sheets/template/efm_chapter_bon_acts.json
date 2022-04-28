@@ -1,0 +1,232 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_chapter_bon_acts",
+  "status": "released",
+  "rows": [
+    {
+      "name": "efm_chapter",
+      "value": "@@fields.current_chapter",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_chapter",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@@fields.current_chapter",
+            "matchedExpression": "@fields.current_chapter",
+            "type": "fields",
+            "fieldName": "current_chapter"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.current_chapter": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "efm_chapter_title",
+      "value": "@local.efm_chapter.title",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "efm_chapter_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_chapter.title",
+            "matchedExpression": "@local.efm_chapter.title",
+            "type": "local",
+            "fieldName": "efm_chapter"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_chapter.title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "title",
+      "name": "chapter_title",
+      "value": "@local.efm_chapter_title",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "chapter_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.efm_chapter_title",
+            "matchedExpression": "@local.efm_chapter_title",
+            "type": "local",
+            "fieldName": "efm_chapter_title"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.efm_chapter_title": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "activity_buttons",
+      "value": "@data.efm_bon_act",
+      "rows": [
+        {
+          "name": "ok_chapter",
+          "value": "@item.chapter == @local.efm_chapter.number",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_buttons.ok_chapter",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.chapter == @local.efm_chapter.number",
+                "matchedExpression": "@item.chapter",
+                "type": "item",
+                "fieldName": "chapter"
+              },
+              {
+                "fullExpression": "@item.chapter == @local.efm_chapter.number",
+                "matchedExpression": "@local.efm_chapter.number",
+                "type": "local",
+                "fieldName": "efm_chapter"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.chapter": [
+              "value"
+            ],
+            "@local.efm_chapter.number": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "button",
+          "name": "button_activities",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "current_bonus_activity",
+                "data.efm_bon_act.@item.id"
+              ],
+              "_raw": "click | set_field:current_bonus_activity: data.efm_bon_act.@item.id",
+              "_cleaned": "click | set_field:current_bonus_activity: data.efm_bon_act.@item.id"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "efm_bon_activity_template"
+              ],
+              "_raw": "click | go_to: efm_bon_activity_template",
+              "_cleaned": "click | go_to: efm_bon_activity_template"
+            }
+          ],
+          "condition": "@local.ok_chapter",
+          "parameter_list": {
+            "style": "short",
+            "text_align": "center"
+          },
+          "_nested_name": "activity_buttons.button_activities",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "0": {
+                "args": {
+                  "1": [
+                    {
+                      "fullExpression": "data.efm_bon_act.@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | set_field:current_bonus_activity: data.efm_bon_act.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | set_field:current_bonus_activity: data.efm_bon_act.@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.ok_chapter",
+                "matchedExpression": "@local.ok_chapter",
+                "type": "local",
+                "fieldName": "ok_chapter"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.title": [
+              "value"
+            ],
+            "@item.id": [
+              "action_list.0.args.1",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.ok_chapter": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "activity_buttons",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.efm_bon_act",
+            "matchedExpression": "@data.efm_bon_act",
+            "type": "data",
+            "fieldName": "efm_bon_act"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.efm_bon_act": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "EFM_activity_high_level_sheets.xlsx"
+}

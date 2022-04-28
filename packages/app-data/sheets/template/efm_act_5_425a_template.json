@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_5_425a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Your child can now count to 100! They can comfortably do mental single-digit addition and subtraction. They can also count or skip count up or down by any number, and tied to that skill is their ability to add or subtract a single-digit number with a double-digit number. They can compare two double-digit numbers, and they have a beginning sense of place value with 10’s and 1’s and of what expanded form is all about.\n\nAs their skip counting is improving, they are also developing skills with multiplying by 2, 3, 4, 5, and 10. The idea of even and odd numbers now makes a lot more sense to them.\n\nSome activities from earlier chapters can be extended to the larger numbers here. Look at Chapter 3: Shape Sums, Going Up Some More; Chapter 4: War - Double Digit Add and Subtract, DiffTriangles and SumTriangles, Fix It, Island Hopping by 1’s and 10’s, Fill in the Blanks Comparison, Sum Square, and Addition Pyramid.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "accordian_1_title",
+          "value": "Chapter Topics",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_title"
+        },
+        {
+          "name": "accordian_1_text",
+          "value": "* Counting to 200 – It’s time to introduce the 100’s place by looking at the numbers from 100 to 200.\n* Skip Counting to 100 – This is not new, but it is an important skill to reinforce.\n* Expanded Form and Place Value – This is a foundational skill, so it will be reinforced further.\n* Double-Digit Addition and Subtraction – Skip counting will help make this seem effortless.\n* All Single-Digit Multiplication – It is time to fill in the missing gaps for 6, 7, 8, and 9.\n* Rectangle Area is Length x Width – This is an important idea in its own right. This fact will also provide many opportunities for fun new games and puzzles involving multiplication and factoring.\n* Factoring – Your child will learn the beauty of how numbers break apart into factors. There are several new words here. 1 is a unit. A number bigger than 1 that is only divisible by 1 and itself is prime. A number bigger than 1 that is not prime is composite. 3 squared is 3 x 3. 3 cubed is 3 x 3 x 3. And 3 raised to a power, means to multiply 3 by itself that many times - for example, 3 to the fourth is 3 x 3 x 3 x 3.\n* Factors, Divisors, and Multiples – 3 divides evenly into 12. That makes 3 a factor or divisor of 12, and 12 a multiple of 3. 3 is a common factor of 12 and 15, and 12 is a common multiple of 4 and 6.\n* Single-Digit Division – Your child will learn division indirectly in the form of finding a missing factor in a multiplication problem.\n* Fact Families for Multiplication and Division – The connection between these two operations will be reinforced. For example, 2 x 5 = 10, 5 x 2 = 10, 10 / 2 = 5, and 10 / 5 = 2 form a fact family.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_text"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter5_sheets.xlsx"
+}

@@ -1,0 +1,367 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Cat_And_Dog_And_The_Ball_pages",
+  "status": "released",
+  "data_list_name": "Cat_And_Dog_And_The_Ball_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-1.jpg",
+      "story_text": "This is Cat.\n\nThis is Dog.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "This is Cat.\n\nThis is Dog."
+        },
+        "annotation_1": {
+          "eng": "Count together the whiskers, ears, legs, eyes, and tails."
+        },
+        "annotation_2": {
+          "eng": "Which counts are the same, which are different, which are the largest, and which are the smallest?"
+        },
+        "annotation_3": {
+          "eng": "Which animal is red and which one is yellow?"
+        }
+      },
+      "annotation_1": "Count together the whiskers, ears, legs, eyes, and tails.",
+      "annotation_2": "Which counts are the same, which are different, which are the largest, and which are the smallest?",
+      "annotation_3": "Which animal is red and which one is yellow?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-2.jpg",
+      "story_text": "Cat and Dog live in a house.\n\nA house with a door.\n\nA house with a roof.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog live in a house.\n\nA house with a door.\n\nA house with a roof."
+        },
+        "annotation_1": {
+          "eng": "Cat and Dog live in a round house. Is your house round?"
+        },
+        "annotation_2": {
+          "eng": "Point to any other round things in the picture."
+        },
+        "annotation_3": {
+          "eng": "How many rooms does their house seem to have?"
+        }
+      },
+      "annotation_1": "Cat and Dog live in a round house. Is your house round?",
+      "annotation_2": "Point to any other round things in the picture.",
+      "annotation_3": "How many rooms does their house seem to have?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-3.jpg",
+      "story_text": "Cat and Dog have a ball.\n\nThe ball is red and blue and green.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog have a ball.\n\nThe ball is red and blue and green."
+        },
+        "annotation_1": {
+          "eng": "Count together the number of colors on the ball."
+        },
+        "annotation_2": {
+          "eng": "Which color on the ball is not a color for Cat or Dog?"
+        },
+        "annotation_3": {
+          "eng": "Is there anything where you are that is striped like this ball?"
+        }
+      },
+      "annotation_1": "Count together the number of colors on the ball.",
+      "annotation_2": "Which color on the ball is not a color for Cat or Dog?",
+      "annotation_3": "Is there anything where you are that is striped like this ball?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-4.jpg",
+      "story_text": "Cat and Dog play with the ball.\n\nCat throws the ball to Dog.\n\nDog catches the ball.\n\nDog throws the ball to Cat.\n\nCat catches the ball.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog play with the ball.\n\nCat throws the ball to Dog.\n\nDog catches the ball.\n\nDog throws the ball to Cat.\n\nCat catches the ball."
+        },
+        "annotation_1": {
+          "eng": "How many times did they throw the ball?"
+        },
+        "annotation_2": {
+          "eng": "Do you like playing with balls? Do you throw them, catch them, or kick them?"
+        },
+        "annotation_3": {
+          "eng": "Can real cats and dogs play catch with a ball? How can they play with balls?"
+        }
+      },
+      "annotation_1": "How many times did they throw the ball?",
+      "annotation_2": "Do you like playing with balls? Do you throw them, catch them, or kick them?",
+      "annotation_3": "Can real cats and dogs play catch with a ball? How can they play with balls?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-5.jpg",
+      "story_text": "Then Cat throws the ball very high.\n\nOh! oh!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Then Cat throws the ball very high.\n\nOh! oh!"
+        },
+        "annotation_1": {
+          "eng": "The ball is higher than Dog. How much higher than Dog did Cat throw it?"
+        },
+        "annotation_2": {
+          "eng": "Did Cat mean to do that? How can you tell from Cat's face?"
+        },
+        "annotation_3": {
+          "eng": "Does the ball sometimes not go where you want it when you play catch?"
+        }
+      },
+      "annotation_1": "The ball is higher than Dog. How much higher than Dog did Cat throw it?",
+      "annotation_2": "Did Cat mean to do that? How can you tell from Cat's face?",
+      "annotation_3": "Does the ball sometimes not go where you want it when you play catch?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-6.jpg",
+      "story_text": "The ball is on the roof.\n\nThe ball is on the roof of the house.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "The ball is on the roof.\n\nThe ball is on the roof of the house."
+        },
+        "annotation_1": {
+          "eng": "The roof is slanted. Does the ball look like it would roll off the roof?"
+        },
+        "annotation_2": {
+          "eng": "Where are Cat and Dog?"
+        },
+        "annotation_3": {
+          "eng": "How is the shape of the ball and the house similar and how are they different?"
+        }
+      },
+      "annotation_1": "The roof is slanted. Does the ball look like it would roll off the roof?",
+      "annotation_2": "Where are Cat and Dog?",
+      "annotation_3": "How is the shape of the ball and the house similar and how are they different?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-7.jpg",
+      "story_text": "Cat and Dog can see the ball.\n\nCat and Dog cannot get to the ball.\n\nHow will they get the ball down?",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog can see the ball.\n\nCat and Dog cannot get to the ball.\n\nHow will they get the ball down?"
+        },
+        "annotation_1": {
+          "eng": "The ball is too high for Cat and Dog to reach. How will they solve this problem?"
+        },
+        "annotation_2": {
+          "eng": "What can you do to get something that is too high? Would you ask for help?"
+        },
+        "annotation_3": {
+          "eng": "Does the ball look bigger than it did when they were throwing it?"
+        }
+      },
+      "annotation_1": "The ball is too high for Cat and Dog to reach. How will they solve this problem?",
+      "annotation_2": "What can you do to get something that is too high? Would you ask for help?",
+      "annotation_3": "Does the ball look bigger than it did when they were throwing it?"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-8.jpg",
+      "story_text": "Cat and Dog are sad.\n\nThey want to find something tall to reach the ball.\n\nThen Elephant comes by.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog are sad.\n\nThey want to find something tall to reach the ball.\n\nThen Elephant comes by."
+        },
+        "annotation_1": {
+          "eng": "Cat and Dog are crying. Is their crying helping them solve their problem?"
+        },
+        "annotation_2": {
+          "eng": "Count together the big animals, birds, and trees in the picture."
+        },
+        "annotation_3": {
+          "eng": "How can Elephant help them? Is the elephant tall?"
+        }
+      },
+      "annotation_1": "Cat and Dog are crying. Is their crying helping them solve their problem?",
+      "annotation_2": "Count together the big animals, birds, and trees in the picture.",
+      "annotation_3": "How can Elephant help them? Is the elephant tall?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-9.jpg",
+      "story_text": "Elephant is big.\n\nElephant can see the ball.\n\nElephant can get to the ball.\n\nElephant gets the ball from the roof.\n\nElephant takes the ball from the roof of the house.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Elephant is big.\n\nElephant can see the ball.\n\nElephant can get to the ball.\n\nElephant gets the ball from the roof.\n\nElephant takes the ball from the roof of the house."
+        },
+        "annotation_1": {
+          "eng": "The ball is higher than Elephant. How does Elephant reach the ball?"
+        },
+        "annotation_2": {
+          "eng": "The animals are all standing on two of their four legs. Have you seen animals do this?"
+        },
+        "annotation_3": {
+          "eng": "What other animals stand on two legs?"
+        }
+      },
+      "annotation_1": "The ball is higher than Elephant. How does Elephant reach the ball?",
+      "annotation_2": "The animals are all standing on two of their four legs. Have you seen animals do this?",
+      "annotation_3": "What other animals stand on two legs?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-10.jpg",
+      "story_text": "Elephant gives the ball to Cat and Dog.\n\nCat and Dog smile. Elephant smiles.\n\nCat and Dog and Elephant smile.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Elephant gives the ball to Cat and Dog.\n\nCat and Dog smile. Elephant smiles.\n\nCat and Dog and Elephant smile."
+        },
+        "annotation_1": {
+          "eng": "Who has the longest nose? Why does an elephant need such a long nose?"
+        },
+        "annotation_2": {
+          "eng": "Which of these animals is the biggest and which is the smallest?"
+        },
+        "annotation_3": {
+          "eng": "How is Elephant different and how is Elephant similar to Cat and Dog? What does Elephant have that they don't?"
+        }
+      },
+      "annotation_1": "Who has the longest nose? Why does an elephant need such a long nose?",
+      "annotation_2": "Which of these animals is the biggest and which is the smallest?",
+      "annotation_3": "How is Elephant different and how is Elephant similar to Cat and Dog? What does Elephant have that they don't?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-11.jpg",
+      "story_text": "Cat and Dog and Elephant play with the ball.\n\nCat throws the ball to Dog. Dog catches the ball.\n\nDog throws the ball to Elephant. Elephant catches the ball.\n\nElephant throws the ball to Cat. Cat catches the ball.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Cat and Dog and Elephant play with the ball.\n\nCat throws the ball to Dog. Dog catches the ball.\n\nDog throws the ball to Elephant. Elephant catches the ball.\n\nElephant throws the ball to Cat. Cat catches the ball."
+        },
+        "annotation_1": {
+          "eng": "Count the number of throws and the number of catches. Are they the same number?"
+        },
+        "annotation_2": {
+          "eng": "Did each animal throw and each animal catch?"
+        },
+        "annotation_3": {
+          "eng": "They are good at taking turns. Are you good at taking turns?"
+        }
+      },
+      "annotation_1": "Count the number of throws and the number of catches. Are they the same number?",
+      "annotation_2": "Did each animal throw and each animal catch?",
+      "annotation_3": "They are good at taking turns. Are you good at taking turns?"
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-12.jpg",
+      "story_text": "Bye bye Cat.\n\nBye bye Dog.\n\nBye bye Elephant.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Bye bye Cat.\n\nBye bye Dog.\n\nBye bye Elephant."
+        },
+        "annotation_1": {
+          "eng": "Count together the number of animals waving."
+        },
+        "annotation_2": {
+          "eng": "Are there more animals or balls? By how much?"
+        },
+        "annotation_3": {
+          "eng": "With fewer balls than animals, the animals must be good at sharing."
+        }
+      },
+      "annotation_1": "Count together the number of animals waving.",
+      "annotation_2": "Are there more animals or balls? By how much?",
+      "annotation_3": "With fewer balls than animals, the animals must be good at sharing."
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-13.jpg"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-CADATB-14.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_beginning.xlsx"
+}

@@ -1,0 +1,106 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_550c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Limited Calculators",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Puzzle",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Suppose you have a calculator that is badly broken and you are challenged to produce some result on the calculator. You can come up with a wide variety of scenarios that can provide interesting challenges with a quick puzzle description. This activity is easy to play orally whenever you have a spare moment. Here are some examples to get you started.\n\nAlthough there are some moments where deeper mathematics is going on in these questions, mostly these are problems entirely for the fun of playing around with them.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "One Working Number",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "a) Suppose you had a calculator with +, -, x, and /, but only one working number key, the 4. Could you get the result 21? If so, what is the fewest number of steps you would need? \n\n4 + 4 + 4 + 4 + 4 + 4/4 = 21 is one way, but there are many other ways to do it. Another is 4 x (4 + 4/4) + 4/4. The goal is to play around and enjoy the exploration.\n\nb) Suppose you could use 4 at most four times - which numbers could you produce? Suppose you had to use the 4 exactly four times. \n\nAs a child’s math resources increase, the four 4’s problem is a fun puzzle. At this point, your child’s choices are quite limited, but it is still a lot of fun to play around with. It will be particularly difficult to do many of the numbers without dividing or using decimals. Don’t be concerned with coming up with all the numbers in order - just come up with as many different numbers as possible.\n\nHere are a few examples just to get you started.\n\n1 = (4/4) x (4/4) = 44 / 44\n2 = 4 / ((4 + 4) / 4)\n3 = (4 + 4 + 4) / 4\n4 = (4 - 4) x 4 + 4\n6 = 4 + (4 + 4) / 4\n7 = 44 / 4 - 4\n8 = (4 + 4) x (4/4) = 4 + 4 + 4 - 4\n32 = 4 x 4 + 4 x 4\n\nc) Play around with having other single numbers and creating other results.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        },
+        {
+          "name": "title3",
+          "value": "Two Working Numbers",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title3"
+        },
+        {
+          "name": "text3",
+          "value": "a) Suppose your calculator could only add 4 or 7. Which numbers could you produce?\n\nThis is the result we have seen several times by now. Starting at (4 - 1) x (7 - 1), you can achieve all numbers by adding multiples of 4 and 7. 18 = 2 x 7 + 4, 19 = 3 x 4 + 7, 20 = 5 x 4, 21 = 3 x 7, and so on.\n\nb) Suppose it had 4 or 7, but it could add and subtract. Which numbers could you produce? \n\nYou can produce all numbers in this way.\n\nc) Replace 4 and 7 with other pairs of numbers. What happens for these pairs? \n\nIn Number Theory, this is called Bezout’s Theorem. The result says that by combining multiples of two numbers you can produce any multiple of the greatest common divisor of the two numbers.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text3"
+        },
+        {
+          "name": "title4",
+          "value": "Binary Numbers",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title4"
+        },
+        {
+          "name": "text4",
+          "value": "Suppose you only had a 1 key and could only add or double. For example, 2 x (2 x 1) + 1 is 5.  What other numbers can you create? \n\nThis is a question about binary numbers in disguise. It is not important for your child to realize this or understand it, it is just for playing with. Any number can be written in binary, so all numbers can be achieved by combining doubling with adding 1. For example, 21 is 16 + 4 + 1. So, 21 = 2 x (2 x (2 x (2 x 1) + 0) + 1) + 0) + 1.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text4"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

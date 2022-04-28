@@ -1,0 +1,88 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_5_460c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Sieve of Eratosthenes",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Activity",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Start with a number line numbered from 1 to 25 - or a larger range if space and your patience allows. \n\nWrite the number 2 below itself. On the line even with this 2, put X’s below each multiple of 2. \n\nNow, pull down the first number with no X’s below it (3 in this case) and put it on the next line. Write the 3 and put X’s on that line for all its multiples. Continue in this way. At the end, you will have pulled down all the primes. Remember that 1 is a unit and not a prime!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "image1",
+          "value": "EFM460SieveOfEratosthenes.svg",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1"
+        },
+        {
+          "name": "image1_max_width",
+          "value": "400px",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.image1_max_width"
+        },
+        {
+          "name": "title2",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "This simple process reveals some interesting facts about primes. See if your child can come up with some of these questions - however, if they don’t arise naturally, here are some questions to ask.\n\na) Why are the numbers that drop down primes?\n\nSuppose you have a composite number. We want to show that this number will have an X under it. Being composite, it is divisible by some number, n, between 1 and that number. If n is a prime, then our composite number would have an X under it from n being an earlier prime. If n is not a prime, then it has an X under it from some earlier prime, call it p. Now, p evenly divides n and n evenly divides our new number, so p must divide our new number. Consequently, when marking the multiples of p, an X would have been placed under our new number.\n\nb) When you are placing X’s for the multiples of a prime, there are some numbers that already have an X from an earlier prime. When does that happen and when doesn’t it happen?\n\nLet’s look at the multiples of 5 in the sieve above. The multiples 5 x 2, 5 x 3, and 5 x 4 are already crossed out. Only 5 x 5 is new. This happens because 5 x 2, 5 x 3, and 5 x 4 are all multiples of 2 and 3, earlier primes. If we want to put X’s in fresh places, we must multiply 5 by numbers that only have prime factors that are 5 and above. Because it is a little tedious to keep track of all that, what some people do is only cross out odd multiples and leave it at that.\n\nc) For this sieve, what was the last prime that had a useful new X in its row?\n\nIn this sieve, the primes with useful X’s are 2, 3, and 5. The multiples of 7 and 11 were all old X’s. If you look at the answer to the last question, you will see the answer here. The only way to get new X’s is to multiply a prime by primes bigger than or equal to itself. Once we reach a prime like 7 where 7 x 7 > 25, we do not need to check it. So, we only need to check primes whose square is smaller than or equal to the last number.\n\nd) If you were given a number, say 53, which primes would you need to divide it by to see that it is prime? \n\nFrom the answer to the last question, we only need to check primes whose square is less than or equal to 53. Those primes are 2, 3, 5, and 7 – none of these divides 53 evenly, so 53 must be prime!",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt45_sheets.xlsx"
+}

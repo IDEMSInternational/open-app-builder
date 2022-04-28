@@ -1,0 +1,478 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "Listen_To_My_Body_data",
+  "status": "released",
+  "data_list_name": "Listen_To_My_Body_storybook",
+  "rows": [
+    {
+      "id": "page_1",
+      "page_no": 1,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-1.jpg",
+      "story_text": "Today I an not going to school.\n\nIt is a holiday.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Today I an not going to school.\n\nIt is a holiday."
+        },
+        "annotation_1": {
+          "eng": "What do you think she will do with her day off from school?"
+        },
+        "annotation_2": {
+          "eng": "Why does she like not going to school?"
+        },
+        "annotation_3": {
+          "eng": "Do you think she will miss seeing her school friends and teachers?"
+        }
+      },
+      "annotation_1": "What do you think she will do with her day off from school?",
+      "annotation_2": "Why does she like not going to school?",
+      "annotation_3": "Do you think she will miss seeing her school friends and teachers?"
+    },
+    {
+      "id": "page_2",
+      "page_no": 2,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-2.jpg",
+      "story_text": "Today I am not going to watch TV.\n\nThere is no electricity anyway.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Today I am not going to watch TV.\n\nThere is no electricity anyway."
+        },
+        "annotation_1": {
+          "eng": "Why does she decide to not watch TV?"
+        },
+        "annotation_2": {
+          "eng": "What would you do if you were to plan a special day?"
+        },
+        "annotation_3": {
+          "eng": "What do you do during times when your electricity is not working? Do you have special activities for such times?"
+        }
+      },
+      "annotation_1": "Why does she decide to not watch TV?",
+      "annotation_2": "What would you do if you were to plan a special day?",
+      "annotation_3": "What do you do during times when your electricity is not working? Do you have special activities for such times?"
+    },
+    {
+      "id": "page_3",
+      "page_no": 3,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-3.jpg",
+      "story_text": "What am I going to do?\n\nToday I am going to listen to my body!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "What am I going to do?\n\nToday I am going to listen to my body!"
+        },
+        "annotation_1": {
+          "eng": "Her hands only have four fingers! Have you seen someone with four fingers on a hand?"
+        },
+        "annotation_2": {
+          "eng": "It is uncommon, but some people are born with six fingers on a hand. How many more fingers is six fingers than what she has?"
+        },
+        "annotation_3": {
+          "eng": "Do you think you can buy gloves for someone with six fingers?"
+        }
+      },
+      "annotation_1": "Her hands only have four fingers! Have you seen someone with four fingers on a hand?",
+      "annotation_2": "It is uncommon, but some people are born with six fingers on a hand. How many more fingers is six fingers than what she has?",
+      "annotation_3": "Do you think you can buy gloves for someone with six fingers?"
+    },
+    {
+      "id": "page_4",
+      "page_no": 4,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-4.jpg",
+      "story_text": "First I have to be very quiet.\n\nSo that I can listen to my own body.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "First I have to be very quiet.\n\nSo that I can listen to my own body."
+        },
+        "annotation_1": {
+          "eng": "Have you listened to the sounds your body makes? What are some of them?"
+        },
+        "annotation_2": {
+          "eng": "Have you heard your stomach rumbling, grumbling, or gurgling?"
+        },
+        "annotation_3": {
+          "eng": "Have you ever run hard and heard your pulse pounding in your ears?"
+        }
+      },
+      "annotation_1": "Have you listened to the sounds your body makes? What are some of them?",
+      "annotation_2": "Have you heard your stomach rumbling, grumbling, or gurgling?",
+      "annotation_3": "Have you ever run hard and heard your pulse pounding in your ears?"
+    },
+    {
+      "id": "page_5",
+      "page_no": 5,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-5.jpg",
+      "story_text": "Yes, now I can hear my breath.\n\nI breath in and out, in and out.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Yes, now I can hear my breath.\n\nI breath in and out, in and out."
+        },
+        "annotation_1": {
+          "eng": "If you stop and listen, can you hear yourself breathing?"
+        },
+        "annotation_2": {
+          "eng": "Do you breathe through your mouth or your nose most of the time?"
+        },
+        "annotation_3": {
+          "eng": "Watch the time for half a minute and count your breaths. How many were there?"
+        }
+      },
+      "annotation_1": "If you stop and listen, can you hear yourself breathing?",
+      "annotation_2": "Do you breathe through your mouth or your nose most of the time?",
+      "annotation_3": "Watch the time for half a minute and count your breaths. How many were there?"
+    },
+    {
+      "id": "page_6",
+      "page_no": 6,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-6.jpg",
+      "story_text": "And I can make my breath noisier. Ssssssssssss!\n\nAnd softer.\nMmmmmmmm.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "And I can make my breath noisier. Ssssssssssss!\n\nAnd softer.\nMmmmmmmm."
+        },
+        "annotation_1": {
+          "eng": "She is making her toy fly around by blowing on it very hard. When have you blown hard on something?"
+        },
+        "annotation_2": {
+          "eng": "Have you blown out candles on a birthday cake or maybe blown on a fire to help it burn?"
+        },
+        "annotation_3": {
+          "eng": "How old were you at your last birthday?"
+        }
+      },
+      "annotation_1": "She is making her toy fly around by blowing on it very hard. When have you blown hard on something?",
+      "annotation_2": "Have you blown out candles on a birthday cake or maybe blown on a fire to help it burn?",
+      "annotation_3": "How old were you at your last birthday?"
+    },
+    {
+      "id": "page_7",
+      "page_no": 7,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-7.jpg",
+      "story_text": "Now I can hear my heart beating!\n\nDoodom, doodoom, dooo dooom.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Now I can hear my heart beating!\n\nDoodom, doodoom, dooo dooom."
+        },
+        "annotation_1": {
+          "eng": "It is not easy to hear your own heart beating. Can you hear yours?"
+        },
+        "annotation_2": {
+          "eng": "Put your ear on someone's chest so you can hear their heart beating."
+        },
+        "annotation_3": {
+          "eng": "Do you think your heart ever stops beating? Most of your muscles can get tired, but your heart muscle never does!"
+        }
+      },
+      "annotation_1": "It is not easy to hear your own heart beating. Can you hear yours?",
+      "annotation_2": "Put your ear on someone's chest so you can hear their heart beating.",
+      "annotation_3": "Do you think your heart ever stops beating? Most of your muscles can get tired, but your heart muscle never does!"
+    },
+    {
+      "id": "page_8",
+      "page_no": 8,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-8.jpg",
+      "story_text": "Can I make my heart go faster or louder?\n\nYes, by jumping up and down twenty times.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Can I make my heart go faster or louder?\n\nYes, by jumping up and down twenty times."
+        },
+        "annotation_1": {
+          "eng": "Can you count to 20 to count the jumps?"
+        },
+        "annotation_2": {
+          "eng": "If you can't count to 20, you can count to 10 and then immediately count to 10 again. That will be just the same."
+        },
+        "annotation_3": {
+          "eng": "When you run around and start breathing hard, do you sometimes feel your heart beating in your chest?"
+        }
+      },
+      "annotation_1": "Can you count to 20 to count the jumps?",
+      "annotation_2": "If you can't count to 20, you can count to 10 and then immediately count to 10 again. That will be just the same.",
+      "annotation_3": "When you run around and start breathing hard, do you sometimes feel your heart beating in your chest?"
+    },
+    {
+      "id": "page_9",
+      "page_no": 9,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-9.jpg",
+      "story_text": "Now see, my heart is beating faster.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "Now see, my heart is beating faster."
+        },
+        "annotation_1": {
+          "eng": "Have you ever seen your own heart beating in yuor chest? Is it possible to see it?"
+        },
+        "annotation_2": {
+          "eng": "The storyteller and artist are streatching the truth a bit here. Have you ever stretched the truth a bit to make a story a little more interesting?"
+        },
+        "annotation_3": {
+          "eng": "Her toy is covering its ears because the heart is beating so loudly. Is it possible to hear someone else's heart from a distance?"
+        }
+      },
+      "annotation_1": "Have you ever seen your own heart beating in yuor chest? Is it possible to see it?",
+      "annotation_2": "The storyteller and artist are streatching the truth a bit here. Have you ever stretched the truth a bit to make a story a little more interesting?",
+      "annotation_3": "Her toy is covering its ears because the heart is beating so loudly. Is it possible to hear someone else's heart from a distance?"
+    },
+    {
+      "id": "page_10",
+      "page_no": 10,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-10.jpg",
+      "story_text": "If I put my fingers on my wrist, then I can feel my pulse!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "If I put my fingers on my wrist, then I can feel my pulse!"
+        },
+        "annotation_1": {
+          "eng": "Can you feel your pulse on your wrist? Some people like to feel their pulse on their neck or on their head. Try it!"
+        },
+        "annotation_2": {
+          "eng": "Count your pulse for ten seconds. Did you get a count between 7 and 20?"
+        },
+        "annotation_3": {
+          "eng": "Have another person do the same thing and compare the counts you got. Whose count was more and whose was less?"
+        }
+      },
+      "annotation_1": "Can you feel your pulse on your wrist? Some people like to feel their pulse on their neck or on their head. Try it!",
+      "annotation_2": "Count your pulse for ten seconds. Did you get a count between 7 and 20?",
+      "annotation_3": "Have another person do the same thing and compare the counts you got. Whose count was more and whose was less?"
+    },
+    {
+      "id": "page_11",
+      "page_no": 11,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-11.jpg",
+      "story_text": "I can hear myself laughing.\n\nHaha, haha, haaah, haaa!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I can hear myself laughing.\n\nHaha, haha, haaah, haaa!"
+        },
+        "annotation_1": {
+          "eng": "She is very expressive, so her laughter is probably very loud. Is it possible to laugh softly? Can you do it?"
+        },
+        "annotation_2": {
+          "eng": "People often like to laugh together. When you laugh, do other people laugh with you?"
+        },
+        "annotation_3": {
+          "eng": "Even when there is nothing funny happening, sometimes just laughing out loud can make you feel better."
+        }
+      },
+      "annotation_1": "She is very expressive, so her laughter is probably very loud. Is it possible to laugh softly? Can you do it?",
+      "annotation_2": "People often like to laugh together. When you laugh, do other people laugh with you?",
+      "annotation_3": "Even when there is nothing funny happening, sometimes just laughing out loud can make you feel better."
+    },
+    {
+      "id": "page_12",
+      "page_no": 12,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-12.jpg",
+      "story_text": "I can hear myself crying. Boohoooo hooo!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I can hear myself crying. Boohoooo hooo!"
+        },
+        "annotation_1": {
+          "eng": "Do you think she is really crying, or is she just pretending?"
+        },
+        "annotation_2": {
+          "eng": "Do you ever pretend to cry so that people will feel sorry for you?"
+        },
+        "annotation_3": {
+          "eng": "Some people feel much better after they cry. Do you feel better after you cry?"
+        }
+      },
+      "annotation_1": "Do you think she is really crying, or is she just pretending?",
+      "annotation_2": "Do you ever pretend to cry so that people will feel sorry for you?",
+      "annotation_3": "Some people feel much better after they cry. Do you feel better after you cry?"
+    },
+    {
+      "id": "page_13",
+      "page_no": 13,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-13.jpg",
+      "story_text": "I can hear myself clapping.\n\nClap, clap, clap.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I can hear myself clapping.\n\nClap, clap, clap."
+        },
+        "annotation_1": {
+          "eng": "Make up a pattern using claps and foot stomps on the ground."
+        },
+        "annotation_2": {
+          "eng": "Was your pattern complicated, or was it as simple as: clap clap stomp, clap clap stomp?"
+        },
+        "annotation_3": {
+          "eng": "Dancing is often a pattern of movements with your arms and legs. Do you like to dance?"
+        }
+      },
+      "annotation_1": "Make up a pattern using claps and foot stomps on the ground.",
+      "annotation_2": "Was your pattern complicated, or was it as simple as: clap clap stomp, clap clap stomp?",
+      "annotation_3": "Dancing is often a pattern of movements with your arms and legs. Do you like to dance?"
+    },
+    {
+      "id": "page_14",
+      "page_no": 14,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-14.jpg",
+      "story_text": "I can hear my stomach rumbling!\n\nGuddu, guddu, guddu.",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "I can hear my stomach rumbling!\n\nGuddu, guddu, guddu."
+        },
+        "annotation_1": {
+          "eng": "When your stomach rumbles, what is your body feeling?"
+        },
+        "annotation_2": {
+          "eng": "Does your stomach ever rumble when it is having trouble digesting something or when you're sick?"
+        },
+        "annotation_3": {
+          "eng": "Looking at her face, what is she feeling right now?"
+        }
+      },
+      "annotation_1": "When your stomach rumbles, what is your body feeling?",
+      "annotation_2": "Does your stomach ever rumble when it is having trouble digesting something or when you're sick?",
+      "annotation_3": "Looking at her face, what is she feeling right now?"
+    },
+    {
+      "id": "page_15",
+      "page_no": 15,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-15.jpg",
+      "story_text": "My stomach is saying, \"Feed me!\"",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My stomach is saying, \"Feed me!\""
+        },
+        "annotation_1": {
+          "eng": "Have you ever been so hungry you couldn't wait and you had to eat immediately?"
+        },
+        "annotation_2": {
+          "eng": "Do you think her stomach is really shoving her to get some food?"
+        },
+        "annotation_3": {
+          "eng": "Each time she bounds forward, she takes two steps. You can count those steps by counting by 2's -- 2, 4, 6, 8, ..."
+        }
+      },
+      "annotation_1": "Have you ever been so hungry you couldn't wait and you had to eat immediately?",
+      "annotation_2": "Do you think her stomach is really shoving her to get some food?",
+      "annotation_3": "Each time she bounds forward, she takes two steps. You can count those steps by counting by 2's -- 2, 4, 6, 8, ..."
+    },
+    {
+      "id": "page_16",
+      "page_no": 16,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-16.jpg",
+      "story_text": "My nose can smell cakes baking in mother's kitchen.\n\nAnd now I want to hear my jaws chewing those cakes!",
+      "_translations": {
+        "story_text": {},
+        "annotation_1": {},
+        "annotation_2": {},
+        "annotation_3": {}
+      },
+      "_translatedFields": {
+        "story_text": {
+          "eng": "My nose can smell cakes baking in mother's kitchen.\n\nAnd now I want to hear my jaws chewing those cakes!"
+        },
+        "annotation_1": {
+          "eng": "How many really small cakes do you think she will eat?"
+        },
+        "annotation_2": {
+          "eng": "What are the most cookies or other snack you've eaten at one time?"
+        },
+        "annotation_3": {
+          "eng": "This story has talked about a lot of different sounds to hear from your body. How many of them can you remember?"
+        }
+      },
+      "annotation_1": "How many really small cakes do you think she will eat?",
+      "annotation_2": "What are the most cookies or other snack you've eaten at one time?",
+      "annotation_3": "This story has talked about a lot of different sounds to hear from your body. How many of them can you remember?"
+    },
+    {
+      "id": "page_17",
+      "page_no": 17,
+      "illustration": "EFMStorybooks/EFM-SB-LTMB-17.jpg"
+    }
+  ],
+  "_xlsxPath": "EFM_storybooks_intermediate.xlsx"
+}

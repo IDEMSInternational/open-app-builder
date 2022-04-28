@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_3_175a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Your child can now count up and down between 0 and 10 and understand what all those quantities mean. Beginning addition and subtraction skills are developing. An important foundation for those skills is confidence with adding and subtracting 1 and 2 (and maybe 3) with other small numbers. Your child also understands small quantities, and can reason with those quantities to do addition and subtraction for small numbers.\n\nIn addition to that wonderful stuff, your child is able to reason so much better now! They understand that objects and numbers have properties, and they can reason and do beginning problem solving. Your child is now a full member in family math games and puzzles and exploring the mathematical world around them.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "accordian_1_title",
+          "value": "Chapter Topics",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_title"
+        },
+        {
+          "name": "accordian_1_text",
+          "value": "* Counting On – This refers to counting upward starting at any number, rather than always starting at 1. This is useful for addition and for finding differences.\n* Counting Down – This refers to counting downward starting at any number. It is useful for subtracting, as well as for developing a sense for the relationships between numbers.\n* Number Bonds – The number bonds for a number are all pairs of numbers that add up to that number. \n* Ten Frames – This represents a number from 0 to 10 as the appropriate number of dots inside a 2 by 5 rectangular grid. For numbers greater than 4, the upper group of 5 squares is always filled.\n* Expanded Form – This refers to writing a multi-digit number broken down into the contribution of each of its digits. For example: 25 = 20 + 5 and 317 = 300 + 10 + 7.\n* Fact Families – This refers to a group of closely related math facts. For example, 2 + 5 = 7 is in the same family as 7 - 2 = 5 and 7 - 5 = 2.\n* Adding twins and near twins – An adding twin is adding a number to itself, such as 4 + 4. A near twin is one away from a twin, such as 4 + 5.\n* Doubling, multiplying by two, and halving, two equal parts, dividing in two – Children usually enjoy adding twins. With that comes the idea of doubling and multiplying by 2. Also associated with that is halving, splitting something * into two equal parts, and dividing by two.\n* Even and Odd numbers – Even numbers can be split into two equal parts. Odd numbers have one left over when split into two matching parts. Even numbers are the results of adding twins.\n* Skip counting by 2’s – This means counting up or down by 2’s – such as, 0, 2, 4, 6, 8 or 13, 11, 9, 7, 5.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_text"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter3_sheets.xlsx"
+}

@@ -1,0 +1,43 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_act_4_285a_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_activity_body_template",
+      "rows": [
+        {
+          "name": "text_top_1",
+          "value": "Your child has come so far! They can now count up and down between 0 and 20 and understand what all those quantities mean. Your child is comfortable “counting on” or “counting down” starting at any number in between 0 and 20. There is also a budding understanding of place value and how that relates to expanded form.\n\nCalculational abilities have also grown! Beyond adding and subtracting small numbers, your child has a sense of the number relationships of number bonds and fact families. The ideas of adding and subtracting 1 or 2, adding twins, and near twins, are ready to form the foundation for learning all the addition and subtraction facts. Your child has also picked up skip counting by 2, doubling, halving, and even and odd numbers – all of which are setting the stage for learning multiplication and division.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text_top_1"
+        },
+        {
+          "name": "accordian_1_title",
+          "value": "Chapter Topics",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_title"
+        },
+        {
+          "name": "accordian_1_text",
+          "value": "* Counting to 100 – While it’s fun to hear your child count to 100, keep this practice grounded in understanding the numbers – place value and counting backwards will help a lot with this.\n* Expanded Form and Place Value – The earlier practice with this will be reinforced here. Understanding tens and ones, and using expanded form (such as 37 = 30 + 7), is essential to understanding numbers.\n* Comparing double-digit numbers – Understanding place value will make this easy.\n* All single-digit adding and subtracting – This is first done with manipulatives, especially fingers. Then, using ideas involving relationships between numbers, it will be extended to mental arithmetic.\n* Compensation for Addition and Subtraction – Adjusting addition and subtraction problems to make them easier to do not only helps with mental arithmetic, it helps teach the structure of numbers.\n* Skip Counting – Skipping up and down by any single-digit number starting anywhere is great practice for doing mental addition and subtraction, and is useful for learning multiplication and division.\n* Beginning multiplying – Your child already knows how to multiply by 2. This will be extended, in part using skip counting, to all single-digit numbers.\n* Games, Puzzles, Problem Solving and Investigations – The games and puzzles will be more challenging in keeping with your child’s growing sophistication and abilities. Keep these activities fun and playful - enjoyment is the most important thing for your child’s long term mathematical success. Kindle sparks of joy when your child discovers or experiences particularly beautiful or satisfying mathematical patterns.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.accordian_1_text"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_activity_chapter4_sheets.xlsx"
+}

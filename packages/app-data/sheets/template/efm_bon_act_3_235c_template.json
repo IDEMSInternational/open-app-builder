@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_bon_act_3_235c_template",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "activity_body",
+      "value": "efm_bon_act_body_template",
+      "rows": [
+        {
+          "name": "activity_title",
+          "value": "Common Sums",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_title"
+        },
+        {
+          "name": "activity_type",
+          "value": "Investigation",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.activity_type"
+        },
+        {
+          "name": "title1",
+          "value": "Introduction",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title1"
+        },
+        {
+          "name": "text1",
+          "value": "Make a sheet of paper with 12 rows. In each row, put 8 squares. The leftmost column of squares has the numbers from 1 to 12 written in the squares. Put 1 token on each of the 12 numbers. Start rolling a pair of dice. After each roll, move the token for the sum of the dice one square to the right. The goal for each token is to be the first to get all the way to the right across the page.\n\nLet your child come up with some questions to investigate. Some natural questions are:\n\n* Which token will win and why? \n* Which tokens do well and which ones do poorly? \n* Which token is the worst?\n* How will the winners change if the rows are changed to have fewer squares or more squares?\n\nHave your child explain their ideas about the answers to these questions, and then investigate their ideas by running experiments.\n\nAdd a competitive element to this by guessing which token will win before the round starts.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text1"
+        },
+        {
+          "name": "title2",
+          "value": "Analysis",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.title2"
+        },
+        {
+          "name": "text2",
+          "value": "As with the analysis of the game Zoo Rescue, the simplest way to analyze this is to list out all the possibilities and count how many times each sum occurs.  \n\nWhen you count how many times each sum occurs, the frequencies are:\n\n1 - 0, 2 - 1, 3 - 2, 4 - 3, 5 - 4, 6 - 5, 7 - 6, 8 - 5, 9 - 4, 10 - 3, 11 - 2, 12 - 1. \n\nBy the way, these are good numbers to remember for any dice game that involves summing the two dice!\n\nSo, 1 will always lose and 7 is the most likely to win. However, the difference in frequency between 7 and 6 or 8 is not very great. If you just do a few rolls, it would be very hard to predict with any certainty which one would win. It is only when you do a great many rolls that you can guarantee that 7 will win eventually.",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "activity_body.text2"
+        }
+      ],
+      "_nested_name": "activity_body"
+    }
+  ],
+  "_xlsxPath": "EFM_bonus_activity_chapt123_sheets.xlsx"
+}
