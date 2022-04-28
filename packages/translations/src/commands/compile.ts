@@ -46,7 +46,7 @@ class TranslationsCompiler {
    * replace text from input files
    **/
   public run() {
-    console.table(this.options);
+    // console.table(this.options);
     const { input: inDir, output: outDir, translations: translationsDir } = this.options;
     fs.ensureDir(inDir);
     fs.ensureDirSync(translationsDir);

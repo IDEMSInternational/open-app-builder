@@ -42,6 +42,13 @@ const config: IDeploymentConfig = {
     translated_strings_path: "packages/app-data/translations_source/from_translators",
     source_strings_path: "packages/app-data/translations_source/to_translate",
   },
-  workflows: ["default.workflows.ts"],
+  _version: 1.0,
 };
+
+config.app_constants.APP_LANGUAGES.default = "gb_en";
+config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
+config.app_constants.APP_HEADER_DEFAULTS.title = "ParentApp";
+config.app_constants.NOTIFICATION_DEFAULTS.title = "New message from PLH";
+config.app_constants.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
+
 export default config;

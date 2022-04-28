@@ -1,0 +1,110 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_lang_translator_mode",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Example Translator Mode",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "intro_text",
+      "value": "Translator mode shows text alongside any known translations. It can be enabled via the translator_mode_toggle emit",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "intro_text"
+    },
+    {
+      "type": "template",
+      "name": "example_lang_select",
+      "value": "example_lang_select",
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "example_lang_select"
+    },
+    {
+      "type": "text",
+      "name": "enabled_text",
+      "value": "Translator Mode Enabled: @fields._translator_mode_enabled",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "enabled_text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Translator Mode Enabled: @fields._translator_mode_enabled",
+            "matchedExpression": "@fields._translator_mode_enabled",
+            "type": "fields",
+            "fieldName": "_translator_mode_enabled"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields._translator_mode_enabled": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "toggle_button",
+      "value": "Toggle Translator Mode",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "emit",
+          "args": [
+            "translator_mode_toggle"
+          ],
+          "_raw": "click | emit: translator_mode_toggle",
+          "_cleaned": "click | emit: translator_mode_toggle"
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "toggle_button"
+    },
+    {
+      "type": "text",
+      "name": "translated_text",
+      "value": "How are you feeling today?",
+      "_translations": {
+        "value": {
+          "es_sp": true,
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "_nested_name": "translated_text"
+    },
+    {
+      "type": "text",
+      "name": "untranslated_text",
+      "value": "This text has not been translated",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "untranslated_text"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_templates/example_languages.xlsx"
+}

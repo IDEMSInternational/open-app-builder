@@ -1,4 +1,4 @@
-import DEFAULT_CONFIG from "./default.config";
+import DEFAULT_CONFIG from "./global.config";
 
 /** ZA config extends the default config **/
 

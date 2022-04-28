@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import boxen from "boxen";
 import chalk from "chalk";
 import path from "path";
 import { Command } from "commander";
@@ -19,10 +20,11 @@ export default program
   .description("Run a workflow")
   // options for compare
   .argument("[name]", "Name of workflow to run")
-  .action(async (name) => {
+  .option("-p --parent <string>", "Name of parent workflow triggered by")
+  .action(async (name, { parent }) => {
     const runner = WorkflowRunner;
     await runner.init();
-    return runner.run(name);
+    return runner.run(name, parent);
   });
 
 /***************************************************************************
@@ -43,9 +45,10 @@ export class WorkflowRunnerClass {
     this.workflows = WORKFLOW_DEFAULTS;
     // load custom workflows
     this.config = getActiveDeployment();
-    const { workflows: workflowPaths, _workspace_path } = this.config;
-    if (workflowPaths) {
-      for (const workflowPath of workflowPaths) {
+    const { workflow, _workspace_path } = this.config as any;
+    const customWorkflowFiles = [];
+    if (workflow) {
+      for (const workflowPath of customWorkflowFiles) {
         const ts: IDeploymentWorkflows = await import(path.resolve(_workspace_path, workflowPath));
         const workflows: IDeploymentWorkflows = ts?.default as any;
         if (workflows) {
@@ -61,7 +64,11 @@ export class WorkflowRunnerClass {
    *
    * @param name
    */
-  public async run(name?: string) {
+  public async run(name?: string, parent?: string) {
+    if (!parent) {
+      const heading = chalk.yellow(`${this.config.name}`);
+      console.log(boxen(heading, { padding: 1, borderColor: "yellow" }));
+    }
     if (!name) {
       name = await this.promptWorkflowSelect();
       console.log(chalk.yellow(`yarn scripts workflow run ${name}`));
