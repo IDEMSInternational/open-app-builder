@@ -181,16 +181,6 @@
           "_cleaned": "completed | emit:completed"
         },
         {
-          "trigger": "completed",
-          "action_id": "set_field",
-          "args": [
-            "daily_relax_done",
-            true
-          ],
-          "_raw": "completed | set_field:daily_relax_done:true",
-          "_cleaned": "completed | set_field:daily_relax_done:true"
-        },
-        {
           "trigger": "uncompleted",
           "action_id": "emit",
           "args": [
