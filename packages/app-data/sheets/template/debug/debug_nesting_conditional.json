@@ -165,7 +165,10 @@
           "action_id": "set_local",
           "args": [],
           "_raw": "click | set_local | var_toggle: !@local.var_toggle",
-          "_cleaned": "click | set_local | var_toggle: !@local.var_toggle"
+          "_cleaned": "click | set_local | var_toggle: !@local.var_toggle",
+          "params": {
+            "var_toggle": "!@local.var_toggle"
+          }
         }
       ],
       "exclude_from_translation": true,
@@ -188,14 +191,25 @@
                 "type": "local",
                 "fieldName": "var_toggle"
               }
-            ]
+            ],
+            "params": {
+              "var_toggle": [
+                {
+                  "fullExpression": "!@local.var_toggle",
+                  "matchedExpression": "!@local.var_toggle",
+                  "type": "local",
+                  "fieldName": "var_toggle"
+                }
+              ]
+            }
           }
         }
       },
       "_dynamicDependencies": {
         "!@local.var_toggle": [
           "action_list.0._raw",
-          "action_list.0._cleaned"
+          "action_list.0._cleaned",
+          "action_list.0.params.var_toggle"
         ]
       }
     }

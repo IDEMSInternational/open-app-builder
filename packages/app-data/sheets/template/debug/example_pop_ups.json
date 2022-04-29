@@ -115,6 +115,85 @@
       ],
       "exclude_from_translation": true,
       "_nested_name": "button_pop_up_3"
+    },
+    {
+      "type": "title",
+      "name": "full_screen",
+      "value": "Full Screen Popups",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "full_screen"
+    },
+    {
+      "type": "text",
+      "name": "text_4",
+      "value": "Button 4 pops up the simple text pop-up in fullscreen",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_4"
+    },
+    {
+      "type": "button",
+      "name": "button_pop_up_4",
+      "value": "Button 5",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "example_text"
+          ],
+          "_raw": "click | pop_up:example_text | fullscreen:true",
+          "_cleaned": "click | pop_up:example_text | fullscreen:true",
+          "params": {
+            "fullscreen": true
+          }
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "button_pop_up_4"
+    },
+    {
+      "type": "text",
+      "name": "text_5",
+      "value": "Button 5 pops up the simple text pop-up in fullscreen without a close button (closes on emit: completed)",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_5"
+    },
+    {
+      "type": "button",
+      "name": "button_pop_up_5",
+      "value": "Button 5",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "pop_up",
+          "args": [
+            "example_emit"
+          ],
+          "_raw": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false",
+          "_cleaned": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false",
+          "params": {
+            "fullscreen": true,
+            "showCloseButton": false
+          }
+        }
+      ],
+      "exclude_from_translation": true,
+      "_nested_name": "button_pop_up_5"
     }
   ],
   "_xlsxPath": "quality_assurance/example_templates/example_actions.xlsx"
