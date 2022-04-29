@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { PLHAnimations } from "src/app/shared/animations";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
@@ -9,6 +9,7 @@ import { TemplateBaseComponent } from "../base";
   selector: "template-animated-slides",
   templateUrl: "./animated-slides.component.html",
   styleUrls: ["./animated-slides.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implements OnInit {
   closeText = "";
@@ -17,6 +18,7 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
   // durations to display each faded section
   fadeTimes = [];
   private _isDismissed = false;
+  style: string | null;
 
   constructor(private modalCtrl: ModalController) {
     super();
@@ -32,6 +34,7 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
     for (let row of this._row.rows) {
       this.fadeTimes.push(getNumberParamFromTemplateRow(row, "duration", 0) * 1000);
     }
+    this.style = getStringParamFromTemplateRow(this._row, "style", "full-screen");
   }
   /**
    * Iterate over each section for display, showing for

@@ -1,6 +1,10 @@
-<ion-button fill="clear" (click)="skipIntro()" class="skip-button">{{ closeText }}</ion-button>
-<div class="section-container">
-  <section *ngFor="let childRow of _row.rows; let idx = index" [@fadeInOut]="fadeSection[idx]">
-    <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
-  </section>
+<div class="tmpl-animated-slides-container">
+  <ion-button fill="clear" (click)="skipIntro()" class="skip-button">
+    {{ closeText }}
+  </ion-button>
+  <div [class]="'section-container animated-slides-child' + ' ' + style">
+    <section *ngFor="let childRow of _row.rows; let idx = index" [@fadeInOut]="fadeSection[idx]">
+      <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
+    </section>
+  </div>
 </div>
