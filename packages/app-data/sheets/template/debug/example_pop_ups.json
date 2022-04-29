@@ -139,7 +139,7 @@
     {
       "type": "button",
       "name": "button_pop_up_4",
-      "value": "Button 5",
+      "value": "Button 4",
       "_translations": {
         "value": {}
       },
@@ -163,7 +163,7 @@
     {
       "type": "text",
       "name": "text_5",
-      "value": "Button 5 pops up the simple text pop-up in fullscreen without a close button (closes on emit: completed)",
+      "value": "Button 5 pops up the simple text pop-up in fullscreen without a close button (closes on emit)",
       "_translations": {
         "value": {}
       },
