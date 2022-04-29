@@ -1,33 +1,43 @@
-p {
-  font-size: 20px;
+:host {
+  background-color: var(--ion-background-color, #fff);
 }
-.section-container {
-  position: relative;
-  width: 300px;
-  max-height: 85%;
-  margin-top: 15%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  width: 100%;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.skip-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0.3;
+.tmpl-animated-slides-container {
+  p {
+    font-size: 20px;
+  }
+  .section-container {
+    position: relative;
+    width: 300px;
+    max-height: 85%;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .skip-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.3;
+  }
+  .full-screen {
+    plh-tmpl-animated-section {
+      align-items: center;
+    }
+  }
 }
