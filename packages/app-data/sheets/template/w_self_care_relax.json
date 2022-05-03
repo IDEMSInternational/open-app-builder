@@ -154,13 +154,6 @@
         }
       ],
       "_nested_name": "relax"
-    },
-    {
-      "type": "set_field",
-      "name": "daily_relax_done",
-      "value": false,
-      "exclude_from_translation": true,
-      "_nested_name": "daily_relax_done"
     }
   ],
   "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
