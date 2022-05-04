@@ -17,6 +17,16 @@
           },
           "rows": [
             {
+              "type": "icon_banner",
+              "parameter_list": {
+                "title": "hi",
+                "text": "body",
+                "image_src": "plh_images/first_app_launch/frustrated_shadow.svg"
+              },
+              "name": "icon_banner",
+              "_nested_name": "animated_slides.animated_section.icon_banner"
+            },
+            {
               "type": "image",
               "name": "image_1",
               "value": "plh_images/first_app_launch/frustrated_shadow.svg",
