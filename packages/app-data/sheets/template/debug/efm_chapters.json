@@ -1,0 +1,353 @@
+{
+  "flow_type": "template",
+  "flow_name": "efm_chapters",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "Games, Puzzles, and More",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "name": "checkbox_guidance",
+      "value": "Please select the kinds of activities you would like to do.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "checkbox_guidance"
+    },
+    {
+      "name": "description_1",
+      "value": "Introductions",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "description_1"
+    },
+    {
+      "name": "description_2",
+      "value": "Games",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "description_2"
+    },
+    {
+      "name": "description_3",
+      "value": "Activities",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "description_3"
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_intros",
+      "value": "@fields.see_activities_introduction",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "see_activities_introduction",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:see_activities_introduction: @local.checkbox_intros",
+          "_cleaned": "changed | set_field:see_activities_introduction: @local.checkbox_intros"
+        }
+      ],
+      "parameter_list": {
+        "label_text": "@local.description_1",
+        "align": "left"
+      },
+      "_nested_name": "checkbox_intros",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.see_activities_introduction",
+            "matchedExpression": "@fields.see_activities_introduction",
+            "type": "fields",
+            "fieldName": "see_activities_introduction"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:see_activities_introduction: @local.checkbox_intros",
+                "matchedExpression": "@local.checkbox_intros",
+                "type": "local",
+                "fieldName": "checkbox_intros"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:see_activities_introduction: @local.checkbox_intros",
+                "matchedExpression": "@local.checkbox_intros",
+                "type": "local",
+                "fieldName": "checkbox_intros"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "label_text": [
+            {
+              "fullExpression": "@local.description_1",
+              "matchedExpression": "@local.description_1",
+              "type": "local",
+              "fieldName": "description_1"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.see_activities_introduction": [
+          "value"
+        ],
+        "@local.checkbox_intros": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.description_1": [
+          "parameter_list.label_text"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_games",
+      "value": "@fields.see_activities_game",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "see_activities_game",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:see_activities_game: @local.checkbox_games",
+          "_cleaned": "changed | set_field:see_activities_game: @local.checkbox_games"
+        }
+      ],
+      "parameter_list": {
+        "label_text": "@local.description_2",
+        "align": "left"
+      },
+      "_nested_name": "checkbox_games",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.see_activities_game",
+            "matchedExpression": "@fields.see_activities_game",
+            "type": "fields",
+            "fieldName": "see_activities_game"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:see_activities_game: @local.checkbox_games",
+                "matchedExpression": "@local.checkbox_games",
+                "type": "local",
+                "fieldName": "checkbox_games"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:see_activities_game: @local.checkbox_games",
+                "matchedExpression": "@local.checkbox_games",
+                "type": "local",
+                "fieldName": "checkbox_games"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "label_text": [
+            {
+              "fullExpression": "@local.description_2",
+              "matchedExpression": "@local.description_2",
+              "type": "local",
+              "fieldName": "description_2"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.see_activities_game": [
+          "value"
+        ],
+        "@local.checkbox_games": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.description_2": [
+          "parameter_list.label_text"
+        ]
+      }
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "checkbox_activities",
+      "value": "@fields.see_activities_activity",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "see_activities_activity",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:see_activities_activity: @local.checkbox_activities",
+          "_cleaned": "changed | set_field:see_activities_activity: @local.checkbox_activities"
+        }
+      ],
+      "parameter_list": {
+        "label_text": "@local.description_3",
+        "align": "left"
+      },
+      "_nested_name": "checkbox_activities",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.see_activities_activity",
+            "matchedExpression": "@fields.see_activities_activity",
+            "type": "fields",
+            "fieldName": "see_activities_activity"
+          }
+        ],
+        "action_list": {
+          "0": {
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:see_activities_activity: @local.checkbox_activities",
+                "matchedExpression": "@local.checkbox_activities",
+                "type": "local",
+                "fieldName": "checkbox_activities"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:see_activities_activity: @local.checkbox_activities",
+                "matchedExpression": "@local.checkbox_activities",
+                "type": "local",
+                "fieldName": "checkbox_activities"
+              }
+            ]
+          }
+        },
+        "parameter_list": {
+          "label_text": [
+            {
+              "fullExpression": "@local.description_3",
+              "matchedExpression": "@local.description_3",
+              "type": "local",
+              "fieldName": "description_3"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@fields.see_activities_activity": [
+          "value"
+        ],
+        "@local.checkbox_activities": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.description_3": [
+          "parameter_list.label_text"
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "name": "button_1",
+      "value": "Chapter 1 (v1)",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "current_chapter",
+            "data.efm_chapt.efm_chapt_1"
+          ],
+          "_raw": "click | set_field:current_chapter: data.efm_chapt.efm_chapt_1",
+          "_cleaned": "click | set_field:current_chapter: data.efm_chapt.efm_chapt_1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "efm_chapter_acts_1"
+          ],
+          "_raw": "click | go_to: efm_chapter_acts_1",
+          "_cleaned": "click | go_to: efm_chapter_acts_1"
+        }
+      ],
+      "parameter_list": {
+        "style": "short",
+        "text_align": "center"
+      },
+      "_nested_name": "button_1"
+    },
+    {
+      "type": "button",
+      "name": "button_2",
+      "value": "Chapter 1 (v2)",
+      "_translations": {
+        "value": {}
+      },
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "set_field",
+          "args": [
+            "current_chapter",
+            "data.efm_chapt.efm_chapt_1"
+          ],
+          "_raw": "click | set_field:current_chapter: data.efm_chapt.efm_chapt_1",
+          "_cleaned": "click | set_field:current_chapter: data.efm_chapt.efm_chapt_1"
+        },
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "efm_chapter_acts_2"
+          ],
+          "_raw": "click | go_to: efm_chapter_acts_2",
+          "_cleaned": "click | go_to: efm_chapter_acts_2"
+        }
+      ],
+      "parameter_list": {
+        "style": "short",
+        "text_align": "center"
+      },
+      "_nested_name": "button_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx"
+}
