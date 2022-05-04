@@ -1,0 +1,8 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_animated_slides_fullscreen",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [],
+  "_xlsxPath": "quality_assurance/components_demo/component_animated_slides.xlsx"
+}
