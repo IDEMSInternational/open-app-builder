@@ -1,0 +1,17 @@
+{
+  "flow_type": "template",
+  "flow_name": "lets_slow_down_lyrics",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "When everything feels like it is falling apart\nAnd you can't help but raise your voice\nWhen all the frustrations are beginning to start\nRemember that you have a choice\n\nLet's slow down\nTake a few deep breaths\nRemember all we have to be grateful for\nLet's slow down\nTake a few deep breaths\nBecause I really couldn't love you more\n\nYou can take pause, you can count to 10\nPlay a game or do something fun\nYou can phone a friend, someone to confide in\nRemember you're not the only one \n\nLet's slow down\nTake a few deep breaths\nRemember all we have to be grateful for\nLet's slow down\nTake a few deep breaths\nBecause I really couldn't love you more\n\nLet's slow down\nTake a few deep breaths\nRemember all we have to be grateful for\nLet's slow down\nTake a few deep breaths\nBecause I really couldn't love you more\nBecause I really couldn't love you more",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    }
+  ],
+  "_xlsxPath": "global/mode_templates/welcome.xlsx"
+}
