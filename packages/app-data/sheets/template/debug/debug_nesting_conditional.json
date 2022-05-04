@@ -163,9 +163,12 @@
         {
           "trigger": "click",
           "action_id": "set_local",
-          "args": [],
-          "_raw": "click | set_local | var_toggle: !@local.var_toggle",
-          "_cleaned": "click | set_local | var_toggle: !@local.var_toggle"
+          "args": [
+            "var_toggle",
+            "!@local.var_toggle"
+          ],
+          "_raw": "click | set_local: var_toggle: !@local.var_toggle",
+          "_cleaned": "click | set_local: var_toggle: !@local.var_toggle"
         }
       ],
       "exclude_from_translation": true,
@@ -173,9 +176,19 @@
       "_dynamicFields": {
         "action_list": {
           "0": {
+            "args": {
+              "1": [
+                {
+                  "fullExpression": "!@local.var_toggle",
+                  "matchedExpression": "!@local.var_toggle",
+                  "type": "local",
+                  "fieldName": "var_toggle"
+                }
+              ]
+            },
             "_raw": [
               {
-                "fullExpression": "click | set_local | var_toggle: !@local.var_toggle",
+                "fullExpression": "click | set_local: var_toggle: !@local.var_toggle",
                 "matchedExpression": "!@local.var_toggle",
                 "type": "local",
                 "fieldName": "var_toggle"
@@ -183,7 +196,7 @@
             ],
             "_cleaned": [
               {
-                "fullExpression": "click | set_local | var_toggle: !@local.var_toggle",
+                "fullExpression": "click | set_local: var_toggle: !@local.var_toggle",
                 "matchedExpression": "!@local.var_toggle",
                 "type": "local",
                 "fieldName": "var_toggle"
@@ -194,6 +207,7 @@
       },
       "_dynamicDependencies": {
         "!@local.var_toggle": [
+          "action_list.0.args.1",
           "action_list.0._raw",
           "action_list.0._cleaned"
         ]
