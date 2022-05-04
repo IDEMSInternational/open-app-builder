@@ -288,6 +288,22 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_templates/debug_nesting_variables.xlsx",
     },
+    efm_act_list: {
+      flow_type: "data_list",
+      flow_name: "efm_act_list",
+      data_list_name: "efm_act",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_list: {
+      flow_type: "data_list",
+      flow_name: "efm_chapter_list",
+      data_list_name: "efm_chapt",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
     example_calc_data_list: {
       flow_type: "data_list",
       flow_subtype: "debug",
@@ -1035,6 +1051,18 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "change_thoughts_sect",
       _xlsxPath: "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx",
     },
+    comp_animated_slides: {
+      flow_type: "template",
+      flow_name: "comp_animated_slides",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/components_demo/component_animated_slides.xlsx",
+    },
+    comp_animated_slides_fullscreen: {
+      flow_type: "template",
+      flow_name: "comp_animated_slides_fullscreen",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/components_demo/component_animated_slides.xlsx",
+    },
     comp_button: {
       flow_type: "template",
       flow_name: "comp_button",
@@ -1046,6 +1074,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_checkbox_button",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
+    },
+    comp_html: {
+      flow_type: "template",
+      flow_name: "comp_html",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/components_demo/component_html.xlsx",
     },
     comp_latex: {
       flow_type: "template",
@@ -1292,6 +1326,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_double_radio_group_2",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_templates/debug_radio_group.xlsx",
+    },
+    debug_emit_force: {
+      flow_type: "template",
+      flow_name: "debug_emit_force",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/debug_templates/debug_emit.xlsx",
     },
     debug_evaluate_hidden: {
       flow_type: "template",
@@ -1922,6 +1962,34 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_wrapper",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_templates/debug_nesting_variables.xlsx",
+    },
+    efm_activity_template: {
+      flow_type: "template",
+      flow_name: "efm_activity_template",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_1: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_1",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_2: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_2",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapters: {
+      flow_type: "template",
+      flow_name: "efm_chapters",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
     },
     example_accordion: {
       flow_type: "template",
@@ -2656,6 +2724,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "learn_temp",
       _xlsxPath: "global/mode_templates/read.xlsx",
     },
+    lets_slow_down_lyrics: {
+      flow_type: "template",
+      flow_name: "lets_slow_down_lyrics",
+      _xlsxPath: "global/mode_templates/welcome.xlsx",
+    },
     lib_act_change_thoughts: {
       flow_type: "template",
       flow_name: "lib_act_change_thoughts",
@@ -3161,6 +3234,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "something_fun",
       _xlsxPath: "global/core_templates/core_templates_relax_and_activities.xlsx",
+    },
+    splash_screens: {
+      flow_type: "template",
+      flow_name: "splash_screens",
+      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
     },
     suggestions: {
       flow_type: "template",

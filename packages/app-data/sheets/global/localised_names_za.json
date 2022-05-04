@@ -7,6 +7,15 @@
   "rows": [
     {
       "type": "declare_global_constant",
+      "name": "topic_intro_name",
+      "value": "Sbo",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
       "name": "female_adult_name_1",
       "value": "Thandie",
       "_translations": {
