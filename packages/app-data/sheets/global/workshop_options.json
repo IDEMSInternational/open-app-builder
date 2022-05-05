@@ -5,14 +5,23 @@
   "rows": [
     {
       "type": "declare_field_default",
-      "name": "do_workshops_together",
+      "name": "workshop_path",
+      "value": "individual",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "workshop_path_user_choice",
       "value": false,
       "exclude_from_translation": true
     },
     {
       "type": "declare_field_default",
-      "name": "workshop_path",
-      "value": "individual",
+      "name": "do_workshops_together",
+      "value": "@fields.workshop_path==\"together\"",
       "_translations": {
         "value": {}
       },

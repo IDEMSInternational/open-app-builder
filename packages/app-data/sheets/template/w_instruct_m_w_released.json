@@ -5,6 +5,30 @@
   "status": "released",
   "rows": [
     {
+      "name": "do_workshops_together",
+      "value": "@fields.do_workshops_together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "do_workshops_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.do_workshops_together",
+            "matchedExpression": "@fields.do_workshops_together",
+            "type": "fields",
+            "fieldName": "do_workshops_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_workshops_together": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "m_workshop_released",
       "value": "m_workshop_released",
@@ -39,30 +63,23 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @field.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+              "value": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
-              "condition": "!@field.do_workshops_together",
+              "condition": "!@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_released.in_week_message.text",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @field.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
-                    "matchedExpression": "@field.user_name",
-                    "type": "field",
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+                    "matchedExpression": "@fields.user_name",
+                    "type": "fields",
                     "fieldName": "user_name"
                   },
                   {
-                    "fullExpression": "Hi @field.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+                    "fullExpression": "Hi @fields.user_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
@@ -70,51 +87,44 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "!@field.do_workshops_together",
-                    "matchedExpression": "!@field.do_workshops_together",
-                    "type": "field",
+                    "fullExpression": "!@local.do_workshops_together",
+                    "matchedExpression": "!@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.user_name": [
+                "@fields.user_name": [
                   "value"
                 ],
                 "@global.parent_app": [
                   "value"
                 ],
-                "!@field.do_workshops_together": [
+                "!@local.do_workshops_together": [
                   "condition"
                 ]
               }
             },
             {
               "name": "text",
-              "value": "Hi @field.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+              "value": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
-              "condition": "@field.do_workshops_together",
+              "condition": "@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_released.in_week_message.text",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @field.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
-                    "matchedExpression": "@field.group_name",
-                    "type": "field",
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+                    "matchedExpression": "@fields.group_name",
+                    "type": "fields",
                     "fieldName": "group_name"
                   },
                   {
-                    "fullExpression": "Hi @field.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
+                    "fullExpression": "Hi @fields.group_name! Congratulations for starting @global.parent_app week 4. \n\nThis week’s workshop is about how to increase your chances of getting your teen to do what you ask them to do.",
                     "matchedExpression": "@global.parent_app",
                     "type": "global",
                     "fieldName": "parent_app"
@@ -122,21 +132,21 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.do_workshops_together",
-                    "matchedExpression": "@field.do_workshops_together",
-                    "type": "field",
+                    "fullExpression": "@local.do_workshops_together",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.group_name": [
+                "@fields.group_name": [
                   "value"
                 ],
                 "@global.parent_app": [
                   "value"
                 ],
-                "@field.do_workshops_together": [
+                "@local.do_workshops_together": [
                   "condition"
                 ]
               }
