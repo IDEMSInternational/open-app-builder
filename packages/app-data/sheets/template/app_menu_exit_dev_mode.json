@@ -51,33 +51,8 @@
           "_cleaned": "click | emit:force_restart"
         }
       ],
-      "hidden": "@local.text_box == @global.dev_mode_code",
       "exclude_from_translation": true,
-      "_nested_name": "button_incorrect_code",
-      "_dynamicFields": {
-        "hidden": [
-          {
-            "fullExpression": "@local.text_box == @global.dev_mode_code",
-            "matchedExpression": "@local.text_box",
-            "type": "local",
-            "fieldName": "text_box"
-          },
-          {
-            "fullExpression": "@local.text_box == @global.dev_mode_code",
-            "matchedExpression": "@global.dev_mode_code",
-            "type": "global",
-            "fieldName": "dev_mode_code"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.text_box": [
-          "hidden"
-        ],
-        "@global.dev_mode_code": [
-          "hidden"
-        ]
-      }
+      "_nested_name": "button_incorrect_code"
     },
     {
       "type": "display_group",
