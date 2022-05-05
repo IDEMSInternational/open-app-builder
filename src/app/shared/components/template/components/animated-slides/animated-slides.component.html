@@ -1,8 +1,9 @@
-<div class="tmpl-animated-slides-container">
+<div [class]="'animated-slides-wrapper'" [attr.data-param-style]="style">
+  <div class="background"></div>
   <ion-button fill="clear" (click)="skipIntro()" class="skip-button">
-    {{ closeText }}
+    {{ skipText }}
   </ion-button>
-  <div [class]="'section-container animated-slides-child' + ' ' + style">
+  <div class="section-container">
     <section *ngFor="let childRow of _row.rows; let idx = index" [@fadeInOut]="fadeSection[idx]">
       <plh-template-component [row]="childRow" [parent]="parent"></plh-template-component>
     </section>

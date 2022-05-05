@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { ModalController } from "@ionic/angular";
 import { PLHAnimations } from "src/app/shared/animations";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
@@ -9,10 +8,10 @@ import { TemplateBaseComponent } from "../base";
   selector: "template-animated-slides",
   templateUrl: "./animated-slides.component.html",
   styleUrls: ["./animated-slides.component.scss"],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implements OnInit {
-  closeText = "";
+  skipText = "";
   // local tracker for which sections have been shown
   fadeSection = [];
   // durations to display each faded section
@@ -20,21 +19,17 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
   private _isDismissed = false;
   style: string | null;
 
-  constructor(private modalCtrl: ModalController) {
-    super();
-  }
-
   ngOnInit(): void {
     this.getParams();
     this.runFade();
   }
 
   getParams() {
-    this.closeText = getStringParamFromTemplateRow(this._row, "close_text", "Skip");
+    this.skipText = getStringParamFromTemplateRow(this._row, "skip_text", "Skip");
     for (let row of this._row.rows) {
       this.fadeTimes.push(getNumberParamFromTemplateRow(row, "duration", 0) * 1000);
     }
-    this.style = getStringParamFromTemplateRow(this._row, "style", "full-screen");
+    this.style = getStringParamFromTemplateRow(this._row, "style", null);
   }
   /**
    * Iterate over each section for display, showing for
@@ -50,14 +45,15 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
       this.fadeSection[i] = "out";
       i++;
     }
-    // modal may have already been dismissed, so check it exists before attempting again
+    /* component may have already been dismissed with "uncompleted" event,
+     * so check it exists before attempting again */
     if (!this._isDismissed) {
-      await this.modalCtrl.dismiss({ _completed: false });
+      this.triggerActions("completed");
     }
   }
   skipIntro() {
     this._isDismissed = true;
-    this.modalCtrl.dismiss({ _completed: false });
+    this.triggerActions("uncompleted");
   }
   private _wait(ms: number) {
     return new Promise<void>((resolve) =>
