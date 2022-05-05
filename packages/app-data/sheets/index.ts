@@ -1052,12 +1052,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_animated_slides.xlsx",
     },
-    comp_animated_slides_fullscreen: {
-      flow_type: "template",
-      flow_name: "comp_animated_slides_fullscreen",
-      flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/components_demo/component_animated_slides.xlsx",
-    },
     comp_button: {
       flow_type: "template",
       flow_name: "comp_button",
@@ -1591,12 +1585,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "debug_pop_ups_variable",
       flow_subtype: "debug",
       _xlsxPath: "quality_assurance/debug_templates/debug_pop_ups_variable.xlsx",
-    },
-    debug_print_global: {
-      flow_type: "template",
-      flow_name: "debug_print_global",
-      flow_subtype: "debug",
-      _xlsxPath: "quality_assurance/debug_templates/debug_small_issues.xlsx",
     },
     debug_radio_group: {
       flow_type: "template",
