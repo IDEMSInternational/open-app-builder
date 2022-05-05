@@ -26,7 +26,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.parent_point_count_instruct_positively == 0",
+              "condition": "@fields.parent_point_count_instruct_positively == 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.text",
               "_dynamicFields": {
@@ -46,9 +46,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively == 0",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively == 0",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
@@ -60,7 +60,7 @@
                 "@global.parent_points": [
                   "value"
                 ],
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "condition"
                 ]
               }
@@ -82,7 +82,7 @@
                   "_cleaned": "click | go_to:w_instruct_tools"
                 }
               ],
-              "condition": "@field.parent_point_count_instruct_positively == 0",
+              "condition": "@fields.parent_point_count_instruct_positively == 0",
               "hidden": "FALSE",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.button_1",
@@ -97,9 +97,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively == 0",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively == 0",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
@@ -108,7 +108,7 @@
                 "@global.w_instruct_tools": [
                   "value"
                 ],
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "condition"
                 ]
               }
@@ -119,7 +119,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.parent_point_count_instruct_positively == 0",
+              "condition": "@fields.parent_point_count_instruct_positively == 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.habit_data",
               "_dynamicFields": {
@@ -133,9 +133,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively == 0",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively == 0",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
@@ -144,7 +144,7 @@
                 "@data.habit.instruct_positively": [
                   "value"
                 ],
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "condition"
                 ]
               }
@@ -162,21 +162,21 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.parent_point_count_instruct_positively > 0",
+              "condition": "@fields.parent_point_count_instruct_positively > 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.title",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively > 0",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively > 0",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "condition"
                 ]
               }
@@ -187,7 +187,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.parent_point_count_instruct_positively > 0",
+              "condition": "@fields.parent_point_count_instruct_positively > 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.image",
               "_dynamicFields": {
@@ -201,9 +201,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively > 0",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively > 0",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
@@ -212,7 +212,7 @@
                 "@data.habit.instruct_positively.image_asset": [
                   "value"
                 ],
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "condition"
                 ]
               }
@@ -230,7 +230,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.parent_point_count_instruct_positively == 1",
+              "condition": "@fields.parent_point_count_instruct_positively == 1",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.text",
               "_dynamicFields": {
@@ -250,9 +250,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively == 1",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively == 1",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
@@ -264,53 +264,46 @@
                 "@data.habit.instruct_positively.title": [
                   "value"
                 ],
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "condition"
                 ]
               }
             },
             {
               "name": "text",
-              "value": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @field.parent_point_count_instruct_positively times already  – so you’re making great progress.",
+              "value": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
-              "condition": "@field.parent_point_count_instruct_positively > 1",
+              "condition": "@fields.parent_point_count_instruct_positively > 1",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.text",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @field.parent_point_count_instruct_positively times already  – so you’re making great progress.",
+                    "fullExpression": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
                     "matchedExpression": "@global.parent_point",
                     "type": "global",
                     "fieldName": "parent_point"
                   },
                   {
-                    "fullExpression": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @field.parent_point_count_instruct_positively times already  – so you’re making great progress.",
+                    "fullExpression": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
                     "matchedExpression": "@data.habit.instruct_positively.title",
                     "type": "data",
                     "fieldName": "habit"
                   },
                   {
-                    "fullExpression": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @field.parent_point_count_instruct_positively times already  – so you’re making great progress.",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_instruct_positively > 1",
-                    "matchedExpression": "@field.parent_point_count_instruct_positively",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_instruct_positively > 1",
+                    "matchedExpression": "@fields.parent_point_count_instruct_positively",
+                    "type": "fields",
                     "fieldName": "parent_point_count_instruct_positively"
                   }
                 ]
@@ -322,7 +315,7 @@
                 "@data.habit.instruct_positively.title": [
                   "value"
                 ],
-                "@field.parent_point_count_instruct_positively": [
+                "@fields.parent_point_count_instruct_positively": [
                   "value",
                   "condition"
                 ]

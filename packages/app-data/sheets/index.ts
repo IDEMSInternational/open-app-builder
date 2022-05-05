@@ -578,11 +578,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "workshop_options",
       _xlsxPath: "global/data/workshop_globals.xlsx",
     },
-    workshop_titles: {
-      flow_type: "global",
-      flow_name: "workshop_titles",
-      _xlsxPath: "global/data/workshop_globals.xlsx",
-    },
   },
   template: {
     accept_terms: {
