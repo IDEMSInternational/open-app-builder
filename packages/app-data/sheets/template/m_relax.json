@@ -175,16 +175,6 @@
               ],
               "_raw": "click | emit:completed",
               "_cleaned": "click | emit:completed"
-            },
-            {
-              "trigger": "click",
-              "action_id": "set_field",
-              "args": [
-                "daily_relax_done",
-                true
-              ],
-              "_raw": "click | set_field:daily_relax_done:true",
-              "_cleaned": "click | set_field:daily_relax_done:true"
             }
           ],
           "hidden": false,

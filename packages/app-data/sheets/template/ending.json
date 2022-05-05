@@ -181,6 +181,27 @@
                   "_nested_name": "watch.workshop_activity.content_box.video_src"
                 },
                 {
+                  "name": "button",
+                  "value": "Read along",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "action_list": [
+                    {
+                      "trigger": "click",
+                      "action_id": "pop_up",
+                      "args": [
+                        "lets_slow_down_lyrics"
+                      ],
+                      "_raw": "click | pop_up : lets_slow_down_lyrics",
+                      "_cleaned": "click | pop_up : lets_slow_down_lyrics"
+                    }
+                  ],
+                  "hidden": false,
+                  "type": "set_variable",
+                  "_nested_name": "watch.workshop_activity.content_box.button"
+                },
+                {
                   "name": "bottom_text",
                   "value": "See you soon.",
                   "_translations": {

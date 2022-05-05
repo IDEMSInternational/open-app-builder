@@ -235,6 +235,10 @@ export class CampaignService {
     if (!notification_schedule) return;
     let { _schedule_at } = notification_schedule;
 
+    // HACK - remove markdown form title and text as not currently supported in capacitor notifications
+    row.text = this.hackStripNotificationMarkdown(row.text);
+    row.title = this.hackStripNotificationMarkdown(row.title);
+
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: row.text || NOTIFICATION_DEFAULTS.text,
@@ -460,5 +464,14 @@ export class CampaignService {
       .map(([_, value]) => shuffleArray(value));
     const shuffleSortedRows: FlowTypes.Campaign_listRow[] = [].concat(...shuffleSortedGroups);
     return shuffleSortedRows;
+  }
+
+  /**
+   * Rough function to strip some commonly used markdown from strings, specifically
+   * `**` - bold text
+   * NOTE - comprehensive extraction could be carried out using something like strip-markdown or mdast
+   */
+  private hackStripNotificationMarkdown(str = "") {
+    return str.replace(/\*\*/g, "");
   }
 }
