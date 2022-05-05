@@ -106,7 +106,7 @@ const APP_SIDEMENU_DEFAULTS = {
 };
 
 type IAppLaunchAction = {
-  type: "template_popup" | "tour_start";
+  type: "run_survey" | "template_popup" | "tour_start";
   value: string;
 };
 /** Define app-specific startup tasks and logic */
