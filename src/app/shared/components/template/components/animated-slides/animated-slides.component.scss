@@ -1,7 +1,4 @@
-:host {
-  background-color: var(--ion-background-color, #fff);
-}
-.tmpl-animated-slides-container {
+.animated-slides-wrapper {
   p {
     font-size: 20px;
   }
@@ -35,9 +32,14 @@
     right: 0;
     opacity: 0.3;
   }
-  .full-screen {
-    plh-tmpl-animated-section {
-      align-items: center;
+  &[data-param-style~="light"] {
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--ion-background-color, #fff);
     }
   }
 }
