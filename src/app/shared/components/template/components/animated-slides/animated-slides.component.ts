@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { PLHAnimations } from "src/app/shared/animations";
 import { getNumberParamFromTemplateRow, getStringParamFromTemplateRow } from "src/app/shared/utils";
 import { TemplateBaseComponent } from "../base";
@@ -8,7 +8,6 @@ import { TemplateBaseComponent } from "../base";
   selector: "template-animated-slides",
   templateUrl: "./animated-slides.component.html",
   styleUrls: ["./animated-slides.component.scss"],
-  // encapsulation: ViewEncapsulation.None,
 })
 export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implements OnInit {
   skipText = "";
