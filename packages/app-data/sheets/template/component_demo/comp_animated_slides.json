@@ -6,8 +6,29 @@
   "rows": [
     {
       "type": "animated_slides",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
       "parameter_list": {
-        "close_text": "Skip Intro"
+        "skip_text": "Skip Intro",
+        "style": "light"
       },
       "rows": [
         {
@@ -17,26 +38,23 @@
           },
           "rows": [
             {
-              "type": "icon_banner",
+              "type": "display_group",
               "parameter_list": {
-                "title": "hi",
-                "text": "body",
-                "image_src": "plh_images/first_app_launch/frustrated_shadow.svg"
+                "style": "centre_image"
               },
-              "name": "icon_banner",
-              "_nested_name": "animated_slides.animated_section.icon_banner"
-            },
-            {
-              "type": "image",
-              "name": "image_1",
-              "value": "plh_images/first_app_launch/frustrated_shadow.svg",
-              "_translations": {
-                "value": {}
-              },
-              "style_list": [
-                "img {max-width: 200px}"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_1",
+                  "value": "plh_images/first_app_launch/frustrated_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.image_1"
+                }
               ],
-              "_nested_name": "animated_slides.animated_section.image_1"
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
             },
             {
               "type": "text",
@@ -61,16 +79,23 @@
           },
           "rows": [
             {
-              "type": "image",
-              "name": "image_2",
-              "value": "plh_images/first_app_launch/loving_parent_shadow.svg",
-              "_translations": {
-                "value": {}
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
               },
-              "style_list": [
-                "max-width: 200px"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_2",
+                  "value": "plh_images/first_app_launch/loving_parent_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.image_2"
+                }
               ],
-              "_nested_name": "animated_slides.animated_section.image_2"
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
             },
             {
               "type": "text",
@@ -95,16 +120,23 @@
           },
           "rows": [
             {
-              "type": "image",
-              "name": "image_3",
-              "value": "plh_images/first_app_launch/parent_group_shadow.svg",
-              "_translations": {
-                "value": {}
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
               },
-              "style_list": [
-                "max-width: 200px"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_3",
+                  "value": "plh_images/first_app_launch/parent_group_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.image_3"
+                }
               ],
-              "_nested_name": "animated_slides.animated_section.image_3"
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
             },
             {
               "type": "text",
@@ -142,6 +174,9 @@
             },
             {
               "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images"
+              },
               "rows": [
                 {
                   "type": "image",
@@ -178,7 +213,17 @@
                     "value": {}
                   },
                   "_nested_name": "animated_slides.animated_section.display_group.partner_4"
-                },
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images_overflow"
+              },
+              "rows": [
                 {
                   "type": "image",
                   "name": "partner_5",
@@ -187,6 +232,143 @@
                     "value": {}
                   },
                   "_nested_name": "animated_slides.animated_section.display_group.partner_5"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "4"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "value": "@global.parent_app funded by",
+              "_translations": {
+                "value": {}
+              },
+              "parameter_list": {
+                "style": "large center"
+              },
+              "name": "text",
+              "_nested_name": "animated_slides.animated_section.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.parent_app funded by",
+                    "matchedExpression": "@global.parent_app",
+                    "type": "global",
+                    "fieldName": "parent_app"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_app": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images tight"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "funder_1",
+                  "value": "plh_images/logos/funders/ukri.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_1"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_2",
+                  "value": "plh_images/logos/funders/gcrf.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_2"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_3",
+                  "value": "plh_images/logos/funders/newton_fund.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_3"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_4",
+                  "value": "plh_images/logos/funders/lego_foundation.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_4"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_5",
+                  "value": "plh_images/logos/funders/university_of_oxford.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_5"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_6",
+                  "value": "plh_images/logos/funders/oak_foundation.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_6"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_7",
+                  "value": "plh_images/logos/funders/unicef.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_7"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_8",
+                  "value": "plh_images/logos/funders/end_violence_against_children.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_8"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_9",
+                  "value": "plh_images/logos/funders/erc.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_9"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_10",
+                  "value": "plh_images/logos/funders/generali_human_safety_net.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_10"
                 }
               ],
               "name": "display_group",
