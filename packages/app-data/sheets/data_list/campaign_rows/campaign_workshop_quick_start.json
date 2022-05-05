@@ -105,9 +105,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_self_care_completed"
+            "calc": "@fields.w_self_care_completion_level == 100"
           },
-          "_raw": "@fields.w_self_care_completed"
+          "_raw": "@fields.w_self_care_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -213,9 +213,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_1on1_completed"
+            "calc": "@fields.w_1on1_completion_level == 100"
           },
-          "_raw": "@fields.w_1on1_completed"
+          "_raw": "@fields.w_1on1_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -321,9 +321,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_praise_completed"
+            "calc": "@fields.w_praise_completion_level == 100"
           },
-          "_raw": "@fields.w_praise_completed"
+          "_raw": "@fields.w_praise_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -429,9 +429,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_instruct_completed"
+            "calc": "@fields.w_instruct_completion_level == 100"
           },
-          "_raw": "@fields.w_instruct_completed"
+          "_raw": "@fields.w_instruct_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -537,9 +537,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_stress_completed"
+            "calc": "@fields.w_stress_completion_level == 100"
           },
-          "_raw": "@fields.w_stress_completed"
+          "_raw": "@fields.w_stress_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -645,9 +645,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_money_completed"
+            "calc": "@fields.w_money_completion_level == 100"
           },
-          "_raw": "@fields.w_money_completed"
+          "_raw": "@fields.w_money_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -744,18 +744,18 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "!@fields.w_rules_disabled &&\n@fields.w_rules_started"
+            "calc": "!@fields.w_rules_disabled && @fields.w_rules_started"
           },
-          "_raw": "!@fields.w_rules_disabled &&\n@fields.w_rules_started"
+          "_raw": "!@fields.w_rules_disabled && @fields.w_rules_started"
         }
       ],
       "deactivation_condition_list": [
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_rules_completed"
+            "calc": "@fields.w_rules_completion_level == 100"
           },
-          "_raw": "@fields.w_rules_completed"
+          "_raw": "@fields.w_rules_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -861,9 +861,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_consequence_completed"
+            "calc": "@fields.w_consequence_completion_level == 100"
           },
-          "_raw": "@fields.w_consequence_completed"
+          "_raw": "@fields.w_consequence_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -969,9 +969,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_solve_completed"
+            "calc": "@fields.w_solve_completion_level == 100"
           },
-          "_raw": "@fields.w_solve_completed"
+          "_raw": "@fields.w_solve_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -1077,9 +1077,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_safe_completed"
+            "calc": "@fields.w_safe_completion_level == 100"
           },
-          "_raw": "@fields.w_safe_completed"
+          "_raw": "@fields.w_safe_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -1185,9 +1185,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_crisis_completed"
+            "calc": "@fields.w_crisis_completion_level == 100"
           },
-          "_raw": "@fields.w_crisis_completed"
+          "_raw": "@fields.w_crisis_completion_level == 100"
         }
       ],
       "campaign_list": [
@@ -1293,9 +1293,9 @@
         {
           "condition_type": "calc",
           "condition_args": {
-            "calc": "@fields.w_celebrate_completed"
+            "calc": "@fields.w_celebrate_completion_level == 100"
           },
-          "_raw": "@fields.w_celebrate_completed"
+          "_raw": "@fields.w_celebrate_completion_level == 100"
         }
       ],
       "campaign_list": [

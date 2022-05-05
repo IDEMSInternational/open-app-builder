@@ -39,13 +39,6 @@
             "calc": "!@fields.w_instruct_started"
           },
           "_raw": "!@fields.w_instruct_started"
-        },
-        {
-          "condition_type": "calc",
-          "condition_args": {
-            "calc": "!@fields.do_workshops_together"
-          },
-          "_raw": "!@fields.do_workshops_together"
         }
       ],
       "deactivation_condition_list": [
@@ -55,6 +48,13 @@
             "calc": "@fields.workshop_number > 4"
           },
           "_raw": "@fields.workshop_number > 4"
+        },
+        {
+          "condition_type": "calc",
+          "condition_args": {
+            "calc": "@fields.do_workshops_together"
+          },
+          "_raw": "@fields.do_workshops_together"
         }
       ],
       "campaign_list": [

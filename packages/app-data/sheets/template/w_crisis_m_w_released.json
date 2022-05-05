@@ -5,6 +5,30 @@
   "status": "released",
   "rows": [
     {
+      "name": "do_workshops_together",
+      "value": "@fields.do_workshops_together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "do_workshops_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.do_workshops_together",
+            "matchedExpression": "@fields.do_workshops_together",
+            "type": "fields",
+            "fieldName": "do_workshops_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_workshops_together": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "m_workshop_released",
       "value": "m_workshop_released",
@@ -39,86 +63,72 @@
           "rows": [
             {
               "name": "text",
-              "value": "Hi @field.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+              "value": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
-              "condition": "!@field.do_workshops_together",
+              "condition": "!@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_released.in_week_message.text",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @field.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
-                    "matchedExpression": "@field.user_name",
-                    "type": "field",
+                    "fullExpression": "Hi @fields.user_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+                    "matchedExpression": "@fields.user_name",
+                    "type": "fields",
                     "fieldName": "user_name"
                   }
                 ],
                 "condition": [
                   {
-                    "fullExpression": "!@field.do_workshops_together",
-                    "matchedExpression": "!@field.do_workshops_together",
-                    "type": "field",
+                    "fullExpression": "!@local.do_workshops_together",
+                    "matchedExpression": "!@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.user_name": [
+                "@fields.user_name": [
                   "value"
                 ],
-                "!@field.do_workshops_together": [
+                "!@local.do_workshops_together": [
                   "condition"
                 ]
               }
             },
             {
               "name": "text",
-              "value": "Hi @field.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+              "value": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
               "_translations": {
-                "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
-                }
+                "value": {}
               },
-              "condition": "@field.do_workshops_together",
+              "condition": "@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_released.in_week_message.text",
               "_dynamicFields": {
                 "value": [
                   {
-                    "fullExpression": "Hi @field.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
-                    "matchedExpression": "@field.group_name",
-                    "type": "field",
+                    "fullExpression": "Hi @fields.group_name! A crisis can happen to anyone - being prepared helps a lot. \n\nThis workshop will show you how.",
+                    "matchedExpression": "@fields.group_name",
+                    "type": "fields",
                     "fieldName": "group_name"
                   }
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.do_workshops_together",
-                    "matchedExpression": "@field.do_workshops_together",
-                    "type": "field",
+                    "fullExpression": "@local.do_workshops_together",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.group_name": [
+                "@fields.group_name": [
                   "value"
                 ],
-                "@field.do_workshops_together": [
+                "@local.do_workshops_together": [
                   "condition"
                 ]
               }

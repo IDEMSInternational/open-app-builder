@@ -6,8 +6,29 @@
   "rows": [
     {
       "type": "animated_slides",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
       "parameter_list": {
-        "close_text": "Skip Intro"
+        "skip_text": "Click here to skip",
+        "style": "light"
       },
       "rows": [
         {
@@ -17,38 +38,35 @@
           },
           "rows": [
             {
-              "type": "icon_banner",
+              "type": "display_group",
               "parameter_list": {
-                "title": "hi",
-                "text": "body",
-                "image_src": "plh_images/first_app_launch/frustrated_shadow.svg"
+                "style": "centre_image"
               },
-              "name": "icon_banner",
-              "_nested_name": "animated_slides.animated_section.icon_banner"
-            },
-            {
-              "type": "image",
-              "name": "image_1",
-              "value": "plh_images/first_app_launch/frustrated_shadow.svg",
-              "_translations": {
-                "value": {}
-              },
-              "style_list": [
-                "img {max-width: 200px}"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_1",
+                  "value": "plh_images/first_app_launch/frustrated_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.image_1"
+                }
               ],
-              "_nested_name": "animated_slides.animated_section.image_1"
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
             },
             {
               "type": "text",
-              "name": "slogan_1",
-              "value": "Bringing teenagers up is hard",
+              "value": "Slide 1 text",
               "_translations": {
                 "value": {}
               },
               "parameter_list": {
                 "style": "large center"
               },
-              "_nested_name": "animated_slides.animated_section.slogan_1"
+              "name": "text",
+              "_nested_name": "animated_slides.animated_section.text"
             }
           ],
           "name": "animated_section",
@@ -61,62 +79,35 @@
           },
           "rows": [
             {
-              "type": "image",
-              "name": "image_2",
-              "value": "plh_images/first_app_launch/loving_parent_shadow.svg",
-              "_translations": {
-                "value": {}
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
               },
-              "style_list": [
-                "max-width: 200px"
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_2",
+                  "value": "plh_images/first_app_launch/loving_parent_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "_nested_name": "animated_slides.animated_section.display_group.image_2"
+                }
               ],
-              "_nested_name": "animated_slides.animated_section.image_2"
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
             },
             {
               "type": "text",
-              "name": "slogan_2",
-              "value": "You are the best parent your teen could have",
+              "value": "Slide 2 text",
               "_translations": {
                 "value": {}
               },
               "parameter_list": {
                 "style": "large center"
               },
-              "_nested_name": "animated_slides.animated_section.slogan_2"
-            }
-          ],
-          "name": "animated_section",
-          "_nested_name": "animated_slides.animated_section"
-        },
-        {
-          "type": "animated_section",
-          "parameter_list": {
-            "duration": "3.5"
-          },
-          "rows": [
-            {
-              "type": "image",
-              "name": "image_3",
-              "value": "plh_images/first_app_launch/parent_group_shadow.svg",
-              "_translations": {
-                "value": {}
-              },
-              "style_list": [
-                "max-width: 200px"
-              ],
-              "_nested_name": "animated_slides.animated_section.image_3"
-            },
-            {
-              "type": "text",
-              "name": "slogan_3",
-              "value": "Join the 152.4 million parents who have used our resources",
-              "_translations": {
-                "value": {}
-              },
-              "parameter_list": {
-                "style": "large center"
-              },
-              "_nested_name": "animated_slides.animated_section.slogan_3"
+              "name": "text",
+              "_nested_name": "animated_slides.animated_section.text"
             }
           ],
           "name": "animated_section",
@@ -130,7 +121,7 @@
           "rows": [
             {
               "type": "text",
-              "value": "Powered by Parenting for Lifelong Health and partners",
+              "value": "Slide 3 text, with two_columns_images display group",
               "_translations": {
                 "value": {}
               },
@@ -142,6 +133,9 @@
             },
             {
               "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images"
+              },
               "rows": [
                 {
                   "type": "image",
@@ -178,7 +172,17 @@
                     "value": {}
                   },
                   "_nested_name": "animated_slides.animated_section.display_group.partner_4"
-                },
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images_overflow"
+              },
+              "rows": [
                 {
                   "type": "image",
                   "name": "partner_5",
