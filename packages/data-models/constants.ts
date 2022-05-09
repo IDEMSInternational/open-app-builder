@@ -1,7 +1,7 @@
 /// <reference lib="dom" />
 
 /*********************************************************************************************
- * Constants used throughout the app
+ *  Constants used throughout the app
  *
  * NOTE - this file should not be edited directly. All constants can be overridden
  * via the `app_constants` field in deployment configs
