@@ -82,11 +82,9 @@ export class AppComponent {
       const user = this.userMetaService.userMeta;
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        this.hackSetFirstOpenFields();
         await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
-      await this.hackSetAppOpenFields(user);
       if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
           this.removeConsoleLogs();
@@ -204,51 +202,5 @@ export class AppComponent {
         this.templateFieldService.setField("user_mode", "false");
       }
     }
-  }
-
-  /**
-   * temporary fix: set initial fields to avoid doubling up of quickstart buttons
-   * TODO CC 2021-07-23 - Review if methods still required
-   */
-  private hackSetFirstOpenFields() {
-    this.templateFieldService.setField(".w_1on1_completion_status", "uncompleted");
-    this.templateFieldService.setField("second_week", "false");
-    this.templateFieldService.setField(".w_praise_completion_status", "uncompleted");
-    this.templateFieldService.setField("third_week", "false");
-  }
-
-  /**
-   * temporary workaround for setting unlocked content
-   */
-  private async hackSetAppOpenFields(user: IUserMeta) {
-    // TODO CC 2021-07-23 - Review if methods below still required
-    let old_date = this.userMetaService.getUserMeta("current_date");
-    await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
-    let current_date = this.userMetaService.getUserMeta("current_date");
-    this.templateFieldService.setField("first_app_open", user.first_app_open);
-    this.templateFieldService.setField("current_date", current_date);
-    if (old_date != current_date) {
-      this.templateFieldService.setField("daily_relax_done", "false");
-    }
-    this.templateFieldService.setField("first_week", "true");
-    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
-      this.templateFieldService.setField("second_week", "true");
-      this.templateFieldService.setField("w_1on1_disabled", "false");
-    } else {
-      this.templateFieldService.setField("second_week", "false");
-    }
-    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
-      this.templateFieldService.setField("third_week", "true");
-      this.templateFieldService.setField("w_praise_disabled", "false");
-    } else {
-      this.templateFieldService.setField("third_week", "false");
-    }
-    this.templateFieldService.setField(
-      "days_since_start",
-      (
-        (Date.parse(current_date) - Date.parse(user.first_app_open)) /
-        (24 * 60 * 60 * 1000)
-      ).toString()
-    );
   }
 }
