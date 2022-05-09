@@ -221,6 +221,30 @@
       }
     },
     {
+      "name": "do_workshops_together",
+      "value": "@fields.do_workshops_together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "do_workshops_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.do_workshops_together",
+            "matchedExpression": "@fields.do_workshops_together",
+            "type": "fields",
+            "fieldName": "do_workshops_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_workshops_together": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "update_action_list",
       "name": "custom_actions_2",
       "action_list": [
@@ -298,9 +322,6 @@
               "_cleaned": "click | go_to: workshop_options_page"
             }
           ],
-          "parameter_list": {
-            "style": "options short flexible"
-          },
           "style_list": [
             "flex: 1"
           ],
@@ -310,469 +331,480 @@
       "_nested_name": "heading"
     },
     {
-      "type": "tile_component",
-      "name": "quick_start_self_care",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "set_field",
-          "args": [
-            "do_this_workshop_together",
-            false
-          ],
-          "_raw": "click | set_field:do_this_workshop_together:false",
-          "_cleaned": "click | set_field:do_this_workshop_together:false"
-        },
-        {
-          "trigger": "click",
-          "action_id": "trigger_actions",
-          "args": [
-            "@local.quick_start_campaign.action_list"
-          ],
-          "_raw": "click | trigger_actions: @local.quick_start_campaign.action_list",
-          "_cleaned": "click | trigger_actions: @local.quick_start_campaign.action_list"
-        }
-      ],
-      "exclude_from_translation": true,
-      "condition": "@local.quick_start_workshop_id==\"w_self_care\" && @local.quick_start_campaign.id != \"default\"",
+      "type": "display_group",
+      "name": "quick_start_button",
+      "condition": "@local.quick_start_campaign.id != \"default\"",
       "parameter_list": {
-        "style": "quick_start_dark",
-        "first_line_text": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-        "icon_src": "@local.quick_start_campaign.icon"
+        "style": "column"
       },
-      "_nested_name": "quick_start_self_care",
-      "_dynamicFields": {
-        "action_list": {
-          "1": {
-            "args": {
-              "0": [
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "quick_start_self_care",
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "do_this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:do_this_workshop_together:false",
+              "_cleaned": "click | set_field:do_this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "trigger_actions",
+              "args": [
+                "@local.quick_start_campaign.action_list"
+              ],
+              "_raw": "click | trigger_actions: @local.quick_start_campaign.action_list",
+              "_cleaned": "click | trigger_actions: @local.quick_start_campaign.action_list"
+            }
+          ],
+          "exclude_from_translation": true,
+          "condition": "@local.quick_start_workshop_id==\"w_self_care\"",
+          "parameter_list": {
+            "style": "quick_start_dark",
+            "first_line_text": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+            "icon_src": "@local.quick_start_campaign.icon"
+          },
+          "_nested_name": "quick_start_button.quick_start_self_care",
+          "_dynamicFields": {
+            "action_list": {
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.quick_start_campaign.action_list",
+                      "matchedExpression": "@local.quick_start_campaign.action_list",
+                      "type": "local",
+                      "fieldName": "quick_start_campaign"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                    "matchedExpression": "@local.quick_start_campaign.action_list",
+                    "type": "local",
+                    "fieldName": "quick_start_campaign"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                    "matchedExpression": "@local.quick_start_campaign.action_list",
+                    "type": "local",
+                    "fieldName": "quick_start_campaign"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@local.quick_start_workshop_id==\"w_self_care\"",
+                "matchedExpression": "@local.quick_start_workshop_id",
+                "type": "local",
+                "fieldName": "quick_start_workshop_id"
+              }
+            ],
+            "parameter_list": {
+              "first_line_text": [
                 {
-                  "fullExpression": "@local.quick_start_campaign.action_list",
-                  "matchedExpression": "@local.quick_start_campaign.action_list",
+                  "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                  "matchedExpression": "@local.start_or_continue",
+                  "type": "local",
+                  "fieldName": "start_or_continue"
+                },
+                {
+                  "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                  "matchedExpression": "@local.quick_start_workshop_in_text_title",
+                  "type": "local",
+                  "fieldName": "quick_start_workshop_in_text_title"
+                }
+              ],
+              "icon_src": [
+                {
+                  "fullExpression": "@local.quick_start_campaign.icon",
+                  "matchedExpression": "@local.quick_start_campaign.icon",
                   "type": "local",
                   "fieldName": "quick_start_campaign"
                 }
               ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
-                "matchedExpression": "@local.quick_start_campaign.action_list",
-                "type": "local",
-                "fieldName": "quick_start_campaign"
-              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.quick_start_campaign.action_list": [
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned"
             ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
-                "matchedExpression": "@local.quick_start_campaign.action_list",
-                "type": "local",
-                "fieldName": "quick_start_campaign"
-              }
+            "@local.quick_start_workshop_id": [
+              "condition"
+            ],
+            "@local.start_or_continue": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.quick_start_workshop_in_text_title": [
+              "parameter_list.first_line_text"
+            ],
+            "@local.quick_start_campaign.icon": [
+              "parameter_list.icon_src"
             ]
           }
         },
+        {
+          "type": "display_group",
+          "name": "not_self_care",
+          "condition": "@local.quick_start_workshop_id!=\"w_self_care\"",
+          "parameter_list": {
+            "style": "column"
+          },
+          "rows": [
+            {
+              "type": "tile_component",
+              "name": "quick_start_individual",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "do_this_workshop_together",
+                    false
+                  ],
+                  "_raw": "click | set_field:do_this_workshop_together:false",
+                  "_cleaned": "click | set_field:do_this_workshop_together:false"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.quick_start_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.quick_start_campaign.action_list"
+                }
+              ],
+              "exclude_from_translation": true,
+              "condition": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+              "parameter_list": {
+                "style": "quick_start_dark",
+                "first_line_text": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                "second_line_text": "@local.label_individual",
+                "icon_src": "@local.quick_start_campaign.icon"
+              },
+              "_nested_name": "quick_start_button.not_self_care.quick_start_individual",
+              "_dynamicFields": {
+                "action_list": {
+                  "1": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.quick_start_campaign.action_list",
+                          "matchedExpression": "@local.quick_start_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "quick_start_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                        "matchedExpression": "@local.quick_start_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "quick_start_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                        "matchedExpression": "@local.quick_start_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "quick_start_campaign"
+                      }
+                    ]
+                  }
+                },
+                "condition": [
+                  {
+                    "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@fields.workshop_day",
+                    "type": "fields",
+                    "fieldName": "workshop_day"
+                  },
+                  {
+                    "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@local.quick_start_workshop_id",
+                    "type": "local",
+                    "fieldName": "quick_start_workshop_id"
+                  },
+                  {
+                    "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@fields.workshop_id",
+                    "type": "fields",
+                    "fieldName": "workshop_id"
+                  },
+                  {
+                    "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
+                    "fieldName": "do_workshops_together"
+                  }
+                ],
+                "parameter_list": {
+                  "first_line_text": [
+                    {
+                      "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                      "matchedExpression": "@local.start_or_continue",
+                      "type": "local",
+                      "fieldName": "start_or_continue"
+                    },
+                    {
+                      "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                      "matchedExpression": "@local.quick_start_workshop_in_text_title",
+                      "type": "local",
+                      "fieldName": "quick_start_workshop_in_text_title"
+                    }
+                  ],
+                  "second_line_text": [
+                    {
+                      "fullExpression": "@local.label_individual",
+                      "matchedExpression": "@local.label_individual",
+                      "type": "local",
+                      "fieldName": "label_individual"
+                    }
+                  ],
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.quick_start_campaign.icon",
+                      "matchedExpression": "@local.quick_start_campaign.icon",
+                      "type": "local",
+                      "fieldName": "quick_start_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.quick_start_campaign.action_list": [
+                  "action_list.1.args.0",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
+                ],
+                "@fields.workshop_day": [
+                  "condition"
+                ],
+                "@local.quick_start_workshop_id": [
+                  "condition"
+                ],
+                "@fields.workshop_id": [
+                  "condition"
+                ],
+                "@local.do_workshops_together": [
+                  "condition"
+                ],
+                "@local.start_or_continue": [
+                  "parameter_list.first_line_text"
+                ],
+                "@local.quick_start_workshop_in_text_title": [
+                  "parameter_list.first_line_text"
+                ],
+                "@local.label_individual": [
+                  "parameter_list.second_line_text"
+                ],
+                "@local.quick_start_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            },
+            {
+              "type": "tile_component",
+              "name": "quick_start_together",
+              "action_list": [
+                {
+                  "trigger": "click",
+                  "action_id": "set_field",
+                  "args": [
+                    "do_this_workshop_together",
+                    true
+                  ],
+                  "_raw": "click | set_field:do_this_workshop_together:true",
+                  "_cleaned": "click | set_field:do_this_workshop_together:true"
+                },
+                {
+                  "trigger": "click",
+                  "action_id": "trigger_actions",
+                  "args": [
+                    "@local.quick_start_campaign.action_list"
+                  ],
+                  "_raw": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                  "_cleaned": "click | trigger_actions: @local.quick_start_campaign.action_list"
+                }
+              ],
+              "exclude_from_translation": true,
+              "condition": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+              "parameter_list": {
+                "style": "quick_start_dark",
+                "first_line_text": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                "second_line_text": "@local.label_together",
+                "icon_src": "@local.quick_start_campaign.icon"
+              },
+              "_nested_name": "quick_start_button.not_self_care.quick_start_together",
+              "_dynamicFields": {
+                "action_list": {
+                  "1": {
+                    "args": {
+                      "0": [
+                        {
+                          "fullExpression": "@local.quick_start_campaign.action_list",
+                          "matchedExpression": "@local.quick_start_campaign.action_list",
+                          "type": "local",
+                          "fieldName": "quick_start_campaign"
+                        }
+                      ]
+                    },
+                    "_raw": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                        "matchedExpression": "@local.quick_start_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "quick_start_campaign"
+                      }
+                    ],
+                    "_cleaned": [
+                      {
+                        "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
+                        "matchedExpression": "@local.quick_start_campaign.action_list",
+                        "type": "local",
+                        "fieldName": "quick_start_campaign"
+                      }
+                    ]
+                  }
+                },
+                "condition": [
+                  {
+                    "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@fields.workshop_day",
+                    "type": "fields",
+                    "fieldName": "workshop_day"
+                  },
+                  {
+                    "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@local.quick_start_workshop_id",
+                    "type": "local",
+                    "fieldName": "quick_start_workshop_id"
+                  },
+                  {
+                    "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@fields.workshop_id",
+                    "type": "fields",
+                    "fieldName": "workshop_id"
+                  },
+                  {
+                    "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @local.do_workshops_together)",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
+                    "fieldName": "do_workshops_together"
+                  }
+                ],
+                "parameter_list": {
+                  "first_line_text": [
+                    {
+                      "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                      "matchedExpression": "@local.start_or_continue",
+                      "type": "local",
+                      "fieldName": "start_or_continue"
+                    },
+                    {
+                      "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
+                      "matchedExpression": "@local.quick_start_workshop_in_text_title",
+                      "type": "local",
+                      "fieldName": "quick_start_workshop_in_text_title"
+                    }
+                  ],
+                  "second_line_text": [
+                    {
+                      "fullExpression": "@local.label_together",
+                      "matchedExpression": "@local.label_together",
+                      "type": "local",
+                      "fieldName": "label_together"
+                    }
+                  ],
+                  "icon_src": [
+                    {
+                      "fullExpression": "@local.quick_start_campaign.icon",
+                      "matchedExpression": "@local.quick_start_campaign.icon",
+                      "type": "local",
+                      "fieldName": "quick_start_campaign"
+                    }
+                  ]
+                }
+              },
+              "_dynamicDependencies": {
+                "@local.quick_start_campaign.action_list": [
+                  "action_list.1.args.0",
+                  "action_list.1._raw",
+                  "action_list.1._cleaned"
+                ],
+                "@fields.workshop_day": [
+                  "condition"
+                ],
+                "@local.quick_start_workshop_id": [
+                  "condition"
+                ],
+                "@fields.workshop_id": [
+                  "condition"
+                ],
+                "@local.do_workshops_together": [
+                  "condition"
+                ],
+                "@local.start_or_continue": [
+                  "parameter_list.first_line_text"
+                ],
+                "@local.quick_start_workshop_in_text_title": [
+                  "parameter_list.first_line_text"
+                ],
+                "@local.label_together": [
+                  "parameter_list.second_line_text"
+                ],
+                "@local.quick_start_campaign.icon": [
+                  "parameter_list.icon_src"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "quick_start_button.not_self_care",
+          "_dynamicFields": {
+            "condition": [
+              {
+                "fullExpression": "@local.quick_start_workshop_id!=\"w_self_care\"",
+                "matchedExpression": "@local.quick_start_workshop_id",
+                "type": "local",
+                "fieldName": "quick_start_workshop_id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.quick_start_workshop_id": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "quick_start_button",
+      "_dynamicFields": {
         "condition": [
           {
-            "fullExpression": "@local.quick_start_workshop_id==\"w_self_care\" && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_workshop_id",
-            "type": "local",
-            "fieldName": "quick_start_workshop_id"
-          },
-          {
-            "fullExpression": "@local.quick_start_workshop_id==\"w_self_care\" && @local.quick_start_campaign.id != \"default\"",
+            "fullExpression": "@local.quick_start_campaign.id != \"default\"",
             "matchedExpression": "@local.quick_start_campaign.id",
             "type": "local",
             "fieldName": "quick_start_campaign"
           }
-        ],
-        "parameter_list": {
-          "first_line_text": [
-            {
-              "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-              "matchedExpression": "@local.start_or_continue",
-              "type": "local",
-              "fieldName": "start_or_continue"
-            },
-            {
-              "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-              "matchedExpression": "@local.quick_start_workshop_in_text_title",
-              "type": "local",
-              "fieldName": "quick_start_workshop_in_text_title"
-            }
-          ],
-          "icon_src": [
-            {
-              "fullExpression": "@local.quick_start_campaign.icon",
-              "matchedExpression": "@local.quick_start_campaign.icon",
-              "type": "local",
-              "fieldName": "quick_start_campaign"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.quick_start_campaign.action_list": [
-          "action_list.1.args.0",
-          "action_list.1._raw",
-          "action_list.1._cleaned"
-        ],
-        "@local.quick_start_workshop_id": [
-          "condition"
-        ],
-        "@local.quick_start_campaign.id": [
-          "condition"
-        ],
-        "@local.start_or_continue": [
-          "parameter_list.first_line_text"
-        ],
-        "@local.quick_start_workshop_in_text_title": [
-          "parameter_list.first_line_text"
-        ],
-        "@local.quick_start_campaign.icon": [
-          "parameter_list.icon_src"
         ]
-      }
-    },
-    {
-      "type": "tile_component",
-      "name": "quick_start_individual",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "set_field",
-          "args": [
-            "do_this_workshop_together",
-            false
-          ],
-          "_raw": "click | set_field:do_this_workshop_together:false",
-          "_cleaned": "click | set_field:do_this_workshop_together:false"
-        },
-        {
-          "trigger": "click",
-          "action_id": "trigger_actions",
-          "args": [
-            "@local.quick_start_campaign.action_list"
-          ],
-          "_raw": "click | trigger_actions: @local.quick_start_campaign.action_list",
-          "_cleaned": "click | trigger_actions: @local.quick_start_campaign.action_list"
-        }
-      ],
-      "exclude_from_translation": true,
-      "condition": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-      "parameter_list": {
-        "style": "quick_start_dark",
-        "first_line_text": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-        "second_line_text": "@local.label_individual",
-        "icon_src": "@local.quick_start_campaign.icon"
-      },
-      "_nested_name": "quick_start_individual",
-      "_dynamicFields": {
-        "action_list": {
-          "1": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.quick_start_campaign.action_list",
-                  "matchedExpression": "@local.quick_start_campaign.action_list",
-                  "type": "local",
-                  "fieldName": "quick_start_campaign"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
-                "matchedExpression": "@local.quick_start_campaign.action_list",
-                "type": "local",
-                "fieldName": "quick_start_campaign"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
-                "matchedExpression": "@local.quick_start_campaign.action_list",
-                "type": "local",
-                "fieldName": "quick_start_campaign"
-              }
-            ]
-          }
-        },
-        "condition": [
-          {
-            "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@fields.workshop_day",
-            "type": "fields",
-            "fieldName": "workshop_day"
-          },
-          {
-            "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_workshop_id",
-            "type": "local",
-            "fieldName": "quick_start_workshop_id"
-          },
-          {
-            "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@fields.workshop_id",
-            "type": "fields",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@fields.do_workshops_together",
-            "type": "fields",
-            "fieldName": "do_workshops_together"
-          },
-          {
-            "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_workshop_id",
-            "type": "local",
-            "fieldName": "quick_start_workshop_id"
-          },
-          {
-            "fullExpression": "!(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_campaign.id",
-            "type": "local",
-            "fieldName": "quick_start_campaign"
-          }
-        ],
-        "parameter_list": {
-          "first_line_text": [
-            {
-              "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-              "matchedExpression": "@local.start_or_continue",
-              "type": "local",
-              "fieldName": "start_or_continue"
-            },
-            {
-              "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-              "matchedExpression": "@local.quick_start_workshop_in_text_title",
-              "type": "local",
-              "fieldName": "quick_start_workshop_in_text_title"
-            }
-          ],
-          "second_line_text": [
-            {
-              "fullExpression": "@local.label_individual",
-              "matchedExpression": "@local.label_individual",
-              "type": "local",
-              "fieldName": "label_individual"
-            }
-          ],
-          "icon_src": [
-            {
-              "fullExpression": "@local.quick_start_campaign.icon",
-              "matchedExpression": "@local.quick_start_campaign.icon",
-              "type": "local",
-              "fieldName": "quick_start_campaign"
-            }
-          ]
-        }
       },
       "_dynamicDependencies": {
-        "@local.quick_start_campaign.action_list": [
-          "action_list.1.args.0",
-          "action_list.1._raw",
-          "action_list.1._cleaned"
-        ],
-        "@fields.workshop_day": [
-          "condition"
-        ],
-        "@local.quick_start_workshop_id": [
-          "condition",
-          "condition"
-        ],
-        "@fields.workshop_id": [
-          "condition"
-        ],
-        "@fields.do_workshops_together": [
-          "condition"
-        ],
         "@local.quick_start_campaign.id": [
           "condition"
-        ],
-        "@local.start_or_continue": [
-          "parameter_list.first_line_text"
-        ],
-        "@local.quick_start_workshop_in_text_title": [
-          "parameter_list.first_line_text"
-        ],
-        "@local.label_individual": [
-          "parameter_list.second_line_text"
-        ],
-        "@local.quick_start_campaign.icon": [
-          "parameter_list.icon_src"
-        ]
-      }
-    },
-    {
-      "type": "tile_component",
-      "name": "quick_start_together",
-      "action_list": [
-        {
-          "trigger": "click",
-          "action_id": "set_field",
-          "args": [
-            "do_this_workshop_together",
-            true
-          ],
-          "_raw": "click | set_field:do_this_workshop_together:true",
-          "_cleaned": "click | set_field:do_this_workshop_together:true"
-        },
-        {
-          "trigger": "click",
-          "action_id": "trigger_actions",
-          "args": [
-            "@local.quick_start_campaign.action_list"
-          ],
-          "_raw": "click | trigger_actions: @local.quick_start_campaign.action_list",
-          "_cleaned": "click | trigger_actions: @local.quick_start_campaign.action_list"
-        }
-      ],
-      "exclude_from_translation": true,
-      "condition": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-      "parameter_list": {
-        "style": "quick_start_dark",
-        "first_line_text": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-        "second_line_text": "@local.label_together",
-        "icon_src": "@local.quick_start_campaign.icon"
-      },
-      "_nested_name": "quick_start_together",
-      "_dynamicFields": {
-        "action_list": {
-          "1": {
-            "args": {
-              "0": [
-                {
-                  "fullExpression": "@local.quick_start_campaign.action_list",
-                  "matchedExpression": "@local.quick_start_campaign.action_list",
-                  "type": "local",
-                  "fieldName": "quick_start_campaign"
-                }
-              ]
-            },
-            "_raw": [
-              {
-                "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
-                "matchedExpression": "@local.quick_start_campaign.action_list",
-                "type": "local",
-                "fieldName": "quick_start_campaign"
-              }
-            ],
-            "_cleaned": [
-              {
-                "fullExpression": "click | trigger_actions: @local.quick_start_campaign.action_list",
-                "matchedExpression": "@local.quick_start_campaign.action_list",
-                "type": "local",
-                "fieldName": "quick_start_campaign"
-              }
-            ]
-          }
-        },
-        "condition": [
-          {
-            "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@fields.workshop_day",
-            "type": "fields",
-            "fieldName": "workshop_day"
-          },
-          {
-            "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_workshop_id",
-            "type": "local",
-            "fieldName": "quick_start_workshop_id"
-          },
-          {
-            "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@fields.workshop_id",
-            "type": "fields",
-            "fieldName": "workshop_id"
-          },
-          {
-            "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@fields.do_workshops_together",
-            "type": "fields",
-            "fieldName": "do_workshops_together"
-          },
-          {
-            "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_workshop_id",
-            "type": "local",
-            "fieldName": "quick_start_workshop_id"
-          },
-          {
-            "fullExpression": "(@fields.workshop_day == 0 && @local.quick_start_workshop_id == @fields.workshop_id && @fields.do_workshops_together) && @local.quick_start_workshop_id!=\"w_self_care\"  && @local.quick_start_campaign.id != \"default\"",
-            "matchedExpression": "@local.quick_start_campaign.id",
-            "type": "local",
-            "fieldName": "quick_start_campaign"
-          }
-        ],
-        "parameter_list": {
-          "first_line_text": [
-            {
-              "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-              "matchedExpression": "@local.start_or_continue",
-              "type": "local",
-              "fieldName": "start_or_continue"
-            },
-            {
-              "fullExpression": "@local.start_or_continue @local.quick_start_workshop_in_text_title",
-              "matchedExpression": "@local.quick_start_workshop_in_text_title",
-              "type": "local",
-              "fieldName": "quick_start_workshop_in_text_title"
-            }
-          ],
-          "second_line_text": [
-            {
-              "fullExpression": "@local.label_together",
-              "matchedExpression": "@local.label_together",
-              "type": "local",
-              "fieldName": "label_together"
-            }
-          ],
-          "icon_src": [
-            {
-              "fullExpression": "@local.quick_start_campaign.icon",
-              "matchedExpression": "@local.quick_start_campaign.icon",
-              "type": "local",
-              "fieldName": "quick_start_campaign"
-            }
-          ]
-        }
-      },
-      "_dynamicDependencies": {
-        "@local.quick_start_campaign.action_list": [
-          "action_list.1.args.0",
-          "action_list.1._raw",
-          "action_list.1._cleaned"
-        ],
-        "@fields.workshop_day": [
-          "condition"
-        ],
-        "@local.quick_start_workshop_id": [
-          "condition",
-          "condition"
-        ],
-        "@fields.workshop_id": [
-          "condition"
-        ],
-        "@fields.do_workshops_together": [
-          "condition"
-        ],
-        "@local.quick_start_campaign.id": [
-          "condition"
-        ],
-        "@local.start_or_continue": [
-          "parameter_list.first_line_text"
-        ],
-        "@local.quick_start_workshop_in_text_title": [
-          "parameter_list.first_line_text"
-        ],
-        "@local.label_together": [
-          "parameter_list.second_line_text"
-        ],
-        "@local.quick_start_campaign.icon": [
-          "parameter_list.icon_src"
         ]
       }
     },
