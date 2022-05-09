@@ -26,7 +26,8 @@
         }
       ],
       "parameter_list": {
-        "close_text": "Skip Intro"
+        "skip_text": "Skip Intro",
+        "style": "light"
       },
       "rows": [
         {
@@ -38,7 +39,7 @@
             {
               "type": "display_group",
               "parameter_list": {
-                "style": "column"
+                "style": "centre_image"
               },
               "rows": [
                 {
@@ -49,9 +50,6 @@
                     "value": {}
                   },
                   "exclude_from_translation": true,
-                  "style_list": [
-                    "max-width: 200px"
-                  ],
                   "_nested_name": "animated_slides.animated_section.display_group.image_1"
                 }
               ],
@@ -83,7 +81,7 @@
             {
               "type": "display_group",
               "parameter_list": {
-                "style": "column"
+                "style": "centre_image"
               },
               "rows": [
                 {
@@ -94,9 +92,6 @@
                     "value": {}
                   },
                   "exclude_from_translation": true,
-                  "style_list": [
-                    "max-width: 200px"
-                  ],
                   "_nested_name": "animated_slides.animated_section.display_group.image_2"
                 }
               ],
@@ -128,7 +123,7 @@
             {
               "type": "display_group",
               "parameter_list": {
-                "style": "column"
+                "style": "centre_image"
               },
               "rows": [
                 {
@@ -139,9 +134,6 @@
                     "value": {}
                   },
                   "exclude_from_translation": true,
-                  "style_list": [
-                    "max-width: 200px"
-                  ],
                   "_nested_name": "animated_slides.animated_section.display_group.image_3"
                 }
               ],
@@ -235,7 +227,7 @@
             {
               "type": "display_group",
               "parameter_list": {
-                "style": "column"
+                "style": "two_columns_images_overflow"
               },
               "rows": [
                 {
@@ -246,9 +238,6 @@
                     "value": {}
                   },
                   "exclude_from_translation": true,
-                  "style_list": [
-                    "max-width: 160px"
-                  ],
                   "_nested_name": "animated_slides.animated_section.display_group.partner_5"
                 }
               ],
