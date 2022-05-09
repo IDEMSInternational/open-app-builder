@@ -94,6 +94,200 @@
       "_nested_name": "final"
     },
     {
+      "name": "hp_review_started",
+      "value": "_hp_review_started",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "hp_review_started"
+    },
+    {
+      "name": "workshop_hp_review_started",
+      "value": "@local.workshop@local.hp_review_started",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "workshop_hp_review_started",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.workshop@local.hp_review_started",
+            "matchedExpression": "@local.workshop",
+            "type": "local",
+            "fieldName": "workshop"
+          },
+          {
+            "fullExpression": "@local.workshop@local.hp_review_started",
+            "matchedExpression": "@local.hp_review_started",
+            "type": "local",
+            "fieldName": "hp_review_started"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop": [
+          "value"
+        ],
+        "@local.hp_review_started": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "first_access",
+      "condition": "!@fields.@local.workshop_hp_review_started",
+      "rows": [
+        {
+          "name": "timestamp",
+          "value": "_ts",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_access.timestamp"
+        },
+        {
+          "type": "set_field",
+          "name": "@local.workshop_hp_review_started",
+          "value": true,
+          "exclude_from_translation": true,
+          "_nested_name": "first_access.@local.workshop_hp_review_started",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@local.workshop_hp_review_started",
+                "matchedExpression": "@local.workshop_hp_review_started",
+                "type": "local",
+                "fieldName": "workshop_hp_review_started"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "first_access.@local.workshop_hp_review_started",
+                "matchedExpression": "@local.workshop_hp_review_started",
+                "type": "local",
+                "fieldName": "workshop_hp_review_started"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_hp_review_started": [
+              "name",
+              "_nested_name"
+            ]
+          }
+        },
+        {
+          "name": "now",
+          "value": "@calc(timestamp())",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "first_access.now",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@calc(timestamp())",
+                "matchedExpression": "@calc(timestamp())",
+                "type": "calc",
+                "fieldName": "timestamp()"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@calc(timestamp())": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "set_field",
+          "name": "@local.workshop_hp_review_started@local.timestamp",
+          "value": "@local.now",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "first_access.@local.workshop_hp_review_started@local.timestamp",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "@local.workshop_hp_review_started@local.timestamp",
+                "matchedExpression": "@local.workshop_hp_review_started",
+                "type": "local",
+                "fieldName": "workshop_hp_review_started"
+              },
+              {
+                "fullExpression": "@local.workshop_hp_review_started@local.timestamp",
+                "matchedExpression": "@local.timestamp",
+                "type": "local",
+                "fieldName": "timestamp"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@local.now",
+                "matchedExpression": "@local.now",
+                "type": "local",
+                "fieldName": "now"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "first_access.@local.workshop_hp_review_started@local.timestamp",
+                "matchedExpression": "@local.workshop_hp_review_started",
+                "type": "local",
+                "fieldName": "workshop_hp_review_started"
+              },
+              {
+                "fullExpression": "first_access.@local.workshop_hp_review_started@local.timestamp",
+                "matchedExpression": "@local.timestamp",
+                "type": "local",
+                "fieldName": "timestamp"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.workshop_hp_review_started": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.timestamp": [
+              "name",
+              "_nested_name"
+            ],
+            "@local.now": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "first_access",
+      "_dynamicFields": {
+        "condition": [
+          {
+            "fullExpression": "!@fields.@local.workshop_hp_review_started",
+            "matchedExpression": "@local.workshop_hp_review_started",
+            "type": "local",
+            "fieldName": "workshop_hp_review_started"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.workshop_hp_review_started": [
+          "condition"
+        ]
+      }
+    },
+    {
       "type": "template",
       "name": "workshop_activity",
       "value": "workshop_activity",
