@@ -1,4 +1,4 @@
-@import "src/theme/mixins.scss";
+@use "src/theme/mixins";
 
 $primary-radio-border: 2px solid;
 $primary-radio-border-rd: 15px;
@@ -12,7 +12,7 @@ img {
   height: 100%;
 
   .container {
-    @include flex-centered;
+    @include mixins.flex-centered;
     margin-bottom: var(--regular-margin);
 
     .btn_triangle {
@@ -144,7 +144,7 @@ img {
 }
 
 .center {
-  @include flex-centered;
+  @include mixins.flex-centered;
   flex-direction: column;
 }
 

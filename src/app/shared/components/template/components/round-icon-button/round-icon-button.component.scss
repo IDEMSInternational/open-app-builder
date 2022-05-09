@@ -1,4 +1,4 @@
-@import "../../../../../../theme/mixins.scss";
+@use "src/theme/mixins";
 
 ion-tab-button {
   color: var(--ion-color-primary-contrast);
@@ -14,7 +14,7 @@ ion-tab-button {
   align-items: center;
   border-radius: var(--ion-border-radius-rounded);
   ion-icon {
-    @include flex-centered;
+    @include mixins.flex-centered;
     width: 100%;
     margin-bottom: 0;
     flex: auto;
@@ -48,8 +48,8 @@ ion-tab-button {
   }
 }
 .home_screen {
-  @include largest-square;
-  @include absolute-centered;
+  @include mixins.largest-square;
+  @include mixins.absolute-centered;
   padding: var(--tiny-padding);
   @media (max-width: 375px) {
     width: var(--round-button-small-device-width);

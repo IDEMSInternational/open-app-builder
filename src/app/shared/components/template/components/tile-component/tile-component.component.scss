@@ -1,4 +1,4 @@
-@import "/src/theme/mixins.scss";
+@use "/src/theme/mixins.scss";
 
 // NOTE CC 2021-12-16 - Presumably this is for case of rendered markdown
 // (but ideally should be handled from within markdown itself)
@@ -10,7 +10,7 @@
 }
 
 .tile-wrapper {
-  @include flex-space-between;
+  @include mixins.flex-space-between;
   .text > div {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-text-large);

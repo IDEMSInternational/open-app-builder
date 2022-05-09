@@ -1,5 +1,5 @@
-@import "src/theme/variables.scss";
-@import "src/theme/mixins.scss";
+@use "/src/theme/variables.scss";
+@use "/src/theme/mixins";
 
 .workshops-accordion {
   position: relative;
@@ -22,7 +22,7 @@
   margin-bottom: var(--regular-margin);
   height: 100%;
   .accordion-status {
-    @include medium-square;
+    @include mixins.medium-square;
     border-radius: var(--ion-border-radius-rounded);
     border: var(--ion-border-thin-standard);
     padding: var(--tiny-padding);
