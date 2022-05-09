@@ -90,7 +90,8 @@
 .tooltipClass {
   border-radius: var(--ion-border-radius-standard);
   color: var(--ion-color-primary);
-  min-width: 90vw;
+  // targets width slightly smaller than max content
+  min-width: calc(min(var(--content-max-width), 100vw) - 2rem); // slightly smaller than content
   font-size: var(--font-size-text-medium);
   right: 0;
   @media (max-width: 320px) {
