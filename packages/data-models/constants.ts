@@ -109,7 +109,6 @@ type IAppLaunchAction = {
   type: "template_popup" | "tour_start";
   value: string;
 };
-
 /** Define app-specific startup tasks and logic */
 const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
