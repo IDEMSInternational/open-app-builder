@@ -9,6 +9,8 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+@use "./theme/breakpoints";
+
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -30,7 +32,11 @@
 @import "./theme/layout";
 @import "./theme/typography";
 @import "./theme/tooltip";
+@import "./theme/variables.scss";
 @import "./theme/deployment/deployment.scss";
+
+@import "~nouislider/distribute/nouislider.min.css";
+
 .slide-up-modal {
   .modal-wrapper {
     max-width: 80%;
@@ -90,8 +96,11 @@
 .tooltipClass {
   border-radius: var(--ion-border-radius-standard);
   color: var(--ion-color-primary);
-  // targets width slightly smaller than max content
-  min-width: calc(min(var(--content-max-width), 100vw) - 2rem); // slightly smaller than content
+  min-width: calc(var(--content-max-width) - 2rem);
+  @include breakpoints.desktop {
+    min-width: var(--content-max-width);
+  }
+  margin: auto;
   font-size: var(--font-size-text-medium);
   right: 0;
   @media (max-width: 320px) {
@@ -151,4 +160,3 @@
     border: none;
   }
 }
-@import "~nouislider/distribute/nouislider.min.css";
