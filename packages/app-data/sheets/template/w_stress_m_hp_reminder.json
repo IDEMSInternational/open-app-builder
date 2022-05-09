@@ -26,21 +26,21 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.parent_point_count_breathe == 0",
+              "condition": "@fields.parent_point_count_breathe == 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.text",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_breathe == 0",
-                    "matchedExpression": "@field.parent_point_count_breathe",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_breathe == 0",
+                    "matchedExpression": "@fields.parent_point_count_breathe",
+                    "type": "fields",
                     "fieldName": "parent_point_count_breathe"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.parent_point_count_breathe": [
+                "@fields.parent_point_count_breathe": [
                   "condition"
                 ]
               }
@@ -51,7 +51,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.parent_point_count_breathe == 0",
+              "condition": "@fields.parent_point_count_breathe == 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.habit_data",
               "_dynamicFields": {
@@ -65,9 +65,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_breathe == 0",
-                    "matchedExpression": "@field.parent_point_count_breathe",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_breathe == 0",
+                    "matchedExpression": "@fields.parent_point_count_breathe",
+                    "type": "fields",
                     "fieldName": "parent_point_count_breathe"
                   }
                 ]
@@ -76,7 +76,7 @@
                 "@data.habit.breathe": [
                   "value"
                 ],
-                "@field.parent_point_count_breathe": [
+                "@fields.parent_point_count_breathe": [
                   "condition"
                 ]
               }
@@ -94,21 +94,21 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.parent_point_count_breathe > 0",
+              "condition": "@fields.parent_point_count_breathe > 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.title",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_breathe > 0",
-                    "matchedExpression": "@field.parent_point_count_breathe",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_breathe > 0",
+                    "matchedExpression": "@fields.parent_point_count_breathe",
+                    "type": "fields",
                     "fieldName": "parent_point_count_breathe"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.parent_point_count_breathe": [
+                "@fields.parent_point_count_breathe": [
                   "condition"
                 ]
               }
@@ -119,7 +119,7 @@
               "_translations": {
                 "value": {}
               },
-              "condition": "@field.parent_point_count_breathe > 0",
+              "condition": "@fields.parent_point_count_breathe > 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.image",
               "_dynamicFields": {
@@ -133,9 +133,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_breathe > 0",
-                    "matchedExpression": "@field.parent_point_count_breathe",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_breathe > 0",
+                    "matchedExpression": "@fields.parent_point_count_breathe",
+                    "type": "fields",
                     "fieldName": "parent_point_count_breathe"
                   }
                 ]
@@ -144,7 +144,7 @@
                 "@data.habit.breathe.image_asset": [
                   "value"
                 ],
-                "@field.parent_point_count_breathe": [
+                "@fields.parent_point_count_breathe": [
                   "condition"
                 ]
               }
@@ -162,21 +162,21 @@
                   "za_zu": true
                 }
               },
-              "condition": "@field.parent_point_count_breathe > 0",
+              "condition": "@fields.parent_point_count_breathe > 0",
               "type": "set_variable",
               "_nested_name": "m_hp_reminder.in_week_message.text",
               "_dynamicFields": {
                 "condition": [
                   {
-                    "fullExpression": "@field.parent_point_count_breathe > 0",
-                    "matchedExpression": "@field.parent_point_count_breathe",
-                    "type": "field",
+                    "fullExpression": "@fields.parent_point_count_breathe > 0",
+                    "matchedExpression": "@fields.parent_point_count_breathe",
+                    "type": "fields",
                     "fieldName": "parent_point_count_breathe"
                   }
                 ]
               },
               "_dynamicDependencies": {
-                "@field.parent_point_count_breathe": [
+                "@fields.parent_point_count_breathe": [
                   "condition"
                 ]
               }
