@@ -1,4 +1,4 @@
-@import "src/theme/mixins.scss";
+@use "src/theme/mixins";
 .container-player {
   background: var(--ion-color-primary-contrast);
   border: var(--ion-border-standard);
@@ -10,7 +10,7 @@
   position: relative;
   flex-direction: column;
   .top-row {
-    @include flex-space-between;
+    @include mixins.flex-space-between;
     .title_and_help {
       width: 85%;
       display: flex;
@@ -36,7 +36,7 @@
       right: 15px;
       .volume-icon {
         color: var(--ion-color-primary);
-        @include small-square;
+        @include mixins.small-square;
       }
     }
   }
@@ -64,7 +64,7 @@
   }
   .time {
     margin-top: -12px;
-    @include flex-space-between;
+    @include mixins.flex-space-between;
     &-value {
       font-size: var(--font-size-text-large);
       line-height: var(--line-height-text-small);
@@ -72,13 +72,13 @@
     }
   }
   .controls {
-    @include flex-space-between;
+    @include mixins.flex-space-between;
     min-width: var(--audio-controls-width);
     align-self: center;
     .rewind,
     .forward {
       ion-button {
-        @include large-square;
+        @include mixins.large-square;
         --background: transparent;
         --padding: 0;
         --border-radius: var(--ion-border-radius-rounded);
@@ -96,7 +96,7 @@
     }
     .play {
       .btn-play {
-        @include large-square;
+        @include mixins.large-square;
         --background: var(--ion-btn-control-bg);
         --border-radius: var(--ion-border-radius-rounded);
         --padding: 0;

@@ -1,4 +1,4 @@
-@import "src/theme/mixins.scss";
+@use "src/theme/mixins";
 :host {
   display: contents;
 }
@@ -52,7 +52,7 @@
       border: var(--ion-border-standard);
       border-radius: var(--ion-border-radius-secondary);
       box-shadow: var(--ion-default-box-shadow);
-      @include flex-centered;
+      @include mixins.flex-centered;
       input {
         display: none;
       }
@@ -60,7 +60,7 @@
         padding: 5px;
         width: 100%;
         text-align: center;
-        @include flex-centered;
+        @include mixins.flex-centered;
         font-weight: var(--font-weight-standard);
         font-size: var(--combo-box-font-size-standard);
         color: var(--ion-color-primary);

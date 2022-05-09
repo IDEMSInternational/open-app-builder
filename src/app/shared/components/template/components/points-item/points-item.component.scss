@@ -1,10 +1,10 @@
-@import "../../../../../../theme/mixins.scss";
+@use "src/theme/mixins";
 
 .wrapper-point {
   padding: calc(var(--regular-padding) * var(--scale-factor--point))
     calc(5px * var(--scale-factor--point));
   .item {
-    @include flex-centered;
+    @include mixins.flex-centered;
     margin: 0 auto;
     padding: calc(20px * var(--scale-factor--point)) 0;
     width: calc(var(--points-item-width) * var(--scale-factor--point));
@@ -16,7 +16,7 @@
     flex-direction: column;
 
     .star {
-      @include flex-centered;
+      @include mixins.flex-centered;
       position: absolute;
       right: -12px;
       top: -16px;

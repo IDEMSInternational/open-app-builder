@@ -1,4 +1,4 @@
-@import "../../../../../../theme/mixins.scss";
+@use "src/theme/mixins";
 .slider-wrapper {
   min-width: 100%;
   padding: var(--regular-padding) 0 var(--regular-padding) var(--regular-padding);
@@ -32,15 +32,15 @@
       max-width: 100%;
     }
     .checkbox-block {
-      @include flex-centered;
-      @include tiny-square;
+      @include mixins.flex-centered;
+      @include mixins.tiny-square;
       margin-top: var(--tiny-margin);
       padding-left: var(--small-padding);
       margin-left: var(--tiny-margin);
     }
   }
   .labels {
-    @include flex-space-between;
+    @include mixins.flex-space-between;
     max-width: var(--slider-labels-max-width);
     margin-left: -5px;
     margin-top: var(--large-margin);
@@ -68,7 +68,7 @@
     content: none;
   }
   .noUi-horizontal .noUi-handle {
-    @include tiny-square;
+    @include mixins.tiny-square;
     border-radius: var(--ion-border-radius-rounded);
     background: var(--ion-color-slider);
     border: none;
@@ -91,8 +91,8 @@
     display: none;
   }
   .noUi-active .noUi-tooltip {
-    @include flex-centered;
-    @include small-square;
+    @include mixins.flex-centered;
+    @include mixins.small-square;
     background: var(--ion-color-slider);
     color: var(--ion-color-primary-contrast);
     border: none;

@@ -1,4 +1,4 @@
-@import "../../../../../../theme/mixins.scss";
+@use "src/theme/mixins";
 
 .icon-banner-wrapper {
   width: 373px;
@@ -19,7 +19,7 @@
     margin-bottom: 10px;
   }
   .image {
-    @include flex-centered;
+    @include mixins.flex-centered;
     width: 73px;
     height: 73px;
     background: var(--ion-color-primary-contrast);
