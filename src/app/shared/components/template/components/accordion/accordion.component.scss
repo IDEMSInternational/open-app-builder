@@ -1,9 +1,7 @@
-@use "/src/theme/variables.scss";
-
 // Create overlapping effect
 ion-accordion {
   background: white;
-  border: 1px solid $primary;
+  border: 1px solid var(--ion-color-primary);
   border-radius: 10px;
   margin-top: -12px;
   padding-top: 8px;
@@ -14,7 +12,7 @@ ion-accordion:first-of-type {
   padding-top: unset;
 }
 ion-label.accordion-section-title {
-  color: $primary;
+  color: var(--ion-color-primary);
   font-size: 1.3rem;
 }
 ion-item.accordion-content {
