@@ -39,7 +39,7 @@ export class TmplAnimatedSlidesComponent extends TemplateBaseComponent implement
     let i = 0;
     for (let fadeTime of this.fadeTimes) {
       this.fadeSection[i] = "in";
-      // wait specied time plus additional animation time
+      // wait specified time plus additional animation time
       await this._wait(fadeTime + 1500);
       this.fadeSection[i] = "out";
       i++;
