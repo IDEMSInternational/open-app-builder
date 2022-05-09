@@ -16,7 +16,7 @@ plh-template-component[data-hidden="true"] {
 }
 plh-template-container {
   width: 100%;
-  max-width: var(--content-max-width, 100%);
+  max-width: var(--content-max-width);
   margin: auto;
 }
 
