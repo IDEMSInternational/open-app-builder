@@ -63,7 +63,8 @@ Once you've installed those tools you'll also need to make sure you PATH and AND
 
 1. Open Android studio and follow the steps here https://developer.android.com/studio/run/managing-avds#createavd to create an Android emulator. When choosing a system image to create an emulator for do not choose a version of Android older than 5.0 Lollipop (API Level 21).
 2. Incase you are having problems with running the AVD you might receivean error message saying something like - _How to Enable Intel Virtualization Technology (vt-x) ……… you will need to get into your bios and enable virtualization_ if you are not sure what that is, then you can google it up for your computer model.
-3. Once you've created an emulator run directly from Android Studio
+3. You may get an error saying something like _Default FirebaseApp failed to initialize because no default options were found_. In this case you need to add a `google-services.json` file to your repo at `android\app\google-services.json`. Contact the dev team to request the contents of this file if you don't know how to generate it.
+4. Once you've created an emulator run directly from Android Studio
 
 ### Running on a physical Android device (developing on Windows)
 
