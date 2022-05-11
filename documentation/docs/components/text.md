@@ -1,12 +1,10 @@
 # Text
 ## Example
 
-| type      | name            | value                       |parameter_list |
-| --------- | ------------    | ------                      |--------- |
-|text	    |text_formatting_1|Style parameter Standard     |style: standard|
-|text       |text_formatting_2|Style parameter Contextual	|style: contextual|
-|text       |text_formatting_3|Style parameter Emphasised  	|style: emphasised|
-|text       |text_formatting_4|Style parameter Alternative  |style: alternative|
+| type      | name            | value              |parameter_list |
+| --------- | ------------    | ------             |--------- |
+|text	      |text_formatting_1|Standard text       |style: standard|
+|text       |text_formatting_2|Contextual text	   |style: contextual|
 
 ![](images/text.png)
 
