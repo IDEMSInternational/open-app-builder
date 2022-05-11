@@ -247,6 +247,11 @@
       "_nested_name": "bonus_button_bon_act_id"
     },
     {
+      "type": "text",
+      "name": "spacer",
+      "_nested_name": "spacer"
+    },
+    {
       "type": "display_group",
       "name": "top_group",
       "parameter_list": {

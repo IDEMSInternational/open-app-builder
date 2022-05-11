@@ -298,7 +298,7 @@
       "id": "page_11",
       "page_no": 11,
       "illustration": "EFMStorybooks/EFM-SB-AVTM-11.jpg",
-      "story_text": "He left his house and moved to a big house in the forest, where lived for many years.",
+      "story_text": "He left his house and moved to a big house in the forest, where he lived for many years.",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -307,7 +307,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "He left his house and moved to a big house in the forest, where lived for many years."
+          "eng": "He left his house and moved to a big house in the forest, where he lived for many years."
         },
         "annotation_1": {
           "eng": "Count the pineapples, bags, and trees with your child."

@@ -76,13 +76,37 @@
       }
     },
     {
-      "name": "current_page_title",
-      "value": "\"No Match\"",
+      "name": "no_match",
+      "value": "No Match",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "current_page_title"
+      "_nested_name": "no_match"
+    },
+    {
+      "name": "current_page_title",
+      "value": "@local.no_match",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "current_page_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.no_match",
+            "matchedExpression": "@local.no_match",
+            "type": "local",
+            "fieldName": "no_match"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.no_match": [
+          "value"
+        ]
+      }
     },
     {
       "type": "items",
