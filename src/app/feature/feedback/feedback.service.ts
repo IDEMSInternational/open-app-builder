@@ -14,6 +14,7 @@ import { generateTimestamp } from "src/app/shared/utils";
 import { environment } from "src/environments/environment";
 import { TemplateFieldService } from "src/app/shared/components/template/services/template-field.service";
 import { DbService } from "src/app/shared/services/db/db.service";
+import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
 import {
   IFeedbackContextMenuButton,
   IFeedbackEntry,
@@ -42,7 +43,8 @@ export class FeedbackService {
     private templateFieldService: TemplateFieldService,
     private userMetaService: UserMetaService,
     private toastController: ToastController,
-    private dbService: DbService
+    private dbService: DbService,
+    private dbSyncService: DBSyncService
   ) {
     // retrieve device info for passing in metadata
     Device.getInfo().then((deviceInfo) => {
@@ -91,10 +93,20 @@ export class FeedbackService {
   public async saveFeedback(entry: IFeedbackEntry) {
     const dbEntry: IFeedbackEntryDB = { ...this.dbService.generateDBMeta(), ...entry };
     await this.dbService.table("feedback").add(dbEntry);
-    // Show toast after small delay
-    setTimeout(async () => {
-      await this.presentToast("Thank you for your feedback");
-    }, 1000);
+    const syncTableResponse = await this.dbSyncService.syncTable("feedback");
+    if (syncTableResponse.error) {
+      // Show toast after small delay
+      const toastMessage =
+        "Your feedback has not been sent yet. It will be sent later, or you can connect to the internet and try again.";
+      setTimeout(async () => {
+        await this.presentToast(toastMessage, { duration: 8000 });
+      }, 1000);
+    } else {
+      // Show toast after small delay
+      setTimeout(async () => {
+        await this.presentToast("Thank you for your feedback");
+      }, 1000);
+    }
   }
 
   /** Handle registration of all defined feedback actions to the relevant context menus */

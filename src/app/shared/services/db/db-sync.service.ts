@@ -62,8 +62,10 @@ export class DBSyncService {
           await this.http.post(endpoint, serverRecord).toPromise();
           const _sync_status: IDBMeta["_sync_status"] = "synced";
           await this.dbService.table(table_id).update(record, { _sync_status });
+          return { success: true };
         } catch (error) {
           console.error(error);
+          return { error };
         }
       }
     }
