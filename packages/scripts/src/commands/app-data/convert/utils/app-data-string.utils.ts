@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { setNestedProperty } from "../utils";
+import { setNestedProperty, booleanStringToBoolean } from "../utils";
 
 /**
  * Xls data represents nested objects in the following ways
@@ -38,10 +38,10 @@ export function parsAppDataString(str: string): string[][] {
  * ["value_1", "value_2", "value_3"]
  * ```
  */
-export function parseAppDataListString(str: string): string[] {
+export function parseAppDataListString(str: string, delimeter = ";"): string[] {
   return (
     str
-      .split(";")
+      .split(delimeter)
       // remove whitespace between elements
       .map((val: string) => val.trim())
       // remove any trailing empty elements left by final ';'
@@ -55,14 +55,21 @@ export function parseAppDataListString(str: string): string[] {
  * ```
  * "key_1:value_1; key_2:value_2"
  * ````
+ * @param delimeter optionally specify delimter that splits values, e.g ','
+ * ```
+ * "key_1:value_1, key_2:value_2"
+ * ```
  * @returns object with key-value pairs, e.g.
  * ```
  * {"key_1":"value_1", "key_2":"value_2"}
  * ```
  */
-export function parseAppDataCollectionString(str: string): { [key: string]: string } {
+export function parseAppDataCollectionString(
+  str: string,
+  delimeter = ";"
+): { [key: string]: string | boolean } {
   const collection = {};
-  const entryList = parseAppDataListString(str);
+  const entryList = parseAppDataListString(str, delimeter);
   entryList.forEach((el) => {
     let [key, value] = el.split(":");
     value = value ? value.trim() : value;
@@ -71,7 +78,7 @@ export function parseAppDataCollectionString(str: string): { [key: string]: stri
       const [base, ...nested] = key.split(".");
       collection[base] = setNestedProperty(nested.join("."), value, collection[base]);
     } else {
-      collection[key] = value ? value.trim() : value;
+      collection[key] = booleanStringToBoolean(value);
     }
   });
   return collection;
