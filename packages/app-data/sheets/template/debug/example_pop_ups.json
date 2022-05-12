@@ -151,10 +151,7 @@
             "example_text"
           ],
           "_raw": "click | pop_up:example_text | fullscreen:true",
-          "_cleaned": "click | pop_up:example_text | fullscreen:true",
-          "params": {
-            "fullscreen": true
-          }
+          "_cleaned": "click | pop_up:example_text | fullscreen:true"
         }
       ],
       "exclude_from_translation": true,
@@ -185,11 +182,7 @@
             "example_emit"
           ],
           "_raw": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false",
-          "_cleaned": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false",
-          "params": {
-            "fullscreen": true,
-            "showCloseButton": false
-          }
+          "_cleaned": "click | pop_up:example_emit | fullscreen:true, showCloseButton:false"
         }
       ],
       "exclude_from_translation": true,

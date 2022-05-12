@@ -434,6 +434,72 @@
       "name": "w_celebrate_tools_disabled",
       "value": true,
       "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_1on1_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_praise_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_instruct_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_stress_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_money_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_rules_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_consequence_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_solve_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_safe_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_crisis_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_field_default",
+      "name": "w_celebrate_hp_review_started",
+      "value": false,
+      "exclude_from_translation": true
     }
   ],
   "_xlsxPath": "global/data/workshop_globals.xlsx"

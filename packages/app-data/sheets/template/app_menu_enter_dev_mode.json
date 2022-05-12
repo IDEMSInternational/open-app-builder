@@ -114,7 +114,7 @@
           "_cleaned": "click | set_local:reply_entered:true"
         }
       ],
-      "hidden": "@local.text_box == @global.dev_mode_code",
+      "hidden": "@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code",
       "exclude_from_translation": true,
       "_nested_name": "button_incorrect_code",
       "_dynamicFields": {
@@ -128,16 +128,28 @@
         ],
         "hidden": [
           {
-            "fullExpression": "@local.text_box == @global.dev_mode_code",
+            "fullExpression": "@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code",
             "matchedExpression": "@local.text_box",
             "type": "local",
             "fieldName": "text_box"
           },
           {
-            "fullExpression": "@local.text_box == @global.dev_mode_code",
+            "fullExpression": "@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code",
             "matchedExpression": "@global.dev_mode_code",
             "type": "global",
             "fieldName": "dev_mode_code"
+          },
+          {
+            "fullExpression": "@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code",
+            "matchedExpression": "@local.text_box",
+            "type": "local",
+            "fieldName": "text_box"
+          },
+          {
+            "fullExpression": "@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code",
+            "matchedExpression": "@global.test_mode_code",
+            "type": "global",
+            "fieldName": "test_mode_code"
           }
         ]
       },
@@ -146,9 +158,13 @@
           "value"
         ],
         "@local.text_box": [
+          "hidden",
           "hidden"
         ],
         "@global.dev_mode_code": [
+          "hidden"
+        ],
+        "@global.test_mode_code": [
           "hidden"
         ]
       }
@@ -191,7 +207,7 @@
           "_cleaned": "click | emit:force_restart"
         }
       ],
-      "hidden": "@local.text_box != @global.dev_mode_code",
+      "hidden": "!(@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code)",
       "exclude_from_translation": true,
       "_nested_name": "button_correct_code",
       "_dynamicFields": {
@@ -205,16 +221,28 @@
         ],
         "hidden": [
           {
-            "fullExpression": "@local.text_box != @global.dev_mode_code",
+            "fullExpression": "!(@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code)",
             "matchedExpression": "@local.text_box",
             "type": "local",
             "fieldName": "text_box"
           },
           {
-            "fullExpression": "@local.text_box != @global.dev_mode_code",
+            "fullExpression": "!(@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code)",
             "matchedExpression": "@global.dev_mode_code",
             "type": "global",
             "fieldName": "dev_mode_code"
+          },
+          {
+            "fullExpression": "!(@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code)",
+            "matchedExpression": "@local.text_box",
+            "type": "local",
+            "fieldName": "text_box"
+          },
+          {
+            "fullExpression": "!(@local.text_box == @global.dev_mode_code || @local.text_box == @global.test_mode_code)",
+            "matchedExpression": "@global.test_mode_code",
+            "type": "global",
+            "fieldName": "test_mode_code"
           }
         ]
       },
@@ -223,9 +251,13 @@
           "value"
         ],
         "@local.text_box": [
+          "hidden",
           "hidden"
         ],
         "@global.dev_mode_code": [
+          "hidden"
+        ],
+        "@global.test_mode_code": [
           "hidden"
         ]
       }

@@ -39,6 +39,12 @@
       "_nested_name": "video_src"
     },
     {
+      "type": "button",
+      "name": "button",
+      "hidden": true,
+      "_nested_name": "button"
+    },
+    {
       "type": "text",
       "name": "bottom_text",
       "hidden": true,
