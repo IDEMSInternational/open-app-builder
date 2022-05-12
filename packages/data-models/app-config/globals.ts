@@ -10,7 +10,7 @@ export default {
   feedback_add_button_text: "Add Feedback",
   feedback_suggest_change_text: "Suggest Change",
   feedback_sent_text: "Thank you for your feedback",
-  feedback_unsent_text: "Your are currently offline. Feedback will be sent when next online",
+  feedback_unsent_text: "You are currently offline. Feedback will be sent when next online",
   notification_default_title: "Notification",
   notification_default_text: "You have a new message",
 };
