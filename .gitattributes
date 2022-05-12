@@ -9,3 +9,6 @@
 
 *.json eol=crlf
 *.ts eol=crlf
+*.scss eol=crlf
+*.html eol=crlf
+*.js eol=crlf
