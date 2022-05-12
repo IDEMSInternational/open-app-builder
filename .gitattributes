@@ -8,3 +8,5 @@
 *.svg filter=lfs diff=lfs merge=lfs -text
 
 *.json eol=crlf
+*.ts eol=crlf
+*.scss eol=crlf
