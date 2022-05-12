@@ -75,10 +75,7 @@
           {
             "trigger": "changed",
             "action_id": "set_field",
-            "args": [
-              "@local.radio_group_field_name",
-              "this.value"
-            ],
+            "args": ["@local.radio_group_field_name", "this.value"],
             "_raw": "changed | set_field:@local.radio_group_field_name:@local.radio_group",
             "_cleaned": "changed | set_field:@local.radio_group_field_name:@local.radio_group"
           }
@@ -156,16 +153,9 @@
             "action_list.0._raw",
             "action_list.0._cleaned"
           ],
-          "@local.radio_group": [
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ],
-          "@local.answer_list_1": [
-            "parameter_list.answer_list"
-          ],
-          "@local.options_per_row": [
-            "parameter_list.options_per_row"
-          ]
+          "@local.radio_group": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list_1": ["parameter_list.answer_list"],
+          "@local.options_per_row": ["parameter_list.options_per_row"]
         }
       },
       {
@@ -200,9 +190,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@local.radio_group": [
-            "hidden"
-          ]
+          "@local.radio_group": ["hidden"]
         }
       },
       {
@@ -237,9 +225,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@local.radio_group": [
-            "hidden"
-          ]
+          "@local.radio_group": ["hidden"]
         }
       },
       {
@@ -274,9 +260,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@local.radio_group": [
-            "hidden"
-          ]
+          "@local.radio_group": ["hidden"]
         }
       },
       {
@@ -315,13 +299,8 @@
           ]
         },
         "_dynamicDependencies": {
-          "@local.radio_group_field_name": [
-            "value",
-            "value"
-          ],
-          "!@local.radio_group": [
-            "hidden"
-          ]
+          "@local.radio_group_field_name": ["value", "value"],
+          "!@local.radio_group": ["hidden"]
         }
       },
       {
@@ -375,9 +354,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.tap_and_choose": [
-            "value"
-          ]
+          "@global.tap_and_choose": ["value"]
         }
       },
       {
@@ -407,9 +384,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@global.type_your_own": [
-            "value"
-          ]
+          "@global.type_your_own": ["value"]
         }
       },
       {
@@ -431,20 +406,14 @@
           {
             "trigger": "changed",
             "action_id": "set_field",
-            "args": [
-              "@local.combo_box_field_name",
-              "this.value"
-            ],
+            "args": ["@local.combo_box_field_name", "this.value"],
             "_raw": "changed | set_field:@local.combo_box_field_name:@local.combo_box",
             "_cleaned": "changed | set_field:@local.combo_box_field_name:@local.combo_box"
           },
           {
             "trigger": "changed",
             "action_id": "set_local",
-            "args": [
-              "combo_box_answered",
-              true
-            ],
+            "args": ["combo_box_answered", true],
             "_raw": "changed | set_local: combo_box_answered: true",
             "_cleaned": "changed | set_local: combo_box_answered: true"
           }
@@ -540,22 +509,11 @@
             "action_list.0._raw",
             "action_list.0._cleaned"
           ],
-          "@local.combo_box": [
-            "action_list.0._raw",
-            "action_list.0._cleaned"
-          ],
-          "@local.answer_list_2": [
-            "parameter_list.answer_list"
-          ],
-          "@local.placeholder": [
-            "parameter_list.placeholder"
-          ],
-          "@local.input_allowed": [
-            "parameter_list.input_allowed"
-          ],
-          "@local.answer_placeholder": [
-            "parameter_list.answer_placeholder"
-          ]
+          "@local.combo_box": ["action_list.0._raw", "action_list.0._cleaned"],
+          "@local.answer_list_2": ["parameter_list.answer_list"],
+          "@local.placeholder": ["parameter_list.placeholder"],
+          "@local.input_allowed": ["parameter_list.input_allowed"],
+          "@local.answer_placeholder": ["parameter_list.answer_placeholder"]
         }
       },
       {
@@ -587,9 +545,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@local.combo_box": [
-                "value"
-              ]
+              "@local.combo_box": ["value"]
             }
           }
         ],
@@ -605,9 +561,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "!@local.combo_box_answered": [
-            "hidden"
-          ]
+          "!@local.combo_box_answered": ["hidden"]
         }
       },
       {
@@ -646,13 +600,8 @@
           ]
         },
         "_dynamicDependencies": {
-          "@local.combo_box_field_name": [
-            "value",
-            "value"
-          ],
-          "!@local.combo_box": [
-            "hidden"
-          ]
+          "@local.combo_box_field_name": ["value", "value"],
+          "!@local.combo_box": ["hidden"]
         }
       },
       {
@@ -668,9 +617,7 @@
           {
             "trigger": "click",
             "action_id": "pop_up",
-            "args": [
-              "example_lang_template_pop_1"
-            ],
+            "args": ["example_lang_template_pop_1"],
             "_raw": "click | pop_up:example_lang_template_pop_1",
             "_cleaned": "click | pop_up:example_lang_template_pop_1"
           }
@@ -691,9 +638,7 @@
           {
             "trigger": "click",
             "action_id": "pop_up",
-            "args": [
-              "example_lang_template_pop_2"
-            ],
+            "args": ["example_lang_template_pop_2"],
             "_raw": "click | pop_up:example_lang_template_pop_2",
             "_cleaned": "click | pop_up:example_lang_template_pop_2"
           }
@@ -741,9 +686,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@global.languge_global": [
-                "value"
-              ]
+              "@global.languge_global": ["value"]
             }
           }
         ],
@@ -788,9 +731,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@fields.language_field_1": [
-                "value"
-              ]
+              "@fields.language_field_1": ["value"]
             }
           }
         ],
@@ -836,9 +777,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@fields.language_field_2": [
-                "value"
-              ]
+              "@fields.language_field_2": ["value"]
             }
           }
         ],
@@ -961,9 +900,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@data.language.example_lang_1.title": [
-            "value"
-          ]
+          "@data.language.example_lang_1.title": ["value"]
         }
       },
       {
@@ -987,9 +924,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@data.language.example_lang_1.text": [
-            "value"
-          ]
+          "@data.language.example_lang_1.text": ["value"]
         }
       },
       {
@@ -1013,9 +948,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@data.language.example_lang_1.image_asset": [
-            "value"
-          ]
+          "@data.language.example_lang_1.image_asset": ["value"]
         }
       },
       {
@@ -1039,9 +972,7 @@
           ]
         },
         "_dynamicDependencies": {
-          "@data.language.example_lang_1.lottie_asset": [
-            "value"
-          ]
+          "@data.language.example_lang_1.lottie_asset": ["value"]
         }
       }
     ],
@@ -1078,9 +1009,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@data.language.example_lang_2.title": [
-                "value"
-              ]
+              "@data.language.example_lang_2.title": ["value"]
             }
           },
           {
@@ -1104,9 +1033,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@data.language.example_lang_2.text": [
-                "value"
-              ]
+              "@data.language.example_lang_2.text": ["value"]
             }
           },
           {
@@ -1130,9 +1057,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@data.language.example_lang_2.image_asset": [
-                "value"
-              ]
+              "@data.language.example_lang_2.image_asset": ["value"]
             }
           },
           {
@@ -1156,9 +1081,7 @@
               ]
             },
             "_dynamicDependencies": {
-              "@data.language.example_lang_2.lottie_asset": [
-                "value"
-              ]
+              "@data.language.example_lang_2.lottie_asset": ["value"]
             }
           }
         ],
