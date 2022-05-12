@@ -5,6 +5,30 @@
   "status": "released",
   "rows": [
     {
+      "name": "do_workshops_together",
+      "value": "@fields.do_workshops_together",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "do_workshops_together",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.do_workshops_together",
+            "matchedExpression": "@fields.do_workshops_together",
+            "type": "fields",
+            "fieldName": "do_workshops_together"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.do_workshops_together": [
+          "value"
+        ]
+      }
+    },
+    {
       "name": "workshop_data",
       "value": "@data.workshop.w_1on1",
       "_translations": {
@@ -105,7 +129,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "!@fields.do_workshops_together",
+              "condition": "!@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_released.in_week_message.text",
               "_dynamicFields": {
@@ -125,9 +149,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "!@fields.do_workshops_together",
-                    "matchedExpression": "!@fields.do_workshops_together",
-                    "type": "fields",
+                    "fullExpression": "!@local.do_workshops_together",
+                    "matchedExpression": "!@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
@@ -139,7 +163,7 @@
                 "@local.workshop_data.in_text_title": [
                   "value"
                 ],
-                "!@fields.do_workshops_together": [
+                "!@local.do_workshops_together": [
                   "condition"
                 ]
               }
@@ -157,7 +181,7 @@
                   "za_zu": true
                 }
               },
-              "condition": "@fields.do_workshops_together",
+              "condition": "@local.do_workshops_together",
               "type": "set_variable",
               "_nested_name": "m_workshop_released.in_week_message.text",
               "_dynamicFields": {
@@ -177,9 +201,9 @@
                 ],
                 "condition": [
                   {
-                    "fullExpression": "@fields.do_workshops_together",
-                    "matchedExpression": "@fields.do_workshops_together",
-                    "type": "fields",
+                    "fullExpression": "@local.do_workshops_together",
+                    "matchedExpression": "@local.do_workshops_together",
+                    "type": "local",
                     "fieldName": "do_workshops_together"
                   }
                 ]
@@ -191,7 +215,7 @@
                 "@local.workshop_data.in_text_title": [
                   "value"
                 ],
-                "@fields.do_workshops_together": [
+                "@local.do_workshops_together": [
                   "condition"
                 ]
               }

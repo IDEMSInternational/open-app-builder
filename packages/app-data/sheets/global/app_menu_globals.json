@@ -12,7 +12,16 @@
     {
       "type": "declare_global_constant",
       "name": "dev_mode_code",
-      "value": "ParentApp_dev",
+      "value": "app_dev",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "test_mode_code",
+      "value": "ParentApp_test",
       "_translations": {
         "value": {}
       },
