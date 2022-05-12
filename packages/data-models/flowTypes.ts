@@ -219,7 +219,6 @@ export namespace FlowTypes {
     | "subtitle"
     | "text"
     | "animated_section"
-    | "animated_slides"
     | "accordion_section"
     | "advanced_dashed_box"
     | "parent_point_counter"
