@@ -25,7 +25,7 @@ import {
 } from "./feedback.types";
 import { APP_CONSTANTS } from "src/app/data";
 
-const { FEEDBACK_MODULE_DEFAULTS } = APP_CONSTANTS;
+const { FEEDBACK_MODULE_DEFAULTS, APP_STRINGS } = APP_CONSTANTS;
 
 const FEEDBACK_BUTTONS: IFeedbackContextMenuButton[] = FEEDBACK_MODULE_DEFAULTS.buttons;
 
@@ -95,17 +95,9 @@ export class FeedbackService {
     await this.dbService.table("feedback").add(dbEntry);
     const syncTableResponse = await this.dbSyncService.syncTable("feedback");
     if (syncTableResponse.error) {
-      // Show toast after small delay
-      const toastMessage =
-        "Your feedback has not been sent yet. It will be sent later, or you can connect to the internet and try again.";
-      setTimeout(async () => {
-        await this.presentToast(toastMessage, { duration: 8000 });
-      }, 1000);
+      await this.presentToast(APP_STRINGS.feedback_unsent_text, { duration: 5000 });
     } else {
-      // Show toast after small delay
-      setTimeout(async () => {
-        await this.presentToast("Thank you for your feedback");
-      }, 1000);
+      await this.presentToast(APP_STRINGS.feedback_sent_text);
     }
   }
 
