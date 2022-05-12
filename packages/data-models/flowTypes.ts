@@ -348,6 +348,8 @@ export namespace FlowTypes {
       | "track_event"
       | "process_template";
     args: any[]; // should be string | boolean, but breaks type-checking for templates;
+    params?: any; // additional params also used by args (does not require position argument)
+    // TODO - CC 2022-04-29 - ideally args should be included as part of params
     _triggeredBy?: TemplateRow; // tracking the component that triggered the action for logging;
     /**
      * most actions are specified from a parent template (begin_template statement) and are executed
