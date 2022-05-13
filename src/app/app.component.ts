@@ -83,7 +83,7 @@ export class AppComponent {
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
       // await this.authService.signOut()
-      const firebaseUser = this.authService.getCurrentUser();
+      const firebaseUser = await this.authService.getCurrentUser();
       console.log("firebaseUser: ", firebaseUser);
       if (!firebaseUser) {
         await this.templateService.runStandaloneTemplate("sign_in", {
