@@ -6,10 +6,18 @@ import firebase from "firebase";
   providedIn: "root",
 })
 export class AuthService {
-  constructor(public afAuth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth) {}
 
-  googleAuth() {
+  signInGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.afAuth.signInWithRedirect(provider);
+    return this.auth.signInWithRedirect(provider);
+  }
+
+  signOut() {
+    return this.auth.signOut();
+  }
+
+  getCurrentUser() {
+    return firebase.auth().currentUser;
   }
 }
