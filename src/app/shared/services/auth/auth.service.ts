@@ -1,23 +1,38 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import firebase from "firebase";
+// import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public afAuth: AngularFireAuth) {}
 
-  signInGoogle() {
+  async signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.auth.signInWithRedirect(provider);
+    return this.afAuth.signInWithRedirect(provider);
   }
 
-  signOut() {
-    return this.auth.signOut();
+  async signOut() {
+    return this.afAuth.signOut();
   }
 
-  getCurrentUser() {
+  async getCurrentUser() {
     return firebase.auth().currentUser;
   }
+
+  // async signInWithGoogle() {
+  //   const result = await FirebaseAuthentication.signInWithGoogle();
+  //   return result.user;
+  // }
+
+  // async signOut() {
+  //   await FirebaseAuthentication.signOut();
+  // }
+
+  // async getCurrentUser() {
+  //   const result = await FirebaseAuthentication.getCurrentUser();
+  //   return result.user;
+  // }
 }

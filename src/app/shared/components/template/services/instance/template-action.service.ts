@@ -181,7 +181,7 @@ export class TemplateActionService extends TemplateInstanceService {
         const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
       case "google_auth":
-        return await this.authService.signInGoogle();
+        return await this.authService.signInWithGoogle();
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
