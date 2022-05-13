@@ -48,7 +48,6 @@ import { SelectTextComponent } from "./select-text/select-text.component";
 import { TemplateHTMLComponent } from "./html/html.component";
 import { TmplAccordionComponent } from "./accordion/accordion.component";
 import { TmplLatexComponent } from "./latex/latex.component";
-import { TmplSignInComponent } from "./sign-in/sign-in.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -94,7 +93,6 @@ export const TEMPLATE_COMPONENTS = [
   TemplateHTMLComponent,
   TmplAccordionComponent,
   TmplLatexComponent,
-  TmplSignInComponent,
 ];
 
 /***************************************************************************************
@@ -156,5 +154,4 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   select_text: SelectTextComponent,
   html: TemplateHTMLComponent,
   latex: TmplLatexComponent,
-  sign_in: TmplSignInComponent,
 };

@@ -28,6 +28,7 @@ import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
+import { AuthService } from "./shared/services/auth/auth.service";
 
 const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
 
@@ -65,6 +66,7 @@ export class AppComponent {
     private templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
+    private authService: AuthService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -80,6 +82,14 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
+      // await this.authService.signOut()
+      const firebaseUser = this.authService.getCurrentUser();
+      console.log("firebaseUser: ", firebaseUser);
+      if (!firebaseUser) {
+        await this.templateService.runStandaloneTemplate("sign_in", {
+          showCloseButton: false,
+        });
+      }
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         await this.handleFirstLaunchDataActions();

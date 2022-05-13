@@ -15,6 +15,7 @@ import { TemplateTranslateService } from "../template-translate.service";
 import { TemplateFieldService } from "../template-field.service";
 import { EventService } from "src/app/shared/services/event/event.service";
 import { DBSyncService } from "src/app/shared/services/db/db-sync.service";
+import { AuthService } from "src/app/shared/services/auth/auth.service";
 
 /** Logging Toggle - rewrite default functions to enable or disable inline logs */
 let SHOW_DEBUG_LOGS = false;
@@ -40,6 +41,7 @@ export class TemplateActionService extends TemplateInstanceService {
   private templateFieldService: TemplateFieldService;
   private eventService: EventService;
   private dbSyncService: DBSyncService;
+  private authService: AuthService;
 
   constructor(injector: Injector, public container?: TemplateContainerComponent) {
     super(injector);
@@ -53,6 +55,7 @@ export class TemplateActionService extends TemplateInstanceService {
     this.templateTranslateService = this.getGlobalService(TemplateTranslateService);
     this.eventService = this.getGlobalService(EventService);
     this.dbSyncService = this.getGlobalService(DBSyncService);
+    this.authService = this.getGlobalService(AuthService);
   }
 
   /** Public method to add actions to processing queue and process */
@@ -177,6 +180,8 @@ export class TemplateActionService extends TemplateInstanceService {
         );
         const processor = new TemplateProcessService(this.injector);
         return processor.processTemplateWithoutRender(templateToProcess);
+      case "google_auth":
+        return await this.authService.signInGoogle();
       case "emit":
         const [emit_value, emit_data] = args;
         const container: TemplateContainerComponent = this.container;
