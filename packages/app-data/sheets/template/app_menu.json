@@ -192,10 +192,10 @@
           "trigger": "click",
           "action_id": "start_tour",
           "args": [
-            "intro_tour"
+            "home_screen_tour_menu"
           ],
-          "_raw": "click | start_tour:intro_tour",
-          "_cleaned": "click | start_tour:intro_tour"
+          "_raw": "click | start_tour:home_screen_tour_menu",
+          "_cleaned": "click | start_tour:home_screen_tour_menu"
         }
       ],
       "parameter_list": {
