@@ -22,7 +22,7 @@ app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
   },
   {
     type: "tour_start",
-    value: "intro_tour",
+    value: "home_screen_tour_intro",
   },
 ];
 
