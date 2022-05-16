@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "efm_chapter_acts_1",
+  "flow_name": "efm_chapter_acts_3",
   "status": "released",
   "flow_subtype": "debug",
   "rows": [
@@ -482,34 +482,72 @@
       }
     },
     {
-      "name": "current_page_title",
-      "value": "\"No Match\"",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "current_page_title"
-    },
-    {
-      "type": "text",
-      "name": "debug_2a",
-      "value": "page title: @local.current_page_title",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "debug_2a",
+      "type": "items",
+      "name": "items_over_chap",
+      "value": "@data.efm_chapt",
+      "rows": [
+        {
+          "name": "current_page_title",
+          "value": "@item.id",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "items_over_chap.current_page_title",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "debug_2a",
+          "value": "page title: @local.current_page_title",
+          "_translations": {
+            "value": {}
+          },
+          "_nested_name": "items_over_chap.debug_2a",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "page title: @local.current_page_title",
+                "matchedExpression": "@local.current_page_title",
+                "type": "local",
+                "fieldName": "current_page_title"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.current_page_title": [
+              "value"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items_over_chap",
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "page title: @local.current_page_title",
-            "matchedExpression": "@local.current_page_title",
-            "type": "local",
-            "fieldName": "current_page_title"
+            "fullExpression": "@data.efm_chapt",
+            "matchedExpression": "@data.efm_chapt",
+            "type": "data",
+            "fieldName": "efm_chapt"
           }
         ]
       },
       "_dynamicDependencies": {
-        "@local.current_page_title": [
+        "@data.efm_chapt": [
           "value"
         ]
       }
