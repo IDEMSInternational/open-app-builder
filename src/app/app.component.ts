@@ -82,7 +82,16 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      // await this.authService.signOut()
+
+      // Uncomment this line to test sign in process:
+      // await this.authService.signOut();
+
+      // Subscribe to firebase authState observable
+      // this.authService.authState$.subscribe((firebaseUser) => {
+      //     console.log('firebaseUser: ', firebaseUser);
+      //   },
+      // );
+
       const firebaseUser = await this.authService.getCurrentUser();
       console.log("firebaseUser: ", firebaseUser);
       if (!firebaseUser) {

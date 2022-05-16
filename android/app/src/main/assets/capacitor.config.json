@@ -8,17 +8,11 @@
 			"launchShowDuration": 7000,
 			"launchAutoHide": true
 		},
-		"CapacitorFirebaseAuth": {
+		"FirebaseAuthentication": {
+			"skipNativeAuth": true,
 			"providers": [
 				"google.com"
-			],
-			"languageCode": "en",
-			"nativeAuth": false,
-			"permissions": {
-				"google": [
-					"profile"
-				]
-			}
+			]
 		}
 	}
 }
