@@ -6063,14 +6063,14 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "demo_essential_tools_tour",
       _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
     },
-    intro_tour: {
+    home_screen_tour_intro: {
       flow_type: "tour",
-      flow_name: "intro_tour",
+      flow_name: "home_screen_tour_intro",
       _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
     },
-    intro_tour_with_edits: {
+    home_screen_tour_menu: {
       flow_type: "tour",
-      flow_name: "intro_tour_with_edits",
+      flow_name: "home_screen_tour_menu",
       _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
     },
     weekly_workshop_options_tour: {
