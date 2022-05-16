@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "efm_chapter_acts_1",
+  "flow_name": "efm_chapter_acts_4",
   "status": "released",
   "flow_subtype": "debug",
   "rows": [
@@ -77,13 +77,37 @@
       }
     },
     {
-      "name": "current_page_title",
+      "name": "debug_string",
       "value": "\"No Match\"",
       "_translations": {
         "value": {}
       },
       "type": "set_variable",
-      "_nested_name": "current_page_title"
+      "_nested_name": "debug_string"
+    },
+    {
+      "name": "current_page_title",
+      "value": "@local.debug_string",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "current_page_title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.debug_string",
+            "matchedExpression": "@local.debug_string",
+            "type": "local",
+            "fieldName": "debug_string"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.debug_string": [
+          "value"
+        ]
+      }
     },
     {
       "type": "text",
@@ -477,39 +501,6 @@
       },
       "_dynamicDependencies": {
         "@data.efm_act": [
-          "value"
-        ]
-      }
-    },
-    {
-      "name": "current_page_title",
-      "value": "\"No Match\"",
-      "_translations": {
-        "value": {}
-      },
-      "type": "set_variable",
-      "_nested_name": "current_page_title"
-    },
-    {
-      "type": "text",
-      "name": "debug_2a",
-      "value": "page title: @local.current_page_title",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "debug_2a",
-      "_dynamicFields": {
-        "value": [
-          {
-            "fullExpression": "page title: @local.current_page_title",
-            "matchedExpression": "@local.current_page_title",
-            "type": "local",
-            "fieldName": "current_page_title"
-          }
-        ]
-      },
-      "_dynamicDependencies": {
-        "@local.current_page_title": [
           "value"
         ]
       }

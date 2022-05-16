@@ -10,8 +10,21 @@
       "_nested_name": "simple_checkbox_default"
     },
     {
+      "type": "title",
+      "name": "title_1",
+      "value": "Simple checkbox alignment",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_1"
+    },
+    {
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_1_1",
+      "value": "Centered aligned simple_checkbox",
+      "_translations": {
+        "value": {}
+      },
       "parameter_list": {
         "align": "center"
       },
@@ -20,6 +33,10 @@
     {
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_1_2",
+      "value": "Left aligned simple_checkbox",
+      "_translations": {
+        "value": {}
+      },
       "parameter_list": {
         "align": "left"
       },
@@ -28,51 +45,82 @@
     {
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_1_3",
+      "value": "Right aligned simple_checkbox",
+      "_translations": {
+        "value": {}
+      },
       "parameter_list": {
         "align": "right"
       },
       "_nested_name": "simple_checkbox_par_1_3"
     },
     {
+      "type": "title",
+      "name": "title_2",
+      "value": "simple checkbox label text",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_2"
+    },
+    {
       "type": "simple_checkbox",
-      "name": "simple_checkbox_par_1_4",
+      "name": "simple_checkbox_par_2_1",
       "parameter_list": {
         "label_text": ""
       },
-      "_nested_name": "simple_checkbox_par_1_4"
+      "_nested_name": "simple_checkbox_par_2_1"
     },
     {
       "type": "simple_checkbox",
-      "name": "simple_checkbox_par_1_5",
+      "name": "simple_checkbox_par_2_2",
       "parameter_list": {
         "label_text": "label text"
       },
-      "_nested_name": "simple_checkbox_par_1_5"
+      "_nested_name": "simple_checkbox_par_2_2"
     },
     {
-      "type": "simple_checkbox",
-      "name": "simple_checkbox_par_1_6",
-      "parameter_list": {
-        "style": "''"
+      "type": "title",
+      "name": "title_3",
+      "value": "To be removed.",
+      "_translations": {
+        "value": {}
       },
-      "_nested_name": "simple_checkbox_par_1_6"
+      "_nested_name": "title_3"
     },
     {
       "type": "simple_checkbox",
-      "name": "simple_checkbox_par_1_7",
+      "name": "simple_checkbox_par_3_1",
+      "parameter_list": {
+        "style": ""
+      },
+      "_nested_name": "simple_checkbox_par_3_1"
+    },
+    {
+      "type": "title",
+      "name": "title_4",
+      "value": "To be removed",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "title_4"
+    },
+    {
+      "type": "simple_checkbox",
+      "name": "simple_checkbox_par_4_1",
       "parameter_list": {
         "reverse": "false"
       },
-      "_nested_name": "simple_checkbox_par_1_7"
+      "_nested_name": "simple_checkbox_par_4_1"
     },
     {
       "type": "simple_checkbox",
-      "name": "simple_checkbox_par_1_8",
+      "name": "simple_checkbox_par_4_2",
       "parameter_list": {
         "reverse": "true"
       },
-      "_nested_name": "simple_checkbox_par_1_8"
+      "_nested_name": "simple_checkbox_par_4_2"
     }
   ],
-  "_xlsxPath": "quality_assurance/components_demo/component_simple_check_box .xlsx"
+  "_xlsxPath": "quality_assurance/components_demo/component_simple_checkbox .xlsx"
 }
