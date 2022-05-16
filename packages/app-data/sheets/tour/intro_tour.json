@@ -33,16 +33,9 @@
       "title": "@global.weekly_workshops",
       "_translations": {
         "title": {},
-        "message_text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
-        }
+        "message_text": {}
       },
-      "message_text": "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different a parenting skill. Press it to start your first workshop!</p>",
+      "message_text": "<p>This big button takes you to your @global.weekly_workshops </p>\n\n<p> Once per week a new workshop will be ready for you - every time focusing on a different parenting skill. Press it to start your first workshop!</p>",
       "template_component_name": "tile_weekly_workshops",
       "route": "template/home_screen"
     },

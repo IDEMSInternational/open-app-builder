@@ -1,0 +1,194 @@
+{
+  "flow_type": "template",
+  "flow_name": "comp_slider_1",
+  "status": "released",
+  "flow_subtype": "component_demo",
+  "rows": [
+    {
+      "type": "slider",
+      "name": "default",
+      "_nested_name": "default"
+    },
+    {
+      "type": "slider",
+      "name": "par_1_1",
+      "parameter_list": {
+        "help": ""
+      },
+      "_nested_name": "par_1_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_1_2",
+      "parameter_list": {
+        "help": "any text for help tooltip"
+      },
+      "_nested_name": "par_1_2"
+    },
+    {
+      "type": "slider",
+      "name": "default",
+      "_nested_name": "default"
+    },
+    {
+      "type": "slider",
+      "name": "par_2_1",
+      "parameter_list": {
+        "title": ""
+      },
+      "_nested_name": "par_2_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_2_2",
+      "parameter_list": {
+        "title": "Any string as a title for Number Selector"
+      },
+      "_nested_name": "par_2_2"
+    },
+    {
+      "type": "slider",
+      "name": "default",
+      "_nested_name": "default"
+    },
+    {
+      "type": "slider",
+      "name": "par_3_1",
+      "parameter_list": {
+        "min": "0"
+      },
+      "_nested_name": "par_3_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_3_2",
+      "parameter_list": {
+        "min": "5"
+      },
+      "_nested_name": "par_3_2"
+    },
+    {
+      "type": "slider",
+      "name": "default",
+      "_nested_name": "default"
+    },
+    {
+      "type": "slider",
+      "name": "par_4_1",
+      "parameter_list": {
+        "title": ""
+      },
+      "_nested_name": "par_4_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_4_2",
+      "parameter_list": {
+        "title": "any text as a title"
+      },
+      "_nested_name": "par_4_2"
+    },
+    {
+      "type": "slider",
+      "name": "default",
+      "_nested_name": "default"
+    },
+    {
+      "type": "slider",
+      "name": "par_5_1",
+      "parameter_list": {
+        "step": "1"
+      },
+      "_nested_name": "par_5_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_5_2",
+      "parameter_list": {
+        "step": "5"
+      },
+      "_nested_name": "par_5_2"
+    },
+    {
+      "type": "slider",
+      "name": "par_6_1",
+      "parameter_list": {
+        "min_value_label": "null (default)"
+      },
+      "_nested_name": "par_6_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_6_2",
+      "parameter_list": {
+        "min_value_label": "string"
+      },
+      "_nested_name": "par_6_2"
+    },
+    {
+      "type": "slider",
+      "name": "par_7_1",
+      "parameter_list": {
+        "max_value_label": "null (default)"
+      },
+      "_nested_name": "par_7_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_7_2",
+      "parameter_list": {
+        "min_value_label": "string"
+      },
+      "_nested_name": "par_7_2"
+    },
+    {
+      "type": "slider",
+      "name": "par_8_1",
+      "parameter_list": {
+        "labels_count": "8 (default)"
+      },
+      "_nested_name": "par_8_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_8_2",
+      "parameter_list": {
+        "labels_count": "number"
+      },
+      "_nested_name": "par_8_2"
+    },
+    {
+      "type": "slider",
+      "name": "par_9_1",
+      "parameter_list": {
+        "no_value": "false(default)"
+      },
+      "_nested_name": "par_9_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_9_2",
+      "parameter_list": {
+        "no_value": "true"
+      },
+      "_nested_name": "par_9_2"
+    },
+    {
+      "type": "slider",
+      "name": "par_10_1",
+      "parameter_list": {
+        "no_value_text": "'no_value'- (default)"
+      },
+      "_nested_name": "par_10_1"
+    },
+    {
+      "type": "slider",
+      "name": "par_10_2",
+      "parameter_list": {
+        "string": "true"
+      },
+      "_nested_name": "par_10_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/components_demo/component_slider.xlsx"
+}
