@@ -14,7 +14,7 @@ const config: CapacitorConfig = {
       launchAutoHide: true,
     },
     FirebaseAuthentication: {
-      skipNativeAuth: true,
+      skipNativeAuth: false,
       providers: ["google.com"],
     },
   },
