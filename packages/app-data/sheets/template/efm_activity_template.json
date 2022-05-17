@@ -220,6 +220,61 @@
       }
     },
     {
+      "name": "chapter",
+      "value": "Chapter",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "chapter"
+    },
+    {
+      "type": "text",
+      "name": "chapter_section",
+      "value": "@local.chapter @local.efm_activity.chapter – @local.efm_activity.page_title",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "text_align": "center",
+        "style": "small"
+      },
+      "_nested_name": "chapter_section",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@local.chapter @local.efm_activity.chapter – @local.efm_activity.page_title",
+            "matchedExpression": "@local.chapter",
+            "type": "local",
+            "fieldName": "chapter"
+          },
+          {
+            "fullExpression": "@local.chapter @local.efm_activity.chapter – @local.efm_activity.page_title",
+            "matchedExpression": "@local.efm_activity.chapter",
+            "type": "local",
+            "fieldName": "efm_activity"
+          },
+          {
+            "fullExpression": "@local.chapter @local.efm_activity.chapter – @local.efm_activity.page_title",
+            "matchedExpression": "@local.efm_activity.page_title",
+            "type": "local",
+            "fieldName": "efm_activity"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.chapter": [
+          "value"
+        ],
+        "@local.efm_activity.chapter": [
+          "value"
+        ],
+        "@local.efm_activity.page_title": [
+          "value"
+        ]
+      }
+    },
+    {
       "type": "items",
       "name": "find_next_and_prev",
       "value": "@data.efm_act",
@@ -475,6 +530,9 @@
     },
     {
       "type": "display_group",
+      "style_list": [
+        "margin-top: -8px"
+      ],
       "rows": [
         {
           "type": "button",
