@@ -1964,6 +1964,7 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 24.9,
     md5Checksum: "6dea152a5cac0fc947ff756af7f8e815",
   },
+<<<<<<< HEAD
   "EFMStorybooks/EFM-SB-LTMB-4.jpg": {
     size_kb: 21.6,
     md5Checksum: "ea275dd44730c8b0b18b86b87899ffd4",
@@ -1991,5 +1992,42 @@ export const ASSETS_CONTENTS_LIST = {
   "EFMStorybooks/EFM-SB-LTMB-Cover.jpg": {
     size_kb: 52.1,
     md5Checksum: "3632ab6da1e245184dd1a80872ac34cf",
+=======
+  "plh_lottie/weekly_workshops.json": {
+    size_kb: 57.2,
+    md5Checksum: "60ccc0774f39602928ca80eb4fb19658",
+  },
+  "plh_video/lets_slow_down.mp4": {
+    size_kb: 13482.2,
+    md5Checksum: "62f06faa95a979d128b4356db9bb396e",
+  },
+  "plh_video/lets_slow_down.srt": {
+    size_kb: 1.7,
+    md5Checksum: "77e6d4265f602b20745a738b9809bb15",
+  },
+  "quality_assurance/test_audio.mp3": {
+    size_kb: 43.4,
+    md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
+    translations: {
+      es_sp: {
+        size_kb: 33.6,
+        md5Checksum: "a53e8b35c7985e051a7b9b9742879b03",
+      },
+    },
+  },
+  "quality_assurance/test_image.png": {
+    size_kb: 2,
+    md5Checksum: "e6d6c6a12ca13a6277084e01c088378c",
+    translations: {
+      es_sp: {
+        size_kb: 1.8,
+        md5Checksum: "f44069fc2c1d641dae929631c17fdbec",
+      },
+    },
+  },
+  "quality_assurance/test_image_no_translations.png": {
+    size_kb: 2.8,
+    md5Checksum: "f759667d7abedfa5aea2ac742e831ce3",
+>>>>>>> master
   },
 };
