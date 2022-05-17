@@ -9,7 +9,7 @@ import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { _DeprecatedSurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
-import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
+import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -30,7 +30,12 @@ import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.se
 import { AppDataService } from "./shared/services/data/app-data.service";
 import { AuthService } from "./shared/services/auth/auth.service";
 
-const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
+const {
+  APP_FIELDS,
+  APP_INITIALISATION_DEFAULTS,
+  APP_SIDEMENU_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
+} = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -43,6 +48,7 @@ export class AppComponent {
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
+  public showLoginTemplate = false;
 
   constructor(
     private platform: Platform,
@@ -82,22 +88,8 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-
-      // Uncomment this line to test sign in process:
-      // await this.authService.signOut();
-
-      // Subscribe to firebase authState observable
-      // this.authService.authState$.subscribe((firebaseUser) => {
-      //     console.log('firebaseUser: ', firebaseUser);
-      //   },
-      // );
-
-      const firebaseUser = await this.authService.getCurrentUser();
-      console.log("firebaseUser: ", firebaseUser);
-      if (!firebaseUser) {
-        await this.templateService.runStandaloneTemplate("sign_in", {
-          showCloseButton: false,
-        });
+      if (APP_AUTHENTICATION_DEFAULTS.encorceLogin) {
+        await this.ensureUserSignedIn();
       }
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
@@ -114,6 +106,19 @@ export class AppComponent {
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
     });
+  }
+
+  async ensureUserSignedIn() {
+    const authUser = await this.authService.getCurrentUser();
+    if (!authUser) {
+      const templatename = APP_AUTHENTICATION_DEFAULTS.signInTemplate;
+      const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+        showCloseButton: false,
+        waitForDismiss: false,
+      });
+      await this.authService.waitForSignInComplete();
+      await modal.dismiss();
+    }
   }
 
   /**
