@@ -87,7 +87,7 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
-      if (APP_AUTHENTICATION_DEFAULTS.encorceLogin) {
+      if (APP_AUTHENTICATION_DEFAULTS.encorceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
       if (!user.first_app_open) {
