@@ -105,6 +105,11 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
+const APP_AUTHENTICATION_DEFAULTS = {
+  encorceLogin: false,
+  signInTemplate: "sign_in",
+};
+
 type IAppLaunchAction = {
   type: "run_survey" | "template_popup" | "tour_start";
   value: string;
@@ -142,6 +147,7 @@ const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
