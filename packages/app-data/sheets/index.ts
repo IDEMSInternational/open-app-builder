@@ -3240,6 +3240,11 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "setup_and_survey_stepper",
       _xlsxPath: "global/top_templates/survey_templates/merged_setup_and_survey_welcome.xlsx",
     },
+    sign_in: {
+      flow_type: "template",
+      flow_name: "sign_in",
+      _xlsxPath: "global/core_templates/core_templates_app_first_launch.xlsx",
+    },
     something_fun: {
       flow_type: "template",
       flow_name: "something_fun",
