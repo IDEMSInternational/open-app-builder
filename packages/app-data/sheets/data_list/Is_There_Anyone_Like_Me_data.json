@@ -168,14 +168,14 @@
           "eng": "Can you make some animals sounds? Which animals?"
         },
         "annotation_2": {
-          "eng": "Can you neigh like a horse, oink like a pig, meow like a cat, or bray like a horse?"
+          "eng": "Can you neigh like a horse, oink like a pig, meow like a cat, or bray like a donkey?"
         },
         "annotation_3": {
           "eng": "This animal has exceptionally big teeth. Think of other animals with teeth like these."
         }
       },
       "annotation_1": "Can you make some animals sounds? Which animals?",
-      "annotation_2": "Can you neigh like a horse, oink like a pig, meow like a cat, or bray like a horse?",
+      "annotation_2": "Can you neigh like a horse, oink like a pig, meow like a cat, or bray like a donkey?",
       "annotation_3": "This animal has exceptionally big teeth. Think of other animals with teeth like these."
     },
     {
@@ -316,12 +316,12 @@
           "eng": "If you remove one animal on one side of the pond from the four animals at the pond, how many are left? What is one less than 4?"
         },
         "annotation_3": {
-          "eng": "Describe how the two facts: \\\\ 3 + 1 = 4 and 4 - 1 = 3 \\\\ are tied together. \\\\ These two related math facts are called a math fact family. Can you think of another math fact family?"
+          "eng": "Describe how the two facts:\n3 + 1 = 4 and 4 - 1 = 3\nare tied together.\nThese two related math facts are called a math fact family. Can you think of another math fact family?"
         }
       },
       "annotation_1": "There are three animals on one side of the pond, and one more on the other side. If you put them all together, how many animals are there? What is one more than 3?",
       "annotation_2": "If you remove one animal on one side of the pond from the four animals at the pond, how many are left? What is one less than 4?",
-      "annotation_3": "Describe how the two facts: \\\\ 3 + 1 = 4 and 4 - 1 = 3 \\\\ are tied together. \\\\ These two related math facts are called a math fact family. Can you think of another math fact family?"
+      "annotation_3": "Describe how the two facts:\n3 + 1 = 4 and 4 - 1 = 3\nare tied together.\nThese two related math facts are called a math fact family. Can you think of another math fact family?"
     },
     {
       "id": "page_12",
@@ -356,7 +356,7 @@
       "id": "page_13",
       "page_no": 13,
       "illustration": "EFMStorybooks/EFM-SB-ITALM-13.jpg",
-      "story_text": "There's only one me in the world! \\\\ I'm special, oh it's true!",
+      "story_text": "There's only one me in the world!\nI'm special, oh it's true!",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -365,7 +365,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "There's only one me in the world! \\\\ I'm special, oh it's true!"
+          "eng": "There's only one me in the world!\nI'm special, oh it's true!"
         },
         "annotation_1": {
           "eng": "How many animals can you count in this picture?"
@@ -385,7 +385,7 @@
       "id": "page_14",
       "page_no": 14,
       "illustration": "EFMStorybooks/EFM-SB-ITALM-14.jpg",
-      "story_text": "But not just me, don't you see? \\\\ There's only one of you!",
+      "story_text": "But not just me, don't you see?\nThere's only one of you!",
       "_translations": {
         "story_text": {},
         "annotation_1": {},
@@ -394,7 +394,7 @@
       },
       "_translatedFields": {
         "story_text": {
-          "eng": "But not just me, don't you see? \\\\ There's only one of you!"
+          "eng": "But not just me, don't you see?\nThere's only one of you!"
         },
         "annotation_1": {
           "eng": "Do you know someone who is very similar to you? How are they similar?"

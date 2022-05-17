@@ -5,7 +5,7 @@
   "rows": [
     {
       "name": "activity_text_style",
-      "value": "@global.efm_act_text_style;",
+      "value": "@global.efm_act_text_style",
       "_translations": {
         "value": {}
       },
@@ -14,7 +14,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.efm_act_text_style;",
+            "fullExpression": "@global.efm_act_text_style",
             "matchedExpression": "@global.efm_act_text_style",
             "type": "global",
             "fieldName": "efm_act_text_style"
@@ -29,7 +29,7 @@
     },
     {
       "name": "activity_text_parskip",
-      "value": "@global.efm_parskip_fix;",
+      "value": "@global.efm_parskip_fix",
       "_translations": {
         "value": {}
       },
@@ -38,7 +38,7 @@
       "_dynamicFields": {
         "value": [
           {
-            "fullExpression": "@global.efm_parskip_fix;",
+            "fullExpression": "@global.efm_parskip_fix",
             "matchedExpression": "@global.efm_parskip_fix",
             "type": "global",
             "fieldName": "efm_parskip_fix"
@@ -245,6 +245,11 @@
       "name": "bonus_button_bon_act_id",
       "type": "set_variable",
       "_nested_name": "bonus_button_bon_act_id"
+    },
+    {
+      "type": "text",
+      "name": "spacer",
+      "_nested_name": "spacer"
     },
     {
       "type": "display_group",
