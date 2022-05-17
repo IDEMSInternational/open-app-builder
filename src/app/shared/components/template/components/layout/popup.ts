@@ -122,6 +122,8 @@ export interface ITemplatePopupComponentProps extends ITemplateContainerProps {
   showCloseButton?: boolean;
   /** Dismiss popup when completed or uncompleted is emitted from child template */
   dismissOnEmit?: boolean;
+  /** Wait for template to be self-dismissed before returning (default: True) */
+  waitForDismiss?: boolean;
   /** Display fullscreen overlayed on top of all other app content */
   fullscreen?: boolean;
 }
