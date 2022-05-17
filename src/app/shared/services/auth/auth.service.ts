@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Auth, authState, User } from "@angular/fire/auth";
-import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
+import { Auth } from "@angular/fire/auth";
+import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject } from "rxjs";
 import { first, filter } from "rxjs/operators";
 
@@ -10,7 +10,8 @@ import { first, filter } from "rxjs/operators";
 export class AuthService {
   private authUser$ = new BehaviorSubject<User | null>(null);
 
-  constructor(private auth: Auth) {
+  // include auth import to ensure app registered
+  constructor(auth: Auth) {
     this.addAuthListeners();
   }
 
@@ -39,7 +40,8 @@ export class AuthService {
 
   /** Listen to auth state changes and update local subject accordingly */
   private addAuthListeners() {
-    authState(this.auth).subscribe((user) => {
+    FirebaseAuthentication.addListener("authStateChange", ({ user }) => {
+      console.log("[User] updated", user);
       this.authUser$.next(user);
     });
   }
