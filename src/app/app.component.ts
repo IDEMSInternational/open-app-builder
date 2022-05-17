@@ -48,7 +48,6 @@ export class AppComponent {
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
-  public showLoginTemplate = false;
 
   constructor(
     private platform: Platform,
