@@ -1,50 +1,46 @@
-import { Injectable, NgZone } from "@angular/core";
-import { Observable, Subject } from "rxjs";
-import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { getAuth, signInWithCredential, GoogleAuthProvider } from "firebase/auth";
-import { AuthStateChange, FirebaseAuthentication } from "@capacitor-firebase/authentication";
+import { Injectable } from "@angular/core";
+import { Auth, authState, User } from "@angular/fire/auth";
+import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
+import { BehaviorSubject } from "rxjs";
+import { first, filter } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  private readonly authStateSubj = new Subject<AuthStateChange>();
+  private authUser$ = new BehaviorSubject<User | null>(null);
 
-  constructor(public afAuth: AngularFireAuth, private readonly ngZone: NgZone) {
-    FirebaseAuthentication.removeAllListeners().then(() => {
-      FirebaseAuthentication.addListener("authStateChange", (change) => {
-        this.ngZone.run(() => {
-          this.authStateSubj.next(change);
-        });
-      });
+  constructor(private auth: Auth) {
+    this.addAuthListeners();
+  }
+
+  /** Return a promise that resolves after a signed in user defined */
+  public async waitForSignInComplete() {
+    return this.authUser$
+      .pipe(
+        filter((value?: User | null) => !!value),
+        first()
+      )
+      .toPromise();
+  }
+
+  public async signInWithGoogle() {
+    return FirebaseAuthentication.signInWithGoogle();
+  }
+
+  public async signOut() {
+    return FirebaseAuthentication.signOut();
+  }
+
+  public async getCurrentUser() {
+    const { user } = await FirebaseAuthentication.getCurrentUser();
+    return user;
+  }
+
+  /** Listen to auth state changes and update local subject accordingly */
+  private addAuthListeners() {
+    authState(this.auth).subscribe((user) => {
+      this.authUser$.next(user);
     });
-  }
-
-  public get authState$(): Observable<AuthStateChange> {
-    return this.authStateSubj.asObservable();
-  }
-
-  // with native SDK:
-  async signInWithGoogle() {
-    // 1. Create credentials on the native layer
-    const result = await FirebaseAuthentication.signInWithGoogle();
-    // 2. Sign in on the web layer using the id token
-    const credential = GoogleAuthProvider.credential(result.credential?.idToken);
-    const auth = getAuth();
-    await signInWithCredential(auth, credential);
-  }
-  // without native SDK:
-  // async signInWithGoogle() {
-  //   const result = await FirebaseAuthentication.signInWithGoogle();
-  //   await result.user
-  // }
-
-  async signOut() {
-    await FirebaseAuthentication.signOut();
-  }
-
-  async getCurrentUser() {
-    const result = await FirebaseAuthentication.getCurrentUser();
-    return result.user;
   }
 }
