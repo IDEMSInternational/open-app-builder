@@ -87,6 +87,8 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
+      // Authentication requires verified domain and app ids populated to firebase console
+      // Currently only run on native where specified (but can comment out for testing locally)
       if (APP_AUTHENTICATION_DEFAULTS.encorceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
