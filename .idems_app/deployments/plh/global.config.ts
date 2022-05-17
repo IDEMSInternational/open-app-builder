@@ -50,6 +50,5 @@ config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp";
 config.app_constants.APP_HEADER_DEFAULTS.title = "ParentApp";
 config.app_constants.NOTIFICATION_DEFAULTS.title = "New message from PLH";
 config.app_constants.NOTIFICATION_DEFAULTS.text = "You have a new message from ParentApp";
-config.app_constants.APP_AUTHENTICATION_DEFAULTS.encorceLogin = true;
 
 export default config;

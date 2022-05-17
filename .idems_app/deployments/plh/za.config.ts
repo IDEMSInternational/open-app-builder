@@ -10,6 +10,5 @@ config.translations.filter_language_codes = ["za_en", "za_zu", "za_xh", "za_tn",
 // Override constants
 config.app_constants.APP_LANGUAGES.default = "za_en";
 config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp (ZA)";
-config.app_constants.APP_AUTHENTICATION_DEFAULTS.encorceLogin = true;
 
 export default config;
