@@ -64,3 +64,4 @@ node_modules
 .vs/slnx.sqlite
 
 .angular
+.gradle
