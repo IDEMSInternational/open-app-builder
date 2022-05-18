@@ -2,6 +2,7 @@
   "flow_type": "template",
   "flow_name": "lets_slow_down_lyrics",
   "status": "released",
+  "flow_subtype": "common_with_parent_text",
   "rows": [
     {
       "name": "verse_1_1",

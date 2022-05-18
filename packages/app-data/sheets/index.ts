@@ -1046,6 +1046,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "change_thoughts_sect",
       _xlsxPath: "global/top_templates/parent_centre_templates/covid/covid_reflect.xlsx",
     },
+    lets_slow_down_lyrics: {
+      flow_type: "template",
+      flow_name: "lets_slow_down_lyrics",
+      flow_subtype: "common_with_parent_text",
+      _xlsxPath: "global/mode_templates/welcome.xlsx",
+    },
     comp_animated_slides: {
       flow_type: "template",
       flow_name: "comp_animated_slides",
@@ -2733,11 +2739,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "learn_temp",
       _xlsxPath: "global/mode_templates/read.xlsx",
-    },
-    lets_slow_down_lyrics: {
-      flow_type: "template",
-      flow_name: "lets_slow_down_lyrics",
-      _xlsxPath: "global/mode_templates/welcome.xlsx",
     },
     lib_act_change_thoughts: {
       flow_type: "template",
