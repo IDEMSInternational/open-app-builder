@@ -3,6 +3,7 @@ import { Auth } from "@angular/fire/auth";
 import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
 import { BehaviorSubject } from "rxjs";
 import { first, filter } from "rxjs/operators";
+import { APP_CONSTANTS } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
@@ -42,7 +43,19 @@ export class AuthService {
   private addAuthListeners() {
     FirebaseAuthentication.addListener("authStateChange", ({ user }) => {
       console.log("[User] updated", user);
+      this.addStorageEntry(user);
       this.authUser$.next(user);
     });
+  }
+
+  /** Keep a subset of auth user info in contact fields for db lookup*/
+  private addStorageEntry(user?: User) {
+    const { APP_AUTH_USER } = APP_CONSTANTS.APP_FIELDS;
+    if (user) {
+      const { email, phoneNumber, uid, displayName } = user;
+      localStorage.setItem(APP_AUTH_USER, JSON.stringify({ email, phoneNumber, uid, displayName }));
+    } else {
+      localStorage.removeItem(APP_AUTH_USER);
+    }
   }
 }
