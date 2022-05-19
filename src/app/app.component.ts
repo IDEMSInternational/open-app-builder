@@ -6,7 +6,6 @@ import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { _DeprecatedSurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
 import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
@@ -57,7 +56,6 @@ export class AppComponent {
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private _deprecatedSurveyService: _DeprecatedSurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -163,9 +161,6 @@ export class AppComponent {
   private async handleFirstLaunchDataActions() {
     for (const initAction of APP_INITIALISATION_DEFAULTS.app_first_launch_actions) {
       switch (initAction.type) {
-        case "run_survey":
-          await this._deprecatedSurveyService.runSurvey(initAction.value as any);
-          break;
         case "template_popup":
           await this.templateService.runStandaloneTemplate(initAction.value, {
             showCloseButton: false,

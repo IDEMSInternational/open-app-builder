@@ -25,7 +25,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 import { environment } from "src/environments/environment";
 import { ThemeEditorComponent } from "src/app/feature/theme/theme-editor/theme-editor.component";
-import { SurveyModule } from "src/app/feature/survey/survey.module";
 import { TourComponent } from "./feature/tour/tour.component";
 import { httpInterceptorProviders } from "./shared/services/server/interceptors";
 import { TemplateComponentsModule } from "./shared/components/template/template.module";
@@ -54,7 +53,6 @@ export function lottiePlayerFactory() {
     provideAuth(() => getAuth()),
     FormsModule,
     ColorSketchModule,
-    SurveyModule,
     LottieModule.forRoot({ player: lottiePlayerFactory }),
     // NOTE CC 2021-11-04 not sure if cache causes issues or not https://github.com/ngx-lottie/ngx-lottie/issues/115
     // LottieCacheModule.forRoot(),
