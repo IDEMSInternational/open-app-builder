@@ -130,7 +130,8 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true
+          "tz_sw": true,
+          "za_af": true
         }
       },
       "_translatedFields": {
