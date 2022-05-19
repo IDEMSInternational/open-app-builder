@@ -53,6 +53,7 @@ export class TemplateService {
       name: templatename,
       templatename,
       dismissOnEmit: true, // defaults will be overridden by passed options
+      waitForDismiss: true,
       fullscreen: true,
       showCloseButton: true,
       ...options,
@@ -63,9 +64,12 @@ export class TemplateService {
       componentProps: { props },
     });
     await modal.present();
-    const { data } = await modal.onDidDismiss();
-    const emitData: { emit_value?: string; emit_data?: any } = data;
-    return emitData;
+    let dismissData: { emit_value?: string; emit_data?: any } = {};
+    if (props.waitForDismiss) {
+      const { data } = await modal.onDidDismiss();
+      dismissData = data;
+    }
+    return { modal, ...dismissData };
   }
 
   /**
