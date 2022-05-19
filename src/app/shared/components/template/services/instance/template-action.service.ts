@@ -144,6 +144,9 @@ export class TemplateActionService extends TemplateInstanceService {
         }
         return this.templateNavService.handleNavActionExternal(value);
       case "pop_up":
+        if (action.params?.fullscreen) {
+          return this.templateService.runStandaloneTemplate(action.args[0], action.params);
+        }
         return this.templateNavService.handlePopupAction(action, this.container);
       case "set_field":
         console.log("[SET FIELD]", key, value);
