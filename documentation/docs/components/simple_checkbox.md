@@ -16,11 +16,10 @@
 
 | Parameter             | Value                | Description |
 | ---------             | -----------          | --------- |
+|label_text             |null (default)        | No label text for simple checkbox|
+|label_text             |string                | Label text for simple checkbox|
 |align	                |center (default)      | The alignment of the simple checkbox on the screen is centred|
 |align	                |left                  | The alignment of the simple checkbox on the screen is left|
 |align                  |right                 | The alignment of the simple checkbox on the screen is right|
-|label_text             |null (default)        | No label text for simple checkbox|
-|label_text             |string                | Label text for simple checkbox|
-|style                  |empty string (default)| To be removed|
-|reverse                |false (default)       | To be removed|
-|reverse                |true                  | To be removed|
+|reverse                |false (default)       | The 'label text' string' is positioned to the right of the checkbox|
+|reverse                |true                  | The 'label text' string' is positioned to the left of the    checkbox|
