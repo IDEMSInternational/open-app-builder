@@ -4,9 +4,9 @@
 
 | type            | name                    | value                          |parameter_list |
 | ---------       | ------------            | ------                         |--------- |
-|simple check_box |simple_checkbox_par_1_1	|Centered aligned simple_checkbox|align: center|
-|simple check_box |simple_checkbox_par_1_2	|Left aligned simple_checkbox	 |align: left|
-|simple check_box |simple_checkbox_par_1_3	|Right aligned simple_checkbox	 |align: right|
+|simple_checkbox |simple_checkbox_par_1_1	|Centered aligned simple_checkbox|align: center|
+|simple_checkbox |simple_checkbox_par_1_2	|Left aligned simple_checkbox	 |align: left|
+|simple_checkbox |simple_checkbox_par_1_3	|Right aligned simple_checkbox	 |align: right|
 
 ![](images/simple_checkbox.png)
 
