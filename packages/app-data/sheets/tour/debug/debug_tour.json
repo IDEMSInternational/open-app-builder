@@ -108,5 +108,5 @@
       "exclude_from_translation": true
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_templates/debug_tour.xlsx"
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_tour.xlsx"
 }
