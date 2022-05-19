@@ -65,7 +65,9 @@
               "name": "text",
               "value": "Hi @fields.user_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "!@local.do_workshops_together",
               "type": "set_variable",
@@ -101,7 +103,9 @@
               "name": "text",
               "value": "Hi @fields.group_name! New week, new workshop! Learn how to set household rules in a way that will increase the chances of your teen keeping them.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "@local.do_workshops_together",
               "type": "set_variable",

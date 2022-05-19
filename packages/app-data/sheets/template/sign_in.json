@@ -7,7 +7,9 @@
       "type": "text",
       "value": "Please sign in with your Google account to use the app.",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "name": "text",
       "_nested_name": "text"
@@ -16,7 +18,9 @@
       "type": "button",
       "value": "Sign in with Google",
       "_translations": {
-        "value": {}
+        "value": {
+          "tz_sw": true
+        }
       },
       "action_list": [
         {

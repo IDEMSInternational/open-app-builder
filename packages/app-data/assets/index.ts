@@ -2634,6 +2634,10 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1.7,
     md5Checksum: "77e6d4265f602b20745a738b9809bb15",
   },
+  "plh_video/lets_slow_down.vtt": {
+    size_kb: 1.8,
+    md5Checksum: "1c172282f4c58766a03562d1eb88a4a4",
+  },
   "quality_assurance/test_audio.mp3": {
     size_kb: 43.4,
     md5Checksum: "5ddddf934d2187d084c75b7e27797fae",
