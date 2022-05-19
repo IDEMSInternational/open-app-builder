@@ -33,7 +33,6 @@
           "value": "We all want to keep our children safe.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -49,7 +48,6 @@
           "value": "How many days in the past month (30 days) did you talk with your teen about keeping safe from sexual violence online or offline?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -65,7 +63,6 @@
           "value": "This could be when they are going out with friends, or talking about the websites they use.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

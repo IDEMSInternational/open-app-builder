@@ -8,7 +8,6 @@
       "title": "Go to the @global.weekly_workshops",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -16,7 +15,6 @@
           "za_zu": true
         },
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -33,7 +31,6 @@
       "title": "Go to the @global.weekly_workshop_options",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -41,7 +38,6 @@
           "za_zu": true
         },
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -59,7 +55,6 @@
       "_translations": {
         "title": {},
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -75,7 +70,6 @@
       "message_text": "<p> You can change your name here. </p>",
       "_translations": {
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -91,7 +85,6 @@
       "message_text": "<p> This shows the day of the week that your new @global.weekly_workshop becomes available. </p>\n\n<p> If you want to change it, just press it. </p>",
       "_translations": {
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -107,7 +100,6 @@
       "message_text": "<p> This shows the @global.weekly_workshop that you're currently on. </p>",
       "_translations": {
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -123,7 +115,6 @@
       "message_text": "<p> You can change here whether you want to do your @global.weekly_workshops as a group or by yourself. </p>",
       "_translations": {
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -139,7 +130,6 @@
       "message_text": "<p> Tap here to change your group name. </p>",
       "_translations": {
         "message_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

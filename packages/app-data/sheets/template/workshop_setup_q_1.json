@@ -9,7 +9,6 @@
       "value": "Let’s start with a few questions about you and your family.",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -25,7 +24,6 @@
       "value": "We would love to know your first name or nickname:",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -173,7 +171,6 @@
       "value": "Are you a woman or a man?",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -277,7 +274,6 @@
       "value": "How old are you?",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

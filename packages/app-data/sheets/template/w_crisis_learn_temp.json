@@ -38,7 +38,6 @@
               "value": "It’s helpful to practice dealing with crisis before something happens. \n\nLook at these five family crisis times. Imagine you are the parent: What would you do?\n\nRemember:  BREATHE - LISTEN - THINK",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -110,7 +109,6 @@
                       "value": "Crisis 1: @global.w_crisis_teen_boy_2 fights at school",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -142,7 +140,6 @@
                       "value": "@global.w_crisis_teen_boy_2: \"I’ve never done this before. And now they will expel me\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -173,7 +170,6 @@
                       "value": "How could you respond to @global.w_crisis_teen_boy_2?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -227,7 +223,6 @@
                           "value": "Crisis 2: @global.w_crisis_teen_girl_1 gets pregnant",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -259,7 +254,6 @@
                           "value": "@global.w_crisis_teen_girl_1: \"@global.w_crisis_male_caregiver_1, I’m so ashamed. I don’t know what to do\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -299,7 +293,6 @@
                           "value": "How could you respond to @global.w_crisis_teen_girl_1?",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -353,7 +346,6 @@
                               "value": "Crisis 3: @global.w_crisis_teen_boy_2 makes a girl pregnant",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -385,7 +377,6 @@
                               "value": "@global.w_crisis_teen_boy_2: \"@global.w_crisis_male_caregiver_2, I don’t want to have a baby\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -425,7 +416,6 @@
                               "value": "How could you respond to @global.w_crisis_teen_boy_2?",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -479,7 +469,6 @@
                                   "value": "Crisis 4: Someone in the family gets sick",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -496,7 +485,6 @@
                                   "value": "\"The test said I have HIV. I’m scared I’m going to die\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -512,7 +500,6 @@
                                   "value": "How could you respond in this situation?",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -546,7 +533,6 @@
                                   "value": "Crisis 5: @global.w_crisis_teen_girl_1 is pressured into sex by her boyfriend",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -578,7 +564,6 @@
                                   "value": "@global.w_crisis_teen_girl_1: \"I didn’t really want to. Now I will get pregnant or be ill. @global.w_crisis_female_caregiver, I’m so scared...\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -618,7 +603,6 @@
                                   "value": "How could you respond to @global.w_crisis_teen_girl_1?",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -665,7 +649,6 @@
               "value": "Remember to support and encourage each other. It is hard to remain calm and listen to each other in a crisis - we are proud of you.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

@@ -38,7 +38,6 @@
               "value": "Let’s do a thought experiment!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -73,7 +72,6 @@
                       "value": "DO NOT THINK ABOUT AN ELEPHANT \n\nWhat are you thinking about?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -111,7 +109,6 @@
                           "value": "You probably DID think about an elephant...\n\n‘Don’t do’ instructions make teens think about that thing. \n\nSometimes they don’t understand what we DID want from them. \n\nAlso they often don’t like being told not to do things (don’t we all?)",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -149,7 +146,6 @@
                               "value": "NOW, THINK ABOUT A CHEETAH! \n\nWhat are you thinking about?",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -182,7 +178,6 @@
                               "value": "That’s right! Positive, clear instructions help teens focus on what they should be doing. \n\nTeens will also feel more respected this way, and are more likely to listen.",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,

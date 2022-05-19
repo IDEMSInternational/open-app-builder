@@ -33,7 +33,6 @@
           "value": "It is hard to find time to have fun with your teenager.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -49,7 +48,6 @@
           "value": "How many days in the past week were you able to give them your attention and do something that they enjoyed with them?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -89,7 +87,6 @@
           "value": "@data.workshop.w_1on1.tools added to @data.parent_centre.my_tips.title.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

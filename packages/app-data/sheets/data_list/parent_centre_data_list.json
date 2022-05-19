@@ -14,7 +14,6 @@
       "title": "My Tips",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -22,7 +21,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -50,7 +48,6 @@
       "title": "Essential Tools",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -58,7 +55,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -86,7 +82,6 @@
       "title": "Customise @global.parent_app",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -94,7 +89,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -122,7 +116,6 @@
       "title": "Customise Again",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -130,7 +123,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true
         }
       },
@@ -154,7 +146,6 @@
       "title": "Relax & Activities",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -162,7 +153,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -190,7 +180,6 @@
       "title": "Help",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -198,7 +187,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -226,7 +214,6 @@
       "title": "Technical Support",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -234,7 +221,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -262,7 +248,6 @@
       "title": "Coping with @global.covid",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -270,7 +255,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -298,7 +282,6 @@
       "title": "Coping with grief",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -306,7 +289,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -334,7 +316,6 @@
       "title": "Message Archive",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -342,7 +323,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -369,7 +349,6 @@
       "title": "Support Contacts",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -377,7 +356,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -404,7 +382,6 @@
       "title": "Evidence Base",
       "_translations": {
         "title": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -412,7 +389,6 @@
           "za_zu": true
         },
         "location_text": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

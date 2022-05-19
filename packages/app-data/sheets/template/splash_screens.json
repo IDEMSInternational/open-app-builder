@@ -61,9 +61,7 @@
               "name": "slogan_1",
               "value": "Bringing teenagers up is hard",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "_nested_name": "animated_slides.animated_section.slogan_1"
             }
@@ -102,9 +100,7 @@
               "name": "slogan_2",
               "value": "You are the best parent your teen could have",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "parameter_list": {
                 "style": "large center"
@@ -146,9 +142,7 @@
               "name": "slogan_3",
               "value": "Join the 152.4 million parents who have used our resources",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "parameter_list": {
                 "style": "large center"
@@ -170,7 +164,6 @@
               "value": "Powered by Parenting for Lifelong Health and partners",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_tn": true,
                   "za_xh": true,
                   "za_zu": true
@@ -266,9 +259,7 @@
               "type": "text",
               "value": "@global.parent_app funded by",
               "_translations": {
-                "value": {
-                  "tz_sw": true
-                }
+                "value": {}
               },
               "parameter_list": {
                 "style": "large center"

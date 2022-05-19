@@ -10,7 +10,6 @@
       "value": "Teens completing school/university",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -25,7 +24,6 @@
       "value": "Building/expanding a house for my family",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -40,7 +38,6 @@
       "value": "Starting a business",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -55,7 +52,6 @@
       "value": "Buying a car for my family",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

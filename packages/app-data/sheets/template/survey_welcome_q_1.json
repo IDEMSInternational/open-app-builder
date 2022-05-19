@@ -57,7 +57,6 @@
               "value": "We know this is hard. We have added some helpful tips on how you can spend time with your teen to @data.parent_centre.my_tips.location_text, so you can access it right away. \n\nBecause @data.workshop.w_1on1.title builds the foundation for all other parenting tools,  it will be the @global.weekly_workshop you receive next week!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -106,7 +105,6 @@
               "value": "Well done! Our next @global.weekly_workshop  will give you more ideas for this, as a foundation for all the other parenting tools. But you already have a great start!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

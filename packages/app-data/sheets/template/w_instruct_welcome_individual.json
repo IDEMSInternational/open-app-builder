@@ -66,7 +66,6 @@
                   "value": "Wonderful, I am so happy! Keep up the good work.",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -82,7 +81,6 @@
                   "value": "Sorry that things are difficult. All families struggle. We are here to help!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -98,7 +96,6 @@
                   "value": "Whatever went ‘wrong’ today, let it go and try again tomorrow. It’s okay!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

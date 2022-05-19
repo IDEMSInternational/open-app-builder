@@ -38,7 +38,6 @@
               "value": "Crisis can happen to anyone. \n\nLet's see what happened with @global.w_crisis_teen_girl_1 and @global.w_crisis_female_caregiver:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -97,7 +96,6 @@
                       "value": "@global.w_crisis_female_caregiver: \"Shame my dear, you look really upset, do you want to tell me what happened?\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -150,7 +148,6 @@
                           "value": "@global.w_crisis_teen_girl_1: \"It’s my Uncle, he… he… he touched me.\"  \n\n@global.w_crisis_female_caregiver (thinking): \"Take a deep breath... What does my child need? She needs me to be calm and listen\" \n\n@global.w_crisis_female_caregiver: \"Come and sit down next to me. Take your time, I’m listening.\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
                               "za_af": true,
                               "za_st": true,
                               "za_tn": true,
@@ -219,7 +216,6 @@
                               "value": "@global.w_crisis_teen_girl_1: \"It’s true, he… he… made me do it! He made me have sex with him! I didn’t want to, I swear, and I even said NO, but he told me I would be in trouble.\"\n\n@global.w_crisis_female_caregiver: \"Thank you for sharing this with me. You are not in trouble. This is not your fault.\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
                                   "za_af": true,
                                   "za_st": true,
                                   "za_tn": true,
@@ -281,7 +277,6 @@
                                   "value": "@global.w_crisis_teen_girl_1: \"Yesterday when you went to see @global.w_crisis_adult_friend. He just came and that’s when it happened.\"\n\n@global.w_crisis_female_caregiver:  \"It’s okay, I believe you my child. This is a big thing and we will find a way to get the help we need. Where could we go for help?\"\n\n@global.w_crisis_teen_girl_1: \"My school?\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
                                       "za_af": true,
                                       "za_st": true,
                                       "za_tn": true,
@@ -359,7 +354,6 @@
                                       "value": "@global.w_crisis_female_caregiver: \"Ah I know, let’s go to the clinic. They will know what we can do to help you. Does that sound okay to you?\"\n\n@global.w_crisis_teen_girl_1: \"Yes… Okay… But will you come with me?\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
                                           "za_af": true,
                                           "za_st": true,
                                           "za_tn": true,
@@ -416,7 +410,6 @@
                                       "value": "@global.w_crisis_female_caregiver: \"Of course I will. And @global.w_crisis_teen_girl_1? Remember this is not your fault. I love you. You are a good person. We will get through this.\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
                                           "za_af": true,
                                           "za_st": true,
                                           "za_tn": true,

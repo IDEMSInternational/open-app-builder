@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 export const UNTRACKED_ASSETS = [];
-
-=======
-export const UNTRACKED_ASSETS = ["es_sp/quality_assurance/test_image_untracked.png"];
->>>>>>> a1048041943080f7e191d1d16d5081bb8e467381
 export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/gb.svg": {
     size_kb: 0.5,

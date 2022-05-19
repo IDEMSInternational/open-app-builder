@@ -37,7 +37,6 @@
               "value": "Let's Slow Down",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -103,7 +102,6 @@
               "value": "Well done!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -119,7 +117,6 @@
               "value": "You’ve completed this week’s workshop.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -184,9 +181,7 @@
                   "name": "button",
                   "value": "Read along",
                   "_translations": {
-                    "value": {
-                      "tz_sw": true
-                    }
+                    "value": {}
                   },
                   "action_list": [
                     {
@@ -208,7 +203,6 @@
                   "value": "See you soon.",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

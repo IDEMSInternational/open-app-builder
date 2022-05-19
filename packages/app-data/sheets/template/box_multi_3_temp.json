@@ -8,7 +8,6 @@
       "value": "Days in the past week",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -24,7 +23,6 @@
       "value": "Days in the past month",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -365,7 +363,6 @@
                   "value": "You selected less than @local.threshold",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -462,7 +459,6 @@
                   "value": "You selected @local.threshold or more",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,

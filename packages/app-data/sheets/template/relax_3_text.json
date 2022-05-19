@@ -14,7 +14,6 @@
           "value": "Close your eyes and think about the day. \n\nName 1 thing that you are grateful for. \nName 1 thing that you did well. \nName 1 thing that you love.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -30,7 +29,6 @@
           "value": "Well done, you are a hero!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -56,7 +56,6 @@
               "value": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -280,7 +279,6 @@
               "value": "You have just unlocked the first workshop!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,

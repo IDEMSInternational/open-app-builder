@@ -38,7 +38,6 @@
               "value": "Let's think about what happened in this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -79,7 +78,6 @@
                       "value": "How do you think @global.w_stress_teen_boy_1 felt?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -150,7 +148,6 @@
                       "value": "And @global.w_stress_male_caregiver?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -221,7 +218,6 @@
                       "value": "And @global.w_stress_girl?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -263,7 +259,6 @@
                       "value": "Each of them was feeling upset for their own reason!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,
@@ -303,7 +298,6 @@
                       "value": "What could @global.w_stress_male_caregiver have done differently?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
                           "za_af": true,
                           "za_st": true,
                           "za_tn": true,

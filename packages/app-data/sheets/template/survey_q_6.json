@@ -33,7 +33,6 @@
           "value": "It is so stressful when children misbehave.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -49,7 +48,6 @@
           "value": "How many days in the past week did you physically discipline your children by hitting, spanking, or slapping with your hand or an object like a stick or a belt?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -89,7 +87,6 @@
           "value": "It is wonderful that you are responding calmly when your teen does something upsetting. They can learn so much from you!",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -111,7 +108,6 @@
           "value": "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

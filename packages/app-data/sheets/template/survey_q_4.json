@@ -43,7 +43,6 @@
           "value": "Sometimes our children make us really upset.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -59,7 +58,6 @@
           "value": "How many days in the past week did you shout, scream or yell at your teen?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -99,7 +97,6 @@
           "value": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -121,7 +118,6 @@
           "value": "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

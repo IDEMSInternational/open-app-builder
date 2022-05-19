@@ -40,7 +40,6 @@
           "value": "This is a very stressful time for families.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -56,7 +55,6 @@
           "value": "How many days in the past week did you feel very stressed as a parent/caregiver?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -102,7 +100,6 @@
           "value": "@data.workshop.w_stress.tools added to @data.parent_centre.my_tips.title.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

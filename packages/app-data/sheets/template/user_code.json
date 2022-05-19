@@ -141,7 +141,6 @@
           "value": "You may be asked to share this code with people who will support your @global.parent_app journey.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -172,7 +171,6 @@
           "value": "Last sync at: @local.sync_latest",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -229,7 +227,6 @@
           "value": "This device has never been synced. Sync to reveal your code.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -263,7 +260,6 @@
       "value": "Sync now",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -364,7 +360,6 @@
       "value": "Syncing...",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

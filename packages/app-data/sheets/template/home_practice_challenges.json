@@ -127,7 +127,6 @@
       "value": "talk to their teens about how they feel",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -143,7 +142,6 @@
       "value": "talk to your teen about how you feel",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -159,7 +157,6 @@
       "value": "Top @local.number_of_challenges challenges other parents experience:",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -191,7 +188,6 @@
       "value": "Did you experience any challenges when trying to @local.hp_description_second_singular?",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,
@@ -244,7 +240,6 @@
       "value": "What was difficult for you when trying to @local.hp_description_second_singular?",
       "_translations": {
         "value": {
-          "tz_sw": true,
           "za_af": true,
           "za_st": true,
           "za_tn": true,

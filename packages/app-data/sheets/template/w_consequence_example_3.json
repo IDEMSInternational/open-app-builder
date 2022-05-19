@@ -55,7 +55,6 @@
           "value": "@global.w_consequence_teen_boy_2 helps washing dishes.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -86,7 +85,6 @@
           "value": "What consequence would help here?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -242,7 +240,6 @@
           "value": "@global.w_consequence_teen_boy_2 helps washing dishes.\n\nWhat positive consequence would help here?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

@@ -66,7 +66,6 @@
           "value": "It’s hard to keep track of your teenagers when they are becoming independent.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -82,7 +81,6 @@
           "value": "How many days in the past week did you know what your teen was doing and who they were with?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -98,7 +96,6 @@
           "value": "@data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -138,7 +135,6 @@
           "value": "This is good to hear.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -154,7 +150,6 @@
           "value": "Were you in lockdown this week?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -170,7 +165,6 @@
           "value": "Great that you are aware of what your teen is doing. Parenting is hard, but you’re really succeeding in this to keep them safe.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -186,7 +180,6 @@
           "value": "How many days in a typical non-lockdown week do you know what your teen is doing and who they are with?",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,
@@ -202,7 +195,6 @@
           "value": "@data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
           "_translations": {
             "value": {
-              "tz_sw": true,
               "za_af": true,
               "za_st": true,
               "za_tn": true,

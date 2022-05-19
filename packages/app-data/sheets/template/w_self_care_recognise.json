@@ -38,7 +38,6 @@
               "value": "Recognise",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -78,7 +77,6 @@
               "value": "Paying attention to what we do well helps us to focus on the positive. \n\nLet’s take a moment to praise ourselves. We’ll show you how.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -140,7 +138,6 @@
                   "value": "Think of one thing YOU have done well recently.\n\nSay it aloud to each other: \"Well done to me for…\"\n\nHere is one thing you deserve praise for: Well done for using @global.parent_app!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -209,7 +206,6 @@
               "value": "Well done! Try to do this every day.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -276,7 +272,6 @@
               "value": "Recognise",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -316,7 +311,6 @@
               "value": "Take a moment to praise yourself. \n\nWe will now show you how.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
@@ -388,7 +382,6 @@
                   "value": "Think of one thing YOU have done well recently.",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -404,7 +397,6 @@
                   "value": "\"Well done to me for...\"",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -433,7 +425,6 @@
                   "value": "Say it aloud if you can.\n\nHere is one thing you deserve praise for: Well done for using @global.parent_app!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
                       "za_af": true,
                       "za_st": true,
                       "za_tn": true,
@@ -467,7 +458,6 @@
               "value": "Well done! Try to do this every day.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
                   "za_af": true,
                   "za_st": true,
                   "za_tn": true,
