@@ -107,7 +107,7 @@ const APP_SIDEMENU_DEFAULTS = {
 };
 
 const APP_AUTHENTICATION_DEFAULTS = {
-  encorceLogin: false,
+  enforceLogin: false,
   signInTemplate: "sign_in",
 };
 
