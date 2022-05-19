@@ -36,6 +36,7 @@ const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+  APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
 };
 
 const APP_LANGUAGES = {
@@ -105,6 +106,11 @@ const APP_SIDEMENU_DEFAULTS = {
   should_show_deployment_name: false,
 };
 
+const APP_AUTHENTICATION_DEFAULTS = {
+  enforceLogin: false,
+  signInTemplate: "sign_in",
+};
+
 type IAppLaunchAction = {
   type: "run_survey" | "template_popup" | "tour_start";
   value: string;
@@ -142,6 +148,7 @@ const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
