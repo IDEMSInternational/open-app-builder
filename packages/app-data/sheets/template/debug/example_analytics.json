@@ -50,7 +50,11 @@
             "example_event"
           ],
           "_raw": "click | track_event : example_event | category:example_events, action:click",
-          "_cleaned": "click | track_event : example_event | category:example_events, action:click"
+          "_cleaned": "click | track_event : example_event | category:example_events, action:click",
+          "params": {
+            "category": "example_events",
+            "action": "click"
+          }
         }
       ],
       "condition": false,
@@ -76,5 +80,5 @@
       "_nested_name": "info_2"
     }
   ],
-  "_xlsxPath": "quality_assurance/example_templates/example_analytics.xlsx"
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_analytics.xlsx"
 }

@@ -273,7 +273,9 @@
               "name": "text",
               "value": "You’ve marked the @global.parent_point @data.habit.instruct_positively.title @fields.parent_point_count_instruct_positively times already  – so you’re making great progress.",
               "_translations": {
-                "value": {}
+                "value": {
+                  "tz_sw": true
+                }
               },
               "condition": "@fields.parent_point_count_instruct_positively > 1",
               "type": "set_variable",

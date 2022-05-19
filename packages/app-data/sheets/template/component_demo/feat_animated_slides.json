@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "comp_animated_slides",
+  "flow_name": "feat_animated_slides",
   "status": "released",
   "flow_subtype": "component_demo",
   "rows": [
@@ -205,5 +205,5 @@
       "_nested_name": "animated_slides"
     }
   ],
-  "_xlsxPath": "quality_assurance/components_demo/component_animated_slides.xlsx"
+  "_xlsxPath": "quality_assurance/feature_sheets/feature_animated_slides.xlsx"
 }

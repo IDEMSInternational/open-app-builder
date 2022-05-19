@@ -1,6 +1,6 @@
 {
   "flow_type": "template",
-  "flow_name": "comp_checkbox_button",
+  "flow_name": "comp_checkbox",
   "status": "released",
   "flow_subtype": "component_demo",
   "rows": [
@@ -12,7 +12,7 @@
     {
       "type": "title",
       "name": "title_1",
-      "value": "Simple checkbox alignment",
+      "value": "Label text",
       "_translations": {
         "value": {}
       },
@@ -21,43 +21,23 @@
     {
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_1_1",
-      "value": "Centered aligned simple_checkbox",
-      "_translations": {
-        "value": {}
-      },
       "parameter_list": {
-        "align": "center"
+        "label_text": ""
       },
       "_nested_name": "simple_checkbox_par_1_1"
     },
     {
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_1_2",
-      "value": "Left aligned simple_checkbox",
-      "_translations": {
-        "value": {}
-      },
       "parameter_list": {
-        "align": "left"
+        "label_text": "label text"
       },
       "_nested_name": "simple_checkbox_par_1_2"
     },
     {
-      "type": "simple_checkbox",
-      "name": "simple_checkbox_par_1_3",
-      "value": "Right aligned simple_checkbox",
-      "_translations": {
-        "value": {}
-      },
-      "parameter_list": {
-        "align": "right"
-      },
-      "_nested_name": "simple_checkbox_par_1_3"
-    },
-    {
       "type": "title",
       "name": "title_2",
-      "value": "simple checkbox label text",
+      "value": "Checkbox alignment",
       "_translations": {
         "value": {}
       },
@@ -67,7 +47,8 @@
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_2_1",
       "parameter_list": {
-        "label_text": ""
+        "align": "center",
+        "label_text": "label text"
       },
       "_nested_name": "simple_checkbox_par_2_1"
     },
@@ -75,14 +56,24 @@
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_2_2",
       "parameter_list": {
+        "align": "left",
         "label_text": "label text"
       },
       "_nested_name": "simple_checkbox_par_2_2"
     },
     {
+      "type": "simple_checkbox",
+      "name": "simple_checkbox_par_2_3",
+      "parameter_list": {
+        "align": "right",
+        "label_text": "label text"
+      },
+      "_nested_name": "simple_checkbox_par_2_3"
+    },
+    {
       "type": "title",
       "name": "title_3",
-      "value": "To be removed.",
+      "value": "Reverse checkbox and text",
       "_translations": {
         "value": {}
       },
@@ -92,35 +83,20 @@
       "type": "simple_checkbox",
       "name": "simple_checkbox_par_3_1",
       "parameter_list": {
-        "style": ""
+        "reverse": "false",
+        "label_text": "label text"
       },
       "_nested_name": "simple_checkbox_par_3_1"
     },
     {
-      "type": "title",
-      "name": "title_4",
-      "value": "To be removed",
-      "_translations": {
-        "value": {}
-      },
-      "_nested_name": "title_4"
-    },
-    {
       "type": "simple_checkbox",
-      "name": "simple_checkbox_par_4_1",
+      "name": "simple_checkbox_par_3_2",
       "parameter_list": {
-        "reverse": "false"
+        "reverse": "true",
+        "label_text": "label text"
       },
-      "_nested_name": "simple_checkbox_par_4_1"
-    },
-    {
-      "type": "simple_checkbox",
-      "name": "simple_checkbox_par_4_2",
-      "parameter_list": {
-        "reverse": "true"
-      },
-      "_nested_name": "simple_checkbox_par_4_2"
+      "_nested_name": "simple_checkbox_par_3_2"
     }
   ],
-  "_xlsxPath": "quality_assurance/components_demo/component_simple_checkbox .xlsx"
+  "_xlsxPath": "quality_assurance/component_sheets/component_simple_checkbox .xlsx"
 }
