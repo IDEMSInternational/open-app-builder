@@ -10,7 +10,7 @@ import { TemplateContainerComponent } from "../../template-container.component";
       (click)="dismissOnBackdrop($event)"
       [attr.data-fullscreen]="props.fullscreen ? true : null"
     >
-      <div style="position:relative">
+      <div class="popup-container">
         <div (click)="dismiss()" class="close-button" fill="clear" *ngIf="props.showCloseButton">
           <ion-icon slot="icon-only" name="close"></ion-icon>
         </div>
@@ -40,9 +40,15 @@ import { TemplateContainerComponent } from "../../template-container.component";
       .popup-backdrop[data-fullscreen] {
         background: white;
       }
+      .popup-container {
+        position: relative;
+        width: var(--content-max-width);
+        padding: 0 2rem;
+        margin: auto;
+      }
 
       .popup-content {
-        margin: 30px;
+        margin: 30px auto;
         max-height: calc(100vh - 60px);
         background: white;
         border-radius: 20px;
