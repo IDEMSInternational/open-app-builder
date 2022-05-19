@@ -1,5 +1,5 @@
 /// <reference lib="dom" />
-
+import APP_CONFIG_GLOBALS from "./app-config/globals";
 /*********************************************************************************************
  *  Constants used throughout the app
  *
@@ -45,14 +45,14 @@ const APP_LANGUAGES = {
 };
 
 /**
- * Some specific strings are currently hardcoded into the app
- * TODO - not all strings included, should add to when required
- */
-const APP_STRINGS = {};
+ * WiP - App strings will be defined from global config
+ * Temporarily just re-export to allow override from deployment in same way as rest of constants
+ * */
+const APP_STRINGS = APP_CONFIG_GLOBALS;
 
 const NOTIFICATION_DEFAULTS = {
-  title: "Notification",
-  text: "You have a new message",
+  title: APP_STRINGS.notification_default_title,
+  text: APP_STRINGS.notification_default_text,
   time: {
     hour: 12,
     minute: 0,
@@ -129,13 +129,13 @@ const FEEDBACK_MODULE_DEFAULTS = {
   buttons: [
     {
       id: "feedback-addFeedback",
-      menuButtonText: "Add Feedback",
+      menuButtonText: APP_STRINGS.feedback_add_button_text,
       appearInMenus: ["rightClick", "longPress", "textSelect"] as any[],
       displayedTemplate: "feature_feedback_default",
     },
     {
       id: "feedback-suggestChange",
-      menuButtonText: "Suggest Change",
+      menuButtonText: APP_STRINGS.feedback_suggest_change_text,
       appearInMenus: ["textSelect"] as any[],
       displayedTemplate: "feature_feedback_text_select",
     },
