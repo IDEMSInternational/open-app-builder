@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 export const UNTRACKED_ASSETS = [];
 
+=======
+export const UNTRACKED_ASSETS = ["es_sp/quality_assurance/test_image_untracked.png"];
+>>>>>>> a1048041943080f7e191d1d16d5081bb8e467381
 export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/gb.svg": {
     size_kb: 0.5,
@@ -2482,6 +2486,14 @@ export const ASSETS_CONTENTS_LIST = {
   "plh_video/lets_slow_down.mp4": {
     size_kb: 13482.2,
     md5Checksum: "62f06faa95a979d128b4356db9bb396e",
+  },
+  "plh_video/lets_slow_down.srt": {
+    size_kb: 1.7,
+    md5Checksum: "77e6d4265f602b20745a738b9809bb15",
+  },
+  "plh_video/lets_slow_down.vtt": {
+    size_kb: 1.8,
+    md5Checksum: "1c172282f4c58766a03562d1eb88a4a4",
   },
   "quality_assurance/test_audio.mp3": {
     size_kb: 43.4,

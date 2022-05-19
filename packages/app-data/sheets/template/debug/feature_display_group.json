@@ -1,0 +1,808 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_display_group",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "example_dp_gr",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "tool_1"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title light_orange",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "example_dp_gr.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display light_orange",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "example_dp_gr.text_ex_text"
+        }
+      ],
+      "_nested_name": "example_dp_gr"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_2",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "tool_2"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title orange",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_2.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display orange",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "right"
+          },
+          "_nested_name": "dg_example_2.text_ex_text"
+        }
+      ],
+      "_nested_name": "dg_example_2"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_3",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "tool_3"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title light_blue",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_3.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display light_blue",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "left"
+          },
+          "_nested_name": "dg_example_3.text_ex_text"
+        }
+      ],
+      "_nested_name": "dg_example_3"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_4",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "tool_4"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title blue",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_4.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display blue",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "center"
+          },
+          "_nested_name": "dg_example_4.text_ex_text"
+        }
+      ],
+      "_nested_name": "dg_example_4"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_6",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "tool_5"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title dark_blue",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "alternative"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_6.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display dark_blue",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "right"
+          },
+          "_nested_name": "dg_example_6.text_ex_text"
+        }
+      ],
+      "_nested_name": "dg_example_6"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_active",
+        "offset": "30"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title with offset",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_7.title_ex_s"
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/characters/group/talk_together.png",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "style_list": [
+            "max-width: 250px"
+          ],
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_8",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "white_box"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title white box",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_8.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display white box",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "left"
+          },
+          "_nested_name": "dg_example_8.text_ex_text"
+        }
+      ],
+      "_nested_name": "dg_example_8"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_8",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "white_box"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "title",
+          "name": "title_ex_s",
+          "value": "Example title white box",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "primary"
+          },
+          "style_list": [
+            "margin: 10px 10px"
+          ],
+          "_nested_name": "dg_example_8.title_ex_s"
+        },
+        {
+          "type": "text",
+          "name": "text_ex_text",
+          "value": "Text for display white box",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "text_align": "left"
+          },
+          "_nested_name": "dg_example_8.text_ex_text"
+        }
+      ],
+      "_nested_name": "dg_example_8"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_8",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "navigation"
+      },
+      "style_list": [
+        "margin: 10px 15px",
+        "min_height: 40px"
+      ],
+      "rows": [
+        {
+          "type": "button",
+          "name": "btn_example",
+          "value": "Continue",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "blue"
+          },
+          "_nested_name": "dg_example_8.btn_example"
+        }
+      ],
+      "_nested_name": "dg_example_8"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_8",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_welcome"
+      },
+      "style_list": [],
+      "rows": [
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/workshop_modes/guide_2/wave.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_8.image"
+        }
+      ],
+      "_nested_name": "dg_example_8"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_short"
+      },
+      "style_list": [],
+      "rows": [
+        {
+          "type": "subtitle",
+          "name": "title_ex_s",
+          "value": "Example short banner",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "small emphasised"
+          },
+          "_nested_name": "dg_example_7.title_ex_s"
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/workshop_modes/guide_2/wave.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_short"
+      },
+      "rows": [
+        {
+          "type": "subtitle",
+          "name": "title_ex_s",
+          "value": "Example short banner with more text",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "small emphasised"
+          },
+          "_nested_name": "dg_example_7.title_ex_s"
+        },
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/workshop_modes/guide_2/wave.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "banner_welcome"
+      },
+      "rows": [
+        {
+          "type": "image",
+          "name": "image",
+          "value": "plh_images/workshop_modes/guide_2/relax.svg",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.image"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_dashed_box",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box",
+        "icon_src": "plh_images/icons/star.svg"
+      },
+      "rows": [
+        {
+          "type": "subtitle",
+          "value": "survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "right"
+          },
+          "name": "subtitle",
+          "_nested_name": "dg_example_dashed_box.subtitle"
+        },
+        {
+          "type": "parent_point_box",
+          "name": "points_example_1",
+          "value": 3,
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "lottie_src": "plh_lottie/parent_centre.json",
+            "text": "text two"
+          },
+          "_nested_name": "dg_example_dashed_box.points_example_1"
+        },
+        {
+          "type": "button",
+          "name": "btn_example",
+          "value": "Continue",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_dashed_box.btn_example"
+        }
+      ],
+      "_nested_name": "dg_example_dashed_box"
+    },
+    {
+      "type": "title",
+      "value": "form with 'go to'",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_form",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "form",
+        "get_device_info": "true",
+        "button_text": "Send",
+        "button_go_to": "feature_audio"
+      },
+      "rows": [
+        {
+          "type": "text_box",
+          "name": "user_name",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "help": "some help text",
+            "placeholder": "Add your name"
+          },
+          "_nested_name": "dg_example_form.user_name"
+        },
+        {
+          "type": "text_box",
+          "name": "user_phone",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "help": "some help text",
+            "placeholder": "Add your phone number"
+          },
+          "_nested_name": "dg_example_form.user_phone"
+        },
+        {
+          "type": "simple_checkbox",
+          "name": "checkbox_1",
+          "value": false,
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "demo_changed_field_checkbox",
+                "this.value"
+              ],
+              "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+              "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
+            }
+          ],
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "label_text": "Example answer?"
+          },
+          "_nested_name": "dg_example_form.checkbox_1",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                    "matchedExpression": "@local.checkbox_1",
+                    "type": "local",
+                    "fieldName": "checkbox_1"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                    "matchedExpression": "@local.checkbox_1",
+                    "type": "local",
+                    "fieldName": "checkbox_1"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.checkbox_1": [
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        },
+        {
+          "type": "simple_checkbox",
+          "name": "checkbox_2",
+          "value": true,
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "label_text": "Example answer?"
+          },
+          "_nested_name": "dg_example_form.checkbox_2"
+        },
+        {
+          "type": "title",
+          "value": "Some text here",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "name": "title",
+          "_nested_name": "dg_example_form.title"
+        },
+        {
+          "type": "text_area",
+          "name": "text_area",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "placeholder": "example placeholder"
+          },
+          "_nested_name": "dg_example_form.text_area"
+        }
+      ],
+      "_nested_name": "dg_example_form"
+    },
+    {
+      "type": "title",
+      "value": "pop up form",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_form",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "form",
+        "get_device_info": "true",
+        "button_text": "Send",
+        "button_pop_up": "feature_audio"
+      },
+      "rows": [
+        {
+          "type": "text_box",
+          "name": "user_name",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "help": "some help text",
+            "placeholder": "Add your name"
+          },
+          "_nested_name": "dg_example_form.user_name"
+        },
+        {
+          "type": "text_box",
+          "name": "user_phone",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "help": "some help text",
+            "placeholder": "Add your phone number"
+          },
+          "_nested_name": "dg_example_form.user_phone"
+        },
+        {
+          "type": "simple_checkbox",
+          "name": "checkbox_1",
+          "value": false,
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "demo_changed_field_checkbox",
+                "this.value"
+              ],
+              "_raw": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+              "_cleaned": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1"
+            }
+          ],
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "label_text": "Example answer?"
+          },
+          "_nested_name": "dg_example_form.checkbox_1",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                    "matchedExpression": "@local.checkbox_1",
+                    "type": "local",
+                    "fieldName": "checkbox_1"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_field:demo_changed_field_checkbox:@local.checkbox_1",
+                    "matchedExpression": "@local.checkbox_1",
+                    "type": "local",
+                    "fieldName": "checkbox_1"
+                  }
+                ]
+              }
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.checkbox_1": [
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ]
+          }
+        },
+        {
+          "type": "simple_checkbox",
+          "name": "checkbox_2",
+          "value": true,
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "label_text": "Example answer?"
+          },
+          "_nested_name": "dg_example_form.checkbox_2"
+        },
+        {
+          "type": "title",
+          "value": "Some text here",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "name": "title",
+          "_nested_name": "dg_example_form.title"
+        },
+        {
+          "type": "text_area",
+          "name": "text_area",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "placeholder": "example placeholder"
+          },
+          "_nested_name": "dg_example_form.text_area"
+        }
+      ],
+      "_nested_name": "dg_example_form"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"
+}

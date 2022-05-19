@@ -1,4 +1,4 @@
-import DEFAULT_CONFIG from "./default.config";
+import DEFAULT_CONFIG from "./global.config";
 
 /** TZ config extends the default config **/
 
@@ -10,5 +10,6 @@ config.translations.filter_language_codes = ["tz_en", "tz_sw"];
 // Override constants
 config.app_constants.APP_LANGUAGES.default = "tz_en";
 config.app_constants.APP_SIDEMENU_DEFAULTS.title = "ParentApp (TZ)";
+config.app_constants.APP_AUTHENTICATION_DEFAULTS.enforceLogin = true;
 
 export default config;

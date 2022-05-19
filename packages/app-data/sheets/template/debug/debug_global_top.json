@@ -1,0 +1,196 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_global_top",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "debug_global_middle",
+      "value": "debug_global_middle",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "debug_global_bottom",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "name": "text_1",
+              "value": "@global.debug_item_3",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_1",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.debug_item_3",
+                    "matchedExpression": "@global.debug_item_3",
+                    "type": "global",
+                    "fieldName": "debug_item_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.debug_item_3": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "text_2",
+              "value": "@global.debug_item_3",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_2",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.debug_item_3",
+                    "matchedExpression": "@global.debug_item_3",
+                    "type": "global",
+                    "fieldName": "debug_item_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.debug_item_3": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "text_3",
+              "value": "This text is overridden directly in the value",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_3"
+            },
+            {
+              "name": "text_4",
+              "value": "@global.debug_item_3",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_4",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.debug_item_3",
+                    "matchedExpression": "@global.debug_item_3",
+                    "type": "global",
+                    "fieldName": "debug_item_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.debug_item_3": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "text_5",
+              "value": "@global.debug_item_3",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_5",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.debug_item_3",
+                    "matchedExpression": "@global.debug_item_3",
+                    "type": "global",
+                    "fieldName": "debug_item_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.debug_item_3": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "text_6",
+              "value": "@global.debug_item_3",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_6",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.debug_item_3",
+                    "matchedExpression": "@global.debug_item_3",
+                    "type": "global",
+                    "fieldName": "debug_item_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.debug_item_3": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "text_7",
+              "value": "This text is overridden directly in the value",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_7"
+            },
+            {
+              "name": "text_8",
+              "value": "@global.debug_item_3",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "type": "set_variable",
+              "_nested_name": "debug_global_middle.debug_global_bottom.text_8",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.debug_item_3",
+                    "matchedExpression": "@global.debug_item_3",
+                    "type": "global",
+                    "fieldName": "debug_item_3"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.debug_item_3": [
+                  "value"
+                ]
+              }
+            }
+          ],
+          "_nested_name": "debug_global_middle.debug_global_bottom"
+        }
+      ],
+      "_nested_name": "debug_global_middle"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_global.xlsx"
+}

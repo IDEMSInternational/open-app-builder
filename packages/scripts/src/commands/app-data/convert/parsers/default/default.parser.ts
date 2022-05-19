@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import path from "path";
-import * as fs from "fs-extra";
 import { FlowTypes } from "data-models";
 import { AbstractParser } from "../abstract.parser";
 import {
@@ -22,11 +20,6 @@ type IRowData = { type: string; name?: string; rows?: IRowData };
  */
 export class DefaultParser implements AbstractParser {
   activeDeployment = getActiveDeployment();
-  ASSETS_CACHE_PATH = path.resolve(
-    this.activeDeployment.google_drive.cache_path,
-    "app_assets",
-    "global"
-  );
 
   public groupSuffix = "_group";
 
@@ -122,10 +115,6 @@ export class DefaultParser implements AbstractParser {
         }
         field = baseField;
       }
-      // handle other data structures
-      if (field.endsWith("_asset")) {
-        row[field] = this.handleAssetLinks(row[field], flow.flow_name);
-      }
       if (field.endsWith("_list")) {
         row[field] = parseAppDataListString(row[field]);
       }
@@ -188,15 +177,6 @@ export class DefaultParser implements AbstractParser {
     }
 
     return row;
-  }
-
-  /** Rewrite urls for local assets and check if currently exists in assets cache */
-  private handleAssetLinks(assetPath: string, flow_name: string) {
-    // log missing asset
-    if (!fs.existsSync(`${this.ASSETS_CACHE_PATH}/${assetPath}`)) {
-      this.summary.missingAssets.push({ flow_name, assetPath });
-    }
-    return assetPath;
   }
 
   /**

@@ -1,4 +1,4 @@
-@import "../../../../../../theme/mixins.scss";
+@use "/src/theme/mixins";
 
 .wrapper {
   width: var(--square-button-min-width);

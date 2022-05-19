@@ -1,0 +1,35 @@
+{
+  "flow_type": "template",
+  "flow_name": "example_double_ref_comp_var",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "template",
+      "name": "first_template",
+      "value": "example_component_variables",
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "first_template"
+    },
+    {
+      "type": "template",
+      "name": "second_template",
+      "value": "example_component_variables",
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "second_template"
+    },
+    {
+      "type": "text",
+      "name": "text_with_double_ref_options",
+      "value": "text should be what is in the comment",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_with_double_ref_options"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_component_variables.xlsx"
+}

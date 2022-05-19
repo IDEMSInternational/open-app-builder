@@ -20,27 +20,37 @@ export interface IDeploymentConfig {
   /** Optional override of any provided constants from data-models/constants */
   app_constants?: Partial<typeof APP_CONSTANTS>;
   app_data?: {
-    /** processed sheets for use in app. Default `./app_data/sheets` */
+    /** processed sheets for use in app. Default `packages/app-data/sheets` */
     sheets_output_path?: string;
     /** partially compiled sheets for use in repopulation. Default `./cache/converter` */
     converter_cache_path?: string;
-    /** processed assets for use in app. Defaults `./app_data/assets` */
+    /** processed assets for use in app. Defaults `packages/app_data/assets` */
     assets_output_path?: string;
     /** filter function that receives converted flows. Default `(flow)=>true`*/
     sheets_filter_function?: (flow: IFlowTypeBase) => boolean;
     /** filter function that receives basic file info such as relativePath and size. Default `(fileEntry)=>true`*/
     assets_filter_function?: (fileEntry: IContentsEntry) => boolean;
+    /** processed translations for use in app. Default `packages/app_data/translations` */
+    translations_output_path?: string;
   };
   translations?: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
-    /** generated output of list of strings to translate. Default `./app_data/translations/source_strings` */
+    /** generated output of list of strings to translate. Default `./app_data/translations_source/source_strings` */
     source_strings_path?: string;
-    /** translated string for import. Default `./app_data/translations/translated_strings */
+    /** translated string for import. Default `./app_data/translations_source/translated_strings */
     translated_strings_path?: string;
-    /** generated output cache. Default `./cache/translations` */
+    /** generated output cache. Default `./cache/translations_source` */
     output_cache_path?: string;
   };
+  workflows?: {
+    /** path to custom workflow files to include */
+    custom_ts_files?: string[];
+    /** path for task working directory. Default `./tasks` */
+    task_cache_path?: string;
+  };
+  /** optional version number to force recompile */
+  _version?: number;
 }
 
 /** Minimal example of just required config */
@@ -56,24 +66,29 @@ export const DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS: IDeploymentConfig = {
     assets_folder_id: "",
     sheets_folder_id: "",
     auth_token_path: "packages/scripts/config/token.json",
-    cache_path: "./cache/gdrive",
     sheets_filter_function: (gdriveEntry) => true,
     assets_filter_function: (gdriveEntry) => true,
   },
   app_constants: {},
   app_data: {
-    sheets_output_path: "./app_data/sheets",
+    sheets_output_path: "packages/app-data/sheets",
     converter_cache_path: "./cache/converter",
-    assets_output_path: "./app_data/assets",
+    assets_output_path: "packages/app-data/assets",
+    translations_output_path: "packages/app-data/translations",
     sheets_filter_function: (flow) => true,
     assets_filter_function: (fileEntry) => true,
   },
   translations: {
     filter_language_codes: null,
-    source_strings_path: "./app_data/translations/source_strings",
-    translated_strings_path: "./app_data/translations/translated_strings",
+    source_strings_path: "./app_data/translations_source/source_strings",
+    translated_strings_path: "./app_data/translations_source/translated_strings",
     output_cache_path: "./cache/translations",
   },
+  workflows: {
+    custom_ts_files: [],
+    task_cache_path: "./tasks",
+  },
+  _version: 1.0,
 };
 
 /** Duplicate type defintion from scripts (TODO - find better way to share) */

@@ -1,0 +1,509 @@
+{
+  "flow_type": "template",
+  "flow_name": "parent_centre_relaxes",
+  "status": "released",
+  "rows": [
+    {
+      "type": "title",
+      "name": "title",
+      "value": "@global.all_relaxes",
+      "_translations": {
+        "value": {}
+      },
+      "parameter_list": {
+        "style": "tiny"
+      },
+      "_nested_name": "title",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.all_relaxes",
+            "matchedExpression": "@global.all_relaxes",
+            "type": "global",
+            "fieldName": "all_relaxes"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.all_relaxes": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_passive_short",
+      "value": "@global.relax_passive_short",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "subtitle_passive_short",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.relax_passive_short",
+            "matchedExpression": "@global.relax_passive_short",
+            "type": "global",
+            "fieldName": "relax_passive_short"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.relax_passive_short": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items_passive_long",
+      "value": "@data.relax",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:this_workshop_together:false",
+              "_cleaned": "click | set_field:this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "activity_@item.id"
+              ],
+              "_raw": "click | go_to:activity_@item.id",
+              "_cleaned": "click | go_to:activity_@item.id"
+            }
+          ],
+          "condition": "@item.type == \"relax_passive_short\"",
+          "_nested_name": "items_passive_long.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "activity_@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@item.type == \"relax_passive_short\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items_passive_long.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items_passive_long",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.relax",
+            "matchedExpression": "@data.relax",
+            "type": "data",
+            "fieldName": "relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.relax": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_passive_long",
+      "value": "@global.relax_passive_long",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "subtitle_passive_long",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.relax_passive_long",
+            "matchedExpression": "@global.relax_passive_long",
+            "type": "global",
+            "fieldName": "relax_passive_long"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.relax_passive_long": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items_passive_long",
+      "value": "@data.relax",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:this_workshop_together:false",
+              "_cleaned": "click | set_field:this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "activity_@item.id"
+              ],
+              "_raw": "click | go_to:activity_@item.id",
+              "_cleaned": "click | go_to:activity_@item.id"
+            }
+          ],
+          "condition": "@item.type == \"relax_passive_long\"",
+          "_nested_name": "items_passive_long.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "activity_@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@item.type == \"relax_passive_long\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items_passive_long.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items_passive_long",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.relax",
+            "matchedExpression": "@data.relax",
+            "type": "data",
+            "fieldName": "relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.relax": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "subtitle",
+      "name": "subtitle_active",
+      "value": "@global.relax_active",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "subtitle_active",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@global.relax_active",
+            "matchedExpression": "@global.relax_active",
+            "type": "global",
+            "fieldName": "relax_active"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@global.relax_active": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "items",
+      "name": "items_active",
+      "value": "@data.relax",
+      "rows": [
+        {
+          "type": "button",
+          "name": "button_@item.id",
+          "value": "@item.title",
+          "_translations": {
+            "value": {}
+          },
+          "action_list": [
+            {
+              "trigger": "click",
+              "action_id": "set_field",
+              "args": [
+                "this_workshop_together",
+                false
+              ],
+              "_raw": "click | set_field:this_workshop_together:false",
+              "_cleaned": "click | set_field:this_workshop_together:false"
+            },
+            {
+              "trigger": "click",
+              "action_id": "go_to",
+              "args": [
+                "activity_@item.id"
+              ],
+              "_raw": "click | go_to:activity_@item.id",
+              "_cleaned": "click | go_to:activity_@item.id"
+            }
+          ],
+          "condition": "@item.type == \"relax_active\"",
+          "parameter_list": {
+            "style": "navigation"
+          },
+          "_nested_name": "items_active.button_@item.id",
+          "_dynamicFields": {
+            "name": [
+              {
+                "fullExpression": "button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ],
+            "value": [
+              {
+                "fullExpression": "@item.title",
+                "matchedExpression": "@item.title",
+                "type": "item",
+                "fieldName": "title"
+              }
+            ],
+            "action_list": {
+              "1": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "activity_@item.id",
+                      "matchedExpression": "@item.id",
+                      "type": "item",
+                      "fieldName": "id"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "click | go_to:activity_@item.id",
+                    "matchedExpression": "@item.id",
+                    "type": "item",
+                    "fieldName": "id"
+                  }
+                ]
+              }
+            },
+            "condition": [
+              {
+                "fullExpression": "@item.type == \"relax_active\"",
+                "matchedExpression": "@item.type",
+                "type": "item",
+                "fieldName": "type"
+              }
+            ],
+            "_nested_name": [
+              {
+                "fullExpression": "items_active.button_@item.id",
+                "matchedExpression": "@item.id",
+                "type": "item",
+                "fieldName": "id"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@item.id": [
+              "name",
+              "action_list.1.args.0",
+              "action_list.1._raw",
+              "action_list.1._cleaned",
+              "_nested_name"
+            ],
+            "@item.title": [
+              "value"
+            ],
+            "@item.type": [
+              "condition"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "items_active",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@data.relax",
+            "matchedExpression": "@data.relax",
+            "type": "data",
+            "fieldName": "relax"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.relax": [
+          "value"
+        ]
+      }
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

@@ -1,0 +1,130 @@
+{
+  "flow_type": "data_list",
+  "flow_name": "efm_act_list",
+  "data_list_name": "efm_act",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "id": "act_1",
+      "type": "introduction",
+      "chapter": 1,
+      "title": "Activity 1",
+      "_translations": {
+        "title": {},
+        "type_name": {},
+        "page_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Activity 1"
+        },
+        "type_name": {
+          "eng": "Introduction"
+        },
+        "page_title": {
+          "eng": "Section 1"
+        }
+      },
+      "type_name": "Introduction",
+      "page_title": "Section 1"
+    },
+    {
+      "id": "act_2",
+      "type": "activity",
+      "chapter": 1,
+      "title": "Activity 2",
+      "_translations": {
+        "title": {},
+        "type_name": {},
+        "page_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Activity 2"
+        },
+        "type_name": {
+          "eng": "Activity"
+        },
+        "page_title": {
+          "eng": "Section 2"
+        }
+      },
+      "type_name": "Activity",
+      "page_title": "Section 2"
+    },
+    {
+      "id": "act_3",
+      "type": "activity",
+      "chapter": 1,
+      "title": "Activity 3",
+      "_translations": {
+        "title": {},
+        "type_name": {},
+        "page_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Activity 3"
+        },
+        "type_name": {
+          "eng": "Activity"
+        },
+        "page_title": {
+          "eng": "Section 2"
+        }
+      },
+      "type_name": "Activity",
+      "page_title": "Section 2"
+    },
+    {
+      "id": "act_4",
+      "type": "activity",
+      "chapter": 1,
+      "title": "Activity 4",
+      "_translations": {
+        "title": {},
+        "type_name": {},
+        "page_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Activity 4"
+        },
+        "type_name": {
+          "eng": "Game"
+        },
+        "page_title": {
+          "eng": "Section 2"
+        }
+      },
+      "type_name": "Game",
+      "page_title": "Section 2"
+    },
+    {
+      "id": "act_5",
+      "type": "game",
+      "chapter": 1,
+      "title": "Activity 5",
+      "_translations": {
+        "title": {},
+        "type_name": {},
+        "page_title": {}
+      },
+      "_translatedFields": {
+        "title": {
+          "eng": "Activity 5"
+        },
+        "type_name": {
+          "eng": "Game"
+        },
+        "page_title": {
+          "eng": "Section 3"
+        }
+      },
+      "type_name": "Game",
+      "page_title": "Section 3"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/Debugging copy of EFM_activity_high_level_sheets.xlsx"
+}

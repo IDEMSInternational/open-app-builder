@@ -1,5 +1,5 @@
 /// <reference lib="dom" />
-
+import APP_CONFIG_GLOBALS from "./app-config/globals";
 /*********************************************************************************************
  *  Constants used throughout the app
  *
@@ -36,6 +36,7 @@ const APP_FIELDS = {
   SERVER_SYNC_LATEST: `${FIELD_PREFIX}._server_sync_latest`,
   APP_LANGUAGE: `${FIELD_PREFIX}._app_language`,
   DEPLOYMENT_NAME: `${FIELD_PREFIX}._deployment_name`,
+  APP_AUTH_USER: `${FIELD_PREFIX}._app_auth_user`,
 };
 
 const APP_LANGUAGES = {
@@ -44,14 +45,14 @@ const APP_LANGUAGES = {
 };
 
 /**
- * Some specific strings are currently hardcoded into the app
- * TODO - not all strings included, should add to when required
- */
-const APP_STRINGS = {};
+ * WiP - App strings will be defined from global config
+ * Temporarily just re-export to allow override from deployment in same way as rest of constants
+ * */
+const APP_STRINGS = APP_CONFIG_GLOBALS;
 
 const NOTIFICATION_DEFAULTS = {
-  title: "Notification",
-  text: "You have a new message from PLH",
+  title: APP_STRINGS.notification_default_title,
+  text: APP_STRINGS.notification_default_text,
   time: {
     hour: 12,
     minute: 0,
@@ -83,7 +84,7 @@ const APP_ROUTE_DEFAULTS = {
 };
 
 const APP_HEADER_DEFAULTS = {
-  title: "ParentApp",
+  title: "App",
   // default only show menu button on home screen
   should_show_menu_button: (location: Location) =>
     location.pathname == APP_ROUTE_DEFAULTS.home_route,
@@ -96,36 +97,29 @@ const APP_HEADER_DEFAULTS = {
 };
 
 const APP_SIDEMENU_DEFAULTS = {
-  title: "ParentApp",
+  title: "App",
   // name of template to display in sidebar
   template_name: "app_menu",
   // show the current version number in the menu
   should_show_version: true,
-  // show the current deployment name (e.g. PLH ZA)
+  // show the current deployment name (e.g. Default)
   should_show_deployment_name: false,
 };
 
+const APP_AUTHENTICATION_DEFAULTS = {
+  enforceLogin: false,
+  signInTemplate: "sign_in",
+};
+
+type IAppLaunchAction = {
+  type: "template_popup" | "tour_start";
+  value: string;
+};
 /** Define app-specific startup tasks and logic */
 const APP_INITIALISATION_DEFAULTS = {
   /** Define initial launch tasks to be performed before main content loaded */
-  app_first_launch_actions: [
-    {
-      type: "template_popup",
-      value: "accept_terms",
-    },
-    {
-      type: "template_popup",
-      value: "language_select",
-    },
-    {
-      type: "template_popup",
-      value: "organisation_registration",
-    },
-    {
-      type: "tour_start",
-      value: "intro_tour",
-    },
-  ] as const,
+  app_first_launch_actions: [] as IAppLaunchAction[],
+
   // TODO - better if refactored to more general handler with condition to filter
   // for things such as app_first_launch, app_version_first_launch etc. and pass data fields
 };
@@ -135,13 +129,13 @@ const FEEDBACK_MODULE_DEFAULTS = {
   buttons: [
     {
       id: "feedback-addFeedback",
-      menuButtonText: "Add Feedback",
+      menuButtonText: APP_STRINGS.feedback_add_button_text,
       appearInMenus: ["rightClick", "longPress", "textSelect"] as any[],
       displayedTemplate: "feature_feedback_default",
     },
     {
       id: "feedback-suggestChange",
-      menuButtonText: "Suggest Change",
+      menuButtonText: APP_STRINGS.feedback_suggest_change_text,
       appearInMenus: ["textSelect"] as any[],
       displayedTemplate: "feature_feedback_text_select",
     },
@@ -150,10 +144,11 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-export default {
+const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
   APP_LANGUAGES,
   APP_ROUTE_DEFAULTS,
   APP_SIDEMENU_DEFAULTS,
@@ -165,3 +160,5 @@ export default {
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
 };
+
+export default APP_CONSTANTS;

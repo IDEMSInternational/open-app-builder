@@ -1,0 +1,59 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_dg_dashed_box",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "dg_example_dashed_box",
+      "value": "dg_example_dashed_box",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "dashed_box"
+      },
+      "rows": [
+        {
+          "type": "subtitle",
+          "value": "Subtitle",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "name": "subtitle",
+          "_nested_name": "dg_example_dashed_box.subtitle"
+        },
+        {
+          "type": "parent_point_box",
+          "name": "points_example_1",
+          "value": 3,
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "lottie_src": "plh_lottie/parent_centre.json",
+            "text": "text two"
+          },
+          "_nested_name": "dg_example_dashed_box.points_example_1"
+        },
+        {
+          "type": "button",
+          "name": "btn_example",
+          "value": "Continue",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_dashed_box.btn_example"
+        }
+      ],
+      "_nested_name": "dg_example_dashed_box"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_dg_styles.xlsx"
+}

@@ -1,0 +1,26 @@
+{
+  "flow_type": "tour",
+  "flow_name": "example_tour_templates",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "step",
+      "title": "Title 1",
+      "_translations": {
+        "title": {}
+      },
+      "message_template": "example_tour_template_1"
+    },
+    {
+      "type": "step",
+      "title": "Title 2",
+      "_translations": {
+        "title": {},
+        "message_text": {}
+      },
+      "message_text": "This is regular text"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_tour.xlsx"
+}

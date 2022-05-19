@@ -1,0 +1,534 @@
+{
+  "flow_type": "template",
+  "module": "stress",
+  "flow_name": "w_stress_read_3_temp",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "read",
+      "value": "read_temp",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_title",
+              "value": "Safety Amnesty",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_title"
+            },
+            {
+              "name": "intro_text",
+              "value": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.intro_text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
+                    "matchedExpression": "@global.w_stress_teen_boy_2",
+                    "type": "global",
+                    "fieldName": "w_stress_teen_boy_2"
+                  },
+                  {
+                    "fullExpression": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
+                    "matchedExpression": "@global.w_stress_teen_girl",
+                    "type": "global",
+                    "fieldName": "w_stress_teen_girl"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.w_stress_teen_boy_2": [
+                  "value"
+                ],
+                "@global.w_stress_teen_girl": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "name": "include_outro",
+              "value": true,
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.include_outro"
+            },
+            {
+              "name": "outro_habit_data",
+              "value": "@data.habit.safe",
+              "_translations": {
+                "value": {}
+              },
+              "type": "set_variable",
+              "_nested_name": "read.workshop_activity.outro_habit_data",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@data.habit.safe",
+                    "matchedExpression": "@data.habit.safe",
+                    "type": "data",
+                    "fieldName": "habit"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@data.habit.safe": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "nested_properties",
+              "name": "intro_nav_buttons",
+              "rows": [
+                {
+                  "name": "button_completed",
+                  "value": "@global.more_button",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "read.workshop_activity.intro_nav_buttons.button_completed",
+                  "_dynamicFields": {
+                    "value": [
+                      {
+                        "fullExpression": "@global.more_button",
+                        "matchedExpression": "@global.more_button",
+                        "type": "global",
+                        "fieldName": "more_button"
+                      }
+                    ]
+                  },
+                  "_dynamicDependencies": {
+                    "@global.more_button": [
+                      "value"
+                    ]
+                  }
+                }
+              ],
+              "_nested_name": "read.workshop_activity.intro_nav_buttons"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "pair",
+              "rows": [
+                {
+                  "type": "nested_properties",
+                  "name": "box_1",
+                  "value": "box_story",
+                  "rows": [
+                    {
+                      "name": "image_src",
+                      "value": "plh_images/workshops/w_stress/read_3/slide_1.svg",
+                      "_translations": {
+                        "value": {}
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.image_src"
+                    },
+                    {
+                      "name": "text",
+                      "value": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
+                      "_translations": {
+                        "value": {
+                          "tz_sw": true,
+                          "za_af": true,
+                          "za_st": true,
+                          "za_tn": true,
+                          "za_xh": true,
+                          "za_zu": true
+                        }
+                      },
+                      "type": "set_variable",
+                      "_nested_name": "read.workshop_activity.content_box.box_1.text",
+                      "_dynamicFields": {
+                        "value": [
+                          {
+                            "fullExpression": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
+                            "matchedExpression": "@global.w_stress_teen_boy_2",
+                            "type": "global",
+                            "fieldName": "w_stress_teen_boy_2"
+                          },
+                          {
+                            "fullExpression": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
+                            "matchedExpression": "@global.w_stress_teen_girl",
+                            "type": "global",
+                            "fieldName": "w_stress_teen_girl"
+                          }
+                        ]
+                      },
+                      "_dynamicDependencies": {
+                        "@global.w_stress_teen_boy_2": [
+                          "value"
+                        ],
+                        "@global.w_stress_teen_girl": [
+                          "value"
+                        ]
+                      }
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_1"
+                },
+                {
+                  "type": "nested_properties",
+                  "name": "box_2",
+                  "value": "pair",
+                  "rows": [
+                    {
+                      "type": "nested_properties",
+                      "name": "box_1",
+                      "value": "box_story",
+                      "rows": [
+                        {
+                          "name": "image_src",
+                          "value": "plh_images/workshops/w_stress/read_3/slide_2.svg",
+                          "_translations": {
+                            "value": {}
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.image_src"
+                        },
+                        {
+                          "name": "text",
+                          "value": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\"",
+                          "_translations": {
+                            "value": {
+                              "tz_sw": true,
+                              "za_af": true,
+                              "za_st": true,
+                              "za_tn": true,
+                              "za_xh": true,
+                              "za_zu": true
+                            }
+                          },
+                          "type": "set_variable",
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_1.text",
+                          "_dynamicFields": {
+                            "value": [
+                              {
+                                "fullExpression": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\"",
+                                "matchedExpression": "@global.w_stress_teen_boy_2",
+                                "type": "global",
+                                "fieldName": "w_stress_teen_boy_2"
+                              }
+                            ]
+                          },
+                          "_dynamicDependencies": {
+                            "@global.w_stress_teen_boy_2": [
+                              "value"
+                            ]
+                          }
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_1"
+                    },
+                    {
+                      "type": "nested_properties",
+                      "name": "box_2",
+                      "value": "pair",
+                      "rows": [
+                        {
+                          "type": "nested_properties",
+                          "name": "box_1",
+                          "value": "box_story",
+                          "rows": [
+                            {
+                              "name": "image_src",
+                              "value": "plh_images/workshops/w_stress/read_3/slide_3.svg",
+                              "_translations": {
+                                "value": {}
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.image_src"
+                            },
+                            {
+                              "name": "text",
+                              "value": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
+                              "_translations": {
+                                "value": {
+                                  "tz_sw": true,
+                                  "za_af": true,
+                                  "za_st": true,
+                                  "za_tn": true,
+                                  "za_xh": true,
+                                  "za_zu": true
+                                }
+                              },
+                              "type": "set_variable",
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1.text",
+                              "_dynamicFields": {
+                                "value": [
+                                  {
+                                    "fullExpression": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
+                                    "matchedExpression": "@global.w_stress_teen_girl",
+                                    "type": "global",
+                                    "fieldName": "w_stress_teen_girl"
+                                  }
+                                ]
+                              },
+                              "_dynamicDependencies": {
+                                "@global.w_stress_teen_girl": [
+                                  "value"
+                                ]
+                              }
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_1"
+                        },
+                        {
+                          "type": "nested_properties",
+                          "name": "box_2",
+                          "value": "pair",
+                          "rows": [
+                            {
+                              "type": "nested_properties",
+                              "name": "box_1",
+                              "value": "box_story",
+                              "rows": [
+                                {
+                                  "name": "image_src",
+                                  "value": "plh_images/workshops/w_stress/read_3/slide_4.svg",
+                                  "_translations": {
+                                    "value": {}
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.image_src"
+                                },
+                                {
+                                  "name": "text",
+                                  "value": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
+                                  "_translations": {
+                                    "value": {
+                                      "tz_sw": true,
+                                      "za_af": true,
+                                      "za_st": true,
+                                      "za_tn": true,
+                                      "za_xh": true,
+                                      "za_zu": true
+                                    }
+                                  },
+                                  "type": "set_variable",
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1.text",
+                                  "_dynamicFields": {
+                                    "value": [
+                                      {
+                                        "fullExpression": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
+                                        "matchedExpression": "@global.w_stress_teen_boy_2",
+                                        "type": "global",
+                                        "fieldName": "w_stress_teen_boy_2"
+                                      },
+                                      {
+                                        "fullExpression": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
+                                        "matchedExpression": "@global.w_stress_teen_girl",
+                                        "type": "global",
+                                        "fieldName": "w_stress_teen_girl"
+                                      },
+                                      {
+                                        "fullExpression": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
+                                        "matchedExpression": "@global.w_stress_parent",
+                                        "type": "global",
+                                        "fieldName": "w_stress_parent"
+                                      }
+                                    ]
+                                  },
+                                  "_dynamicDependencies": {
+                                    "@global.w_stress_teen_boy_2": [
+                                      "value"
+                                    ],
+                                    "@global.w_stress_teen_girl": [
+                                      "value"
+                                    ],
+                                    "@global.w_stress_parent": [
+                                      "value"
+                                    ]
+                                  }
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_1"
+                            },
+                            {
+                              "type": "nested_properties",
+                              "name": "box_2",
+                              "value": "pair",
+                              "rows": [
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_1",
+                                  "value": "box_story",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_stress/read_3/slide_5.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "value": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
+                                      "_translations": {
+                                        "value": {
+                                          "tz_sw": true,
+                                          "za_af": true,
+                                          "za_st": true,
+                                          "za_tn": true,
+                                          "za_xh": true,
+                                          "za_zu": true
+                                        }
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1.text",
+                                      "_dynamicFields": {
+                                        "value": [
+                                          {
+                                            "fullExpression": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
+                                            "matchedExpression": "@global.w_stress_teen_girl",
+                                            "type": "global",
+                                            "fieldName": "w_stress_teen_girl"
+                                          },
+                                          {
+                                            "fullExpression": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
+                                            "matchedExpression": "@global.w_stress_parent",
+                                            "type": "global",
+                                            "fieldName": "w_stress_parent"
+                                          }
+                                        ]
+                                      },
+                                      "_dynamicDependencies": {
+                                        "@global.w_stress_teen_girl": [
+                                          "value"
+                                        ],
+                                        "@global.w_stress_parent": [
+                                          "value"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_1"
+                                },
+                                {
+                                  "type": "nested_properties",
+                                  "name": "box_2",
+                                  "value": "box_image",
+                                  "rows": [
+                                    {
+                                      "name": "image_src",
+                                      "value": "plh_images/workshops/w_stress/read_3/slide_6.svg",
+                                      "_translations": {
+                                        "value": {}
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.image_src"
+                                    },
+                                    {
+                                      "name": "text",
+                                      "value": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\"",
+                                      "_translations": {
+                                        "value": {
+                                          "tz_sw": true,
+                                          "za_af": true,
+                                          "za_st": true,
+                                          "za_tn": true,
+                                          "za_xh": true,
+                                          "za_zu": true
+                                        }
+                                      },
+                                      "type": "set_variable",
+                                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2.text",
+                                      "_dynamicFields": {
+                                        "value": [
+                                          {
+                                            "fullExpression": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\"",
+                                            "matchedExpression": "@global.w_stress_teen_boy_2",
+                                            "type": "global",
+                                            "fieldName": "w_stress_teen_boy_2"
+                                          },
+                                          {
+                                            "fullExpression": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\"",
+                                            "matchedExpression": "@global.w_stress_parent",
+                                            "type": "global",
+                                            "fieldName": "w_stress_parent"
+                                          }
+                                        ]
+                                      },
+                                      "_dynamicDependencies": {
+                                        "@global.w_stress_teen_boy_2": [
+                                          "value"
+                                        ],
+                                        "@global.w_stress_parent": [
+                                          "value"
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2.box_2"
+                                }
+                              ],
+                              "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2.box_2"
+                            }
+                          ],
+                          "_nested_name": "read.workshop_activity.content_box.box_2.box_2.box_2"
+                        }
+                      ],
+                      "_nested_name": "read.workshop_activity.content_box.box_2.box_2"
+                    }
+                  ],
+                  "_nested_name": "read.workshop_activity.content_box.box_2"
+                }
+              ],
+              "_nested_name": "read.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "read.workshop_activity"
+        }
+      ],
+      "_nested_name": "read"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_stress.xlsx"
+}
