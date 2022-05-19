@@ -89,7 +89,7 @@ export class AppComponent {
       const user = this.userMetaService.userMeta;
       // Authentication requires verified domain and app ids populated to firebase console
       // Currently only run on native where specified (but can comment out for testing locally)
-      if (APP_AUTHENTICATION_DEFAULTS.encorceLogin && Capacitor.isNativePlatform()) {
+      if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
         await this.ensureUserSignedIn();
       }
       if (!user.first_app_open) {
