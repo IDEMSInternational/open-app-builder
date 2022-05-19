@@ -2,11 +2,10 @@
 
 ## Example
 
-| type            | name                    | value                          |parameter_list |
-| ---------       | ------------            | ------                         |--------- |
-|simple check_box |simple_checkbox_par_1_1	|Centered aligned simple_checkbox|align: center|
-|simple check_box |simple_checkbox_par_1_2	|Left aligned simple_checkbox	 |align: left|
-|simple check_box |simple_checkbox_par_1_3	|Right aligned simple_checkbox	 |align: right|
+| type            | name                    |parameter_list |
+| ---------       | ------------            | ------        |                
+|simple_checkbox  |simple_checkbox_par_3_1	|reverse: false; label_text: label text  |
+|simple_checkbox  |simple_checkbox_par_3_2	|reverse: true; label_text: label text   |
 
 ![](images/simple_checkbox.png)
 
