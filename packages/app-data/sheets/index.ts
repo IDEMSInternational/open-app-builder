@@ -1062,7 +1062,7 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "comp_checkbox_button",
       flow_subtype: "component_demo",
-      _xlsxPath: "quality_assurance/components_demo/component_simple_check_box .xlsx",
+      _xlsxPath: "quality_assurance/components_demo/component_simple_checkbox .xlsx",
     },
     comp_html: {
       flow_type: "template",
@@ -1081,6 +1081,12 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "comp_round_button",
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/components_demo/component_round_button .xlsx",
+    },
+    comp_slider_1: {
+      flow_type: "template",
+      flow_name: "comp_slider_1",
+      flow_subtype: "component_demo",
+      _xlsxPath: "quality_assurance/components_demo/component_slider.xlsx",
     },
     comp_square_button: {
       flow_type: "template",
@@ -1963,6 +1969,27 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     efm_chapter_acts_2: {
       flow_type: "template",
       flow_name: "efm_chapter_acts_2",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_3: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_3",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_4: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_4",
+      flow_subtype: "debug",
+      _xlsxPath:
+        "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
+    },
+    efm_chapter_acts_5: {
+      flow_type: "template",
+      flow_name: "efm_chapter_acts_5",
       flow_subtype: "debug",
       _xlsxPath:
         "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx",
@@ -6036,9 +6063,14 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_name: "demo_essential_tools_tour",
       _xlsxPath: "global/demo_templates/demo_navigation.xlsx",
     },
-    intro_tour: {
+    home_screen_tour_intro: {
       flow_type: "tour",
-      flow_name: "intro_tour",
+      flow_name: "home_screen_tour_intro",
+      _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
+    },
+    home_screen_tour_menu: {
+      flow_type: "tour",
+      flow_name: "home_screen_tour_menu",
       _xlsxPath: "global/tutorials/home_screen_tour.xlsx",
     },
     weekly_workshop_options_tour: {

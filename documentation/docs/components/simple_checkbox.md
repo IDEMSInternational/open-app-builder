@@ -1,4 +1,4 @@
-# Simple Checkbox
+# Checkbox
 
 ## Example
 
