@@ -9,7 +9,7 @@ import { ThemeService } from "./feature/theme/theme-service/theme.service";
 import { _DeprecatedSurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
-import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
+import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -28,8 +28,14 @@ import { DBSyncService } from "./shared/services/db/db-sync.service";
 import { APP_CONSTANTS } from "./data";
 import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
 import { AppDataService } from "./shared/services/data/app-data.service";
+import { AuthService } from "./shared/services/auth/auth.service";
 
-const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
+const {
+  APP_FIELDS,
+  APP_INITIALISATION_DEFAULTS,
+  APP_SIDEMENU_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
+} = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -65,6 +71,7 @@ export class AppComponent {
     private templateTranslateService: TemplateTranslateService,
     private crashlyticsService: CrashlyticsService,
     private appDataService: AppDataService,
+    private authService: AuthService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -80,6 +87,11 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
+      // Authentication requires verified domain and app ids populated to firebase console
+      // Currently only run on native where specified (but can comment out for testing locally)
+      if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
+        await this.ensureUserSignedIn();
+      }
       if (!user.first_app_open) {
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
         await this.handleFirstLaunchDataActions();
@@ -95,6 +107,19 @@ export class AppComponent {
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
     });
+  }
+
+  async ensureUserSignedIn() {
+    const authUser = await this.authService.getCurrentUser();
+    if (!authUser) {
+      const templatename = APP_AUTHENTICATION_DEFAULTS.signInTemplate;
+      const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+        showCloseButton: false,
+        waitForDismiss: false,
+      });
+      await this.authService.waitForSignInComplete();
+      await modal.dismiss();
+    }
   }
 
   /**
