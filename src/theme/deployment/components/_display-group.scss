@@ -50,8 +50,39 @@ plh-tmpl-display-group .display-group-wrapper[data-param-style~="parent_point"] 
     max-width: 160px;
     padding: 16px;
   }
+  &[data-param-style~="tight"] {
+    plh-template-component {
+      display: block;
+      max-height: 70px;
+      max-width: 160px;
+      padding: 0px;
+    }
+  }
   .tmpl-image-container {
     padding: 0 !important;
+  }
+}
+
+.display-group-wrapper[data-param-style~="two_columns_images_overflow"] {
+  justify-content: center;
+  plh-template-component {
+    display: block;
+    max-height: 160px;
+    max-width: 160px;
+    padding: 32px 16px 16px 16px;
+  }
+  .tmpl-image-container {
+    padding: 0 !important;
+  }
+}
+
+.display-group-wrapper[data-param-style~="centre_image"] {
+  plh-template-component > plh-tmpl-image > .tmpl-image-container {
+    display: flex;
+    justify-content: center;
+  }
+  img {
+    max-width: 200px;
   }
 }
 

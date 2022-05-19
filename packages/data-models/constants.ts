@@ -112,7 +112,7 @@ const APP_AUTHENTICATION_DEFAULTS = {
 };
 
 type IAppLaunchAction = {
-  type: "run_survey" | "template_popup" | "tour_start";
+  type: "template_popup" | "tour_start";
   value: string;
 };
 /** Define app-specific startup tasks and logic */
