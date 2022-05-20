@@ -46,12 +46,7 @@
               "value": "Let's talk about this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -66,12 +61,7 @@
                   "value": "For @global.w_money_grandma, a storm happened. \n\nWhat other emergencies could come up for us?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -117,12 +107,7 @@
               "value": "Emergencies can happen in any family. Saving some money for these emergencies BEFORE they happen prevents a lot of sudden worry and stress!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -193,12 +178,7 @@
               "value": "Let's think about this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -224,12 +204,7 @@
                   "value": "For @global.w_money_grandma, a storm happened.",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -255,12 +230,7 @@
                   "value": "What other emergencies could come up for your family?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -356,12 +326,7 @@
                   "value": "Emergencies can happen in any family. Saving some money for these emergencies BEFORE they happen prevents a lot of sudden worry and stress!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",

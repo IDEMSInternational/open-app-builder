@@ -13,12 +13,7 @@
           "value": "Make a list of healthy activities that you like to do. Here are some suggestions:\n* Listening to your favourite music\n* Going for a walk (if allowed)\n* Doing some exercise\n* Drinking a cup of tea by yourself\n* Calling up a friend\n* Singing, dancing, praying, or reading\n* Sitting in the sun with your eyes closed\n* Watching your favourite T.V. show\n\nPick one and do it today!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

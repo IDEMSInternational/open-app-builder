@@ -38,12 +38,7 @@
               "value": "Let's think about what happened in this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -78,12 +73,7 @@
                       "value": "What went well here in making a rule together?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -154,12 +144,7 @@
                       "value": "That's right, making clear rules together in a calm and positive way works so well!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -200,12 +185,7 @@
                       "value": "How do you think @global.w_rules_teen_boy knew his @global.w_rules_female_caregiver_1 appreciated him?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -256,12 +236,7 @@
                       "value": "Exactly - a positive response makes all the difference!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",

@@ -10,12 +10,7 @@
       "value": "At home",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -25,12 +20,7 @@
       "value": "Buy things we can sell",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -40,12 +30,7 @@
       "value": "At a bank",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -55,12 +40,7 @@
       "value": "In a savings group",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     }

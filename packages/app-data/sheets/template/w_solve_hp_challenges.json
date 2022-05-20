@@ -64,12 +64,7 @@
           "value": "resolve problems with their teens",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -80,12 +75,7 @@
           "value": "resolve the problem with your teen",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -96,12 +86,7 @@
           "value": "I forgot the steps of problem solving.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -112,12 +97,7 @@
           "value": "It takes some practice to use all four steps of problem solving. Next time a problem comes up, look at the four steps together with your teen - it will make a big difference!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -135,12 +115,7 @@
           "value": "Four steps of problem solving",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "action_list": [
@@ -162,12 +137,7 @@
           "value": "I started with the solutions right away.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -178,12 +148,7 @@
           "value": "When we have a problem, we always want to get to the quickest end result and can forget about the steps. To come up with the best solution together, it is helpful to first have a full understanding of the problem and the different solutions.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -201,12 +166,7 @@
           "value": "Four steps of problem solving",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "action_list": [
@@ -228,12 +188,7 @@
           "value": "We could not agree on a solution to try out and we got into an argument.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -244,12 +199,7 @@
           "value": "Sometimes it can be difficult to agree with everyone in the family, especially if everyone is not yet calm. You could agree to try one solution first, and then another. Also, if you get stuck, try to get together later to agree on the solution together.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -260,12 +210,7 @@
           "value": "I got angry when the problem came up and I forgot to use the problem-solving steps.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -276,12 +221,7 @@
           "value": "When a problem comes up, we all get angry or stressed sometimes. Remember, when you feel angry or stressed, you can take a pause to help you stay calm and then solve the problem you are facing.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -292,12 +232,7 @@
           "value": "My teen got angry and did not want to talk about the problem.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -308,12 +243,7 @@
           "value": "Your teen might be too overwhelmed to deal with the problem right away. Recognise and name their emotions, and create a time later in the day or week to discuss and solve the problem together. By giving your teen time, the problem can be solved well.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

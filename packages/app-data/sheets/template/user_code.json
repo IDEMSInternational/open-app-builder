@@ -141,12 +141,7 @@
           "value": "You may be asked to share this code with people who will support your @global.parent_app journey.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "_nested_name": "has_ever_been_synced.text",
@@ -172,12 +167,7 @@
           "value": "Last sync at: @local.sync_latest",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "_nested_name": "has_ever_been_synced.last_sync_text",
@@ -229,12 +219,7 @@
           "value": "This device has never been synced. Sync to reveal your code.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "_nested_name": "has_never_been_synced.not_synced_text"
@@ -263,12 +248,7 @@
       "value": "Sync now",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "action_list": [
@@ -364,12 +344,7 @@
       "value": "Syncing...",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "condition": "@local.sync_status",

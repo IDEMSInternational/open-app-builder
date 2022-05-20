@@ -14,12 +14,7 @@
           "value": "Greetings, everyone. \n\nToday our topic is teen safety. \n\nIt is our responsibility as parents to keep our teens safe at all times. We need to ensure that our teenagers are safe in the communities that we live in. It is our responsibility that we make them aware of the safe and unsafe areas in the communities. \n\nIt is also our responsibility to ensure that they understand the dangers that they might be exposed to when they are online. That way our teenagers will be responsible and be able to make right decisions to keep themselves safe too.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

@@ -94,12 +94,7 @@
                       "value": "How did @global.w_instruct_teen_girl and @global.w_instruct_female_caregiver feel now?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -180,12 +175,7 @@
                       "value": "Why do you think the situation went better for @global.w_instruct_female_caregiver this time?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -284,12 +274,7 @@
               "value": "Positive instructions can work with your teen too!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

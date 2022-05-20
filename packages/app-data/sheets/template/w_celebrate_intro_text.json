@@ -14,12 +14,7 @@
           "value": "Greetings everyone.\n\nToday’s topic is celebration and next steps.\n\nIt has been amazing, it has been wonderful having you on this journey. Today we are celebrating our journey together. \n\nToday we are celebrating all the learnings that we have learned throughout.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

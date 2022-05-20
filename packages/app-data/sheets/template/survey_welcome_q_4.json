@@ -57,12 +57,7 @@
               "value": "Well done. Brain science shows that controlling your anger improves your teen’s brain development. Be proud of yourself.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -73,12 +68,7 @@
               "value": "Thank you for being honest. It can be so difficult to control our stress. To look after yourself and help you feel calmer when things get tough, we’ll remind you regularly to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "!(@fields.survey_welcome_a_3>=@global.survey_t_3)",
@@ -143,12 +133,7 @@
               "value": "Thank you for being honest. It can be so difficult to control our stress. We hope our stress management tools will be useful to you. You can already find them under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_welcome_a_3>=@global.survey_t_3",

@@ -14,12 +14,7 @@
           "value": "Today you will explore:",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -30,12 +25,7 @@
           "value": "* Story & discussion – that didn’t work… \n* Story & discussion – that worked!\n* Tools: How to create rules\nTEAM RULES - REAL RULES - PRAISE RULES!\n* Online safety story – that worked!\n* Try it out!\n* Home practice suggestions",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@field.do_this_workshop_together",
@@ -62,12 +52,7 @@
           "value": "* Story & reflection – that didn’t work… \n* Story & reflection – that worked!\n* Tools: How to create rules\nTEAM RULES - REAL RULES - PRAISE RULES!\n* Online safety story – that worked!\n* Try it out!\n* Home practice suggestions",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "!@field.do_this_workshop_together",

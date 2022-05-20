@@ -38,12 +38,7 @@
               "value": "GET REAL",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -54,12 +49,7 @@
               "value": "Can your teen actually do what you are about to ask? It may be impossible for them to read quietly all day, but half an hour when you really need it is realistic.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -77,12 +67,7 @@
               "value": "GET POSITIVE",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -93,12 +78,7 @@
               "value": "Smile, look them in the eye, and use positive words. Praise them as soon as they start to do what you ask!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -116,12 +96,7 @@
               "value": "GET  CLEAR",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -132,12 +107,7 @@
               "value": "Often we know what we want in our head, but we don’t say it clearly enough. Say exactly what you want your teen to do. Try ‘please come home by 7pm’ instead of ‘come home in time’.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

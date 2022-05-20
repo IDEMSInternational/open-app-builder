@@ -9,12 +9,7 @@
       "value": "New workshop ready tomorrow!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -24,12 +19,7 @@
       "value": "New workshop!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -39,12 +29,7 @@
       "value": "Workshop Reminder",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -54,12 +39,7 @@
       "value": "Nice progress!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -77,12 +57,7 @@
       "value": "Remember to sit down and relax today - taking care of yourself is an important parenting skill.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -92,12 +67,7 @@
       "value": "You are appreciated!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -107,12 +77,7 @@
       "value": "Something Fun",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -122,12 +87,7 @@
       "value": "Here is a fun activity to do with your teen!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -137,12 +97,7 @@
       "value": "Your @global.parent_points this week",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -152,12 +107,7 @@
       "value": "Hi @fields.user_name! Thank you for using @global.parent_app and committing to your parenting. \n\nRemember to tap your @global.parent_points!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -167,12 +117,7 @@
       "value": "Home Practice Reminder",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     },
@@ -182,12 +127,7 @@
       "value": "Let's talk about how your home practice went this week.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       }
     }

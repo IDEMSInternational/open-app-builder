@@ -42,12 +42,7 @@
               "value": "Does your teen always listen to you? If not (like the rest of us), have a look at this week's workshop to learn how giving positive instructions can help - a lot.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

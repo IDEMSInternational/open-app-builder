@@ -41,12 +41,7 @@
           "value": "You will find tips that we think you may find useful here, based on your answers to the app customisation.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "_nested_name": "survey_not_completed.text_if_empty"

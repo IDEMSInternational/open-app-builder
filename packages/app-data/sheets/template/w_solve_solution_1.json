@@ -43,12 +43,7 @@
           "value": "Ground @global.w_solve_teen_girl for a month",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "hidden": false,
@@ -75,12 +70,7 @@
           "value": "@global.w_solve_female_caregiver_1: “You can’t go out for the next month”",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -106,12 +96,7 @@
           "value": "That didn’t work... Let's try something else.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "hidden": false,

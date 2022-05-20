@@ -251,12 +251,7 @@
               "value": "Why @local.workshop_data.title?",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -347,12 +342,7 @@
                       "value": "Hear @global.topic_intro_name's message",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -402,12 +392,7 @@
                       "value": "Read @global.topic_intro_name's message",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "action_list": [
@@ -480,12 +465,7 @@
                       "value": "Today's steps",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "action_list": [
@@ -555,9 +535,7 @@
                       "value": "Hear a caregiver's testimonial",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -592,9 +570,7 @@
                       "value": "Read a caregiver's testimonial",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true
+                          "tz_sw": true
                         }
                       },
                       "action_list": [
@@ -756,12 +732,7 @@
               "value": "Why @local.workshop_data.title?",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -847,12 +818,7 @@
                   "value": "Hear @global.topic_intro_name's message",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -902,12 +868,7 @@
                   "value": "Read @global.topic_intro_name's message",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "action_list": [
@@ -980,12 +941,7 @@
                   "value": "Today's steps",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "action_list": [

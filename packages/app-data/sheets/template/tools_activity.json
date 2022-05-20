@@ -198,12 +198,7 @@
           "value": "Here are this week’s takeaway skills! \n\nUse them at home and find them anytime in your @global.parent_centre.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

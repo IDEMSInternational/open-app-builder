@@ -159,12 +159,7 @@
       "value": "Next week, you’ll share with your group how your home practice went. You can also support and remind each other during the week.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -250,12 +245,7 @@
           "value": "Home Practice",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -266,12 +256,7 @@
           "value": "Small actions, big results! Parents who practice their workshop skills at home get better results.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -374,9 +359,7 @@
                   "value": "Hear a teen's testimonial",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -411,9 +394,7 @@
                   "value": "Read a teen's testimonial",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true
+                      "tz_sw": true
                     }
                   },
                   "action_list": [

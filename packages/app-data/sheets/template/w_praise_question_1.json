@@ -57,12 +57,7 @@
                       "value": "Think about the last time someone thanked you, or said you did something great.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -73,12 +68,7 @@
                       "value": "How did it make you feel?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -122,12 +112,7 @@
                       "value": "Parents usually don’t get thanked or praised enough.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -138,12 +123,7 @@
                       "value": "How does it make you feel when nobody says \"thank you\"?",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -164,12 +144,7 @@
                       "value": "Your teen can feel this way too. That's what makes this week's parenting tool simple but important: Praise them for what they do right.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",

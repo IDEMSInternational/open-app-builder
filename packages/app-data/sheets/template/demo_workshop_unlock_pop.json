@@ -9,12 +9,7 @@
       "value": "Unlock all workshops",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "exclude_from_translation": true,
@@ -36,12 +31,7 @@
       "value": "Unlock workshops",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "action_list": [
@@ -201,12 +191,7 @@
       "value": "All workshops are now unlocked.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "exclude_from_translation": true,

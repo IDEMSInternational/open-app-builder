@@ -27,12 +27,7 @@
       "text": "Hi! Is everything OK? It seems you haven’t opened @global.parent_app lately. Why don’t you give it a try? Millions of parents have found these materials helpful. We are still here to support you.",
       "_translations": {
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -64,12 +59,7 @@
       "text": "@global.parent_app misses you! There is a lot to explore. We are still here to support you.",
       "_translations": {
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -101,12 +91,7 @@
       "text": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to prepare your teen for success in life.",
       "_translations": {
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {
@@ -138,12 +123,7 @@
       "text": "Hope you are feeling OK. We know parenting is hard - use @global.parent_app to bond with your teen again!",
       "_translations": {
         "text": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_translatedFields": {

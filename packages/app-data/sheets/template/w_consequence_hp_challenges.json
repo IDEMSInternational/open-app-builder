@@ -65,12 +65,7 @@
           "value": "introduce a consequence together",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -81,12 +76,7 @@
           "value": "Did you have any challenges when trying to introduce a consequence together?",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -97,12 +87,7 @@
           "value": "What was difficult for you about introducing a consequence with your teen?",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -113,12 +98,7 @@
           "value": "I got very angry when my teen broke the rule.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -129,12 +109,7 @@
           "value": "When we take a pause before responding, it helps us to calm down and respond better. \n\nNext time your teen makes you angry, try to take a pause first. Even a few deep breaths can make a big difference!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -145,12 +120,7 @@
           "value": "My teen got very angry with me after I gave the consequence.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -161,12 +131,7 @@
           "value": "When your teen gets angry, you might need to walk away until you are both calm. \n\nCheck to make sure your consequence is fair and reasonable. Listen to your teen’s explanation, and make sure to give a “Safety Amnesty” if they broke a rule in order to stay safe.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -177,12 +142,7 @@
           "value": "I introduced the consequence without first discussing it with my teen.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -193,12 +153,7 @@
           "value": "Can you make a consequence for if this happens again? When we establish a consequence together with our teens, the consequence will be more realistic, and our teens will be more willing and able to follow the rule.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -209,12 +164,7 @@
           "value": "I forgot to follow through with the consequence.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -225,12 +175,7 @@
           "value": "We all make mistakes! The more consistent we are with our consequences, the more likely our children will choose to behave positively in the future.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -241,12 +186,7 @@
           "value": "Even with the consequence, my teen still does not follow the rule.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -257,12 +197,7 @@
           "value": "If your teen keeps breaking rules, you might need to spend more positive time with them. \n\nTry to keep going with your other goals  – like self-care, one-on-one time, and praise. All these skills will help your teen feel more loved and secure… and you less stressed!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -273,12 +208,7 @@
           "value": "We only created a negative consequence, not a positive consequence.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -289,12 +219,7 @@
           "value": "It can be difficult to think of positive consequences sometimes. Positive consequences will encourage your teen to take more responsibility, and you will see the difference!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -305,12 +230,7 @@
           "value": "My teen suggested being hit as a negative consequence.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -321,12 +241,7 @@
           "value": "Teens can be used to seeing hitting as the only possible consequence for breaking rules. \n\nBrainstorm some calm consequences with them that could help them understand that they have done something wrong. These will be more effective and will set positive examples!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

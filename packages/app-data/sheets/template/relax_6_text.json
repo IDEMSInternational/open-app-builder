@@ -13,12 +13,7 @@
           "value": "Close your eyes. \n\nTake a minute to think about the day.\n\nThink about one positive or fun thing you did.\nPraise yourself for one thing you did well today. \nThink of one thing you can do differently tomorrow.  \nThink of one thing that you are grateful for.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

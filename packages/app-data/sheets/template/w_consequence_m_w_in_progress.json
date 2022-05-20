@@ -42,12 +42,7 @@
               "value": "Complete the workshop and try to discuss with your teen to come up with one positive and one negative consequence of a behaviour together.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

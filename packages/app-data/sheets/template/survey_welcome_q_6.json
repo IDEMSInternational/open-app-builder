@@ -57,12 +57,7 @@
               "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. To look after yourselves and help you feel calmer when things get tough, we’ll remind you every day to relax, recognise and reward yourself. You matter!\n\nWe will learn more about managing stress in week 5 of the @global.weekly_workshops, but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get started.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_welcome_a_3<@global.survey_t_3 && @fields.survey_welcome_a_4<@global.survey_t_4",
@@ -136,12 +131,7 @@
               "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe all feel overwhelmed sometimes, and using @global.parent_app is a great step to help you and your family!\n\nOur materials have helped thousands of parents and families to be less stressed and have more positive time together. We are here to support you.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_welcome_a_3>=@global.survey_t_3 && @fields.survey_welcome_a_4>=@global.survey_t_4",
@@ -206,12 +196,7 @@
               "value": "Thank you for being honest – and we’re sorry you’re having a difficult time with your teen. \n\nWe hope our stress management tools will help you to feel calmer in hard situations. You can find them under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "!(@fields.survey_welcome_a_3<@global.survey_t_3 && @fields.survey_welcome_a_4<@global.survey_t_4) && !(@fields.survey_welcome_a_3>=@global.survey_t_3 && @fields.survey_welcome_a_4>=@global.survey_t_4)",

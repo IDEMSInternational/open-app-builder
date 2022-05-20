@@ -170,10 +170,7 @@
               "value": "Powered by Parenting for Lifelong Health and partners",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "parameter_list": {

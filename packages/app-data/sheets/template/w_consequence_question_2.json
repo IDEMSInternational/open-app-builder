@@ -9,12 +9,7 @@
       "value": "@global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver discussed consequences when they were both calm",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -49,12 +44,7 @@
       "value": "They agreed on consequences together",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -65,12 +55,7 @@
       "value": "@global.w_consequence_male_caregiver responded calmly but firmly when @global.w_consequence_teen_boy_1 broke the rule",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -105,12 +90,7 @@
       "value": "@global.w_consequence_male_caregiver listened to @global.w_consequence_teen_boy_1",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -145,12 +125,7 @@
       "value": "The consequence was realistic and appropriate",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -190,12 +165,7 @@
               "value": "Let's think about this story.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -227,12 +197,7 @@
                   "value": "Why did using a consequence work well this time?",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",

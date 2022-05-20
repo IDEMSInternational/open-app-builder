@@ -66,12 +66,7 @@
                   "value": "Remember that YOU matter!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -82,12 +77,7 @@
                   "value": "Well done for recognising a positive feeling. I am happy to hear you are feeling well today!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -98,12 +88,7 @@
                   "value": "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember you are not alone.",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -114,12 +99,7 @@
                   "value": "Well done for recognising a difficult feeling. It’s okay not to be okay sometimes. Remember you are not alone.",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",

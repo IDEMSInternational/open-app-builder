@@ -14,12 +14,7 @@
           "value": "Here's an activity to relax your body:  \n\nSit comfortably and close your eyes if you can.  \nImagine a golden ring scanning your body from your feet to your head.   \nPay attention as it moves up and down your body. Are there any areas that feel tense? Numb? Painful?   \nFocus on those areas for a moment. Breathe in to the area and when you breathe out, try to let go of any tension or pain.   \nDo this for a few breaths.   \n\nOpen your eyes. How does your body feel now?",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -30,12 +25,7 @@
           "value": "You can also try this next time you find yourself lying in bed unable to sleep!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

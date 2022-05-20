@@ -38,12 +38,7 @@
               "value": "Let's go back to @global.w_consequence_teen_boy_1 and his @global.w_consequence_male_caregiver",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -97,12 +92,7 @@
                       "value": "@global.w_consequence_male_caregiver: \"I am concerned that you are often still coming home late, @global.w_consequence_teen_boy_1. What can we do to help you remember to come home in time?\"\n\n@global.w_consequence_teen_boy_1: \"If I come home in time, maybe I can stay up 30 minutes later than usual?\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -166,12 +156,7 @@
                           "value": "@global.w_consequence_male_caregiver: That is a good idea! And what should we do if you don’t follow the rule?  \n\n@global.w_consequence_teen_boy_1 (mumbles): “Mgmluuhm”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -228,12 +213,7 @@
                               "value": "@global.w_consequence_male_caregiver: \"Oh come on, I know you have some ideas.\"\n\n@global.w_consequence_teen_boy_1: \"Okay…. What about: I have to do my homework?\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -290,12 +270,7 @@
                                   "value": "@global.w_consequence_male_caregiver: \"You have to do your homework anyway. If you forget the rule, it is fair that you will not be able to see your friends the next day.\"\n\n@global.w_consequence_teen_boy_1: \"Okay, @global.w_consequence_male_caregiver.\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -359,12 +334,7 @@
                                       "value": "The next day...\n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1! What time is it! It is late!”",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",
@@ -421,12 +391,7 @@
                                           "value": "@global.w_consequence_teen_boy_1: “Sorry @global.w_consequence_male_caregiver – you can go back to sleep.”  \n\n@global.w_consequence_male_caregiver: “It is WAY past the time you were supposed to be home!”",
                                           "_translations": {
                                             "value": {
-                                              "tz_sw": true,
-                                              "za_af": true,
-                                              "za_st": true,
-                                              "za_tn": true,
-                                              "za_xh": true,
-                                              "za_zu": true
+                                              "tz_sw": true
                                             }
                                           },
                                           "type": "set_variable",
@@ -490,12 +455,7 @@
                                               "value": "@global.w_consequence_teen_boy_1: “I can explain, @global.w_consequence_male_caregiver, I can.” \n\n@global.w_consequence_male_caregiver: “@global.w_consequence_teen_boy_1, it is the middle of the night and you came home later than we agreed. Whatever the reason is, you must understand that this is not acceptable. @global.w_consequence_female_caregiver and I felt really worried.”",
                                               "_translations": {
                                                 "value": {
-                                                  "tz_sw": true,
-                                                  "za_af": true,
-                                                  "za_st": true,
-                                                  "za_tn": true,
-                                                  "za_xh": true,
-                                                  "za_zu": true
+                                                  "tz_sw": true
                                                 }
                                               },
                                               "type": "set_variable",
@@ -575,12 +535,7 @@
                                                   "value": "@global.w_consequence_teen_boy_1: “My friends wanted me to stay longer. They were calling me a baby for having to go home already.” \n\n@global.w_consequence_male_caregiver: “I know it can be hard to say no to your friends. Let’s talk more about this in the morning when we have had some rest.”",
                                                   "_translations": {
                                                     "value": {
-                                                      "tz_sw": true,
-                                                      "za_af": true,
-                                                      "za_st": true,
-                                                      "za_tn": true,
-                                                      "za_xh": true,
-                                                      "za_zu": true
+                                                      "tz_sw": true
                                                     }
                                                   },
                                                   "type": "set_variable",
@@ -632,12 +587,7 @@
                                                   "value": "@global.w_consequence_teen_boy_1: “I am sorry I worried you and @global.w_consequence_female_caregiver.” \n\n@global.w_consequence_male_caregiver: “Thank you. Now go to bed, but just to be clear, as you came home later than we agreed, you will not be allowed to go out tomorrow night.”",
                                                   "_translations": {
                                                     "value": {
-                                                      "tz_sw": true,
-                                                      "za_af": true,
-                                                      "za_st": true,
-                                                      "za_tn": true,
-                                                      "za_xh": true,
-                                                      "za_zu": true
+                                                      "tz_sw": true
                                                     }
                                                   },
                                                   "type": "set_variable",

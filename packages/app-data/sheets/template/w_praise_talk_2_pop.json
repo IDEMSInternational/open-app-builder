@@ -14,12 +14,7 @@
           "value": "@global.w_praise_female_caregiver_name praised her teens...",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -45,12 +40,7 @@
           "value": "* To get them to do it more often\n* To help her finish her work \n* To make them feel good \n* To make herself feel good",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

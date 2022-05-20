@@ -9,12 +9,7 @@
       "value": "Unlock all workshops",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_nested_name": "title"
@@ -25,12 +20,7 @@
       "value": "By clicking in the button below you will unlock all the workshops.\n\nNOTE: Users should not use this functionality to unlock workshops, this is not recommended unless strictly necessary.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_nested_name": "text_1"
@@ -41,12 +31,7 @@
       "value": "Unlock workshops",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "action_list": [
@@ -205,12 +190,7 @@
       "value": "All workshops are now unlocked.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "!@fields.unlock_workshops_confirm",

@@ -38,12 +38,7 @@
               "value": "Let’s see what happens if @global.w_instruct_female_caregiver tells @global.w_instruct_teen_girl \"DON'T\":",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -97,12 +92,7 @@
                       "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was practicing dance moves with her friend.\n\n@global.w_instruct_female_caregiver: “Don’t make such a mess while I am cleaning the house. You are in the way!”",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -166,12 +156,7 @@
                           "value": "@global.w_instruct_teen_girl: “But I need to practice for the school competition. You never let me do anything.”\n\n@global.w_instruct_female_caregiver: “Don’t you talk back to me!”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -223,12 +208,7 @@
                           "value": "@global.w_instruct_teen_girl: “Arrg!! Why am I being yelled at all the time????”\n\n@global.w_instruct_female_caregiver to herself: “That child is always making trouble.”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",

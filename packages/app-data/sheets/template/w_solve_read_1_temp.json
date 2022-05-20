@@ -38,12 +38,7 @@
               "value": "Let’s look at what happened to @global.w_solve_teen_girl and her @global.w_solve_female_caregiver_1 when @global.w_solve_teen_girl got a phone from a boy… a phone!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -104,12 +99,7 @@
                       "value": "@global.w_solve_female_caregiver_1: “@global.w_solve_teen_girl, where did you get that thing?” \n\n@global.w_solve_teen_girl: “@global.w_solve_teen_boy_1 bought it for me. It’s a nice phone, @global.w_solve_female_caregiver_1. It takes great photos!\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -189,12 +179,7 @@
                           "value": "@global.w_solve_female_caregiver_1: “I don’t want to see that expensive thing! That boy is no good! How does he think you are going to repay him for this?!”  \n\n@global.w_solve_teen_girl: “That’s not how it works, @global.w_solve_female_caregiver_1! That’s not fair!”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -253,12 +238,7 @@
                           "value": "@global.w_solve_female_caregiver_1: “I don’t want to hear it!” \n\n@global.w_solve_teen_girl: “You’re not even trying to listen to me! I don’t know why I even try with you!”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",

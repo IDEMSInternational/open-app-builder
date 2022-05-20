@@ -88,12 +88,7 @@
               "value": "You and your family have learnt so much. Let's think back and see what has changed.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -110,12 +105,7 @@
               "value": "Reflect",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -131,12 +121,7 @@
                   "value": "Listen and reflect",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",
@@ -156,12 +141,7 @@
                   "value": "Read and reflect",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "action_list": [

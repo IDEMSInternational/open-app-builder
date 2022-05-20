@@ -57,12 +57,7 @@
               "value": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules and safety planning under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "!(@fields.survey_welcome_a_7_part_1<@global.survey_t_7 || @fields.survey_welcome_a_7_part_3<@global.survey_t_7)",
@@ -134,12 +129,7 @@
               "value": "@data.workshop.w_rules.tools and @data.workshop.w_safe.tools added to @data.parent_centre.my_tips.title.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "!(@fields.survey_welcome_a_7_part_1<@global.survey_t_7 || @fields.survey_welcome_a_7_part_3<@global.survey_t_7)",
@@ -220,12 +210,7 @@
               "value": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! You can get focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can already access some first core tips which will help with making rules under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_welcome_a_7_part_1<@global.survey_t_7 || @fields.survey_welcome_a_7_part_3<@global.survey_t_7",
@@ -297,12 +282,7 @@
               "value": "@data.workshop.w_rules.tools added to @data.parent_centre.my_tips.title.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_welcome_a_7_part_1<@global.survey_t_7 || @fields.survey_welcome_a_7_part_3<@global.survey_t_7",
@@ -374,12 +354,7 @@
               "value": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nWe’ll have more support for you on this in the later @global.weekly_workshops if you’d like to know even more!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

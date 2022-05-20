@@ -13,12 +13,7 @@
           "value": "Are you sure you want to skip this question?",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -29,12 +24,7 @@
           "value": "Are you sure you want to skip this question? Remember, your answer will be kept private and will help us understand your parenting needs. \n\nYou can also choose not to answer any question by selecting the circle.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

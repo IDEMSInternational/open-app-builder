@@ -33,12 +33,7 @@
           "value": "Think Together",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@field.do_this_workshop_together",
@@ -65,12 +60,7 @@
           "value": "It's time to think together!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@field.do_this_workshop_together",
@@ -122,12 +112,7 @@
           "value": "Think",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "!@field.do_this_workshop_together",
@@ -154,12 +139,7 @@
           "value": "It's time to think!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "!@field.do_this_workshop_together",

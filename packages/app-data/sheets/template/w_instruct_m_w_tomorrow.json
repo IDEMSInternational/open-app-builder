@@ -38,12 +38,7 @@
           "value": "As usual, you can access a new workshop tomorrow. It will help to complete the previous workshop before then.  \n\nSome parents are using the app while commuting to work. Why don’t you use the app when you have a few minutes? \n\nThank you again for using @global.parent_app.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -69,12 +64,7 @@
           "value": "Congratulations, you completed the @local.workshop_data.in_text_title.\n\nTomorrow, a new workshop is ready for you: you will see a big difference by making small changes!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

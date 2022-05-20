@@ -38,12 +38,7 @@
               "value": "Thank you for thinking along! \n\nLet’s go back in time and see what happens if @global.w_instruct_female_caregiver gives a positive instruction:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -88,12 +83,7 @@
                       "value": "@global.w_instruct_female_caregiver was cleaning the house while @global.w_instruct_teen_girl was with her friends practicing dance moves.  \n\n@global.w_instruct_female_caregiver: “@global.w_instruct_teen_girl, it is nice to see you practicing your dance moves with your friend. Please take it outside so I can finish cleaning the house. Afterwards, you can show me your dance.\"\n\n@global.w_instruct_teen_girl: “Okay, @global.w_instruct_female_caregiver!”",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -206,12 +196,7 @@
                               "value": "@global.w_instruct_female_caregiver: \"Thank you for practicing outside while I finished cleaning, @global.w_instruct_teen_girl. Now I have some time to watch your dance.\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -263,12 +248,7 @@
                               "value": "@global.w_instruct_female_caregiver: \"Wow, @global.w_instruct_teen_girl! You have such good dance moves!\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",

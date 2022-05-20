@@ -14,12 +14,7 @@
           "value": "Today you will explore:",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -30,12 +25,7 @@
           "value": "* Ideas for one-on-one time\n* Tools: How to spend one-on-one time\nDAY - PLAY - STAY\n* Home practice suggestions",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "!@field.do_this_workshop_together",
@@ -62,12 +52,7 @@
           "value": "* Self-care activities\n* Ideas for one-on-one time\n* Tools: How to spend one-on-one time\nDAY - PLAY - STAY\n* Home practice suggestions",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@field.do_this_workshop_together",

@@ -44,12 +44,7 @@
           "value": "You have not added any relaxation activities to @global.my_relaxes yet. Why don't you choose some?",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "_nested_name": "none_added.text",

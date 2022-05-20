@@ -38,12 +38,7 @@
               "value": "Online Safety",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -85,12 +80,7 @@
               "value": "Rules are important to keep your teens safe - also online. There’s more about this in the Weekly Workshop on safety planning, but let’s already have a first look now!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -120,12 +110,7 @@
                       "value": "@global.w_rules_female_caregiver_2: \"@global.w_rules_teen_girl, have you done your homework?\"\n\n@global.w_rules_teen_girl: \"Just a minute @global.w_rules_female_caregiver_2, I’m finishing this @global.teen_social_medium video\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -205,12 +190,7 @@
                           "value": "@global.w_rules_female_caregiver_2: \"You are a really great dancer! Tell me about why you like it\"\n\n@global.w_rules_teen_girl: \"All my friends are on it, @global.w_rules_female_caregiver_2. I have more than 600 likes and 120 followers.\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -274,12 +254,7 @@
                               "value": "@global.w_rules_female_caregiver_2: \"I’m proud of how well you dance, @global.w_rules_teen_girl. But we need to make sure you are safe. \n\nI know your friends look at @global.teen_social_medium, but with an open account, there are other people who look at videos of teenagers for their own sexual needs. Sometimes they contact teenagers. They pretend to be nice but end up threatening and abusing teens.\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -345,12 +320,7 @@
                                   "value": "@global.w_rules_female_caregiver_2: \"Let’s look together online at how we can keep this fun for you but also safe. Look – you can make your account private and control who follows you.\n\nSo you can accept people you know from school and our community, but not people who contact you online.\n\nCan we make a rule together that you can use @global.teen_social_medium, but with a private account? I trust you to know who to accept!”",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -402,12 +372,7 @@
                                   "value": "@global.w_rules_female_caregiver_2: \"I’m proud of you @global.w_rules_teen_girl\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",

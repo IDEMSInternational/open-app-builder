@@ -46,12 +46,7 @@
       "value": "Days in the past week",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -297,12 +292,7 @@
       "value": "You selected @local.threshold or less",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_nested_name": "reply_less_equal",
@@ -328,12 +318,7 @@
       "value": "You selected more than @local.threshold",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_nested_name": "reply_greater",

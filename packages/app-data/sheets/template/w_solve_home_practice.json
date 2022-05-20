@@ -70,12 +70,7 @@
                       "value": "Teach your teenagers the four steps of problem-solving:\nKNOW IT - SOLVE IT - TRY IT - TEST IT \n\nUse these steps together when a problem comes up!\n\nWhen something bad happens, we often get upset and blame. But what our teens really need is someone to help find solutions together. Listen to them, accept how they see and feel things, and thank them for trusting you.\n\nTeaching your teen how to deal with problems will help them for the rest of their lives. What a gift!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",

@@ -70,12 +70,7 @@
                       "value": "Your home practice for this week will be to talk together with your teen about a ONE negative consequence and ONE positive consequence.\n\nConsequences should be:\nFAIR (not too harsh)\nIMMEDIATE (do it straight away)\nCONSISTENT (same every time)",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",

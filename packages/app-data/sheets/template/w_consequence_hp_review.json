@@ -94,12 +94,7 @@
                       "value": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule). You tapped the @data.habit.consequence.in_text_title - great job for remembering!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.weekly_parent_point_consequence > 0",
@@ -137,12 +132,7 @@
                       "value": "Your goal was to introduce ONE positive consequence (for your teen taking responsibility) and ONE negative consequence (for your teen breaking a household rule).",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.weekly_parent_point_consequence == 0",
