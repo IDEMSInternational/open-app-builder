@@ -448,13 +448,49 @@ export const ASSETS_CONTENTS_LIST = {
     size_kb: 1354.9,
     md5Checksum: "03a593d94debd98384bff908450aa0d3",
   },
-  "plh_audio/testimonies/teen/w_1on1.mp3": {
-    size_kb: 314.5,
-    md5Checksum: "3fae469b0b11e65d64eb4d4896ec46ba",
+  "plh_audio/testimonials/caregiver/caregiver_test_w_1on1.mp3": {
+    size_kb: 737.7,
+    md5Checksum: "36a24d6ad95cc402bb1681faa5b1e3a4",
   },
-  "plh_audio/testimonies/teen/w_rules.mp3": {
-    size_kb: 903.4,
-    md5Checksum: "7eca3329c62136c1fe76b776ba2e7dfe",
+  "plh_audio/testimonials/caregiver/caregiver_test_w_consequence.mp3": {
+    size_kb: 905.7,
+    md5Checksum: "78ce55cffe940fc12314da045a546719",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_crisis.mp3": {
+    size_kb: 516.4,
+    md5Checksum: "8fa7ec84159ca032796833995a1b2b62",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_instruct.mp3": {
+    size_kb: 800.7,
+    md5Checksum: "ee313a449c29f58ce9899698898997a7",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_money.mp3": {
+    size_kb: 672,
+    md5Checksum: "aa4cba93dc63a20f60a91e357780abed",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_praise.mp3": {
+    size_kb: 836.4,
+    md5Checksum: "019a0e6f0340875dbab6f912bd1d29ab",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_rules.mp3": {
+    size_kb: 871.3,
+    md5Checksum: "6b7b48df0e3aba9a41786c3487c21b04",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_safe.mp3": {
+    size_kb: 647.4,
+    md5Checksum: "d18a091db58024e72159b14e908d7430",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_self_care.mp3": {
+    size_kb: 493.6,
+    md5Checksum: "212924f29d05c94e977952b06c7edb8c",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_solve.mp3": {
+    size_kb: 660.9,
+    md5Checksum: "a09239ee2cd722701f310e3a1e822d55",
+  },
+  "plh_audio/testimonials/caregiver/caregiver_test_w_stress.mp3": {
+    size_kb: 640.3,
+    md5Checksum: "e1bee0b763b33787767eade301353b8a",
   },
   "plh_audio/timer/bell_1.mp3": {
     size_kb: 121.6,
