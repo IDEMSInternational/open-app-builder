@@ -48,12 +48,7 @@
           "value": "* First person says, “On Saturday, I am going to… (e.g., go to the park)”\n* Second person adds to first person, “On Saturday, I am going to the park and… (e.g., visit my best friend).\n* Each person adds to the previous, trying to think of all of the fun things to do on Saturday.",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

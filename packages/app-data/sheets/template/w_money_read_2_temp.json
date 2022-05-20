@@ -38,12 +38,7 @@
               "value": "Great work, you have completed the first 3 steps! \n\nLet's see how @global.w_money_grandma made a plan with her money, just like you are doing:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -88,12 +83,7 @@
                       "value": "\"I want the best future for my grandchildren, but I don’t know where to get the money. Loan sharks are dangerous and paying them back is so expensive. \n\nI should save, but that feels impossible!\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -126,12 +116,7 @@
                           "value": "\"My goal is to make sure my grandson can go to high school and my granddaughter can reach her dream of university. How can I save a lot of money with the little money I have?\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -164,12 +149,7 @@
                               "value": "\"I know - let’s start with a plan! First, let me make a budget – a plan for how I can save my money. Then I will save just a little bit of money at a time – I will even join a savings and loans group.\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -202,12 +182,7 @@
                                   "value": "\"I should also speak with my grandchildren to choose things that we can spend just a little bit less on each week. They will help me think of things we want but don’t need.\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -235,12 +210,7 @@
                                   "value": "A few years later:\n\n\"Look, we reached our dreams! I didn’t borrow any money from friends or loan sharks. By saving a tiny bit each week, I managed to pay for @global.w_money_teen_boy’s high school and save some money for @global.w_money_teen_girl’s university. I am so proud of this.”",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",

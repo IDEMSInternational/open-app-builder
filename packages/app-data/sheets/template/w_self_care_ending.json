@@ -41,12 +41,7 @@
                   "value": "You've completed this week's workshop.\n\nWe’ll do some of the self-care activities again when you get together with your group for the first time - you all deserve some extra self-care!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "condition": "@field.do_workshops_together",

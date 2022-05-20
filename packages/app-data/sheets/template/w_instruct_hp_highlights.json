@@ -10,12 +10,7 @@
       "value": "Which of the tips helped you?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "parameter_list": {
@@ -28,12 +23,7 @@
       "value": "GET REAL – Can your teen do what you are about to ask?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -44,12 +34,7 @@
       "value": "GET POSITIVE – Use positive words and praise them!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -60,12 +45,7 @@
       "value": "GET CLEAR – Be clear and specific!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -267,12 +247,7 @@
       "value": "Wonderful! When we ask our teen to do something that is realistic, it is easier for them to succeed.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.combo_box!=\"choice_1\"",
@@ -299,12 +274,7 @@
       "value": "When we praise them, our teens feel encouraged to listen to us again!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.combo_box!=\"choice_2\"",
@@ -331,12 +301,7 @@
       "value": "Awesome! When we think ahead of specific instructions to give our teen, our instructions become much easier to follow!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.combo_box!=\"choice_3\"",

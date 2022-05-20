@@ -94,12 +94,7 @@
                       "value": "Your goal was to make a family budget and savings plan. We noticed you tapped the @data.habit.money.in_text_title - great job for remembering!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.weekly_parent_point_money > 0",
@@ -137,12 +132,7 @@
                       "value": "Your goal was to make a family budget and savings plan.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.weekly_parent_point_money == 0",
@@ -254,12 +244,7 @@
               "value": "Thank you for sharing your experiences! Well done for thinking about how you can budget and save with your family. This will really help you to work towards your family goals. \n\nTogether you can achieve so many good things!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

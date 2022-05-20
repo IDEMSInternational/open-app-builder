@@ -167,12 +167,7 @@
           "value": "Home practice is how we make our family life better. But it often brings challenges. \n\nLet's share our successes and problems, and help each other find new ideas to try!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -225,12 +220,7 @@
               "value": "Think about how your home activities went this week. \n\nTake turns to discuss: \n* What went well and what was a problem? \n* What solutions can you think of together? \n* Pick one solution and try it later with your teen! \n\n(Or you can even practice it now so it will be easier later!)",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -319,12 +309,7 @@
               "value": "Discussion example from @data.workshop.w_1on1.title",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "action_list": [

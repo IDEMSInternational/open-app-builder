@@ -38,12 +38,7 @@
               "value": "Another problem that many parents are worried about is violence and crime. Let’s look at an example together.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -73,12 +68,7 @@
                       "value": "@global.w_crisis_male_caregiver_1: \"@global.w_crisis_teen_boy_1, you look worried since yesterday. What is wrong?\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -135,12 +125,7 @@
                           "value": "@global.w_crisis_teen_boy_1: \"Yesterday, my friends and I went to a soccer match. Some guys who were drunk started a fight with my friend.\"\n\n@global.w_crisis_male_caregiver_1: \"Continue, I am listening. I hope you did not fight?\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -197,12 +182,7 @@
                               "value": "@global.w_crisis_teen_boy_1: \"I didn’t want to, but I couldn’t just stand there and let them beat up my friend, so…\"\n\n@global.w_crisis_male_caregiver_1: \"So, did you fight in order to help defend your friend?\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -259,12 +239,7 @@
                                   "value": "@global.w_crisis_teen_boy_1: “Everyone was fighting. I saw someone lying on the field in a pool of blood. He looked… dead.\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -312,12 +287,7 @@
                                       "value": "@global.w_crisis_male_caregiver_1: \"I am glad you are telling me about this, @global.w_crisis_teen_boy_1. Let’s sit down together now and discuss whether we should involve the police or someone else to help.\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",
@@ -369,12 +339,7 @@
                                       "value": "@global.w_crisis_teen_boy_1: \"Thank you, @global.w_crisis_male_caregiver_1\"\n\n@global.w_crisis_male_caregiver_1: \"We will get through this. Remember, we will support you as a family.\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",

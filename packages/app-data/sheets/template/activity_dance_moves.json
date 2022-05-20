@@ -48,12 +48,7 @@
           "value": "* Create a set of dance moves to your teen's favourite songs. \n* One person does a dance move and everyone else copies it.  \n* Everyone takes turns being the leader. \n* Perform it for the household!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

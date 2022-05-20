@@ -38,12 +38,7 @@
               "value": "Communication is the most important thing!\n\nLet's see what happened with @global.w_safe_female_caregiver and @global.w_safe_teen_girl_1:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -97,12 +92,7 @@
                       "value": "@global.w_safe_teen_girl_1: \"Something happened when I was out with my friends @global.w_safe_teen_girl_2 and @global.w_safe_teen_girl_3!\"\n\n@global.w_safe_female_caregiver: \"Tell me, @global.w_safe_teen_girl_1\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -184,12 +174,7 @@
                           "value": "Man in car: “Hey beautiful. I have been looking at you for a while. You are very beautiful, what’s your name?  \n\n@global.w_safe_teen_girl_2: “Her name is @global.w_safe_teen_girl_1”",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -246,12 +231,7 @@
                               "value": "Man in car: “@global.w_safe_teen_girl_1, would you like to come with me to have something to drink and chips? Come on, get in, you’ll be back in time, I promise…” \n\n@global.w_safe_teen_girl_1: “I’m not sure if that’s a good idea…”",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -306,12 +286,7 @@
                                   "value": "@global.w_safe_teen_girl_2: “You are lucky, my friend. I wish a man would ask ME out and buy me gifts. I’m telling you, if you don’t do this I’m going to tell everyone you are stupid!”",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -359,12 +334,7 @@
                                       "value": "@global.w_safe_teen_girl_3: “@global.w_safe_teen_girl_1 don’t go! Be careful! Let’s go home. It is dangerous to go with people you don’t know. Besides, he’s too old for you and what he is doing is wrong.\"\n\n@global.w_safe_teen_girl_1: “I just don’t know…”",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",
@@ -423,12 +393,7 @@
                                       "value": "@global.w_safe_female_caregiver: \"Pfff, I am so proud of you that you did not get into the car. That was a dangerous situation, thank you for telling me!\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",

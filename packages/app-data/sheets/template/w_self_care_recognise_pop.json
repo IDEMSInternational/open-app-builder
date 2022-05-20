@@ -13,12 +13,7 @@
           "value": "Things to praise yourself for:",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -29,12 +24,7 @@
           "value": "* Showing love to your children \n* Getting up even though you felt tired \n* Smiling at someone \n* Making food to stay strong \n* Spending time with your children \n* Helping your children with schoolwork",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

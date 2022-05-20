@@ -1,5 +1,4 @@
 export const UNTRACKED_ASSETS = [];
-
 export const ASSETS_CONTENTS_LIST = {
   "i18n/flags/gb.svg": {
     size_kb: 0.5,

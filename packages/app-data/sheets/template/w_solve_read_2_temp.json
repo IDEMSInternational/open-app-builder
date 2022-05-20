@@ -38,12 +38,7 @@
               "value": "Let’s see how problem solving works in practice.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -73,12 +68,7 @@
                       "value": "@global.w_solve_female_caregiver_2 is coming home from work. \n\n@global.w_solve_female_caregiver_2 (thinking): \"Ay my poor feet! I need to sit down a moment and drink a cup of coffee before I start preparing food for everyone.\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -133,12 +123,7 @@
                           "value": "@global.w_solve_female_caregiver_2: \"@global.w_solve_teen_boy_2! What are you doing? That bread is for dinner! Now there won’t be enough for us all!\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -195,12 +180,7 @@
                               "value": "@global.w_solve_teen_boy_2: “Sorry, @global.w_solve_female_caregiver_2, I was just hungry. I can explain, you see, there is this guy at school...” \n\n@global.w_solve_female_caregiver_2 (thinking): “Take a Pause… just breathe…”",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -264,12 +244,7 @@
                                   "value": "@global.w_solve_female_caregiver_2: “Just give me a moment. I am tired and now worried about having enough food for dinner.” \n\n@global.w_solve_teen_boy_2: “I am sorry, @global.w_solve_female_caregiver_2\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -311,12 +286,7 @@
                                   "value": "Step 1: KNOW IT",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "hidden": false,
@@ -350,12 +320,7 @@
                                       "value": "@global.w_solve_female_caregiver_2: \"Now tell me, why are you so hungry? Did you not eat your lunch at school?” \n\n@global.w_solve_teen_boy_2: \"That is the problem. There’s a guy at school who bullies me. He says if I do not give my lunch to him every day, he and his friends will hurt me. He makes me so mad!\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",
@@ -412,12 +377,7 @@
                                           "value": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that but am glad that you told me, @global.w_solve_teen_boy_2. It doesn’t mean that you can eat everybody’s dinner. After we speak, you need to go to the shop to buy some more bread. But first: What do you think we should do about the bully problem?\"\n\n@global.w_solve_teen_boy_2: \"Well… I want to just hit him or get him back.\"",
                                           "_translations": {
                                             "value": {
-                                              "tz_sw": true,
-                                              "za_af": true,
-                                              "za_st": true,
-                                              "za_tn": true,
-                                              "za_xh": true,
-                                              "za_zu": true
+                                              "tz_sw": true
                                             }
                                           },
                                           "type": "set_variable",
@@ -459,12 +419,7 @@
                                           "value": "Step 2: SOLVE IT",
                                           "_translations": {
                                             "value": {
-                                              "tz_sw": true,
-                                              "za_af": true,
-                                              "za_st": true,
-                                              "za_tn": true,
-                                              "za_xh": true,
-                                              "za_zu": true
+                                              "tz_sw": true
                                             }
                                           },
                                           "hidden": false,
@@ -498,12 +453,7 @@
                                               "value": "@global.w_solve_female_caregiver_2: \"Hmmm… what do you think will happen to you if you do that?\"\n\n@global.w_solve_teen_boy_2: \"I don’t know. He is bigger than me so he will probably hurt me more. And I could get into trouble at school and expelled.\"",
                                               "_translations": {
                                                 "value": {
-                                                  "tz_sw": true,
-                                                  "za_af": true,
-                                                  "za_st": true,
-                                                  "za_tn": true,
-                                                  "za_xh": true,
-                                                  "za_zu": true
+                                                  "tz_sw": true
                                                 }
                                               },
                                               "type": "set_variable",
@@ -560,12 +510,7 @@
                                                   "value": "@global.w_solve_female_caregiver_2: \"Yes, that could happen. What could we do instead?\"\n\n@global.w_solve_teen_boy_2: \"I guess I could tell the teacher. But then the other kids will call me a tattletale. Maybe you could talk to the teacher?\"",
                                                   "_translations": {
                                                     "value": {
-                                                      "tz_sw": true,
-                                                      "za_af": true,
-                                                      "za_st": true,
-                                                      "za_tn": true,
-                                                      "za_xh": true,
-                                                      "za_zu": true
+                                                      "tz_sw": true
                                                     }
                                                   },
                                                   "type": "set_variable",
@@ -622,12 +567,7 @@
                                                       "value": "@global.w_solve_female_caregiver_2: \"That sounds like a better idea. I could also have a word with his parents if you want me to.\"\n\n@global.w_solve_teen_boy_2: \"Sure. If you think that would help too. Thanks, @global.w_solve_female_caregiver_2\"",
                                                       "_translations": {
                                                         "value": {
-                                                          "tz_sw": true,
-                                                          "za_af": true,
-                                                          "za_st": true,
-                                                          "za_tn": true,
-                                                          "za_xh": true,
-                                                          "za_zu": true
+                                                          "tz_sw": true
                                                         }
                                                       },
                                                       "type": "set_variable",
@@ -691,12 +631,7 @@
                                                           "value": "@global.w_solve_female_caregiver_2: \"Anything for you, my dear. I will do it first thing after dinner. And you know? If that doesn’t work, we can always try something else together.\"\n\n@global.w_solve_teen_boy_2: \"Thanks, @global.w_solve_female_caregiver_2\"",
                                                           "_translations": {
                                                             "value": {
-                                                              "tz_sw": true,
-                                                              "za_af": true,
-                                                              "za_st": true,
-                                                              "za_tn": true,
-                                                              "za_xh": true,
-                                                              "za_zu": true
+                                                              "tz_sw": true
                                                             }
                                                           },
                                                           "type": "set_variable",
@@ -738,12 +673,7 @@
                                                           "value": "Step 3: TRY IT",
                                                           "_translations": {
                                                             "value": {
-                                                              "tz_sw": true,
-                                                              "za_af": true,
-                                                              "za_st": true,
-                                                              "za_tn": true,
-                                                              "za_xh": true,
-                                                              "za_zu": true
+                                                              "tz_sw": true
                                                             }
                                                           },
                                                           "hidden": false,
@@ -777,12 +707,7 @@
                                                               "value": "A week later… \n\n@global.w_solve_female_caregiver_2: \"How are things going at school now?\"\n\n@global.w_solve_teen_boy_2: \"It’s going better, the boy does not take my lunch anymore. But he is still being really mean to me.\"",
                                                               "_translations": {
                                                                 "value": {
-                                                                  "tz_sw": true,
-                                                                  "za_af": true,
-                                                                  "za_st": true,
-                                                                  "za_tn": true,
-                                                                  "za_xh": true,
-                                                                  "za_zu": true
+                                                                  "tz_sw": true
                                                                 }
                                                               },
                                                               "type": "set_variable",
@@ -817,12 +742,7 @@
                                                               "value": "Step 4: TEST IT",
                                                               "_translations": {
                                                                 "value": {
-                                                                  "tz_sw": true,
-                                                                  "za_af": true,
-                                                                  "za_st": true,
-                                                                  "za_tn": true,
-                                                                  "za_xh": true,
-                                                                  "za_zu": true
+                                                                  "tz_sw": true
                                                                 }
                                                               },
                                                               "hidden": false,
@@ -851,12 +771,7 @@
                                                               "value": "@global.w_solve_female_caregiver_2: \"I am sorry to hear that, @global.w_solve_teen_boy_2. Shall I ask your uncle to go talk to his parents? If that does not work, we will try something else!\"\n\n@global.w_solve_teen_boy_2: \"Yes, thank you @global.w_solve_female_caregiver_2. At least I know you are on my side.\"",
                                                               "_translations": {
                                                                 "value": {
-                                                                  "tz_sw": true,
-                                                                  "za_af": true,
-                                                                  "za_st": true,
-                                                                  "za_tn": true,
-                                                                  "za_xh": true,
-                                                                  "za_zu": true
+                                                                  "tz_sw": true
                                                                 }
                                                               },
                                                               "type": "set_variable",

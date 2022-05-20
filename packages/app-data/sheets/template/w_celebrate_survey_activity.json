@@ -10,12 +10,7 @@
       "value": "End of programme check-in",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_nested_name": "title"
@@ -26,12 +21,7 @@
       "value": "You have been using @global.parent_app for the last months, but parenting a teen is long lasting!  The next questions about your parenting experiences will help us assess your parenting.\n\nBe honest. Remember that millions of parents feel like you do, and we all deserve support. You are not alone!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "condition": "!@field.survey_final_completed",
@@ -69,12 +59,7 @@
       "value": "You seem to have completed the end of programme check-in already. You can now skip this activity.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "condition": "@field.survey_final_completed",

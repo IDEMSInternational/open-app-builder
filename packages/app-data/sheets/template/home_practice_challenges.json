@@ -127,12 +127,7 @@
       "value": "talk to their teens about how they feel",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -143,12 +138,7 @@
       "value": "talk to your teen about how you feel",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -159,12 +149,7 @@
       "value": "Top @local.number_of_challenges challenges other parents experience:",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "type": "set_variable",
@@ -191,12 +176,7 @@
       "value": "Did you experience any challenges when trying to @local.hp_description_second_singular?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "condition": "!(@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\")",
@@ -244,12 +224,7 @@
       "value": "What was difficult for you when trying to @local.hp_description_second_singular?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "condition": "@fields.@local.workshop_hp_review_mood == \"ok\" || @fields.@local.workshop_hp_review_mood == \"sad\"",

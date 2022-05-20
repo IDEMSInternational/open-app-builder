@@ -94,12 +94,7 @@
                       "value": "Your goal was to spend one-on-one time with your teen. We noticed you tapped the @data.habit.spend_time.in_text_title - great job for remembering!",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.weekly_parent_point_spend_time > 0",
@@ -137,12 +132,7 @@
                       "value": "Your goal was to spend one-on-one time with your teen.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.weekly_parent_point_spend_time == 0",
@@ -269,12 +259,7 @@
               "value": "Well done for exploring solutions to your challenges. Go try them out. Your relationship with your teen will get stronger and stronger!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

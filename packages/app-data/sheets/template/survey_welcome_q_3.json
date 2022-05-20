@@ -57,12 +57,7 @@
               "value": "Great that this has been a good week!\n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -73,12 +68,7 @@
               "value": "Great that you felt calm most of the week! \n\nWe will remind you regularly to relax, recognise and reward yourself, to help you continue to manage your stress and feel calm.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -89,12 +79,7 @@
               "value": "We understand how stressful life can be. We will remind you regularly to relax, recognise and reward yourself, to help manage your stress and feel calmer.\n\nWe will learn more about managing stress in week @data.workshop.w_stress.number of the @global.weekly_workshops - but you can already access some helpful tools under @data.parent_centre.my_tips.location_text to get you started!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

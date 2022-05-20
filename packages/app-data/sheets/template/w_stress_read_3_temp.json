@@ -38,12 +38,7 @@
               "value": "Safety Amnesty",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -54,12 +49,7 @@
               "value": "Think back to when you were a teenager. \n\nWas there ever a time when you were in danger but you couldn’t tell your family because they would have been angry?\n\nThis ALMOST happened to @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl! Let’s have a look:",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -174,12 +164,7 @@
                       "value": "@global.w_stress_teen_boy_2: \"Don’t tell the adults, but I’m going to bar with my friends tonight\" \n\n@global.w_stress_teen_girl: \"Have fun! I’ve told them I’m staying with my girlfriend, but I’m actually going to a cool party\"",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "type": "set_variable",
@@ -236,12 +221,7 @@
                           "value": "@global.w_stress_teen_boy_2: \"I think they are dealing drugs. We could all get arrested. But I can’t tell my parents – they’ll be so angry\"",
                           "_translations": {
                             "value": {
-                              "tz_sw": true,
-                              "za_af": true,
-                              "za_st": true,
-                              "za_tn": true,
-                              "za_xh": true,
-                              "za_zu": true
+                              "tz_sw": true
                             }
                           },
                           "type": "set_variable",
@@ -289,12 +269,7 @@
                               "value": "@global.w_stress_teen_girl: \"I’m scared. Everyone is too drunk to drive me home. This boy says he’ll take me but he wants us to go to his house first. I can’t tell my parents – I lied about coming to this party.\"",
                               "_translations": {
                                 "value": {
-                                  "tz_sw": true,
-                                  "za_af": true,
-                                  "za_st": true,
-                                  "za_tn": true,
-                                  "za_xh": true,
-                                  "za_zu": true
+                                  "tz_sw": true
                                 }
                               },
                               "type": "set_variable",
@@ -342,12 +317,7 @@
                                   "value": "These are dangerous situations! Thankfully, @global.w_stress_teen_boy_2 and @global.w_stress_teen_girl then remembered what @global.w_stress_parent told them:  \n\n\"I care about your safety more than anything. If you are ever upset, or scared, you can always call me for help, or tell me about it. \n\nJust say 'SAFETY AMNESTY'. I promise that I will try my best to help and I won’t be angry – even if you are doing something you shouldn't.\"",
                                   "_translations": {
                                     "value": {
-                                      "tz_sw": true,
-                                      "za_af": true,
-                                      "za_st": true,
-                                      "za_tn": true,
-                                      "za_xh": true,
-                                      "za_zu": true
+                                      "tz_sw": true
                                     }
                                   },
                                   "type": "set_variable",
@@ -413,12 +383,7 @@
                                       "value": "@global.w_stress_teen_girl: \"@global.w_stress_parent, it’s a safety amnesty. Can you come and pick me up? I really need a lift home.\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",
@@ -470,12 +435,7 @@
                                       "value": "@global.w_stress_teen_boy_2: \"@global.w_stress_parent, safety amnesty. I think my friends are in trouble. I don’t want to stop being their friend, but I’m worried. Can we talk?\"",
                                       "_translations": {
                                         "value": {
-                                          "tz_sw": true,
-                                          "za_af": true,
-                                          "za_st": true,
-                                          "za_tn": true,
-                                          "za_xh": true,
-                                          "za_zu": true
+                                          "tz_sw": true
                                         }
                                       },
                                       "type": "set_variable",

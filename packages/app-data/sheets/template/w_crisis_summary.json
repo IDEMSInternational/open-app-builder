@@ -14,12 +14,7 @@
           "value": "Today you will explore:",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -30,12 +25,7 @@
           "value": "* Story & discussion\n* Story & discussion\n* Tools: How to deal with crisis\nBREATHE - LISTEN - THINK\n* Try it out!\n* Home practice suggestions",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "@field.do_this_workshop_together",
@@ -62,12 +52,7 @@
           "value": "* Story & reflection\n* Story & reflection\n* Tools: How to deal with crisis\nBREATHE - LISTEN - THINK\n* Try it out!\n* Home practice suggestions",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "condition": "!@field.do_this_workshop_together",

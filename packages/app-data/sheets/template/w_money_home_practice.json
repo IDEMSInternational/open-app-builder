@@ -70,12 +70,7 @@
                       "value": "Make a budget again - this time WITH your teen and family! \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"alone\" || !@fields.w_money_path )",
@@ -120,12 +115,7 @@
                       "value": "Make a budget with your teen and family. \n\nThis is an important and fun thing to do with your family - it takes about 30 minutes.\n\nMaking a budget together helps teens understand that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped  millions of families.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "@fields.do_this_workshop_together",
@@ -152,12 +142,7 @@
                       "value": "Review your budget with your teen and family. This will remind everyone that we all need to make hard decisions sometimes - but that it helps us have enough money at the end of the month and realise our goals!\n\nBudgets have helped millions of families.",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "condition": "!@fields.do_this_workshop_together && (@fields.w_money_path==\"family\" )",
@@ -193,12 +178,7 @@
                       "value": "Steps to make a budget",
                       "_translations": {
                         "value": {
-                          "tz_sw": true,
-                          "za_af": true,
-                          "za_st": true,
-                          "za_tn": true,
-                          "za_xh": true,
-                          "za_zu": true
+                          "tz_sw": true
                         }
                       },
                       "action_list": [

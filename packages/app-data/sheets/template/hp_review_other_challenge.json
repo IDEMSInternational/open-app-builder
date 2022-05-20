@@ -100,12 +100,7 @@
       "value": "Sorry we missed this!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "_nested_name": "text"
@@ -116,12 +111,7 @@
       "value": "Do you want to share it with us?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "parameter_list": {
@@ -223,12 +213,7 @@
       "value": "Thank you for sharing your challenge! We will use this feedback to make @global.parent_app better.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "!@local.text_box",

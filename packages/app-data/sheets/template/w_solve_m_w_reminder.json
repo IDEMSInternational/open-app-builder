@@ -42,12 +42,7 @@
               "value": "With teenagers, and in life, unexpected problems come up and we have to deal with them. \n\nStart the next workshop to learn how to successfully address these problems.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

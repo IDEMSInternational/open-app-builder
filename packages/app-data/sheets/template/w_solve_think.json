@@ -44,12 +44,7 @@
               "value": "Remember @global.w_solve_teen_girl and the phone she got from the boy?",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
@@ -80,12 +75,7 @@
                   "value": "How could @global.w_solve_teen_girl and @global.w_solve_female_caregiver_1 use the 4 steps of problem solving, like @global.w_solve_female_caregiver_2 and @global.w_solve_teen_boy_2 did? \n\nKNOW IT - SOLVE IT - TRY IT - TEST IT",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",

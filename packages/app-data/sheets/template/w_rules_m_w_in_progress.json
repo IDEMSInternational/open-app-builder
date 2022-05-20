@@ -66,12 +66,7 @@
               "value": "You are close to gaining another parenting tool! Complete the @local.workshop_data.in_text_title, set ONE simple and realistic rule with your teen, and see things change!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",

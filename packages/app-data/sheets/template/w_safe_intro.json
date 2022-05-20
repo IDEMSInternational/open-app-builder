@@ -66,12 +66,7 @@
                   "value": "Teens can spend a lot of time outside the house or online, where it is harder for us to keep them safe. \n\nTalking together about safe and unsafe places, and how to prevent problems, really helps!",
                   "_translations": {
                     "value": {
-                      "tz_sw": true,
-                      "za_af": true,
-                      "za_st": true,
-                      "za_tn": true,
-                      "za_xh": true,
-                      "za_zu": true
+                      "tz_sw": true
                     }
                   },
                   "type": "set_variable",

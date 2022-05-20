@@ -14,12 +14,7 @@
           "value": "Some rules that other groups made:",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -30,12 +25,7 @@
           "value": "* Tuesday at 7pm is our @global.parent_app time together\n* Take turns holding the phone (1 activity per person)\n* Accept each other’s experiences. We are all different!\n* Take turns speaking and listening\n* All questions are welcome\n* What we share stays among us",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

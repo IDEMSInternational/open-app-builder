@@ -14,12 +14,7 @@
           "value": "@global.w_instruct_female_caregiver could have...",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",
@@ -45,12 +40,7 @@
           "value": "* Said something nice first \n* Spoken to @global.w_instruct_teen_girl in a calm voice \n* Told @global.w_instruct_teen_girl what she wants her to do",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "type": "set_variable",

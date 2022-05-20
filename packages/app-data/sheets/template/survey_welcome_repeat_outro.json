@@ -56,12 +56,7 @@
               "value": "Content unlocked by these questions is now accessible under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_welcome_repeat_a_1 < @global.survey_t_1 ||@fields.survey_welcome_repeat_a_2 < @global.survey_t_2 || @fields.survey_welcome_repeat_a_3 >= @global.survey_t_3 ||@fields.survey_welcome_repeat_a_4 >= @global.survey_t_4 ||@fields.survey_welcome_repeat_a_5_part_1>=@global.survey_t_5 ||@fields.survey_welcome_repeat_a_5_part_2>=@global.survey_t_5 ||@fields.survey_welcome_repeat_a_6 >= @global.survey_t_6 ||@fields.survey_welcome_repeat_a_7_part_1<@global.survey_t_7 ||@fields.survey_welcome_repeat_a_7_part_3<@global.survey_t_7 ||@fields.survey_welcome_repeat_a_8 <@global.survey_t_8 ||@fields.survey_welcome_repeat_a_8 <@global.survey_t_8",
@@ -280,12 +275,7 @@
               "value": "You have just unlocked the first workshop!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "!(@fields.survey_welcome_repeat_a_1 < @global.survey_t_1 ||@fields.survey_welcome_repeat_a_2 < @global.survey_t_2 || @fields.survey_welcome_repeat_a_3 >= @global.survey_t_3 ||@fields.survey_welcome_repeat_a_4 >= @global.survey_t_4 ||@fields.survey_welcome_repeat_a_5_part_1>=@global.survey_t_5 ||@fields.survey_welcome_repeat_a_5_part_2>=@global.survey_t_5 ||@fields.survey_welcome_repeat_a_6 >= @global.survey_t_6 ||@fields.survey_welcome_repeat_a_7_part_1<@global.survey_t_7 ||@fields.survey_welcome_repeat_a_7_part_3<@global.survey_t_7 ||@fields.survey_welcome_repeat_a_8 <@global.survey_t_8 ||@fields.survey_welcome_repeat_a_8 <@global.survey_t_8)",

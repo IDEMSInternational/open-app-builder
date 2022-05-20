@@ -54,12 +54,7 @@
       "value": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.praise_teen_count == 0",
@@ -97,12 +92,7 @@
       "value": "Your goal was to praise your teen.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.praise_teen_count >= 1",
@@ -129,12 +119,7 @@
       "value": "Did you have a chance to praise your teen this week?",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.praise_teen_count >= 1",
@@ -275,12 +260,7 @@
       "value": "It can sometimes be hard to remember to praise our teens. Next time you spend one-on-one time with your teen, try and think of one thing you can praise them for. You can even say, “Thank you for spending time with me!”.",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
@@ -316,12 +296,7 @@
       "value": "Well done - great job for remembering!",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "hidden": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
@@ -365,12 +340,7 @@
           "value": "How did your teen respond?",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "parameter_list": {
@@ -495,12 +465,7 @@
           "value": "Remember, it takes some time for your teen to get used to seeing you praise them. The more time you spend with them, the better it will go!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "hidden": "!(@local.combo_box==\"choice_1\")",
@@ -527,12 +492,7 @@
           "value": "Well done for observing how your teen felt; keep it up!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "hidden": "!(@local.combo_box==\"choice_2\")",
@@ -559,12 +519,7 @@
           "value": "It happens - just be patient. Make sure to keep spending time with your teen, so they will value your opinion more and more. When your praise is genuine, you will see the benefits soon!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "hidden": "!(@local.combo_box==\"choice_3\")",
@@ -591,12 +546,7 @@
           "value": "No problem - try to observe how they respond the next time!",
           "_translations": {
             "value": {
-              "tz_sw": true,
-              "za_af": true,
-              "za_st": true,
-              "za_tn": true,
-              "za_xh": true,
-              "za_zu": true
+              "tz_sw": true
             }
           },
           "hidden": "!(@local.combo_box==\"choice_4\")",

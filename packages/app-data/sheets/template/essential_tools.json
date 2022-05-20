@@ -134,12 +134,7 @@
       "value": "You can always find these tools in the @global.parent_centre",
       "_translations": {
         "value": {
-          "tz_sw": true,
-          "za_af": true,
-          "za_st": true,
-          "za_tn": true,
-          "za_xh": true,
-          "za_zu": true
+          "tz_sw": true
         }
       },
       "parameter_list": {

@@ -57,12 +57,7 @@
               "value": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you!\n\nRemember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. You can also review core tips on rules and safety planning under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "!(@fields.survey_final_a_7_part_1<@global.survey_t_7 || @fields.survey_final_a_7_part_3<@global.survey_t_7)",
@@ -134,12 +129,7 @@
               "value": "Being a parent is not easy. It can be difficult to know how to keep our teens safe. We often feel powerless as parents in this, but we are here to support you! Remember, you can find focused tools, extra content and resources on this in the @global.parent_centre at any time. \n\nYou can also review core tips on making rules under @data.parent_centre.my_tips.location_text.",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "condition": "@fields.survey_final_a_7_part_1<@global.survey_t_7 || @fields.survey_final_a_7_part_3<@global.survey_t_7",
@@ -217,12 +207,7 @@
               "value": "Being a parent is not easy. Well done for focusing on keeping your teen safe. \n\nRemember, you can find more support on this in the @data.workshop.w_safe.in_text_title whenever you need it!",
               "_translations": {
                 "value": {
-                  "tz_sw": true,
-                  "za_af": true,
-                  "za_st": true,
-                  "za_tn": true,
-                  "za_xh": true,
-                  "za_zu": true
+                  "tz_sw": true
                 }
               },
               "type": "set_variable",
