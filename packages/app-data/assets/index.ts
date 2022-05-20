@@ -1451,8 +1451,8 @@ export const ASSETS_CONTENTS_LIST = {
     md5Checksum: "963f0b32ea26bd9fdfddf47f0d42f340",
   },
   "plh_images/logos/partners/plh.png": {
-    size_kb: 18.4,
-    md5Checksum: "5e85adf4533077a5335ec7c6a175299b",
+    size_kb: 66.5,
+    md5Checksum: "4cc18480bb1e712fa397cbe2ff130021",
   },
   "plh_images/logos/partners/unicef.png": {
     size_kb: 29.9,
