@@ -8,8 +8,8 @@ import { TemplateActionService } from "src/app/shared/components/template/servic
 import { TemplateTranslateService } from "src/app/shared/components/template/services/template-translate.service";
 import { TemplateVariablesService } from "src/app/shared/components/template/services/template-variables.service";
 import { FlowTypes } from "src/app/shared/model";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 import { DataEvaluationService } from "src/app/shared/services/data/data-evaluation.service";
-import { DATA_LIST } from "src/app/shared/services/data/data.service";
 import {
   ILocalNotification,
   LocalNotificationService,
@@ -47,6 +47,7 @@ export class CampaignService {
     private dataEvaluationService: DataEvaluationService,
     private localNotificationService: LocalNotificationService,
     private templateTranslateService: TemplateTranslateService,
+    private appDataService: AppDataService,
     private injector: Injector
   ) {}
 
@@ -63,7 +64,7 @@ export class CampaignService {
 
     const schedules = await this.loadCampaignSchedules();
 
-    const { allCampaigns, scheduledCampaigns } = this.loadCampaignRows(schedules);
+    const { allCampaigns, scheduledCampaigns } = await this.loadCampaignRows(schedules);
 
     this.scheduledCampaigns = scheduledCampaigns;
     this.allCampaigns = allCampaigns;
@@ -234,6 +235,10 @@ export class CampaignService {
     if (!notification_schedule) return;
     let { _schedule_at } = notification_schedule;
 
+    // HACK - remove markdown form title and text as not currently supported in capacitor notifications
+    row.text = this.hackStripNotificationMarkdown(row.text);
+    row.title = this.hackStripNotificationMarkdown(row.title);
+
     const notificationSchedule: ILocalNotification = {
       schedule: { at: _schedule_at },
       body: row.text || NOTIFICATION_DEFAULTS.text,
@@ -292,9 +297,11 @@ export class CampaignService {
    * and schedule start/end
    */
   private async loadCampaignSchedules() {
-    const scheduleRows = DATA_LIST.filter((list) => list.flow_subtype === "campaign_schedule").map(
-      (list) => list.rows
+    const dataLists = await this.appDataService.getSheetsWithData(
+      "data_list",
+      (list) => list.flow_subtype === "campaign_schedule"
     );
+    const scheduleRows = dataLists.map((d) => d.rows);
     const allCampaignSchedules: FlowTypes.Campaign_Schedule[] = mergeArrayOfArrays(scheduleRows);
     const evaluatedCampaignSchedules = await Promise.all(
       allCampaignSchedules.map(async (scheduleRow) => {
@@ -314,11 +321,12 @@ export class CampaignService {
    * Get a list of all campaign rows collated by campaign_id, and merge with campaign schedules
    * TODO - most of this logic could be handled in parser instead
    */
-  private loadCampaignRows(scheduledCampaigns: IScheduledCampaignsHashmap) {
+  private async loadCampaignRows(scheduledCampaigns: IScheduledCampaignsHashmap) {
     // Retrieve and merge list of all campaign rows
-    const campaignListRows = DATA_LIST.filter((list) =>
+    const dataLists = await this.appDataService.getSheetsWithData("data_list", (list) =>
       ["campaign_rows", "campaign_rows_debug"].includes(list.flow_subtype)
-    ).map((list) => list.rows);
+    );
+    const campaignListRows = dataLists.map((list) => list.rows);
 
     const allCampaignRows: FlowTypes.Campaign_listRow[] = mergeArrayOfArrays(campaignListRows);
     const allCampaignRowsByPriority = allCampaignRows.sort(
@@ -456,5 +464,14 @@ export class CampaignService {
       .map(([_, value]) => shuffleArray(value));
     const shuffleSortedRows: FlowTypes.Campaign_listRow[] = [].concat(...shuffleSortedGroups);
     return shuffleSortedRows;
+  }
+
+  /**
+   * Rough function to strip some commonly used markdown from strings, specifically
+   * `**` - bold text
+   * NOTE - comprehensive extraction could be carried out using something like strip-markdown or mdast
+   */
+  private hackStripNotificationMarkdown(str = "") {
+    return str.replace(/\*\*/g, "");
   }
 }

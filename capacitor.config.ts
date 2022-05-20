@@ -10,15 +10,12 @@ const config: CapacitorConfig = {
   webDir: "www",
   plugins: {
     SplashScreen: {
-      launchShowDuration: 3000,
+      launchShowDuration: 7000, // app.component.ts should manually dismiss before duration
+      launchAutoHide: true,
     },
-    CapacitorFirebaseAuth: {
+    FirebaseAuthentication: {
+      skipNativeAuth: false,
       providers: ["google.com"],
-      languageCode: "en",
-      nativeAuth: false,
-      permissions: {
-        google: ["profile"],
-      },
     },
   },
 };

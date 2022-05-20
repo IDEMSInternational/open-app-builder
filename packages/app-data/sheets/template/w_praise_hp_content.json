@@ -1,0 +1,676 @@
+{
+  "flow_type": "template",
+  "module": "praise",
+  "flow_name": "w_praise_hp_content",
+  "status": "released",
+  "rows": [
+    {
+      "name": "praise_teen_count",
+      "value": "@fields.weekly_parent_point_praise_teen",
+      "_translations": {
+        "value": {}
+      },
+      "type": "set_variable",
+      "_nested_name": "praise_teen_count",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "@fields.weekly_parent_point_praise_teen",
+            "matchedExpression": "@fields.weekly_parent_point_praise_teen",
+            "type": "fields",
+            "fieldName": "weekly_parent_point_praise_teen"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.weekly_parent_point_praise_teen": [
+          "value"
+        ]
+      }
+    },
+    {
+      "name": "radio_group_tracker",
+      "value": "w_praise_hp_review_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "radio_group_tracker"
+    },
+    {
+      "name": "combo_box_tracker",
+      "value": "w_praise_hp_review_2",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "combo_box_tracker"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "hidden": "@local.praise_teen_count == 0",
+      "_nested_name": "text_1",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Your goal was to praise your teen. You’ve tapped the @data.habit.praise_teen.in_text_title this week. Great job for remembering!",
+            "matchedExpression": "@data.habit.praise_teen.in_text_title",
+            "type": "data",
+            "fieldName": "habit"
+          }
+        ],
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count == 0",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@data.habit.praise_teen.in_text_title": [
+          "value"
+        ],
+        "@local.praise_teen_count": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Your goal was to praise your teen.",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "hidden": "@local.praise_teen_count >= 1",
+      "_nested_name": "text_2",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count >= 1",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.praise_teen_count": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "question_text_1",
+      "value": "Did you have a chance to praise your teen this week?",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "hidden": "@local.praise_teen_count >= 1",
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "question_text_1",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count >= 1",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.praise_teen_count": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "name": "answer_list_1",
+      "value": [
+        "name: yes | text: Yes",
+        "name: no | text: No"
+      ],
+      "type": "set_variable",
+      "_nested_name": "answer_list_1"
+    },
+    {
+      "type": "radio_group",
+      "name": "radio_group",
+      "action_list": [
+        {
+          "trigger": "changed",
+          "action_id": "set_field",
+          "args": [
+            "@local.radio_group_tracker",
+            "this.value"
+          ],
+          "_raw": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+          "_cleaned": "changed | set_field:@local.radio_group_tracker:@local.radio_group"
+        }
+      ],
+      "hidden": "@local.praise_teen_count >= 1",
+      "parameter_list": {
+        "answer_list": "@local.answer_list_1",
+        "radio_button_type": "btn_text",
+        "options_per_row": "2"
+      },
+      "_nested_name": "radio_group",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.radio_group_tracker",
+                  "matchedExpression": "@local.radio_group_tracker",
+                  "type": "local",
+                  "fieldName": "radio_group_tracker"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group_tracker",
+                "type": "local",
+                "fieldName": "radio_group_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group_tracker",
+                "type": "local",
+                "fieldName": "radio_group_tracker"
+              },
+              {
+                "fullExpression": "changed | set_field:@local.radio_group_tracker:@local.radio_group",
+                "matchedExpression": "@local.radio_group",
+                "type": "local",
+                "fieldName": "radio_group"
+              }
+            ]
+          }
+        },
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count >= 1",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          }
+        ],
+        "parameter_list": {
+          "answer_list": [
+            {
+              "fullExpression": "@local.answer_list_1",
+              "matchedExpression": "@local.answer_list_1",
+              "type": "local",
+              "fieldName": "answer_list_1"
+            }
+          ]
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.radio_group_tracker": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.radio_group": [
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.praise_teen_count": [
+          "hidden"
+        ],
+        "@local.answer_list_1": [
+          "parameter_list.answer_list"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "reply_no",
+      "value": "It can sometimes be hard to remember to praise our teens. Next time you spend one-on-one time with your teen, try and think of one thing you can praise them for. You can even say, “Thank you for spending time with me!”.",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "hidden": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
+      "_nested_name": "reply_no",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          },
+          {
+            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"no\")",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.praise_teen_count": [
+          "hidden"
+        ],
+        "@local.radio_group": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "reply_yes",
+      "value": "Well done - great job for remembering!",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      },
+      "hidden": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
+      "_nested_name": "reply_yes",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          },
+          {
+            "fullExpression": "@local.praise_teen_count >= 1 || !(@local.radio_group == \"yes\")",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.praise_teen_count": [
+          "hidden"
+        ],
+        "@local.radio_group": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "display_group",
+      "name": "replies_did_it",
+      "hidden": "@local.praise_teen_count ==0 && !(@local.radio_group == \"yes\" )",
+      "parameter_list": {
+        "style": "column"
+      },
+      "rows": [
+        {
+          "type": "text",
+          "name": "question_text_2",
+          "value": "How did your teen respond?",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "parameter_list": {
+            "style": "emphasised"
+          },
+          "_nested_name": "replies_did_it.question_text_2"
+        },
+        {
+          "name": "answer_list_2",
+          "value": [
+            "name:choice_1 | text: Surprised",
+            "name:choice_2 | text: Happy",
+            "name:choice_3 | text: My teen did not like it",
+            "name:choice_4 | text: I do not know"
+          ],
+          "type": "set_variable",
+          "_nested_name": "replies_did_it.answer_list_2"
+        },
+        {
+          "type": "combo_box",
+          "name": "combo_box",
+          "action_list": [
+            {
+              "trigger": "changed",
+              "action_id": "set_field",
+              "args": [
+                "@local.combo_box_tracker",
+                "this.value"
+              ],
+              "_raw": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+              "_cleaned": "changed | set_field: @local.combo_box_tracker: @local.combo_box"
+            }
+          ],
+          "parameter_list": {
+            "answer_list": "@local.answer_list_2",
+            "placeholder": "@global.tap_and_choose"
+          },
+          "_nested_name": "replies_did_it.combo_box",
+          "_dynamicFields": {
+            "action_list": {
+              "0": {
+                "args": {
+                  "0": [
+                    {
+                      "fullExpression": "@local.combo_box_tracker",
+                      "matchedExpression": "@local.combo_box_tracker",
+                      "type": "local",
+                      "fieldName": "combo_box_tracker"
+                    }
+                  ]
+                },
+                "_raw": [
+                  {
+                    "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                    "matchedExpression": "@local.combo_box_tracker",
+                    "type": "local",
+                    "fieldName": "combo_box_tracker"
+                  },
+                  {
+                    "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                    "matchedExpression": "@local.combo_box",
+                    "type": "local",
+                    "fieldName": "combo_box"
+                  }
+                ],
+                "_cleaned": [
+                  {
+                    "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                    "matchedExpression": "@local.combo_box_tracker",
+                    "type": "local",
+                    "fieldName": "combo_box_tracker"
+                  },
+                  {
+                    "fullExpression": "changed | set_field: @local.combo_box_tracker: @local.combo_box",
+                    "matchedExpression": "@local.combo_box",
+                    "type": "local",
+                    "fieldName": "combo_box"
+                  }
+                ]
+              }
+            },
+            "parameter_list": {
+              "answer_list": [
+                {
+                  "fullExpression": "@local.answer_list_2",
+                  "matchedExpression": "@local.answer_list_2",
+                  "type": "local",
+                  "fieldName": "answer_list_2"
+                }
+              ],
+              "placeholder": [
+                {
+                  "fullExpression": "@global.tap_and_choose",
+                  "matchedExpression": "@global.tap_and_choose",
+                  "type": "global",
+                  "fieldName": "tap_and_choose"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box_tracker": [
+              "action_list.0.args.0",
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.combo_box": [
+              "action_list.0._raw",
+              "action_list.0._cleaned"
+            ],
+            "@local.answer_list_2": [
+              "parameter_list.answer_list"
+            ],
+            "@global.tap_and_choose": [
+              "parameter_list.placeholder"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_1",
+          "value": "Remember, it takes some time for your teen to get used to seeing you praise them. The more time you spend with them, the better it will go!",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "hidden": "!(@local.combo_box==\"choice_1\")",
+          "_nested_name": "replies_did_it.reply_1",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "!(@local.combo_box==\"choice_1\")",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box": [
+              "hidden"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_2",
+          "value": "Well done for observing how your teen felt; keep it up!",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "hidden": "!(@local.combo_box==\"choice_2\")",
+          "_nested_name": "replies_did_it.reply_2",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "!(@local.combo_box==\"choice_2\")",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box": [
+              "hidden"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_3",
+          "value": "It happens - just be patient. Make sure to keep spending time with your teen, so they will value your opinion more and more. When your praise is genuine, you will see the benefits soon!",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "hidden": "!(@local.combo_box==\"choice_3\")",
+          "_nested_name": "replies_did_it.reply_3",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "!(@local.combo_box==\"choice_3\")",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box": [
+              "hidden"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "name": "reply_4",
+          "value": "No problem - try to observe how they respond the next time!",
+          "_translations": {
+            "value": {
+              "tz_sw": true,
+              "za_af": true,
+              "za_st": true,
+              "za_tn": true,
+              "za_xh": true,
+              "za_zu": true
+            }
+          },
+          "hidden": "!(@local.combo_box==\"choice_4\")",
+          "_nested_name": "replies_did_it.reply_4",
+          "_dynamicFields": {
+            "hidden": [
+              {
+                "fullExpression": "!(@local.combo_box==\"choice_4\")",
+                "matchedExpression": "@local.combo_box",
+                "type": "local",
+                "fieldName": "combo_box"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.combo_box": [
+              "hidden"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "replies_did_it",
+      "_dynamicFields": {
+        "hidden": [
+          {
+            "fullExpression": "@local.praise_teen_count ==0 && !(@local.radio_group == \"yes\" )",
+            "matchedExpression": "@local.praise_teen_count",
+            "type": "local",
+            "fieldName": "praise_teen_count"
+          },
+          {
+            "fullExpression": "@local.praise_teen_count ==0 && !(@local.radio_group == \"yes\" )",
+            "matchedExpression": "@local.radio_group",
+            "type": "local",
+            "fieldName": "radio_group"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@local.praise_teen_count": [
+          "hidden"
+        ],
+        "@local.radio_group": [
+          "hidden"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/in_week_messages/home_practice_reviews/w_praise_hp_review.xlsx"
+}

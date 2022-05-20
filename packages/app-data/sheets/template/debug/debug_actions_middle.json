@@ -1,0 +1,171 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_actions_middle",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "field_1",
+      "value": "debug_actions_middle_1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "field_1"
+    },
+    {
+      "name": "value_1",
+      "value": "Value 1",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "value_1"
+    },
+    {
+      "type": "text",
+      "name": "text_1",
+      "value": "Set the field debug_actions_middle_1 through a local variable",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_1"
+    },
+    {
+      "type": "template",
+      "name": "debug_actions_bottom_1",
+      "value": "debug_actions_bottom",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "@local.field_1",
+            "@local.value_1"
+          ],
+          "_raw": "completed | set_field: @local.field_1 : @local.value_1",
+          "_cleaned": "completed | set_field: @local.field_1 : @local.value_1"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "debug_actions_bottom_1",
+      "_dynamicFields": {
+        "action_list": {
+          "0": {
+            "args": {
+              "0": [
+                {
+                  "fullExpression": "@local.field_1",
+                  "matchedExpression": "@local.field_1",
+                  "type": "local",
+                  "fieldName": "field_1"
+                }
+              ],
+              "1": [
+                {
+                  "fullExpression": "@local.value_1",
+                  "matchedExpression": "@local.value_1",
+                  "type": "local",
+                  "fieldName": "value_1"
+                }
+              ]
+            },
+            "_raw": [
+              {
+                "fullExpression": "completed | set_field: @local.field_1 : @local.value_1",
+                "matchedExpression": "@local.field_1",
+                "type": "local",
+                "fieldName": "field_1"
+              },
+              {
+                "fullExpression": "completed | set_field: @local.field_1 : @local.value_1",
+                "matchedExpression": "@local.value_1",
+                "type": "local",
+                "fieldName": "value_1"
+              }
+            ],
+            "_cleaned": [
+              {
+                "fullExpression": "completed | set_field: @local.field_1 : @local.value_1",
+                "matchedExpression": "@local.field_1",
+                "type": "local",
+                "fieldName": "field_1"
+              },
+              {
+                "fullExpression": "completed | set_field: @local.field_1 : @local.value_1",
+                "matchedExpression": "@local.value_1",
+                "type": "local",
+                "fieldName": "value_1"
+              }
+            ]
+          }
+        }
+      },
+      "_dynamicDependencies": {
+        "@local.field_1": [
+          "action_list.0.args.0",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ],
+        "@local.value_1": [
+          "action_list.0.args.1",
+          "action_list.0._raw",
+          "action_list.0._cleaned"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "name": "text_2",
+      "value": "Set the field debug_actions_middle_2 directly",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "_nested_name": "text_2"
+    },
+    {
+      "type": "template",
+      "name": "debug_actions_bottom_2",
+      "value": "debug_actions_bottom",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "set_field",
+          "args": [
+            "debug_actions_middle_2",
+            "Value 2"
+          ],
+          "_raw": "completed | set_field: debug_actions_middle_2 : Value 2",
+          "_cleaned": "completed | set_field: debug_actions_middle_2 : Value 2"
+        },
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit: completed",
+          "_cleaned": "completed | emit: completed"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "debug_actions_bottom_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_overriding_action_list.xlsx"
+}

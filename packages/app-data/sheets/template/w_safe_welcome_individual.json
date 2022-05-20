@@ -1,0 +1,139 @@
+{
+  "flow_type": "template",
+  "module": "safe",
+  "flow_name": "w_safe_welcome_individual",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_safe",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "welcome_individual.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_safe",
+                "matchedExpression": "@data.workshop.w_safe",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_safe": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "text",
+                  "value": "Being a great parent also means taking time to care for yourself every day.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.text"
+                },
+                {
+                  "name": "reply_happy",
+                  "value": "Great. And amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                },
+                {
+                  "name": "reply_ok",
+                  "value": "Being a parent is hard. But it is amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                },
+                {
+                  "name": "reply_sad",
+                  "value": "Being a parent is hard. But it is amazing that you are using this app – it shows your commitment as a parent. Make sure you give yourself credit and praise for what you are doing.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                }
+              ],
+              "_nested_name": "welcome_individual.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "welcome_individual.workshop_activity"
+        }
+      ],
+      "_nested_name": "welcome_individual"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_safe.xlsx"
+}

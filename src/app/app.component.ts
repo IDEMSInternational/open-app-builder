@@ -4,13 +4,11 @@ import { Router } from "@angular/router";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { App } from "@capacitor/app";
-import { PushNotificationService } from "./shared/services/notification/push-notification.service";
 import { DbService } from "./shared/services/db/db.service";
 import { ThemeService } from "./feature/theme/theme-service/theme.service";
-import { SurveyService } from "./feature/survey/survey.service";
 import { environment } from "src/environments/environment";
 import { TaskActionService } from "./shared/services/task/task-action.service";
-import { UserMetaService, IUserMeta } from "./shared/services/userMeta/userMeta.service";
+import { UserMetaService } from "./shared/services/userMeta/userMeta.service";
 import { AppEventService } from "./shared/services/app-events/app-events.service";
 import { TourService } from "./shared/services/tour/tour.service";
 import { TemplateService } from "./shared/components/template/services/template.service";
@@ -27,8 +25,16 @@ import { LocalNotificationInteractionService } from "./shared/services/notificat
 import { DBSyncService } from "./shared/services/db/db-sync.service";
 
 import { APP_CONSTANTS } from "./data";
+import { CrashlyticsService } from "./shared/services/crashlytics/crashlytics.service";
+import { AppDataService } from "./shared/services/data/app-data.service";
+import { AuthService } from "./shared/services/auth/auth.service";
 
-const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_CONSTANTS;
+const {
+  APP_FIELDS,
+  APP_INITIALISATION_DEFAULTS,
+  APP_SIDEMENU_DEFAULTS,
+  APP_AUTHENTICATION_DEFAULTS,
+} = APP_CONSTANTS;
 
 @Component({
   selector: "app-root",
@@ -38,7 +44,6 @@ const { APP_FIELDS, APP_INITIALISATION_DEFAULTS, APP_SIDEMENU_DEFAULTS } = APP_C
 export class AppComponent {
   APP_VERSION = environment.version;
   DEPLOYMENT_NAME = environment.deploymentName;
-  ENV_NAME = environment.envName;
   sideMenuDefaults = APP_SIDEMENU_DEFAULTS;
   /** Track when app ready to render sidebar and route templates */
   public renderAppTemplates = false;
@@ -47,12 +52,10 @@ export class AppComponent {
     private platform: Platform,
     private menuController: MenuController,
     private router: Router,
-    private pushNotificationService: PushNotificationService,
     private dbService: DbService,
     private dbSyncService: DBSyncService,
     private userMetaService: UserMetaService,
     private themeService: ThemeService,
-    private surveyService: SurveyService,
     private tourService: TourService,
     private templateService: TemplateService,
     private templateFieldService: TemplateFieldService,
@@ -64,6 +67,9 @@ export class AppComponent {
     private localNotificationService: LocalNotificationService,
     private localNotificationInteractionService: LocalNotificationInteractionService,
     private templateTranslateService: TemplateTranslateService,
+    private crashlyticsService: CrashlyticsService,
+    private appDataService: AppDataService,
+    private authService: AuthService,
     /** Inject in the main app component to start tracking actions immediately */
     public taskActions: TaskActionService,
     public serverService: ServerService
@@ -72,7 +78,6 @@ export class AppComponent {
   }
 
   async initializeApp() {
-    this.themeService.init();
     this.platform.ready().then(async () => {
       // ensure deployment field set correctly for use in any startup services or templates
       localStorage.setItem(APP_FIELDS.DEPLOYMENT_NAME, this.DEPLOYMENT_NAME);
@@ -80,25 +85,39 @@ export class AppComponent {
       this.hackSetDeveloperOptions();
       const isDeveloperMode = this.templateFieldService.getField("user_mode") === false;
       const user = this.userMetaService.userMeta;
+      // Authentication requires verified domain and app ids populated to firebase console
+      // Currently only run on native where specified (but can comment out for testing locally)
+      if (APP_AUTHENTICATION_DEFAULTS.enforceLogin && Capacitor.isNativePlatform()) {
+        await this.ensureUserSignedIn();
+      }
       if (!user.first_app_open) {
-        await this.surveyService.runSurvey("introSplash");
         await this.userMetaService.setUserMeta({ first_app_open: new Date().toISOString() });
-        this.hackSetFirstOpenFields();
         await this.handleFirstLaunchDataActions();
       }
       this.menuController.enable(true, "main-side-menu");
-      await this.hackSetAppOpenFields(user);
-      if (Capacitor.isNative) {
+      if (Capacitor.isNativePlatform()) {
         if (!isDeveloperMode) {
           this.removeConsoleLogs();
         }
-        SplashScreen.hide();
-        this.pushNotificationService.init();
+        await SplashScreen.hide();
       }
-      this.analyticsService.init();
+      // Show main template
       this.renderAppTemplates = true;
       this.scheduleReinitialisation();
     });
+  }
+
+  async ensureUserSignedIn() {
+    const authUser = await this.authService.getCurrentUser();
+    if (!authUser) {
+      const templatename = APP_AUTHENTICATION_DEFAULTS.signInTemplate;
+      const { modal } = await this.templateService.runStandaloneTemplate(templatename, {
+        showCloseButton: false,
+        waitForDismiss: false,
+      });
+      await this.authService.waitForSignInComplete();
+      await modal.dismiss();
+    }
   }
 
   /**
@@ -109,21 +128,31 @@ export class AppComponent {
    * (e.g. notifications before campaigns that require notifications)
    **/
   async initialiseCoreServices() {
+    this.crashlyticsService.init(); // Start init but do not need to wait for complete
     await this.dbService.init();
     await this.userMetaService.init();
-    // CC 2021-05-14 - disabling reminders service until decide on full implementation
-    // (ideally not requiring evaluation of all reminders on init)
+    this.themeService.init();
+    /** CC 2021-05-14 - disabling reminders service until decide on full implementation (ideally not requiring evaluation of all reminders on init) */
     // this.remindersService.init();
     await this.appEventService.init();
     await this.serverService.init();
     await this.dataEvaluationService.refreshDBCache();
     await this.templateTranslateService.init();
+    await this.appDataService.init();
     await this.templateService.init();
     await this.templateProcessService.init();
-    await this.localNotificationInteractionService.init();
-    await this.localNotificationService.init();
     await this.campaignService.init();
-    await this.dbSyncService.init();
+    await this.tourService.init();
+
+    // Initialise additional services in a non-blocking way
+    setTimeout(async () => {
+      await this.localNotificationInteractionService.init();
+      await this.localNotificationService.init();
+      await this.dbSyncService.init();
+      await this.analyticsService.init();
+      /** CC 2022-04-01 - Disable service as not currently in use */
+      // await this.pushNotificationService.init();
+    }, 1000);
   }
 
   /**
@@ -196,51 +225,5 @@ export class AppComponent {
         this.templateFieldService.setField("user_mode", "false");
       }
     }
-  }
-
-  /**
-   * temporary fix: set initial fields to avoid doubling up of quickstart buttons
-   * TODO CC 2021-07-23 - Review if methods still required
-   */
-  private hackSetFirstOpenFields() {
-    this.templateFieldService.setField(".w_1on1_completion_status", "uncompleted");
-    this.templateFieldService.setField("second_week", "false");
-    this.templateFieldService.setField(".w_praise_completion_status", "uncompleted");
-    this.templateFieldService.setField("third_week", "false");
-  }
-
-  /**
-   * temporary workaround for setting unlocked content
-   */
-  private async hackSetAppOpenFields(user: IUserMeta) {
-    // TODO CC 2021-07-23 - Review if methods below still required
-    let old_date = this.userMetaService.getUserMeta("current_date");
-    await this.userMetaService.setUserMeta({ current_date: new Date().toISOString() });
-    let current_date = this.userMetaService.getUserMeta("current_date");
-    this.templateFieldService.setField("first_app_open", user.first_app_open);
-    this.templateFieldService.setField("current_date", current_date);
-    if (old_date != current_date) {
-      this.templateFieldService.setField("daily_relax_done", "false");
-    }
-    this.templateFieldService.setField("first_week", "true");
-    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 6 * 24 * 60 * 60 * 1000) {
-      this.templateFieldService.setField("second_week", "true");
-      this.templateFieldService.setField("w_1on1_disabled", "false");
-    } else {
-      this.templateFieldService.setField("second_week", "false");
-    }
-    if (Date.parse(current_date) - Date.parse(user.first_app_open) > 13 * 24 * 60 * 60 * 1000) {
-      this.templateFieldService.setField("third_week", "true");
-      this.templateFieldService.setField("w_praise_disabled", "false");
-    } else {
-      this.templateFieldService.setField("third_week", "false");
-    }
-    this.templateFieldService.setField(
-      "days_since_start",
-      (
-        (Date.parse(current_date) - Date.parse(user.first_app_open)) /
-        (24 * 60 * 60 * 1000)
-      ).toString()
-    );
   }
 }

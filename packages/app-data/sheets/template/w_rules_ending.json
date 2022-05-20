@@ -1,0 +1,36 @@
+{
+  "flow_type": "template",
+  "module": "rules",
+  "flow_name": "w_rules_ending",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "ending",
+      "value": "ending",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "ending"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_rules.xlsx"
+}

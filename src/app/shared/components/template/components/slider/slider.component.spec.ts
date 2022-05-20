@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { TmplSliderComponent } from './slider.component';
+import { TmplSliderComponent } from "./slider.component";
 
-describe('SliderNewComponent', () => {
+describe("SliderNewComponent", () => {
   let component: TmplSliderComponent;
   let fixture: ComponentFixture<TmplSliderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TmplSliderComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [TmplSliderComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TmplSliderComponent);
@@ -18,7 +18,7 @@ describe('SliderNewComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

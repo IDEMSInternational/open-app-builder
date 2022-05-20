@@ -5,19 +5,14 @@
 	"webDir": "www",
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 3000
+			"launchShowDuration": 7000,
+			"launchAutoHide": true
 		},
-		"CapacitorFirebaseAuth": {
+		"FirebaseAuthentication": {
+			"skipNativeAuth": false,
 			"providers": [
 				"google.com"
-			],
-			"languageCode": "en",
-			"nativeAuth": false,
-			"permissions": {
-				"google": [
-					"profile"
-				]
-			}
+			]
 		}
 	}
 }

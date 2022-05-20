@@ -1,0 +1,122 @@
+{
+  "flow_type": "template",
+  "flow_name": "box_multi_2",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "text",
+      "name": "question_text",
+      "parameter_list": {
+        "style": "emphasised"
+      },
+      "_nested_name": "question_text"
+    },
+    {
+      "type": "display_group",
+      "rows": [
+        {
+          "type": "template",
+          "name": "number_selector_1",
+          "value": "box_number_selector",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "nav_buttons",
+              "hidden": true,
+              "rows": [],
+              "_nested_name": "display_group.number_selector_1.nav_buttons"
+            }
+          ],
+          "_nested_name": "display_group.number_selector_1"
+        },
+        {
+          "type": "template",
+          "name": "number_selector_2",
+          "value": "box_number_selector",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "nav_buttons",
+              "hidden": true,
+              "rows": [],
+              "_nested_name": "display_group.number_selector_2.nav_buttons"
+            }
+          ],
+          "_nested_name": "display_group.number_selector_2"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "display_group",
+      "rows": [
+        {
+          "type": "template",
+          "name": "number_selector_3",
+          "value": "box_number_selector",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "nav_buttons",
+              "hidden": true,
+              "rows": [],
+              "_nested_name": "display_group.number_selector_3.nav_buttons"
+            }
+          ],
+          "_nested_name": "display_group.number_selector_3"
+        },
+        {
+          "type": "template",
+          "name": "number_selector_4",
+          "value": "box_number_selector",
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "nav_buttons",
+              "hidden": true,
+              "rows": [],
+              "_nested_name": "display_group.number_selector_4.nav_buttons"
+            }
+          ],
+          "_nested_name": "display_group.number_selector_4"
+        }
+      ],
+      "name": "display_group",
+      "_nested_name": "display_group"
+    },
+    {
+      "type": "template",
+      "name": "nav_buttons",
+      "value": "nav_buttons",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [],
+      "_nested_name": "nav_buttons"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_survey_boxes.xlsx"
+}

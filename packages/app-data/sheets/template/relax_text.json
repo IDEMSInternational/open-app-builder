@@ -1,0 +1,18 @@
+{
+  "flow_type": "template",
+  "flow_name": "relax_text",
+  "status": "released",
+  "rows": [
+    {
+      "type": "text",
+      "name": "activity_text",
+      "_nested_name": "activity_text"
+    },
+    {
+      "type": "text",
+      "name": "outro_text",
+      "_nested_name": "outro_text"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_relax_and_activities.xlsx"
+}

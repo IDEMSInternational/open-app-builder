@@ -43,7 +43,6 @@ async function appDataDownload(options: IProgramOptions) {
     assets_folder_id,
     sheets_folder_id,
     auth_token_path,
-    cache_path,
     assets_filter_function,
     sheets_filter_function,
   } = activeDeployment.google_drive;
@@ -53,9 +52,7 @@ async function appDataDownload(options: IProgramOptions) {
     ? path.resolve(_workspace_path, auth_token_path)
     : AUTH_TOKEN_PATH;
   const sheetsOutput = path.resolve(_workspace_path, "app_data", "sheets");
-  const sheetsCachePath = path.resolve(_workspace_path, cache_path, "app_sheets");
   const assetsOutput = path.resolve(_workspace_path, "app_data", "assets");
-  const assetsCachePath = path.resolve(_workspace_path, cache_path, "app_assets");
   const sheetsFilter = Buffer.from(sheets_filter_function.toString()).toString("base64");
   const assetsFilter = Buffer.from(assets_filter_function.toString()).toString("base64");
 
@@ -69,10 +66,10 @@ async function appDataDownload(options: IProgramOptions) {
   }
   // handle single file download
   if (options.sheetname) {
-    const cachedEntry = await getFileCacheEntry(options.sheetname, sheetsCachePath);
+    const cachedEntry = await getFileCacheEntry(options.sheetname, sheetsOutput);
     if (cachedEntry) {
       const fileEntry64 = Buffer.from(JSON.stringify(cachedEntry)).toString("base64");
-      const args = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --cache-path "${sheetsCachePath}" --file-entry-64 ${fileEntry64} --filter-function-64 "${sheetsFilter}"`;
+      const args = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --file-entry-64 ${fileEntry64} --filter-function-64 "${sheetsFilter}"`;
       const singleDLCmd = `${gdriveToolsExec} download ${commonArgs} ${args}`;
       return spawnSync(singleDLCmd, { shell: true, stdio: "inherit" });
     } else {
@@ -84,7 +81,7 @@ async function appDataDownload(options: IProgramOptions) {
   }
   // handle full sheets/assets sync
   // download sheets
-  const sheetsArgs = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --cache-path "${sheetsCachePath}" --log-name sheets.log --filter-function-64 "${sheetsFilter}"`;
+  const sheetsArgs = `--folder-id ${sheets_folder_id} --output-path "${sheetsOutput}" --log-name sheets.log --filter-function-64 "${sheetsFilter}"`;
   const sheetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${sheetsArgs}`;
   console.log(chalk.yellow("-----Sheets-----"));
   console.log(chalk.gray(sheetsDLCmd));
@@ -95,7 +92,7 @@ async function appDataDownload(options: IProgramOptions) {
   }
 
   // download assets
-  const assetsArgs = `--folder-id ${assets_folder_id} --output-path "${assetsOutput}" --cache-path "${assetsCachePath}" --log-name assets.log --filter-function-64 "${assetsFilter}"`;
+  const assetsArgs = `--folder-id ${assets_folder_id} --output-path "${assetsOutput}" --log-name assets.log --filter-function-64 "${assetsFilter}"`;
   const assetsDLCmd = `${gdriveToolsExec} download ${commonArgs} ${assetsArgs}`;
   console.log(chalk.yellow("-----Assets-----"));
   console.log(chalk.gray(assetsDLCmd));

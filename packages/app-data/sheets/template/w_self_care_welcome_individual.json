@@ -1,0 +1,138 @@
+{
+  "flow_type": "template",
+  "flow_name": "w_self_care_welcome_individual",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "welcome_individual",
+      "value": "welcome_individual",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "rows": [
+        {
+          "name": "workshop_data",
+          "value": "@data.workshop.w_self_care",
+          "_translations": {
+            "value": {}
+          },
+          "type": "set_variable",
+          "_nested_name": "welcome_individual.workshop_data",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "@data.workshop.w_self_care",
+                "matchedExpression": "@data.workshop.w_self_care",
+                "type": "data",
+                "fieldName": "workshop"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_self_care": [
+              "value"
+            ]
+          }
+        },
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "rows": [
+            {
+              "name": "intro_text",
+              "value": "Welcome! It’s great to have you here. This week is about YOU. \n\nIn this welcome workshop you will: \n* Get tools to care for yourself \n* Customise the app for your needs",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_af": true,
+                  "za_st": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "type": "set_variable",
+              "_nested_name": "welcome_individual.workshop_activity.intro_text"
+            },
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "rows": [
+                {
+                  "name": "reply_happy",
+                  "value": "Wonderful, I am so happy things are going well.",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_happy"
+                },
+                {
+                  "name": "reply_ok",
+                  "value": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_ok"
+                },
+                {
+                  "name": "reply_sad",
+                  "value": "Sorry that things are difficult now. It is completely normal to struggle sometimes. Remember that you are not alone!",
+                  "_translations": {
+                    "value": {
+                      "tz_sw": true,
+                      "za_af": true,
+                      "za_st": true,
+                      "za_tn": true,
+                      "za_xh": true,
+                      "za_zu": true
+                    }
+                  },
+                  "type": "set_variable",
+                  "_nested_name": "welcome_individual.workshop_activity.content_box.reply_sad"
+                }
+              ],
+              "_nested_name": "welcome_individual.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "welcome_individual.workshop_activity"
+        }
+      ],
+      "_nested_name": "welcome_individual"
+    }
+  ],
+  "_xlsxPath": "global/top_templates/workshop_templates/workshop_self_care.xlsx"
+}

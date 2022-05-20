@@ -1,0 +1,70 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_render_updates",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "title",
+      "value": "Parent",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "name": "title",
+      "_nested_name": "title"
+    },
+    {
+      "type": "text",
+      "value": "Changing either child input should update the other sibling",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "name": "text",
+      "_nested_name": "text"
+    },
+    {
+      "type": "text",
+      "value": "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "name": "text",
+      "_nested_name": "text",
+      "_dynamicFields": {
+        "value": [
+          {
+            "fullExpression": "Value of debug_render_updates_field: \nfield: @fields.debug_render_updates_field",
+            "matchedExpression": "@fields.debug_render_updates_field",
+            "type": "fields",
+            "fieldName": "debug_render_updates_field"
+          }
+        ]
+      },
+      "_dynamicDependencies": {
+        "@fields.debug_render_updates_field": [
+          "value"
+        ]
+      }
+    },
+    {
+      "type": "template",
+      "name": "debug_render_updates_child_1",
+      "value": "debug_render_updates_child_1",
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "debug_render_updates_child_1"
+    },
+    {
+      "type": "template",
+      "name": "debug_render_updates_child_2",
+      "value": "debug_render_updates_child_2",
+      "exclude_from_translation": true,
+      "rows": [],
+      "_nested_name": "debug_render_updates_child_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_render_updates.xlsx"
+}

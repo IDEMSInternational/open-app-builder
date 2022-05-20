@@ -1,0 +1,128 @@
+{
+  "flow_type": "global",
+  "flow_name": "home_screen_variables",
+  "status": "released",
+  "rows": [
+    {
+      "type": "declare_global_constant",
+      "name": "parent_app",
+      "value": "ParentApp",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "weekly_workshops",
+      "value": "Weekly Workshops",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "weekly_workshop",
+      "value": "Weekly Workshop",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "weekly_workshop_options",
+      "value": "Weekly Workshop Options",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "parent_points",
+      "value": "ParentPoints",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "parent_point",
+      "value": "ParentPoint",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "parent_centre",
+      "value": "Parent Library",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    },
+    {
+      "type": "declare_global_constant",
+      "name": "in_week_messages",
+      "value": "In-Week Messages",
+      "_translations": {
+        "value": {
+          "tz_sw": true,
+          "za_af": true,
+          "za_st": true,
+          "za_tn": true,
+          "za_xh": true,
+          "za_zu": true
+        }
+      }
+    }
+  ],
+  "_xlsxPath": "global/data/navigation_globals.xlsx"
+}
