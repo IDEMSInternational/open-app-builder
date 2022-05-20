@@ -12,8 +12,7 @@
         "value": {}
       },
       "parameter_list": {
-        "subtitles_src": "plh_video/lets_slow_down.vtt",
-        "subtitles_size": "1.5"
+        "subtitles_src": "plh_video/lets_slow_down.vtt"
       },
       "_nested_name": "video_src"
     }
