@@ -1,0 +1,45 @@
+{
+  "flow_type": "template",
+  "flow_subtype": "debug",
+  "flow_name": "w_example_tools_activity",
+  "status": "released",
+  "rows": [
+    {
+      "type": "template",
+      "name": "tools_activity",
+      "value": "tools_activity",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        }
+      ],
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "type": "nested_properties",
+          "name": "workshop_activity",
+          "exclude_from_translation": true,
+          "rows": [
+            {
+              "type": "nested_properties",
+              "name": "content_box",
+              "value": "w_example_tools",
+              "exclude_from_translation": true,
+              "rows": [],
+              "_nested_name": "tools_activity.workshop_activity.content_box"
+            }
+          ],
+          "_nested_name": "tools_activity.workshop_activity"
+        }
+      ],
+      "_nested_name": "tools_activity"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_workshop.xlsx"
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject } from "packages/api/node_modules/rxjs";
 import { interval } from "rxjs";
 import { debounce, takeUntil } from "rxjs/operators";
@@ -11,7 +11,7 @@ import { IFeedbackEntryDB } from "../feedback.types";
   templateUrl: "./feedback-debug.page.html",
   styleUrls: ["./feedback-debug.page.scss"],
 })
-export class FeedbackDebugPage implements OnInit {
+export class FeedbackDebugPage implements OnInit, OnDestroy {
   private destroyed$ = new Subject<boolean>();
   public feedbackPending: IFeedbackEntryDB[] = [];
   public feedbackSent: IFeedbackEntryDB[] = [];

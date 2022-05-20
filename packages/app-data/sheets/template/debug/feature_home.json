@@ -1,0 +1,321 @@
+{
+  "flow_type": "template",
+  "flow_name": "feature_home",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "weekly_workshops"
+          ],
+          "_raw": "click | go_to:weekly_workshops",
+          "_cleaned": "click | go_to:weekly_workshops"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "home_screen light"
+      },
+      "style_list": [
+        "margin: 40px 10px 0px 10px"
+      ],
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "lottie_src",
+          "value": "plh_lottie/weekly_workshops.json",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.lottie_src"
+        },
+        {
+          "type": "display_group",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "padding: 0"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_ex_s",
+              "value": "@global.weekly_workshops",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "style_list": [
+                "align-self: flex-start",
+                "margin-left: 20px",
+                "margin-bottom: 8px",
+                "margin-top: 15px"
+              ],
+              "_nested_name": "dg_example_7.display_group.title_ex_s",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.weekly_workshops",
+                    "matchedExpression": "@global.weekly_workshops",
+                    "type": "global",
+                    "fieldName": "weekly_workshops"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.weekly_workshops": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "round_button_1",
+              "value": "Value",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "plh_images/icons/letter_outline.svg",
+                "text": "Message",
+                "style": "home_screen yellow"
+              },
+              "style_list": [
+                "padding: 0"
+              ],
+              "_nested_name": "dg_example_7.display_group.round_button_1"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "dg_example_7.display_group"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parent_points"
+          ],
+          "_raw": "click | go_to:parent_points",
+          "_cleaned": "click | go_to:parent_points"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "home_screen shade"
+      },
+      "style_list": [
+        "margin: 40px 10px 0px 10px"
+      ],
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "lottie_src",
+          "value": "plh_lottie/parent_points.json",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.lottie_src"
+        },
+        {
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "name": "set_variable",
+          "_nested_name": "dg_example_7.set_variable"
+        },
+        {
+          "type": "display_group",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "padding: 0"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_ex_s",
+              "value": "@global.parent_points",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "style_list": [
+                "align-self: flex-start",
+                "white-space: nowrap",
+                "margin-top: 15px"
+              ],
+              "_nested_name": "dg_example_7.display_group.title_ex_s",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.parent_points",
+                    "matchedExpression": "@global.parent_points",
+                    "type": "global",
+                    "fieldName": "parent_points"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_points": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "round_button_1",
+              "value": "Value",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "plh_images/icons/play_outline_white.svg",
+                "text": "Start",
+                "style": "home_screen orange"
+              },
+              "style_list": [
+                "padding: 0"
+              ],
+              "_nested_name": "dg_example_7.display_group.round_button_1"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "dg_example_7.display_group"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    },
+    {
+      "type": "display_group",
+      "name": "dg_example_7",
+      "action_list": [
+        {
+          "trigger": "click",
+          "action_id": "go_to",
+          "args": [
+            "parent_centre"
+          ],
+          "_raw": "click | go_to:parent_centre",
+          "_cleaned": "click | go_to:parent_centre"
+        }
+      ],
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "home_screen dark"
+      },
+      "style_list": [
+        "margin: 40px 10px 0px 10px"
+      ],
+      "rows": [
+        {
+          "type": "lottie_animation",
+          "name": "lottie_src",
+          "value": "plh_lottie/parent_centre.json",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "_nested_name": "dg_example_7.lottie_src"
+        },
+        {
+          "type": "display_group",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "column"
+          },
+          "style_list": [
+            "padding: 0"
+          ],
+          "rows": [
+            {
+              "type": "title",
+              "name": "title_ex_s",
+              "value": "@global.parent_centre",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "style": "alternative"
+              },
+              "style_list": [
+                "align-self: flex-start",
+                "white-space: nowrap",
+                "margin-top:15px"
+              ],
+              "_nested_name": "dg_example_7.display_group.title_ex_s",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.parent_centre",
+                    "matchedExpression": "@global.parent_centre",
+                    "type": "global",
+                    "fieldName": "parent_centre"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_centre": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "round_button",
+              "name": "round_button_1",
+              "value": "Value",
+              "_translations": {
+                "value": {}
+              },
+              "exclude_from_translation": true,
+              "parameter_list": {
+                "icon_src": "plh_images/icons/play_outline_white.svg",
+                "style": "home_screen dark_orange"
+              },
+              "style_list": [
+                "padding: 0"
+              ],
+              "_nested_name": "dg_example_7.display_group.round_button_1"
+            }
+          ],
+          "name": "display_group",
+          "_nested_name": "dg_example_7.display_group"
+        },
+        {
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "name": "set_variable",
+          "_nested_name": "dg_example_7.set_variable"
+        }
+      ],
+      "_nested_name": "dg_example_7"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/feature_sheets/to_be_sorted/feature_template_components.xlsx"
+}

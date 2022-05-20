@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
 import introJs from "intro.js";
-import { TOUR } from "../data/data.service";
 import { TemplateTranslateService } from "../../components/template/services/template-translate.service";
-import { FlowTypes } from "packages/data-models/dist";
+import { FlowTypes } from "data-models";
 import { TemplateFieldService } from "../../components/template/services/template-field.service";
+import { AppDataService } from "../data/app-data.service";
 
 @Injectable({
   providedIn: "root",
@@ -14,15 +14,16 @@ export class TourService {
   introJS = introJs();
 
   waitForRoutingDelay = 1000;
+  public toursList: FlowTypes.FlowTypeBase[] = [];
 
   constructor(
     private router: Router,
     private templateFieldService: TemplateFieldService,
-    private translateService: TemplateTranslateService
+    private translateService: TemplateTranslateService,
+    private appDataService: AppDataService
   ) {}
-
-  listTourNames(): string[] {
-    return TOUR.map((t) => t.flow_name);
+  async init() {
+    this.toursList = this.appDataService.listSheetsByType("tour");
   }
 
   /**
@@ -31,7 +32,7 @@ export class TourService {
    * @param tourName flow-name of tour, e.g. `test_tour`
    */
   async startTour(tourName: string) {
-    let matchingTour = TOUR.find((t) => t.flow_name === tourName);
+    let matchingTour = await this.appDataService.getSheet<FlowTypes.Tour>("tour", tourName);
     if (matchingTour && matchingTour.rows && matchingTour.rows.length > 0) {
       this.introJS.setOptions({
         tooltipClass: "tooltipClass",

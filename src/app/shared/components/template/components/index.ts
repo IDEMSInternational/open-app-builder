@@ -47,6 +47,8 @@ import { PLHDebugToggleComponent } from "../../debug-toggle";
 import { SelectTextComponent } from "./select-text/select-text.component";
 import { TemplateHTMLComponent } from "./html/html.component";
 import { TmplAccordionComponent } from "./accordion/accordion.component";
+import { TmplLatexComponent } from "./latex/latex.component";
+import { TmplAnimatedSlidesComponent } from "./animated-slides/animated-slides.component";
 
 /** All components should be exported as a single array for easy module import */
 export const TEMPLATE_COMPONENTS = [
@@ -91,6 +93,8 @@ export const TEMPLATE_COMPONENTS = [
   SelectTextComponent,
   TemplateHTMLComponent,
   TmplAccordionComponent,
+  TmplLatexComponent,
+  TmplAnimatedSlidesComponent,
 ];
 
 /***************************************************************************************
@@ -151,4 +155,6 @@ export const TEMPLATE_COMPONENT_MAPPING: Record<
   items: null,
   select_text: SelectTextComponent,
   html: TemplateHTMLComponent,
+  latex: TmplLatexComponent,
+  animated_slides: TmplAnimatedSlidesComponent,
 };

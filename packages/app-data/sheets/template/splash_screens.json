@@ -1,0 +1,414 @@
+{
+  "flow_type": "template",
+  "flow_name": "splash_screens",
+  "status": "released",
+  "rows": [
+    {
+      "type": "animated_slides",
+      "action_list": [
+        {
+          "trigger": "completed",
+          "action_id": "emit",
+          "args": [
+            "completed"
+          ],
+          "_raw": "completed | emit:completed",
+          "_cleaned": "completed | emit:completed"
+        },
+        {
+          "trigger": "uncompleted",
+          "action_id": "emit",
+          "args": [
+            "uncompleted"
+          ],
+          "_raw": "uncompleted | emit:uncompleted",
+          "_cleaned": "uncompleted | emit:uncompleted"
+        }
+      ],
+      "parameter_list": {
+        "skip_text": "Skip Intro",
+        "style": "light"
+      },
+      "rows": [
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "3.5"
+          },
+          "rows": [
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_1",
+                  "value": "plh_images/first_app_launch/frustrated_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.image_1"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "text",
+              "name": "slogan_1",
+              "value": "Bringing teenagers up is hard",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "_nested_name": "animated_slides.animated_section.slogan_1"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "4"
+          },
+          "rows": [
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_2",
+                  "value": "plh_images/first_app_launch/loving_parent_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.image_2"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "text",
+              "name": "slogan_2",
+              "value": "You are the best parent your teen could have",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "parameter_list": {
+                "style": "large center"
+              },
+              "_nested_name": "animated_slides.animated_section.slogan_2"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "3.5"
+          },
+          "rows": [
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "centre_image"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "image_3",
+                  "value": "plh_images/first_app_launch/parent_group_shadow.svg",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.image_3"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "text",
+              "name": "slogan_3",
+              "value": "Join the 152.4 million parents who have used our resources",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "parameter_list": {
+                "style": "large center"
+              },
+              "_nested_name": "animated_slides.animated_section.slogan_3"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "5"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "value": "Powered by Parenting for Lifelong Health and partners",
+              "_translations": {
+                "value": {
+                  "tz_sw": true,
+                  "za_tn": true,
+                  "za_xh": true,
+                  "za_zu": true
+                }
+              },
+              "parameter_list": {
+                "style": "large center"
+              },
+              "name": "text",
+              "_nested_name": "animated_slides.animated_section.text"
+            },
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "partner_1",
+                  "value": "plh_images/logos/partners/plh.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.partner_1"
+                },
+                {
+                  "type": "image",
+                  "name": "partner_2",
+                  "value": "plh_images/logos/partners/unicef.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.partner_2"
+                },
+                {
+                  "type": "image",
+                  "name": "partner_3",
+                  "value": "plh_images/logos/partners/who.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.partner_3"
+                },
+                {
+                  "type": "image",
+                  "name": "partner_4",
+                  "value": "plh_images/logos/partners/cwb.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.partner_4"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            },
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images_overflow"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "partner_5",
+                  "value": "plh_images/logos/partners/idems.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.partner_5"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        },
+        {
+          "type": "animated_section",
+          "parameter_list": {
+            "duration": "4"
+          },
+          "rows": [
+            {
+              "type": "text",
+              "value": "@global.parent_app funded by",
+              "_translations": {
+                "value": {
+                  "tz_sw": true
+                }
+              },
+              "parameter_list": {
+                "style": "large center"
+              },
+              "name": "text",
+              "_nested_name": "animated_slides.animated_section.text",
+              "_dynamicFields": {
+                "value": [
+                  {
+                    "fullExpression": "@global.parent_app funded by",
+                    "matchedExpression": "@global.parent_app",
+                    "type": "global",
+                    "fieldName": "parent_app"
+                  }
+                ]
+              },
+              "_dynamicDependencies": {
+                "@global.parent_app": [
+                  "value"
+                ]
+              }
+            },
+            {
+              "type": "display_group",
+              "parameter_list": {
+                "style": "two_columns_images tight"
+              },
+              "rows": [
+                {
+                  "type": "image",
+                  "name": "funder_1",
+                  "value": "plh_images/logos/funders/ukri.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_1"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_2",
+                  "value": "plh_images/logos/funders/gcrf.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_2"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_3",
+                  "value": "plh_images/logos/funders/newton_fund.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_3"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_4",
+                  "value": "plh_images/logos/funders/lego_foundation.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_4"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_5",
+                  "value": "plh_images/logos/funders/university_of_oxford.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_5"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_6",
+                  "value": "plh_images/logos/funders/oak_foundation.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_6"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_7",
+                  "value": "plh_images/logos/funders/unicef.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_7"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_8",
+                  "value": "plh_images/logos/funders/end_violence_against_children.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_8"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_9",
+                  "value": "plh_images/logos/funders/erc.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_9"
+                },
+                {
+                  "type": "image",
+                  "name": "funder_10",
+                  "value": "plh_images/logos/funders/generali_human_safety_net.png",
+                  "_translations": {
+                    "value": {}
+                  },
+                  "exclude_from_translation": true,
+                  "_nested_name": "animated_slides.animated_section.display_group.funder_10"
+                }
+              ],
+              "name": "display_group",
+              "_nested_name": "animated_slides.animated_section.display_group"
+            }
+          ],
+          "name": "animated_section",
+          "_nested_name": "animated_slides.animated_section"
+        }
+      ],
+      "name": "animated_slides",
+      "_nested_name": "animated_slides"
+    }
+  ],
+  "_xlsxPath": "global/core_templates/core_templates_app_first_launch.xlsx"
+}

@@ -1,0 +1,141 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_tile_text",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "type": "text",
+      "name": "text",
+      "value": "All the tiles in the display group below should be the same height. \n\nText in the tiles below should be vertically centred, not fixed to top. You can see how the text in the tiles with short text is not vertically centred.",
+      "_translations": {
+        "value": {}
+      },
+      "_nested_name": "text"
+    },
+    {
+      "type": "display_group",
+      "name": "tool_tiles",
+      "exclude_from_translation": true,
+      "parameter_list": {
+        "style": "two_columns"
+      },
+      "rows": [
+        {
+          "type": "tile_component",
+          "name": "tile_1",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "image_text",
+            "first_line_text": "short text",
+            "icon_src": "@data.workshop.w_1on1.image_asset"
+          },
+          "_nested_name": "tool_tiles.tile_1",
+          "_dynamicFields": {
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.workshop.w_1on1.image_asset",
+                  "matchedExpression": "@data.workshop.w_1on1.image_asset",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.image_asset": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_2",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "image_text",
+            "first_line_text": "This is a very long text that should wrap into several lines within the tile component. Please go through this",
+            "icon_src": "@data.workshop.w_1on1.image_asset"
+          },
+          "_nested_name": "tool_tiles.tile_2",
+          "_dynamicFields": {
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.workshop.w_1on1.image_asset",
+                  "matchedExpression": "@data.workshop.w_1on1.image_asset",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.image_asset": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_3",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "image_text",
+            "first_line_text": "short text",
+            "icon_src": "@data.workshop.w_1on1.image_asset"
+          },
+          "_nested_name": "tool_tiles.tile_3",
+          "_dynamicFields": {
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.workshop.w_1on1.image_asset",
+                  "matchedExpression": "@data.workshop.w_1on1.image_asset",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.image_asset": [
+              "parameter_list.icon_src"
+            ]
+          }
+        },
+        {
+          "type": "tile_component",
+          "name": "tile_4",
+          "exclude_from_translation": true,
+          "parameter_list": {
+            "style": "image_text",
+            "first_line_text": "short text",
+            "icon_src": "@data.workshop.w_1on1.image_asset"
+          },
+          "_nested_name": "tool_tiles.tile_4",
+          "_dynamicFields": {
+            "parameter_list": {
+              "icon_src": [
+                {
+                  "fullExpression": "@data.workshop.w_1on1.image_asset",
+                  "matchedExpression": "@data.workshop.w_1on1.image_asset",
+                  "type": "data",
+                  "fieldName": "workshop"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@data.workshop.w_1on1.image_asset": [
+              "parameter_list.icon_src"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "tool_tiles"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_tile_text.xlsx"
+}

@@ -1,0 +1,146 @@
+{
+  "flow_type": "template",
+  "flow_name": "debug_double_radio_group_2",
+  "status": "released",
+  "flow_subtype": "debug",
+  "rows": [
+    {
+      "name": "template_name",
+      "value": "debug_radio_group",
+      "_translations": {
+        "value": {}
+      },
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "template_name"
+    },
+    {
+      "name": "answer_list_1_list",
+      "value": [
+        "name:name_var_1 | text:First",
+        "name:name_var_2 | text:Second",
+        "name:name_var_3 | text:Third"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list_1_list"
+    },
+    {
+      "name": "answer_list_2_list",
+      "value": [
+        "name:name_var_1 | text:1",
+        "name:name_var_2 | text:2",
+        "name:name_var_3 | text:3"
+      ],
+      "exclude_from_translation": true,
+      "type": "set_variable",
+      "_nested_name": "answer_list_2_list"
+    },
+    {
+      "type": "template",
+      "name": "debug_radio_group_1",
+      "value": "debug_radio_group",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text",
+          "value": "This is the first instance of @local.template_name",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_1.text",
+          "_dynamicFields": {
+            "value": [
+              {
+                "fullExpression": "This is the first instance of @local.template_name",
+                "matchedExpression": "@local.template_name",
+                "type": "local",
+                "fieldName": "template_name"
+              }
+            ]
+          },
+          "_dynamicDependencies": {
+            "@local.template_name": [
+              "value"
+            ]
+          }
+        },
+        {
+          "name": "answer_list",
+          "value": [
+            "@local.answer_list_1_list"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_1.answer_list",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "@local.answer_list_1_list",
+                  "matchedExpression": "@local.answer_list_1_list",
+                  "type": "local",
+                  "fieldName": "answer_list_1_list"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.answer_list_1_list": [
+              "value.0"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "debug_radio_group_1"
+    },
+    {
+      "type": "template",
+      "name": "debug_radio_group_2",
+      "value": "debug_radio_group",
+      "exclude_from_translation": true,
+      "rows": [
+        {
+          "name": "text",
+          "value": "This is the second instance of debug_radio_group",
+          "_translations": {
+            "value": {}
+          },
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_2.text"
+        },
+        {
+          "name": "answer_list",
+          "value": [
+            "@local.answer_list_2_list"
+          ],
+          "exclude_from_translation": true,
+          "type": "set_variable",
+          "_nested_name": "debug_radio_group_2.answer_list",
+          "_dynamicFields": {
+            "value": {
+              "0": [
+                {
+                  "fullExpression": "@local.answer_list_2_list",
+                  "matchedExpression": "@local.answer_list_2_list",
+                  "type": "local",
+                  "fieldName": "answer_list_2_list"
+                }
+              ]
+            }
+          },
+          "_dynamicDependencies": {
+            "@local.answer_list_2_list": [
+              "value.0"
+            ]
+          }
+        }
+      ],
+      "_nested_name": "debug_radio_group_2"
+    }
+  ],
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_radio_group.xlsx"
+}

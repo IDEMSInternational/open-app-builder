@@ -1,25 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Media, MediaObject } from '@ionic-native/media';
+import { Injectable } from "@angular/core";
+import { Media, MediaObject } from "@ionic-native/media";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: "root",
 })
 export class AudioRecordingService {
+  constructor() {}
 
-    constructor() {
+  recordAudioTest() {
+    console.log("Testing audio recording");
+    // Recording to a file
+    const file: MediaObject = Media.create("path/to/file.mp3");
 
-    }
+    file.startRecord();
 
-    recordAudioTest() {
-        console.log("Testing audio recording");
-        // Recording to a file
-        const file: MediaObject = Media.create("path/to/file.mp3");
-
-        file.startRecord();
-
-        setTimeout(() => {
-            file.stopRecord();
-        }, 2000);
-    }
-
+    setTimeout(() => {
+      file.stopRecord();
+    }, 2000);
+  }
 }

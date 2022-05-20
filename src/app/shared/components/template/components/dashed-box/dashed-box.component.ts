@@ -11,7 +11,8 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 })
 export class TmplDashedBoxComponent
   extends TemplateBaseComponent
-  implements ITemplateRowProps, OnInit {
+  implements ITemplateRowProps, OnInit
+{
   style: string;
   icon_src: string | null;
   icon_position: string;

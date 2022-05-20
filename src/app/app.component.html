@@ -5,8 +5,8 @@
         <ion-title>{{ sideMenuDefaults.title }}</ion-title>
         <div class="app-version" slot="end">
           <span *ngIf="sideMenuDefaults.should_show_version">{{ APP_VERSION }} </span>
-          <span *ngIf="sideMenuDefaults.should_show_env" style="margin-left: 16px"
-            >({{ ENV_NAME }})</span
+          <span *ngIf="sideMenuDefaults.should_show_deployment_name" style="margin-left: 16px"
+            >({{ DEPLOYMENT_NAME }})</span
           >
         </div>
       </ion-toolbar>

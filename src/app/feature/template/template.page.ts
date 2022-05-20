@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { TEMPLATE } from "src/app/shared/services/data/data.service";
+import { FlowTypes } from "packages/data-models";
+import { AppDataService } from "src/app/shared/services/data/app-data.service";
 
 @Component({
   selector: "plh-template-page",
@@ -10,17 +11,21 @@ import { TEMPLATE } from "src/app/shared/services/data/data.service";
 export class TemplatePage implements OnInit {
   templateName: string;
   filterTerm: string;
-  allTemplates = TEMPLATE.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
-  data = this.allTemplates;
-  constructor(private route: ActivatedRoute) {}
+  allTemplates: FlowTypes.FlowTypeBase[] = [];
+  filteredTemplates: FlowTypes.FlowTypeBase[] = [];
+  constructor(private route: ActivatedRoute, private appDataService: AppDataService) {}
 
   ngOnInit() {
     this.templateName = this.route.snapshot.params.templateName;
+    const allTemplates = this.appDataService.listSheetsByType("template");
+
+    this.allTemplates = allTemplates.sort((a, b) => (a.flow_name > b.flow_name ? 1 : -1));
+    this.filteredTemplates = allTemplates;
   }
 
   search() {
-    this.allTemplates = this.data;
-    this.allTemplates = this.allTemplates.filter(
+    this.allTemplates = this.allTemplates;
+    this.filteredTemplates = this.allTemplates.filter(
       (i) => i.flow_name.toLocaleLowerCase().indexOf(this.filterTerm.toLowerCase()) > -1
     );
   }
