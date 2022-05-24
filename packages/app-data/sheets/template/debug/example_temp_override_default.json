@@ -2,7 +2,7 @@
   "flow_type": "template",
   "flow_name": "example_temp_override_default",
   "status": "released",
-  "flow_subtype": "debug_override",
+  "flow_subtype": "debug",
   "rows": [
     {
       "type": "set_variable",
