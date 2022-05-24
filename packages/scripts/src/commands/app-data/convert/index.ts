@@ -44,7 +44,7 @@ export default program
 
 class AppDataConverter {
   /** Change version to invalidate any cached conversions */
-  public converterVersion = 1.6;
+  public converterVersion = 1.7;
 
   private activeDeployment = getActiveDeployment();
   private paths = {
@@ -89,8 +89,10 @@ class AppDataConverter {
     const allConvertedData = [...converted, ...cached].filter((data) =>
       this.applySheetFilters(data)
     );
-    this.writeOutputJsons(allConvertedData);
-    this.logSheetsSummary(allConvertedData);
+    const mergedData = this.mergeOutputsByType(allConvertedData);
+    const postProcessedData = postProcessData(mergedData);
+    this.writeOutputJsons(postProcessedData);
+    this.logSheetsSummary(postProcessedData);
     console.log(chalk.yellow("Conversion Complete"));
 
     if (this.conversionWarnings.length > 0) {
@@ -169,9 +171,8 @@ class AppDataConverter {
       const dataByFlowType = groupJsonByKey(merged, "flow_type");
       try {
         const convertedData = processData(dataByFlowType);
-        const postProcessed = postProcessData(convertedData);
-        processed.push(postProcessed);
-        this.saveCachedConversion(entry, postProcessed);
+        processed.push(convertedData);
+        this.saveCachedConversion(entry, convertedData);
       } catch (error) {
         this.conversionErrors.push(error);
       }
@@ -198,43 +199,51 @@ class AppDataConverter {
     return data;
   }
 
+  /** Merge all workbook data by flow_type to allow post-processing by flow type */
+  private mergeOutputsByType(workbooks: IParsedWorkbookData[]): IParsedWorkbookData {
+    const merged: IParsedWorkbookData = {};
+    for (const workbook of workbooks) {
+      Object.entries(workbook).forEach(([flow_type, flowArray]) => {
+        if (!merged[flow_type]) merged[flow_type] = [];
+        flowArray.forEach((flow) => merged[flow_type].push(flow));
+      });
+    }
+    return merged;
+  }
+
   /** Write individual converted jsons to flow_type folders */
-  private writeOutputJsons(convertedData: IParsedWorkbookData[]) {
+  private writeOutputJsons(data: IParsedWorkbookData) {
     const outputBase = this.paths.SHEETS_OUTPUT_FOLDER;
     fs.ensureDirSync(outputBase);
     fs.emptyDirSync(outputBase);
-    Object.values(convertedData).forEach((workbookDataEntry) => {
-      Object.values(workbookDataEntry).forEach((flowArray) => {
-        Object.values(flowArray).forEach((flow) => {
-          const { flow_type, flow_name, flow_subtype } = flow;
-          const flowOutputPath = path.resolve(
-            outputBase,
-            flow_type,
-            flow_subtype || "",
-            `${flow_name}.json`
-          );
-          // TODO - track error if output path already exists (duplicate name)
-          fs.ensureDirSync(path.dirname(flowOutputPath));
-          fs.writeFileSync(flowOutputPath, JSON.stringify(flow, null, 2));
-          // TODO - statsync
-        });
+    Object.values(data).forEach((flowArray) => {
+      Object.values(flowArray).forEach((flow) => {
+        const { flow_type, flow_name, flow_subtype } = flow;
+        const flowOutputPath = path.resolve(
+          outputBase,
+          flow_type,
+          flow_subtype || "",
+          `${flow_name}.json`
+        );
+        // TODO - track error if output path already exists (duplicate name)
+        fs.ensureDirSync(path.dirname(flowOutputPath));
+        fs.writeFileSync(flowOutputPath, JSON.stringify(flow, null, 2));
+        // TODO - statsync
       });
     });
   }
 
   /** Collate totals of flows by subtype and log */
-  private logSheetsSummary(data: IParsedWorkbookData[]) {
+  private logSheetsSummary(data: IParsedWorkbookData) {
     const countBySubtype = {};
-    data.forEach((workbookData) =>
-      Object.values(workbookData).forEach((flows) => {
-        flows.forEach((flow) => {
-          let type = flow.flow_type;
-          if (flow.flow_subtype) type += `.${flow.flow_subtype}`;
-          if (!countBySubtype[type]) countBySubtype[type] = 0;
-          countBySubtype[type]++;
-        });
-      })
-    );
+    Object.values(data).forEach((flows) => {
+      flows.forEach((flow) => {
+        let type = flow.flow_type;
+        if (flow.flow_subtype) type += `.${flow.flow_subtype}`;
+        if (!countBySubtype[type]) countBySubtype[type] = 0;
+        countBySubtype[type]++;
+      });
+    });
     const logOutput = Object.keys(countBySubtype)
       .sort()
       .map((key) => {
