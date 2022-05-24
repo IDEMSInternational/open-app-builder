@@ -35,6 +35,7 @@ nav:
       - components/round_button.md
       - components/text.md
       - components/simple_checkbox.md
+      - components/slider.md
 # Enable all extension for authoring as per https://squidfunk.github.io/mkdocs-material/setup/extensions/
 
 markdown_extensions:
