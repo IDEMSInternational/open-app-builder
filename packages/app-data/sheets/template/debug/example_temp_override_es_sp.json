@@ -2,7 +2,7 @@
   "flow_type": "template",
   "flow_name": "example_temp_override_es_sp",
   "status": "released",
-  "flow_subtype": "debug_override",
+  "flow_subtype": "debug",
   "override_target": "example_temp_override_default",
   "override_condition": "@fields._app_language.startsWith(\"es\")",
   "comments": "condition used to apply override to all es users (e.g. es_sp)",
