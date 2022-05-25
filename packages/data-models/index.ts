@@ -1,6 +1,5 @@
 export * from "./flowTypes";
 export * from "./functions";
-export * from "./workflow.model";
 export * from "./workflows";
 export { IDeploymentConfig, DEPLOYMENT_CONFIG_EXAMPLE_DEFAULTS } from "./deployment.model";
 
