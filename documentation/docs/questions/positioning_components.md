@@ -8,4 +8,4 @@ We don't exactly have a syntax to get text to wrap around an image. The system w
 
 ![](images/display_group.png)
 
-_Answered on 14 February 2022_
+_Answered on 14 February 2022 by ETW_
