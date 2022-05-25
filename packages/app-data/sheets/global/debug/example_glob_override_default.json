@@ -2,7 +2,7 @@
   "flow_type": "global",
   "flow_name": "example_glob_override_default",
   "status": "released",
-  "flow_subtype": "debug_override",
+  "flow_subtype": "debug",
   "rows": [
     {
       "type": "declare_global_constant",
