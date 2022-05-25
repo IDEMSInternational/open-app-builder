@@ -10,4 +10,5 @@ const WORKFLOW_DEFAULTS: IDeploymentWorkflows = {
   ...MISC_WORKFLOWS,
 };
 
-export { IDeploymentWorkflows, WORKFLOW_DEFAULTS };
+export { WORKFLOW_DEFAULTS };
+export * from "./workflow.model";
