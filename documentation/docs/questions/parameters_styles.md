@@ -8,4 +8,4 @@ The `parameter_list` takes only parameters that are specifically defined by us f
 
 Instead, the `style_list` does indeed interpret CSS directly. My knowledge of CSS is limited as well so I can't be of much help here, but [this documentation website](https://www.w3schools.com/cssref/default.asp) has proven handy to me in the past. 
 
-_Answered on 14 February 2022_
+_Answered on 14 February 2022 by ETW_
