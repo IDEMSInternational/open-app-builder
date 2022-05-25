@@ -1,5 +1,77 @@
 [
   {
+    "SourceText": "When everything feels like it is falling apart",
+    "text": "Wakati kila kitu kinaonekana kunaharibika",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "And you can't help but raise your voice",
+    "text": "Na huwezi kusaidia isipokuwa kupaza sauti",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "When all the frustrations are beginning to start",
+    "text": "Wakati kuchanganyikiwa kote kunaanza kutokea",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember that you have a choice",
+    "text": "Kumbuka kwamba unalo chaguo",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember all we have to be grateful for",
+    "text": "Kumbuka tunatakiwa kushukuru kwa kila kitu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Let's slow down",
+    "text": "Twende taratibu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Take a few deep breaths",
+    "text": "Vuta pumzi ndefu",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Because I really couldn't love you more",
+    "text": "Kwa sababu siwezi kuendelea kukupenda zaidi",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can take pause, you can count to 10",
+    "text": "Unaweza kupumzika, unaweza kuhesabu mpaka 10",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Play a game or do something fun",
+    "text": "Cheza mchezo au fany kitu flani cha kufurahisha",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "You can phone a friend, someone to confide in",
+    "text": "Unaweza kumpigia simu rafiki, mtu flani unayemuamini",
+    "type": "template",
+    "note": ""
+  },
+  {
+    "SourceText": "Remember you're not the only one",
+    "text": "Kumbuka siyo wewe peke yako",
+    "type": "template",
+    "note": ""
+  },
+  {
     "SourceText": "* Ask each other, “What made you happy today?”\n* Ask each other, “What difficulty did you face today?”\n* Ask each other, “How can I help you?”\n* Try to do this together every day; it could be when you are eating dinner together or before you go to bed.",
     "text": "* Ulizaneni, “Kitu gani kilikufurahisha leo?”\n* Ulizaneni, “Ulikabiliana na shida gani leo?”\n* Ulizaneni, “Ninaweza kukusaidiaje?”\n* Jaribuni kufanya hivyo pamoja kila siku; inaweza kuwa wakati mnapokula pamoja chakula cha usiku au kabla ya kwenda kulala.",
     "type": "template",
