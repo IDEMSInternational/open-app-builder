@@ -9,7 +9,7 @@
 ![](images/slider.png)
 
 [Google Sheet Demo](https://docs.google.com/spreadsheets/d/1oSJHE2gq_WqgQM6NAKWBfuxCXIjcJ1k4aIUl422QK60/edit#gid=569531329)   
-[Live Preview Demo](https://plh-teens-app1.web.app/template/comp_slider)
+[Live Preview Demo](https://plh-global.web.app/template/comp_slider)
 
 ## Parameters
 
