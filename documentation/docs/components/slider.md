@@ -3,8 +3,8 @@
 
 | type      | name          |parameter_list                 |
 | --------- | ------------  |---------                      |
-|slider	    |slider_par_1_1 |help:                          |
-|slider     |slider_par_1_2 |help: any text for help tooltip|
+|slider	    |slider_par_5_1 |min: 0; max: 10; step: 2       |
+|slider     |slider_par_5_2 |min: 0; max: 10; step: 5       |
 
 ![](images/slider.png)
 
@@ -13,26 +13,19 @@
 
 ## Parameters
 
-| Parameter             | Value               | Description                          |
-| ---------             | -----------         | ---------                          	                                
-|help                   |null (default)       | No help tooltip                      |
-|help                   |string               | Any text for help tooltip            |
-|min                    |0 (default)          | Minimum value on slider is 0         |
-|min                    |number               | Any number as minimum value |
-|max                    |7 (default)          | Maximum value on slider is 7          |
-|max                    |number               | Any number as maximum value        |
-|title                  |null (default)       | No title                             |
-|title                  |string               | Any text as a title                  |
-|step                   |1 (default)          | Step for slider                      |
-|step                   |number               | Any number as a step for slider      |
-|min_value_label        |null (default)       | No select value on slider            |
-|min_value_label        |string               | Select value on slider               |
-|max_value_label        |null (default)       | No select value on slider            |
-|max_value_label        |string               | Select value on slider               |
-|labels_count           |8 (default)          | To be removed                        |
-|labels_count           |number               | To be removed                        |
-|no_value               |false (default)      | To be removed                        |
-|no_value               |true                 | To be removed                        |
-|no_value_text          |'no_value' (default) | To be removed                        |
-|no_value_text          |string               | To be removed                        |
-
+| Parameter             | Value                                                        | Description                                                     |
+| ---------             | -----------                                                  | ---------                                                       |                              
+|help                   |string                                                        | Any text for help tooltip                                       |             
+|title                  |string                                                        | Any text as a title                                             |
+|min_max_value          |number                                                        | Any number as min and max values. Min should be less than max   |
+|min_value_label        |string                                                        | A string below the minimum value                                |
+|max_value_label        |string                                                        | A string below the maximum value                                |
+|min_max_value_label    |string                                                        | A string below both minimum and maximum values                  |
+|min_max_step           |number                                                        | A number as a step size. This number needs to divide (max - min)|
+|min_max_step           |number                                                        | A number as a step size. This number needs to divide (max - min)|
+|min_max_labels_count   |number   | A number as the number of labels to show. This labels count minus 1 needs to divide (max - min). Selection of labels in between is possible/can be done.|
+|min_max_labels_count   |number   | A number as the number of labels to show. This labels count minus 1 needs to divide (max - min). Selection of labels in between is possible/can be done.|
+|no_value               |false (default)                                               | To be removed                        |
+|no_value               |true                                                          | To be removed                        |
+|no_value_text          |'no_value' (default)                                          | To be removed                        |
+|no_value_text          |string                                                        | To be removed                        |
