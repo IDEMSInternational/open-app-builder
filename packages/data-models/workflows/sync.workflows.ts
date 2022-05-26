@@ -5,14 +5,19 @@ const workflows: IDeploymentWorkflows = {
     label: "Sync All Content",
     steps: [
       {
+        name: "sync_assets",
+        function: async ({ tasks, workflow }) =>
+          tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
+      },
+      {
         name: "sync_sheets",
         function: async ({ tasks, workflow }) =>
           tasks.workflow.runWorkflow({ name: "sync_sheets", parent: workflow }),
       },
       {
-        name: "sync_assets",
+        name: "sync_live",
         function: async ({ tasks, workflow }) =>
-          tasks.workflow.runWorkflow({ name: "sync_assets", parent: workflow }),
+          tasks.workflow.runWorkflow({ name: "sync_live", parent: workflow }),
       },
     ],
   },
@@ -68,6 +73,26 @@ const workflows: IDeploymentWorkflows = {
             localAssetsFolder: workflow.assets_dl.output,
             appAssetsFolder: config.app_data.assets_output_path,
           }),
+      },
+    ],
+  },
+  sync_live: {
+    label: "View options for sync live reload (🧪 experimental)",
+    steps: [
+      {
+        name: "sync_live",
+        function: async ({ tasks, workflow, config }) => {
+          tasks.gdrive.liveReload({
+            folderId: config.google_drive.sheets_folder_id,
+            // customCommands: [
+            //   {
+            //     keybinding: "r",
+            //     name: "Full Resync",
+            //     command: async () => tasks.workflow.runWorkflow({ name: "sync", parent: workflow }),
+            //   },
+            // ],
+          });
+        },
       },
     ],
   },
