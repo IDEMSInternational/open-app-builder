@@ -18,7 +18,7 @@
 |help                   |null (default)       | No help tooltip                      |
 |help                   |string               | Any text for help tooltip            |
 |min                    |0 (default)          | Minimum value on slider is 0         |
-|min                    |number               | Any number as minimum value; number 5 is selcted as the minimum value          |
+|min                    |number               | Any number as minimum value |
 |max                    |7 (default)          | Maximum value on slider              |
 |max                    |number               | Any number as maximum value; number 8 is selected as the maximum value          |
 |title                  |null (default)       | No title                             |
