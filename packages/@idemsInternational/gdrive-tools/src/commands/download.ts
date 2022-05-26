@@ -71,7 +71,7 @@ export default program
     "Function applied to omit downloads based on file entry, encoded as base64. e.g. decoded: (entry)=>entry.folderPath.includes('temp/')"
   )
   .action(async (options: IProgramOptions) => {
-    new GDriveDownloader(options).run();
+    return new GDriveDownloader(options).run();
   });
 
 // Run if called directly from Node
@@ -99,16 +99,16 @@ class GDriveDownloader {
 
   public async run() {
     const { fileEntry64, folderId, authTokenPath, credentialsPath } = this.options;
-    this.drive = await authorizeGDrive({ authTokenPath, credentialsPath });
+    const { drive } = await authorizeGDrive({ authTokenPath, credentialsPath });
+    this.drive = drive;
     // Handle case of single or full download
     if (fileEntry64) {
       const cachedEntry: IGDriveFileWithFolder = JSON.parse(
         Buffer.from(fileEntry64, "base64").toString()
       );
       return this.processSingleFileDownload(cachedEntry);
-    } else {
-      return this.processFullFolderDownload(folderId);
     }
+    return this.processFullFolderDownload(folderId);
   }
 
   /**
@@ -369,6 +369,10 @@ class GDriveDownloader {
       }
     });
   }
+}
+
+function getDownloader(options: IProgramOptions) {
+  return new GDriveDownloader(options);
 }
 
 /**
