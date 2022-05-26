@@ -20,7 +20,7 @@
 |min                    |0 (default)          | Minimum value on slider is 0         |
 |min                    |number               | Any number as minimum value |
 |max                    |7 (default)          | Maximum value on slider              |
-|max                    |number               | Any number as maximum value; number 8 is selected as the maximum value          |
+|max                    |number               | Any number as maximum value        |
 |title                  |null (default)       | No title                             |
 |title                  |string               | Any text as a title                  |
 |step                   |1 (default)          | Step for slider                      |
