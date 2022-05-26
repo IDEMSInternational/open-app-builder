@@ -7,12 +7,12 @@ import * as inquirer from "inquirer";
  * (what is displayed), and value (what is returned)
  * @param message main text that appears above options
  */
-export async function promptOptions(
+export async function promptOptions<T = any>(
   choices: string[] | { name: string; value: any }[] = [],
   message = "Select an option"
 ) {
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
-  return res.selected;
+  return res.selected as T;
 }
 export async function promptInput(message: string) {
   const name = "inputValue";
