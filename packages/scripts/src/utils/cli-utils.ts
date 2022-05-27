@@ -14,7 +14,7 @@ export async function promptOptions<T = any>(
   const res = await inquirer.prompt([{ type: "list", name: "selected", message, choices }]);
   return res.selected as T;
 }
-export async function promptInput(message: string, defaultValue: string) {
+export async function promptInput(message: string, defaultValue?: string) {
   const name = "inputValue";
   const res = await inquirer.prompt([{ type: "input", message, name, default: defaultValue }]);
   return res[name];
