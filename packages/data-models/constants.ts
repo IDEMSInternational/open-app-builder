@@ -1,5 +1,6 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
+import clone from "clone";
 /*********************************************************************************************
  *  Constants used throughout the app
  *
@@ -144,7 +145,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-export const DEFAULT_APP_CONSTANTS = {
+const APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
@@ -160,5 +161,6 @@ export const DEFAULT_APP_CONSTANTS = {
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
 };
-
-export type IAppConstants = typeof DEFAULT_APP_CONSTANTS;
+// Export as a clone to avoid risk one import could alter another
+export const getDefaultAppConstants = () => clone(APP_CONSTANTS);
+export type IAppConstants = typeof APP_CONSTANTS;
