@@ -5,6 +5,7 @@ import gdrive from "./providers/gdrive";
 import template from "./providers/template";
 import translate from "./providers/translate";
 import workflow from "./providers/workflow";
+import git from "./providers/git";
 
 /**
  * Tasks are thin wrappers around functions and commands, to support inclusion as part of
@@ -20,6 +21,7 @@ const ALL_TASKS = {
   template,
   translate,
   workflow,
+  git,
 };
 
 export type ITasks = typeof ALL_TASKS;

@@ -1,5 +1,5 @@
 import { spawnSync } from "child_process";
-import { IWorkflowContext } from "data-models";
+import type { IWorkflowContext } from "data-models";
 
 /**
  * Call another workflow to run.
