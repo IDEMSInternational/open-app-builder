@@ -144,7 +144,7 @@ const FEEDBACK_MODULE_DEFAULTS = {
   selected_text_field: "_feedback_selected_text",
 };
 
-const APP_CONSTANTS = {
+export const DEFAULT_APP_CONSTANTS = {
   APP_FIELDS,
   APP_HEADER_DEFAULTS,
   APP_INITIALISATION_DEFAULTS,
@@ -161,4 +161,4 @@ const APP_CONSTANTS = {
   SERVER_SYNC_FREQUENCY_MS,
 };
 
-export default APP_CONSTANTS;
+export type IAppConstants = typeof DEFAULT_APP_CONSTANTS;
