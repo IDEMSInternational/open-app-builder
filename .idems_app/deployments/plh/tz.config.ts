@@ -1,8 +1,9 @@
+import { cloneConfig } from "data-models/deployment.model";
 import DEFAULT_CONFIG from "./global.config";
 
 /** TZ config extends the default config **/
 
-const config = DEFAULT_CONFIG;
+const config = cloneConfig(DEFAULT_CONFIG);
 config.name = "plh_tz";
 config.app_data.sheets_filter_function = (flow) =>
   !["debug", "component_demo", "example_hardcoded", "campaign_rows_debug"].includes(
