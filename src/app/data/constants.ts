@@ -1,4 +1,4 @@
-import { DEFAULT_APP_CONSTANTS, IAppConstants } from "data-models";
+import { getDefaultAppConstants, IAppConstants } from "data-models";
 import { environment } from "src/environments/environment";
 import { deepMergeObjects } from "../shared/utils";
 
@@ -6,6 +6,6 @@ const app_constant_overrides = (environment.deploymentConfig as any).app_constan
 
 /** List of constants provided by data-models combined with deployment-specific overrides */
 export const APP_CONSTANTS: IAppConstants = deepMergeObjects(
-  DEFAULT_APP_CONSTANTS,
+  getDefaultAppConstants(),
   app_constant_overrides
 );
