@@ -346,16 +346,28 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
     example_glob_override_default: {
       flow_type: "global",
       flow_name: "example_glob_override_default",
-      flow_subtype: "debug_override",
+      flow_subtype: "debug",
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
     },
     example_glob_override_es_sp: {
       flow_type: "global",
       flow_name: "example_glob_override_es_sp",
-      flow_subtype: "debug_override",
+      flow_subtype: "debug",
       override_target: "example_glob_override_default",
       override_condition: '@fields._app_language.startsWith("es")',
       _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
+    },
+    example_initialise_global: {
+      flow_type: "global",
+      flow_name: "example_initialise_global",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_global_field.xlsx",
+    },
+    example_lang_global: {
+      flow_type: "global",
+      flow_name: "example_lang_global",
+      flow_subtype: "debug",
+      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_languages.xlsx",
     },
     financial_emergencies: {
       flow_type: "global",
@@ -1018,24 +1030,6 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_subtype: "component_demo",
       _xlsxPath: "quality_assurance/feature_sheets/feature_animated_slides.xlsx",
     },
-    example_temp_override_default: {
-      flow_type: "template",
-      flow_name: "example_temp_override_default",
-      flow_subtype: "debug_override",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-      _overrides: {
-        example_temp_override_es_sp: '@fields._app_language.startsWith("es")',
-      },
-    },
-    example_temp_override_es_sp: {
-      flow_type: "template",
-      flow_name: "example_temp_override_es_sp",
-      flow_subtype: "debug_override",
-      override_target: "example_temp_override_default",
-      override_condition: '@fields._app_language.startsWith("es")',
-      comments: "condition used to apply override to all es users (e.g. es_sp)",
-      _xlsxPath: "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
-    },
     demo_emo_check_in: {
       flow_type: "template",
       flow_name: "demo_emo_check_in",
@@ -1122,6 +1116,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "language_select",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
+      _overrides: {
+        language_select_tz: '@fields._deployment_name == "plh_tz"',
+        language_select_za: '@fields._deployment_name == "plh_za"',
+      },
     },
     language_select_tz: {
       flow_type: "template",
@@ -1316,6 +1314,10 @@ export const SHEETS_CONTENT_LIST: ISheetContents = {
       flow_type: "template",
       flow_name: "organisation_registration",
       _xlsxPath: "global/core_templates/core_templates_settings.xlsx",
+      _overrides: {
+        organisation_registration_tz: '@fields._deployment_name == "plh_tz"',
+        organisation_registration_za: '@fields._deployment_name == "plh_za"',
+      },
     },
     organisation_registration_tz: {
       flow_type: "template",

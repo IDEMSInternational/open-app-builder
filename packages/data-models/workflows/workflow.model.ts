@@ -1,7 +1,7 @@
 // NOTE - this import can lead to build issues
 // https://www.codejam.info/2021/10/typescript-cannot-write-file-overwrite-input.html
 import type { ITasks } from "scripts/src/tasks";
-import { IDeploymentConfig } from ".";
+import type { IDeploymentConfig } from "../deployment.model";
 
 export interface IWorkflowContext {
   [step_name: string]: { output: any };
