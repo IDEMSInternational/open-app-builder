@@ -33,6 +33,10 @@ export interface IDeploymentConfig {
     /** processed translations for use in app. Default `packages/app_data/translations` */
     translations_output_path?: string;
   };
+  git?: {
+    /** Url of external git repo to store content */
+    content_repo?: string;
+  };
   translations?: {
     /** List of all language codes to include. Default null (includes all) */
     filter_language_codes?: string[];
