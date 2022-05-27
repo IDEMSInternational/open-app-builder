@@ -3854,6 +3854,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@kwsites/file-exists@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@kwsites/file-exists@npm:1.1.1"
+  dependencies:
+    debug: ^4.1.1
+  checksum: 4ff945de7293285133aeae759caddc71e73c4a44a12fac710fdd4f574cce2671a3f89d8165fdb03d383cfc97f3f96f677d8de3c95133da3d0e12a123a23109fe
+  languageName: node
+  linkType: hard
+
+"@kwsites/promise-deferred@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@kwsites/promise-deferred@npm:1.1.1"
+  checksum: 07455477a0123d9a38afb503739eeff2c5424afa8d3dbdcc7f9502f13604488a4b1d9742fc7288832a52a6422cf1e1c0a1d51f69a39052f14d27c9a0420b6629
+  languageName: node
+  linkType: hard
+
 "@nestjs/cli@npm:^7.6.0":
   version: 7.6.0
   resolution: "@nestjs/cli@npm:7.6.0"
@@ -22581,6 +22597,7 @@ __metadata:
     jasmine-ts: ^0.3.2
     node-rsa: ^1.1.1
     pkg: ^5.5.1
+    simple-git: ^3.7.1
     ts-node: ~7.0.0
     ts-node-dev: ^1.0.0
     typescript: ^4.1.2
@@ -23059,6 +23076,17 @@ __metadata:
   bin:
     simple-git-hooks: cli.js
   checksum: e7d15ec4c20d2f6c85139fb9dee2cb25be684a27ff32931459fd2e5b1ed205ab89f31fd2e0fc53fc964c1a576d33cbcfbf69611f3d694f11851152f4bc415145
+  languageName: node
+  linkType: hard
+
+"simple-git@npm:^3.7.1":
+  version: 3.7.1
+  resolution: "simple-git@npm:3.7.1"
+  dependencies:
+    "@kwsites/file-exists": ^1.1.1
+    "@kwsites/promise-deferred": ^1.1.1
+    debug: ^4.3.3
+  checksum: df5361e892cadf73f0bfad2b34f3609809465c4ba1c8f3f95b2650e8a40c366c78a1a99c5e4f0eafc2acd33a85a9660d834690bb6331ef11bc1c064f526cd4a8
   languageName: node
   linkType: hard
 

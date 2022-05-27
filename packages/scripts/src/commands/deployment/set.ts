@@ -65,7 +65,7 @@ async function setActiveDeployment(deploymentName?: string) {
  * Iterate over the files and dynamically import to resolve their values,
  * which can be passed back as an array of deployments
  */
-async function listDeployments() {
+export async function listDeployments() {
   const deploymentsHashmap: { [name: string]: IDeploymentConfigWithFilename } = {};
   const { found: allDeploymentFiles } = new GlobSync("**/*config.ts", {
     cwd: IDEMS_APP_CONFIG.deployments,
