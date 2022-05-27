@@ -5,8 +5,8 @@ const app_constants = DEFAULT_CONSTANTS;
 /** Define default startup actions for plh app */
 app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
   {
-    type: "run_survey",
-    value: "plhIntroSplash",
+    type: "template_popup",
+    value: "splash_screens",
   },
   {
     type: "template_popup",
@@ -22,7 +22,7 @@ app_constants.APP_INITIALISATION_DEFAULTS.app_first_launch_actions = [
   },
   {
     type: "tour_start",
-    value: "intro_tour",
+    value: "home_screen_tour_intro",
   },
 ];
 

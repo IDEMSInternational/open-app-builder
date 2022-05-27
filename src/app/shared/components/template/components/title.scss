@@ -1,4 +1,4 @@
-@import "src/theme/mixins";
+@use "/src/theme/mixins";
 
 .title-wrapper {
   display: flex;
@@ -43,6 +43,6 @@
   .title-help {
     margin-left: var(--tiny-margin);
     color: var(--ion-color-primary);
-    @include small-square;
+    @include mixins.small-square;
   }
 }
