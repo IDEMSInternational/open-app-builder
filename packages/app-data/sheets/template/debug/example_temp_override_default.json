@@ -2,7 +2,7 @@
   "flow_type": "template",
   "flow_name": "example_temp_override_default",
   "status": "released",
-  "flow_subtype": "debug_override",
+  "flow_subtype": "debug",
   "rows": [
     {
       "type": "set_variable",
@@ -105,7 +105,7 @@
       "_nested_name": "example_lang_select"
     }
   ],
-  "_xlsxPath": "quality_assurance/example_templates/example_overrides.xlsx",
+  "_xlsxPath": "quality_assurance/example_sheets/to_be_sorted/example_overrides.xlsx",
   "_overrides": {
     "example_temp_override_es_sp": "@fields._app_language.startsWith(\"es\")"
   }

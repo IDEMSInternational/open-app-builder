@@ -137,5 +137,5 @@
       "_nested_name": "tool_tiles"
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_templates/debug_tile_text.xlsx"
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/debug_tile_text.xlsx"
 }

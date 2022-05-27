@@ -1,46 +1,61 @@
 import { Injectable } from "@angular/core";
-import { cfaSignIn, cfaSignOut } from "capacitor-firebase-auth";
-import { AngularFireAuth } from "@angular/fire/auth";
+import { Auth } from "@angular/fire/auth";
+import { FirebaseAuthentication, User } from "@capacitor-firebase/authentication";
+import { BehaviorSubject } from "rxjs";
+import { first, filter } from "rxjs/operators";
+import { APP_CONSTANTS } from "src/app/data";
 
 @Injectable({
   providedIn: "root",
 })
-/**
- * The auth service handles login and user document sync
- * Native code requirements for auth:
- * https://www.npmjs.com/package/capacitor-firebase-auth
- * Also if signing via google play, ensure correct sha:1
- * added from google play store to firebase
- */
 export class AuthService {
-  authUser;
-  constructor(private afAuth: AngularFireAuth) {}
-  init() {
-    this._subscribeToAuthUpdates();
+  private authUser$ = new BehaviorSubject<User | null>(null);
+
+  // include auth import to ensure app registered
+  constructor(auth: Auth) {
+    this.addAuthListeners();
   }
 
-  /**
-   * Use native capacitor firebase auth sign in with google provider
-   * auth state changes still handled by generic listener, but can
-   * be subscribed to for receiving update of completion
-   */
-  signIn() {
-    return cfaSignIn("google.com");
-    // .subscribe((user) =>
-    //   console.log("user", user)
-    // );
+  /** Return a promise that resolves after a signed in user defined */
+  public async waitForSignInComplete() {
+    return this.authUser$
+      .pipe(
+        filter((value?: User | null) => !!value),
+        first()
+      )
+      .toPromise();
   }
 
-  /**
-   * Sign user out, but retain locally stored data
-   */
-  signOutUser() {
-    cfaSignOut().subscribe((e) => console.log("signed out", e));
+  public async signInWithGoogle() {
+    return FirebaseAuthentication.signInWithGoogle();
   }
 
-  private _subscribeToAuthUpdates() {
-    this.afAuth.authState.subscribe(async (user) => {
-      this.authUser = user;
+  public async signOut() {
+    return FirebaseAuthentication.signOut();
+  }
+
+  public async getCurrentUser() {
+    const { user } = await FirebaseAuthentication.getCurrentUser();
+    return user;
+  }
+
+  /** Listen to auth state changes and update local subject accordingly */
+  private addAuthListeners() {
+    FirebaseAuthentication.addListener("authStateChange", ({ user }) => {
+      console.log("[User] updated", user);
+      this.addStorageEntry(user);
+      this.authUser$.next(user);
     });
+  }
+
+  /** Keep a subset of auth user info in contact fields for db lookup*/
+  private addStorageEntry(user?: User) {
+    const { APP_AUTH_USER } = APP_CONSTANTS.APP_FIELDS;
+    if (user) {
+      const { email, phoneNumber, uid, displayName } = user;
+      localStorage.setItem(APP_AUTH_USER, JSON.stringify({ email, phoneNumber, uid, displayName }));
+    } else {
+      localStorage.removeItem(APP_AUTH_USER);
+    }
   }
 }

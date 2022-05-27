@@ -6,7 +6,7 @@
   "flow_subtype": "debug",
   "rows": [
     {
-      "id": "efm_act_1_5a",
+      "id": "act_1",
       "type": "introduction",
       "chapter": 1,
       "title": "Activity 1",
@@ -30,7 +30,7 @@
       "page_title": "Section 1"
     },
     {
-      "id": "efm_act_1_10a",
+      "id": "act_2",
       "type": "activity",
       "chapter": 1,
       "title": "Activity 2",
@@ -54,7 +54,7 @@
       "page_title": "Section 2"
     },
     {
-      "id": "efm_act_1_10b",
+      "id": "act_3",
       "type": "activity",
       "chapter": 1,
       "title": "Activity 3",
@@ -78,7 +78,7 @@
       "page_title": "Section 2"
     },
     {
-      "id": "efm_act_1_12a",
+      "id": "act_4",
       "type": "activity",
       "chapter": 1,
       "title": "Activity 4",
@@ -92,18 +92,18 @@
           "eng": "Activity 4"
         },
         "type_name": {
-          "eng": "Activity"
+          "eng": "Game"
         },
         "page_title": {
           "eng": "Section 2"
         }
       },
-      "type_name": "Activity",
+      "type_name": "Game",
       "page_title": "Section 2"
     },
     {
-      "id": "efm_act_1_12b",
-      "type": "activity",
+      "id": "act_5",
+      "type": "game",
       "chapter": 1,
       "title": "Activity 5",
       "_translations": {
@@ -116,495 +116,15 @@
           "eng": "Activity 5"
         },
         "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 2"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 2"
-    },
-    {
-      "id": "efm_act_1_12c",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 6",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 6"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 2"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 2"
-    },
-    {
-      "id": "efm_act_1_20a",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 7",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 7"
-        },
-        "type_name": {
-          "eng": "Activity"
+          "eng": "Game"
         },
         "page_title": {
           "eng": "Section 3"
         }
       },
-      "type_name": "Activity",
+      "type_name": "Game",
       "page_title": "Section 3"
-    },
-    {
-      "id": "efm_act_1_20b",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 8",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 8"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 3"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 3"
-    },
-    {
-      "id": "efm_act_1_20c",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 9",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 9"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 3"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 3"
-    },
-    {
-      "id": "efm_act_1_20d",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 10",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 10"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 3"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 3"
-    },
-    {
-      "id": "efm_act_1_30a",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 11",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 11"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 4"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 4"
-    },
-    {
-      "id": "efm_act_1_30b",
-      "type": "game",
-      "chapter": 1,
-      "title": "Activity 12",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 12"
-        },
-        "type_name": {
-          "eng": "Game"
-        },
-        "page_title": {
-          "eng": "Section 4"
-        }
-      },
-      "type_name": "Game",
-      "page_title": "Section 4"
-    },
-    {
-      "id": "efm_act_1_30c",
-      "type": "game",
-      "chapter": 1,
-      "title": "Activity 13",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 13"
-        },
-        "type_name": {
-          "eng": "Game"
-        },
-        "page_title": {
-          "eng": "Section 4"
-        }
-      },
-      "type_name": "Game",
-      "page_title": "Section 4"
-    },
-    {
-      "id": "efm_act_1_40a",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 14",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 14"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 5"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 5"
-    },
-    {
-      "id": "efm_act_1_40b",
-      "type": "game",
-      "chapter": 1,
-      "title": "Activity 15",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 15"
-        },
-        "type_name": {
-          "eng": "Game"
-        },
-        "page_title": {
-          "eng": "Section 5"
-        }
-      },
-      "type_name": "Game",
-      "page_title": "Section 5"
-    },
-    {
-      "id": "efm_act_1_40c",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 16",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 16"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 5"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 5"
-    },
-    {
-      "id": "efm_act_1_50a",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 17",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 17"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 6"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 6"
-    },
-    {
-      "id": "efm_act_1_50b",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 18",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 18"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 6"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 6"
-    },
-    {
-      "id": "efm_act_1_50c",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 19",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 19"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 6"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 6"
-    },
-    {
-      "id": "efm_act_1_60a",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 20",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 20"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 7"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 7"
-    },
-    {
-      "id": "efm_act_1_60b",
-      "type": "game",
-      "chapter": 1,
-      "title": "Activity 21",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 21"
-        },
-        "type_name": {
-          "eng": "Game"
-        },
-        "page_title": {
-          "eng": "Section 7"
-        }
-      },
-      "type_name": "Game",
-      "page_title": "Section 7"
-    },
-    {
-      "id": "efm_act_1_60c",
-      "type": "game",
-      "chapter": 1,
-      "title": "Activity 22",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 22"
-        },
-        "type_name": {
-          "eng": "Game"
-        },
-        "page_title": {
-          "eng": "Section 7"
-        }
-      },
-      "type_name": "Game",
-      "page_title": "Section 7"
-    },
-    {
-      "id": "efm_act_1_70a",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 23",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 23"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 8"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 8"
-    },
-    {
-      "id": "efm_act_1_70b",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 24",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 24"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 8"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 8"
-    },
-    {
-      "id": "efm_act_1_70c",
-      "type": "activity",
-      "chapter": 1,
-      "title": "Activity 25",
-      "_translations": {
-        "title": {},
-        "type_name": {},
-        "page_title": {}
-      },
-      "_translatedFields": {
-        "title": {
-          "eng": "Activity 25"
-        },
-        "type_name": {
-          "eng": "Activity"
-        },
-        "page_title": {
-          "eng": "Section 9"
-        }
-      },
-      "type_name": "Activity",
-      "page_title": "Section 9"
     }
   ],
-  "_xlsxPath": "quality_assurance/debug_templates/Debugging copy of EFM_activity_high_level_sheets.xlsx"
+  "_xlsxPath": "quality_assurance/debug_sheets/to_be_sorted/Debugging copy of EFM_activity_high_level_sheets.xlsx"
 }
