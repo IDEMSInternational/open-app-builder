@@ -1,5 +1,6 @@
 /// <reference lib="dom" />
 import APP_CONFIG_GLOBALS from "./app-config/globals";
+import clone from "clone";
 /*********************************************************************************************
  *  Constants used throughout the app
  *
@@ -160,5 +161,6 @@ const APP_CONSTANTS = {
   NOTIFICATION_DEFAULTS,
   SERVER_SYNC_FREQUENCY_MS,
 };
-
-export default APP_CONSTANTS;
+// Export as a clone to avoid risk one import could alter another
+export const getDefaultAppConstants = () => clone(APP_CONSTANTS);
+export type IAppConstants = typeof APP_CONSTANTS;
